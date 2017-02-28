@@ -34,7 +34,7 @@
                         <tr>
                             {% for key,sectionFilter in accredit.procedure if ( sectionFilter.procedure is not null and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') ) or
                             ( sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and sectionFilter.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED')) %}
-                            <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                            <td data-tab="{{ sectionFilter.procedure|trans_fallback('title')|urlize }}">
                                 {{ sectionFilter.procedure|trans_fallback('title') }}
                             </td>
                             {% if  loop.index % 3 == 0 %}
@@ -49,7 +49,7 @@
 
             <div class="border-top">
                 {% for key, section in accredit.procedure %}
-                    <div class="block-contain-txt-register-movie" data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                    <div class="block-contain-txt-register-movie" data-article="{{ section.procedure|trans_fallback('title')|urlize }}">
                         <div class="block-01-ms">
                             <div class="buttons buttons-01">
                                 <a href="#" class="button" onclick="window.print()"><i class="icon icon-print"></i>Imprimer</a>

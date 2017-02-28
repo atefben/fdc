@@ -135,14 +135,6 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press'
                     ),
-                    'btnSelectionLabel' => array(
-                        'field_type' => 'text',
-                        'label' => 'Libellé du bouton 1 (gauche)'
-                    ),
-                    'btnSelectionLink' => array(
-                        'field_type' => 'text',
-                        'label' => 'Lien du bouton 1 (gauche)'
-                    ),
                     'firstColumnContact' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
@@ -203,7 +195,7 @@ class CorpoMovieInscriptionProcedureAdmin extends Admin
                 'label' => 'Image cover du règlement'
             ))
             ->add('backgroundImage', 'sonata_type_model_list', array(
-                'label' => 'Image cover de la strate formulaire'
+                'label' => 'Image cover'
             ))
             ->add('displayReglement')
             ->add('displayInscription')

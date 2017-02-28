@@ -1,7 +1,5 @@
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-
-
         var $grid = $('.isotope-01:not(.add-ajax-request)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
@@ -17,16 +15,21 @@ var owInitGrid = function (id) {
                 $('.item-inner').css({
                     'width':'100.5%',
                     'height':'100.5%'
-                })
+                });
+
+                $('.isotope-01 .item.video').on('click',function(){
+                    $('.isotope-01 .item.video').removeClass('activeVideo');
+                    $(this).addClass('activeVideo');
+                });
             });
 
 
         });
 
         var $items = $('.item');
-
-        
-        var $gridMore = $('.add-ajax-request').imagesLoaded(function () {
+        var clickAllow = true;
+        var $gridDom = $('.add-ajax-request');
+        var $gridMore = $gridDom.imagesLoaded(function () {
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
@@ -41,7 +44,25 @@ var owInitGrid = function (id) {
             });
             $gridMore.isotope();
 
+            if($gridDom.parent().find('.ajax-request').length){
+                if(!$gridDom.find('.ajax-request').is(':visible')){
+                    //hidden button, infinite load
+                    var footerHeight = $('footer').outerHeight();
+                    $(window).scroll(function(){
+                        if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
+                            if(clickAllow){
+                                clickAllow = false;
+                                $('.ajax-request').trigger('click');
+                            }
+                        }
+                    });
+                }
+            }
         });
+
+        var ticker = window.setInterval(function(){
+            clickAllow = true;
+        },1000);
 
 
         var number = 0;
@@ -53,7 +74,6 @@ var owInitGrid = function (id) {
                 var url = $(this).attr('href');
 
                 var dateTime = $('.last-element').data('time');
-                console.log(dateTime);
 
                 $.get( url, {date: dateTime}, function( data ) {
 
@@ -101,9 +121,9 @@ var owInitGrid = function (id) {
                             });
 
                             //scroll bottom
-                            $('html,body').animate({
+                            /*$('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()
-                            },300);
+                            },300);*/
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
@@ -227,8 +247,6 @@ var owInitGrid = function (id) {
 
             $.each($('.item.block-poster'), function (i,e) {
                 var p = $(e).find('.title-12');
-
-                console.log(p.length )
 
                 if(p.length > 3){ 
                     stop = true;

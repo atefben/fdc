@@ -12,7 +12,7 @@
             {% endif %}
             {% set mainImage = mainTrans.file %}
             <div class="block-push block-push-top"
-                 style="background-image: url({% path mainImage, '1280x808' %}); background-position: 0px 0px;">
+                 style="background-image: url('{% path mainImage, '1280x808' %}'); background-position: 0px 0px;">
                 <div class="vFlexAlign">
                     <div class="txts">
                         <strong class="title-3">{{ 'participate.rules'|trans }}</strong>

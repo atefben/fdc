@@ -13,22 +13,18 @@ class FDCEventRoutesRepository extends NestedTreeRepository
 {
 
     /**
-     * Find if page is displayed by parent id
-     *
      * @param $parent_id
-     * @return \Doctrine\ORM\Query
+     * @return array
      */
     public function getEnabledRouteByParent($parent_id)
     {
-        $query = $this->createQueryBuilder('er')
+        return $this->createQueryBuilder('er')
             ->where('er.parent = :parent_id')
             ->andWhere('er.enabled = 1')
             ->orderBy('er.position', 'desc')
             ->setParameter('parent_id', $parent_id)
             ->getQuery()
             ->getArrayResult();
-
-        return $query;
     }
 
 }

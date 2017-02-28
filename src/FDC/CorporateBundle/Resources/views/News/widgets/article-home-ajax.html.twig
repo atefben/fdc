@@ -1,36 +1,29 @@
-<div id="filter-update">
-{% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
-</div>
+{% if homeArticles|length %}
+    {% if homeArticles|length %}
+        <div class="articles right pad">
+            {% for article in homeArticles|slice(0, 3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
-{% set vars = {'isDouble': 'double'} %}
-{% for article in homeArticles %}
-    {% if loop.first %}
-    <div class="articles right pad">
-        {% include 'FDCCorporateBundle:News:widgets/article-home.html.twig' with vars %}
-    {% elseif loop.index == 4 %}
-        {% if homeArticlesSlider is not empty %}
-            {% include 'FDCCorporateBundle:News:widgets/slideshow-actu-home.html.twig' %}
-        {% endif %}
-    <div class="articles left">
-        {% include 'FDCCorporateBundle:News:widgets/article-home.html.twig' with vars %}
-    {% else %}
-        {% include 'FDCCorporateBundle:News:widgets/article-home.html.twig' %}
+    {% if homeArticles|length > 3 %}
+        <div class="articles left">
+            {% for article in homeArticles|slice(3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
+            {% endfor %}
+        </div>
     {% endif %}
-    {% if loop.index == 3 %}
-    </div>
-    {% endif %}
-    {% if loop.last %}
-    </div>
-    {% endif %}
-{% endfor %}
-{% if homeArticlesNext %}
-    <div class="articles right nextDay">
-        {% for article in homeArticlesNext %}
-            {% if loop.first %}
-            {% include 'FDCCorporateBundle:News:widgets/article-home.html.twig' with vars %}
-            {% else %}
-            {% include 'FDCCorporateBundle:News:widgets/article-home.html.twig' %}
-            {% endif %}
-        {% endfor %}
-    </div>
+
+    <script type="text/javascript">
+        $('#home-news-statements-more').attr('href', '{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}');
+    </script>
+{% else %}
+    {% trans_default_domain 'FDCEventBundle' %}
+    <script type="text/javascript">
+        $('#home-news-statements-more').replaceWith('' +
+            '<a id="home-news-statements-more"' +
+            'href="{{ path('fdc_corporate_news_getarticles',{year: festivalYear}) }}"' +
+            'class="read-more">{{ "article.list.title.touslesarticles"|trans|raw }}</a>');
+    </script>
 {% endif %}

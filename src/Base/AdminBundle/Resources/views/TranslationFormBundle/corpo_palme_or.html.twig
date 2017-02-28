@@ -127,7 +127,7 @@
                                                     <h4><strong>{{ 'form.widget.movie'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' %}
                                                     <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type' %}
                                                     <h4><strong>Image + texte</strong></h4>
                                                 {% endif %}
 
@@ -141,7 +141,7 @@
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
-                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                {% if widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type' %}
                                                     {{ form_label(widget.image) }}
                                                     <span class="help-block sonata-ba-field-help">Dimensions attendues : 726x518 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
                                                     {{ form_widget(widget.image) }}
@@ -181,7 +181,7 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_intro_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.intro'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_movie_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.movie'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget"
-                                       data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_typeone_type)| escape }}"><i
+                                       data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type)| escape }}"><i
                                                 class="icon-plus"></i>Image + texte</a>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@
                                                     <h4><strong>{{ 'form.widget.movie'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' %}
                                                     <h4><strong>{{ 'form.widget.intro'|trans }}</strong></h4>
-                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type' %}
                                                     <h4><strong>Texte + image</strong></h4>
                                                 {% endif %}
 
@@ -254,7 +254,7 @@
                                                             {% endif %}
                                                         </div>
                                                     </div>
-                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type' %}
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type' %}
                                                     {{ form_label(widget.image) }}
                                                     <span class="help-block sonata-ba-field-help">Dimensions attendues : 726x518 - ratio paysage. Format attendu : .jpg, .png, .gif</span>
                                                     {{ form_widget(widget.image) }}
@@ -456,7 +456,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_type'%}
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_typeone_media_image_type'%}
                                                         <h4><strong>Module Image + texte</strong></h4>
                                                         <div class="form-group">
                                                             <label>

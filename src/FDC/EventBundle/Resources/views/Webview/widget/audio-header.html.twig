@@ -1,7 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 
-
-{% set file = widget.file %}
+{% set file = widget.audio %}
 {% set url = '' %}
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% if file %}
@@ -12,7 +11,7 @@
     {% endif %}
     {% set file = trans.file %}
     {% set url = trans.mp3Url %}
-    {% set header = widget.file.image %}
+    {% set header = widget.header %}
     {% if header is not null %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
         {% if imageTrans is null or imageTrans.file is null %}
@@ -25,5 +24,5 @@
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
-      data-title="Un certain regard<br/>sur le palmarès 2016" 
+      data-title="{{ widget|trans_fallback('title') }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>

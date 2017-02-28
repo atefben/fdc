@@ -99,10 +99,10 @@ class EditionsController extends Controller
         $results = $bitlyManager->bitly_get('shorten', $params);
 
         return $this->render('FDCCorporateBundle:Retrospective:affiche.html.twig', [
-            'posters'   => $posters,
-            'festival'  => $festival,
-            'urlshare'  => $results['data']['url'],
-            'year'  => $year,
+            'posters'  => $posters,
+            'festival' => $festival,
+            'urlshare' => $results['data']['url'],
+            'year'     => $year,
         ]);
     }
 
@@ -128,7 +128,7 @@ class EditionsController extends Controller
             ->find(1)
         ;
 
-        if ($page->findTranslationByLocale('fr')->getStatus() == 1) {
+        if ($page->findTranslationByLocale('fr')->getStatus() == TranslateChildInterface::STATUS_PUBLISHED) {
             return $this->render('FDCCorporateBundle:Retrospective:history.html.twig', [
                 'currentPage' => $page,
             ]);
@@ -201,6 +201,7 @@ class EditionsController extends Controller
         return $this->render('FDCCorporateBundle:Retrospective:palme.html.twig', [
             'pages'       => $pages,
             'currentPage' => $page,
+            'slug'        => $slug,
         ]);
     }
 

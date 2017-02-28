@@ -168,7 +168,6 @@ class MovieController extends Controller
             'next'               => $next,
             'nextProjectionDate' => $nextProjectionDate,
             'festivals'          => $festivals,
-            'hidePressBlock'     => true,
         ]);
     }
 

@@ -69,9 +69,7 @@ var owinitSlideShow = function (slider, hash) {
 
 
 var openSlideShow = function (slider, hash, affiche) {
-    console.log(slider);
     console.log(hash);
-    console.log(affiche);
     $('html').addClass('slideshow-open');
 
     var images = [];
@@ -144,6 +142,10 @@ var openSlideShow = function (slider, hash, affiche) {
                 var url = $(value).find('img').attr('data-url');
 
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+            }
+
+            if(hash == id && centerElement == 0){
+                centerElement = $(this).index('.photo');
             }
 
             var image = {
@@ -341,7 +343,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }, 1000);
 
-
+    console.log(centerElement);
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 

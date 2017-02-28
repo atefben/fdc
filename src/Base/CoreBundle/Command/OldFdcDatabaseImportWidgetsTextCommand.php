@@ -56,7 +56,6 @@ class OldFdcDatabaseImportWidgetsTextCommand extends ContainerAwareCommand
             }
         }
         $bar->finish();
-
         $output->writeln('');
     }
 

@@ -29,7 +29,6 @@
                             <div class="box-body">
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.title) }}
-                                    {{ form_row(form.parent.children.mainImage) }}
                                     {{ form_row(translationsFields.procedureContent) }}
                                 </div>
                             </div>
@@ -44,15 +43,18 @@
                                 <div class="sonata-ba-collapsed-fields">
                                     {{ form_row(translationsFields.pushTitle) }}
                                     {{ form_row(translationsFields.pushSubTitle) }}
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnSelectionLabel) }}
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnSelectionLink) }}
+                                        </div>
+                                    </div>
+                                    {{ form_row(form.parent.children.mainImage) }}
                                     {{ form_row(translationsFields.rulesContent) }}
                                     {{ form_row(form.parent.children.pdf) }}
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnSelectionLabel) }}
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnSelectionLink) }}
-                                    </div>
                                     {{ form_row(form.parent.children.displayReglement) }}
                                 </div>
                             </div>
@@ -71,17 +73,18 @@
                                         }
                                     </style>
                                     {{ form_row(translationsFields.btnText) }}
-                                    {{ form_row(translationsFields.inscriptionContent) }}
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnLabel) }}
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-5">
+                                            {{ form_row(translationsFields.btnLink) }}
+                                        </div>
+                                    </div>
                                     {{ form_row(form.parent.children.backgroundImage) }}
-{#                                    {{ form_row(form.parent.children.mainImage) }}#}
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnLabel) }}
-                                        {{ form_row(form.parent.children.displayInscription) }}
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-5">
-                                        {{ form_row(translationsFields.btnLink) }}
-                                    </div>
+                                    {{ form_row(translationsFields.inscriptionContent) }}
+                                    {{ form_row(form.parent.children.displayInscription) }}
                                 </div>
                             </div>
                         </div>

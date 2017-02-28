@@ -121,6 +121,12 @@ var initVideo = function(hash) {
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         var $container    = $("#"+vid.id).closest('.video-container');
+        var checkInt = window.setInterval(function(){
+            $container.find('.jwplayer').removeClass('jw-skin-seven');
+            if($container.find('.jwplayer').hasClass('jw-skin-seven')){
+                window.clearInterval(checkInt);
+            }
+        },500);
 
         if($container.find('.control-bar').length <= 0) {
             $container.append(controlBar);
@@ -441,7 +447,6 @@ var initVideo = function(hash) {
         }
 
         function initChannelTopBar() {
-
             sliderChannelsVideoTop = $container.find(".slider-channels-video").owlCarousel({
                 nav: false,
                 dots: false,
@@ -497,12 +502,15 @@ var initVideo = function(hash) {
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
+        }else{
+            var videoFile =  $container.data('file');
+            var videoImage =  $container.data('img');
         }
         
         playerInstance.setup({
-            // file: $container.data('file'),
-            sources: $('.activeVideo').length > 0 ? videoFile : $container.data('file'),
-            image: $('.activeVideo').length > 0 ? videoImage :  $container.data('img'),
+            //sources: videoFile,
+            file: videoFile[0],
+            image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
             width: $(vid).parent('div').width(),
@@ -530,7 +538,6 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                console.log(playlist)
                 playerInstance.load(playlist);
 
 

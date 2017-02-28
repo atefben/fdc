@@ -88,122 +88,7 @@
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
                             {% for article in homeContents|slice(0, 3) %}
-                                {% if class(article) starts with 'S' %}
-                                    {% set type = 'communique' %}
-                                {% else %}
-                                    {% set type = 'info' %}
-                                {% endif %}
-                                {% if article is news_article or article is statement_article or article is info_article %}
-                                    {% set contentType = 'article' %}
-                                    {% set img = article.header %}
-                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                    {% if trans is null or trans.file is null %}
-                                        {% set trans = img.findTranslationByLocale('fr') %}
-                                    {% endif %}
-                                    {% set file = trans.file %}
-                                {% elseif article is news_video or article is statement_video or article is info_video %}
-                                    {% set contentType = 'video' %}
-                                    {% set header = article.header %}
-                                    {% if header is not null %}
-                                        {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = trans %}
-                                        {% else %}
-                                            {% set trans = article.header.findTranslationByLocale('fr') %}
-                                            {% if trans is not null and trans.file is not null %}
-                                                {% set imageTrans = trans %}
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if imageTrans is defined and imageTrans is not null %}
-                                        {% set file = imageTrans.file %}
-                                        {% set img = article.header %}
-                                    {% else %}
-                                        {% set img = article.video.image %}
-                                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is null or trans.file is null %}
-                                            {% set trans = img.findTranslationByLocale('fr') %}
-                                        {% endif %}
-                                        {% set file = trans.file %}
-                                    {% endif %}
-                                {% elseif article is news_audio or article is info_audio or article is statement_audio %}
-                                    {% set contentType = 'audio' %}
-                                    {% set header = article.header %}
-                                    {% if header is not null %}
-                                        {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = trans %}
-                                        {% else %}
-                                            {% set trans = article.header.findTranslationByLocale('fr') %}
-                                            {% if trans is not null and trans.file is not null %}
-                                                {% set imageTrans = trans %}
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if imageTrans is defined and imageTrans is not null %}
-                                        {% set file = imageTrans.file %}
-                                        {% set img = article.header %}
-                                    {% else %}
-                                        {% set img = article.audio.image %}
-                                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is null or trans.file is null %}
-                                            {% set trans = img.findTranslationByLocale('fr') %}
-                                        {% endif %}
-                                        {% set file = trans.file %}
-                                    {% endif %}
-                                {% elseif article is news_image or article is statement_image or article is info_image %}
-                                    {% set contentType = 'photo' %}
-                                    {% set header = article.header %}
-                                    {% if header is not null %}
-                                        {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is not null and trans.file is not null %}
-                                            {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                                        {% else %}
-                                            {% set trans = article.header.findTranslationByLocale('fr') %}
-                                            {% if trans is not null and trans.file is not null %}
-                                                {% set imageTrans = trans %}
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if imageTrans is defined and imageTrans is not null %}
-                                        {% set img = article.header %}
-                                        {% set file = imageTrans.file %}
-                                    {% else %}
-                                        {% set img = article.gallery.medias[0].media %}
-                                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans is null or trans.file is null %}
-                                            {% set trans = img.findTranslationByLocale('fr') %}
-                                        {% endif %}
-                                        {% set file = trans.file %}
-                                    {% endif %}
-                                {% endif %}
-                                <article
-                                        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{% if loop.first %} double w2{% endif %}"
-                                        data-format="{{ contentType }}"
-                                        data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420"
-                                        data-end="false">
-                                    <div class="image">
-                                        <div class="image-wrapper">
-                                            <img src="{% path file , '926x584' %}" alt=""/>
-                                        </div>
-
-                                        {% set trans = article.findTranslationByLocale(app.request.locale) %}
-                                        {% if trans == null %}
-                                            {% set trans = article.findTranslationByLocale('fr') %}
-                                        {% endif %}
-                                        {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
-                                        <a href="{{ sliderUrl }}"
-                                           class="linkImage"></a>
-                                        <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
-                                    </div>
-                                    <div class="info">
-                                        <a href="#"
-                                           class="category">{{ article.theme|trans_fallback('name') }}</a><span
-                                                class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
-                                                class="hour">{{ article.publishedAt|date('H:i') }}</span>
-                                        <strong><a href="{{ sliderUrl }}">{{ article|trans_fallback('title') }}</a></strong>
-                                    </div>
-                                </article>
+                                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
                             {% endfor %}
                         </div> <!-- end articles-->
                     </div> <!-- end article wrapper-->
@@ -272,130 +157,17 @@
 
                                 {% if homeContents|length > 3 %}
                                     {% for article in homeContents|slice(3) %}
-                                        {% if class(article) starts with 'S' %}
-                                            {% set type = 'communique' %}
-                                        {% else %}
-                                            {% set type = 'info' %}
-                                        {% endif %}
-                                        {% if article is news_article or article is statement_article or article is info_article %}
-                                            {% set contentType = 'article' %}
-                                            {% set img = article.header %}
-                                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                            {% if trans is null or trans.file is null %}
-                                                {% set trans = img.findTranslationByLocale('fr') %}
-                                            {% endif %}
-                                            {% set file = trans.file %}
-                                        {% elseif article is news_video or article is statement_video or article is info_video %}
-                                            {% set contentType = 'video' %}
-                                            {% set header = article.header %}
-                                            {% if header is not null %}
-                                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is not null and trans.file is not null %}
-                                                    {% set imageTrans = trans %}
-                                                {% else %}
-                                                    {% set trans = article.header.findTranslationByLocale('fr') %}
-                                                    {% if trans is not null and trans.file is not null %}
-                                                        {% set imageTrans = trans %}
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endif %}
-                                            {% if imageTrans is defined and imageTrans is not null %}
-                                                {% set file = imageTrans.file %}
-                                                {% set img = article.header %}
-                                            {% else %}
-                                                {% set img = article.video.image %}
-                                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is null or trans.file is null %}
-                                                    {% set trans = img.findTranslationByLocale('fr') %}
-                                                {% endif %}
-                                                {% set file = trans.file %}
-                                            {% endif %}
-                                        {% elseif article is news_audio or article is info_audio or article is statement_audio %}
-                                            {% set contentType = 'audio' %}
-                                            {% set header = article.header %}
-                                            {% if header is not null %}
-                                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is not null and trans.file is not null %}
-                                                    {% set imageTrans = trans %}
-                                                {% else %}
-                                                    {% set trans = article.header.findTranslationByLocale('fr') %}
-                                                    {% if trans is not null and trans.file is not null %}
-                                                        {% set imageTrans = trans %}
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endif %}
-                                            {% if imageTrans is defined and imageTrans is not null %}
-                                                {% set file = imageTrans.file %}
-                                                {% set img = article.header %}
-                                            {% else %}
-                                                {% set img = article.audio.image %}
-                                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is null or trans.file is null %}
-                                                    {% set trans = img.findTranslationByLocale('fr') %}
-                                                {% endif %}
-                                                {% set file = trans.file %}
-                                            {% endif %}
-                                        {% elseif article is news_image or article is statement_image or article is info_image %}
-                                            {% set contentType = 'photo' %}
-                                            {% set header = article.header %}
-                                            {% if header is not null %}
-                                                {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is not null and trans.file is not null %}
-                                                    {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                                                {% else %}
-                                                    {% set trans = article.header.findTranslationByLocale('fr') %}
-                                                    {% if trans is not null and trans.file is not null %}
-                                                        {% set imageTrans = trans %}
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endif %}
-                                            {% if imageTrans is defined and imageTrans is not null %}
-                                                {% set img = article.header %}
-                                                {% set file = imageTrans.file %}
-                                            {% else %}
-                                                {% set img = article.gallery.medias[0].media %}
-                                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans is null or trans.file is null %}
-                                                    {% set trans = img.findTranslationByLocale('fr') %}
-                                                {% endif %}
-                                                {% set file = trans.file %}
-                                            {% endif %}
-                                        {% endif %}
-
-                                        <article
-                                                class="card item all {{ contentType }} {{ article.theme|trans_fallback('slug') }} {% if loop.index == 2 %}double w2{% else %}{% endif %}"
-                                                data-format="{{ contentType }}"
-                                                data-theme="{{ article.theme|trans_fallback('slug') }}"
-                                                data-time="1455909420" data-end="false">
-                                            <div class="image">
-                                                <div class="image-wrapper">
-                                                    <img src="{% path file , '926x584' %}" alt=""/>
-                                                </div>
-                                                {% set trans = article.findTranslationByLocale(app.request.locale) %}
-                                                {% if trans == null %}
-                                                    {% set trans = article.findTranslationByLocale('fr') %}
-                                                {% endif %}
-                                                {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
-                                                <a href="{{ sliderUrl }}" class="linkImage"></a>
-
-                                                <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
-                                                <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>
-                                            </div>
-                                            <div class="info">
-                                                <a href="#"
-                                                   class="category">{{ article.theme|trans_fallback('name') }}</a><span
-                                                        class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
-                                                <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
-                                                <strong><a href="{{ sliderUrl }}">{{ article|trans_fallback('title') }}</a></strong>
-                                            </div>
-                                        </article>
+                                        {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
                                     {% endfor %}
                                 {% endif %}
+
                             </div>
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
 
-                    <a href="{{ path('fdc_corporate_default_getarticlesfrom') }}" data-reverse=""
+                    <a id="home-news-statements-more"
+                       href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                       data-reverse=""
                        class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                 {% endif %}
             </div>
@@ -642,6 +414,43 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     </div> <!-- end block 01 -->
                 </div> <!-- end block 02 -->
             {% endif %}
+            {% if homepage.displayedSocialWall == false %}
+
+                <div class="block-01 socialwall">
+                    <div class="padding-top">
+                        <h2 class="title title-01">{{ homepage.socialWallHashtags }}</h2>
+                    </div>
+                    <div id="social-wall">
+                        <div class="container">
+                            <div id="wall">
+                                {% for i in 0..14 %}
+                                    {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
+                                {% endfor %}
+                            </div>
+
+                            <div id="networks">
+                                <p>{{ 'home.coporate.social.follow'|trans|raw }}</p>
+                                <ul>
+                                    <li><a class="facebook"
+                                           href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
+                                           target="_blank">Facebook<i style="position:relative;top:2px;" class="icon icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i style="position:relative;top:2px;"
+                                                    class="icon icon-twitter"></i></a></li>
+                                    <li><a class="instagram" href="https://instagram.com/festivaldecannes"
+                                           target="_blank">Instagram<i style="position:relative;top:2px;" class="icon icon-instagram"></i></a></li>
+                                    <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/"
+                                           target="_blank">Tumblr<i style="position:relative;top:2px;" class="icon icon-tumblr"></i></a></li>
+                                    <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes"
+                                           target="_blank">Youtube<i style="position:relative;top:3px;" class="icon icon-youtube"></i></a></li>
+                                    <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV"
+                                           target="_blank">Dailymotion<i style="position:relative;top:1px;" class="icon icon-dailymotion"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             {% if homepage.displayedPushsMain == false %}
                 <div class="block-scale">
                     <div class="half-div block-push">
@@ -689,42 +498,6 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     </div>
                 </div>
             {% endif %}
-
-            {% if homepage.displayedSocialWall == false %}
-
-                <div class="block-01">
-                    <div id="social-wall">
-                        <div class="container">
-                            <div id="wall">
-                                {% for i in 0..14 %}
-                                    {% include 'FDCEventBundle:News:widgets/post.html.twig' %}
-                                {% endfor %}
-                            </div>
-
-                            <div id="networks">
-                                <p>{{ 'home.coporate.social.follow'|trans|raw }}</p>
-                                <ul>
-                                    <li><a class="facebook"
-                                           href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
-                                           target="_blank">Facebook<i class="icon icon-facebook"></i></a></li>
-                                    <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i
-                                                    class="icon icon-twitter"></i></a></li>
-                                    <li><a class="instagram" href="https://instagram.com/festivaldecannes"
-                                           target="_blank">Instagram<i class="icon icon-instagram"></i></a></li>
-                                    <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/"
-                                           target="_blank">Tumblr<i class="icon icon-tumblr"></i></a></li>
-                                    <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes"
-                                           target="_blank">Youtube<i class="icon icon-youtube"></i></a></li>
-                                    <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV"
-                                           target="_blank">Dailymotion<i class="icon icon-dailymotion"></i></a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-
             {% if homepage.displayedPushsSecondary == false %}
                 <div class="block-05">
                     <div class="block-01">
@@ -778,7 +551,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                                 {% if trans is null or trans.file is null %}
                                                     {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                <img src="{% path trans.file , '650x410' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle3')|raw }}</strong>

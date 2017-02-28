@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Form\Type;
 
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
 use Symfony\Component\Form\AbstractType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,22 +17,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class FDCPageLaSelectionCannesClassicsWidgetType extends BaseType
 {
     /**
-     * dataClass
-     * 
-     * (default value: 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget')
-     * 
      * @var string
-     * @access protected
      */
-    protected $dataClass = 'Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget';
-    
+    protected $dataClass = FDCPageLaSelectionCannesClassicsWidget::class;
+
     /**
-     * buildForm function.
-     * 
-     * @access public
      * @param FormBuilderInterface $builder
      * @param array $options
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,13 +35,9 @@ class FDCPageLaSelectionCannesClassicsWidgetType extends BaseType
             ->add('position', 'hidden')
         ;
     }
-    
+
     /**
-     * setDefaultOptions function.
-     * 
-     * @access public
      * @param OptionsResolverInterface $resolver
-     * @return void
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -58,12 +46,9 @@ class FDCPageLaSelectionCannesClassicsWidgetType extends BaseType
             'model_class' => $this->dataClass,
         ));
     }
-    
+
     /**
-     * getName function.
-     * 
-     * @access public
-     * @return void
+     * @return string
      */
     public function getName()
     {

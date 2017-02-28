@@ -31,6 +31,23 @@ html {
 			height: 240px;
 		}
 
+		img {
+			width: 100%;
+		}
+
+		.Article-picture-caption {
+			height: auto;
+			line-height: 25px;
+			font-size: 0.8rem;
+			margin-bottom: 1.6rem;
+			strong {
+				font-family: "Open Sans";
+				padding-bottom: 1.6rem;
+				line-height: 2.2rem;
+				display: inline;
+			}
+		}
+
 		&-meta {
 			display: block;
 			height: auto;
@@ -80,7 +97,7 @@ html {
 			width: 100%!important;
 		}
 
-		p, strong {
+		p {
 			display: block;
 			font-family: "Open Sans";
 			padding-bottom: 1.6rem;
@@ -89,6 +106,7 @@ html {
 
 		img {
 			max-width: 100%;
+			height: auto!important;
 		}
 
 		a {
@@ -141,12 +159,12 @@ html {
 			margin-top: -20px;
 		}
 
-		 &-next {
-		 	background: url(../../img/article/slider-next.png) no-repeat top left;
-		 	background-size: 100%;
-		 	left: auto;
-		 	right: 0;
-		 }
+		&-next {
+			background: url(../../img/article/slider-next.png) no-repeat top left;
+			background-size: 100%;
+			left: auto;
+			right: 0;
+		}
 
 		&-item {
 			float: left;
@@ -164,6 +182,10 @@ html {
 
 			strong {
 				display: inline;
+
+				.Article-content & {
+					font-size: 0.8rem;
+				}
 			}
 		}
 

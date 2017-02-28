@@ -1,10 +1,17 @@
 /* thomon 27/01/2017 - misc fixes retrospective 69e edition */
 .slider-restropective .block-01 .vFlexAlign img {
   .ie & {
-    height: 404px;
+
+    height: auto!important;
+    width: auto!important;
+    min-width: none!important;
+    max-with: 100%!important;
+    min-height: none!important;
+    max-height: 100%!important;
 
     &.open {
         height: auto;
+        max-height: none!important;
     }
   }
 }
@@ -149,9 +156,52 @@ h2.sub-title {
   color: $gold;
 }
 
-
-
 .affiche-fdc .block-movie-preview .poster:hover {
   cursor: pointer;
+}
+
+.block-diaporama .slider-01 .owl-item .item {
+    width: 640px;
+    height: 428px;
+    overflow: hidden;
+
+    figure {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.block-legend .texts .text-01 strong {
+    font-weight: bold;
+}
+
+.block-01.socialwall .title {
+    font-weight: 300;
+}
+
+header #navigation ul.user li a {
+    font-weight: bold;
+}
+
+header #navigation ul.user li a .icon {
+    margin-right: 7px!important;
+    margin-left: 12tpx!important;
+    top: 1px!important;
+    color: #d1d1d1;
+}
+
+header #navigation ul.user li a .icon-pencil:before {
+    content: "";
+    background: url(../img/pencil.svg) no-repeat left top;
+    background-size: 100%;
+    width: 12px;
+    height: 12px;
+}
+
+.slider-01 figcaption {
+    color: #666666;
+    font-size: .75rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    height: 15px;
 }
 /* thomon - end fixes */

@@ -6983,10 +6983,16 @@ body.chocolat-open > .chocolat-content {
 }
 /* thomon 27/01/2017 - misc fixes retrospective 69e edition */
 .ie .slider-restropective .block-01 .vFlexAlign img {
-  height: 404px;
+  height: auto !important;
+  width: auto !important;
+  min-width: none !important;
+  max-with: 100% !important;
+  min-height: none !important;
+  max-height: 100% !important;
 }
 .ie .slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
+  max-height: none !important;
 }
 
 .block-search .content-result .artist .item, .block-search .content-result .movies .item {
@@ -7138,6 +7144,50 @@ h2.sub-title {
 
 .affiche-fdc .block-movie-preview .poster:hover {
   cursor: pointer;
+}
+
+.block-diaporama .slider-01 .owl-item .item {
+  width: 640px;
+  height: 428px;
+  overflow: hidden;
+}
+.block-diaporama .slider-01 .owl-item .item figure {
+  height: 100%;
+  width: auto;
+}
+
+.block-legend .texts .text-01 strong {
+  font-weight: bold;
+}
+
+.block-01.socialwall .title {
+  font-weight: 300;
+}
+
+header #navigation ul.user li a {
+  font-weight: bold;
+}
+
+header #navigation ul.user li a .icon {
+  margin-right: 7px !important;
+  margin-left: 12tpx !important;
+  top: 1px !important;
+  color: #d1d1d1;
+}
+
+header #navigation ul.user li a .icon-pencil:before {
+  content: "";
+  background: url(../img/pencil.svg) no-repeat left top;
+  background-size: 100%;
+  width: 12px;
+  height: 12px;
+}
+
+.slider-01 figcaption {
+  color: #666666;
+  font-size: .75rem;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  height: 15px;
 }
 
 /* thomon - end fixes */
@@ -10196,17 +10246,17 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective .calc3 img.i1 {
   position: relative;
   top: -2%;
-  left: -5%;
+  left: -21%;
 }
 .slider-restropective .calc3 img.i2 {
   top: 38%;
   position: relative;
-  right: 21%;
+  right: 7%;
 }
 .slider-restropective .calc3 img.i3 {
   position: relative;
-  top: 3%;
-  left: 1%;
+  top: 0%;
+  left: 15%;
 }
 .slider-restropective .calc4 {
   position: absolute;
@@ -10223,7 +10273,7 @@ body#home .isotope-01 .item .contain-img {
 }
 .slider-restropective .calc4 img.i1 {
   position: relative;
-  top: -9%;
+  top: -14%;
   left: 13%;
 }
 .slider-restropective .calc4 img.i2 {
@@ -10270,7 +10320,7 @@ body#home .isotope-01 .item .contain-img {
 .slider-restropective .vFlexAlign img {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
   width: 100%;
-  object-fit: cover;
+  object-fit: initial;
 }
 .slider-restropective .vFlexAlign .texts {
   transition: opacity .2s;
@@ -12904,7 +12954,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 
 #social-wall {
-  padding-top: 80px;
+  padding-top: 16px;
 }
 #social-wall #graph {
   border-bottom: 1px solid #eaeaea;
@@ -13144,6 +13194,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.875rem;
   line-height: 20px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 #networks ul {

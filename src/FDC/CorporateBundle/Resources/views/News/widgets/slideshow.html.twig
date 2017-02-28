@@ -6,10 +6,7 @@
     {% if trans is null or trans.file is null %}
         {% set trans = gallery.media.findTranslationByLocale('fr') %}
     {% endif %}
-    {% if
-    trans.isPublishedOnFDCEvent and
-    trans|publish_date
-    %}
+    {% if gallery.media|is_published('site-institutionnel') %}
         {% set hasPublishedMedias = true %}
     {% endif %}
 {% endfor %}
@@ -25,10 +22,7 @@
                         {% if trans is null or trans.file is null %}
                             {% set trans = gallery.media.findTranslationByLocale('fr') %}
                         {% endif %}
-                        {% if
-                        trans.isPublishedOnFDCEvent and
-                        trans|publish_date
-                        %}
+                        {% if gallery.media|is_published('site-institutionnel') %}
                             {% set file = trans.file %}
                             {% set copyright = gallery.media|trans_fallback('copyright') %}
                             <div class="img {% if loop.index0 == 0 %}active{% endif %}">
@@ -60,10 +54,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         {% if trans is null or trans.file is null %}
                             {% set trans = gallery.media.findTranslationByLocale('fr') %}
                         {% endif %}
-                        {% if
-                        trans.isPublishedOnFDCEvent and
-                        trans|publish_date
-                        %}
+                        {% if gallery.media|is_published('site-institutionnel') %}
                             {% set photo = gallery.media %}
                             {% if loop.index == 1 %}
                                 {% set firstLegend = photo|trans_fallback('legend') %}

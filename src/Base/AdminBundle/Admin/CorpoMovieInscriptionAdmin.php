@@ -109,6 +109,12 @@ class CorpoMovieInscriptionAdmin extends Admin
                         'choices' => PressAccreditTranslation::getStatuses(),
                         'choice_translation_domain' => 'BaseAdminBundle'
                     ),
+                    'tabPrefix' => array(
+                        'label' => 'form.corpo_movie_inscription_tab_prefix',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'text',
+                        'required' => false,
+                    ),
                     'seoTitle' => array(
                         'attr' => array(
                             'placeholder' => 'form.placeholder_seo_title'

@@ -49,6 +49,7 @@
                                                 display: none;
                                             }
                                         </style>
+                                        {{ form_row(translationsFields.tabPrefix) }}
                                         {{ form_row(form.parent.children.procedure) }}
                                     </div>
                                 </div>
@@ -68,6 +69,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4 class="box-title">
+                                        Procédure d'inscription
+                                    </h4>
+                                </div>
+                                <div class="box-body">
+                                    <div class="sonata-ba-collapsed-fields" id="sonata-btn-procedure-collection">
+                                        <style>
+                                            #sonata-btn-procedure-collection .btn.btn-danger.btn-sm.btn-outline.sonata-ba-action {
+                                                display: none;
+                                            }
+                                        </style>
+                                        {{ form_row(translationsFields.tabPrefix) }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="box box-success">
@@ -84,19 +102,18 @@
                                         <label>
                                             Contenu
                                         </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.commonContent|raw }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <div>
+                                                {{ form.children.fr.vars.value.commonContent|raw }}
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
                             <div class="box box-success">
 
                             </div>
+                        </div>
                     {% endif %}
                 </div>
                 <div class="row">

@@ -1,6 +1,10 @@
-
-<iframe width="100%" height="auto" style="margin-bottom: 20px;" src="{{ widget|trans_fallback('url')|replace({'//www.youtube.com/watch?v=': "//www.youtube.com/embed/"}) }}" frameborder="0" allowfullscreen></iframe>
-{% if widget.title is defined %}
-<p>{{ widget.title }}</p>
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
+{% if widget.image is not null %}
+data-poster="{% path widget.image, 'reference' %}" 
 {% endif %}
-<br/>
+data-file="{{ widget|trans_fallback('url') }}" 
+{% if widget.title is defined %}
+data-title="{{ widget.title }}</p>"
+{% endif %}
+>
+</div>

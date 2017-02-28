@@ -265,7 +265,6 @@ var initAudio = function (hash) {
     var audioPopin;
 
     if ($('#audio-player-popin').length > 0) {
-
         function updatePopinMedia(data) {
             data['url'] = data['url'] || document.location.href;
 

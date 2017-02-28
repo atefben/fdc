@@ -18,6 +18,9 @@
   {% elseif object.imageAmazonUrl != null %}
     {% set cover_image = s3_server_video ~ object|trans_fallback('imageAmazonUrl') %}
   {% endif %}
+  {% if cover_image is not defined %}
+    {% set cover_image = asset('bundles/fdcevent/img/article/placeholder.png') %}
+  {% endif %}
 {% endif %}
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +37,12 @@
     <article class="Article-wrapper">
       <header class="Article-header">
         {% if object is news_article %}
-          {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with { 'widget': object } %}
+          <img src="{% path object.header|trans_fallback('file'), 'reference' %}"/>
+          <div class="Article-picture-caption"><strong>{{ object.header|trans_fallback('legend') }}</strong> {{ object.header|trans_fallback('copyright') }}</div>
         {% elseif object is news_audio %}
-          {% include 'FDCEventBundle:Webview:widget/audio.html.twig' with { 'widget':object } %}
+          {% include 'FDCEventBundle:Webview:widget/audio-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
-          {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
+          {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_image %}
           {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias': object.gallery.medias } %}
         {% endif %}
@@ -126,12 +130,69 @@
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
+
             {% if associatedNews.header is not null %}
-              {% if associatedNews.header.file is null %}
-                <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
-              {% else %}
-                <img src="{% path associatedNews.header|trans_fallback('file'), 'reference' %}"/>
+              {% set header = associatedNews.header %}
+              {% if header is not null %}
+                  {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                  {% if imageTrans is null or imageTrans.file is null %}
+                      {% set imageTrans = header.findTranslationByLocale('fr') %}
+                  {% endif %}
               {% endif %}
+              {% if imageTrans is defined and imageTrans.file is not null %}
+                  {% set img = associatedNews.header %}
+                  {% set file = imageTrans.file %}
+              {% else %}
+                  {% if associatedNews.gallery and associatedNews.gallery.medias|length > 0 %}
+                      {% set img = associatedNews.gallery.medias[0].media %}
+                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is null or trans.file is null %}
+                          {% set trans = img.findTranslationByLocale('fr') %}
+                      {% endif %}
+                      {% set file = trans.file %}
+                  {% endif %}
+              {% endif %}
+
+              {% if associatedNews is news_article %}
+                  {% set img = associatedNews.header %}
+                  {% if img is not null %}
+                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is null or trans.file is null %}
+                          {% set trans = img.findTranslationByLocale('fr') %}
+                      {% endif %}
+                      {% set file = trans.file %}
+                      {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
+                  {% endif %}
+              {% endif %}
+              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+                {% set header = associatedNews.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = associatedNews.header %}
+                {% else %}
+                    {% set img = associatedNews.audio.image %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
+            {% endif %}
+            {% if file is defined and file is not null %}
+                <img src="{% path file, 'reference' %}"/>
+            {% else %}
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
             {% endif %}
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>

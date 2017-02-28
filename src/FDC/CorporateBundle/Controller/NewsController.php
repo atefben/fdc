@@ -25,7 +25,7 @@ class NewsController extends Controller
     /**
      * @Route("/{year}/articles")
      */
-    public function getArticlesAction(Request $request, $year)
+    public function getArticlesAction(Request $request, $year = null)
     {
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();

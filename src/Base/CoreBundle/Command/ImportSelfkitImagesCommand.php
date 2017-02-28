@@ -152,6 +152,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     $media->setThumbsGenerated(false);
                 }
                 $media->setName($oldImage->getTitre());
+                $media->setOldMediaFilm($oldImage->getIdfilm());
                 $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
                 if ($person) {

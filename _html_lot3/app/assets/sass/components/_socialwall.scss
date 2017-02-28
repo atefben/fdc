@@ -4,7 +4,7 @@
 }
 
 #social-wall {
-  padding-top: 80px;
+  padding-top: 16px;
 
   #graph {
     border-bottom: 1px solid #eaeaea;
@@ -285,6 +285,7 @@
     font-family: $CamphorHeavy;
     font-size: 0.875rem;
     line-height: 20px;
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
 

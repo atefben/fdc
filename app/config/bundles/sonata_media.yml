@@ -211,6 +211,7 @@ sonata_media:
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival
                 640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
                 1280x808: { width: 1280 , height: 808 , quality: 100, constraint: false}
+                1280x: { width: 1280 , quality: 100}
                 808x1280: { width: 808 , height: 1280 , quality: 100, constraint: false}
                 # Vidéo à la une, Toutes les photos, Toutes les vidéos, Chaînes festival portrait
                 320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
@@ -254,6 +255,8 @@ sonata_media:
                 368x500: { width: 368, height: 500, quality: 100, constraint: false}
                 #webview
                 640x400: { width: 640, height: 400, quality: 100, constraint: false}
+                976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                363x260: { width: 363 , height: 260 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:
@@ -332,6 +335,7 @@ sonata_media:
                 346x346: { width: 346 , height: 346 , quality: 100, constraint: false }
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
                 954x606: { width: 954 , height: 606 , quality: 100, constraint: false }
+                420x266: { width: 420 , height: 266 , quality: 100, constraint: false }
 
         media_audio:
             providers:
