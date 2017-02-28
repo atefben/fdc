@@ -100,7 +100,7 @@
         </div>
       </div-->
     </article>
-    
+
     {% if sameDayObjects != null and object.hideSameDay == false %}
     <aside class="Article-related">
       <h2>Le même jour</h2>
@@ -178,17 +178,19 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-                {{ dump(imageTrans) }}
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
                     {% set img = associatedNews.header %}
                 {% else %}
-                    {% set img = associatedNews.audio.image %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% set tmp = associatedNews.audio %}
+                    {% if tmp %}
+                        {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = tmp.image.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set img = trans %}
+                        {% set file = trans.file %}
                     {% endif %}
-                    {% set file = trans.file %}
                 {% endif %}
             {% endif %}
             {% if file is defined and file is not null %}
