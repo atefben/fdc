@@ -7,6 +7,7 @@
 {% endif %}
 
 {% set header = news.header %}
+in tpl
 {% if header is not null %}headernotnull 
     {% set imageTrans = news.header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
