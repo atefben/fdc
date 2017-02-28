@@ -2,42 +2,21 @@
 
 {% block main %}
 <section id="main">
-    <div class="block-push block-push-top" style="background-image: url('img/media/who-fdc-01.jpg')">
-        <div class="vFlexAlign">
-            <div class="txts">
-                <h1 class="title-3">qui sommes nous ?</h1>
-            </div>
-        </div>
-    </div> <!-- end block push -->
-
     <div class="ajax-section">
         <div class="contain-ajax">
-            <nav class="navigation-sticky">
-                <ul>
-                    <li><a href="who-fdc.html">Festival de cannes</a></li>
-                    <li><a href="who-fdc1.html">cinéfondation</a></li>
-                    <li><a href="who-fdc2.html">cannes court métrage</a></li>
-                    <li><a href="who-fdc3.html">Marché du film</a></li>
-                    <li><a href="who-village-international.html">Village international</a></li>
-                    <li><a href="who-staff.html">L'équipe</a></li>
-                    <li class="active"><a href="who-identity-guidelines.html">Charte graphique</a></li>
-                </ul>
-            </nav>
-
             <div class="all-contain">
 
                 <div class="contain-title vFlexAlign block-01-s">
                     <h2 class="title-02" style="color: #0a0a0a">{{ labelPage.header }}</h2>
                 </div>
 
-
                 <div class="block-01">
 
                     <div class="block-01-xs">
                         <strong class="title-22">{{ labelPage.title }}</strong>
-                        <p class="texte-01">
+                        <div class="texte-01">
                             {{ labelPage.text|raw }}
-                        </p>
+                        </div>
                     </div>
 
                     <div class="block-accordion">
