@@ -42,7 +42,7 @@
         {% elseif object is news_audio %}
           {% include 'FDCEventBundle:Webview:widget/audio-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
-          {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'video':object.video,'image':cover_image } %}
+          {% include 'FDCEventBundle:Webview:widget/video-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_image %}
           {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias': object.gallery.medias } %}
         {% endif %}
