@@ -85,7 +85,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         if ($id) {
             $oldImages = [];
             $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
-            if ($movie) {
+            if ($person) {
                 $oldImages = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:OldFilmPhoto')
