@@ -179,11 +179,11 @@ html {
 			height: auto;
 			line-height: 25px;
 			font-size: 0.8rem;
-			padding-right: 3rem;
 
 			strong {
-				display: inline;
-
+				display: block;
+				word-wrap: break-word;
+				
 				.Article-content & {
 					font-size: 0.8rem;
 				}

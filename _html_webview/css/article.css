@@ -132,10 +132,10 @@ html {
 .Article-slider-caption {
   height: auto;
   line-height: 25px;
-  font-size: 0.8rem;
-  padding-right: 3rem; }
+  font-size: 0.8rem; }
   .Article-slider-caption strong {
-    display: inline; }
+    display: block;
+    word-wrap: break-word; }
     .Article-content .Article-slider-caption strong {
       font-size: 0.8rem; }
 
