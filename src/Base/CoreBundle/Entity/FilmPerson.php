@@ -404,6 +404,7 @@ class FilmPerson implements TranslateMainInterface
      *      joinColumns={@ORM\JoinColumn(name="person", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
      *      )
+     * @ORM\OrderBy({"updatedAt" = "desc"})
      */
     protected $selfkitImages;
 
