@@ -53,7 +53,7 @@
                                     <li>
                                         {% if child.route =='fdc_corporate_news_getarticles' and child.enabled == true %}
                                             <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
-                                               {% if route =='fdc_corporate_news_getarticles' %}active{% endif %}>
+                                               {% if route =='fdc_corporate_news_getarticles' %}class="active"{% endif %}>
                                                 {{ child.transName|trans }}
                                             </a>
                                         {% else %}
