@@ -7,6 +7,7 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\SeoMain;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Base\CoreBundle\Entity\Theme;
 
 /**
  * CcmYoutube
@@ -36,6 +37,15 @@ class CcmYoutube
     protected $position;
 
     /**
+     * @var Theme
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme")
+     * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
+     *
+     */
+    protected $theme;
+
+    /**
      * @var
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="youtube")
      */
@@ -57,20 +67,20 @@ class CcmYoutube
         $translation = $this->findTranslationByLocale('fr');
 
         if ($translation !== null) {
-            $string = $translation->getUrl();
+            $string = $translation->getTitle();
         } else {
             $string = strval($this->getId());
         }
         return (string) $string;
     }
 
-    public function getUrl()
+    public function getTitle()
     {
         $translation = $this->findTranslationByLocale('fr');
         $string = '';
 
         if ($translation !== null) {
-            $string = $translation->getUrl();
+            $string = $translation->getTitle();
         }
 
         return $string;
@@ -143,5 +153,37 @@ class CcmYoutube
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * @return Theme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param Theme $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
     }
 }

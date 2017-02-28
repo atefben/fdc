@@ -25,7 +25,7 @@ class CcmYoutubeAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('url')
+            ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -52,8 +52,16 @@ class CcmYoutubeAdmin extends Admin
                                 'class' => 'hidden',
                             ),
                         ),
+                        'title'        => array(
+                            'label'              => 'form.ccm.label.a_propos.youtube.title',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'constraints'        => array(
+                                new NotBlank(),
+                            ),
+                            'required' => true
+                        ),
                         'url'        => array(
-                            'label'              => 'form.ccm.label.a_propos.youtube.name',
+                            'label'              => 'form.ccm.label.a_propos.youtube.url',
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank(),
@@ -63,6 +71,10 @@ class CcmYoutubeAdmin extends Admin
                     ),
                 )
             )
+            ->add('theme', 'sonata_type_model_list',array(
+                'label' => 'form.ccm.label.a_propos.youtube.theme',
+                'required' => true
+            ))
         ;
     }
 
@@ -73,6 +85,6 @@ class CcmYoutubeAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('url');
+            ->add('title');
     }
 }

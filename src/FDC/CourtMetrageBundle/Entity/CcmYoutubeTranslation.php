@@ -27,9 +27,32 @@ class CcmYoutubeTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="url", type="string", length=255, nullable=true)
      */
     protected $url;
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
     /**
      * @return string
