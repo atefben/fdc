@@ -774,7 +774,7 @@ class Homepage implements CcmAProposInterface
     /**
      * @return boolean
      */
-    public function isAProposIsActive()
+    public function getAProposIsActive()
     {
         return $this->aProposIsActive;
     }

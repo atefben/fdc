@@ -15,9 +15,11 @@
     </div>
 
     {% if aPropos is not null %}
-        <div class="about">
-            {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
-        </div>
+        {% if apropoIsActive == 1 %}
+            <div class="about">
+                {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
+            </div>
+        {% endif %}
     {% endif %}
 
     {% if pushIsActive == 1 %}
@@ -71,7 +73,9 @@
                 </div>
             {% endif %}
         {% elseif position == 'social'%}
-            {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+            {% if socialIsActive == 1 %}
+                {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% endblock %}
