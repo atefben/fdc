@@ -70,7 +70,7 @@
                     {% set file = imageTrans.file %}
                     {% set img = imageTrans %}
                 {% else %}
-                    imagetransnotdefined 
+                    imagetransnotdefined a
                     {% set tmp = article.audio %}
                     {% if tmp %}
                         {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
