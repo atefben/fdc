@@ -54,7 +54,7 @@ class CcmYoutubeAdmin extends Admin
                             ),
                         ),
                         'title'        => array(
-                            'label'              => 'form.ccm.label.a_propos.youtube.title',
+                            'label'              => 'form.ccm.label.a_propos.youtube_title',
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank(),
@@ -62,7 +62,7 @@ class CcmYoutubeAdmin extends Admin
                             'required' => true
                         ),
                         'url'        => array(
-                            'label'              => 'form.ccm.label.a_propos.youtube.url',
+                            'label'              => 'form.ccm.label.a_propos.youtube_url',
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank(),
@@ -73,7 +73,7 @@ class CcmYoutubeAdmin extends Admin
                 )
             )
             ->add('theme', 'sonata_type_model_list',array(
-                'label' => 'form.ccm.label.a_propos.youtube.theme',
+                'label' => 'form.ccm.label.a_propos.youtube_theme',
                 'required' => true
             ))
         ;
