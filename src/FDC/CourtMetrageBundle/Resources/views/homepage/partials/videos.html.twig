@@ -1,0 +1,31 @@
+<div class="aboutVideos" style="display:block;!important">
+    {% if widget|length > 1 %}
+        <div id="slider-aboutVideos" class="owl-carousel">
+    {% endif %}
+    {% for key, video in widget  %}
+        <div class="item">
+            <div class="video-container state-init video"
+                 data-name="{{ video.title }}"
+                 data-file='[{% if(video.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ video.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ video.mp4Url }}"}]'
+                 data-img="{% path video.translatable.image|trans_fallback('file'), 'reference' %}">
+                <div id="v_{{ key }}" class="video-player">
+                </div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category">{{ video.theme }}</a><span class="date">{{ video.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ video.updatedAt|date("g:i") }}</span>
+                                <p>{{ video.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% if widget|length > 1 %}
+        </div>
+    {% endif %}
+</div>

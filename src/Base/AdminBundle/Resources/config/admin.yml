@@ -2840,3 +2840,21 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmModuleThreeColumns, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Module Three Columns, show_in_dashboard: false }
+
+    base.admin.ccm_videos_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmVideosCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmVideosCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Videos Collection, show_in_dashboard: false }
+
+    base.admin.ccm_youtubes_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmYoutubesCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Youtubes Collection, show_in_dashboard: false }
+
+    base.admin.ccm_youtube:
+        class: Base\AdminBundle\Admin\CCM\CcmYoutubeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmYoutube, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Youtube Video, show_in_dashboard: false }

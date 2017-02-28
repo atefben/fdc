@@ -31,6 +31,43 @@
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
+                    {# A propos module #}
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.ccm.label.a_propos.config'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    {{ form_row(translationsFields.aProposLabel) }}
+                                    {{ form_row(translationsFields.aProposTitle) }}
+                                    {{ form_row(translationsFields.aProposDescription) }}
+                                    {{ form_row(translationsFields.aProposUrl) }}
+                                    {{ form_row(form.parent.children.aProposType) }}
+                                    {{ form_row(form.parent.children.aProposIsActive) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.youtubes_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.youtubesCollection) }}
+                                    </div>
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.videos_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.videosCollection) }}
+                                    </div>
+                                    <div class="item base-widget">
+                                        <h4><strong>{{ 'form.ccm.label.a_propos.images_collection'|trans }}</strong></h4>
+                                        {{ form_row(form.parent.children.gallery) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# End #}
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
                             <div class="box box-success">
@@ -103,6 +140,8 @@
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {{ form_label(form.parent.catalogIsActive) }}
                                     {{ form_widget(form.parent.catalogIsActive) }}
+                                    {{ form_label(form.parent.positionCatalog) }}
+                                    {{ form_widget(form.parent.positionCatalog) }}
                                     </br>
                                     {{ form_label(form.parent.catalogImage) }}
                                     {{ form_widget(form.parent.catalogImage) }}
@@ -112,6 +151,7 @@
                                                 <h4><strong>{{ 'form.ccm.label.catalog.homepage'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
                                             <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -135,6 +175,8 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {{ form_label(form.parent.actualiteIsActive) }}
                                         {{ form_widget(form.parent.actualiteIsActive) }}
+                                        {{ form_label(form.parent.positionActualites) }}
+                                        {{ form_widget(form.parent.positionActualites) }}
                                         </br>
                                         {#{% for widget in form.parent.children.actualites.children %}#}
                                             {#<div class="item base-widget" data-itemtype="actualite">#}
@@ -159,6 +201,25 @@
 
                             <div class="col-md-12">
                                 <div class="box box-success">
+                                    <h4> {{'form.ccm.label.social.title'|trans}}</h4>
+                                </div>
+                            </div></br>
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {{ form_label(form.parent.socialIsActive) }}
+                                        {{ form_widget(form.parent.socialIsActive) }}
+                                        </br>
+                                        {{ form_label(form.parent.positionSocial) }}
+                                        {{ form_widget(form.parent.positionSocial) }}
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
                                     <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
                                 </div>
                             </div></br>
@@ -167,6 +228,8 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {{ form_label(form.parent.sejourIsActive) }}
                                         {{ form_widget(form.parent.sejourIsActive) }}
+                                        {{ form_label(form.parent.positionSejour) }}
+                                        {{ form_widget(form.parent.positionSejour) }}
                                         </br>
                                         {% for widget in form.parent.children.sejoures.children %}
                                             <div class="item base-widget" data-itemtype="sejour">

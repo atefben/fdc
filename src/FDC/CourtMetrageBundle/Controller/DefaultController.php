@@ -13,6 +13,7 @@ use Guzzle\Http\Client;
 use Guzzle\Http\Exception\BadResponseException;
 use Symfony\Component\HttpFoundation\Request;
 use FDC\CourtMetrageBundle\Form\Type\ShareEmailType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
@@ -23,6 +24,13 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $homepageManger = $this->get('ccm.manager.homepage');
+        $homepage = $homepageManger->getPage();
+        
+        if (!$homepage || !$homepage->getTranslatable()) {
+            throw new NotFoundHttpException();
+        }
+        
+        $aPropos = $homepageManger->getAPropos($homepage);
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
         $movies = $homepageManger->getFilmsByCourtYear();
@@ -31,10 +39,16 @@ class DefaultController extends Controller
         $pushIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getPushIsActive();
         $courtIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCourtIsActive();
         $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
+        $apropoIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getAProposIsActive();
+
+        $positions = $homepageManger->orderTransversModules();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/homepage.html.twig',
             [
+                'homepage' => $homepage,
+                'aPropos' => $aPropos,
                 'sliders' => $homepageSliders,
                 'pushes'  => $homepagePushes,
                 'movies' => $movies,
@@ -43,6 +57,10 @@ class DefaultController extends Controller
                 'pushIsActive' => $pushIsActive,
                 'courtIsActive' => $courtIsActive,
                 'sejourIsActive' => $sejourIsActive,
+                'socialIsActive' => $socialIsActive,
+                'apropoIsActive' => $apropoIsActive,
+
+                'positions' => $positions,
             ]
         );
     }

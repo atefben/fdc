@@ -110,7 +110,8 @@ class CcmShortFilmCornerWidgetVideoYoutubeType extends CcmShortFilmCornerWidgetT
             ))
             ->add('image', 'sonata_type_model_list', array(
                 'required' => false,
-                'label' => 'Image cover',
+                'translation_domain' => 'BaseAdminBundle',
+                'label' => 'form.ccm.label.image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageSimpleAdmin->getModelManager(),
                 'class' => $this->mediaImageSimpleAdmin->getClass()
