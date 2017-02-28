@@ -100,7 +100,6 @@ var ow = ow || {};
 				var player = $(this);
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
-					"controls":false,
 					"height": 90,
 					"title": player.data('title'),
 					"description": player.data('date'),
