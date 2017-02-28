@@ -51,7 +51,7 @@
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
                                     <li>
-                                        {% if child.route ends with 'fdc_corporate_news_getarticles' and child.enabled == true %}
+                                        {% if child.route =='fdc_corporate_news_getarticles' and child.enabled == true %}
                                             <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
                                                {% if route =='fdc_corporate_news_getarticles' %}active{% endif %}>
                                                 {{ child.transName|trans }}
