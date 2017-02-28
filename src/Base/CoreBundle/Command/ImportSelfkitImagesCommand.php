@@ -177,6 +177,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                         $this->getManager()->flush();
                     }
                 }
+                unlink($filename);
             } catch (\Exception $e) {
                 $this->output->writeln('<error>' . $e->getMessage() . '</error>');
             }
@@ -239,6 +240,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('BaseCoreBundle:FilmFilm')
                     ->find($oldImage->getIdfilm())
                 ;
+                if (!$film) {
+                    $this->output->writeln(PHP_EOL . "<error>Film not found " . $oldImage->getIdfilm() . "</error>");
+                    continue;
+                }
                 if ($oldImage->getIdpersonne() && $this->isDirector($oldImage->getIdpersonne(), $film)) {
                     $this->output->writeln(PHP_EOL . "<error>Director Image: $filename</error>");
                     continue;
