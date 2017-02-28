@@ -5,7 +5,7 @@
                         {% if pro.translatable.image is defined and pro.translatable.image is not null %}
                             <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" alt="">
                         {% else %}
-                            <img class="containerFit" src="img/member.jpg" alt="">
+                            <img class="containerFit" src="{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}" alt="">
                         {% endif %}
                     </div>
                     {% if pro.translatable.isShortFilmCorner %}
