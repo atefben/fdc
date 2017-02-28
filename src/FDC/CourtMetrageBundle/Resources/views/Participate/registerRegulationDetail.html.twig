@@ -18,8 +18,13 @@
         <div class="border-top border-bottom block-button-bottom">
             <div class="block-01-ms">
                 <div class="align-flex">
+<<<<<<< HEAD
                     <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i> Conditions de préselection</a>
                     <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+=======
+                    <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i>{{ 'ccm.register_movie.preselection_rules'|trans }}</a>
+                    <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+>>>>>>> Translation updates.
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
             <div id="format" class="filter">
                 <span class="label">{#Thèmes#}{{ 'ccm.news.themes'|trans }} :</span>
                 <span class="select">
-                    <span class="active" data-filter="all">Tous</span><i class="icon icon_fleche-down"></i>
+                    <span class="active" data-filter="all">{{ 'ccm.news.all-themes'|trans }}</span><i class="icon icon_fleche-down"></i>
                     {% for themeId, themeData in filters.themes %}
                         <span data-filter="theme{{ themeId }}">{{ themeData.name }}</span>
                     {% endfor %}

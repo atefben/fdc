@@ -21,11 +21,11 @@
             <div id="accordion-conf" class="conferences confcourtaccordion">
 
                 <div class="dropdown">
-                    <span>{{ 'afficher'|trans }}</span>
+                    <span>{{ 'ccm.pros.afficher'|trans }}</span>
                     <div id="eventSelector">
 
                         {% if hasSFC %}
-                            <div class="selectText" id="short-fim-corner">{{ 'present_sfc'|trans }}</div>
+                            <div class="selectText" id="short-fim-corner">{{ 'ccm.pros.present_sfc'|trans }}</div>
                         {% endif %}
 
                         {% if prosDomains is defined and prosDomains is not null %}
@@ -39,7 +39,7 @@
                 <div class="selector">
                     {% if hasSFC %}
                         <div class="selectbtn bigSelectbtn" id="short-fim-corner" rel="short-fim-corner">
-                            {{ 'present_sfc'|trans }} <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
+                            {{ 'ccm.pros.present_sfc'|trans }} <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
                         </div>
                     {% endif %}
 

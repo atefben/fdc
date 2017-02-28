@@ -22,8 +22,8 @@
                 </div>
                 <h2 class="title-article">{{ artist.fullName }}</h2>
                 <div class="buttons">
-                    <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>Partager</a>
-                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>Imprimer</a>
+                    <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.artist.share'|trans }}</a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.artist.print'|trans }}</a>
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
@@ -51,7 +51,7 @@
                     {% set biography = artist|trans_fallback('biography') %}
                     {% if biography %}
                         <div class="biographie">
-                            <h2 class="title title-cat-artist">Biographie</h2>
+                            <h2 class="title title-cat-artist">{{ 'ccm.artist.biography'|trans }}</h2>
                             <p class="paragraph" {{ artist|content_lang('biography') }}>
                                 {{ biography|raw }}
                             </p>
@@ -61,7 +61,7 @@
                         {% set countera = 0 %}
                         {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                             {% if countera == 0 %}
-                                <h2 class="title title-art-artist">Films présentés à Cannes</h2>
+                                <h2 class="title title-art-artist">{{ 'ccm.artist.cannes_films'|trans }}</h2>
                                 <div class="contain-films-list">
                                 {% set countera = countera+1 %}
                             {% endif %}
@@ -136,7 +136,7 @@
                                 {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') and awardAssociation.person.id == artist.id) or
                                 (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
                                     {% if counter == 0 %}
-                                        <h2 class="title title-art-artist">Palmarès</h2>
+                                        <h2 class="title title-art-artist">{{ 'ccm.artist.palmares'|trans }}</h2>
                                         <div class="contain-films-list">
                                         {% set counter = counter+1 %}
                                     {% endif %}
@@ -199,7 +199,7 @@
                         {% endif %}
                     {% endif %}
                     {% if artist.juries|length > 0 %}
-                        <h2  class="title title-art-artist">Présences au Jury</h2>
+                        <h2  class="title title-art-artist">{{ 'ccm.artist.jury'|trans }}</h2>
                         <div class="jury">
                             {% for jury in artist.juries %}
                                 {% if jury.function %}
@@ -242,7 +242,7 @@
                 </div>
             </div>
             <div class="realisateurs">
-                <h1 class="title">Réalisateurs</h1>
+                <h1 class="title">{{ 'ccm.artist.filmmakers'|trans }}</h1>
                 <div id="slide-artist">
                     {% for director in directors %}
                         <div class="item first">
