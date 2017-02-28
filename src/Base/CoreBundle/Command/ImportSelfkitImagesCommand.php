@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Entity\FilmFilm;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -102,22 +103,23 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         foreach ($oldImages as $oldImage) {
             try {
-
                 $person = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:FilmPerson')
                     ->find($oldImage->getIdpersonne())
                 ;
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
-
+                $ftpRemotFilename = $this->getFtpUrl() . $oldImage->getFichier();
                 $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
 
                 if (!is_file($filename)) {
-                    file_put_contents($filename, file_get_contents($remoteFilename));
+                    file_put_contents($filename, file_get_contents($ftpRemotFilename));
+                    if (!(@is_array(getimagesize($filename)))) {
+                        file_put_contents($filename, file_get_contents($remoteFilename));
+                    }
                 }
-
                 if (!(@is_array(getimagesize($filename)))) {
-                    $this->output->writeln("<info>Ignore filename.</info>");
+                    $this->output->writeln(PHP_EOL . "<error>Cannot download  $filename</error>");
                     continue;
                 }
 
@@ -224,7 +226,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getRepository('BaseCoreBundle:FilmFilm')
                     ->find($oldImage->getIdfilm())
                 ;
-
+                if ($oldImage->getIdpersonne() && $this->isDirector($oldImage->getIdpersonne(), $film)) {
+                    $this->output->writeln(PHP_EOL . "<error>Director Image: $filename</error>");
+                    continue;
+                }
 
                 $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
                 $ftpRemotFilename = $this->getFtpUrl() . $oldImage->getFichier();
@@ -237,7 +242,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     }
                 }
                 if (!(@is_array(getimagesize($filename)))) {
-                    $this->output->writeln(PHP_EOL . "<error>Ignore  $filename</error>");
+                    $this->output->writeln(PHP_EOL . "<error>Cannot download  $filename</error>");
                     continue;
                 }
 
@@ -355,5 +360,21 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ->prepare($sql)
         ;
         return $stmt->execute();
+    }
+
+    /**
+     * @param $idPerson
+     * @param FilmFilm $movie
+     * @return bool
+     */
+    public function isDirector($idPerson, FilmFilm $movie)
+    {
+        foreach ($movie->getDirectors(true) as $director) {
+            if ($director instanceof FilmFilmPerson) {
+                if ($idPerson == $director->getPerson()->getId()) {
+                    return true;
+                }
+            }
+        }
     }
 }
