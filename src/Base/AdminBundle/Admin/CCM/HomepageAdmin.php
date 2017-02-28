@@ -232,6 +232,16 @@ class HomepageAdmin extends Admin
                     'label'    => 'form.ccm.label.homepage.position_sejour',
                     'required' => false,
                 ))
+            ->add('positionSocial',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.social.position_social',
+                    'required' => false,
+                ))
+            ->add('socialIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.social.social_is_activated',
+                'required' => false,
+            ))
         ;
     }
 

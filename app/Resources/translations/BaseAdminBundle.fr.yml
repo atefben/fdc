@@ -745,6 +745,10 @@ form:
                 is_active: Activer le module
                 is_active_actualite: Activer le actualite
                 url: URL
+            social:
+                title: Le social wall
+                position_social: La position du module Social
+                social_is_activated: Activer le module
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter

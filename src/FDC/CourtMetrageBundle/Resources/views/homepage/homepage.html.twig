@@ -45,13 +45,6 @@
         </div>
     {% endif %}
 
-<<<<<<< 3b6a8c2fc92753c2ea9b97cd9a19769f4a025a2b
-    {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
-    
-    {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
-
-    {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
-
     {% if sejourIsActive == 1 %}
         <div class="list-article">
             <div class="bandeau-list">
@@ -61,7 +54,7 @@
             </div>
         </div>
     {% endif %}
-=======
+
     {% for position in positions %}
         {% if position == 'catalog' %}
             {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
@@ -77,7 +70,8 @@
                     </div>
                 </div>
             {% endif %}
+        {% elseif position == 'social'%}
+            {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
         {% endif %}
     {% endfor %}
->>>>>>> Modules positions.
 {% endblock %}

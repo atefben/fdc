@@ -8,13 +8,10 @@ use Base\CoreBundle\Entity\News;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-<<<<<<< 3b6a8c2fc92753c2ea9b97cd9a19769f4a025a2b
 use FDC\CourtMetrageBundle\Entity\CcmVideosCollection;
 use FDC\CourtMetrageBundle\Entity\CcmYoutubesCollection;
 use FDC\CourtMetrageBundle\Entity\CcmYoutubeTranslation;
-=======
 use FDC\CourtMetrageBundle\Entity\Homepage;
->>>>>>> Modules positions.
 use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepagePushTranslation;
 use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
@@ -265,6 +262,7 @@ class HomepageManager
         $positions[$homepage->getTranslatable()->getPositionCatalog()] = 'catalog';
         $positions[$homepage->getTranslatable()->getPositionActualites()] = 'actualite';
         $positions[$homepage->getTranslatable()->getPositionSejour()] = 'sejour';
+        $positions[$homepage->getTranslatable()->getPositionSocial()] = 'social';
 
         return $positions;
     }

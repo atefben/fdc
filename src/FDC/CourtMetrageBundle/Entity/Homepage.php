@@ -194,6 +194,20 @@ class Homepage implements CcmAProposInterface
     protected $positionActualites;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $socialIsActive = false;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionSocial;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer")
@@ -845,6 +859,50 @@ class Homepage implements CcmAProposInterface
     public function setPositionSejour($positionSejour)
     {
         $this->positionSejour = $positionSejour;
+
+        return $this;
+    }
+
+    /**
+     * Get positionSocial.
+     *
+     * @return int
+     */
+    public function getPositionSocial()
+    {
+        return $this->positionSocial;
+    }
+
+    /**
+     * Set positionSocial.
+     *
+     * @param int $positionSocial
+     */
+    public function setPositionSocial($positionSocial)
+    {
+        $this->positionSocial = $positionSocial;
+
+        return $this;
+    }
+
+    /**
+     * Get socialIsActive.
+     *
+     * @return bool
+     */
+    public function getSocialIsActive()
+    {
+        return $this->socialIsActive;
+    }
+
+    /**
+     * Set social is active.
+     *
+     * @param bool $socialIsActive
+     */
+    public function setSocialIsActive($socialIsActive)
+    {
+        $this->socialIsActive = $socialIsActive;
 
         return $this;
     }

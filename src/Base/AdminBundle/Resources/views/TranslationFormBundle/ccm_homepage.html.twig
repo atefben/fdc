@@ -201,6 +201,25 @@
 
                             <div class="col-md-12">
                                 <div class="box box-success">
+                                    <h4> {{'form.ccm.label.social.title'|trans}}</h4>
+                                </div>
+                            </div></br>
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
+                                        {{ form_label(form.parent.socialIsActive) }}
+                                        {{ form_widget(form.parent.socialIsActive) }}
+                                        </br>
+                                        {{ form_label(form.parent.positionSocial) }}
+                                        {{ form_widget(form.parent.positionSocial) }}
+                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="box box-success">
                                     <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
                                 </div>
                             </div></br>
