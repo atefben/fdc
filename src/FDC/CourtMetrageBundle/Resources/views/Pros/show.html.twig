@@ -103,25 +103,26 @@
             </div>
         </div>
 
-        {#<?php include('box-catalogue.php'); ?>#}
-        {#<?php include('box-social.php'); ?>#}
-        {#<?php include('box-news.php'); ?>#}
-        {#<?php include('box-contact.php'); ?>#}
+        {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
 
-{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
-    {"breadcrumb":
-        [
-        {
-            "name" : 'breadcrumb.home'|trans,
-            "url"  : path('fdc_ccm_homepage')
-        },
-        {
-            "name" : prosPage.title,
-            "url"  : ''
-        }
-        ]
-    }
-%}
+        {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+
+        {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+
+        {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+            {"breadcrumb":
+                [
+                {
+                    "name" : 'breadcrumb.home'|trans,
+                    "url"  : path('fdc_ccm_homepage')
+                },
+                {
+                    "name" : prosPage.title,
+                    "url"  : ''
+                }
+                ]
+            }
+        %}
         <!-- POP PERSONS -->
         <div class="modal">
             <div class="modal-overlay modal-toggle"></div>
@@ -134,4 +135,5 @@
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
