@@ -59,6 +59,8 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             if ($input->getOption('count')) {
                 $count = $this->importPersonImagesCount();
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
+            } else if ($input->getOption('id')) {
+                $this->importPersonImages($input->getOption('id'));
             } else {
                 $this->importPersonImages();
             }
@@ -78,19 +80,33 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
     }
 
-    private function importPersonImages()
+    private function importPersonImages($id = null)
     {
-        $maxResults = null;
-        if (null !== $this->firstResult) {
-            $maxResults = $this->maxResults;
-            $pages = ceil($this->importPersonImagesCount() / $maxResults);
-            $this->output->writeln($this->input->getOption('page') . "/$pages");
+        if ($id) {
+            $oldImages = [];
+            $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
+            if ($movie) {
+                $oldImages = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                    ->getLegacyPersonImages($person)
+                ;
+            }
+
+        } else {
+            $maxResults = null;
+            if (null !== $this->firstResult) {
+                $maxResults = $this->maxResults;
+                $pages = ceil($this->importPersonImagesCount() / $maxResults);
+                $this->output->writeln($this->input->getOption('page') . "/$pages");
+            }
+            $oldImages = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                ->getLegacyPersonImages(null, $this->firstResult, $maxResults)
+            ;
         }
-        $oldImages = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:OldFilmPhoto')
-            ->getLegacyPersonImages(null, $this->firstResult, $maxResults)
-        ;
+
         if (!$oldImages) {
             $this->output->writeln('<info>There is no images to import with these options</info>');
             return;
