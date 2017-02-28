@@ -106,7 +106,7 @@ class HomepageManager
     public function getActualite($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = 3)
     {
         /** @var CcmNews[] $actualite */
-        $actualites = $this->em->getRepository(CcmNews::class)->getNewsArticlesByYearAndTheme($locale, $year, $themeId, $offset, $limit);
+        $actualites = $this->em->getRepository(CcmNews::class)->getNewsArticlesByYearAndTheme($locale, $year, $themeId, $offset, $limit, true);
 
         return $actualites;
     }
@@ -186,12 +186,12 @@ class HomepageManager
                             )
                         )
                     );
-                
+
                 if ($video) {
                     $videos[] = $video;
                 }
             }
-            
+
             return $videos;
         }
 
@@ -263,6 +263,8 @@ class HomepageManager
         $positions[$homepage->getTranslatable()->getPositionActualites()] = 'actualite';
         $positions[$homepage->getTranslatable()->getPositionSejour()] = 'sejour';
         $positions[$homepage->getTranslatable()->getPositionSocial()] = 'social';
+
+        ksort($positions);
 
         return $positions;
     }

@@ -70,7 +70,7 @@ class CcmNewsRepository extends EntityRepository
      * @param int $offset
      * @return array
      */
-    public function getNewsArticlesByYearAndTheme($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = null)
+    public function getNewsArticlesByYearAndTheme($locale = 'fr', $year = null, $themeId = null, $offset = 0, $limit = null, $displayedOnHomepage = false)
     {
         $qb =  $this
             ->createQueryBuilder('n')
@@ -135,9 +135,16 @@ class CcmNewsRepository extends EntityRepository
             ->setFirstResult($offset)
         ;
 
+        if ($displayedOnHomepage) {
+            $qb
+                ->andWhere('n.displayedHome = 1')
+            ;
+        }
+
         if($limit) {
             $qb->setMaxResults($limit);
         }
+
         return $qb->getQuery()->getResult();
     }
 
@@ -257,7 +264,7 @@ class CcmNewsRepository extends EntityRepository
             $qb
                 ->andWhere('n.id not in (:excludedIds)')
                 ->setParameter('excludedIds', $excludedIds)
-            ;           
+            ;
         }
 
         if ($maxResults) {

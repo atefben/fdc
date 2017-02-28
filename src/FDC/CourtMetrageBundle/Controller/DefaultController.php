@@ -25,11 +25,11 @@ class DefaultController extends Controller
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $homepage = $homepageManger->getPage();
-        
+
         if (!$homepage || !$homepage->getTranslatable()) {
             throw new NotFoundHttpException();
         }
-        
+
         $aPropos = $homepageManger->getAPropos($homepage);
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
@@ -180,7 +180,7 @@ class DefaultController extends Controller
      * @return array
      */
     public function shareEmailMediaAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null) {
-        
+
         $emailData = array(
             'section' => $section,
             'detail' => $detail,

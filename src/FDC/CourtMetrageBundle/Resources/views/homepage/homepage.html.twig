@@ -47,16 +47,6 @@
         </div>
     {% endif %}
 
-    {% if sejourIsActive == 1 %}
-        <div class="list-article">
-            <div class="bandeau-list">
-                {% if sejour is defined and sejour is not null %}
-                    {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
-                {% endif %}
-            </div>
-        </div>
-    {% endif %}
-
     {% for position in positions %}
         {% if position == 'catalog' %}
             {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
