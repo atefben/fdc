@@ -13265,6 +13265,14 @@ header #searchContainer {
   opacity: 1;
   visibility: visible;
 }
+#social-wall #wall .post .side.hastext .txt {
+  opacity: 1;
+  visibility: visible;
+}
+#social-wall #wall .post .side.hastext:hover .txt {
+  opacity: 0;
+  visibility: hidden;
+}
 #social-wall #wall .post .side .txt {
   background-color: #fff;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
