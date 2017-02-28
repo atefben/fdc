@@ -6,6 +6,7 @@ use Base\AdminBundle\Component\Admin\Admin;
 use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class CcmLabelAdmin
@@ -101,5 +102,13 @@ class CcmLabelAdmin extends Admin
                 'by_reference' => false,
             ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }
