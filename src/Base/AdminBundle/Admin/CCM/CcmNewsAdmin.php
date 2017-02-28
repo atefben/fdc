@@ -293,6 +293,20 @@ class CcmNewsAdmin extends Admin
                 $em->persist($association);
                 $em->flush();
             }
-        } // todo: if no association is present, remove all film -> ccm news associations ??
+        } else {
+            /**
+             * if the news is not associated with a film,
+             * we find and remove all existing film -> ccm news associations
+             *
+             * @var CcmNewsFilmFilmAssociated[] $existingAssociations
+             */
+            $existingAssociations = $em->getRepository(CcmNewsFilmFilmAssociated::class)->findBy([
+                'ccmNews' => $news
+            ]);
+            foreach ($existingAssociations as $association) {
+                $em->remove($association);
+            }
+            $em->flush();
+        }
     }
 }
