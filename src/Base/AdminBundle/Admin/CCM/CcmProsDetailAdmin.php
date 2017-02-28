@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Count;
 
 class CcmProsDetailAdmin extends Admin
 {
@@ -131,6 +131,15 @@ class CcmProsDetailAdmin extends Admin
                     'by_reference'       => false,
                     'label'              => 'form.ccm.label.pros.detail_activities_list',
                     'translation_domain' => 'BaseAdminBundle',
+                    'required' => true,
+                    'constraints'        => array(
+                        new Count(
+                            array(
+                                'min' => 1,
+                                'minMessage' => "validation.pros.min"
+                            )
+                        ),
+                    ),
                 ), array(
                     'edit'     => 'inline',
                     'inline'   => 'table',
