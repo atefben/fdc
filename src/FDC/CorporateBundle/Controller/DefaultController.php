@@ -81,12 +81,12 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
         $this->sortByDate($homeContents);
