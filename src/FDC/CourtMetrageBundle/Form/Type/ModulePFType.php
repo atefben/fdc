@@ -71,6 +71,7 @@ class ModulePFType extends ModuleType
                         'label'              => 'form.ccm.label.module.pf.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                     'nameSurname'          => array(

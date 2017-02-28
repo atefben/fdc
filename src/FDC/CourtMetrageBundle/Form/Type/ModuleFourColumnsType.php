@@ -42,6 +42,7 @@ class ModuleFourColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.four_columns.description1',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                     'picto2'          => array(
@@ -55,6 +56,7 @@ class ModuleFourColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.four_columns.description2',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                     'picto3'          => array(
@@ -68,6 +70,7 @@ class ModuleFourColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.four_columns.description3',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                     'picto4'          => array(
@@ -81,6 +84,7 @@ class ModuleFourColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.four_columns.description4',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                 ),

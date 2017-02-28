@@ -39,6 +39,7 @@ class ModuleSubtitleType extends ModuleType
                         'label'              => 'form.ccm.label.module.subtitle.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'required' => false,
                     ),
                 ),

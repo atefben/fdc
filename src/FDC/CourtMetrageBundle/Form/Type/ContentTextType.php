@@ -49,6 +49,7 @@ class ContentTextType extends AbstractType
                         'label'              => 'form.ccm.label.footer.content_text_body',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'constraints'        => array(
                             new NotBlank(),
                         ),

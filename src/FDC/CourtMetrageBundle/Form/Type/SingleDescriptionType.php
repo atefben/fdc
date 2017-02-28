@@ -43,6 +43,7 @@ class SingleDescriptionType extends DescriptionType
                         'label'              => 'form.ccm.label.pros.detail_description_single',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'config_name' => 'widget',
                         'constraints'        => array(
                             new NotBlank(),
                         ),

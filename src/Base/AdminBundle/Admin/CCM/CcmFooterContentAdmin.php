@@ -88,6 +88,7 @@ class CcmFooterContentAdmin extends Admin
                         ),
                         'required' => true,
                         'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
                     ),
                     'createdAt'         => array(
                         'display' => false,
