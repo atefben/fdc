@@ -43,6 +43,9 @@ class DoubleDescriptionType extends DescriptionType
                         'label'              => 'form.ccm.label.pros.detail_description_first_double',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'config_name' => 'widget',
                         'constraints'        => array(
                             new NotBlank(),
@@ -61,6 +64,9 @@ class DoubleDescriptionType extends DescriptionType
                         'label'              => 'form.ccm.label.pros.detail_description_second_double',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'config_name' => 'widget',
                         'constraints'        => array(
                             new NotBlank(),
