@@ -14,6 +14,11 @@
                         {% set sliderItems = {} %}
                         {% set dataItem = 1 %}
                         {% for homeSlide in homeSlider %}
+                            {% if class(article) starts with 'S' %}
+                                {% set type = 'communique' %}
+                            {% else %}
+                                {% set type = 'info' %}
+                            {% endif %}
                             {% set img = homeSlide.header %}
                             {% set trans = img.findTranslationByLocale(app.request.locale) %}
                             {% if trans is null or trans.file is null %}
@@ -35,11 +40,7 @@
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'Statement' %}
-                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'communique', format: homeSlide.newsFormat, slug: trans.slug }) %}
-                            {% else %}
-                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'info', format: homeSlide.newsFormat, slug: trans.slug }) %}
-                            {% endif %}
+                            {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(homeSlide), 'slug': homeSlide|trans_fallback('slug') , 'year': homeSlide.festival.year}) %}
 
                             {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                             {% set sliderItems = sliderItems|merge(sliderItem) %}
