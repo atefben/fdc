@@ -27,17 +27,22 @@
                 </div>
                 <div class="single-photo">
                     <div class="photo-container">
-                        {% set artistImage = artist_page_media(artist, app.request.locale) %}
-                        {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
-                        {% if artistImage %}
-                            {% if artistImage.width > artistImage.height %}
-                                <img src="{% path artistImage, 'mobile' %}" height="485"
-                                     alt="{{ artist.fullName }}"/>
-                            {% else %}
-                                <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
-                            {% endif %}
-                            {% if artistCredits %}
-                                <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
+                        {% if artist.portraitImage and artist.displayedImage == 0 %}
+                            <img src="{% path artist.portraitImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 384px; height: 485px;"/>
+                        {% elseif artist.landscapeImage and artist.displayedImage == 1 %}
+                            <img src="{% path artist.landscapeImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 625px; height: 384px;"/>
+                        {% else %}
+                            {% set artistImage = artist_page_media(artist, app.request.locale) %}
+                            {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
+                            {% if artistImage %}
+                                {% if artistImage.width > artistImage.height %}
+                                    <img src="{% path artistImage, 'mobile' %}" height="485" alt="{{ artist.fullName }}"/>
+                                {% else %}
+                                    <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
+                                {% if artistCredits %}
+                                    <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </div>
