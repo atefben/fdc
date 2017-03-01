@@ -9,11 +9,11 @@
             <h1>{{ registerProcedure.techniqueCharacteristicsTitle }}</h1>
             <div class="onlinegoldBorders">
                 <div class="specs">
-                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/camera.svg') }}"> Spécifications vidéo</h2>
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/camera.svg') }}">{{ 'ccm.register_movie.video_specs'|trans }}</h2>
                     {{ registerProcedure.techniqueCharacteristicsVideo|raw }}
                 </div>
                 <div class="specs">
-                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/sound.svg') }}"> Spécifications audio</h2>
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/sound.svg') }}">{{ 'ccm.register_movie.audio_specs'|trans }}</h2>
                     {{ registerProcedure.techniqueCharacteristicsAudio|raw }}
                 </div>
             </div>

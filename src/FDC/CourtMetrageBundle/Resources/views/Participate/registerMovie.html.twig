@@ -15,7 +15,7 @@
             {% endif %}
 
             <div class="block-tab-switch block-01-ms">
-                <h3 class="title-tab-swich">Consultez la procédure d’inscription en<br>fonction de la catégorie :</h3>
+                <h3 class="title-tab-swich">{{ 'ccm.register_movie.register_info'|trans }}:</h3>
             </div>
 
             <div class="block-tab-switch">
@@ -51,7 +51,7 @@
                                         {{ item.characteristicsText|raw }}
 
                                         <div class="buttons-02 centered">
-                                            <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'voir le formulaire'}}</div></a>
+                                            <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'ccm.register_movie.see_form'|trans }}</div></a>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                         <strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>
                                         <p class="centered">{{ item.regulationText|raw }}</p><br>
                                         <div class="buttons-02 centered">
-                                            <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">Voir le règlement</a>
+                                            <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">{{ 'ccm.register_movie.see_rules'|trans }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@
                             <div class="item i-2">
                                 {{ item.contactUsRightText|raw }}
                                 <div class="buttons-02">
-                                    <a href="#" class="button autoBtn centered">Formulaire de contact</a>
+                                    <a href="#" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
                                 </div>
                             </div>
                         </div>

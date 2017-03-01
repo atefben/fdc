@@ -56,7 +56,7 @@ class ShareEmailType extends AbstractType
                 ),
                 'data' => false,
                 'required' => false,
-                'label' => 'M\'envoyez une copie par email'
+                'label' => 'ccm.sharemail.form.label.copy'
             ))
             ->add('message', 'textarea', array(
                 'attr' => array(
@@ -72,7 +72,7 @@ class ShareEmailType extends AbstractType
                 ),
                 'data' => false,
                 'required' => false,
-                'label' => 'Je souhaite recevoir la newsletter du Festival de Cannes'
+                'label' => 'ccm.sharemail.form.label.newsletter'
             ))
             ->add('section', 'hidden', array('label' => false))
             ->add('url', 'hidden', array('label' => false))

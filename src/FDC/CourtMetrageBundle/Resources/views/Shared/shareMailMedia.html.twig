@@ -14,7 +14,7 @@
         {% else %}
             {{ form_widget(form.email) }}
         {% endif %}
-        <span class="complet-infos popin">Séparez les adresses par des virgules</span>
+        <span class="complet-infos popin">{{ 'ccm.share_mail.mail_info'|trans }}</span>
 
         {% if form_errors(form.user) %}
             {{ form_widget(form.user, {'attr': {'class': 'invalid'}}) }}
@@ -43,17 +43,14 @@
             {{ form_label(form.newsletter) }}
         </span>
 
-        <span class="detail popin">* Champs obligatoires</span>
+        <span class="detail popin">* {{ 'ccm.share_mail.required'|trans }}</span>
         <div id="errorMsg"></div>
-        <input type="submit" value='ENVOYER' class='popin' id="share_mail">
+        <input type="submit" value='{{ 'ccm.share_mail.submit'|trans }}' class='popin' id="share_mail">
         {{ form_rest(form) }}
     {{ form_end(form) }}
 
     <div class="info-popin popin">
-        <p class="popin">
-            En application de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, l’internaute dispose des droits d'opposition (art. 38 de la loi), d'accès (art. 39 de la loi), de rectification et de suppression (art. 40 de la loi) des données le concernant. Pour exercer ces droits, l’internaute doit s’adresser à : Direction juridique OGF, 31 rue de Cambrai 75946 PARIS cedex 19, ou à l’adresse électronique suivante informatiqueetlibertes.dj@ogf.fr, accompagné d’une copie d’un titre d’identité.
-            <br> OGF a déclaré les fichiers décrits ci-dessus à la CNIL et enregistrée sous le n° 1607719.
-        </p>
+        <p class="popin">{{ 'ccm.share_mail.rules'|trans }}</p>
     </div>
 </div>
 <!-- END POPIN MAIL MEDIA SHARE -->

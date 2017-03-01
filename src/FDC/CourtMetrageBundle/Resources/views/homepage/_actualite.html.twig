@@ -1,5 +1,5 @@
 <div class="our-news">
-    <h3>les actualités</h3>
+    <h3>{{ 'ccm_news'|trans }}</h3>
     <div class="innerWrapper">
         {% if actualites is defined and actualites is not null and actualiteIsActive == 1 %}
             {% for actualite in actualites %}
