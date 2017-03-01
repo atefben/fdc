@@ -68,6 +68,12 @@ class ShortFilmCornerController extends Controller
      */
     public function ourEventsAction(Request $request)
     {
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $sejour = $homepageManger->getSejouresFromShortFilm();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
+        $positions = $homepageManger->orderTransversModules();
+
         $locale = $request->get('_locale', 'fr');
         
         $pageData = $this->get('ccm.manager.sfc')->getPageData(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale);
@@ -75,7 +81,17 @@ class ShortFilmCornerController extends Controller
         if ($pageData == null) {
             throw $this->createNotFoundException();
         }
-        
+
+        $pageData = array_merge(
+            $pageData,
+            [
+                'sejour' => $sejour,
+                'sejourIsActive' => $sejourIsActive,
+                'socialIsActive' => $socialIsActive,
+                'positions' => $positions,
+            ]
+        );
+
         return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
     
@@ -99,16 +115,17 @@ class ShortFilmCornerController extends Controller
         if ($pageData == null) {
             throw $this->createNotFoundException();
         }
-        
-        return $this->render(
-            '@FDCCourtMetrage/shortfilmcorner/show.html.twig',
+
+        $pageData = array_merge(
+            $pageData,
             [
-                $pageData,
                 'sejour' => $sejour,
                 'sejourIsActive' => $sejourIsActive,
                 'socialIsActive' => $socialIsActive,
                 'positions' => $positions,
             ]
         );
+
+        return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
 }
