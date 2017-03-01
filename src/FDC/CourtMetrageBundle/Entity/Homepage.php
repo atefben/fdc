@@ -47,7 +47,7 @@ class Homepage implements CcmAProposInterface
      * @Assert\Count(
      *      min = "3",
      *      minMessage = "ccm.validation.homepage.pushes_min",
-     *      max = "6",
+     *      max = "9",
      *      maxMessage = "ccm.validation.homepage.pushes_max"
      * )
      * @Assert\Valid
@@ -774,7 +774,7 @@ class Homepage implements CcmAProposInterface
     /**
      * @return boolean
      */
-    public function getAProposIsActive()
+    public function isAProposIsActive()
     {
         return $this->aProposIsActive;
     }
