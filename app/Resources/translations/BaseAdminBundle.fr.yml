@@ -1146,6 +1146,7 @@ form:
     label_seo_file: Vignette partage
     label_theme_name: Nom du thème
     label_file: Fichier
+    label_file_eps: Fichier eps
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
     label_film_film_media_audio: Audios associés

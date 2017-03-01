@@ -39,6 +39,12 @@ class MdfPressGraphicalCharterWidget
     protected $image;
 
     /**
+     * @var MediaMdf
+     * @ORM\ManyToOne(targetEntity="FDC\MarcheDuFilmBundle\Entity\MediaMdfPdf")
+     */
+    protected $epsFile;
+
+    /**
      * @ORM\ManyToOne(targetEntity="MdfPressGraphicalCharter", inversedBy="pressGraphicalCharterWidgets")
      * @ORM\JoinColumn(name="press_graphical_charter_id", referencedColumnName="id")
      */
@@ -63,6 +69,46 @@ class MdfPressGraphicalCharterWidget
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return MediaMdf
+     */
+    public function getEpsFile()
+    {
+        return $this->epsFile;
+    }
+
+    /**
+     * @param $epsFile
+     *
+     * @return $this
+     */
+    public function setEpsFile($epsFile)
+    {
+        $this->epsFile = $epsFile;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param $translations
+     *
+     * @return $this
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
     }
 
     /**
