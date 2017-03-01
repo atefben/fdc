@@ -10054,7 +10054,7 @@ body#home .isotope-01 .item .contain-img {
 }
 
 .slider-02 .owl-stage {
-  margin-left: -419px;
+  margin-left: 0px !important;
 }
 @media screen and (max-width: 1024px) {
   .slider-02 .owl-stage-outer {
@@ -14835,7 +14835,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   position: relative;
   width: 293px;
   float: left;
-  margin-right: 50px;
 }
 .single-movie .videos #slider-movie-videos .slide-video .info .category {
   font-size: 0.650rem;
