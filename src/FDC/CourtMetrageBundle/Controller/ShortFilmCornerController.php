@@ -2,7 +2,6 @@
 
 namespace FDC\CourtMetrageBundle\Controller;
 
-
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
 use FDC\CourtMetrageBundle\Manager\ShortFilmCornerManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,6 +22,12 @@ class ShortFilmCornerController extends Controller
      */
     public function whoAreWeAction($slug, Request $request)
     {
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $sejour = $homepageManger->getSejouresFromShortFilm();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
+        $positions = $homepageManger->orderTransversModules();
+
         $pageData = null;
         $locale = $request->get('_locale', 'fr');
         /** @var ShortFilmCornerManager $manager */
@@ -42,6 +47,16 @@ class ShortFilmCornerController extends Controller
         }
 
         if ($pageData == null) throw $this->createNotFoundException();
+
+        $pageData = array_merge(
+            $pageData,
+            [
+                'sejour' => $sejour,
+                'sejourIsActive' => $sejourIsActive,
+                'socialIsActive' => $socialIsActive,
+                'positions' => $positions,
+            ]
+        );
         
         return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
@@ -71,6 +86,12 @@ class ShortFilmCornerController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $sejour = $homepageManger->getSejour();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
+        $positions = $homepageManger->orderTransversModules();
+
         $locale = $request->get('_locale', 'fr');
         
         $pageData = $this->get('ccm.manager.sfc')->getPageData(CcmShortFilmCorner::TYPE_RELIVE_EDITION, $locale);
@@ -79,6 +100,15 @@ class ShortFilmCornerController extends Controller
             throw $this->createNotFoundException();
         }
         
-        return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
+        return $this->render(
+            '@FDCCourtMetrage/shortfilmcorner/show.html.twig',
+            [
+                $pageData,
+                'sejour' => $sejour,
+                'sejourIsActive' => $sejourIsActive,
+                'socialIsActive' => $socialIsActive,
+                'positions' => $positions,
+            ]
+        );
     }
 }
