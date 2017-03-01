@@ -224,7 +224,7 @@
                 </div>
             </div>
             <div class="share">
-                <p>Partagez l'article</p>
+                <p>{{ 'ccm.artist.share_article'|trans }}</p>
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 <div class="buttons square">
                     <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% if shareMedia is defined %}{% path shareMedia.file, '384x485' -%}{% endif %}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography is not null %}{{ biography|raw|url_encode(true) }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"

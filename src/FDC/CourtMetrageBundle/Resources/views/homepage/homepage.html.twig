@@ -37,7 +37,7 @@
     {% if courtIsActive == 1 %}
         <div class="competition">
             <div class="maxContainer">
-                <h3>courts en compétition</h3>
+                <h3>{{ 'ccm.homepage.competition_section'|trans }}</h3>
             </div>
             <div id="slider-competition" class="owl-carousel">
                 {% if movies is defined and movies is not null %}

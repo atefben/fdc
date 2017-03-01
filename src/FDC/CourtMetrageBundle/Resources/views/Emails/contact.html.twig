@@ -43,10 +43,10 @@
     </style>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Arial, Helvetica, sans-serif">
-    <p>Email de <b>{{ name }}</b></p>
-    <p>Email du contact <b>{{ email }}</b></p>
-    <p>Le message concerne <b>{{ theme }}</b></p>
-    <p>Détail du message : </p>
+    <p>{{ 'ccm.contact.email.name'|trans }} <b>{{ name }}</b></p>
+    <p>{{ 'ccm.contact.email.email'|trans }} <b>{{ email }}</b></p>
+    <p>{{ 'ccm.contact.email.message_type'|trans }} <b>{{ theme }}</b></p>
+    <p>{{ 'ccm.contact.email.message_details'|trans }} : </p>
     <p>{{ message }}</p>
 </body>
 </html>

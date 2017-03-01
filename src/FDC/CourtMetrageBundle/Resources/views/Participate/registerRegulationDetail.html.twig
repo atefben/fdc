@@ -8,7 +8,7 @@
 
         <div class="all-contain block-01-ms padding-top block-rules">
             <strong class="title-23">{{ registerProcedure.name }}</strong>
-            <strong class="title-24 title-rules">Réglement {{ "now"|date("Y") }}</strong>
+            <strong class="title-24 title-rules">{{ 'ccm.register_movie.rules'|trans }} {{ "now"|date("Y") }}</strong>
 
             <div class="block-01-ms">
                 {{ registerProcedure.regulationDetailsText|raw }}
