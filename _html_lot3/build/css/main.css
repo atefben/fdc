@@ -14991,6 +14991,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #fff;
   width: 49%;
   padding-bottom: 96px;
+  vertical-align: top;
 }
 .single-movie .press .info-press .wrapper {
   float: right;
