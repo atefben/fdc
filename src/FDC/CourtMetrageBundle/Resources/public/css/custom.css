@@ -70,6 +70,12 @@ sup {
 body.chocolat-open.fixed {
     overflow-y: initial;
 }
+
+.single-article .block-01-xs .title-21 {
+    display: inline-block;
+    margin-top: 15px;
+}
+
 .single-article .block-01-xs .texte-01 strong {
     color: #666666;
 }
