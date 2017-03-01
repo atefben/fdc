@@ -197,7 +197,7 @@ entity:
     theme: Thèmes
     tag: Tags de recherche
     web_tv: Chaînes
-    media_pdf: Pdfs
+    media_pdf: Pdfs, eps
     media_image: Photos
     media_image_simple: Images semi-riches
     media_audio: Audios
@@ -962,7 +962,7 @@ form:
             color6: Couleur n°4
             color7: Couleur n°11
     media_pdf:
-        helper_file: Format attendu : .pdf
+        helper_file: Format attendu : .pdf, .eps
     fdc_page_participate_section:
         image_big: Grande image
     label_mobile: Utiliser cette strate sur mobile
