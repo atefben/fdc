@@ -204,4 +204,39 @@ header #navigation ul.user li a .icon-pencil:before {
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     height: 15px;
 }
+
+.retrospective {
+    .slider-restropective {
+        .calc3 img.i1 {
+            position: relative;
+            top: 2%;
+            left: -8%;
+        }
+
+        .calc3 img.i2 {
+            top: 29%;
+            position: relative;
+            right: 19%;
+        }
+
+        .calc3 img.i3 {
+            position: relative;
+            top: 8%;
+            left: -35%;
+        }
+
+        .calc4 img.i1 {
+            position: relative;
+            top: 1%;
+            left: 35%;
+        }
+
+        .calc4 img.i2 {
+            top: 16%;
+            position: relative;
+            right: -27%;
+        }
+    }
+}
+
 /* thomon - end fixes */

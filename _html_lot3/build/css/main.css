@@ -7190,6 +7190,32 @@ header #navigation ul.user li a .icon-pencil:before {
   height: 15px;
 }
 
+.retrospective .slider-restropective .calc3 img.i1 {
+  position: relative;
+  top: 2%;
+  left: -8%;
+}
+.retrospective .slider-restropective .calc3 img.i2 {
+  top: 29%;
+  position: relative;
+  right: 19%;
+}
+.retrospective .slider-restropective .calc3 img.i3 {
+  position: relative;
+  top: 8%;
+  left: -35%;
+}
+.retrospective .slider-restropective .calc4 img.i1 {
+  position: relative;
+  top: 1%;
+  left: 35%;
+}
+.retrospective .slider-restropective .calc4 img.i2 {
+  top: 16%;
+  position: relative;
+  right: -27%;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -9359,6 +9385,14 @@ header #searchContainer {
 
 .articles-list-medias .card-01.double.w2 .image {
   width: auto;
+}
+
+.articles-list h2.title {
+  color: #333;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 700;
+  font-size: 1.625rem;
+  padding-top: 60px;
 }
 
 .isotope-01 {
@@ -14991,6 +15025,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #fff;
   width: 49%;
   padding-bottom: 96px;
+  vertical-align: top;
 }
 .single-movie .press .info-press .wrapper {
   float: right;
