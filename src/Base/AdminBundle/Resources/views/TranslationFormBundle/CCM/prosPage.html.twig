@@ -57,10 +57,53 @@
                             {% endif %}
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
+                        </div>
+                    </div></br>
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {{ form_label(form.parent.sejourIsActive) }}
+                                    {{ form_widget(form.parent.sejourIsActive) }}
+                                    {{ form_label(form.parent.positionSejour) }}
+                                    {{ form_widget(form.parent.positionSejour) }}
+                                    </br>
+                                    {% for widget in form.parent.children.sejoures.children %}
+                                        <div class="item base-widget" data-itemtype="sejour">
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.image) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+
+                                            <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <a class="btn btn-primary btn-add-base-widget"
+                                   data-prototype="{{ form_widget(form.parent.children.sejoures.vars.prototypes.ccm_homepage_sejour_type)|escape }}"><i
+                                            class="icon-plus"></i>{{ 'form.ccm.label.homepage_sejour_type'|trans }}</a>
+                            </div>
+                        </div>
                     {% else %}
                     <div class="col-md-8">
                         <div class="box-body">
                             <div class="fdc-widgets" data-form-widget="collection">
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.sejour.title'|trans}}</h4>
+                                </div>
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.sejoures.children %}
+                                        <div class="item base-widget" data-itemtype="sejour">
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.image) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
                                 <div class="item base-widget">
                                     <h4><strong>{{ 'form.ccm.label.pros.domains_collection'|trans }}</strong></h4>
                                     {{ form_row(form.parent.children.domainsCollection) }}
@@ -111,6 +154,54 @@
                         </div>
                     </div>
                     {% endif %}
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <h4> {{ 'form.ccm.label.catalog.pushes'|trans}}</h4>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="box-body">
+                        <div class="fdc-widgets" data-form-widget="collection">
+                            {{ form_label(form.parent.catalogIsActive) }}
+                            {{ form_widget(form.parent.catalogIsActive) }}
+                            </br>
+                            {{ form_label(form.parent.positionCatalog) }}
+                            {{ form_widget(form.parent.positionCatalog) }}
+                            </br>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <h4> {{'form.ccm.label.social.title'|trans}}</h4>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="box-body">
+                        <div class="fdc-widgets" data-form-widget="collection">
+                            {{ form_label(form.parent.socialIsActive) }}
+                            {{ form_widget(form.parent.socialIsActive) }}
+                            </br>
+                            {{ form_label(form.parent.positionSocial) }}
+                            {{ form_widget(form.parent.positionSocial) }}
+                            </br>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="box box-success">
+                            <h4> {{'form.ccm.label.actualite.title'|trans}}</h4>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="box-body">
+                        <div class="fdc-widgets" data-form-widget="collection">
+                            {{ form_label(form.parent.actualiteIsActive) }}
+                            {{ form_widget(form.parent.actualiteIsActive) }}
+                            </br>
+                            {{ form_label(form.parent.positionActualites) }}
+                            {{ form_widget(form.parent.positionActualites) }}
+                            </br>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}

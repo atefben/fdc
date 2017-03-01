@@ -127,6 +127,14 @@ class HomepageManager
             );
     }
 
+    public function getSejouresFromProsPage()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findSejourForProsPage($this->requestStack->getMasterRequest()->get('_locale')
+            );
+    }
+
     public function getPage()
     {
         return $this->em->getRepository(HomepageTranslation::class)

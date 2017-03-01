@@ -16,6 +16,12 @@ class ProsController extends Controller
      */
     public function showAction(Request $request)
     {
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $sejour = $homepageManger->getSejouresFromProsPage();
+        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
+        $positions = $homepageManger->orderTransversModules();
+
         $prosManager = $this->get('ccm.manager.pros');
         
         $prosPage = $prosManager->getProsPageByLocale();
@@ -28,6 +34,10 @@ class ProsController extends Controller
                 'prosList' => $prosList,
                 'prosDomains' => $prosDomains,
                 'hasSFC' => $hasSFC,
+                'sejour' => $sejour,
+                'sejourIsActive' => $sejourIsActive,
+                'socialIsActive' => $socialIsActive,
+                'positions' => $positions,
             ]
         );
     }

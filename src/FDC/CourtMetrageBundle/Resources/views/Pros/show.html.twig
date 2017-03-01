@@ -103,11 +103,27 @@
             </div>
         </div>
 
-        {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
-
-        {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
-
-        {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+        {% for position in positions %}
+            {% if position == 'catalog' %}
+                {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
+            {% elseif position == 'actualite' %}
+                {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+            {% elseif position == 'sejour' %}
+                {% if sejourIsActive == 1 %}
+                    <div class="list-article">
+                        <div class="bandeau-list">
+                            {% if sejour is defined and sejour is not null %}
+                                {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% elseif position == 'social'%}
+                {% if socialIsActive == 1 %}
+                    {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
 
         {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
             {"breadcrumb":
