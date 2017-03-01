@@ -762,7 +762,7 @@ form:
                 sub_nav_is_active: Cet onglet de navigation secondaire est actif?
             pros:
                 detail_image: Pro image
-                detail_is_sfc: Est SFC
+                detail_is_sfc: Présent au Short Film Corner
                 detail_name: Nom du pro
                 detail_quote: Pro quote
                 detail_country: Pro pays
