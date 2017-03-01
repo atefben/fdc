@@ -4476,7 +4476,7 @@ var owInitSlider = function (sliderName) {
         });
 
         // Custom Navigation Events
-        $('.slider-02 .owl-item').on('click', function () {
+        $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
             console.log('init player');
 
