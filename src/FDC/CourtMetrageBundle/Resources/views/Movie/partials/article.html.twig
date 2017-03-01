@@ -110,7 +110,6 @@
             </div>
             <a href="{{ path('ccm_news_detail', {'slug' : article|trans_fallback('slug')}) }}" class="linkImage"></a>
 
-            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{{ 'ccm.add_my_selection'|trans }}</span></a>
             {% if article is news_object %}
                 <span class="picto"><i class="icon icon_{{ article|get_news_type }}"></i></span>
             {% elseif article is info_object %}

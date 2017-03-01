@@ -170,7 +170,6 @@
                                             </div>
                                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
                                             <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
-                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                                         </div>
                                         <div class="info">
                                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
@@ -208,7 +207,6 @@
                                                 </a>
                                             </div>
                                             <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
-                                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                                         </div>
                                         <div class="info">
                                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ sameDayArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>

@@ -41,7 +41,6 @@
                                     <img src="{% path article.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
                                 {% endif %}
                             </a>
-                            <a href="#" class="read-later"><i class="icon icon_lire-plus-tard"></i><span>{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span></a>
                         </div>
                         <div class="info">
                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</a>
