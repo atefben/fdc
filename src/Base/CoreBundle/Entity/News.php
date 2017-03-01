@@ -286,7 +286,7 @@ abstract class News implements TranslateMainInterface,RoutedItemInterface
 
         if ($this->getId()) {
             if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
-                $string = $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
+                $string = "$class " . $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
             } else {
                 $string = "$class {$this->getId()}";
             }
