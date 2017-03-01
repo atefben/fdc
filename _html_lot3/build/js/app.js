@@ -4467,7 +4467,7 @@ var owInitSlider = function (sliderName) {
 
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
-            items: 1,
+            items: 3,
             autoWidth: true,
             smartSpeed: 700,
             center: true,
@@ -6056,7 +6056,7 @@ var timeout = 1000,
     controlBar =
         '<div class="control-bar">\
             <div class="playstate">\
-                <button class="play-btn play icon icon_play"></button>\
+                <button class="play-btn play icon icon-play"></button>\
             </div>\
             <div class="time">\
                 <p class="time-info">\
@@ -6070,24 +6070,24 @@ var timeout = 1000,
                 </div>\
             </div>\
             <div class="sound">\
-                <button class="icon icon_son"></button>\
+                <button class="icon icon-son"></button>\
                 <div class="sound-bar">\
                     <div class="sound-seek"></div>\
                 </div>\
             </div>\
             <div class="fs">\
-                <button class="icon icon_fullscreen"></button>\
+                <button class="icon icon-fullscreen"></button>\
             </div>\
         </div>',
     topBar =
         '<div class="top-bar">\
-            <a href="#" class="channels"><i class="icon icon_playlist"></i></a>\
+            <a href="#" class="channels"><i class="icon icon-playlist"></i></a>\
             <div class="info"></div>\
             <div class="buttons square">\
-                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
-                <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>\
-                <a href="#" class="button link"><i class="icon icon_link"></i></a>\
-                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
+                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon-facebook"></i></a>\
+                <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon-twitter"></i></a>\
+                <a href="#" class="button link"><i class="icon icon-link"></i></a>\
+                <a href="#" class="button email"><i class="icon icon-lettre"></i></a>\
             </div>\
         </div>',
     slider =
@@ -6102,7 +6102,7 @@ var timeout = 1000,
             </div>\
             <a class="linkVid" href="#"></a>\
             <div class="info">\
-                <div class="picto"><i class="icon icon_playlist"></i></div>\
+                <div class="picto"><i class="icon icon-playlist"></i></div>\
                     <div class="info-container">\
                         <div class="vCenter">\
                             <div class="vCenterKid">\
@@ -6595,16 +6595,16 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
-        $stateBtn.removeClass('icon_play').addClass('icon_pause');
+        $stateBtn.removeClass('icon-play').addClass('icon-pause');
         fullScreenApi.isFullScreen() ? mouseMoving(true) : mouseMoving(false);
     }).on('pause', function () {
-        $stateBtn.removeClass('icon_pause').addClass('icon_play');
+        $stateBtn.removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function () {
         // console.log("");
     }).on('complete', function () {
         this.stop();
-        $stateBtn.removeClass('icon_pause').addClass('icon_play');
+        $stateBtn.removeClass('icon-pause').addClass('icon-play');
         $container.addClass('state-complete');
         mouseMoving(false);
     }).on('firstFrame', function () {

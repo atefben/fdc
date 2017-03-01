@@ -103,7 +103,7 @@ var owInitSlider = function (sliderName) {
 
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
-            items: 1,
+            items: 3,
             autoWidth: true,
             smartSpeed: 700,
             center: true,
