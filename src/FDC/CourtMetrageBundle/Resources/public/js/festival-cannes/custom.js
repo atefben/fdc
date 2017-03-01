@@ -195,6 +195,14 @@ function click() {
         if($(this).hasClass('purpleBtn')) {
             $(this).removeClass('purpleBtn');
 
+            var activeFilters = [];
+
+            $('.selectbtn').each(function () {
+                if ($(this).hasClass('purpleBtn')) {
+                    activeFilters.push($(this).attr("id"));
+                }
+            });
+
 
             console.log("class removed");
               var index = el.indexOf(identification);
@@ -206,8 +214,22 @@ function click() {
                   el.splice(indexRel, 1);
               }
 
-              $('.' + identification).fadeOut(200);
-              $('#' + attr).hide();
+            $('.' + identification).each(function () {
+                var $this = $(this);
+                var isSafe = true;
+                activeFilters.forEach(function (item) {
+                    if ($this.hasClass(item)) {
+                        isSafe = false;
+                        return;
+                    }
+                });
+
+                if (isSafe) {
+                    $(this).fadeOut(200);
+                }
+            });
+
+            $('#' + attr).hide();
               console.log("removed " + identification);
               console.log(el);
 
