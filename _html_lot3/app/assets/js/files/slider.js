@@ -99,7 +99,7 @@ var owInitSlider = function (sliderName) {
 
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
-    if (sliderName == 'slider-02' && !$('.s-video-playlist').length) {
+    if (sliderName == 'slider-02') {
 
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
@@ -114,6 +114,7 @@ var owInitSlider = function (sliderName) {
         $('.slider-02 .owl-item').on('click', function () {
             var number = $(this).index();
             alert('init player');
+            
             playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');
