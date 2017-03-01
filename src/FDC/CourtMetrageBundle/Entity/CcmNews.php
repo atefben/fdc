@@ -200,7 +200,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
 
     public function __construct()
     {
-        $this->hideSameDay = false;
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
@@ -602,18 +601,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     }
 
     /**
-     * Set hideSameDay
-     *
-     * @param boolean $hideSameDay
-     * @return $this
-     */
-    public function setHideSameDay($hideSameDay)
-    {
-        $this->hideSameDay = $hideSameDay;
-        return $this;
-    }
-
-    /**
      * Set hidden
      *
      * @param boolean $hidden
@@ -670,16 +657,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
         $this->homepageMediaVideo = $homepageMediaVideo;
 
         return $this;
-    }
-
-    /**
-     * Get hideSameDay
-     *
-     * @return boolean
-     */
-    public function getHideSameDay()
-    {
-        return $this->hideSameDay;
     }
 
     /**
@@ -889,10 +866,11 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
             if ($widget instanceof CcmNewsWidgetDescription) {
                 $translation = $widget->findTranslationByLocale($locale);
                 if ($translation == null && $locale !== 'fr' ) {
+                    /** @var CcmNewsWidgetDescriptionTranslation $translation */
                     $translation = $widget->findTranslationByLocale('fr');
                 }
                 if ($translation !== null) {
-                    $description = $translation->getDescription();
+                    $description = $translation->getContent();
                 }
             }
         }

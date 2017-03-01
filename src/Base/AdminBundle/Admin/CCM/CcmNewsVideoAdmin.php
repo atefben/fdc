@@ -170,7 +170,6 @@ class CcmNewsVideoAdmin extends CcmNewsAdmin
                     'inline' => 'table'
                 )
             )
-            ->add('hideSameDay')
             ->add('displayedHome')
             ->add('translate')
             ->add('translateOptions', 'choice', array(

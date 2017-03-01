@@ -185,27 +185,6 @@ class NewsManager
     }
 
     /**
-     * @param \DateTime $date
-     * @param string $locale
-     * @param bool $count
-     * @param int|bool $currentNewsId
-     * @param array $focusArticles
-     * 
-     * @return array
-     */
-    public function getSameDayNews($date, $locale = 'fr', $count = false, $currentNewsId = false, $focusArticles = [])
-    {
-        $excludedIds = [];
-        is_int($currentNewsId) ? $excludedIds[] = $currentNewsId : null;
-        (isset($focusArticles[0])) ? $excludedIds[] = $focusArticles[0]->getId() : null;
-        (isset($focusArticles[1])) ? $excludedIds[] = $focusArticles[1]->getId() : null;
-        $sameDayNews = $this->em->getRepository(CcmNews::class)->getSameDayNews($date, $locale, $count, $excludedIds);
-        $sameDayNews = $this->removeUnpublishedNewsAudioVideo($sameDayNews, $locale, $count);
-        
-        return $sameDayNews;
-    }
-
-    /**
      * @param $array
      * @param $locale
      * @param null $count
