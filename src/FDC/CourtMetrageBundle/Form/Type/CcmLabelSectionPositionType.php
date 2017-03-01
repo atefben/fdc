@@ -66,6 +66,7 @@ class CcmLabelSectionPositionType extends AbstractType
                 'class' => $this->labelSection->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
+                'btn_add' => false,
                 'required' => true
             ))
             ->add('position')
