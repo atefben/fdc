@@ -121,8 +121,8 @@ services:
             - @sonata.media.cdn.server_pdf
             - @sonata.media.generator.default
             - @sonata.media.thumbnail.format
-            - ['pdf']
-            - ['application/pdf']
+            - ['pdf', 'eps']
+            - ['application/pdf', 'application/postscript']
 
     #override sonata_media_type to add an option to show/hide the unlink button
     sonata.form.type_extension.media:
