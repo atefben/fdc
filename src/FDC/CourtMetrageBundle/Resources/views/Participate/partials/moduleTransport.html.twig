@@ -5,7 +5,7 @@
         <strong class="transport">{{ translation.title }}</strong>
         <span class="info">{{ translation.description|raw }}</span>
         {% if translation.url is not null %}
-            <a href="{{ translation.url }}" {% if fdc_court_metrage_domain in translation.url %}target="_blank"{% endif %} class="btn"><i class="icon icon_creer"></i>En savoir plus</a>
+            <a href="{{ translation.url }}" {% if fdc_court_metrage_domain not in translation.url %}target="_blank"{% endif %} class="btn"><i class="icon icon_creer"></i>En savoir plus</a>
         {% endif %}
     </div>
 {% endif %}

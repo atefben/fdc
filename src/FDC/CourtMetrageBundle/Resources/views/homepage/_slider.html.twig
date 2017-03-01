@@ -1,7 +1,7 @@
 <div id="slider-movies" class="owl-carousel">
     {% for slide in sliders %}
         <div>
-            <a href="{{ slide.url }}"{% if fdc_court_metrage_domain in slide.url %}target="_blank"{% endif %}>
+            <a href="{{ slide.url }}" {% if fdc_court_metrage_domain not in slide.url %}target="_blank"{% endif %}>
                 <div class="video">
                     <video preload>
                         <source src="#">
