@@ -24,7 +24,9 @@
         {%- set film_format = 'small' -%}
     {%- endif -%}
 
-    {%- if display_film_path is defined and display_film_path -%}
+    {% if film.imageCover %}
+        {% path media, 'reference' %}
+    {%- elseif display_film_path is defined and display_film_path -%}
         {%- if media is not empty -%}
             {%- path media, film_format -%}
         {%- else -%}

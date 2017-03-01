@@ -14,16 +14,17 @@
 
         <div class="container container-list">
             <section class="categorie-items">
-                <div class="title-list-cat">
-                    <h2 class="title">Courts métrages</h2>
-                </div>
                 {% for award_association in award_associations %}
                     {% include 'FDCCourtMetrageBundle:Competition:partials/movie.html.twig' %}
                 {% endfor %}
             </section>
         </div>
 
-        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' %}
+        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' with {
+            'isSelection': false,
+            'isJury': false,
+            'isPalmares': true
+        }%}
     </div>
 
 {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with

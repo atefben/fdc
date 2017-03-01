@@ -76,6 +76,11 @@ class LoadCcmContentData implements FixtureInterface
             $manager->persist($socialWallHashtag);
         }
 
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmLabel::class)->findAll()) == 0) {
+            $labelPage = new \FDC\CourtMetrageBundle\Entity\CcmLabel();
+            $manager->persist($labelPage);
+        }
+
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\Homepage::class)->findAll()) == 0) {
             $homepage = new \FDC\CourtMetrageBundle\Entity\Homepage();
             $manager->persist($homepage);
