@@ -185,43 +185,6 @@
                         </div>
                     </div>
                 {% endif %}
-                {% if sameDayArticles is not empty and article.hideSameDay == false %}
-                    <div class="same-day">
-                        <h2 class="title">{{ 'ccm.news.same_day'|trans }}</h2>
-                        <div class="articles center">
-                            {% for sameDayArticle in sameDayArticles %}
-                                {% if sameDayArticle is not null %}
-                                    {% set articleTranslation = sameDayArticle.findTranslationByLocale(app.request.locale) %}
-                                    {% set articleType = sameDayArticle.getType != 'image' ? sameDayArticle.getType : 'photo' %}
-                                    <article class="{{ articleType }}" data-format="{{ articleType }}" data-theme="competition">
-                                        <div class="image">
-                                            <div class="image-wrapper">
-                                                <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
-                                                {% if sameDayArticle.header is not null %}
-                                                    {% set translations = sameDayArticle.header.findTranslationByLocale(app.request.locale) %}
-                                                    <img src="{% path sameDayArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
-                                                {% elseif sameDayArticle.image is not null %}
-                                                    {% set translations = sameDayArticle.image.findTranslationByLocale(app.request.locale) %}
-                                                    <img src="{% path sameDayArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
-                                                {% endif %}
-                                                </a>
-                                            </div>
-                                            <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
-                                        </div>
-                                        <div class="info">
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ sameDayArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
-                                                <span class="date">{{ sameDayArticle.publishedAt|date('d.m.y') }}</span> .
-                                                <span class="hour">{{ sameDayArticle.publishedAt|date('H:i') }}</span>
-                                            </a>
-                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
-                                        </div>
-                                    </article>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
             </div>
         </div>
         <span class="anim"></span>

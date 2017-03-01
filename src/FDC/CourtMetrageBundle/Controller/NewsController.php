@@ -90,15 +90,12 @@ class NewsController extends Controller
 
         //get focus articles
         $associatedNews = $newsManager->getNewsFocusArticles($article, $locale);
-
-        //get day articles
-        $count = 3;
+        
         if ($article->getPublishedAt()) {
             $newsDate = $article->getPublishedAt();
         } else {
             $newsDate = new \DateTime();
         }
-        $sameDayArticles = $newsManager->getSameDayNews($newsDate, $locale, $count, $article->getId(), $associatedNews);
 
         // next and previous button links
         $prevArticles = $newsManager->getPrevOrNextNews($newsDate, 'prev', $locale);
@@ -111,7 +108,6 @@ class NewsController extends Controller
             'associatedNews'            => $associatedNews,
             'programmations'            => $programmations,
             'associatedFilm'            => $associatedFilm,
-            'sameDayArticles'           => $sameDayArticles,
             'nextProjectionDate'        => $nextProjectionDate,
             'associatedFilmDuration'    => $associatedFilmDuration
         ]);
