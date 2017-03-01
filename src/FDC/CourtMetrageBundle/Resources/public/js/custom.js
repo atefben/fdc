@@ -3,6 +3,7 @@ $(document).ready(function () {
     initProPage();
     shortFilmCornerStickyHeader();
     initNewsListWatcher();
+    patchFullScreenChocolatSlideShow();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -142,6 +143,34 @@ function initNewsListWatcher() {
         };
 
         NewsListWatcher.init();
+    }
+}
+
+function patchFullScreenChocolatSlideShow() {
+    /**
+     * we create a workaround for jQuery Chocolat's know issue
+     * when handling full screen gallery with one image
+     */
+    if ($('.single-article.show').length) {
+        $(document).delegate('.chocolat-image', 'click', function () {
+            var chocolatInstance = $(this).closest('.images').data('chocolat');
+            try {
+                if (typeof chocolatInstance == 'object' && chocolatInstance.settings.images.length == 1) {
+
+                    chocolatInstance.change = function () {
+                        chocolatInstance.zoomOut(0);
+                        chocolatInstance.zoomable();
+                        $('.chocolat-content, .chocolat-description, .credit').addClass('hide');
+                        setTimeout(function() {
+                            chocolatInstance.settings.currentImage = 1;
+
+                            return chocolatInstance.load(0);
+                        }, 900);
+                    }
+
+                }
+            } catch (e) {}
+        });
     }
 }
     
