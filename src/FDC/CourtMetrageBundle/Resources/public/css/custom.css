@@ -82,6 +82,7 @@ body.chocolat-open.fixed {
 .single-article .block-01-xs .title-21 {
     display: inline-block;
     margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .single-article .block-01-xs .texte-01 strong {
