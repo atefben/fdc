@@ -20,6 +20,7 @@ var isMac = isMacintosh();
 var isPC = !isMacintosh();
 
 var owInitSlider = function (sliderName) {
+    console.log('owInitSlider');
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
     if (sliderName == 'home') {
@@ -100,7 +101,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-02') {
-
+        console.log('slider02');
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
@@ -113,8 +114,8 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $('.slider-02 .owl-item').on('click', function () {
             var number = $(this).index();
-            alert('init player');
-            
+            console.log('init player');
+
             playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');
