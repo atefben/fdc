@@ -113,6 +113,8 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $(document).on('click', '.slider-02 .owl-item', function () {
             var number = $(this).index();
+            
+            playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');
             $(this).addClass('center');
