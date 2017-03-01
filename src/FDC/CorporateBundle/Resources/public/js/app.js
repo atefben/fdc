@@ -5253,7 +5253,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }, 1000);
 
-    console.log(centerElement);
+    console.log(images[centerElement]);
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 

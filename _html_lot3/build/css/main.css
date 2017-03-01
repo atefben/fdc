@@ -14149,7 +14149,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   top: 57%;
   width: 0;
   margin-top: -105px;
-  z-index: 2;
+  z-index: 3;
   transform: translateZ(0);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
@@ -14810,8 +14810,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .videos #slider-movie-videos .owl-item {
   opacity: 1;
-  position: relative;
-  left: 77px;
 }
 .single-movie .videos #slider-movie-videos .owl-item.center .slide-video:after {
   opacity: 1;
@@ -14836,6 +14834,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 185px;
   position: relative;
   width: 293px;
+  float: left;
+  margin-right: 50px;
 }
 .single-movie .videos #slider-movie-videos .slide-video .info .category {
   font-size: 0.650rem;

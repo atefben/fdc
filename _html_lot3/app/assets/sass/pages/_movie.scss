@@ -129,7 +129,7 @@
     top: 57%;
     width: 0;
     margin-top: -105px;
-    z-index: 2;
+    z-index: 3;
     @include transform(translateZ(0));
     @include transition(all 0.9s $smoothTransition);
 
@@ -899,8 +899,6 @@
 
       .owl-item {
         opacity: 1;
-        position: relative;
-        left: 77px;
 
         &.center .slide-video:after {
           opacity: 1;
@@ -931,6 +929,8 @@
         height: 185px;
         position: relative;
         width: 293px;
+        float: left;
+        margin-right: 50px;
 
         .info {
 
