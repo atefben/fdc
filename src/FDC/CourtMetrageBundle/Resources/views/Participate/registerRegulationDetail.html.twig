@@ -19,7 +19,7 @@
             <div class="block-01-ms">
                 <div class="align-flex">
                     <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i>{{ 'ccm.register_movie.preselection_rules'|trans }}</a>
-                    <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+                    <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain not in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
                 </div>
             </div>
         </div>
