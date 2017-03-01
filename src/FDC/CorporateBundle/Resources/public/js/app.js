@@ -2646,7 +2646,7 @@ var owInitGrid = function (id) {
                 var dateTime = $('.last-element').data('time');
 
                 $.get( url, {date: dateTime}, function( data ) {
-
+                    console.log(data);
                     if(data == null){
                         return false;
                     }else{
