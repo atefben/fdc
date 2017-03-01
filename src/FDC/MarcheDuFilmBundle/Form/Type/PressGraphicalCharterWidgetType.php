@@ -89,16 +89,13 @@ class PressGraphicalCharterWidgetType extends AbstractType
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
-                'constraints' => array(
-                    new NotBlank(),
-                ),
                 'label' => 'form.mdf.label.press.graphical_charter_widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('epsFile', 'sonata_type_model_list', array(
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['epsFile'],
