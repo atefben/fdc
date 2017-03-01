@@ -866,10 +866,11 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
             if ($widget instanceof CcmNewsWidgetDescription) {
                 $translation = $widget->findTranslationByLocale($locale);
                 if ($translation == null && $locale !== 'fr' ) {
+                    /** @var CcmNewsWidgetDescriptionTranslation $translation */
                     $translation = $widget->findTranslationByLocale('fr');
                 }
                 if ($translation !== null) {
-                    $description = $translation->getDescription();
+                    $description = $translation->getContent();
                 }
             }
         }
