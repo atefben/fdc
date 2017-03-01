@@ -115,10 +115,15 @@ class HomepageManager
     {
         return $this->em
             ->getRepository(HomepageSejourTranslation::class)
-            ->findOneBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
+            ->findSejourForHomepage($this->requestStack->getMasterRequest()->get('_locale')
+            );
+    }
+
+    public function getSejouresFromShortFilm()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findSejourForShortFilm($this->requestStack->getMasterRequest()->get('_locale')
             );
     }
 

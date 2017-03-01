@@ -15,11 +15,9 @@
     </div>
 
     {% if aPropos is not null %}
-        {% if apropoIsActive == 1 %}
-            <div class="about">
-                {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
-            </div>
-        {% endif %}
+        <div class="about">
+            {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
+        </div>
     {% endif %}
 
     {% if pushIsActive == 1 %}

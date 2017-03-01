@@ -82,12 +82,81 @@ class CcmShortFilmCorner implements TranslateMainInterface
     protected $widgets;
 
     /**
+     * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="shortFilm", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "ccm.validation.homepage.sejour_min",
+     *      max = "1",
+     *      maxMessage = "ccm.validation.homepage.sejour_max"
+     * )
+     * @Assert\Valid
+     */
+    protected $sejoures;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $sejourIsActive = false;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionSejour;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $actualiteIsActive = false;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionActualites;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $socialIsActive = false;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionSocial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $positionCatalog;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $catalogIsActive = false;
+
+    /**
      * CcmShortFilmCorner constructor.
      */
     public function __construct()
     {
         $this->translations = new ArrayCollection();
         $this->widgets = new ArrayCollection();
+        $this->sejoures =  new ArrayCollection();
     }
 
     /**
@@ -265,5 +334,226 @@ class CcmShortFilmCorner implements TranslateMainInterface
         $this->menuOrder = $menuOrder;
 
         return $this;
+    }
+
+    /**
+     * Get sejoures.
+     *
+     * @return mixed
+     */
+    public function getSejoures()
+    {
+        return $this->sejoures;
+    }
+
+    /**
+     * Set sejoures.
+     *
+     * @param mixed $sejoures
+     */
+    public function setSejoures($sejoures)
+    {
+        $this->sejoures = $sejoures;
+
+        return $this;
+    }
+
+    /**
+     * Get sejourIsActive.
+     *
+     * @return bool
+     */
+    public function getSejourIsActive()
+    {
+        return $this->sejourIsActive;
+    }
+
+    /**
+     * Set sejourIsActive.
+     *
+     * @param bool $sejourIsActive
+     */
+    public function setSejourIsActive($sejourIsActive)
+    {
+        $this->sejourIsActive = $sejourIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Get positionSejour.
+     *
+     * @return int
+     */
+    public function getPositionSejour()
+    {
+        return $this->positionSejour;
+    }
+
+    /**
+     * Set positionSejour.
+     *
+     * @param int $positionSejour
+     */
+    public function setPositionSejour($positionSejour)
+    {
+        $this->positionSejour = $positionSejour;
+
+        return $this;
+    }
+
+    /**
+     * Add sejour.
+     *
+     * @param HomepageSejour $sejour
+     *
+     * @return $this
+     */
+    public function addSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->add($sejour);
+        $sejour->setShortFilm($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove sejour.
+     *
+     * @param HomepageSejour $sejour
+     */
+    public function removeSejour(HomepageSejour $sejour)
+    {
+        $this->sejoures->removeElement($sejour);
+    }
+
+    /**
+     * Get actualiteIsActive.
+     *
+     * @return bool
+     */
+    public function getActualiteIsActive()
+    {
+        return $this->actualiteIsActive;
+    }
+
+    /**
+     * Set actualiteIsActive.
+     *
+     * @param bool $actualiteIsActive
+     */
+    public function setActualiteIsActive($actualiteIsActive)
+    {
+        $this->actualiteIsActive = $actualiteIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Get positionActualites.
+     *
+     * @return int
+     */
+    public function getPositionActualites()
+    {
+        return $this->positionActualites;
+    }
+
+    /**
+     * Set positionActualite.
+     *
+     * @param int $positionActualites
+     */
+    public function setPositionActualites($positionActualites)
+    {
+        $this->positionActualites = $positionActualites;
+
+        return $this;
+    }
+
+    /**
+     * Get socialIsActive.
+     *
+     * @return bool
+     */
+    public function getSocialIsActive()
+    {
+        return $this->socialIsActive;
+    }
+
+    /**
+     * Set socialIsActive.
+     *
+     * @param bool $socialIsActive
+     */
+    public function setSocialIsActive($socialIsActive)
+    {
+        $this->socialIsActive = $socialIsActive;
+
+        return $this;
+    }
+
+    /**
+     * Get PositionSocial.
+     *
+     * @return int
+     */
+    public function getPositionSocial()
+    {
+        return $this->positionSocial;
+    }
+
+    /**
+     * Set positionSocial.
+     *
+     * @param int $positionSocial
+     */
+    public function setPositionSocial($positionSocial)
+    {
+        $this->positionSocial = $positionSocial;
+
+        return $this;
+    }
+
+    /**
+     * Get positionCatalog.
+     *
+     * @return int
+     */
+    public function getPositionCatalog()
+    {
+        return $this->positionCatalog;
+    }
+
+    /**
+     * Set positionCatalog.
+     *
+     * @param int $positionCatalog
+     */
+    public function setPositionCatalog($positionCatalog)
+    {
+        $this->positionCatalog = $positionCatalog;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogIsActive.
+     *
+     * @return bool
+     */
+    public function getCatalogIsActive()
+    {
+        return $this->catalogIsActive;
+    }
+
+    /**
+     * Set catalogIsActive.
+     *
+     * @param bool $catalogIsActive
+     */
+    public function setCatalogIsActive($catalogIsActive)
+    {
+        $this->catalogIsActive = $catalogIsActive;
     }
 }

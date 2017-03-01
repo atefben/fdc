@@ -81,7 +81,69 @@ class CcmShortFilmCornerAdmin extends Admin
                     )
                 )
             ))
-            ->add('image', 'sonata_type_model_list')
+            ->add(
+                'image',
+                'sonata_type_model_list'
+            )
+            ->add(
+                'sejoures',
+                'infinite_form_polycollection',
+                array(
+                    'label'        => false,
+                    'types'        => array(
+                        'ccm_homepage_sejour_type',
+                        ),
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'prototype'    => true,
+                    'by_reference' => false,
+                    )
+            )
+            ->add(
+                'sejourIsActive',
+                'checkbox',
+                array(
+                'label'    => 'form.ccm.label.sejour.sejour_is_activated',
+                'required' => false,
+                    )
+            )
+            ->add('positionSejour',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_sejour',
+                    'required' => false,
+                )
+            )
+            ->add('positionSocial',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.social.position_social',
+                    'required' => false,
+                ))
+            ->add('socialIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.social.social_is_activated',
+                'required' => false,
+            ))
+            ->add('positionActualites',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_actualite',
+                    'required' => false,
+                ))
+            ->add('actualiteIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.actualite.is_active',
+                'required' => false,
+            ))
+            ->add('catalogIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.catalog.push_is_activated',
+                'required' => false,
+            ))
+            ->add('positionCatalog',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_catalog',
+                    'required' => false,
+                ))
             ->add('widgets', 'infinite_form_polycollection', array(
                 'label'        => false,
                 'types'        => array(

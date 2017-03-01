@@ -40,7 +40,6 @@ class DefaultController extends Controller
         $courtIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCourtIsActive();
         $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
         $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
-        $apropoIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getAProposIsActive();
 
         $positions = $homepageManger->orderTransversModules();
 
@@ -58,7 +57,6 @@ class DefaultController extends Controller
                 'courtIsActive' => $courtIsActive,
                 'sejourIsActive' => $sejourIsActive,
                 'socialIsActive' => $socialIsActive,
-                'apropoIsActive' => $apropoIsActive,
 
                 'positions' => $positions,
             ]

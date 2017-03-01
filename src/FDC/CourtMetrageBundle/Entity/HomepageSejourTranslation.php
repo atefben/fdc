@@ -5,11 +5,12 @@ namespace FDC\CourtMetrageBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\ORM\Mapping as ORM;
+use FDC\CourtMetrageBundle\Repository\HomepageSejourTranslationsRepository;
 
 /**
  * HomepageSliderTranslation
  * @ORM\Table(name="ccm_homepage_sejour_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\HomepageSejourTranslationRepository")
  */
 class HomepageSejourTranslation
 {
