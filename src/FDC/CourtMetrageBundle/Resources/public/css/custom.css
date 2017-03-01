@@ -59,6 +59,14 @@ sup {
     max-width: 100%;
 }
 
+.all-articles.grid #gridAudios .item .img {
+    max-height: 65%;
+}
+
+.all-articles.grid #gridAudios .item.w2 .img {
+    max-height: 145%;
+}
+
 .contact .success.show {
     display: block;
 }
