@@ -68,14 +68,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
-     * @Groups({"news_show"})
-     */
-    protected $hideSameDay;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
      *
      */
     protected $displayedHome;
