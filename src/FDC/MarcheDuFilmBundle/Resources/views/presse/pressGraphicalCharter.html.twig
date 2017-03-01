@@ -13,21 +13,39 @@
             <div class="our-news infosPage galeriePhotos graphical-charter">
                 <div class="innerWrapper">
                     {% for pressGraphicalCharterWidget in pressGraphicalCharterWidgets %}
-                        {% set imageInfo = pressGraphicalCharterWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
-                        <div class="articles">
-                            <a href="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" target="_blank" download>
-                                <div class="articles-content">
-                                    <div class="photoWrapper">
-                                        <img src="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 341px; height: 217px;">
+                        {% if pressGraphicalCharterWidget.translatable.epsFile %}
+                            {% set epsInfo = pressGraphicalCharterWidget.translatable.epsFile.findTranslationByLocale(app.request.locale) %}
+                            <div class="articles">
+                                <a href="{% path pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                                    <div class="articles-content">
+                                        <div class="photoWrapper">
+                                            <img src="{{ asset('bundles/fdcmarchedufilm/img/no-image.png') }}" style="width: 341px; height: 217px;">
+                                        </div>
+                                        <div class="textWrapper">
+                                            <h6>{{ pressGraphicalCharterWidget.title|truncate(28, true, "...") }}</h6>
+                                            <span>{{ epsInfo.name }}</span>
+                                            <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }} - {{ pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file')|split('.')|last }}</span>
+                                        </div>
                                     </div>
-                                    <div class="textWrapper">
-                                        <h6>{{ pressGraphicalCharterWidget.title|truncate(28, true, "...") }}</h6>
-                                        <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
-                                        <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }} - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                </a>
+                            </div>
+                        {% else %}
+                            {% set imageInfo = pressGraphicalCharterWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
+                            <div class="articles">
+                                <a href="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                                    <div class="articles-content">
+                                        <div class="photoWrapper">
+                                            <img src="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 341px; height: 217px;">
+                                        </div>
+                                        <div class="textWrapper">
+                                            <h6>{{ pressGraphicalCharterWidget.title|truncate(28, true, "...") }}</h6>
+                                            <span>{{ imageInfo.legend ~ ' © ' ~  imageInfo.copyright }}</span>
+                                            <span class="upSpan">{{ (pressGraphicalCharterWidget.translatable.image|trans_fallback('file').size / (1024 * 1024))|round(2)  }} {{ 'image_size_mo'|trans }} - {{ pressGraphicalCharterWidget.translatable.image|trans_fallback('file')|split('.')|last }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

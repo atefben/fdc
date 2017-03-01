@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Form\Type;
 
+use Base\AdminBundle\Admin\MediaMdfPdfAdmin;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,10 +23,26 @@ class PressGraphicalCharterWidgetType extends AbstractType
      * @access private
      */
     private $admin;
+
     /**
      * @var MediaMdfImageAdmin
      */
     private $mediaImageAdmin;
+
+    /**
+     * @var
+     */
+    private $fileAdmin;
+
+    /**
+     * @var MediaMdfPdfAdmin
+     */
+    private $mediaFileAdmin;
+
+    public function setMediaFileAdmin($mediaFileAdmin)
+    {
+        $this->mediaFileAdmin = $mediaFileAdmin;
+    }
 
     /**
      * setSonataAdmin function.
@@ -82,6 +99,14 @@ class PressGraphicalCharterWidgetType extends AbstractType
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
+            ))
+            ->add('epsFile', 'sonata_type_model_list', array(
+                'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['epsFile'],
+                'model_manager' => $this->mediaFileAdmin->getModelManager(),
+                'class' => $this->mediaFileAdmin->getClass(),
+                'btn_delete' => false,
+                'label' => 'form.label_file_eps',
+                'translation_domain' => 'BaseAdminBundle'
             ));
         ;
     }
