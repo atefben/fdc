@@ -1,4 +1,3 @@
-var videoNews;
 
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
