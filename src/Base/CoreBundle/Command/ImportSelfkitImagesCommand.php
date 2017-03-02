@@ -35,7 +35,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     /**
      * @var int
      */
-    protected $maxResults = 100;
+    protected $maxResults = 10;
 
     protected function configure()
     {
