@@ -7228,6 +7228,18 @@ header #navigation ul.user li a .icon-pencil:before {
     top: -4%;
   }
 }
+@media only screen and (max-width: 1280px) {
+  .retrospective .slider-restropective .calc3 {
+    zoom: 0.9;
+    left: 12%;
+    top: 5%;
+  }
+  .retrospective .slider-restropective .calc4 {
+    zoom: 0.8;
+    left: 17%;
+    top: -4%;
+  }
+}
 /* thomon - end fixes */
 header {
   background-color: #080808;
