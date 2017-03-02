@@ -4970,7 +4970,7 @@ var openSlideShow = function (slider, hash, affiche) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-
+    console.log(centerElement);
     slider.find('.item, .img, .poster').each(function (index, value) {
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
@@ -5059,7 +5059,7 @@ var openSlideShow = function (slider, hash, affiche) {
             images.push(image);
         }
     });
-
+    console.log(centerElement);
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
@@ -5069,14 +5069,14 @@ var openSlideShow = function (slider, hash, affiche) {
             }
         }
     }
-
+    console.log(centerElement);
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
         var hashPush = '#'+hash;
         history.pushState(null, null, hashPush);
     }
 
-
+    console.log(centerElement);
     var goToNextPrev = function (direction) {
         w = $(window).width();
 
@@ -5147,7 +5147,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-        console.log(id);
+
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
