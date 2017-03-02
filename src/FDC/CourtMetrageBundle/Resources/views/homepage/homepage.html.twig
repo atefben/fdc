@@ -14,12 +14,6 @@
         </div>
     </div>
 
-    {% if aPropos is not null %}
-        <div class="about">
-            {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
-        </div>
-    {% endif %}
-
     {% if pushIsActive == 1 %}
         <div class="discover">
             <div id="slider-discover" class="owl-carousel">
@@ -30,7 +24,11 @@
         </div>
     {% endif %}
 
-
+    {% if aPropos is not null %}
+        <div class="about">
+            {% include 'FDCCourtMetrageBundle::homepage/_aPropos.html.twig' with {'homepage' : homepage, 'widget' : aPropos} %}
+        </div>
+    {% endif %}
 
     {% if courtIsActive == 1 %}
         <div class="competition">

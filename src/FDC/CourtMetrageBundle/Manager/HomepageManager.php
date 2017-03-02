@@ -252,7 +252,7 @@ class HomepageManager
                     ->findOneBy(
                         array(
                             'locale' => $this->requestStack->getMasterRequest()->getLocale(),
-                            'translatable' => $item->getId(),
+                            'translatable' => $item->getYoutube(),
                         )
                     );
 
