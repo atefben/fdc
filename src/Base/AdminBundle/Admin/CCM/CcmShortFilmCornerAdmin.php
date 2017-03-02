@@ -4,13 +4,48 @@ namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerTranslation;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CcmShortFilmCornerAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
+
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
+        ;
+        $this->addCreatedBetweenFilters($datagridMapper);
+        $this->addStatusFilter($datagridMapper);
+    }
+    
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');

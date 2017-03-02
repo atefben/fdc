@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Entity\MediaImageSimple;
+use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,9 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CcmShortFilmCorner
  * @ORM\Table(name="ccm_short_film_corner")
  * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmShortFilmCornerRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class CcmShortFilmCorner implements TranslateMainInterface
 {
+    use Time;
     use Translatable;
     use TranslateMain;
 
