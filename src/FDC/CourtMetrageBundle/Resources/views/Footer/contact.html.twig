@@ -12,7 +12,7 @@
                 <p>{{ 'ccm.contact.info'|trans }}</p>
                 <div id="form">
                     {{ form_start(form) }}
-                        <div class="select">
+                        <div class="select {{ form.vars.errors|length > 0 ? 'invalid' : '' }}">
                             <label for="select">{{ 'ccm.contact.message-theme'|trans }}:</label>
                             {{ form_widget(form.select) }}
                             <span id="triggerSelect"></span>
@@ -26,8 +26,7 @@
                         <input type="submit" value="{{ 'ccm.contact.submit'|trans }}">
                         {{ form_widget(form._token) }}
                     {{ form_end(form) }}
-                    <div class="errors {{ form.vars.errors|length > 0 ? 'show' : '' }}">
-                        {{ form_errors(form) }}
+                    <div class="errors">
                         <ul></ul>
                     </div>
                 </div>
