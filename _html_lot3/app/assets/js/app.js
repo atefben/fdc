@@ -214,7 +214,6 @@ $(document).ready(function () {
         owinitSlideShow(slider);
         scrollSingleMovie();
     }
-
     if ($('.slider-03').length) {
         owInitSlider('slider-03');
     }
@@ -248,10 +247,6 @@ $(document).ready(function () {
             } else {
                 initAudio();
             }
-        }
-
-        if ($('.artist-page').length > 0) {
-            owInitSlider('slider-03');
         }
     }
 

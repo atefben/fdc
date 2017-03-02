@@ -4475,7 +4475,6 @@ var owInitSlider = function (sliderName) {
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-03') {
 
-        console.log('init slider 3');
         var slide01 = $('.slider-03').owlCarousel({
             navigation: false,
             items: 1,
@@ -6920,7 +6919,6 @@ $(document).ready(function () {
         owinitSlideShow(slider);
         scrollSingleMovie();
     }
-
     if ($('.slider-03').length) {
         owInitSlider('slider-03');
     }
@@ -6954,10 +6952,6 @@ $(document).ready(function () {
             } else {
                 initAudio();
             }
-        }
-
-        if ($('.artist-page').length > 0) {
-            owInitSlider('slider-03');
         }
     }
 
