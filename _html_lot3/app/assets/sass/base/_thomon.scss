@@ -239,4 +239,12 @@ header #navigation ul.user li a .icon-pencil:before {
     }
 }
 
+@media only screen and (max-device-width : 1440px) {
+    .retrospective .slider-restropective {
+        .calc3, .calc4 {
+            zoom: 0.9;
+        }
+    }
+}
+
 /* thomon - end fixes */
