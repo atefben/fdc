@@ -15181,30 +15181,35 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .competition #slider-competition {
   margin-top: 65px;
+  height: 380px;
+  min-height: 380px;
+  overflow: hidden;
+  width: 200%;
 }
-.single-movie .competition #slider-competition .owl-item {
+.single-movie .competition #slider-competition .slide {
   opacity: 1;
   min-height: 380px;
-  position: relative;
-  left: -380px;
-  position: relative;
+  display: inline-block;
+  float: left;
+  width: auto;
+  margin-right: 50px;
 }
-.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit {
+.single-movie .competition #slider-competition .slide.compat-object-fit {
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
   height: 284px;
   margin-bottom: 60px;
 }
-.single-movie .competition #slider-competition .owl-item .slide.compat-object-fit img {
+.single-movie .competition #slider-competition .slide.compat-object-fit img {
   opacity: 0;
 }
-.single-movie .competition #slider-competition .owl-item img {
+.single-movie .competition #slider-competition img {
   height: 284px;
   width: 210px;
   object-fit: cover;
 }
-.single-movie .competition #slider-competition .owl-item .linkVid {
+.single-movie .competition #slider-competition .linkVid {
   height: 284px;
   display: block;
   z-index: 3;

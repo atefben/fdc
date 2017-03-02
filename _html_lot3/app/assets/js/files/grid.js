@@ -109,7 +109,7 @@ var owInitGrid = function (id) {
 
                         $gridMore.append($data);
                         $gridMore.isotope('destroy');
-                        console.log(data);
+                        
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',

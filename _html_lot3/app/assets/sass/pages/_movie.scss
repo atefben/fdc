@@ -1327,43 +1327,46 @@
 
     #slider-competition {
       margin-top: 65px;
+      height: 380px;
+      min-height: 380px;
+      overflow: hidden;
+      width: 200%;
 
-      .owl-item {
+      .slide {
         opacity: 1;
         min-height: 380px;
-        position: relative;
-        left: -380px;
+        display: inline-block;
+        float: left;
+        width: auto;
+        margin-right: 50px;
 
-        .slide {
-          &.compat-object-fit {
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;
-            height: 284px;
-            margin-bottom: 60px;
+        &.compat-object-fit {
+          background-size: cover;
+          background-position: top center;
+          background-repeat: no-repeat;
+          height: 284px;
+          margin-bottom: 60px;
 
-            img {
-              opacity: 0;
-            }
+          img {
+            opacity: 0;
           }
         }
+      }
 
-        img {
-          height: 284px;
-          width: 210px;
-          object-fit: cover;
-        }
+      img {
+        height: 284px;
+        width: 210px;
+        object-fit: cover;
+      }
 
-        .linkVid {
-          height: 284px;
-          display: block;
-          z-index: 3;
-          width: 210px;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-        position: relative;
+      .linkVid {
+        height: 284px;
+        display: block;
+        z-index: 3;
+        width: 210px;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
 
       .info-movie {
