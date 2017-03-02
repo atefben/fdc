@@ -624,7 +624,6 @@ var initVideo = function(hash) {
             $stateBtn.removeClass('icon-pause').addClass('icon-play');
             mouseMoving(false);
         }).on('buffer', function() {
-            // console.log("");
         }).on('complete', function () {
             this.stop();
             $stateBtn.removeClass('icon-pause').addClass('icon-play');

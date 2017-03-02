@@ -20,7 +20,6 @@ var isMac = isMacintosh();
 var isPC = !isMacintosh();
 
 var owInitSlider = function (sliderName) {
-    console.log('owInitSlider');
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
     if (sliderName == 'home') {
@@ -62,8 +61,6 @@ var owInitSlider = function (sliderName) {
         });
 
         $('.slider-home').on('click', function(e){
-            console.log($(e.target));
-            console.log($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length);
             if($(e.target).hasClass('owl-dots') || $(e.target).closest('.owl-dots').length){
                 return false;
             }else{
@@ -101,7 +98,6 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-02') {
-        console.log('slider02');
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
@@ -114,7 +110,6 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
-            console.log('init player');
 
             playerInstance.playlistItem(number);
 
@@ -499,10 +494,8 @@ var owInitSlider = function (sliderName) {
 
 var rtime;
 var timeoutVar = false;
-console.log(timeoutVar);
 var delta = 300;
 $(window).resize(function() {
-    console.log(timeoutVar);
     $('.slides').removeClass('fadeIn').addClass('animated fadeOut');
 
     rtime = new Date();
@@ -512,7 +505,7 @@ $(window).resize(function() {
     }
 });
 
-function resizeend() {console.log('resizeend');
+function resizeend() {
 
 
     if (new Date() - rtime < delta) {

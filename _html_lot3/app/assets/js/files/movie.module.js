@@ -18,7 +18,6 @@ $(document).ready(function() {
     currentHeight = tetiere.outerHeight();
     
     if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
-      console.log(currentHeight);
       tetiere.css({
         'height': defaultHeight,
         'position':'relative',
@@ -133,9 +132,7 @@ $(document).ready(function() {
       videoMovie = playerInit('video-movie-trailer');
       videoMovie.resize('100%','100%');
       // show and play trailer
-      console.log('init');
       $('.poster .picto').on('click', function(e) {
-        console.log('playvid');
         $('html, body').animate({
           scrollTop: 0
         }, 300, function() {

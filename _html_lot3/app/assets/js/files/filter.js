@@ -118,8 +118,6 @@ var owInitFilter = function (isTabSelection) {
                     $that.find(".pages:not([data-filter='all'])").each(function () {
                         $this = $(this);
 
-                        console.log($this);
-
                         var getVal = $this.data('filter');
                         var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
@@ -157,7 +155,6 @@ var owInitFilter = function (isTabSelection) {
 
                     $('.pages:not(.' + f + ')').css('display', 'none');
                     $('.pages.' + f).css('display', 'block');
-                    console.log(f);
                 });
 
                 // close filters

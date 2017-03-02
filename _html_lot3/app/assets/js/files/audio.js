@@ -133,7 +133,6 @@ var initAudio = function (hash) {
         }).on('pause', function () {
             $stateBtn.find('i').removeClass('icon-pause').addClass('icon-play');
         }).on('buffer', function () {
-            // console.log("");
         }).on('complete', function () {
             this.stop();
             $stateBtn.find('i').removeClass('icon-pause').addClass('icon-play');

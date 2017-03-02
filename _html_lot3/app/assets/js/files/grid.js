@@ -76,7 +76,7 @@ var owInitGrid = function (id) {
                 var dateTime = $('.last-element').data('time');
 
                 $.get( url, {date: dateTime}, function( data ) {
-                    console.log(data);
+
                     if(data == null){
                         return false;
                     }else{
@@ -285,7 +285,6 @@ var owInitGrid = function (id) {
             $('.pages:not(.'+active+')').css('display','none');
             $('.pages.'+active).css('display','block');
 
-            console.log(active);
         }
 
         return $grid;
