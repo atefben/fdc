@@ -161,6 +161,9 @@ class CcmShortFilmCornerAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('menuOrder', 'number',[
+                'label' => 'form.ccm.label.short_film_corner.position_du_menu'
+            ])
         ;
     }
 
@@ -169,6 +172,6 @@ class CcmShortFilmCornerAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(['edit', 'list']);
+        $collection->clearExcept(['edit', 'list', 'create', 'delete', 'batch']);
     }
 }

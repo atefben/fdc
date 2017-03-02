@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerTranslation;
 
 /**
@@ -48,11 +47,12 @@ class CcmShortFilmCornerRepository extends EntityRepository
     }
 
     /**
-     * @param $limit
-     * @param $locale
+     * @param $type
+     * @param string $locale
+     * @param bool $limit
      * @return array
      */
-    public function getWhoAreWePages($locale = 'fr', $limit = false)
+    public function getSFCPagesByType($type, $locale = 'fr', $limit = false)
     {
         $qb = $this
             ->createQueryBuilder('sfc')
@@ -62,7 +62,7 @@ class CcmShortFilmCornerRepository extends EntityRepository
             ->andWhere('t.locale = :locale')
             ->andWhere('t.status = :status')
             ->setParameter('locale', $locale)
-            ->setParameter('type', CcmShortFilmCorner::TYPE_WHO_ARE_WE)
+            ->setParameter('type', $type)
             ->orderBy('sfc.menuOrder', 'ASC')
         ;
         if ($locale != 'fr') {
@@ -75,35 +75,5 @@ class CcmShortFilmCornerRepository extends EntityRepository
         }
 
         return $qb->getQuery()->getResult();
-    }
-
-    /**
-     * @param $slug
-     * @param string $locale
-     * @return mixed
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function findWhoAreWePageBySlugAndLocale($slug, $locale = 'fr')
-    {
-        $qb = $this
-            ->createQueryBuilder('sfc')
-            ->select('sfc')
-            ->andWhere('sfc.type = :type')
-            ->join('sfc.translations', 't')
-            ->andWhere('t.locale = :locale')
-            ->andWhere('t.status = :status')
-            ->andWhere('t.slug = :slug')
-            ->setParameter('locale', $locale)
-            ->setParameter('type', CcmShortFilmCorner::TYPE_WHO_ARE_WE)
-            ->setParameter('slug', $slug)
-            ->setMaxResults(1)
-        ;
-        if ($locale != 'fr') {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_TRANSLATED);
-        } else {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_PUBLISHED);
-        }
-
-        return $qb->getQuery()->getOneOrNullResult();
     }
 }

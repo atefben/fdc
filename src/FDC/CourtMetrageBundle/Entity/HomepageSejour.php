@@ -139,6 +139,24 @@ class HomepageSejour
     }
 
     /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return array
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Get shortFilm.
      *
      * @return mixed

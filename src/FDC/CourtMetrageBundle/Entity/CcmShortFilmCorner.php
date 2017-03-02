@@ -339,7 +339,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * Get sejoures.
      *
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getSejoures()
     {

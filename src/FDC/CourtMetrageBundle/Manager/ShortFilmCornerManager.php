@@ -6,6 +6,7 @@ namespace FDC\CourtMetrageBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerTranslation;
+use FDC\CourtMetrageBundle\Entity\HomepageSejour;
 
 /**
  * Class ShortFilmCornerManager
@@ -54,6 +55,18 @@ class ShortFilmCornerManager
 
         ksort($positions);
 
+        $sejourTranslation = null;
+        if ($shortFilmCornerPage->getSejourIsActive()) {
+            /** @var HomepageSejour $sejour */
+            $sejour = $shortFilmCornerPage->getSejoures()->first();
+            if ($sejour instanceof HomepageSejour) {
+                $sejourTranslation = $sejour->findTranslationByLocale($locale);
+                if ($sejourTranslation == null && $locale != 'fr') { // fallback to default locale
+                    $sejourTranslation = $sejour->findTranslationByLocale('fr');
+                }
+            }
+        }
+        
         $pageData = [
             'slug'        => $translation->getSlug(),
             'type'        => $type,
@@ -62,25 +75,24 @@ class ShortFilmCornerManager
             'description' => $translation->getHeader(),
             'widgets'     => $shortFilmCornerPage->getWidgets(),
             'positions'   => $positions,
+            'sejour'      => $sejourTranslation,
             'sejourIsActive' => $sejourIsActive,
-            'socialIsActive' => $socialIsActive
+            'socialIsActive' => $socialIsActive,
         ];
-        
-        if ($type == CcmShortFilmCorner::TYPE_WHO_ARE_WE) {
-            $pageData['whoAreWePages'] = $this->getTitleAndSlugsForWhoAreWePages($locale);
-        }
+        $pageData['sfcPages'] = $this->getTitleAndSlugsForSFCPages($type, $locale);
 
         return $pageData;
     }
 
     /**
+     * @param $type
      * @param string $locale
      * @return CcmShortFilmCorner|null
      */
-    public function getFirstWhoAreWePageSlug($locale = 'fr')
+    public function getFirstSFCPageSlug($type, $locale = 'fr')
     {
         /** @var CcmShortFilmCorner[]|null $results */
-        $results = $this->em->getRepository(CcmShortFilmCorner::class)->getWhoAreWePages($locale, 1);
+        $results = $this->em->getRepository(CcmShortFilmCorner::class)->getSFCPagesByType($type, $locale, 1);
         if (!empty($results)) {
             /** @var CcmShortFilmCornerTranslation $translation */
             $translation = $results[0]->findTranslationByLocale($locale);
@@ -93,14 +105,15 @@ class ShortFilmCornerManager
     }
 
     /**
-     * @param $locale
+     * @param $type
+     * @param string $locale
      * @return array
      */
-    public function getTitleAndSlugsForWhoAreWePages($locale = 'fr')
+    public function getTitleAndSlugsForSFCPages($type, $locale = 'fr')
     {
         $pages = [];
         /** @var CcmShortFilmCorner[]|null $results */
-        $results = $this->em->getRepository(CcmShortFilmCorner::class)->getWhoAreWePages($locale);
+        $results = $this->em->getRepository(CcmShortFilmCorner::class)->getSFCPagesByType($type, $locale);
 
         foreach ($results as $result) {
             /** @var CcmShortFilmCornerTranslation $translation */
