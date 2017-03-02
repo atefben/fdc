@@ -5147,7 +5147,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-
+        console.log(id);
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
