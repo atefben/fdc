@@ -106,7 +106,7 @@ $(document).ready(function () {
 
     if ($('.displayed-home-news').length) {
         function checkDisplayHomeNewsCheckbox() {
-            if ($("input[id*='sites_1']")) {
+            if ($("input[id*='sites_1']").is(':checked')) {
                 $('.form-group[id$="displayedHomepageLabel"]').show();
             } else {
                 $('.form-group[id$="displayedHomepageLabel"]').hide();
@@ -120,7 +120,7 @@ $(document).ready(function () {
     }
     else if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
         function checkDisplayHomeInfoStatementCheckbox() {
-            if ($("input[id*='sites_3']")) {
+            if ($("input[id*='sites_3']").is(':checked')) {
                 $('.form-group[id$="displayedHomepageLabel"]').show();
             } else {
                 $('.form-group[id$="displayedHomepageLabel"]').hide();
