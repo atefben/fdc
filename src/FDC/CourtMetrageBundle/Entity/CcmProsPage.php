@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CcmProsPage
  * @ORM\Table(name="ccm_pros_page")
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks() 
+ * @ORM\HasLifecycleCallbacks()
  */
 class CcmProsPage implements TranslateMainInterface
 {
@@ -45,7 +45,7 @@ class CcmProsPage implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
      */
     protected $image;
-    
+
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmDomainCollection", mappedBy="prosPage", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -56,8 +56,6 @@ class CcmProsPage implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageSejour", mappedBy="prosPage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
-     *      min = "1",
-     *      minMessage = "ccm.validation.homepage.sejour_min",
      *      max = "1",
      *      maxMessage = "ccm.validation.homepage.sejour_max"
      * )
