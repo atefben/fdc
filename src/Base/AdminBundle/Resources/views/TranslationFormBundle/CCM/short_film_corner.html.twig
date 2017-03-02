@@ -151,7 +151,7 @@
                                         </label>
                                         {% if form.children.fr.vars.value is not null %}
                                             <div>
-                                                {{ form.children.fr.vars.value.header }}
+                                                {{ form.children.fr.vars.value.header|raw }}
                                             </div>
                                         {% endif %}
                                     </div>
