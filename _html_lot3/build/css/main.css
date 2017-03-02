@@ -15185,6 +15185,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   min-height: 380px;
   overflow: hidden;
   padding-left: 424px;
+  width: 200%;
 }
 .single-movie .competition #slider-competition .slide {
   opacity: 1;
