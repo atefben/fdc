@@ -7230,14 +7230,19 @@ header #navigation ul.user li a .icon-pencil:before {
 }
 @media only screen and (max-width: 1280px) {
   .retrospective .slider-restropective .calc3 {
-    zoom: 0.9;
-    left: 12%;
-    top: 5%;
+    zoom: 0.8;
+    left: 10%;
+    top: 3%;
+  }
+  .retrospective .slider-restropective .calc3 .i2 {
+    top: 21%;
+    position: relative;
+    right: 47%;
   }
   .retrospective .slider-restropective .calc4 {
-    zoom: 0.8;
-    left: 17%;
-    top: -4%;
+    zoom: 0.7;
+    left: 25%;
+    top: -1%;
   }
 }
 /* thomon - end fixes */
