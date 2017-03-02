@@ -34,11 +34,25 @@ class CcmShortFilmCornerAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit'   => array(),
-                ),
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
+                'label' => 'Titre'
+            ))
+            ->add('menuOrder',null,array('label' => 'Position'))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+                'label' => 'Date de création'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => CcmShortFilmCornerTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle',
+                'label' => 'Statut'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'Editer'
+
             ))
         ;
     }
