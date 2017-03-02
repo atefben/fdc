@@ -14219,6 +14219,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .prevmovie .info a:hover, .single-movie .nextmovie .info a:hover {
   opacity: 0.7;
 }
+.single-movie .prevmovie .info a span, .single-movie .nextmovie .info a span {
+  color: #c8a461;
+}
 .single-movie .prevmovie .info p, .single-movie .nextmovie .info p {
   color: #999;
   font-size: 0.625rem;
@@ -14232,6 +14235,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .prevmovie {
   left: 2%;
+}
+.single-movie .prevmovie .info {
+  left: auto;
+  right: 275px;
+  text-align: left;
 }
 .single-movie .nextmovie {
   right: 2%;

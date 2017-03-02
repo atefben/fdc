@@ -171,6 +171,7 @@
         @include transition(opacity .6s $smoothTransition);
         pointer-events: none;
 
+
         &:hover {
           opacity: 0.7;
         }
