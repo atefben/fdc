@@ -83,6 +83,13 @@ class LoadCcmContentData implements FixtureInterface
 
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\Homepage::class)->findAll()) == 0) {
             $homepage = new \FDC\CourtMetrageBundle\Entity\Homepage();
+            $homepage
+                ->setCourtYear('')
+                ->setPositionCatalog(0)
+                ->setPositionActualites(0)
+                ->setPositionSocial(0)
+                ->setPositionSejour(0)
+            ;
             $manager->persist($homepage);
         }
 

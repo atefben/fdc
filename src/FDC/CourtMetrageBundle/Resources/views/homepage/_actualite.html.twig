@@ -13,7 +13,7 @@
                                     <br><span class="article-date">{{ actualite.publishedAt|date("d M Y") }}</span>
                                 </span>
                                 <h6>{{ actualiteTranslation.title }}</h6>
-                                <p>{{ actualite.description(app.request.locale) }}</p>
+                                <p>{{ actualite.description(app.request.locale)|striptags|raw }}</p>
                             </div>
                         </div>
                     </a>

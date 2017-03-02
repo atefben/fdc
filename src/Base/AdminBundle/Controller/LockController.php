@@ -161,6 +161,7 @@ class LockController extends Controller
         'ccmrubrique' => 'CcmRubrique',
         'ccmrubriquequestion' => 'CcmRubriqueQuestion',
         'ccmyoutube' => 'CcmYoutube',
+        'ccmregisterprocedure' => 'CcmRegisterProcedure',
     );
 
     /**
