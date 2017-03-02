@@ -308,6 +308,13 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         ;
 
         if ($this->input->getOption('force-reupload') && $media) {
+            foreach ($media->getSelfkitFilms() as $selfkitFilm) {
+                $media->removeSelfkitFilm($selfkitFilm);
+            }
+            foreach ($media->getSelfkitPersons() as $selfkitPerson) {
+                $media->removeSelfkitPerson($selfkitPerson);
+            }
+            $this->getManager()->remove($media);
             $this->getManager()->flush();
             $media = null;
         }
