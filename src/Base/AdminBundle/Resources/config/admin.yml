@@ -2456,19 +2456,19 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWhoAreWeAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Qui sommes nous ?}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Qui sommes nous ?}
 
     base.admin.ccm_sfc_our_events:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerOurEventsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Nos évènements}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Nos évènements}
 
     base.admin.ccm_sfc_relive_edition:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerReliveEditionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Revivez l’édition}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Revivez l’édition}
 
     base.admin.ccm_sfc_widget_audio_dummy:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetAudioDummyAdmin

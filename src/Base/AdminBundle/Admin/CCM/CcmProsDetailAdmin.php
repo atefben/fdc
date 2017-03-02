@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmDomainTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmProsActivityTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmProsDetailTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -10,6 +11,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class CcmProsDetailAdmin extends Admin
 {
@@ -20,6 +22,10 @@ class CcmProsDetailAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
+
+    protected $formOptions = array(
+        'cascade_validation' => true,
+    );
 
     public function configure()
     {
@@ -34,19 +40,111 @@ class CcmProsDetailAdmin extends Admin
         );
     }
 
+    public function filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value)
+    {
+        static $joined = false;
+        if (!$joined) {
+            $queryBuilder
+                ->join("{$alias}.translations", 't2');
+            $joined = true;
+        }
+
+        return $queryBuilder;
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id', null, array('label' => 'filter.ccm.pro.id'))
+            ->add('name', 'doctrine_orm_callback', array(
+                    'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                        if ($value['value'] === null) {
+                            return;
+                        }
+                        $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t.name LIKE :name');
+                        $queryBuilder->setParameter('name', '%' . $value['value'] . '%');
+                        return true;
+                    },
+                    'field_type' => 'text',
+                    'label'      => 'filter.ccm.pro.name',
+                )
+            )
+            ->add('domain', 'doctrine_orm_callback', array(
+                    'callback' => function($queryBuilder, $alias, $field, $value) {
+                        if ($value['value'] === null || $value['value'] === '') {
+                            return;
+                        }
+                        $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere("t.domain = :domain");
+                        $queryBuilder->setParameter('domain', $value['value']);
+
+                        return true;
+                    },
+                    'field_type' => 'choice',
+                    'field_options' => array(
+                        'choices' => $this->getDomains(),
+                        'choice_translation_domain' => 'BaseAdminBundle'
+                    ),
+                    'label'      => 'filter.ccm.pro.domains_activities',
+                )
+            )
+        ;
+
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addStatusFilter($datagridMapper);
+
+        $datagridMapper
+            ->add('status_translated', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+
+                    if ($value['value']) {
+                        $this->filterCallbackJoinTwiceTranslations($queryBuilder, $alias, $field, $value);
+                        $queryBuilder->andWhere('t2.status = :translated');
+                        $queryBuilder->setParameter('translated', CcmProsDetailTranslation::STATUS_TRANSLATED);
+                    }
+                    return true;
+                },
+                'field_type' => 'checkbox',
+                'label'      => 'list.news_common.translated',
+            ))
+        ;
+    }
+
     /**
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
+            ->add('id', null, array(
+                    'label' => 'list.ccm.pro.identifiant'
                 )
+            )
+            ->add('name', null, array(
+                    'label'    => 'list.ccm.pro.name',
+                )
+            )
+            ->add('domain', 'choice', array(
+                'choices'   => $this->getDomains(),
+                'template' => 'BaseAdminBundle:TranslateMain:CCM/list_domains.html.twig',
+                'catalogue' => 'BaseAdminBundle',
+                'label'     => 'list.ccm.pro.domains_activities'
             ))
+            ->add('statusMain', 'choice', array(
+                    'choices'   => CcmProsDetailTranslation::getMainStatuses(),
+                    'catalogue' => 'BaseAdminBundle',
+                    'label'    => 'list.ccm.pro.status',
+                )
+            )
+            ->add('_edit_translations', null, array(
+                    'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                    'label'    => 'list.ccm.pro.edit_translations',
+                )
+            )
         ;
     }
 
@@ -97,10 +195,7 @@ class CcmProsDetailAdmin extends Admin
                     'country'          => array(
                         'label'              => 'form.ccm.label.pros.detail_country',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'url'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url',
