@@ -701,7 +701,6 @@ class StatementRepository extends EntityRepository
         $now = new \DateTime();
         $qb = $this
             ->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
@@ -714,8 +713,6 @@ class StatementRepository extends EntityRepository
             ->setParameter('displayedMobile', true)
             ->andWhere('n.festival = :festival')
             ->setParameter('festival', $festival)
-            ->andWhere('s.slug = :site')
-            ->setParameter('site', 'site-press')
             ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('since', $since)
             ->setParameter('now', $now)

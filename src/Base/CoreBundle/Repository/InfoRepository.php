@@ -701,7 +701,6 @@ class InfoRepository extends EntityRepository
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
