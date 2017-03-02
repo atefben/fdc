@@ -5,6 +5,7 @@ namespace FDC\CourtMetrageBundle\Controller;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use FDC\CourtMetrageBundle\Component\Controller\Controller;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticle;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNewsAudio;
@@ -170,7 +171,7 @@ class MovieController extends Controller
         );
     }
 
-    protected function isNewsPublished(CcmNewsArticle $news = null, $locale)
+    protected function isNewsPublished(CcmNews $news = null, $locale)
     {
         if ($news) {
             $now = new \DateTime();
