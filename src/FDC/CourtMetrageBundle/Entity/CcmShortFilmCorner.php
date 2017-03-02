@@ -84,8 +84,6 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="shortFilm", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
-     *      min = "1",
-     *      minMessage = "ccm.validation.homepage.sejour_min",
      *      max = "1",
      *      maxMessage = "ccm.validation.homepage.sejour_max"
      * )
@@ -259,7 +257,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
 
         return $this;
     }
-    
+
     /**
      * Set image
      *

@@ -121,8 +121,6 @@ class Homepage implements CcmAProposInterface
     /**
      * @ORM\OneToMany(targetEntity="HomepageSejour", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
-     *      min = "1",
-     *      minMessage = "ccm.validation.homepage.sejour_min",
      *      max = "1",
      *      maxMessage = "ccm.validation.homepage.sejour_max"
      * )
