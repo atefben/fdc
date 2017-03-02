@@ -127,6 +127,14 @@ class HomepageManager
             );
     }
 
+    public function getSejouresFromProsPage()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findSejourForProsPage($this->requestStack->getMasterRequest()->get('_locale')
+            );
+    }
+
     public function getPage()
     {
         return $this->em->getRepository(HomepageTranslation::class)
@@ -268,6 +276,20 @@ class HomepageManager
         $positions[$homepage->getTranslatable()->getPositionActualites()] = 'actualite';
         $positions[$homepage->getTranslatable()->getPositionSejour()] = 'sejour';
         $positions[$homepage->getTranslatable()->getPositionSocial()] = 'social';
+
+        ksort($positions);
+
+        return $positions;
+    }
+
+    public function orderTransversModulesForProsPage($prosPage)
+    {
+        $positions = [];
+
+        $positions[$prosPage->getTranslatable()->getPositionCatalog()] = 'catalog';
+        $positions[$prosPage->getTranslatable()->getPositionActualites()] = 'actualite';
+        $positions[$prosPage->getTranslatable()->getPositionSejour()] = 'sejour';
+        $positions[$prosPage->getTranslatable()->getPositionSocial()] = 'social';
 
         ksort($positions);
 

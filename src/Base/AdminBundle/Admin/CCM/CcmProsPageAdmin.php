@@ -18,6 +18,14 @@ class CcmProsPageAdmin extends Admin
         '_sort_by' => 'id'
     );
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     protected $translationDomain = 'BaseAdminBundle';
 
     public function configure()
@@ -102,6 +110,65 @@ class CcmProsPageAdmin extends Admin
                     'sortable' => 'position',
                 )
             )
+            ->add(
+                'sejoures',
+                'infinite_form_polycollection',
+                array(
+                    'label'        => false,
+                    'types'        => array(
+                        'ccm_homepage_sejour_type',
+                    ),
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'prototype'    => true,
+                    'by_reference' => false,
+                )
+            )
+            ->add(
+                'sejourIsActive',
+                'checkbox',
+                array(
+                    'label'    => 'form.ccm.label.sejour.sejour_is_activated',
+                    'required' => false,
+                )
+            )
+            ->add('positionSejour',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_sejour',
+                    'required' => false,
+                )
+            )
+            ->add('positionSocial',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.social.position_social',
+                    'required' => false,
+                ))
+            ->add('socialIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.social.social_is_activated',
+                'required' => false,
+            ))
+            ->add('positionActualites',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_actualite',
+                    'required' => false,
+                ))
+            ->add('actualiteIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.actualite.is_active',
+                'required' => false,
+            ))
+            ->add('catalogIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.catalog.push_is_activated',
+                'required' => false,
+            ))
+            ->add('positionCatalog',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.homepage.position_catalog',
+                    'required' => false,
+                ))
         ;
     }
 

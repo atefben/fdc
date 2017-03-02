@@ -33,4 +33,17 @@ class HomepageSejourTranslationRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function findSejourForProsPage($locale)
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb
+            ->join('t.translatable', 's')
+            ->where('t.locale = :locale')
+            ->andWhere('s.prosPage is not null')
+            ->setParameter(':locale', $locale)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

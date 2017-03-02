@@ -42,13 +42,28 @@ class ShortFilmCornerManager
 
         /** @var CcmShortFilmCornerTranslation $translation */
         $translation = $shortFilmCornerPage->findTranslationByLocale($locale);
+        $positions = [];
+
+        $sejourIsActive = $shortFilmCornerPage->getSejourIsActive();
+        $socialIsActive = $shortFilmCornerPage->getSocialIsActive();
+
+        $positions[$shortFilmCornerPage->getPositionCatalog()] = 'catalog';
+        $positions[$shortFilmCornerPage->getPositionActualites()] = 'actualite';
+        $positions[$shortFilmCornerPage->getPositionSejour()] = 'sejour';
+        $positions[$shortFilmCornerPage->getPositionSocial()] = 'social';
+
+        ksort($positions);
+
         $pageData = [
             'slug'        => $translation->getSlug(),
             'type'        => $type,
             'title'       => $translation->getTitle(),
             'image'       => $shortFilmCornerPage->getImage(),
             'description' => $translation->getHeader(),
-            'widgets'     => $shortFilmCornerPage->getWidgets()
+            'widgets'     => $shortFilmCornerPage->getWidgets(),
+            'positions'   => $positions,
+            'sejourIsActive' => $sejourIsActive,
+            'socialIsActive' => $socialIsActive
         ];
         
         if ($type == CcmShortFilmCorner::TYPE_WHO_ARE_WE) {
