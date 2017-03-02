@@ -3130,10 +3130,10 @@ $(document).ready(function() {
     var h = $('.press[data-section]').height();
     $('.contacts').css('min-height',h);
   }
-
+  alert('olala');
   // anchors menu
-  $('body').on('click', '#nav-movie ul a', function (e) {
-    
+  $('#nav-movie ul a').on('click', , function (e) {
+    alert('olaaaaa');
 
     $('#nav-movie ul a').removeClass('active');
     $(this).addClass('active');
@@ -3148,7 +3148,7 @@ $(document).ready(function() {
     }
 
     console.log(posT);
-    
+
     $('html, body').animate({
       scrollTop: posT
     }, 500);
