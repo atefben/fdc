@@ -83,81 +83,78 @@
     }
 </script>
 
-<!-- build:js js/vendor.min.js -->
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/owl.carousel/src/js/owl.carousel.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/moment/min/moment.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/fullcalendar/dist/lang-all.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/chocolat/src/js/jquery.chocolat.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/Snap.svg/dist/snap.svg-min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/jquery-cookie/jquery.cookie.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/wavesurfer.js/dist/wavesurfer.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/isotope/dist/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/isotope-packery/packery-mode.pkgd.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/infinite-scroll/jquery.infinitescroll.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/canvasloader/js/heartcode-canvasloader-min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/snap.svg.easing.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/FileSaver.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/ics.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/fullscreenjs.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/object-fit-polyfill.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/jwplayer.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/clipboard.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/pikaday.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/jquery.timepicker.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/components/jquery.lazyload.min.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
-<!-- endbuild -->
+{% javascripts
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/jquery/dist/jquery.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/owl.carousel/src/js/owl.carousel.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/moment/min/moment.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/fullcalendar/dist/fullcalendar.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/fullcalendar/dist/lang-all.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/chocolat/src/js/jquery.chocolat.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/Snap.svg/dist/snap.svg-min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/jquery-cookie/jquery.cookie.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/wavesurfer.js/dist/wavesurfer.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/isotope/dist/isotope.pkgd.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/isotope-packery/packery-mode.pkgd.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/imagesloaded-packaged/imagesloaded.pkgd.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/infinite-scroll/jquery.infinitescroll.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/canvasloader/js/heartcode-canvasloader-min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/snap.svg.easing.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/FileSaver.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/ics.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/fullscreenjs.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/object-fit-polyfill.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/jwplayer.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/clipboard.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/pikaday.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/jquery.timepicker.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/jquery-ui.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/components/jquery.lazyload.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/helpers.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/article.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/audio.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/contact.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/faq.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/films.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/filters.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/google-map.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/grids.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/jurys.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/menu.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/movie.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/news.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/newsletter.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/palmares.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/participate.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/playeraudio.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/practicialguide.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/prefooter.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/prehome.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/press.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/resize.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/search.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/seating-chart.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/selection.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/share.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/sliderartist.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/sliderchannels.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/sliderhome.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/slidermovies.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/slidervideos.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/slideshows.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/socialwall.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/transitions.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/video.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/webtv.module.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/popin.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/scroll.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/custom.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/tab.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/festival-cannes/accordions.js'
+    '@FDCCourtMetrageBundle/Resources/public/js/custom.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
-<!-- build:js js/app.min.js -->
-<!-- festival-cannes tags start -->
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/helpers.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/article.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/audio.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/contact.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/faq.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/films.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/filters.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/google-map.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/grids.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/jurys.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/menu.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/movie.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/news.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/newsletter.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/palmares.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/participate.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/playeraudio.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/practicialguide.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/prefooter.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/prehome.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/press.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/resize.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/search.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/seating-chart.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/selection.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/share.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/sliderartist.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/sliderchannels.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/sliderhome.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/slidermovies.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/slidervideos.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/slideshows.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/socialwall.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/transitions.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/video.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/webtv.module.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/popin.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/scroll.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/custom.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/tab.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/festival-cannes/accordions.js') }}"></script>
-<script src="{{ asset('bundles/fdccourtmetrage/js/custom.js') }}"></script>
-<!-- festival-cannes tags end -->
-<!-- endbuild -->
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>
