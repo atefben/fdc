@@ -80,7 +80,7 @@ class HomepageManager
             $films = $this
                 ->em
                 ->getRepository('BaseCoreBundle:FilmFilm')
-                ->findBy(['productionYear' => $year]);
+                ->getFilmsByCourtYearRandom($year);
 
             return $films;
         }
