@@ -95,8 +95,14 @@
         <div class="share" id="share" >
             <p>{{ 'ccm.news.share_article'|trans }}</p>
             <div class="buttons square">
-                <a href="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>
-                <a href="//twitter.com/intent/tweet?text=Enrages%20Polar%20Hybride" class="button twitter"><i class="icon icon_twitter"></i>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                {% spaceless %}
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if prosPage.translatable.image is not null %}{% path prosPage.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ prosPage.title|url_encode(true) }}&description={% if prosPage.description is not null %}{{ prosPage.description|striptags|raw }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                       rel="nofollow" class="button facebook news-fb-share">
+                        <i class="icon icon_facebook"></i>
+                    </a>
+                {% endspaceless %}
+                <a href="//twitter.com/intent/tweet?text={{ prosPage.title ~ ' ' ~ currentUrl }}" class="button twitter"><i class="icon icon_twitter"></i>
                 </a>
                 <a href="#" class="button link self"><i class="icon icon_link"></i></a>
                 <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
