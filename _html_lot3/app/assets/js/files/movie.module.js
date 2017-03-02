@@ -10,11 +10,9 @@ $(document).ready(function() {
     var h = $('.press[data-section]').height();
     $('.contacts').css('min-height',h);
   }
-  alert('olala');
+  
   // anchors menu
   $('#nav-movie ul a').on('click', function (e) {
-
-    alert('olaaaaa');
 
     $('#nav-movie ul a').removeClass('active');
     $(this).addClass('active');
