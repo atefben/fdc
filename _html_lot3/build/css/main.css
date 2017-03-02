@@ -14178,7 +14178,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   top: 57%;
   width: 0;
   margin-top: -105px;
-  z-index: 3;
+  z-index: 6;
   transform: translateZ(0);
   transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
