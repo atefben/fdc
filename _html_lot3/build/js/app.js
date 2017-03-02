@@ -3132,8 +3132,8 @@ $(document).ready(function() {
   }
   alert('olala');
   // anchors menu
-  $('#nav-movie ul a').on('click', , function (e) {
-    
+  $('#nav-movie ul a').on('click', function (e) {
+
     alert('olaaaaa');
 
     $('#nav-movie ul a').removeClass('active');
