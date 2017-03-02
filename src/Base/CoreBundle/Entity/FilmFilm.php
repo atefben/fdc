@@ -526,7 +526,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="selfkitFilms")
      * @ORM\JoinTable(name="film_film_selfkit_images",
      *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}

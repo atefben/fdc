@@ -47,5 +47,11 @@
         <one-to-one field="projectionMedias" target-entity="Base\CoreBundle\Entity\FilmProjectionMedia"
                     mapped-by="file">
         </one-to-one>
+
+        <many-to-many field="selfkitFilms" target-entity="Base\CoreBundle\Entity\FilmFilm" mapped-by="selfkitImages">
+        </many-to-many>
+
+        <many-to-many field="selfkitPersons" target-entity="Base\CoreBundle\Entity\FilmPerson" mapped-by="selfkitImages">
+        </many-to-many>
     </entity>
 </doctrine-mapping>
