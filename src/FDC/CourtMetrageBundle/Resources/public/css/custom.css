@@ -1,3 +1,11 @@
+.portrait-custom {
+    width: 384px !important;
+    height: 485px !important;
+}
+.landscape-custom {
+    width: 625px !important;
+    height: 384px !important;
+}
 .big-quote, .p-register .info {
     padding: 25px 40px;
     border: 1px solid #c8a461;
