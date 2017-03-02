@@ -118,7 +118,7 @@ $(document).ready(function () {
             checkDisplayHomeNewsCheckbox()
         });
     }
-    else if ($('.displayed-home-news').length) {
+    else if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
         function checkDisplayHomeInfoStatementCheckbox() {
             if ($("input[id*='sites_3']")) {
                 $('.form-group[id$="displayedHomepageLabel"]').show();
