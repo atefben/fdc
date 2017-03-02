@@ -54,7 +54,6 @@ $(document).ready(function() {
           speed: 200,
           slidee: $('#slider-competition'),
           horizontal: 1,
-          touchDragging: 1,
           mouseDragging: 1,
           releaseSwing: 1
       } );
