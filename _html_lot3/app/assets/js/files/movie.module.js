@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   // anchors menu
   $('body').on('click', '#nav-movie ul a', function (e) {
-    e.preventDefault();
+    
 
     $('#nav-movie ul a').removeClass('active');
     $(this).addClass('active');
@@ -27,9 +27,13 @@ $(document).ready(function() {
       posT -= 32;
     }
 
+    console.log(posT);
+    
     $('html, body').animate({
       scrollTop: posT
     }, 500);
+
+    e.preventDefault();
   });
 
   /* thomon - tetiere height computing */
