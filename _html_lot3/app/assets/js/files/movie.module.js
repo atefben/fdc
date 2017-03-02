@@ -11,6 +11,27 @@ $(document).ready(function() {
     $('.contacts').css('min-height',h);
   }
 
+  // anchors menu
+  $('body').on('click', '#nav-movie ul a', function (e) {
+    e.preventDefault();
+
+    $('#nav-movie ul a').removeClass('active');
+    $(this).addClass('active');
+
+    var $el = $(this)
+      , id = $el.attr('href').substr(1);
+
+    var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
+
+    if(!$('#nav-movie').hasClass('sticky')) {
+      posT -= 32;
+    }
+
+    $('html, body').animate({
+      scrollTop: posT
+    }, 500);
+  });
+
   /* thomon - tetiere height computing */
   if($('.tetiere-movie').length) {
     var tetiere = $('.tetiere-movie'),
