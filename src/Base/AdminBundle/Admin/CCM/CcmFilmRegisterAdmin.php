@@ -8,6 +8,7 @@ use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTabTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class CcmFilmRegisterAdmin extends Admin
 {
@@ -103,5 +104,13 @@ class CcmFilmRegisterAdmin extends Admin
                 'by_reference' => false,
             ))
         ;
+    }
+
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->clearExcept(['edit', 'list']);
     }
 }

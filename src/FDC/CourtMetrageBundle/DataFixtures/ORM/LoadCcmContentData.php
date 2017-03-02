@@ -93,6 +93,11 @@ class LoadCcmContentData implements FixtureInterface
             $manager->persist($homepage);
         }
 
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmFilmRegister::class)->findAll()) == 0) {
+            $filmRegisterPage = new \FDC\CourtMetrageBundle\Entity\CcmFilmRegister();
+            $manager->persist($filmRegisterPage);
+        }
+
         $manager->flush();
     }
 }

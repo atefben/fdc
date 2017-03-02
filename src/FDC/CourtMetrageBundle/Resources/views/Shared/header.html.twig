@@ -89,7 +89,9 @@
                                 <li>
                                     {% set menuURL = ('http' in mainTab.route or 'https' in mainTab.route ? mainTab.route : url(mainTab.route)) %}
                                     {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
-                                    {% set menuIsActive = (mainTab.route == routeName ? true : false) %}
+                                    {% set menuIsActive = ((mainTab.route == routeName)
+                                    or (mainTab.route == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
+                                    or (mainTab.route == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false) %}
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         {% for subTab in subNavs[key] %}
                                             {% if subTab.translatable.isActive and subTab.route == routeName %}
