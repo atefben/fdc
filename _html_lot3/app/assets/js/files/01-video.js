@@ -908,7 +908,7 @@ var initVideo = function(hash) {
             $('.ov').addClass('show');
 
             $('#main').addClass('overlay');
-
+            console.log(videoNews);
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
                     history.pushState(null, null, '#');
