@@ -144,6 +144,10 @@ var openSlideShow = function (slider, hash, affiche) {
 
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
+
+                if(centerElement < 0){
+                    centerElement = $(this).index();
+                }
                 console.log(centerElement);
             }
 
