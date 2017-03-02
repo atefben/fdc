@@ -851,7 +851,7 @@ var initVideo = function(hash) {
                 name = $(this).find('.contain-txt strong a').data('title');
 
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
-
+            console.log(videoNews);
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
 
