@@ -14691,7 +14691,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   line-height: 40px;
   top: 91px;
   width: 100%;
-  z-index: 3;
+  z-index: 6;
   transform: translateZ(0);
 }
 .single-movie #nav-movie.sticky .block-social-network-all a {
