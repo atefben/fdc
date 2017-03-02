@@ -484,6 +484,9 @@ filter:
             domains_activities: Domaines d'activité
 
 admin:
+    ccm:
+        menu:
+            pros: Les pros du court
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
