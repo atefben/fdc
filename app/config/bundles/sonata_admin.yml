@@ -77,6 +77,9 @@ sonata_admin:
             admin.group.ccm.seo_tetieres:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            admin.group.ccm.short:
+                items: ~
+                label_catalogue: BaseAdminBundle
             admin.group.ccm.pros:
                 items: ~
                 label_catalogue: BaseAdminBundle

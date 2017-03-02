@@ -151,6 +151,7 @@ class LockController extends Controller
         'ccmnewsimage' => 'CcmNewsImage',
         'ccmprosactivity' => 'CcmProsActivity',
         'ccmproscontact' => 'CcmProsContact',
+        'ccmprosdetail' => 'CcmProsDetail',
         'ccmdomain' => 'CcmDomain',
         'ccmcontactsubject' => 'CcmContactSubject',
         'ccmplandessallessector' => 'CcmPlanDesSallesSector',

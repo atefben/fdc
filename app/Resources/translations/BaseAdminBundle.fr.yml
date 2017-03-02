@@ -375,7 +375,13 @@ list:
         label_endsat: Date de fin du festival
     person_duplicates: IDs doublon SOIF
     person_selfkit: IDs doublon Selfkit
-
+    ccm:
+        pro:
+            identifiant: Identifiant
+            name: Entité
+            domains_activities: Domaines d'activité
+            status: Statut
+            edit_translations: Éditer
 filter:
     media_pdf:
         name: Nom
@@ -471,6 +477,11 @@ filter:
         label_title: Nom de la salle
     fdc_page_participate:
         label_section: Nom de la section
+    ccm:
+        pro:
+            id: Identifiant
+            name: Entité
+            domains_activities: Domaines d'activité
 
 admin:
     group:
@@ -484,7 +495,8 @@ admin:
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
         ccm:
-            pros: Short Film Corner
+            pros: Les pros du court
+            short: Short Film Corner
             general: CCM General
             participate: Participer
             news: Actualités
@@ -761,13 +773,13 @@ form:
                 sub_nav_route: Route ou URL
                 sub_nav_is_active: Cet onglet de navigation secondaire est actif?
             pros:
-                detail_image: Pro image
+                detail_image: Image
                 detail_is_sfc: Présent au Short Film Corner
-                detail_name: Nom du pro
-                detail_quote: Pro quote
-                detail_country: Pro pays
-                detail_url: Pro url
-                detail_url_name: Nom du site Web pro
+                detail_name: Entité Pro
+                detail_quote: Citation
+                detail_country: Pays
+                detail_url: Url du site Web
+                detail_url_name: Nom du site Web
                 detail_activities_list: Liste des activités
                 detail_contacts_list: Liste de contacts
                 activity: Activité
@@ -784,11 +796,11 @@ form:
                 detail_description_second_double: Deuxième description
                 detail_config: Informations sur pro
                 activities_collection: Collection d'activités
-                contacts_collection: Collection de contacts
+                contacts_collection: Contacts
                 description_1_column_widget: Un widget de description de colonne
                 description_2_column_widget: Deux colonnes description widget
-                description_1_column: Ajouter une description de colonne
-                description_2_column: Ajouter deux colonnes description
+                description_1_column: Widget une colonne
+                description_2_column: Widget deux colonnes
                 contact_config: Informations de contact
                 activity_config: Informations sur l'activité
                 domain_config: Informations sur le domaine
@@ -796,9 +808,9 @@ form:
                 domain: Domaine
                 page_title: titre de la page
                 page_description: Description de la page
-                page_domains_list: Liste des domaines
+                page_domains_list: Liste des domaines d'activité
                 page_config: Informations sur la page
-                domains_collection: Collection de domaines
+                domains_collection: Filtres
                 page_image: Page image
             actualite:
                 title: Les actualités
