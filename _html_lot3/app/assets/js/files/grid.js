@@ -107,11 +107,11 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data).html();
 
-                        $grid.append($data);
-                        $grid.isotope('destroy');
+                        $gridMore.append($data);
+                        $gridMore.isotope('destroy');
                         console.log(data);
-                        $grid.imagesLoaded(function () {
-                            $grid.isotope({
+                        $gridMore.imagesLoaded(function () {
+                            $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'packery',
                                 packery: {
