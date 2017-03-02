@@ -6918,8 +6918,11 @@ $(document).ready(function () {
     if ($('.single-movie').length) {
         var slider = $('.slideshow-img .images');
         owinitSlideShow(slider);
-        owInitSlider('slider-03');
         scrollSingleMovie();
+    }
+
+    if ($('.slider-03').length) {
+        owInitSlider('slider-03');
     }
 
     if ($('.jury').length) {
