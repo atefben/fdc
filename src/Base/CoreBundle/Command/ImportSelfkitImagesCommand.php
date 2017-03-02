@@ -341,6 +341,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $provider = $this->getContainer()->get($media->getProviderName());
         $format = $provider->getFormatName($media, 'reference');
         $url = $provider->generatePublicUrl($media, $format);
+        $this->output->writeln("<info>$url</info>");
 
         if ((@is_array(getimagesize($url)))) {
             $this->applyAssociation($media, $old);
