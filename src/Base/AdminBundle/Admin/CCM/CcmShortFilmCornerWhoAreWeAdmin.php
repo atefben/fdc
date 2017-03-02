@@ -64,6 +64,6 @@ class CcmShortFilmCornerWhoAreWeAdmin extends CcmShortFilmCornerAdmin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(['edit', 'list', 'create', 'delete']);
+        $collection->clearExcept(['edit', 'list', 'create', 'delete', 'batch']);
     }
 }
