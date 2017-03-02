@@ -5,7 +5,6 @@ namespace FDC\CourtMetrageBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use FDC\CourtMetrageBundle\Entity\CcmPlanDesSalles;
-use FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner;
 
 class LoadCcmContentData implements FixtureInterface
 {
@@ -29,20 +28,6 @@ class LoadCcmContentData implements FixtureInterface
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmContactPage::class)->findAll()) == 0) {
             $contactPage = new \FDC\CourtMetrageBundle\Entity\CcmContactPage();
             $manager->persist($contactPage);
-        }
-
-        if (count($manager->getRepository(CcmShortFilmCorner::class)
-                ->findBy(['type' => CcmShortFilmCorner::TYPE_RELIVE_EDITION])) == 0) {
-            $reliveEdition = new CcmShortFilmCorner();
-            $reliveEdition->setType(CcmShortFilmCorner::TYPE_RELIVE_EDITION);
-            $manager->persist($reliveEdition);
-        }
-
-        if (count($manager->getRepository(CcmShortFilmCorner::class)
-                ->findBy(['type' => CcmShortFilmCorner::TYPE_OUR_EVENTS])) == 0) {
-            $ourEvents = new CcmShortFilmCorner();
-            $ourEvents->setType(CcmShortFilmCorner::TYPE_OUR_EVENTS);
-            $manager->persist($ourEvents);
         }
 
         if (count($manager->getRepository(CcmPlanDesSalles::class)->findAll()) == 0) {

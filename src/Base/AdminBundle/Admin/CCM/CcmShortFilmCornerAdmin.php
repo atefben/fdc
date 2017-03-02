@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerTranslation;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -11,6 +12,39 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CcmShortFilmCornerAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id'
+    );
+
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback' => function($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+
+                    return true;
+                },
+                'field_type' => 'text'
+            ))
+        ;
+        $this->addCreatedBetweenFilters($datagridMapper);
+        $this->addStatusFilter($datagridMapper);
+    }
+    
     public function configure()
     {
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
@@ -34,11 +68,25 @@ class CcmShortFilmCornerAdmin extends Admin
     {
         $listMapper
             ->add('id')
-            ->add('title')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit'   => array(),
-                ),
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
+                'label' => 'Titre'
+            ))
+            ->add('menuOrder',null,array('label' => 'Position'))
+            ->add('createdAt', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                'sortable' => 'createdAt',
+                'label' => 'Date de création'
+            ))
+            ->add('statusMain', 'choice', array(
+                'choices'   => CcmShortFilmCornerTranslation::getStatuses(),
+                'catalogue' => 'BaseAdminBundle',
+                'label' => 'Statut'
+            ))
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'Editer'
+
             ))
         ;
     }
@@ -65,8 +113,10 @@ class CcmShortFilmCornerAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'header'          => array(
+                        'field_type'         => 'ckeditor',
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
+                        'config_name' => 'press',
                         'required' => false
                     ),
                     'status'         => array(
@@ -161,6 +211,9 @@ class CcmShortFilmCornerAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
+            ->add('menuOrder', 'number',[
+                'label' => 'form.ccm.label.short_film_corner.position_du_menu'
+            ])
         ;
     }
 
@@ -169,6 +222,6 @@ class CcmShortFilmCornerAdmin extends Admin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(['edit', 'list']);
+        $collection->clearExcept(['edit', 'list', 'create', 'delete', 'batch']);
     }
 }

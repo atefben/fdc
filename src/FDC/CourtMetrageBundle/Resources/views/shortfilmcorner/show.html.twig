@@ -6,10 +6,13 @@
                 <h1 class="title-3">
                     {% if type == 'who_are_we' %}
                         {{ 'ccm.short_film_corner.who_are_we'|trans }}
+                        {% set sfc_route_name = 'ccm_sfc_who_are_we' %}
                     {% elseif type == 'our_events' %}
                         {{ 'ccm.short_film_corner.our_events'|trans }}
+                        {% set sfc_route_name = 'ccm_sfc_our_events' %}
                     {% elseif type == 'relive_edition' %}
                         {{ 'ccm.short_film_corner.relive_edition'|trans }}
+                        {% set sfc_route_name = 'ccm_sfc_relive_edition' %}
                     {% endif %}
                 </h1>
             </div>
@@ -17,12 +20,12 @@
     </div>
     <div class="ajax-section short-film-corner">
         <div class="contain-ajax bright" id="main">
-            {% if whoAreWePages is defined %}
+            {% if sfcPages is defined and sfc_route_name is defined %}
                 <nav class="navigation-sticky">
                     <ul>
-                        {% for page in whoAreWePages %}
+                        {% for page in sfcPages %}
                             <li {{ slug == page.slug ? 'class="active"' : '' }}>
-                                <a href="{{ path('ccm_sfc_who_are_we',{'slug': page.slug}) }}">{{ page.title }}</a>
+                                <a href="{{ path(sfc_route_name,{'slug': page.slug}) }}">{{ page.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>

@@ -22,9 +22,6 @@ class ShortFilmCornerController extends Controller
      */
     public function whoAreWeAction($slug, Request $request)
     {
-        $homepageManger = $this->get('ccm.manager.homepage');
-        $sejour = $homepageManger->getSejouresFromShortFilm();
-
         $pageData = null;
         $locale = $request->get('_locale', 'fr');
         /** @var ShortFilmCornerManager $manager */
@@ -37,76 +34,77 @@ class ShortFilmCornerController extends Controller
              * if no slug is provided we find the first chronological page
              * and redirect to it
              */
-            if (($slug = $manager->getFirstWhoAreWePageSlug($locale)) !== null) {
+            if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_WHO_ARE_WE, $locale)) !== null) {
 
                 return $this->redirectToRoute('ccm_sfc_who_are_we', ['slug' => $slug]);
             }
         }
 
         if ($pageData == null) throw $this->createNotFoundException();
-
-        $pageData = array_merge(
-            $pageData,
-            [
-                'sejour' => $sejour,
-            ]
-        );
         
         return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
-    
+
     /**
-     * @Route("nosevenements", name="ccm_sfc_our_events")
+     * @Route("nosevenements/{slug}", name="ccm_sfc_our_events", defaults={"slug"=null})
+     * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ourEventsAction(Request $request)
+    public function ourEventsAction($slug, Request $request)
     {
-        $homepageManger = $this->get('ccm.manager.homepage');
-        $sejour = $homepageManger->getSejouresFromShortFilm();
-
+        $pageData = null;
         $locale = $request->get('_locale', 'fr');
 
-        $pageData = $this->get('ccm.manager.sfc')->getPageData(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale);
+        /** @var ShortFilmCornerManager $manager */
+        $manager = $this->get('ccm.manager.sfc');
 
-        if ($pageData == null) {
-            throw $this->createNotFoundException();
+        if ($slug != null) {
+            $pageData = $manager->getPageData(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale, $slug);
+        } else {
+            /**
+             * if no slug is provided we find the first chronological page
+             * and redirect to it
+             */
+            if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale)) !== null) {
+
+                return $this->redirectToRoute('ccm_sfc_our_events', ['slug' => $slug]);
+            }
         }
 
-        $pageData = array_merge(
-            $pageData,
-            [
-                'sejour' => $sejour,
-            ]
-        );
+        if ($pageData == null) throw $this->createNotFoundException();
 
         return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
-    
+
     /**
-     * @Route("revivezledition", name="ccm_sfc_relive_edition")
+     * @Route("revivezledition/{slug}", name="ccm_sfc_relive_edition", defaults={"slug"=null})
+     * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction($slug, Request $request)
     {
-        $homepageManger = $this->get('ccm.manager.homepage');
-        $sejour = $homepageManger->getSejouresFromShortFilm();
-
+        $pageData = null;
         $locale = $request->get('_locale', 'fr');
-        
-        $pageData = $this->get('ccm.manager.sfc')->getPageData(CcmShortFilmCorner::TYPE_RELIVE_EDITION, $locale);
-        
-        if ($pageData == null) {
-            throw $this->createNotFoundException();
+
+        /** @var ShortFilmCornerManager $manager */
+        $manager = $this->get('ccm.manager.sfc');
+
+        if ($slug != null) {
+            $pageData = $manager->getPageData(CcmShortFilmCorner::TYPE_RELIVE_EDITION, $locale, $slug);
+        } else {
+            /**
+             * if no slug is provided we find the first chronological page
+             * and redirect to it
+             */
+            if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_RELIVE_EDITION, $locale)) !== null) {
+
+                return $this->redirectToRoute('ccm_sfc_relive_edition', ['slug' => $slug]);
+            }
         }
 
-        $pageData = array_merge(
-            $pageData,
-            [
-                'sejour' => $sejour,
-            ]
-        );
+        if ($pageData == null) throw $this->createNotFoundException();
 
         return $this->render('@FDCCourtMetrage/shortfilmcorner/show.html.twig', $pageData);
     }
