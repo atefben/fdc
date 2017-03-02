@@ -731,7 +731,7 @@ var initVideo = function(hash) {
 
 
     var initPopinVideo = function(hash) {
-
+        var videoNews;
         if(hash != undefined) {
 
             $this = $('.item.video[data-vid="'+hash+'"');
