@@ -281,4 +281,18 @@ class HomepageManager
 
         return $positions;
     }
+
+    public function orderTransversModulesForProsPage($prosPage)
+    {
+        $positions = [];
+
+        $positions[$prosPage->getTranslatable()->getPositionCatalog()] = 'catalog';
+        $positions[$prosPage->getTranslatable()->getPositionActualites()] = 'actualite';
+        $positions[$prosPage->getTranslatable()->getPositionSejour()] = 'sejour';
+        $positions[$prosPage->getTranslatable()->getPositionSocial()] = 'social';
+
+        ksort($positions);
+
+        return $positions;
+    }
 }

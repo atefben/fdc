@@ -18,13 +18,13 @@ class ProsController extends Controller
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $sejour = $homepageManger->getSejouresFromProsPage();
-        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
-        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
-        $positions = $homepageManger->orderTransversModules();
 
         $prosManager = $this->get('ccm.manager.pros');
         
         $prosPage = $prosManager->getProsPageByLocale();
+        $positions = $homepageManger->orderTransversModulesForProsPage($prosPage);
+        $sejourIsActive = $prosPage->getTranslatable()->getSejourIsActive();
+        $socialIsActive = $prosPage->getTranslatable()->getSocialIsActive();
         $prosList = $prosManager->getProsByLocale();
         $prosDomains = $prosManager->getDomains($prosList);
         $hasSFC = $prosManager->hasSFC($prosList);

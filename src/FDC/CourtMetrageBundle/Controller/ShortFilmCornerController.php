@@ -24,9 +24,6 @@ class ShortFilmCornerController extends Controller
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $sejour = $homepageManger->getSejouresFromShortFilm();
-        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
-        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
-        $positions = $homepageManger->orderTransversModules();
 
         $pageData = null;
         $locale = $request->get('_locale', 'fr');
@@ -52,9 +49,6 @@ class ShortFilmCornerController extends Controller
             $pageData,
             [
                 'sejour' => $sejour,
-                'sejourIsActive' => $sejourIsActive,
-                'socialIsActive' => $socialIsActive,
-                'positions' => $positions,
             ]
         );
         
@@ -70,14 +64,11 @@ class ShortFilmCornerController extends Controller
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $sejour = $homepageManger->getSejouresFromShortFilm();
-        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
-        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
-        $positions = $homepageManger->orderTransversModules();
 
         $locale = $request->get('_locale', 'fr');
-        
+
         $pageData = $this->get('ccm.manager.sfc')->getPageData(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale);
-        
+
         if ($pageData == null) {
             throw $this->createNotFoundException();
         }
@@ -86,9 +77,6 @@ class ShortFilmCornerController extends Controller
             $pageData,
             [
                 'sejour' => $sejour,
-                'sejourIsActive' => $sejourIsActive,
-                'socialIsActive' => $socialIsActive,
-                'positions' => $positions,
             ]
         );
 
@@ -103,10 +91,7 @@ class ShortFilmCornerController extends Controller
     public function indexAction(Request $request)
     {
         $homepageManger = $this->get('ccm.manager.homepage');
-        $sejour = $homepageManger->getSejour();
-        $sejourIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSejourIsActive();
-        $socialIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getSocialIsActive();
-        $positions = $homepageManger->orderTransversModules();
+        $sejour = $homepageManger->getSejouresFromShortFilm();
 
         $locale = $request->get('_locale', 'fr');
         
@@ -120,9 +105,6 @@ class ShortFilmCornerController extends Controller
             $pageData,
             [
                 'sejour' => $sejour,
-                'sejourIsActive' => $sejourIsActive,
-                'socialIsActive' => $socialIsActive,
-                'positions' => $positions,
             ]
         );
 
