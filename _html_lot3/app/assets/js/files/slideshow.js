@@ -69,14 +69,12 @@ var owinitSlideShow = function (slider, hash) {
 
 
 var openSlideShow = function (slider, hash, affiche) {
-    console.log(hash);
     $('html').addClass('slideshow-open');
 
     var images = [];
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-    console.log(centerElement);
     slider.find('.item, .img, .poster').each(function (index, value) {
 
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
@@ -146,6 +144,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
+                console.log(centerElement);
             }
 
             var image = {
@@ -165,7 +164,6 @@ var openSlideShow = function (slider, hash, affiche) {
             images.push(image);
         }
     });
-    console.log(centerElement);
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
@@ -175,14 +173,12 @@ var openSlideShow = function (slider, hash, affiche) {
             }
         }
     }
-    console.log(centerElement);
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
         var hashPush = '#'+hash;
         history.pushState(null, null, hashPush);
     }
 
-    console.log(centerElement);
     var goToNextPrev = function (direction) {
         w = $(window).width();
 
@@ -343,9 +339,6 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }, 1000);
 
-    console.log(images); 
-    console.log(centerElement);
-    console.log(images[centerElement]);
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
 
