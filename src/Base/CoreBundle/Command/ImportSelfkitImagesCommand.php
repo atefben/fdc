@@ -335,7 +335,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         $media->setName($old->getTitre());
         $this->getMediaManager()->save($media, false);
-        unlink($filename); // remove original file
 
         $provider = $this->getContainer()->get($media->getProviderName());
         $format = $provider->getFormatName($media, 'reference');
@@ -346,10 +345,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             $this->applyAssociation($media, $old);
             $this->generatePresets($media);
             $this->getManager()->flush();
+            unlink($filename); // remove original file
             return $media;
         } else {
             $this->getManager()->remove($media);
             $this->getManager()->flush();
+            unlink($filename); // remove original file
         }
     }
 
