@@ -50,7 +50,6 @@ $(document).ready(function() {
       console.log('initSliders');
       // slider competitions
       var sliderCompetition = new Sly( $(".competition"), {
-          scrollBy: 200,
           speed: 200,
           slidee: $('#slider-competition'),
           horizontal: 1,
