@@ -334,7 +334,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         }
 
         $media->setName($old->getTitre());
-        $media->setProviderReference($old->getTitre());
         $this->getMediaManager()->save($media, false);
 
 
