@@ -18,6 +18,14 @@ class CcmProsPageAdmin extends Admin
         '_sort_by' => 'id'
     );
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     protected $translationDomain = 'BaseAdminBundle';
 
     public function configure()
