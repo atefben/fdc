@@ -46,7 +46,7 @@
                         {% endfor %}
                     </div>
                     <div class="share">
-                        <p>Partagez l'article</p>
+                        <p>{{ 'ccm.news.share_article'|trans }}</p>
                         <div class="buttons square">
                             {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                             {% spaceless %}

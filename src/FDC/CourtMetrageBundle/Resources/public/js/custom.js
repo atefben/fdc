@@ -4,6 +4,7 @@ $(document).ready(function () {
     shortFilmCornerStickyHeader();
     initNewsListWatcher();
     patchFullScreenChocolatSlideShow();
+    adaptContactFormEmailValidator();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -170,6 +171,43 @@ function patchFullScreenChocolatSlideShow() {
 
                 }
             } catch (e) {}
+        });
+    }
+}
+
+/**
+ * we replace the email checking for contact form
+ * because the original jQuery selector fails when
+ * the input has a Symfony Form Type name:
+ *
+ * $('.errors .' + input.attr('name')).remove();
+ *
+ * this fails when the name is "ccm_contact_form_type[email]"
+ *
+ */
+function adaptContactFormEmailValidator()
+{
+    if ($('#main.contact').length) {
+        $('.contact input[type="email"]').off('input').on('input', function() {
+            var input=$(this);
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            var is_email=re.test(input.val());
+            var symfonySafeName = input.attr('name').replace(input.closest('form').attr('name'), '').replace('[','').replace(']','');
+            if(is_email){
+                input.removeClass("invalid").addClass("valid");
+                $('.errors .' + symfonySafeName).remove();
+            }
+            else{
+                input.removeClass("valid").addClass("invalid");
+                $('.errors .' + symfonySafeName).remove();
+                $('.errors ul').append('<li class="' + symfonySafeName + '">' + input.data('error') + '</li>');
+            }
+
+            if($('.invalid').length) {
+                $('.errors').addClass('show');
+            } else {
+                $('.errors').removeClass('show');
+            }
         });
     }
 }
