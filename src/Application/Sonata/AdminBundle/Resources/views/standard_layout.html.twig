@@ -261,12 +261,13 @@ file that was distributed with this source code.
                                                 'admin_fdc_courtmetrage_ccmprosdetail_create'] ? true : active %}
                                             {% set active = group.label == 'dashboard.group.general' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmmenu_edit',
-                                                'admin_fdc_courtmetrage_homepage_edit',
-                                                'admin_fdc_courtmetrage_ccmfaqpage_edit',
-                                                'admin_fdc_courtmetrage_ccmcontactpage_edit'] ? true : active %}
+                                                'admin_fdc_courtmetrage_homepage_edit'] ? true : active %}
                                             {% set active = group.label == 'admin.group.ccm.participer' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmfilmregister_edit',
                                                 'admin_fdc_courtmetrage_ccmlabel_edit'] ? true : active %}
+                                            {% set active = group.label == 'admin.group.ccm.footer' and app.request.attributes.get('_route') in
+                                                ['admin_fdc_courtmetrage_ccmfaqpage_edit',
+                                                'admin_fdc_courtmetrage_ccmcontactpage_edit'] ? true : active %}
                                             <li class="treeview{% if active %} active{% endif %}">
                                                 <a href="#">
                                                     {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
@@ -305,6 +306,8 @@ file that was distributed with this source code.
                                                                 </a>
                                                             </li>
                                                         {% endif %}
+                                                    {% endif %}
+                                                    {% if group.label == 'admin.group.ccm.footer' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_FAQ_PAGE_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfaqpage_edit' ? 'active' }}">
                                                                 <a data-edit="true" class="fdc-check-lock-list"
@@ -324,7 +327,6 @@ file that was distributed with this source code.
                                                             </li>
                                                         {% endif %}
                                                     {% endif %}
-
                                                     {% if group.label == 'admin.group.ccm.participer' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_FILM_REGISTER_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfilmregister_edit' ? 'active' }}">
