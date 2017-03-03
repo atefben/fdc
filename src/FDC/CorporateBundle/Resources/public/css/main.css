@@ -10114,9 +10114,11 @@ body#home .isotope-01 .item .contain-img {
 .s-slider-retrospective .slides {
   position: relative;
   width: 100000px;
+  transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
+}
+.s-slider-retrospective .slides .restrospective-init.dark {
   height: 290px;
   overflow: hidden;
-  transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
 }
 .s-slider-retrospective .timelapse {
   height: 20px;
