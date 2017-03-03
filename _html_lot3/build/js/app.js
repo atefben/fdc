@@ -2847,7 +2847,7 @@ var owInitGrid = function (id) {
                     $(this).attr('rel',lineClassIndex);
                     previousItem = $(this);
                 });
-
+                console.log(lineContentHeights);
                 //apply heights
                 $.each($('.item.block-poster'), function (i,e) {
                     var height = lineContentHeights[$(this).attr('rel')];
