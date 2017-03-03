@@ -106,7 +106,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
      *
      * @ORM\Column(type="integer")
      */
-    protected $positionSejour;
+    protected $positionSejour = 0;
 
     /**
      * @var boolean
@@ -120,7 +120,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
      *
      * @ORM\Column(type="integer")
      */
-    protected $positionActualites;
+    protected $positionActualites = 0;
 
     /**
      * @var boolean
@@ -134,14 +134,14 @@ class CcmShortFilmCorner implements TranslateMainInterface
      *
      * @ORM\Column(type="integer")
      */
-    protected $positionSocial;
+    protected $positionSocial = 0;
 
     /**
      * @var integer
      *
      * @ORM\Column(type="integer")
      */
-    protected $positionCatalog;
+    protected $positionCatalog = 0;
 
     /**
      * @var boolean
