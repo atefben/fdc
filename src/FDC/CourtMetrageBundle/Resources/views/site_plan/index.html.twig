@@ -5,106 +5,63 @@
         <h2 class="title">{{ 'site_plan.title'|trans }}</h2>
         <section class="sitemap-container">
 
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    <a href="{{ path('fdc_court_metrage_competition_selection') }}">
-                        {{ 'site_plan.competition'|trans }}
-                    </a>
-                </h3>
-                <ul>
-                  <li>
-                      <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_selection') }}">
-                          {{ 'site_plan.competition_selection'|trans }}
-                      </a>
-                  </li>
-                  <li>
-                      <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_jury') }}">
-                          {{ 'site_plan.competition_jury'|trans }}
-                      </a>
-                  </li>
-                  <li>
-                      <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_palmares') }}">
-                          {{ 'site_plan.competition_palmares'|trans }}
-                      </a>
-                  </li>
-                </ul>
-            </article>
+            {% for key, mainNav in mainNavs %}
+                <article class="sitemap-item">
+                    {% if mainNav.translatable.isActive %}
+                        <h3 class="title sitemap-item-title">
+                            <a href="{{ path(mainNav.route) }}">
+                                {{ mainNav.name }}
+                            </a>
+                        </h3>
 
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    {{ 'site_plan.film_corner'|trans }}
-                </h3>
-                <ul>
-                    <li>
-                        <a class="sub-cat" href="{{ path('ccm_sfc_who_are_we') }}">
-                            {{ 'site_plan.who_are_we'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sub-cat" href="{{ path('ccm_sfc_our_events') }}">
-                            {{ 'site_plan.our_events'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sub-cat" href="{{ path('ccm_sfc_relive_edition') }}">
-                            {{ 'site_plan.program_2017'|trans }}
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sub-cat" href="{{ path('ccm_sfc_relive_edition') }}">
-                            {{ 'site_plan.program_2016'|trans }}
-                        </a>
-                    </li>
-                </ul>
-            </article>
-
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    {{ 'site_plan.catalog'|trans }}
-                </h3>
-                {#TO DO: add sub-cat#}
-            </article>
-
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    <a href="{{ path('fdc_ccm_pros_du_court') }}">
-                        {{ 'site_plan.court_pros'|trans }}
-                    </a>
-                </h3>
-                {#TO DO: add sub-cat#}
-            </article>
-
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    <a href="{{ path('ccm_news') }}">
-                        {{ 'site_plan.news'|trans }}
-                    </a>
-                </h3>
-                {#TO DO: add sub-cat#}
-            </article>
-
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    {{ 'site_plan.participate'|trans }}
-                </h3>
-                <ul>
-                   <li>
-                       <a class="sub-cat" href="{{ path('fdc_court_metrage_register_movie') }}">
-                           {{ 'site_plan.register_movie'|trans }}
-                       </a>
-                   </li>
-                    {#TO DO: add sub-cat#}
-                </ul>
-            </article>
-
-            <article class="sitemap-item">
-                <h3 class="title sitemap-item-title">
-                    <a href="{{ path('fdc_courtmetrage_faq') }}">
-                        {{ 'site_plan.faq'|trans }}
-                    </a>
-                </h3>
-            </article>
-
+                        {% if mainNav.route == 'fdc_court_metrage_competition_selection' or mainNav.route == 'fdc_court_metrage_competition_jury' or mainNav.route == 'fdc_court_metrage_competition_palmares' %}
+                            <ul>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_selection') }}">
+                                        {{ 'site_plan.competition_selection'|trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_jury') }}">
+                                        {{ 'site_plan.competition_jury'|trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_palmares') }}">
+                                        {{ 'site_plan.competition_palmares'|trans }}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        {% if subNavs[key] is defined %}
+                            <ul>
+                            {% for subNav in subNavs[key] %}
+                                {% if subNav.translatable.isActive %}
+                                    <li>
+                                        <a class="sub-cat" href="{{ path(subNav.route) }}">
+                                            {{ subNav.name }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if mainNav.route == 'fdc_court_metrage_register_movie' %}
+                                    {% if loop.last %}
+                                        {% if participatePages is defined and participatePages is not null %}
+                                            {% for page in participatePages %}
+                                                <li>
+                                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}">
+                                                        {{ page.name }}
+                                                    </a>
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                </article>
+            {% endfor %}
         </section>
     </div>
 {% endblock %}

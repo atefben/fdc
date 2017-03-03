@@ -99,6 +99,19 @@ class FooterContentController extends Controller
      */
     public function sitePlanAction()
     {
-        return $this->render('@FDCCourtMetrage/site_plan/index.html.twig');
+        $menuManager = $this->get('ccm.manager.menu');
+
+        $menuPage = $menuManager->getMenuPage();
+        $mainNavs = $menuManager->getMainNavs($menuPage);
+        $subNavs = $menuManager->getSubNavs($mainNavs);
+        $participatePages = $menuManager->getParticipatePages();
+
+        return $this->render('FDCCourtMetrageBundle::site_plan/index.html.twig', array(
+                 'menuPage' => $menuPage,
+                 'mainNavs' => $mainNavs,
+                 'subNavs' => $subNavs,
+                 'participatePages' => $participatePages,
+             )
+        );
     }
 }
