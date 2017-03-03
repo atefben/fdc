@@ -4,7 +4,7 @@ $(document).ready(function () {
     shortFilmCornerStickyHeader();
     initNewsListWatcher();
     patchFullScreenChocolatSlideShow();
-    adaptContactFormEmailValidator();
+    adaptContactFormFieldValidator();
     removeShareFromYoutubeWidget();
 });
 
@@ -177,7 +177,7 @@ function patchFullScreenChocolatSlideShow() {
 }
 
 /**
- * we replace the email checking for contact form
+ * we replace the field checking for contact form
  * because the original jQuery selector fails when
  * the input has a Symfony Form Type name:
  *
@@ -186,7 +186,7 @@ function patchFullScreenChocolatSlideShow() {
  * this fails when the name is "ccm_contact_form_type[email]"
  *
  */
-function adaptContactFormEmailValidator()
+function adaptContactFormFieldValidator()
 {
     if ($('#main.contact').length) {
         $('.contact input[type="email"]').off('input').on('input', function() {
@@ -204,6 +204,25 @@ function adaptContactFormEmailValidator()
             }
 
             if ($('.invalid').length) {
+                $('.errors').addClass('show');
+            } else {
+                $('.errors').removeClass('show');
+            }
+        });
+        $('.contact input[type="text"], textarea').off('input').on('input', function() {
+            var input = $(this);
+            var is_name = input.val();
+            var symfonyName = input.attr('name').replace(input.closest('form').attr('name'), '').replace('[','').replace(']','');
+            if (is_name) {
+                input.removeClass("invalid").addClass("valid");
+                $('.errors .' + symfonyName).remove();
+            } else {
+                input.removeClass("valid").addClass("invalid");
+                $('.errors .' + symfonyName).remove();
+                $('.errors ul').append('<li class="' + symfonyName + '">' + input.data('error') + '</li>');
+            }
+
+            if($('.invalid').length) {
                 $('.errors').addClass('show');
             } else {
                 $('.errors').removeClass('show');

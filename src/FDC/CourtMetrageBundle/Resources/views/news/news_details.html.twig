@@ -12,13 +12,13 @@
                     href="{{ path('ccm_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
                     class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
-                    <a href="#" class="category">
+                    <span class="category">
                         {% set themeTranslation = article.theme.findTranslationByLocale(app.request.locale) %}
                         {% if app.request.locale != 'fr' and themeTranslation is null %}
                             {% set themeTranslation = article.theme.findTranslationByLocale('fr') %}
                         {% endif %}
                         {{ themeTranslation.name }}
-                    </a>
+                    </span>
                     {% if app.request.locale != 'en' %}
                         {% set hourFormat = 'H:i' %}
                     {% else %}
