@@ -226,7 +226,7 @@ $(document).ready(function() {
         }
       });
       console.log('init slider movie');
-      $('#slider-movie-videos .slide-video').on('click', , function(e) {
+      $('#slider-movie-videos .slide-video').on('click', function(e) {
         
         console.log('click slider movie');
 
