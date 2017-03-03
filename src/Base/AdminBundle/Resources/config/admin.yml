@@ -2667,7 +2667,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmProsPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Les pros du court}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Les pros du court, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

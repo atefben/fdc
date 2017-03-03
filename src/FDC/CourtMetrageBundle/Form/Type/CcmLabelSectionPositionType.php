@@ -69,7 +69,7 @@ class CcmLabelSectionPositionType extends AbstractType
                 'btn_add' => false,
                 'required' => true
             ))
-            ->add('position')
+            ->add('position', 'hidden')
         ;
     }
 
