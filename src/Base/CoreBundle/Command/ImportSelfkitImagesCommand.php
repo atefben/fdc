@@ -343,7 +343,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         if ((@is_array(getimagesize($url)))) {
             $this->applyAssociation($media, $old);
-            $this->generatePresets($media);
+            if (!$media->getThumbsGenerated()) {
+                $this->generatePresets($media);
+            }
             $this->getManager()->flush();
             unlink($filename); // remove original file
             return $media;
