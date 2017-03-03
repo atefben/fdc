@@ -312,7 +312,7 @@
     width: 100000px;
     transition: $smoothTransition .8s;
 
-    .restrospective-init.dark {
+    .restrospective-init.dark &{
       height: 290px;
       overflow: hidden;
     }
