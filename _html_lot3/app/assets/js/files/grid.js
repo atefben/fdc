@@ -269,11 +269,11 @@ var owInitGrid = function (id) {
                     }
 
                     if(typeof lineContentHeights[lineClassIndex] !== 'undefined'){
-                        lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
-                    }else{
                         if($(this).find('.contain-txts').outerHeight() > lineContentHeights[lineClassIndex]){
                             lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
                         }
+                    }else{
+                        lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
                     }
 
 
