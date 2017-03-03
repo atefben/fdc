@@ -169,14 +169,20 @@
                             <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
                         </div>
                     </div></br>
+                <div class="col-md-12">
+                    <div class="box-body">
+                        <div class="fdc-widgets" data-form-widget="collection">
+                            {{ form_label(form.parent.sejourIsActive) }}
+                            {{ form_widget(form.parent.sejourIsActive) }}</br>
+                            {{ form_label(form.parent.positionSejour) }}
+                            {{ form_widget(form.parent.positionSejour) }}
+                        </div>
+                    </div>
+                </div>
+                    </br>
                     <div class="col-md-12">
                         <div class="box-body">
                             <div class="fdc-widgets" data-form-widget="collection">
-                                {{ form_label(form.parent.sejourIsActive) }}
-                                {{ form_widget(form.parent.sejourIsActive) }}</br>
-                                {{ form_label(form.parent.positionSejour) }}
-                                {{ form_widget(form.parent.positionSejour) }}
-                                </br>
                                 {% for widget in form.parent.children.sejoures.children %}
                                     <div class="item base-widget" data-itemtype="sejour">
                                         {{ form_row(widget._type) }}

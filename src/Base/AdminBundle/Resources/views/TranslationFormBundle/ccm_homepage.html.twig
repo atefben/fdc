@@ -105,11 +105,14 @@
                             </div>
                             <br/>
                             <div class="box-body">
-
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {{ form_label(form.parent.pushIsActive) }}
                                     {{ form_widget(form.parent.pushIsActive) }}
-                                    </br></br>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="box-body">
+                                <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.pushes.children %}
                                         <div class="item base-widget" data-itemtype="push">
                                             {% if widget.children._type.vars.value == 'ccm_homepage_push_type' %}
@@ -145,6 +148,10 @@
                                     </br>
                                     {{ form_label(form.parent.catalogImage) }}
                                     {{ form_widget(form.parent.catalogImage) }}
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.catalogPushes.children %}
                                         <div class="item base-widget" data-itemtype="catalog">
                                             {% if widget.children._type.vars.value == 'ccm_catalog_push_type' %}
@@ -228,9 +235,16 @@
                                     <div class="fdc-widgets" data-form-widget="collection">
                                         {{ form_label(form.parent.sejourIsActive) }}
                                         {{ form_widget(form.parent.sejourIsActive) }}
+                                        <br/>
                                         {{ form_label(form.parent.positionSejour) }}
                                         {{ form_widget(form.parent.positionSejour) }}
-                                        </br>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="col-md-12">
+                                <div class="box-body">
+                                    <div class="fdc-widgets" data-form-widget="collection">
                                         {% for widget in form.parent.children.sejoures.children %}
                                             <div class="item base-widget" data-itemtype="sejour">
                                                 {{ form_row(widget._type) }}
