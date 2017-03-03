@@ -15194,6 +15194,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   float: left;
   width: auto;
   margin-right: 50px;
+  position: relative;
 }
 .single-movie .competition #slider-competition .slide.compat-object-fit {
   background-size: cover;
