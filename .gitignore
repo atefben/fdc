@@ -118,3 +118,5 @@ src/FDC/MarcheDuFilmBundle/Resources/translations/messages.zh.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.en.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.fr.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.zh.xliff
+
+/web/clear-cache.php
