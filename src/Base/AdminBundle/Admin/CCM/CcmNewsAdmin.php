@@ -167,7 +167,6 @@ class CcmNewsAdmin extends Admin
                 'label'      => 'list.news_common.translated',
             ))
         ;
-        $datagridMapper = $this->addPriorityFilter($datagridMapper);
     }
 
     /**
@@ -191,11 +190,6 @@ class CcmNewsAdmin extends Admin
                 'template' => 'BaseAdminBundle:TranslateMain:list_published_interval.html.twig',
                 'sortable' => 'publishedAt',
                 'label'    => 'form.label_published_at'
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices'   => CcmNewsArticle::getPriorityStatusesList(),
-                'catalogue' => 'BaseAdminBundle',
-                'label'     => 'form.label_priority_status'
             ))
             ->add('statusMain', 'choice', array(
                 'choices'   => CcmNewsArticleTranslation::getMainStatuses(),

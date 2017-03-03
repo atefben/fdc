@@ -170,17 +170,6 @@ class CcmNewsAudioAdmin extends CcmNewsAdmin
                 )
             )
             ->add('displayedHome')
-            ->add('translate')
-            ->add('translateOptions', 'choice', array(
-                'choices' => CcmNews::getAvailableTranslateOptions(),
-                'translation_domain' => 'BaseAdminBundle',
-                'multiple' => true,
-                'expanded' => true
-            ))
-            ->add('priorityStatus', 'choice', array(
-                'choices' => CcmNews::getPriorityStatuses(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
