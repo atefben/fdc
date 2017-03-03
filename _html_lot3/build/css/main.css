@@ -9456,11 +9456,12 @@ body#home .isotope-01 .card.w2 {
 }
 body#home .isotope-01 .item img {
   width: 100%;
-  object-fit: cover;
 }
 body#home .isotope-01 .item .contain-img {
   overflow: hidden;
   background-size: cover;
+  height: 340px;
+  overflow: hidden;
 }
 @media screen and (max-width: 1280px) {
   body#home .isotope-01 .grid-sizer {
