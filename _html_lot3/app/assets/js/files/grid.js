@@ -246,17 +246,21 @@ var owInitGrid = function (id) {
             var stop = false;
 
             $.each($('.item.block-poster'), function (i,e) {
-                var p = $(e).find('.title-12');
-
-                if(p.length > 3){ 
-                    stop = true;
+                var ww = $(window).width();
+                var colNumber = 4;
+                if(ww > 1280){
+                    colNumber = 5;
                 }
 
-                if(stop) {
-                    $('.block-poster .contain-txts').css('height',' 140px');
-                    $(window).trigger('resize');
-                    return false;
+                if(ww > 1600){
+                    colNumber = 6;
                 }
+
+                if(ww > 1920){
+                    colNumber = 8;
+                }
+
+                console.log(i);
             })
         }
 
