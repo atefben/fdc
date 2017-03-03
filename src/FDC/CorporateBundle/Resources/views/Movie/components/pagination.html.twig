@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% if prev is not null %}
-    <a href="{{ path('fdc_corporate_movie_get', {'slug': next.slug}) }}" class="prevmovie">
+    <a href="#" class="prevmovie">
         <div class="img">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: prev,
@@ -28,7 +28,7 @@
     </a>
 {% endif %}
 {% if next is not null %}
-    <a href="{{ path('fdc_corporate_movie_get', {'slug': next.slug}) }}" class="nextmovie">
+    <a href="#" class="nextmovie">
         <div class="img">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: next,
