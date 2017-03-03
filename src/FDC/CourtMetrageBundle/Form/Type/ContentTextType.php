@@ -50,6 +50,9 @@ class ContentTextType extends AbstractType
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
                         'config_name' => 'widget',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'constraints'        => array(
                             new NotBlank(),
                         ),
