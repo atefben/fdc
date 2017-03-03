@@ -260,4 +260,24 @@ class FilmFilmRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Get Films by courtYear and order randomly.
+     *
+     * @param $year
+     * @return array
+     */
+    public function getFilmsByCourtYearRandom($year)
+    {
+        $qb = $this
+            ->createQueryBuilder('f')
+            ->select('f, RAND() as HIDDEN r')
+            ->where('f.productionYear = :year')
+            ->setParameter(':year', $year)
+            ->orderBy('r')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 }

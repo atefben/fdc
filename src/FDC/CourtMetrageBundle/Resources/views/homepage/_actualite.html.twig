@@ -7,6 +7,12 @@
                 {% if actualite.displayedHome == 1 %}
                     <a href="{{ path('ccm_news_detail',{'slug':actualiteTranslation.slug}) }}">
                         <div class="articles">
+                            {% if  actualite.translatable.image is not null %}
+                                <div class="articles-img"><img src="{% path actualite.translatable.image|trans_fallback('file'), 'reference' %}"></div>
+                            {% endif %}
+                            {% if  actualite.translatable.header is not null %}
+                                <div class="articles-img"><img src="{% path actualite.translatable.header|trans_fallback('file'), 'reference' %}"></div>
+                            {% endif %}
                             <div class="articles-content">
                                 <span>
                                     {{ actualite.theme.name }}
