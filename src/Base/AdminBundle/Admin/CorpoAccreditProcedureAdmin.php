@@ -130,20 +130,20 @@ class CorpoAccreditProcedureAdmin extends Admin
                         'label' => 'form.label_procedure',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
+                        'config_name' => 'corpo'
                     ),
                     'firstColumnContact' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.first',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press',
+                        'config_name' => 'corpo',
 
                     ),
                     'secondColumnContact' => array(
                         'field_type' => 'ckeditor',
                         'label' => 'form.label_column.second',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
+                        'config_name' => 'corpo'
                     ),
                     'contactTitle' => array(
                         'label' => 'form.label_title',
