@@ -42,7 +42,7 @@ class CcmProsPage implements TranslateMainInterface
     /**
      * @var MediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
      */
     protected $image;
 
