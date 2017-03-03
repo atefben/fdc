@@ -335,6 +335,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         $media->setName($old->getTitre());
         $this->getMediaManager()->save($media, false);
+        $this->output->writeln("<info>Media {$media->getId()} saved.</info>");
 
         $provider = $this->getContainer()->get($media->getProviderName());
         $format = $provider->getFormatName($media, 'reference');
@@ -343,7 +344,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         if ((@is_array(getimagesize($url)))) {
             $this->applyAssociation($media, $old);
-            $this->generatePresets($media);
+            if (!$media->getThumbsGenerated()) {
+                $this->generatePresets($media);
+            }
             $this->getManager()->flush();
             unlink($filename); // remove original file
             return $media;
@@ -360,8 +363,10 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $person = $this->getPerson($old->getIdpersonne());
         if ($person && $film && !$this->isDirector($person, $film) && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
-        } else if ($film && !$media->getSelfkitFilms()->contains($film)) {
+        } else if (!$person && $film && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
+        } elseif ($media->getSelfkitFilms()->contains($film)) {
+            $media->removeSelfkitFilm($film);
         }
 
         if ($person && !$media->getSelfkitPersons()->contains($person)) {

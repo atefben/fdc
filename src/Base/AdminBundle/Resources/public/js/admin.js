@@ -104,18 +104,32 @@ $(document).ready(function () {
         }
     });
 
-    if ($("input[id*='sites_1']").length && $("input[id*='sites_3']").length) {
-        function checkDisplayHomeCheckbox() {
-            if ($("input[id*='sites_1']").is(':checked') || $("input[id*='sites_3']").is(':checked')) {
+    if ($('.displayed-home-news').length) {
+        function checkDisplayHomeNewsCheckbox() {
+            if ($("input[id*='sites_1']").is(':checked')) {
                 $('.form-group[id$="displayedHomepageLabel"]').show();
             } else {
                 $('.form-group[id$="displayedHomepageLabel"]').hide();
             }
         }
 
-        checkDisplayHomeCheckbox();
-        $("input[id*='sites_1'], input[id*='sites_3']").on('ifChanged', function () {
-            checkDisplayHomeCheckbox()
+        checkDisplayHomeNewsCheckbox();
+        $("input[id*='sites_1']").on('ifChanged', function () {
+            checkDisplayHomeNewsCheckbox()
+        });
+    }
+    else if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
+        function checkDisplayHomeInfoStatementCheckbox() {
+            if ($("input[id*='sites_3']").is(':checked')) {
+                $('.form-group[id$="displayedHomepageLabel"]').show();
+            } else {
+                $('.form-group[id$="displayedHomepageLabel"]').hide();
+            }
+        }
+
+        checkDisplayHomeInfoStatementCheckbox();
+        $("input[id*='sites_3']").on('ifChanged', function () {
+            checkDisplayHomeInfoStatementCheckbox()
         });
     }
     else {
