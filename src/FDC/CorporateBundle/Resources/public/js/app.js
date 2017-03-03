@@ -3345,14 +3345,13 @@ $(document).ready(function() {
           setActiveMovieVideos();
         }
       });
-      console.log('init slider movie');
+      
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         
         
-        console.log('click slider movie');
 
         var number = $(this).index();
-        playerInstance.playlistItem(number);
+        videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
       });
     }
