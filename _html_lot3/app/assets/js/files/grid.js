@@ -252,7 +252,7 @@ var owInitGrid = function (id) {
                 //get max heights
                 $.each($('.item.block-poster'), function (i,e) {
                     var naturalIndex = i+1;
-                    var ww = $(document).width();
+                    var ww = $(document).outerWidth();
                     var colNumber = 4;
                     if(ww > 1280){
                         colNumber = 5;
