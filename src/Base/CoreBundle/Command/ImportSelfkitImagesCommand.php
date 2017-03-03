@@ -335,6 +335,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         $media->setName($old->getTitre());
         $this->getMediaManager()->save($media, false);
+        $this->output->writeln("<info>Media {$media->getId()} saved.</info>");
 
         $provider = $this->getContainer()->get($media->getProviderName());
         $format = $provider->getFormatName($media, 'reference');
