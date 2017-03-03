@@ -68,7 +68,7 @@ sonata_admin:
             dashboard.group.general:
                 items: ~
                 label_catalogue: BaseAdminBundle
-            admin.group.ccm.news:
+            admin.group.ccm.footer:
                 items: ~
                 label_catalogue: BaseAdminBundle
             admin.group.ccm.news:

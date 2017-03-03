@@ -8,8 +8,10 @@
             {% for key, mainNav in mainNavs %}
                 <article class="sitemap-item">
                     {% if mainNav.translatable.isActive %}
+                        {% set menuURL = ('http' in mainNav.route or 'https' in mainNav.route ? mainNav.route : url(mainNav.route)) %}
+                        {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
                         <h3 class="title sitemap-item-title">
-                            <a href="{{ path(mainNav.route) }}">
+                            <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
                                 {{ mainNav.name }}
                             </a>
                         </h3>
@@ -37,8 +39,10 @@
                             <ul>
                             {% for subNav in subNavs[key] %}
                                 {% if subNav.translatable.isActive %}
+                                    {% set submenuURL = ('http' in subNav.route or 'https' in subNav.route ? subNav.route : url(subNav.route)) %}
+                                    {% set submenuIsExtern = (fdc_court_metrage_domain in submenuURL ? false : true) %}
                                     <li>
-                                        <a class="sub-cat" href="{{ path(subNav.route) }}">
+                                        <a class="sub-cat" href="{{ submenuURL }}" {% if submenuIsExtern %}target="_blank"{% endif %}>
                                             {{ subNav.name }}
                                         </a>
                                     </li>
