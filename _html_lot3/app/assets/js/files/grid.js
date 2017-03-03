@@ -262,7 +262,7 @@ var owInitGrid = function (id) {
                         colNumber = 6;
                     }
 
-                    if(ww > 1920){
+                    if(ww >= 1920){
                         colNumber = 8;
                     }
 
