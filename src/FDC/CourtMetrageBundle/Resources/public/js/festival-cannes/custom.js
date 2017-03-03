@@ -603,7 +603,7 @@ if ( $("body").hasClass( "who" ) ) {
 
 }
 
-if ( $("#main").hasClass( "single-article" ) ) {
+if ( $("#main").hasClass( "single-article" ) && $('.list-article').length > 0 ) {
   var fixed = false;
    var topTrigger = $('.list-article').offset().top +10;
    $(document).scroll(function() {
