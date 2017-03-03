@@ -4105,6 +4105,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-poster {
   width: 256px;
   overflow: hidden;
+  float: left;
 }
 .block-poster .title-11 {
   display: block;
