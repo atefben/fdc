@@ -1,18 +1,18 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% if prev is not null %}
-    <a href="#" class="prevmovie">
-        <div class="img">
+    <div class="prevmovie">
+        <a href="#" class="img">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: prev,
             film_format: '156x206',
             film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
             }) %}
-        </div>
+        </a>
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
                     {% set title = prev.titleVO %}
-                    <h2>{{ title }}</h2>
+                    <a href="#"><h2>{{ title }}</h2></a>
                     {% set directors = prev.getDirectors() %}
                     {% spaceless %}
                         {% for director in directors %}
@@ -25,22 +25,22 @@
                 </div>
             </div>
         </div>
-    </a>
+    </div>
 {% endif %}
 {% if next is not null %}
-    <a href="#" class="nextmovie">
-        <div class="img">
+    <div class="nextmovie">
+        <a href="#" class="img">
             {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
             film: next,
             film_format: '156x206',
             film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
             }) %}
-        </div>
+        </a>
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
                     {% set title = next.titleVO %}
-                    <h2>{{ title }}</h2>
+                    <a href="#"><h2>{{ title }}</h2></a>
                     {% set directors = next.getDirectors() %}
                     {% spaceless %}
                         {% for director in directors %}
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-    </a>
+    </div>
 {% endif %}
 <div class="arrows">
 {% if prev is not null %}
