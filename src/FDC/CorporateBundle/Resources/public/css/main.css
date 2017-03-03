@@ -10116,11 +10116,8 @@ body#home .isotope-01 .item .contain-img {
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
 }
 .restrospective-init.dark .s-slider-retrospective .slides {
-  height: 290px;
-  overflow: hidden;
-}
-.articles-list-medias.restrospective-init.dark .s-slider-retrospective .slides {
   height: 448px;
+  overflow: hidden;
 }
 .s-slider-retrospective .timelapse {
   height: 20px;
