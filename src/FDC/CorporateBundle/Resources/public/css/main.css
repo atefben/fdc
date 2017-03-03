@@ -10119,6 +10119,9 @@ body#home .isotope-01 .item .contain-img {
   height: 290px;
   overflow: hidden;
 }
+.restrospective-init.dark .s-slider-retrospective .slides.articles-list-medias {
+  height: 448px;
+}
 .s-slider-retrospective .timelapse {
   height: 20px;
   width: 977px;
