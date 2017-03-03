@@ -2835,8 +2835,8 @@ var owInitGrid = function (id) {
                     }
 
                     if(typeof lineContentHeights[lineClassIndex] !== 'undefined'){
-                        console.log($(this).find('.contain-txts').outerHeight());
-                        if($(this).find('.contain-txts').outerHeight() > lineContentHeights[lineClassIndex]){
+                        console.log($(this).find('.contain-txts').removeAttr('style').outerHeight());
+                        if($(this).find('.contain-txts').removeAttr('style').outerHeight() > lineContentHeights[lineClassIndex]){
                             lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
                         }
                     }else{
