@@ -101,7 +101,6 @@ class NewsController extends Controller
 //        ;
 
 //        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
-        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
         usort($articles, [$this, 'compareArticle']);
 
 
