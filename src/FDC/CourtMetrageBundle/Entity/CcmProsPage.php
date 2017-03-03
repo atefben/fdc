@@ -9,7 +9,7 @@ use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,7 +40,7 @@ class CcmProsPage implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @var MediaImage
+     * @var MediaImageSimple
      *
      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
      */
@@ -203,7 +203,7 @@ class CcmProsPage implements TranslateMainInterface
     }
 
     /**
-     * @return MediaImage
+     * @return MediaImageSimple
      */
     public function getImage()
     {
@@ -211,7 +211,7 @@ class CcmProsPage implements TranslateMainInterface
     }
 
     /**
-     * @param MediaImage $image
+     * @param MediaImageSimple $image
      */
     public function setImage($image)
     {

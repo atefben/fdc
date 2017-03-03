@@ -8,7 +8,7 @@ use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,9 +39,9 @@ class CcmProsDetail implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @var MediaImage
+     * @var MediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
      */
     protected $image;
 
@@ -51,7 +51,7 @@ class CcmProsDetail implements TranslateMainInterface
      * @ORM\Column(name="isShortFilmCorner", type="boolean", nullable=true)
      */
     protected $isShortFilmCorner = false;
-    
+
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection", mappedBy="prosDetail", cascade={"persist", "remove"}, orphanRemoval=true)
@@ -186,7 +186,7 @@ class CcmProsDetail implements TranslateMainInterface
     }
 
     /**
-     * @return MediaImage
+     * @return MediaImageSimple
      */
     public function getImage()
     {
@@ -194,7 +194,7 @@ class CcmProsDetail implements TranslateMainInterface
     }
 
     /**
-     * @param MediaImage $image
+     * @param MediaImageSimple $image
      */
     public function setImage($image)
     {
