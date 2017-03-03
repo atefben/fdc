@@ -168,11 +168,11 @@
                                                     <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
                                                 {% endif %}
                                             </div>
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}"></a>
+                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="linkImage"></a>
                                             <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
                                         </div>
                                         <div class="info">
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                                            <span class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</span>
                                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
                                                 <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
                                                 <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>

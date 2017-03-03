@@ -43,7 +43,7 @@
                             </a>
                         </div>
                         <div class="info">
-                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</a>
+                            <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
                                 <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
                                 <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
