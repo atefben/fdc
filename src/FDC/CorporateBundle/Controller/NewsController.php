@@ -79,22 +79,28 @@ class NewsController extends Controller
         }
         $maxResults = 30;
 
-        $newsArticles = $this
+        $articles = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:News')
             ->getNewsRetrospective($locale, $festival, $since, $maxResults)
         ;
-        $statementArticles = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, $festival, $since, $maxResults)
-        ;
-        $infoArticles = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfoRetrospective($locale, $festival, $since, $maxResults)
-        ;
+//        $newsArticles = $this
+//            ->getDoctrineManager()
+//            ->getRepository('BaseCoreBundle:News')
+//            ->getNewsRetrospective($locale, $festival, $since, $maxResults)
+//        ;
+//        $statementArticles = $this
+//            ->getDoctrineManager()
+//            ->getRepository('BaseCoreBundle:Statement')
+//            ->getStatementRetrospective($locale, $festival, $since, $maxResults)
+//        ;
+//        $infoArticles = $this
+//            ->getDoctrineManager()
+//            ->getRepository('BaseCoreBundle:Info')
+//            ->getInfoRetrospective($locale, $festival, $since, $maxResults)
+//        ;
 
+//        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
         $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
         usort($articles, [$this, 'compareArticle']);
 
