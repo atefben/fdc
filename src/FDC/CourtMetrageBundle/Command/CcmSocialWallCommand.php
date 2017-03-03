@@ -184,76 +184,76 @@ class CcmSocialWallCommand extends ContainerAwareCommand
         /////////////////////////   INSTAGRAM   ////////////////////////////
         ////////////////////////////////////////////////////////////////////
 
-//        $lastIdInstagram = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findBy(
-//            array('network' => constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_INSTAGRAM')),
-//            array('id' => 'DESC'),
-//            1,
-//            null
-//        );
-//
-//        $nextUrl = null;
-//        $instagramPosts = array();
-//        $socialWalls = array();
-//
-//        foreach ($tags as $tag) {
-//            $tag = substr($tag, 1);
-//            $tag = trim($tag);
-//            $break = false;
-//            while (true) {
-//                if ($nextUrl == null) {
-//                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
-//                } else {
-//                    $instagramResponse = file_get_contents($nextUrl);
-//                }
-//
-//                $instagramResults = json_decode($instagramResponse);
-//                $nextUrl = $instagramResults->pagination->next_url;
-//
-//                foreach ($instagramResults->data as $instagramPost) {
-//                    if($em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
-//                        $break = true;
-//                        break;
-//                    }
-//                    $instagramPosts[] = $instagramPost;
-//                }
-//
-//                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
-//
-//                if($input->getArgument('first') || $break == true) {
-//                    break;
-//                }
-//
-//            }
-//
-//        }
-//
-//        krsort($instagramPosts);
-//        foreach ($instagramPosts as $instagramPost) {
-//            $socialWall = new CcmSocialWall();
-//            $socialWall->setMessage($instagramPost->caption->text);
-//            $socialWall->setContent($instagramPost->images->standard_resolution->url);
-//            $socialWall->setUrl($instagramPost->link);
-//            $socialWall->setNetwork(constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_INSTAGRAM'));
-//            $socialWall->setMaxIdInstagram($instagramPost->id);
-//            $socialWall->setEnabledDesktop(0);
-//            $socialWall->setDate($datetime);
-//            $socialWall->setTags($socialWallTag[0]->getHashTag());
-//            $em->persist($socialWall);
-//            $socialWalls[] = $socialWall;
-//        }
-//
-//        $em->flush();
-//
-//        //update ACL
-//        foreach ($socialWalls as $socialWall) {
-//            $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
-//            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
-//            if (is_null($acl)) {
-//                $acl = $adminSecurityHandler->createAcl($objectIdentity);
-//            }
-//            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
-//            $adminSecurityHandler->updateAcl($acl);
-//        }
+        $lastIdInstagram = $em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findBy(
+            array('network' => constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_INSTAGRAM')),
+            array('id' => 'DESC'),
+            1,
+            null
+        );
+
+        $nextUrl = null;
+        $instagramPosts = array();
+        $socialWalls = array();
+
+        foreach ($tags as $tag) {
+            $tag = substr($tag, 1);
+            $tag = trim($tag);
+            $break = false;
+            while (true) {
+                if ($nextUrl == null) {
+                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
+                } else {
+                    $instagramResponse = file_get_contents($nextUrl);
+                }
+
+                $instagramResults = json_decode($instagramResponse);
+                $nextUrl = $instagramResults->pagination->next_url;
+
+                foreach ($instagramResults->data as $instagramPost) {
+                    if($em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
+                        $break = true;
+                        break;
+                    }
+                    $instagramPosts[] = $instagramPost;
+                }
+
+                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
+
+                if($input->getArgument('first') || $break == true) {
+                    break;
+                }
+
+            }
+
+        }
+
+        krsort($instagramPosts);
+        foreach ($instagramPosts as $instagramPost) {
+            $socialWall = new CcmSocialWall();
+            $socialWall->setMessage($instagramPost->caption->text);
+            $socialWall->setContent($instagramPost->images->standard_resolution->url);
+            $socialWall->setUrl($instagramPost->link);
+            $socialWall->setNetwork(constant('FDC\\CourtMetrageBundle\\Entity\\CcmSocialWall::NETWORK_INSTAGRAM'));
+            $socialWall->setMaxIdInstagram($instagramPost->id);
+            $socialWall->setEnabledDesktop(0);
+            $socialWall->setDate($datetime);
+            $socialWall->setTags($socialWallTag[0]->getHashTag());
+            $em->persist($socialWall);
+            $socialWalls[] = $socialWall;
+        }
+
+        $em->flush();
+
+        //update ACL
+        foreach ($socialWalls as $socialWall) {
+            $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
+            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
+            if (is_null($acl)) {
+                $acl = $adminSecurityHandler->createAcl($objectIdentity);
+            }
+            $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
+            $adminSecurityHandler->updateAcl($acl);
+        }
     }
 
     private function getHashTagsForTweet($hashTags, $boHashTags)
