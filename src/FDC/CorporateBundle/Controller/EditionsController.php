@@ -51,10 +51,10 @@ class EditionsController extends Controller
         ;
 
         //news
-        $news = $this
+        $news = (bool)$this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getAllNews($locale, $festival->getId())
+            ->getNewsRetrospective($locale, $festival, null, null)
         ;
 //        $news = $this->removeUnpublishedNewsAudioVideo($news, $locale, null, true);
 
