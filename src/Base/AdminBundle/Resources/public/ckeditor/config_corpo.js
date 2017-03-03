@@ -30,8 +30,14 @@ CKEDITOR.editorConfig = function( config ) {
         // Paragraphs
         {name: 'Description titre centré', element: 'p', attributes: {'class': 'descrip-title'}},
         {name: 'Description google map', element: 'span', attributes: {'class': 'googlemap-descrip'}},
-        {name: 'Cadre doré', element: 'div', attributes: {'class': 'info'}},
-        {name: 'Paragraphe', element: 'p', attributes: {'class': 'paragraph'}}
+        {
+            name: 'Cadre doré',
+            element: 'div',
+            attributes: {'class': 'info'},
+            styles: {
+                element: 'p',
+            }
+        }
     ];
 
     // TOOLBAR
