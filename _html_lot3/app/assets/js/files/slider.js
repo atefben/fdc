@@ -98,6 +98,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-02') {
+        console.log('init slider 2');
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
@@ -110,7 +111,7 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
-
+            console.log('click slider 2');
             playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');

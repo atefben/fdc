@@ -3130,7 +3130,7 @@ $(document).ready(function() {
     var h = $('.press[data-section]').height();
     $('.contacts').css('min-height',h);
   }
-  
+
   // anchors menu
   $('#nav-movie ul a').on('click', function (e) {
 
@@ -3191,7 +3191,6 @@ $(document).ready(function() {
     }
 
     function initSliders() {
-      console.log('initSliders');
       // slider competitions
       var sliderCompetition = new Sly( $(".competition"), {
           speed: 200,
@@ -4488,6 +4487,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-02') {
+        console.log('init slider 2');
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
@@ -4500,7 +4500,7 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
-
+            console.log('click slider 2');
             playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');

@@ -10,7 +10,7 @@ $(document).ready(function() {
     var h = $('.press[data-section]').height();
     $('.contacts').css('min-height',h);
   }
-  
+
   // anchors menu
   $('#nav-movie ul a').on('click', function (e) {
 
@@ -71,7 +71,6 @@ $(document).ready(function() {
     }
 
     function initSliders() {
-      console.log('initSliders');
       // slider competitions
       var sliderCompetition = new Sly( $(".competition"), {
           speed: 200,
