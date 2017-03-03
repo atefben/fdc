@@ -2807,7 +2807,7 @@ var owInitGrid = function (id) {
 
 
         if($('.item.block-poster').length) {
-            $(window).on('resize',function(){
+            function selectionGridComuting(){
                 var stop = false;
                 var lineClassIndex = 1;
                 var previousItem;
@@ -2833,6 +2833,11 @@ var owInitGrid = function (id) {
 
                     $(this).attr('class','item block-poster l'+lineClassIndex);
                 });
+            }
+            
+            selectionGridComuting();
+            $(window).on('resize',function(){
+                selectionGridComuting();
             });
         }
 
