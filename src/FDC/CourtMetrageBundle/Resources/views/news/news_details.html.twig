@@ -72,80 +72,52 @@
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
                 </div>
             </div>
-            {% if associatedFilm is not null or programmations is not empty %}
+            {% if associatedFilm is not null %}
                 <div class="film">
-                    {% if associatedFilm is not null %}
-                        <div class="info-film {% if programmations is empty %} single{% endif %}">
-                            <div class="wrapper">
-                                <div class="vCenter">
-                                    <div class="vCenterKid">
-                                        <div class="poster">
-                                            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-                                            film: associatedFilm,
-                                            film_format: '293x397',
-                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                    <div class="info-film single">
+                        <div class="wrapper">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <div class="poster">
+                                        <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                            {% include '@FDCCourtMetrage/Shared/filmPoster.html.twig' with ({
+                                                film: associatedFilm,
+                                                film_format: '293x397',
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                             }) %}
-                                        </div>
-                                        <div class="text-container" id="filmPoster">
-                                            {% if associatedFilm.selectionSection is not null %}
-                                                <span class="category">
-                                        {{ associatedFilm.selectionSection|trans_fallback('name') }}
-                                    </span>
+                                        </a>
+                                    </div>
+                                    <div class="text-container" id="filmPoster">
+                                        {% if associatedFilm.selectionSection is not null %}
+                                            <span class="category">
+                                                {{ associatedFilm.selectionSection|trans_fallback('name') }}
+                                            </span>
+                                        {% endif %}
+                                        <h3>
+                                            <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                                {{ associatedFilm.titleVO }}
+                                            </a>
+                                        </h3>
+                                        <p class="director">
+                                            {% set comma = false %}
+                                            {% spaceless %}{% for index,director in associatedFilm.getDirectors() %}
+                                                {% if index < 4 %}<a href="{{ path('fdc_court_metrage_artist', {slug: director.person.slug }) }}">{% if comma %}, {% endif %}{{ director.person.fullName }}</a>{% endif %}
+                                                {% if index == 4 %}...{% endif %}
+                                                {% set comma = true %}
+                                            {% endfor %}{% endspaceless %}
+                                        </p>
+                                        <p>
+                                            {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
+                                            {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
+                                                - {{ associatedFilm.productionYear }}
                                             {% endif %}
-                                            <h3>
-                                                <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
-                                                    {{ associatedFilm.titleVO }}
-                                                </a>
-                                            </h3>
-                                            <p class="director">
-                                                {% set comma = false %}
-                                                {% spaceless %}{% for index,director in associatedFilm.getDirectors() %}
-                                                    {% if index < 4 %}<a href="{{ path('fdc_court_metrage_artist', {slug: director.person.slug }) }}">{% if comma %}, {% endif %}{{ director.person.fullName }}</a>{% endif %}
-                                                    {% if index == 4 %}...{% endif %}
-                                                    {% set comma = true %}
-                                                {% endfor %}{% endspaceless %}
-                                            </p>
-                                            <p>
-                                                {% spaceless %}{% for index,country in associatedFilm.countries %}{% if index < 4 %}{% if loop.index != 1 %}, {% endif %}{{ country.country|trans_fallback('name') }}{% endif %}{% if index == 4 %}...{% endif %}{% endfor %}{% endspaceless %}
-                                                {% if associatedFilm.productionYear != 0 or associatedFilm.productionYear != null %}
-                                                    - {{ associatedFilm.productionYear }}
-                                                {% endif %}
-                                            </p>
-                                            <p>{{ associatedFilmDuration }}</p>
-                                        </div>
+                                        </p>
+                                        <p>{{ associatedFilmDuration }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
-                    {% if programmations is not empty %}
-                        <div class="programmation-film">
-                            <div class="wrapper">
-                                <div class="vCenter">
-                                    <div class="vCenterKid">
-                                        <span class="category">{{ 'ccm.news.programmation'|trans }}</span>
-                                        <ul>
-                                            {% set progDisplayed = 0 %}
-                                            {% for programmation in programmations if progDisplayed < 4 %}
-                                                {% if programmation.type not in ['Séance de presse', 'Conférence de presse', 'Divers'] %}
-                                                    <li>
-                                                        <span class="type">{{ 'article.film.text.projection'|trans }}</span>
-                                                        <span>{{ programmation.startsAt|date('d-m-Y') }}</span>
-                                                        <span>{{ agenda_leftbar_translate_hour(programmation.startsAt|date('H:i'), true, true) }}</span>
-                                                        <span class="location">{{ programmation.room.name }}</span>
-                                                    </li>
-                                                    {% set progDisplayed = progDisplayed + 1 %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </ul>
-                                        {# todo: ccm event link ? #}
-                                        <a href="{{ path('fdc_event_agenda_scheduling') }}{{ nextProjectionDate ? '?date=' ~ nextProjectionDate : '' }}"
-                                           class="button">{{ 'article.film.btn.toutelaprojection'|trans }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
+                    </div>
                 </div>
             {% endif %}
             <div class="container">

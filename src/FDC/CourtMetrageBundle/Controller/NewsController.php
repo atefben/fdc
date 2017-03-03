@@ -106,7 +106,6 @@ class NewsController extends Controller
             'prev'                      => $prevArticles,
             'next'                      => $nextArticles,
             'associatedNews'            => $associatedNews,
-            'programmations'            => $programmations,
             'associatedFilm'            => $associatedFilm,
             'nextProjectionDate'        => $nextProjectionDate,
             'associatedFilmDuration'    => $associatedFilmDuration
