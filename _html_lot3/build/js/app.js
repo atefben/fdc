@@ -2835,7 +2835,6 @@ var owInitGrid = function (id) {
                     }
 
                     if(typeof lineContentHeights[lineClassIndex] !== 'undefined'){
-                        console.log($(this).find('.contain-txts').removeAttr('style').outerHeight());
                         if($(this).find('.contain-txts').removeAttr('style').outerHeight() > lineContentHeights[lineClassIndex]){
                             lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
                         }
@@ -2848,7 +2847,7 @@ var owInitGrid = function (id) {
                     $(this).attr('rel',lineClassIndex);
                     previousItem = $(this);
                 });
-                console.log(lineContentHeights);
+                
                 //apply heights
                 $.each($('.item.block-poster'), function (i,e) {
                     var height = lineContentHeights[$(this).attr('rel')];
