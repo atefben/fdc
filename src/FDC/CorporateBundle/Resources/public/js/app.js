@@ -2807,7 +2807,7 @@ var owInitGrid = function (id) {
 
 
         if($('.item.block-poster').length) {
-            function selectionGridComuting(){
+            function selectionGridComputing(){
                 var stop = false;
                 var lineClassIndex = 0;
                 var lineContentHeights = [];
@@ -2825,7 +2825,7 @@ var owInitGrid = function (id) {
                     if(ww > 1600){
                         colNumber = 6;
                     }
-                    
+
                     if(ww >= 1920){
                         colNumber = 8;
                     }
@@ -2855,9 +2855,9 @@ var owInitGrid = function (id) {
                 });
             }
 
-            selectionGridComuting();
+            selectionGridComputing();
             $(window).on('resize',function(){
-                selectionGridComuting();
+                selectionGridComputing();
             });
         }
 
