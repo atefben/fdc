@@ -119,6 +119,10 @@ body.chocolat-open.fixed {
     margin-bottom: 10px;
 }
 
+.single-article #filmPoster {
+    max-width: 140px;
+}
+
 .single-article .block-01-xs .texte-01 strong {
     color: #666666;
 }
