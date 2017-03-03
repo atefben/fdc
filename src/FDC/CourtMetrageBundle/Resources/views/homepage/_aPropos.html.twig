@@ -11,10 +11,10 @@
             <span>{{ homepage.aProposLabel }}</span>
         {% endif %}
         {% if homepage.aProposTitle is not null %}
-            <a href="#"><h5>{{ homepage.aProposTitle }}</h5></a>
+            <a href="{% if homepage.aProposUrl is not null %}{{ homepage.aProposUrl }}{% else %}#{% endif %}" target="_blank"><h5>{{ homepage.aProposTitle }}</h5></a>
         {% endif %}
         {% if homepage.aProposDescription is not null %}
-            <a href="#">{{ homepage.aProposDescription|raw }}</a>
+            <a href="{% if homepage.aProposUrl is not null %}{{ homepage.aProposUrl }}{% else %}#{% endif %}" target="_blank">{{ homepage.aProposDescription|raw }}</a>
         {% endif %}
         {% if homepage.aProposUrl is not null %}
             <a href="{{ homepage.aProposUrl }}" {% if fdc_court_metrage_domain not in homepage.aProposUrl %}target="_blank"{% endif %}><div class="aboutMore">{{ 'ccm_en_savoir_plus'|trans }}</div></a>
