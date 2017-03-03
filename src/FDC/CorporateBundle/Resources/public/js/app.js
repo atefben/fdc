@@ -850,7 +850,7 @@ var initVideo = function(hash) {
                 name = $(this).find('.contain-txt strong a').data('title');
 
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
-            console.log(videoNews);
+
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
 
@@ -907,7 +907,7 @@ var initVideo = function(hash) {
             $('.ov').addClass('show');
 
             $('#main').addClass('overlay');
-            console.log(videoNews);
+
             setTimeout(function(){
                 $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function(e){
                     history.pushState(null, null, '#');
@@ -5289,11 +5289,12 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').addClass('chocolat-wrapper');
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
-
+    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
+    
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description"><span class="category">' + images[centerElement].label + '</span><span class="date">' + images[centerElement].date + '</span><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +

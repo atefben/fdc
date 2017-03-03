@@ -354,11 +354,12 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').addClass('chocolat-wrapper');
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
-
+    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
+    
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description"><span class="category">' + images[centerElement].label + '</span><span class="date">' + images[centerElement].date + '</span><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
