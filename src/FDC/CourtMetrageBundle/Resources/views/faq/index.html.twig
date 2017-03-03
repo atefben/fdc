@@ -27,7 +27,7 @@
                             class="faq-container {% if (faqRubriques|first).id == rubrique.id %}faq-active{% endif %}"
                             data-name="rubrique-{{ rubrique.id }}">
                             {% for questionAnswer in faqQuestionsAnswers[rubrique.translatable.id] %}
-                                <article {% if loop.first and isFirstLoop %}class="faq-article-active" style="max-height: 5000px;"{% endif %}>
+                                <article class="wysiwyg {% if loop.first and isFirstLoop %}faq-article-active{% endif %}" {% if loop.first and isFirstLoop %}style="max-height: 5000px;"{% endif %}>
                                     <div class="faq-question">
                                         <h3 class="faq-title">{{ questionAnswer.questionText }}</h3>
                                         {% if loop.first and isFirstLoop %}
