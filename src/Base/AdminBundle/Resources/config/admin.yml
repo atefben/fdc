@@ -3013,3 +3013,39 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmYoutube, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Youtube Video, show_in_dashboard: false }
+
+    base.admin.ccm_program:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgram, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Programmation}
+
+    base.admin.ccm_program_days_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramDaysCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramDaysCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Days Collection, show_in_dashboard: false}
+
+    base.admin.ccm_program_day:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramDayAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramDay, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Dates}
+
+    base.admin.ccm_program_schedules_collection:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramSchedulesCollectionAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramSchedulesCollection, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Schedules Collection, show_in_dashboard: false}
+
+    base.admin.ccm_program_schedule:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramScheduleAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramSchedule, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Schedule, show_in_dashboard: false}
+
+    base.admin.ccm_program_schedule_type:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramScheduleTypeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramScheduleType, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Schedule Type, show_in_dashboard: false}

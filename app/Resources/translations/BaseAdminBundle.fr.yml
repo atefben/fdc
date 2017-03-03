@@ -1045,6 +1045,29 @@ form:
                 youtube_title: Youtube title
                 youtube_url: URL de YouTube
                 youtube_theme: Youtube theme
+            program:
+                program_title: Gestion du programme global de l'année
+                image: Image Cover
+                title: Titre
+                body: Chapô
+                days_collection: Dates
+                days_title: Liste des jours disponibles dans le programme
+                day:
+                    list: Dates
+                    date_event: Date
+                    schedule_collection: Gestion des événements de la journée
+                schedule:
+                    list: Événements
+                    schedule_title: Détail de l'événement dans le programme
+                    title: Titre
+                    description: Description
+                    url: URL
+                    access_type: Détail Type d’accès
+                    location: Détail Lieu
+                    time_details: Détail Heure
+                    schedule_type: Catégorie
+                schedule_type:
+                    title: Titre
         size:
             small:  Titre petit
             medium: Titre moyen

@@ -4,6 +4,21 @@
     {{ form_widget(form.children.fr) }}
 {% endblock %}
 #}
+{% block base_admin_ccm_program_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/ccm_program.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_program_day_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/ccm_program_day.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_program_schedule_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/ccm_program_schedule.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_program_schedule_type_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/ccm_program_schedule_type.html.twig' %}
+{% endblock %}
 
 {% block base_admin_ccm_label_file_translations_a2lix_translations_widget %}
     {% include '@BaseAdmin/TranslationFormBundle/CCM/label_file.html.twig' %}

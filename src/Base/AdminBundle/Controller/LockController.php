@@ -176,7 +176,8 @@ class LockController extends Controller
         'ccmfaqpage' => 'CcmFaqPage',
         'ccmcontactpage' => 'CcmContactPage',
         'ccmfilmregister' => 'CcmFilmRegister',
-        'ccmlabel' => 'CcmLabel'
+        'ccmlabel' => 'CcmLabel',
+        'ccmprogram' => 'CcmProgram',
     );
 
     /**
