@@ -5,6 +5,17 @@ Admin.add_pretty_errors = function () {
 };
 
 $(document).ready(function () {
+    for (var i in CKEDITOR.instances) {
+        CKEDITOR.instances[i].on('change', function () {
+            console.log('log instance ckeditor');
+            $('.cke div.info').each(function () {
+                if ($(this).find('p').length) {
+                    console.log('log div info');
+                    $(this).html('<p>' + $(this).html + '</p>');
+                }
+            });
+        });
+    }
 
     if ($('#homepageSlideArea').length > 0) {
         var timesRun = 0;
