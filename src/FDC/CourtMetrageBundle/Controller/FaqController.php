@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class FaqController extends Controller
 {
     /**
-     * @Route("infos-utiles", name="fdc_courtmetrage_faq")
+     * @Route("faq", name="fdc_courtmetrage_faq")
      */
     public function faqAction(Request $request)
     {
