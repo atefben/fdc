@@ -230,7 +230,7 @@ $(document).ready(function() {
         
         
 
-        var number = $(this).index();
+        var number = $(this).closest('.owl-item').index();
         console.log(number);
         videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
