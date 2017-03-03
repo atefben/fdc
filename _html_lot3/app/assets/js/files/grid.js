@@ -1,6 +1,6 @@
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-        var $grid = $('.isotope-01:not(.add-ajax-request)');
+        var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
@@ -29,7 +29,7 @@ var owInitGrid = function (id) {
         var $items = $('.item');
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
-        var $gridMore = $gridDom.imagesLoaded(function () {
+        var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
@@ -267,10 +267,13 @@ var owInitGrid = function (id) {
                         lineClassIndex += 1;
                     }
 
+
+
                     $(this).attr('class','item block-poster l'+lineClassIndex);
+                    previousItem = $(this);
                 });
             }
-            
+
             selectionGridComuting();
             $(window).on('resize',function(){
                 selectionGridComuting();
