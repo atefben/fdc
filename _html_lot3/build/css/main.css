@@ -3478,6 +3478,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-push-top .vFlexAlign {
   height: 100%;
   margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
 }
 .block-push-top .txts {
   text-align: center;
