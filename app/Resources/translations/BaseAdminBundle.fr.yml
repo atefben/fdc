@@ -505,7 +505,7 @@ admin:
             news: Actualités
             seo_tetieres: SEO + TETIERES
             participer: Participer
-
+            footer: Footer
 dashboard:
     translator:
         object:
