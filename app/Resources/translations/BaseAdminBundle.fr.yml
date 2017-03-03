@@ -797,8 +797,8 @@ form:
                 detail_config: Informations sur pro
                 activities_collection: Collection d'activités
                 contacts_collection: Contacts
-                description_1_column_widget: Un widget de description de colonne
-                description_2_column_widget: Deux colonnes description widget
+                description_1_column_widget: Widget une colonne
+                description_2_column_widget: Widget deux colonnes
                 description_1_column: Widget une colonne
                 description_2_column: Widget deux colonnes
                 contact_config: Informations de contact
