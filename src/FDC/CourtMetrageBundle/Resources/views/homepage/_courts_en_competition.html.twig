@@ -15,37 +15,21 @@
     {% endif %}
 
     <div class="item">
-        <figure>
+        <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}"> <img src="{% path media, 'reference' %}" style="object-fit: cover; height: 284px;"></a>
+        <div class="title">
             <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}">
-                <div class="image">
-                    {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
-                    film: movie,
-                    film_format: '366x488',
-                    film_attrs: {
-                    alt: movie|trans_fallback('title')?:movie.titleVO,
-                    'data-object-fit': 'cover'
-                    },
-                    film_image_default: 'bundles/fdccourtmetrage/img/palmares/film_w181.jpg'
-                    }) %}
-                </div>
+                {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
+                    <h5>{{ movie.titleVo }}</h5>
+                    <h6>({{ movie|trans_fallback_movie('title') }})</h6>
+                {% else %}
+                    <h5>{{ movie|trans_fallback('title')?:movie.titleVo }}</h5>
+                {% endif %}
             </a>
-            <figcaption>
-                <div class="title">
-                    <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}">
-                        {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                            <h5 class="name">{{ movie.titleVo }}</h5>
-                            <h5 class="sub-name">({{ movie|trans_fallback_movie('title') }})</h5>
-                        {% else %}
-                            <h5 class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</h5>
-                        {% endif %}
-                    </a>
-                    {% for director in movie.getDirectors() %}
-                        <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
-                            <h4 class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</h4>
-                        </a>
-                    {% endfor %}
-                </div>
-            </figcaption>
-        </figure>
+            {% for director in movie.getDirectors() %}
+                <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                    <h4 class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</h4>
+                </a>
+            {% endfor %}
+        </div>
     </div>
 {% endfor %}
