@@ -166,6 +166,7 @@ class LockController extends Controller
         'ccmsfcourevents' => 'CcmShortFilmCorner',
         'ccmsfcreliveedition' => 'CcmShortFilmCorner',
         'ccmregisterprocedure' => 'CcmRegisterProcedure',
+        'ccmprospage' => 'CcmProsPage',
     );
 
     /**

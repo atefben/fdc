@@ -25,6 +25,7 @@ class CcmLabel
 
     /**
      * @ORM\OneToMany(targetEntity="CcmLabelSectionPosition", mappedBy="label", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $labelSection;
 

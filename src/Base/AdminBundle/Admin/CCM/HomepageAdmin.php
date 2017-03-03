@@ -59,11 +59,6 @@ class HomepageAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
-                    'title' => array(
-                        'label'              => 'form.ccm.label.title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => true
-                    ),
                     'aProposLabel' => array(
                         'label'              => 'form.ccm.label.a_propos.label',
                         'translation_domain' => 'BaseAdminBundle',

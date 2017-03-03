@@ -7,7 +7,7 @@ interface CcmPictoInterface
     const PICTO_POINT_INFOS = 'icon_point-infos';
     const PICTO_CONSIGNES = 'icon_consignes';
     const PICTO_OBJETS_TROUVES = 'icon_objets-trouves';
-    const PICTO_URGENCES = 'icon_n-urgence';
+    const PICTO_URGENCES = 'icon_n-urgences';
 
     const PICTO_APPAREIL_PHOTO = 'icon_enregistreur';
     const PICTO_SELFIE = 'icon_selfie';

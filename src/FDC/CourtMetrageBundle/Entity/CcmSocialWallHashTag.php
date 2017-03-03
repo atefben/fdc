@@ -26,6 +26,17 @@ class CcmSocialWallHashTag
      */
     protected $hashTag;
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = $this->getHashTag();
+        }
+
+        return $string;
+    }
+
     /**
      * @return int
      */

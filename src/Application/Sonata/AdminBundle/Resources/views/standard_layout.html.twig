@@ -255,13 +255,29 @@ file that was distributed with this source code.
                                                     {% set active = true %}
                                                 {% endif %}
                                             {% endfor %}
+                                            {% set active = group.label == 'admin.group.ccm.pros' and app.request.attributes.get('_route') in
+                                                ['admin_fdc_courtmetrage_ccmprospage_edit',
+                                                'admin_fdc_courtmetrage_ccmprosdetail_list',
+                                                'admin_fdc_courtmetrage_ccmprosdetail_create'] ? true %}
                                             <li class="treeview{% if active %} active{% endif %}">
                                                 <a href="#">
                                                     {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
                                                     <span>{{ group.label|trans({}, group.label_catalogue) }}</span>
                                                     <i class="fa pull-right fa-angle-left"></i>
                                                 </a>
-                                                <ul class="treeview-menu{% if active %} active{% endif %}">
+                                                <ul class="treeview-menu active">
+                                                    {% if group.label == 'admin.group.ccm.pros' %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_PROS_PAGE_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmprospage_edit' ? 'active' }}">
+                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmprospage_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.pros'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+
                                                     {% if group.label == 'dashboard.group.general' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_HOMEPAGE_ADMIN') %}
                                                             <li>
