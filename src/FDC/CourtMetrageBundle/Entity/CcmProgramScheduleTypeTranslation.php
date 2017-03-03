@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CcmProgramScheduleTypeTranslation
  * 
  * @ORM\Table(name="ccm_program_schedule_type_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\CcmProgramScheduleTypeTranslationRepository")
  */
 class CcmProgramScheduleTypeTranslation implements TranslateChildInterface
 {
