@@ -11,13 +11,14 @@
   .item {
     img {
       width: 100%;
-      object-fit: cover;
     }
 
     .contain-img {
       overflow: hidden;
       background-size: cover;
       width: 100.5%;
+      height: 340px;
+      overflow: hidden;
     }
   }
 
@@ -58,8 +59,6 @@
       .contain-img {
         overflow: hidden;
         background-size: cover;
-        height: 340px;
-        overflow: hidden;
       }
     }
 
