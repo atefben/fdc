@@ -315,10 +315,10 @@
     .restrospective-init.dark &{
       height: 290px;
       overflow: hidden;
+    }
 
-      &.articles-list-medias {
-        height: 448px;
-      }
+    .articles-list-medias.restrospective-init.dark & {
+      height: 448px;
     }
   }
 
