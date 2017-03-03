@@ -310,6 +310,8 @@
   .slides {
     position: relative;
     width: 100000px;
+    height: 290px;
+    overflow: hidden;
     transition: $smoothTransition .8s;
   }
 
