@@ -1242,6 +1242,7 @@
 // - BLOCK POSTER
 .block-poster {
   width: 256px;
+  height: 520px;
   overflow: hidden;
   float: left;
 
@@ -1260,7 +1261,7 @@
   .contain-txts {
     box-sizing: border-box;
     padding-top: 27px;
-    height: 109px;
+    height: auto;
     flex-direction: column;
     justify-content: initial;
     text-align: center;

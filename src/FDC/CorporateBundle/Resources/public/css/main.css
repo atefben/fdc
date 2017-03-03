@@ -4104,6 +4104,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 
 .block-poster {
   width: 256px;
+  height: 520px;
   overflow: hidden;
   float: left;
 }
@@ -4119,7 +4120,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-poster .contain-txts {
   box-sizing: border-box;
   padding-top: 27px;
-  height: 109px;
+  height: auto;
   -ms-flex-direction: column;
       flex-direction: column;
   -ms-flex-pack: initial;

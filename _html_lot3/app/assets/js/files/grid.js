@@ -246,6 +246,7 @@ var owInitGrid = function (id) {
             function selectionGridComuting(){
                 var stop = false;
                 var lineClassIndex = 1;
+                var lineContentHeights = [];
                 var previousItem;
                 $.each($('.item.block-poster'), function (i,e) {
                     var naturalIndex = i+1;
@@ -267,11 +268,21 @@ var owInitGrid = function (id) {
                         lineClassIndex += 1;
                     }
 
+                    if(typeof lineContentHeights[lineClassIndex] !== 'undefined'){
+                        lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
+                    }else{
+                        if($(this).find('.contain-txts').outerHeight() > lineContentHeights[lineClassIndex]){
+                            lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
+                        }
+                    }
+
 
 
                     $(this).attr('class','item block-poster l'+lineClassIndex);
                     previousItem = $(this);
                 });
+
+                console.log(lineContentHeights);
             }
 
             selectionGridComuting();
