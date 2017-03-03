@@ -3,7 +3,7 @@
         <div class="half-photo">
             <div class="photo-container">
                 <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="{{ image.media|trans_fallback('alt') }}" title="{{ image.media|trans_fallback('alt') }}">
-                <p class="caption">{{ image.media|trans_fallback('legend') ~ ' - ©' ~ image.media|trans_fallback('copyright') }}</p>
+                <p class="caption">{{ image.media|trans_fallback('legend') ~ ' © ' ~ image.media|trans_fallback('copyright') }}</p>
             </div>
         </div>
     {% endfor %}

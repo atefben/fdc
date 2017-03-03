@@ -21,9 +21,9 @@
             </div>
         </div>
         {% if mediaImage is not null %}
-            <p class="caption">{{ mediaImage|trans_fallback('legend') ~ ' - ©' ~  mediaImage|trans_fallback('copyright') }}</p>
+            <p class="caption">{{ mediaImage|trans_fallback('legend') ~ ' © ' ~  mediaImage|trans_fallback('copyright') }}</p>
         {% elseif gallery.medias[0] is defined %}
-            <p class="caption">{{ gallery.medias[0].media|trans_fallback('legend') ~ ' - ©' ~  gallery.medias[0].media|trans_fallback('copyright') }}</p>
+            <p class="caption">{{ gallery.medias[0].media|trans_fallback('legend') ~ ' © ' ~  gallery.medias[0].media|trans_fallback('copyright') }}</p>
         {% endif %}
     </div>
 {% endif %}

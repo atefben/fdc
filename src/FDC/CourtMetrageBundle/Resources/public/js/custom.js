@@ -5,6 +5,7 @@ $(document).ready(function () {
     initNewsListWatcher();
     patchFullScreenChocolatSlideShow();
     adaptContactFormEmailValidator();
+    removeShareFromYoutubeWidget();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -147,11 +148,11 @@ function initNewsListWatcher() {
     }
 }
 
+/**
+ * we create a workaround for jQuery Chocolat's know issue
+ * when handling fullscreen gallery with one image
+ */
 function patchFullScreenChocolatSlideShow() {
-    /**
-     * we create a workaround for jQuery Chocolat's know issue
-     * when handling full screen gallery with one image
-     */
     if ($('.single-article.show').length) {
         $(document).delegate('.chocolat-image', 'click', function () {
             var chocolatInstance = $(this).closest('.images').data('chocolat');
@@ -193,21 +194,33 @@ function adaptContactFormEmailValidator()
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             var is_email=re.test(input.val());
             var symfonySafeName = input.attr('name').replace(input.closest('form').attr('name'), '').replace('[','').replace(']','');
-            if(is_email){
+            if (is_email) {
                 input.removeClass("invalid").addClass("valid");
                 $('.errors .' + symfonySafeName).remove();
-            }
-            else{
+            } else {
                 input.removeClass("valid").addClass("invalid");
                 $('.errors .' + symfonySafeName).remove();
                 $('.errors ul').append('<li class="' + symfonySafeName + '">' + input.data('error') + '</li>');
             }
 
-            if($('.invalid').length) {
+            if ($('.invalid').length) {
                 $('.errors').addClass('show');
             } else {
                 $('.errors').removeClass('show');
             }
+        });
+    }
+}
+
+/**
+ * remove share functionality for youtube news widget
+ * when in fullscreen --see #7376
+ */
+function removeShareFromYoutubeWidget()
+{
+    if ($('.youtube-news-widget').length > 0) {
+        $(document).delegate('.youtube-news-widget .control-bar .fs', 'click', function () {
+            $(this).closest('.youtube-news-widget').find('.top-bar .buttons.square').remove();
         });
     }
 }

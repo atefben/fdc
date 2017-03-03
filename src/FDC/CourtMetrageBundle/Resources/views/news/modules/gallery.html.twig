@@ -13,6 +13,6 @@
     </div>
     {% if widget.gallery.medias[0] is defined %}
         {% set translation = widget.gallery.medias[0].media.findTranslationByLocale(app.request.locale) %}
-        <p class="caption">{{ translation.legend ~ ' - ©' ~  translation.copyright }}</p>
+        <p class="caption">{{ translation.legend ~ ' © ' ~  translation.copyright }}</p>
     {% endif %}
 </div>

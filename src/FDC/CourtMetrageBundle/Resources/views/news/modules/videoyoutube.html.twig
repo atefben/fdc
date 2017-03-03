@@ -1,5 +1,5 @@
 {% set translation = widget.findTranslationByLocale(app.request.locale) %}
-<div class="video-container state-init video"
+<div class="video-container state-init video youtube-news-widget"
      data-name="{{ translation.title }}"
      data-file='[{"file":"{{ translation.url }}"}]'
      data-img="{% path widget.image|trans_fallback('file'), 'reference' %}">
