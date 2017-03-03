@@ -6,6 +6,7 @@ $(document).ready(function () {
     patchFullScreenChocolatSlideShow();
     adaptContactFormFieldValidator();
     removeShareFromYoutubeWidget();
+    handleDualShareEmailForms();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -240,6 +241,27 @@ function removeShareFromYoutubeWidget()
     if ($('.youtube-news-widget').length > 0) {
         $(document).delegate('.youtube-news-widget .control-bar .fs', 'click', function () {
             $(this).closest('.youtube-news-widget').find('.top-bar .buttons.square').remove();
+        });
+    }
+}
+
+/**
+ * when we have both share email and share email media forms
+ * in one page, when we click on "send copy" or "newsletter"
+ * checkboxes the form closes because of current js logic
+ * because there are 2 pairs of labels and checkboxes with the
+ * same "id" and "for" attributes
+ */
+function handleDualShareEmailForms()
+{
+    if ($('.popin-mail:not(.media)').length > 0 && $('.popin-mail.media').length > 0) {
+        $('.popin-mail.media label').each(function (k, label) {
+            var $label  = $(label),
+                forAttr = $label.attr('for'),
+                newAttr = forAttr + '_media'
+            ;
+            $('.popin-mail.media #' + forAttr).attr('id', newAttr);
+            $label.attr('for', newAttr);
         });
     }
 }
