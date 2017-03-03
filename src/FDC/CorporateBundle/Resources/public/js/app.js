@@ -3345,8 +3345,13 @@ $(document).ready(function() {
           setActiveMovieVideos();
         }
       });
+      console.log('init slider movie');
+      $('#slider-movie-videos .slide-video').on('click', , function(e) {
+        
+        console.log('click slider movie');
 
-      $('body').on('click', '#slider-movie-videos .owl-item', function(e) {
+        var number = $(this).index();
+        playerInstance.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
       });
     }
@@ -4487,7 +4492,6 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 02
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-02') {
-        console.log('init slider 2');
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
@@ -4500,7 +4504,6 @@ var owInitSlider = function (sliderName) {
         // Custom Navigation Events
         $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
-            console.log('click slider 2');
             playerInstance.playlistItem(number);
 
             $('.slider-02 .center').removeClass('center');
