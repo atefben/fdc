@@ -255,15 +255,7 @@ class Homepage implements CcmAProposInterface
 
     public function __toString()
     {
-        $translation = $this->findTranslationByLocale('fr');
-
-        if ($translation !== null) {
-            $string = $translation->getTitle();
-        } else {
-            $string = strval($this->getId());
-        }
-
-        return (string) $string;
+        return 'Homepage';
     }
 
     /**

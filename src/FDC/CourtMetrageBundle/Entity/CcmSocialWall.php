@@ -98,6 +98,17 @@ class CcmSocialWall
      */
     protected $maxIdInstagram;
 
+    public function __toString()
+    {
+        $string = substr(strrchr(get_class($this), '\\'), 1);
+
+        if ($this->getId()) {
+            $string = $this->getUrl();
+        }
+
+        return $string;
+    }
+
     public static function getNetworks(){
         return array(
             self::NETWORK_TWITTER => 'form.social_wall.twitter',

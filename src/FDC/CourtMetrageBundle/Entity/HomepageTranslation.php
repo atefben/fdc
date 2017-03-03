@@ -19,13 +19,6 @@ class HomepageTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $title;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="a_propos_label", type="string", length=255, nullable=true)
      */
     protected $aProposLabel;
@@ -50,28 +43,6 @@ class HomepageTranslation
      * @ORM\Column(name="a_propos_url", type="string", length=255, nullable=true)
      */
     protected $aProposUrl;
-
-    /**
-     * Get title.
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set title.
-     *
-     * @param string $title
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
 
     /**
      * @return string
