@@ -243,25 +243,33 @@ var owInitGrid = function (id) {
 
 
         if($('.item.block-poster').length) {
-            var stop = false;
+            $(window).on('resize',function(){
+                var stop = false;
+                var lineClassIndex = 1;
+                var previousItem;
+                $.each($('.item.block-poster'), function (i,e) {
+                    var naturalIndex = i+1;
+                    var ww = $(window).width();
+                    var colNumber = 4;
+                    if(ww > 1280){
+                        colNumber = 5;
+                    }
 
-            $.each($('.item.block-poster'), function (i,e) {
-                var ww = $(window).width();
-                var colNumber = 4;
-                if(ww > 1280){
-                    colNumber = 5;
-                }
+                    if(ww > 1600){
+                        colNumber = 6;
+                    }
 
-                if(ww > 1600){
-                    colNumber = 6;
-                }
+                    if(ww > 1920){
+                        colNumber = 8;
+                    }
 
-                if(ww > 1920){
-                    colNumber = 8;
-                }
+                    if(naturalIndex%colNumber == 0){
+                        lineClassIndex += 1;
+                    }
 
-                console.log(i);
-            })
+                    $(this).attr('class','item block-poster l'+lineClassIndex);
+                });
+            });
         }
 
         return $grid;
