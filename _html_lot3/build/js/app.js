@@ -2827,7 +2827,7 @@ var owInitGrid = function (id) {
                         colNumber = 8;
                     }
 
-                    if(naturalIndex%colNumber == 0){
+                    if(i%colNumber == 0){
                         lineClassIndex += 1;
                     }
 
