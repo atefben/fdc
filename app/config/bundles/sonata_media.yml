@@ -173,6 +173,9 @@ sonata_media:
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
                 #
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         pdf:
             providers:
