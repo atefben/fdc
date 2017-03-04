@@ -22,11 +22,13 @@
                     {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias } %}
                 </div>
 
-                <div class="bright" style="display:none">
-                    <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
-                       class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-                    </a>
-                </div>
+                {% if not last %}
+                    <div class="bright" style="display:none">
+                        <a href="{{ path('fdc_corporate_news_getmediasajax', {'page': page + 1, 'year': festival.year}) }}"
+                           class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </section>

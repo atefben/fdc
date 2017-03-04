@@ -205,10 +205,10 @@ class MediaRepository extends EntityRepository
      * @param $locale
      * @param $festival
      * @param int $maxResults
-     * @param int $page
+     * @param int $firstResult
      * @return Media[]
      */
-    public function getRetrospective($locale, $festival, $maxResults = 30, $page = 1)
+    public function getRetrospective($locale, $festival, $maxResults = 30, $firstResult = 0)
     {
 
         $qb = $this
@@ -254,7 +254,7 @@ class MediaRepository extends EntityRepository
             ->andWhere("m.publishEndedAt IS NULL")
             ->addOrderBy('m.publishedAt', 'DESC')
             ->setMaxResults($maxResults)
-            ->setFirstResult(($page - 1) * $maxResults)
+            ->setFirstResult($firstResult)
             ->getQuery()
             ->getResult()
             ;

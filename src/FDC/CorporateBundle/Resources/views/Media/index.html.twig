@@ -15,7 +15,7 @@
         </div> <!-- end block push -->
 
         <div class="block-search block-01">
-            <form method="post">
+            <form action="" method="post">
                 <div class="vFlexAlign">
                     <label for="s-text" class="search-txt vFlexAlign">
                         <i class="icon icon-search"></i>
@@ -52,9 +52,9 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                <input type="hidden" for="s-yearstart" class="s-yearstart" name="year-start"
+                <input type="hidden" class="s-yearstart" name="year-start"
                        value="{% if app.request.get('yearStart') is not null %}{{ app.request.get('yearStart') }}{% else %}1946{% endif %}">
-                <input type="hidden" for="s-yearend" class="s-yearend" name="year-end"
+                <input type="hidden" class="s-yearend" name="year-end"
                        value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
                 <button type="submit" name="submit" class="button button-submit"><i
@@ -84,7 +84,7 @@
             {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
         </div>
 
-        {% if moreresults %}
+        {% if not last %}
             <div>
                 <a href="{{ path('fdc_corporate_media_index_ajax') }}"
                    class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
