@@ -20,12 +20,14 @@
                         {% include 'FDCCorporateBundle:News/list/include:article.html.twig' %}
                     {% endfor %}
                 </div>
-
-                <div class="bright" style="display:none">
-                    <a href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"
-                       class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-                    </a>
-                </div>
+                {% if not last %}
+                    <div class="bright" style="display:none">
+                        <a id="news-more"
+                           href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"
+                           class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
 

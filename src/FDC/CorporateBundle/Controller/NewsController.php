@@ -72,40 +72,26 @@ class NewsController extends Controller
 
     private function getArticlesAndFilters(FilmFestival $festival, $locale, $time = null)
     {
-        $since = null;
+        $before = null;
         if ($time) {
-            $since = new DateTime();
-            $since->setTimestamp($time);
+            $before = new DateTime();
+            $before->setTimestamp($time);
         }
-        $maxResults = 30;
+        $maxResults = 50;
 
         $articles = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getNewsRetrospective($locale, $festival, $since, $maxResults)
+            ->getNewsRetrospective($locale, $festival, null, $maxResults, $before)
         ;
-//        $newsArticles = $this
-//            ->getDoctrineManager()
-//            ->getRepository('BaseCoreBundle:News')
-//            ->getNewsRetrospective($locale, $festival, $since, $maxResults)
-//        ;
-//        $statementArticles = $this
-//            ->getDoctrineManager()
-//            ->getRepository('BaseCoreBundle:Statement')
-//            ->getStatementRetrospective($locale, $festival, $since, $maxResults)
-//        ;
-//        $infoArticles = $this
-//            ->getDoctrineManager()
-//            ->getRepository('BaseCoreBundle:Info')
-//            ->getInfoRetrospective($locale, $festival, $since, $maxResults)
-//        ;
-
-//        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
-        usort($articles, [$this, 'compareArticle']);
-
-
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
-        $articles = array_slice($articles, 0, 30);
+
+        if (count($articles) > 30) {
+            $last = false;
+            $articles = array_slice($articles, 0, 30);
+        } else {
+            $last = true;
+        }
         if (!$articles) {
             throw new NotFoundHttpException();
         }
@@ -141,9 +127,9 @@ class NewsController extends Controller
         }
 
         $time = null;
-        if ($articles && ($last = end($articles))) {
-            if (method_exists($last, 'getPublishedAt') && $last->getPublishedAt()) {
-                $time = $last->getPublishedAt()->getTimestamp();
+        if ($articles && ($lastArticle = end($articles))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
             }
         }
 
@@ -152,6 +138,7 @@ class NewsController extends Controller
             'articles' => $articles,
             'filters'  => $filters,
             'time'     => $time,
+            'last'     => $last,
         ];
     }
 
@@ -673,21 +660,5 @@ class NewsController extends Controller
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles
         ]);
-    }
-
-
-    /**
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    private function compareArticle($a, $b)
-    {
-        $aTime = $a->getPublishedAt()->getTimestamp();
-        $bTime = $b->getPublishedAt()->getTimestamp();
-        if ($aTime == $bTime) {
-            return 0;
-        }
-        return ($aTime > $bTime) ? -1 : 1;
     }
 }

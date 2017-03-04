@@ -134,7 +134,6 @@ class DefaultController extends Controller
             }
         }
 
-
         $movies = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')

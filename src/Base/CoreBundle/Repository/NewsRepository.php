@@ -959,9 +959,10 @@ class NewsRepository extends EntityRepository
      * @param $festival
      * @param $since
      * @param int $maxResults
+     * @param int $before
      * @return News[]
      */
-    public function getNewsRetrospective($locale, $festival, $since, $maxResults)
+    public function getNewsRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -1007,10 +1008,18 @@ class NewsRepository extends EntityRepository
 
         if ($since) {
             $qb
-                ->setMaxResults($maxResults)
                 ->andWhere('n.publishedAt > :since')
                 ->setParameter(':since', $since)
             ;
+        }
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt < :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
         }
 
         return $qb
