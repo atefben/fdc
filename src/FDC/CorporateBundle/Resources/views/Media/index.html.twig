@@ -84,9 +84,9 @@
             {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
         </div>
 
-        {% if more %}
+        {% if moreresults %}
             <div>
-                <a href="{{ path('fdc', {'ajax' : true }) }}"
+                <a href="{{ path('fdc_corporate_media_index_ajax') }}"
                    class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
             </div>
         {% endif %}
