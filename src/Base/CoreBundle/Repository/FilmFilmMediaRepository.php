@@ -16,7 +16,7 @@ class FilmFilmMediaRepository extends EntityRepository
      * @param $search
      * @param $yearStart
      * @param $yearEnd
-     * @return FilmFilmMedia
+     * @return FilmFilmMedia[]
      */
     public function getMedias($search, $yearStart, $yearEnd)
     {
