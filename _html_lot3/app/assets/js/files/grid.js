@@ -45,7 +45,7 @@ var owInitGrid = function (id) {
             $gridMore.isotope();
 
             if($gridDom.parent().find('.ajax-request').length){
-                if(!$gridDom.find('.ajax-request').is(':visible')){
+                if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
