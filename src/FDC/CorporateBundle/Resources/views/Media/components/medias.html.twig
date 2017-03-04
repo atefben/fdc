@@ -25,19 +25,17 @@
             {% endif %}
             {% set format = file.width > file.height ? 'paysage' : 'portrait' %}
             {% set legend = '' %}
-            {% if app.request.locale == 'fr' and media.media.titleVf %}
+            {% if app.request.locale == 'fr' and media.media.titleVf is defined %}
                 {% set legend = media.media.titleVf %}
             {% elseif class(media) == 'FilmFestivalPoster' %}
                 {% set legend = media|trans_fallback('title') %}
-            {% elseif app.request.locale != 'fr' and media.media.titleVa %}
+            {% elseif app.request.locale != 'fr' and media.media.titleVa is defined %}
                 {% set legend = media.media.titleVa %}
             {% endif %}
-            {% if app.request.locale == 'fr' and media.media.titleVf %}
+            {% if app.request.locale == 'fr' and media.media.copyright is defined %}
                 {% set copyright = media.media.copyright %}
             {% elseif class(media) == 'FilmFestivalPoster' %}
                 {% set copyright = file.copyright %}
-            {% elseif app.request.locale != 'fr' and media.media.titleVa %}
-                {% set copyright = media.media.copyright %}
             {% endif %}
             <article class="card card-01 item photo shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}" data-format="photo"
                      data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ dateMedia }}">
