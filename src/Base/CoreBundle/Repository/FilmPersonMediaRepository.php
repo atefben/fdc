@@ -17,16 +17,16 @@ class FilmPersonMediaRepository extends EntityRepository
     public function getMedias($search, $yearStart, $yearEnd)
     {
         $qb = $this->createQueryBuilder('fpm')
-            ->leftJoin('fpm.media', 'fm')
-            ->leftJoin('fpm.person', 'p')
-            ->leftJoin('p.translations', 'pt')
-            ->andWhere('fpm.media IS NOT NULL')
-            ->andWhere('fpm.person IS NOT NULL')
+            ->innerJoin('fpm.media', 'fm')
+            ->innerJoin('fpm.person', 'p')
+            ->innerJoin('p.films', 'ffp')
+            ->innerJoin('ffp.film', 'film')
+            ->innerJoin('film.festival', 'festival')
             ->andWhere('p.firstname LIKE :search OR p.lastname LIKE :search OR p.asianName LIKE :search')
             ->setParameter('search', '%'.$search.'%');
 
         if($yearStart && $yearEnd) {
-            $qb->andWhere('fpm.createdAt BETWEEN :yearStart AND :yearEnd')
+            $qb->andWhere('festival.year BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', '%'.$yearStart.'%')
                 ->setParameter('yearEnd', '%'.$yearEnd.'%')
             ;
