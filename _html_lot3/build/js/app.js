@@ -2646,7 +2646,7 @@ var owInitGrid = function (id) {
                     }else{
                         $data = $(data);
                         articles = $data.find('article');
-                        var moreBtn = $data.find('.bright').html();
+                        var moreBtn = $data.filter('.bright').html();
                         console.log('moreBtn',$data);
                         console.log('moreBtn',$data.filter('.bright'));
                         console.log('moreBtn',moreBtn);
@@ -2679,7 +2679,7 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
                         articles = $data.find('article');
-                        var moreBtn = $data.find('.bright').html();
+                        var moreBtn = $data.filter('.bright').html();
                         console.log('moreBtn',data);
                         console.log('moreBtn',$data);
                         console.log('moreBtn',$data.filter('.bright'));
