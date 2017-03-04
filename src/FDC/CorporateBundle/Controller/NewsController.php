@@ -215,9 +215,9 @@ class NewsController extends Controller
         $articles = array_merge($infos, $statements);
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
         usort($articles, [$this, 'compareArticle']);
-        if (count($articles) > 30) {
+        if (count($articles) > 3) {
             $last = false;
-            $articles = array_slice($articles, 0, 30);
+            $articles = array_slice($articles, 0, 3);
         } else {
             $last = true;
         }
