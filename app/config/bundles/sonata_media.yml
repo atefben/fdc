@@ -21,6 +21,9 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
         # SOIF
         film_director:
             providers:
@@ -40,6 +43,9 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_image_cover:
             providers:
@@ -47,6 +53,9 @@ sonata_media:
             formats:
                 2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
                 976x535: { width: 976, height: 535, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_affiche:
             providers:
@@ -54,6 +63,9 @@ sonata_media:
             formats:
                 256x348: { width: 256 , height: 348 , quality: 100, constraint: false }
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_poster:
             providers:
@@ -90,6 +102,9 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
         film_main:
             providers:
                 - sonata.media.provider.image
