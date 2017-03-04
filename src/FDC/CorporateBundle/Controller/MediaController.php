@@ -46,6 +46,9 @@ class MediaController extends Controller
         if (!$parameters['medias'] && !$page->getDisplayedSelection()) {
             $parameters['medias'] = $page->getMediasSelection();
             $parameters['last'] = true;
+            $parameters['noResult'] = true;
+        } else {
+            $parameters['noResult'] = false;
         }
         $parameters = array_merge($parameters, ['page' => $page]);
 
