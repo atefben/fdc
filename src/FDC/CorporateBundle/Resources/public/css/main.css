@@ -5373,11 +5373,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   list-style: none;
   list-style-type: none;
 }
-.block-contain-txt-register-movie .block-contact p > strong {
-  margin-top: 28px;
-  margin-bottom: 20px;
-  display: block;
-}
 .block-contain-txt-register-movie .block-s-info-02 p {
   line-height: 30px;
   margin-bottom: 30px;
