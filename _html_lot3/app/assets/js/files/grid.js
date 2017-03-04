@@ -82,6 +82,7 @@ var owInitGrid = function (id) {
                     }else{
                         data = $(data).find('article');
                         var moreBtn = $(data).find('.bright').html();
+                        console.log('moreBtn',moreBtn);
                         $gridMore.append(data).isotope( 'addItems', data );
                         $gridMore.isotope();
                         $('.bright').empty().html(moreBtn);
