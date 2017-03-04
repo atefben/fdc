@@ -2,6 +2,9 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFilmMedia;
+use Base\CoreBundle\Entity\FilmPersonMedia;
+use Base\CoreBundle\Entity\Media;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -138,9 +141,38 @@ class MediaController extends Controller
             ;
             $medias = array_merge($medias, $items);
         }
+        usort($medias, [$this, 'sortMedias']);
         return [
             'medias' => array_slice($medias, ($page - 1) * 30, 30),
             'last'   => !(bool)count($medias) > 30,
         ];
     }
+
+
+    private function sortMedias($a, $b)
+    {
+        $aTime = $this->getDateItem($a)->getTimestamp();
+        $bTime = $this->getDateItem($b)->getTimestamp();
+        if ($aTime == $bTime) {
+            return 0;
+        }
+        return ($aTime > $bTime) ? -1 : 1;
+    }
+
+    /**
+     * @param $item
+     * @return \DateTime
+     */
+    private function getDateItem($item)
+    {
+        if ($item instanceof Media) {
+            return $item->getPublishedAt();
+        } elseif ($item instanceof FilmFilmMedia) {
+            return $item->getUpdatedAt();
+        } elseif ($item instanceof FilmPersonMedia) {
+            return $item->getUpdatedAt();
+        }
+    }
+
+
 }
