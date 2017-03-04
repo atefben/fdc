@@ -110,6 +110,9 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data).find('article');
                         var moreBtn = $(data).find('.bright').html();
+                        console.log('moreBtn',data);
+                        console.log('moreBtn',$(data));
+                        console.log('moreBtn',$(data).find('.bright'));
                         console.log('moreBtn',moreBtn);
                         $gridMore.append($data);
                         $gridMore.isotope('destroy');
