@@ -164,10 +164,16 @@
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
 
-                    <a id="home-news-statements-more"
-                       href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
-                       data-reverse=""
-                       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
+                    {% if not last %}
+                        <a id="home-news-statements-more"
+                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                           data-reverse=""
+                           class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
+                    {% else %}
+                        <a id="home-news-statements-more"
+                        href="{{ path('fdc_corporate_news_infosandstatements',{year: festivalYear}) }}"
+                        class="read-more">{{ "article.list.title.touslesarticles"|trans|raw }}</a>
+                    {% endif %}
                 {% endif %}
             </div>
 
