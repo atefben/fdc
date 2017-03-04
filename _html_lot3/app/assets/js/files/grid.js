@@ -80,13 +80,13 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
-                        data = $(data).find('article');
-                        var moreBtn = $(data).find('.bright').html();
-                        console.log('moreBtn',data);
-                        console.log('moreBtn',$(data));
-                        console.log('moreBtn',$(data).find('.bright'));
+                        $data = $(data);
+                        articles = $data.find('article');
+                        var moreBtn = $data.find('.bright').html();
+                        console.log('moreBtn'$data);
+                        console.log('moreBtn',$data.find('.bright'));
                         console.log('moreBtn',moreBtn);
-                        $gridMore.append(data).isotope( 'addItems', data );
+                        $gridMore.append(articles).isotope( 'addItems', articles );
                         $gridMore.isotope();
                         if(typeof moreBtn !== 'undefined'){
                             $('.bright').empty().html(moreBtn);
@@ -113,13 +113,14 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        $data = $(data).find('article');
-                        var moreBtn = $(data).find('.bright').html();
+                        $data = $(data);
+                        articles = $data.find('article');
+                        var moreBtn = $data.find('.bright').html();
                         console.log('moreBtn',data);
-                        console.log('moreBtn',$(data));
-                        console.log('moreBtn',$(data).find('.bright'));
+                        console.log('moreBtn',$data);
+                        console.log('moreBtn',$data.find('.bright'));
                         console.log('moreBtn',moreBtn);
-                        $gridMore.append($data);
+                        $gridMore.append(articles);
                         $gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             $('.bright').empty().html(moreBtn);
