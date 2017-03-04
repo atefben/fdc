@@ -8,11 +8,10 @@
     {% endfor %}
 </div>
 
-{% if not last %}
-    <div class="bright" style="display:none">
-        <a id="news-more"
-           href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"
-           class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-        </a>
-    </div>
-{% endif %}
+<script type="text/javascript">
+    {% if not last %}
+    $('#news-more').attr('href', '{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}');
+    {% else %}
+    $('#news-more').removeClass('read-more block-01 ajax-request').attr('href', '');
+    {% endif %}
+</script>
