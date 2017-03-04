@@ -559,7 +559,7 @@ class InfoRepository extends EntityRepository
 
         if ($before) {
             $qb
-                ->andWhere('$n.publishedAt > :before')
+                ->andWhere('n.publishedAt > :before')
                 ->setParameter(':before', $before)
             ;
         }
