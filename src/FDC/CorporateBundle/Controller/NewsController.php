@@ -174,6 +174,7 @@ class NewsController extends Controller
         $parameters = $this->infosAndStatementsFilters($festival, $locale);
         return $this->render('FDCCorporateBundle:News:infos-and-statements.html.twig', $parameters);
     }
+
     /**
      * @Route("/{year}/infos-et-communiques/more/{timestamp}")
      * @param Request $request
@@ -188,7 +189,6 @@ class NewsController extends Controller
         $parameters = $this->infosAndStatementsFilters($festival, $locale, $timestamp);
         return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
-
 
 
     private function infosAndStatementsFilters(FilmFestival $festival, $locale, $time = null)
@@ -787,7 +787,8 @@ class NewsController extends Controller
             'prev'                   => $prevArticlesURL,
             'next'                   => $nextArticlesURL,
             'associatedFilm'         => $associatedFilm,
-            'sameDayArticles'        => $sameDayArticles
+            'sameDayArticles'        => $sameDayArticles,
+            'hideSliderAndMenu'      => true,
         ]);
     }
 

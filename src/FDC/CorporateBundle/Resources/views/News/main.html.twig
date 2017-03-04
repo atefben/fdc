@@ -6,11 +6,15 @@
 {% block body %}
     <section class="s-slider-retrospective">
 
-        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {% if not hideSliderAndMenu|default(false) %}
+            {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {% endif %}
 
         <div class="ajax-section">
             <div class="contain-ajax bright" id="main">
+                {% if not hideSliderAndMenu|default(false) %}
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+                {% endif %}
 
                 <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
