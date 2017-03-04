@@ -15,7 +15,7 @@
         </div> <!-- end block push -->
 
         <div class="block-search block-01">
-            <form action="" method="post">
+            <form action="" method="get">
                 <div class="vFlexAlign">
                     <label for="s-text" class="search-txt vFlexAlign">
                         <i class="icon icon-search"></i>
@@ -57,8 +57,9 @@
                 <input type="hidden" class="s-yearend" name="year-end"
                        value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
-                <button type="submit" name="submit" class="button button-submit"><i
-                            class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}</button>
+                <button type="submit" name="submit" class="button button-submit">
+                    <i class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}
+                </button>
             </form>
         </div>
 

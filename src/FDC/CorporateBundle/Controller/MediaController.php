@@ -72,6 +72,17 @@ class MediaController extends Controller
         return $this->render('FDCCorporateBundle:Media:components/medias.html.twig', $parameters);
     }
 
+    /**
+     * @param $locale
+     * @param $search
+     * @param $photo
+     * @param $video
+     * @param $audio
+     * @param $yearStart
+     * @param $yearEnd
+     * @param int $page
+     * @return array
+     */
     private function getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $page = 1)
     {
         if (!$photo && !$video && !$audio) {
