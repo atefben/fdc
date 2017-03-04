@@ -1,65 +1,18 @@
 {% trans_default_domain 'FDCEventBundle' %}
+{% import 'FDCCorporateBundle:Macro:movie.html.twig' as macroMovie %}
 {% if prev is not null %}
-    <div class="prevmovie">
-        <a href="{{ path('fdc_corporate_movie_get', {'slug': prev.slug}) }}" class="img">
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-            film: prev,
-            film_format: '156x206',
-            film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
-            }) %}
-        </a>
-        <div class="info">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    {% set title = prev.titleVO %}
-                    <a href="{{ path('fdc_corporate_movie_get', {'slug': prev.slug}) }}"><h2>{{ title }}</h2></a>
-                    {% set directors = prev.getDirectors() %}
-                    {% spaceless %}
-                        {% for director in directors %}
-                            {% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}{% if loop.index != directors|length %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
-                        {% endfor %}
-                    {% endspaceless %}
-                    {% if prev.countries|length > 0 %}
-                        <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}{% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
+    {{ macroMovie.navigation(prev, 'prevmovie') }}
 {% endif %}
 {% if next is not null %}
-    <div class="nextmovie">
-        <a href="{{ path('fdc_corporate_movie_get', {'slug': prev.slug}) }}" class="img">
-            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
-            film: next,
-            film_format: '156x206',
-            film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
-            }) %}
-        </a>
-        <div class="info">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    {% set title = next.titleVO %}
-                    <a href="{{ path('fdc_corporate_movie_get', {'slug': prev.slug}) }}"><h2>{{ title }}</h2></a>
-                    {% set directors = next.getDirectors() %}
-                    {% spaceless %}
-                        {% for director in directors %}
-                            {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}{% if not loop.last %}<a href="#"><span class="nom-item">, </span></a>{% endif %}
-                        {% endfor %}
-                    {% endspaceless %}
-                    {% if next.countries|length > 0 %}
-                        <p>{{ 'movie.label.pays'|trans }} : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }} {% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
+    {{ macroMovie.navigation(prev, 'nextmovie') }}
 {% endif %}
 <div class="arrows">
-{% if prev is not null %}
-    <a href="{{ path('fdc_corporate_movie_get', {'slug':  prev.slug }) }}" class="nav prev"><i class="icon icon-arrow-left"></i></a>
-{% endif %}
-{% if next is not null %}
-    <a href="{{ path('fdc_corporate_movie_get', {'slug':  next.slug }) }}" class="nav next"><i class="icon icon-arrow-right"></i></a>
-{% endif %}
+    {% if prev is not null %}
+        <a href="{{ path('fdc_corporate_movie_get', {'slug':  prev.slug }) }}" class="nav prev"><i
+                    class="icon icon-arrow-left"></i></a>
+    {% endif %}
+    {% if next is not null %}
+        <a href="{{ path('fdc_corporate_movie_get', {'slug':  next.slug }) }}" class="nav next"><i
+                    class="icon icon-arrow-right"></i></a>
+    {% endif %}
 </div>
