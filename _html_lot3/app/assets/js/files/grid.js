@@ -82,14 +82,14 @@ var owInitGrid = function (id) {
                     }else{
                         $data = $(data);
                         
-                        var moreBtn = $data.filter('.bright').html();
+                        var moreBtn = $data.filter('.bright').attr('href');
                         console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
                             $gridMore.append(articles).isotope( 'addItems', articles );
                             $gridMore.isotope();
                         
-                            $('.bright').empty().html(moreBtn);
+                            $this.attr('href',moreBtn);
                         }
                     }
                 });
@@ -98,6 +98,7 @@ var owInitGrid = function (id) {
         }else{
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
+                var $this = $(this);
                 var url = $(this).attr('href');
 
                 $.post({
@@ -115,13 +116,13 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
                         
-                        var moreBtn = $data.filter('.bright').html();
+                        var moreBtn = $data.filter('.bright').attr('href');
                         console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
                             $gridMore.append(articles);
                             $gridMore.isotope('destroy');
-                            $('.bright').empty().html(moreBtn);
+                            $this.attr('href',moreBtn);
                         }
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
