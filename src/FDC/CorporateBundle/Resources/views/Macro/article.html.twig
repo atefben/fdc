@@ -5,7 +5,7 @@
     {% if class(article) starts with 'S' %}
         {% set type = 'communique' %}
     {% else %}
-        {% set type = 'communique' %}
+        {% set type = 'info' %}
     {% endif %}
     {% set articleUrl = path('fdc_corporate_news_presssingle', {
     'year': article.festival.year,

@@ -8,13 +8,9 @@
 
 {% block body %}
     <section class=" border-bottom s-slider-retrospective">
-        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
         <div class="ajax-section">
             <div class="contain-ajax articles-list evenements padding-bottom" id="main">
-                <h2 class="title">Toute l'actualité</h2>
-                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
                 {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
 
                 <div class="grid-01 isotope-01">
