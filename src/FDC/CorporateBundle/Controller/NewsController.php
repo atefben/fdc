@@ -332,8 +332,14 @@ class NewsController extends Controller
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
-            ->getRetrospective($locale, $festival, 30, $page)
+            ->getRetrospective($locale, $festival, 31, ($page - 1) * 30)
         ;
+        if (count($medias) > 30) {
+            $medias = array_slice($medias, 0, 30);
+            $last = false;
+        } else {
+            $last = true;
+        }
 
         //set default filters
         $filters = [];
@@ -367,6 +373,7 @@ class NewsController extends Controller
             'filters'  => $filters,
             'festival' => $festival,
             'page'     => $page,
+            'last'     => $last,
         ];
     }
 
