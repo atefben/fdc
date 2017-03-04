@@ -380,7 +380,7 @@
   .block-contact {
     ul,p {
       color: #666666;
-      margin-bottom: 42px;
+      margin-bottom: 0px;
       margin-left: 0px;
       margin-top: 0px;
       font-size: .875rem;
@@ -388,6 +388,12 @@
       list-style: none;
       list-style-type: none;
 
+    }
+
+    strong {
+      margin-top: 28px;
+      margin-bottom: 20px;
+      display: block;
     }
   }
 
