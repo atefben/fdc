@@ -81,14 +81,13 @@ var owInitGrid = function (id) {
                         return false;
                     }else{
                         $data = $(data);
-                        articles = $data.find('article');
+                        
                         var moreBtn = $data.filter('.bright').html();
-                        console.log('moreBtn',$data);
-                        console.log('moreBtn',$data.filter('.bright'));
-                        console.log('moreBtn',moreBtn);
-                        $gridMore.append(articles).isotope( 'addItems', articles );
-                        $gridMore.isotope();
                         if(typeof moreBtn !== 'undefined'){
+                            var articles = $data.find('article');
+                            $gridMore.append(articles).isotope( 'addItems', articles );
+                            $gridMore.isotope();
+                        
                             $('.bright').empty().html(moreBtn);
                         }
                     }
@@ -114,15 +113,13 @@ var owInitGrid = function (id) {
                     },
                     success: function(data) {
                         $data = $(data);
-                        articles = $data.find('article');
+                        
                         var moreBtn = $data.filter('.bright').html();
-                        console.log('moreBtn',data);
-                        console.log('moreBtn',$data);
-                        console.log('moreBtn',$data.filter('.bright'));
-                        console.log('moreBtn',moreBtn);
-                        $gridMore.append(articles);
-                        $gridMore.isotope('destroy');
+                        
                         if(typeof moreBtn !== 'undefined'){
+                            var articles = $data.find('article');
+                            $gridMore.append(articles);
+                            $gridMore.isotope('destroy');
                             $('.bright').empty().html(moreBtn);
                         }
                         $gridMore.imagesLoaded(function () {
