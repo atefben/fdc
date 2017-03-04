@@ -16,7 +16,7 @@
                     {% endif %}
                 {% endif %}
                 {% set dateMedia = media.film.festival.year %}
-            {% elseif media.person is defined %}
+            {% elseif media.person is defined and media.person %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
                 {% set dateMedia = '' %}
             {% elseif class('Media') == 'FilmFestivalPoster' %}
