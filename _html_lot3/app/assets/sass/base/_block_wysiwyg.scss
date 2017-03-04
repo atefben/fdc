@@ -390,8 +390,11 @@
 
     }
 
-    br {
-      font-size: .5rem;
+    hr {
+      visibility: hidden;
+      height: 10px;
+      margin: 0px;
+      padding: 0px;
     }
   }
 
