@@ -194,41 +194,10 @@ var owInitGrid = function (id) {
             var trunTitle = function() {
                 $.each($('.card.item'), function (i, e) {
                     var title = $(e).find('.info strong a');
-    
-                    if (!title.hasClass('init')) {
-                        var text = $(e).find('.info strong a').text();
-                        title.addClass('init');
-                        title.attr('data-title', text);
-                    } else {
-                        var text = title.attr('data-title');
-                    }
-
                     var cat = $(e).find('.info .category');
 
-                    if (!cat.hasClass('init')) {
-                        text2 = cat.text();
-                        cat.addClass('init');
-                        cat.attr('data-cat', text2);
-                    } else {
-                        text2 = cat.attr('data-title');
-                    }
-    
-    
-                    if($('.medias').length > 0) {
-    
-                        if (window.matchMedia("(max-width: 1405px)").matches) {
-                            title.html(text.trunc(25, true));
-                        }else{
-                            title.html(text.trunc(30, true));
-                        }
-    
-                    } else {
-                        title.html(text.trunc(30, true));
-
-                        if (typeof text2 !== "undefined") {
-                            cat.html(text2.trunc(30, true));
-                        }
-                    }
+                    $clamp(title.get(0), {clamp: 1});
+                    $clamp(cat.get(0), {clamp: 1});
                 });
             }
     
