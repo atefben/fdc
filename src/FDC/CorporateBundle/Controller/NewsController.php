@@ -186,7 +186,7 @@ class NewsController extends Controller
         $festival = $this->getFestival($year);
 
         $parameters = $this->infosAndStatementsFilters($festival, $locale, $timestamp);
-        return $this->render('FDCCorporateBundle:News:infos-and-statements-more.html.twig', $parameters);
+        return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
 
 
