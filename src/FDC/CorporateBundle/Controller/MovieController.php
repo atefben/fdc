@@ -174,6 +174,9 @@ class MovieController extends Controller
     protected function isPublished($article, $locale)
     {
         $translation = $article->findTranslationByLocale($locale);
+        if (!$translation) {
+            return false;
+        }
         if ($locale == 'fr') {
             if ($translation->getStatus() === NewsArticleTranslation::STATUS_PUBLISHED) {
                 return true;
