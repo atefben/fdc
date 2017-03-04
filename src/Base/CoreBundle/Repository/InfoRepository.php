@@ -260,10 +260,10 @@ class InfoRepository extends EntityRepository
      * @param $dateTime
      * @param null $count
      * @param string $site
-     * @param bool $displayedHome
+     * @param bool $displayedOnCorpoHome
      * @return Info[]
      */
-    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedHome = false)
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -325,10 +325,10 @@ class InfoRepository extends EntityRepository
             $qb->setMaxResults($count);
         }
 
-        if ($displayedHome) {
+        if ($displayedOnCorpoHome) {
             $qb
-                ->andWhere('n.displayedHome = :displayedHome')
-                ->setParameter(':displayedHome', true)
+                ->andWhere('n.displayedOnCorpoHome = :displayedOnCorpoHome')
+                ->setParameter(':displayedOnCorpoHome', true)
             ;
         }
 

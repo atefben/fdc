@@ -82,6 +82,14 @@ abstract class Statement implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     *
+     */
+    protected $displayedOnCorpoHome = 0;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $displayedMobile;
 
@@ -1010,5 +1018,24 @@ abstract class Statement implements TranslateMainInterface
     public function getMobileDisplay()
     {
         return $this->mobileDisplay;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isDisplayedOnCorpoHome()
+    {
+        return $this->displayedOnCorpoHome;
+    }
+
+    /**
+     * @param bool $displayedOnCorpoHome
+     * @return $this
+     */
+    public function setDisplayedOnCorpoHome($displayedOnCorpoHome)
+    {
+        $this->displayedOnCorpoHome = $displayedOnCorpoHome;
+        return $this;
     }
 }

@@ -1129,6 +1129,7 @@ form:
     label_news_film_film_associated: Association à une ou plusieurs fiches films
     label_news_news_associated: Actualités associés
     label_displayed_home: Remonter en homepage
+    label_displayed_on_corpo_home: Remonter en homepage du site institutionnel
     label_displayed_mobile: Flux mobiles
     label_translate: Envoyer en traduction
     label_theme: Thème

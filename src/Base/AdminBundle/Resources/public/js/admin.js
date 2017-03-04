@@ -115,47 +115,40 @@ $(document).ready(function () {
         }
     });
 
-    if ($('.displayed-home-news').length) {
-        function checkDisplayHomeNewsCheckbox() {
+    if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
+        function checkDisplayHomeInfoStatementCheckbox() {
+            var $displayedHomeLabel = $('.form-group[id$="displayedHomepageLabel"]');
+            var $displayedOnCorpoHomeLabel = $('.form-group[id$="displayedOnCorpoHomeLabel"]');
             if ($("input[id*='sites_1']").is(':checked')) {
-                $('.form-group[id$="displayedHomepageLabel"]').show();
+                $displayedHomeLabel.show();
             } else {
-                $('.form-group[id$="displayedHomepageLabel"]').hide();
+                $displayedHomeLabel.hide();
+            }
+            if ($("input[id*='sites_3']").is(':checked')) {
+                $displayedOnCorpoHomeLabel.show();
+            } else {
+                $displayedOnCorpoHomeLabel.hide();
+            }
+        }
+
+        checkDisplayHomeInfoStatementCheckbox();
+        $("input[id*='sites_1'], input[id*='sites_3']").on('ifChanged', function () {
+            checkDisplayHomeInfoStatementCheckbox()
+        });
+    }
+    else {
+        function checkDisplayHomeNewsCheckbox() {
+            var $displayedHomeLabel = $('.form-group[id$="displayedHomepageLabel"]');
+            if ($("input[id*='sites_1']").is(':checked')) {
+                $displayedHomeLabel.show();
+            } else {
+                $displayedHomeLabel.hide();
             }
         }
 
         checkDisplayHomeNewsCheckbox();
         $("input[id*='sites_1']").on('ifChanged', function () {
             checkDisplayHomeNewsCheckbox()
-        });
-    }
-    else if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
-        function checkDisplayHomeInfoStatementCheckbox() {
-            if ($("input[id*='sites_3']").is(':checked')) {
-                $('.form-group[id$="displayedHomepageLabel"]').show();
-            } else {
-                $('.form-group[id$="displayedHomepageLabel"]').hide();
-            }
-        }
-
-        checkDisplayHomeInfoStatementCheckbox();
-        $("input[id*='sites_3']").on('ifChanged', function () {
-            checkDisplayHomeInfoStatementCheckbox()
-        });
-    }
-    else {
-        if ($("input[id*='sites_1']").is(':checked')) {
-            $('.form-group[id$="displayedHomepageLabel"]').show();
-        } else {
-            $('.form-group[id$="displayedHomepageLabel"]').hide();
-        }
-
-        $("input[id*='sites_1']").on('ifChanged', function () {
-            if (!$(this).is(':checked')) {
-                $('.form-group[id$="displayedHomepageLabel"]').hide();
-            } else {
-                $('.form-group[id$="displayedHomepageLabel"]').show();
-            }
         });
     }
 
