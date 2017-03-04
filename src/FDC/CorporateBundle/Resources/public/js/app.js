@@ -2646,10 +2646,15 @@ var owInitGrid = function (id) {
                     }else{
                         data = $(data).find('article');
                         var moreBtn = $(data).find('.bright').html();
+                        console.log('moreBtn',data);
+                        console.log('moreBtn',$(data));
+                        console.log('moreBtn',$(data).find('.bright'));
                         console.log('moreBtn',moreBtn);
                         $gridMore.append(data).isotope( 'addItems', data );
                         $gridMore.isotope();
-                        $('.bright').empty().html(moreBtn);
+                        if(typeof moreBtn !== 'undefined'){
+                            $('.bright').empty().html(moreBtn);
+                        }
                     }
                 });
 
@@ -2680,7 +2685,9 @@ var owInitGrid = function (id) {
                         console.log('moreBtn',moreBtn);
                         $gridMore.append($data);
                         $gridMore.isotope('destroy');
-                        $('.bright').empty().html(moreBtn);
+                        if(typeof moreBtn !== 'undefined'){
+                            $('.bright').empty().html(moreBtn);
+                        }
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
