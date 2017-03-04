@@ -1,7 +1,7 @@
 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 {% for id, media in medias  %}
     {% if media.type is not null %}
-        {% if class('Media') == 'FilmFestivalPoster' %}
+        {% if class(media) == 'FilmFestivalPoster' %}
             {% set file = media.file %}
         {% else %}
             {% set file = media.media.file %}
