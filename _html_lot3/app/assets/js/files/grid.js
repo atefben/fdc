@@ -108,11 +108,12 @@ var owInitGrid = function (id) {
                         pg: parseInt($('input[name="pg"]').val())+1
                     },
                     success: function(data) {
-                        $data = $(data).html();
-
+                        $data = $(data).find('article');
+                        var moreBtn = $(data).find('.bright').html();
+                        console.log('moreBtn',moreBtn);
                         $gridMore.append($data);
                         $gridMore.isotope('destroy');
-                        
+                        $('.bright').empty().html(moreBtn);
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
