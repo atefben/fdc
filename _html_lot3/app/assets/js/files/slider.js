@@ -36,9 +36,10 @@ var owInitSlider = function (sliderName) {
             onInitialized: function(){
                 var slides = $('.slider-home .owl-item');
                 slides.each(function(){
-                    var desc = $(this).find('.text-trunc').get(0);
-                    console.log(desc);
-                    $clamp(desc, {clamp: 3});
+                    var container = $(this).find('.text-trunc');
+                    var desc = container.text();
+                    container.empty().text(desc);
+                    $clamp(container.get(0), {clamp: 3});
                 });
             }
         });
