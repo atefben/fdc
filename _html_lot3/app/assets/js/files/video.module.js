@@ -84,6 +84,7 @@ function playerInit(id, cls, havePlaylist, live) {
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
+            console.log(videoPlayer);
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -95,11 +96,9 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            console.log("",this);
-            console.log("",this.className);
-            console.log("",this.id);
-            var videoPlayer = jwplayer(this.id);
+            var videoPlayer = jwplayer(this.id);console.log(this.id);
             if (!$(videoPlayer).data('loaded')) {
+                console.log(videoPlayer);
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
@@ -455,8 +454,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-
-
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
@@ -467,6 +464,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         height: $(vid).parent('div').height(),
         controls: ($('body').hasClass('tablet')) ? true : false
     });
+
 
     if (havePlaylist) {
         var tempSlider = $(slider),

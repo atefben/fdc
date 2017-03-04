@@ -22,7 +22,7 @@ var isPC = !isMacintosh();
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
-    if (sliderName == 'home') {
+    console.log(sliderName);if (sliderName == 'home') {
 
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
@@ -32,7 +32,15 @@ var owInitSlider = function (sliderName) {
             autoplayTimeout: 4000,
             autoplayHoverPause: true,
             loop: true,
-            smartSpeed: 700
+            smartSpeed: 700,
+            onInitialized: function(){
+                var slides = $('.slider-home .owl-item');
+                slides.each(function(){
+                    var desc = $(this).find('.text-trunc').get(0);
+                    console.log(desc);
+                    $clamp(desc, {clamp: 3});
+                });
+            }
         });
 
         slide.on('changed.owl.carousel', function (event) {
@@ -48,16 +56,6 @@ var owInitSlider = function (sliderName) {
                     $active.removeClass('active');
                 }, 500);
             }, 200);
-        });
-
-        $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
-            var title = $(e).find('.title-4a');
-            var text = $(e).find('.title-4a').html();
-            var textTrunc = $(e).find('.text-trunc p');
-            var textI = textTrunc[0].innerText;
-
-            title.html(text.trunc(40, true));
-            textTrunc.html(textI.trunc(400, false));
         });
 
         $('.slider-home').on('click', function(e){

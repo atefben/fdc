@@ -4453,7 +4453,7 @@ var isPC = !isMacintosh();
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
-    if (sliderName == 'home') {
+    console.log(sliderName);if (sliderName == 'home') {
 
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
@@ -4463,7 +4463,15 @@ var owInitSlider = function (sliderName) {
             autoplayTimeout: 4000,
             autoplayHoverPause: true,
             loop: true,
-            smartSpeed: 700
+            smartSpeed: 700,
+            onInitialized: function(){
+                var slides = $('.slider-home .owl-item');
+                slides.each(function(){
+                    var desc = $(this).find('.text-trunc').get(0);
+                    console.log(desc);
+                    $clamp(desc, {clamp: 3});
+                });
+            }
         });
 
         slide.on('changed.owl.carousel', function (event) {
@@ -4479,16 +4487,6 @@ var owInitSlider = function (sliderName) {
                     $active.removeClass('active');
                 }, 500);
             }, 200);
-        });
-
-        $.each($('.slider-carousel .item.vFlexAlign'), function(i,e){
-            var title = $(e).find('.title-4a');
-            var text = $(e).find('.title-4a').html();
-            var textTrunc = $(e).find('.text-trunc p');
-            var textI = textTrunc[0].innerText;
-
-            title.html(text.trunc(40, true));
-            textTrunc.html(textI.trunc(400, false));
         });
 
         $('.slider-home').on('click', function(e){
@@ -5873,8 +5871,10 @@ $(document).ready(function() {
           if (GLOBALS.env == "html") {
             var count = 15; 
             for (var i = 0; i < count; i++) {
-              if (typeof data.data[i] !== 'undefined' ) {
-                posts.push({'type': 'instagram', 'img': data.data[i].images.low_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div></div>', 'user': data.data[i].user.username});
+              if (typeof data.data !== 'undefined' ) {
+                if (typeof data.data[i] !== 'undefined' ) {
+                  posts.push({'type': 'instagram', 'img': data.data[i].images.low_resolution.url, 'date' : data.data[i].created_time, 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data.data[i].caption.text.substr(0, 140).parseURL().parseUsername().parseHashtag() + '</p></div></div></div>', 'user': data.data[i].user.username});
+                }
               }
              
               if(i == count - 1) {
@@ -6198,6 +6198,7 @@ function playerInit(id, cls, havePlaylist, live) {
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
+            console.log(videoPlayer);
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -6209,11 +6210,9 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            console.log("",this);
-            console.log("",this.className);
-            console.log("",this.id);
-            var videoPlayer = jwplayer(this.id);
+            var videoPlayer = jwplayer(this.id);console.log(this.id);
             if (!$(videoPlayer).data('loaded')) {
+                console.log(videoPlayer);
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
@@ -6569,8 +6568,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-
-
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
@@ -6581,6 +6578,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         height: $(vid).parent('div').height(),
         controls: ($('body').hasClass('tablet')) ? true : false
     });
+
 
     if (havePlaylist) {
         var tempSlider = $(slider),
