@@ -146,20 +146,8 @@ var owInitGrid = function (id) {
                                 var titleText;
                                 var catText;
 
-                                //if (!title.hasClass('init')) {
-                                    titleText = $this.find('.info strong a').text();
-                                    title.addClass('init');
-                                    title.attr('data-title', titleText);
-
-                                //if (!cat.hasClass('init')) {
-                                    catText = cat.text();
-                                    cat.addClass('init');
-                                    cat.attr('data-cat', catText);
-
-                                cat.addClass('init').attr('data-cat', cat.text());
-
-                                title.html(titleText.trunc(30, true));
-                                cat.html(catText.trunc(30, true));
+                                $clamp(title.get(0), {clamp: 1});
+                                $clamp(cat.get(0), {clamp: 1});
                             });
 
                         });
