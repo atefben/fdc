@@ -1,0 +1,64 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+
+{% import 'FDCCorporateBundle:Macro:article.html.twig' as macroArticle %}
+
+{% block bodyClass %}dark retrospective retrospective-home restrospective-init loading{% endblock %}
+
+
+{% block body %}
+    <section class=" border-bottom s-slider-retrospective">
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+
+        <div class="ajax-section">
+            <div class="contain-ajax articles-list evenements padding-bottom" id="main">
+                <h2 class="title">Toute l'actualité</h2>
+                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+
+                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+
+                <div class="grid-01 isotope-01">
+                    <div class="grid-sizer"></div>
+
+                    {% for article in articles %}
+                        {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+                    {% endfor %}
+                </div>
+
+                {% if not last %}
+                    <div class="bright">
+                        <a id="infos-and-statements-more"
+                           href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time, 'year': festival.year}) }}"
+                           class="read-more block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'header.mainnav.nav.lactualite'|trans,
+    "url"  : ''
+    },
+    ]} %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+{% endblock %}

@@ -142,6 +142,135 @@ class NewsController extends Controller
         ];
     }
 
+
+    /**
+     * @Route("/{year}/infos-et-communiques")
+     * @param Request $request
+     * @param null $year
+     * @return Response
+     */
+    public function infosAndStatementsAction(Request $request, $year)
+    {
+//        $this->isPageEnabled($request->get('_route'));
+        $locale = $request->getLocale();
+
+        $festival = $this->getFestival($year);
+
+        // SEO
+
+        $id = $this->getParameter('admin_fdc_page_news_articles_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsArticles')
+            ->find($id)
+        ;
+
+        if (!$page) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+
+        $parameters = $this->infosAndStatementsFilters($festival, $locale);
+        return $this->render('FDCCorporateBundle:News:infos-and-statements.html.twig', $parameters);
+    }
+    /**
+     * @Route("/{year}/infos-et-communiques/more/{timestamp}")
+     * @param Request $request
+     * @param null $year
+     * @return Response
+     */
+    public function infosAndStatementsMoreAction(Request $request, $year, $timestamp)
+    {
+        $locale = $request->getLocale();
+        $festival = $this->getFestival($year);
+
+        $parameters = $this->infosAndStatementsFilters($festival, $locale, $timestamp);
+        return $this->render('FDCCorporateBundle:News:infos-and-statements-more.html.twig', $parameters);
+    }
+
+
+
+    private function infosAndStatementsFilters(FilmFestival $festival, $locale, $time = null)
+    {
+        $before = null;
+        if ($time) {
+            $before = new DateTime();
+            $before->setTimestamp($time);
+        }
+        $maxResults = 50;
+
+        $infos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getInfoRetrospective($locale, $festival, null, $maxResults, $before)
+        ;
+
+        $statements = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getStatementRetrospective($locale, $festival, null, $maxResults, $before)
+        ;
+
+        $articles = array_merge($infos, $statements);
+        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
+        usort($articles, [$this, 'compareArticle']);
+        if (count($articles) > 2) {
+            $last = false;
+            $articles = array_slice($articles, 0, 2);
+        } else {
+            $last = true;
+        }
+        if (!$articles) {
+            throw new NotFoundHttpException();
+        }
+
+        //set default filters
+        $filters = [];
+        $filters['dates'][0] = 'all';
+        $filters['dateFormated'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['id'][0] = 'all';
+        $filters['format'][0] = 'all';
+
+
+        foreach ($articles as $key => $newsArticle) {
+            if (($key % 3) == 0) {
+                $newsArticle->double = true;
+            }
+
+            //check if filters don't already exist
+            $date = $newsArticle->getPublishedAt();
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
+            }
+
+            if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
+            }
+
+            if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                $filters['format'][] = $newsArticle->getNewsType();
+            }
+        }
+
+        $time = null;
+        if ($articles && ($lastArticle = end($articles))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
+            }
+        }
+
+        return [
+            'festival' => $festival,
+            'articles' => $articles,
+            'filters'  => $filters,
+            'time'     => $time,
+            'last'     => $last,
+        ];
+    }
+
     /**
      * @Route("/{year}/medias")
      * @param Request $request
@@ -660,5 +789,21 @@ class NewsController extends Controller
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles
         ]);
+    }
+
+
+    /**
+     * @param $a
+     * @param $b
+     * @return int
+     */
+    private function compareArticle($a, $b)
+    {
+        $aTime = $a->getPublishedAt()->getTimestamp();
+        $bTime = $b->getPublishedAt()->getTimestamp();
+        if ($aTime == $bTime) {
+            return 0;
+        }
+        return ($aTime > $bTime) ? -1 : 1;
     }
 }

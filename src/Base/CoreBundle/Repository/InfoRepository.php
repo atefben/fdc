@@ -511,9 +511,10 @@ class InfoRepository extends EntityRepository
      * @param $festival
      * @param $since
      * @param int $maxResults
+     * @param $before
      * @return Info[]
      */
-    public function getInfoRetrospective($locale, $festival, $since, $maxResults = 30)
+    public function getInfoRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -556,8 +557,19 @@ class InfoRepository extends EntityRepository
             ;
         }
 
+        if ($before) {
+            $qb
+                ->andWhere('$n.publishedAt > :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
         return $qb
-            ->setMaxResults($maxResults)
+
             ->getQuery()
             ->getResult()
             ;

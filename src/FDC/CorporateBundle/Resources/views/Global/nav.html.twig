@@ -51,9 +51,9 @@
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
                                     <li>
-                                        {% if child.route =='fdc_corporate_news_getarticles' and child.enabled == true %}
-                                            <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
-                                               {% if route =='fdc_corporate_news_getarticles' %}class="active"{% endif %}>
+                                        {% if child.route in ['fdc_corporate_news_getarticles', 'fdc_corporate_news_infosandstatements'] and child.enabled == true %}
+                                            <a href="{{ path(child.route, {'year': currentYear}) }}"
+                                                {% if route == child.route %}class="active"{% endif %}>
                                                 {{ child.transName|trans }}
                                             </a>
                                         {% else %}

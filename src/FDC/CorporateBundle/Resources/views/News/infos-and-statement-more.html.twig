@@ -1,0 +1,16 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+<div class="grid-01 isotope-01 add-ajax-request">
+    <div class="grid-sizer"></div>
+    {% for article in articles %}
+        {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+    {% endfor %}
+</div>
+
+<script type="text/javascript">
+{% if not last %}
+    $('#infos-and-statements-more').attr('href', '{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time, 'year': festival.year}) }}');
+{% else %}
+    $('#infos-and-statements-more').hide();
+{% endif %}
+</script>

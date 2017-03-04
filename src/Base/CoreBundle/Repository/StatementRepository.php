@@ -519,9 +519,10 @@ class StatementRepository extends EntityRepository
      * @param $festival
      * @param $since
      * @param int $maxResults
+     * @param $before
      * @return Statement[]
      */
-    public function getStatementRetrospective($locale, $festival, $since, $maxResults)
+    public function getStatementRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -570,8 +571,19 @@ class StatementRepository extends EntityRepository
             ;
         }
 
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt > :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
         return $qb
-            ->setMaxResults($maxResults)
+
             ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
