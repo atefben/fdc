@@ -42,6 +42,7 @@ class MediaController extends Controller
         $audio = (bool)$request->get('audio');
         $pg = $request->get('pg', 1);
         $yearStart = $request->get('yearStart');
+        $yearStart = $request->get('yearStart');
         $yearEnd = $request->get('yearEnd');
 
         $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $pg);

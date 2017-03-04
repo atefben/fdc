@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 
 /**
@@ -11,6 +12,12 @@ use Base\CoreBundle\Entity\FilmFilmMediaInterface;
  */
 class FilmFilmMediaRepository extends EntityRepository
 {
+    /**
+     * @param $search
+     * @param $yearStart
+     * @param $yearEnd
+     * @return FilmFilmMedia
+     */
     public function getMedias($search, $yearStart, $yearEnd)
     {
         $qb = $this->createQueryBuilder('ffm')

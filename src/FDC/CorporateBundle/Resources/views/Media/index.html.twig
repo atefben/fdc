@@ -52,9 +52,9 @@
                     </div>
                     <span id="slider-snap-value-upper" class="number"></span>
                 </div>
-                <input type="hidden" class="s-yearstart" name="year-start"
+                <input type="hidden" class="s-yearstart" name="yearStart"
                        value="{% if app.request.get('yearStart') is not null %}{{ app.request.get('yearStart') }}{% else %}1946{% endif %}">
-                <input type="hidden" class="s-yearend" name="year-end"
+                <input type="hidden" class="s-yearend" name="yearEnd"
                        value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
                 <input type="hidden" name="pg" value="1">
                 <button type="submit" name="submit" class="button button-submit">
