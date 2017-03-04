@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\Media;
@@ -177,6 +178,8 @@ class MediaController extends Controller
         } elseif ($item instanceof FilmFilmMedia) {
             return $item->getUpdatedAt();
         } elseif ($item instanceof FilmPersonMedia) {
+            return $item->getUpdatedAt();
+        } elseif ($item instanceof FilmFestivalPoster) {
             return $item->getUpdatedAt();
         }
     }
