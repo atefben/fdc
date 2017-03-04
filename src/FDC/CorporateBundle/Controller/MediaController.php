@@ -108,11 +108,17 @@ class MediaController extends Controller
             ;
             $medias = array_merge($medias, $items);
 
-            //FilmFilmMedia
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilmMedia')
                 ->getMedias($search, $yearStart, $yearEnd)
+            ;
+            $medias = array_merge($medias, $items);
+
+            $items = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFestivalPoster')
+                ->getMedias($locale, $search, $yearStart, $yearEnd)
             ;
             $medias = array_merge($medias, $items);
 

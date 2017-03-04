@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FilmFestivalPoster
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmFestivalPosterRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmFestivalPoster implements FilmFestivalPosterInterface, TranslateMainInterface

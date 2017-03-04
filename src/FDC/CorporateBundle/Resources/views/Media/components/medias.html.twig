@@ -14,6 +14,9 @@
             {% elseif media.person is defined %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
                 {% set dateMedia = '' %}
+            {% elseif class('Media') == 'FilmFestivalPoster' %}
+                {% set title = media|trans_fallback('title') %}
+                {% set dateMedia = media.festival.year %}
             {% endif %}
             {% set format = media.media.file.width > media.media.file.height ? 'paysage' : 'portrait' %}
             {% set legend = '' %}
@@ -33,7 +36,6 @@
                             <img src="{% path media.media.file, resolution %}" alt="" data-id="pid={{ id }}" data-credit="{% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}" data-title='<span class="category">{{ legend }}</span><span class="date">{{ dateMedia }}</span><h2>{{ legend }}</h2>' data-label="{{ legend }}" data-date="{{ dateMedia }}" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ app.request.uri ~ '#pid=' ~ id }}&picture={% path media.media.file, media.media.file.context ~ '640x404' %}&name=&caption=&description={% if media.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ media.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text={{ app.request.uri ~ '#pid=' ~ id }}" />
                         </div>
                         <a href="{% path media.media.file , 'reference' %}" class="linkImage"></a>
-                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                     </div>
                     <div class="info vFlexAlign">
                         <span class="picto"><i class="icon icon-photo"></i></span>
