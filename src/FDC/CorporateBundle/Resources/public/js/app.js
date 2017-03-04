@@ -2644,9 +2644,11 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
-                        data = $(data);
+                        data = $(data).find('article');
+                        var moreBtn = $(data).find('.bright').html();
                         $gridMore.append(data).isotope( 'addItems', data );
                         $gridMore.isotope();
+                        $('.bright').empty().html(moreBtn);
                     }
                 });
 
@@ -4469,7 +4471,6 @@ var owInitSlider = function (sliderName) {
                 slides.each(function(){
                     var container = $(this).find('.text-trunc');
                     var desc = container.text();
-                    console.log(desc);
                     container.empty().html(desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ""));
                     $clamp(container.get(0), {clamp: 3});
                 });

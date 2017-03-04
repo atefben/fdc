@@ -80,9 +80,11 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
-                        data = $(data);
+                        data = $(data).find('article');
+                        var moreBtn = $(data).find('.bright').html();
                         $gridMore.append(data).isotope( 'addItems', data );
                         $gridMore.isotope();
+                        $('.bright').empty().html(moreBtn);
                     }
                 });
 
