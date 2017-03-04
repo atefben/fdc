@@ -8,7 +8,7 @@
         {% endif %}
         {% if file %}
             {% set title = '' %}
-            {% if media.film is defined %}
+            {% if media.film is defined and media.film %}
                 {% set title = media.film.titleVO  %}
                 {% if title is defined and title is not null %}
                     {% if media.film|trans_fallback('title') != null and title != media.film|trans_fallback('title') %}
