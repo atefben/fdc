@@ -38,7 +38,7 @@ var owInitSlider = function (sliderName) {
                 slides.each(function(){
                     var container = $(this).find('.text-trunc');
                     var desc = container.text();
-                    container.empty().text(desc);
+                    container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
             }
