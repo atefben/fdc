@@ -2879,14 +2879,13 @@ var owInitGrid = function (id) {
 
 
         var trunTitle = function() {
-                $.each($('.card.item'), function (i, e) {
-                    var title = $(e).find('.info strong a');
-                    var cat = $(e).find('.info .category');
+            $.each($('.card.item'), function (i, e) {
+                var title = $(e).find('.info strong a');
+                var cat = $(e).find('.info .category');
 
-                    $clamp(title.get(0), {clamp: 1});
-                    $clamp(cat.get(0), {clamp: 1});
-                });
-            }
+                $clamp(title.get(0), {clamp: 1});
+                $clamp(cat.get(0), {clamp: 1});
+            });
         }
 
 
@@ -2939,7 +2938,6 @@ var owInitGrid = function (id) {
             var $grid = $('.isotope-02').isotope({filter: filterStaff});
         }
     }
-
 
 };
 
