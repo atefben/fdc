@@ -2,14 +2,14 @@
 {% for id, media in medias %}
     {% if media.type is not null %}
         {% if class(media) == 'FilmFestivalPoster' %}
-            {% set mediaPid = {{ 'ffp' ~ media.id }} %}
+            {% set mediaPid = 'ffp' ~ media.id %}
         {% elseif class(media) == 'FilmPersonMedia' %}
-            {% set mediaPid = {{ 'fpm' ~ media.id }} %}
+            {% set mediaPid = 'fpm' ~ media.id %}
         {% endif %}
         {% elseif class(media) == 'FilmFilmMedia' %}
-            {% set mediaPid = {{ 'ffpm' ~ media.id }} %}
+            {% set mediaPid = 'ffpm' ~ media.id %}
         {% else %}
-            {% set mediaPid = {{ media.id }} %}
+            {% set mediaPid = media.id %}
         {% endif %}
         {% if class(media) == 'FilmFestivalPoster' %}
             {% set file = media.file %}
