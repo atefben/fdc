@@ -133,14 +133,15 @@ class SearchController extends Controller
                             $name = $item->getNationality()->findTranslationByLocale($_locale)->getName();
                             if (strpos(strtoupper($name), strtoupper($data['artistCountry'])) === false) {
                                 unset($artistResults['items'][$key]);
+                                --$artistResults['count'];
                             }
                         } else {
                             unset($artistResults['items'][$key]);
+                            --$artistResults['count'];
                         }
                     }
                 }
                 $artistResults['items'] = array_slice(array_values($artistResults['items']), 0, 5);
-                $artistResults['count'] = count($artistResults['items']);
             }
 
             $result = [
