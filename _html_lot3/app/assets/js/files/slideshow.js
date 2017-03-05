@@ -128,9 +128,14 @@ var openSlideShow = function (slider, hash, affiche) {
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
+                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
+                if(typeof getTitle === 'undefined'){
+                    getTitle = $(value).find('img').attr("data-title");
+                }
+                console.log(getTitle);
                 var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
-                var title = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
+                var title = getTitle;
                 var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
                 var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
                 var caption = $(value).find('img').attr('data-credit');
@@ -138,10 +143,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 var facebookurl = $(value).find('img').attr('data-facebookurl');
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
-                console.log($(value));
-                console.log($(value).hasClass('photo'));
-                console.log($(value).find('.info .contain-txt strong a').data('title'));
-                console.log($(value).find('img').attr("data-title"));
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
 
@@ -361,7 +362,7 @@ var openSlideShow = function (slider, hash, affiche) {
     if(images[centerElement].caption.indexOf('Crédit Image :') == -1){
         images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
     }
-    console.log(images[centerElement]);
+    
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
