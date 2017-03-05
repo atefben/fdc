@@ -37,10 +37,10 @@ var owInitAjax = function() {
         number = hash.slice(4);
 
         if (hash.length > 0 && verif == "pid") {
-          var slider = $('.grid-01');console.log('in2');
+          var slider = $('.grid-01');
           owinitSlideShow(slider,hash);
         }else{
-          var slider = $('.grid-01');console.log('in3');
+          var slider = $('.grid-01');
           owinitSlideShow(slider);
         }
 

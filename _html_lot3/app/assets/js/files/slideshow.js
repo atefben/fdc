@@ -14,7 +14,6 @@ var owinitSlideShow = function (slider, hash) {
             $('.poster').off('click').on('click', function(e){
                 slider = $('.all-contain');
                 $(this).parent().addClass('active center');
-                console.log($(this));
                 var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
                 openSlideShow(slider,hash, true);
             })
@@ -54,7 +53,7 @@ var owinitSlideShow = function (slider, hash) {
             if($('.medias').length > 0 || $('.media-library').length > 0) {
                 $('.item.photo').off('click').on('click', function (e) {
                     e.preventDefault();
-                    console.log(slider);
+                    slider = $('.isotope-01');
                     $(this).addClass('photoActive');
                     openSlideShow(slider);
 

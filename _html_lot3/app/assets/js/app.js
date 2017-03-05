@@ -125,7 +125,7 @@ $(document).ready(function () {
 
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
-            owinitSlideShow(slider, hash);console.log('in8');
+            owinitSlideShow(slider, hash);
 
         }
     }
@@ -138,7 +138,7 @@ $(document).ready(function () {
         owInitSlider('slider-02');
         owInitReadMore();
         var slider = $('.block-diaporama .slider-01');
-        owinitSlideShow(slider);console.log('in9');
+        owinitSlideShow(slider);
 
         owInitGrid('isotope-01');
     }
@@ -181,10 +181,10 @@ $(document).ready(function () {
 
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.grid-01');
-            owinitSlideShow(slider, hash);console.log('in10');
+            owinitSlideShow(slider, hash);
         } else {
             var slider = $('.grid-01');
-            owinitSlideShow(slider);console.log('in11');
+            owinitSlideShow(slider);
         }
 
         if (hash.length > 0 && verif == "vid") {
@@ -211,7 +211,7 @@ $(document).ready(function () {
 
     if ($('.single-movie').length) {
         var slider = $('.slideshow-img .images');
-        owinitSlideShow(slider);console.log('in12');
+        owinitSlideShow(slider);
         scrollSingleMovie();
     }
     if ($('.slider-03').length) {
@@ -237,9 +237,9 @@ $(document).ready(function () {
             number = hash.slice(4);
 
             if (hash.length > 0 && verif == "pid") {
-                owinitSlideShow(slider, hash);console.log('in13');
+                owinitSlideShow(slider, hash);
             } else {
-                owinitSlideShow(slider);console.log('in14');
+                owinitSlideShow(slider);
             }
 
             if (hash.length > 0 && verif == "aid") {
@@ -310,9 +310,9 @@ $(document).ready(function () {
         number = hash.slice(4);
 
         if (hash.length > 0 && verif == "pid") {
-            owinitSlideShow(grid, hash);console.log('in7');
+            owinitSlideShow(grid, hash);
         } else {
-            owinitSlideShow(grid);console.log('in6');
+            owinitSlideShow(grid);
         }
 
         if (hash.length > 0 && verif == "vid") {
@@ -388,7 +388,7 @@ $(document).ready(function () {
         verif = hash.slice(0, 3);
 
         if (hash.length > 0 && verif == "pid") {
-            var slider = $('.affiche-fdc');console.log('in5');
+            var slider = $('.affiche-fdc');
             owinitSlideShow(slider, hash);
 
             $('.poster').on('click', function(e){
@@ -398,7 +398,7 @@ $(document).ready(function () {
                 openSlideShow(slider, "undefined", true);
             })
 
-        }else{console.log('in4');
+        }else{
             owinitSlideShow();
         }
     }

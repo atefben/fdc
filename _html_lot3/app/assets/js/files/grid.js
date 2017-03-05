@@ -157,7 +157,7 @@ var owInitGrid = function (id) {
                         
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
-                        console.log('in');
+                        
                         owinitSlideShow($gridMore);
                         initVideo();
                         initAudio();
