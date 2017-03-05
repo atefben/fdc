@@ -2593,6 +2593,7 @@ var owInitGrid = function (id) {
         var $items = $('.item');
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
+        console.log('check');
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
@@ -2660,6 +2661,7 @@ var owInitGrid = function (id) {
 
             });
         }else{
+            console.log('check mediatheque');
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
                 var $this = $(this);
