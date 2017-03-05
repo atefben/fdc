@@ -158,7 +158,7 @@ var owInitGrid = function (id) {
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
 
-                        owinitSlideShow($grid);
+                        owinitSlideShow($('.isotope-01'));
                         initVideo();
                         initAudio();
 
