@@ -3,6 +3,7 @@
 namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmPerson;
 use Elastica\Query;
 use Elastica\Query\QueryString;
 use FDC\CorporateBundle\Form\Type\SearchType;
@@ -124,7 +125,23 @@ class SearchController extends Controller
                 $mediaResults = false;
             }
             $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
-            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
+            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 40000, 1) : false;
+            if ($data['artistCountry']) {
+                foreach ($artistResults['items'] as $key => $item) {
+                    if ($item instanceof FilmPerson) {
+                        if ($item->getNationality() && $item->getNationality()->findTranslationByLocale($_locale)) {
+                            $name = $item->getNationality()->findTranslationByLocale($_locale)->getName();
+                            if (strpos(strtoupper($name), strtoupper($data['artistCountry'])) === false) {
+                                unset($artistResults['items'][$key]);
+                            }
+                        } else {
+                            unset($artistResults['items'][$key]);
+                        }
+                    }
+                }
+                $artistResults['items'] = array_slice(array_values($artistResults['items']), 0, 5);
+                $artistResults['count'] = count($artistResults['items']);
+            }
 
             $result = [
                 'news'           => $newsResults,
