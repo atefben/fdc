@@ -82,7 +82,7 @@ var owInitGrid = function (id) {
                     }else{
                         $data = $(data);
                         
-                        var moreBtn = $data.filter('.bright').find('a').attr('href');
+                        var moreBtn = $data.find('.ajax-request').attr('href');
                         console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
@@ -116,7 +116,7 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
                         
-                        var moreBtn = $data.filter('.ajax-request').attr('href');
+                        var moreBtn = $data.find('.ajax-request').attr('href');
                         console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
