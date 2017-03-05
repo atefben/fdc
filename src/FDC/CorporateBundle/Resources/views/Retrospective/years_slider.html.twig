@@ -2,7 +2,7 @@
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}loading retrospective retrospective-home {% endblock %}
-{{ dump(app.request.getPathInfo) }}
+
 {% block body %}
     <div class="b-timer">
         <div class="c-timer block-01">
@@ -11,7 +11,7 @@
             <span class="c-icon"><i class="icon icon-close"></i></span>
         </div>
     </div>
-
+    {{ dump(app.request.getPathInfo) }}
     <section class="s-slider-retrospective">
 
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
