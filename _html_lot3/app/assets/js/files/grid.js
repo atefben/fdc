@@ -50,19 +50,22 @@ var owInitGrid = function (id) {
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
+                            console.log(clickAllow);
                             if(clickAllow){
                                 clickAllow = false;
                                 $('.ajax-request').trigger('click');
                             }
                         }
                     });
+
+                    var ticker = window.setInterval(function(){
+                        clickAllow = true;
+                    },1000);
                 }
             }
         });
 
-        var ticker = window.setInterval(function(){
-            clickAllow = true;
-        },1000);
+        
 
 
         var number = 0;
