@@ -4544,7 +4544,7 @@ var owInitSlider = function (sliderName) {
 
         var initOpenAjax = function () { //ajax
             $('.discover').on('click', function (e) {
-
+                
                 e.preventDefault();
                 var url = $(this).data('url');
 
@@ -4566,7 +4566,7 @@ var owInitSlider = function (sliderName) {
 
 
                     var data = $(data).find('.contain-ajax');
-
+                    $('body').addClass('fs-off');
                     $('.ajax-section').html(data);
                     owInitNavSticky(1);
 
@@ -5280,8 +5280,11 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').addClass('chocolat-wrapper');
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
-    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
     
+    if(images[centerElement].caption.indexOf('Crédit Image :') == -1){
+        images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
+    }
+    console.log(images[centerElement]);
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
