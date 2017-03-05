@@ -132,7 +132,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
                 }
-                console.log(getTitle);
                 var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
                 var title = getTitle;
@@ -358,7 +357,7 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').addClass('chocolat-wrapper');
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
-
+    console.log(images[centerElement].caption);
     if(images[centerElement].caption.indexOf('dit Image :') == -1){
         images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
     }
