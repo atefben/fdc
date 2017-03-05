@@ -215,14 +215,14 @@ $(document).ready(function() {
         onInitialized: function() {
           var m = ($(window).width() - $('.container').width()) / 2;
           $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
-          setActiveMovieVideos();
+          //setActiveMovieVideos();
         },
         onResized: function() {
           var m = ($(window).width() - $('.container').width()) / 2;
           $('#slider-movie-videos .owl-stage').css({ 'margin-left': m });
         },
         onTranslated: function() {
-          setActiveMovieVideos();
+          //setActiveMovieVideos();
         }
       });
 
