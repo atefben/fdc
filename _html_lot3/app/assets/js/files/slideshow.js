@@ -95,7 +95,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 }
             }
 
-            if ($('.img').length > 0 && ($(value).hasClass('active') || $(value).hasClass('photoActive'))) {
+            if ($('.img').length > 0 && $(value).hasClass('active')) {
                 centerElement = index;
             }
 
@@ -173,6 +173,8 @@ var openSlideShow = function (slider, hash, affiche) {
     });
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
+        console.log(pid);
+        console.log(images);
         for(var o = 0; o < images.length; o++){
             if(pid == images[o].id){
                 var v = o;
@@ -181,8 +183,6 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }
     if(typeof hash == "undefined") {
-        console.log(images[centerElement]);
-        console.log(centerElement);
         hash = images[centerElement].id;
         var hashPush = '#'+hash;
         history.pushState(null, null, hashPush);
