@@ -110,7 +110,6 @@ var owInitSlider = function (sliderName) {
         $('.slider-02 .slide-video').on('click', function () {
             var number = $(this).index();
             playerInstance.playlistItem(number);
-            console.log(number);
             $('.slider-02 .center').removeClass('center');
             $(this).addClass('center');
             slide01.trigger('to.owl.carousel', number);

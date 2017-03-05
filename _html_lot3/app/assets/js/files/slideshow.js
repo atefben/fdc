@@ -95,7 +95,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 }
             }
 
-            if ($('.img').length > 0 && $(value).hasClass('active')) {
+            if ($('.img').length > 0 && ($(value).hasClass('active') || $(value).hasClass('photoActive'))) {
                 centerElement = index;
             }
 
