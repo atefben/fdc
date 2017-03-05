@@ -5284,7 +5284,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
     console.log(images[centerElement].caption);
-    if(images[centerElement].caption.indexOf('dit Image :') == -1){
+    if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
         images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
     }
 
