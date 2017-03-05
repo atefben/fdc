@@ -2614,7 +2614,6 @@ var owInitGrid = function (id) {
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
-                            console.log(clickAllow);
                             if(clickAllow){
                                 clickAllow = false;
                                 $('.ajax-request').trigger('click');
@@ -2624,7 +2623,7 @@ var owInitGrid = function (id) {
 
                     var ticker = window.setInterval(function(){
                         clickAllow = true;
-                    },1000);
+                    },2000);
                 }
             }
         });
@@ -6733,6 +6732,7 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
+        console.log($('.video-player').length);
         videoPlayer = playerInit(false, 'video-player', false);
     }
 

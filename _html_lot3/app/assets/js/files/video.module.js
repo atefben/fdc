@@ -662,6 +662,7 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
+        console.log($('.video-player').length);
         videoPlayer = playerInit(false, 'video-player', false);
     }
 
