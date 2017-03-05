@@ -4547,7 +4547,7 @@ var owInitSlider = function (sliderName) {
 
                 e.preventDefault();
                 var url = $(this).data('url');
-
+                $('body').addClass('fs-off');
                 $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
                 $('.timelapse').css('display', 'none');
                 $('.discover').css('display', 'none');
@@ -4562,14 +4562,9 @@ var owInitSlider = function (sliderName) {
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                 $.get(url, function (data) {
-
-                    $('body').addClass('fs-off');
-                    console.log($('body').hasClass('fs-off'))
                     var data = $(data).find('.contain-ajax');
-
                     $('.ajax-section').html(data);
                     owInitNavSticky(1);
-
                     window.history.pushState('', '', url);
 
                     setTimeout(function () {
