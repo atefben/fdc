@@ -663,8 +663,8 @@ $(document).ready(function () {
 
     if ($('.video-player').length > 0) {
 
-        console.log($('.video-player'),$('.video-player').data('file'));
-        videoPlayer = playerInit(false, 'video-player', false);
+        var dataFile = $('.video-player').data('file');
+        videoPlayer = playerInit(false, 'video-player', dataFile.length > 1);
     }
 
     if ($('.video-player-pl').length > 0) {
