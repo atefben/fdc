@@ -5087,7 +5087,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 twitterurl: twitterurl,
                 isPortrait: isPortrait
             };
-
+            console.log(image);
             images.push(image);
         }
     });
