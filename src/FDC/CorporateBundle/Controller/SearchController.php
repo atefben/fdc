@@ -243,6 +243,22 @@ class SearchController extends Controller
                 $s[$item->getSelectionSection()->findTranslationByLocale('fr')->getName()] = '';
             }
         }
+        if ($data['artistCountry']) {
+            foreach ($searchResults['items'] as $key => $item) {
+                if ($item instanceof FilmPerson) {
+                    if ($item->getNationality() && $item->getNationality()->findTranslationByLocale($_locale)) {
+                        $name = $item->getNationality()->findTranslationByLocale($_locale)->getName();
+                        if (strpos(strtoupper($name), strtoupper($data['artistCountry'])) === false) {
+                            unset($searchResults['items'][$key]);
+                            --$searchResults['count'];
+                        }
+                    } else {
+                        unset($searchResults['items'][$key]);
+                        --$searchResults['count'];
+                    }
+                }
+            }
+        }
 
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", [
             'result'  => [$searchFilter => $searchResults],
