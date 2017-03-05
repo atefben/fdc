@@ -312,7 +312,7 @@
     width: 100000px;
     transition: $smoothTransition .8s;
 
-    .restrospective-init.dark &{
+    .restrospective &{
       height: 373px;
       overflow: hidden;
     }
@@ -623,6 +623,8 @@
       display: block;
       z-index: 2;
       text-align: left;
+      position: absolute;
+      top: 0px;
     }
 
     .date{

@@ -10121,7 +10121,7 @@ body#home .isotope-01 .item .contain-img {
   width: 100000px;
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.8s;
 }
-.restrospective-init.dark .s-slider-retrospective .slides {
+.restrospective .s-slider-retrospective .slides {
   height: 373px;
   overflow: hidden;
 }
@@ -10373,6 +10373,8 @@ body#home .isotope-01 .item .contain-img {
   display: block;
   z-index: 2;
   text-align: left;
+  position: absolute;
+  top: 0px;
 }
 .slider-restropective.background-effet .date-back, .slider-restropective.background-effet .date-next {
   display: block;
