@@ -76,7 +76,7 @@ var openSlideShow = function (slider, hash, affiche) {
     var centerElement = 0;
     var caption = "";
     slider.find('.item, .img, .poster').each(function (index, value) {
-
+        console.log(!$(value).hasClass('video') && !$(value).hasClass('audio'));
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
