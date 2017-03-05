@@ -5064,7 +5064,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 var facebookurl = $(value).find('img').attr('data-facebookurl');
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
-
+                console.log(title);
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
 
