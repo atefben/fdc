@@ -4974,7 +4974,7 @@ var owinitSlideShow = function (slider, hash) {
             if($('.medias').length > 0 || $('.media-library').length > 0) {
                 $('.item.photo').off('click').on('click', function (e) {
                     e.preventDefault();
-
+                    console.log(slider);
                     $(this).addClass('photoActive');
                     openSlideShow(slider);
 
