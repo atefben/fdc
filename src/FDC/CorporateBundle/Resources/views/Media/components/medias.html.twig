@@ -5,7 +5,6 @@
             {% set mediaPid = 'ffp' ~ media.id %}
         {% elseif class(media) == 'FilmPersonMedia' %}
             {% set mediaPid = 'fpm' ~ media.id %}
-        {% endif %}
         {% elseif class(media) == 'FilmFilmMedia' %}
             {% set mediaPid = 'ffpm' ~ media.id %}
         {% else %}
