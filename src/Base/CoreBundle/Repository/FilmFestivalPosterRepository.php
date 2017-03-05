@@ -16,9 +16,10 @@ class FilmFestivalPosterRepository extends EntityRepository
      * @param $search
      * @param $yearStart
      * @param $yearEnd
+     * @param $since
      * @return FilmFestivalPoster[]
      */
-    public function getMedias($locale, $search, $yearStart, $yearEnd)
+    public function getMedias($locale, $search, $yearStart, $yearEnd, $since = null)
     {
         $qb = $this
             ->createQueryBuilder('fp')
@@ -38,8 +39,18 @@ class FilmFestivalPosterRepository extends EntityRepository
                 ->setParameter('search', '%' . $search . '%')
             ;
         }
+
+        if ($since) {
+            $qb
+                ->andWhere('fp.updatedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
         return $qb
-            ->getQuery()->getResult()
+            ->addOrderBy('fp.updatedAt', 'desc')
+            ->getQuery()
+            ->getResult()
             ;
     }
 }

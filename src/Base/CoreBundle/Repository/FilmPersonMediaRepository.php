@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmPersonMedia;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
@@ -14,9 +15,17 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class FilmPersonMediaRepository extends EntityRepository
 {
-    public function getMedias($search, $yearStart, $yearEnd)
+    /**
+     * @param $search
+     * @param $yearStart
+     * @param $yearEnd
+     * @param $since
+     * @return FilmPersonMedia[]
+     */
+    public function getMedias($search, $yearStart, $yearEnd, $since = null)
     {
-        $qb = $this->createQueryBuilder('fpm')
+        $qb = $this
+            ->createQueryBuilder('fpm')
             ->innerJoin('fpm.media', 'fm')
             ->innerJoin('fpm.person', 'p')
             ->innerJoin('p.films', 'ffp')
@@ -32,7 +41,17 @@ class FilmPersonMediaRepository extends EntityRepository
             ;
         }
 
-        return $qb->getQuery()->getResult();
+        if ($since) {
+            $qb
+                ->andWhere('fpm.updatedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('fpm.updatedAt', 'desc')
+            ->getQuery()
+            ->getResult();
     }
 
 }

@@ -56,7 +56,6 @@
                        value="{% if app.request.get('yearStart') is not null %}{{ app.request.get('yearStart') }}{% else %}1946{% endif %}">
                 <input type="hidden" class="s-yearend" name="yearEnd"
                        value="{% if app.request.get('yearEnd') is not null %}{{ app.request.get('yearEnd') }}{% else %}2016{% endif %}">
-                <input type="hidden" name="pg" value="1">
                 <button type="submit" class="button button-submit">
                     <i class="icon icon-search"></i>{{ 'mediatheque.filters.submit'|trans }}
                 </button>
@@ -80,14 +79,14 @@
             {% endif %}
         {% endif %}
 
-        <div class="grid-01 isotope-01 padding-bottom" id="main">
+        <div class="grid-01 isotope-01 padding-bottom add-ajax-request" id="main">
             <div class="grid-sizer"></div>
             {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
         </div>
 
-        {% if not last %}
+        {% if not last and since %}
             <div>
-                <a href="{{ path('fdc_corporate_media_index_ajax') }}"
+                <a href="{{ path('fdc_corporate_media_index_ajax', {'since': since|date('U')}) }}{{ filtersString }}"
                    class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
             </div>
         {% endif %}

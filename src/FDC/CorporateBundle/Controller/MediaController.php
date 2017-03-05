@@ -41,12 +41,10 @@ class MediaController extends Controller
         $photo = (bool)$request->get('photo');
         $video = (bool)$request->get('video');
         $audio = (bool)$request->get('audio');
-        $pg = $request->get('pg', 1);
-        $yearStart = $request->get('yearStart');
         $yearStart = $request->get('yearStart');
         $yearEnd = $request->get('yearEnd');
 
-        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $pg);
+        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd);
 
         if (!$parameters['medias'] && !$page->getDisplayedSelection()) {
             $parameters['medias'] = $page->getMediasSelection();
@@ -61,23 +59,24 @@ class MediaController extends Controller
     }
 
     /**
-     * @Route("/more", name="fdc_corporate_media_index_ajax")
+     * @Route("/more/{since}", name="fdc_corporate_media_index_ajax")
      * @param Request $request
      * @return Response
      */
-    public function indexAjaxAction(Request $request)
+    public function indexAjaxAction(Request $request, $since)
     {
         $locale = $request->getLocale();
         $search = $request->request->get('search');
         $photo = (bool)$request->request->get('photo');
         $video = (bool)$request->request->get('video');
         $audio = (bool)$request->request->get('audio');
-        $pg = $request->request->get('pg', 1);
-        $yearStart = $request->request->get('year-start');
-        $yearEnd = $request->request->get('year-end');
+        $start = $request->request->get('yearStart');
+        $end = $request->request->get('yearEnd');
+        $time = new \DateTime();
+        $time->setTimestamp($since);
 
-        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $pg);
-        return $this->render('FDCCorporateBundle:Media:components/medias.html.twig', $parameters);
+        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $start, $end, $time);
+        return $this->render('FDCCorporateBundle:Media:index.more.html.twig', $parameters);
     }
 
     /**
@@ -88,38 +87,37 @@ class MediaController extends Controller
      * @param $audio
      * @param $yearStart
      * @param $yearEnd
-     * @param int $page
+     * @param $since
      * @return array
      */
-    private function getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $page = 1)
+    private function getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $since = null)
     {
         if (!$photo && !$video && !$audio) {
             $photo = true;
             $video = true;
             $audio = true;
         }
-
         $medias = [];
         if ($photo) {
             //MediaImage
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Media')
-                ->searchMedias($locale, $search, true, false, false, $yearStart, $yearEnd, 31)
+                ->searchMedias($locale, $search, 'image', $yearStart, $yearEnd, 31, $since)
             ;
             $medias = array_merge($medias, $items);
 
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFilmMedia')
-                ->getMedias($search, $yearStart, $yearEnd)
+                ->getMedias($search, $yearStart, $yearEnd, $since)
             ;
             $medias = array_merge($medias, $items);
 
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmFestivalPoster')
-                ->getMedias($locale, $search, $yearStart, $yearEnd)
+                ->getMedias($locale, $search, $yearStart, $yearEnd, $since)
             ;
             $medias = array_merge($medias, $items);
 
@@ -127,7 +125,7 @@ class MediaController extends Controller
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FilmPersonMedia')
-                ->getMedias($search, $yearStart, $yearEnd)
+                ->getMedias($search, $yearStart, $yearEnd, $since)
             ;
             $medias = array_merge($medias, $items);
         }
@@ -136,7 +134,7 @@ class MediaController extends Controller
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Media')
-                ->searchMedias($locale, $search, false, true, false, $yearStart, $yearEnd, 31)
+                ->searchMedias($locale, $search, 'video', $yearStart, $yearEnd, 31, $since)
             ;
             $medias = array_merge($medias, $items);
         }
@@ -145,17 +143,53 @@ class MediaController extends Controller
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Media')
-                ->searchMedias($locale, $search, false, false, true, $yearStart, $yearEnd, 31)
+                ->searchMedias($locale, $search, 'audio', $yearStart, $yearEnd, 31, $since)
             ;
             $medias = array_merge($medias, $items);
         }
+
         usort($medias, [$this, 'sortMedias']);
+
+        $last = true;
+        $since = false;
+        if (count($medias) > 30) {
+            $last = false;
+        }
+        $medias = array_slice($medias, 0, 30);
+        $lastItem = end($medias);
+        if ($lastItem) {
+            $since = $this->getDateItem($lastItem);
+        }
+        $filters = [];
+        if ($search) {
+            $filters['search'] = $search;
+        }
+        if ($photo) {
+            $filters['photo'] = 'on';
+        }
+        if ($video) {
+            $filters['video'] = 'on';
+        }
+        if ($audio) {
+            $filters['audio'] = 'on';
+        }
+        if ($yearStart) {
+            $filters['yearStart'] = $yearStart;
+        }
+        if ($yearEnd) {
+            $filters['yearEnd'] = $yearEnd;
+        }
+        $filtersString = '';
+        foreach ($filters as $key => $value) {
+            $filtersString .= ($filtersString ? '&' : '?') . "$key=$value";
+        }
         return [
-            'medias' => array_slice($medias, ($page - 1) * 30, 30),
-            'last'   => !(bool)count($medias) > 30,
+            'medias' => $medias,
+            'last'   => $last,
+            'since'  => $since,
+            'filtersString'  => $filtersString,
         ];
     }
-
 
     private function sortMedias($a, $b)
     {

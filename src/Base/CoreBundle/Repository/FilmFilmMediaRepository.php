@@ -16,9 +16,10 @@ class FilmFilmMediaRepository extends EntityRepository
      * @param $search
      * @param $yearStart
      * @param $yearEnd
+     * @param $since
      * @return FilmFilmMedia[]
      */
-    public function getMedias($search, $yearStart, $yearEnd)
+    public function getMedias($search, $yearStart, $yearEnd, $since = null)
     {
         $qb = $this->createQueryBuilder('ffm')
             ->innerJoin('ffm.media', 'fm')
@@ -38,7 +39,17 @@ class FilmFilmMediaRepository extends EntityRepository
             ;
         }
 
-        return $qb->getQuery()->getResult();
+        if ($since) {
+            $qb
+                ->andWhere('ffm.updatedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('ffm.updatedAt', 'desc')
+            ->getQuery()
+            ->getResult();
     }
 
 }
