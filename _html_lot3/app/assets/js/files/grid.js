@@ -29,7 +29,6 @@ var owInitGrid = function (id) {
         var $items = $('.item');
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
-        console.log('check');
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
@@ -97,7 +96,6 @@ var owInitGrid = function (id) {
 
             });
         }else{
-            console.log('check mediatheque');
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
                 var $this = $(this);
@@ -118,7 +116,7 @@ var owInitGrid = function (id) {
                     success: function(data) {
                         $data = $(data);
                         
-                        var moreBtn = $data.filter('.bright').find('a').attr('href');
+                        var moreBtn = $data.filter('.ajax-request').attr('href');
                         console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
