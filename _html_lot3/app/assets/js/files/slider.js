@@ -158,7 +158,7 @@ var owInitSlider = function (sliderName) {
 
         var initOpenAjax = function () { //ajax
             $('.discover').on('click', function (e) {
-                
+
                 e.preventDefault();
                 var url = $(this).data('url');
 
@@ -177,10 +177,10 @@ var owInitSlider = function (sliderName) {
 
                 $.get(url, function (data) {
 
-
-
-                    var data = $(data).find('.contain-ajax');
                     $('body').addClass('fs-off');
+                    console.log($('body').hasClass('fs-off'))
+                    var data = $(data).find('.contain-ajax');
+
                     $('.ajax-section').html(data);
                     owInitNavSticky(1);
 
