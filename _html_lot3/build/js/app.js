@@ -3344,7 +3344,7 @@ $(document).ready(function() {
 
         var number = $(this).closest('.owl-item').index();
         videoMovieBa.playlistItem(number);
-        sliderMovieVideos.trigger('to.owl.carousel', [$(this).index(), 400, true]);
+        sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
 
