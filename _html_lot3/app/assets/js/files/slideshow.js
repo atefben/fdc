@@ -182,6 +182,7 @@ var openSlideShow = function (slider, hash, affiche) {
     }
     if(typeof hash == "undefined") {
         console.log(images[centerElement]);
+        console.log(centerElement);
         hash = images[centerElement].id;
         var hashPush = '#'+hash;
         history.pushState(null, null, hashPush);
