@@ -663,9 +663,7 @@ $(document).ready(function () {
 
     if ($('.video-player').length > 0) {
 
-        var dataFile = JSON.parse($('.video-player').data('file'));
         console.log($('.video-player'),$('.video-player').data('file'));
-        console.log(dataFile.length);
         videoPlayer = playerInit(false, 'video-player', false);
     }
 
