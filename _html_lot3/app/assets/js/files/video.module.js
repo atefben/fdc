@@ -664,8 +664,15 @@ $(document).ready(function () {
     if ($('.video-player').length > 0) {
 
         var dataFile = $('.video-player').data('file');
+        var isPlaylist = false;
+        if(typeof dataFile !== 'undefined'){
+            if(dataFile.length > 1){
+                isPlaylist = true;
+            }
+        }
 
-        videoPlayer = playerInit(false, 'video-player', dataFile.length > 1);
+
+        videoPlayer = playerInit(false, 'video-player', isPlaylist);
     }
 
     if ($('.video-player-pl').length > 0) {
