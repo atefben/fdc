@@ -507,8 +507,7 @@ var initVideo = function(hash) {
         }
         
         playerInstance.setup({
-            //sources: videoFile,
-            file: videoFile[0],
+            sources: videoFile,
             image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
