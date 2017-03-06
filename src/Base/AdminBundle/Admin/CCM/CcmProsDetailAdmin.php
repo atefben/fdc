@@ -243,6 +243,7 @@ class CcmProsDetailAdmin extends Admin
             )
             ->add('contactsCollection', 'sonata_type_collection', array(
                     'by_reference'       => false,
+                    'required' => false,
                     'label'              => 'form.ccm.label.pros.detail_contacts_list',
                     'translation_domain' => 'BaseAdminBundle',
                 ), array(

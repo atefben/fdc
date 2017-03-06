@@ -282,17 +282,25 @@ class HomepageManager
         return $positions;
     }
 
-    public function orderTransversModulesForProsPage($prosPage)
+    public function orderTransversModulesForPage($page)
     {
         $positions = [];
 
-        $positions[$prosPage->getTranslatable()->getPositionCatalog()] = 'catalog';
-        $positions[$prosPage->getTranslatable()->getPositionActualites()] = 'actualite';
-        $positions[$prosPage->getTranslatable()->getPositionSejour()] = 'sejour';
-        $positions[$prosPage->getTranslatable()->getPositionSocial()] = 'social';
+        $positions[$page->getTranslatable()->getPositionCatalog()] = 'catalog';
+        $positions[$page->getTranslatable()->getPositionActualites()] = 'actualite';
+        $positions[$page->getTranslatable()->getPositionSejour()] = 'sejour';
+        $positions[$page->getTranslatable()->getPositionSocial()] = 'social';
 
         ksort($positions);
 
         return $positions;
+    }
+
+    public function getSejouresFromProgramPage()
+    {
+        return $this->em
+            ->getRepository(HomepageSejourTranslation::class)
+            ->findSejourForProgramPage($this->requestStack->getMasterRequest()->get('_locale')
+            );
     }
 }

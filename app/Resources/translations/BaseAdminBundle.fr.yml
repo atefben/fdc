@@ -180,6 +180,29 @@ group:
     content: Contenu
     mobile_notificaton:
         publish: Publication
+    ccm:
+        helper_seo_example: |
+            <title> : [valeur champ titre actualité] - Cannes Court Métrage
+            meta desc  : [valeur champ chapô actualité]
+
+            og:site_name : Cannes Court Métrage
+            og:type : article
+            og:title : [valeur champ titre actualité]
+            og:url : [URL actualité]
+            og:description : [valeur champ chapô actualité]
+            og:updated_time : [valeur date de modif actualité]
+            og:image : [preset spécifique image principale (1200x630px)]
+
+            twitter:card : summary_large_image
+            twitter:site : Cannes Court Métrage
+            twitter:creator : @Cannes_Court
+            twitter:title : [valeur champ titre actualité]
+            twitter:description : [valeur champ chapô actualité]
+            twitter:image : [preset spécifique image principale (600x380px)]
+
+            article:author : [valeur signature actualité]
+            article:published_time : [valeur date de publication de l'actu]
+            article:modified_time : [valeur date de modif actualité]
 entity:
     corpo_festival_history: L'histoire du festival
     corpo_palme_or: La palme d'or
@@ -487,12 +510,16 @@ admin:
     ccm:
         menu:
             pros: Les pros du court
+            program: Programmation
             menu: Menu
             homepage: Homepage
-            faq: FAQ Page
-            contact_page: Contact Page
+            faq: FAQ
+            contact_page: Contact
             film_register: Inscrire un film
             label_page: La charte graphique
+            confidentialite: Politique de confidentialité
+            credits: Crédits
+            legal_mentions: Mentions Légales
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
@@ -1024,6 +1051,41 @@ form:
                 youtube_title: Youtube title
                 youtube_url: URL de YouTube
                 youtube_theme: Youtube theme
+            program:
+                program_title: Gestion du programme global de l'année
+                image: Image Cover
+                title: Titre
+                body: Chapô
+                days_collection: Dates
+                days_title: Liste des jours disponibles dans le programme
+                day:
+                    list: Dates
+                    date_event: Date
+                    schedule_collection: Gestion des événements de la journée
+                schedule:
+                    list: Événements
+                    schedule_title: Détail de l'événement dans le programme
+                    title: Titre
+                    description: Description
+                    url: URL
+                    access_type: Détail Type d’accès
+                    location: Détail Lieu
+                    time_details: Détail Heure
+                    schedule_type: Catégorie
+                schedule_type:
+                    title: Titre
+                catalog_title: Module Catalogue
+                catalog_is_activated: Activer le module
+                position_catalog: La position du module Catalog
+                social_title: Le social wall
+                social_is_activated: Activer le module
+                position_social: La position du module Social
+                actualite_title: Les actualités
+                position_actualite: La position du module Actualité
+                actualite_is_activated: Activer le module
+                sejour_is_activated: Activer le module
+                position_sejour: La position du module Séjour
+                sejour_title: Préparer son séjour
         size:
             small:  Titre petit
             medium: Titre moyen

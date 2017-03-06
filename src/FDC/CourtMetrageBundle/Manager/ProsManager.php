@@ -3,6 +3,7 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmDomainCollection;
 use FDC\CourtMetrageBundle\Entity\CcmDomainTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmProsDescription;
 use FDC\CourtMetrageBundle\Entity\CcmProsDetailTranslation;
@@ -42,7 +43,11 @@ class ProsManager
     public function getProsPageByLocale()
     {
         return $this->em->getRepository(CcmProsPageTranslation::class)
-            ->getByLocaleAndStatus($this->requestStack->getMasterRequest()->getLocale());
+            ->findOneBy(
+                array(
+                    'locale' => $this->requestStack->getMasterRequest()->getLocale()
+                )
+            );
     }
 
     /**
@@ -58,11 +63,18 @@ class ProsManager
      * @param $pros
      * @return array|null
      */
-    public function getDomains($pros)
+    public function getDomains($pros, $page)
     {
         if ($pros) {
             $domains = [];
+            $pageDomains = [];
             $repo = $this->em->getRepository(CcmDomainTranslation::class);
+            $domainsCollection = $this->em->getRepository(CcmDomainCollection::class)
+                ->findBy(
+                    array(
+                        'prosPage' => $page->getTranslatable()->getId()
+                    )
+                );
             
             foreach ($pros as $pro) {
                 $domain = $repo
@@ -72,13 +84,27 @@ class ProsManager
                             'slug' => $pro->getDomain()
                         )
                     );
-                
+
                 if ($domain) {
                     $domains[$domain->getSlug()] = $domain->getName();
                 }
             }
-            
-            return $domains;
+
+            foreach ($domainsCollection as $pd) {
+                $pageDomain = $this->em->getRepository(CcmDomainTranslation::class)
+                    ->findOneBy(
+                        array(
+                            'locale' => $this->requestStack->getMasterRequest()->getLocale(),
+                            'translatable' => $pd->getDomain(),
+                        )
+                    );
+
+                if ($pageDomain) {
+                    $pageDomains[$pageDomain->getSlug()] = $pageDomain->getName();
+                }
+            }
+
+            return array_intersect_key($domains, $pageDomains);
         }
         
         return null;
