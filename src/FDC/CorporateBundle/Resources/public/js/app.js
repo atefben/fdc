@@ -6150,7 +6150,6 @@ var timeout = 1000,
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
 function playerInit(id, cls, havePlaylist, live) {
-    console.log('playerInit');
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
@@ -6159,7 +6158,6 @@ function playerInit(id, cls, havePlaylist, live) {
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
-            console.log(videoPlayer);
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -6173,7 +6171,6 @@ function playerInit(id, cls, havePlaylist, live) {
         $("." + cls).each(function (i, v) {
             var videoPlayer = jwplayer(this.id);console.log(this.id);
             if (!$(videoPlayer).data('loaded')) {
-                console.log(videoPlayer);
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
@@ -6187,6 +6184,7 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
+    console.log('playerLoad');
     var $container = $("#" + vid.id).closest('.video-container');
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
