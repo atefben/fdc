@@ -156,12 +156,16 @@ $(document).ready(function () {
         if ($('#featured-movies').length) {
             if (s > $('#featured-movies').offset().top - $('#featured-movies').height() && s < $('#featured-movies').offset().top + $('#featured-movies').height()) {
                 if ($('#featured-movies .active').length) {
-                    $('#featured-movies .active').find('video')[0].play();
+                    if ($('#featured-movies .active').find('video').length > 1) {
+                        $('#featured-movies .active').find('video')[0].play();
+                    }
                 }
                 handleEndVideo();
             } else {
                 if ($('#featured-movies .active').length) {
-                    $('#featured-movies .active').find('video')[0].pause();
+                    if ($('#featured-movies .active').find('video').length > 1) {
+                        $('#featured-movies .active').find('video')[0].pause();
+                    }
                 }
             }
         }
