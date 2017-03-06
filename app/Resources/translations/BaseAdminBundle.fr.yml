@@ -753,6 +753,9 @@ form:
             regulation_details_button_label: Détail du règlement - Bouton libellé
             regulation_details_button_url: Détail du règlement - Bouton lien
         label_status: Statut
+        widget:
+            description: Module chapô
+            image: Module 1 photo
         label:
             contact_subject_theme: Page de contact thème
             contact_page_email_receiver: Récepteur email
@@ -762,6 +765,8 @@ form:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
+            short_film_corner:
+                position_du_menu: Position
             menu:
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
@@ -846,7 +851,7 @@ form:
                 title2: Titre 2
                 url: URL
                 sejour_is_activated: Activer le module
-                title: Préparer son séjour
+                title: Grand push
                 button : Bouton titre
             push:
                 homepage: Push
