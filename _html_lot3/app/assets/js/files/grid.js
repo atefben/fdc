@@ -425,6 +425,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
+        console.log('1919');
         while (i < $img.length) {
             if (j < 30) {
                 if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
@@ -440,7 +441,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
-
+        console.log('1920');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 0 || j == 5 || j == 14) {
@@ -454,8 +455,8 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    var d = grid.isotope('layout');
-    console.log(d);
+    grid.isotope('layout');
+
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
