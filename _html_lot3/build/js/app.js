@@ -2608,7 +2608,7 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
-            //$gridMore.isotope();
+            $gridMore.isotope();
 
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
@@ -2628,11 +2628,6 @@ var owInitGrid = function (id) {
                     },2000);
                 }
             }
-            owsetGridBigImg($gridMore, $('.grid-01'), true);
-
-            $(window).resize(function () {
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
-            });
         });
 
         
@@ -3025,6 +3020,8 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
+    var d = grid.isotope('layout');
+    console.log(d);
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
@@ -7013,7 +7010,11 @@ $(document).ready(function () {
     if ($('.articles-list').length) {
 
         var grid = owInitGrid('isotope-01');
-        
+        owsetGridBigImg(grid, $('.grid-01'), true);
+
+        $(window).resize(function () {
+            owsetGridBigImg(grid, $('.grid-01'), false);
+        });
     }
 
     if ($('.articles-list-medias').length) {

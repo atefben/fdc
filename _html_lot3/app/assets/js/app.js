@@ -254,7 +254,11 @@ $(document).ready(function () {
     if ($('.articles-list').length) {
 
         var grid = owInitGrid('isotope-01');
-        
+        owsetGridBigImg(grid, $('.grid-01'), true);
+
+        $(window).resize(function () {
+            owsetGridBigImg(grid, $('.grid-01'), false);
+        });
     }
 
     if ($('.articles-list-medias').length) {
