@@ -493,6 +493,9 @@ admin:
             contact_page: Contact Page
             film_register: Inscrire un film
             label_page: La charte graphique
+            confidentialite: Politique de confidentialité
+            credits: Crédits
+            legal_mentions: Mentions Légales
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
