@@ -379,7 +379,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log(owsetGridBigImg);
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -455,6 +454,8 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
+
+    grid.isotope();
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
