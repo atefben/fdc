@@ -286,7 +286,7 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            
+
             if(typeof $playlist[index] !== 'undefined'){
                 fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
@@ -297,7 +297,9 @@ var initVideo = function(hash) {
 
             // CUSTOM LINK TWITTER
             var twHref   = twitterLink;
-            twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+            if(typeof $playlist[index] !== 'undefined'){
+                twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+            }
             $topBar.find('.buttons .twitter').attr('href', twHref);
 
             // CUSTOM LINK COPY
