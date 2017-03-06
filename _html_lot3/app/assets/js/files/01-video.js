@@ -505,6 +505,8 @@ var initVideo = function(hash) {
             var videoFile =  $container.data('file');
             var videoImage =  $container.data('img');
         }
+
+        console.log(videoFile);
         
         playerInstance.setup({
             sources: videoFile,
