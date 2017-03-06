@@ -7218,6 +7218,10 @@ header #navigation ul.user li a .icon-pencil:before {
   margin-top: 0px;
 }
 
+.articles-list .grid-01 .card .info .category {
+  display: inline-block !important;
+}
+
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
