@@ -25,7 +25,7 @@
                         <div><img src="{{ asset('bundles/fdccourtmetrage/img/world.png') }}" alt=""><h3>{{ pro.country|shorten(56, '...') }}</h3></div>
                     {% endif %}
                     {% if pro.url is not null %}
-                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url|shorten(56, '...') }}" target="blank">{{ pro.urlName }}</a></h3></div>
+                        <div><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url|shorten(56, '...') }}" target="_blank">{{ pro.urlName }}</a></h3></div>
                     {% endif %}
                 </div>
             </div>
