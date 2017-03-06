@@ -7152,9 +7152,12 @@ h2.sub-title {
   height: 428px;
   overflow: hidden;
 }
-.block-diaporama .slider-01 .owl-item .item figure {
+.block-diaporama .slider-01 .owl-item .item figure, .block-diaporama .slider-01 .owl-item .item img {
   height: 100%;
   width: auto;
+  max-width: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 .block-legend .texts .text-01 strong {
