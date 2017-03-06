@@ -97,5 +97,69 @@
                 </div>
             </div>
         </div>
+
+        <div class="share" id="share" >
+            <p>{{ 'ccm.news.share_article'|trans }}</p>
+            <div class="buttons square">
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                {% spaceless %}
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if program.translatable.image is not null %}{% path program.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ program.title|url_encode(true) }}&description={% if program.body is not null %}{{ program.body|striptags|raw }}{% else %}Festival%20de%20Cannes{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                       rel="nofollow" class="button facebook news-fb-share">
+                        <i class="icon icon_facebook"></i>
+                    </a>
+                {% endspaceless %}
+                <a href="//twitter.com/intent/tweet?text={{ program.title ~ ' ' ~ currentUrl }}" class="button twitter"><i class="icon icon_twitter"></i>
+                </a>
+                <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                <a onclick="javascript:window.print()" href="#" class="button print"><i class="icon icon_print"></i></a>
+            </div>
+        </div>
+
+        {% for position in positions %}
+            {% if position == 'catalog' %}
+                {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
+            {% elseif position == 'actualite' %}
+                {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+            {% elseif position == 'sejour' %}
+                {% if sejourIsActive == 1 %}
+                    <div class="list-article">
+                        <div class="bandeau-list">
+                            {% if sejour is defined and sejour is not null %}
+                                {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% elseif position == 'social'%}
+                {% if socialIsActive == 1 %}
+                    {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+            {"breadcrumb":
+                [
+                    {
+                        "name" : 'breadcrumb.home'|trans,
+                        "url"  : path('fdc_ccm_homepage')
+                    },
+                    {
+                        "name" : 'breadcrumb.programe'|trans,
+                        "url"  :  path('ccm_program')
+                    }
+                ]
+            }
+        %}
+
+        {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+        {'section': 'Short Film Corner',
+            'detail': program.createdAt|date('d.m.y'),
+            'title': program.title,
+            'description': program.body is not null ? program.body|slice(0, 230) ~ '...' : '',
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+        })) }}
+
     </div>
 {% endblock %}

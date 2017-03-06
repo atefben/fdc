@@ -24,17 +24,26 @@ class ProgramController extends Controller
 
         $filters = $programManager->getAvailableListFilters($locale);
         $program = $programManager->getProgramPage($locale);
+        $programTranslatable = $program->getTranslatable();
 
-        if (!$program || !$program->getTranslatable()) {
+        if (!$program || !$programTranslatable) {
             throw new NotFoundHttpException();
         }
 
-        $orderedDays = $programManager->orderProgramDays($program->getTranslatable());
+        $orderedDays = $programManager->orderProgramDays($programTranslatable);
+
+        $homepageManger = $this->get('ccm.manager.homepage');
+        $sejour = $homepageManger->getSejouresFromProgramPage();
+        $positions = $homepageManger->orderTransversModulesForPage($program);
 
         return $this->render('@FDCCourtMetrage/program/program.html.twig', [
             'program'    => $program,
             'filters' => $filters,
             'daysCollection' => $orderedDays,
+            'sejourIsActive' => $programTranslatable->getSejourIsActive(),
+            'socialIsActive' => $programTranslatable->getSocialIsActive(),
+            'positions' => $positions,
+            'sejour' => $sejour,
         ]);
     }
 }
