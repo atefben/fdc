@@ -269,7 +269,7 @@ file that was distributed with this source code.
                                                     {% if group.label == 'admin.group.ccm.pros' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_PROS_PAGE_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmprospage_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmprospage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.pros'|trans({}, 'BaseAdminBundle') }}
