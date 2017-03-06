@@ -7218,6 +7218,11 @@ header #navigation ul.user li a .icon-pencil:before {
   margin-top: 0px;
 }
 
+.block-diaporama .owl-carousel .owl-item img {
+  width: auto;
+  height: 100%;
+}
+
 .articles-list .grid-01 .card .info .category {
   display: inline-block !important;
 }
