@@ -7222,6 +7222,12 @@ header #navigation ul.user li a .icon-pencil:before {
   display: inline-block !important;
 }
 
+.slider-selection .number#slider-snap-value-upper {
+  position: absolute;
+  right: 40px;
+  top: 95px;
+}
+
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
