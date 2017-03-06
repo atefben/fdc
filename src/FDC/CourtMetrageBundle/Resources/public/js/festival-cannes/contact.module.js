@@ -48,7 +48,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.selectOptions span', function() {
-      var i = parseInt($(this).index());
+      var i = parseInt($(this).index()) + 1;
       $('select option').eq(i).prop('selected', 'selected');
       $('.select').removeClass('invalid');
     });

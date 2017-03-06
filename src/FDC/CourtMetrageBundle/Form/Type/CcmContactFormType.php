@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +13,10 @@ class CcmContactFormType extends AbstractType
 
     public function __construct($contactSubjects)
     {
-        $this->contactSubjects = $contactSubjects;
+        $this->contactSubjects = array_merge(
+            ['default' => 'ccm.contact.select_theme'],
+            $contactSubjects
+        );
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -55,7 +57,16 @@ class CcmContactFormType extends AbstractType
                 ),
                 'required' => false,
                 'choices' => $this->contactSubjects,
-                'empty_value' => 'ccm.contact.select_theme'
+                'empty_value' => false,
+                'choice_attr' => function($val) {
+                    if ($val == 'default') {
+                        $attr = ['class' => 'default'];
+                    } else {
+                        $attr = [];
+                    }
+
+                    return $attr;
+                }
             ));
     }
 

@@ -113,6 +113,10 @@ body.chocolat-open.fixed {
     overflow-y: initial;
 }
 
+.contact #form .select #triggerSelect {
+    width: 60%;
+}
+
 .single-article .block-01-xs .title-21 {
     display: inline-block;
     margin-top: 15px;
