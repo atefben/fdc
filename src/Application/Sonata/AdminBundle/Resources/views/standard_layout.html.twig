@@ -282,15 +282,6 @@ file that was distributed with this source code.
                                                                 </a>
                                                             </li>
                                                         {% endif %}
-                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_PROGRAM_ADMIN') %}
-                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmprogram_edit' ? 'active' }}">
-                                                                <a data-edit="true"
-                                                                   href="{{ path('admin_fdc_courtmetrage_ccmprogram_edit', {id: 1}) }}">
-                                                                    <i class="fa fa-angle-double-right"></i>
-                                                                    {{ 'admin.ccm.menu.program'|trans({}, 'BaseAdminBundle') }}
-                                                                </a>
-                                                            </li>
-                                                        {% endif %}
                                                     {% endif %}
 
                                                     {% if group.label == 'dashboard.group.general' %}
@@ -309,6 +300,17 @@ file that was distributed with this source code.
                                                                    href="{{ path('admin_fdc_courtmetrage_homepage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.homepage'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if group.label == 'admin.group.ccm.short' %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_PROGRAM_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmprogram_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmprogram_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.program'|trans({}, 'BaseAdminBundle') }}
                                                                 </a>
                                                             </li>
                                                         {% endif %}
