@@ -275,7 +275,7 @@ var initVideo = function(hash) {
         function updateShareLink(index, secondaryContainer) {
             index = index || 0;
             sc    = secondaryContainer || 0;
-            console.log('tou');
+
             // CUSTOM LINK FACEBOOK
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
@@ -286,9 +286,13 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
-            fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
-            fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+            
+            if(typeof $playlist[index] !== 'undefined'){
+                fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
+                fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
+                fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+            }
+
             $topBar.find('.buttons .facebook').attr('href', fbHref);
 
             // CUSTOM LINK TWITTER
