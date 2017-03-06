@@ -180,6 +180,29 @@ group:
     content: Contenu
     mobile_notificaton:
         publish: Publication
+    ccm:
+        helper_seo_example: |
+            <title> : [valeur champ titre actualité] - Cannes Court Métrage
+            meta desc  : [valeur champ chapô actualité]
+
+            og:site_name : Cannes Court Métrage
+            og:type : article
+            og:title : [valeur champ titre actualité]
+            og:url : [URL actualité]
+            og:description : [valeur champ chapô actualité]
+            og:updated_time : [valeur date de modif actualité]
+            og:image : [preset spécifique image principale (1200x630px)]
+
+            twitter:card : summary_large_image
+            twitter:site : Cannes Court Métrage
+            twitter:creator : @Cannes_Court
+            twitter:title : [valeur champ titre actualité]
+            twitter:description : [valeur champ chapô actualité]
+            twitter:image : [preset spécifique image principale (600x380px)]
+
+            article:author : [valeur signature actualité]
+            article:published_time : [valeur date de publication de l'actu]
+            article:modified_time : [valeur date de modif actualité]
 entity:
     corpo_festival_history: L'histoire du festival
     corpo_palme_or: La palme d'or
