@@ -11427,13 +11427,16 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
   box-sizing: border-box;
-  padding-top: 38px;
+  padding-top: 28px;
   padding-left: 135px;
   text-align: left;
   line-height: 12px;
   position: relative;
   z-index: 2;
   transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+div.chocolat-wrapper .chocolat-bottom .chocolat-description.oneline, .c-fullscreen-slider .chocolat-bottom .chocolat-description.oneline {
+  padding-top: 38px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description.hide, .c-fullscreen-slider .chocolat-bottom .chocolat-description.hide {
   opacity: 0;
@@ -11674,17 +11677,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
     height: 80px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
-    padding-top: 0px;
+    padding-top: 23px;
     padding-left: 115px;
-    display: inline-block;
-    vertical-align: middle;
   }
-  div.chocolat-wrapper .chocolat-bottom:before, .c-fullscreen-slider .chocolat-bottom:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-    width: 0px;
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description.oneline, .c-fullscreen-slider .chocolat-bottom .chocolat-description.oneline {
+    padding-top: 15px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-pagination, .c-fullscreen-slider .chocolat-bottom .chocolat-pagination {
     line-height: 120px;

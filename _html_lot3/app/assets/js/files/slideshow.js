@@ -367,6 +367,8 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }
 
+    console.log(images[centerElement].title.find('*').size());
+
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
