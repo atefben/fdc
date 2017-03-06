@@ -117,7 +117,7 @@ $(document).ready(function () {
     }
 
     if ($('.block-diaporama').length > 0) {
-
+        console.log('init diapo');
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
