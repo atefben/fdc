@@ -11674,8 +11674,17 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
     height: 80px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
-    padding-top: 15px;
+    padding-top: 0px;
     padding-left: 115px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  div.chocolat-wrapper .chocolat-bottom .chocolat-description:before, .c-fullscreen-slider .chocolat-bottom .chocolat-description:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-pagination, .c-fullscreen-slider .chocolat-bottom .chocolat-pagination {
     line-height: 120px;
