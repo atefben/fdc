@@ -14156,10 +14156,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   content: '';
   display: block;
   height: 100%;
-  width: 97%;
+  width: 100%;
   position: absolute;
   top: 0;
-  left: 1%;
+  left: 0%;
   z-index: 1;
   opacity: .6;
 }
