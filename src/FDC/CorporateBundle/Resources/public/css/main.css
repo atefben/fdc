@@ -4109,9 +4109,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-poster .contain-txts br {
   display: none;
 }
-.isotope-01 .block-poster.item .contain-img {
-  height: auto;
-}
 .bright .block-poster {
   background-color: #fff;
 }
