@@ -34,10 +34,7 @@ class DoubleDescriptionType extends DescriptionType
                     'titleFirst'          => array(
                         'label'              => 'form.ccm.label.pros.detail_title_first_double',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                     'descriptionFirst'            => array(
                         'label'              => 'form.ccm.label.pros.detail_description_first_double',
@@ -47,18 +44,12 @@ class DoubleDescriptionType extends DescriptionType
                             'class' => 'ckeditor'
                         ),
                         'config_name' => 'widget',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                     'titleSecond'          => array(
                         'label'              => 'form.ccm.label.pros.detail_title_second_double',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                     'descriptionSecond'            => array(
                         'label'              => 'form.ccm.label.pros.detail_description_second_double',
@@ -68,10 +59,7 @@ class DoubleDescriptionType extends DescriptionType
                             'class' => 'ckeditor'
                         ),
                         'config_name' => 'widget',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                 ),
             ))

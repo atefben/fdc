@@ -34,10 +34,7 @@ class SingleDescriptionType extends DescriptionType
                     'title'          => array(
                         'label'              => 'form.ccm.label.pros.detail_title_single',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                     'description'            => array(
                         'label'              => 'form.ccm.label.pros.detail_description_single',
@@ -47,10 +44,7 @@ class SingleDescriptionType extends DescriptionType
                         ),
                         'field_type' => 'ckeditor',
                         'config_name' => 'widget',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                     ),
                 ),
             ))
