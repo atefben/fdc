@@ -6880,13 +6880,13 @@ $(document).ready(function () {
         hash = hash.substring(1, hash.length);
 
         verif = hash.slice(0, 3);
-
+        var slider = $('.block-diaporama .slider-01');
+        slider.find('.item').each(function(){
+            console.log($(this).find('img').width());
+            $(this).css('width',$(this).find('img').width());
+        });
         if (hash.length > 0 && verif == "pid") {
-            var slider = $('.block-diaporama .slider-01');
-            slider.find('.item').each(function(){
-                console.log($(this).find('img').width());
-                $(this).css('width',$(this).find('img').width());
-            });
+            
 
             owinitSlideShow(slider, hash);
 
