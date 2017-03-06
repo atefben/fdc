@@ -4941,6 +4941,7 @@ var owinitSlideShow = function (slider, hash) {
         } else if($('.article-single').length){
 
             $('.slideshow-img').on('click', function (e) {
+                console.log(e.target);
                 e.preventDefault();
 
                 slider = $(this);
