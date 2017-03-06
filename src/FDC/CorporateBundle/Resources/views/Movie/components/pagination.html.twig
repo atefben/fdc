@@ -4,7 +4,7 @@
     {{ macroMovie.navigation(prev, 'prevmovie') }}
 {% endif %}
 {% if next is not null %}
-    {{ macroMovie.navigation(prev, 'nextmovie') }}
+    {{ macroMovie.navigation(next, 'nextmovie') }}
 {% endif %}
 <div class="arrows">
     {% if prev is not null %}
