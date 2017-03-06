@@ -133,3 +133,7 @@ body.chocolat-open.fixed {
     height: 100%;
     border-radius: 500px;
 }
+
+.contact {
+    min-height: 450px;
+}
