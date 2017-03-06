@@ -1,6 +1,5 @@
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-        console.log('inIsotope01');
         var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
@@ -86,7 +85,6 @@ var owInitGrid = function (id) {
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
-                        console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
                             $gridMore.append(articles).isotope( 'addItems', articles );
@@ -120,7 +118,6 @@ var owInitGrid = function (id) {
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
-                        console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             var articles = $data.find('article');
                             $gridMore.append(articles);
@@ -193,7 +190,6 @@ var owInitGrid = function (id) {
         }
 
         if(!$('#home').length > 0) {
-            console.log('notHome');
             var trunTitle = function() {
                 $.each($('.card.item'), function (i, e) {
                     var title = $(e).find('.info strong a');
@@ -217,7 +213,7 @@ var owInitGrid = function (id) {
 
 
         if($('.item.block-poster').length) {
-            console.log('blockPosterIn');
+
             function selectionGridComputing(){
                 var stop = false;
                 var lineClassIndex = 0;
