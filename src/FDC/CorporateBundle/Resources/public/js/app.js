@@ -4431,7 +4431,6 @@ var owInitSlider = function (sliderName) {
                     var container = $(this).find('.text-trunc');
                     var desc = container.text();
                     desc = desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
-                    console.log(desc);
                     container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
