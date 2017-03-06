@@ -9368,22 +9368,21 @@ header #searchContainer {
   left: 15px;
   z-index: 3;
 }
+.card-01 .info .contain-txt {
+  padding-left: 55px;
+}
 .card-01 .info strong {
   font-size: .875rem;
   margin: 0px 0px;
   max-width: 100%;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
   text-align: left;
-  margin-left: 55px;
 }
 .medias .card-01 .info strong {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .card-01 .info strong a {
   color: #fff;
-}
-.card-01 .info .category {
-  margin-left: 55px;
 }
 .card-01 .info span {
   color: #9c9c9b;
