@@ -36,7 +36,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("actualites/{slug}", name="ccm_news_detail")
+     * @Route("actualites/{slug}", name="ccm_news_detail", options={"expose"=true})
      * @param $slug
      * @param Request $request
      * @return Response

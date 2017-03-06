@@ -156,8 +156,10 @@ class CcmNewsVideoAdmin extends CcmNewsAdmin
                 'btn_delete' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
-                'help' => 'form.news.helper_film_film_associated',
-                'required' => false
+                'label'    => 'form.ccm.label.actualite.associated_movie',
+                'help' => 'form.ccm.label.actualite.associated_movie_help',
+                'required' => false,
+                'btn_add' => false
             ))
             ->add('associatedNews', 'sonata_type_collection', array(
                 'label' => 'form.label_news_news_associated',

@@ -34,11 +34,13 @@
                             <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
                             <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
                                 {% if article.header is not null %}
-                                    {% set translations = article.header.findTranslationByLocale(app.request.locale) %}
-                                    <img src="{% path article.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                    <img src="{% path article.header|trans_fallback('file'), 'reference' %}" alt="{{ article.header|trans_fallback('alt') }}"/>
                                 {% elseif article.image is not null %}
-                                    {% set translations = article.image.findTranslationByLocale(app.request.locale) %}
-                                    <img src="{% path article.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                    <img src="{% path article.image|trans_fallback('file'), 'reference' %}" alt="{{ article.image|trans_fallback('alt') }}"/>
+                                {% elseif  article.getType() == 'image' and article.gallery is not null %}
+                                    {% if article.gallery.medias.first() is not null and article.gallery.medias.first().media is not null %}
+                                        <img src="{% path article.gallery.medias.first().media|trans_fallback('file'), 'reference' %}" alt="{{ article.gallery.medias.first().media|trans_fallback('alt') }}"/>
+                                    {% endif %}
                                 {% endif %}
                             </a>
                         </div>

@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Form\Type;
 
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * CcmShortFilmCornerWidgetImageType class.
@@ -35,7 +36,7 @@ class CcmShortFilmCornerWidgetImageType extends CcmShortFilmCornerWidgetType
     /**
      * @var mixed
      */
-    private $galleryAdmin;
+    private $imageAdmin;
 
     /**
      * sonataAdmin function.
@@ -49,9 +50,9 @@ class CcmShortFilmCornerWidgetImageType extends CcmShortFilmCornerWidgetType
         $this->admin = $admin;
     }
 
-    public function setGalleryAdmin($galleryAdmin)
+    public function setImageAdmin($imageAdmin)
     {
-        $this->galleryAdmin = $galleryAdmin;
+        $this->imageAdmin = $imageAdmin;
     }
 
     /**
@@ -65,11 +66,14 @@ class CcmShortFilmCornerWidgetImageType extends CcmShortFilmCornerWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' => $this->admin->getFormFieldDescriptions()['gallery'],
-            'model_manager'            => $this->galleryAdmin->getModelManager(),
-            'class'                    => $this->galleryAdmin->getClass(),
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' => $this->admin->getFormFieldDescriptions()['file'],
+            'model_manager'            => $this->imageAdmin->getModelManager(),
+            'class'                    => $this->imageAdmin->getClass(),
             'label'                    => false,
+            'constraints'              => [
+                new NotBlank()
+            ]
         ));
     }
 

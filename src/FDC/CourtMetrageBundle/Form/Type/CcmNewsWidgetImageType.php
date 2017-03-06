@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Form\Type;
 
 
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * CcmNewsWidgetImageType class.
@@ -32,7 +33,10 @@ class CcmNewsWidgetImageType extends CcmNewsWidgetType
      */
     private $newsWidgetImageDummyAdmin;
 
-    private $galleryAdmin;
+    /**
+     * @var mixed
+     */
+    private $imageAdmin;
 
     /**
      * setNewsWidgetImageDummyAdmin function.
@@ -46,9 +50,12 @@ class CcmNewsWidgetImageType extends CcmNewsWidgetType
         $this->newsWidgetImageDummyAdmin = $newsWidgetImageDummyAdmin;
     }
 
-    public function setgalleryAdmin($galleryAdmin)
+    /**
+     * @param mixed $imageAdmin
+     */
+    public function setImageAdmin($imageAdmin)
     {
-        $this->galleryAdmin = $galleryAdmin;
+        $this->imageAdmin = $imageAdmin;
     }
 
     /**
@@ -62,11 +69,14 @@ class CcmNewsWidgetImageType extends CcmNewsWidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('gallery', 'sonata_type_model_list', array(
-            'sonata_field_description' => $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['gallery'],
-            'model_manager'            => $this->galleryAdmin->getModelManager(),
-            'class'                    => $this->galleryAdmin->getClass(),
+        $builder->add('file', 'sonata_type_model_list', array(
+            'sonata_field_description' => $this->newsWidgetImageDummyAdmin->getFormFieldDescriptions()['file'],
+            'model_manager'            => $this->imageAdmin->getModelManager(),
+            'class'                    => $this->imageAdmin->getClass(),
             'label'                    => false,
+            'constraints' => [
+                new NotBlank()
+            ]
         ));
     }
 

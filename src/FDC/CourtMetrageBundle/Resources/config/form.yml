@@ -86,7 +86,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_image_type'}
         calls:
             - ['setNewsWidgetImageDummyAdmin', ['@base.admin.ccm_news_widget_image_dummy']]
-            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setImageAdmin', ['@base.admin.media_image']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_image_dual_align_type:
@@ -168,7 +168,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_image_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_image_dummy']]
-            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setImageAdmin', ['@base.admin.media_image']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_image_dual_align_type:

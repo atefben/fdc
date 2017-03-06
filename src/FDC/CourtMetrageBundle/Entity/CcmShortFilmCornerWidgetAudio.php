@@ -17,7 +17,7 @@ class CcmShortFilmCornerWidgetAudio extends CcmShortFilmCornerWidget
     /**
      * @var MediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"persist"})
      */
     protected $file;
 

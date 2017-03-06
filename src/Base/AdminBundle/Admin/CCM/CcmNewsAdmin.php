@@ -7,12 +7,12 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Base\CoreBundle\Entity\FilmFilm;
 use Doctrine\ORM\EntityManager;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
-use FDC\CourtMetrageBundle\Entity\CcmNewsArticle;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
@@ -196,6 +196,9 @@ class CcmNewsAdmin extends Admin
                 'catalogue' => 'BaseAdminBundle',
                 'label'     => 'show.label_status'
             ))
+            ->add('_preview', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_preview.html.twig'
+            ))
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
@@ -302,5 +305,11 @@ class CcmNewsAdmin extends Admin
             }
             $em->flush();
         }
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('acl');
+        $collection->add('previewnews', $this->getRouterIdParameter().'/previewnews');
     }
 }
