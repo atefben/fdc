@@ -9427,8 +9427,11 @@ header #searchContainer {
 .articles-list .card .info strong {
   color: #333;
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-weight: 700;
-  font-size: 1.625rem;
+  font-weight: 300;
+  font-size: 1.125rem;
+}
+.articles-list .card .info strong a {
+  color: #333;
 }
 
 .isotope-01 {
