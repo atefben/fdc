@@ -65,6 +65,7 @@ var owInitAjax = function() {
 
       if($('.grid-01').length) {
         var grid = owInitGrid('isotope-01');
+        console.log('two');
         owsetGridBigImg(grid, $('.grid-01'), true);
 
         $( window ).resize(function() {
