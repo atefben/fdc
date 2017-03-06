@@ -10089,7 +10089,7 @@ body#home .isotope-01 .item .contain-img {
 .slider-01 .item:after {
   content: '';
   width: 100%;
-  height: calc(100% - 20px);
+  height: 100%;
   opacity: .5;
   background-color: #fff;
   position: absolute;
