@@ -125,6 +125,10 @@ $(document).ready(function () {
 
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
+            slider.find('.item').each(function(){
+                $(this).css('width',$(this).find('img').width());
+            });
+
             owinitSlideShow(slider, hash);
 
         }
