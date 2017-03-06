@@ -275,7 +275,7 @@ var initVideo = function(hash) {
         function updateShareLink(index, secondaryContainer) {
             index = index || 0;
             sc    = secondaryContainer || 0;
-
+            console.log('tou');
             // CUSTOM LINK FACEBOOK
             if($('.container-webtv-ba-video').length > 0) {
                 var shareUrl = $('.video .video-container').attr('data-link');
@@ -6295,7 +6295,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     function updateShareLink(index, secondaryContainer) {
         index = index || 0;
         sc = secondaryContainer || 0;
-
+        console.log('one');
         // CUSTOM LINK FACEBOOK
         if ($('.container-webtv-ba-video').length > 0) {
             /*var shareUrl = $('.video .video-container').attr('data-link');*/
