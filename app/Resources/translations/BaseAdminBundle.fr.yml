@@ -487,6 +487,12 @@ admin:
     ccm:
         menu:
             pros: Les pros du court
+            menu: Menu
+            homepage: Homepage
+            faq: FAQ Page
+            contact_page: Contact Page
+            film_register: Inscrire un film
+            label_page: La charte graphique
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop

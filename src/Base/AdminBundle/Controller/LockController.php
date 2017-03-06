@@ -113,6 +113,10 @@ class LockController extends Controller
         'corpoteammembers'                 => 'CorpoTeamMembers',
         'corpopalmeor'                     => 'CorpoPalmeOr',
         'corpofestivalhistory'             => 'CorpoFestivalHistory',
+        'gallerydualalign' => 'GalleryDualAlign',
+        'filmselectionsection' => 'FilmSelectionSection',
+        'filmfilm' => 'FilmFilm',
+
     );
 
     /**
@@ -167,6 +171,12 @@ class LockController extends Controller
         'ccmsfcreliveedition' => 'CcmShortFilmCorner',
         'ccmregisterprocedure' => 'CcmRegisterProcedure',
         'ccmprospage' => 'CcmProsPage',
+        'ccmlabelsection' => 'CcmLabelSection',
+        'ccmmenu' => 'CcmMenu',
+        'ccmfaqpage' => 'CcmFaqPage',
+        'ccmcontactpage' => 'CcmContactPage',
+        'ccmfilmregister' => 'CcmFilmRegister',
+        'ccmlabel' => 'CcmLabel'
     );
 
     /**
