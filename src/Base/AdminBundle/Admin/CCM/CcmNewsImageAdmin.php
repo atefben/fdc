@@ -156,8 +156,8 @@ class CcmNewsImageAdmin extends CcmNewsAdmin
                 'required' => false
             ))
             ->add('associatedFilm', 'sonata_type_model_list', array(
-                'label'    => 'Film associé',
-                'help' => 'Sélectionnez un film associé à l\'article.',
+                'label'    => 'form.ccm.label.actualite.associated_movie',
+                'help' => 'form.ccm.label.actualite.associated_movie_help',
                 'required' => false,
                 'btn_add' => false
             ))

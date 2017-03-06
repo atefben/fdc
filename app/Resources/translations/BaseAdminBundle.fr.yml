@@ -860,6 +860,8 @@ form:
                 description: Description
                 is_active: Activer le module
                 is_active_actualite: Activer le actualite
+                associated_movie: Film associé
+                associated_movie_help: Sélectionnez un film associé à l'article.
                 url: URL
             social:
                 title: Le social wall
