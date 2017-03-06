@@ -22,7 +22,7 @@ var isPC = !isMacintosh();
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
-    console.log(sliderName);if (sliderName == 'home') {
+    if (sliderName == 'home') {
 
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,

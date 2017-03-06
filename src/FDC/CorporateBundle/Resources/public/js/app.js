@@ -4414,7 +4414,7 @@ var isPC = !isMacintosh();
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
-    console.log(sliderName);if (sliderName == 'home') {
+    if (sliderName == 'home') {
 
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
@@ -5958,8 +5958,6 @@ $(document).ready(function() {
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
-          
-          console.log(c);
 
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
