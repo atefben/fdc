@@ -3018,7 +3018,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmProgramAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgram, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Programmation}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Programmation, show_in_dashboard: false}
 
     base.admin.ccm_program_days_collection:
         class: Base\AdminBundle\Admin\CCM\CcmProgramDaysCollectionAdmin

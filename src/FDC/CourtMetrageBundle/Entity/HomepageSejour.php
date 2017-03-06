@@ -56,6 +56,12 @@ class HomepageSejour
     protected $prosPage;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CcmProgram", inversedBy="sejoures")
+     * @ORM\JoinColumn(name="program_page_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $programPage;
+
+    /**
      * HomepageSejour constructor.
      */
     public function __construct()
@@ -196,5 +202,28 @@ class HomepageSejour
     public function setProsPage($prosPage)
     {
         $this->prosPage = $prosPage;
+    }
+
+    /**
+     * Get prosPage.
+     *
+     * @return mixed
+     */
+    public function getProgramPage()
+    {
+        return $this->programPage;
+    }
+
+    /**
+     * Set ProsPage.
+     *
+     * @param CcmProgram $programPage
+     * @return true
+     */
+    public function setProgramPage(CcmProgram$programPage)
+    {
+        $this->programPage = $programPage;
+
+        return true;
     }
 }

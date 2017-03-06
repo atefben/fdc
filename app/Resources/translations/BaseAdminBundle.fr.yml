@@ -510,6 +510,7 @@ admin:
     ccm:
         menu:
             pros: Les pros du court
+            program: Programmation
             menu: Menu
             homepage: Homepage
             faq: FAQ
@@ -1068,6 +1069,18 @@ form:
                     schedule_type: Catégorie
                 schedule_type:
                     title: Titre
+                catalog_title: Module Catalogue
+                catalog_is_activated: Activer le module
+                position_catalog: La position du module Catalog
+                social_title: Le social wall
+                social_is_activated: Activer le module
+                position_social: La position du module Social
+                actualite_title: Les actualités
+                position_actualite: La position du module Actualité
+                actualite_is_activated: Activer le module
+                sejour_is_activated: Activer le module
+                position_sejour: La position du module Séjour
+                sejour_title: Préparer son séjour
         size:
             small:  Titre petit
             medium: Titre moyen

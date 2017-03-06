@@ -17,6 +17,14 @@ class CcmProgramAdmin extends Admin
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('BaseAdminBundle:Form:polycollection.html.twig')
+        );
+    }
+
     /**
      * @param ListMapper $listMapper
      */
@@ -41,6 +49,7 @@ class CcmProgramAdmin extends Admin
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'label'  => false,
+                'locales' => array('fr', 'en'),
                 'fields' => array(
                     'applyChanges'      => array(
                         'field_type' => 'hidden',
@@ -86,6 +95,65 @@ class CcmProgramAdmin extends Admin
                 'edit'     => 'inline',
                 'inline'   => 'table',
                 'sortable' => 'position',
+            ))
+            ->add(
+                'sejoures',
+                'infinite_form_polycollection',
+                array(
+                    'label'        => false,
+                    'types'        => array(
+                        'ccm_homepage_sejour_type',
+                    ),
+                    'allow_add'    => true,
+                    'allow_delete' => true,
+                    'prototype'    => true,
+                    'by_reference' => false,
+                )
+            )
+            ->add(
+                'sejourIsActive',
+                'checkbox',
+                array(
+                    'label'    => 'form.ccm.label.program.sejour_is_activated',
+                    'required' => false,
+                )
+            )
+            ->add('positionSejour',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.program.position_sejour',
+                    'required' => false,
+                )
+            )
+            ->add('positionSocial',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.program.position_social',
+                    'required' => false,
+                ))
+            ->add('socialIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.program.social_is_activated',
+                'required' => false,
+            ))
+            ->add('positionActualites',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.program.position_actualite',
+                    'required' => false,
+                ))
+            ->add('actualiteIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.program.actualite_is_activated',
+                'required' => false,
+            ))
+            ->add('catalogIsActive', 'checkbox', array(
+                'label'    => 'form.ccm.label.program.catalog_is_activated',
+                'required' => false,
+            ))
+            ->add('positionCatalog',
+                'integer',
+                array(
+                    'label'    => 'form.ccm.label.program.position_catalog',
+                    'required' => false,
             ))
         ;
     }

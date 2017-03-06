@@ -39,6 +39,7 @@ class CcmProgramScheduleAdmin extends Admin
         $formMapper
             ->add('translations', 'a2lix_translations', array(
                 'translation_domain' => 'BaseAdminBundle',
+                'locales' => array('fr', 'en'),
                 'required_locales' => array('fr'),
                 'fields' => array(
                     'applyChanges' => array(
