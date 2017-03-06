@@ -7222,9 +7222,13 @@ header #navigation ul.user li a .icon-pencil:before {
   display: inline-block !important;
 }
 
+.block-search .content-result section.artist {
+  overflow: hidden;
+}
+
 .slider-selection .number#slider-snap-value-upper {
   position: absolute;
-  right: 40px;
+  right: 35px;
   top: 95px;
 }
 
