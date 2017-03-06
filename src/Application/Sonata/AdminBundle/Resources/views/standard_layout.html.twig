@@ -290,7 +290,7 @@ file that was distributed with this source code.
                                                     {% if group.label == 'dashboard.group.general' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_MENU_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmmenu_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmmenu_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.menu'|trans({}, 'BaseAdminBundle') }}
@@ -299,7 +299,7 @@ file that was distributed with this source code.
                                                         {% endif %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_HOMEPAGE_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_homepage_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_homepage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.homepage'|trans({}, 'BaseAdminBundle') }}
@@ -310,7 +310,7 @@ file that was distributed with this source code.
                                                     {% if group.label == 'admin.group.ccm.footer' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_FAQ_PAGE_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfaqpage_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmfaqpage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.faq'|trans({}, 'BaseAdminBundle') }}
@@ -319,7 +319,7 @@ file that was distributed with this source code.
                                                         {% endif %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_CONTACT_PAGE_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmcontactpage_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmcontactpage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.contact_page'|trans({}, 'BaseAdminBundle') }}
@@ -330,7 +330,7 @@ file that was distributed with this source code.
                                                     {% if group.label == 'admin.group.ccm.participer' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_FILM_REGISTER_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfilmregister_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmfilmregister_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.film_register'|trans({}, 'BaseAdminBundle') }}
@@ -339,7 +339,7 @@ file that was distributed with this source code.
                                                         {% endif %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_CCM_LABEL_ADMIN') %}
                                                             <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmlabel_edit' ? 'active' }}">
-                                                                <a data-edit="true" class="fdc-check-lock-list"
+                                                                <a data-edit="true"
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmlabel_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.label_page'|trans({}, 'BaseAdminBundle') }}
