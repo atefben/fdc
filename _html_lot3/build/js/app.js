@@ -4998,6 +4998,7 @@ var openSlideShow = function (slider, hash, affiche) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
+    console.log(slider);
     slider.find('.item, .img, .poster').each(function (index, value) {
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
@@ -5278,8 +5279,6 @@ var openSlideShow = function (slider, hash, affiche) {
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
 
-    console.log(images);
-    console.log(centerElement);
     if(typeof images[centerElement].caption !== 'undefined'){
         if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
             images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
