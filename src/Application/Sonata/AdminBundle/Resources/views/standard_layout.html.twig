@@ -258,7 +258,13 @@ file that was distributed with this source code.
                                             {% set active = group.label == 'admin.group.ccm.pros' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmprospage_edit',
                                                 'admin_fdc_courtmetrage_ccmprosdetail_list',
-                                                'admin_fdc_courtmetrage_ccmprosdetail_create'] ? true %}
+                                                'admin_fdc_courtmetrage_ccmprosdetail_create'] ? true : active %}
+                                            {% set active = group.label == 'dashboard.group.general' and app.request.attributes.get('_route') in
+                                                ['admin_fdc_courtmetrage_ccmmenu_edit',
+                                                'admin_fdc_courtmetrage_homepage_edit'] ? true : active %}
+                                            {% set active = group.label == 'admin.group.ccm.participer' and app.request.attributes.get('_route') in
+                                                ['admin_fdc_courtmetrage_ccmfilmregister_edit',
+                                                'admin_fdc_courtmetrage_ccmlabel_edit'] ? true : active %}
                                             <li class="treeview{% if active %} active{% endif %}">
                                                 <a href="#">
                                                     {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
@@ -273,6 +279,47 @@ file that was distributed with this source code.
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmprospage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.pros'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+
+                                                    {% if group.label == 'dashboard.group.general' %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_MENU_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmmenu_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmmenu_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.menu'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_HOMEPAGE_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_homepage_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_homepage_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.homepage'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if group.label == 'admin.group.ccm.participer' %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_FILM_REGISTER_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfilmregister_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmfilmregister_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.film_register'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_LABEL_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmlabel_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmlabel_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.label_page'|trans({}, 'BaseAdminBundle') }}
                                                                 </a>
                                                             </li>
                                                         {% endif %}
@@ -356,19 +403,62 @@ file that was distributed with this source code.
                                     {% endfor %}
 
 
-                                    {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
-                                        <li class="treeview {% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
+                                    {% if is_granted('ROLE_BASE_ADMIN_CCM_FAQ_PAGE_ADMIN') %}
+                                        {% set active = app.request.attributes.get('_route') in
+                                            ['admin_fdc_courtmetrage_ccmfaqpage_edit',
+                                            'admin_fdc_courtmetrage_ccmcontactpage_edit',
+                                            'ccm_confidentialite_edit',
+                                            'ccm_credits_edit',
+                                            'ccm_legal_mentions_edit'] ? true : false %}
+                                        <li class="treeview {% if active %} active{% endif %}">
                                             <a href="#">
                                                 <i class="fa fa-folder"></i>
-                                                <span>{{ 'dashboard.link.corpo_mediatheque'|trans({}, 'BaseAdminBundle') }}</span>
+                                                <span>{{ 'admin.group.ccm.footer'|trans({}, 'BaseAdminBundle') }}</span>
                                                 <i class="fa pull-right fa-angle-left"></i>
                                             </a>
-                                            <ul class="treeview-menu {% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
-                                                {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
-                                                    <li class="{% if app.request.attributes.get('_route') == 'admin_base_core_corpomediatheque_edit' %} active{% endif %}">
-                                                        <a href="{{ path('admin_base_core_corpomediatheque_edit', {id: admin_corpo_mediatheque_id}) }}">
+                                            <ul class="treeview-menu {% if active %} active{% endif %}">
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_FAQ_PAGE_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmfaqpage_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('admin_fdc_courtmetrage_ccmfaqpage_edit', {id: 1}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
-                                                            Notre sélection
+                                                            {{ 'admin.ccm.menu.faq'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_CONTACT_PAGE_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmcontactpage_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('admin_fdc_courtmetrage_ccmcontactpage_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.contact_page'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_CONFIDENTIALITE_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_confidentialite_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_confidentialite_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.confidentialite'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_CREDITS_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_credits_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_credits_edit', {id: 2}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.credits'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_LEGAL_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_legal_mentions_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_legal_mentions_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.legal_mentions'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
                                                     </li>
                                                 {% endif %}
