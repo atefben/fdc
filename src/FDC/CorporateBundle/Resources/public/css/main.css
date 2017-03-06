@@ -7214,6 +7214,14 @@ header #navigation ul.user li a .icon-pencil:before {
   right: -24%;
 }
 
+.dark #main {
+  background: #000;
+}
+
+.dark .filters {
+  background: #fff;
+}
+
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
