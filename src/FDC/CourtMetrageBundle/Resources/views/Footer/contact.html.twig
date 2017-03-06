@@ -4,16 +4,16 @@
         <h2 class="title">{{ 'ccm.contact.title'|trans }}</h2>
         {% if app.session.flashBag.get('success')|length == 0 %}
             <div class="coords">
-                <h3>Festival de Cannes</h3>
-                <p>3, rue Amélie 75007 Paris - France</p>
-                <p>Tel: +33 (0) 1 53 59 61 00  -  Fax : +33 (0)1 53 59 61 10</p>
+                <h3>{{ 'contact.contact_block.title'|trans }}</h3>
+                <p>{{ 'contact.contact_block.address'|trans }}</p>
+                <p>{{ 'contact.contact_block.phone'|trans }}</p>
             </div>
             <div class="container">
                 <p>{{ 'ccm.contact.info'|trans }}</p>
                 <div id="form">
                     {{ form_start(form) }}
                         <div class="select {{ form.vars.errors|length > 0 ? 'invalid' : '' }}">
-                            <label for="select">{{ 'ccm.contact.message-theme'|trans }}:</label>
+                            <label for="select">{{ 'ccm.contact.message-theme'|trans }} :</label>
                             {{ form_widget(form.select) }}
                             <span id="triggerSelect"></span>
                         </div>
