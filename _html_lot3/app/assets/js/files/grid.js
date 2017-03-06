@@ -62,6 +62,11 @@ var owInitGrid = function (id) {
                     },2000);
                 }
             }
+            owsetGridBigImg($gridMore, $('.grid-01'), true);
+
+            $(window).resize(function () {
+                owsetGridBigImg($gridMore, $('.grid-01'), false);
+            });
         });
 
         

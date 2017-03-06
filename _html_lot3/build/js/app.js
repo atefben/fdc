@@ -1115,7 +1115,6 @@ var owInitAjax = function() {
 
       if($('.grid-01').length) {
         var grid = owInitGrid('isotope-01');
-        console.log('two');
         owsetGridBigImg(grid, $('.grid-01'), true);
 
         $( window ).resize(function() {
@@ -2629,6 +2628,11 @@ var owInitGrid = function (id) {
                     },2000);
                 }
             }
+            owsetGridBigImg($gridMore, $('.grid-01'), true);
+
+            $(window).resize(function () {
+                owsetGridBigImg($gridMore, $('.grid-01'), false);
+            });
         });
 
         
@@ -7009,12 +7013,7 @@ $(document).ready(function () {
     if ($('.articles-list').length) {
 
         var grid = owInitGrid('isotope-01');
-        console.log('one');
-        owsetGridBigImg(grid, $('.grid-01'), true);
-
-        $(window).resize(function () {
-            owsetGridBigImg(grid, $('.grid-01'), false);
-        });
+        
     }
 
     if ($('.articles-list-medias').length) {
