@@ -94,6 +94,7 @@
       margin-top: -1px;
     &:hover {
       background: #ECECEC;
+      cursor: pointer;
     }
   }
 
@@ -192,9 +193,19 @@
   }
 }
 
-
 .modal-wrapper {
-  margin-top: 100px;
+  margin-top: 100px!important;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  position: relative;
+  z-index: 9999;
+  width: 1034px;
+  height: auto;
+  overflow-y: visible;
+  min-height: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.35);
 }
 
 
@@ -204,8 +215,8 @@
   width: 450px;
   height: 480px;
   position: absolute;
-  left: -2%;
-  top: -0.5%;
+  left: -22px;
+  top: -18px;
   z-index: 2;
 }
 
@@ -214,7 +225,7 @@
 }
 
 .modal-content {
-  min-height: 1000px;
+  min-height: 1px;
   z-index: 1005;
   padding: 3% 0%;
   background: white;
@@ -422,6 +433,7 @@
         color: #141414;
         font-family: $CamphorHeavy;
         font-size: 14px;
+        margin-bottom: 10px!important;
       }
 
       p {
@@ -484,16 +496,42 @@
       width: 100%;
       line-height: 40px;
       text-align: left;
+
+      /*.contactInfoEmail {
+        &:before {
+          width: 30px;
+          content: " ";
+          background-image: url(/img/world.png);
+          position: absolute;
+          height: 20px;
+          left: 5%;
+        }
+      }
+
+      .world {
+        &:before {
+          width: 30px;
+          content: " ";
+          background-image: url(/img/computer.png);
+          position: absolute;
+          height: 20px;
+          left: 5%;
+        }
+      }*/
       div {
           width: 100%;
           float: left;
           margin-bottom: 10px;
+
         h3 {
           position: relative;
           font-family: $CamphorHeavy;
           font-size: 20px;
           color: #141414;
           float:left;
+          width: 85%;
+          margin-left: 3%;
+          line-height: 25px;
           a {
             text-decoration: none;
             color:#141414!important;
@@ -503,8 +541,8 @@
         img {
           position: relative;
           float:left;
-          padding-top: 10px;
-          margin-right: 10px;
+          padding-top:2px;
+          width: 10%;
         }
       }
     }

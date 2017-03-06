@@ -162,6 +162,7 @@
         font-size: 2.8rem;
         color: #c1c1c1;
         @include transition(color 0.5s $smoothTransition);
+            font-style: normal !important;
       }
 
       .icon_moins {

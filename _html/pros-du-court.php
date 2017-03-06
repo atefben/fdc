@@ -81,6 +81,7 @@
                   <div class="content firstContent">
                     <div class="parent">
                       <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
+     
                     <div class="box a events modal-toggle">
                       <div class="eventPhoto">
                         <div class="eventPhotoContainer">
@@ -362,8 +363,8 @@
                   <div class="bckgQuote">&#8220;</div>
                 </div>
                 <div class="contactInfo">
-                    <div><img src="img/world.png" alt=""> <h3>Japan</h3></div>
-                    <div><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">shortshorts.org</a></h3></div>
+                    <div class="world"><img src="img/world.png" alt=""> <h3>Japan zefazefartze  rzze</h3></div>
+                    <div class="contactInfoEmail"><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">shortshorts.org sgsergze ezrgze zert zer</a></h3></div>
                     <!--<div><img src="img/flyingPaper.png" alt=""><h3><a href="mailto:aki@shortshorts.org" >aki@shortshorts.org</h3></a></div>
                     <div><img src="img/flyingPaper.png" alt=""><h3>jessica@shortshorts.org</h3></div>
                     <div><img src="img/flyingPaper.png" alt=""><h3>clairechauvat@shortshorts.org</h3></div>-->

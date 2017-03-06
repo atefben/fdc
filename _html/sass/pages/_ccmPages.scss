@@ -966,3 +966,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     font-family: $CamphorThin!important;
   }
 } 
+
+.item figcaption, .item .caption {
+    margin-top: 0px;
+}

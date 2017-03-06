@@ -270,6 +270,10 @@ article {
 .single-article {
   padding: 65px 0;
 
+  .text {
+    margin: 35px 0px;
+  }
+
   ul {
     li {
       font-family: $CamphorRegular;
@@ -448,6 +452,10 @@ article {
       margin-left: 4px;
       margin-right: 5px;
       padding-left: 8px;
+    }
+
+    a {
+      color: black;
     }
 
     span {
