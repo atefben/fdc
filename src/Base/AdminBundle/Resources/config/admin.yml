@@ -2816,19 +2816,19 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmConfidentialiteAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Politique de confidentialité }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Politique de confidentialité, show_in_dashboard: false }
 
     base.admin.ccm_credits:
         class: Base\AdminBundle\Admin\CCM\CcmCreditsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Crédits }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Crédits, show_in_dashboard: false }
 
     base.admin.ccm_legal:
         class: Base\AdminBundle\Admin\CCM\CcmLegalAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmFooterContent, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Mentions Légales }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Mentions Légales, show_in_dashboard: false }
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
