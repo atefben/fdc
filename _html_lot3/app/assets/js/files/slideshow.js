@@ -75,9 +75,7 @@ var openSlideShow = function (slider, hash, affiche) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-    console.log(slider.html());
     slider.find('.item, .img, .poster').each(function (index, value) {
-        console.log(!$(value).hasClass('video') && !$(value).hasClass('audio'));
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
@@ -152,7 +150,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 if(centerElement < 0){
                     centerElement = $(this).index();
                 }
-                console.log(centerElement);
             }
 
             var image = {
@@ -168,14 +165,11 @@ var openSlideShow = function (slider, hash, affiche) {
                 twitterurl: twitterurl,
                 isPortrait: isPortrait
             };
-            console.log(image);
             images.push(image);
         }
     });
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
-        console.log(pid);
-        console.log(images);
         for(var o = 0; o < images.length; o++){
             if(pid == images[o].id){
                 var v = o;
