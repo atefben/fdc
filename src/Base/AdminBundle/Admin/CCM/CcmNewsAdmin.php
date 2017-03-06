@@ -310,6 +310,5 @@ class CcmNewsAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('acl');
-        $collection->add('previewnews', $this->getRouterIdParameter().'/previewnews');
     }
 }
