@@ -7148,7 +7148,7 @@ h2.sub-title {
 }
 
 .block-diaporama .slider-01 .owl-item .item {
-  width: 640px;
+  width: auto;
   height: 428px;
   overflow: hidden;
 }
