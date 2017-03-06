@@ -114,6 +114,14 @@ jQuery(document).ready(function ($) {
         var route = Routing.generate('fdc_press_news_get', {_locale: 'fr', format: format, slug: slug, type: type});
         $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
+    else if (newsUrl[6] == 'ccmnewsarticle' || newsUrl[6] == 'ccmnewsvideo' ||
+        newsUrl[6] == 'ccmnewsimage' || newsUrl[6] == 'ccmnewsaudio') {
+        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview');
+
+
+        var route = Routing.generate('ccm_news_detail', {_locale: 'fr', slug: slug});
+        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+    }
     // on modal add, reload function
     $(window).on('shown.bs.modal', function () {
         if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {
