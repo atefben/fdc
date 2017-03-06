@@ -1,3 +1,1 @@
-{% for image in widget.gallery.medias %}
-    <img src="{% path image.media|trans_fallback('file'), 'reference' %}" alt="{{ image.media|trans_fallback('alt') }}" />
-{% endfor %}
+<img src="{% path widget.file|trans_fallback('file'), 'reference' %}" alt="{{ widget.file|trans_fallback('alt') }}" />

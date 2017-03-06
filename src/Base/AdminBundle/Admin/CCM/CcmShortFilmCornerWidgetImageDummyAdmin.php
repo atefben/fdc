@@ -19,7 +19,7 @@ class CcmShortFilmCornerWidgetImageDummyAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('gallery', 'sonata_type_model_list',array(
+            ->add('file', 'sonata_type_model_list',array(
                 'btn_delete' => true
             ))
         ;

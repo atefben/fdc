@@ -2,10 +2,9 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\Gallery;
-use Doctrine\ORM\Mapping as ORM;
 
-use JMS\Serializer\Annotation\Groups;
+use Base\CoreBundle\Entity\MediaImage;
+use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmShortFilmCornerWidgetImage
  *
@@ -16,31 +15,31 @@ use JMS\Serializer\Annotation\Groups;
 class CcmShortFilmCornerWidgetImage extends CcmShortFilmCornerWidget
 {
     /**
-     * @var Gallery
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery", cascade={"all"})
+     * @var MediaImage
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", cascade={"persist"})
      */
-    protected $gallery;
+    protected $file;
 
     /**
-     * Set gallery
+     * Set file
      *
-     * @param Gallery $gallery
+     * @param MediaImage $file
      * @return CcmShortFilmCornerWidgetImage
      */
-    public function setGallery(Gallery $gallery = null)
+    public function setFile(MediaImage $file = null)
     {
-        $this->gallery = $gallery;
+        $this->file = $file;
 
         return $this;
     }
 
     /**
-     * Get gallery
+     * Get file
      *
-     * @return Gallery
+     * @return MediaImage
      */
-    public function getGallery()
+    public function getFile()
     {
-        return $this->gallery;
+        return $this->file;
     }
 }
