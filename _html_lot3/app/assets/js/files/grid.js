@@ -42,7 +42,7 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
-            $gridMore.isotope();
+            //$gridMore.isotope();
 
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
@@ -454,8 +454,6 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-
-    grid.isotope();
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
