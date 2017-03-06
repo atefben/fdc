@@ -248,6 +248,9 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
+                                        {% if group.label == 'dashboard.group.soif' and is_granted('ROLE_ADMIN_CCM') %}
+                                            {% set display = false %}
+                                        {% endif %}
                                         {% if display and (item_count > 0) and group.label != "dashboard.group.participate" and group.label != "sonata_user" %}
                                             {% set active = false %}
                                             {% for admin in group.items %}
