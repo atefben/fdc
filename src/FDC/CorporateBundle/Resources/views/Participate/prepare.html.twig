@@ -38,7 +38,7 @@
                     </ul>
                 </nav>
                 <div class="all-contain"><div class="contain-descript">
-                <div class="descrip">{{ content|trans_fallback('mainDescription') }}</div>
+                <div class="descrip">{{ content|trans_fallback('mainDescription')|raw }}</div>
             </div>
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
