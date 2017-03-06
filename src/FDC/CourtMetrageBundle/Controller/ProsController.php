@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProsController extends Controller
 {
@@ -17,16 +18,20 @@ class ProsController extends Controller
     public function showAction(Request $request)
     {
         $homepageManger = $this->get('ccm.manager.homepage');
-        $sejour = $homepageManger->getSejouresFromProsPage();
-
         $prosManager = $this->get('ccm.manager.pros');
-        
+
+        $sejour = $homepageManger->getSejouresFromProsPage();
         $prosPage = $prosManager->getProsPageByLocale();
+
+        if (!$prosPage) {
+            throw new NotFoundHttpException();
+        }
+
         $positions = $homepageManger->orderTransversModulesForProsPage($prosPage);
         $sejourIsActive = $prosPage->getTranslatable()->getSejourIsActive();
         $socialIsActive = $prosPage->getTranslatable()->getSocialIsActive();
         $prosList = $prosManager->getProsByLocale();
-        $prosDomains = $prosManager->getDomains($prosList);
+        $prosDomains = $prosManager->getDomains($prosList, $prosPage);
         $hasSFC = $prosManager->hasSFC($prosList);
         
         return $this->render('FDCCourtMetrageBundle:Pros:show.html.twig', [
