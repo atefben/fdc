@@ -502,14 +502,14 @@ div.chocolat-wrapper, .c-fullscreen-slider {
         padding-left: 115px;
         display: inline-block;
         vertical-align: middle;
+      }
 
-        &:before {
-          content: "";
-          display: inline-block;
-          vertical-align: middle;
-          height: 100%;
-          width: 0px;
-        }
+      &:before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        width: 0px;
       }
 
       .chocolat-pagination {

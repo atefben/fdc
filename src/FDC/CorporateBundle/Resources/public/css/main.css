@@ -11679,7 +11679,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
     display: inline-block;
     vertical-align: middle;
   }
-  div.chocolat-wrapper .chocolat-bottom .chocolat-description:before, .c-fullscreen-slider .chocolat-bottom .chocolat-description:before {
+  div.chocolat-wrapper .chocolat-bottom:before, .c-fullscreen-slider .chocolat-bottom:before {
     content: "";
     display: inline-block;
     vertical-align: middle;
