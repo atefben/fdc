@@ -6885,6 +6885,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.block-diaporama .slider-01');
             slider.find('.item').each(function(){
+                console.log($(this).find('img').width());
                 $(this).css('width',$(this).find('img').width());
             });
 
