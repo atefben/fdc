@@ -60,3 +60,8 @@ services:
         class: FDC\CourtMetrageBundle\Manager\SocialWallManager
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    ccm.manager.program:
+        class: FDC\CourtMetrageBundle\Manager\ProgramManager
+        arguments:
+            - '@doctrine.orm.entity_manager'

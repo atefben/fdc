@@ -27,7 +27,7 @@ class ProsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        $positions = $homepageManger->orderTransversModulesForProsPage($prosPage);
+        $positions = $homepageManger->orderTransversModulesForPage($prosPage);
         $sejourIsActive = $prosPage->getTranslatable()->getSejourIsActive();
         $socialIsActive = $prosPage->getTranslatable()->getSocialIsActive();
         $prosList = $prosManager->getProsByLocale();
