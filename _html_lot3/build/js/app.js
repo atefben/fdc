@@ -4998,7 +4998,6 @@ var openSlideShow = function (slider, hash, affiche) {
     var w = $(window).width();
     var centerElement = 0;
     var caption = "";
-    console.log(slider);
     slider.find('.item, .img, .poster').each(function (index, value) {
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
@@ -5284,8 +5283,9 @@ var openSlideShow = function (slider, hash, affiche) {
             images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
         }
     }
-
-    console.log(images[centerElement].title.find('*').size());
+    var tempTitle = images[centerElement].title;
+    console.log(tempTitle);
+    console.log(tempTitle.find('*').size());
 
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
