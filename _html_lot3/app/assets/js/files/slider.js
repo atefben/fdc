@@ -155,12 +155,15 @@ var owInitSlider = function (sliderName) {
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide + 1000;
 
+        $('.discover').on('click', function (e) {
+            $('body').addClass('fs-off');
+        });
         var initOpenAjax = function () { //ajax
             $('.discover').on('click', function (e) {
 
                 e.preventDefault();
                 var url = $(this).data('url');
-                $('body').addClass('fs-off');
+                
                 $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
                 $('.timelapse').css('display', 'none');
                 $('.discover').css('display', 'none');
