@@ -43,17 +43,17 @@ class ShortFilmCornerManager
 
         /** @var CcmShortFilmCornerTranslation $translation */
         $translation = $shortFilmCornerPage->findTranslationByLocale($locale);
-        $positions = [];
-
         $sejourIsActive = $shortFilmCornerPage->getSejourIsActive();
         $socialIsActive = $shortFilmCornerPage->getSocialIsActive();
 
-        $positions[$shortFilmCornerPage->getPositionCatalog()] = 'catalog';
-        $positions[$shortFilmCornerPage->getPositionActualites()] = 'actualite';
-        $positions[$shortFilmCornerPage->getPositionSejour()] = 'sejour';
-        $positions[$shortFilmCornerPage->getPositionSocial()] = 'social';
+        $positions = [];
 
-        ksort($positions);
+        $positions['catalog'] = $shortFilmCornerPage->getPositionCatalog();
+        $positions['actualite'] = $shortFilmCornerPage->getPositionActualites();
+        $positions['sejour'] = $shortFilmCornerPage->getPositionSejour();
+        $positions['social'] = $shortFilmCornerPage->getPositionSocial();
+
+        asort($positions);
 
         $sejourTranslation = null;
         if ($shortFilmCornerPage->getSejourIsActive()) {
