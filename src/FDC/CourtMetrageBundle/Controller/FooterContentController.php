@@ -21,7 +21,7 @@ class FooterContentController extends Controller
      * Retrieve data for Mentions Légales / Crédits / Politique de confidentialité page
      * @param Request $request
      *
-     * @Route("/mentions-legales", name="fdc_ccm_footer_mentions_legales")
+     * @Route("/mentions-legales", name="fdc_court_metrage_footer_mentions_legales")
      * @Route("/credits", name="fdc_ccm_footer_credits")
      * @Route("/politique-de-confidentialite", name="fdc_ccm_footer_politique_de_confidentialite")
      */
@@ -48,7 +48,7 @@ class FooterContentController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/contact", name="ccm_contact")
+     * @Route("/contact", name="fdc_court_metrage_contact")
      */
     public function contactAction(Request $request)
     {
@@ -83,7 +83,7 @@ class FooterContentController extends Controller
                 ]);
                 $this->addFlash('success', '');
 
-                return $this->redirectToRoute('ccm_contact');
+                return $this->redirectToRoute('fdc_court_metrage_contact');
             }
         }
 
@@ -93,7 +93,7 @@ class FooterContentController extends Controller
     }
 
     /**
-     * @Route("/plan-du-site", name="fdc_courtmetrage_site_plan")
+     * @Route("/plan-du-site", name="fdc_court_metrage_site_plan")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

@@ -21,7 +21,7 @@
     {% endspaceless %}')">
         <div class="bck-hover">
             <div class="contain_item">
-                <a href="{{ path('fdc_ccm_movie_show', {slug: movie.slug}) }}">
+                <a href="{{ path('fdc_court_metrage_movie_show', {slug: movie.slug}) }}">
                     {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
                     film: movie,
                     film_format: 'mobile',
@@ -71,7 +71,7 @@
                         {% endif %}
                     {% endif %}
 
-                    <a href="{{ path('fdc_ccm_movie_show', {slug: movie.slug}) }}">
+                    <a href="{{ path('fdc_court_metrage_movie_show', {slug: movie.slug}) }}">
                         <h3 class="title-item">{{ movie.titleVO }}</h3>
                         {% if movie|trans_fallback('title') != movie.titleVO and movie|trans_fallback('title') %}
                             <h4 class="sub-title-item">({{ movie|trans_fallback('title') }})</h4>

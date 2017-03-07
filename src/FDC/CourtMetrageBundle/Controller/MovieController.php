@@ -20,7 +20,7 @@ class MovieController extends Controller
 {
 
     /**
-     * @Route("/films/{slug}", name="fdc_ccm_movie_show")
+     * @Route("/films/{slug}", name="fdc_court_metrage_movie_show")
      * @param $slug
      * @param Request $request
      * @return Response

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlanDesSallesController extends Controller
 {
     /**
-     * @Route("plan-des-salles", name="ccm_plan_des_salles")
+     * @Route("plan-des-salles", name="fdc_court_metrage_plan_des_salles")
      */
     public function indexAction()
     {

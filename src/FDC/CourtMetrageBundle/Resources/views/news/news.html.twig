@@ -32,7 +32,7 @@
                     <article class="article">
                         <div class="img">
                             <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
-                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                 {% if article.header is not null %}
                                     <img src="{% path article.header|trans_fallback('file'), 'reference' %}" alt="{{ article.header|trans_fallback('alt') }}"/>
                                 {% elseif article.image is not null %}
@@ -46,12 +46,12 @@
                         </div>
                         <div class="info">
                             <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
-                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                 <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
                                 <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
                             </a>
                             <h3>
-                                <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                     {% if articleTranslation.title|length > 60 %}
                                         {{ articleTranslation.title|slice(0, 60) ~ '...' }}
                                     {% else %}
@@ -74,7 +74,7 @@
         [
         {
             "name" : 'breadcrumb.home'|trans,
-            "url"  : path('fdc_ccm_homepage')
+            "url"  : path('fdc_court_metrage_homepage')
         },
         {
             "name" : 'ccm.news.all_articles'|trans,

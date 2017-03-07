@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class SocialWallController extends Controller
 {
     /**
-     * @Route("social-wall", name="fdc_courtmetrage_social_wall")
+     * @Route("social-wall", name="fdc_court_metrage_social_wall")
      */
     public function socialAction(Request $request)
     {
