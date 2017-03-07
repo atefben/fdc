@@ -33,8 +33,6 @@
     {% if imageTrans is defined %}
         {% set image = imageTrans.file %}
     {% endif %}
-{% else %}
-    {% set image = image_s3 %}
 {% endif %}
 {{ dump(image) }}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
