@@ -668,7 +668,7 @@ class NewsController extends Controller
      * @param $slug
      * @return Response
      */
-    public function pressSingleAction(Request $request, $year, $type, $format, $slug)
+    public function pressSingleAction(Request $request, $type, $format, $slug)
     {
         $locale = $request->getLocale();
 
