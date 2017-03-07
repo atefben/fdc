@@ -125,11 +125,13 @@ class ParticipateController extends Controller
         }
         $pageLayers = $participateManager->getPageLayers($participatePage);
         $layerModules = $participateManager->getLayerModules($pageLayers);
+        $hasPF = $participateManager->hasPF($layerModules);
 
         return $this->render('FDCCourtMetrageBundle:Participate:participatePage.html.twig', [
                 'page' => $participatePage,
                 'layers' => $pageLayers,
                 'modules' => $layerModules,
+                'hasPF' => $hasPF,
             ]
         );
     }
