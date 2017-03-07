@@ -163,4 +163,12 @@
             </div>
         </div>
     </div>
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': '',
+        'detail': '',
+        'title': prosPage.title,
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+        'artist' : ''
+    })) }}
 {% endblock %}
