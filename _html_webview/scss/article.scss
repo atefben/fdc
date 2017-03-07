@@ -169,6 +169,10 @@ html {
 		&-item {
 			float: left;
 			width: 90vw;
+			
+			.Article-header & {
+				width: 100vw;
+			}
 
 			img {
 				width: 100%;

@@ -126,6 +126,8 @@ html {
 .Article-slider-item {
   float: left;
   width: 90vw; }
+  .Article-header .Article-slider-item {
+    width: 100vw; }
   .Article-slider-item img {
     width: 100%; }
 
