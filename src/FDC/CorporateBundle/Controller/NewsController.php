@@ -645,8 +645,7 @@ class NewsController extends Controller
 
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $festival->getId(), $newsDate);
         $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
-
-        $this->render('FDCCorporateBundle:News:main.html.twig', [
+        return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'localeSlugs'            => $localeSlugs,
             'focusArticles'          => $focusArticles,
             'programmations'         => $programmations,
@@ -657,7 +656,6 @@ class NewsController extends Controller
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles,
             'nextProjectionDate'     => $nextProjectionDate,
-            'festivals'              => $festivals,
         ]);
     }
 
