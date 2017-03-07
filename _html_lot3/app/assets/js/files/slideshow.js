@@ -362,9 +362,9 @@ var openSlideShow = function (slider, hash, affiche) {
     }
     var tempTitle = images[centerElement].title;
 
-    var onelineclass = '';
+    var onelineclass = ' oneline';
     if($(tempTitle).filter('*').size() > 0){
-        onelineclass = ' oneline'
+        onelineclass = ''
     }
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
