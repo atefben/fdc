@@ -31,6 +31,32 @@
     }
 }
 
+#home {
+    .card {
+        .info strong {
+            color: #333;
+            font-family: "Playfair Display",Times New Roman,Times,serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            letter-spacing: .02em;
+            line-height: 1.3em;
+            margin: 15px auto 0;
+            text-align: center;
+
+            a {
+                color: #333;
+            }
+        }
+
+        &.w2 {
+            .info strong {
+                font-size: 2.25rem;
+                line-height: 1.3em;
+            }
+        }
+    }   
+}
+
 .slider-home .texts .item p {
     padding-bottom: 0px;
     margin-bottom: 72px;
@@ -54,6 +80,10 @@
 
 .block-movie-preview .wrapper-item .description {
 	width: 475px;
+}
+
+.card.double strong {
+    
 }
 
 .block-search .content-result .top-texts .see-all {
