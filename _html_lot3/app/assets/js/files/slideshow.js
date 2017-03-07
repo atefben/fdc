@@ -366,7 +366,7 @@ var openSlideShow = function (slider, hash, affiche) {
     console.log($(tempTitle).filter('*').size());
     var onelineclass = '';
     if($(tempTitle).filter('*').size() > 0){
-        onelineclass = 'oneline '
+        onelineclass = ' oneline'
     }
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
