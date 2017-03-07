@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin\CCM;
 
 use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmNewsVideoTranslation;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
@@ -49,6 +50,15 @@ class CcmNewsVideoAdmin extends CcmNewsAdmin
         );
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        parent::configureListFields($listMapper);
+
+        $listMapper->remove('type');
+    }
 
     /**
      * @param FormMapper $formMapper

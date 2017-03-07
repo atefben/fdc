@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class NewsController extends Controller
 {
     /**
-     * @Route("actualites", name="ccm_news")
+     * @Route("actualites", name="fdc_court_metrage_news")
      * @param Request $request
      * @return Response
      */
@@ -36,7 +36,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("actualites/{slug}", name="ccm_news_detail", options={"expose"=true})
+     * @Route("actualites/{slug}", name="fdc_court_metrage_news_detail", options={"expose"=true})
      * @param $slug
      * @param Request $request
      * @return Response

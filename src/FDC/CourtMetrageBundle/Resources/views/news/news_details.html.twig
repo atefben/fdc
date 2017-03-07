@@ -6,10 +6,10 @@
         <div class="content-article">
             <div class="container small-container">
                 {% if prev[0] is defined and not prev[0] is empty %}<a
-                    href="{{ path('ccm_news_detail', {'slug': prev[0]|trans_fallback('slug')}) }}"
+                    href="{{ path('fdc_court_metrage_news_detail', {'slug': prev[0]|trans_fallback('slug')}) }}"
                     class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
                 {% if next[0] is defined and not next[0] is empty %}<a
-                    href="{{ path('ccm_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
+                    href="{{ path('fdc_court_metrage_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
                     class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
                     <span class="category">
@@ -79,7 +79,7 @@
                             <div class="vCenter">
                                 <div class="vCenterKid">
                                     <div class="poster">
-                                        <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                        <a href="{{ path('fdc_court_metrage_movie_show',{'slug': associatedFilm.slug}) }}">
                                             {% include '@FDCCourtMetrage/Shared/filmPoster.html.twig' with ({
                                                 film: associatedFilm,
                                                 film_format: '293x397',
@@ -94,7 +94,7 @@
                                             </span>
                                         {% endif %}
                                         <h3>
-                                            <a href="{{ path('fdc_ccm_movie_show',{'slug': associatedFilm.slug}) }}">
+                                            <a href="{{ path('fdc_court_metrage_movie_show',{'slug': associatedFilm.slug}) }}">
                                                 {{ associatedFilm.titleVO }}
                                             </a>
                                         </h3>
@@ -140,16 +140,16 @@
                                                     <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
                                                 {% endif %}
                                             </div>
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}" class="linkImage"></a>
+                                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}" class="linkImage"></a>
                                             <span class="picto"><i class="icon icon_{{ articleType }}"></i></span>
                                         </div>
                                         <div class="info">
                                             <span class="category">{{ associatedArticle.theme.findTranslationByLocale(app.request.locale).name }}</span>
-                                            <a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">
+                                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                                 <span class="date">{{ associatedArticle.publishedAt|date('d.m.y') }}</span> .
                                                 <span class="hour">{{ associatedArticle.publishedAt|date('H:i') }}</span>
                                             </a>
-                                            <h3><a href="{{ path('ccm_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
+                                            <h3><a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">{{ articleTranslation.title }}</a></h3>
                                         </div>
                                     </article>
                                 {% endif %}
@@ -166,11 +166,11 @@
         [
         {
             "name" : 'breadcrumb.home'|trans,
-            "url"  : path('fdc_ccm_homepage')
+            "url"  : path('fdc_court_metrage_homepage')
         },
         {
             "name" : 'ccm.news.all_articles'|trans,
-            "url"  : path('ccm_news')
+            "url"  : path('fdc_court_metrage_news')
         },
         {
             "name" : article|trans_fallback('title'),

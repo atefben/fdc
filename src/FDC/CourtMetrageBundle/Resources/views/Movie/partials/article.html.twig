@@ -108,7 +108,7 @@
                     {% endif %}
                 {% endif %}
             </div>
-            <a href="{{ path('ccm_news_detail', {'slug' : article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            <a href="{{ path('fdc_court_metrage_news_detail', {'slug' : article|trans_fallback('slug')}) }}" class="linkImage"></a>
 
             {% if article is news_object %}
                 <span class="picto"><i class="icon icon_{{ article|get_news_type }}"></i></span>
@@ -120,7 +120,7 @@
         </div>
         <div class="info">
             <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a><span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
-            <h2><a href="{{ path('ccm_news_detail', {'slug' : article|trans_fallback('slug')}) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></h2>
+            <h2><a href="{{ path('fdc_court_metrage_news_detail', {'slug' : article|trans_fallback('slug')}) }}">{{ article|trans_fallback('title')|truncate(40) }}</a></h2>
         </div>
     </article>
 </div>

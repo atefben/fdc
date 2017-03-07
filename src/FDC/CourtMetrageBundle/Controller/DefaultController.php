@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="fdc_ccm_homepage")
+     * @Route("/", name="fdc_court_metrage_homepage")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()

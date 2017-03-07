@@ -12,7 +12,7 @@ class ProsController extends Controller
 {
 
     /**
-     * @Route("/pros-du-court", name="fdc_ccm_pros_du_court")
+     * @Route("/pros-du-court", name="fdc_court_metrage_pros_du_court")
      * @param Request $request
      */
     public function showAction(Request $request)
@@ -55,7 +55,7 @@ class ProsController extends Controller
      * @param Request $request
      * @param $id
      * 
-     * @Route("/pros-du-court/{id}", options={"expose" = true}, name="fdc_ccm_pros_du_court_modal")
+     * @Route("/pros-du-court/{id}", options={"expose" = true}, name="fdc_court_metrage_pros_du_court_modal")
      * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showModalAction(Request $request, $id)

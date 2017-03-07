@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ShortFilmCornerController extends Controller
 {
     /**
-     * @Route("quisommesnous/{slug}", name="ccm_sfc_who_are_we", defaults={"slug"=null})
+     * @Route("quisommesnous/{slug}", name="fdc_court_metrage_sfc_who_are_we", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -36,7 +36,7 @@ class ShortFilmCornerController extends Controller
              */
             if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_WHO_ARE_WE, $locale)) !== null) {
 
-                return $this->redirectToRoute('ccm_sfc_who_are_we', ['slug' => $slug]);
+                return $this->redirectToRoute('fdc_court_metrage_sfc_who_are_we', ['slug' => $slug]);
             }
         }
 
@@ -46,7 +46,7 @@ class ShortFilmCornerController extends Controller
     }
 
     /**
-     * @Route("nosevenements/{slug}", name="ccm_sfc_our_events", defaults={"slug"=null})
+     * @Route("nosevenements/{slug}", name="fdc_court_metrage_sfc_our_events", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -68,7 +68,7 @@ class ShortFilmCornerController extends Controller
              */
             if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_OUR_EVENTS, $locale)) !== null) {
 
-                return $this->redirectToRoute('ccm_sfc_our_events', ['slug' => $slug]);
+                return $this->redirectToRoute('fdc_court_metrage_sfc_our_events', ['slug' => $slug]);
             }
         }
 
@@ -78,7 +78,7 @@ class ShortFilmCornerController extends Controller
     }
 
     /**
-     * @Route("revivezledition/{slug}", name="ccm_sfc_relive_edition", defaults={"slug"=null})
+     * @Route("revivezledition/{slug}", name="fdc_court_metrage_sfc_relive_edition", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -100,7 +100,7 @@ class ShortFilmCornerController extends Controller
              */
             if (($slug = $manager->getFirstSFCPageSlug(CcmShortFilmCorner::TYPE_RELIVE_EDITION, $locale)) !== null) {
 
-                return $this->redirectToRoute('ccm_sfc_relive_edition', ['slug' => $slug]);
+                return $this->redirectToRoute('fdc_court_metrage_sfc_relive_edition', ['slug' => $slug]);
             }
         }
 

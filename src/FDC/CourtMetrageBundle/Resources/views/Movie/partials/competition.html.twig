@@ -34,10 +34,10 @@
                                     {% if film_image_default_attrs is defined %} {{ film_image_default_attrs }} {% endif %}>
                         {% endif %}
                     {% endif %}
-                    <a class="linkVid" href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}"></a>
+                    <a class="linkVid" href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"></a>
                     <div class="info-movie">
                         <p>
-                            <a href="{{ path('fdc_ccm_movie_show', {'slug': movie.slug}) }}">
+                            <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}">
                                 {{ movie.titleVO }}
                                 {% set transTitle = movie|trans_fallback_movie('title') %}
                                 {% if transTitle|trim and transTitle|trim != movie.titleVo|trim %}
