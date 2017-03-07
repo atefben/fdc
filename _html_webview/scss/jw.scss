@@ -259,9 +259,8 @@
 				top: auto;
 				color: #fff;
 				width: 100%;
-				padding: 0 5%;
-				height: 100%;
-				padding-top: 9rem;
+				padding: 0 5% 5% 5%;
+				height: auto;
 
 				background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
 				background-image: -webkit-gradient(linear, 0% 100%, 0% 0%,color-stop(0, rgb(0, 0, 0)),color-stop(1, rgba(0, 0, 0, 0)));
@@ -274,22 +273,25 @@
 				}
 
 				&-primary {
+					min-height: 0px;
+					padding: 0px;
+					overflow: visible;
+					
+					width: 100%;
+					position: relative;
+				}
+
+				&-secondary {
+					padding: 0px;
+					padding-top: 1rem;
+					overflow: visible;
 					font-weight: normal;
 					font-family: "Open Sans";
 					font-weight: 300;
 					font-size: 1.2rem;
 					line-height: 1.5rem;
-					padding: 0px;
-					overflow: visible;
 					white-space: initial;
 					width: 100%;
-					position: relative;
-					top: 4.5rem;
-				}
-
-				&-secondary {
-					padding: 0px;
-					overflow: visible;
 				}
 				
 				h4 {

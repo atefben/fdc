@@ -621,7 +621,7 @@ html {
     color: #fff; }
   .jwplayer.jw-skin-fdc-video.jw-state-idle .jw-icon-display:before {
     content: ""; }
-  .jwplayer.jw-skin-fdc-video .jw-tooltip-time {
+  .jwplayer.jw-skin-fdc-video .jw-tooltip-time, .jwplayer.jw-skin-fdc-video .jw-icon-hd {
     display: none !important; }
   .jwplayer.jw-skin-fdc-video .jw-background-color,
   .jwplayer.jw-skin-fdc-video .jw-display-icon-container {
@@ -657,20 +657,22 @@ html {
     .jwplayer.jw-skin-fdc-video .jw-title--hidden {
       display: none; }
     .jwplayer.jw-skin-fdc-video .jw-title-primary {
+      min-height: 0px;
+      padding: 0px;
+      overflow: visible;
+      width: 100%;
+      position: relative; }
+    .jwplayer.jw-skin-fdc-video .jw-title-secondary {
+      padding: 0px;
+      padding-top: 1rem;
+      overflow: visible;
       font-weight: normal;
       font-family: "Open Sans";
       font-weight: 300;
       font-size: 1.2rem;
       line-height: 1.5rem;
-      padding: 0px;
-      overflow: visible;
       white-space: initial;
-      width: 100%;
-      position: relative;
-      top: 4.5rem; }
-    .jwplayer.jw-skin-fdc-video .jw-title-secondary {
-      padding: 0px;
-      overflow: visible; }
+      width: 100%; }
     .jwplayer.jw-skin-fdc-video .jw-title h4 {
       display: inline;
       color: #c9a45e;
