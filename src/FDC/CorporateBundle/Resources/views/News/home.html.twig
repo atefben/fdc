@@ -38,7 +38,7 @@
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(homeSlide), 'slug': homeSlide|trans_fallback('slug')) %}
+                            {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(homeSlide), 'slug': homeSlide|trans_fallback('slug')}) %}
 
                             {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                             {% set sliderItems = sliderItems|merge(sliderItem) %}
