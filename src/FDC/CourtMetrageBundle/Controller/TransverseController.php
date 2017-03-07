@@ -44,34 +44,28 @@ class TransverseController extends Controller
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $actualites = $homepageManger->getActualite();
-        $actualiteIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getActualiteIsActive();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/_actualite.html.twig',
             [
                 'actualites' => $actualites,
-                'actualiteIsActive' => $actualiteIsActive,
             ]
         );
     }
 
     /**
-     * @Route("/ccm-catalog", name="ccm_catalog")
-     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function catalogAction()
     {
         $homepageManger = $this->get('ccm.manager.homepage');
         $catalogs = $homepageManger->getCatalogPushes();
-        $catalogIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getCatalogIsActive();
         $catalogImage = $homepageManger->getCatalogImage();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/_catalog.html.twig',
             [
                 'catalogs' => $catalogs,
-                'catalogIsActive' => $catalogIsActive,
                 'catalogImage' => $catalogImage,
             ]
         );

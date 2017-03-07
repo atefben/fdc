@@ -45,6 +45,8 @@ class ShortFilmCornerManager
         $translation = $shortFilmCornerPage->findTranslationByLocale($locale);
         $sejourIsActive = $shortFilmCornerPage->getSejourIsActive();
         $socialIsActive = $shortFilmCornerPage->getSocialIsActive();
+        $actualiteIsActive = $shortFilmCornerPage->getActualiteIsActive();
+        $catalogIsActive = $shortFilmCornerPage->getCatalogIsActive();
 
         $positions = [];
 
@@ -78,6 +80,8 @@ class ShortFilmCornerManager
             'sejour'      => $sejourTranslation,
             'sejourIsActive' => $sejourIsActive,
             'socialIsActive' => $socialIsActive,
+            'actualiteIsActive' => $actualiteIsActive,
+            'catalogIsActive' => $catalogIsActive,
         ];
         $pageData['sfcPages'] = $this->getTitleAndSlugsForSFCPages($type, $locale);
 

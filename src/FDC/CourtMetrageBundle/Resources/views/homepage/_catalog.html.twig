@@ -1,22 +1,21 @@
-{% if catalogIsActive == 1 %}
-    <div class="catalogue">
-        {% if catalogs is defined and catalogs is not null and catalogIsActive == 1 %}
-            <div class="imgIllustration">
-                <img class="img" style="background-image:url({% path catalogImage|trans_fallback('file'), 'reference' %})">
-            </div>
-            <h5>le catalogue</h5>
-            {% for catalog in catalogs %}
-                <div class="blocks">
-                    <h6>{{ catalog.name }}</h6>
-                    <a href="{{ catalog.url }}" target="_blank">
-                        <div class="plusSignContainer">
-                            <div class="plusSign">
-                                <img src="{{ asset('bundles/fdccourtmetrage/img/plusSign.png') }}"/>
-                            </div>
+<div class="catalogue">
+    {% if catalogs is defined and catalogs is not null %}
+        <div class="imgIllustration">
+            <img class="img" style="background-image:url({% path catalogImage|trans_fallback('file'), 'reference' %})">
+        </div>
+        <h5>le catalogue</h5>
+        {% for catalog in catalogs %}
+            <div class="blocks">
+                <h6>{{ catalog.name }}</h6>
+                <a href="{{ catalog.url }}" target="_blank">
+                    <div class="plusSignContainer">
+                        <div class="plusSign">
+                            <img src="{{ asset('bundles/fdccourtmetrage/img/plusSign.png') }}"/>
                         </div>
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
-    </div>
-{% endif %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+

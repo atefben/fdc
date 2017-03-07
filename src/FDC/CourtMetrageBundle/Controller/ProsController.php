@@ -30,6 +30,8 @@ class ProsController extends Controller
         $positions = $homepageManger->orderTransversModulesForPage($prosPage);
         $sejourIsActive = $prosPage->getTranslatable()->getSejourIsActive();
         $socialIsActive = $prosPage->getTranslatable()->getSocialIsActive();
+        $catalogIsActive = $prosPage->getTranslatable()->getCatalogIsActive();
+        $actualiteIsActive = $prosPage->getTranslatable()->getActualiteIsActive();
         $prosList = $prosManager->getProsByLocale();
         $prosDomains = $prosManager->getDomains($prosList, $prosPage);
         $hasSFC = $prosManager->hasSFC($prosList);
@@ -43,6 +45,8 @@ class ProsController extends Controller
                 'sejourIsActive' => $sejourIsActive,
                 'socialIsActive' => $socialIsActive,
                 'positions' => $positions,
+                'catalogIsActive' => $catalogIsActive,
+                'actualiteIsActive' => $actualiteIsActive,
             ]
         );
     }

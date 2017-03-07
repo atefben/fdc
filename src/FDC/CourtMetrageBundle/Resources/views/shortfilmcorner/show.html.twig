@@ -64,13 +64,16 @@
                 </div>
             </section>
         </div>
-
         {% for key, position in positions %}
             {% if key == 'catalog' %}
-                {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
+                {% if catalogIsActive == 1%}
+                    {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
+                {% endif %}
             {% elseif key == 'actualite' %}
-                {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
-            {% elseif key == 'sejour' %}
+                {% if actualiteIsActive == 1 %}
+                    {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+                {% endif %}
+            {% elseif key == 'sejour'%}
                 {% if sejourIsActive == 1 %}
                     <div class="list-article">
                         <div class="bandeau-list">
