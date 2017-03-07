@@ -50,6 +50,7 @@ class MediaController extends Controller
 
         if (!$parameters['medias'] && !$page->getDisplayedSelection()) {
             $parameters['medias'] = $page->getMediasSelection();
+            $parameters['ourSelection'] = true;
             $parameters['last'] = true;
             $parameters['noResult'] = false;
             if ($request->query->has('search')) {

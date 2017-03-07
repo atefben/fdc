@@ -66,11 +66,12 @@
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
             </div>
-            {% if page.displayedSelection == false %}
-                <div class="contain-title vFlexAlign">
-                    <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
-                </div>
-            {% endif %}
+        {% endif %}
+
+        {% if ourSelection is defined and ourSelection %}
+            <div class="contain-title vFlexAlign">
+                <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
+            </div>
         {% endif %}
 
         <div class="grid-01 isotope-01 padding-bottom add-ajax-request" id="main">
