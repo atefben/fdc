@@ -2343,7 +2343,7 @@ services:
     #CCM News
     base.admin.ccm_news:
         class: Base\AdminBundle\Admin\CCM\CcmNewsAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNews, ApplicationSonataAdminBundle:CRUD]
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmNews, BaseAdminBundle:CCM\News]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: News, show_in_dashboard: false}
         calls:

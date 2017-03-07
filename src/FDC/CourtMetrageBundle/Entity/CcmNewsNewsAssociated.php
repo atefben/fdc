@@ -38,7 +38,7 @@ class CcmNewsNewsAssociated
     protected $news;
     
      /**
-     * @var NewsArticle
+     * @var CcmNewsArticle
      *
      * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNews")
      * @ORM\JoinColumn(onDelete="CASCADE")

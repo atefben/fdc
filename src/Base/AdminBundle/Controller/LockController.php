@@ -149,6 +149,7 @@ class LockController extends Controller
     private static $ccmEntityMapper = array(
         'ccmmainnav' => 'CcmMainNav',
         'ccmsubnav' => 'CcmSubNav',
+        'ccmnews' => 'CcmNews',
         'ccmnewsarticle' => 'CcmNewsArticle',
         'ccmnewsvideo' => 'CcmNewsVideo',
         'ccmnewsaudio' => 'CcmNewsAudio',
