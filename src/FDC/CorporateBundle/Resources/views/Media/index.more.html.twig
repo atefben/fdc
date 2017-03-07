@@ -7,7 +7,7 @@
 
 {% if not last and since %}
     <div>
-        <a href="{{ path('fdc_corporate_media_index_ajax', {'since': since|date('U')}) }}"
+        <a href="{{ path('fdc_corporate_media_index_ajax', {'since': since|date('U')}) }}{{ filtersString }}"
            class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}</a>
     </div>
 {% endif %}
