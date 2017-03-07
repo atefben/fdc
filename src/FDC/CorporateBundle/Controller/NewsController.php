@@ -681,7 +681,6 @@ class NewsController extends Controller
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
 
-        $festivalId = $festival->getId();
         $format = substr($format, 0, -1);
 
         if ('communique' == $type) {
@@ -702,6 +701,7 @@ class NewsController extends Controller
         if (!$news) {
             throw $this->createNotFoundException();
         }
+        $festival = $news->getFestival();
 
         $associatedFilm = null;
         $associatedProgrammation = null;
