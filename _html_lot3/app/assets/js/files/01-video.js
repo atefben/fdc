@@ -273,7 +273,6 @@ var initVideo = function(hash) {
         }
 
         function updateShareLink(index, secondaryContainer) {
-            index = index || 0;
             sc    = secondaryContainer || 0;
 
             // CUSTOM LINK FACEBOOK
