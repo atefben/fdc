@@ -68,6 +68,18 @@ class CcmProgramSchedule implements TranslateMainInterface
         return (string) $string;
     }
 
+    public function getTitle()
+    {
+        $translation = $this->findTranslationByLocale('fr');
+        $string = '';
+
+        if ($translation !== null) {
+            $string = $translation->getTitle();
+        }
+
+        return $string;
+    }
+
     /**
      * findTranslationByLocale function.
      *
