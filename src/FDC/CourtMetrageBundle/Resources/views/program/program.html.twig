@@ -43,16 +43,19 @@
                     {% endfor %}
                 </div>
                 <div class="conferencesMenu">
-                    {% set beforeEvent = ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) %}
+                    {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
                     <ul>
                         {% for dayCollection in daysCollection %}
-                            <li class="{% if ("now"|date("Y-m-d") == dayCollection.day.dateEvent|date("Y-m-d")) or (beforeEvent and loop.index == 1)  %}open-selected-conf{% endif %}">
+                            {% set openedDay = (("now"|date("Y-m-d") == dayCollection.day.dateEvent|date("Y-m-d")) or (beforeEvent and loop.index == 1)) %}
+                            <li class="{% if openedDay %}open-selected-conf{% endif %}">
                                 <div class="open">
-                                    {{ dayCollection.day.dateEvent|date('Y-m-d') }}
-                                    <span class="openPlus noDisplay">
+                                    {{ dayCollection.day.dateEvent|date('d') }} {{ dayCollection.day.dateEvent|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ dayCollection.day.dateEvent|date('Y') }}
+                                    <span class="openPlus {% if openedDay %}noDisplay{% endif %}">
                                         <i class="icon icon_creer"></i>
                                     </span>
-                                    <span class="openMinus doDisplay"><i class="icon icon_moins"></i></span>
+                                    <span class="openMinus {% if openedDay %}doDisplay{% endif %}">
+                                        <i class="icon icon_moins"></i>
+                                    </span>
                                 </div>
                                 <div class="content firstContent">
                                     <div class="parent">
@@ -63,9 +66,9 @@
                                                 <div class="conf60">
                                                     <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
                                                     <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
-                                                    <p>{{ scheduleCollection.schedule|trans_fallback('description')|raw }}</p>
+                                                    {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
                                                     {% if scheduleCollection.schedule|trans_fallback('url') %}
-                                                        <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}">
+                                                        <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" target="_blank">
                                                             <div class="confButton">
                                                                 <i class="icon icon_flecheGauche ensavoirplus"></i>
                                                                 {{ 'ccm.program.see_more'|trans }}
