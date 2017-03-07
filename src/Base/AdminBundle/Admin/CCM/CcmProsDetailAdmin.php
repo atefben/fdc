@@ -274,7 +274,7 @@ class CcmProsDetailAdmin extends Admin
         $domainsCollection = $em->getRepository(CcmDomainTranslation::class)
             ->findBy(
                 array(
-                    'locale' => $this->request->getLocale()
+                    'locale' => $this->request ? $this->request->getLocale() : 'fr'
                 )
             );
 

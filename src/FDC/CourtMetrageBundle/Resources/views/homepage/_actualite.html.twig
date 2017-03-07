@@ -5,7 +5,7 @@
             {% for actualite in actualites %}
                 {% set actualiteTranslation = actualite.findTranslationByLocale(app.request.locale) %}
                 {% if actualite.displayedHome == 1 %}
-                    <a href="{{ path('ccm_news_detail',{'slug':actualiteTranslation.slug}) }}">
+                    <a href="{{ path('fdc_court_metrage_news_detail',{'slug':actualiteTranslation.slug}) }}">
                         <div class="articles">
                             {% if  actualite.translatable.image is not null %}
                                 <div class="articles-img"><img src="{% path actualite.translatable.image|trans_fallback('file'), 'reference' %}"></div>
@@ -19,7 +19,11 @@
                                     <br><span class="article-date">{{ actualite.publishedAt|date("d M Y") }}</span>
                                 </span>
                                 <h6>{{ actualiteTranslation.title }}</h6>
-                                <p>{{ actualite.description(app.request.locale)|striptags|raw}}</p>
+                                {% if  actualite.translatable.image is not null or actualite.translatable.header is not null %}
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('182', '...')}}</p>
+                                {% else %}
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('562', '...')}}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </a>

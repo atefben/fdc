@@ -45,7 +45,7 @@ function initProPage() {
 function getProInfo(pro) {
 
     $.ajax({
-        url: Routing.generate('fdc_ccm_pros_du_court_modal', {id: $(pro).data('pro-id')}),
+        url: Routing.generate('fdc_court_metrage_pros_du_court_modal', {id: $(pro).data('pro-id')}),
         type: 'POST',
         cache: false,
         data: {

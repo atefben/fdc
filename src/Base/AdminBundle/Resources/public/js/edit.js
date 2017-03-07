@@ -119,7 +119,7 @@ jQuery(document).ready(function ($) {
         var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview');
 
 
-        var route = Routing.generate('ccm_news_detail', {_locale: 'fr', slug: slug});
+        var route = Routing.generate('fdc_court_metrage_news_detail', {_locale: 'fr', slug: slug});
         $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
     // on modal add, reload function

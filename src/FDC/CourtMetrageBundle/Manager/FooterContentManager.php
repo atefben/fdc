@@ -27,7 +27,7 @@ class FooterContentManager
 
     protected $routes = [
         'fdc_ccm_footer_credits' => CcmFooterContent::FOOTER_CREDITS,
-        'fdc_ccm_footer_mentions_legales' => CcmFooterContent::FOOTER_MENTIONES_LEGALES,
+        'fdc_court_metrage_footer_mentions_legales' => CcmFooterContent::FOOTER_MENTIONES_LEGALES,
         'fdc_ccm_footer_politique_de_confidentialite' => CcmFooterContent::FOOTER_CONFIDENTIALITE
     ];
 

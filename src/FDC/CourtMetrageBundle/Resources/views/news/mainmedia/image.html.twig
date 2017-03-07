@@ -15,7 +15,7 @@
                 {% endfor %}
             </div>
         </div>
-        {% if gallery.medias[0] is defined %}
+        {% if gallery.medias[0] is defined and gallery.medias[0].media is not null %}
             <p class="caption">{{ gallery.medias[0].media|trans_fallback('legend') ~ ' © ' ~  gallery.medias[0].media|trans_fallback('copyright') }}</p>
         {% endif %}
     </div>

@@ -3,8 +3,8 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 
-use FDC\CourtMetrageBundle\Entity\CcmNews;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -48,6 +48,16 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        parent::configureListFields($listMapper);
+
+        $listMapper->remove('type');
     }
 
     /**
