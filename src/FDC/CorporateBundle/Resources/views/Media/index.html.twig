@@ -62,12 +62,6 @@
             </form>
         </div>
 
-        {% if app.request.method == 'GET' and page.displayedSelection == false and app.request.query.all is empty %}
-            <div class="contain-title vFlexAlign">
-                <h1 class="title-01">{{ 'mediatheque.title.ourselection'|trans }}</h1>
-            </div>
-        {% endif %}
-
         {% if noResult %}
             <div class="contain-title vFlexAlign">
                 <h1 class="title-01">{{ 'mediatheque.title.nosresults'|trans }}</h1>
