@@ -283,6 +283,8 @@ var initVideo = function(hash) {
                 var shareUrl = document.location.href;
             }
             console.log($playlist);
+            console.log(index);
+            console.log($playlist[index]);
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
