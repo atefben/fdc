@@ -16,14 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * @Route("/69-editions/retrospective")
- */
 class NewsController extends Controller
 {
 
     /**
-     * @Route("/{year}/articles")
+     * @Route("/69-editions/retrospective/{year}/articles")
      * @param Request $request
      * @param null $year
      * @return Response
@@ -54,7 +51,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/articles-ajax/{time}", options={"expose"=true})
+     * @Route("/69-editions/retrospective/{year}/articles-ajax/{time}", options={"expose"=true})
      * @param Request $request
      * @param $year
      * @param int|null $time
@@ -144,7 +141,7 @@ class NewsController extends Controller
 
 
     /**
-     * @Route("/{year}/infos-et-communiques")
+     * @Route("/69-editions/retrospective/{year}/infos-et-communiques")
      * @param Request $request
      * @param null $year
      * @return Response
@@ -176,7 +173,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/infos-et-communiques/more/{timestamp}")
+     * @Route("/69-editions/retrospective/{year}/infos-et-communiques/more/{timestamp}")
      * @param Request $request
      * @param null $year
      * @return Response
@@ -272,7 +269,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/medias")
+     * @Route("/69-editions/retrospective/{year}/medias")
      * @param Request $request
      * @param $year
      * @return Response
@@ -304,7 +301,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/medias-ajax/{page}", options={"expose"=true})
+     * @Route("/69-editions/retrospective/{year}/medias-ajax/{page}", options={"expose"=true})
      * @param Request $request
      * @param $year
      * @param int $page
@@ -378,7 +375,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/videos")
+     * @Route("/69-editions/retrospective/videos")
      * @Template("FDCCorporateBundle:News/list:video.html.twig")
      */
     public function getVideosAction(Request $request)
@@ -446,7 +443,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/audios")
+     * @Route("/69-editions/retrospective/audios")
      * @Template("FDCCorporateBundle:News/list:audio.html.twig")
      */
     public function getAudiosAction(Request $request)
@@ -514,7 +511,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+     * @Route("/69-editions/retrospective/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
      *     options={"expose"=true})
      * @param Request $request
      * @param $year
@@ -665,7 +662,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
+     * @Route("/infos-communiques/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
      * @param Request $request
      * @param $year
      * @param $type
