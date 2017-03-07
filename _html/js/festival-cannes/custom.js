@@ -390,13 +390,13 @@ $(window).scroll(function (e) {
 
 $( "#slider-movies > .owl-controls" ).wrap( "<div class='container'></div>" );
 
-$(window).scroll(function (e) {
+/*$(window).scroll(function (e) {
   if($(window).scrollTop() > 100) {
         $(".topiconsContainer").hide();
       } else {
         $(".topiconsContainer").show();
       }
-});
+});*/
 
 $(".topiconsContainer .first").hover(function () {
     $(this).toggleClass("goldBdrs");

@@ -3302,10 +3302,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 #slider-competition img {
   overflow: hidden;
-  object-fit: cover;
+  /*object-fit: cover;
   width: 100%;
   height: 100%;
-  max-width: 210px !important;
+  max-width: 210px!important;*/
 }
 #slider-competition .title {
   width: 100%;
@@ -9082,6 +9082,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 .topiconsContainer {
   float: right;
   width: 193px;
+  margin-top: 15px;
 }
 .topiconsContainer .first {
   position: relative;
@@ -11655,6 +11656,12 @@ video {
 
 .jwplayer {
   width: 100% !important;
+}
+
+.video .picto .icon {
+  font-size: 0.8rem;
+  margin-top: 16px;
+  margin-left: 4px !important;
 }
 
 #selection {
@@ -18753,6 +18760,10 @@ input[type=submit] {
   margin-bottom: 5px;
 }
 
+#filters.show {
+  z-index: 1006;
+}
+
 .container-list {
   width: 100%;
   clear: both;
@@ -20738,9 +20749,9 @@ body:not(.tablette) .webtv #live .img {
   top: 163px;
 }
 .faq .faq-menu.stick {
-  position: fixed;
-  top: 120px;
-  z-index: 4;
+  /*position: fixed;
+  top: 200px!important;
+  z-index: 4;*/
 }
 .faq .faq-menu.bottom {
   position: absolute;
