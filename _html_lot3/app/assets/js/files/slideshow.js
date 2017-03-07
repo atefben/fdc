@@ -362,13 +362,16 @@ var openSlideShow = function (slider, hash, affiche) {
     }
     var tempTitle = images[centerElement].title;
     console.log(tempTitle);
-    
-    console.log($(tempTitle).filter('*').size());
 
+    console.log($(tempTitle).filter('*').size());
+    var onelineclass = '';
+    if($(tempTitle).filter('*').size() > 0){
+        onelineclass = 'oneline '
+    }
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
+        '<span class="chocolat-description'+onelineclass+'"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
