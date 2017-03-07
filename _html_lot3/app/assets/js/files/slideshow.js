@@ -362,7 +362,7 @@ var openSlideShow = function (slider, hash, affiche) {
     }
     var tempTitle = images[centerElement].title;
     console.log(tempTitle);
-    console.log($(tempTitle).find('*').size());
+    console.log($(tempTitle).filter('*').size());
 
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
