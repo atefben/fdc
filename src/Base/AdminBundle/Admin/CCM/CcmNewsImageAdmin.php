@@ -2,9 +2,8 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use FDC\CourtMetrageBundle\Entity\CcmNews;
+
 use FDC\CourtMetrageBundle\Entity\CcmNewsImageTranslation;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -48,6 +47,16 @@ class CcmNewsImageAdmin extends CcmNewsAdmin
             parent::getFormTheme(),
             array('BaseAdminBundle:Form:polycollection.html.twig')
         );
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        parent::configureListFields($listMapper);
+
+        $listMapper->remove('type');
     }
 
     /**
