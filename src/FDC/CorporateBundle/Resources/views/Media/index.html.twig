@@ -29,7 +29,7 @@
                                {% if app.request.get('photo') is not null %}checked {% endif %}/>
                     </label>
                     <label for="s-video"
-                           class="icon-s vFlexAlign{% if app.request.get('video') == 1 %} active{% endif %}"><i
+                           class="icon-s vFlexAlign{% if app.request.get('video') %} active{% endif %}"><i
                                 class="icon icon-video"></i><span
                                 class="text">{{ 'mediatheque.filters.videos'|trans }}</span><input class="choice"
                                                                                                    type="checkbox"
@@ -37,7 +37,7 @@
                                                                                                    id="s-video"
                                                                                                    {% if app.request.get('video') is not null %}checked {% endif %}/></label>
                     <label for="s-audio"
-                           class="icon-s vFlexAlign{% if app.request.get('audio') == 1 %} active{% endif %}"><i
+                           class="icon-s vFlexAlign{% if app.request.get('audio') %} active{% endif %}"><i
                                 class="icon icon-audio"></i><span
                                 class="text">{{ 'mediatheque.filters.audios'|trans }}</span><input class="choice"
                                                                                                    type="checkbox"
