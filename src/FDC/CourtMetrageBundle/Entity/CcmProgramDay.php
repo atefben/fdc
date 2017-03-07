@@ -159,6 +159,14 @@ class CcmProgramDay
     {
         $this->dateString = $this->dateEvent->format('Y-m-d');
     }
+    
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->dateString = $this->dateEvent->format('Y-m-d');
+    }
 
     /**
      * @param CcmProgramDaysCollection $daysCollection
