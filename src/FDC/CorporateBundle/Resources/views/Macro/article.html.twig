@@ -8,7 +8,6 @@
         {% set type = 'info' %}
     {% endif %}
     {% set articleUrl = path('fdc_corporate_news_presssingle', {
-    'year': article.festival.year,
     'type': type,
     'format': (article|get_news_type)~'s',
     'slug': article|trans_fallback('slug')

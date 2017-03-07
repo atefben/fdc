@@ -102,7 +102,7 @@
         {% if trans == null %}
             {% set trans = article.findTranslationByLocale('fr') %}
         {% endif %}
-        {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) %}
+        {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(article), 'slug': article|trans_fallback('slug')}) %}
         <a href="{{ sliderUrl }}"
            class="linkImage"></a>
         <span class="picto"><i class="icon icon-{{ contentType }}"></i></span>

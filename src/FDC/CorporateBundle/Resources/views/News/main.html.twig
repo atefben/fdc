@@ -28,7 +28,7 @@
                                 {% else %}
                                     {% set type = 'info' %}
                                 {% endif %}
-                                <a href="{{ path('fdc_corporate_news_presssingle', {'year': prev[0].festival.year, type: type, format: get_news_format_slug(prev[0]), 'slug': prev[0]|trans_fallback('slug')}) }}"
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(prev[0]), 'slug': prev[0]|trans_fallback('slug')}) }}"
                                    class="prev"><i class="icon icon-arrow-left"></i></a>
                             {% endif %}
                         {% endif %}
@@ -42,7 +42,7 @@
                                 {% else %}
                                     {% set type = 'info' %}
                                 {% endif %}
-                                <a href="{{ path('fdc_corporate_news_presssingle', {'year': next[0].festival.year, type: type, format: get_news_format_slug(next[0]), 'slug': next[0]|trans_fallback('slug')}) }}"
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(next[0]), 'slug': next[0]|trans_fallback('slug')}) }}"
                                    class="next"><i class="icon icon-arrow-right"></i></a>
                             {% endif %}
                         {% endif %}
