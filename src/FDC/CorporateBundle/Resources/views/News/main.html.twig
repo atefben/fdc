@@ -198,11 +198,11 @@
     },
     {
     "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_editions_year', {'year': news.festival.year})
     },
     {
     "name" : 'header.mainnav.nav.lactualite'|trans,
-    "url"  : path('fdc_corporate_news_getarticles', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_news_getarticles', {'year': news.festival.year})
     },
     {
     "name" : news|trans_fallback('title'),
