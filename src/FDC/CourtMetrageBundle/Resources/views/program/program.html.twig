@@ -43,13 +43,13 @@
                     {% endfor %}
                 </div>
                 <div class="conferencesMenu">
-                    {% set beforeEvent = ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) %}
+                    {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
                     <ul>
                         {% for dayCollection in daysCollection %}
                             {% set openedDay = (("now"|date("Y-m-d") == dayCollection.day.dateEvent|date("Y-m-d")) or (beforeEvent and loop.index == 1)) %}
                             <li class="{% if openedDay %}open-selected-conf{% endif %}">
                                 <div class="open">
-                                    {{ dayCollection.day.dateEvent|date('Y-m-d') }}
+                                    {{ dayCollection.day.dateEvent|date('d') }} {{ dayCollection.day.dateEvent|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ dayCollection.day.dateEvent|date('Y') }}
                                     <span class="openPlus {% if openedDay %}noDisplay{% endif %}">
                                         <i class="icon icon_creer"></i>
                                     </span>
