@@ -66,7 +66,7 @@
                                                 <div class="conf60">
                                                     <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
                                                     <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
-                                                    <p>{{ scheduleCollection.schedule|trans_fallback('description')|raw }}</p>
+                                                    {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
                                                     {% if scheduleCollection.schedule|trans_fallback('url') %}
                                                         <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" target="_blank">
                                                             <div class="confButton">
