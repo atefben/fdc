@@ -49,7 +49,10 @@
         
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
-          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
+          <span class="Article-header-meta-date">
+          <strong>{% if "now"|date('Ymd')  > evenement.publishedAt|date('Ymd') %}
+          {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+          </span>
           <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> ©{{ object.header|trans_fallback('copyright')|replace({'©': ''}) }}</span>
         </div>
       </header>
@@ -165,7 +168,7 @@
                       {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                   {% endif %}
               {% endif %}
-              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}{{ dump(associatedNews) }}
                 {% set header = associatedNews.header %}
                 {% if header is not null %}
                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -181,7 +184,7 @@
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
                     {% set img = associatedNews.header %}
-                {% else %}in 
+                {% else %}
                     {% set tmp = associatedNews.audio %}
                     {% if tmp %}
                         {% set trans = tmp.image.findTranslationByLocale(app.request.locale) %}
