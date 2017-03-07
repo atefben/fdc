@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ShortFilmCornerController extends Controller
 {
     /**
-     * @Route("quisommesnous/{slug}", name="fdc_court_metrage_sfc_who_are_we", defaults={"slug"=null})
+     * @Route("short-film-corner/quisommesnous/{slug}", name="fdc_court_metrage_sfc_who_are_we", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -46,7 +46,7 @@ class ShortFilmCornerController extends Controller
     }
 
     /**
-     * @Route("nosevenements/{slug}", name="fdc_court_metrage_sfc_our_events", defaults={"slug"=null})
+     * @Route("short-film-corner/nosevenements/{slug}", name="fdc_court_metrage_sfc_our_events", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -78,7 +78,7 @@ class ShortFilmCornerController extends Controller
     }
 
     /**
-     * @Route("revivezledition/{slug}", name="fdc_court_metrage_sfc_relive_edition", defaults={"slug"=null})
+     * @Route("short-film-corner/revivezledition/{slug}", name="fdc_court_metrage_sfc_relive_edition", defaults={"slug"=null})
      * @param $slug
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
