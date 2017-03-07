@@ -5291,9 +5291,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }
     var tempTitle = images[centerElement].title;
-    console.log(tempTitle);
 
-    console.log($(tempTitle).filter('*').size());
     var onelineclass = '';
     if($(tempTitle).filter('*').size() > 0){
         onelineclass = ' oneline'
