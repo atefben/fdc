@@ -2998,7 +2998,7 @@ var owsetGridBigImg = function (grid, dom, init) {
         console.log('1919');
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -3014,7 +3014,7 @@ var owsetGridBigImg = function (grid, dom, init) {
         console.log('1920');
         while (i < $img.length) {
             if (j < 15) {
-                if (j == 0 || j == 5 || j == 14) {
+                if (j == 1 || j == 5 || j == 14) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
