@@ -55,6 +55,8 @@
     height: 100%;
     top: 0px;
     margin-top: 0px; }
+    .Article-header .jwplayer.jw-skin-fdc .jw-background-color {
+      background: transparent; }
   .jwplayer.jw-skin-fdc .jw-rail, .jwplayer.jw-skin-fdc .jw-buffer, .jwplayer.jw-skin-fdc .jw-progress {
     background: rgba(255, 255, 255, 0.2); }
   .jwplayer.jw-skin-fdc .jw-knob {
