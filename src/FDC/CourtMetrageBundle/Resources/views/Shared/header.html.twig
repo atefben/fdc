@@ -85,7 +85,7 @@
                 <ul class="main">
                     {% if mainNavs is defined and mainNavs is not null %}
                         {% for key, mainTab in mainNavs %}
-                            {% if mainTab.translatable.isActive %}
+                            {% if mainTab.translatable.isActive and isValidMenuElement(mainTab.route, app.request.locale) %}
                                 <li>
                                     {% set menuURL = ('http' in mainTab.route or 'https' in mainTab.route ? mainTab.route : url(mainTab.route)) %}
                                     {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
@@ -112,7 +112,7 @@
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         <ul class="tcenter">
                                             {% for subTab in subNavs[key] %}
-                                                {% if subTab.translatable.isActive %}
+                                                {% if subTab.translatable.isActive and isValidMenuElement(subTab.route, app.request.locale)%}
                                                     {% set submenuURL = ('http' in subTab.route or 'https' in subTab.route ? subTab.route : url(subTab.route)) %}
                                                     {% set submenuIsExtern = (fdc_court_metrage_domain in submenuURL ? false : true) %}
                                                     <li><a {% if subTab.route == routeName %}class="active"{% endif %} href="{{ submenuURL }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
