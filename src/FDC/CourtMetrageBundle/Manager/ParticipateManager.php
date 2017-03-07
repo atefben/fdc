@@ -85,8 +85,7 @@ class ParticipateManager
         $sections = $labelPage->getTranslatable()->getLabelSection();
 
         $labelSections = array();
-        foreach($sections as $section)
-        {
+        foreach ($sections as $section) {
             $labelSections[$section->getLabelSection()->getId()] = $this->em
                 ->getRepository(CcmLabelSectionTranslation::class)
                 ->getLabelSectionsBySectionIdAndLocale($section->getLabelSection()->getId(), $this->requestStack->getMasterRequest()->get('_locale'));
@@ -102,19 +101,16 @@ class ParticipateManager
 
         $labeSections = array();
 
-        foreach($sections as $section)
-        {
+        foreach ($sections as $section) {
             $labelSections[] = $section;
         }
 
-        usort($labelSections, function($a, $b)
-        {
+        usort($labelSections, function ($a, $b) {
             return $a->getPosition() > $b->getPosition();
         });
 
         $labelSectionsWidgets = array();
-        foreach($labelSections as $section)
-        {
+        foreach ($labelSections as $section) {
             $textWidgets = $this->em
                 ->getRepository(CcmLabelSectionContentTextTranslation::class)
                 ->getLabelContentTextWidgetsByLocaleAndSectionId($this->requestStack->getMasterRequest()->get('_locale'), $section->getLabelSection()->getId());
@@ -135,8 +131,7 @@ class ParticipateManager
             $widgets = array();
             $widgets = array_merge($widgets, $textWidgets, $oneColumnWidgets, $twoColumnWidgets, $threeColumnWidgets);
 
-            usort($widgets, function($a, $b)
-            {
+            usort($widgets, function ($a, $b) {
                 return $a->getTranslatable()->getPosition() > $b->getTranslatable()->getPosition();
             });
 
@@ -186,6 +181,24 @@ class ParticipateManager
         }
 
         return null;
+    }
+
+    public function hasPF($layers)
+    {
+        $hasPF = false;
+
+        foreach ($layers as $modules) {
+            if ($hasPF)
+                break;
+            foreach ($modules as $module) {
+                if ($module->getType() == 'pf') {
+                    $hasPF = true;
+                    break;
+                }
+            }
+        }
+
+        return $hasPF;
     }
 
     public function getImageSectionTabs($section)
