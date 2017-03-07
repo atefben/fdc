@@ -95,9 +95,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     protected $hidden = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="CcmNewsNewsAssociated", mappedBy="news", cascade={"all"}, orphanRemoval=true)
-     *
-     * @Groups({"news_list", "search", "news_show"})
+     * @ORM\OneToMany(targetEntity="CcmNewsNewsAssociated", mappedBy="news", cascade={"persist"}, orphanRemoval=true)
      */
     protected $associatedNews;
 
