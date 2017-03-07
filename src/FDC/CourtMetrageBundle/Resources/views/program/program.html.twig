@@ -68,7 +68,7 @@
                                                     <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
                                                     <p>{{ scheduleCollection.schedule|trans_fallback('description')|raw }}</p>
                                                     {% if scheduleCollection.schedule|trans_fallback('url') %}
-                                                        <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}">
+                                                        <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" target="_blank">
                                                             <div class="confButton">
                                                                 <i class="icon icon_flecheGauche ensavoirplus"></i>
                                                                 {{ 'ccm.program.see_more'|trans }}
