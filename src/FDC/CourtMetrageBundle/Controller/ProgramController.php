@@ -42,6 +42,8 @@ class ProgramController extends Controller
             'daysCollection' => $orderedDays,
             'sejourIsActive' => $programTranslatable->getSejourIsActive(),
             'socialIsActive' => $programTranslatable->getSocialIsActive(),
+            'catalogIsActive' => $programTranslatable->getCatalogIsActive(),
+            'actualiteIsActive' => $programTranslatable->getActualiteIsActive(),
             'positions' => $positions,
             'sejour' => $sejour,
         ]);
