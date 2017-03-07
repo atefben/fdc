@@ -267,17 +267,18 @@ class HomepageManager
         return null;
     }
 
+
     public function orderTransversModules()
     {
         $positions = [];
         $homepage = $this->getHomepageTranslation();
 
-        $positions[$homepage->getTranslatable()->getPositionCatalog()] = 'catalog';
-        $positions[$homepage->getTranslatable()->getPositionActualites()] = 'actualite';
-        $positions[$homepage->getTranslatable()->getPositionSejour()] = 'sejour';
-        $positions[$homepage->getTranslatable()->getPositionSocial()] = 'social';
+        $positions['catalog'] = $homepage->getTranslatable()->getPositionCatalog();
+        $positions['actualite'] = $homepage->getTranslatable()->getPositionActualites();
+        $positions['sejour'] = $homepage->getTranslatable()->getPositionSejour();
+        $positions['social'] = $homepage->getTranslatable()->getPositionSocial();
 
-        ksort($positions);
+        asort($positions);
 
         return $positions;
     }
@@ -286,12 +287,12 @@ class HomepageManager
     {
         $positions = [];
 
-        $positions[$page->getTranslatable()->getPositionCatalog()] = 'catalog';
-        $positions[$page->getTranslatable()->getPositionActualites()] = 'actualite';
-        $positions[$page->getTranslatable()->getPositionSejour()] = 'sejour';
-        $positions[$page->getTranslatable()->getPositionSocial()] = 'social';
+        $positions['catalog'] = $page->getTranslatable()->getPositionCatalog();
+        $positions['actualite'] = $page->getTranslatable()->getPositionActualites();
+        $positions['sejour'] = $page->getTranslatable()->getPositionSejour();
+        $positions['social'] = $page->getTranslatable()->getPositionSocial();
 
-        ksort($positions);
+        asort($positions);
 
         return $positions;
     }
