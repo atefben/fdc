@@ -228,58 +228,58 @@ $(document).ready(function() {
         };
       }
 
-      $.ajax({
-        url  : twitterUrl,
-        type : twitterType,
-        data : twitterRequest,
-        success: function(data, textStatus, xhr) {
-          if (GLOBALS.env == "html") {
-            data = JSON.parse(data)
-            if (typeof data.statuses !== 'undefined') {
-              data = data.statuses;
-            }
-
-            var img = '';
-
-            for (var i = 0; i < data.length; i++) {
-              img = '';
-              url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
-              try {
-                if (data[i].entities['media']) {
-                  img = data[i].entities['media'][0].media_url;
-                }
-              } catch (e) {
-                // no media
-              }
-        
-              posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
-              
-              if(i == data.length - 1) {
-                callback();
-              }
-            }
-          } else {
-            var img = '';
-
-            for (var i = 0; i < data.length; i++) {
-              img = '';
-              try {
-                if (data[i].content) {
-                  img = data[i].content;
-                }
-              } catch (e) {
-                // no media
-              }
-            
-              posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': img})
-
-              if(i == data.length - 1) {
-                callback();
-              }
-            }
-          }
-        }
-      });
+      // $.ajax({
+      //   url  : twitterUrl,
+      //   type : twitterType,
+      //   data : twitterRequest,
+      //   success: function(data, textStatus, xhr) {
+      //     if (GLOBALS.env == "html") {
+      //       data = JSON.parse(data)
+      //       if (typeof data.statuses !== 'undefined') {
+      //         data = data.statuses;
+      //       }
+      //
+      //       var img = '';
+      //
+      //       for (var i = 0; i < data.length; i++) {
+      //         img = '';
+      //         url = 'http://twitter.com/' + data[i].user.screen_name + '/status/' + data[i].id_str;
+      //         try {
+      //           if (data[i].entities['media']) {
+      //             img = data[i].entities['media'][0].media_url;
+      //           }
+      //         } catch (e) {
+      //           // no media
+      //         }
+      //
+      //         posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].text.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'name': data[i].user.screen_name, 'img': img, 'url': url, 'date': data[i].created_at})
+      //
+      //         if(i == data.length - 1) {
+      //           callback();
+      //         }
+      //       }
+      //     } else {
+      //       var img = '';
+      //
+      //       for (var i = 0; i < data.length; i++) {
+      //         img = '';
+      //         try {
+      //           if (data[i].content) {
+      //             img = data[i].content;
+      //           }
+      //         } catch (e) {
+      //           // no media
+      //         }
+      //
+      //         posts.push({'type': 'twitter', 'text': '<div class="txt"><div class="vCenter"><div class="vCenterKid"><p>' + data[i].message.parseURL().parseUsername(true).parseHashtag(true) + '</p></div></div></div>', 'img': img})
+      //
+      //         if(i == data.length - 1) {
+      //           callback();
+      //         }
+      //       }
+      //     }
+      //   }
+      // });
     }
 
     loadInstagram(function() {
