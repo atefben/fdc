@@ -462,7 +462,7 @@ file that was distributed with this source code.
                                                 {% if is_granted('ROLE_BASE_ADMIN_CCM_CONFIDENTIALITE_ADMIN') %}
                                                     <li class="{{ app.request.attributes.get('_route') == 'ccm_confidentialite_edit' ? 'active' }}">
                                                         <a data-edit="true"
-                                                           href="{{ path('ccm_confidentialite_edit', {id: 1}) }}">
+                                                           href="{{ path('ccm_confidentialite_edit', {id: 3}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'admin.ccm.menu.confidentialite'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
