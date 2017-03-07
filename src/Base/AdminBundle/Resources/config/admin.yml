@@ -2514,7 +2514,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmPlanDesSalles, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Se reperer à Cannes}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Se reperer à Cannes, show_in_dashboard: false}
 
     base.admin.ccm_plan_des_salles_sector_collection:
         class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesSectorCollectionAdmin

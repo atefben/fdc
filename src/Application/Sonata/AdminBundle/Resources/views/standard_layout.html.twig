@@ -267,7 +267,8 @@ file that was distributed with this source code.
                                                 'admin_fdc_courtmetrage_homepage_edit'] ? true : active %}
                                             {% set active = group.label == 'admin.group.ccm.participer' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmfilmregister_edit',
-                                                'admin_fdc_courtmetrage_ccmlabel_edit'] ? true : active %}
+                                                'admin_fdc_courtmetrage_ccmlabel_edit',
+                                                'ccm_plan_des_sales_edit'] ? true : active %}
                                             <li class="treeview{% if active %} active{% endif %}">
                                                 <a href="#">
                                                     {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
@@ -334,6 +335,15 @@ file that was distributed with this source code.
                                                                    href="{{ path('admin_fdc_courtmetrage_ccmlabel_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.label_page'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_PLAN_DES_SALLES_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'ccm_plan_des_sales_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('ccm_plan_des_sales_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.plan_des_salles'|trans({}, 'BaseAdminBundle') }}
                                                                 </a>
                                                             </li>
                                                         {% endif %}
