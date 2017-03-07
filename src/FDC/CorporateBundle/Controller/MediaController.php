@@ -6,6 +6,7 @@ use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\Media;
+use FDC\CorporateBundle\Entity\CorpoMediaLibraryItem;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +46,7 @@ class MediaController extends Controller
             $audio = (bool)$request->get('audio');
             $yearStart = $request->get('yearStart');
             $yearEnd = $request->get('yearEnd');
-            $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd);
+            $parameters = $this->getCorpoMediaLibraryItemParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd);
         }
 
         if (!$parameters['medias'] && !$page->getDisplayedSelection()) {
@@ -78,10 +79,8 @@ class MediaController extends Controller
         $audio = (bool)$request->request->get('audio');
         $start = $request->request->get('yearStart');
         $end = $request->request->get('yearEnd');
-        $time = new \DateTime();
-        $time->setTimestamp($since);
 
-        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $start, $end, $time);
+        $parameters = $this->getCorpoMediaLibraryItemParameters($locale, $search, $photo, $video, $audio, $start, $end, $since);
         return $this->render('FDCCorporateBundle:Media:index.more.html.twig', $parameters);
     }
 
@@ -224,5 +223,64 @@ class MediaController extends Controller
         }
     }
 
+    private function getCorpoMediaLibraryItemParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $page = 1)
+    {
+        if (!$photo && !$video && !$audio) {
+            $photo = true;
+            $video = true;
+            $audio = true;
+        }
+        $items = $this
+            ->getDoctrineManager()
+            ->getRepository('FDCCorporateBundle:CorpoMediaLibraryItem')
+            ->getItems($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd)
+        ;
+
+        $filters = [];
+        if ($search) {
+            $filters['search'] = $search;
+        }
+        if ($photo) {
+            $filters['photo'] = 'on';
+        }
+        if ($video) {
+            $filters['video'] = 'on';
+        }
+        if ($audio) {
+            $filters['audio'] = 'on';
+        }
+        if ($yearStart) {
+            $filters['yearStart'] = $yearStart;
+        }
+        if ($yearEnd) {
+            $filters['yearEnd'] = $yearEnd;
+        }
+        $filtersString = '';
+        foreach ($filters as $key => $value) {
+            $filtersString .= ($filtersString ? '&' : '?') . "$key=$value";
+        }
+
+        return [
+            'last'          => count($items) < 31,
+            'medias'        => $this->loadMedias(array_slice($items, 0, 30)),
+            'since'         => $page + 1,
+            'filtersString' => $filtersString,
+        ];
+    }
+
+    private function loadMedias($items)
+    {
+        $medias = [];
+        foreach ($items as $item) {
+            if ($item instanceof CorpoMediaLibraryItem) {
+                $medias[] = $this
+                    ->getDoctrineManager()
+                    ->getRepository($item->getEntityClass())
+                    ->find($item->getEntityId())
+                ;
+            }
+        }
+        return $medias;
+    }
 
 }
