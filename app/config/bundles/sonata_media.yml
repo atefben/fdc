@@ -275,6 +275,8 @@ sonata_media:
                 640x400: { width: 640, height: 400, quality: 100, constraint: false}
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 363x260: { width: 363 , height: 260 , quality: 100, constraint: false }
+                351x222: { width: 351 , height: 222 , quality: 100, constraint: false }
+                703x443: { width: 703 , height: 443 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:
@@ -354,6 +356,8 @@ sonata_media:
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
                 954x606: { width: 954 , height: 606 , quality: 100, constraint: false }
                 420x266: { width: 420 , height: 266 , quality: 100, constraint: false }
+                351x222: { width: 351 , height: 222 , quality: 100, constraint: false }
+                703x443: { width: 703 , height: 443 , quality: 100, constraint: false }
 
         media_audio:
             providers:
