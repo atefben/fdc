@@ -34,8 +34,7 @@
         {% set image = imageTrans.file %}
     {% endif %}
 {% endif %}
-{{ dump(image) }}
-<div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
+<div {%if image is defined %}style="background-image: url({% path image, 'reference' %});" {% endif %}id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
       data-title="{{ widget|trans_fallback('title') }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>
