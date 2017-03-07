@@ -4,10 +4,8 @@ namespace Base\CoreBundle\Component\Repository;
 
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
-use \DateTime;
-
+use DateTime;
 use Doctrine\ORM\EntityRepository as BaseRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -25,15 +23,15 @@ class EntityRepository extends BaseRepository
         $query = substr($query, 0, -3);
         $qb = $qb->where($query);
 
-       if (isset($params['title']) && !empty($params['title'])) {
+        if (isset($params['title']) && !empty($params['title'])) {
             foreach ($aliases as $key => $alias) {
                 $aliasMain = substr($alias, 0, -1);
-                $aliasTrans = $aliasMain. 't'. $key;
+                $aliasTrans = $aliasMain . 't' . $key;
                 $qb->leftJoin("{$aliasMain}.translations", $aliasTrans);
                 $query2 .= "({$aliasTrans}.locale = 'fr' AND {$aliasTrans}.title LIKE :title";
                 $query2 .= ") OR";
             }
-            $qb->setParameter('title', '%'. $params['title']. '%');
+            $qb->setParameter('title', '%' . $params['title'] . '%');
             $query2 = substr($query2, 0, -3);
             $qb = $qb->andWhere($query2);
         }
@@ -54,8 +52,8 @@ class EntityRepository extends BaseRepository
             ->setParameter('locales', $locales)
             ->groupBy('e.id')
             ->getQuery()
-            ->getArrayResult();
-        ;
+            ->getArrayResult()
+        ;;
 
         return count($qb);
     }
@@ -121,10 +119,12 @@ class EntityRepository extends BaseRepository
      */
     public function addMasterQueries(QueryBuilder $qb, $alias, $festival, $published = true)
     {
-        $qb
-            ->andWhere("{$alias}.festival = :festival")
-            ->setParameter('festival', $festival)
-        ;
+        if ($festival) {
+            $qb
+                ->andWhere("{$alias}.festival = :festival")
+                ->setParameter('festival', $festival)
+            ;
+        }
 
         if ($published) {
             $qb
@@ -150,12 +150,12 @@ class EntityRepository extends BaseRepository
 
         if ($slug !== null) {
             if ($locale == 'fr') {
-               $slugCondition .= " AND {$alias}.slug = :slug";
+                $slugCondition .= " AND {$alias}.slug = :slug";
             }
             $slugCondition .= ')';
 
             $qb
-                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published". $slugCondition)
+                ->andWhere("({$alias}.locale = 'fr' AND {$alias}.status = :status_published" . $slugCondition)
                 ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
                 ->setParameter('slug', $slug)
             ;
@@ -176,9 +176,9 @@ class EntityRepository extends BaseRepository
             ;
 
             if ($media == 'MediaAudio') {
-            //    $this->addAWSAudioEncodersQueries($qb, $alias);
+                //    $this->addAWSAudioEncodersQueries($qb, $alias);
             } else if ($media == 'MediaVideo') {
-            //    $this->addAWSVideoEncodersQueries($qb, $alias);
+                //    $this->addAWSVideoEncodersQueries($qb, $alias);
             }
 
             if ($locale != 'fr') {
@@ -239,11 +239,9 @@ class EntityRepository extends BaseRepository
 //                ->andWhere("(($aliasMain.image IS NOT NULL AND $aliasImage.publishedAt >= :imageNow AND ($aliasImage.publishEndedAt IS NULL OR $aliasImage.publishEndedAt <= :imageNow)) OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
 //                ->setParameter('imageNow', new DateTime())
 //            ;
-        }
-        else {
+        } else {
             $qb
-                ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)")
-            ;
+                ->andWhere("($aliasMain.image IS NOT NULL OR $aliasTranslation.imageAmazonUrl IS NOT NULL)");
         }
 
         return $qb;

@@ -678,12 +678,8 @@ class NewsController extends Controller
         }
 
         // GET FDC SETTINGS
-        $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        if ($festival === null) {
-            throw $this->createNotFoundException();
-        }
 
         $festivalId = $festival->getId();
         $format = substr($format, 0, -1);
@@ -693,14 +689,14 @@ class NewsController extends Controller
             $news = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Statement')
-                ->getStatementBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
+                ->getStatementBySlug($slug, null, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         } else {
             $repository = array_flip(Info::getTypes())[$format];
             $news = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Info')
-                ->getInfoBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
+                ->getInfoBySlug($slug, null, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         }
         if (!$news) {
