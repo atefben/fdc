@@ -3,6 +3,8 @@ services:
       class: FDC\CourtMetrageBundle\Twig\MenuExtension
       tags:
           - name: twig.extension
+      calls:
+          - ['setRouter', ['@router']]
 
     base.twig.filter_extension:
       class: FDC\CourtMetrageBundle\Twig\FilterExtension
