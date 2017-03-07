@@ -1,9 +1,4 @@
-{% trans_default_domain 'FDCCorporateBundle' %}
-
-<div class="grid-01 isotope-01 padding-bottom add-ajax-request">
-    <div class="grid-sizer"></div>
-    {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
-</div>
+{% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}
 
 {% if not last and since %}
     <div>

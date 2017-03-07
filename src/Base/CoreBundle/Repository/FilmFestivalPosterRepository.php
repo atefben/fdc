@@ -42,7 +42,7 @@ class FilmFestivalPosterRepository extends EntityRepository
 
         if ($since) {
             $qb
-                ->andWhere('fp.updatedAt <= :since')
+                ->andWhere('fp.festival <= :since')
                 ->setParameter(':since', $since)
             ;
         }
