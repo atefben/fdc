@@ -2,6 +2,9 @@
   text-decoration: none;
   color: #c8a461; }
 
+.Article-content ol, .Article-content ul {
+  padding-left: 2rem; }
+
 .Article-content table {
   width: 100% !important; }
 
