@@ -37,19 +37,24 @@ class MediaController extends Controller
 
         $locale = $request->getLocale();
 
-        $search = $request->get('search');
-        $photo = (bool)$request->get('photo');
-        $video = (bool)$request->get('video');
-        $audio = (bool)$request->get('audio');
-        $yearStart = $request->get('yearStart');
-        $yearEnd = $request->get('yearEnd');
-
-        $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd);
+        $parameters = ['medias' => []];
+        if ($request->query->has('search')) {
+            $search = $request->get('search');
+            $photo = (bool)$request->get('photo');
+            $video = (bool)$request->get('video');
+            $audio = (bool)$request->get('audio');
+            $yearStart = $request->get('yearStart');
+            $yearEnd = $request->get('yearEnd');
+            $parameters = $this->getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd);
+        }
 
         if (!$parameters['medias'] && !$page->getDisplayedSelection()) {
             $parameters['medias'] = $page->getMediasSelection();
             $parameters['last'] = true;
-            $parameters['noResult'] = true;
+            $parameters['noResult'] = false;
+            if ($request->query->has('search')) {
+                $parameters['noResult'] = true;
+            }
         } else {
             $parameters['noResult'] = false;
         }
@@ -184,10 +189,10 @@ class MediaController extends Controller
             $filtersString .= ($filtersString ? '&' : '?') . "$key=$value";
         }
         return [
-            'medias' => $medias,
-            'last'   => $last,
-            'since'  => $since,
-            'filtersString'  => $filtersString,
+            'medias'        => $medias,
+            'last'          => $last,
+            'since'         => $since,
+            'filtersString' => $filtersString,
         ];
     }
 
