@@ -274,6 +274,19 @@ article {
     margin: 35px 0px;
   }
 
+  .txt-grey-bkg-container {
+      background-color: #f4f4f4;
+      padding: 88px 80px;
+      margin-bottom: 70px;
+      max-width: 776px;
+      margin: 0 auto;
+      text-align: left;
+  }
+
+  .strong {
+    margin-bottom: 10px;
+  }
+
   ul {
     li {
       font-family: $CamphorRegular;

@@ -970,3 +970,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .item figcaption, .item .caption {
     margin-top: 0px;
 }
+
+
+@media print
+{    
+    .buttons
+    {
+        display: none !important;
+    }
+}

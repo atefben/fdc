@@ -15999,6 +15999,17 @@ article .read-later.rAlign span:after {
 .single-article .text {
   margin: 35px 0px;
 }
+.single-article .txt-grey-bkg-container {
+  background-color: #f4f4f4;
+  padding: 88px 80px;
+  margin-bottom: 70px;
+  max-width: 776px;
+  margin: 0 auto;
+  text-align: left;
+}
+.single-article .strong {
+  margin-bottom: 10px;
+}
 .single-article ul li {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 30px;
@@ -29315,6 +29326,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   margin-top: 0px;
 }
 
+@media print {
+  .buttons {
+    display: none !important;
+  }
+}
 .confcourtaccordion .selectbtn {
   float: none !important;
   min-width: 0px !important;

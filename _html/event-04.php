@@ -440,6 +440,99 @@
               </div>
             </div>
           </div>
+
+          <table cellpadding="1" cellspacing="1" class="table-article">
+            <tbody>
+              <tr>
+                <td><em>Sew the Winter to my Skin</em></td>
+                <td>Jahmil X.T. Qubeka</td>
+                <td>&nbsp;Afrique du Sud</td>
+              </tr>
+              <tr>
+                <td><em>Day After Tomorrow</em></td>
+                <td>Kamar Ahmad Simon</td>
+                <td>Bangladesh</td>
+              </tr>
+              <tr>
+                <td><em>Ningdu</em></td>
+                <td>Lei Lei</td>
+                <td>Chine</td>
+              </tr>
+              <tr>
+                <td><em>Teenage Jesus</em></td>
+                <td>Marie Grahtø Sørensen</td>
+                <td>Danemark</td>
+              </tr>
+              <tr>
+                <td><em>Decompression</em></td>
+                <td>Yona Rozenkier</td>
+                <td>Israël</td>
+              </tr>
+              <tr>
+                <td><em>Go Youth</em></td>
+                <td>Carlos Armella</td>
+                <td>Mexique</td>
+              </tr>
+              <tr>
+                <td><em>Bedridden</em></td>
+                <td>
+                <p>Byamba Sakhya</p>
+                </td>
+                <td>
+                <p>Mongolie</p>
+                </td>
+              </tr>
+              <tr>
+                <td><em>Alam</em></td>
+                <td>Firas Khoury</td>
+                <td>Palestine</td>
+              </tr>
+              <tr>
+                <td><em>Candy Town</em></td>
+                <td>Yanillys Perez</td>
+                <td>
+                <p>République</p>
+
+                <p>Dominicaine</p>
+                </td>
+              </tr>
+              <tr>
+                <td><em>Otto the Barbarian</em></td>
+                <td>Ruxandra Ghitescu</td>
+                <td>Roumanie</td>
+              </tr>
+              <tr>
+                <td><em>Summer E5</em></td>
+                <td>Emily Young</td>
+                <td>Royaume-Uni</td>
+              </tr>
+              <tr>
+                <td><em>City of Small Blessings</em></td>
+                <td>Chen-Hsi Wong</td>
+                <td>Singapour</td>
+              </tr>
+              <tr>
+                <td><em>The Translator</em></td>
+                <td>Rana Kazkaz &amp; Anas Khalaf</td>
+                <td>Syrie</td>
+              </tr>
+              <tr>
+                <td><em>Cu Li Nevers Cries</em></td>
+                <td>Pham Ngoc Lan</td>
+                <td>Vietnam</td>
+              </tr>
+              <tr>
+                <td><em>Taste</em></td>
+                <td>Le Bao</td>
+                <td>Vietnam</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="author">Rédigé par Tarik Khaldi</div>
+
+
           <section class="categorie-items honneur-invit">
             <div class="contain-article-invit">
                <article style="background-image:url('http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_main/0001/02/thumb_1319_film_main_976x535.jpeg')">
