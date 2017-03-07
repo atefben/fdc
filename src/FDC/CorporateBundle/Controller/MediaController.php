@@ -237,9 +237,7 @@ class MediaController extends Controller
         ;
 
         $filters = [];
-        if ($search) {
-            $filters['search'] = $search;
-        }
+        $filters['search'] = $search;
         if ($photo) {
             $filters['photo'] = 'on';
         }
