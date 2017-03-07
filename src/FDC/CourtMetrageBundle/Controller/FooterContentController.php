@@ -22,8 +22,8 @@ class FooterContentController extends Controller
      * @param Request $request
      *
      * @Route("/mentions-legales", name="fdc_court_metrage_footer_mentions_legales")
-     * @Route("/credits", name="fdc_ccm_footer_credits")
-     * @Route("/politique-de-confidentialite", name="fdc_ccm_footer_politique_de_confidentialite")
+     * @Route("/credits", name="fdc_court_metrage_footer_credits")
+     * @Route("/politique-de-confidentialite", name="fdc_court_metrage_footer_politique_de_confidentialite")
      */
     public function showAction(Request $request)
     {
