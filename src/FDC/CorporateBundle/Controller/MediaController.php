@@ -73,12 +73,12 @@ class MediaController extends Controller
     public function indexAjaxAction(Request $request, $since)
     {
         $locale = $request->getLocale();
-        $search = $request->request->get('search');
-        $photo = (bool)$request->request->get('photo');
-        $video = (bool)$request->request->get('video');
-        $audio = (bool)$request->request->get('audio');
-        $start = $request->request->get('yearStart');
-        $end = $request->request->get('yearEnd');
+        $search = $request->get('search');
+        $photo = (bool)$request->get('photo');
+        $video = (bool)$request->get('video');
+        $audio = (bool)$request->get('audio');
+        $yearStart = $request->get('yearStart');
+        $yearEnd = $request->get('yearEnd');
 
         $parameters = $this->getCorpoMediaLibraryItemParameters($locale, $search, $photo, $video, $audio, $start, $end, $since);
         return $this->render('FDCCorporateBundle:Media:index.more.html.twig', $parameters);
