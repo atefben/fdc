@@ -159,6 +159,7 @@ class DefaultController extends Controller
             'filters'           => $filters,
             'lastPublishedAt'   => $lastPublishedAt,
             'last'              => $last,
+            'festivalYear'              => $this->getFestival()->getYear(),
         ]);
     }
 
