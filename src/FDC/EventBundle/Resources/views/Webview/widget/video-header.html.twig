@@ -1,4 +1,9 @@
 {% set video = widget.video %}
+
+{% if video|trans_fallback('imageAmazonUrl') %}
+	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+{% endif %}
+
 {% if video.image.file is defined and video.image.file is not null %}
 	{% set image = video.image|trans_fallback('file') %}
 {% endif %}
@@ -8,10 +13,8 @@
     {% set trans = video.findTranslationByLocale('fr') %}
 {% endif %}
 
-{% if video|trans_fallback('imageAmazonUrl') %}
-	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-{% endif %}
-{{ dump(image) }}
+
+{{ dump(widget.video.image|trans_fallback('file')) }}
 {{ dump(video|trans_fallback('imageAmazonUrl')) }}
 {% if image is defined and image is not null %}
 	{% path image, 'reference' %}
