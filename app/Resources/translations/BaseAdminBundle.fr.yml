@@ -856,7 +856,7 @@ form:
                 domains_collection: Filtres
                 page_image: Page image
             actualite:
-                title: Les actualités
+                title: Module Actualités
                 date: Date
                 title: Titre
                 description: Description
@@ -866,29 +866,30 @@ form:
                 associated_movie_help: Sélectionnez un film associé à l'article.
                 url: URL
             social:
-                title: Le social wall
+                title: Module Social Wall
                 position_social: La position du module Social
                 social_is_activated: Activer le module
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter
                 push_is_activated: Activer le module
-                homepage: Catalogue
+                homepage: Push Catalogue
                 whiteTitle: Nom du push
                 url: URL
                 homepage: Le catalogue
+                catalog_image: Image de background
             sejour:
                 title1: Titre 1
                 title2: Titre 2
                 url: URL
                 sejour_is_activated: Activer le module
-                title: Grand push
+                title: Module Grand Push
                 button : Bouton titre
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc
                 goldenTitle: Titre Doré
-                url: URL de la push
+                url: URL du push
                 isActive: Activer le module
                 add_message: Pushes
             homepage:
@@ -905,7 +906,7 @@ form:
                 url: URL de la slide
             court:
                 homepage: Module Courts en compétition
-                film_selection: Liste des films
+                film_selection: Section de sélection
                 court_is_activated: Activer le module
                 court_year: L’année
             homepage_slider_type: Ajouter
@@ -913,7 +914,7 @@ form:
             homepage_actualite_type: Ajouter
             homepage_sejour_type: Ajouter
             homepage_push: Push
-            pushes: Module Push
+            pushes: Module Pushs
             homepage_slider: Slide
             slide: Module Slider
             footer:
@@ -1035,21 +1036,21 @@ form:
                 bus: Bus
                 taxi: Taxi
             a_propos:
-                config: A propos informations sur le module
-                label: Une étiquette de module propos
-                title: A propos module titre
-                description: A propos description du module
-                url: A propos module url
-                type: Un type de module propos
-                is_activated: c'est actif
-                youtube: Youtube
-                video: Vidéo
-                image: Image
-                youtubes_collection: Collection youtube
-                youtubes_list: Liste de youtube
-                videos_collection: Collection de vidéos
-                videos_list: Liste de vidéos
-                images_collection: Collection d'images
+                config: Module A Propos
+                label: Surtitre
+                title: Titre
+                description: Description
+                url: URL en savoir plus
+                type: Type de médias
+                is_activated: Activer le module
+                youtube: Vidéo(s) Youtube
+                video: Vidéo(s) Amazon
+                image: Image(s)
+                youtubes_collection: Vidéos Youtube
+                youtubes_list: Liste
+                videos_collection: Vidéos Amazon
+                videos_list: Liste
+                images_collection: Galerie d'image
                 gallery: Galerie
                 youtube_page_config: Informations sur youtube
                 youtube_title: Youtube title
@@ -1080,7 +1081,7 @@ form:
                     title: Titre
                 catalog_title: Module Catalogue
                 catalog_is_activated: Activer le module
-                position_catalog: La position du module Catalog
+                position_catalog: Position
                 social_title: Le social wall
                 social_is_activated: Activer le module
                 position_social: La position du module Social
