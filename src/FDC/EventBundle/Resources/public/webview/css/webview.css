@@ -473,6 +473,9 @@ html {
   margin: 0 auto;
   line-height: 20px; }
 
+.Article-content .descrip-participate {
+  text-align: center; }
+
 .Article-content em {
   font-style: italic; }
 
