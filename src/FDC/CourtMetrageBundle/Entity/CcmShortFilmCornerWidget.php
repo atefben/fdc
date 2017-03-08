@@ -20,6 +20,7 @@ use JMS\Serializer\Annotation\VirtualProperty;
  *  "quote" = "CcmShortFilmCornerWidgetQuote",
  *  "audio" = "CcmShortFilmCornerWidgetAudio",
  *  "image" = "CcmShortFilmCornerWidgetImage",
+ *  "gallery" = "CcmShortFilmCornerWidgetGallery",
  *  "image_dual_align" = "CcmShortFilmCornerWidgetImageDualAlign",  
  *  "video" = "CcmShortFilmCornerWidgetVideo",
  *  "video_youtube" = "CcmShortFilmCornerWidgetVideoYoutube",

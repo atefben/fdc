@@ -824,6 +824,20 @@
     </div>
 {% endblock %}
 
+{% block ccm_sfc_widget_gallery_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.widget.gallery'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block ccm_news_widget_gallery_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'form.widget.gallery'|trans }}</h4>
