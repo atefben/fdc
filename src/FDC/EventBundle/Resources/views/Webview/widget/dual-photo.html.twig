@@ -7,7 +7,9 @@
                 {% endif %}
                 {% set file = trans.file %}
                 <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                {% if gallery.media|trans_fallback('copyright') %}
                 <div class="Article-picture-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+                {% endif %}
             {% endif %}
         {% endfor %}
     {% endif %}
