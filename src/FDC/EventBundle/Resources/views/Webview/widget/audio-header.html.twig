@@ -53,13 +53,13 @@
         console.log(backgroundElems);
         if(backgroundElems){
             for (index = 0; index < backgroundElems.length; ++index) {
-                console.log(backgroundElems[index]);
+                backgroundElems[index].style.backgroundImage = 'url({% path image, 'reference' %})';
             }
         }
     },200);
 
 </script>
-{% path image, 'reference' %}
+
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
