@@ -118,7 +118,7 @@
                 <a href="#" class="linkAllCover"></a>
                 <div class="image">
                     <div class="image-wrapper">
-                        <img src="{% path transImage.file , '572x362' %}" alt=""/>
+                        <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '572x362' %}{% endif %}" alt=""/>
                     </div>
                     <a href="#" class="linkImage"></a>
                 </div>
