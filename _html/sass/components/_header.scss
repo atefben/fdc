@@ -73,6 +73,10 @@ header {
       display: none;
     }
 
+    #edition {
+      margin-left: 10px!important;
+    }
+
     #sticky-user {
       opacity: 1;
       visibility: visible;
@@ -117,8 +121,6 @@ header {
           float: left;
           margin-top: -5px;
           width: 72px;
-          margin-left: 35px;
-          margin-left: 50px;
         }
 
         h2 {
@@ -229,11 +231,11 @@ header {
   }
 
   #top-bar {
-    border-bottom: 0px solid #080808;
+    border-bottom: 1px solid #080808;
     background-color: #141414;
     font-size: 0.750rem;
-    height: 35px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 28px;
     @include transition(all .6s $smoothTransition);
 
     .main-nav {
@@ -284,26 +286,24 @@ header {
 
   #logo-wrapper {
     background-color: $black;
-    height: 154px !important;
+    height: 159px !important;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
       height: 100%;
       position: relative;
-      width: 1152px;
-      @media screen and (max-width: 1024px) {
-        width: 1152px;
-      }
+      width: 977px;
     }
 
     #logo {
       display: inline-block;
-      padding: 0px 100px 0px 0;
+      padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
-      width: 200px;
-      positon: relative;
+      /*width: 200px;*/
+      width: 165px;
+      margin-left: 10px;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -318,10 +318,8 @@ header {
 
       h1 {
         position: absolute;
-        /*top: 108px;
-        left: 0px;*/
-        top: 95px!important;
-        left: 40px!important;
+        top: 100px!important;
+        left: 10px!important;
       }
 
       h2 {
@@ -371,7 +369,6 @@ header {
         display: block;
         margin: 0 auto;
         width: 145px;
-        margin-left: 55px;
         @include transition(width 0.3s $smoothTransition);
         @include transform(translateY(0));
       }
@@ -423,7 +420,7 @@ header {
       height: 90px;
       @include transition(all 0.5s $smoothTransition);
       top: 30px;
-      left: 405px;
+      left: 230px;
       background: #333333;
       text-align: center;
       color: white;
@@ -496,17 +493,17 @@ header {
         }
 
         &:first-child {
-          margin-left: 45px;
-          /*@media screen and(max-width: $mobileWidth) {
-            margin-left: 5px;
-          }*/
+          margin-left: 10px;
+          @media screen and(max-width: $mobileWidth) {
+            margin-left: 10px;
+          }
         }
 
         a {
           color: #fff;
           font-size: 14px;
           display: block;
-          padding-right: 45px;
+          padding-right: 20px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -727,9 +724,12 @@ header {
 }
 
 #searchBar {
-    margin-left: 105px !important;
+    margin-left: 85px !important;
     border-left: 1px solid #404040;
     padding-left: 20px;
+    @media screen and (max-width: 1279px) {
+      margin-left: 55px !important;
+    }
   }  
 
 #searchBarA {
@@ -1009,4 +1009,13 @@ header {
     position: absolute!important;
     right: 0%!important;
     z-index: 1000!important;
+}
+
+header {
+    .bigContainer {
+      max-width: 977px;
+      margin: 0 auto;
+      text-align: center;
+      overflow: hidden!important;
+  }
 }
