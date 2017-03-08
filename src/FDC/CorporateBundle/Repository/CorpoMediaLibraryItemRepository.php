@@ -39,7 +39,7 @@ class CorpoMediaLibraryItemRepository extends EntityRepository
 
         if ($search) {
             $qb
-                ->andWhere('i.search = :search')
+                ->andWhere('i.search like :search')
                 ->setParameter(':search', "%$search%")
             ;
         }
