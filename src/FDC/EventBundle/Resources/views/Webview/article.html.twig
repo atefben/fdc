@@ -172,19 +172,10 @@
               {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
                 {% if header is not null %}
-                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is not null and trans.file is not null %}
-                        {% set imageTrans = trans %}
-                    {% else %}
-                        {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
-                        {% if trans is not null and trans.file is not null %}
-                            {% set imageTrans = trans %}
-                        {% endif %}
-                    {% endif %}
+                    {% set file = header|trans_fallback('file') %}
                 {% endif %}
                 {% if imageTrans is defined and imageTrans is not null %}
                     {% set file = imageTrans.file %}
-                    {% set img = associatedNews.header %}
                 {% else %}
                     {% set tmp = associatedNews.audio %}
                     {% if tmp %}
@@ -192,7 +183,6 @@
                         {% if trans is null or trans.file is null %}
                             {% set trans = tmp.image.findTranslationByLocale('fr') %}
                         {% endif %}
-                        {% set img = trans %}
                         {% set file = trans.file %}
                     {% endif %}
                 {% endif %}
