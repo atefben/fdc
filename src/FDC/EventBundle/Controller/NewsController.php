@@ -112,7 +112,7 @@ class NewsController extends Controller
             $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
             $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
-            sort($homeArticles);
+            asort($homeArticles);
         }
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
