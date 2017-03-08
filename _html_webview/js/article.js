@@ -96,7 +96,10 @@ var ow = ow || {};
 	ow.audioPlayer = function(){
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
-				console.log($(this).closest('.Article-header').length);
+				var height = 90;
+				if($(this).closest('.Article-header').length){
+					height = $(window).width();
+				}
 				var player = $(this);
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
