@@ -197,12 +197,13 @@
                     {% endif %}
                 {% endif %}
               {% endif %}
-              {% if file is defined and file is not null %}
-                  <img src="{% path file, 'reference' %}"/>
-              {% else %}
-                <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
-              {% endif %}
-              <i class="Article-related-slider-icon {{ iconClass }}"></i>
+            {% endif %}
+            {% if file is defined and file is not null %}
+                <img src="{% path file, 'reference' %}"/>
+            {% else %}
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+            {% endif %}
+            <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>
             <div class="Article-related-slider-caption">
               <h4>{{ associatedNews.theme|trans_fallback('name') }}</h4> <p>18.05.15&nbsp;&nbsp;.&nbsp;&nbsp;09:00</p>
