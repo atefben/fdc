@@ -70,4 +70,37 @@ class FilmPersonRepository extends EntityRepository
             ;
     }
 
+    public function getDirectorsRandomlyCcm($festival, $count, $exclude, $selectionSection)
+    {
+        return $this
+            ->createQueryBuilder('fp')
+            ->select('
+                fp,
+                RAND() as HIDDEN rand
+            ')
+            ->join('fp.films', 'ffp')
+            ->join('ffp.film', 'film')
+            ->join('ffp.functions', 'ffpf')
+            ->join('ffpf.function', 'ff')
+            ->join('fp.medias', 'fpm')
+            ->andWhere('fp.firstname IS NOT NULL')
+            ->andWhere('fp.firstname != :empty')
+            ->setParameter('empty', "")
+            ->andWhere('film.festival = :festival')
+            ->andWhere('film.selectionSection = :selectionSection')
+            ->setParameter('festival', $festival)
+            ->setParameter('selectionSection', $selectionSection)
+            ->andWhere('ff.id = :id_director')
+            ->setParameter('id_director', FilmFunctionInterface::FUNCTION_DIRECTOR)
+            ->andWhere('(fp.portraitImage IS NOT NULL OR fpm.media IS NOT NULL)')
+            ->andWhere('fp.id != :exclude')
+            ->andWhere('fp.duplicate = :false')
+            ->setParameter(':false', false)
+            ->setParameter('exclude', $exclude)
+            ->addOrderBy('rand')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
