@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Form\DataTransformer\ModelToIdTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * CcmNewsWidgetGalleryType class.
+ * CcmShortFilmCornerWidgetGalleryType class.
  *
  * \@extends CcmShortFilmCornerWidgetGalleryType
  * \@company Ohwee
