@@ -122,14 +122,14 @@ var ow = ow || {};
 
 				//video ratio computing
 				var ratio = 320/202;
-				var width = $(window).width() * ratio;
+				var height = $(window).width() * ratio;
 				var videoInstance = jwplayer(player.attr('id')).setup({
 					"file": player.data('file'),
 					"image": player.data('poster'),
 					"title": player.data('title'),
 					"description": player.data('desc'),
 					"width": '100%',
-					"height": ,
+					"height": height,
 					'skin': {
 						'name': 'fdc-video'
 					}
