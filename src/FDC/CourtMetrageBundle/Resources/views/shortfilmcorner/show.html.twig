@@ -94,6 +94,22 @@
         {% endfor %}
 
     </div>
+
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'ccm.breadcrumb.shortfilmcorner.homepage'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : title,
+    "url"  : path( sfc_route_name, {'slug': slug})
+    }
+    ]
+    }
+    %}
+
     <!-- POPIN MAIL SHARE -->
     {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
     {'section': '',
