@@ -2,24 +2,24 @@
 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
 {% set file = news.audio %}
 {% set trans = file.findTranslationByLocale(app.request.locale) %}
-    one 
-    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}tou 
+
+    {% if trans is null or trans.mp3Url is null or trans.jobMp3State != 3 %}
         {% set trans = file.findTranslationByLocale('fr') %}
     {% endif %}
 
     {% set header = news.header %}
-    {% if header is not null %}tri 
+    {% if header is not null %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-        {% if imageTrans is null or imageTrans.file is null %}fore 
+        {% if imageTrans is null or imageTrans.file is null %}
             {% set imageTrans = header.findTranslationByLocale('fr') %}
         {% endif %}
     {% endif %}
-    {% if imageTrans is defined %}five 
+    {% if imageTrans is defined %}
         {% set image = imageTrans.file %}
-    {% else %}six 
+    {% else %}
         {% set header = news.audio.image %}
         {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-        {% if imageTrans is null or imageTrans.file is null %}seven 
+        {% if imageTrans is null or imageTrans.file is null %}
             {% set imageTrans = header.findTranslationByLocale('fr') %}
         {% endif %}
 
