@@ -36,4 +36,18 @@
             </div>
         </div>
     </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'ccm.breadcrumb.participer.homepage'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : 'ccm.breadcrumb.participer.se_reperer_a_cannes'|trans,
+    "url"  : path('fdc_court_metrage_plan_des_salles')
+    }
+    ]
+    }
+    %}
 {% endblock %}

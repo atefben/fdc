@@ -132,6 +132,7 @@ class ParticipateController extends Controller
                 'layers' => $pageLayers,
                 'modules' => $layerModules,
                 'hasPF' => $hasPF,
+                'slug' => $slug,
             ]
         );
     }

@@ -58,7 +58,20 @@
             </div>
         {% endif %}
     </div>
-
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'ccm.breadcrumb.participer.homepage'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : 'ccm.breadcrumb.participer.participe'|trans,
+    "url"  : path('fdc_court_metrage_participer_page', {'slug': slug})
+    }
+    ]
+    }
+    %}
 {% endblock %}
 
 {% block javascripts %}
