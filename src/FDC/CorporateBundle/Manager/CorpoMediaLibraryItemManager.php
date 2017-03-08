@@ -212,29 +212,30 @@ class CorpoMediaLibraryItemManager
 
     private function syncFilmFilmMedia(FilmFilmMedia $object)
     {
-        if (!$object->getMedia()){
-            return null;
-        }
         foreach ($this->locales as $locale) {
-            $filmTranslation = $object->getFilm()->findTranslationByLocale($locale);
-            if ($filmTranslation instanceof FilmFilmTranslation) {
-                $item = $this->getCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
+            if (!$object->getMedia() || !$object->getMedia()->getFile()) {
+                $this->removeCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
+            } else {
+                $filmTranslation = $object->getFilm()->findTranslationByLocale($locale);
+                if ($filmTranslation instanceof FilmFilmTranslation) {
+                    $item = $this->getCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
 
-                $sorted = $object->getFilm()->getFestival()->getFestivalStartsAt();
-                $search = $object->getFilm()->getTitleVO();
-                $search .= ' ' . $filmTranslation->getTitle();
-                $search .= ' ' . $object->getMedia()->getCopyright();
-                $search .= ' ' . $object->getMedia()->getCredits();
-                $search .= ' ' . $object->getMedia()->getTitleVf();
-                $search .= ' ' . $object->getMedia()->getTitleVa();
+                    $sorted = $object->getFilm()->getFestival()->getFestivalStartsAt();
+                    $search = $object->getFilm()->getTitleVO();
+                    $search .= ' ' . $filmTranslation->getTitle();
+                    $search .= ' ' . $object->getMedia()->getCopyright();
+                    $search .= ' ' . $object->getMedia()->getCredits();
+                    $search .= ' ' . $object->getMedia()->getTitleVf();
+                    $search .= ' ' . $object->getMedia()->getTitleVa();
 
-                $item
-                    ->setType('image')
-                    ->setSorted($sorted)
-                    ->setFestivalYear($object->getFilm()->getFestival()->getYear())
-                    ->setSearch($search)
-                ;
-                $this->getDoctrineManager()->flush();
+                    $item
+                        ->setType('image')
+                        ->setSorted($sorted)
+                        ->setFestivalYear($object->getFilm()->getFestival()->getYear())
+                        ->setSearch($search)
+                    ;
+                    $this->getDoctrineManager()->flush();
+                }
             }
         }
     }
