@@ -40,6 +40,9 @@
     {% if imageTrans is null or imageTrans.file is null %}
       {% set imageTrans = headerAimg.findTranslationByLocale('fr') %}
     {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
 {% endif %}
 <div {%if image is defined %}style="background-image: url({% path image, 'reference' %});" {% endif %}id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
