@@ -195,9 +195,11 @@
                     {% endif %}
                 {% endif %}
               {% endif %}
-              {% if associatedNews.video.image|trans_fallback('file') %}
-                {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
-              {% endif %}
+              {% if associatedNews.video is not null %}
+                {% if associatedNews.video.image|trans_fallback('file') %}
+                  {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+                {% endif %}
+                {% endif %}
               {% if file is defined and file is not null %}
                   {% set finalImage = file %}
               {% endif %}
