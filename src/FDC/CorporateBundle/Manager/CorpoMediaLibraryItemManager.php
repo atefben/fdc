@@ -212,6 +212,9 @@ class CorpoMediaLibraryItemManager
 
     private function syncFilmFilmMedia(FilmFilmMedia $object)
     {
+        if (!$object->getMedia()){
+            return null;
+        }
         foreach ($this->locales as $locale) {
             $filmTranslation = $object->getFilm()->findTranslationByLocale($locale);
             if ($filmTranslation instanceof FilmFilmTranslation) {
