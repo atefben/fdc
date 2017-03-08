@@ -14,18 +14,25 @@ class CorpoMediaLibraryItemListener
 
     public function setCorpoMediaLibraryItemManager(CorpoMediaLibraryItemManager $manager)
     {
+
         $this->corpoMediaLibraryItemManager = $manager;
     }
 
 
     public function postPersist(LifecycleEventArgs $args)
     {
-        $this->corpoMediaLibraryItemManager->sync($args->getObject());
+        try {
+            $this->corpoMediaLibraryItemManager->sync($args->getObject());
+        } catch ($exception) {
+        }
     }
 
 
     public function postUpdate(LifecycleEventArgs $args)
     {
-        $this->corpoMediaLibraryItemManager->sync($args->getObject());
+        try {
+            $this->corpoMediaLibraryItemManager->sync($args->getObject());
+        } catch ($exception) {
+        }
     }
 }
