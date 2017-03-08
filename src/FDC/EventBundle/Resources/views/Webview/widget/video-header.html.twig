@@ -12,6 +12,7 @@
 	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
 {% endif %}
 {{ dump(image) }}
+{{ dump(video|trans_fallback('imageAmazonUrl')) }}
 {% if image is defined and image is not null %}
 	{% path image, 'reference' %}
 {% endif %}
