@@ -195,8 +195,14 @@
                     {% endif %}
                 {% endif %}
               {% endif %}
+              {% if widget.video.image|trans_fallback('file') %}
+                {% set finalImage = widget.video.image|trans_fallback('file') %}
+              {% endif %}
               {% if file is defined and file is not null %}
-                  <img src="{% path file, 'reference' %}"/>
+                  {% set finalImage = file %}
+              {% endif %}
+              {% if finalImage is defined and finalImage is not null %}
+                  <img src="{% path finalImage, 'reference' %}"/>
               {% else %}
                 <img src="{{ asset('bundles/fdcevent/img/article/placeholder.jpg') }}"/>
               {% endif %}
