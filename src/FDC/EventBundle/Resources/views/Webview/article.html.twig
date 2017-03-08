@@ -134,8 +134,8 @@
             {%  set iconClass = 'icon-photo' %}
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
-            <div class="Article-related-slider-item-pictureWrap">
-
+            <div class="Article-related-slider-item-pictureWrap" style="height:auto">
+              {{ dump(associatedNews) }}
             {% if associatedNews.header is not null %}
               {% set header = associatedNews.header %}
               {% if header is not null %}
