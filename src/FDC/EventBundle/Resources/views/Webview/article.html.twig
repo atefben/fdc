@@ -193,7 +193,7 @@
                         {% set file = trans.file %}
                     {% endif %}
                 {% endif %}
-              {% endif %}
+              {% endif %}{{ dump(file) }}
               {% if file is defined and file is not null %}
                   <img src="{% path file, 'reference' %}"/>
               {% else %}
