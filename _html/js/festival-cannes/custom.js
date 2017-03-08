@@ -752,10 +752,10 @@ var len3 = $(".contactInfo");
     $(".contactInfo").addClass("fullContact");
   } 
 
-
 var fixed = false;
- var topTrigger = $('.subNavigation').offset().top - 250;
- $(document).scroll(function() {
+var topTrigger = 
+if($('.subNavigation').length){
+  $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {
        fixed = true;
@@ -768,11 +768,7 @@ var fixed = false;
      }
    }
  });
-
-
-
-
-
+}
 
 /*if ($('.selectText').length > 1) {
     $('.selectText').addClass('virgule');
