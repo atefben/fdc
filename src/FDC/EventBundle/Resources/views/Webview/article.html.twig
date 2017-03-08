@@ -174,7 +174,7 @@
                 {% if header is not null %}
                     {% set file = header|trans_fallback('file') %}
                 {% endif %}
-                {% set headerAimg = news.audio.image %}
+                {% set headerAimg = associatedNews.audio.image %}
                   {% set imageTrans = headerAimg.findTranslationByLocale(app.request.locale) %}
                   {% if imageTrans is null or imageTrans.file is null %}
                       {% set imageTrans = headerAimg.findTranslationByLocale('fr') %}
