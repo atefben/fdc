@@ -22,6 +22,7 @@
         {% set image = imageTrans.file %}
     {% endif %}
 {% endif %}
+
 {% if widget.file %}
     {% set wfi = widget.file.image %}
     {% if wfi is not null %}
@@ -32,6 +33,12 @@
     {% endif %}
     {% if imageTrans is defined %}
         {% set image = imageTrans.file %}
+    {% endif %}
+{% else %}
+    {% set headerAimg = widget.audio.image %}
+    {% set imageTrans = headerAimg.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+      {% set imageTrans = headerAimg.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
 <div {%if image is defined %}style="background-image: url({% path image, 'reference' %});" {% endif %}id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
