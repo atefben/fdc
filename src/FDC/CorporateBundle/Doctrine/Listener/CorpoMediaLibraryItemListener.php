@@ -23,7 +23,7 @@ class CorpoMediaLibraryItemListener
     {
         try {
             $this->corpoMediaLibraryItemManager->sync($args->getObject());
-        } catch ($exception) {
+        } catch (\Exception $e) {
         }
     }
 
@@ -32,7 +32,7 @@ class CorpoMediaLibraryItemListener
     {
         try {
             $this->corpoMediaLibraryItemManager->sync($args->getObject());
-        } catch ($exception) {
+        } catch (\Exception $e) {
         }
     }
 }
