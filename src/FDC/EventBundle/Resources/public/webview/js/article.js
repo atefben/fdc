@@ -97,9 +97,9 @@ var ow = ow || {};
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
 				var height = 90;
-				if($(this).closest('.Article-header').length){
+				/*if($(this).closest('.Article-header').length){
 					height = $(window).width();
-				}
+				}*/
 				var player = $(this);
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),
