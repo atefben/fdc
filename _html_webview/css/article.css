@@ -138,6 +138,8 @@ html {
   .Article-slider-caption strong {
     display: block;
     word-wrap: break-word; }
+    .Article-header .Article-slider-caption strong {
+      display: inline-block; }
     .Article-content .Article-slider-caption strong {
       font-size: 0.8rem; }
 
