@@ -47,12 +47,13 @@
 {%if image is defined %}
 <script type="text/javascript">
     //jwplayer audio cover img hack
-    $(document).ready(function(){
-        console.log('in');
-    });
-    var timeout = window.setTimeout(function(){
+    var backgroundElems = document.querySelector('.Article-header .Article-audioPlayer .jw-background-color');
+    var interval = window.setInterval(function(){
+        for (index = 0; index < backgroundElems.length; ++index) {
+            console.log(backgroundElems[index]);
+        }
+    },200);
 
-    });
 </script>
 {% path image, 'reference' %}
 {% endif %}
