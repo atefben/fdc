@@ -14,8 +14,7 @@
 {% endif %}
 
 
-{{ dump(widget.video.image|trans_fallback('file')) }}
-{{ dump(video|trans_fallback('imageAmazonUrl')) }}
+{{ dump(image) }}
 {% if image is defined and image is not null %}
 	{% path image, 'reference' %}
 {% endif %}
