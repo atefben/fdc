@@ -15,8 +15,6 @@
         {% else %}
             {% set file = media.media.file %}
         {% endif %}
-        {% dump(media) %}
-        {% dump(file) %}
         {% if file %}
             {% set title = '' %}
             {% if media.film is defined and media.film %}
