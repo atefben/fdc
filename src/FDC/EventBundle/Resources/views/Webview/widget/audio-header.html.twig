@@ -49,7 +49,7 @@
     //jwplayer audio cover img hack
     
     var interval = window.setInterval(function(){
-        var backgroundElems = document.querySelector('.Article-header .jw-background-color');
+        var backgroundElems = document.querySelectorAll('.Article-header .jw-background-color');
         console.log(backgroundElems);
         if(backgroundElems){
             for (index = 0; index < backgroundElems.length; ++index) {
