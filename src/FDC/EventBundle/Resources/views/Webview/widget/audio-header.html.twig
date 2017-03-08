@@ -47,8 +47,10 @@
 {%if image is defined %}
 <script type="text/javascript">
     //jwplayer audio cover img hack
-    var backgroundElems = document.querySelector('.Article-header .jw-background-color');
+    
     var interval = window.setInterval(function(){
+        var backgroundElems = document.querySelector('.Article-header .jw-background-color');
+        console.log(backgroundElems);
         if(backgroundElems){
             for (index = 0; index < backgroundElems.length; ++index) {
                 console.log(backgroundElems[index]);
