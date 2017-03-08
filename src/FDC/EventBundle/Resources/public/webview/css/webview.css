@@ -476,6 +476,10 @@ html {
 .Article-content .descrip-participate {
   text-align: center; }
 
+.Article-content .txt-grey-bkg-container-paragraph {
+  background: #ccc;
+  padding: 1rem; }
+
 .Article-content em {
   font-style: italic; }
 
