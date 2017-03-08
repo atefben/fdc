@@ -36,10 +36,11 @@ class FooterContentController extends Controller
         }
         
         $pageDescription = $footerContentManager->getPageDescription($pageContent);
-        
+
         return $this->render('FDCCourtMetrageBundle:Footer:footerContentPage.html.twig', [
                 'pageContent' => $pageContent,
                 'pageDescription' => $pageDescription,
+                'route' => $routeName,
             ]
         );
     }
