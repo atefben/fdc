@@ -2820,7 +2820,12 @@ var owInitGrid = function (id) {
                     }
 
                     //ratio class
-                    console.log($(this).find('img').width(),$(this).find('img').height());
+                    var img = $(this).find('img');
+                    var imgClass = 'portrait';
+                    if(img.width() > img.height()){
+                        var imgClass = 'landscape';
+                    }
+
                     $(this).attr('rel',lineClassIndex);
                     previousItem = $(this);
                 });
