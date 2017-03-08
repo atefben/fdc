@@ -4,11 +4,11 @@
 	&.jw-skin-fdc.jw-state-complete {
 		.jw-title {
 			display: block;
-			bottom: 1rem;
+			top: 1rem;
 			margin-left: 10.3rem;
 
 			.Article-header & {
-				bottom: 2.2rem;
+				top: 2.2rem;
 			}
 		}
 		.jw-icon-playback {
@@ -36,7 +36,7 @@
 		}
 
 		.jw-title {
-			bottom: 2.2rem;
+			top: 2.2rem;
 		}
 
 		.jw-text-elapsed,
@@ -114,10 +114,7 @@
 					z-index: 1;
 					height: auto;
 					margin-left: 9rem;
-					height: 5rem;
-    				top: auto;
-					bottom: 1.7rem;
-
+					top: 1.7rem;
 
 					&-primary {
 						height: auto;

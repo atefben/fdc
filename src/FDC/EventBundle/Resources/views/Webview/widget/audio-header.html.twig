@@ -48,19 +48,17 @@
 <script type="text/javascript">
     //jwplayer audio cover img hack
     
-    var interval = window.setInterval(function(){
+    /*var interval = window.setInterval(function(){
         var backgroundElems = document.querySelectorAll('.Article-header .jw-background-color');
-        console.log(backgroundElems);
         if(backgroundElems){
             for (index = 0; index < backgroundElems.length; ++index) {
                 backgroundElems[index].style.backgroundImage = 'url({% path image, 'reference' %})';
                 backgroundElems[index].style.backgroundSize = 'cover';
             }
         }
-    },200);
-
+    },200);*/
 </script>
-
+<img src="{% path image, 'reference' %}"/>
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
       data-date="<strong>Le</strong> 10.05.16"  
