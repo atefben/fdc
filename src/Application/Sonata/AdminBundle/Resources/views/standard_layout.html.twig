@@ -264,7 +264,8 @@ file that was distributed with this source code.
                                                 'admin_fdc_courtmetrage_ccmprosdetail_create'] ? true : active %}
                                             {% set active = group.label == 'dashboard.group.general' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmmenu_edit',
-                                                'admin_fdc_courtmetrage_homepage_edit'] ? true : active %}
+                                                'admin_fdc_courtmetrage_homepage_edit',
+                                                'admin_fdc_courtmetrage_ccmsocialwallhashtag_edit'] ? true : active %}
                                             {% set active = group.label == 'admin.group.ccm.participer' and app.request.attributes.get('_route') in
                                                 ['admin_fdc_courtmetrage_ccmfilmregister_edit',
                                                 'admin_fdc_courtmetrage_ccmlabel_edit',
@@ -304,6 +305,15 @@ file that was distributed with this source code.
                                                                    href="{{ path('admin_fdc_courtmetrage_homepage_edit', {id: 1}) }}">
                                                                     <i class="fa fa-angle-double-right"></i>
                                                                     {{ 'admin.ccm.menu.homepage'|trans({}, 'BaseAdminBundle') }}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_BASE_ADMIN_CCM_SOCIAL_WALL_HASHTAG_ADMIN') %}
+                                                            <li class="{{ app.request.attributes.get('_route') == 'admin_fdc_courtmetrage_ccmsocialwallhashtag_edit' ? 'active' }}">
+                                                                <a data-edit="true"
+                                                                   href="{{ path('admin_fdc_courtmetrage_ccmsocialwallhashtag_edit', {id: 1}) }}">
+                                                                    <i class="fa fa-angle-double-right"></i>
+                                                                    {{ 'admin.ccm.menu.social_wall_hashtag'|trans({}, 'BaseAdminBundle') }}
                                                                 </a>
                                                             </li>
                                                         {% endif %}

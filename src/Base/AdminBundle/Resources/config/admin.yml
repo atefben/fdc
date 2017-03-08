@@ -2659,7 +2659,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmSocialWallHashTagAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmSocialWallHashTag, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall hashtag}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Social wall hashtag, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

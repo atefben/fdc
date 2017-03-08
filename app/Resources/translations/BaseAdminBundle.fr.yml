@@ -521,6 +521,7 @@ admin:
             credits: Crédits
             legal_mentions: Mentions Légales
             plan_des_salles: Se reperer à Cannes
+            social_wall_hashtag: Social wall hashtag
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
