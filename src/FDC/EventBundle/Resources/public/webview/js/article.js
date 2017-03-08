@@ -94,7 +94,7 @@ var ow = ow || {};
 	}
 
 	ow.audioPlayer = function(){
-		console.log($('.Article-audioPlayer').length);
+		console.log($('.Article-audioPlayer').closest('.Article-header').length);
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
 				var player = $(this);
