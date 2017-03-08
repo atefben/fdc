@@ -117,7 +117,7 @@ class NewsController extends Controller
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
 
-        if ($homepage->getTopNewsType() == false) {
+        if ($homepage->getTopNewsType() != false) {
             unset($homeArticles);
             ksort($homeArticles);
         }
