@@ -94,9 +94,9 @@ var ow = ow || {};
 	}
 
 	ow.audioPlayer = function(){
-		console.log($('.Article-audioPlayer').closest('.Article-header').length);
 		if($('.Article-audioPlayer').length){
 			$('.Article-audioPlayer').each(function(){
+				console.log($(this).closest('.Article-header').length);
 				var player = $(this);
 				jwplayer(player.attr('id')).setup({
 					"file": player.data('file-mp3'),

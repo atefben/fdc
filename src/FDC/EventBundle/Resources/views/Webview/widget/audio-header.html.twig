@@ -54,6 +54,7 @@
         if(backgroundElems){
             for (index = 0; index < backgroundElems.length; ++index) {
                 backgroundElems[index].style.backgroundImage = 'url({% path image, 'reference' %})';
+                backgroundElems[index].style.backgroundSize = 'cover';
             }
         }
     },200);
