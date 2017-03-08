@@ -110,6 +110,7 @@
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
+          {% set file = null %}
           {% set type = 'news' %}
           {% set variant = 'article' %}
           {% if associatedNews is news_article %}
@@ -170,7 +171,6 @@
               {% endif %}
               {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
-                {{ dump(associatedNews) }}
                 {% if header is not null %}
                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
                     {% if trans is not null and trans.file is not null %}
