@@ -121,7 +121,7 @@ var ow = ow || {};
 				var defaultHeight = 200;
 
 				//video ratio computing
-				var ratio = 320/202;
+				var ratio = 202/320;
 				var height = $(window).width() * ratio;
 				var videoInstance = jwplayer(player.attr('id')).setup({
 					"file": player.data('file'),
