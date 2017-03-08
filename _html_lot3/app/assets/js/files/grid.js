@@ -249,8 +249,8 @@ var owInitGrid = function (id) {
                         lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
                     }
 
-
-
+                    //ratio class
+                    console.log($(this).find('img').width(),$(this).find('img').height());
                     $(this).attr('rel',lineClassIndex);
                     previousItem = $(this);
                 });
