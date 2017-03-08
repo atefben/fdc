@@ -121,8 +121,7 @@ class NewsController extends Controller
             unset($homeArticles);
             ksort($homeArticles);
         }
-        }
-    
+
         while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
             if ($homepage->getTopNewsType() == false) {
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime->modify('-1 day'), $count);
