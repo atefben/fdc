@@ -195,7 +195,7 @@
                     {% endif %}
                 {% endif %}
               {% endif %}
-              {% if widget.video.image|trans_fallback('file') %}
+              {% if associatedNews.video.image|trans_fallback('file') %}
                 {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
               {% endif %}
               {% if file is defined and file is not null %}
