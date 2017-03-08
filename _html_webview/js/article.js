@@ -118,13 +118,18 @@ var ow = ow || {};
 		if($('.Article-videoPlayer').length){
 			$('.Article-videoPlayer').each(function(){
 				var player = $(this);
+				var defaultHeight = 200;
+
+				//video ratio computing
+				va ratio = 203 / 320;
+				var width = $(window).width() * ratio;
 				var videoInstance = jwplayer(player.attr('id')).setup({
 					"file": player.data('file'),
 					"image": player.data('poster'),
 					"title": player.data('title'),
 					"description": player.data('desc'),
 					"width": '100%',
-					"height": 180,
+					"height": ,
 					'skin': {
 						'name': 'fdc-video'
 					}
