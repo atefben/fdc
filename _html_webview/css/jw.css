@@ -42,7 +42,8 @@
   display: none; }
 
 .jwplayer.jw-skin-fdc {
-  height: 9rem; }
+  height: 9rem;
+  background: transparent; }
   .jwplayer.jw-skin-fdc .jw-icon-volume {
     display: none !important; }
   .jwplayer.jw-skin-fdc .jw-icon-fullscreen {
