@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\CourtMetrageBundle\Manager\ExceptionManager;
 use FDC\MarcheDuFilmBundle\Manager\HeaderFooterManager;
 use FDC\MarcheDuFilmBundle\Manager\NotFoundExceptionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\ExceptionController
@@ -16,6 +18,11 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
     protected $notFound404Manager;
     protected $headerFooterManager;
     protected $mdfDomain;
+    protected $ccmDomain;
+    /**
+     * @var ExceptionManager
+     */
+    protected $ccmExceptionManager;
 
     public function __construct(\Twig_Environment $twig, $debug, NotFoundExceptionManager $notFound404Manager, HeaderFooterManager $headerFooterManager, $mdfDomain)
     {
@@ -44,6 +51,13 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
                     'banner' => $banner,
                     'availableMenu' => $availableMenu,
                 )));
+            }
+        } elseif ($requestHeaders['HOST'] == $this->ccmDomain) {
+            $locale = $request->getLocale();
+
+            if ($exception->getStatusCode() === 404) {
+
+                return $this->ccmExceptionManager->render404Page($locale);
             }
         }
 
@@ -89,5 +103,21 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
         $request->setRequestFormat('html');
 
         return new TemplateReference('TwigBundle', 'Exception', $showException ? 'exception_full' : $name, 'html', 'twig');
+    }
+    
+    /**
+     * @param string $ccmDomain
+     */
+    public function setCcmDomain($ccmDomain)
+    {
+        $this->ccmDomain = $ccmDomain;
+    }
+
+    /**
+     * @param ExceptionManager $ccmExceptionManager
+     */
+    public function setCcmExceptionManager($ccmExceptionManager)
+    {
+        $this->ccmExceptionManager = $ccmExceptionManager;
     }
 }

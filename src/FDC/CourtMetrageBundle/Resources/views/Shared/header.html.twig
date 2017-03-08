@@ -24,7 +24,7 @@
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }}</a>
                 <ul class="sub-languages">
-                    {% for locale in ccm_locales if locale != app.request.locale %}
+                    {% for locale in ccm_locales if locale != app.request.locale and routeName is not null %}
                         <li>
                             <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
                         </li>
@@ -68,7 +68,7 @@
                     <li class="lang">
                         <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
                         <ul class="sub-languages">
-                            {% for locale in ccm_locales if locale != app.request.locale %}
+                            {% for locale in ccm_locales if locale != app.request.locale and routeName is not null %}
                                 <li>
                                     <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
                                 </li>

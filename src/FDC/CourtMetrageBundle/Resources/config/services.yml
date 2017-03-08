@@ -13,6 +13,10 @@ services:
         class: FDC\CourtMetrageBundle\Manager\ShortFilmCornerManager
         arguments: [ '@doctrine.orm.entity_manager' ]
 
+    ccm.manager.exception:
+        class: FDC\CourtMetrageBundle\Manager\ExceptionManager
+        arguments: [ '@doctrine.orm.entity_manager', '@templating' ]
+
     ccm.manager.menu:
         class: FDC\CourtMetrageBundle\Manager\MenuManager
         arguments:

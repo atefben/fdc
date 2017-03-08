@@ -49,7 +49,9 @@
 
 {% set route = app.request.attributes.get('_route') %}
 {% set route_params = app.request.attributes.get('_route_params') %}
-{% set params = route_params|merge(app.request.query.all) %}
+{% if params is not defined %}
+    {% set params = route_params|merge(app.request.query.all) %}
+{% endif %}
 
 {{ render(controller('FDCCourtMetrageBundle:Transverse:header', { 'routeName': app.request.get('_route'), 'routeParams': params })) }}
 
