@@ -2825,7 +2825,7 @@ var owInitGrid = function (id) {
                     if(img.width() > img.height()){
                         var imgClass = 'landscape';
                     }
-
+                    img.addClass(imgClass);
                     $(this).attr('rel',lineClassIndex);
                     previousItem = $(this);
                 });
