@@ -112,7 +112,7 @@
                  data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
                  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
                  data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
-                 data-img="{% path transImage.file , '1144x724' %}"
+                 data-img="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '1144x724' %}{% endif %}"
                  data-aid="{{ audio.id }}">
             <div class="item-inner">
                 <a href="#" class="linkAllCover"></a>
