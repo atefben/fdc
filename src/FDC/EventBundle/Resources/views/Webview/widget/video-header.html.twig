@@ -11,6 +11,7 @@
 {% if video|trans_fallback('imageAmazonUrl') %}
 	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
 {% endif %}
+{{ dump(image) }}
 {% if image is defined and image is not null %}
 	{% path image, 'reference' %}
 {% endif %}
