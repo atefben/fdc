@@ -102,7 +102,7 @@ class CorpoMediaLibraryItemManager
     private function syncMediaAudio(MediaAudio $object)
     {
         foreach ($this->locales as $locale) {
-            if ($object->getImage() && $this->isAvailableMedia($object, $locale) && $this->isAvailableMedia($object->getImage(), $locale)) {
+            if ($this->isAvailableMedia($object, $locale)) {
                 $trans = $object->findTranslationByLocale($locale);
                 if ($trans instanceof MediaAudioTranslation) {
                     $item = $this->getCorpoMediaLibraryItem($object, MediaAudio::class, $locale);
@@ -146,7 +146,7 @@ class CorpoMediaLibraryItemManager
     private function syncMediaVideo(MediaVideo $object)
     {
         foreach ($this->locales as $locale) {
-            if ($object->getImage() && $this->isAvailableMedia($object, $locale) && $this->isAvailableMedia($object->getImage(), $locale)) {
+            if ($this->isAvailableMedia($object, $locale)) {
                 $trans = $object->findTranslationByLocale($locale);
                 if ($trans instanceof MediaVideoTranslation) {
                     $item = $this->getCorpoMediaLibraryItem($object, MediaVideo::class, $locale);
