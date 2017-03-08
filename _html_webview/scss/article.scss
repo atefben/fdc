@@ -190,7 +190,7 @@ html {
 				.Article-header & {
 					display: inline-block;	
 				}
-				
+
 				.Article-content & {
 					font-size: 0.8rem;
 				}
@@ -208,6 +208,10 @@ html {
 			strong {
 				display: inline;
 				color: #212121;
+
+				.Article-header & {
+					font-size: 1.6rem;
+				}
 			}
 		}
 	}

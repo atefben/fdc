@@ -152,6 +152,8 @@ html {
   .Article-slider-count strong {
     display: inline;
     color: #212121; }
+    .Article-header .Article-slider-count strong {
+      font-size: 1.6rem; }
 
 .Article-push {
   background: #141414; }
