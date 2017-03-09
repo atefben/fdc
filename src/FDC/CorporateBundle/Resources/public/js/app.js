@@ -6209,7 +6209,7 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    console.log('playerLoad');
+
     var $container = $("#" + vid.id).closest('.video-container');
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
@@ -6488,7 +6488,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         primary: 'html5',
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
-        height: $(vid).parent('div').height(),
+        height: $('.home').length ? 550 : $(vid).parent('div').height(),
         controls: ($('body').hasClass('tablet')) ? true : false
     });
 
