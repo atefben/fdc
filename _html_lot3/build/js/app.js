@@ -5079,10 +5079,10 @@ var openSlideShow = function (slider, hash, affiche) {
                 
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
-
-                    if($('.medias').length > 0 || $('.media-library').length > 0) {
-                        $(value).find('.info .contain-txt').html();
-                    }
+                }
+                
+                if($('.medias').length > 0 || $('.media-library').length > 0) {
+                    $(value).find('.info .contain-txt').html();
                 }
                 console.log(getTitle);
 
