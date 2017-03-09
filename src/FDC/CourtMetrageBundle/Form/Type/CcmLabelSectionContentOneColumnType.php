@@ -93,6 +93,7 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                     'title'             => array(
                         'label'              => 'form.ccm.graphical_charter.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'legend'          => array(
                         'label'              => 'form.ccm.graphical_charter.legend',
