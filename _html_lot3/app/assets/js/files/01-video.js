@@ -514,14 +514,17 @@ var initVideo = function(hash) {
 
         console.log(videoFile);
         console.log(havePlaylist);
-        
+        var playerHeight = $(vid).parent('div').height();
+        if($('.home').length){
+            playerHeight = 550;
+        }
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
             width: $(vid).parent('div').width(),
-            height: $(vid).parent('div').height(),
+            height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
         });
 
