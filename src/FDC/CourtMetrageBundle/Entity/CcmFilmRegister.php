@@ -41,6 +41,7 @@ class CcmFilmRegister
 
     /**
      * @ORM\OneToMany(targetEntity="CcmFilmRegisterProcedure", mappedBy="filmRegister", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $filmRegisterProcedure;
 

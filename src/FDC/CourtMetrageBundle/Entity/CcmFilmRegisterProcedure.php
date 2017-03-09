@@ -37,6 +37,12 @@ class CcmFilmRegisterProcedure
     protected $filmRegister;
 
     /**
+     * @var integer
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $position;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -47,6 +53,26 @@ class CcmFilmRegisterProcedure
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param $position
+     *
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
     }
 
     /**
