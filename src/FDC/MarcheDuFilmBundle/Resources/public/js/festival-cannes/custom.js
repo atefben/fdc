@@ -762,23 +762,21 @@ String.prototype.trunc = function (n, useWordBoundary) {
 };
 
 var fixed = false;
-if($('.subNavigation').length){
-  var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
+ var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
 
-  $(document).scroll(function() {
-     if( $(this).scrollTop() >= topTrigger ) {
-       if( !fixed ) {
-         fixed = true;
-         $('.subNavigation').addClass("subNavigationFixed");
-       }
-     } else {
-       if( fixed ) {
-         fixed = false;
-         $('.subNavigation').removeClass("subNavigationFixed");
-       }
+ $(document).scroll(function() {
+   if( $(this).scrollTop() >= topTrigger ) {
+     if( !fixed ) {
+       fixed = true;
+       $('.subNavigation').addClass("subNavigationFixed");
      }
-   });
- }
+   } else {
+     if( fixed ) {
+       fixed = false;
+       $('.subNavigation').removeClass("subNavigationFixed");
+     }
+   }
+ });
 
 var len = $(".partnersTabs");
 if($(len).length === 2) {
