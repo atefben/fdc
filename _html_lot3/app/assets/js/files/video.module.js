@@ -662,7 +662,7 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
-
+        console.log('players');
         var dataFile = $('.video-player').data('file');
         var isPlaylist = false;
         if(typeof dataFile !== 'undefined'){
