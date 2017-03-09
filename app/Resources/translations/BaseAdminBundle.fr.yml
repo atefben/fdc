@@ -755,6 +755,7 @@ form:
         film_register:
             title: Têtière titre
             text: Text
+            procedures_title: Titre au dessus du tableau des procédures
             header_photo: Têtière photo
             is_text_active: Est le texte affiché?
             procedure_widget: Procédures d’inscription
