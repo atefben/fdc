@@ -2660,14 +2660,14 @@ var owInitGrid = function (id) {
                         var articles = $data.find('article');
                         $gridMore.append(articles).isotope( 'addItems', articles );
                         $gridMore.isotope();
-                        console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             //ajax btn found, more content to come
                             $this.attr('href',moreBtn);
                         }else{
                             //no more content but let's take read more link and wording
-                            var allNewsButton = $data.find('.read-more')[0].outerHTML;
+                            var allNewsButton = $data.find('.read-more');
                             console.log(allNewsButton);
+                            console.log($data.filter('.read-more'));
                         }
                     }
                 });
