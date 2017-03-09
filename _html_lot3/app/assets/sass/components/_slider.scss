@@ -218,10 +218,6 @@
 .slider-01 {
   margin-bottom: 9px;
 
-  .owl-stage {
-    //margin-left: -147px;
-    margin-left: -171px;
-  }
 
   & .owl-stage-outer {
     overflow: visible;
@@ -243,7 +239,7 @@
     }
   }
 
-  .center {
+  .active {
 
     .item:after {
       opacity:0;

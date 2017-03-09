@@ -10105,9 +10105,6 @@ body#home .isotope-01 .item .contain-img {
 .slider-01 {
   margin-bottom: 9px;
 }
-.slider-01 .owl-stage {
-  margin-left: -171px;
-}
 .slider-01 .owl-stage-outer {
   overflow: visible;
 }
@@ -10125,13 +10122,13 @@ body#home .isotope-01 .item .contain-img {
   left: 0;
   transition: .5s;
 }
-.slider-01 .center .item:after {
+.slider-01 .active .item:after {
   opacity: 0;
 }
-.slider-01 .center figcaption {
+.slider-01 .active figcaption {
   opacity: 1;
 }
-.slider-01 .center strong {
+.slider-01 .active strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .slider-01 figcaption {
