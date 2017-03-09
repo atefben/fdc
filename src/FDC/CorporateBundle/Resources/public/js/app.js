@@ -2656,9 +2656,10 @@ var owInitGrid = function (id) {
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        $gridMore.append(articles).isotope( 'addItems', articles );
                         if(typeof moreBtn !== 'undefined'){
-                            var articles = $data.find('article');
-                            $gridMore.append(articles).isotope( 'addItems', articles );
+                            
                             $gridMore.isotope();
                         
                             $this.attr('href',moreBtn);
