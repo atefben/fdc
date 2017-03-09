@@ -685,6 +685,7 @@ form:
     label_pdf: Pdf
     ccm:
         graphical_charter:
+            page_title: Titre de la page
             content_files: Fichiers colonne 1
             content_files_2: Fichiers colonne 2
             content_files_3: Fichiers colonne 3
