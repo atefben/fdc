@@ -122,8 +122,20 @@ $(document).ready(function () {
 
         verif = hash.slice(0, 3);
         var slider = $('.block-diaporama .slider-01');
+
         slider.find('.item').each(function(){
-            $(this).css('width',$(this).find('img').css('height',428).width());
+            var img = $(this).find('img').css('height',428);
+            var w = img.width();
+            if(w == 0){
+                var i = window.setInterval(function(){
+                    w = img.width();
+                    if(w > 0){
+                        window.clearInterval(i);
+                    }
+                },200);
+            }else{
+                $(this).css('width',img.width());
+            }
         });
         if (hash.length > 0 && verif == "pid") {
             
