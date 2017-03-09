@@ -7168,7 +7168,7 @@ h2.sub-title {
 .block-diaporama .slider-01 .owl-item .item {
   width: auto;
   height: 428px;
-  overflow: hidden;
+  overflow: visible;
 }
 .block-diaporama .slider-01 .owl-item .item figure, .block-diaporama .slider-01 .owl-item .item img {
   height: 100%;
