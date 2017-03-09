@@ -39,6 +39,7 @@
                                                         {% elseif widget.children._type.vars.value == 'ccm_label_section_content_one_column_type'%}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</strong></h4>
                                                             {{ form_row(widget.image) }}
+                                                            {{ form_row(widget.labelContentFiles) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                         {% elseif widget.children._type.vars.value == 'ccm_label_section_content_two_columns_type'%}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</strong></h4>

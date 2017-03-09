@@ -29,6 +29,32 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
     private $mediaImageSimpleAdmin;
 
     /**
+     * @var
+     */
+    private $sonataAdminContentFiles;
+
+    /**
+     * @var
+     */
+    private $contentFilesAdmin;
+
+    /**
+     * @param $sonataAdminContentFiles
+     */
+    public function setSonataAdminContentFiles($sonataAdminContentFiles)
+    {
+        $this->sonataAdminContentFiles = $sonataAdminContentFiles;
+    }
+
+    /**
+     * @param $contentFilesAdmin
+     */
+    public function setContentFilesAdmin($contentFilesAdmin)
+    {
+        $this->contentFilesAdmin = $contentFilesAdmin;
+    }
+
+    /**
      * setSonataAdmin function.
      *
      * @access public
@@ -95,37 +121,7 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'checkbox',
                         'required' => false
-                    ),
-                    'fileTitle'             => array(
-                        'label'              => 'form.ccm.graphical_charter.file_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
-                    'file'           => array(
-                        'label' => 'form.ccm.graphical_charter.file_1',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                        'field_type'         => 'sonata_media_type',
-                        'provider'           => 'sonata.media.provider.archive',
-//                        'constraints'        => array(
-//                            new NotBlank()
-//                        )
-                    ),
-                    'file2Title'             => array(
-                        'label'              => 'form.ccm.graphical_charter.file2_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
-                    ),
-                    'file2'           => array(
-                        'label' => 'form.ccm.graphical_charter.file_2',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required'           => false,
-                        'field_type'         => 'sonata_media_type',
-                        'provider'           => 'sonata.media.provider.archive',
-//                        'constraints'        => array(
-//                            new NotBlank()
-//                        )
-                    ),
+                    )
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
@@ -139,7 +135,17 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
-            ));
+            ))
+            ->add('labelContentFiles', 'sonata_type_model_list', array(
+                'label' => 'form.ccm.graphical_charter.content_files_one_column',
+                'sonata_field_description' =>  $this->sonataAdminContentFiles->getFormFieldDescriptions()['labelContentFiles'],
+                'model_manager' => $this->contentFilesAdmin->getModelManager(),
+                'class' => $this->contentFilesAdmin->getClass(),
+                'translation_domain' => 'BaseAdminBundle',
+                'btn_delete' => true,
+                'required' => false
+            ))
+        ;
     }
 
     /**

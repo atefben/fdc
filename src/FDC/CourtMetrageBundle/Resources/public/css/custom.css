@@ -1,3 +1,11 @@
+.block-accordion .download.no-flex.customWidth {
+    width: 100%;
+}
+
+.block-accordion .download.customFloat {
+    float: left;
+}
+
 .block-contact ul, .block-contact p {
     margin-bottom: 15px;
 }

@@ -1,4 +1,4 @@
-<div class="download">
+<div class="download{{ widget.translatable.isWidgetOneColumn() ? ' customFloat' : '' }}">
     {% for tab in tabs[widget.translatable.id][column] %}
         <div class="item">
             <strong class="title-dowload">{{ tab.buttonsSectionTitle }}</strong>

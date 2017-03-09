@@ -827,6 +827,8 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_one_column_image_dummy_admin']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_one_column_dummy_admin']]
+            - ['setContentFilesAdmin', ['@base.admin.ccm_label_content_files']]
 
     base.admin.form.ccm_label_section_content_two_columns_type:
         scope: prototype
