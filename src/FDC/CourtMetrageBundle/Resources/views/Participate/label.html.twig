@@ -63,4 +63,22 @@
         </div>
     </div>
 </section>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+},
+{
+    "name" : 'breadcrumb.inscrire'|trans,
+    "url"  : path('fdc_court_metrage_register_movie')
+},
+{
+    "name" : 'breadcrumb.participer.label'|trans,
+    "url"  : ''
+}
+]
+}
+%}
 {% endblock %}
