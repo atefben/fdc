@@ -6997,7 +6997,7 @@ body.chocolat-open > .chocolat-content {
 
 #home .card .info strong {
   color: #333;
-  font-family: "Playfair Display",Times New Roman,Times,serif;
+  /*font-family: "Playfair Display",Times New Roman,Times,serif;*/
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: .02em;
