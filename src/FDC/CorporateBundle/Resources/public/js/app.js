@@ -6194,7 +6194,6 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            console.log('foreach vids');
             var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
