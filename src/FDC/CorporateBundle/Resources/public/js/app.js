@@ -5301,11 +5301,16 @@ var openSlideShow = function (slider, hash, affiche) {
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
 
-    if(typeof images[centerElement].caption !== 'undefined'){
-        if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
-            images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
+    if(typeof images !== 'undefined'){
+        if(typeof images[centerElement] !== 'undefined'){
+            if(typeof images[centerElement].caption !== 'undefined'){
+                if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
+                    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
+                }
+            }
         }
     }
+    
     var tempTitle = images[centerElement].title;
 
     var onelineclass = ' oneline';
