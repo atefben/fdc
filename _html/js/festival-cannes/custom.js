@@ -753,7 +753,7 @@ var len3 = $(".contactInfo");
   } 
 
 var fixed = false;
-var topTrigger = 
+var topTrigger = $('.subNavigation').offset().tpo;
 if($('.subNavigation').length){
   $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
