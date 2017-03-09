@@ -379,6 +379,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             });
         }
     }
+
+    var playerHeight = ('.home').length ? 550 : $(vid).parent('div').height();
+    console.log(playerHeight);
     console.log($container.data('file'));
     playerInstance.setup({
         // file: $container.data('file'),
@@ -387,7 +390,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         primary: 'html5',
         aspectratio: '16:9',
         width: $(vid).parent('div').width(),
-        height: $('.home').length ? 550 : $(vid).parent('div').height(),
+        height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
     });
 
