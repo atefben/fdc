@@ -71,7 +71,10 @@ var owinitSlideShow = function (slider, hash) {
 var openSlideShow = function (slider, hash, affiche) {
     $('html').addClass('slideshow-open');
 
-    console.log(slider);
+    
+    if($('.medias').length > 0 || $('.media-library').length > 0) {
+        slider = $('.isotope-01');
+    }
 
     var images = [];
     var w = $(window).width();
