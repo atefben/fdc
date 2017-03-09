@@ -4490,12 +4490,13 @@ var owInitSlider = function (sliderName) {
             items: 1,
             autoWidth: true,
             smartSpeed: 700,
-            center: center,
-            afterInit : function(elem){
-                console.log('afterInit',elem);
-                if($('#home').length){
-                    console.log(elem);
-                }
+            center: center
+        });
+
+        slide01.on('initialize.owl.carousel',function(elem){
+            console.log('afterInit',elem);
+            if($('#home').length){
+                console.log(elem);
             }
         });
 
