@@ -2,7 +2,7 @@
 <nav>
     <ul class="main">
         {% for menu in menus %}
-            {% if menu.route != 'fdc_corporate_press_show' and menu.route != 'fdc_corporate_participate_inscription' %}
+            {% if menu.route != 'fdc_press_news_home' and menu.route != 'fdc_corporate_participate_inscription' %}
                 <li{% if menu.route == 'fdc_corporate_default_home' %} class="actu"{% endif %}>
                     {% if menu.route == '#' and menu.enabled == true %}
                         <a href="#">
