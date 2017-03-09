@@ -1,3 +1,7 @@
+.block-accordion .download .item.customMarginRight {
+    margin-right: 5px;
+}
+
 .block-accordion .download.no-flex.customWidth {
     width: 100%;
 }
