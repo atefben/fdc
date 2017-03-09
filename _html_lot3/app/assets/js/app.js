@@ -127,10 +127,10 @@ $(document).ready(function () {
             var img = $(this).find('img').css('height',428);
             var w = img.width();
             if(parseInt(w) == 0){
-                var i = window.setInterval(function(){
+                var itv = window.setInterval(function(){
                     w = img.width();
                     if(w > 0){
-                        window.clearInterval(i);
+                        window.clearInterval(itv);
                     }
                 },200);
             }else{
