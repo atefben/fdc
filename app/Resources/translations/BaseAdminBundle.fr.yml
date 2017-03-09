@@ -411,6 +411,15 @@ list:
             date_creation: Date de création
             status: Statut
             edit: Editer
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            content: Contenu
+            tags: Tags
+            message: Message
+            enabled_desktop: Visible sur le site
+            created_at: Date de création
 filter:
     media_pdf:
         name: Nom
@@ -514,7 +523,13 @@ filter:
             domains_activities: Domaines d'activité
         sfc:
             title: Titre
-
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            festival: Festival
+            enabled_desktop: Visible sur le site
+            tags: Hashtag
 admin:
     ccm:
         menu:
