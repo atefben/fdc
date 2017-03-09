@@ -178,6 +178,10 @@ body.chocolat-open.fixed {
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+#social-wall #wall .post .side.hasimg {
+    cursor: default;
+}
+
 .modal-content .half .authors .job {
     width: 47% !important;
 }
