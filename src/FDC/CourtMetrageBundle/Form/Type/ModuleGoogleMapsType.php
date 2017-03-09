@@ -41,6 +41,7 @@ class ModuleGoogleMapsType extends ModuleType
                         'label'              => 'form.ccm.label.module.google_maps.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                 ),
             ))

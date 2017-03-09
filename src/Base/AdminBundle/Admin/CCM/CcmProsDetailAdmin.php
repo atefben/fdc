@@ -200,7 +200,8 @@ class CcmProsDetailAdmin extends Admin
                     'url'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                     'urlName'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url_name',
