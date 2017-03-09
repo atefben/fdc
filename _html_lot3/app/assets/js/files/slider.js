@@ -93,7 +93,7 @@ var owInitSlider = function (sliderName) {
                     $('.block-diaporama .owl-item').removeClass('active');
                     $('.block-diaporama .owl-item:first-child').addClass('active');
 
-
+                    window.clearInterval(loadingInterval);
                 }
             });
         }
