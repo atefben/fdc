@@ -35,10 +35,10 @@
                                 <figcaption>
                                     <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}">
                                         {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                                            <span class="name">{{ movie.titleVo }}</span>
-                                            <span class="sub-name">({{ movie|trans_fallback_movie('title') }})</span>
+                                            <span class="name">{{ movie.titleVo|shorten(78, '...') }}</span>
+                                            <span class="sub-name">({{ movie|trans_fallback_movie('title')|shorten(100, '...') }})</span>
                                         {% else %}
-                                            <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo }}</span>
+                                            <span class="name">{{ movie|trans_fallback('title')?:movie.titleVo|shorten(78, '...') }}</span>
                                         {% endif %}
                                     </a>
                                     {% for director in movie.getDirectors() %}
