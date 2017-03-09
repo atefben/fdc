@@ -147,11 +147,12 @@ class NewsManager
     /**
      * @param $slug
      * @param string $locale
+     * @param bool $isAdmin
      * @return CcmNews|null
      */
-    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr')
+    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr', $isAdmin = false)
     {
-        $newsArticle = $this->em->getRepository(CcmNews::class)->getNewsArticleBySlugAndLocale($slug, $locale);
+        $newsArticle = $this->em->getRepository(CcmNews::class)->getNewsArticleBySlugAndLocale($slug, $locale, $isAdmin);
 
         return $newsArticle;
     }

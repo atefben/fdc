@@ -46,8 +46,8 @@ class NewsController extends Controller
         $locale = $request->get('_locale', 'fr');
         /** @var NewsManager $newsManager */
         $newsManager = $this->get('ccm.manager.news');
-        
-        $article = $newsManager->getNewsArticleBySlugAndLocale($slug, $locale);
+
+        $article = $newsManager->getNewsArticleBySlugAndLocale($slug, $locale, $this->isGranted('ROLE_ADMIN'));
 
         if ($article == null) {
             throw $this->createNotFoundException();
