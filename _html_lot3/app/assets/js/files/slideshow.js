@@ -362,12 +362,24 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }
     var tempTitle = images[centerElement].title;
-    console.log('here');
+
     var onelineclass = ' oneline';
-    if($(tempTitle).filter('*').size() > 0){
-        onelineclass = ''
+
+    function isHTML(str) {
+        var a = document.createElement('div');
+        a.innerHTML = str;
+        for (var c = a.childNodes, i = c.length; i--; ) {
+            if (c[i].nodeType == 1) return true; 
+        }
+        return false;
     }
-    console.log('two');
+
+    if(isHTML(tempTitle)){
+        if($(tempTitle).filter('*').size() > 0){
+            onelineclass = ''
+        }
+    }
+
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
