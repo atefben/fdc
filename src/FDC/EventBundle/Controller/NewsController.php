@@ -117,9 +117,7 @@ class NewsController extends Controller
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
 
-        if ($homepage->getTopNewsType() != false) {
-            print_r(\Doctrine\Common\Util\Debug::export($homeArticles, 6),1);
-        }
+        print_r(\Doctrine\Common\Util\Debug::export($homeArticles, 6),1);
 
         while (count($homeArticles) === 0 && $dateTime > $festivalStart) {
             if ($homepage->getTopNewsType() == false) {
