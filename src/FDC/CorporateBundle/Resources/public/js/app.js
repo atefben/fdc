@@ -5082,9 +5082,8 @@ var openSlideShow = function (slider, hash, affiche) {
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    //getTitle = $(value).find('.info .contain-txt').html();
+                    getTitle = $(value).find('.info .contain-txt').html();
                 }
-                console.log(getTitle);
 
                 var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
