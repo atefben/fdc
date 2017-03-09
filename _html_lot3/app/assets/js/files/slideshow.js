@@ -365,7 +365,9 @@ var openSlideShow = function (slider, hash, affiche) {
         }
         return false;
     }
-    
+
+    console.log(images);
+    console.log(centerElement);
     var onelineclass = ' oneline';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
