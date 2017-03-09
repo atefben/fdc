@@ -516,12 +516,15 @@ admin:
             faq: FAQ
             contact_page: Contact
             film_register: Inscrire un film
-            label_page: La charte graphique
+            label_page: Label
             confidentialite: Politique de confidentialité
             credits: Crédits
             legal_mentions: Mentions Légales
-            plan_des_salles: Se reperer à Cannes
+            plan_des_salles: Se repérer à Cannes
             social_wall_hashtag: Social wall hashtag
+            register_procedure: Procédures d'inscription
+            participate_pages: Pages Participer
+            strates_participer: Strates Participer
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop

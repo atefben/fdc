@@ -2573,7 +2573,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmRegisterProcedureAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmRegisterProcedure, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Catégories des procédures d’inscription}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Procédures d'inscription, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2803,7 +2803,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLabelSectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Sections de charte graphique}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label - Sections}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2860,13 +2860,13 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmParticiperPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Pages Participer }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Pages Participer, show_in_dashboard: false}
 
     base.admin.ccm_participer_page_layer:
         class: Base\AdminBundle\Admin\CCM\CcmParticiperPageLayerAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayer, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Strates Participer }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Strates Participer, show_in_dashboard: false}
 
     base.admin.ccm_module_image_text:
         class: Base\AdminBundle\Admin\CCM\CcmModuleImageTextAdmin
@@ -2938,7 +2938,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Charte graphique sections boutons }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label - Fichiers }
 
     base.admin.ccm_label_content_files_widget:
         class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesWidgetAdmin
