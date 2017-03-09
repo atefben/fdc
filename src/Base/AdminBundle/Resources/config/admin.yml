@@ -2789,7 +2789,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmContactSubjectAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmContactSubject, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: ContactSubject, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.footer, label: Association thème et contact, show_in_dashboard: false}
 
     base.admin.ccm_label:
         class: Base\AdminBundle\Admin\CCM\CcmLabelAdmin
