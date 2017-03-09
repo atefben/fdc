@@ -6480,7 +6480,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             });
         }
     }
-
+    console.log($container.data('file'));
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
