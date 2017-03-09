@@ -136,9 +136,11 @@ var openSlideShow = function (slider, hash, affiche) {
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
                 }
-                
+
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
                     $(value).find('.info .contain-txt').html();
+                    console.log($(value));
+                    console.log($(value).find('.info .contain-txt'));
                 }
                 console.log(getTitle);
 
@@ -622,9 +624,4 @@ var openSlideShow = function (slider, hash, affiche) {
         translate = -(w + 0) * centerElement;
         $('.fullscreen-slider').css('transform', 'translateX(' + translate + 'px)');
     });
-
-
 }
-
-
-
