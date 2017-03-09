@@ -76,6 +76,7 @@ var openSlideShow = function (slider, hash, affiche) {
     var centerElement = 0;
     var caption = "";
     slider.find('.item, .img, .poster').each(function (index, value) {
+        console.log(index);
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
@@ -366,8 +367,6 @@ var openSlideShow = function (slider, hash, affiche) {
         return false;
     }
 
-    console.log(images);
-    console.log(centerElement);
     var onelineclass = ' oneline';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
