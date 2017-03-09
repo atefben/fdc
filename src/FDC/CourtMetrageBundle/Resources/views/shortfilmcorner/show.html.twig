@@ -20,7 +20,7 @@
     </div>
     <div class="ajax-section short-film-corner">
         <div class="contain-ajax bright" id="main">
-            {% if sfcPages is defined and sfc_route_name is defined %}
+            {% if sfcPages is defined and sfcPages|length > 1 and sfc_route_name is defined %}
                 <nav class="navigation-sticky">
                     <ul>
                         {% for page in sfcPages %}
