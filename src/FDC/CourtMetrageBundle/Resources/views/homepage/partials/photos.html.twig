@@ -16,8 +16,8 @@
                         {% endif %}
 
                         <div class="img {% if loop.first %}active{% endif %}">
-                            <a id="photo{{ key }}" class="chocolat-image ajax" href="{% path mediaGallery.media|trans_fallback('file'), 'reference' %}" title='<span class="category">{{ photoTheme.name }}</span><span class="date">{{ photoTranslation.updatedAt|date("d-m-Y") }}</span><h2>{{ photoTranslation.legend }}</h2>' data-credit="{{ 'ccm_credit_image'|trans }}: {{ photoTranslation.copyright }}">
-                                <img src="{% path mediaGallery.media|trans_fallback('file'), 'reference' %}" alt="" />
+                            <a id="photo{{ key }}" data-pid="{{ key }}" class="chocolat-image ajax" href="{% path mediaGallery.media|trans_fallback('file'), '2560x1620' %}" title='<span class="category">{{ photoTheme.name }}</span><span class="date">{{ photoTranslation.updatedAt|date("d-m-Y") }}</span><h2>{{ photoTranslation.legend }}</h2>' data-credit="{{ 'ccm_credit_image'|trans }}: {{ photoTranslation.copyright }}">
+                                <img src="{% path mediaGallery.media|trans_fallback('file'), '1266x798' %}" srcset="{% path mediaGallery.media|trans_fallback('file'), '1266x798' %} 1x, {% path mediaGallery.media|trans_fallback('file'), '1266x798' %} 2x" alt="{{ mediaGallery.media|trans_fallback('alt')  }}" title="{{ mediaGallery.media|trans_fallback('legend') }}" data-object-fit="contain">
                             </a>
                         </div>
                     {% endfor %}
@@ -36,7 +36,7 @@
                             {% endif %}
                         {% endif %}
                         <div data-id="photo{{ key }}" class="thumb {% if loop.first %}active{% endif %}" data-caption="<strong>{{ photoTranslation.legend }}</strong> © {{ photoTranslation.copyright }}">
-                            <img src="{% path mediaGallery.media|trans_fallback('file'), 'reference' %}" />
+                            <img src="{% path mediaGallery.media|trans_fallback('file'), '97x61' %}" srcset="{% path mediaGallery.media|trans_fallback('file'), '97x61' %} 1x, {% path mediaGallery.media|trans_fallback('file'), '194x122' %} 2x" />
                         </div>
                     {% endfor %}
                 {% endif %}
