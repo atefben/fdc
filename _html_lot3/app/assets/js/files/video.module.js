@@ -93,6 +93,7 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
+            console.log('foreach vids');
             var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
@@ -108,7 +109,7 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-
+    
     var $container = $("#" + vid.id).closest('.video-container');
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
@@ -662,7 +663,6 @@ $(document).ready(function () {
     }
 
     if ($('.video-player').length > 0) {
-        console.log('players');
         var dataFile = $('.video-player').data('file');
         var isPlaylist = false;
         if(typeof dataFile !== 'undefined'){
