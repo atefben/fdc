@@ -110,7 +110,7 @@ class SyncMissingThumbsCommand extends BaseCommand
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => false], null, 10)
+            ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => false], ['createdAt' => 'desc'], 10)
             ;
     }
 
