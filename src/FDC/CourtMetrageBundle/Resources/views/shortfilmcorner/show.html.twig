@@ -34,6 +34,9 @@
             <section id="main" class="single-article">
                 <div class="all-contain">
                     <div class="contain-title vFlexAlign block-01-s">
+                        {% if hideTitle == false %}
+                            <h2 class="title-article">{{ title }}</h2>
+                        {% endif %}
                         <h2 class="title-02">{{ description|raw }}</h2>
                     </div>
                     <div class="buttons buttons-01">
@@ -100,4 +103,11 @@
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
     <!-- END POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmailMedia',
+    {'section': '',
+        'detail': '',
+        'title': title,
+        'description': description|raw,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}

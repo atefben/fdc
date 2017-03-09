@@ -78,7 +78,8 @@ class HomepageAdmin extends Admin
                     'aProposUrl' => array(
                         'label'              => 'form.ccm.label.a_propos.url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
 
                 )

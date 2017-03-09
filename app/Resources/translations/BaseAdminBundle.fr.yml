@@ -786,6 +786,7 @@ form:
             description: Module chapô
             image: Module 1 photo
         label:
+            external_url: La valeur doit commencer par http ou https
             contact_subject_theme: Page de contact thème
             contact_page_email_receiver: Récepteur email
             contact_page_subjects_list: Page de contact liste de sujets
@@ -1211,6 +1212,7 @@ form:
             legal_mentions: Mentions légales
             general_conditions: Conditions générales
             title: Titre de page
+            hide_title: Cacher le titre
             theme_title: Nom du thème
             theme: Thème
             header: Chapô

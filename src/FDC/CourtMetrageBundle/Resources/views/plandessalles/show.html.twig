@@ -10,7 +10,12 @@
             <div class="nav-map">
                 <ul>
                     {% for sector in sectors %}
-                        <li data-maps="{{ sector|trans_fallback('slug') }}">{{ sector|trans_fallback('title') }}</li>
+                        <li class="{{ loop.index == 1 ? ' active ' : '' }}" data-maps="{{ sector|trans_fallback('slug') }}">
+                            {% if loop.index == 1 %}
+                                <i class="icon icon_a-votre-service"></i>
+                            {% endif %}
+                            {{ sector|trans_fallback('title') }}
+                        </li>
                     {% endfor %}
                     <li data-maps="zone-festival" id='more-map'>
                         <strong>{{ 'ccm.plan_des_salles.festival_area'|trans }}</strong>
