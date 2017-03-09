@@ -21,7 +21,6 @@ var owinitSlideShow = function (slider, hash) {
         } else if($('.article-single').length){
 
             $('.slideshow-img').on('click', function (e) {
-                console.log(e.target);
                 e.preventDefault();
 
                 slider = $(this);
@@ -81,7 +80,6 @@ var openSlideShow = function (slider, hash, affiche) {
     var centerElement = 0;
     var caption = "";
     slider.find('.item, .img, .poster').each(function (index, value) {
-        console.log(index);
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
 
@@ -134,9 +132,13 @@ var openSlideShow = function (slider, hash, affiche) {
 
             }else{
                 var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
-                console.log(getTitle);
+                
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
+
+                    if($('.medias').length > 0 || $('.media-library').length > 0) {
+                        $(value).find('.info .contain-txt').html();
+                    }
                 }
                 console.log(getTitle);
 
