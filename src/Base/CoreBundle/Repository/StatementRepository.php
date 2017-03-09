@@ -830,7 +830,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderStatement($locale, $festival, $date)
+    public function getOlderStatement($locale, $festival, $date, $site = 'site-press')
     {
 
         $qb = $this
@@ -883,7 +883,7 @@ class StatementRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb
@@ -894,7 +894,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNextStatement($locale, $festival, $date)
+    public function getNextStatement($locale, $festival, $date, $site = 'site-press')
     {
 
         $qb = $this
@@ -947,7 +947,7 @@ class StatementRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb
