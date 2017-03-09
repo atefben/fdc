@@ -286,7 +286,8 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-
+            console.log($playlist);
+            console.log(index);
             if(typeof $playlist[index] !== 'undefined'){
                 fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
