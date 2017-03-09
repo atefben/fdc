@@ -71,14 +71,14 @@ i {
 
 sub {
   vertical-align: sub;
-  font-size: smaller;
-  margin-left: 5px;
+  font-size: x-small;
+  margin-left: 1px;
 }
 
 sup {
   vertical-align: super;
-  font-size: smaller;
-  margin-left: 5px;
+  font-size: x-small;
+  margin-left: 1px;
 }
 
 .wysiwyg a {
