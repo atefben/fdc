@@ -4492,6 +4492,7 @@ var owInitSlider = function (sliderName) {
             smartSpeed: 700,
             center: center,
             afterInit : function(elem){
+                console.log('afterInit',elem);
                 if($('#home').length){
                     console.log(elem);
                 }
