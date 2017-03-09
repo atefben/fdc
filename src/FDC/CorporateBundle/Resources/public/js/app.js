@@ -282,8 +282,6 @@ var initVideo = function(hash) {
                 var shareUrl = document.location.href;
             }
 
-            console.log(index);
-
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             console.log($playlist);
@@ -465,11 +463,11 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
-                index = parseInt(index)
 
+                console.log(index);
+                index = parseInt(index)
+                index
                 playerInstance.playlistItem(index);
-                console.log(playerInstance);
-                console.log(playerInstance.getPlaylist());
                 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
