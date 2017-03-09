@@ -77,12 +77,13 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-01') {
+        var center = $('#home').length ? false : true;
         var slide01 = $('.slider-01').owlCarousel({
             navigation: false,
             items: 1,
             autoWidth: true,
             smartSpeed: 700,
-            center: true
+            center: center
         });
 
         // Custom Navigation Events
