@@ -127,6 +127,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
+                console.log('1');
                 var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
@@ -143,7 +144,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 var url = $(value).find('img').attr('data-url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
-
+            console.log('2');
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
 
@@ -361,11 +362,12 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     }
     var tempTitle = images[centerElement].title;
-
+    console.log('here');
     var onelineclass = ' oneline';
     if($(tempTitle).filter('*').size() > 0){
         onelineclass = ''
     }
+    console.log('two');
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
