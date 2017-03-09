@@ -45,7 +45,6 @@ var owInitFilter = function (isTabSelection) {
             }, 700);
         });
 
-
     } else {
 
         if (!$('.who-filter').length) {

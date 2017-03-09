@@ -2370,7 +2370,6 @@ var owInitFilter = function (isTabSelection) {
             }, 700);
         });
 
-
     } else {
 
         if (!$('.who-filter').length) {
@@ -2654,20 +2653,22 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
+                        //get previous articles disposition
+                        $('.articles-wrapper').find('')
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         $gridMore.append(articles).isotope( 'addItems', articles );
                         $gridMore.isotope();
+
+                        //BUTTON BEHAVIOUR
                         if(typeof moreBtn !== 'undefined'){
                             //ajax btn found, more content to come
                             $this.attr('href',moreBtn);
                         }else{
                             //no more content but let's take read more link and wording
                             var allNewsButton = $data.filter('.read-more');
-                            console.log(allNewsButton);
-                            container.append(allNewsButton);
                             $('#home-news-statements-more').remove();
                         }
                     }
@@ -4487,9 +4488,14 @@ var owInitSlider = function (sliderName) {
         var slide01 = $('.slider-01').owlCarousel({
             navigation: false,
             items: 1,
-            //autoWidth: true,
+            autoWidth: true,
             smartSpeed: 700,
-            center: center
+            center: center,
+            afterInit : function(elem){
+                if($('#home').length){
+                    console.log(elem);
+                }
+            }
         });
 
         // Custom Navigation Events

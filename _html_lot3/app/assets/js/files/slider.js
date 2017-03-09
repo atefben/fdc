@@ -81,9 +81,14 @@ var owInitSlider = function (sliderName) {
         var slide01 = $('.slider-01').owlCarousel({
             navigation: false,
             items: 1,
-            //autoWidth: true,
+            autoWidth: true,
             smartSpeed: 700,
-            center: center
+            center: center,
+            afterInit : function(elem){
+                if($('#home').length){
+                    console.log(elem);
+                }
+            }
         });
 
         // Custom Navigation Events
