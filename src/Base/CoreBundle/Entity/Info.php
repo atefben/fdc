@@ -84,7 +84,7 @@ abstract class Info implements TranslateMainInterface
      * @ORM\Column(type="boolean", options={"default":0})
      *
      */
-    protected $displayedOnCorpoHome = 0;
+    protected $displayedOnCorpoHome = false;
 
     /**
      * @var boolean
