@@ -9,7 +9,7 @@
                     <div class="post{% if loop.index == 1 or loop.index == 2 %} big {% elseif loop.index == 8 %} big right {% endif %}">
                         {% for post in batch %}
                             <div class="side side-{{ loop.index }} {% if post.network %} instagram {% else %} twitter {% endif %}
-                                 {% if loop.parent.loop.index in [2, 3, 5, 7, 8, 9, 13 ] %} hastext {% elseif flip %} flip hasimg {% else %} hasimg {% endif %}"
+                                 {% if loop.parent.loop.index in [2, 3, 5, 7, 8, 9, 13 ] %} hastext {% elseif flip and post.content is not null %} flip {% endif %}{% if post.content is not null %} hasimg {% endif %}"
                                  style="z-index: 5; background-image: url({{ post.content }});">
                                 <div class="txt">
                                     <div class="vCenter">
