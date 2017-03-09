@@ -3355,9 +3355,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: absolute;
   right: 0px;
 }
-.aboutPhotos .slideshow .slideshow-img .images .img img {
-  object-fit: cover !important;
-}
 .aboutPhotos .slideshow .caption {
   text-align: left;
 }
