@@ -113,6 +113,7 @@ class NewsController extends Controller
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
 
             $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
+            usort($homeArticles, [$this, 'compareArticle']);
         }
 
         $homeArticles = $this->removeUnpublishedNewsAudioVideo($homeArticles, $locale, $count);
@@ -246,7 +247,7 @@ class NewsController extends Controller
         ////////////////////////////////////////////////////////////////////////////////////
 
         $films = $homepage->getFilmsAssociated();
-
+        
         // SEO
         $this->get('base.manager.seo')->setFDCEventPageHomepageSeo($homepage, $locale);
 
@@ -837,6 +838,21 @@ class NewsController extends Controller
             $mark += $incr;
         }
         return $partition;
+    }
+
+    /**
+     * @param $a
+     * @param $b
+     * @return int
+     */
+    private function compareArticle($a, $b)
+    {
+        $aTime = $a->getPublishedAt()->getTimestamp();
+        $bTime = $b->getPublishedAt()->getTimestamp();
+        if ($aTime == $bTime) {
+            return 0;
+        }
+        return ($aTime > $bTime) ? -1 : 1;
     }
 
 }
