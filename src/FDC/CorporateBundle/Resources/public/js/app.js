@@ -6194,7 +6194,7 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            var videoPlayer = jwplayer(this.id);console.log(this.id);
+            var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
@@ -6899,14 +6899,12 @@ $(document).ready(function () {
     }
 
     if ($('.block-diaporama').length > 0) {
-        console.log('init diapo');
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
         verif = hash.slice(0, 3);
         var slider = $('.block-diaporama .slider-01');
         slider.find('.item').each(function(){
-            console.log($(this).find('img').css('height',428).width());
             $(this).css('width',$(this).find('img').css('height',428).width());
         });
         if (hash.length > 0 && verif == "pid") {

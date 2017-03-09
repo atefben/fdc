@@ -93,7 +93,7 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            var videoPlayer = jwplayer(this.id);console.log(this.id);
+            var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
