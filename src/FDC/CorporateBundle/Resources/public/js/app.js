@@ -2686,10 +2686,11 @@ var owInitGrid = function (id) {
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        $gridMore.append(articles);
+                        $gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
-                            var articles = $data.find('article');
-                            $gridMore.append(articles);
-                            $gridMore.isotope('destroy');
+                            
                             $this.attr('href',moreBtn);
                         }
                         $gridMore.imagesLoaded(function () {
