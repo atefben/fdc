@@ -177,3 +177,7 @@ body.chocolat-open.fixed {
     -webkit-transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
+
+.modal-content .half .authors .job {
+    width: 47% !important;
+}
