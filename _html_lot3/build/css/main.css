@@ -6991,6 +6991,10 @@ body.chocolat-open > .chocolat-content {
   text-align: center;
 }
 
+.slider-01 figcaption strong {
+  font-weight: normal;
+}
+
 #home .card .info strong {
   color: #333;
   font-family: "Playfair Display",Times New Roman,Times,serif;
