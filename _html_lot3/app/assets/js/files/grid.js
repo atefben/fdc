@@ -88,7 +88,12 @@ var owInitGrid = function (id) {
                         $gridMore.append(articles).isotope( 'addItems', articles );
                         $gridMore.isotope();
                         if(typeof moreBtn !== 'undefined'){
+                            //ajax btn found, more content to come
                             $this.attr('href',moreBtn);
+                        }else{
+                            //no more content but let's take read more link and wording
+                            var allNewsButton = $data.find('.read-more')[0].outerHTML;
+                            console.log(allNewsButton);
                         }
                     }
                 });
