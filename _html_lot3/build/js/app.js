@@ -2660,6 +2660,7 @@ var owInitGrid = function (id) {
                         var articles = $data.find('article');
                         $gridMore.append(articles).isotope( 'addItems', articles );
                         $gridMore.isotope();
+                        console.log(moreBtn);
                         if(typeof moreBtn !== 'undefined'){
                             //ajax btn found, more content to come
                             $this.attr('href',moreBtn);
