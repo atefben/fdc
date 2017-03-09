@@ -23,6 +23,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="block-contact block-01-ms">
+            <strong class="title-25">{{ registerProcedure.contactUsTitle }}</strong>
+            <div class="item i-1">
+                {{ registerProcedure.contactUsLeftText|raw }}
+            </div>
+
+            <div class="item i-2">
+                {{ registerProcedure.contactUsRightText|raw }}
+                <div class="buttons-02">
+                    <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
