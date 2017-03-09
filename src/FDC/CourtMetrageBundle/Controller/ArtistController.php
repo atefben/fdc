@@ -39,11 +39,14 @@ class ArtistController extends CcmController
             return $this->redirectToRoute('fdc_event_artist_get', ['slug' => $artist->getOwner()->getSlug()], 301);
         }
 
+        $competitionManager = $this->get('ccm.manager.competition');
+        $selectionTab = $competitionManager->getSelectionTab();
+
         // find directors randomly, order them after by firstname
         $directors = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmPerson')
-            ->getDirectorsRandomly($festival, $count, $artist->getId())
+            ->getDirectorsRandomlyCcm($festival, $count, $artist->getId(), $selectionTab->getTranslatable()->getSelectionSection())
         ;
         usort($directors, array($this, 'sortByFirstname'));
 

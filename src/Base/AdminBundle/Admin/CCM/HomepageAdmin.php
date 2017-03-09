@@ -187,6 +187,7 @@ class HomepageAdmin extends Admin
 //            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
+                    'label'    => 'form.ccm.label.catalog.catalog_image',
                 ), array(
                     'sortable' => 'order',
                 )
