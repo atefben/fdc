@@ -2640,15 +2640,16 @@ var owInitGrid = function (id) {
         var number = 0;
 
         if($('.home').length){
-            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('one');
+            //#home-news-statements-more
+            $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
 
                 var url = $(this).attr('href');
 
                 var dateTime = $('.last-element').data('time');
-
+                console.log(url, dateTime);
                 $.get( url, {date: dateTime}, function( data ) {
-
+                    console.log('get success',data)
                     if(data == null){
                         return false;
                     }else{
@@ -2667,7 +2668,7 @@ var owInitGrid = function (id) {
 
             });
         }else{
-            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('tou');
+            $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');
