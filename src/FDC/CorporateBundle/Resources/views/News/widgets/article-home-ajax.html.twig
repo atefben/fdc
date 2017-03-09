@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 {% if homeArticles|length %}
     <div class="articles right pad">
         {% for article in homeArticles|slice(0, 3) %}
@@ -15,15 +17,12 @@
 {% endif %}
 
 {% if not last %}
-    <script type="text/javascript">
-        $('#home-news-statements-more').attr('href', '{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}');
-    </script>
+    <a id="home-news-statements-more"
+       href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+       data-reverse=""
+       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
 {% else %}
-    {% trans_default_domain 'FDCEventBundle' %}
-    <script type="text/javascript">
-        $('#home-news-statements-more').replaceWith('' +
-            '<a id="home-news-statements-more"' +
-            'href="{{ path('fdc_corporate_news_infosandstatements',{year: festivalYear}) }}"' +
-            'class="read-more">{{ "article.list.title.touslesarticles"|trans|raw }}</a>');
-    </script>
+    <a id="home-news-statements-more"
+       href="{{ path('fdc_corporate_news_infosandstatements', {'year': festivalYear}) }}"
+       class="read-more">{{ "home.coporate.statements.and.infos.all.button"|trans|raw }}</a>
 {% endif %}
