@@ -1216,7 +1216,7 @@ form:
             theme: Thème
             header: Chapô
             label:
-                title: Titre du paragrapheS
+                title: Titre du paragraphe
                 text: Contenu texte
                 gallery: Nom du diaporama
             widget:
