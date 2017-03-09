@@ -100,4 +100,11 @@
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
     <!-- END POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmailMedia',
+    {'section': '',
+        'detail': '',
+        'title': title,
+        'description': description|raw,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}
