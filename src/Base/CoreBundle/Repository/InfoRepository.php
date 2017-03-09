@@ -769,7 +769,7 @@ class InfoRepository extends EntityRepository
 
     }
 
-    public function getOlderInfo($locale, $festival, $date)
+    public function getOlderInfo($locale, $festival, $date, $site = 'site-press')
     {
 
         $qb = $this
@@ -822,7 +822,7 @@ class InfoRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb
@@ -833,7 +833,7 @@ class InfoRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNextInfo($locale, $festival, $date)
+    public function getNextInfo($locale, $festival, $date, $site = 'site-press')
     {
 
         $qb = $this
@@ -886,7 +886,7 @@ class InfoRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb

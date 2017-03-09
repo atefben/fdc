@@ -629,7 +629,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderNews($locale, $festival, $date)
+    public function getOlderNews($locale, $festival, $date, $site = 'site-evenementiel')
     {
 
         $qb = $this
@@ -682,7 +682,7 @@ class NewsRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb
@@ -693,7 +693,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getNextNews($locale, $festival, $date)
+    public function getNextNews($locale, $festival, $date, $site = 'site-evenementiel')
     {
 
         $qb = $this
@@ -746,7 +746,7 @@ class NewsRepository extends EntityRepository
             ->setMaxResults('1')
             ->setParameter('date', $date)
             ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-evenementiel')
+            ->setParameter('site_slug', $site)
         ;
 
         $qb = $qb
