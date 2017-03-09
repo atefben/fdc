@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ProgramController extends Controller
 {
     /**
-     * @Route("program", name="fdc_court_metrage_program")
+     * @Route("/short-film-corner/program", name="fdc_court_metrage_program")
      * @param Request $request
      * @return Response
      */
