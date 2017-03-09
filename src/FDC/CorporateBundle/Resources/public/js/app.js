@@ -2665,9 +2665,10 @@ var owInitGrid = function (id) {
                             $this.attr('href',moreBtn);
                         }else{
                             //no more content but let's take read more link and wording
-                            var allNewsButton = $data.find('.read-more');
+                            var allNewsButton = $data.filter('.read-more');
                             console.log(allNewsButton);
-                            console.log($data.filter('.read-more'));
+                            $('#home-news-statements-more').before(allNewsButton);
+                            $('#home-news-statements-more').remove();
                         }
                     }
                 });
