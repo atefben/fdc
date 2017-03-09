@@ -75,7 +75,7 @@ var owInitGrid = function (id) {
                 e.preventDefault();
 
                 var url = $(this).attr('href');
-
+                var container = $(this).closest('.block-01');
                 var dateTime = $('.last-element').data('time');
                 $.get( url, {date: dateTime}, function( data ) {
                     if(data == null){
@@ -94,8 +94,7 @@ var owInitGrid = function (id) {
                             //no more content but let's take read more link and wording
                             var allNewsButton = $data.filter('.read-more');
                             console.log(allNewsButton);
-                            $('#home-news-statements-more').css('border','1px solid red');
-                            $('#home-news-statements-more').insertBefore(allNewsButton);
+                            container.append(allNewsButton);
                             $('#home-news-statements-more').remove();
                         }
                     }
