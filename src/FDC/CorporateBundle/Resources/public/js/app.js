@@ -466,7 +466,7 @@ var initVideo = function(hash) {
 
                 console.log(index);
                 index = parseInt(index)
-                console.log(index);
+
                 playerInstance.playlistItem(index);
                 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
@@ -596,6 +596,7 @@ var initVideo = function(hash) {
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
+                console.log('in');
                 updateShareLink(0, '.infos-videos');
 
                 $('.infos-videos .buttons .email').on('click', function(e) {
@@ -2639,7 +2640,7 @@ var owInitGrid = function (id) {
         var number = 0;
 
         if($('.home').length){
-            $('.read-more.ajax-request').off('click').on('click', function(e){
+            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('one');
                 e.preventDefault();
 
                 var url = $(this).attr('href');
@@ -2666,7 +2667,7 @@ var owInitGrid = function (id) {
 
             });
         }else{
-            $('.read-more.ajax-request').off('click').on('click', function(e){
+            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('tou');
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');

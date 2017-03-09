@@ -70,7 +70,7 @@ var owInitGrid = function (id) {
         var number = 0;
 
         if($('.home').length){
-            $('.read-more.ajax-request').off('click').on('click', function(e){
+            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('one');
                 e.preventDefault();
 
                 var url = $(this).attr('href');
@@ -97,7 +97,7 @@ var owInitGrid = function (id) {
 
             });
         }else{
-            $('.read-more.ajax-request').off('click').on('click', function(e){
+            $('.read-more.ajax-request').off('click').on('click', function(e){console.log('tou');
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');

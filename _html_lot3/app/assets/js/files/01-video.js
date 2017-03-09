@@ -466,7 +466,7 @@ var initVideo = function(hash) {
 
                 console.log(index);
                 index = parseInt(index)
-                console.log(index);
+
                 playerInstance.playlistItem(index);
                 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
@@ -596,6 +596,7 @@ var initVideo = function(hash) {
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
+                console.log('in');
                 updateShareLink(0, '.infos-videos');
 
                 $('.infos-videos .buttons .email').on('click', function(e) {
