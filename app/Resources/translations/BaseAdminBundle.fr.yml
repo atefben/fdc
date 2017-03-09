@@ -405,6 +405,12 @@ list:
             domains_activities: Domaines d'activité
             status: Statut
             edit_translations: Éditer
+        sfc:
+            title: Titre
+            position: Position
+            date_creation: Date de création
+            status: Statut
+            edit: Editer
 filter:
     media_pdf:
         name: Nom
@@ -470,6 +476,7 @@ filter:
     label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
     label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     label_selfkit: Selfkit
+    label_status: Statut
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
@@ -505,6 +512,8 @@ filter:
             id: Identifiant
             name: Entité
             domains_activities: Domaines d'activité
+        sfc:
+            title: Titre
 
 admin:
     ccm:
