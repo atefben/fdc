@@ -4492,7 +4492,8 @@ var owInitSlider = function (sliderName) {
             smartSpeed: 700,
             center: center
         });
-
+        
+        console.log('before init');
         slide01.on('initialize.owl.carousel',function(elem){
             console.log('afterInit',elem);
             if($('#home').length){
