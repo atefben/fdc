@@ -74,6 +74,12 @@ class CcmFilmRegisterAdmin extends Admin
                         'config_name' => 'widget',
                         'input_sync' => true
                     ),
+                    'proceduresTitle'        => array(
+                        'label'              => 'form.ccm.film_register.procedures_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                        'field_type'         => 'ckeditor'
+                    ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',

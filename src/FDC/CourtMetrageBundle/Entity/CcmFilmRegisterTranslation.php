@@ -34,6 +34,13 @@ class CcmFilmRegisterTranslation implements TranslateChildInterface
     protected $text;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $proceduresTitle;
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -69,6 +76,26 @@ class CcmFilmRegisterTranslation implements TranslateChildInterface
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProceduresTitle()
+    {
+        return $this->proceduresTitle;
+    }
+
+    /**
+     * @param $proceduresTitle
+     *
+     * @return $this
+     */
+    public function setProceduresTitle($proceduresTitle)
+    {
+        $this->proceduresTitle = $proceduresTitle;
 
         return $this;
     }

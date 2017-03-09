@@ -15,7 +15,7 @@
             {% endif %}
 
             <div class="block-tab-switch block-01-ms">
-                <h3 class="title-tab-swich">{{ 'ccm.register_movie.register_info'|trans }}:</h3>
+                <h3 class="title-tab-swich">{{ filmRegisterPage.proceduresTitle|raw }}</h3>
             </div>
 
             <div class="block-tab-switch">
@@ -42,33 +42,33 @@
 
                             <h4>{{ item.name }}</h4>
                             {{ item.procedureText|raw }}
-
-                            {% if item.isCharacteristicsActive %}
-                                <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-                                    <div class="block-01-ms">
-                                        <strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>
-
-                                        {{ item.characteristicsText|raw }}
-
-                                        <div class="buttons-02 centered">
-                                            <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'ccm.register_movie.see_form'|trans }}</div></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% if item.isRegulationActive %}
-                                <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-                                    <div class="block-01-ms">
-                                        <strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>
-                                        <p class="centered">{{ item.regulationText|raw }}</p><br>
-                                        <div class="buttons-02 centered">
-                                            <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">{{ 'ccm.register_movie.see_rules'|trans }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
                         </div>
+
+                        {% if item.isCharacteristicsActive %}
+                            <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+                                <div class="block-01-ms">
+                                    <strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>
+
+                                    {{ item.characteristicsText|raw }}
+
+                                    <div class="buttons-02 centered">
+                                        <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'ccm.register_movie.see_form'|trans }}</div></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if item.isRegulationActive %}
+                            <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
+                                <div class="block-01-ms">
+                                    <strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>
+                                    <p class="centered">{{ item.regulationText|raw }}</p><br>
+                                    <div class="buttons-02 centered">
+                                        <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">{{ 'ccm.register_movie.see_rules'|trans }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
 
                         {% if item.isRegisterFormActive %}
                             <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url({% path item.translatable.registerFormBackground|trans_fallback('file'), 'reference' %})">

@@ -63,6 +63,10 @@ class CcmLabelAdmin extends Admin
                             'class' => 'hidden',
                         ),
                     ),
+                    'pageTitle'          => array(
+                        'label'              => 'form.ccm.graphical_charter.page_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                     'title'          => array(
                         'label'              => 'form.ccm.graphical_charter.title',
                         'translation_domain' => 'BaseAdminBundle',

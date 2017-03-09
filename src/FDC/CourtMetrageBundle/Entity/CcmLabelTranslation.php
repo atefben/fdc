@@ -24,6 +24,13 @@ class CcmLabelTranslation implements TranslateChildInterface
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    protected $pageTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
     protected $header;
 
     /**
@@ -39,6 +46,26 @@ class CcmLabelTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $text;
+
+    /**
+     * @return string
+     */
+    public function getPageTitle()
+    {
+        return $this->pageTitle;
+    }
+
+    /**
+     * @param $pageTitle
+     *
+     * @return $this
+     */
+    public function setPageTitle($pageTitle)
+    {
+        $this->pageTitle = $pageTitle;
+
+        return $this;
+    }
 
     /**
      * @return string

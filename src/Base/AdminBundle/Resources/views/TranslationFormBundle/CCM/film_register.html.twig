@@ -30,6 +30,7 @@
                                         {{ form_row(form.parent.children.headerPhoto) }}
                                         {{ form_row(translationsFields.text) }}
                                         {{ form_row(form.parent.children.isTextActive) }}
+                                        {{ form_row(translationsFields.proceduresTitle) }}
                                         {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                             {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                                         {% elseif is_granted('ROLE_JOURNALIST') %}
@@ -59,6 +60,7 @@
                                                     <h4><strong>{{ 'form.ccm.film_register.widget'|trans }}</strong></h4>
                                                 {% endif %}
                                                 {{ form_row(widget._type) }}
+                                                {{ form_row(widget.position) }}
                                                 {{ form_row(widget.procedure) }}
 
                                                 <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -85,6 +87,7 @@
                                     <div class="sonata-ba-collapsed-fields">
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(translationsFields.text) }}
+                                        {{ form_row(translationsFields.proceduresTitle) }}
                                         {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                             {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                                         {% elseif is_granted('ROLE_JOURNALIST') %}
