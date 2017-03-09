@@ -95,7 +95,7 @@ var owInitGrid = function (id) {
                             var allNewsButton = $data.filter('.read-more');
                             console.log(allNewsButton);
                             $('#home-news-statements-more').css('border','1px solid red');
-                            $('#home-news-statements-more').before(allNewsButton);
+                            $('#home-news-statements-more').insertBefore(allNewsButton);
                             $('#home-news-statements-more').remove();
                         }
                     }
