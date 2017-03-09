@@ -247,10 +247,7 @@ class NewsController extends Controller
         ////////////////////////////////////////////////////////////////////////////////////
 
         $films = $homepage->getFilmsAssociated();
-
-        foreach ($homeArticles as $homeArticle) {
-            dump($homeArticle->getPublishedAt()->format('Y-m-d H:i:s'));
-        }
+        
         // SEO
         $this->get('base.manager.seo')->setFDCEventPageHomepageSeo($homepage, $locale);
 
