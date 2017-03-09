@@ -138,7 +138,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    getTitle = $(value).find('.info .contain-txt').html();
+                    //getTitle = $(value).find('.info .contain-txt').html();
                 }
                 console.log(getTitle);
 
