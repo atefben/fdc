@@ -466,7 +466,7 @@ var initVideo = function(hash) {
 
                 console.log(index);
                 index = parseInt(index)
-                index
+                console.log(index);
                 playerInstance.playlistItem(index);
                 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
