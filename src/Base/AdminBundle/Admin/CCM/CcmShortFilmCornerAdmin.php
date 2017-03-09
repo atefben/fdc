@@ -131,6 +131,11 @@ class CcmShortFilmCornerAdmin extends Admin
                     )
                 )
             ))
+            ->add('hideTitle', 'checkbox', array(
+                    'label' => 'form.mdf.content_template.hide_title',
+                    'required' => false,
+                )
+            )
             ->add(
                 'image',
                 'sonata_type_model_list'

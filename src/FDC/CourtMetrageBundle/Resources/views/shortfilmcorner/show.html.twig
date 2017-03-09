@@ -34,6 +34,9 @@
             <section id="main" class="single-article">
                 <div class="all-contain">
                     <div class="contain-title vFlexAlign block-01-s">
+                        {% if hideTitle == false %}
+                            <h2 class="title-article">{{ title }}</h2>
+                        {% endif %}
                         <h2 class="title-02">{{ description|raw }}</h2>
                     </div>
                     <div class="buttons buttons-01">
