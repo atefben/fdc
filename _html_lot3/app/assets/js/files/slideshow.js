@@ -71,6 +71,8 @@ var owinitSlideShow = function (slider, hash) {
 var openSlideShow = function (slider, hash, affiche) {
     $('html').addClass('slideshow-open');
 
+    console.log(slider);
+
     var images = [];
     var w = $(window).width();
     var centerElement = 0;
