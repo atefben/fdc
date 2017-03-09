@@ -182,6 +182,12 @@ body.chocolat-open.fixed {
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.single-article .film .info-film .wrapper .poster img {
+    width: 187px!important;
+    height: 255px!important;
+    object-fit: cover;
+}
+
 #social-wall #wall .post .side.hasimg {
     cursor: default;
 }
