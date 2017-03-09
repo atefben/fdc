@@ -2534,7 +2534,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmPlanDesSallesSectorAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmPlanDesSallesSector, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: PlanDesSallesSector, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: Section, show_in_dashboard: false}
     # end plan des salles
 
     base.admin.ccm_short_film_competition_tab_selection:

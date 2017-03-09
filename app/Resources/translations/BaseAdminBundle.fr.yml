@@ -792,6 +792,11 @@ form:
             image: Module 1 photo
         label:
             external_url: La valeur doit commencer par http ou https
+            plan_des_salles_sector: Sections
+            plan_des_salles_sector_list: Navigation de gauche
+            plan_des_salles_info: Nom de la section
+            plan_des_salles_title: Titre
+
             contact_subject_theme: Page de contact thème
             contact_page_email_receiver: Récepteur email
             contact_page_subjects_list: Page de contact liste de sujets
