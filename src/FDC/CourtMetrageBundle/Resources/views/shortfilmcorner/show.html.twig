@@ -99,12 +99,16 @@
     {"breadcrumb":
     [
     {
-    "name" : 'ccm.breadcrumb.shortfilmcorner.homepage'|trans,
-    "url"  : path('fdc_court_metrage_homepage')
+        "name" : 'breadcrumb.home'|trans,
+        "url"  : path('fdc_court_metrage_homepage')
     },
     {
-    "name" : title,
-    "url"  : path( sfc_route_name, {'slug': slug})
+        "name" : 'breadcrumb.who_are_we'|trans,
+        "url"  : path('fdc_court_metrage_sfc_who_are_we', {'slug' : null})
+    },
+    {
+        "name" : title,
+        "url"  : ''
     }
     ]
     }

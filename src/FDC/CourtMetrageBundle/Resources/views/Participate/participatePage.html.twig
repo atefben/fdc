@@ -62,12 +62,16 @@
     {"breadcrumb":
     [
     {
-    "name" : 'ccm.breadcrumb.participer.homepage'|trans,
+    "name" : 'breadcrumb.home'|trans,
     "url"  : path('fdc_court_metrage_homepage')
     },
     {
+        "name" : 'breadcrumb.inscrire'|trans,
+        "url"  : path('fdc_court_metrage_register_movie')
+    },
+    {
     "name" : page.title,
-    "url"  : path('fdc_court_metrage_participer_page', {'slug': slug})
+    "url"  : ''
     }
     ]
     }

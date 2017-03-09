@@ -40,12 +40,16 @@
     {"breadcrumb":
     [
     {
-    "name" : 'ccm.breadcrumb.participer.homepage'|trans,
-    "url"  : path('fdc_court_metrage_homepage')
+        "name" : 'breadcrumb.home'|trans,
+        "url"  : path('fdc_court_metrage_homepage')
     },
     {
-    "name" : 'ccm.breadcrumb.participer.se_reperer_a_cannes'|trans,
-    "url"  : path('fdc_court_metrage_plan_des_salles')
+        "name" : 'breadcrumb.participer'| trans,
+        "url"  : path('fdc_court_metrage_participer_page', {'slug':null} )
+    },
+    {
+        "name" : 'breadcrumb.plan_du_site'|trans,
+        "url"  : ''
     }
     ]
     }
