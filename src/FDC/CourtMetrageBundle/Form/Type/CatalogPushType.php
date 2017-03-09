@@ -65,6 +65,7 @@ class CatalogPushType extends AbstractType
                     'url'          => array(
                         'label'              => 'form.ccm.label.catalog.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                 ),
             ))
