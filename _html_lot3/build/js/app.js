@@ -2647,9 +2647,7 @@ var owInitGrid = function (id) {
                 var url = $(this).attr('href');
 
                 var dateTime = $('.last-element').data('time');
-                console.log(url, dateTime);
                 $.get( url, {date: dateTime}, function( data ) {
-                    console.log('get success',data)
                     if(data == null){
                         return false;
                     }else{
@@ -2658,10 +2656,8 @@ var owInitGrid = function (id) {
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         $gridMore.append(articles).isotope( 'addItems', articles );
+                        $gridMore.isotope();
                         if(typeof moreBtn !== 'undefined'){
-                            
-                            $gridMore.isotope();
-                        
                             $this.attr('href',moreBtn);
                         }
                     }
