@@ -2494,6 +2494,14 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_sfc_widget_gallery_dummy:
+        class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetGalleryDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetGallery, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ShortFilmCorner Widget Gallery, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_sfc_widget_video_dummy:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetVideoDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCornerWidgetVideo, ApplicationSonataAdminBundle:CRUD]

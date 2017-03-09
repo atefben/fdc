@@ -203,6 +203,7 @@ class CcmShortFilmCornerAdmin extends Admin
                     'ccm_sfc_widget_audio_type',
                     'ccm_sfc_widget_image_type',
                     'ccm_sfc_widget_image_dual_align_type',
+                    'ccm_sfc_widget_gallery_type',
                     'ccm_sfc_widget_video_type',
                     'ccm_sfc_widget_video_youtube_type',
                 ),
