@@ -5082,9 +5082,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    $(value).find('.info .contain-txt').html();
-                    console.log($(value));
-                    console.log($(value).find('.info .contain-txt'));
+                    getTitle = $(value).find('.info .contain-txt').html();
                 }
                 console.log(getTitle);
 
