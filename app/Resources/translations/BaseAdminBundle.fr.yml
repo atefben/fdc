@@ -996,7 +996,9 @@ form:
         helper_pushes: Format de l'image recommandé : 650x410
         helper_pushes_306x206: Format de l'image recommandé : 306x206
         helper_pushes_325x205: Format de l'image recommandé : 351x222
+        helper_pushes_702x444: Format de l'image recommandé : 702x444
         helper_pushes_703x443: Format de l'image recommandé : 703x443
+        helper_pushes_1406x886: Format de l'image recommandé : 1406x886
         helper_push3: Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
