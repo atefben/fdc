@@ -228,6 +228,12 @@
 
 .block-diaporama {
   padding-top:10px;
+
+  .block-legend {
+    .info {
+      padding-top: 16px;
+    }
+  }
 }
 
 /*.contain-card + .block-diaporama {

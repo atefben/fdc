@@ -3261,6 +3261,9 @@ video {
 .block-diaporama {
   padding-top: 10px;
 }
+.block-diaporama .block-legend .info {
+  padding-top: 16px;
+}
 
 /*.contain-card + .block-diaporama {
   padding-top: 0px;
