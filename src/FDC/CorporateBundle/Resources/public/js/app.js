@@ -2667,6 +2667,7 @@ var owInitGrid = function (id) {
                             //no more content but let's take read more link and wording
                             var allNewsButton = $data.filter('.read-more');
                             console.log(allNewsButton);
+                            $('#home-news-statements-more').css('border','1px solid red');
                             $('#home-news-statements-more').before(allNewsButton);
                             $('#home-news-statements-more').remove();
                         }
