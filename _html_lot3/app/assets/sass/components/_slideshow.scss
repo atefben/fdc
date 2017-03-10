@@ -208,7 +208,7 @@ div.chocolat-wrapper, .c-fullscreen-slider {
 
     .chocolat-description {
       box-sizing: border-box;
-      padding-top: 28px;
+      padding-top: 21px;
       padding-left: 135px;
       text-align: left;
       line-height: 12px;
@@ -229,6 +229,7 @@ div.chocolat-wrapper, .c-fullscreen-slider {
 
       @include breakpoint(1600px) {
         width: 830px;
+        padding-top: 12px;
       }
 
       @include breakpoint(1280px) {
@@ -237,7 +238,6 @@ div.chocolat-wrapper, .c-fullscreen-slider {
 
       @include breakpoint(1024px) {
         width: 430px;
-        padding-top: 17px;
       }
 
       span {
