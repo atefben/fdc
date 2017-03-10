@@ -87,6 +87,7 @@ var owInitGrid = function (id) {
                         var wrapper = '<div class="articles'+newOrder+'"><div class="isotope-01 to-init"></div></div>';
                         $data = $(data);
                         
+                        
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         articles = articles.wrap(wrapper);
