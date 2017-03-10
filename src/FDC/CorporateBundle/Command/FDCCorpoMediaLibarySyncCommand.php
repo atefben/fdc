@@ -4,6 +4,7 @@ namespace FDC\CorporateBundle\Command;
 
 use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFilmMedia;
+use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaVideo;
@@ -20,9 +21,10 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
     protected $entities = [
         'FilmFestivalPoster' => FilmFestivalPoster::class,
         'FilmFilmMedia'      => FilmFilmMedia::class,
-        'MediaImage'      => MediaImage::class,
-        'MediaAudio'      => MediaAudio::class,
-        'MediaVideo'      => MediaVideo::class,
+        'FilmPersonMedia'    => FilmPersonMedia::class,
+        'MediaImage'         => MediaImage::class,
+        'MediaAudio'         => MediaAudio::class,
+        'MediaVideo'         => MediaVideo::class,
     ];
 
 
@@ -44,8 +46,7 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
         $id = $input->getOption('id');
         if (array_key_exists($entity, $this->entities)) {
             $class = $this->entities[$entity];
-        }
-        else {
+        } else {
             $output->writeln("<error>$entity is not an available entity</error>");
             return;
         }

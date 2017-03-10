@@ -63,6 +63,12 @@ class CorpoMediaLibraryItem
      */
     private $search;
 
+    /**
+     * @var int
+     * @ORM\Column(name="weight", type="integer", nullable=true)
+     */
+    private $weight = 0;
+
 
     /**
      * Get id
@@ -246,5 +252,28 @@ class CorpoMediaLibraryItem
     public function getSearch()
     {
         return $this->search;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     * @return CorpoMediaLibraryItem
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer 
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }
