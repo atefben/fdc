@@ -2681,7 +2681,11 @@ var owInitGrid = function (id) {
                                 gutter: 0
                             }
                         }).removeClass('to-init');
-
+                        var h = 0
+                        $('.articles-wrapper .articles').each(function(){
+                            h += $(this).heigt();
+                        });
+                        $('.articles-wrapper').css('height',h);
                         //BUTTON BEHAVIOUR
                         if(typeof moreBtn !== 'undefined'){
                             //ajax btn found, more content to come
