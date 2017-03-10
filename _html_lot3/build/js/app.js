@@ -2664,13 +2664,22 @@ var owInitGrid = function (id) {
                     }else{
                         //get previous articles disposition
                         lastArticlesBlock  = $('.articles-wrapper').find('.articles:last-child');
-                        var newOrder = lastArticlesBlock.hasClass('article-inverse') ? '' : 'article-inverse';
+                        var newOrder = lastArticlesBlock.hasClass('article-inverse') ? '' : ' article-inverse';
+                        var wrapper = '<div class="articles'+newOrder+'"><div class="isotope-01 to-init"></div></div>';
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
-                        $gridMore.append(articles).isotope( 'addItems', articles );
-                        $gridMore.isotope();
+                        articles = articles.wrap(wrapper);
+                        $('.articles-wrapper').append(articles);
+                        $('.articles-wrapper').find('.to-init').isotope({
+                            itemSelector: '.item',
+                            layoutMode: 'packery',
+                            packery: {
+                                columnWidth: '.grid-sizer',
+                                gutter: 0
+                            }
+                        }).removeClass('to-init');
 
                         //BUTTON BEHAVIOUR
                         if(typeof moreBtn !== 'undefined'){
