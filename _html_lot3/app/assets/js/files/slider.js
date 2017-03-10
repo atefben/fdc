@@ -77,35 +77,35 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-01') {
-        var center = $('#home').length ? false : true;
-        var slide01 = $('.slider-01').owlCarousel({
-            navigation: false,
-            items: 1,
-            autoWidth: true,
-            smartSpeed: 700,
-            center: center
-        });
-
-        if($('#home').length && $('.block-diaporama').length){
-            //loading interval
-            var loadingInterval = window.setInterval(function(){
-                if($('.block-diaporama .owl-item.active').length){
-                    $('.block-diaporama .owl-item').removeClass('active');
-                    $('.block-diaporama .owl-item:first-child').addClass('active');
-
-                    window.clearInterval(loadingInterval);
-                }
+        var sliderBlock = $('.slider-01');
+        sliderBlock.find('img').imagesLoaded(function(){
+            var center = $('.home').length ? false : true;
+            console.log(center);
+            var slide01 = sliderBlock.owlCarousel({
+                navigation: false,
+                items: 1,
+                autoWidth: true,
+                smartSpeed: 700,
+                center: center
             });
-        }
 
-        // Custom Navigation Events
-        $(document).on('click', '.slider-01 .owl-item', function () {
-            var number = $(this).index();
+            slide01.on('initialize.owl.carousel', function(event) {
 
-            $('.slider-01 .center').removeClass('center');
-            $(this).addClass('center');
-            slide01.trigger('to.owl.carousel', number);
+                console.log('init');
+            }).on('changed.owl.carousel', function(event) {
+                sliderBlock.find('.owl-item').removeClass('active');
+                console.log(event.item.index);
+                //sliderBlock.find('.owl-item').eq(event.item.index).addClass('active');
+            });
+
+            // Custom Navigation Events
+            $(document).on('click', '.slider-01 .owl-item', function () {
+                var number = $(this).index();
+
+                slide01.trigger('to.owl.carousel', number);
+            });
         });
+        
     }
 
     /* SLIDER 02
@@ -114,6 +114,7 @@ var owInitSlider = function (sliderName) {
         var slide01 = $('.slider-02').owlCarousel({
             navigation: false,
             items: 3,
+            itemsDesktop:[1199,1],
             autoWidth: true,
             smartSpeed: 700,
             center: true,

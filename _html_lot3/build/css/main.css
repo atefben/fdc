@@ -7205,6 +7205,20 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
+.block-diaporama .owl-stage-outer .owl-stage {
+  min-width: 2300px;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a {
+  color: #c8a461;
+  cursor: default;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description strong a {
+  color: #fff;
+  cursor: default;
+}
+
 header #navigation ul.user li a .icon-pencil:before {
   content: "";
   background: url(../img/pencil.svg) no-repeat left top;

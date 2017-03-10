@@ -248,6 +248,20 @@ header #navigation ul.user li a .icon {
     color: $gold;
 }
 
+.block-diaporama .owl-stage-outer .owl-stage {
+    min-width: 2300px;    
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a{
+    color: $gold;
+    cursor: default;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description strong a{
+    color: #fff;
+    cursor: default;
+}
+
 header #navigation ul.user li a {
     .icon-pencil:before {
         content: "";
@@ -263,7 +277,7 @@ header #navigation ul.user li a {
             background: url(../img/pencil-hover.svg) no-repeat left top;
         }
     }
-} 
+}
 
 .slider-01 figcaption {
     color: #666666;

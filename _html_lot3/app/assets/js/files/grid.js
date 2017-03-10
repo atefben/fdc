@@ -82,7 +82,8 @@ var owInitGrid = function (id) {
                         return false;
                     }else{
                         //get previous articles disposition
-                        $('.articles-wrapper').find('')
+                        lastArticlesBlock  = $('.articles-wrapper').find('.articles:last-child');
+                        var newOrder = lastArticlesBlock.hasClass('article-inverse') ? '' : 'article-inverse';
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
