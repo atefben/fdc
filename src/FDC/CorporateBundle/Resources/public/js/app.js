@@ -273,6 +273,7 @@ var initVideo = function(hash) {
         }
 
         function updateShareLink(index, secondaryContainer) {
+            console.log('updateShareLink');
             sc    = secondaryContainer || 0;
 
             // CUSTOM LINK FACEBOOK
@@ -287,7 +288,7 @@ var initVideo = function(hash) {
             
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
-                console.log($playlist[index]);
+                console.log($playlist[index].name);
             }
 
             if(typeof $playlist[index] !== 'undefined'){
