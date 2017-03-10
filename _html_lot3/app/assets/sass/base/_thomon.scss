@@ -262,10 +262,9 @@ header #navigation ul.user li a .icon {
     text-transform: uppercase;
 }
 
+.c-fullscreen-slider .chocolat-bottom .chocolat-description span.date,
 .c-fullscreen-slider .chocolat-bottom .chocolat-description span.hour {
-    color: #666;
-    display: inline-block;
-    font-size: 0.625rem;
+    display: none;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a{
