@@ -7206,7 +7206,7 @@ header #navigation ul.user li a .icon {
 }
 
 .block-diaporama .owl-stage-outer .owl-stage {
-  min-width: 2300px;
+  min-width: 9999px;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description {
@@ -10165,13 +10165,13 @@ body#home .isotope-01 .item .contain-img {
   left: 0;
   transition: .5s;
 }
-.slider-01 .active .item:after {
+.slider-01 .center .item:after {
   opacity: 0;
 }
-.slider-01 .active figcaption {
+.slider-01 .center figcaption {
   opacity: 1;
 }
-.slider-01 .active strong {
+.slider-01 .center strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .slider-01 figcaption {

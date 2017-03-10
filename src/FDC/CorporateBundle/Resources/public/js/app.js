@@ -4494,15 +4494,17 @@ var owInitSlider = function (sliderName) {
     if (sliderName == 'slider-01') {
         var sliderBlock = $('.slider-01');
         sliderBlock.find('img').imagesLoaded(function(){
-            var center = $('.home').length ? false : true;
-            console.log(center);
             var slide01 = sliderBlock.owlCarousel({
                 navigation: false,
                 items: 1,
                 autoWidth: true,
                 smartSpeed: 700,
-                center: center
+                center: true
             });
+
+            if($('.home').length){
+                //get offset to compensate;
+            }
 
             slide01.on('initialize.owl.carousel', function(event) {
 
