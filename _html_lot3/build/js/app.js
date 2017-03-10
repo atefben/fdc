@@ -6594,10 +6594,12 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         initChannel();
         playerInstance.load(playlist);
 
-        $topBar.find('.info .category').text(playlist[0].category);
-        $topBar.find('.info .date').text(playlist[0].date);
-        $topBar.find('.info .hour').text(playlist[0].hour);
-        $topBar.find('.info p').text(playlist[0].name);
+        if(typeof playlist[0] !== 'undefined'){ 
+            $topBar.find('.info .category').text(playlist[0].category);
+            $topBar.find('.info .date').text(playlist[0].date);
+            $topBar.find('.info .hour').text(playlist[0].hour);
+            $topBar.find('.info p').text(playlist[0].name);
+        }
 
         if ($('.infos-videos .buttons').length > 0) {
             linkPopinInit(0, '.infos-videos .buttons .link');
