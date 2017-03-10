@@ -252,7 +252,7 @@ class CorpoMediaLibraryItemManager
         foreach ($this->locales as $locale) {
 
             $item = $this->getCorpoMediaLibraryItem($object, FilmPersonMedia::class, $locale);
-            if (!$object->getMedia() && !$object->getMedia()->getFestival()) {
+            if (!$object->getMedia() || !$object->getMedia()->getFestival()) {
                 return null;
             }
             $text = $object->getPerson()->getFullName();
