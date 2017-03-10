@@ -7212,6 +7212,11 @@ header #navigation ul.user li a .icon {
 .c-fullscreen-slider .chocolat-bottom .chocolat-description .category {
   color: #c8a461;
   cursor: default;
+  display: inline-block;
+  font-size: .625rem;
+  letter-spacing: .1em;
+  margin-right: 12px;
+  text-transform: uppercase;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description span.hour {
