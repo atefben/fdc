@@ -63,7 +63,7 @@
                                                 <div class="contain-infos">
                                                     {% for widget in content.arriveWidgets %}
                                                         {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
-                                                            <div class="item-infos">
+                                                            <div class="item-infos{% if loop.index < 3 %} large{% endif %}">
                                                                 {% if widget.picto is not null %}
                                                                     <i class="icon {{ widget.picto|icon_corpo }}"></i>
                                                                 {% endif %}
