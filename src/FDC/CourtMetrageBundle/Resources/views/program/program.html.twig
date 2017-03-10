@@ -42,6 +42,7 @@
                         </div>
                     {% endfor %}
                 </div>
+
                 <div class="conferencesMenu">
                     {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
                     <ul>
