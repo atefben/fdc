@@ -469,7 +469,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     function updateShareLink(index, secondaryContainer) {
         index = index || 0;
         sc = secondaryContainer || 0;
-
+        console.log($playlist);
+        console.log(index);
         // CUSTOM LINK FACEBOOK
         if ($('.container-webtv-ba-video').length > 0) {
             /*var shareUrl = $('.video .video-container').attr('data-link');*/
