@@ -296,6 +296,7 @@ var initVideo = function(hash) {
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
                 fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
             }
+            console.log('fb url',fbHref);
 
             $topBar.find('.buttons .facebook').attr('href', fbHref);
 
