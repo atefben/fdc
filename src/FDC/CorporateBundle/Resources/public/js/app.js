@@ -284,8 +284,12 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            console.log($playlist);
-            console.log(index);
+            
+            if(typeof index === 'undefined'){
+                index = $('.activeVideo').index('.video');
+                console.log(index);
+            }
+
             if(typeof $playlist[index] !== 'undefined'){
                 fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
@@ -3011,7 +3015,6 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
-        console.log('1919');
         while (i < $img.length) {
             if (j < 30) {
                 if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
@@ -3027,7 +3030,6 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
-        console.log('1920');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 1 || j == 5 || j == 14) {
