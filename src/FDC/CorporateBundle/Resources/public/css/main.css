@@ -7033,6 +7033,9 @@ body.chocolat-open > .chocolat-content {
   height: 100%;
   width: auto;
 }
+.isotope-01 .item.block-poster img.portrait {
+  height: 100%;
+}
 
 .item.block-poster .contain-txts {
   padding-top: 25px;
