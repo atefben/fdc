@@ -6985,7 +6985,11 @@ body.chocolat-open > .chocolat-content {
   background: #000;
 }
 
-.block-accordion-02 .item-manual .contain-infos .item-infos a
+.block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
+  color: #000;
+  border-color: #000;
+}
+
 .participate .contain-descript .descrip {
   width: 785px;
   margin: 0 auto;
@@ -6993,6 +6997,11 @@ body.chocolat-open > .chocolat-content {
   line-height: 30px;
   color: #333;
   text-align: center;
+}
+
+.block-accordion .active .contain-infos a {
+  display: inline-block;
+  color: #c8a461;
 }
 
 .slider-01 .center figcaption strong {

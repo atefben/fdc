@@ -36,6 +36,11 @@
     }
 }
 
+.block-accordion .active .contain-infos a {
+    display: inline-block;
+    color: $gold;    
+}
+
 .slider-01 .center figcaption strong {
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
