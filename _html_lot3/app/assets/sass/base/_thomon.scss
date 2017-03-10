@@ -72,6 +72,12 @@
 
 .isotope-01 .item.block-poster img {
   display: block;
+  background: #000;
+
+  &.landscape {
+    height: 100%;
+    width: auto;
+  }
 }
 
 .item.block-poster .contain-txts {

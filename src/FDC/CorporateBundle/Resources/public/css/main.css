@@ -7027,6 +7027,11 @@ body.chocolat-open > .chocolat-content {
 
 .isotope-01 .item.block-poster img {
   display: block;
+  background: #000;
+}
+.isotope-01 .item.block-poster img.landscape {
+  height: 100%;
+  width: auto;
 }
 
 .item.block-poster .contain-txts {
