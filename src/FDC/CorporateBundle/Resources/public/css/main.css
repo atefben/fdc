@@ -7004,6 +7004,11 @@ body.chocolat-open > .chocolat-content {
   color: #c8a461;
 }
 
+.block-push-top h1 i.icon {
+  font-size: 2.75rem;
+  margin-top: -6px;
+}
+
 .slider-01 .center figcaption strong {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
