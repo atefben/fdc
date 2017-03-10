@@ -38,6 +38,13 @@ class CcmProgramSchedulesCollection
     private $programDay;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
+    /**
      * Get id
      *
      * @return integer
@@ -85,5 +92,21 @@ class CcmProgramSchedulesCollection
         $this->programDay = $programDay;
         
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }
