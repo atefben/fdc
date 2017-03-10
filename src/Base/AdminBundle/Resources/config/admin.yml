@@ -2452,23 +2452,30 @@ services:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
     #CCM Short Film Corner
+
+    base.admin.ccm_program_day:
+        class: Base\AdminBundle\Admin\CCM\CcmProgramDayAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramDay, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Programme - Dates}
+
     base.admin.ccm_sfc_who_are_we:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWhoAreWeAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Qui sommes nous ?}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Qui sommes nous ?, show_in_dashboard: false}
 
     base.admin.ccm_sfc_our_events:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerOurEventsAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Nos évènements}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Nos évènements, show_in_dashboard: false}
 
     base.admin.ccm_sfc_relive_edition:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerReliveEditionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCorner, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Revivez l’édition}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Revivez l’édition, show_in_dashboard: false}
 
     base.admin.ccm_sfc_widget_audio_dummy:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCornerWidgetAudioDummyAdmin
@@ -3034,19 +3041,13 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmProgramAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgram, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Programmation, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Programme, show_in_dashboard: false}
 
     base.admin.ccm_program_days_collection:
         class: Base\AdminBundle\Admin\CCM\CcmProgramDaysCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramDaysCollection, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Days Collection, show_in_dashboard: false}
-
-    base.admin.ccm_program_day:
-        class: Base\AdminBundle\Admin\CCM\CcmProgramDayAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramDay, ApplicationSonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Dates}
 
     base.admin.ccm_program_schedules_collection:
         class: Base\AdminBundle\Admin\CCM\CcmProgramSchedulesCollectionAdmin
