@@ -287,6 +287,7 @@ var initVideo = function(hash) {
             
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
+                console.log($playlist);
                 console.log(index);
             }
 
