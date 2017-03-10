@@ -287,8 +287,7 @@ var initVideo = function(hash) {
             
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
-                console.log($playlist);
-                console.log(index);
+                console.log($playlist[index]);
             }
 
             if(typeof $playlist[index] !== 'undefined'){
@@ -619,7 +618,7 @@ var initVideo = function(hash) {
                     e.preventDefault();
                     launchPopinMedia({}, playerInstance);
                 });
-            } else {                console.log('in ?');
+            } else {
                 updateShareLink();
             }
         }else{
