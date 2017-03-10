@@ -86,12 +86,12 @@ var owInitGrid = function (id) {
                         var newOrder = lastArticlesBlock.hasClass('article-inverse') ? '' : ' article-inverse';
                         var wrapper = '<div class="articles'+newOrder+'"><div class="isotope-01 to-init"></div></div>';
                         $data = $(data);
-                        
+
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         articles = articles.wrap(wrapper);
-                        $('.articles-wrapper').append(articles);
+                        $('.articles-wrapper').append(wrapper).find('.articles:last-child').append(articles);
                         $('.articles-wrapper').find('.to-init').isotope({
                             itemSelector: '.item',
                             layoutMode: 'packery',
