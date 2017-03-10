@@ -806,10 +806,10 @@ form:
             plan_des_salles_info: Nom de la section
             plan_des_salles_title: Titre
 
-            contact_subject_theme: Page de contact thème
-            contact_page_email_receiver: Récepteur email
+            contact_subject_theme: Thème de contact
+            contact_page_email_receiver: Email du destinataire
             contact_page_subjects_list: Page de contact liste de sujets
-            contact_page_subject_info: Sujet du message info
+            contact_page_subject_info: Informations de contact
             contact_subject: Sujet du message
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
