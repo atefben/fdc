@@ -16,7 +16,7 @@
         {%  if program.body %}
             <div class="minPadding">
                 <div class="container">
-                    <h5 class="minMargin">{{ program.body }}</h5>
+                    <h5 class="minMargin">{{ program.body|raw }}</h5>
                 </div>
             </div>
         {% endif %}
