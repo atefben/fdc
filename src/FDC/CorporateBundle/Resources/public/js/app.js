@@ -888,7 +888,7 @@ var initVideo = function(hash) {
 
             var fbHref = facebookLink;
 
-
+            console.log($(this));
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
