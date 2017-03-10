@@ -41,6 +41,7 @@ class CcmProgramDay
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="CcmProgramSchedulesCollection", mappedBy="programDay", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $schedulesCollection;
 
