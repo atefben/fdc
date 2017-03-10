@@ -7,12 +7,15 @@
                     {% if type == 'who_are_we' %}
                         {{ 'ccm.short_film_corner.who_are_we'|trans }}
                         {% set sfc_route_name = 'fdc_court_metrage_sfc_who_are_we' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_who_are_we'|trans %}
                     {% elseif type == 'our_events' %}
                         {{ 'ccm.short_film_corner.our_events'|trans }}
                         {% set sfc_route_name = 'fdc_court_metrage_sfc_our_events' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_our_events'|trans %}
                     {% elseif type == 'relive_edition' %}
                         {{ 'ccm.short_film_corner.relive_edition'|trans }}
                         {% set sfc_route_name = 'fdc_court_metrage_sfc_relive_edition' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_relive_edition'|trans %}
                     {% endif %}
                 </h1>
             </div>
@@ -96,22 +99,26 @@
     </div>
 
     {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
-    {"breadcrumb":
-    [
-    {
-        "name" : 'breadcrumb.home'|trans,
-        "url"  : path('fdc_court_metrage_homepage')
-    },
-    {
-        "name" : 'breadcrumb.who_are_we'|trans,
-        "url"  : path('fdc_court_metrage_sfc_who_are_we', {'slug' : null})
-    },
-    {
-        "name" : title,
-        "url"  : ''
-    }
-    ]
-    }
+        {"breadcrumb":
+            [
+                {
+                    "name" : 'breadcrumb.home'|trans,
+                    "url"  : path('fdc_court_metrage_homepage')
+                },
+                {
+                    "name" : 'breadcrumb.sfc'|trans,
+                    "url"  : path('fdc_court_metrage_sfc_who_are_we')
+                },
+                {
+                    "name" : breadcrumb_trans,
+                    "url"  : path(sfc_route_name)
+                },
+                {
+                    "name" : title|truncate(32),
+                    "url"  : ''
+                }
+            ]
+        }
     %}
 
     <!-- POPIN MAIL SHARE -->
