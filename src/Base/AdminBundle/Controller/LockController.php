@@ -179,6 +179,7 @@ class LockController extends Controller
         'ccmfilmregister' => 'CcmFilmRegister',
         'ccmlabel' => 'CcmLabel',
         'ccmprogram' => 'CcmProgram',
+        'ccmprogramschedule' => 'CcmProgramSchedule'
     );
 
     /**
