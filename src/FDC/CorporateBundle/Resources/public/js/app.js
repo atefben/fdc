@@ -866,6 +866,9 @@ var initVideo = function(hash) {
                 date = $(e.target).closest('.video').find('.date').text(),
                 hour = $(e.target).closest('.video').find('.hour').text(),
                 name = $(this).find('.contain-txt strong a').data('title');
+                if(typeof name === 'undefined'){
+                    name = $(this).find('.contain-txt strong a').text();
+                }
 
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
 
