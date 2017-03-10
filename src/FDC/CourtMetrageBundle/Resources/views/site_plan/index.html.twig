@@ -10,11 +10,11 @@
                     {% if mainNav.translatable.isActive %}
                         {% set menuURL = ('http' in mainNav.route or 'https' in mainNav.route ? mainNav.route : url(mainNav.route)) %}
                         {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
-                        <h3 class="title sitemap-item-title">
-                            <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
-                                {{ mainNav.name }}
-                            </a>
-                        </h3>
+                        <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
+                            <h3 class="title sitemap-item-title">
+                                    {{ mainNav.name }}
+                            </h3>
+                        </a>
 
                         {% if mainNav.route == 'fdc_court_metrage_competition_selection' or mainNav.route == 'fdc_court_metrage_competition_jury' or mainNav.route == 'fdc_court_metrage_competition_palmares' %}
                             <ul>
@@ -68,9 +68,7 @@
             {% endfor %}
             <article class="sitemap-item">
                 <h3 class="title sitemap-item-title">
-                    <a href="#">
-                        {{ 'site_plan.footer'|trans }}
-                    </a>
+                    {{ 'site_plan.footer'|trans }}
                 </h3>
                 <ul>
                     <li>

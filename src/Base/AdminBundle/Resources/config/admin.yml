@@ -2810,7 +2810,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLabelSectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSection, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label - Sections}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Charte Graphique - Sections}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2945,7 +2945,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label - Fichiers }
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Groupes de boutons }
 
     base.admin.ccm_label_content_files_widget:
         class: Base\AdminBundle\Admin\CCM\CcmLabelContentFilesWidgetAdmin

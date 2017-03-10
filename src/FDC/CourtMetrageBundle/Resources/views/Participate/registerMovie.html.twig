@@ -80,19 +80,21 @@
                             </div>
                         {% endif %}
 
-                        <div class="block-contact block-01-ms">
-                            <strong class="title-25">{{ item.contactUsTitle }}</strong>
-                            <div class="item i-1">
-                                {{ item.contactUsLeftText|raw }}
-                            </div>
+                        {% if item.contactUsTitle %}
+                            <div class="block-contact block-01-ms">
+                                <strong class="title-25">{{ item.contactUsTitle }}</strong>
+                                <div class="item i-1">
+                                    {{ item.contactUsLeftText|raw }}
+                                </div>
 
-                            <div class="item i-2">
-                                {{ item.contactUsRightText|raw }}
-                                <div class="buttons-02">
-                                    <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
+                                <div class="item i-2">
+                                    {{ item.contactUsRightText|raw }}
+                                    <div class="buttons-02">
+                                        <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div> <!-- FIN border-top border-bottom-->
