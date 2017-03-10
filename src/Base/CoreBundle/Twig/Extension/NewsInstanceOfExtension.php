@@ -17,6 +17,11 @@ use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementAudio;
 use Base\CoreBundle\Entity\StatementImage;
 use Base\CoreBundle\Entity\StatementVideo;
+use FDC\CourtMetrageBundle\Entity\CcmNews;
+use FDC\CourtMetrageBundle\Entity\CcmNewsArticle;
+use FDC\CourtMetrageBundle\Entity\CcmNewsAudio;
+use FDC\CourtMetrageBundle\Entity\CcmNewsImage;
+use FDC\CourtMetrageBundle\Entity\CcmNewsVideo;
 use Twig_Extension;
 
 /**
@@ -32,16 +37,16 @@ class NewsInstanceOfExtension extends Twig_Extension
      * getTests function.
      * 
      * @access public
-     * @return void
+     * @return array
      */
     public function getTests()
     {
         return array(
-            new \Twig_SimpleTest('news_article', function ($object) { return $object instanceof NewsArticle || $object instanceof InfoArticle || $object instanceof StatementArticle; }),
-            new \Twig_SimpleTest('news_audio', function ($object) { return $object instanceof NewsAudio || $object instanceof InfoAudio || $object instanceof StatementAudio; }),
-            new \Twig_SimpleTest('news_image', function ($object) { return $object instanceof NewsImage || $object instanceof InfoImage || $object instanceof StatementImage; }),
-            new \Twig_SimpleTest('news_video', function ($object) { return $object instanceof NewsVideo || $object instanceof InfoVideo || $object instanceof StatementVideo; }),
-            new \Twig_SimpleTest('news_object', function ($object) { return $object instanceof News; }),
+            new \Twig_SimpleTest('news_article', function ($object) { return $object instanceof NewsArticle || $object instanceof InfoArticle || $object instanceof StatementArticle || $object instanceof CcmNewsArticle; }),
+            new \Twig_SimpleTest('news_audio', function ($object) { return $object instanceof NewsAudio || $object instanceof InfoAudio || $object instanceof StatementAudio || $object instanceof CcmNewsAudio; }),
+            new \Twig_SimpleTest('news_image', function ($object) { return $object instanceof NewsImage || $object instanceof InfoImage || $object instanceof StatementImage || $object instanceof CcmNewsImage; }),
+            new \Twig_SimpleTest('news_video', function ($object) { return $object instanceof NewsVideo || $object instanceof InfoVideo || $object instanceof StatementVideo || $object instanceof CcmNewsVideo; }),
+            new \Twig_SimpleTest('news_object', function ($object) { return $object instanceof News || $object instanceof CcmNews; }),
             new \Twig_SimpleTest('info_object', function ($object) { return $object instanceof Info; }),
             new \Twig_SimpleTest('statement_object', function ($object) { return $object instanceof Statement; }),
         );
