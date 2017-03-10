@@ -45,7 +45,6 @@
                             {% if app.request.attributes.get('slug') == 'prepare' %}
                                 {% if content.arriveDisplayInstit %}
                                     <div class="item border-top i-transport active">
-                                        <div class="block-01">
                                             <div class="title-contain">
                                                 <strong class="title-22">
                                                     <i class="noFloat icon {{ content.arriveIcon|icon_corpo }}"></i>{{ content|trans_fallback('arriveTitle') }}
@@ -81,12 +80,10 @@
                                                     {% endfor %}
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 {% endif %}
                                 {% if content.informationDisplayInstit %}
                                     <div class="item border-top">
-                                        <div class="block-01">
                                             <div class="title-contain">
                                                 <strong class="title-22">
                                                     <i class="noFloat icon {{ content.informationIcon|icon_corpo }}"></i>{{ content|trans_fallback('informationTitle') }}
@@ -107,11 +104,9 @@
                                                     {% endfor %}
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 {% endif %}
                                 <div class="item border-top">
-                                    <div class="block-01">
                                         <div class="title-contain">
                                             <strong class="title-22">
                                                 <i class="noFloat icon {{ content.meetingIcon|icon_corpo }}"></i>{{ content|trans_fallback('meetingTitle') }}
@@ -132,12 +127,10 @@
                                                 <div id="google-map"></div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                                 {% if content|trans_fallback('serviceTitle') != "" or content|trans_fallback('serviceDescription')|raw != "" %}
                                     {% if content.serviceDisplayInstit %}
                                         <div class="item border-top">
-                                            <div class="block-01">
                                                 <div class="title-contain">
                                                     <strong class="title-22">
                                                         <i class="noFloat icon {{ content.serviceIcon|icon_corpo }}"></i>{{ content|trans_fallback('serviceTitle') }}
@@ -151,7 +144,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
 
 
@@ -166,7 +158,7 @@
                                     ( s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and s.section.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED')) %}
                                         {% if s.section.instit %}
                                             <div class="item border-top {% if i == 0 %}active{% endif %}">
-                                                <div class="block-01">
+
                                                     <div class="title-contain">
                                                         <strong class="title-22">
                                                             <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
@@ -201,7 +193,6 @@
                                                             {% endfor %}
                                                         </div>
                                                     </div>
-                                                </div>
                                             </div>
                                         {% endif %}
                                     {% endif %}

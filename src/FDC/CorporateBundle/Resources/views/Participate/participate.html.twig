@@ -33,7 +33,6 @@
                             %}
                                 {% if s.section.instit %}
                                     <div class="item {% if i == 0 %}active{% endif %}">
-                                        <div class="block-01">
                                             <div class="title-contain border-top">
                                                 <strong class="title-22">
                                                     <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
@@ -69,7 +68,6 @@
                                                     {% endfor %}
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 {% endif %}
                             {% endif %}
