@@ -62,6 +62,7 @@
                                             {#{% endif %}#}
                                             <div class="item-manual">
                                                 <div class="contain-infos">
+                                                    <div class="block-01">
                                                     {% for widget in content.arriveWidgets %}
                                                         {% if class(widget) == "FDCPagePrepareWidgetPicto" %}
                                                             <div class="item-infos{% if loop.index < 3 %} large{% endif %}">
@@ -80,6 +81,7 @@
                                                             </div>
                                                         {% endif %}
                                                     {% endfor %}
+                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
