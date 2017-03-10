@@ -240,3 +240,13 @@
         {% endfor %}
     </div>
 </div>
+{% block javascripts %}
+    <script type="text/javascript">
+        var a = document.getElementById('show_button')
+        a.addEventListener('click',hideshow,false);
+
+        function hideshow() {
+            $('#show_button').hide();
+        }
+    </script>
+{% endblock %}
