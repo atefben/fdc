@@ -182,10 +182,12 @@
                     </div>
                 </div>
                     </br>
+                    {% set nr = 0 %}
                     <div class="col-md-12">
                         <div class="box-body">
                             <div class="fdc-widgets" data-form-widget="collection">
                                 {% for widget in form.parent.children.sejoures.children %}
+                                    {% set nr = nr + 1 %}
                                     <div class="item base-widget" data-itemtype="sejour">
                                         {{ form_row(widget._type) }}
                                         {{ form_row(widget.image) }}
@@ -197,10 +199,11 @@
                                     </div>
                                 {% endfor %}
                             </div>
-
-                            <a class="btn btn-primary btn-add-base-widget"
+                            {% if nr == 0 %}
+                            <a class="btn btn-primary btn-add-base-widget" id="show_button"
                                data-prototype="{{ form_widget(form.parent.children.sejoures.vars.prototypes.ccm_homepage_sejour_type)|escape }}"><i
                                         class="icon-plus"></i>{{ 'form.ccm.label.homepage_sejour_type'|trans }}</a>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -667,3 +670,13 @@
         </div>
     {% endfor %}
 </div>
+{% block javascripts %}
+    <script type="text/javascript">
+        var a = document.getElementById('show_button')
+        a.addEventListener('click',hideshow,false);
+
+        function hideshow() {
+            $('#show_button').hide();
+        }
+    </script>
+{% endblock %}
