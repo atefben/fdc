@@ -52,9 +52,6 @@ class CcmDomainCollectionAdmin extends Admin
             ->add('domain', 'sonata_type_model_list', array(
                 'label' => 'form.ccm.label.pros.domain',
                 'btn_delete' => false,
-                'constraints'        => array(
-                    new NotNull(),
-                ),
                 'required' => true
             ))
             ->add('position','hidden',array(
