@@ -214,12 +214,13 @@ div.chocolat-wrapper, .c-fullscreen-slider {
       line-height: 12px;
       position: relative;
       z-index: 2;
+      
       @include transition(opacity 0.6s $smoothTransition);
 
       &.oneline {
         padding-top: 38px;
       }
-      
+
       &.hide {
         opacity: 0;
       }
