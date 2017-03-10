@@ -66,6 +66,9 @@ class CcmProgramAdmin extends Admin
                         'label'              => 'form.ccm.label.program.body',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type'         => 'ckeditor',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
                         'required' => false,
                     ),
                     'createdAt'         => array(
