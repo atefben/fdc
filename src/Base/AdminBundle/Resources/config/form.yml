@@ -874,7 +874,7 @@ services:
             - { name: form.type, alias: 'module_partenaires_fournisseur_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_module_partenaires_fournisseur']]
-            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+            - ['setMediaImageAdmin', ['@base.admin.media_image_simple']]
 
     base.admin.form.ccm_module_pictos_type:
         scope: prototype
