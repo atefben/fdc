@@ -25,6 +25,14 @@ class CcmLabelSectionContentOneColumn extends CcmLabelSectionContent
     protected $image;
 
     /**
+     * @var CcmLabelContentFiles
+     *
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmLabelContentFiles")
+     *
+     */
+    protected $labelContentFiles;
+
+    /**
      * ArrayCollection
      */
     protected $translations;
@@ -73,6 +81,26 @@ class CcmLabelSectionContentOneColumn extends CcmLabelSectionContent
     public function setTranslations($translations)
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * @return CcmLabelContentFiles
+     */
+    public function getLabelContentFiles()
+    {
+        return $this->labelContentFiles;
+    }
+
+    /**
+     * @param $labelContentFiles
+     *
+     * @return $this
+     */
+    public function setLabelContentFiles($labelContentFiles)
+    {
+        $this->labelContentFiles = $labelContentFiles;
 
         return $this;
     }

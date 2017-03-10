@@ -2964,6 +2964,14 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Label content files collection, show_in_dashboard: false}
 
+    base.admin.ccm_label_section_content_one_column_dummy_admin:
+        class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentOneColumnDummyAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumn, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_label_section_content_two_columns_dummy_admin:
         class: Base\AdminBundle\Admin\CCM\CcmLabelSectionContentTwoColumnsDummyAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumns, ApplicationSonataAdminBundle:CRUD]

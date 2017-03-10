@@ -36,7 +36,11 @@
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetOneColumn() %}
-                                        {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {'widget': widget} %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'oneColumnTabs': oneColumnTabs,
+                                            'oneColumnFiles': oneColumnFiles
+                                        } %}
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetTwoColumns() %}

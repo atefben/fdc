@@ -201,7 +201,7 @@ class ParticipateManager
         return $hasPF;
     }
 
-    public function getImageSectionTabs($section)
+    public function getFilesSectionTabs($section)
     {
         if ($section) {
             $labelContentFilesWidgetCollectionRepo = $this->em->getRepository(CcmLabelContentFilesWidgetCollection::class);
@@ -273,6 +273,9 @@ class ParticipateManager
 
     public function getFilesWidgetsList($labelSectionsWidgets)
     {
+        $oneColumnTabs = array();
+        $oneColumnFiles = array();
+
         $twoColumnsTabs = array();
         $twoColumnsFiles = array();
 
@@ -280,9 +283,20 @@ class ParticipateManager
         $threeColumnsFiles = array();
         foreach($labelSectionsWidgets as $sectionWidgets) {
             foreach ($sectionWidgets as $widget) {
+
+                if ($widget->getTranslatable()->isWidgetOneColumn()) {
+                    if($widget->getTranslatable()->getLabelContentFiles()){
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles());
+                        $files = $this->getFilesList($tabs);
+
+                        $oneColumnTabs[$widget->getTranslatable()->getId()][1] = $tabs;
+                        $oneColumnFiles = $oneColumnFiles + $files;
+                    }
+                }
+
                 if ($widget->getTranslatable()->isWidgetTwoColumns()) {
                     if($widget->getTranslatable()->getLabelContentFiles()){
-                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles());
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles());
                         $files = $this->getFilesList($tabs);
 
                         $twoColumnsTabs[$widget->getTranslatable()->getId()][1] = $tabs;
@@ -290,7 +304,7 @@ class ParticipateManager
                     }
 
                     if($widget->getTranslatable()->getLabelContentFiles2()) {
-                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
                         $files = $this->getFilesList($tabs);
 
                         $twoColumnsTabs[$widget->getTranslatable()->getId()][2] = $tabs;
@@ -301,7 +315,7 @@ class ParticipateManager
 
                 if ($widget->getTranslatable()->isWidgetThreeColumns()) {
                     if($widget->getTranslatable()->getLabelContentFiles()){
-                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles());
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles());
                         $files = $this->getFilesList($tabs);
 
                         $threeColumnsTabs[$widget->getTranslatable()->getId()][1] = $tabs;
@@ -309,7 +323,7 @@ class ParticipateManager
                     }
 
                     if($widget->getTranslatable()->getLabelContentFiles2()) {
-                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles2());
                         $files = $this->getFilesList($tabs);
 
                         $threeColumnsTabs[$widget->getTranslatable()->getId()][2] = $tabs;
@@ -317,7 +331,7 @@ class ParticipateManager
                     }
 
                     if($widget->getTranslatable()->getLabelContentFiles3()) {
-                        $tabs = $this->getImageSectionTabs($widget->getTranslatable()->getLabelContentFiles3());
+                        $tabs = $this->getFilesSectionTabs($widget->getTranslatable()->getLabelContentFiles3());
                         $files = $this->getFilesList($tabs);
 
                         $threeColumnsTabs[$widget->getTranslatable()->getId()][3] = $tabs;
@@ -331,7 +345,9 @@ class ParticipateManager
             'threeColumnsTabs' => $threeColumnsTabs,
             'threeColumnsFiles' => $threeColumnsFiles,
             'twoColumnsTabs' => $twoColumnsTabs,
-            'twoColumnsFiles' => $twoColumnsFiles
+            'twoColumnsFiles' => $twoColumnsFiles,
+            'oneColumnTabs' => $oneColumnTabs,
+            'oneColumnFiles' => $oneColumnFiles,
         );
     }
 }
