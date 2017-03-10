@@ -228,8 +228,10 @@ div.chocolat-wrapper, .c-fullscreen-slider {
       }
 
       @include breakpoint(1600px) {
-        width: 830px;
-        padding-top: 12px;
+        body & {
+          width: 830px;
+          padding-top: 12px;
+        }
       }
 
       @include breakpoint(1280px) {

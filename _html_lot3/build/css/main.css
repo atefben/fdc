@@ -11535,7 +11535,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description.hide, .c-fullscreen-
   }
 }
 @media screen and (max-width: 1600px) {
-  div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
+  body div.chocolat-wrapper .chocolat-bottom .chocolat-description, body .c-fullscreen-slider .chocolat-bottom .chocolat-description {
     width: 830px;
     padding-top: 12px;
   }
