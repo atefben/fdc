@@ -80,6 +80,7 @@ var owInitGrid = function (id) {
                 $.get( url, {date: dateTime}, function( data ) {
                     if(data == null){
                         return false;
+                        
                     }else{
                         //get previous articles disposition
                         lastArticlesBlock  = $('.articles-wrapper').find('.articles:last-child');
