@@ -178,6 +178,8 @@ class LockController extends Controller
         'ccmcontactpage' => 'CcmContactPage',
         'ccmfilmregister' => 'CcmFilmRegister',
         'ccmlabel' => 'CcmLabel',
+        'ccmprogramscheduletype' => 'CcmProgramScheduleType',
+        'ccmprogramday' => 'CcmProgramDay',
         'ccmprogram' => 'CcmProgram',
     );
 
