@@ -46,10 +46,12 @@
                                 {% if content.arriveDisplayInstit %}
                                     <div class="item border-top i-transport active">
                                             <div class="title-contain">
-                                                <strong class="title-22">
-                                                    <i class="noFloat icon {{ content.arriveIcon|icon_corpo }}"></i>{{ content|trans_fallback('arriveTitle') }}
-                                                </strong>
-                                                <i class="icon icon-nav-accordion icon-minus"></i>
+                                                <div class="block-01">
+                                                    <strong class="title-22">
+                                                        <i class="noFloat icon {{ content.arriveIcon|icon_corpo }}"></i>{{ content|trans_fallback('arriveTitle') }}
+                                                    </strong>
+                                                    <i class="icon icon-nav-accordion icon-minus"></i>
+                                                </div>
                                             </div>
                                             {#{% if content|trans_fallback('mainDescription')|raw %}#}
                                                 {#<div class="contain-infos-02">#}

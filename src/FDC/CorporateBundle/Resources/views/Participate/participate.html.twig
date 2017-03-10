@@ -34,14 +34,17 @@
                                 {% if s.section.instit %}
                                     <div class="item {% if i == 0 %}active{% endif %}">
                                             <div class="title-contain border-top">
-                                                <strong class="title-22">
-                                                    <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
-                                                </strong>
-                                                <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-more-square{% endif %}"></i>
+                                                <div class="block-01">
+                                                    <strong class="title-22">
+                                                        <i class="noFloat icon {{ s.section|trans_fallback('icon')|icon_corpo }}"></i>{{ s.section|trans_fallback('title') }}
+                                                    </strong>
+                                                    <i class="icon icon-nav-accordion {% if i == 0 %}icon-minus{% else %}icon-more-square{% endif %}"></i>
+                                                </div>
                                             </div>
                                             {% set i = 1 %}
                                             <div class="item-manual">
                                                 <div class="contain-infos">
+                                                    <div class="block-01">
                                                     {% if s.section|trans_fallback('description') %}
                                                         <div class="descrip-section">
                                                             {{ s.section|trans_fallback('description')|raw }}
@@ -66,6 +69,7 @@
                                                             {% include 'FDCEventBundle:Participate:widgets/participate-subtitle.html.twig' %}
                                                         {% endif %}
                                                     {% endfor %}
+                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
