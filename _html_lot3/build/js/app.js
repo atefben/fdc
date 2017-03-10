@@ -2661,7 +2661,7 @@ var owInitGrid = function (id) {
                 $.get( url, {date: dateTime}, function( data ) {
                     if(data == null){
                         return false;
-                        
+
                     }else{
                         //get previous articles disposition
                         lastArticlesBlock  = $('.articles-wrapper').find('.articles:last-child');
@@ -2670,7 +2670,7 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         
-                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        
                         var articles = $data.find('article');
                         articles = articles.wrap(wrapper);
                         $('.articles-wrapper').append(wrapper).find('.articles:last-child').append(articles);
@@ -2684,10 +2684,11 @@ var owInitGrid = function (id) {
                         }).removeClass('to-init');
                         var h = 0
                         $('.articles-wrapper .articles').each(function(){
-                            h += $(this).heigt();
+                            h += $(this).height();
                         });
                         $('.articles-wrapper').css('height',h);
                         //BUTTON BEHAVIOUR
+                        var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){
                             //ajax btn found, more content to come
                             $this.attr('href',moreBtn);
@@ -2695,6 +2696,7 @@ var owInitGrid = function (id) {
                             //no more content but let's take read more link and wording
                             var allNewsButton = $data.filter('.read-more');
                             $('#home-news-statements-more').remove();
+                            container.append(allNewsButton);
                         }
                     }
                 });
