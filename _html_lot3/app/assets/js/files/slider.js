@@ -91,7 +91,7 @@ var owInitSlider = function (sliderName) {
                 //get offset to compensate;
                 var itv = window.setInterval(function(){
                     if($('.block-diaporama .owl-stage').length && $('.block-diaporama .owl-stage').attr('style').length){
-                        $('.block-diaporama .owl-stage').attr('style','transform: translate3d(114px, 0px, 0px);');
+                        $('.block-diaporama .owl-stage').attr('style','transform: translate3d(0px, 0px, 0px);');
                         window.clearInterval(itv);
                     }
                 },200);
