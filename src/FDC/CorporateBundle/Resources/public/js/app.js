@@ -4504,16 +4504,18 @@ var owInitSlider = function (sliderName) {
 
             if($('.home').length){
                 //get offset to compensate;
+                var itv = window.setInterval(function(){
+                    if($('.block-diaporama .owl-stage').length && $('.block-diaporama .owl-stage').attr('style').length){
+                        $('.block-diaporama .owl-stage').attr('style','transform: translate3d(114px, 0px, 0px);');
+                        window.clearInterval(itv);
+                    }
+                },200);
             }
 
             slide01.on('initialize.owl.carousel', function(event) {
 
                 console.log('init');
-            }).on('changed.owl.carousel', function(event) {
-                sliderBlock.find('.owl-item').removeClass('active');
-                console.log(event.item.index);
-                //sliderBlock.find('.owl-item').eq(event.item.index).addClass('active');
-            });
+            })
 
             // Custom Navigation Events
             $(document).on('click', '.slider-01 .owl-item', function () {
