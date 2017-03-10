@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmPerson;
 use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\OldFilmPhoto;
 use Doctrine\Common\Persistence\ObjectManager;
