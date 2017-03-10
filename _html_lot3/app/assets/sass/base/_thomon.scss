@@ -252,8 +252,12 @@ header #navigation ul.user li a .icon {
     min-width: 2300px;    
 }
 
-.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a{
+.c-fullscreen-slider .chocolat-bottom .chocolat-description .category {
     color: $gold;
+    cursor: default;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a{
     cursor: default;
 }
 
