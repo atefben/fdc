@@ -7223,8 +7223,9 @@ header #navigation ul.user li a .icon {
   margin-right: 12px;
   text-transform: uppercase;
 }
-.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 {
-  font-size: 1rem;
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description span.hour {
+  font-size: 0.625rem;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a {
