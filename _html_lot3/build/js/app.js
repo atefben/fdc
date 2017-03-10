@@ -604,7 +604,7 @@ var initVideo = function(hash) {
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
-                console.log('in');
+
                 updateShareLink(0, '.infos-videos');
 
                 $('.infos-videos .buttons .email').on('click', function(e) {
@@ -619,7 +619,7 @@ var initVideo = function(hash) {
                     e.preventDefault();
                     launchPopinMedia({}, playerInstance);
                 });
-            } else {
+            } else {                console.log('in ?');
                 updateShareLink();
             }
         }else{
