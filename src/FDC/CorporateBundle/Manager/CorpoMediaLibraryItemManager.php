@@ -152,12 +152,18 @@ class CorpoMediaLibraryItemManager
                         }
                     }
 
+                    $films = [];
                     if ($object->getAssociatedFilm()) {
-                        $filmTranslation = $object->getAssociatedFilm()->findTranslationByLocale($locale);
+                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+                    }
+                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaAudio($object) as $film) {
+                        $films[$film->getId()] = $film;
+                    }
+                    foreach ($films as $film) {
+                        $filmTranslation = $film->findTranslationByLocale($locale);
                         if ($filmTranslation instanceof FilmFilmTranslation) {
-                            $item = $this->getCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
 
-                            $search .= ' ' . $object->getAssociatedFilm()->getTitleVO();
+                            $search .= ' ' . $film->getTitleVO();
                             $search .= ' ' . $filmTranslation->getTitle();
                             $search .= ' ' . $filmTranslation->getSynopsis();
                             $search .= ' ' . $filmTranslation->getInfoRestauration();
@@ -208,17 +214,27 @@ class CorpoMediaLibraryItemManager
                         }
                     }
 
+                    $films = [];
                     if ($object->getAssociatedFilm()) {
-                        $filmTranslation = $object->getAssociatedFilm()->findTranslationByLocale($locale);
+                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+                    }
+                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMainVideo($object) as $film) {
+                        $films[$film->getId()] = $film;
+                    }
+                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaVideo($object) as $film) {
+                        $films[$film->getId()] = $film;
+                    }
+                    foreach ($films as $film) {
+                        $filmTranslation = $film->findTranslationByLocale($locale);
                         if ($filmTranslation instanceof FilmFilmTranslation) {
-                            $item = $this->getCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
 
-                            $search .= ' ' . $object->getAssociatedFilm()->getTitleVO();
+                            $search .= ' ' . $film->getTitleVO();
                             $search .= ' ' . $filmTranslation->getTitle();
                             $search .= ' ' . $filmTranslation->getSynopsis();
                             $search .= ' ' . $filmTranslation->getInfoRestauration();
                         }
                     }
+                    dump($search);
 
                     $item
                         ->setType('video')
