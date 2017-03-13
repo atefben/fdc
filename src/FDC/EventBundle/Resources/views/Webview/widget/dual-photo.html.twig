@@ -1,25 +1,10 @@
-{% if widget.gallery is not empty %}
-        {% for gallery in widget.gallery.medias %}
-            {% if gallery.media != null %}
-                {% set file = gallery.media|trans_fallback('file') %}
-                <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
-                <div class="Article-picture-caption">
-                    <strong>{{ gallery.media|trans_fallback('legend')}}</strong> 
-                    {% if gallery.media|trans_fallback('copyright') %}
-                    ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}
-                    {% endif %}
-                </div>
-                {% endif %}
 
-            {% endif %}
-        {% endfor %}
-    {% endif %}
     {% if widget.gallery is not empty %}
     <div class="Article-picture-dual">
       {% if widget.gallery.medias[0] is not null %}
         {% set galleryItemFirst = widget.gallery.medias[0] %}{{ dump(galleryItemFirst) }}
       <div class="Article-picture-dual-col">
-        <img src="{% path galleryItemFirst.media|trans_fallback('file'), 'reference' %}"/>
+        <img src="{% path galleryItemFirst|trans_fallback('file'), 'reference' %}"/>
         <div class="Article-picture-caption">
             {% if galleryItemFirst.media|trans_fallback('legend') %}
             <strong>{{ galleryItemFirst.media|trans_fallback('legend') }}</strong> 
@@ -31,7 +16,7 @@
       </div><!--
       {% else %}<!--
       {% endif %}-->{% if widget.gallery.medias[1] is not null %}{% set galleryItemLast = widget.gallery.medias[0] %}{{ dump(galleryItemLast) }}<div class="Article-picture-dual-col">
-        <img src="{% path galleryItemLast.media|trans_fallback('file'), 'reference' %}"/>
+        <img src="{% path galleryItemLast|trans_fallback('file'), 'reference' %}"/>
         <div class="Article-picture-caption">
             {% if galleryItemLast.media|trans_fallback('legend') %}
             <strong>{{ galleryItemLast.media|trans_fallback('legend') }}</strong>
