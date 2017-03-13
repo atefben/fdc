@@ -12,7 +12,8 @@
 {% endif %}
 
 {% set video = widget.file %}
-{% set image = video|trans_fallback('image') %}
+{{ dump(object) }}
+{{ dump(video) }}
 
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
