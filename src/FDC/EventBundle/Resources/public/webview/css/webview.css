@@ -49,6 +49,9 @@ body {
 html {
   font-size: 62.5%; }
 
+.jwplayer.jw-state-buffering .jw-display-icon-container .jw-icon-display {
+  display: none !important; }
+
 .Article-wrapper {
   font-family: "Open Sans"; }
 
@@ -585,7 +588,7 @@ html {
     height: auto;
     margin-left: 9rem;
     top: 1.7rem; }
-    .Article-header .jwplayer.jw-skin-fdc .jw-title {
+    .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jwplayer.jw-skin-fdc .jw-title {
       top: 2.2rem;
       margin-left: 9rem; }
     .jwplayer.jw-skin-fdc .jw-title-primary {
