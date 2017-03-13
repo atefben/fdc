@@ -31,15 +31,15 @@
     {% set file = header|trans_fallback('file') %}
 {% endif %}
 
-{% set tmp = associatedNews.audio %}
+{% set tmp = widget.audio %}
 {% if tmp %}
-    {% if associatedNews.audio.image is not null %}
-      {% set file = associatedNews.audio.image|trans_fallback('file') %}
+    {% if widget.audio.image is not null %}
+      {% set file = widget.audio.image|trans_fallback('file') %}
     {% endif %}
 {% endif %}
-{% if associatedNews.video is not null %}
-	{% if associatedNews.video.image|trans_fallback('file') %}
-	  {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+{% if widget.video is not null %}
+	{% if widget.video.image|trans_fallback('file') %}
+	  {% set finalImage = widget.video.image|trans_fallback('file') %}
 	{% endif %}
 {% endif %}
 {% if file is defined and file is not null %}
