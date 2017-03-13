@@ -132,7 +132,14 @@ var ow = ow || {};
 						//player overlays img
 						newPlayer.css({
 							'position':'relative',
-							'top':-60
+							'top':-70
+						});
+
+						//recompute header height
+						var headerHeight = img.outerHeight() + Article-header-meta.outerHeight();
+						$('.Article-header').css({
+							'height':headerHeight,
+							'overflow':'hidden'
 						})
 					}
 				});
