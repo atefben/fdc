@@ -3059,7 +3059,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmProgramScheduleAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramSchedule, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Schedule, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Evénement, show_in_dashboard: false}
 
     base.admin.ccm_program_schedule_type:
         class: Base\AdminBundle\Admin\CCM\CcmProgramScheduleTypeAdmin

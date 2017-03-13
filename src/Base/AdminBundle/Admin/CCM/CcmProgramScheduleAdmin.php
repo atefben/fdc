@@ -41,6 +41,7 @@ class CcmProgramScheduleAdmin extends Admin
                 'translation_domain' => 'BaseAdminBundle',
                 'locales' => array('fr', 'en'),
                 'required_locales' => array('fr'),
+                'label'  => false,
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',
@@ -59,10 +60,7 @@ class CcmProgramScheduleAdmin extends Admin
                     'description'         => array(
                         'label'              => 'form.ccm.label.program.schedule.description',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true,
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -79,26 +77,17 @@ class CcmProgramScheduleAdmin extends Admin
                     'accessType'     => array(
                         'label'              => 'form.ccm.label.program.schedule.access_type',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'location'     => array(
                         'label'              => 'form.ccm.label.program.schedule.location',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'timeDetails'     => array(
                         'label'              => 'form.ccm.label.program.schedule.time_details',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     )
                 ),
             ))
