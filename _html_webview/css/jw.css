@@ -50,6 +50,8 @@
 .jwplayer.jw-skin-fdc {
   height: 9rem;
   background: transparent; }
+  .jwplayer.jw-skin-fdc .jw-text-elapsed,
+  .jwplayer.jw-skin-fdc .jw-text-duration,
   .jwplayer.jw-skin-fdc .jw-icon-volume {
     display: none !important; }
   .jwplayer.jw-skin-fdc .jw-icon-fullscreen {
@@ -102,7 +104,7 @@
     background: url(../../img/article/audioPlayer/play.png) no-repeat 2rem 3rem;
     background-size: 1.8rem; }
     .jwplayer.jw-skin-fdc .jw-icon-playback:before {
-      content: ""; }
+      content: "" !important; }
   .jwplayer.jw-skin-fdc .jw-slider-container {
     vertical-align: top;
     height: 100%; }
@@ -114,6 +116,10 @@
   .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
     background-size: 1.8rem; }
+    @media screen and (min-width: 768px) {
+      .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
+        background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+        background-size: 1.8rem; } }
   .jwplayer.jw-skin-fdc .jw-display-icon-container .jw-icon-display {
     text-align: left;
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
