@@ -24,7 +24,7 @@
 	{% set image = widget.video.image|trans_fallback('file') %}
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
-{% set associatedNews = widget.news %}
+{% set associatedNews = widget %}
 {% if associatedNews.header is not null %}
               {% set header = associatedNews.header %}
               {% if header is not null %}
