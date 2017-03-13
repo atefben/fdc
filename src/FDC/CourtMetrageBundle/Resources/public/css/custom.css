@@ -245,3 +245,7 @@ body.chocolat-open.fixed {
 .artist .title-cat-artist.bio-top-padding {
     padding-top: 40px;
 }
+
+.modal-content .half .authors h4 {
+    width: 100%;
+}

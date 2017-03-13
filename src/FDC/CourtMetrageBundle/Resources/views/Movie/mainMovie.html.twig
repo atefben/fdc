@@ -82,7 +82,7 @@
             <div class="container">
                 {% include 'FDCCourtMetrageBundle:Movie:partials/casting.html.twig' %}
 
-                {% include 'FDCCourtMetrageBundle:Movie:partials/photos.html.twig' with { 'photos' : movie.medias, 'selfkits' : movie.selfkitImages } %}
+                {% include 'FDCCourtMetrageBundle:Movie:partials/photos.html.twig' with { 'photos' : movie.medias, 'selfkits' : movie.selfkitImages, 'mainTitle': mainTitle } %}
             </div>
             <div class="news" data-section="news">
                 <div class="articles center">
