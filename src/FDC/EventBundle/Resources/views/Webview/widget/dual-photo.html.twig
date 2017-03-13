@@ -11,14 +11,17 @@
     {% endif %}
     {% if widget.gallery is not empty %}
     <div class="Article-picture-dual">
-        {% if  widget.gallery.medias}
+      {% if widget.gallery.medias[0] is not null %}
+        {% set galleryItemFirst = widget.gallery.medias[0] %}
       <div class="Article-picture-dual-col">
-        <img src="img/article/slide.png"/>
-        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
+        <img src="{% path galleryItemFirst.media|trans_fallback('file'), 'reference' %}"/>
+        <div class="Article-picture-caption"><strong>{{ galleryItemFirst|trans_fallback('legend') }}</strong> ©{{ galleryItemFirst|trans_fallback('copyright')|replace({'©': ''}) }}</div>
       </div><!--
-      --><div class="Article-picture-dual-col">
-        <img src="img/article/slide.png"/>
-        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
+      {% else %}<!--
+      {% endif %}-->{% if widget.gallery.medias[1] is not null %}{% set galleryItemLast = widget.gallery.medias[0] %}<div class="Article-picture-dual-col">
+        <img src="{% path galleryItemLast.media|trans_fallback('file'), 'reference' %}"/>
+        <div class="Article-picture-caption"><strong>{{ galleryItemLast|trans_fallback('legend') }}</strong> ©{{ galleryItemLast|trans_fallback('copyright')|replace({'©': ''}) }}</div>
       </div>
+      {% endif %}
     </div>
     {% endif %}
