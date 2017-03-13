@@ -72,17 +72,6 @@
             {% else %}
               {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
             {% endif %}
-
-
-
-
-
-              <strong>
-              
-            {% else %}
-               
-            {% endif %}
-           
           </span>
           {% if object is news_image %}
             <span class="Article-header-meta-misc">
