@@ -245,6 +245,9 @@ body.chocolat-open.fixed {
 .artist .title-art-artist.hide-top-border {
     border-top: none;
 }
+.wysiwyg-white a {
+    color: white;
+}
 
 .artist .title-cat-artist.bio-top-padding {
     padding-top: 40px;
