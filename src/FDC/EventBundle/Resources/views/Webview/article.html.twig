@@ -50,8 +50,8 @@
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date">
           <strong>
-            {% set postDate = object.publishedAt|date('d-m-Y') %}
-            {% set today = "now"|date('d-m-Y') %}
+            {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
+            {% set today = "now"|date('d-m-Y H:i:s') %}
             {% set difference = date(today).diff(date(postDate)) %}
             {% set daysElapsed = difference.days %}
             {{ object.publishedAt|date('d.m.y') }}
