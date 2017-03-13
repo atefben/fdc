@@ -60,12 +60,13 @@
             {{ daysElapsed }}
             {{ hoursElapsed }}
             {{ minutesElapsed }}
-            
+
             {% if daysElapsed > 1 %}
               {% if hoursElapsed <= 1 %}
                 <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }}H <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
               {% else %}
                 <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }}m <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
+              {% endif %}
             {% elseif daysElapsed == 2 %} <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
               {% endif %}
             {% else %}
