@@ -143,7 +143,7 @@ var ow = ow || {};
 						});
 						$('.Article-header-meta').css({
 							'position': 'relative',
-							'top': -70
+							'top': -90
 						});
 					}
 				});

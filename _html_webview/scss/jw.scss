@@ -123,6 +123,11 @@
 					margin-left: 9rem;
 					top: 1.7rem;
 
+					.Article-header & {
+						top: 2.2rem;
+						margin-left: 9rem;
+					}
+
 					&-primary {
 						height: auto;
 						padding: 0px;
