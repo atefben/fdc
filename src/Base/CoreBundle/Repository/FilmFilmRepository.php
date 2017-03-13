@@ -4,6 +4,8 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaVideo;
 
 /**
  * FilmFilmRepository class.
@@ -258,6 +260,56 @@ class FilmFilmRepository extends EntityRepository
         }
         $this->addMasterQueries($qb, 'f', $festival, false);
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param MediaVideo $mediaVideo
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMediaVideo(MediaVideo $mediaVideo)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.associatedMediaVideos', 'amv')
+            ->innerJoin('amv.mediaVideo', 'mv')
+            ->andWhere('mv.id = :id')
+            ->setParameter(':id', $mediaVideo->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @param MediaAudio $mediaAudio
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMediaAudio(MediaAudio $mediaAudio)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.associatedMediaAudios', 'ama')
+            ->innerJoin('amv.mediaAudio', 'ma')
+            ->andWhere('ma.id = :id')
+            ->setParameter(':fid', $mediaAudio->getId())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @param MediaVideo $mediaVideo
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMainVideo(MediaVideo $mediaVideo)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.videoMain', 'mv')
+            ->andWhere('mv.id = :id')
+            ->setParameter(':id', $mediaVideo->getId())
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 }
