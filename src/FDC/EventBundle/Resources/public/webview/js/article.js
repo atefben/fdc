@@ -129,6 +129,7 @@ var ow = ow || {};
 						//add active cover background
 						newPlayer.find('.jw-preview').css({
 							'background':'url('+img.attr('src')+') no-repeat left bottom',
+							'background-size': '100%',
 							'-moz-transform': 'scale(1.1)',
 							'-ms-transform': 'scale(1.1)',
 							'-webkit-transform': 'scale(1.1)',
@@ -136,7 +137,7 @@ var ow = ow || {};
 							'-webkit-filter': 'blur(7px)',
 							'filter': 'blur(7px)'
 						});
-						img.hide();
+						//img.hide();
 						console.log($('.Article-header #'+player.attr('id')).find('.jw-media'));
 					}
 				});
