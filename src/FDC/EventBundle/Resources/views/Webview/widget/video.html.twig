@@ -30,7 +30,7 @@
 {% if header is not null %}
     {% set file = header|trans_fallback('file') %}
 {% endif %}
-{% elseif widget is news_audio or widget is info_audio or widget is statement_audio %}
+{% if widget is news_audio or widget is info_audio or widget is statement_audio %}
 	{% set tmp = widget.audio %}
 	{% if tmp %}
 	    {% if widget.audio.image is not null %}
