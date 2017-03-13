@@ -32,6 +32,13 @@ class CcmShortFilmCornerTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $titleNavigation;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
@@ -104,5 +111,21 @@ class CcmShortFilmCornerTranslation implements TranslateChildInterface
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleNavigation()
+    {
+        return $this->titleNavigation;
+    }
+
+    /**
+     * @param string $titleNavigation
+     */
+    public function setTitleNavigation($titleNavigation)
+    {
+        $this->titleNavigation = $titleNavigation;
     }
 }
