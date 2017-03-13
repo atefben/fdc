@@ -106,34 +106,33 @@
             {% set transImage = audio.image.findTranslationByLocale('fr') %}
         {% endif %}
     {% endif %}
-    {% if transImage is defined %}
-        <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}"
-                 data-format="audio"
-                 data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
-                 data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
-                 data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
-                 data-img="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '1144x724' %}{% endif %}"
-                 data-aid="{{ audio.id }}">
-            <div class="item-inner">
-                <a href="#" class="linkAllCover"></a>
-                <div class="image">
-                    <div class="image-wrapper">
-                        <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '572x362' %}{% endif %}" alt=""/>
-                    </div>
-                    <a href="#" class="linkImage"></a>
+    <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}"
+             data-format="audio"
+             data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+             data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+             data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
+             data-img="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '1144x724' %}{% endif %}"
+             data-aid="{{ audio.id }}">
+        <div class="item-inner">
+            <a href="#" class="linkAllCover"></a>
+            <div class="image">
+                <div class="image-wrapper">
+                    <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '572x362' %}{% endif %}"
+                         alt=""/>
                 </div>
-                <div class="info vFlexAlign">
-                    <span class="picto"><i class="icon icon-audio"></i></span>
-                    <div class="contain-txt">
-                        <div>
-                            <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span
-                                    class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
-                                    class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
-                        </div>
-                        <strong><a href="#">{{ audio|trans_fallback('title') }}</a></strong>
+                <a href="#" class="linkImage"></a>
+            </div>
+            <div class="info vFlexAlign">
+                <span class="picto"><i class="icon icon-audio"></i></span>
+                <div class="contain-txt">
+                    <div>
+                        <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span
+                                class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
+                                class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
                     </div>
+                    <strong><a href="#">{{ audio|trans_fallback('title') }}</a></strong>
                 </div>
             </div>
-        </article>
-    {% endif %}
+        </div>
+    </article>
 {% endif %}
