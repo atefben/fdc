@@ -122,8 +122,8 @@ var ow = ow || {};
 					player.find('audio').prop('playsinline',true);
 					if($('.Article-header #'+player.attr('id')).length){
 						//hide video and set transparent audio header
-						player.find('.jw-media').css('opacity',0);
-						console.log(player.find('.jw-media'));
+						$('.Article-header #'+player.attr('id')).find('.jw-media').css('opacity',0);
+						console.log($('.Article-header #'+player.attr('id')).find('.jw-media'));
 					}
 				});
 			});
