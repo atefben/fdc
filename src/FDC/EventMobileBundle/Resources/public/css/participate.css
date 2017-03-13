@@ -3570,7 +3570,8 @@ a.partners-link{
 }
 
 .access-container .contain-map .name {
-   text-transform: uppercase;
+    text-transform: uppercase;
+    display: block;
 }
 
 .portrait img{
