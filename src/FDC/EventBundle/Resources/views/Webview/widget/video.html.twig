@@ -21,19 +21,7 @@
 {% endif %}
 {% if object.video is not null %}
 	{% set video = widget.video|trans_fallback('file') %}
-	{% if object.video.image is not null %}
-	    {% if imageTrans is defined %}
-	        {% set image = imageTrans.file %}
-	    {% else %}
-	        {% set header = object.video.image %}
-	        {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
-	        {% if imageTrans is null or imageTrans.file is null %}
-	            {% set imageTrans = header.findTranslationByLocale('fr') %}
-	        {% endif %}
-
-	        {% set image = imageTrans.file %}
-	    {% endif %}
-	{% endif %}
+	{% set image = widget.video|trans_fallback('image') %}
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
