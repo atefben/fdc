@@ -86,7 +86,7 @@ i {
 }
 
 sub {
-  vertical-align: sub;
+  vertical-align: sub !important;
   font-size: x-small;
   margin-left: 1px;
 }
