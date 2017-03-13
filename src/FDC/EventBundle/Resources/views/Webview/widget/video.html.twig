@@ -12,8 +12,6 @@
 {% endif %}
 
 {% set video = widget.file %}
-{{ dump(video) }}
-{{ dump(redactional) }}
 
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
