@@ -54,11 +54,8 @@
             {% set today = "now"|date('d-m-Y') %}
             {% set difference = date(today).diff(date(postDate)) %}
             {% set daysElapsed = difference.days %}
-            {% set hoursElapsed = difference.hours %}
-            {% set minutesElapsed = difference.minutes %}
             {{ daysElapsed }}
-            {{ hoursElapsed }}
-            {{ minutesElapsed }}
+            {{ dump(difference) }}
             {% if daysElapsed == 1 %}
 
               <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>  {{ object.publishedAt|date('H') }}
