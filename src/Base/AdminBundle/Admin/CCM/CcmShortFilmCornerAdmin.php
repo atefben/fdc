@@ -124,7 +124,6 @@ class CcmShortFilmCornerAdmin extends Admin
                         'field_type'         => 'ckeditor',
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press',
                         'required' => false
                     ),
                     'status'         => array(

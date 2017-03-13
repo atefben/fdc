@@ -79,11 +79,7 @@ class CcmLabelAdmin extends Admin
                         'label'              => 'form.ccm.graphical_charter.text',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
                         'input_sync' => true
                     ),
                     'status'         => array(

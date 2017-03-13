@@ -6911,7 +6911,6 @@ blockquote, .quote {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .contain-title p sub, .contain-title ul sub, .contain-title ol sub {
-  vertical-align: text-bottom;
   font-size: .5rem;
 }
 .contain-title p sup, .contain-title ul sup, .contain-title ol sup {
