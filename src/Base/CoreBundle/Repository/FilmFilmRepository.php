@@ -289,9 +289,9 @@ class FilmFilmRepository extends EntityRepository
         return $this
             ->createQueryBuilder('f')
             ->innerJoin('f.associatedMediaAudios', 'ama')
-            ->innerJoin('amv.mediaAudio', 'ma')
+            ->innerJoin('ama.mediaAudio', 'ma')
             ->andWhere('ma.id = :id')
-            ->setParameter(':fid', $mediaAudio->getId())
+            ->setParameter(':id', $mediaAudio->getId())
             ->getQuery()
             ->getResult()
         ;
