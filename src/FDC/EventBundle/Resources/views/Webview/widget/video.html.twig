@@ -31,11 +31,11 @@
 {% if header is not null %}
     {% set file = header|trans_fallback('file') %}
 {% endif %}
+
 {% set tmp = associatedNews.audio %}
-    {% if tmp %}
-        {% if associatedNews.audio.image is not null %}
-          {% set file = associatedNews.audio.image|trans_fallback('file') %}
-        {% endif %}
+{% if tmp %}
+    {% if associatedNews.audio.image is not null %}
+      {% set file = associatedNews.audio.image|trans_fallback('file') %}
     {% endif %}
 {% endif %}
 {% if associatedNews.video is not null %}
