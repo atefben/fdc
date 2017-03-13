@@ -27,7 +27,6 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
-{% set header = widget.header %}
 {% if header is not null %}
     {% set file = header|trans_fallback('file') %}
 {% endif %}
