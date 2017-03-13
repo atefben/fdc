@@ -49,8 +49,18 @@ var ow = ow || {};
 			});
 
 			Slider.on('moveStart moveEnd', function (a,b,c) {
-				var increment = Slider.rel.firstItem + 1;
-				$wrap.find('.Article-slider-count strong').html(increment);
+				var index = Slider.rel.firstItem;
+				var increment = index + 1;
+				
+
+				//if slider is located in the header area
+				if($wrap.closest('.Article-header').length){
+					$wrap.closest('.Article-header').find('.Article-slider-count strong').html(increment);
+					$('.Article-header-meta .copyright').removeClass('active');
+					$('.Article-header-meta .copyright:nth-child('+increment+')').addClass('active');
+				}else{
+					$wrap.find('.Article-slider-count strong').html(increment);
+				}
 			});
 
 			Slider.init();
