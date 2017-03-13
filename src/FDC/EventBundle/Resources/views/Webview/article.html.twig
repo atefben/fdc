@@ -54,6 +54,7 @@
             {% set today = "now"|date('d-m-Y') %}
             {% set difference = date(today).diff(date(postDate)) %}
             {% set daysElapsed = difference.days %}
+            {{ object.publishedAt }}
             {{ postDate }}
             {{ today }}
             {{ dump(difference) }}
