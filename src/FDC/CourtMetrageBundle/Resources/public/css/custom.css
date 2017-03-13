@@ -256,3 +256,7 @@ body.chocolat-open.fixed {
 .modal-content .half .authors h4 {
     width: 100%;
 }
+
+.single-article .single-photo .photo-container {
+    width: auto;
+}
