@@ -2584,6 +2584,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-bottom: 20px;
 }
 
+sup {
+  vertical-align: super;
+  font-size: x-small;
+  margin-left: 3px !important;
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
@@ -2986,6 +2992,18 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin: 0 auto;
   text-align: center;
   display: block;
+  position: relative;
+}
+.discover:before {
+  content: "";
+  background: url(/img/palmeBckg-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f6f6f6;
+  position: absolute;
+  height: 1000px;
+  width: 100%;
+  left: 0;
 }
 
 #slider-discover {
@@ -15348,8 +15366,6 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  margin-bottom: 100px;
-  margin-top: 70px;
   /*background: url("/img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align: center;
@@ -15602,15 +15618,7 @@ a {
 }
 
 .competition {
-  /*@media screen and (max-width: 1366px) {
-    width: 1330px;
-  }
-  @media screen and (max-width: 1280px) {
-    width: 1200px;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 1000px;
-  }*/
+  position: relative;
 }
 .competition h3 {
   font-size: 18px;
@@ -15628,21 +15636,13 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  height: 710px;
+  min-height: 700px;
+  height: auto;
   width: 100%;
   z-index: 3;
-}
-.about:before {
-  content: "";
-  background: url(/img/palmeBckg-2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #f6f6f6;
-  position: absolute;
-  height: 1000px;
-  width: 100%;
-  left: 0;
-  top: 8%;
+  position: relative;
+  overflow: auto;
+  margin-bottom: 80px;
 }
 .about .innerWrapper {
   width: 1152px;
@@ -15657,13 +15657,13 @@ a {
   }
 }
 .about .aboutContent {
-  height: 475px;
+  height: auto;
   width: 650px;
   background: #c3a05f;
   text-align: right;
   color: white;
   float: right;
-  padding: 50px 60px 80px 0px;
+  padding: 50px 60px 50px 0px;
   z-index: 2;
   position: relative;
 }
@@ -29355,6 +29355,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     display: none !important;
   }
 }
+#share {
+  margin: 0 auto !important;
+}
+
 .confcourtaccordion .selectbtn {
   float: none !important;
   min-width: 0px !important;

@@ -2041,8 +2041,6 @@ a {
 .catalogue {
   height: 630px;
   @include align();
-  margin-bottom: 100px;
-  margin-top: 70px;
   /*background: url("/img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align:center;
@@ -2263,15 +2261,7 @@ a {
 } 
 
 .competition {
-  /*@media screen and (max-width: 1366px) {
-    width: 1330px;
-  }
-  @media screen and (max-width: 1280px) {
-    width: 1200px;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 1000px;
-  }*/
+  position: relative;
   
   h3 {
     font-size: 18px;
@@ -2288,22 +2278,13 @@ a {
 
 .about {
   @include align();
-  height: 710px;
+  min-height: 700px;
+  height: auto;
   width: 100%;
   z-index: 3;
-
-  &:before {
-    content: "";
-    background: url(/img/palmeBckg-2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #f6f6f6;
-    position: absolute;
-    height: 1000px;
-    width: 100%;
-    left: 0;
-    top: 8%;
-  }
+  position: relative;
+  overflow: auto;
+  margin-bottom: 80px;
 
 
   .innerWrapper {
@@ -2316,13 +2297,13 @@ a {
   }
 
   .aboutContent {
-    height: 475px;
+    height: auto;
     width: 650px;
     background: #c3a05f;
     text-align: right;
     color: white;
     float: right;
-    padding:50px 60px 80px 0px;
+    padding:50px 60px 50px 0px;
     z-index: 2;
     position: relative;
     @media screen and(max-width: 1024px) {

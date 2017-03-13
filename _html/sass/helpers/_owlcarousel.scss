@@ -401,6 +401,19 @@
 .discover {
   padding-bottom: 100px;
   @include align();
+  position: relative;
+
+  &:before {
+    content: "";
+    background: url(/img/palmeBckg-2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #f6f6f6;
+    position: absolute;
+    height: 1000px;
+    width: 100%;
+    left: 0;
+  } 
 
 }
 
