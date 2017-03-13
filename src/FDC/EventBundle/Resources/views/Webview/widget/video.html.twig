@@ -17,11 +17,12 @@
 
 {% endif %}
 {% if header is not null %}
-	{% if header.image is not null %}
+	{% if header.file is not null %}
 		{% set image = header|trans_fallback('file') %}
 	{% endif %}
 {% endif %}
 {% if object.video is not null %}
+	{% set image = widget.video.image|trans_fallback('file') %}
 	{% set video = widget.video|trans_fallback('file') %}
 
 {% endif %}
