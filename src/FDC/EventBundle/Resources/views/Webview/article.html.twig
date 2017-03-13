@@ -61,14 +61,14 @@
             {{ hoursElapsed }}
             {{ minutesElapsed }}
 
-            {% if daysElapsed > 1 %}
+            {% if daysElapsed == 2 %}
+              <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
+            {% elseif daysElapsed == 1 %}
               {% if hoursElapsed <= 1 %}
                 <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }}H <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
               {% else %}
                 <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }}m <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
               {% endif %}
-            {% elseif daysElapsed == 2 %}
-              <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
             {% else %}
               {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
             {% endif %}
