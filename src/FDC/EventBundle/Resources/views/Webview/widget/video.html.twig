@@ -47,6 +47,12 @@
 	{% endif %}
 {% endif %}
 
+{% if widget.video is not null %}
+	{% if widget.video.image|trans_fallback('file') %}
+	  {% set finalImage = widget.video.image|trans_fallback('file') %}
+	{% endif %}
+{% endif %}
+
 {% if finalImage is defined and finalImage is not null %}
   {% set image = finalImage %}
 {% endif %}
