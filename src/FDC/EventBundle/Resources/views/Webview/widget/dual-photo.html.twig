@@ -13,9 +13,8 @@
             ©{{ galleryItemFirst.media|trans_fallback('copyright')|replace({'©': ''}) }}
             {% endif %}
             </div>
-      </div><!--
-      {% else %}<!--
-      {% endif %}-->{% if widget.gallery.medias[1] is not null %}{% set galleryItemLast = widget.gallery.medias[0] %}{{ dump(galleryItemLast) }}<div class="Article-picture-dual-col">
+      </div><!--{% endif %}{% if widget.gallery.medias[1] is not null %}--><div class="Article-picture-dual-col">
+        {% set galleryItemLast = widget.gallery.medias[0] %}
         <img src="{% path galleryItemLast|trans_fallback('file'), 'reference' %}"/>
         <div class="Article-picture-caption">
             {% if galleryItemLast.media|trans_fallback('legend') %}
