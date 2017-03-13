@@ -14,7 +14,7 @@
             {% endif %}
             </div>
       </div><!--{% endif %}{% if widget.gallery.medias[1] is not null %}--><div class="Article-picture-dual-col">
-        {% set galleryItemLast = widget.gallery.medias[0] %}
+        {% set galleryItemLast = widget.gallery.medias[1] %}
         <img src="{% path galleryItemLast.media|trans_fallback('file'), 'reference' %}"/>
         <div class="Article-picture-caption">
             {% if galleryItemLast.media|trans_fallback('legend') %}
