@@ -188,6 +188,7 @@
                   {% endif %}
                 {% endif %}
             {% endif %}
+            {{ dump(associatedNews) }}
             {% if associatedNews.video is not null %}11 
               {% if associatedNews.video.image|trans_fallback('file') %}12 
                 {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
