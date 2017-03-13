@@ -176,13 +176,13 @@
               {% endif %}
 
               
-              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}hah 
+              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
-                {% if header is not null %}hoh 
+                {% if header is not null %}
                     {% set file = header|trans_fallback('file') %}
                 {% endif %}
                 {% set tmp = associatedNews.audio %}
-                    {% if tmp %}heh 
+                    {% if tmp %}
                         {% if associatedNews.audio.image is not null %}
                           {% set file = associatedNews.audio.image|trans_fallback('file') %}
                         {% endif %}
