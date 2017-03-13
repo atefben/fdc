@@ -3459,6 +3459,10 @@ strong.color, span.number, .item-info a, .link .icon, .link .icon-mobile-partici
     line-height: 90px;
 }
 
+.item-info .title-infos {
+    text-transform: uppercase;
+}
+
 .item-good-practice p{
     width: 240px;
     height: 115px;
@@ -3563,6 +3567,10 @@ a.partners-link{
 
 .access-container .contain-map {
    text-align: center;
+}
+
+.access-container .contain-map .name {
+   text-transform: uppercase;
 }
 
 .portrait img{
