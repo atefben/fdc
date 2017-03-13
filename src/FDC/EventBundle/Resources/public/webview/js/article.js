@@ -138,9 +138,13 @@ var ow = ow || {};
 						//recompute header height
 						var headerHeight = img.outerHeight() + $('.Article-header-meta').outerHeight();
 						$('.Article-header').css({
-							'height':headerHeight,
-							'overflow':'hidden'
-						})
+							'height': headerHeight,
+							'overflow': 'hidden'
+						});
+						$('.Article-header-meta').css({
+							'position': 'relative',
+							'top': -70
+						});
 					}
 				});
 			});
