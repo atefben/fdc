@@ -1,3 +1,23 @@
+.title.customFontSize {
+    font-size: 1.625rem;
+}
+
+.block-accordion .download .item.customMarginRight {
+    margin-right: 5px;
+}
+
+.block-accordion .download.no-flex.customWidth {
+    width: 100%;
+}
+
+.block-accordion .download.customFloat {
+    float: left;
+}
+
+.block-contact ul, .block-contact p {
+    margin-bottom: 15px;
+}
+
 .portrait-custom {
     width: 384px !important;
     height: 485px !important;
@@ -41,7 +61,7 @@
 .half-div.v2 .half-photo .photo-container {
     overflow: hidden;
 }
-.single-article .chapeau {
+.single-article .chapeau, .single-article .text {
     text-align: left;
     max-width: 100%;
 }
@@ -66,15 +86,15 @@ i {
 }
 
 sub {
-  vertical-align: sub;
-  font-size: smaller;
-  margin-left: 5px;
+  vertical-align: sub !important;
+  font-size: x-small;
+  margin-left: 1px;
 }
 
 sup {
   vertical-align: super;
-  font-size: smaller;
-  margin-left: 5px;
+  font-size: x-small;
+  margin-left: 1px;
 }
 
 .wysiwyg a {
@@ -178,6 +198,61 @@ body.chocolat-open.fixed {
     transition: all 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 
+.single-article .film .info-film .wrapper .poster img {
+    width: 187px!important;
+    height: 255px!important;
+    object-fit: cover;
+}
+
+#social-wall #wall .post .side.hasimg {
+    cursor: default;
+}
+
 .modal-content .half .authors .job {
     width: 47% !important;
+}
+
+.slideshow .slideshow-img .images .img img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: contain !important;
+    pointer-events: none;
+    -moz-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.single-article .single-photo img {
+    height: auto;
+}
+
+.eventsPage .share {
+    float: none;
+}
+
+.aboutPhotos .slideshow .slideshow-img {
+    height: 459px !important;
+}
+
+.artist .title-art-artist.hide-top-border {
+    border-top: none;
+}
+.wysiwyg-white a {
+    color: white;
+}
+
+.artist .title-cat-artist.bio-top-padding {
+    padding-top: 40px;
+}
+
+.modal-content .half .authors h4 {
+    width: 100%;
 }

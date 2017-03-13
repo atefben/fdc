@@ -35,10 +35,11 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit'   => array(),
-                ),
-            ))
+                    'actions' => array(
+                        'edit'   => array(),
+                    ),
+                )
+            )
         ;
     }
 
@@ -49,39 +50,36 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
-                'locales' => ['fr','en'],
-                'label'  => false,
-                'fields' => array(
-                    'applyChanges'      => array(
-                        'field_type' => 'hidden',
-                        'attr'       => array(
-                            'class' => 'hidden',
+                    'locales' => ['fr','en'],
+                    'label'  => false,
+                    'fields' => array(
+                        'applyChanges'      => array(
+                            'field_type' => 'hidden',
+                            'attr'       => array(
+                                'class' => 'hidden',
+                            ),
                         ),
-                    ),
-                    'name'          => array(
-                        'label'              => 'form.ccm.label.competition_tab_name',
-                        'translation_domain' => 'BaseAdminBundle',
-                    ),
-                    'status'         => array(
-                        'label'                     => 'form.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => CcmShortFilmCompetitionTabTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle'
+                        'name'          => array(
+                            'label'              => 'form.ccm.label.competition_tab_name',
+                            'translation_domain' => 'BaseAdminBundle',
+                        ),
+                        'status'         => array(
+                            'label'                     => 'form.label_status',
+                            'translation_domain'        => 'BaseAdminBundle',
+                            'field_type'                => 'choice',
+                            'choices'                   => CcmShortFilmCompetitionTabTranslation::getStatuses(),
+                            'choice_translation_domain' => 'BaseAdminBundle'
+                        )
                     )
                 )
-            ))
+            )
             ->add('image', 'sonata_type_model_list', array(
-                'label' => 'form.ccm.label.image',
-                'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
-                'required' => true
-            ))
-            ->add('selectionSection', 'sonata_type_model_list', array(
-                'label'    => 'form.ccm.label.film_selection',
-                'required' => true,
-                'btn_add' => false,
-            ))
+                    'label' => 'form.ccm.label.image',
+                    'translation_domain' => 'BaseAdminBundle',
+                    'btn_delete' => false,
+                    'required' => true
+                )
+            )
         ;
     }
 }

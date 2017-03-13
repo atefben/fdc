@@ -18,11 +18,27 @@
         <div class="border-top border-bottom block-button-bottom">
             <div class="block-01-ms">
                 <div class="align-flex">
-                    <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i>{{ 'ccm.register_movie.preselection_rules'|trans }}</a>
+                    <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i> {{ 'ccm.register_movie.preselection_rules'|trans }}</a>
                     <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain not in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
                 </div>
             </div>
         </div>
+
+        {% if registerProcedure.contactUsTitle %}
+            <div class="block-contact block-01-ms">
+                <strong class="title-25">{{ registerProcedure.contactUsTitle }}</strong>
+                <div class="item i-1">
+                    {{ registerProcedure.contactUsLeftText|raw }}
+                </div>
+
+                <div class="item i-2">
+                    {{ registerProcedure.contactUsRightText|raw }}
+                    <div class="buttons-02">
+                        <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </section>
 
     {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with

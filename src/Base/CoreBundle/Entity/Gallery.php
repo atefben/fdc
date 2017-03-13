@@ -95,7 +95,7 @@ class Gallery implements TranslateMainInterface
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string = 'Gallery : ' . $this->getName();
+            $string = $this->getName();
         }
 
         return $string;

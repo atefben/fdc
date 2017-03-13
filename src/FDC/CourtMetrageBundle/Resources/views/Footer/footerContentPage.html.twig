@@ -19,5 +19,18 @@
             {% endif %}
         </section>
     </div>
-
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : pageContent.title,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
 {% endblock %}

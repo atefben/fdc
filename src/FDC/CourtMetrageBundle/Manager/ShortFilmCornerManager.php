@@ -82,6 +82,7 @@ class ShortFilmCornerManager
             'socialIsActive' => $socialIsActive,
             'actualiteIsActive' => $actualiteIsActive,
             'catalogIsActive' => $catalogIsActive,
+            'hideTitle' => $shortFilmCornerPage->isHideTitle(),
         ];
         $pageData['sfcPages'] = $this->getTitleAndSlugsForSFCPages($type, $locale);
 

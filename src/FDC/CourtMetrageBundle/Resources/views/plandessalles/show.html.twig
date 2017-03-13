@@ -1,16 +1,19 @@
 {% extends "@FDCCourtMetrage/base.html.twig" %}
 {% block main %}
     <div id="main" class="press loading seatingchart lock">
-        <div class="header-press">
-            <div class="container">
-                <h2>{{ 'ccm.plan_des_salles.title'|trans }}</h2>
-            </div>
+        <div class="contain-title vFlexAlign block-01-s">
+            <h2 class="title customFontSize">{{ 'ccm.plan_des_salles.title'|trans }}</h2>
         </div>
         <div id='seatingchart'>
             <div class="nav-map">
                 <ul>
                     {% for sector in sectors %}
-                        <li data-maps="{{ sector|trans_fallback('slug') }}">{{ sector|trans_fallback('title') }}</li>
+                        <li class="{{ loop.index == 1 ? ' active ' : '' }}" data-maps="{{ sector|trans_fallback('slug') }}">
+                            {% if loop.index == 1 %}
+                                <i class="icon icon_a-votre-service"></i>
+                            {% endif %}
+                            {{ sector|trans_fallback('title') }}
+                        </li>
                     {% endfor %}
                     <li data-maps="zone-festival" id='more-map'>
                         <strong>{{ 'ccm.plan_des_salles.festival_area'|trans }}</strong>
@@ -33,4 +36,22 @@
             </div>
         </div>
     </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+        "name" : 'breadcrumb.home'|trans,
+        "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+        "name" : 'breadcrumb.participer'| trans,
+        "url"  : path('fdc_court_metrage_register_movie' )
+    },
+    {
+        "name" : 'breadcrumb.plan_des_salles'|trans,
+        "url"  : ''
+    }
+    ]
+    }
+    %}
 {% endblock %}

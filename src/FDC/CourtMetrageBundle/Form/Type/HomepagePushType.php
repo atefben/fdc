@@ -81,6 +81,7 @@ class HomepagePushType extends AbstractType
                     'url'          => array(
                         'label'              => 'form.ccm.label.push.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                 ),
             ))

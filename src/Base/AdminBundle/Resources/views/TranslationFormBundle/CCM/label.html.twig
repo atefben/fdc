@@ -26,6 +26,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.pageTitle) }}
                                         {{ form_row(translationsFields.header) }}
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(translationsFields.text) }}
@@ -83,6 +84,7 @@
                                 </div>
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
+                                        {{ form_row(translationsFields.pageTitle) }}
                                         {{ form_row(translationsFields.header) }}
                                         {{ form_row(translationsFields.text) }}
                                         {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}

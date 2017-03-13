@@ -111,7 +111,7 @@
             <a href="{{ path('fdc_court_metrage_news_detail', {'slug' : article|trans_fallback('slug')}) }}" class="linkImage"></a>
 
             {% if article is news_object %}
-                <span class="picto"><i class="icon icon_{{ article|get_news_type }}"></i></span>
+                <span class="picto"><i class="icon icon_{{ article.getType() != 'image' ? article.getType() : 'photo' }}"></i></span>
             {% elseif article is info_object %}
                 <span class="picto"><i class="icon icon_article"></i></span>
             {% elseif article is statement_object %}

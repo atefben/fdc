@@ -198,33 +198,35 @@ class CcmSocialWallCommand extends ContainerAwareCommand
         foreach ($tags as $tag) {
             $tag = substr($tag, 1);
             $tag = trim($tag);
-            $break = false;
             while (true) {
                 if ($nextUrl == null) {
-                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=100');
+                    $instagramResponse = file_get_contents('https://api.instagram.com/v1/tags/' . $tag . '/media/recent?access_token=' . $this->getContainer()->getParameter('instagram_token') . '&count=' . $offset);
                 } else {
                     $instagramResponse = file_get_contents($nextUrl);
                 }
 
                 $instagramResults = json_decode($instagramResponse);
-                $nextUrl = $instagramResults->pagination->next_url;
-
-                foreach ($instagramResults->data as $instagramPost) {
-                    if($em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){
-                        $break = true;
-                        break;
-                    }
-                    $instagramPosts[] = $instagramPost;
+                if(property_exists($instagramResults->pagination, 'next_url')) {
+                    $nextUrl = $instagramResults->pagination->next_url;
+                } else {
+                    $nextUrl = null;
                 }
 
-                $output->writeln('INSTAGRAMS POSTS DONE: '. sizeof($instagramPosts));
+                $count = 0;
+                foreach ($instagramResults->data as $instagramPost) {
+                    if(!($em->getRepository('FDCCourtMetrageBundle:CcmSocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null)){
+                        $instagramPosts[] = $instagramPost;
+                        $count++;
+                    }
+                }
 
-                if($input->getArgument('first') || $break == true) {
+                $output->writeln('INSTAGRAMS POSTS DONE: '. $count);
+
+                if(sizeof($instagramResults->data) < $offset)
+                {
                     break;
                 }
-
             }
-
         }
 
         krsort($instagramPosts);
@@ -237,7 +239,7 @@ class CcmSocialWallCommand extends ContainerAwareCommand
             $socialWall->setMaxIdInstagram($instagramPost->id);
             $socialWall->setEnabledDesktop(0);
             $socialWall->setDate($datetime);
-            $socialWall->setTags($socialWallTag[0]->getHashTag());
+            $socialWall->setTags($this->getHashTagsForInstagramPost($instagramPost->caption->text, $tags));
             $em->persist($socialWall);
             $socialWalls[] = $socialWall;
         }
@@ -254,6 +256,17 @@ class CcmSocialWallCommand extends ContainerAwareCommand
             $adminSecurityHandler->addObjectClassAces($acl, $adminSecurityHandler->buildSecurityInformation($modelAdmin));
             $adminSecurityHandler->updateAcl($acl);
         }
+    }
+
+    private function getHashTagsForInstagramPost($postMessage, $boHashTags) {
+        foreach ($boHashTags as $boHashTag)
+        {
+            if(strpos(strtolower($postMessage), strtolower($boHashTag))) {
+                return $boHashTag;
+            }
+        }
+
+        return '';
     }
 
     private function getHashTagsForTweet($hashTags, $boHashTags)

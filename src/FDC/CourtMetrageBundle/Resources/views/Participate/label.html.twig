@@ -5,8 +5,8 @@
     <div class="ajax-section">
         <div class="contain-ajax">
             <div class="all-contain">
-
                 <div class="contain-title vFlexAlign block-01-s">
+                    <h2 class="title customFontSize">{{ labelPage.pageTitle }}</h2>
                     <h2 class="title-02" style="color: #0a0a0a">{{ labelPage.header }}</h2>
                 </div>
 
@@ -14,7 +14,7 @@
 
                     <div class="block-01-xs">
                         <strong class="title-22">{{ labelPage.title }}</strong>
-                        <div class="texte-01">
+                        <div class="texte-01 wysiwyg">
                             {{ labelPage.text|raw }}
                         </div>
                     </div>
@@ -36,7 +36,11 @@
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetOneColumn() %}
-                                        {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {'widget': widget} %}
+                                        {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {
+                                            'widget': widget,
+                                            'oneColumnTabs': oneColumnTabs,
+                                            'oneColumnFiles': oneColumnFiles
+                                        } %}
                                     {% endif %}
 
                                     {% if widget.translatable.isWidgetTwoColumns() %}
@@ -63,4 +67,22 @@
         </div>
     </div>
 </section>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+},
+{
+    "name" : 'breadcrumb.inscrire'|trans,
+    "url"  : path('fdc_court_metrage_register_movie')
+},
+{
+    "name" : 'breadcrumb.participer.label'|trans,
+    "url"  : ''
+}
+]
+}
+%}
 {% endblock %}

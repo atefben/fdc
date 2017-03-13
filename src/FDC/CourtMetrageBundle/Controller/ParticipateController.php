@@ -102,7 +102,9 @@ class ParticipateController extends Controller
             'threeColumnsTabs' => $filesWidgets['threeColumnsTabs'],
             'threeColumnsFiles' => $filesWidgets['threeColumnsFiles'],
             'twoColumnsTabs' => $filesWidgets['twoColumnsTabs'],
-            'twoColumnsFiles' => $filesWidgets['twoColumnsFiles']
+            'twoColumnsFiles' => $filesWidgets['twoColumnsFiles'],
+            'oneColumnTabs' => $filesWidgets['oneColumnTabs'],
+            'oneColumnFiles' => $filesWidgets['oneColumnFiles']
         ));
     }
 

@@ -1842,6 +1842,7 @@
     <div class="item base-widget">
         <h4>{{ 'form.ccm.film_register.procedure_widget'|trans }}</h4>
         {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
         {{ form_row(form.children.procedure) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -1996,6 +1997,7 @@
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
         {{ form_row(form.children.image) }}
+        {{ form_row(form.children.labelContentFiles) }}
         {{ form_widget(attribute(form.children.translations, locale)) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">

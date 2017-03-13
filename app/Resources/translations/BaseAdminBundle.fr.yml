@@ -405,6 +405,21 @@ list:
             domains_activities: Domaines d'activité
             status: Statut
             edit_translations: Éditer
+        sfc:
+            title: Titre
+            position: Position
+            date_creation: Date de création
+            status: Statut
+            edit: Editer
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            content: Contenu
+            tags: Tags
+            message: Message
+            enabled_desktop: Visible sur le site
+            created_at: Date de création
 filter:
     media_pdf:
         name: Nom
@@ -470,6 +485,7 @@ filter:
     label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
     label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     label_selfkit: Selfkit
+    label_status: Statut
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
@@ -505,23 +521,37 @@ filter:
             id: Identifiant
             name: Entité
             domains_activities: Domaines d'activité
-
+        sfc:
+            title: Titre
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            festival: Festival
+            enabled_desktop: Visible sur le site
+            tags: Hashtag
 admin:
     ccm:
         menu:
             pros: Les pros du court
-            program: Programmation
+            program: Programme
             menu: Menu
             homepage: Homepage
             faq: FAQ
             contact_page: Contact
             film_register: Inscrire un film
-            label_page: La charte graphique
+            label_page: Charte Graphique
             confidentialite: Politique de confidentialité
             credits: Crédits
             legal_mentions: Mentions Légales
-            plan_des_salles: Se reperer à Cannes
+            plan_des_salles: Se repérer à Cannes
             social_wall_hashtag: Social wall hashtag
+            register_procedure: Procédures d'inscription
+            participate_pages: Pages Participer
+            strates_participer: Strates Participer
+            who_are_we: Qui sommes nous ?
+            our_events: Nos évènements
+            relive_edition: Revivez l’édition
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
@@ -682,6 +712,8 @@ form:
     label_pdf: Pdf
     ccm:
         graphical_charter:
+            content_files_one_column: Fichiers
+            page_title: Titre de la page
             content_files: Fichiers colonne 1
             content_files_2: Fichiers colonne 2
             content_files_3: Fichiers colonne 3
@@ -752,6 +784,7 @@ form:
         film_register:
             title: Têtière titre
             text: Text
+            procedures_title: Titre au dessus du tableau des procédures
             header_photo: Têtière photo
             is_text_active: Est le texte affiché?
             procedure_widget: Procédures d’inscription
@@ -786,14 +819,22 @@ form:
             description: Module chapô
             image: Module 1 photo
         label:
-            contact_subject_theme: Page de contact thème
-            contact_page_email_receiver: Récepteur email
+            external_url: La valeur doit commencer par http ou https
+            plan_des_salles_sector: Sections
+            plan_des_salles_sector_list: Navigation de gauche
+            plan_des_salles_info: Nom de la section
+            plan_des_salles_title: Titre
+
+            contact_subject_theme: Thème de contact
+            contact_page_email_receiver: Email du destinataire
             contact_page_subjects_list: Page de contact liste de sujets
-            contact_page_subject_info: Sujet du message info
+            contact_page_subject_info: Informations de contact
             contact_subject: Sujet du message
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
+            film_jury: Type de jury
+            film_jury_date: Date
             short_film_corner:
                 position_du_menu: Position
             menu:
@@ -816,7 +857,7 @@ form:
                 sub_nav_route: Route ou URL
                 sub_nav_is_active: Cet onglet de navigation secondaire est actif?
             pros:
-                detail_image: Image
+                detail_image: Image (carrée ou 230x230)
                 detail_is_sfc: Présent au Short Film Corner
                 detail_name: Entité Pro
                 detail_quote: Citation
@@ -1211,6 +1252,7 @@ form:
             legal_mentions: Mentions légales
             general_conditions: Conditions générales
             title: Titre de page
+            hide_title: Cacher le titre
             theme_title: Nom du thème
             theme: Thème
             header: Chapô
