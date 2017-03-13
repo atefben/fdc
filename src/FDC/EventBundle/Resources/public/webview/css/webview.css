@@ -286,7 +286,7 @@ html {
   .Article-related-slider-item:last-child {
     padding-right: 3.3rem; }
   .Article-related-slider-item-pictureWrap {
-    height: 16.25rem;
+    height: auto;
     position: relative;
     overflow: hidden; }
     .Article-related-slider-item-pictureWrap img {

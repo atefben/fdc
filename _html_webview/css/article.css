@@ -140,6 +140,9 @@ html {
 .Article-slider-item {
   float: left;
   width: 90vw; }
+  @media screen and (min-width: 768px) {
+    .Article-slider-item {
+      width: 100vw; } }
   .Article-header .Article-slider-item {
     width: 100vw; }
   .Article-slider-item img {
@@ -238,7 +241,7 @@ html {
   .Article-related-slider-item:last-child {
     padding-right: 3.3rem; }
   .Article-related-slider-item-pictureWrap {
-    height: 16.25rem;
+    height: auto;
     position: relative;
     overflow: hidden; }
     .Article-related-slider-item-pictureWrap img {

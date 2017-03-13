@@ -197,6 +197,10 @@ html {
 			float: left;
 			width: 90vw;
 			
+			@media screen and (min-width: 768px) {
+				width: 100vw;
+			}
+
 			.Article-header & {
 				width: 100vw;
 			}
@@ -337,7 +341,7 @@ html {
 					padding-right: 3.3rem;
 				}
 				&-pictureWrap {
-					height: 16.25rem;
+					height: auto;
 					position: relative;
 					overflow: hidden;
 
