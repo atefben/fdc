@@ -47,9 +47,9 @@
 	{% endif %}
 {% endif %}
 
-{% if widget.video is not null %}
-	{% if widget.video.image|trans_fallback('file') %}
-	  {% set finalImage = widget.video.image|trans_fallback('file') %}
+{% if widget.news.video is not null %}
+	{% if widget.news.video.image|trans_fallback('file') %}
+	  {% set finalImage = widget.news.video.image|trans_fallback('file') %}
 	{% endif %}
 {% endif %}
 
