@@ -265,4 +265,65 @@ function handleDualShareEmailForms()
         });
     }
 }
+
+/**
+ * we override and slightly change slideshows.module.js function
+ * to fix fullscreen share for FB and Twitter not displaying title
+ * for the first image displayed
+ *
+ * @param pid
+ * @param title
+ */
+function updatePhotoShare(pid, title) {
+    var pid      = pid || 0,
+        title    = title || $('[data-pid='+pid+']').attr('data-title') || '',
+        t0       = title.split('<h2>') || "",
+        t1       = typeof t0[1] !== 'undefined' ? t0[1].split('</h2>') : "",
+        shareUrl = GLOBALS.urls.photosUrl+'#pid='+pid;
+
+    $('.chocolat-bottom .img-slideshow-share .button.facebook').off('click');
+    $('.chocolat-bottom .img-slideshow-share .button.twitter').off('click');
+
+    // CUSTOM LINK FACEBOOK
+    var fbHref = 'http://www.facebook.com/dialog/feed?app_id=1198653673492784' +
+        '&link=CUSTOM_URL' +
+        '&picture=CUSTOM_IMAGE' +
+        '&name=CUSTOM_NAME' +
+        '&caption=' +
+        '&description=CUSTOM_DESC' +
+        '&redirect_uri=http://www.festival-cannes.com/fr/sharing' +
+        '&display=popup';
+    fbHref     = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+    fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($('[data-pid='+pid+']').attr('href')));
+    fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(t1.slice(0, -1)));
+    fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent('© ' + $('[data-pid='+pid+']').attr('data-credit')));
+    $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
+    // CUSTOM LINK TWITTER
+    var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
+    twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
+    $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
+    // CUSTOM LINK COPY
+    $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', shareUrl);
+    $('.chocolat-bottom .img-slideshow-share .button.link').attr('data-clipboard-text', shareUrl);
+
+    $('.chocolat-bottom .img-slideshow-share .button.facebook').on('click',function() {
+        $('.chocolat-bottom .buttons').removeClass('show');
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
+        return false;
+    });
+    $('.chocolat-bottom .img-slideshow-share .button.twitter').on('click', function() {
+        $('.chocolat-bottom .buttons').removeClass('show');
+        window.open(this.href,'','width=700,height=500');
+        return false;
+    });
+
+    var parsed = $('<div/>').append(title);
+    updatePopinMedia({
+        'type'     : "photo",
+        'category' : parsed.find('.category').text(),
+        'date'     : parsed.find('.date').text(),
+        'title'    : parsed.find('h2').text(),
+        'url'      : shareUrl,
+    });
+}
     
