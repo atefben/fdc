@@ -120,9 +120,23 @@ var ow = ow || {};
 					}
 				}).on('ready',function(){
 					player.find('audio').prop('playsinline',true);
-					if($('.Article-header #'+player.attr('id')).length){
+					var newPlayer = $('.Article-header #'+player.attr('id'));
+					if(newPlayer.length){
+						var img = newPlayer.prev('img');
 						//hide video and set transparent audio header
-						$('.Article-header #'+player.attr('id')).find('.jw-media').css('opacity',0);
+						newPlayer.find('.jw-media').css('opacity',0);
+
+						//add active cover background
+						newPlayer.find('.jw-preview').css({
+							'background':'url('+img.attr('href')+') no-repeat left bottom',
+							'-moz-transform': 'scale(1.1)',
+							'-ms-transform': 'scale(1.1)',
+							'-webkit-transform': 'scale(1.1)',
+							'transform': 'scale(1.1)',
+							'-webkit-filter': 'blur(7px)',
+							'filter': 'blur(7px)'
+						});
+						img.hide();
 						console.log($('.Article-header #'+player.attr('id')).find('.jw-media'));
 					}
 				});
