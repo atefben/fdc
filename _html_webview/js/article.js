@@ -128,7 +128,7 @@ var ow = ow || {};
 
 						//add active cover background
 						newPlayer.find('.jw-preview').css({
-							'background':'url('+img.attr('href')+') no-repeat left bottom',
+							'background':'url('+img.attr('src')+') no-repeat left bottom',
 							'-moz-transform': 'scale(1.1)',
 							'-ms-transform': 'scale(1.1)',
 							'-webkit-transform': 'scale(1.1)',
