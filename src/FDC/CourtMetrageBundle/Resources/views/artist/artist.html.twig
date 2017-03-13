@@ -23,33 +23,42 @@
                     <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.artist.share'|trans }}</a>
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.artist.print'|trans }}</a>
                 </div>
-                <div class="single-photo">
-                    <div class="photo-container{{ artist.displayedImage == 0 ? ' portrait-custom' : ' landscape-custom' }}" >
-                        {% if artist.portraitImage and artist.displayedImage == 0 %}
-                            <img src="{% path artist.portraitImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 384px; height: 485px;"/>
-                        {% elseif artist.landscapeImage and artist.displayedImage == 1 %}
-                            <img src="{% path artist.landscapeImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 625px; height: 384px;"/>
-                        {% else %}
-                            {% set artistImage = artist_page_media(artist, app.request.locale) %}
-                            {% if artistImage %}
-                                {% if artist.displayedImage == 0 %}
-                                    <img src="{% path artistImage, '384x485' %}" style="width: 384px; height: 485px;" alt="{{ artist.fullName }}"/>
-                                {% else %}
-                                    <img src="{% path artistImage, '625x384' %}" style="width: 625px; height: 384px;" alt="{{ artist.fullName }}"/>
+                {% if
+                    (artist.portraitImage and artist.displayedImage == 0) or
+                    (artist.landscapeImage and artist.displayedImage == 1) or
+                    artist_page_media(artist, app.request.locale)
+                %}
+                    {% set hasImage = true %}
+                    <div class="single-photo">
+                        <div class="photo-container{{ artist.displayedImage == 0 ? ' portrait-custom' : ' landscape-custom' }}" >
+                            {% if artist.portraitImage and artist.displayedImage == 0 %}
+                                <img src="{% path artist.portraitImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 384px; height: 485px;"/>
+                            {% elseif artist.landscapeImage and artist.displayedImage == 1 %}
+                                <img src="{% path artist.landscapeImage|trans_fallback('file'), 'reference' %}" alt="{{ artist.fullName }}" style="width: 625px; height: 384px;"/>
+                            {% else %}
+                                {% set artistImage = artist_page_media(artist, app.request.locale) %}
+                                {% if artistImage %}
+                                    {% if artist.displayedImage == 0 %}
+                                        <img src="{% path artistImage, '384x485' %}" style="width: 384px; height: 485px;" alt="{{ artist.fullName }}"/>
+                                    {% else %}
+                                        <img src="{% path artistImage, '625x384' %}" style="width: 625px; height: 384px;" alt="{{ artist.fullName }}"/>
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
-                        {% endif %}
-                        {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
-                        {% if artistCredits %}
-                            <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
-                        {% endif %}
+                            {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
+                            {% if artistCredits %}
+                                <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    {% set hasImage = false %}
+                {% endif %}
                 <div class="small-container">
                     {% set biography = artist|trans_fallback('biography') %}
                     {% if biography %}
                         <div class="biographie">
-                            <h2 class="title title-cat-artist">{{ 'ccm.artist.biography'|trans }}</h2>
+                            <h2 class="title title-cat-artist {% if hasImage == false %}bio-top-padding{% endif %}">{{ 'ccm.artist.biography'|trans }}</h2>
                             <p class="paragraph" {{ artist|content_lang('biography') }}>
                                 {{ biography|raw }}
                             </p>
@@ -59,7 +68,7 @@
                         {% set countera = 0 %}
                         {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                             {% if countera == 0 %}
-                                <h2 class="title title-art-artist">{{ 'ccm.artist.cannes_films'|trans }}</h2>
+                                <h2 class="title title-art-artist {% if hasImage == false and biography|length == 0 %}hide-top-border{% endif %}">{{ 'ccm.artist.cannes_films'|trans }}</h2>
                                 <div class="contain-films-list">
                                 {% set countera = countera+1 %}
                             {% endif %}

@@ -238,3 +238,10 @@ body.chocolat-open.fixed {
     height: 459px !important;
 }
 
+.artist .title-art-artist.hide-top-border {
+    border-top: none;
+}
+
+.artist .title-cat-artist.bio-top-padding {
+    padding-top: 40px;
+}
