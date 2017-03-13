@@ -128,6 +128,12 @@ var ow = ow || {};
 
 						//add active cover background
 						newPlayer.find('.jw-preview').css('background','transparent');
+
+						//player overlays img
+						newPlayer.css({
+							'position':'relative',
+							'top':-60
+						})
 					}
 				});
 			});
