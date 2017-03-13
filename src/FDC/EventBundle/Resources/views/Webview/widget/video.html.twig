@@ -14,7 +14,7 @@
 
 
 {% set video = widget.file %}
-{% set associatedNews = widget %}
+{% set associatedNews = widget.news %}
 {% if associatedNews.header is not null %}1 
               {% set header = associatedNews.header %}
               {% if header is not null %}2 
