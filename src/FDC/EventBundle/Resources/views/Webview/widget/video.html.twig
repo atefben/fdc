@@ -12,6 +12,7 @@
 {% endif %}
 
 
+
 {% set video = widget.file %}
 {% if header is not null %}
 
@@ -24,7 +25,29 @@
 {% if object.video is not null %}
 	{% set image = widget.video.image|trans_fallback('file') %}
 	{% set video = widget.video|trans_fallback('file') %}
+{% endif %}
 
+{% set header = widget.header %}
+{% if header is not null %}
+    {% set file = header|trans_fallback('file') %}
+{% endif %}
+{% set tmp = associatedNews.audio %}
+    {% if tmp %}
+        {% if associatedNews.audio.image is not null %}
+          {% set file = associatedNews.audio.image|trans_fallback('file') %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if associatedNews.video is not null %}
+	{% if associatedNews.video.image|trans_fallback('file') %}
+	  {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+	{% endif %}
+{% endif %}
+{% if file is defined and file is not null %}
+  {% set finalImage = file %}
+{% endif %}
+{% if finalImage is defined and finalImage is not null %}
+  {% set image = finalImage %}
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
