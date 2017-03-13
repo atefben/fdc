@@ -57,10 +57,6 @@
             {% set hoursElapsed = difference.h %}
             {% set minutesElapsed = difference.i %}
 
-            {{ daysElapsed }}
-            {{ hoursElapsed }}
-            {{ minutesElapsed }}
-
             {% if daysElapsed > 1 %}
               <strong>{{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
             {% elseif daysElapsed == 1 %}
