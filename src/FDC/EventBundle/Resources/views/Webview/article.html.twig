@@ -56,7 +56,7 @@
             <span class="Article-header-meta-misc">
             {% for media in object.gallery.medias %}
               <div class="copyright{% if loop.index == 1 %} active{% endif %}">
-              <strong>{{ media|trans_fallback('legend') }}</strong> ©{{ media|trans_fallback('copyright')|replace({'©': ''}) }}
+              <strong>{{ media.media|trans_fallback('legend') }}</strong> ©{{ media.media|trans_fallback('copyright')|replace({'©': ''}) }}
               </div>
             {% endfor %}
             </span>
