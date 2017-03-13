@@ -50,7 +50,7 @@
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date">
           <strong>
-            {% set daysElapsed =  "now"|date('Ym') -  object.publishedAt|date('Ym') %}
+            {% set daysElapsed =  "now"|date('Ymd') -  object.publishedAt|date('Ymd') %}
             {% if daysElapsed >= 2 %}
               {{ 'webview.article.yesterday_at'|trans }}
             {% elseif daysElapsed == 1 %}
