@@ -12,6 +12,7 @@
 {% endif %}
 
 {% set video = widget.file %}
+{% set image = widget.video|trans_fallback('image') %}
 
 {% if header is not null %}
     {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
@@ -21,8 +22,7 @@
 {% endif %}
 {% if object.video is not null %}
 	{% set video = widget.video|trans_fallback('file') %}
-	{% set image = widget.video|trans_fallback('image') %}
-		{{ dump(image) }}
+
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
