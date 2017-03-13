@@ -120,9 +120,11 @@ var ow = ow || {};
 					}
 				}).on('ready',function(){
 					player.find('audio').prop('playsinline',true);
+					console.log(player.closest('.Article-header').length);
 					if(player.closest('.Article-header').length){
 						//hide video and set transparent audio header
 						player.find('.jw-media').css('opacity',0);
+						console.log(player.find('.jw-media'));
 					}
 				});
 			});
