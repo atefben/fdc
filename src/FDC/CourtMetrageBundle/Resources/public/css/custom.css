@@ -233,3 +233,8 @@ body.chocolat-open.fixed {
 .eventsPage .share {
     float: none;
 }
+
+.aboutPhotos .slideshow .slideshow-img {
+    height: 459px !important;
+}
+
