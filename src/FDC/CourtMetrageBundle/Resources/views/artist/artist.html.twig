@@ -23,28 +23,33 @@
                     <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.artist.share'|trans }}</a>
                     <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.artist.print'|trans }}</a>
                 </div>
-                <div class="single-photo">
-                    <div class="photo-container">
-                        {% set artistImage = artist_page_media(artist, app.request.locale) %}
-                        {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
-                        {% if artistImage %}
-                            {% if artistImage.width > artistImage.height %}
-                                <img src="{% path artistImage, 'mobile' %}" height="485"
-                                     alt="{{ artist.fullName }}"/>
-                            {% else %}
-                                <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                {% set artistImage = artist_page_media(artist, app.request.locale) %}
+                {% if artistImage %}
+                    {% set hasImage = true %}
+                    <div class="single-photo">
+                        <div class="photo-container">
+                            {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
+                            {% if artistImage %}
+                                {% if artistImage.width > artistImage.height %}
+                                    <img src="{% path artistImage, 'mobile' %}" height="485"
+                                         alt="{{ artist.fullName }}"/>
+                                {% else %}
+                                    <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
+                                {% if artistCredits %}
+                                    <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
+                                {% endif %}
                             {% endif %}
-                            {% if artistCredits %}
-                                <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
-                            {% endif %}
-                        {% endif %}
+                        </div>
                     </div>
-                </div>
+                {% else %}
+                    {% set hasImage = false %}
+                {% endif %}
                 <div class="small-container">
                     {% set biography = artist|trans_fallback('biography') %}
                     {% if biography %}
                         <div class="biographie">
-                            <h2 class="title title-cat-artist">{{ 'ccm.artist.biography'|trans }}</h2>
+                            <h2 class="title title-cat-artist {% if hasImage == false %}bio-top-padding{% endif %}">{{ 'ccm.artist.biography'|trans }}</h2>
                             <p class="paragraph" {{ artist|content_lang('biography') }}>
                                 {{ biography|raw }}
                             </p>
@@ -54,7 +59,7 @@
                         {% set countera = 0 %}
                         {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                             {% if countera == 0 %}
-                                <h2 class="title title-art-artist">{{ 'ccm.artist.cannes_films'|trans }}</h2>
+                                <h2 class="title title-art-artist {% if hasImage == false and biography|length == 0 %}hide-top-border{% endif %}">{{ 'ccm.artist.cannes_films'|trans }}</h2>
                                 <div class="contain-films-list">
                                 {% set countera = countera+1 %}
                             {% endif %}
