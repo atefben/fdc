@@ -1,15 +1,27 @@
 {% if widget.gallery is not empty %}
         {% for gallery in widget.gallery.medias %}
             {% if gallery.media != null %}
-                {% set trans = gallery.media.findTranslationByLocale(app.request.locale) %}
-                {% if trans is null or trans.file is null %}
-                    {% set trans = gallery.media.findTranslationByLocale('fr') %}
-                {% endif %}
-                {% set file = trans.file %}
+                {% set file = gallery.media|trans_fallback('file') %}
                 <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
                 {% if gallery.media|trans_fallback('copyright') %}
                 <div class="Article-picture-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
                 {% endif %}
             {% endif %}
         {% endfor %}
+    {% endif %}
+    {% if widget.gallery is not empty %}
+    <div class="Article-picture-dual">
+      {% if widget.gallery.medias[0] is not null %}
+        {% set galleryItemFirst = widget.gallery.medias[0] %}
+      <div class="Article-picture-dual-col">
+        <img src="{% path galleryItemFirst.media|trans_fallback('file'), 'reference' %}"/>
+        <div class="Article-picture-caption"><strong>{{ galleryItemFirst.media|trans_fallback('legend') }}</strong> ©{{ galleryItemFirst.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+      </div><!--
+      {% else %}<!--
+      {% endif %}-->{% if widget.gallery.medias[1] is not null %}{% set galleryItemLast = widget.gallery.medias[0] %}<div class="Article-picture-dual-col">
+        <img src="{% path galleryItemLast.media|trans_fallback('file'), 'reference' %}"/>
+        <div class="Article-picture-caption"><strong>{{ galleryItemLast.media|trans_fallback('legend') }}</strong> ©{{ galleryItemLast.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+      </div>
+      {% endif %}
+    </div>
     {% endif %}

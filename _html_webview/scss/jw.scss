@@ -192,6 +192,10 @@
 			position: relative;
 			margin-bottom: 2rem;
 
+			.Article-header & {
+				margin-bottom: 0px;
+			}
+
 			&.jw-state-complete {
 				.jw-display-icon-container{
 					& > .jw-icon {

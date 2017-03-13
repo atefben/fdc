@@ -19,9 +19,9 @@ class FDCPageLaSelectionCannesClassicsRepository extends TranslationRepository
     {
         $qb = $this
             ->createQueryBuilder('cc')
-            ->join('cc.translations', 't')
+            ->join('cc.translations', 'cct')
         ;
-        $this->addTranslationQueries($qb, 't', $locale);
+        $this->addTranslationQueries($qb, 'cct', $locale);
         return $qb->getQuery()->getResult();
 
     }

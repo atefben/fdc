@@ -52,8 +52,18 @@
           <strong>
           {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
           </span>
-          {% if object.header|trans_fallback('copyright') %}
-          <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> ©{{ object.header|trans_fallback('copyright')|replace({'©': ''}) }}</span>
+          {% if object is news_image %}
+            <span class="Article-header-meta-misc">
+            {% for media in object.gallery.medias %}
+              <div class="copyright{% if loop.index == 1 %} active{% endif %}">
+              <strong>{{ media.media|trans_fallback('legend') }}</strong> ©{{ media.media|trans_fallback('copyright')|replace({'©': ''}) }}
+              </div>
+            {% endfor %}
+            </span>
+          {% else %}
+            {% if object.header|trans_fallback('copyright') %}
+            <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> ©{{ object.header|trans_fallback('copyright')|replace({'©': ''}) }}</span>
+            {% endif %}
           {% endif %}
         </div>
       </header>
@@ -133,6 +143,12 @@
           {% endif %}
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
+          {% endif %}
+          {%  if class(associatedNews) ends with 'Audio'  %}
+            {%  set iconClass = 'icon-audio' %}
+          {% endif %}
+          {%  if class(associatedNews) ends with 'Video'  %}
+            {%  set iconClass = 'icon-video' %}
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">

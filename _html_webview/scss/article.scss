@@ -33,6 +33,7 @@ html {
 
 		img {
 			width: 100%;
+			display: block;
 		}
 
 		.Article-picture-caption {
@@ -53,6 +54,7 @@ html {
 			height: auto;
 			line-height: 18px;
 			font-size: 0.8rem;
+			position: relative;
 
 			&-category {
 				display: inline-block;
@@ -73,9 +75,19 @@ html {
 				font-size: 0.6rem;
 				padding-left: 12px;
 				color: #666666;
-				display: block;
+				display: inline-block;
+
 				strong {
 					color: #212121;
+				}
+
+				.copyright {
+					display: none;
+					font-size: 0.8rem;
+
+					&.active {
+						display: inline-block;
+					}
 				}
 			}
 		}
@@ -114,16 +126,27 @@ html {
 			text-decoration: none;
 		}
 
-		.Article-picture-caption {
-			height: auto;
-			line-height: 25px;
-			font-size: 0.8rem;
-			margin-bottom: 1.6rem;
-			strong {
-				font-family: "Open Sans";
-				padding-bottom: 1.6rem;
-				line-height: 2.2rem;
-				display: inline;
+		.Article-picture {
+			&-dual {
+				&-col {
+					width: 50%;
+					display: inline-block;
+				}
+			}
+
+			&-caption {
+				height: auto;
+				line-height: 25px;
+				font-size: 0.8rem;
+				margin-bottom: 1.6rem;
+
+				strong {
+					font-family: "Open Sans";
+					padding-bottom: 1.6rem;
+					line-height: 2.2rem;
+					font-size: 1.1rem;
+					display: inline;
+				}
 			}
 		}
 	}
@@ -196,6 +219,10 @@ html {
 				}
 			}
 
+			.Article-header & {
+				display: none;
+			}
+
 
 		}
 
@@ -208,9 +235,10 @@ html {
 			strong {
 				display: inline;
 				color: #212121;
+				font-size: 1.1rem;
 
-				.Article-header & {
-					font-size: 1.6rem;
+				.Article-content & {
+					font-size: 1.1rem;
 				}
 			}
 		}
