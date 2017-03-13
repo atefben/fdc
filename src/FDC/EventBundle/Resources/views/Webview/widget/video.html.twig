@@ -22,6 +22,7 @@
 {% if object.video is not null %}
 	{% set video = widget.video|trans_fallback('file') %}
 	{% set image = widget.video|trans_fallback('image') %}
+		{{ dump(image) }}
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
