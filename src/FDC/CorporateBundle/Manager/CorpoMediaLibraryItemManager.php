@@ -89,12 +89,6 @@ class CorpoMediaLibraryItemManager
                     if ($object->getAssociatedFilm()) {
                         $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
                     }
-                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMainVideo($object) as $film) {
-                        $films[$film->getId()] = $film;
-                    }
-                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaVideo($object) as $film) {
-                        $films[$film->getId()] = $film;
-                    }
                     foreach ($films as $film) {
                         $filmTranslation = $film->findTranslationByLocale($locale);
                         if ($filmTranslation instanceof FilmFilmTranslation) {
@@ -234,7 +228,6 @@ class CorpoMediaLibraryItemManager
                             $search .= ' ' . $filmTranslation->getInfoRestauration();
                         }
                     }
-                    dump($search);
 
                     $item
                         ->setType('video')

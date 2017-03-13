@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Repository;
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaVideo;
 
 /**
