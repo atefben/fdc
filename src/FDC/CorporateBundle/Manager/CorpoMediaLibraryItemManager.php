@@ -450,9 +450,6 @@ class CorpoMediaLibraryItemManager
         if (!$media->getPublishedAt()) {
             return false;
         }
-        if (!$trans->getFile()) {
-            return false;
-        }
         return true;
     }
 }
