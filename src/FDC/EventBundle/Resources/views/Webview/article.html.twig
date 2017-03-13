@@ -176,31 +176,31 @@
               {% endif %}
 
               
-              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+            {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
                 {% if header is not null %}
                     {% set file = header|trans_fallback('file') %}
                 {% endif %}
                 {% set tmp = associatedNews.audio %}
-                    {% if tmp %}
-                        {% if associatedNews.audio.image is not null %}
-                          {% set file = associatedNews.audio.image|trans_fallback('file') %}
-                        {% endif %}
-                    {% endif %}
-              {% endif %}
-              {% if associatedNews.video is not null %}
-                {% if associatedNews.video.image|trans_fallback('file') %}
-                  {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+                {% if tmp %}
+                  {% if associatedNews.audio.image is not null %}
+                    {% set file = associatedNews.audio.image|trans_fallback('file') %}
+                  {% endif %}
                 {% endif %}
-                {% endif %}
-              {% if file is defined and file is not null %}
-                  {% set finalImage = file %}
+            {% endif %}
+            {% if associatedNews.video is not null %}
+              {% if associatedNews.video.image|trans_fallback('file') %}
+                {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
               {% endif %}
-              {% if finalImage is defined and finalImage is not null %}
-                  <img src="{% path finalImage, 'reference' %}"/>
-              {% else %}
-                <img src="{{ asset('bundles/fdcevent/img/article/placeholder.jpg') }}"/>
               {% endif %}
+            {% if file is defined and file is not null %}
+                {% set finalImage = file %}
+            {% endif %}
+            {% if finalImage is defined and finalImage is not null %}
+                <img src="{% path finalImage, 'reference' %}"/>
+            {% else %}
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.jpg') }}"/>
+            {% endif %}
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>
             <div class="Article-related-slider-caption">

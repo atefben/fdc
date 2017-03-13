@@ -24,35 +24,55 @@
 	{% set image = widget.video.image|trans_fallback('file') %}
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
+{% set associatedNews = widget.news %}
+{% if associatedNews.header is not null %}
+              {% set header = associatedNews.header %}
+              {% if header is not null %}
+                  {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+                  {% if imageTrans is null or imageTrans.file is null %}
+                      {% set imageTrans = header.findTranslationByLocale('fr') %}
+                  {% endif %}
+              {% endif %}
+              {% if imageTrans is defined and imageTrans.file is not null %}
+                  {% set img = associatedNews.header %}
+                  {% set file = imageTrans.file %}
+              {% else %}
+                  {% if associatedNews.gallery and associatedNews.gallery.medias|length > 0 %}
+                      {% set img = associatedNews.gallery.medias[0].media %}
+                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                      {% if trans is null or trans.file is null %}
+                          {% set trans = img.findTranslationByLocale('fr') %}
+                      {% endif %}
+                      {% set file = trans.file %}
+                  {% endif %}
+              {% endif %}
 
-{% if header is not null %}
-    {% set file = header|trans_fallback('file') %}
-{% endif %}
-{% if widget.news is news_audio or widget.news is info_audio or widget.news is statement_audio %}
-	{% set tmp = widget.audio %}
-	{% if tmp %}
-	    {% if widget.audio.image is not null %}
-	      {% set file = widget.audio.image|trans_fallback('file') %}
-	    {% endif %}
-	{% endif %}
-	{% if widget.video is not null %}
-		{% if widget.video.image|trans_fallback('file') %}
-		  {% set finalImage = widget.video.image|trans_fallback('file') %}
-		{% endif %}
-	{% endif %}
-	{% if file is defined and file is not null %}
-	  {% set finalImage = file %}
-	{% endif %}
-{% endif %}
-
-{% if widget.news.header is not null %}
-  {% set finalImage = widget.news.header|trans_fallback('file') %}
-  {{ dump(finalImage) }}
-{% endif %}
-
-{% if finalImage is defined and finalImage is not null %}
-  {% set image = finalImage %}
-{% endif %}
+              
+            {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+                {% set header = associatedNews.header %}
+                {% if header is not null %}
+                    {% set file = header|trans_fallback('file') %}
+                {% endif %}
+                {% set tmp = associatedNews.audio %}
+                {% if tmp %}
+                  {% if associatedNews.audio.image is not null %}
+                    {% set file = associatedNews.audio.image|trans_fallback('file') %}
+                  {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if associatedNews.video is not null %}
+              {% if associatedNews.video.image|trans_fallback('file') %}
+                {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+              {% endif %}
+              {% endif %}
+            {% if file is defined and file is not null %}
+                {% set finalImage = file %}
+            {% endif %}
+            {% if finalImage is defined and finalImage is not null %}
+                <img src="{% path finalImage, 'reference' %}"/>
+            {% else %}
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.jpg') }}"/>
+            {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
