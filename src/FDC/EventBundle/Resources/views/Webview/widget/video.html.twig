@@ -13,14 +13,13 @@
 
 
 {% set video = widget.file %}
-{% if header.image is not null %}
-	{% set image = header.image %}
+{% if header is not null %}
+
 {% endif %}
 {% if header is not null %}
-    {% set imageTrans = object.header.findTranslationByLocale(app.request.locale) %}
-    {% if imageTrans is null or imageTrans.file is null %}
-        {% set imageTrans = object.header.findTranslationByLocale('fr') %}
-    {% endif %}
+	{% if header.image is not null %}
+		{% set image = header|trans_fallback('file') %}
+	{% endif %}
 {% endif %}
 {% if object.video is not null %}
 	{% set video = widget.video|trans_fallback('file') %}
