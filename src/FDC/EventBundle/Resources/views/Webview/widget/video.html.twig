@@ -3,7 +3,7 @@
 	{% set image = widget.news.header|trans_fallback('file') %}
 	{% set object = widget.news %}
 	{% set header = object.header %}
-	{% set redactional = widget.news %}
+	{% set redactional = widget.file %}
 {% else %}
 	{% set object = widget.statement %}
 	{% set redactional = object %}
