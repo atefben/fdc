@@ -50,6 +50,8 @@
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date">
           <strong>
+            {{ "now"|date('Ymd') }}
+            {{ object.publishedAt|date('Ymd') }}
           {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
           </span>
           {% if object is news_image %}
