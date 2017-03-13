@@ -508,7 +508,7 @@ html {
 
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
-  top: 1rem;
+  top: 2.2rem;
   margin-left: 10.3rem; }
   .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .Article-header .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
     top: 2.2rem; }
@@ -541,7 +541,8 @@ html {
   display: none; }
 
 .jwplayer.jw-skin-fdc.jw-state-paused .jw-title {
-  display: block; }
+  display: block;
+  top: 2.2rem; }
 
 .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback {
   background-position: 2rem center;

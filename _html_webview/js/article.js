@@ -127,18 +127,7 @@ var ow = ow || {};
 						newPlayer.find('.jw-media').css('opacity',0);
 
 						//add active cover background
-						newPlayer.find('.jw-preview').css({
-							'background':'url('+img.attr('src')+') no-repeat left bottom',
-							'background-size': '100%',
-							'-moz-transform': 'scale(1.1)',
-							'-ms-transform': 'scale(1.1)',
-							'-webkit-transform': 'scale(1.1)',
-							'transform': 'scale(1.1)',
-							'-webkit-filter': 'blur(7px)',
-							'filter': 'blur(7px)'
-						});
-						//img.hide();
-						console.log($('.Article-header #'+player.attr('id')).find('.jw-media'));
+						newPlayer.find('.jw-preview').css('background','transparent');
 					}
 				});
 			});
