@@ -311,7 +311,7 @@ class CorpoMediaLibraryItemManager
                 foreach ($object->getMedia()->getFilmMedias() as $filmMedia) {
                     if ($filmMedia instanceof FilmFilmMedia) {
                         if ($this->getCorpoMediaLibraryItem($filmMedia, FilmFilmMedia::class, $locale)) {
-                            $this->removeCorpoMediaLibraryItem($object, FilmPersonMedia::class, $locale)
+                            $this->removeCorpoMediaLibraryItem($object, FilmPersonMedia::class, $locale);
                             return;
                         }
                     }
