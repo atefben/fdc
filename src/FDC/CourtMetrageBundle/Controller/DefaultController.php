@@ -24,8 +24,9 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $homepageManger = $this->get('ccm.manager.homepage');
-        $homepage = $homepageManger->getPage();
+        $competitionManager = $this->get('ccm.manager.competition');
 
+        $homepage = $homepageManger->getPage();
         if (!$homepage || !$homepage->getTranslatable()) {
             throw new NotFoundHttpException();
         }
@@ -33,7 +34,8 @@ class DefaultController extends Controller
         $aPropos = $homepageManger->getAPropos($homepage);
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
-        $movies = $homepageManger->getFilmsByCourtYear();
+        $selectionTab = $competitionManager->getSelectionTab();
+        $movies = $homepageManger->getFilmsByCourtYear($selectionTab);
         $sejour = $homepageManger->getSejour();
 
         $pushIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getPushIsActive();
