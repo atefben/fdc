@@ -54,7 +54,8 @@
             {% set today = "now"|date('d-m-Y') %}
             {% set difference = date(today).diff(date(postDate)) %}
             {% set daysElapsed = difference.days %}
-            {{ daysElapsed }}
+            {{ postDate }}
+            {{ today }}
             {{ dump(difference) }}
             {% if daysElapsed == 1 %}
 
