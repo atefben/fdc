@@ -238,3 +238,7 @@ body.chocolat-open.fixed {
     height: 459px !important;
 }
 
+.modal-content .half .authors h4 {
+    width: 100%;
+}
+
