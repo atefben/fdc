@@ -17,11 +17,11 @@
       {% endif %}-->{% if widget.gallery.medias[1] is not null %}{% set galleryItemLast = widget.gallery.medias[0] %}<div class="Article-picture-dual-col">
         <img src="{% path galleryItemLast.media|trans_fallback('file'), 'reference' %}"/>
         <div class="Article-picture-caption">
-            {% if galleryItemLast.media|trans_fallback('legend') %}
+            {% if galleryItemFirst.media|trans_fallback('legend') %}
             <strong>{{ galleryItemLast.media|trans_fallback('legend') }}</strong> 
             {% endif %}
-            {% if galleryItemLast.media|trans_fallback('copyright') %}
-            ©{{ galleryItemLast.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+            {% if galleryItemFirst.media|trans_fallback('copyright') %}
+            ©{{ galleryItemFirst.media|trans_fallback('copyright')|replace({'©': ''}) }}</div>
             {% endif %}</div>
       </div>
       {% endif %}
