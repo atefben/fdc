@@ -1725,7 +1725,19 @@ notably for promotional and/or advertising purposes, within the limits of our pr
       </trans-unit>
       <trans-unit id="webview.article.signature_prefix" resname="webview.article.signature_prefix">
         <source>webview.article.signature_prefix</source>
-        <target>Rédigé par</target>
+        <target>Written by</target>
+      </trans-unit>
+      <trans-unit id="webview.article.yesterday_at" resname="webview.article.yesterday_at">
+        <source>webview.article.yesterday_at</source>
+        <target>Yesterday, at</target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
+        <source>webview.article.hours_elapsed</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+        <source>webview.article.hours_elapsed_suffix</source>
+        <target>minutes ago</target>
       </trans-unit>
     </body>
   </file>
