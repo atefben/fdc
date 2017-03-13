@@ -112,7 +112,7 @@ article {
 
   h2 {
     color: #333;
-    font-family: $Playfair;
+    font-family: $CamphorRegular;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -127,7 +127,7 @@ article {
 
   h3 {
     color: #333;
-    font-family: $Playfair;
+    font-family: $CamphorRegular;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -386,6 +386,7 @@ article {
     font-family: $CamphorHeavy;
     color: $gold;
     font-size: 0.625rem;
+    margin-bottom: 50px;
 
     .icon {
       font-size: 1rem;
@@ -441,7 +442,7 @@ article {
     margin: 0 auto;
     max-width: 775px;
     text-align: center;
-    margin-bottom: 80px;
+    margin: 40px 0px;
   }
 
   .info {
@@ -758,6 +759,7 @@ article {
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     padding: 70px 0;
+    margin-bottom: 50px;
 
     p {
       font-family: $CamphorBold;
@@ -1079,5 +1081,11 @@ article {
         }
       }
     }
+  }
+}
+
+.grid {
+  h2.title {
+    font-family: $CamphorHeavy!important;
   }
 }

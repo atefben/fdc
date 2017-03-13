@@ -56,7 +56,7 @@
                   <div class="vCenter">
                     <div class="container">
                       <div class="vCenterKid">
-                        <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
+                        <h2>Short film<br> corner<br> <span class="goldColor small-title">2017</span></h2>
                         <div class="alignButton">
                           <div class="programmButton">Le Programme</div>
                         </div>
@@ -80,7 +80,7 @@
                   <div class="vCenter">
                     <div class="container">
                       <div class="vCenterKid">
-                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
+                        <a href="/"><h2>Short film<br> corner<br> <span class="goldColor medium-title">2017</span></h2></a>
                         <div class="alignButton">
                           <a href="/"><div class="programmButton">Le Programme</div></a>
                         </div>
