@@ -30,21 +30,23 @@
 {% if header is not null %}
     {% set file = header|trans_fallback('file') %}
 {% endif %}
-
-{% set tmp = widget.audio %}
-{% if tmp %}
-    {% if widget.audio.image is not null %}
-      {% set file = widget.audio.image|trans_fallback('file') %}
-    {% endif %}
-{% endif %}
-{% if widget.video is not null %}
-	{% if widget.video.image|trans_fallback('file') %}
-	  {% set finalImage = widget.video.image|trans_fallback('file') %}
+{% elseif widget is news_audio or widget is info_audio or widget is statement_audio %}
+	{% set tmp = widget.audio %}
+	{% if tmp %}
+	    {% if widget.audio.image is not null %}
+	      {% set file = widget.audio.image|trans_fallback('file') %}
+	    {% endif %}
+	{% endif %}
+	{% if widget.video is not null %}
+		{% if widget.video.image|trans_fallback('file') %}
+		  {% set finalImage = widget.video.image|trans_fallback('file') %}
+		{% endif %}
+	{% endif %}
+	{% if file is defined and file is not null %}
+	  {% set finalImage = file %}
 	{% endif %}
 {% endif %}
-{% if file is defined and file is not null %}
-  {% set finalImage = file %}
-{% endif %}
+
 {% if finalImage is defined and finalImage is not null %}
   {% set image = finalImage %}
 {% endif %}
