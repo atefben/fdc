@@ -52,7 +52,6 @@ var ow = ow || {};
 				var index = Slider.rel.firstItem;
 				var increment = index + 1;
 				
-
 				//if slider is located in the header area
 				if($wrap.closest('.Article-header').length){
 					$wrap.closest('.Article-header').find('.Article-slider-count strong').html(increment);
@@ -64,7 +63,6 @@ var ow = ow || {};
 			});
 
 			Slider.init();
-			
 		}
 	}
 
@@ -122,6 +120,10 @@ var ow = ow || {};
 					}
 				}).on('ready',function(){
 					player.find('audio').prop('playsinline',true);
+					if(player.closest('.Article-header').length){
+						//hide video and set transparent audio header
+						player.find('.jw-media').css('opacity',0);
+					}
 				});
 			});
 		}

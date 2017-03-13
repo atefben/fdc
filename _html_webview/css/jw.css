@@ -5,6 +5,11 @@
   .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .Article-header .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
     top: 2.2rem; }
 
+.jwplayer.jw-skin-fdc.jw-state-playing .jw-text-elapsed,
+.jwplayer.jw-skin-fdc.jw-state-playing .jw-text-duration, .jwplayer.jw-skin-fdc.jw-state-complete .jw-text-elapsed,
+.jwplayer.jw-skin-fdc.jw-state-complete .jw-text-duration {
+  display: none; }
+
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback {
   background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
   background-position: 2rem center;
