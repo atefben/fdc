@@ -69,9 +69,9 @@
               <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
             {% else %}
               {% if hoursElapsed <= 1 %}
-                <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
-              {% else %}
                 <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }} <strong>{{ 'webview.article.minutes_elapsed_suffix'|trans }}</strong>
+              {% else %}
+                <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
               {% endif %}
             {% endif %}
           </span>
