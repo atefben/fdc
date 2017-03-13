@@ -28,7 +28,7 @@
                     <ul>
                         {% for page in sfcPages %}
                             <li {{ slug == page.slug ? 'class="active"' : '' }}>
-                                <a href="{{ path(sfc_route_name,{'slug': page.slug}) }}">{{ page.title }}</a>
+                                <a href="{{ path(sfc_route_name,{'slug': page.slug}) }}">{{ page.titleNavigation ?: page.title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
