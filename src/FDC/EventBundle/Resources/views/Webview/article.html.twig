@@ -51,14 +51,15 @@
           <span class="Article-header-meta-date">
           <strong>
             {% set daysElapsed =  "now"|date('Ymd') -  object.publishedAt|date('Ymd') %}
-            {% if daysElapsed >= 2 %}
-              {{ 'webview.article.yesterday_at'|trans }}
+            {{ daysElapsed }}
+            {% if daysElapsed == 2 %}
+              <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>  {{ object.publishedAt|date('H') }}
             {% elseif daysElapsed == 1 %}
-              {{ 'webview.article.hours_elapsed'|trans }} {{ agenda_leftbar_translate_hour(object.publishedAt|date('i'), true, true) }} {{ 'webview.article.hours_elapsed_suffix'|trans }}
+              <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('i'), true, true) }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
             {% else %}
-              {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+               {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
             {% endif %}
-            {{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+           
           </span>
           {% if object is news_image %}
             <span class="Article-header-meta-misc">
