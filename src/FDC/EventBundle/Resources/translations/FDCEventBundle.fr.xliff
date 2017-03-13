@@ -1724,6 +1724,10 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <source>webview.article.yesterday_at</source>
         <target>Hier, à</target>
       </trans-unit>
+      <trans-unit id="webview.article.yesterday_at_suffix" resname="webview.article.yesterday_at_suffix">
+        <source>webview.article.yesterday_at_suffix</source>
+        <target>heure(s)</target>
+      </trans-unit>
       <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
         <source>webview.article.hours_elapsed</source>
         <target>Il y a</target>

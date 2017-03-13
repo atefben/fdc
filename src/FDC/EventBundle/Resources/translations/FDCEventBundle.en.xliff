@@ -1731,6 +1731,10 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>webview.article.yesterday_at</source>
         <target>Yesterday, at</target>
       </trans-unit>
+      <trans-unit id="webview.article.yesterday_at_suffix" resname="webview.article.yesterday_at_suffix">
+        <source>webview.article.yesterday_at_suffix</source>
+        <target>hour(s)</target>
+      </trans-unit>
       <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
         <source>webview.article.hours_elapsed</source>
         <target></target>
