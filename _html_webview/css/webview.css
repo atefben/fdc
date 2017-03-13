@@ -585,7 +585,7 @@ html {
     height: auto;
     margin-left: 9rem;
     top: 1.7rem; }
-    .Article-header .jwplayer.jw-skin-fdc .jw-title {
+    .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jwplayer.jw-skin-fdc .jw-title {
       top: 2.2rem;
       margin-left: 9rem; }
     .jwplayer.jw-skin-fdc .jw-title-primary {
