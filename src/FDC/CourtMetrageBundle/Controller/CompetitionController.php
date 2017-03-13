@@ -65,8 +65,13 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
+        /** Uses current date as fetch parameter from repository **/
         $juryTab = $competitionManager->getJuryTab();
         $palmaresTab = $competitionManager->getPalmaresTab();
+
+        if(!$juryTab || ($juryTab->getStatus() != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $juryTab->getStatus() != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
+            throw new NotFoundHttpException();
+        }
 
         $waitingPage = $competitionManager->checkWaitingPage($juryTab);
         if($waitingPage)
@@ -87,14 +92,9 @@ class CompetitionController extends CcmController
             ));
         }
 
-        $translationStatus = $juryTab->getStatus();
-        if(!$juryTab || ($translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $translationStatus != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
-            throw new NotFoundHttpException();
-        }
-
         $festival = $this->getFestival();
 
-        $jury = $competitionManager->getJury($festival->getId());
+        $jury = $competitionManager->getJury($festival->getId(), $juryTab);
 
         return $this->render('FDCCourtMetrageBundle:Competition:jury.html.twig', array(
             'selectionTab' => $selectionTab,

@@ -833,6 +833,8 @@ form:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
+            film_jury: Type de jury
+            film_jury_date: Date
             short_film_corner:
                 position_du_menu: Position
             menu:

@@ -6,7 +6,7 @@ use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
 
 class CcmShortFilmCompetitionTabTranslationRepository extends EntityRepository
 {
-    public function findTabByLocaleAndType($locale, $type)
+    public function findTabByLocaleAndType($locale, $type, $year = null)
     {
         $qb = $this->createQueryBuilder('sfctt')
                    ->join('sfctt.translatable', 'sfct')
@@ -15,6 +15,11 @@ class CcmShortFilmCompetitionTabTranslationRepository extends EntityRepository
                    ->setParameter('locale', $locale)
                    ->setParameter('type', $type)
         ;
+
+        if ($year) {
+            $qb->andWhere('sfct.dateJury = :year')
+                ->setParameter('year', $year);
+        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }
