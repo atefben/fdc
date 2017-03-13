@@ -9,3 +9,16 @@
             {% endif %}
         {% endfor %}
     {% endif %}
+    {% if widget.gallery is not empty %}
+    <div class="Article-picture-dual">
+        {% if  widget.gallery.medias}
+      <div class="Article-picture-dual-col">
+        <img src="img/article/slide.png"/>
+        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
+      </div><!--
+      --><div class="Article-picture-dual-col">
+        <img src="img/article/slide.png"/>
+        <div class="Article-picture-caption"><strong>Le jury 2016</strong> © FDC / Théophile Delange</div>
+      </div>
+    </div>
+    {% endif %}
