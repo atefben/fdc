@@ -266,13 +266,15 @@ class FilmFilmRepository extends EntityRepository
      * @param $year
      * @return array
      */
-    public function getFilmsByCourtYearRandom($year)
+    public function getFilmsByCourtYearRandom($year, $selection)
     {
         $qb = $this
             ->createQueryBuilder('f')
             ->select('f, RAND() as HIDDEN r')
             ->where('f.productionYear = :year')
+            ->andWhere('f.selectionSection = :selectionSection')
             ->setParameter(':year', $year)
+            ->setParameter(':selectionSection', $selection)
             ->orderBy('r')
         ;
 

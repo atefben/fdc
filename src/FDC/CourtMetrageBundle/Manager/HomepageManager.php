@@ -70,20 +70,22 @@ class HomepageManager
      *
      * @return mixed
      */
-    public function getFilmsByCourtYear()
+    public function getFilmsByCourtYear($selectionTab)
     {
         $homepage = $this->getHomepageTranslation();
 
-        if($homepage) {
+        if($homepage && $selectionTab) {
             $year = $homepage->getTranslatable()->getCourtYear();
 
             $films = $this
                 ->em
                 ->getRepository('BaseCoreBundle:FilmFilm')
-                ->getFilmsByCourtYearRandom($year);
+                ->getFilmsByCourtYearRandom($year, $selectionTab->getTranslatable()->getSelectionSection()->getId());
 
             return $films;
         }
+        
+        return null;
     }
 
     public function getCatalogPushes()

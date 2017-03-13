@@ -50,11 +50,11 @@ class CompetitionManager
     /**
      * @return mixed
      */
-    public function getJuryTab()
+    public function getJuryTab($year = null)
     {
         return $this->em
             ->getRepository(CcmShortFilmCompetitionTabTranslation::class)
-            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_JURY);
+            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_JURY, $year?:date("Y"));
     }
 
     /**
@@ -90,14 +90,12 @@ class CompetitionManager
      *
      * @return array
      */
-    public function getJury($festivalId)
+    public function getJury($festivalId, $juryTab)
     {
-        $selectionSectionId = $this->getJuryTab()->getTranslatable()->getSelectionSection()->getId();
-
         $juries = $this
             ->em
             ->getRepository('BaseCoreBundle:FilmJury')
-            ->getJurysByType($festivalId, $this->requestStack->getMasterRequest()->get('_locale'), $selectionSectionId)
+            ->getJurysByType($festivalId, $this->requestStack->getMasterRequest()->get('_locale'), $juryTab->getTranslatable()->getJuryType()->getId())
         ;
 
         $members = array();

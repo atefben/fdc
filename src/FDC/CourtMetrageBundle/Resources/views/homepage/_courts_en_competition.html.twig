@@ -15,7 +15,7 @@
     {% endif %}
 
     <div class="item">
-        <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"> <img src="{% path media, 'reference' %}" style="object-fit: cover; height: 284px;"></a>
+        <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"> <img src="{% path media, 'reference' %}" style="object-fit: cover; height: 284px; width: 213px;"></a>
         <div class="title">
             <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}">
                 {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}

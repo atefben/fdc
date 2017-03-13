@@ -833,6 +833,8 @@ form:
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
+            film_jury: Type de jury
+            film_jury_date: Date
             short_film_corner:
                 position_du_menu: Position
             menu:
@@ -855,7 +857,7 @@ form:
                 sub_nav_route: Route ou URL
                 sub_nav_is_active: Cet onglet de navigation secondaire est actif?
             pros:
-                detail_image: Image
+                detail_image: Image (carrée ou 230x230)
                 detail_is_sfc: Présent au Short Film Corner
                 detail_name: Entité Pro
                 detail_quote: Citation

@@ -6,7 +6,7 @@
     {% elseif homepage.translatable.aProposType == 'youtube' %}
         {% include 'FDCCourtMetrageBundle::homepage/partials/youtube.html.twig' with {'widget' : widget} %}
     {% endif %}
-    <div class="aboutContent">
+    <div class="aboutContent wysiwyg-white">
         {% if homepage.aProposLabel is not null %}
             <span>{{ homepage.aProposLabel }}</span>
         {% endif %}
