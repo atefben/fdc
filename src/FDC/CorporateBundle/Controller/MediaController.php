@@ -61,7 +61,7 @@ class MediaController extends Controller
             $parameters['noResult'] = false;
         }
         $parameters = array_merge($parameters, ['page' => $page]);
-
+        
         return $this->render('FDCCorporateBundle:Media:index.html.twig', $parameters);
     }
 
