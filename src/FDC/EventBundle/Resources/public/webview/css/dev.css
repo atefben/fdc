@@ -1,0 +1,11 @@
+.Article-content .Article-picture-dual-col {
+    width: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.Article-content .Article-picture-dual-col .Article-picture-caption strong {
+    font-size: 0.8rem;
+	display: inline;
+	font-weight: bold;
+}
