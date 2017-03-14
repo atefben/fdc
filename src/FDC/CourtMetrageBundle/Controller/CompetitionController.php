@@ -65,8 +65,8 @@ class CompetitionController extends CcmController
         $competitionManager = $this->get('ccm.manager.competition');
 
         $selectionTab = $competitionManager->getSelectionTab();
-        /** Uses current date as fetch parameter from repository **/
-        $juryTab = $competitionManager->getJuryTab();
+        $festival = $this->getFestival();
+        $juryTab = $competitionManager->getJuryTab($festival->getYear());
         $palmaresTab = $competitionManager->getPalmaresTab();
 
         if(!$juryTab || ($juryTab->getStatus() != CcmShortFilmCompetitionTabTranslation::STATUS_PUBLISHED && $juryTab->getStatus() != CcmShortFilmCompetitionTabTranslation::STATUS_TRANSLATED)) {
@@ -92,7 +92,6 @@ class CompetitionController extends CcmController
             ));
         }
 
-        $festival = $this->getFestival();
 
         $jury = $competitionManager->getJury($festival->getId(), $juryTab);
 
