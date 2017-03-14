@@ -100,7 +100,7 @@ var owInitGrid = function (id) {
                                 }
                             }).removeClass('to-init');
 
-                            $('.articles-wrapper .articles').fadeIn(300);
+                            $('.articles-wrapper .articles').css('opacity',1);
 
                             var h = 0
                             $('.articles-wrapper .articles').each(function(){
