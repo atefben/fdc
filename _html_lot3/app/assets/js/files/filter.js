@@ -124,7 +124,7 @@ var owInitFilter = function (isTabSelection) {
 
                         //get accurate data
                         var innerIndex = 0;
-                        var activeAppendedGridContainer = $('.articles-wrapper .article:first-child');
+                        var activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                         $.each(isotopeHomepageItems,function(index,value){
                             if($(value).hasClass(selectedClass)){
                                 //OK card
@@ -141,11 +141,25 @@ var owInitFilter = function (isTabSelection) {
                         });
 
                         $('.contain-card .isotope-01').each(function(){
-                            $(this).isotope();
+                            $(this).isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
                         });
 
                         $('.articles-wrapper .isotope-01').each(function(){
-                            $(this).isotope();
+                            $(this).isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            });
                         });
                     }
                     var id = $('#filters').data('id'),
