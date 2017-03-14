@@ -2663,17 +2663,10 @@ var owInitGrid = function (id) {
                         return false;
 
                     }else{
-                        //get previous articles disposition
-                        lastArticlesBlock  = $('.articles-wrapper').find('.articles:last-child');
-                        var newOrder = lastArticlesBlock.hasClass('article-inverse') ? '' : ' article-inverse';
-                        var wrapper = '<div class="articles'+newOrder+'"><div class="isotope-01 to-init"></div></div>';
                         $data = $(data);
 
-                        
-                        
-                        var articles = $data.find('article');
-                        articles = articles.wrap(wrapper);
-                        $('.articles-wrapper').append(wrapper).find('.articles:last-child').append(articles);
+                        var articles = $data.find('.articles');
+                        $('.articles-wrapper').append(articles);
                         $('.articles-wrapper').find('.to-init').isotope({
                             itemSelector: '.item',
                             layoutMode: 'packery',
@@ -2687,6 +2680,7 @@ var owInitGrid = function (id) {
                             h += $(this).height();
                         });
                         $('.articles-wrapper').css('height',h);
+                        
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){
