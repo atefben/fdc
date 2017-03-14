@@ -821,17 +821,10 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getDescription($locale)
     {
         $description = '';
-        foreach ($this->getWidgets() as $widget) {
-            if ($widget instanceof CcmNewsWidgetDescription) {
-                $translation = $widget->findTranslationByLocale($locale);
-                if ($translation == null && $locale !== 'fr' ) {
-                    /** @var CcmNewsWidgetDescriptionTranslation $translation */
-                    $translation = $widget->findTranslationByLocale('fr');
-                }
-                if ($translation !== null) {
-                    $description = $translation->getContent();
-                }
-            }
+        $translation = $this->findTranslationByLocale($locale);
+
+        if ($translation !== null) {
+            $description = $translation->getChapo();
         }
 
         return $description;
