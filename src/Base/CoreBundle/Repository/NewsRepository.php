@@ -629,7 +629,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderNews($locale, $festival, $date, $site = 'site-evenementiel')
+    public function getOlderNews($locale, $festival, $date, $site = 'site-evenementiel', $exclude)
     {
 
         $qb = $this
@@ -645,8 +645,15 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')
+            ->andWhere('n.publishedAt <= :date')
         ;
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         $qb
             ->andWhere(
@@ -697,7 +704,7 @@ class NewsRepository extends EntityRepository
 
     }
 
-    public function getNextNews($locale, $festival, $date, $site = 'site-evenementiel')
+    public function getNextNews($locale, $festival, $date, $site = 'site-evenementiel', $exclude = null)
     {
 
         $qb = $this
@@ -713,8 +720,14 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt > :date')
+            ->andWhere('n.publishedAt => :date')
         ;
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         $qb
             ->andWhere(

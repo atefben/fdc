@@ -827,7 +827,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderStatement($locale, $festival, $date, $site = 'site-press')
+    public function getOlderStatement($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -843,7 +843,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')->andWhere(
+            ->andWhere('n.publishedAt <= :date')->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
                     (na3t.locale = :locale_fr AND na3t.status = :status) OR
@@ -852,6 +852,13 @@ class StatementRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb
@@ -889,7 +896,7 @@ class StatementRepository extends EntityRepository
         ;
     }
 
-    public function getNextStatement($locale, $festival, $date, $site = 'site-press')
+    public function getNextStatement($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -906,7 +913,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->setParameter('site_slug', $site)
-            ->andWhere('n.publishedAt > :date')
+            ->andWhere('n.publishedAt >= :date')
             ->setParameter('date', $date)
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
@@ -917,6 +924,13 @@ class StatementRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb

@@ -9,10 +9,10 @@
 	font-weight: bold;
 }
 .Article-slider-wrapper .Article-slider-count {
-    bottom: 32px;
+    padding: 2px;
 }
 .Article-header .Article-slider-count {
-	bottom: 0px;
+	padding: 2px;
 }
 .Article-content .Article-picture-dual-col .Article-picture-caption  {
 	line-height: 10px;
