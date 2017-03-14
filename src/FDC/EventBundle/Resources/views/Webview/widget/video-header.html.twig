@@ -1,30 +1,26 @@
-{% set video = widget.video %}
-{% if video.image.file is defined and video.image.file is not null %}
-	{% set image = video.image|trans_fallback('file') %}
-{% endif %}
-
-{% set trans = video.findTranslationByLocale(app.request.locale) %}
+{% set file = widget.file %}
+{% set trans = widget.video.findTranslationByLocale(app.request.locale) %}
 {% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
-    {% set trans = video.findTranslationByLocale('fr') %}
+    {% set trans = widget.video.findTranslationByLocale('fr') %}
 {% endif %}
 
-{% if video|trans_fallback('imageAmazonUrl') %}
-	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+{% set header = file.image %}
+{% if header is not null %}
+	{% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+	{% if imageTrans is null or imageTrans.file is null %}
+		{% set imageTrans = header.findTranslationByLocale('fr') %}
+	{% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+	{% set image = imageTrans.file %}
+{% endif %}
+{% if image is not defined and trans.imageAmazonUrl is not null %}
+	{% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
 
-{% if widget.video.image|trans_fallback('file') %}
-	{% set image = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
-{% endif %}
-{% if image is defined and image is not null %}
-	{% set finalImage = image %}
-{% endif %}
-
-{% if widget.video.image|trans_fallback('file') %}
-	{% set finalImage = widget.video.image|trans_fallback('file') %}
-{% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
-data-poster="{% path finalImage, 'reference' %}" 
-data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
+data-poster="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+data-file="{{ s3_server_video ~ widget.video|trans_fallback('mp4Url') }}"
 data-title=""
 data-desc=""
 id="videoPlayer1">
