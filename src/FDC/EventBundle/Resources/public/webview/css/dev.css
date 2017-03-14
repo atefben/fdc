@@ -1,35 +1,66 @@
-.Article-content .Article-picture-dual-col {
-    width: 50%;
-    vertical-align: top;
-    display: inline-block;
-}
-.Article-content .Article-picture-dual-col .Article-picture-caption strong {
-    font-size: 0.8rem;
-	display: inline;
-	font-weight: bold;
-}
-.Article-content .Article-picture-dual-col .Article-picture-caption  {
-	line-height: 10px;
-}
-.Article-content .cntb {
-	display:none;
-}
-.Article-header .cntb {
-	top: 235px;
-	padding: 2px 2px 0 0;
-}
-.Article-header .cnta {
-	display:none;
-	font-weight:normal;
-}
-.Article-content .Article-slider-count.cnta {
-	font-weight:bold;
-}
-.Article-content .Article-slider-count.cnta strong {
-	bottom:35px;
-	font-weight:bold;
+@media screen and (max-width: 768px){
+	.Article-content .Article-picture-dual-col {
+	    width: 50%;
+	    vertical-align: top;
+	    display: inline-block;
+	}
+	.Article-content .Article-picture-dual-col .Article-picture-caption strong {
+	    font-size: 0.8rem;
+		display: inline;
+		font-weight: bold;
+	}
+	.Article-content .Article-picture-dual-col .Article-picture-caption  {
+		line-height: 10px;
+	}
+	.Article-content .cntb {
+		display:none;
+	}
+	.Article-header .cntb {
+		top: 482px;
+		padding: 2px 2px 0 0;
+	}
+	.Article-header .cnta {
+		display:none;
+		font-weight:normal;
+	}
+	.Article-content .Article-slider-count.cnta {
+		font-weight:bold;
+		bottom: 10px;
+	}
+	.Article-content .Article-slider-count.cnta strong {
+		bottom:35px;
+		font-weight:bold;
+	}
 }
 @media screen and (max-width: 375px){
+	.Article-content .Article-picture-dual-col {
+	    width: 50%;
+	    vertical-align: top;
+	    display: inline-block;
+	}
+	.Article-content .Article-picture-dual-col .Article-picture-caption strong {
+	    font-size: 0.8rem;
+		display: inline;
+		font-weight: bold;
+	}
+	.Article-content .Article-picture-dual-col .Article-picture-caption  {
+		line-height: 10px;
+	}
+	.Article-content .cntb {
+		display:none;
+	}
+	.Article-header .cntb {
+		top: 235px;
+		padding: 2px 2px 0 0;
+	}
+	.Article-header .cnta {
+		display:none;
+		font-weight:normal;
+	}
+	.Article-content .Article-slider-count.cnta strong {
+		bottom:35px;
+		font-weight:bold;
+	}
 	.Article-content .Article-slider-count.cnta {
 		bottom:35px;
 	}
