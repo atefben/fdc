@@ -233,7 +233,7 @@ class MediaController extends Controller
         $items = $this
             ->getDoctrineManager()
             ->getRepository('FDCCorporateBundle:CorpoMediaLibraryItem')
-            ->getItems($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd)
+            ->getItems($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $page)
         ;
 
         $filters = [];
