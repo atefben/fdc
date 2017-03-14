@@ -41,7 +41,9 @@
 {% endif %}
 
 {% if finalImage is defined and finalImage is not null %}
+	{{ finalImage }}
   {% set image = finalImage %}
+	}
 {% endif %}
 {{ dump(widget.file|trans_fallback('imageAmazonUrl') is not null) }}
 
