@@ -53,7 +53,7 @@ class FixFilmMediaCommand extends ContainerAwareCommand
                     $this->getDoctrineManager()->remove($filmMedia);
                     foreach ($filmMedia->getFilmMedias() as $filmFilmMedia) {
                         if ($filmFilmMedia instanceof FilmFilmMedia) {
-                            if ($filmFilmMedia->getFilm() && in_array($filmFilmMedia->getFilm()->getId(), $films)) {
+                            if ($filmFilmMedia->getFilm() && !in_array($filmFilmMedia->getFilm()->getId(), $films)) {
                                 $films[] = $filmFilmMedia->getFilm()->getId();
                             }
                             $this->getDoctrineManager()->remove($filmFilmMedia);
@@ -62,21 +62,20 @@ class FixFilmMediaCommand extends ContainerAwareCommand
                     $persons = [];
                     foreach ($filmMedia->getPersonMedias() as $filmPersonMedia) {
                         if ($filmPersonMedia instanceof FilmPersonMedia) {
-                            if ($filmPersonMedia->getPerson() && in_array($filmPersonMedia->getPerson()->getId(), $persons)) {
+                            if ($filmPersonMedia->getPerson() && !in_array($filmPersonMedia->getPerson()->getId(), $persons)) {
                                 $persons[] = $filmPersonMedia->getPerson()->getId();
                             }
                             $this->getDoctrineManager()->remove($filmPersonMedia);
                         }
                     }
                     $this->getDoctrineManager()->flush();
-
                     foreach ($films as $film) {
                         dump('film : ' . $film);
                         $this->getFilm($film);
                     }
                     foreach ($persons as $person) {
                         dump('person : ' . $person);
-                        $this->getFilm($person);
+                        $this->getPerson($person);
                     }
                 }
             }
