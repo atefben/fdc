@@ -127,6 +127,7 @@ var owInitFilter = function (isTabSelection) {
                         var activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                         $.each(isotopeHomepageItems,function(index,value){
                             if($(value).hasClass(selectedClass) || selectedClass == 'all'){
+                                console.log('OK to inject',value);
                                 //OK card
                                 if(innerIndex < 3){
                                     $('.contain-card .isotope-01').append(value);
