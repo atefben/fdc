@@ -25,10 +25,6 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
-{% if widget.video %}
-	{{ dump(widget.video) }}
-{% endif %}
-
 {% set tmp = widget.news.audio %}
 {% if tmp %}
     {% if tmp.image is not null %}
