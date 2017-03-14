@@ -61,11 +61,11 @@
 		font-weight:normal;
 	}
 	.Article-content .Article-slider-count.cnta strong {
-		bottom:18px;
+		bottom:35px;
 		font-weight:bold;
 	}
 	.Article-content .Article-slider-count.cnta {
-		bottom:35px;
+		bottom:18px;
 	}
 	.Article-content .Article-slider-prev, .Article-content .Article-slider-next {
 		top: 40%;
