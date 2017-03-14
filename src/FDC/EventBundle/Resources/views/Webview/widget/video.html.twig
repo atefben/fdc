@@ -25,7 +25,7 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
-{% if widget.video is not null %}
+{% if widget.video %}
 	{{ dump(widget.video) }}
 {% endif %}
 
