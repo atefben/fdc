@@ -25,22 +25,20 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
-{% if widget.news is news_audio or widget.news is info_audio or widget.news is statement_audio %}
-	{% set tmp = widget.news.audio %}
-	{% if tmp %}
+{% set tmp = widget.news.audio %}
+{% if tmp %}
 
-	    {% if tmp.image is not null %}
-	      {% set file = tmp.image|trans_fallback('file') %}
-	    {% endif %}
+    {% if tmp.image is not null %}
+      {% set file = tmp.image|trans_fallback('file') %}
+    {% endif %}
+{% endif %}
+{% if widget.news.video is not null %}
+	{% if widget.news.video.image|trans_fallback('file') %}
+	  {% set finalImage = widget.news.video.image|trans_fallback('file') %}
 	{% endif %}
-	{% if widget.news.video is not null %}
-		{% if widget.news.video.image|trans_fallback('file') %}
-		  {% set finalImage = widget.news.video.image|trans_fallback('file') %}
-		{% endif %}
-	{% endif %}
-	{% if file is defined and file is not null %}
-	  {% set finalImage = file %}
-	{% endif %}
+{% endif %}
+{% if file is defined and file is not null %}
+  {% set finalImage = file %}
 {% endif %}
 
 {% if finalImage is defined and finalImage is not null %}
