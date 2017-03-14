@@ -535,6 +535,7 @@ html {
     content: ""; }
 
 .jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-buffering .jw-icon-playback {
+  border: thomon;
   background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
   background-position: 2rem center;
   background-size: 1.2rem;
