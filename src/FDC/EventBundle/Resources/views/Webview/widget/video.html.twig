@@ -21,8 +21,8 @@
 	{% endif %}
 {% endif %}
 {% if object.video is not null %}
-	{% set image = widget.video|trans_fallback('file') %}
-	{% set video = widget.video|trans_fallback('imageAmazonUrl') %}
+	{% set image = widget.video|trans_fallback('imageAmazonUrl') %}
+	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
 {% if widget.news is news_audio or widget.news is info_audio or widget.news is statement_audio %}
