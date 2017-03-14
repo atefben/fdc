@@ -756,17 +756,50 @@ class NewsController extends Controller
         if ($type == "communique") {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
-            $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
-            $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         } else {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getSameDayInfo($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
-            $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
-            $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
+
+        }
+        $prevStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $prevStatement = $this->removeUnpublishedNewsAudioVideo($prevStatement, $locale);
+        $prevStatement = reset($prevStatement);
+        $nextStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $nextStatement = $this->removeUnpublishedNewsAudioVideo($nextStatement, $locale);
+
+
+
+        $prevInfo = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $prevInfo = $this->removeUnpublishedNewsAudioVideo($prevInfo, $locale);
+        $prevInfo = reset($prevInfo);
+        $nextInfo = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $nextInfo = $this->removeUnpublishedNewsAudioVideo($nextInfo, $locale);
+        $nextInfo = reset($nextInfo);
+
+        $prev = null;
+        if ($prevStatement && $prevInfo) {
+            if ($prevStatement->getPublishedAt()->getTimestamp >= $prevInfo->getPublishedAt()->getTimestamp) {
+                $prev = $prevStatement;
+            } else {
+                $prev = $prevInfo;
+            }
+        } elseif ($prevStatement) {
+            $prev = $prevStatement;
+        } elseif ($prevInfo) {
+            $prev = $prevInfo;
+        }
+
+        $next = null;
+        if ($nextStatement && $nextInfo) {
+            if ($nextStatement->getPublishedAt()->getTimestamp <= $nextInfo->getPublishedAt()->getTimestamp) {
+                $next = $nextStatement;
+            } else {
+                $next = $nextInfo;
+            }
+        } elseif ($nextStatement) {
+            $next = $nextStatement;
+        } elseif ($nextInfo) {
+            $next = $nextInfo;
         }
 
 
@@ -777,8 +810,8 @@ class NewsController extends Controller
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
-            'prev'                   => reset($prevArticlesURL),
-            'next'                   => reset($nextArticlesURL),
+            'prev'                   => $prev,
+            'next'                   => $next,
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles,
             'hideSliderAndMenu'      => true,
