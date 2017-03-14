@@ -11,7 +11,7 @@
 {% endif %}
 
 {% if homeArticles|length > 3 %}
-    <div class="articles articles-inverses">
+    <div class="articles article-inverses">
         <div class="cards grid-01 isotope-01">
             {% for article in homeArticles|slice(3) %}
                 {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.last ? 'double w2' : ''}) %}
