@@ -176,7 +176,7 @@ class FixMediaImageCommand extends ContainerAwareCommand
             ->setIgnoreListener(true)
             ->setThumbsGenerated(true)
         ;
-        $this->getManager()->flush();
+        $this->getDoctrineManager()->flush();
     }
 
     public function getMediaPool()
