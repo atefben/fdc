@@ -46,15 +46,9 @@
 {% endif %}
 
 {% if finalImage is defined and finalImage is not null %}
-	{{ finalImage }}
   {% set image = finalImage %}
+{% endif %}
 
-{% endif %}
-{% if isAmazonSrc is defined %}
-	<img src="{{ s3_server_video ~ image }}"/>
-{% else %}
-	<img src="{% path image, 'reference' %}"/>
-{% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
