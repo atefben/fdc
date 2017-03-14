@@ -564,9 +564,9 @@ html {
   top: -0.2rem; }
   .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback:before {
     content: ""; }
-
-.jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
-  display: none; }
+	  
+.Article-content .jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
+  display: inline-block; }
 
 .jwplayer.jw-skin-fdc {
   height: 9rem;
@@ -676,8 +676,6 @@ html {
     background: transparent url(../../img/article/video-play-btn.png) no-repeat center;
     background-size: 2.2rem;
     z-index: 1; }
-    .Article-header .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
-      background-size: 3.5rem; }
   .jwplayer.jw-skin-fdc-video .jw-slider-container {
     height: 3px;
     top: -18px;

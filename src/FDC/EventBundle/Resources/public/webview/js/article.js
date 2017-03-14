@@ -119,8 +119,9 @@ var ow = ow || {};
 						'name': 'fdc'
 					}
 				}).on('ready',function(){
+					
 					player.find('audio').prop('playsinline',true);
-
+					
 
 					var newPlayer = $('.Article-header #'+player.attr('id'));
 					//if audio player in header only
@@ -149,9 +150,19 @@ var ow = ow || {};
 							'position': 'relative',
 							'top': -90
 						});
+						if(newPlayer.parent().attr('class') == 'Article-header') {
+							jwplayer(player.attr('id')).play();
+							setTimeout(function(){
+							  jwplayer(player.attr('id')).pause();
+							}, 100);
+						}
+						
 					}
+					
 				});
+				
 			});
+			
 		}
 	}
 

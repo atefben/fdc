@@ -32,8 +32,28 @@
 		font-weight:bold;
 	}
 	.Article-content .Article-slider-prev, .Article-content .Article-slider-next {
-	
+		
 	}
+	.jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
+	    background: transparent url(../../img/article/video-play-btn.png) no-repeat center;
+	}
+	.jwplayer.jw-skin-fdc-video .jw-display-icon-container {
+		    top: 45%;
+		    height: 6.2em;
+		    width: 6.0em;
+	}
+    .jwplayer.jw-skin-fdc .jw-title-primary {
+      margin: -4px 0 0 3px;
+      font-size: 1.8rem;
+  }
+  .jwplayer.jw-skin-fdc .jw-title-secondary {
+  	margin-left: 5px;
+	font-size: 1.2rem;
+  }
+.Article-related h2 {
+    padding-top: 40px;
+	font-size: 2.2rem;
+}
 }
 @media screen and (max-width: 375px){
 	.Article-content .Article-picture-dual-col {
@@ -67,7 +87,21 @@
 	.Article-content .Article-slider-count.cnta {
 		bottom:18px;
 	}
-	.Article-content .Article-slider-prev, .Article-content .Article-slider-next {
-
+	.jwplayer.jw-skin-fdc-video .jw-display-icon-container {
+		    top: 40%;
+	}
+    .Article-header .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
+      background-size: 3.5rem; }
+      .jwplayer.jw-skin-fdc .jw-title-primary {
+		  margin: 0 0 0 0;
+        font-size: 1.4rem;
+    }
+    .jwplayer.jw-skin-fdc .jw-title-secondary {
+  	font-size: 0.8rem;
+	margin-left: 0px;
+    }
+	.Article-related h2 {
+		padding-top: 40px;
+		font-size: 1.2rem;
 	}
 }

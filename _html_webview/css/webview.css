@@ -150,7 +150,6 @@ html {
     .Article-content .Article-picture-caption strong {
       font-family: "Open Sans";
       padding-bottom: 1.6rem;
-      line-height: 2.2rem;
       font-size: 1.1rem;
       display: inline; }
 
@@ -166,7 +165,7 @@ html {
   margin-bottom: 40px; }
 
 .Article-slider-wrapper {
-  position: relative; margin: 0 0 10px 0; }
+  position: relative; }
 
 .Article-slider-prev, .Article-slider-next {
   position: absolute;
@@ -198,7 +197,7 @@ html {
 
 .Article-slider-caption {
   height: auto;
-  line-height: 25px;
+  line-height: 0px;
   font-size: 0.8rem; }
   .Article-slider-caption strong {
     display: block;
@@ -566,7 +565,7 @@ html {
   .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback:before {
     content: ""; }
 
-.jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
+.Article-header .jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
   display: none; }
 
 .jwplayer.jw-skin-fdc {
