@@ -2421,6 +2421,9 @@ var owInitFilter = function (isTabSelection) {
                 }, 400);
 
                 $('#filters span').on('click', function () {
+                    if($('.home').length){
+                        console.log('filter click HP');
+                    }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
 
