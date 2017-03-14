@@ -1,6 +1,6 @@
 
 {% if class(widget) starts with 'News' %}
-	{{ dump(widget.file) }}
+	{{ dump(widget.file|trans_fallback('image')) }}
 	{% set image = widget.news.header|trans_fallback('file') %}
 	{% set object = widget.news %}
 	{% set header = object.header %}
