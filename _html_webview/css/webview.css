@@ -515,8 +515,7 @@ html {
 
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
-  top: 2.2rem;
-  margin-left: 10.3rem; }
+  top: 2.2rem; }
   .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .Article-header .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
     top: 2.2rem; }
 
@@ -635,7 +634,13 @@ html {
     height: 0.5rem;
     overflow: hidden;
     width: 85%;
-    float: right; }
+    float: left;
+    margin-left: 8%; }
+    @media screen and (min-width: 768px) {
+      .jwplayer.jw-skin-fdc .jw-slider-horizontal {
+        background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+        background-size: 1.8rem;
+        margin-left: 4%; } }
   .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
     background-size: 1.8rem; }

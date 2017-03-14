@@ -5,7 +5,6 @@
 		.jw-title {
 			display: block;
 			top: 2.2rem;
-			margin-left: 10.3rem;
 
 			.Article-header & {
 				top: 2.2rem;
@@ -89,6 +88,10 @@
 		&-skin-fdc {
 			height: 9rem;
 			background: transparent;
+
+			.jw-buffer {
+
+			}
 
 			.jw-text-elapsed,
 			.jw-text-duration,
@@ -183,7 +186,14 @@
 					height: 0.5rem;
 					overflow: hidden;
 					width: 85%;
-					float: right;
+					float: left;
+    				margin-left: 8%;
+
+    				@media screen and (min-width: 768px) {
+						background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+						background-size: 1.8rem;
+						margin-left: 4%;
+					}
 				}
 
 				&-controlbar-left-group {

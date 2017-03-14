@@ -515,8 +515,7 @@ html {
 
 .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
   display: block;
-  top: 2.2rem;
-  margin-left: 10.3rem; }
+  top: 2.2rem; }
   .Article-header .jwplayer.jw-skin-fdc.jw-state-playing .jw-title, .Article-header .jwplayer.jw-skin-fdc.jw-state-complete .jw-title {
     top: 2.2rem; }
 
@@ -535,6 +534,7 @@ html {
     content: ""; }
 
 .jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-buffering .jw-icon-playback {
+  border: thomon;
   background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
   background-position: 2rem center;
   background-size: 1.2rem;
@@ -634,7 +634,8 @@ html {
     height: 0.5rem;
     overflow: hidden;
     width: 85%;
-    float: right; }
+    float: left;
+    margin-left: 8%; }
   .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
     background-size: 1.8rem; }
