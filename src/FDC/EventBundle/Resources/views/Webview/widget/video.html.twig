@@ -43,7 +43,7 @@
 {% if finalImage is defined and finalImage is not null %}
   {% set image = finalImage %}
 {% endif %}
-{{ dump(widget.file|trans_fallback('imageAmazonUrl')) }}
+{{ dump(widget.file.imageAmazonUrl) }}
 {{ dump(image) }}
 
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
