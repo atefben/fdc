@@ -8,11 +8,15 @@
 	display: inline;
 	font-weight: bold;
 }
-
-.Article-content .Article-slider-count {
-	padding: 2px;
-}
 .Article-content .Article-picture-dual-col .Article-picture-caption  {
 	line-height: 10px;
 }
-    
+.Article-content .cntb {
+	display:none;
+}
+.Article-content .cnta {
+	bottom:0px;
+}
+.Article-slider-wrapper .cnta {
+	display:none;
+}
