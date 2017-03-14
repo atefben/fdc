@@ -703,9 +703,10 @@ class StatementRepository extends EntityRepository
      * @param $since
      * @param int $page
      * @param int $count
+     * @param \DateTime|null $limitDate
      * @return Statement[]
      */
-    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
     {
         $now = new \DateTime();
         $qb = $this
@@ -733,6 +734,13 @@ class StatementRepository extends EntityRepository
             )
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb
@@ -774,7 +782,7 @@ class StatementRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getApiLastStatements($festival, $dateTime, $locale, $count)
+    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
@@ -796,6 +804,13 @@ class StatementRepository extends EntityRepository
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
             )
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb = $qb

@@ -646,7 +646,7 @@ class InfoRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getApiLastInfos($festival, $dateTime, $locale, $count)
+    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -660,6 +660,13 @@ class InfoRepository extends EntityRepository
             ->leftJoin('ni.translations', 'nit')
             ->andWhere('n.displayedMobile = :displayedMobile')
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         $qb = $qb
             ->andWhere(
@@ -706,9 +713,10 @@ class InfoRepository extends EntityRepository
      * @param $since
      * @param int $page
      * @param int $count
+     * @param \DateTime|null $limitDate
      * @return Info[]
      */
-    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
@@ -735,6 +743,13 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb

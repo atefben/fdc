@@ -155,7 +155,7 @@ class NewsRepository extends EntityRepository
         return $qb;
     }
 
-    public function getApiLastsNews($locale, $festival, $dateTime, $count)
+    public function getApiLastsNews($locale, $festival, $dateTime, $count, DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -172,6 +172,13 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         $qb = $qb
             ->andWhere(
@@ -223,9 +230,10 @@ class NewsRepository extends EntityRepository
      * @param $since
      * @param int $page
      * @param int $count
+     * @param DateTime|null $limitDate
      * @return News[]
      */
-    public function getApiNewsHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    public function getApiNewsHome2017($locale, $festival, $since, $page = 1, $count = 10, DateTime $limitDate = null)
     {
         $now = new DateTime();
         $qb = $this
@@ -255,6 +263,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb
