@@ -111,20 +111,42 @@ var owInitFilter = function (isTabSelection) {
 
                         $('.contain-card .isotope-01').each(function(){
                             $(this).isotope('destroy');
+                            $(this).find('article').each(function(){
+                                $(this).remove();
+                            });
                         });
                         $('.articles-wrapper .isotope-01').each(function(){
                             $(this).isotope('destroy');
+                            $(this).find('article').each(function(){
+                                $(this).remove();
+                            });
                         });
 
                         //get accurate data
+                        var innerIndex = 0;
+                        var activeAppendedGridContainer = $('.articles-wrapper .article:first-child');
                         $.each(isotopeHomepageItems,function(index,value){
-                            console.log(value);
-                            console.log($(value));
-                            console.log($(value).hasClass(selectedClass));
+                            if($(value).hasClass(selectedClass)){
+                                //OK card
+                                if(innerIndex < 3){
+                                    $('.contain-card .isotope-01').append(value);
+                                }else{
+                                    if(innerIndex%3 && innerIndex != 3){
+                                        activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                    }
+                                    activeAppendedGridContainer.find('.isotope-01').append(value);
+                                }
+                                innerIndex++;
+                            }
+                        });
 
-                        })
+                        $('.contain-card .isotope-01').each(function(){
+                            $(this).isotope();
+                        });
 
-
+                        $('.articles-wrapper .isotope-01').each(function(){
+                            $(this).isotope();
+                        });
                     }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
