@@ -25,9 +25,12 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
+{{ dump(widget) }}
+{{ dump(widget.news) }}
+{{ dump(widget.news.video) }}
+{{ dump(widget.news.video.image) }}
 {% set tmp = widget.news.audio %}
 {% if tmp %}
-
     {% if tmp.image is not null %}
       {% set file = tmp.image|trans_fallback('file') %}
     {% endif %}
