@@ -2757,6 +2757,9 @@ var owInitGrid = function (id) {
                                     gutter: 0
                                 }
                             }).removeClass('to-init');
+
+                            $('.articles-wrapper .articles').fadeIn(300);
+
                             var h = 0
                             $('.articles-wrapper .articles').each(function(){
                                 h += $(this).height();
