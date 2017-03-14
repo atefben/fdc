@@ -101,9 +101,11 @@ var owInitFilter = function (isTabSelection) {
                         //fill array with homepage items if not set
                         if(!homepageItemsFilled){
                             homepageItemsFilled = true;
+                            
                             $('.contain-card article').each(function(index,value){
                                 isotopeHomepageItems.push(value);
                             });
+
                             $('.articles-wrapper article').each(function(index,value){
                                 isotopeHomepageItems.push(value);
                             });
