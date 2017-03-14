@@ -15,18 +15,22 @@
 	display:none;
 }
 .Article-header .cntb {
+	bottom: 4px;
 	padding: 2px 2px 0 0;
 }
 .Article-header .cnta {
 	display:none;
 	font-weight:normal;
 }
-.Article-content .cnta strong {
+.Article-content .Article-slider-count.cnta {
+	font-weight:bold;
+}
+.Article-content .Article-slider-count.cnta strong {
 	bottom:40px;
 	font-weight:bold;
 }
 @media screen and (max-width: 375px){
-	.Article-content .cnta {
+	.Article-content .Article-slider-count.cnta {
 		bottom:60px;
 	}
 }
