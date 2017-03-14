@@ -18,6 +18,10 @@ class FixMediaImageCommand extends ContainerAwareCommand
      * @var InputInterface
      */
     private $input;
+    /**
+     * @var OutputInterface
+     */
+    private $output;
 
     protected function configure()
     {
@@ -34,6 +38,7 @@ class FixMediaImageCommand extends ContainerAwareCommand
     {
 
         $this->input = $input;
+        $this->output = $output;
         $medias = $this->getMediaImages();
         if ($medias) {
             $progress = new ProgressBar($output, count($medias));
