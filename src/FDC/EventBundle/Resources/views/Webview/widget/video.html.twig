@@ -29,8 +29,8 @@
 	{% set tmp = widget.news.audio %}
 	{% if tmp %}
 
-	    {% if widget.audio.image is not null %}
-	      {% set file = widget.audio.image|trans_fallback('file') %}
+	    {% if tmp.image is not null %}
+	      {% set file = tmp.image|trans_fallback('file') %}
 	    {% endif %}
 	{% endif %}
 	{% if widget.video is not null %}
