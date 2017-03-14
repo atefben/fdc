@@ -8,10 +8,10 @@
               {% if gallery.media|trans_fallback('copyright') %}
               <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</span> 
               {% endif %}
-                  <div class="Article-slider-count cnta"><strong>1</strong>/{{ medias|length }}</div>
             </div><!--
             {% endfor %}
-          --></div>
+          --> <div class="Article-slider-count cnta"><strong>1</strong>/{{ medias|length }}</div>
+          </div>
 
         </div>
 <div class="Article-slider-count cntb"><strong>1</strong>/{{ medias|length }}</div>
