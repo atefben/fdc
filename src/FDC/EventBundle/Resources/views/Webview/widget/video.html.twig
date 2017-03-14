@@ -29,7 +29,6 @@
 {% if object.video is not null %}
 	{% set image = widget.video|trans_fallback('image') %}
 	{% set video = widget.video|trans_fallback('file') %}
-		{% set isAmazonSrc = false %}
 {% endif %}
 
 {% set tmp = widget.news.audio %}
@@ -43,6 +42,7 @@
 
 {% if file is defined and file is not null %}
   {% set finalImage = file %}
+  {% set isAmazonSrc = false %}
 {% endif %}
 
 {% if finalImage is defined and finalImage is not null %}
