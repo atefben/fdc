@@ -49,6 +49,8 @@ class FixFilmMediaCommand extends ContainerAwareCommand
                 dump($id);
                 if ($this->is404($url)) {
                     $films = [];
+                    $this->getDoctrineManager()->remove($filmMedia->getFile());
+                    $this->getDoctrineManager()->remove($filmMedia);
                     foreach ($filmMedia->getFilmMedias() as $filmFilmMedia) {
                         if ($filmFilmMedia instanceof FilmFilmMedia) {
                             if ($filmFilmMedia->getFilm() && in_array($filmFilmMedia->getFilm()->getId(), $films)) {
@@ -62,12 +64,10 @@ class FixFilmMediaCommand extends ContainerAwareCommand
                         if ($filmPersonMedia instanceof FilmPersonMedia) {
                             if ($filmPersonMedia->getPerson() && in_array($filmPersonMedia->getPerson()->getId(), $persons)) {
                                 $persons[] = $filmPersonMedia->getPerson()->getId();
-                                $this->getDoctrineManager()->remove($filmFilmMedia);
+                                $this->getDoctrineManager()->remove($filmPersonMedia);
                             }
                         }
                     }
-                    $this->getDoctrineManager()->remove($filmMedia->getFile());
-                    $this->getDoctrineManager()->remove($filmMedia);
                     $this->getDoctrineManager()->flush();
 
                     foreach ($films as $film) {
