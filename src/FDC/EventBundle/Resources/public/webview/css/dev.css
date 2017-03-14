@@ -14,14 +14,15 @@
 .Article-content .cntb {
 	display:none;
 }
-.Article-content .cnta {
-	bottom:40px;
-}
 .Article-header .cnta {
 	display:none;
+	font-weight:normal;
+}
+.Article-content .cnta strong {
+	font-weight:bold;
 }
 @media screen and (max-width: 375px){
 	.Article-content .cnta {
-		bottom:40px;
+		bottom:60px;
 	}
 }
