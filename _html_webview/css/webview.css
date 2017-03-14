@@ -166,7 +166,7 @@ html {
   margin-bottom: 40px; }
 
 .Article-slider-wrapper {
-  position: relative; }
+  position: relative; margin: 0 0 10px 0; }
 
 .Article-slider-prev, .Article-slider-next {
   position: absolute;
