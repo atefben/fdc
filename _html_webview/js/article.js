@@ -120,7 +120,10 @@ var ow = ow || {};
 					}
 				}).on('ready',function(){
 					player.find('audio').prop('playsinline',true);
+
+
 					var newPlayer = $('.Article-header #'+player.attr('id'));
+					//if audio player in header only
 					if(newPlayer.length){
 						var img = newPlayer.prev('img');
 						//hide video and set transparent audio header
@@ -141,6 +144,7 @@ var ow = ow || {};
 							'height': headerHeight,
 							'overflow': 'hidden'
 						});
+						$('.Article-header').prepend('<div style="position:absolute;height:'+img.outerHeight()+'px;width:100%;background:rgba(0,0,0,.5);top:0px;left:0px;"></div>');
 						$('.Article-header-meta').css({
 							'position': 'relative',
 							'top': -90
