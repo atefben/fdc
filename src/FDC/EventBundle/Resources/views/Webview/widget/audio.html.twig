@@ -27,7 +27,7 @@
     {% endif %}
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
-      data-date="<strong>Le</strong> 10.05.16"  
+      data-date="<strong>Le</strong> {{ widget.publishedAt|date('d-m-Y H:i:s') }}"  
       data-title="{{ title }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>
 <div class="Article-content">
