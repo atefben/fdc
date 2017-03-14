@@ -96,7 +96,7 @@ class FixFilmMediaCommand extends ContainerAwareCommand
         return $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmMedia')
-            ->findBy($criteria, null, $this->input->getOption('first-result'), $this->input->getOption('max-results'))
+            ->findBy($criteria, null, $this->input->getOption('max-results'), $this->input->getOption('first-result'))
             ;
     }
 
