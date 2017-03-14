@@ -62,6 +62,7 @@ class FixMediaImageCommand extends ContainerAwareCommand
                                 $this->getDoctrineManager()->persist($newFile);
                                 $this->getDoctrineManager()->flush();
                                 $mediaTrans->setFile($newFile);
+                                $this->generatePresets($newFile);
                                 $this->getDoctrineManager()->remove($file);
                                 $this->getDoctrineManager()->flush();
                             }
@@ -144,6 +145,38 @@ class FixMediaImageCommand extends ContainerAwareCommand
         }
 
         return $directory;
+    }
+
+    private function generatePresets(Media $media)
+    {
+        $provider = $this->getMediaPool()->getProvider($media->getProviderName());
+        try {
+            $provider->removeThumbnails($media);
+        } catch (\Exception $e) {
+            $message = 'Unable to remove old thumbnails, media: %s - %s';
+            $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+            $this->output->writeln("<error>$logMessage</error>");
+        }
+
+        try {
+            $this->output->writeln("<info>Generate preset for media {$media->getId()}</info>");
+            $provider->generateThumbnails($media);
+        } catch (\Exception $e) {
+            $message = 'Unable to generated new thumbnails, media: %s - %s';
+            $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+            $this->output->writeln("<error>$logMessage</error>");
+        }
+
+        $media
+            ->setIgnoreListener(true)
+            ->setThumbsGenerated(true)
+        ;
+        $this->getManager()->flush();
+    }
+
+    public function getMediaPool()
+    {
+        return $this->getContainer()->get('sonata.media.pool');
     }
 
 }
