@@ -288,7 +288,6 @@ var initVideo = function(hash) {
             
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
-                console.log($playlist[index].name);
             }
 
             if(typeof $playlist[index] !== 'undefined'){
@@ -524,7 +523,7 @@ var initVideo = function(hash) {
         if($('.home').length){
             playerHeight = 550;
         }
-        playerInstance.setup({
+        /*playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
@@ -532,7 +531,7 @@ var initVideo = function(hash) {
             width: $(vid).parent('div').width(),
             height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
-        });
+        });*/
 
         if(havePlaylist) {
             var tempSlider = $(slider),
