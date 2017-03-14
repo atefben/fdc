@@ -103,11 +103,11 @@
         <div class="top-info">
             <span class="category">{{ article.theme|trans_fallback('name') }}</span>
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
-            <h2>
-                {#<a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">#}
-                    {{ article|trans_fallback('title') }}
-                {#</a>#}
-            </h2>
         </div>
+        <h2>
+            {#<a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">#}
+            {{ article|trans_fallback('title') }}
+            {#</a>#}
+        </h2>
     </div>
 </div>
