@@ -220,9 +220,9 @@
 
                             <div class="block-legend">
                                 <div class="info">
-                                    <span class="category">{{ featuredVideo.theme|trans_fallback('name') }}</span><span
-                                            class="date">{{ featuredVideo.publishedAt|date('d.m.y') }}</span> . <span
-                                            class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.publishedAt|date('H:i'), true, true) }}</span>
+                                    <span class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</span><span
+                                            class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span
+                                            class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
                                     <div class="texts">
                                         <h2><a>{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
                                         <div class="text-01">
