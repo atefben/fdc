@@ -766,6 +766,7 @@ class NewsController extends Controller
         $prevStatement = reset($prevStatement);
         $nextStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
         $nextStatement = $this->removeUnpublishedNewsAudioVideo($nextStatement, $locale);
+        $nextStatement = reset($nextStatement);
 
 
 
