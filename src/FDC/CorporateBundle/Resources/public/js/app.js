@@ -2475,7 +2475,7 @@ var owInitFilter = function (isTabSelection) {
                                 innerIndex++;
                             }
                         });
-
+                        
                         $('.contain-card .isotope-01').each(function(){
                             $(this).isotope({
                                 itemSelector: '.item',
