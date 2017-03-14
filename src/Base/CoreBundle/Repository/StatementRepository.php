@@ -843,7 +843,8 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt <= :date')->andWhere(
+            ->andWhere('n.publishedAt <= :date')
+            ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
                     (na3t.locale = :locale_fr AND na3t.status = :status) OR
@@ -893,7 +894,7 @@ class StatementRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     public function getNextStatement($locale, $festival, $date, $site = 'site-press', $exclude = null)
