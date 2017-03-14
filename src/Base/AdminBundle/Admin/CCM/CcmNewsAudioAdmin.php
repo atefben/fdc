@@ -81,6 +81,12 @@ class CcmNewsAudioAdmin extends CcmNewsAdmin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
+                    'chapo'   => array(
+                        'field_type'         => 'ckeditor',
+                        'label'              => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),

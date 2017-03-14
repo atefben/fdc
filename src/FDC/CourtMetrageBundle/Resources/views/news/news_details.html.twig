@@ -44,6 +44,8 @@
                     {% include '@FDCCourtMetrage/news/mainmedia/video.html.twig' with {'mediaVideo': article.video, 'mediaImage': article.image} %}
                 {% endif %}
 
+                <div class="chapeau">{{ article|trans_fallback('chapo')|raw }}</div>
+
                 {% set articleDescriptionWidget = null %}
                 {% for widget in article.widgets %}
                     {% if widget.getType() == 'description' and articleDescriptionWidget is null %}
