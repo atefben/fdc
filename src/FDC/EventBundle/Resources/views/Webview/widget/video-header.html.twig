@@ -3,8 +3,9 @@
 {% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
 	{% set trans = widget.video.findTranslationByLocale('fr') %}
 {% endif %}
-
-{% set header = file.image %}
+{{ if file.image is defined }}
+	{% set header = file.image %}
+{% endif %}
 {% if header is not null %}
 	{% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
 	{% if imageTrans is null or imageTrans.file is null %}
