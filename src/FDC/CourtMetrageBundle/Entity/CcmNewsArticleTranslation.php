@@ -44,6 +44,13 @@ class CcmNewsArticleTranslation implements TranslateChildInterface
     /**
      * @var string
      *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $chapo;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"title"}, updatable=false)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"news_list", "search", "news_show", "home"})
@@ -101,5 +108,21 @@ class CcmNewsArticleTranslation implements TranslateChildInterface
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChapo()
+    {
+        return $this->chapo;
+    }
+
+    /**
+     * @param string $chapo
+     */
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
     }
 }
