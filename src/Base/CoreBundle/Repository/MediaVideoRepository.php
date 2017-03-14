@@ -134,7 +134,7 @@ class MediaVideoRepository extends TranslationRepository
 
         $qb
             ->orderBy('mv.publishedAt', 'desc')
-            ->groupBy('channel')
+            ->groupBy('channel', 'lastVideo')
         ;
 
         return $qb->getQuery()->getResult();
