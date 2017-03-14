@@ -19,6 +19,9 @@
   .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback:before, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback:before {
     content: ""; }
 
+.jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback {
+  background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem; }
+
 .jwplayer.jw-skin-fdc-video.jw-state-buffering .jw-display-icon-container .jw-icon-display, .jwplayer.jw-skin-fdc-video.jw-state-buffering .jw-controlbar {
   display: none; }
 

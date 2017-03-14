@@ -633,7 +633,8 @@ html {
     background-size: 1.8rem; }
     @media screen and (min-width: 768px) {
       .jwplayer.jw-skin-fdc .jw-controlbar-left-group {
-        background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem; } }
+        background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+        background-size: 1.8rem; } }
   .jwplayer.jw-skin-fdc .jw-display-icon-container .jw-icon-display {
     text-align: left;
     background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
