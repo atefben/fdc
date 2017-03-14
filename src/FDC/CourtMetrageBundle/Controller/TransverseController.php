@@ -43,7 +43,7 @@ class TransverseController extends Controller
     public function actualiteAction()
     {
         $homepageManger = $this->get('ccm.manager.homepage');
-        $actualites = $homepageManger->getActualite();
+        $actualites = $homepageManger->getHomepageActualite();
 
         return $this->render(
             'FDCCourtMetrageBundle::homepage/_actualite.html.twig',

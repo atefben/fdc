@@ -3,23 +3,18 @@
     <div class="innerWrapper">
         {% if actualites is defined and actualites is not null%}
             {% for actualite in actualites %}
-                {% set actualiteTranslation = actualite.findTranslationByLocale(app.request.locale) %}
-                {% if actualite.displayedHome == 1 %}
-                    <a href="{{ path('fdc_court_metrage_news_detail',{'slug':actualiteTranslation.slug}) }}">
+                    <a href="{{ path('fdc_court_metrage_news_detail',{'slug':actualite.url}) }}">
                         <div class="articles">
                             {% if  actualite.translatable.image is not null %}
                                 <div class="articles-img"><img src="{% path actualite.translatable.image|trans_fallback('file'), 'reference' %}"></div>
                             {% endif %}
-                            {% if  actualite.translatable.header is not null %}
-                                <div class="articles-img"><img src="{% path actualite.translatable.header|trans_fallback('file'), 'reference' %}"></div>
-                            {% endif %}
                             <div class="articles-content">
                                 <span>
-                                    {{ actualite.theme.name }}
-                                    <br><span class="article-date">{{ actualite.publishedAt|date("d M Y") }}</span>
+                                    {{ actualite.translatable.theme.name }}
+                                    <br><span class="article-date">{{ actualite.translatable.date|date("d M Y") }}</span>
                                 </span>
-                                <h6>{{ actualiteTranslation.title }}</h6>
-                                {% if  actualite.translatable.image is not null or actualite.translatable.header is not null %}
+                                <h6>{{ actualite.title }}</h6>
+                                {% if  actualite.translatable.image is not null%}
                                     <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('182', '...')}}</p>
                                 {% else %}
                                     <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('562', '...')}}</p>
@@ -27,7 +22,6 @@
                             </div>
                         </div>
                     </a>
-                {% endif %}
             {% endfor %}
         {% endif %}
     </div>
