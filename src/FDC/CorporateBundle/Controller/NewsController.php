@@ -141,7 +141,7 @@ class NewsController extends Controller
 
 
     /**
-     * @Route("/69-editions/retrospective/infos-et-communiques")
+     * @Route("infos-et-communiques")
      * @param Request $request
      * @return Response
      */
