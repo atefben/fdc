@@ -778,7 +778,7 @@ class NewsController extends Controller
 
         $prev = null;
         if ($prevStatement && $prevInfo) {
-            if ($prevStatement->getPublishedAt()->getTimestamp >= $prevInfo->getPublishedAt()->getTimestamp) {
+            if ($prevStatement->getPublishedAt()->getTimestamp() >= $prevInfo->getPublishedAt()->getTimestamp()) {
                 $prev = $prevStatement;
             } else {
                 $prev = $prevInfo;
@@ -791,7 +791,7 @@ class NewsController extends Controller
 
         $next = null;
         if ($nextStatement && $nextInfo) {
-            if ($nextStatement->getPublishedAt()->getTimestamp <= $nextInfo->getPublishedAt()->getTimestamp) {
+            if ($nextStatement->getPublishedAt()->getTimestamp() <= $nextInfo->getPublishedAt()->getTimestamp()) {
                 $next = $nextStatement;
             } else {
                 $next = $nextInfo;
