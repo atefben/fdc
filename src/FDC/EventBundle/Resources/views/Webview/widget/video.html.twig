@@ -34,6 +34,7 @@
 
 {% if widget.file|trans_fallback('imageAmazonUrl') is not null %}
 	{% set finalImage = widget.file|trans_fallback('imageAmazonUrl') %}
+		{% set isAmazonSrc = true %}
 {% endif %}
 
 {% if file is defined and file is not null %}
@@ -45,7 +46,11 @@
   {% set image = finalImage %}
 
 {% endif %}
-<img src="{% path image, 'reference' %}"/>
+{% if isAmazonSrc is defined %}
+	<img src="{{ s3_server_video ~ image }}"/>
+{% else %}
+	<img src="{% path image, 'reference' %}"/>
+{% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
