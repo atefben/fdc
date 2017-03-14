@@ -569,7 +569,6 @@ class InfoRepository extends EntityRepository
         }
 
         return $qb
-
             ->getQuery()
             ->getResult()
             ;
@@ -769,7 +768,7 @@ class InfoRepository extends EntityRepository
 
     }
 
-    public function getOlderInfo($locale, $festival, $date, $site = 'site-press')
+    public function getOlderInfo($locale, $festival, $date, $site = 'site-press', $exclude)
     {
 
         $qb = $this
@@ -785,8 +784,15 @@ class InfoRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')
+            ->andWhere('n.publishedAt <= :date')
         ;
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         $qb
             ->andWhere(
@@ -830,11 +836,11 @@ class InfoRepository extends EntityRepository
             ->setParameter('site_slug', $site)
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
     }
 
-    public function getNextInfo($locale, $festival, $date, $site = 'site-press')
+    public function getNextInfo($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -851,9 +857,16 @@ class InfoRepository extends EntityRepository
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->setParameter('site_slug', $site)
-            ->andWhere('n.publishedAt > :date')
+            ->andWhere('n.publishedAt >= :date')
             ->setParameter('date', $date)
         ;
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
 
         $qb
             ->andWhere(
@@ -898,7 +911,7 @@ class InfoRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     public function getAllInfo($locale, $festival)
