@@ -2666,7 +2666,7 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         var articles = $data.find('.articles');
-                        console.log(articles);
+                        console.log(articles.html());
                         $('.articles-wrapper').append(articles);
                         $('.articles-wrapper').find('.to-init').isotope({
                             itemSelector: '.item',
