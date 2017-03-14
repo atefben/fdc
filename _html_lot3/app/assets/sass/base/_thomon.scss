@@ -371,7 +371,27 @@ header #navigation ul.user li a {
             position: relative;
             right: -24%;
         }
+
+        
     }
+
+    .slider-restropective[data-slide="10"] {
+            .calc3 {
+                img.i1 {
+                    left: -23%;
+                }
+
+                img.i2 {
+                    right: -9%;
+
+                    @media only screen and (max-width : 1440px) {
+                        top: 8%;
+                        position: relative;
+                        right: -16%;
+                    }
+                }
+            }
+        }
 }
 
 .dark .grid-01 {
