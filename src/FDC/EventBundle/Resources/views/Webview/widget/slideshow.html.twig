@@ -6,7 +6,7 @@
             --><div class="Article-slider-item">
               <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
               {% if gallery.media|trans_fallback('copyright') %}
-              <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</span> 
+              <div class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</div> 
               {% endif %}
             </div>
               <!--

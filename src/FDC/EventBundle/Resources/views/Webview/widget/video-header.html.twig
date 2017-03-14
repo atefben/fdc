@@ -14,14 +14,14 @@
 		{% set imageTrans = header.findTranslationByLocale('fr') %}
 	{% endif %}
 {% endif %}
+{% set imgtmp = widget.video.image|trans_fallback('file') %}
 {% if imageTrans is defined %}
 	{% set image = imageTrans.file %}
-{% else if widget.video.image|trans_fallback('file') is defined and widget.video.image|trans_fallback('file') is not null %}
+{% elseif imgtmp is defined and imgtmp is not empty %}
 	{% set image = widget.video.image|trans_fallback('file') %}
 {% else %}
-	{% set image_s3 = s3_server_video ~ widget.video|trans_fallback('imageAmazonUrl') %}
+	{% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
-{{ image_s3 }}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer"
 	 data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
 	 data-file="{{ s3_server_video ~ widget.video|trans_fallback('mp4Url') }}"

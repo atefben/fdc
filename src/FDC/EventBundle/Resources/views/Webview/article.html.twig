@@ -49,7 +49,6 @@
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
           <span class="Article-header-meta-date">
-          <strong>
             {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
             {% set today = "now"|date('d-m-Y H:i:s') %}
             {% set difference = date(today).diff(date(postDate)) %}
@@ -61,8 +60,7 @@
               <strong>{{ 'webview.article.date_prefix'|trans }} {{ object.publishedAt|date('d.m.y') }}</strong> {{ 'webview.article.date_separator'|trans }} {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
             {% elseif daysElapsed == 1 %}
               <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
-              {{ object.publishedAt|date('H') }}
-              <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
+              {{ object.publishedAt|date('H') }}:{{ object.publishedAt|date('i') }}
             {% else %}
               {% if hoursElapsed <= 1 %}
                 <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }} <strong>{{ 'webview.article.minutes_elapsed_suffix'|trans }}</strong>

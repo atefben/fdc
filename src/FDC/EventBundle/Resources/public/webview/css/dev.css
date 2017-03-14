@@ -25,7 +25,7 @@
 	}
 	.Article-content .Article-slider-count.cnta {
 		font-weight:bold;
-		bottom: 10px;
+		bottom: 6px;
 	}
 	.Article-content .Article-slider-count.cnta strong {
 		bottom:35px;
@@ -85,14 +85,17 @@
 		font-weight:bold;
 	}
 	.Article-content .Article-slider-count.cnta {
-		bottom:18px;
+		bottom:10px;
 	}
 	.jwplayer.jw-skin-fdc-video .jw-display-icon-container {
-		    top: 40%;
+		    top: 45%;
+		    height: 4.2em;
+		    width: 4.0em;
 	}
-    .Article-header .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
-      background-size: 3.5rem; }
-      .jwplayer.jw-skin-fdc .jw-title-primary {
+    .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
+      background-size: 2.2rem;
+  }
+	.jwplayer.jw-skin-fdc .jw-title-primary {
 		  margin: 0 0 0 0;
         font-size: 1.4rem;
     }
