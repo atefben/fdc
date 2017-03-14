@@ -1,6 +1,5 @@
 
 {% if class(widget) starts with 'News' %}
-	{{ dump(widget.file|trans_fallback('imageAmazonUrl')) }}
 	{% set image = widget.news.header|trans_fallback('file') %}
 	{% set object = widget.news %}
 	{% set header = object.header %}
@@ -16,7 +15,38 @@
 
 {% set video = widget.file %}
 
+{% if header is not null %}
+	{% if header.file is not null %}
+		{% set image = header|trans_fallback('file') %}
+	{% endif %}
+{% endif %}
+{% if object.video is not null %}
+	{% set image = widget.video|trans_fallback('image') %}
+	{% set video = widget.video|trans_fallback('file') %}
+{% endif %}
 
+{% if widget.video %}
+	{{ dump(widget.video) }}
+{% endif %}
+
+{% set tmp = widget.news.audio %}
+{% if tmp %}
+    {% if tmp.image is not null %}
+      {% set file = tmp.image|trans_fallback('file') %}
+    {% endif %}
+{% endif %}
+
+{% if widget.file|trans_fallback('imageAmazonUrl') %}
+	{% set finalImage = widget.file|trans_fallback('imageAmazonUrl') %}
+{% endif %}
+
+{% if file is defined and file is not null %}
+  {% set finalImage = file %}
+{% endif %}
+
+{% if finalImage is defined and finalImage is not null %}
+  {% set image = finalImage %}
+{% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
