@@ -62,6 +62,6 @@
 {{ dump(widget) }}
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
-      data-date="<strong>Le</strong> {# widget.news.publishedAt|date('d-m-Y H:i:s') #}"  
+      data-date="<strong>Le</strong> {{ widget.updatedAt|date('d-m-Y H:i:s') }}"  
       data-title="{{ widget|trans_fallback('title') }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>
