@@ -150,7 +150,6 @@ html {
     .Article-content .Article-picture-caption strong {
       font-family: "Open Sans";
       padding-bottom: 1.6rem;
-      line-height: 2.2rem;
       font-size: 1.1rem;
       display: inline; }
 
@@ -198,7 +197,7 @@ html {
 
 .Article-slider-caption {
   height: auto;
-  line-height: 25px;
+  line-height: 0px;
   font-size: 0.8rem; }
   .Article-slider-caption strong {
     display: block;
@@ -214,7 +213,8 @@ html {
   position: absolute;
   font-size: 1.1rem;
   color: #bfbfbf;
-  right: 0px; }
+  right: 0px;
+  bottom: 0px; }
   .Article-slider-count strong {
     display: inline;
     color: #212121;

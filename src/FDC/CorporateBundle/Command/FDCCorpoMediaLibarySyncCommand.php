@@ -2,6 +2,7 @@
 
 namespace FDC\CorporateBundle\Command;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPersonMedia;
@@ -25,6 +26,7 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
         'MediaImage'         => MediaImage::class,
         'MediaAudio'         => MediaAudio::class,
         'MediaVideo'         => MediaVideo::class,
+        'SonataMedia'         => Media::class,
     ];
 
 
@@ -55,11 +57,26 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
         if ($id) {
             $criteria['id'] = $id;
         }
-        $objects = $this
-            ->getDoctrineManager()
-            ->getRepository($class)
-            ->findBy($criteria, null, $input->getOption('max-results'), $input->getOption('first-result'))
-        ;
+        if ($entity== 'SonataMedia') {
+            $objects = $this
+                ->getDoctrineManager()
+                ->getRepository('ApplicationSonataMediaBundle:Media')
+                ->createQueryBuilder('m')
+                ->innerJoin('m.selfkitFilms', 'sf')
+                ->andWhere('m.oldMediaPhoto is not null')
+                ->setFirstResult($input->getOption('first-result'))
+                ->setMaxResults($input->getOption('max-results'))
+                ->getQuery()
+                ->getResult()
+            ;
+        }else {
+            $objects = $this
+                ->getDoctrineManager()
+                ->getRepository($class)
+                ->findBy($criteria, null, $input->getOption('max-results'), $input->getOption('first-result'))
+            ;
+        }
+
 
         if ($objects) {
             $progress = new ProgressBar($output, count($objects));

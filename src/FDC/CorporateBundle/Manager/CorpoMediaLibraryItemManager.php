@@ -2,11 +2,12 @@
 
 namespace FDC\CorporateBundle\Manager;
 
+use Application\Sonata\MediaBundle\Entity\Media as SonataMedia;
 use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFestivalPosterTranslation;
+use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
-use Base\CoreBundle\Entity\FilmMedia;
 use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\FilmPersonTranslation;
 use Base\CoreBundle\Entity\Media;
@@ -52,6 +53,8 @@ class CorpoMediaLibraryItemManager
             $this->syncFilmFilmMedia($object);
         } elseif ($object instanceof FilmPersonMedia) {
             $this->syncFilmPersonMedia($object);
+        } elseif ($object instanceof SonataMedia && $object->getOldMediaPhoto()) {
+            $this->syncSonataMedia($object);
         }
     }
 
@@ -350,6 +353,54 @@ class CorpoMediaLibraryItemManager
                 ->setSearch($text)
             ;
 
+            $this->getDoctrineManager()->flush();
+        }
+    }
+
+    public function syncSonataMedia(SonataMedia $sonataMedia)
+    {
+        foreach ($this->locales as $locale) {
+            if (!$sonataMedia->getSelfkitFilms()->count()) {
+                return;
+            }
+            $item = $this->getCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);
+            $search = '';
+            $search .= ' ' . $sonataMedia->getName();
+            $search .= ' ' . $sonataMedia->getCopyright();
+            $sorted = null;
+            $festivalYear = null;
+            if ($sonataMedia->getSelfkitFilms()->count() && $sonataMedia->getSelfkitFilms()->first()) {
+                $film = $sonataMedia->getSelfkitFilms()->first();
+                if ($film instanceof FilmFilm) {
+                    $sorted = $film->getFestival()->getFestivalStartsAt();
+                    $festivalYear = $film->getFestival()->getYear();
+                    $filmTranslation = $film->findTranslationByLocale($locale);
+                    if ($filmTranslation instanceof FilmFilmTranslation) {
+                        $search .= ' ' . $film->getTitleVO();
+                        $search .= ' ' . $filmTranslation->getTitle();
+                        $search .= ' ' . $filmTranslation->getSynopsis();
+                        $search .= ' ' . $filmTranslation->getDialog();
+                        $search .= ' ' . $filmTranslation->getInfoRestauration();
+                    }
+                }
+
+            }
+            foreach ($sonataMedia->getSelfkitPersons() as $person) {
+                $search .= '' . $person->getFullName();
+                $search .= ' ' . $person->getCredits();
+                $search .= ' ' . $person->getPresidentJuryCredits();
+                $personTrans = $person->findTranslationByLocale($locale);
+                if ($personTrans instanceof FilmPersonTranslation) {
+                    $search .= ' ' . $personTrans->getBiography();
+                    $search .= ' ' . $personTrans->getProfession();
+                }
+            }
+            $item
+                ->setType('image')
+                ->setSorted($sorted)
+                ->setFestivalYear($festivalYear)
+                ->setSearch($search)
+            ;
             $this->getDoctrineManager()->flush();
         }
     }
