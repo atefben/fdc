@@ -1754,11 +1754,11 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
         <source>webview.article.hours_elapsed_suffix</source>
         <target>hours ago</target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.hours_elapsed">
+      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
         <source>webview.article.minutes_elapsed</source>
         <target></target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.minutes_elapsed_suffix">
         <source>webview.article.minutes_elapsed_suffix</source>
         <target>minutes ago</target>
       </trans-unit>

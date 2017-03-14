@@ -1758,11 +1758,11 @@
         <source>webview.article.hours_elapsed_suffix</source>
         <target>minutes ago</target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.hours_elapsed">
+      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
         <source>webview.article.minutes_elapsed</source>
         <target>Il y a</target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.minutes_elapsed_suffix">
         <source>webview.article.minutes_elapsed_suffix</source>
         <target>minute(s)</target>
       </trans-unit>

@@ -1743,7 +1743,7 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>webview.article.hours_elapsed_suffix</source>
         <target>hours ago</target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.hours_elapsed">
+      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
         <source>webview.article.minutes_elapsed</source>
         <target></target>
       </trans-unit>
