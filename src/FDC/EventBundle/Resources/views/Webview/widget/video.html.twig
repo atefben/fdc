@@ -1,18 +1,17 @@
 {% if class(widget) starts with 'News' %}
 	{% set image = widget.news.header|trans_fallback('file') %}
 	{% set object = widget.news %}
-	{% set header = object.header %}
+	{% set header = object.header.image  %}
 	{% set redactional = widget.file %}
 {% else %}
 	{% set object = widget.statement %}
 	{% set redactional = object %}
-	{% set header = redactional.header %}
+	{% set header = redactional.header.image  %}
 	{% set image = object.image %}
 {% endif %}
 {% set file = widget.file %}
 {% set video = widget.file %}
 
-{{% set header = file.image %}
 {% if header is not null %}
 	{% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
 	{% if imageTrans is null or imageTrans.file is null %}
