@@ -128,12 +128,12 @@ var owInitFilter = function (isTabSelection) {
                         $.each(isotopeHomepageItems,function(index,value){
                             if($(value).hasClass(selectedClass) || selectedClass == 'all'){
                                 console.log('OK to inject',value);
-                                console.log('check inner index condition',innerIndex,(innerIndex%3 && innerIndex != 3));
+                                console.log('check inner index condition',innerIndex,(innerIndex%3 == 0 && innerIndex != 3));
                                 //OK card
                                 if(innerIndex < 3){
                                     $('.contain-card .isotope-01').append(value);
                                 }else{
-                                    if(innerIndex%3 && innerIndex != 3){
+                                    if(innerIndex%3 == 0 && innerIndex != 3){
                                         activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                     }
                                     activeAppendedGridContainer.find('.isotope-01').append(value);
