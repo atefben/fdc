@@ -46,6 +46,7 @@
 {{ dump(widget.news) }}
 {{ dump(widget.news.image) }}
 {{ dump(widget.news.video) }}
+
 {{ dump(widget) }}
 {% if widget.news.video is not null %}
 	{% if widget.news.video.image|trans_fallback('file') %}
