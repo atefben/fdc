@@ -43,10 +43,9 @@
 {% if finalImage is defined and finalImage is not null %}
 	{{ finalImage }}
   {% set image = finalImage %}
-	}
-{% endif %}
-{{ dump(widget.file|trans_fallback('imageAmazonUrl') is not null) }}
 
+{% endif %}
+<img src="{% path image, 'reference' %}"/>
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% path image, 'reference' %}" 
 data-file="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}" 
