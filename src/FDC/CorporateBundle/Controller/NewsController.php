@@ -699,25 +699,25 @@ class NewsController extends Controller
         $associatedFilm = null;
         $associatedProgrammation = null;
         $associatedFilmDuration = null;
-        $type = null;
+        $typeAssociated = null;
         if ($news->getAssociatedFilm() != null) {
             $associatedFilm = $news->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type = 'film';
+            $typeAssociated = 'film';
         } elseif ($news->getAssociatedEvent() != null) {
             $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type = 'film';
+            $typeAssociated = 'film';
         } elseif ($news->getAssociatedProjections() != null) {
             $associatedProgrammation = $news->getAssociatedProjections();
-            $type = 'event';
+            $typeAssociated = 'event';
         }
         $programmations = [];
         if ($associatedProgrammation != null) {
             foreach ($associatedProgrammation as $projection) {
-                if ($type == 'event') {
+                if ($typeAssociated == 'event') {
                     $programmations[] = $projection->getAssociation();
                 } else {
                     $programmations[] = $projection->getProjection();
