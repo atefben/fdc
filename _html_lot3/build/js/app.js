@@ -2338,6 +2338,8 @@ var initFaq = function() {
 var owInitFilter = function (isTabSelection) {
 
     isTabSelection = isTabSelection || false;
+    var homepageItemsFilled = false;
+    var isotopeHomepageItems = [];
 
     // on click on a filter
     if (isTabSelection) {
@@ -2423,6 +2425,24 @@ var owInitFilter = function (isTabSelection) {
                 $('#filters span').on('click', function () {
                     if($('.home').length){
                         console.log('filter click HP');
+                        /* TODO 
+                            destroy all isotope
+                            stock html in js array
+                            repopulate first grid
+                            compute new height for last section
+                        */
+                        if(!homepageItemsFilled){
+                            homepageItemsFilled = true;
+                            $('.contain-card article').each(function(index,value){
+                                console.log($(this));
+                                console.log(value);
+                            });
+                            $('.articles-wrapper article').each(function(index,value){
+                                console.log($(this));
+                                console.log(value);
+                            });
+                            //isotopeHomepageItems.push();
+                        }
                     }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
