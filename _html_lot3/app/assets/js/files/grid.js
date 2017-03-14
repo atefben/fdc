@@ -87,19 +87,22 @@ var owInitGrid = function (id) {
                         console.log(data);
                         $('.articles-wrapper').append(data);
                         $('.articles-wrapper').find('.read-more').remove();
-                        $('.articles-wrapper').find('.to-init').isotope({
-                            itemSelector: '.item',
-                            layoutMode: 'packery',
-                            packery: {
-                                columnWidth: '.grid-sizer',
-                                gutter: 0
-                            }
-                        }).removeClass('to-init');
-                        var h = 0
-                        $('.articles-wrapper .articles').each(function(){
-                            h += $(this).height();
+                        $('.articles-wrapper').find('img').imagesLoaded(function(){
+                            $('.articles-wrapper').find('.to-init').isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            }).removeClass('to-init');
+                            var h = 0
+                            $('.articles-wrapper .articles').each(function(){
+                                h += $(this).height();
+                            });
+                            $('.articles-wrapper').css('height',h);
                         });
-                        $('.articles-wrapper').css('height',h);
+                        
 
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
