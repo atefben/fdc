@@ -25,12 +25,10 @@
 	{% set video = widget.video|trans_fallback('file') %}
 {% endif %}
 
-{% if header is not null %}
-    {% set file = header|trans_fallback('file') %}
-{% endif %}
 {% if widget.news is news_audio or widget.news is info_audio or widget.news is statement_audio %}
 	{% set tmp = widget.audio %}
 	{% if tmp %}
+		{{ dump(tmp) }}
 	    {% if widget.audio.image is not null %}
 	      {% set file = widget.audio.image|trans_fallback('file') %}
 	    {% endif %}
@@ -45,9 +43,10 @@
 	{% endif %}
 {% endif %}
 
-{% if video is not null %}
-	{% if video.image|trans_fallback('file') %}
-	  {% set finalImage = video.image|trans_fallback('file') %}
+{{ dump(widget.news) }}
+{% if widget.news.video is not null %}
+	{% if widget.news.video.image|trans_fallback('file') %}
+	  {% set finalImage = widget.news.video.image|trans_fallback('file') %}
 	{% endif %}
 {% endif %}
 
