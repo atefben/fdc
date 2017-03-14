@@ -1,17 +1,11 @@
-{% if class(widget) starts with 'News' %}
-	{% set image = widget.news.header|trans_fallback('file') %}
-	{% set object = widget.news %}
-	{% set header = object.header.image  %}
-	{% set redactional = widget.file %}
-{% else %}
-	{% set object = widget.statement %}
-	{% set redactional = object %}
-	{% set header = redactional.header.image  %}
-	{% set image = object.image %}
-{% endif %}
 {% set file = widget.file %}
-{% set video = widget.file %}
+{% set trans = get_available_video(file, false, app.request.locale) %}
 
+{% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
+	{% set trans = file.findTranslationByLocale('fr') %}
+{% endif %}
+
+{% set header = file.image %}
 {% if header is not null %}
 	{% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
 	{% if imageTrans is null or imageTrans.file is null %}
@@ -20,13 +14,10 @@
 {% endif %}
 {% if imageTrans is defined %}
 	{% set image = imageTrans.file %}
-{% else %}
-	{% set image = widget.video.image|trans_fallback('file') %}
 {% endif %}
 {% if image is not defined and trans.imageAmazonUrl is not null %}
 	{% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
-
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
 data-poster="{% if image is defined %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
 data-file="{{ s3_server_video ~ widget.video|trans_fallback('mp4Url') }}"
