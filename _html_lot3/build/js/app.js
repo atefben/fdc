@@ -2424,25 +2424,41 @@ var owInitFilter = function (isTabSelection) {
 
                 $('#filters span').on('click', function () {
                     if($('.home').length){
-                        console.log('filter click HP');
+                        var selectedClass = $(this).data('filter');
                         /* TODO 
                             destroy all isotope
                             stock html in js array
                             repopulate first grid
                             compute new height for last section
                         */
+
+                        //fill array with homepage items if not set
                         if(!homepageItemsFilled){
                             homepageItemsFilled = true;
                             $('.contain-card article').each(function(index,value){
-                                console.log($(this));
-                                console.log(value);
+                                isotopeHomepageItems.push(value);
                             });
                             $('.articles-wrapper article').each(function(index,value){
-                                console.log($(this));
-                                console.log(value);
+                                isotopeHomepageItems.push(value);
                             });
-                            //isotopeHomepageItems.push();
                         }
+
+                        $('.contain-card .isotope-01').each(function(){
+                            $(this).isotope('destroy');
+                        });
+                        $('.articles-wrapper .isotope-01').each(function(){
+                            $(this).isotope('destroy');
+                        });
+
+                        //get accurate data
+                        $.each(isotopeHomepageItems,function(index,value){
+                            console.log(value);
+                            console.log($(value));
+                            console.log($(value).hasClass(selectedClass));
+
+                        })
+
+
                     }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
