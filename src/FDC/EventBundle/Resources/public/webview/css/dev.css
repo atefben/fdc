@@ -14,9 +14,19 @@
 .Article-content .cntb {
 	display:none;
 }
-.Article-content .cnta {
-	bottom:0px;
+.Article-header .cntb {
+	padding: 2px 2px 0 0;
 }
-.Article-slider-wrapper .cnta {
+.Article-header .cnta {
 	display:none;
+	font-weight:normal;
+}
+.Article-content .cnta strong {
+	bottom:40px;
+	font-weight:bold;
+}
+@media screen and (max-width: 375px){
+	.Article-content .cnta {
+		bottom:60px;
+	}
 }
