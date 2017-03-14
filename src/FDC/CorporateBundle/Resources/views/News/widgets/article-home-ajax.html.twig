@@ -1,18 +1,22 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% if homeArticles|length %}
-    <div class="articles right pad">
-        {% for article in homeArticles|slice(0, 3) %}
-            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
-        {% endfor %}
+    <div class="articles">
+        <div class="cards grid-01 isotope-01">
+            {% for article in homeArticles|slice(0, 3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}
 
 {% if homeArticles|length > 3 %}
-    <div class="articles left">
-        {% for article in homeArticles|slice(3) %}
-            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
-        {% endfor %}
+    <div class="articles articles-inverses">
+        <div class="cards grid-01 isotope-01">
+            {% for article in homeArticles|slice(3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.last ? 'double w2' : ''}) %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}
 
