@@ -31,6 +31,9 @@
 		bottom:35px;
 		font-weight:bold;
 	}
+	.Article-content .Article-slider-prev, .Article-content .Article-slider-next {
+		top: 40%;
+	}
 }
 @media screen and (max-width: 375px){
 	.Article-content .Article-picture-dual-col {
@@ -63,5 +66,8 @@
 	}
 	.Article-content .Article-slider-count.cnta {
 		bottom:35px;
+	}
+	.Article-content .Article-slider-prev, .Article-content .Article-slider-next {
+		top: 40%;
 	}
 }
