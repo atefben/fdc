@@ -1751,6 +1751,14 @@ notably for promotional and/or advertising purposes, within the limits of our pr
         <source>webview.article.minutes_elapsed_suffix</source>
         <target>minutes ago</target>
       </trans-unit>
+      <trans-unit id="webview.article.date_prefix" resname="webview.article.date_prefix">
+        <source>webview.article.date_prefix</source>
+        <target>The</target>
+      </trans-unit>
+      <trans-unit id="webview.article.date_separator" resname="webview.article.date_separator">
+        <source>webview.article.date_separator</source>
+        <target>At</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

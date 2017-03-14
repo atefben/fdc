@@ -1744,6 +1744,14 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <source>webview.article.minutes_elapsed_suffix</source>
         <target>minutes</target>
       </trans-unit>
+      <trans-unit id="webview.article.date_prefix" resname="webview.article.date_prefix">
+        <source>webview.article.date_prefix</source>
+        <target>Le</target>
+      </trans-unit>
+      <trans-unit id="webview.article.date_separator" resname="webview.article.date_separator">
+        <source>webview.article.date_separator</source>
+        <target>À</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
