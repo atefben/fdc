@@ -8,10 +8,8 @@
 	display: inline;
 	font-weight: bold;
 }
-.Article-slider-wrapper .Article-slider-count {
-    padding: 2px;
-}
-.Article-header .Article-slider-count {
+
+.Article-content .Article-slider-count {
 	padding: 2px;
 }
 .Article-content .Article-picture-dual-col .Article-picture-caption  {
