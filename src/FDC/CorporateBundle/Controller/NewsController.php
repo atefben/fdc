@@ -141,19 +141,14 @@ class NewsController extends Controller
 
 
     /**
-     * @Route("/69-editions/retrospective/{year}/infos-et-communiques")
+     * @Route("/69-editions/retrospective/infos-et-communiques")
      * @param Request $request
-     * @param null $year
      * @return Response
      */
-    public function infosAndStatementsAction(Request $request, $year)
+    public function infosAndStatementsAction(Request $request)
     {
-//        $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
 
-        $festival = $this->getFestival($year);
-
-        // SEO
 
         $id = $this->getParameter('admin_fdc_page_news_articles_id');
         $page = $this
@@ -168,27 +163,25 @@ class NewsController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
 
-        $parameters = $this->infosAndStatementsFilters($festival, $locale);
+        $parameters = $this->infosAndStatementsFilters($locale);
         return $this->render('FDCCorporateBundle:News:infos-and-statements.html.twig', $parameters);
     }
 
     /**
-     * @Route("/69-editions/retrospective/{year}/infos-et-communiques/more/{timestamp}")
+     * @Route("/69-editions/retrospective/infos-et-communiques/more/{timestamp}")
      * @param Request $request
-     * @param null $year
      * @return Response
      */
-    public function infosAndStatementsMoreAction(Request $request, $year, $timestamp)
+    public function infosAndStatementsMoreAction(Request $request, $timestamp)
     {
         $locale = $request->getLocale();
-        $festival = $this->getFestival($year);
 
-        $parameters = $this->infosAndStatementsFilters($festival, $locale, $timestamp);
+        $parameters = $this->infosAndStatementsFilters($locale, $timestamp);
         return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
 
 
-    private function infosAndStatementsFilters(FilmFestival $festival, $locale, $time = null)
+    private function infosAndStatementsFilters($locale, $time = null)
     {
         $before = null;
         if ($time) {
@@ -200,13 +193,13 @@ class NewsController extends Controller
         $infos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfoRetrospective($locale, $festival, null, $maxResults, $before)
+            ->getInfoRetrospective($locale, null, null, $maxResults, $before)
         ;
 
         $statements = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, $festival, null, $maxResults, $before)
+            ->getStatementRetrospective($locale, null, null, $maxResults, $before)
         ;
 
         $articles = array_merge($infos, $statements);
@@ -260,11 +253,11 @@ class NewsController extends Controller
         }
 
         return [
-            'festival' => $festival,
             'articles' => $articles,
             'filters'  => $filters,
             'time'     => $time,
             'last'     => $last,
+            'festivalYear' => $this->getFestival()->getYear()
         ];
     }
 
@@ -640,10 +633,10 @@ class NewsController extends Controller
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($festival->getId(), $locale, $newsDate, $count, $news->getId(), null, $focusArticles);
         $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
 
-        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $festival->getId(), $newsDate, $siteSlug);
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, null, $newsDate, $siteSlug);
         $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
 
-        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $festival->getId(), $newsDate, $siteSlug);
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, null, $newsDate, $siteSlug);
         $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'localeSlugs'            => $localeSlugs,
@@ -651,8 +644,8 @@ class NewsController extends Controller
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
-            'prev'                   => $prevArticlesURL,
-            'next'                   => $nextArticlesURL,
+            'prev'                   => reset($prevArticlesURL),
+            'next'                   => reset($nextArticlesURL),
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles,
             'nextProjectionDate'     => $nextProjectionDate,
@@ -662,7 +655,6 @@ class NewsController extends Controller
     /**
      * @Route("/infos-communiques/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
      * @param Request $request
-     * @param $year
      * @param $type
      * @param $format
      * @param $slug
@@ -762,18 +754,19 @@ class NewsController extends Controller
         if ($type == "communique") {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-institutionnel');
+            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, null, $newsDate, 'site-institutionnel');
             $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-institutionnel');
+            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel');
             $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         } else {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getSameDayInfo($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-institutionnel');
+            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, null, $newsDate, 'site-institutionnel');
             $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-institutionnel');
+            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, null, $newsDate, 'site-institutionnel');
             $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         }
+
 
         return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'festivals'              => $festivals,
@@ -782,8 +775,8 @@ class NewsController extends Controller
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
-            'prev'                   => $prevArticlesURL,
-            'next'                   => $nextArticlesURL,
+            'prev'                   => reset($prevArticlesURL),
+            'next'                   => reset($nextArticlesURL),
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles,
             'hideSliderAndMenu'      => true,

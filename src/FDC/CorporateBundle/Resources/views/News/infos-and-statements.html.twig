@@ -24,7 +24,7 @@
                 {% if not last %}
                     <div class="bright" style="display:none">
                         <a id="infos-and-statements-more"
-                           href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time, 'year': festival.year}) }}"
+                           href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time}) }}"
                            class="read-more ajax-request block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
                     </div>
                 {% endif %}
@@ -43,7 +43,7 @@
     },
     {
     "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_editions_year', {'year': festivalYear})
     },
     {
     "name" : 'header.mainnav.nav.lactualite'|trans,

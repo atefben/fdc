@@ -1,0 +1,20 @@
+.Article-content .Article-picture-dual-col {
+    width: 50%;
+    vertical-align: top;
+    display: inline-block;
+}
+.Article-content .Article-picture-dual-col .Article-picture-caption strong {
+    font-size: 0.8rem;
+	display: inline;
+	font-weight: bold;
+}
+.Article-slider-wrapper .Article-slider-count {
+    bottom: 32px;
+}
+.Article-header .Article-slider-count {
+	bottom: 0px;
+}
+.Article-content .Article-picture-dual-col .Article-picture-caption  {
+	line-height: 10px;
+}
+    

@@ -52,7 +52,7 @@
                                 {% if child.enabled %}
                                     <li>
                                         {% if child.route in ['fdc_corporate_news_getarticles', 'fdc_corporate_news_infosandstatements'] and child.enabled == true %}
-                                            <a href="{{ path(child.route, {'year': currentYear}) }}"
+                                            <a href="{{ path(child.route) }}"
                                                 {% if route == child.route %}class="active"{% endif %}>
                                                 {{ child.transName|trans }}
                                             </a>

@@ -360,7 +360,6 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
-
         ;
 
         if ($festival) {
@@ -534,7 +533,6 @@ class StatementRepository extends EntityRepository
             ->leftjoin('naa.translations', 'naat')
             ->leftjoin('nv.translations', 'nvt')
             ->leftjoin('ni.translations', 'nit')
-            ->andWhere('n.festival = :festival')
             ->andWhere(
                 "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
@@ -583,11 +581,10 @@ class StatementRepository extends EntityRepository
         }
 
         return $qb
-
             ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     /**
@@ -846,12 +843,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival')
-        ;
-
-        $qb = $qb
-            ->andWhere(
+            ->andWhere('n.publishedAt < :date')->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
                     (na3t.locale = :locale_fr AND na3t.status = :status) OR
@@ -862,7 +854,7 @@ class StatementRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -877,21 +869,24 @@ class StatementRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
 
-        $qb = $qb
+        $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
             ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
             ->setParameter('site_slug', $site)
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
     public function getNextStatement($locale, $festival, $date, $site = 'site-press')
@@ -910,11 +905,9 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
+            ->setParameter('site_slug', $site)
             ->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival')
-        ;
-
-        $qb = $qb
+            ->setParameter('date', $date)
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -926,7 +919,7 @@ class StatementRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -942,20 +935,23 @@ class StatementRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'ASC')
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        $qb
+            ->addOrderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
-            ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
-            ->setParameter('site_slug', $site)
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
-        return $qb;
     }
 
     public function getAllStatement($locale, $festival)
