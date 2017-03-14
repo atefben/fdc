@@ -646,10 +646,9 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival')
         ;
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -661,7 +660,7 @@ class NewsRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -677,20 +676,25 @@ class NewsRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
             ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
             ->setParameter('site_slug', $site)
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
         ;
 
-        return $qb;
     }
 
     public function getNextNews($locale, $festival, $date, $site = 'site-evenementiel')
@@ -710,10 +714,9 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
             ->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival')
         ;
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -725,7 +728,7 @@ class NewsRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -741,20 +744,24 @@ class NewsRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+        $qb
             ->orderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
             ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
             ->setParameter('site_slug', $site)
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
     public function getLastsNews($locale, $festival, $dateTime, $count)
