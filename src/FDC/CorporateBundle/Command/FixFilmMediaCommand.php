@@ -39,7 +39,7 @@ class FixFilmMediaCommand extends ContainerAwareCommand
             $progress->advance();
 
             foreach ($filmMedias as $filmMedia) {
-                $id = $film->getId();
+                $id = $filmMedia->getId();
                 $progress->advance();
                 if (!$filmMedia->getFile() || $filmMedia->getFile()->getContext() === 'pdf') {
                     continue;
