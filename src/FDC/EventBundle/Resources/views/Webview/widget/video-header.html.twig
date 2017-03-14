@@ -16,10 +16,9 @@
 {% endif %}
 {% if imageTrans is defined %}
 	{% set image = imageTrans.file %}
-{% else %}
+{% else if widget.video.image|trans_fallback('file') is not null %}
 	{% set image = widget.video.image|trans_fallback('file') %}
-{% endif %}
-{% if image is not defined  and image is not null and widget.video|trans_fallback('imageAmazonUrl') is not null %}
+{% else %}
 	{% set image_s3 = s3_server_video ~ widget.video|trans_fallback('imageAmazonUrl') %}
 {% endif %}
 {{ image_s3 }}
