@@ -68,11 +68,14 @@ class FixFilmMediaCommand extends ContainerAwareCommand
                     }
                     $this->getDoctrineManager()->remove($filmMedia->getFile());
                     $this->getDoctrineManager()->remove($filmMedia);
+                    $this->getDoctrineManager()->flush();
 
                     foreach ($films as $film) {
+                        dump('film : ' . $film);
                         $this->getFilm($film);
                     }
                     foreach ($persons as $person) {
+                        dump('person : ' . $person);
                         $this->getFilm($person);
                     }
                 }
