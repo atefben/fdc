@@ -16327,7 +16327,8 @@ article .read-later.rAlign span:after {
   font-weight: normal;
 }
 .single-article .big-txt {
-  width: 776px;
+  /*width: 776px;*/
+  width: 100%;
   margin: 0 auto 70px;
 }
 .single-article .big-txt p {
@@ -29783,8 +29784,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 25px;
 }
 .modal-content .half .halfContent {
-  width: 50%;
+  width: 265px;
+  max-width: 265px;
   float: left;
+  word-wrap: break-word;
+  padding: 0px 40px 0px 0px;
 }
 .modal-content .half .photo {
   width: 100%;

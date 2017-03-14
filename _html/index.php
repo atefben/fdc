@@ -219,34 +219,6 @@
                 </div>
                 <a href=""><img src="img/slider2.png"></a>
               </div>
-              <div class="item">
-                <div class="title">
-                  <a href=""><h5>Short film corner</h5></a>
-                  <a href=""><h4>le programme 2017</h4></a>
-                </div>
-                <a href=""><img src="img/slider2.png"></a>
-              </div>
-              <div class="item">
-                <div class="title">
-                  <a href=""><h5>Short film corner</h5></a>
-                  <a href=""><h4>le programme 2017</h4></a>
-                </div>
-                <a href=""><img src="img/slider1.png"></a>
-              </div>
-              <div class="item">
-                <div class="title">
-                  <a href=""><h5>Short film corner</h5></a>
-                  <a href=""><h4>le programme 2017</h4></a>
-                </div>
-                <a href=""><img src="img/slider3.png"></a>
-              </div>
-              <div class="item">
-                <div class="title">
-                  <a href=""><h5>Short film corner</h5></a>
-                  <a href=""><h4>le programme 2017</h4></a>
-                </div>
-                <a href=""><img src="img/slider2.png"></a>
-              </div>
           </div>
         </div>
 

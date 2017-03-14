@@ -1,12 +1,19 @@
-
-  $('#slider-discover').owlCarousel({
+if ($('#slider-discover .item').length === 1) {  
+      $('#slider-discover').owlCarousel({
+          items:1,
+          dots: false,
+        });
+  } else {
+      $('#slider-discover').owlCarousel({
       dots: true,
       navigation : true,
       slideSpeed : 600,
       navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"],
       paginationSpeed : 400,
       items : 3
-  });
+    });
+  }
+
 
 
   $('#slider-competition').owlCarousel({
@@ -34,16 +41,14 @@
 
 
   var fixOwl = function(){
-        var $stage = $('.owl-stage'),
-            stageW = $stage.width(),
-            $el = $('.owl-item'),
-            elW = 0;
-        $el.each(function() {
-            elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
-        });
-        if ( elW > stageW ) {
-            $stage.width( elW );
-        };
+      $('.owl-dot').click(function() {
+
+        var clicked = $(this);
+
+        $('.owl-dot').removeClass('active');
+        $(this).addClass('active');
+
+      });
     }
 
   $('#slider-aboutVideos').owlCarousel({

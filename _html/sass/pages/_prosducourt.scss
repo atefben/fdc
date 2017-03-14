@@ -450,8 +450,11 @@
     }
 
     .halfContent {
-      width: 50%;
+      width: 265px;
+      max-width: 265px;
       float: left;
+      word-wrap: break-word;
+      padding: 0px 40px 0px 0px;
     }
 
     .photo {
