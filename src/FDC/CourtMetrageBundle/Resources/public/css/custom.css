@@ -260,3 +260,8 @@ body.chocolat-open.fixed {
 .single-article .single-photo .photo-container {
     width: auto;
 }
+
+.title-custom {
+    padding: 60px;
+    font-size: 28px;
+}
