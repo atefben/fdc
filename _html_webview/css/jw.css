@@ -19,7 +19,7 @@
   .jwplayer.jw-skin-fdc.jw-state-playing .jw-icon-playback:before, .jwplayer.jw-skin-fdc.jw-state-complete .jw-icon-playback:before {
     content: ""; }
 
-.jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback {
+.jwplayer.jw-skin-fdc.jw-state-idle .jw-icon-playback, .jwplayer.jw-skin-fdc.jw-state-buffering .jw-icon-playback {
   background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
   background-position: 2rem center;
   background-size: 1.2rem;
