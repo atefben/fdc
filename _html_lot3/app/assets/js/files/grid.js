@@ -85,6 +85,7 @@ var owInitGrid = function (id) {
                         $data = $(data);
 
                         var articles = $data.find('.articles');
+                        console.log(articles);
                         $('.articles-wrapper').append(articles);
                         $('.articles-wrapper').find('.to-init').isotope({
                             itemSelector: '.item',
@@ -99,7 +100,7 @@ var owInitGrid = function (id) {
                             h += $(this).height();
                         });
                         $('.articles-wrapper').css('height',h);
-                        
+
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){
