@@ -2463,8 +2463,6 @@ var owInitFilter = function (isTabSelection) {
                         var activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                         $.each(isotopeHomepageItems,function(index,value){
                             if($(value).hasClass(selectedClass) || selectedClass == 'all'){
-                                console.log('OK to inject',value);
-                                console.log('check inner index condition',innerIndex,(innerIndex%3 == 0 && innerIndex != 3));
                                 //OK card
                                 if(innerIndex < 3){
                                     $('.contain-card .isotope-01').append(value);
@@ -2737,6 +2735,10 @@ var owInitGrid = function (id) {
                 var url = $(this).attr('href');
                 var container = $(this).closest('.block-01');
                 var dateTime = $('.last-element').data('time');
+
+                //fake animation before the real computing
+                $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+
                 $.get( url, {date: dateTime}, function( data ) {
                     if(data == null){
                         return false;
@@ -2781,10 +2783,15 @@ var owInitGrid = function (id) {
             //populate isotope data array on change
             $('.articles-wrapper').on('change',function(){
                 $(this).find('.articles').each(function(){
-                    var grid = $(this).find('.isotope-01');
-                    grid
+                    var $this = $(this);
+                    var grid = $this.find('.isotope-01');
+                    var currentFilters = 
+                    $this.find('article').each(function(){
+
+                    });
                 });
             });
+
         }else{
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
