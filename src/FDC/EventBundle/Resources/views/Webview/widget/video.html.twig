@@ -43,16 +43,6 @@
 	{% endif %}
 {% endif %}
 
-{{ dump(widget.news) }}
-{{ dump(widget.video) }}
-
-{{ dump(widget) }}
-{% if widget.news.video is not null %}
-	{% if widget.news.video.image|trans_fallback('file') %}
-	  {% set finalImage = widget.news.video.image|trans_fallback('file') %}
-	{% endif %}
-{% endif %}
-
 {% if finalImage is defined and finalImage is not null %}
   {% set image = finalImage %}
 {% endif %}
