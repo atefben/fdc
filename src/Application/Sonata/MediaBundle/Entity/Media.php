@@ -69,6 +69,11 @@ class Media extends SonataBaseMedia
     private $oldMediaFilm;
 
     /**
+     * @var string
+     */
+    private $oldMediaFestivalYear;
+
+    /**
      * @var ArrayCollection
      */
     private $selfkitFilms;
@@ -436,5 +441,28 @@ class Media extends SonataBaseMedia
     public function getSelfkitPersons()
     {
         return $this->selfkitPersons;
+    }
+
+    /**
+     * Set oldMediaFestivalYear
+     *
+     * @param string $oldMediaFestivalYear
+     * @return Media
+     */
+    public function setOldMediaFestivalYear($oldMediaFestivalYear)
+    {
+        $this->oldMediaFestivalYear = $oldMediaFestivalYear;
+
+        return $this;
+    }
+
+    /**
+     * Get oldMediaFestivalYear
+     *
+     * @return string 
+     */
+    public function getOldMediaFestivalYear()
+    {
+        return $this->oldMediaFestivalYear;
     }
 }

@@ -360,7 +360,7 @@ class CorpoMediaLibraryItemManager
     public function syncSonataMedia(SonataMedia $sonataMedia)
     {
         foreach ($this->locales as $locale) {
-            if (!$sonataMedia->getSelfkitFilms()->count()) {
+            if (!$sonataMedia->getSelfkitFilms()->count() && !$sonataMedia->getOldMediaFestivalYear()) {
                 return;
             }
             $item = $this->getCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);

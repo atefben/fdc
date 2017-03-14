@@ -21,6 +21,9 @@
         <field name="oldMediaPhotoJury" type="string" column="old_media_photo_jury" nullable="true">
         </field>
 
+        <field name="oldMediaFestivalYear" type="string" column="old_media_festival_year" nullable="true">
+        </field>
+
         <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
         </field>
 

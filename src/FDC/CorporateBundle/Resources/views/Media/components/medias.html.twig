@@ -71,7 +71,7 @@
                 {% set dateMedia = media.film.festival.year %}
             {% elseif media.person is defined and media.person %}
                 {% set title = media.person.firstname ~ ' ' ~ media.person.lastname %}
-                {% set dateMedia = '' %}
+                {% set dateMedia = media.media.festival.year %}
             {% elseif class(media) == 'FilmFestivalPoster' %}
                 {% set title = media|trans_fallback('title') %}
                 {% set dateMedia = media.festival.year %}
