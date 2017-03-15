@@ -121,6 +121,7 @@ var owInitGrid = function (id) {
                         console.log('test');
 
                         $('.isotope-01').each(function(){
+                            if($(this).data('isotope')){
                                 $(this).isotope('destroy').isotope({
                                     itemSelector: '.item',
                                     layoutMode: 'masonry',
@@ -133,6 +134,20 @@ var owInitGrid = function (id) {
                                     // sort by color then number
                                     sortBy: ['number']
                                 });
+                            }else{
+                                $(this).isotope({
+                                    itemSelector: '.item',
+                                    layoutMode: 'masonry',
+                                    packery: {
+                                        columnWidth: '.grid-sizer'
+                                    },
+                                    getSortData: {
+                                        number: '[data-sort]'
+                                    },
+                                    // sort by color then number
+                                    sortBy: ['number']
+                                });
+                            }
                         });
 
                         //BUTTON BEHAVIOUR
