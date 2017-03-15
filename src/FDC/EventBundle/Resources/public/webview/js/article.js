@@ -153,14 +153,13 @@ var ow = ow || {};
 						if(newPlayer.parent().attr('class') == 'Article-header') {
 
 						}
-
-						newPlayer.on('play', function(e) {
-							alert('play');
-						});
 						
 					}
 					
-				});
+				})..on('play', function() {
+					$('#fakebar').hide();
+					alert('play');
+				});;
 				
 			});
 			
