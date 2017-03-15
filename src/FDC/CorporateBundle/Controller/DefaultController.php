@@ -128,15 +128,17 @@ class DefaultController extends Controller
             ->findOneBy(['displayedHomeCorpo' => 1], ['id' => 'DESC'])
         ;
         $galleryMedias = [];
-        foreach ($gallery->getMedias() as $m) {
-            $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
-            if ($available) {
-                $trans = $m->getMedia()->findTranslationByLocale('fr');
-            }
-            $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
-            $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
-            if ($available) {
-                $galleryMedias[] = $m;
+        if ($gallery) {
+            foreach ($gallery->getMedias() as $m) {
+                $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
+                if ($available) {
+                    $trans = $m->getMedia()->findTranslationByLocale('fr');
+                }
+                $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
+                $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
+                if ($available) {
+                    $galleryMedias[] = $m;
+                }
             }
         }
 
@@ -159,7 +161,7 @@ class DefaultController extends Controller
             'filters'           => $filters,
             'lastPublishedAt'   => $lastPublishedAt,
             'last'              => $last,
-            'festivalYear'              => $this->getFestival()->getYear(),
+            'festivalYear'      => $this->getFestival()->getYear(),
         ]);
     }
 
