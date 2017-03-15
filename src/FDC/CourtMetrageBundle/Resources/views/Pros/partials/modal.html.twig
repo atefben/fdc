@@ -35,12 +35,12 @@
                 {% endif %}
                 <div class="titleHalf"><h3>{{ pro.name|shorten(46,'...') }}</h3></div>
                 <div class="cats">
-                    {% if pro.translatable.getActivitiesCollection is not null %}
-                        {% for activityCollection in pro.translatable.getActivitiesCollection %}
-                            {% if activityCollection.activity is defined and activityCollection.activity is not null %}
-                                {% if activityCollection.activity.translations[app.request.locale] is defined and activityCollection.activity.translations[app.request.locale] is not null %}
-                                    {% set proActivity = activityCollection.activity.translations[app.request.locale] %}
-                                    <span>{{ proActivity.name }}</span>
+                    {% if pro.translatable.getDomainsCollection is not null %}
+                        {% for domainCollection in pro.translatable.getDomainsCollection %}
+                            {% if domainCollection.domain is defined and domainCollection.domain is not null %}
+                                {% if domainCollection.domain.translations[app.request.locale] is defined and domainCollection.domain.translations[app.request.locale] is not null %}
+                                    {% set proDomain = domainCollection.domain.translations[app.request.locale] %}
+                                    <span>{{ proDomain.name }}</span>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}

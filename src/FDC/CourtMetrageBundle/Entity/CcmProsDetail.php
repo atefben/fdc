@@ -54,10 +54,10 @@ class CcmProsDetail implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection", mappedBy="prosDetail", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmDomainCollection", mappedBy="prosDetail", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    protected $activitiesCollection;
+    protected $domainsCollection;
 
     /**
      * @var ArrayCollection
@@ -76,7 +76,7 @@ class CcmProsDetail implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->activitiesCollection = new ArrayCollection();
+        $this->domainsCollection = new ArrayCollection();
         $this->contactsCollection = new ArrayCollection();
         $this->description = new ArrayCollection();
     }
@@ -114,31 +114,31 @@ class CcmProsDetail implements TranslateMainInterface
     }
 
     /**
-     * @param CcmProsActivityCollection $activityCollection
+     * @param CcmDomainCollection $domainCollection
      * @return $this
      */
-    public function addActivitiesCollection(\FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection $activityCollection)
+    public function addDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
     {
-        $activityCollection->setProsDetail($this);
-        $this->activitiesCollection[] = $activityCollection;
+        $domainCollection->setProsDetail($this);
+        $this->domainsCollection[] = $domainCollection;
 
         return $this;
     }
 
     /**
-     * @param CcmProsActivityCollection $activityCollection
+     * @param CcmDomainCollection $domainCollection
      */
-    public function removeActivitiesCollection(\FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection $activityCollection)
+    public function removeDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
     {
-        $this->activitiesCollection->removeElement($activityCollection);
+        $this->domainsCollection->removeElement($domainCollection);
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getActivitiesCollection()
+    public function getDomainsCollection()
     {
-        return $this->activitiesCollection;
+        return $this->domainsCollection;
     }
 
     /**
