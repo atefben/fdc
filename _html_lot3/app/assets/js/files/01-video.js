@@ -516,8 +516,6 @@ var initVideo = function(hash) {
             var videoImage =  $container.data('img');
         }
 
-        console.log(videoFile);
-        console.log(havePlaylist);
         var playerHeight = $(vid).parent('div').height();
         if($('.home').length){
             playerHeight = 550;
@@ -553,7 +551,7 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                playerInstance.load(playlist);
+                //playerInstance.load(playlist);
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
