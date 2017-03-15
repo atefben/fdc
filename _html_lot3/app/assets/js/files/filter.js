@@ -2,7 +2,7 @@
 // =========================
 
 var owInitFilter = function (isTabSelection) {
-
+    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
     var isotopeHomepageItems = [];
