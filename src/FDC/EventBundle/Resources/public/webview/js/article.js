@@ -153,7 +153,7 @@ var ow = ow || {};
 						if(newPlayer.parent().attr('class') == 'Article-header') {
 							jwplayer(player.attr('id')).play();
 							setTimeout(function(){
-							  jwplayer(player.attr('id')).pause();
+							  //jwplayer(player.attr('id')).pause();
 							}, 500);
 						}
 						
