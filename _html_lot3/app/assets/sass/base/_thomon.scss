@@ -59,15 +59,15 @@
 }
 
 
-.articles-wrapper .articles article:first-child {
+body#home .articles-wrapper .articles article.item:first-child {
     width: 650px;
 }
 
-.articles-wrapper .articles.article-inverse article:first-child {
+body#home .articles-wrapper .articles.article-inverse article.item:first-child {
     width: 325px;
 }
 
-.articles-wrapper .articles.article-inverse article:last-child {
+body#home .articles-wrapper .articles.article-inverse article.item:last-child {
     width: 650px;
 }
 
