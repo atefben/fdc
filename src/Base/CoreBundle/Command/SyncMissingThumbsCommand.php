@@ -108,7 +108,7 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     private function getMedias()
     {
-        $order = ['createdAt' => $this->input->getOption('order-by')];
+        $order = ['createdAt' => $this->input->getOption('order-by')?:'desc'];
         if ($this->input->getOption('from-bo')) {
             $criteria = ['thumbsGenerated' => false, 'uploadedFromBO' => true];
             return $this
