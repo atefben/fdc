@@ -1,3 +1,6 @@
+.jwplayer.jw-skin-fdc .jw-title-secondary {
+	text-transform: initial;
+}
 @media screen and (max-width: 768px){
 	.Article-content .Article-picture-dual-col {
 	    width: 50%;
