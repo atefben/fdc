@@ -1,15 +1,12 @@
 // Filters
 // =========================
 
-var fnFilters = function(){
-    
-}
+
+var isotopeHomepageItems = [];
 
 var owInitFilter = function (isTabSelection) {
-    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
-    var isotopeHomepageItems = [];
 
     // on click on a filter
     if (isTabSelection) {

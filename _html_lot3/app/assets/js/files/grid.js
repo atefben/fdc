@@ -86,7 +86,6 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
-                        console.log('ajax response');
                         $data = $(data);
                         //add new filters
                         if($(data).filter('.compute-filters').length){

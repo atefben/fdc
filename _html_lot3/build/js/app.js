@@ -2328,15 +2328,12 @@ var initFaq = function() {
 // Filters
 // =========================
 
-var fnFilters = function(){
-    
-}
+
+var isotopeHomepageItems = [];
 
 var owInitFilter = function (isTabSelection) {
-    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
-    var isotopeHomepageItems = [];
 
     // on click on a filter
     if (isTabSelection) {
@@ -2766,7 +2763,6 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
-                        console.log('ajax response');
                         $data = $(data);
                         //add new filters
                         if($(data).filter('.compute-filters').length){
