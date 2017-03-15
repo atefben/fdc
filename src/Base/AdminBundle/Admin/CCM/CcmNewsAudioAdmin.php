@@ -181,7 +181,6 @@ class CcmNewsAudioAdmin extends CcmNewsAdmin
                     'inline' => 'table'
                 )
             )
-            ->add('displayedHome')
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',
