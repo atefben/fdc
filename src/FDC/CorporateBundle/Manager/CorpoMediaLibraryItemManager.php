@@ -130,8 +130,6 @@ class CorpoMediaLibraryItemManager
                 $trans = $object->findTranslationByLocale($locale);
                 if ($trans instanceof MediaImageTranslation) {
                     $item = $this->getCorpoMediaLibraryItem($object, MediaImage::class, $locale);
-                    dump($trans->getLegend());
-                    dump($trans->getId());
                     $search = $trans->getLegend();
                     $search .= ' ' . $trans->getAlt();
                     $search .= ' ' . $trans->getCopyright();
@@ -167,7 +165,6 @@ class CorpoMediaLibraryItemManager
                             $search .= ' ' . $filmTranslation->getInfoRestauration();
                         }
                     }
-                    dump($search);
 
                     $item
                         ->setType('image')
