@@ -87,7 +87,7 @@
                         <div class="cards grid-01 isotope-01">
                             <div class="grid-sizer"></div>
                             {% for article in homeContents|slice(0, 3) %}
-                                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
+                                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
                             {% endfor %}
                         </div> <!-- end articles-->
                     </div> <!-- end article wrapper-->
@@ -156,7 +156,7 @@
 
                                 {% if homeContents|length > 3 %}
                                     {% for article in homeContents|slice(3) %}
-                                        {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? ''}) %}
+                                        {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
                                     {% endfor %}
                                 {% endif %}
 
