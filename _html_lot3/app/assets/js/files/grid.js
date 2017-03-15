@@ -137,18 +137,6 @@ var owInitGrid = function (id) {
                 });
             });
 
-            //populate isotope data array on change
-            $('.articles-wrapper').on('change',function(){
-                $(this).find('.articles').each(function(){
-                    var $this = $(this);
-                    var grid = $this.find('.isotope-01');
-                    var currentFilters = 
-                    $this.find('article').each(function(){
-
-                    });
-                });
-            });
-
         }else{
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
