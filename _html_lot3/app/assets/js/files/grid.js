@@ -86,18 +86,19 @@ var owInitGrid = function (id) {
                     if(data == null){
                         return false;
                     }else{
+                        console.log('ajax response');
                         $data = $(data);
                         //add new filters
                         if($(data).filter('.compute-filters').length){
                             $(data).filter('.compute-filters').find('span').each(function(){
                                 //test if filter exists
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                    $('#theme .select .icon-arrow-down').before($(this).on('click',function(){
-                                        console.log('click new filter');
-                                    }));
+                                    $('#theme .select .icon-arrow-down').before($(this));
                                 }
-                                
                             });
+                            $('#theme .select span').on('click',function(){
+                                console.log('click new filter');
+                            })
                         }
 
                         $('.articles-wrapper').append(data);
