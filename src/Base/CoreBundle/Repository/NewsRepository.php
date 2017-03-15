@@ -98,6 +98,7 @@ class NewsRepository extends EntityRepository
             ;
         }
 
+
         $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
 
         if ($festival->getFestivalStartsAt() >= $dateTime) {
