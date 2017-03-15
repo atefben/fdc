@@ -180,13 +180,13 @@
                             </div></br>
                             <div class="col-md-12">
                                 <div class="box-body">
+                                    {{ form_label(form.parent.actualiteIsActive) }}
+                                    {{ form_widget(form.parent.actualiteIsActive) }}
+                                    </br>
+                                    {{ form_label(form.parent.positionActualites) }}
+                                    {{ form_widget(form.parent.positionActualites) }}
+                                    </br>
                                     <div class="fdc-widgets" data-form-widget="collection">
-                                        {{ form_label(form.parent.actualiteIsActive) }}
-                                        {{ form_widget(form.parent.actualiteIsActive) }}
-                                        </br>
-                                        {{ form_label(form.parent.positionActualites) }}
-                                        {{ form_widget(form.parent.positionActualites) }}
-                                        </br>
                                         {% for widget in form.parent.children.actualites.children %}
                                             <div class="item base-widget" data-itemtype="actualite">
                                                 {{ form_row(widget._type) }}

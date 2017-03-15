@@ -838,6 +838,9 @@ form:
             short_film_corner:
                 position_du_menu: Position
             menu:
+                urlProgram: URL de bouton Programme
+                urlCatalog: URL de bouton Catalogue
+                urlRegister: URL de bouton Registre
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
                 register_pic_is_active: Le bouton Registre est visible?

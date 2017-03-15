@@ -16,6 +16,7 @@ class HomepageActualiteTranslationRepository extends EntityRepository
             ->where('t.locale = :locale')
             ->andWhere('a.isActive = 1')
             ->andWhere('a.homepage is not null')
+            ->orderBy('a.date', 'DESC')
             ->setMaxResults(3)
             ->setParameter(':locale', $locale)
         ;

@@ -44,6 +44,34 @@ class CcmMenuAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('translations', 'a2lix_translations', array(
+                'label'              => false,
+                'translation_domain' => 'BaseAdminBundle',
+                'locales' => ['fr','en'],
+                'fields'             => array(
+                    'applyChanges'   => array(
+                        'field_type' => 'hidden',
+                        'attr'       => array(
+                            'class' => 'hidden',
+                        ),
+                    ),
+                    'urlProgram'          => array(
+                        'label'              => 'form.ccm.label.menu.urlProgram',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'urlCatalog'          => array(
+                        'label'              => 'form.ccm.label.menu.urlCatalog',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'urlRegister'          => array(
+                        'label'              => 'form.ccm.label.menu.urlRegister',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                )
+            ))
             ->add('programPicIsActive', 'checkbox', array(
                     'label' => 'form.ccm.label.menu.program_pic_is_active',
                     'required' => false,

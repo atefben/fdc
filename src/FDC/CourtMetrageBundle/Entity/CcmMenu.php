@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 /**
  * CcmMenu
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CcmMenu
 {
+    use Translatable;
+
     /**
      * @var integer
      * @ORM\Column(name="id", type="integer")
@@ -47,9 +50,15 @@ class CcmMenu
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $mainNavsCollection;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $translations;
     
     public function __construct()
     {
+        $this->translations = new ArrayCollection();
         $this->mainNavsCollection = new ArrayCollection();
     }
 
@@ -148,5 +157,45 @@ class CcmMenu
     public function getMainNavsCollection()
     {
         return $this->mainNavsCollection;
+    }
+
+    /**
+     * Get translations.
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * Set translations.
+     *
+     * @param ArrayCollection $translations
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * findTranslationByLocale function.
+     *
+     * @access public
+     * @param mixed $locale
+     * @return array
+     */
+    public function findTranslationByLocale($locale)
+    {
+        foreach ($this->getTranslations() as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+
+        return null;
     }
 }
