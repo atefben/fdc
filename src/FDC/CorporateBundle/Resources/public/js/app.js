@@ -2769,7 +2769,9 @@ var owInitGrid = function (id) {
                             $(data).filter('.compute-filters').find('span').each(function(){
                                 //test if filter exists
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                    $('#theme .select .icon-arrow-down').before($(this));
+                                    $('#theme .select .icon-arrow-down').before($(this).on('click',function(){
+                                        console.log('click new filter');
+                                    }));
                                 }
                             });
                         }
