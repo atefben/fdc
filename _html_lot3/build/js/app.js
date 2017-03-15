@@ -527,7 +527,6 @@ var initVideo = function(hash) {
             height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
         });
-        console.log(havePlaylist);
 
         if(havePlaylist) {
             var tempSlider = $(slider),
@@ -549,7 +548,9 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                playerInstance.load(playlist);
+                if($('.media-library').length){
+                    playerInstance.load(playlist);
+                }
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
