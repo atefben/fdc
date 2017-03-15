@@ -115,6 +115,7 @@ var owInitGrid = function (id) {
                                         }
                                     });
                                 });
+                            });
                         }
 
                         $('.articles-wrapper').append(data);
