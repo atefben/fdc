@@ -265,3 +265,7 @@ body.chocolat-open.fixed {
     padding: 60px;
     font-size: 28px;
 }
+
+.custom-block {
+    margin: 0px auto;
+}
