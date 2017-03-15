@@ -5574,6 +5574,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if(typeof images[centerElement].date !== 'undefined'){
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
         }
+        console.log(images[centerElement].date);
         
         if(typeof images[centerElement].title !== 'undefined'){
             if($(images[centerElement].title).filter('*').size()){
