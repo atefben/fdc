@@ -87,7 +87,7 @@ var owInitGrid = function (id) {
 
                     }else{
                         $data = $(data);
-
+                        console.log(isotopeHomepageItems);
                         //add new filters
                         if($(data).filter('.compute-filters').length){
                             $(data).filter('.compute-filters').find('span').each(function(){
