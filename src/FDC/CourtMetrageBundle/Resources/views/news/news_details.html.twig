@@ -4,7 +4,7 @@
         <span id="addtext">{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span>
         <div id="canvasloader" class="canvasloader"></div>
         <div class="content-article">
-            <div class="container small-container">
+            <div class="container">
                 {% if prev[0] is defined and not prev[0] is empty %}<a
                     href="{{ path('fdc_court_metrage_news_detail', {'slug': prev[0]|trans_fallback('slug')}) }}"
                     class="nav prev"><i class="icon icon_flecheGauche"></i></a>{% endif %}
