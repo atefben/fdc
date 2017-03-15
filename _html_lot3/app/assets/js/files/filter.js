@@ -71,9 +71,7 @@ var owInitFilter = function (isTabSelection) {
         
         if (!$('.who-filter').length) {
 
-            var filterClick = function(){
-                
-            }
+
             $('.filters .select span').off('click').on('click', function () {
                 $('.filter .select').each(function () {
                     $that = $(this);
