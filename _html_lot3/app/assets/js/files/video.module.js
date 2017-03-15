@@ -504,14 +504,29 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 data['url'] = data['url'] || document.location.href;
 
                 if ($('.popin-mail').length) {
-                    $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
-                    $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
-                    $('.popin-mail').find('.contain-popin .title-article').text(data['title']);console.log('t6');
-                    $('.popin-mail').find('form #contact_section').val(data['category']);
-                    $('.popin-mail').find('form #contact_detail').val(data['date']);
-                    $('.popin-mail').find('form #contact_title').val(data['title']);
-                    $('.popin-mail').find('form #contact_url').val(data['url']);
+                    if(typeof data['category'] !== 'undefined'){
+                        $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
+                    }
+                    if(typeof data['date'] !== 'undefined'){
+                        $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+                    }
+                    if(typeof data['title'] !== 'undefined'){
+                        $('.popin-mail').find('.contain-popin .title-article').text($(data['title']).text());
+                    }
+                    if(typeof data['category'] !== 'undefined'){
+                        $('.popin-mail').find('form #contact_section').val(data['category']);
+                    }
+                    if(typeof data['date'] !== 'undefined'){
+                        $('.popin-mail').find('form #contact_detail').val(data['date']);
+                    }
+                    if(typeof data['title'] !== 'undefined'){
+                        $('.popin-mail').find('form #contact_title').val(data['title']);
+                    }
+                    if(typeof data['url'] !== 'undefined'){
+                        $('.popin-mail').find('form #contact_url').val(data['url']);
+                    }
                     $('.popin-mail').find('.chap-article').html('');
+                    
                 }
             }
             updatePopinMedia({
