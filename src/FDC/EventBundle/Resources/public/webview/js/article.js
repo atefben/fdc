@@ -156,7 +156,7 @@ var ow = ow || {};
 						
 					}
 					
-				})..on('play', function() {
+				}).on('play', function() {
 					$('#fakebar').hide();
 					alert('play');
 				});;
