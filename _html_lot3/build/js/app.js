@@ -2401,7 +2401,7 @@ var owInitFilter = function (isTabSelection) {
 
 
             $('.filters .select span').on('click', function () {
-
+                console.log('filter click');
                 $('.filter .select').each(function () {
                     $that = $(this);
                     $id = $(this).closest('.filter').attr('id');
