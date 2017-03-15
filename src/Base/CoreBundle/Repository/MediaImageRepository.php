@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Entity\FilmFestival;
+use Base\CoreBundle\Entity\MediaImage;
 
 class MediaImageRepository extends TranslationRepository
 {
@@ -25,12 +26,13 @@ class MediaImageRepository extends TranslationRepository
     }
 
     /**
-     * @param $festival
      * @param $locale
+     * @param FilmFestival $festival
      * @param \DateTime $dateTime
-     * @return array
+     * @param \DateTime $limitDate
+     * @return MediaImage[]
      */
-    public function getNewsApiImages($locale, FilmFestival $festival, \DateTime $dateTime)
+    public function getNewsApiImages($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('mi')
@@ -38,6 +40,13 @@ class MediaImageRepository extends TranslationRepository
             ->andWhere('mi.festival = :festival')
             ->setParameter('festival', $festival)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('mi.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
 

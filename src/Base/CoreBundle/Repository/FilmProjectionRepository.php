@@ -171,10 +171,11 @@ class FilmProjectionRepository extends EntityRepository
 
     /**
      * @param $festival
-     * @param \DateTime $dateTime
+     * @param \DateTime|null $dateTime
+     * @param \DateTime $limitDate
      * @return array
      */
-    public function getNewsApiProjections($festival, \DateTime $dateTime = null)
+    public function getNewsApiProjections($festival, \DateTime $dateTime = null, \DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('fp')
@@ -182,6 +183,13 @@ class FilmProjectionRepository extends EntityRepository
             ->join('fp.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('fp.startsAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($dateTime) {
             if($festival->getFestivalEndsAt() == $dateTime) {

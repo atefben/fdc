@@ -122,7 +122,14 @@ class StatementRepository extends EntityRepository
             ;
     }
 
-    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime)
+    /**
+     * @param $locale
+     * @param FilmFestival $festival
+     * @param \DateTime $dateTime
+     * @param \DateTime $limitDate
+     * @return Statement[]
+     */
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -140,6 +147,14 @@ class StatementRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
+
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
@@ -152,7 +167,7 @@ class StatementRepository extends EntityRepository
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
                 ->setParameter('festivalEndAt', '2016-05-23 00:00:00')
-            ;;
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -169,7 +184,7 @@ class StatementRepository extends EntityRepository
         }
 
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 "(na1t.locale = 'fr' AND na1t.status = :status) OR
                 (na2t.locale = 'fr' AND na2t.status = :status) OR
@@ -180,7 +195,7 @@ class StatementRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -197,13 +212,12 @@ class StatementRepository extends EntityRepository
         }
 
 
-        $qb = $qb
+        return $qb
             ->addOrderBy('n.publishedAt', 'desc')
             ->getQuery()
             ->getResult()
         ;
 
-        return $qb;
     }
 
     public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-press')

@@ -127,9 +127,10 @@ class InfoRepository extends EntityRepository
      * @param $locale
      * @param FilmFestival $festival
      * @param \DateTime $dateTime
-     * @return array
+     * @param \DateTime $limitDate
+     * @return Info[]
      */
-    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime)
+    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -147,6 +148,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($festival->getFestivalStartsAt() >= $dateTime) { //before
             $this->addMasterQueries($qb, 'n', $festival, true);
