@@ -1,5 +1,14 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
+{% if filters.themes.content is defined and filters.themes.content|length %}
+    <div class="compute-filters">
+        {% for theme in filters.themes.content %}
+            <span class="" data-filter="{{ theme|trans_fallback('name') }}">{{ theme|trans_fallback('name') }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
 {% if homeArticles|length %}
     <div class="articles" style="opacity:0">
         <div class="cards grid-01 isotope-01 to-init">
