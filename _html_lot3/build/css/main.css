@@ -7025,6 +7025,10 @@ body.chocolat-open > .chocolat-content {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
 
+.articles-list .card.w2 .info strong {
+  font-size: 2.25rem;
+}
+
 .slider-01 .center figcaption strong {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
