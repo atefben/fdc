@@ -8,6 +8,7 @@ use Base\CoreBundle\Entity\FilmFilmMedia;
 use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaImage;
+use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Entity\MediaVideo;
 use Doctrine\Common\Persistence\ObjectManager;
 use FDC\CorporateBundle\Manager\CorpoMediaLibraryItemManager;
@@ -26,7 +27,8 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
         'MediaImage'         => MediaImage::class,
         'MediaAudio'         => MediaAudio::class,
         'MediaVideo'         => MediaVideo::class,
-        'SonataMedia'         => Media::class,
+        'SonataMedia'        => Media::class,
+        'MediaImageSimple'   => MediaImageSimple::class,
     ];
 
 
@@ -57,7 +59,7 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
         if ($id) {
             $criteria['id'] = $id;
         }
-        if ($entity== 'SonataMedia') {
+        if ($entity == 'SonataMedia') {
             $objects = $this
                 ->getDoctrineManager()
                 ->getRepository('ApplicationSonataMediaBundle:Media')
@@ -69,7 +71,7 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
                 ->getQuery()
                 ->getResult()
             ;
-        }else {
+        } else {
             $objects = $this
                 ->getDoctrineManager()
                 ->getRepository($class)

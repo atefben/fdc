@@ -473,7 +473,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @var MediaImageSimple
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", inversedBy="imageMainFilms")
      * @Groups({
      *     "film_list",
      *     "film_show",
@@ -491,7 +491,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $imageMain;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", inversedBy="imageCoverFilms")
      * @Groups({
      *     "film_list",
      *     "film_show",
