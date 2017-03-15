@@ -2795,6 +2795,7 @@ var owInitGrid = function (id) {
                             });
                             $('.articles-wrapper').css('height',h);
                         });
+                        console.log('test');
 
                         $('.isotope-01').each(function(){
                                 $(this).isotope('destroy').isotope({
