@@ -61,7 +61,6 @@ var owInitFilter = function (isTabSelection) {
                             //isotopeHomepageItems.push(value);
                         });
                     });
-                    owInitFilter();
                 }
             });
             var lockInterval = window.setInterval(function(){
@@ -105,10 +104,6 @@ var owInitFilter = function (isTabSelection) {
                     $('#filters').addClass('show');
                 }, 100);
 
-
-
-
-
                 setTimeout(function () {
                     $('#filters span').addClass('show');
                 }, 400);
@@ -126,7 +121,6 @@ var owInitFilter = function (isTabSelection) {
                         //fill array with homepage items if not set
                         if(!homepageItemsFilled){
                             homepageItemsFilled = true;
-                            
                             $('.contain-card article').each(function(index,value){
                                 isotopeHomepageItems.push(value);
                             });
