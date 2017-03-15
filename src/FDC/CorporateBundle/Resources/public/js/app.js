@@ -5377,7 +5377,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
+            $('.popin-mail').find('.contain-popin .title-article').text('test');
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -6346,7 +6346,6 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            console.log('foreach vids');
             var videoPlayer = jwplayer(this.id);
             if (!$(videoPlayer).data('loaded')) {
                 playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
@@ -6362,7 +6361,6 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    console.log(vid, playerInstance, havePlaylist, live, callback);
     var $container = $("#" + vid.id).closest('.video-container');
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
@@ -6568,9 +6566,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                                 updateShareLink(i);
                             }
 
-                            console.log($container);
-                            console.log($container.find('.channels-video'));
-
                             $container.find('.channels-video').removeClass('active');
                             $container.find('.jwplayer').removeClass('overlay-channels');
 
@@ -6635,8 +6630,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     var playerHeight = ('.home').length ? 550 : $(vid).parent('div').height();
-    console.log(playerHeight);
-    console.log($container.data('file'));
+
     playerInstance.setup({
         // file: $container.data('file'),
         sources: $container.data('file'),
@@ -6743,7 +6737,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             } else {
                 var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
             }
-            console.log('debug hp');
 
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
@@ -6863,7 +6856,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     });
 
     $sound.on('click', '.icon_son', function () {
-        console.log(playerInstance.getConfig());
         playerInstance.updateMute();
     });
 
