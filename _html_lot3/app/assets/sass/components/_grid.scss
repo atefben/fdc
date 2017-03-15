@@ -1,10 +1,14 @@
 .articles-list {
   h2.title {
     color: #333;
-    font-family: "Playfair Display", Times New Roman, Times, serif;
+    /*font-family: "Playfair Display", Times New Roman, Times, serif;*/
     font-weight: 700;
     font-size: 1.625rem;
     padding-top: 60px;
+
+    .retrospective & {
+      display: none;
+    }
   }
 
   .card {
