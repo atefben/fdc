@@ -58,6 +58,19 @@
     font-weight: 300;
 }
 
+
+.articles-wrapper .articles article:first-child {
+    width: 650px;
+}
+
+.articles-wrapper .articles.article-inverse article:first-child {
+    width: 325px;
+}
+
+.articles-wrapper .articles.article-inverse article:last-child {
+    width: 650px;
+}
+
 .slider-01 .center figcaption strong {
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
