@@ -2743,7 +2743,7 @@ var owInitGrid = function (id) {
                     }else{
                         $data = $(data);
 
-                        console.log($(data)filter('.compute-filters'));
+                        console.log($(data).filter('.compute-filters'));
                         $('.articles-wrapper').append(data);
                         $('.articles-wrapper').find('.read-more').remove();
                         $('.articles-wrapper').find('.compute-filters').remove();
