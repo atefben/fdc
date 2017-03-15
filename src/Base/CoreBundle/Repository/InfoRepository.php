@@ -656,21 +656,20 @@ class InfoRepository extends EntityRepository
      */
     public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
-        $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
-            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
-            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'ni', 'WITH', 'ni.id = n.id')
-            ->leftJoin('na.translations', 'nat')
-            ->leftJoin('naa.translations', 'naat')
-            ->leftJoin('nv.translations', 'nvt')
-            ->leftJoin('ni.translations', 'nit')
-            ->andWhere('n.displayedMobile = :displayedMobile')
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na1', 'WITH', 'na1.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'na2', 'WITH', 'na2.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoImage', 'na3', 'WITH', 'na3.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'na4', 'WITH', 'na4.id = n.id')
+            ->leftJoin('na1.translations', 'na1t')
+            ->leftJoin('na2.translations', 'na2t')
+            ->leftJoin('na3.translations', 'na3t')
+            ->leftJoin('na4.translations', 'na4t')
+            ->andWhere('n.displayedMobile= :displayedMobile')
             ->andWhere('n.festival = :festival')
-            ->setParameter('festival', $festival)
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
-            ->setParameter('datetime', $dateTime)
         ;
 
         if ($limitDate) {
@@ -682,39 +681,44 @@ class InfoRepository extends EntityRepository
 
         $qb = $qb
             ->andWhere(
-                '(nat.locale = :locale_fr AND nat.status = :status)
-                OR (nit.locale = :locale_fr AND nit.status = :status)
-                OR (naat.locale = :locale_fr AND naat.status = :status)
-                OR (nvt.locale = :locale_fr AND nvt.status = :status)')
+                '(na1t.locale = :locale_fr AND na1t.status = :status) OR
+                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
+                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
+                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+            )
             ->setParameter('locale_fr', 'fr')
-            ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {
-
             $qb = $qb
-                ->leftJoin('na.translations', 'na5t')
-                ->leftJoin('naa.translations', 'na6t')
-                ->leftJoin('nv.translations', 'na7t')
-                ->leftJoin('ni.translations', 'na8t')
+                ->leftJoin('na1.translations', 'na5t')
+                ->leftJoin('na2.translations', 'na6t')
+                ->leftJoin('na3.translations', 'na7t')
+                ->leftJoin('na4.translations', 'na8t')
                 ->andWhere(
                     '(na5t.locale = :locale AND na5t.status = :status_translated) OR
                     (na6t.locale = :locale AND na6t.status = :status_translated) OR
                     (na7t.locale = :locale AND na7t.status = :status_translated) OR
                     (na8t.locale = :locale AND na8t.status = :status_translated)'
                 )
-                ->setParameter('status_translated', InfoArticleTranslation::STATUS_TRANSLATED)
+                ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
                 ->setParameter('locale', $locale)
             ;
         }
+
         $qb = $qb
-            ->addOrderBy('n.publishedAt', 'DESC')
-            ->setMaxResults($count)
+            ->orderBy('n.publishedAt', 'DESC')
+            ->setParameter('festival', $festival)
+            ->setParameter('datetime', $dateTime)
             ->setParameter('displayedMobile', true)
+        ;
+
+        $qb = $qb
+            ->setMaxResults($count)
             ->getQuery()
             ->getResult()
         ;
-        
 
         return $qb;
     }
