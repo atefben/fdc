@@ -2387,7 +2387,7 @@ var owInitFilter = function (isTabSelection) {
                         var grid = $this.find('.isotope-01');
                         $this.find('article').each(function(index,value){
                             console.log(isotopeHomepageItems.indexOf(value));
-                            //isotopeHomepageItems.push(value);
+                            isotopeHomepageItems.push(value);
                         });
                     });
                 }
@@ -2797,7 +2797,6 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        fnFilters();
 
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');

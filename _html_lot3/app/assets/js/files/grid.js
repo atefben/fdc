@@ -120,7 +120,6 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        fnFilters();
 
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
