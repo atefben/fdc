@@ -735,7 +735,7 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt => :date')
+            ->andWhere('n.publishedAt = :date')
         ;
         if ($exclude) {
             $qb
