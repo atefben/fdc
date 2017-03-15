@@ -1943,6 +1943,31 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
 }
 
+@media screen and (min-width: 1920px) {
+  .block-push-top {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .block-push-top {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
 .block-p-register {
   margin-top: 70px;
 }
@@ -3011,6 +3036,27 @@ sup {
   text-align: center;
   margin: 0 auto;
   z-index: 3;
+}
+#slider-discover .owl-dot:focus:before {
+  content: "\f155";
+  font-family: icons;
+  font-size: .5rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: #c6b5b5;
+  line-height: 13px;
 }
 #slider-discover .owl-next, #slider-discover .owl-prev {
   color: #c8a461;
@@ -7533,7 +7579,7 @@ a {
 }
 
 .title {
-  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
@@ -11685,7 +11731,7 @@ video {
 .video .picto .icon {
   font-size: 0.8rem;
   margin-top: 16px;
-  margin-left: 4px !important;
+  margin-left: 1px !important;
 }
 
 #selection {
@@ -16100,7 +16146,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #c8a461;
   font-size: 0.625rem;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .single-article #share-article .icon {
   font-size: 1rem;
@@ -16140,10 +16186,11 @@ article .read-later.rAlign span:after {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.3em;
-  margin: 0 auto;
   max-width: 775px;
   text-align: center;
-  margin: 40px 0px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 .single-article .info {
   color: #969696;
@@ -16410,6 +16457,7 @@ article .read-later.rAlign span:after {
   border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
   margin-bottom: 50px;
+  margin-top: 30px;
 }
 .single-article .share p {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -22570,31 +22618,31 @@ body:not(.tablette) .webtv #live .img {
 @media screen and (min-width: 1920px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 448px !important;
+    height: 300px !important;
   }
 }
 @media screen and (min-width: 1600px) and (max-width: 1919px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 373px !important;
+    height: 300px !important;
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .participate.bandeau-list,
   .participate .bandeau-list-img {
-    height: 297px !important;
+    height: 230px !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 294px !important;
+    height: 230px !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 296px !important;
+    height: 230px !important;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -29110,6 +29158,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: auto;
   border: 1px solid #c8a461;
   position: relative;
+  overflow: auto;
 }
 .onlinegoldBorders:after {
   content: '';
@@ -29880,6 +29929,15 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   float: left;
   padding-top: 2px;
   width: 10%;
+}
+
+.IEfit {
+  width: 155px !important;
+  height: 100% !important;
+}
+
+.backgroundPhotoContainer {
+  background-size: cover !important;
 }
 
 /*

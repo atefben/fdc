@@ -386,7 +386,7 @@ article {
     font-family: $CamphorHeavy;
     color: $gold;
     font-size: 0.625rem;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     .icon {
       font-size: 1rem;
@@ -439,10 +439,11 @@ article {
     font-size: 3rem;
     font-weight: 400;
     line-height: 1.3em;
-    margin: 0 auto;
     max-width: 775px;
     text-align: center;
-    margin: 40px 0px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   .info {
@@ -761,6 +762,7 @@ article {
     border-bottom: 1px solid #e5e5e5;
     padding: 70px 0;
     margin-bottom: 50px;
+    margin-top: 30px;
 
     p {
       font-family: $CamphorBold;

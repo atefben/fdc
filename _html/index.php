@@ -212,13 +212,13 @@
                 </div>
                 <a href=""><img src="img/slider2.png"></a>
               </div>
-              <div class="item">
+              <!--<div class="item">
                 <div class="title">
                   <a href=""><h5>Short film corner</h5></a>
                   <a href=""><h4>le programme 2017</h4></a>
                 </div>
                 <a href=""><img src="img/slider2.png"></a>
-              </div>
+              </div>-->
           </div>
         </div>
 
@@ -470,6 +470,642 @@
             <h4>le programme 2017</h4></a>
           </div>
         </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO, il silenzio silenzio</h5></a>
+            <a href="#"><h6>(le silence, le silence, le silence, le silence)</h6></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI,Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI, Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+         <a href="#"> <img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png">
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film5.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film2.png">
+          <div class="title">
+            <a href="#"><h5>IL SILENZIO</h5></a>
+            <a href="#"><h4>Farnoosh Samadi, Ali ASGARI</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="img/film4.png"></a>
+          <div class="title">
+            <a href="#"><h5>Short film corner</h5></a>
+            <a href="#"><h4>le programme 2017</h4></a>
+          </div>
+        </div>
+        <div class="item">
+          <a href="#"><img src="img/film1.png"></a>
+          <div class="title">
+            <h5>Short film corner</h5></a>
+            <h4>le programme 2017</h4></a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -553,5 +1189,6 @@
     <!-- //// SCRIPTS \\\\ -->
 
     <?php include('scripts.inc.php'); ?>
+
   </body>
 </html>

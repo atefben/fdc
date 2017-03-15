@@ -163,6 +163,7 @@ var GLOBALS = {
 <script src="js/festival-cannes/custom.js"></script>
 <script src="js/festival-cannes/tab.js"></script>
 <script src="js/festival-cannes/accordions.js"></script>
+
 <!-- festival-cannes tags end -->
 <!-- endbuild -->
 <script>jwplayer.key="DDlGCb2Z6Hc44IZsRCireCJGh+dhUmBcgQzM1Q==";</script>

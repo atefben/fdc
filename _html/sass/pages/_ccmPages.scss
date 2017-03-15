@@ -708,6 +708,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: auto;
   border: 1px solid #c8a461;
   position: relative;
+  overflow: auto;
 
   &:after {
     content: '';

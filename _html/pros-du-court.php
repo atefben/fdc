@@ -117,8 +117,7 @@
                     </div>
                     <div class="box c events">
                       <div class="eventPhoto">
-                        <div class="eventPhotoContainer">
-                          <img class="containerFit" src="img/member.jpg" alt="">
+                        <div class="eventPhotoContainer backgroundPhotoContainer" style="background-image:url(http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image_simple/0001/03/367fb90b242b369e6cf8a808049dc113af178f93.jpg)">
                         </div>
                         <div class="sfcLogo">
                           <img src="img/sfcLogo.png" alt="">
