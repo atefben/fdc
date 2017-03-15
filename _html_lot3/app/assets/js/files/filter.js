@@ -189,6 +189,11 @@ var owInitFilter = function (isTabSelection) {
                                 }
                             });
                         });
+                        var newSectionHeight = 0;
+                        //recompute height
+                        $('.articles-wrapper .articles').each(function(){
+                            newSectionHeight += $(this).outerHeight();
+                        })
                     }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
