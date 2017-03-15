@@ -7029,7 +7029,7 @@ body#home .articles-wrapper .articles.article-inverse article.item:first-child {
   width: 325px;
 }
 
-body#home .articles-wrapper .articles.article-inverse article.item:last-child {
+body#home .articles-wrapper .articles.article-inverse article.item:nth-child(1) {
   width: 650px;
 }
 
