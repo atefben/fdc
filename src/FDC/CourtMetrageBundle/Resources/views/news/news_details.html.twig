@@ -12,13 +12,15 @@
                     href="{{ path('fdc_court_metrage_news_detail', {'slug': next[0]|trans_fallback('slug')}) }}"
                     class="nav next"><i class="icon icon_fleche-right"></i></a>{% endif %}
                 <div class="info">
-                    <span class="category">
-                        {% set themeTranslation = article.theme.findTranslationByLocale(app.request.locale) %}
-                        {% if app.request.locale != 'fr' and themeTranslation is null %}
-                            {% set themeTranslation = article.theme.findTranslationByLocale('fr') %}
-                        {% endif %}
-                        {{ themeTranslation.name }}
-                    </span>
+                    {% if article.theme %}
+                        <span class="category">
+                            {% set themeTranslation = article.theme.findTranslationByLocale(app.request.locale) %}
+                            {% if app.request.locale != 'fr' and themeTranslation is null %}
+                                {% set themeTranslation = article.theme.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {{ themeTranslation.name }}
+                        </span>
+                    {% endif %}
                     {% if app.request.locale != 'en' %}
                         {% set hourFormat = 'H:i' %}
                     {% else %}
