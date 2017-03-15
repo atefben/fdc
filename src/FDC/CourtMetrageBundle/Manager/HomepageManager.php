@@ -121,6 +121,15 @@ class HomepageManager
             );
     }
 
+    public function getHomepageActualite()
+    {
+
+        return $this->em
+            ->getRepository(HomepageActualiteTranslation::class)
+            ->findActualiteForHomepage($this->requestStack->getMasterRequest()->get('_locale')
+            );
+    }
+
     public function getSejouresFromShortFilm()
     {
         return $this->em

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * HomepagePushTranslation
  * @ORM\Table(name="ccm_homepage_actualite_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\HomepageActualiteTranslationRepository")
  */
 class HomepageActualiteTranslation
 {
