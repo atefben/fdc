@@ -42,10 +42,10 @@ var owinitSlideShow = function (slider, hash) {
 
             if($('.slideshow-img').length > 0 ) {
                 $('.images').on('click', function (e) {
-                    e.preventDefault();
-
-                    openSlideShow(slider);
-
+                    if(!$(e.target).is('.thumbnails') ||!$(e.target).closest('.thumbnails').length){
+                        e.preventDefault();
+                        openSlideShow(slider);
+                    }
                     return false;
                 });
             }

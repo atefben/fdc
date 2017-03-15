@@ -2770,32 +2770,9 @@ var owInitGrid = function (id) {
                                 //test if filter exists
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                     $('#theme .select .icon-arrow-down').before($(this));
+
                                 }
                             });
-                            window.setTimeout(function(){
-                                console.log('redeclare filters');
-                                $('.filters .select span').off('click').on('click', function () {
-
-                                    $('.filter .select').each(function () {
-                                        $that = $(this);
-                                        $id = $(this).closest('.filter').attr('id');
-
-                                        $that.find(".pages:not([data-filter='all'])").each(function () {
-                                            $this = $(this);
-
-                                            var getVal = $this.data('filter');
-                                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
-
-                                            if (numItems === 0) {
-                                                $this.addClass('disabled');
-                                            } else {
-                                                $this.removeClass('disabled');
-                                            }
-                                        });
-                                    });
-                                });
-                            },200);
-                            
                         }
 
                         $('.articles-wrapper').append(data);
@@ -5164,10 +5141,10 @@ var owinitSlideShow = function (slider, hash) {
 
             if($('.slideshow-img').length > 0 ) {
                 $('.images').on('click', function (e) {
-                    e.preventDefault();
-
-                    openSlideShow(slider);
-
+                    if(!$(e.target).is('.thumbnails') ||!$(e.target).closest('.thumbnails').length){
+                        e.preventDefault();
+                        openSlideShow(slider);
+                    }
                     return false;
                 });
             }
