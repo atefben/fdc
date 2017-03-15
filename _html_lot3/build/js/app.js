@@ -2776,7 +2776,7 @@ var owInitGrid = function (id) {
                                     $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
-                            fnFilters();
+                            owInitFilter();
                         }
 
                         $('.articles-wrapper').append(data);
