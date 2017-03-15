@@ -7029,6 +7029,10 @@ body.chocolat-open > .chocolat-content {
   width: 325px;
 }
 
+.articles-wrapper .articles.article-inverse article:last-child {
+  width: 650px;
+}
+
 .slider-01 .center figcaption strong {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
