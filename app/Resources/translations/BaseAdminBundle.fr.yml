@@ -1134,8 +1134,8 @@ form:
                 position_actualite: La position du module Actualité
                 actualite_is_activated: Activer le module
                 sejour_is_activated: Activer le module
-                position_sejour: La position du module Séjour
-                sejour_title: Préparer son séjour
+                position_sejour: La position du module grand push
+                sejour_title: Module grand push
         size:
             small:  Titre petit
             medium: Titre moyen
