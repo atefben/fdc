@@ -5572,9 +5572,8 @@ var openSlideShow = function (slider, hash, affiche) {
     if($('.popin-mail').length) {
         $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
         if(typeof images[centerElement].date !== 'undefined'){
-            $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
+            $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date.replace('undefined',''));
         }
-        console.log(images[centerElement].date);
         
         if(typeof images[centerElement].title !== 'undefined'){
             if($(images[centerElement].title).filter('*').size()){
