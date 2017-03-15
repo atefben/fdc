@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\AdminBundle\Component\Admin\Export;
+use Base\CoreBundle\Util\TruncatePro;
 use \DateTime;
 
 use Base\CoreBundle\Util\SeoMain;
@@ -33,6 +34,7 @@ abstract class Statement implements TranslateMainInterface
     use Time;
     use SeoMain;
     use TranslateMain;
+    use TruncatePro;
 
     /**
      * @var integer
@@ -75,6 +77,14 @@ abstract class Statement implements TranslateMainInterface
      *
      */
     protected $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     */
+    protected $displayedOnCorpoHome = false;
 
     /**
      * @var boolean
@@ -248,10 +258,19 @@ abstract class Statement implements TranslateMainInterface
     }
 
     public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
+        $string = null;
+        $class = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' #'. $this->getId();
+            if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
+                $string = "$class " . $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
+            } else {
+                $string = "$class {$this->getId()}";
+            }
+        }
+
+        if (!$string) {
+            $string = $class;
         }
 
         return $string;
@@ -999,5 +1018,24 @@ abstract class Statement implements TranslateMainInterface
     public function getMobileDisplay()
     {
         return $this->mobileDisplay;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isDisplayedOnCorpoHome()
+    {
+        return $this->displayedOnCorpoHome;
+    }
+
+    /**
+     * @param bool $displayedOnCorpoHome
+     * @return $this
+     */
+    public function setDisplayedOnCorpoHome($displayedOnCorpoHome)
+    {
+        $this->displayedOnCorpoHome = $displayedOnCorpoHome;
+        return $this;
     }
 }

@@ -1720,6 +1720,38 @@ notamment à des fins promotionnelles et/ou publicitaires, dans le respect de no
         <source>webview.article.signature_prefix</source>
         <target>Rédigé par</target>
       </trans-unit>
+      <trans-unit id="webview.article.yesterday_at" resname="webview.article.yesterday_at">
+        <source>webview.article.yesterday_at</source>
+        <target>Hier à</target>
+      </trans-unit>
+      <trans-unit id="webview.article.yesterday_at_suffix" resname="webview.article.yesterday_at_suffix">
+        <source>webview.article.yesterday_at_suffix</source>
+        <target>heure(s)</target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
+        <source>webview.article.hours_elapsed</source>
+        <target>Il y a</target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+        <source>webview.article.hours_elapsed_suffix</source>
+        <target>heures</target>
+      </trans-unit>
+      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
+        <source>webview.article.minutes_elapsed</source>
+        <target>Il y a</target>
+      </trans-unit>
+      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.minutes_elapsed_suffix">
+        <source>webview.article.minutes_elapsed_suffix</source>
+        <target>minutes</target>
+      </trans-unit>
+      <trans-unit id="webview.article.date_prefix" resname="webview.article.date_prefix">
+        <source>webview.article.date_prefix</source>
+        <target>Le</target>
+      </trans-unit>
+      <trans-unit id="webview.article.date_separator" resname="webview.article.date_separator">
+        <source>webview.article.date_separator</source>
+        <target>À</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

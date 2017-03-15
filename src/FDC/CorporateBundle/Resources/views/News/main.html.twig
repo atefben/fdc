@@ -1,27 +1,50 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading article-single dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block bodyClass %}loading article-single dark fs-off retrospective retrospective-home restrospective-init{% endblock %}
 
 {% block body %}
     <section class="s-slider-retrospective">
 
-        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {#{% if not hideSliderAndMenu|default(false) %}#}
+            {#{% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}#}
+        {#{% endif %}#}
 
         <div class="ajax-section">
             <div class="contain-ajax bright" id="main">
-                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
+                {#{% if not hideSliderAndMenu|default(false) %}#}
+                    {#{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}#}
+                {#{% endif %}#}
                 <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
                     <div class="arrows">
-                        {% if prev[0] is defined and not prev[0] is empty %}
-                            <a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                               class="prev"><i class="icon icon-arrow-left"></i></a>
+                        {% if prev is defined and not prev is empty %}
+                            {% if class(prev) starts with 'News' %}
+                                <a href="{{ path('fdc_corporate_news_get', {'format': prev.newsFormat, 'slug': prev|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
+                                   class="prev"><i class="icon icon-arrow-right"></i></a>
+                            {% else %}
+                                {% if class(prev) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
+                                {% endif %}
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(prev), 'slug': prev|trans_fallback('slug')}) }}"
+                                   class="prev"><i class="icon icon-arrow-left"></i></a>
+                            {% endif %}
                         {% endif %}
-                        {% if next[0] is defined and not next[0] is empty %}
-                            <a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                               class="next"><i class="icon icon-arrow-right"></i></a>
+                        {% if next is defined and not next is empty %}
+                            {% if class(next) starts with 'News' %}
+                                <a href="{{ path('fdc_corporate_news_get', {'format': next.newsFormat, 'slug': next|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
+                                   class="next"><i class="icon icon-arrow-right"></i></a>
+                            {% else %}
+                                {% if class(next) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
+                                {% endif %}
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(next), 'slug': next|trans_fallback('slug')}) }}"
+                                   class="next"><i class="icon icon-arrow-right"></i></a>
+                            {% endif %}
                         {% endif %}
                     </div>
 
@@ -175,11 +198,11 @@
     },
     {
     "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_editions_year', {'year': news.festival.year})
     },
     {
     "name" : 'header.mainnav.nav.lactualite'|trans,
-    "url"  : path('fdc_corporate_news_getarticles', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_news_getarticles', {'year': news.festival.year})
     },
     {
     "name" : news|trans_fallback('title'),

@@ -27,9 +27,14 @@
     {% endif %}
 {% endif %}
 
-
-<div id="player" {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}  data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"></div>
-
+<div class="m-video">
+    <div id="player" {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}  data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"></div>
+    <div class="legend-video">
+        <div class="info">
+            <p>{{ trans.title }}</p>
+        </div>
+    </div>
+</div>
 {#<div class="video-container video-single state-init video"#}
     {#data-link="//www.example.com"#}
     {#data-email="//www.gmail.com"#}

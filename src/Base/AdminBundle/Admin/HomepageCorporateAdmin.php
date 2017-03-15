@@ -298,17 +298,17 @@ class HomepageCorporateAdmin extends Admin
             ))
             ->add('pushSecondaryImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes_306x206',
+                'help' => 'form.homepage.helper_pushes_702x444',
                 'required' => false,
             ))
             ->add('pushSecondaryImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes_306x206',
+                'help' => 'form.homepage.helper_pushes_702x444',
                 'required' => false,
             ))
             ->add('pushSecondaryImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes_3',
+                'help' => 'form.homepage.helper_pushes_1406x886',
                 'required' => false,
             ))
             ->add('displayedSocialWall','checkbox',array(

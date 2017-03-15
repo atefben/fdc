@@ -3,6 +3,9 @@
   overflow: hidden;
   width:  100%;
   height: calc(977px / 1.58);
+  .home & {
+    height: 550px;
+  }
 
   &.video-playlist {
     height: 382px;

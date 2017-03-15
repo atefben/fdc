@@ -16,16 +16,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * @Route("/69-editions/retrospective")
- */
 class NewsController extends Controller
 {
 
     /**
-     * @Route("/{year}/articles")
+     * @Route("/69-editions/retrospective/{year}/articles")
+     * @param Request $request
+     * @param null $year
+     * @return Response
      */
-    public function getArticlesAction(Request $request, $year = null)
+    public function getArticlesAction(Request $request, $year)
     {
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
@@ -51,7 +51,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/articles-ajax/{time}", options={"expose"=true})
+     * @Route("/69-editions/retrospective/{year}/articles-ajax/{time}", options={"expose"=true})
      * @param Request $request
      * @param $year
      * @param int|null $time
@@ -69,35 +69,26 @@ class NewsController extends Controller
 
     private function getArticlesAndFilters(FilmFestival $festival, $locale, $time = null)
     {
-        $since = null;
+        $before = null;
         if ($time) {
-            $since = new DateTime();
-            $since->setTimestamp($time);
+            $before = new DateTime();
+            $before->setTimestamp($time);
         }
-        $maxResults = 30;
+        $maxResults = 50;
 
-        $newsArticles = $this
+        $articles = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getNewsRetrospective($locale, $festival, $since, $maxResults)
+            ->getNewsRetrospective($locale, $festival, null, $maxResults, $before)
         ;
-        $statementArticles = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, $festival, $since, $maxResults)
-        ;
-        $infoArticles = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfoRetrospective($locale, $festival, $since, $maxResults)
-        ;
-
-        $articles = array_merge($newsArticles, $statementArticles, $infoArticles);
-        usort($articles, [$this, 'compareArticle']);
-
-
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
-        $articles = array_slice($articles, 0, 30);
+
+        if (count($articles) > 30) {
+            $last = false;
+            $articles = array_slice($articles, 0, 30);
+        } else {
+            $last = true;
+        }
         if (!$articles) {
             throw new NotFoundHttpException();
         }
@@ -133,9 +124,9 @@ class NewsController extends Controller
         }
 
         $time = null;
-        if ($articles && ($last = end($articles))) {
-            if (method_exists($last, 'getPublishedAt') && $last->getPublishedAt()) {
-                $time = $last->getPublishedAt()->getTimestamp();
+        if ($articles && ($lastArticle = end($articles))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
             }
         }
 
@@ -143,12 +134,135 @@ class NewsController extends Controller
             'festival' => $festival,
             'articles' => $articles,
             'filters'  => $filters,
-            'time'  => $time,
+            'time'     => $time,
+            'last'     => $last,
+        ];
+    }
+
+
+    /**
+     * @Route("infos-et-communiques")
+     * @param Request $request
+     * @return Response
+     */
+    public function infosAndStatementsAction(Request $request)
+    {
+        $locale = $request->getLocale();
+
+
+        $id = $this->getParameter('admin_fdc_page_news_articles_id');
+        $page = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FDCPageNewsArticles')
+            ->find($id)
+        ;
+
+        if (!$page) {
+            $this->createNotFoundException('Page not found');
+        }
+
+        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
+
+        $parameters = $this->infosAndStatementsFilters($locale);
+        return $this->render('FDCCorporateBundle:News:infos-and-statements.html.twig', $parameters);
+    }
+
+    /**
+     * @Route("/69-editions/retrospective/infos-et-communiques/more/{timestamp}")
+     * @param Request $request
+     * @return Response
+     */
+    public function infosAndStatementsMoreAction(Request $request, $timestamp)
+    {
+        $locale = $request->getLocale();
+
+        $parameters = $this->infosAndStatementsFilters($locale, $timestamp);
+        return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
+    }
+
+
+    private function infosAndStatementsFilters($locale, $time = null)
+    {
+        $before = null;
+        if ($time) {
+            $before = new DateTime();
+            $before->setTimestamp($time);
+        }
+        $maxResults = 50;
+
+        $infos = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Info')
+            ->getInfoRetrospective($locale, null, null, $maxResults, $before)
+        ;
+
+        $statements = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Statement')
+            ->getStatementRetrospective($locale, null, null, $maxResults, $before)
+        ;
+
+        $articles = array_merge($infos, $statements);
+        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
+        usort($articles, [$this, 'compareArticle']);
+        if (count($articles) > 30) {
+            $last = false;
+            $articles = array_slice($articles, 0, 30);
+        } else {
+            $last = true;
+        }
+        if (!$articles) {
+            throw new NotFoundHttpException();
+        }
+
+        //set default filters
+        $filters = [];
+        $filters['dates'][0] = 'all';
+        $filters['dateFormated'][0] = 'all';
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['id'][0] = 'all';
+        $filters['format'][0] = 'all';
+
+
+        foreach ($articles as $key => $newsArticle) {
+            if (($key % 3) == 0) {
+                $newsArticle->double = true;
+            }
+
+            //check if filters don't already exist
+            $date = $newsArticle->getPublishedAt();
+            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+                $filters['dates'][$date->format('y-m-d')] = $date;
+            }
+
+            if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
+                $filters['themes']['content'][] = $newsArticle->getTheme();
+            }
+
+            if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
+                $filters['format'][] = $newsArticle->getNewsType();
+            }
+        }
+
+        $time = null;
+        if ($articles && ($lastArticle = end($articles))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
+            }
+        }
+
+        return [
+            'articles' => $articles,
+            'filters'  => $filters,
+            'time'     => $time,
+            'last'     => $last,
+            'festivalYear' => $this->getFestival()->getYear()
         ];
     }
 
     /**
-     * @Route("/{year}/medias")
+     * @Route("/69-editions/retrospective/{year}/medias")
      * @param Request $request
      * @param $year
      * @return Response
@@ -180,7 +294,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/medias-ajax/{page}", options={"expose"=true})
+     * @Route("/69-editions/retrospective/{year}/medias-ajax/{page}", options={"expose"=true})
      * @param Request $request
      * @param $year
      * @param int $page
@@ -208,8 +322,14 @@ class NewsController extends Controller
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
-            ->getRetrospective($locale, $festival, 30, $page)
+            ->getRetrospective($locale, $festival, 31, ($page - 1) * 30)
         ;
+        if (count($medias) > 30) {
+            $medias = array_slice($medias, 0, 30);
+            $last = false;
+        } else {
+            $last = true;
+        }
 
         //set default filters
         $filters = [];
@@ -243,11 +363,12 @@ class NewsController extends Controller
             'filters'  => $filters,
             'festival' => $festival,
             'page'     => $page,
+            'last'     => $last,
         ];
     }
 
     /**
-     * @Route("/videos")
+     * @Route("/69-editions/retrospective/videos")
      * @Template("FDCCorporateBundle:News/list:video.html.twig")
      */
     public function getVideosAction(Request $request)
@@ -315,7 +436,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/audios")
+     * @Route("/69-editions/retrospective/audios")
      * @Template("FDCCorporateBundle:News/list:audio.html.twig")
      */
     public function getAudiosAction(Request $request)
@@ -383,7 +504,7 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
+     * @Route("/69-editions/retrospective/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
      *     options={"expose"=true})
      * @param Request $request
      * @param $year
@@ -508,41 +629,39 @@ class NewsController extends Controller
         } else {
             $newsDate = new DateTime();
         }
+        $exclude = $news->getId();
 
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($festival->getId(), $locale, $newsDate, $count, $news->getId(), null, $focusArticles);
         $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
 
-        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $festival->getId(), $newsDate);
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, null, $newsDate, $siteSlug, $exclude);
         $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
 
-        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $festival->getId(), $newsDate);
+        $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, null, $newsDate, $siteSlug, $exclude);
         $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
-
-        $this->render('FDCCorporateBundle:News:main.html.twig', [
+        return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'localeSlugs'            => $localeSlugs,
             'focusArticles'          => $focusArticles,
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
-            'prev'                   => $prevArticlesURL,
-            'next'                   => $nextArticlesURL,
+            'prev'                   => reset($prevArticlesURL),
+            'next'                   => reset($nextArticlesURL),
             'associatedFilm'         => $associatedFilm,
             'sameDayArticles'        => $sameDayArticles,
             'nextProjectionDate'     => $nextProjectionDate,
-            'festivals'              => $festivals,
         ]);
     }
 
     /**
-     * @Route("/{year}/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
+     * @Route("/infos-communiques/{type}/{format}/{slug}", requirements={"type": "communique|info", "format": "articles|audios|videos|photos"}, options={"expose"=true}))
      * @param Request $request
-     * @param $year
      * @param $type
      * @param $format
      * @param $slug
      * @return Response
      */
-    public function pressSingleAction(Request $request, $year, $type, $format, $slug)
+    public function pressSingleAction(Request $request, $type, $format, $slug)
     {
         $locale = $request->getLocale();
 
@@ -552,14 +671,9 @@ class NewsController extends Controller
         }
 
         // GET FDC SETTINGS
-        $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        if ($festival === null) {
-            throw $this->createNotFoundException();
-        }
 
-        $festivalId = $festival->getId();
         $format = substr($format, 0, -1);
 
         if ('communique' == $type) {
@@ -567,42 +681,43 @@ class NewsController extends Controller
             $news = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Statement')
-                ->getStatementBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
+                ->getStatementBySlug($slug, null, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         } else {
             $repository = array_flip(Info::getTypes())[$format];
             $news = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Info')
-                ->getInfoBySlug($slug, $festivalId, $locale, $isAdmin, $repository, 'site-institutionnel')
+                ->getInfoBySlug($slug, null, $locale, $isAdmin, $repository, 'site-institutionnel')
             ;
         }
         if (!$news) {
             throw $this->createNotFoundException();
         }
+        $festival = $news->getFestival();
 
         $associatedFilm = null;
         $associatedProgrammation = null;
         $associatedFilmDuration = null;
-        $type = null;
+        $typeAssociated = null;
         if ($news->getAssociatedFilm() != null) {
             $associatedFilm = $news->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type = 'film';
+            $typeAssociated = 'film';
         } elseif ($news->getAssociatedEvent() != null) {
             $associatedFilm = $news->getAssociatedEvent()->getAssociatedFilm();
             $associatedFilmDuration = date('H:i', mktime(0, $associatedFilm->getDuration()));
             $associatedProgrammation = $associatedFilm->getProjectionProgrammationFilms();
-            $type = 'film';
+            $typeAssociated = 'film';
         } elseif ($news->getAssociatedProjections() != null) {
             $associatedProgrammation = $news->getAssociatedProjections();
-            $type = 'event';
+            $typeAssociated = 'event';
         }
         $programmations = [];
         if ($associatedProgrammation != null) {
             foreach ($associatedProgrammation as $projection) {
-                if ($type == 'event') {
+                if ($typeAssociated == 'event') {
                     $programmations[] = $projection->getAssociation();
                 } else {
                     $programmations[] = $projection->getProjection();
@@ -636,22 +751,58 @@ class NewsController extends Controller
         $this->get('base.manager.seo')->setFDCEventPageNewsSeo($news, $locale);//get day articles
         $count = 3;
         $newsDate = $news->getPublishedAt();
+        $exclude = $news->getId();
 
         if ($type == "communique") {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt());
-            $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt());
-            $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         } else {
             $sameDayArticles = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getSameDayInfo($festival->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt());
-            $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt());
-            $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
+
         }
+        $prevStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $prevStatement = $this->removeUnpublishedNewsAudioVideo($prevStatement, $locale);
+        $prevStatement = reset($prevStatement);
+        $nextStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $nextStatement = $this->removeUnpublishedNewsAudioVideo($nextStatement, $locale);
+        $nextStatement = reset($nextStatement);
+
+
+
+        $prevInfo = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $prevInfo = $this->removeUnpublishedNewsAudioVideo($prevInfo, $locale);
+        $prevInfo = reset($prevInfo);
+        $nextInfo = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);
+        $nextInfo = $this->removeUnpublishedNewsAudioVideo($nextInfo, $locale);
+        $nextInfo = reset($nextInfo);
+
+        $prev = null;
+        if ($prevStatement && $prevInfo) {
+            if ($prevStatement->getPublishedAt()->getTimestamp() >= $prevInfo->getPublishedAt()->getTimestamp()) {
+                $prev = $prevStatement;
+            } else {
+                $prev = $prevInfo;
+            }
+        } elseif ($prevStatement) {
+            $prev = $prevStatement;
+        } elseif ($prevInfo) {
+            $prev = $prevInfo;
+        }
+
+        $next = null;
+        if ($nextStatement && $nextInfo) {
+            if ($nextStatement->getPublishedAt()->getTimestamp() <= $nextInfo->getPublishedAt()->getTimestamp()) {
+                $next = $nextStatement;
+            } else {
+                $next = $nextInfo;
+            }
+        } elseif ($nextStatement) {
+            $next = $nextStatement;
+        } elseif ($nextInfo) {
+            $next = $nextInfo;
+        }
+
 
         return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'festivals'              => $festivals,
@@ -660,10 +811,11 @@ class NewsController extends Controller
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
-            'prev'                   => $prevArticlesURL,
-            'next'                   => $nextArticlesURL,
+            'prev'                   => $prev,
+            'next'                   => $next,
             'associatedFilm'         => $associatedFilm,
-            'sameDayArticles'        => $sameDayArticles
+            'sameDayArticles'        => $sameDayArticles,
+            'hideSliderAndMenu'      => true,
         ]);
     }
 

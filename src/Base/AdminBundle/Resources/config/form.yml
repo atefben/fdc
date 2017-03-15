@@ -673,6 +673,7 @@ services:
         calls:
             - ['setSonataAdmin', ['@base.admin.press_graphical_charter_widget_image_dummy']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+            - ['setMediaFileAdmin', ['@base.admin.mdf_media_pdf']]
 
     base.admin.form.who_are_we_team_widget_type:
         scope: prototype

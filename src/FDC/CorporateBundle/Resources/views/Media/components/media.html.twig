@@ -1,4 +1,4 @@
- {% if media.mediaType == 'MediaImage' %}
+{% if media.mediaType == 'MediaImage' %}
     {% set photo = media %}
     {% set trans = photo.findTranslationByLocale(app.request.locale) %}
     {% if trans is null or trans.file is null %}
@@ -6,16 +6,24 @@
     {% endif %}
     {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
     {% set copyright = photo|trans_fallback('copyright') %}
-
-    <article class="card card-01 item photo shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }}" data-format="photo"
-             data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
+    <article
+            class="card card-01 item photo img shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }}"
+            data-format="photo"
+            data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+            data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
         <div class="item-inner">
             <a href="{% path trans.file , 'reference' %}" class="linkAllCover"></a>
             <div class="image">
                 <div class="image-wrapper">
                     {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                     {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
-                    <img src="{% path trans.file , resolutionRetina %}" alt="" data-id="pid={{ photo.id }}" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}" data-title='<span class="category">{{ photo.theme|trans_fallback('name') }}</span><span class="date">{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span><h2>{{ photo|trans_fallback('legend') }}</h2>' data-label="{{ photo.theme|trans_fallback('slug') }}" data-date="{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}" data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ (mediaUrl ~ '#pid=' ~ photo.id )|escape('url') }}&picture={% path trans.file , resolution %}&name={{ trans.legend|escape('url') }}&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" data-twitterurl="https://twitter.com/intent/tweet?text={{ trans.legend ? trans.legend ~ ' ' : ''|escape('url') }}{{ (mediaUrl ~ '#pid=' ~ photo.id )|escape('url') }}" />
+                    <img src="{% path trans.file , resolutionRetina %}" alt="" data-id="pid=mi-{{ photo.id }}"
+                         data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
+                         data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }}"
+                         data-label="{{ photo.theme|trans_fallback('slug') }}"
+                         data-date="{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}"
+                         data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ (mediaUrl ~ '#pid=' ~ photo.id )|escape('url') }}&picture={% path trans.file , resolution %}&name={{ trans.legend|escape('url') }}&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                         data-twitterurl="https://twitter.com/intent/tweet?text={{ trans.legend ? trans.legend ~ ' ' : ''|escape('url') }}{{ (mediaUrl ~ '#pid=mi' ~ photo.id )|escape('url') }}"/>
                 </div>
                 <a href="{% path trans.file , 'reference' %}" class="linkImage"></a>
                 <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
@@ -24,7 +32,8 @@
                 <span class="picto"><i class="icon icon-photo"></i></span>
                 <div class="contain-txt">
                     <div>
-                        <a href="#" class="category">{{ photo.theme|trans_fallback('name')|truncate(22) }} </a><span class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
+                        <a href="#" class="category">{{ photo.theme|trans_fallback('name')|truncate(22) }} </a><span
+                                class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
                                 class="hour">{{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span>
                     </div>
                     <strong><a href="{% path trans.file , 'reference' %}">{{ photo|trans_fallback('legend') }}</a></strong>
@@ -54,25 +63,29 @@
         {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
     {%- endif -%}
     {% if transImage is defined or amazonImage is defined %}
-        <article class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}" data-format="video"
-                 data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false" data-vid="{{ video.id }}"
-                 data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
-                 data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}"
-                 data-date="date-{{ video.publishedAt|date('d-m-y') }}">
+        <article
+                class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}"
+                data-format="video"
+                data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+                data-vid="{{ video.id }}"
+                data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}"
+                data-date="date-{{ video.publishedAt|date('d-m-y') }}">
             <div class="item-inner">
                 <a href="#" class="linkAllCover"></a>
                 <div class="image">
                     <div class="image-wrapper">
-                        <img src="{% if transImage is not null %}{% path transImage.file , '640x404' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
+                        <img src="{% if transImage is not null %}{% path transImage.file , '640x404' %}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}"
+                             alt="{{ transImage|trans_fallback('alt') }}">
                     </div>
                     <a href="#" class="linkImage"></a>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
                 </div>
                 <div class="info vFlexAlign">
                     <span class="picto"><i class="icon icon-video"></i></span>
                     <div class="contain-txt">
                         <div>
-                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }} </a><span class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span
+                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }} </a><span
+                                    class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span
                                     class="hour">{{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
                         </div>
                         <strong><a href="#">{{ video|trans_fallback('title') }}</a></strong>
@@ -80,49 +93,46 @@
                 </div>
             </div>
         </article>
-    {%  endif %}
+    {% endif %}
 {% elseif media.mediaType == 'MediaAudio' %}
     {% set audio = media %}
     {% set trans = audio.findTranslationByLocale(app.request.locale) %}
     {% if trans is null %}
         {% set trans = audio.findTranslationByLocale('fr') %}
     {% endif %}
-    {% if audio.header is not null %}
-        {% set transImage = audio.header.findTranslationByLocale(app.request.locale) %}
-        {% if transImage is null or transImage.file is null %}
-            {% set transImage = audio.header.findTranslationByLocale('fr') %}
-        {% endif %}
-    {% elseif audio.image %}
+    {% if audio.image %}
         {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
         {% if transImage is null or transImage.file is null %}
             {% set transImage = audio.image.findTranslationByLocale('fr') %}
         {% endif %}
     {% endif %}
-    {% if transImage is defined %}
-        <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}" data-format="audio"
-                 data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"  data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]' data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
-                 data-img="{% path transImage.file , '1144x724' %}"
-                 data-aid="{{ audio.id }}">
-            <div class="item-inner">
-                <a href="#" class="linkAllCover"></a>
-                <div class="image">
-                    <div class="image-wrapper">
-                        <img src="{% path transImage.file , '572x362' %}" alt=""/>
-                    </div>
-                    <a href="#" class="linkImage"></a>
-                    <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+    <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}"
+             data-format="audio"
+             data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+             data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+             data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
+             data-img="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '1144x724' %}{% endif %}"
+             data-aid="{{ audio.id }}">
+        <div class="item-inner">
+            <a href="#" class="linkAllCover"></a>
+            <div class="image">
+                <div class="image-wrapper">
+                    <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '572x362' %}{% endif %}"
+                         alt=""/>
                 </div>
-                <div class="info vFlexAlign">
-                    <span class="picto"><i class="icon icon-audio"></i></span>
-                    <div class="contain-txt">
-                        <div>
-                            <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
-                                    class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
-                        </div>
-                        <strong><a href="#">{{ audio|trans_fallback('title') }}</a></strong>
+                <a href="#" class="linkImage"></a>
+            </div>
+            <div class="info vFlexAlign">
+                <span class="picto"><i class="icon icon-audio"></i></span>
+                <div class="contain-txt">
+                    <div>
+                        <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span
+                                class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
+                                class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
                     </div>
+                    <strong><a href="#">{{ audio|trans_fallback('title') }}</a></strong>
                 </div>
             </div>
-        </article>
-    {% endif %}
+        </div>
+    </article>
 {% endif %}

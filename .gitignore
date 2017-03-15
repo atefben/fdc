@@ -126,3 +126,5 @@ src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.en.xliff
 src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.fr.xliff
 src/FDC/CourtMetrageBundle/Resources/translations/messages.en.xliff
 src/FDC/CourtMetrageBundle/Resources/translations/messages.fr.xliff
+
+/web/clear-cache.php

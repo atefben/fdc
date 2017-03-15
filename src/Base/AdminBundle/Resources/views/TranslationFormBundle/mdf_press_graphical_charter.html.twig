@@ -44,6 +44,7 @@
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
                                             {{ form_row(widget.image) }}
+                                            {{ form_row(widget.epsFile) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
                                             <a class="btn btn-danger btn-sm btn-outline remove_item">
@@ -78,6 +79,7 @@
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.position) }}
                                             {{ form_row(widget.image) }}
+                                            {{ form_row(widget.epsFile) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}

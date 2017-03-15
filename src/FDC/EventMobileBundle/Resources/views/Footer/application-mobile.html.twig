@@ -1,23 +1,41 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% extends 'FDCEventMobileBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets "bundles/fdceventmobile/css/article.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
-<div id="main" class="app loading">
-    <div class="contain-app">
-        <h1>{{ 'applicationmobile.title.telechargezlapplication'|trans|raw }}</h1>
-        <h2>{{ 'applicationmobile.title.lapplicationofficielle'|trans|raw }}</h2>
-        <div class="logo-app">
-            <a href="{{ fdc_app_ios_download_url }}">
-                {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
-                <img src="{{ asset_url }}" alt="apple" />
-                {% endimage %}
-            </a>
-            <a href="{{ fdc_app_android_download_url }}">
-                {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
-                <img src="{{ asset_url }}" alt="android" />
-                {% endimage %}
-            </a>
+    <div id="main" class="participate-page" data-menu="participate">
+        {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
+        {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
+        <div id="app" class="app loading">
+            <div class="contain-app">
+                <h1>{{ 'applicationmobile.title.telechargezlapplication'|trans|raw }}</h1>
+                <h2>{{ 'applicationmobile.title.lapplicationofficielle'|trans|raw }}</h2>
+                <div class="logo-app">
+                    <a href="{{ 'https://itunes.apple.com/' ~ app.request.locale ~ '/app/festival-de-cannes-officiel/id431842884?mt=8' }}">
+                        {% image '@FDCEventBundle/Resources/public/img/appstore.png' %}
+                        <img src="{{ asset_url }}" alt="apple" />
+                        {% endimage %}
+                    </a>
+                    <a href="{{ 'https://play.google.com/store/apps/details?id=fr.festivaldecannes&feature=search_result&hl=' ~ app.request.locale }}">
+                        {% image '@FDCEventBundle/Resources/public/img/appgoogle.png' %}
+                        <img src="{{ asset_url }}" alt="android" />
+                        {% endimage %}
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@FDCEventMobileBundle/Resources/public/js/participate.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ parent() }}
 {% endblock %}

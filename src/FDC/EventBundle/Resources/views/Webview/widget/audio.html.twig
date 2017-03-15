@@ -27,7 +27,7 @@
     {% endif %}
 {% endif %}
 <div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
-      data-date="<strong>Le</strong> 10.05.16"  
+      data-date="<strong>{{ 'webview.article.date_prefix'|trans }}</strong> {{ widget.updatedAt|date('d.m.Y') }} {{ 'webview.article.date_separator'|trans }} {{ widget.updatedAt|date('H:i:s') }}"  
       data-title="{{ title }}" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>
 <div class="Article-content">

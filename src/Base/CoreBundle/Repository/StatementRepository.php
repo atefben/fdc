@@ -336,9 +336,10 @@ class StatementRepository extends EntityRepository
      * @param $dateTime
      * @param null $count
      * @param string $site
-     * @return mixed
+     * @param bool $displayedOnCorpoHome
+     * @return Statement[]
      */
-    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press')
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -398,6 +399,13 @@ class StatementRepository extends EntityRepository
 
         if ($count) {
             $qb->setMaxResults($count);
+        }
+
+        if ($displayedOnCorpoHome) {
+            $qb
+                ->andWhere('n.displayedOnCorpoHome = :displayedOnCorpoHome')
+                ->setParameter(':displayedOnCorpoHome', true)
+            ;
         }
 
         return $qb
@@ -510,9 +518,10 @@ class StatementRepository extends EntityRepository
      * @param $festival
      * @param $since
      * @param int $maxResults
+     * @param $before
      * @return Statement[]
      */
-    public function getStatementRetrospective($locale, $festival, $since, $maxResults)
+    public function getStatementRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -524,7 +533,6 @@ class StatementRepository extends EntityRepository
             ->leftjoin('naa.translations', 'naat')
             ->leftjoin('nv.translations', 'nvt')
             ->leftjoin('ni.translations', 'nit')
-            ->andWhere('n.festival = :festival')
             ->andWhere(
                 "(nat.locale = 'fr' AND nat.status = :status)
                 OR (nit.locale = 'fr' AND nit.status = :status)
@@ -561,12 +569,22 @@ class StatementRepository extends EntityRepository
             ;
         }
 
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt > :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
         return $qb
-            ->setMaxResults($maxResults)
             ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     /**
@@ -685,14 +703,14 @@ class StatementRepository extends EntityRepository
      * @param $since
      * @param int $page
      * @param int $count
+     * @param \DateTime|null $limitDate
      * @return Statement[]
      */
-    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
     {
         $now = new \DateTime();
         $qb = $this
             ->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementAudio', 'naa', 'WITH', 'naa.id = n.id')
             ->leftjoin('Base\CoreBundle\Entity\StatementVideo', 'nv', 'WITH', 'nv.id = n.id')
@@ -705,8 +723,6 @@ class StatementRepository extends EntityRepository
             ->setParameter('displayedMobile', true)
             ->andWhere('n.festival = :festival')
             ->setParameter('festival', $festival)
-            ->andWhere('s.slug = :site')
-            ->setParameter('site', 'site-press')
             ->andWhere('n.publishedAt >= :since and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('since', $since)
             ->setParameter('now', $now)
@@ -718,6 +734,13 @@ class StatementRepository extends EntityRepository
             )
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb
@@ -759,7 +782,7 @@ class StatementRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getApiLastStatements($festival, $dateTime, $locale, $count)
+    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
@@ -781,6 +804,13 @@ class StatementRepository extends EntityRepository
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
             )
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb = $qb
@@ -812,7 +842,7 @@ class StatementRepository extends EntityRepository
         return $qb;
     }
 
-    public function getOlderStatement($locale, $festival, $date)
+    public function getOlderStatement($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -828,11 +858,7 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival')
-        ;
-
-        $qb = $qb
+            ->andWhere('n.publishedAt <= :date')
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -843,8 +869,15 @@ class StatementRepository extends EntityRepository
             ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
         ;
 
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
+
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -859,24 +892,27 @@ class StatementRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
 
-        $qb = $qb
+        $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
             ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
+            ->setParameter('site_slug', $site)
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
-
-        return $qb;
+            ;
     }
 
-    public function getNextStatement($locale, $festival, $date)
+    public function getNextStatement($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -892,11 +928,9 @@ class StatementRepository extends EntityRepository
             ->leftjoin('na3.translations', 'na3t')
             ->leftjoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival')
-        ;
-
-        $qb = $qb
+            ->setParameter('site_slug', $site)
+            ->andWhere('n.publishedAt >= :date')
+            ->setParameter('date', $date)
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -907,8 +941,15 @@ class StatementRepository extends EntityRepository
             ->setParameter('status', StatementArticleTranslation::STATUS_PUBLISHED)
         ;
 
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
+
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -924,20 +965,23 @@ class StatementRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'ASC')
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        $qb
+            ->addOrderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
-            ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
-        return $qb;
     }
 
     public function getAllStatement($locale, $festival)

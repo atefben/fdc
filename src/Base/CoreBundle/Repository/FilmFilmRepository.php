@@ -4,25 +4,25 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaVideo;
 
 /**
- * FilmFilmRepository class.
- * \@extends EntityRepository
- * @author   Antoine Mineau
- * \@company Ohwee
+ * Class FilmFilmRepository
+ * @package Base\CoreBundle\Repository
  */
 class FilmFilmRepository extends EntityRepository
 {
     public function getApiFilms($festival, $selection)
     {
         $query = $this->createQueryBuilder('f')
-                      ->where('f.festival = :festival')
-                      ->setParameter('festival', $festival)
+            ->where('f.festival = :festival')
+            ->setParameter('festival', $festival)
         ;
 
         if ($selection !== null) {
             $query = $query->andWhere('f.selection = :selection')
-                           ->setParameter('selection', $selection)
+                ->setParameter('selection', $selection)
             ;
         }
 
@@ -38,23 +38,23 @@ class FilmFilmRepository extends EntityRepository
     public function getApiFilm($id, $festival)
     {
         return $this->createQueryBuilder('f')
-                    ->where('f.festival = :festival')
-                    ->andWhere('f.id = :id')
-                    ->setParameter('festival', $festival)
-                    ->setParameter('id', $id)
-                    ->getQuery()
-                    ->getOneOrNullResult()
+            ->where('f.festival = :festival')
+            ->andWhere('f.id = :id')
+            ->setParameter('festival', $festival)
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
             ;
     }
 
     public function getApiFilmTrailers($festival, $locale)
     {
         $qb = $this->createQueryBuilder('f')
-                   ->join('f.associatedMediaVideos', 'fa')
-                   ->join('fa.mediaVideo', 'mv')
-                   ->join('mv.translations', 'mvt')
-                   ->where('mv.displayedTrailer = :displayedTrailer')
-                   ->setParameter('displayedTrailer', true)
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.mediaVideo', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('mv.displayedTrailer = :displayedTrailer')
+            ->setParameter('displayedTrailer', true)
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
@@ -67,13 +67,13 @@ class FilmFilmRepository extends EntityRepository
     public function getApiTrailers($id, $festival, $locale)
     {
         $qb = $this->createQueryBuilder('f')
-                   ->join('f.associatedMediaVideos', 'fa')
-                   ->join('fa.mediaVideo', 'mv')
-                   ->join('mv.translations', 'mvt')
-                   ->where('f.id = :id')
-                   ->andWhere('mv.displayedTrailer = :displayed_trailer')
-                   ->setParameter('id', $id)
-                   ->setParameter('displayed_trailer', true)
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.mediaVideo', 'mv')
+            ->join('mv.translations', 'mvt')
+            ->where('f.id = :id')
+            ->andWhere('mv.displayedTrailer = :displayed_trailer')
+            ->setParameter('id', $id)
+            ->setParameter('displayed_trailer', true)
         ;
 
         $qb = $this->addMasterQueries($qb, 'mv', $festival);
@@ -87,15 +87,15 @@ class FilmFilmRepository extends EntityRepository
     public function getFilmsThatHaveTrailers($festival, $locale, $selectionSection = null)
     {
         $qb = $this->createQueryBuilder('f')
-                   ->join('f.translations', 't')
-                   ->join('f.associatedMediaVideos', 'fa')
-                   ->join('fa.mediaVideo', 'mv')
-                   ->join('mv.sites', 's')
-                   ->join('mv.translations', 'mvt')
-                   ->where('mv.displayedTrailer = :displayed_trailer')
-                   ->andWhere('t.slug IS NOT NULL')
-                   ->andWhere("t.slug != ''")
-                   ->setParameter('displayed_trailer', true)
+            ->join('f.translations', 't')
+            ->join('f.associatedMediaVideos', 'fa')
+            ->join('fa.mediaVideo', 'mv')
+            ->join('mv.sites', 's')
+            ->join('mv.translations', 'mvt')
+            ->where('mv.displayedTrailer = :displayed_trailer')
+            ->andWhere('t.slug IS NOT NULL')
+            ->andWhere("t.slug != ''")
+            ->setParameter('displayed_trailer', true)
         ;
 
         $this->addMasterQueries($qb, 'mv', $festival);
@@ -235,7 +235,7 @@ class FilmFilmRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getPalmaresCameraDOr($festival, $selectionSectionIds = array(), $exclude = array())
+    public function getPalmaresCameraDOr($festival, $selectionSectionIds = [], $exclude = [])
     {
         $qb = $this
             ->createQueryBuilder('f')
@@ -282,4 +282,55 @@ class FilmFilmRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @param MediaVideo $mediaVideo
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMediaVideo(MediaVideo $mediaVideo)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.associatedMediaVideos', 'amv')
+            ->innerJoin('amv.mediaVideo', 'mv')
+            ->andWhere('mv.id = :id')
+            ->setParameter(':id', $mediaVideo->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param MediaAudio $mediaAudio
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMediaAudio(MediaAudio $mediaAudio)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.associatedMediaAudios', 'ama')
+            ->innerJoin('ama.mediaAudio', 'ma')
+            ->andWhere('ma.id = :id')
+            ->setParameter(':id', $mediaAudio->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param MediaVideo $mediaVideo
+     * @return FilmFilm[]
+     */
+    public function getFilmsByMainVideo(MediaVideo $mediaVideo)
+    {
+        return $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.videoMain', 'mv')
+            ->andWhere('mv.id = :id')
+            ->setParameter(':id', $mediaVideo->getId())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }
