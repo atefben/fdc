@@ -118,7 +118,6 @@ var owInitGrid = function (id) {
                             });
                             $('.articles-wrapper').css('height',h);
                         });
-                        console.log('test');
 
                         $('.articles-wrapper .isotope-01').each(function(){
                             if($(this).data('isotope')){
