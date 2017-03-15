@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaImageSimple;
+
 use \DateTime;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
@@ -34,9 +34,9 @@ class CcmNewsWidgetVideoYoutube extends CcmNewsWidget
     protected $translations;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $image;
@@ -49,10 +49,10 @@ class CcmNewsWidgetVideoYoutube extends CcmNewsWidget
     /**
      * Set image
      *
-     * @param MediaImageSimple $image
+     * @param CcmMediaImageSimple $image
      * @return CcmNewsWidgetVideoYoutube
      */
-    public function setImage(MediaImageSimple $image = null)
+    public function setImage(CcmMediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -62,7 +62,7 @@ class CcmNewsWidgetVideoYoutube extends CcmNewsWidget
     /**
      * Get image
      *
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getImage()
     {

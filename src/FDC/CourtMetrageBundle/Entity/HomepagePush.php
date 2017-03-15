@@ -5,7 +5,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,8 +25,8 @@ class HomepagePush
     protected $id;
 
     /**
-     * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepagePushes")
+     * @var CcmMediaImage
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", inversedBy="homepagePushes")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;
@@ -64,7 +63,7 @@ class HomepagePush
     /**
      * Get Image.
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage()
     {
@@ -74,7 +73,7 @@ class HomepagePush
     /**
      * Set Image.
      *
-     * @param MediaImage $image
+     * @param CcmMediaImage $image
      *
      * @return $this
      */

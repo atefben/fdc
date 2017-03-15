@@ -14,17 +14,17 @@ use Doctrine\ORM\Mapping as ORM;
 class CcmShortFilmCornerWidgetImageDualAlign extends CcmShortFilmCornerWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\GalleryDualAlign")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlign")
      */
     protected $gallery;
 
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\GalleryDualAlign $gallery
+     * @param CcmGalleryDualAlign $gallery
      * @return CcmShortFilmCornerWidgetImageDualAlign
      */
-    public function setGallery(\Base\CoreBundle\Entity\GalleryDualAlign $gallery = null)
+    public function setGallery(CcmGalleryDualAlign $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -34,7 +34,7 @@ class CcmShortFilmCornerWidgetImageDualAlign extends CcmShortFilmCornerWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\GalleryDualAlign 
+     * @return CcmGalleryDualAlign 
      */
     public function getGallery()
     {

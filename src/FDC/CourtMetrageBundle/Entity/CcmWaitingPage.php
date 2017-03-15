@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,9 +24,9 @@ class CcmWaitingPage
     protected $id;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      *
      */
     protected $image;
@@ -88,7 +87,7 @@ class CcmWaitingPage
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getImage()
     {

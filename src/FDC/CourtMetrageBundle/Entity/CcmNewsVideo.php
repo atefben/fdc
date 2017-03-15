@@ -4,9 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Base\CoreBundle\Entity\MediaImage;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Util\Time;
 
 use Base\CoreBundle\Util\TruncatePro;
@@ -31,9 +28,9 @@ class CcmNewsVideo extends CcmNews
     use TruncatePro;
 
     /**
-     * @var MediaVideo
+     * @var CcmMediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaVideo")
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      * @Assert\NotNull()
@@ -41,9 +38,9 @@ class CcmNewsVideo extends CcmNews
     protected $video;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
@@ -67,10 +64,10 @@ class CcmNewsVideo extends CcmNews
     /**
      * Set video
      *
-     * @param \Base\CoreBundle\Entity\MediaVideo $video
+     * @param CcmMediaVideo $video
      * @return CcmNewsVideo
      */
-    public function setVideo(\Base\CoreBundle\Entity\MediaVideo $video = null)
+    public function setVideo(CcmMediaVideo $video = null)
     {
         $this->video = $video;
 
@@ -80,7 +77,7 @@ class CcmNewsVideo extends CcmNews
     /**
      * Get video
      *
-     * @return \Base\CoreBundle\Entity\MediaVideo 
+     * @return CcmMediaVideo 
      */
     public function getVideo()
     {
@@ -90,10 +87,10 @@ class CcmNewsVideo extends CcmNews
     /**
      * Set image
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $image
+     * @param CcmMediaImage $image
      * @return CcmNewsVideo
      */
-    public function setImage(\Base\CoreBundle\Entity\MediaImage $image = null)
+    public function setImage(CcmMediaImage $image = null)
     {
         $this->image = $image;
 
@@ -103,7 +100,7 @@ class CcmNewsVideo extends CcmNews
     /**
      * Get image
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return CcmMediaImage 
      */
     public function getImage()
     {
@@ -114,7 +111,7 @@ class CcmNewsVideo extends CcmNews
     /**
      * Get header
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getHeader()
     {
@@ -124,10 +121,10 @@ class CcmNewsVideo extends CcmNews
     /**
      * Set header
      *
-     * @param MediaImage $header
-     * @return NewsArticle
+     * @param CcmMediaImage $header
+     * @return CcmNewsVideo
      */
-    public function setHeader(MediaImage $header = null)
+    public function setHeader(CcmMediaImage $header = null)
     {
         $this->image = $header;
 

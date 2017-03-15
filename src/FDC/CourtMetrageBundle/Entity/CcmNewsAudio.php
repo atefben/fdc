@@ -2,8 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaImage;
+
 use Base\CoreBundle\Util\Time;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
@@ -30,18 +29,18 @@ class CcmNewsAudio extends CcmNews
     use TruncatePro;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     protected $header;
 
     /**
-     * @var MediaAudio
+     * @var CcmMediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaAudio")
      *
      * @Groups({"news_list", "search", "news_show", "home"})
      * @Assert\NotNull()
@@ -67,10 +66,10 @@ class CcmNewsAudio extends CcmNews
     /**
      * Set header
      *
-     * @param MediaImage $header
+     * @param CcmMediaImage $header
      * @return CcmNewsAudio
      */
-    public function setHeader(MediaImage $header = null)
+    public function setHeader(CcmMediaImage $header = null)
     {
         $this->header = $header;
 
@@ -80,7 +79,7 @@ class CcmNewsAudio extends CcmNews
     /**
      * Get header
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getHeader()
     {
@@ -90,10 +89,10 @@ class CcmNewsAudio extends CcmNews
     /**
      * Set audio
      *
-     * @param \Base\CoreBundle\Entity\MediaAudio $audio
+     * @param CcmMediaAudio $audio
      * @return CcmNewsAudio
      */
-    public function setAudio(\Base\CoreBundle\Entity\MediaAudio $audio = null)
+    public function setAudio(CcmMediaAudio $audio = null)
     {
         $this->audio = $audio;
 
@@ -103,7 +102,7 @@ class CcmNewsAudio extends CcmNews
     /**
      * Get audio
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return CcmMediaAudio 
      */
     public function getAudio()
     {

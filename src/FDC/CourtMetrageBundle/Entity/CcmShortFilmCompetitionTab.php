@@ -6,7 +6,6 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Base\CoreBundle\Entity\FilmSelectionSection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Entity\MediaImage;
 
 /**
  * CcmShortFilmCompetitionTab
@@ -37,9 +36,9 @@ class CcmShortFilmCompetitionTab
     protected $type;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      */
     protected $image;
@@ -86,7 +85,7 @@ class CcmShortFilmCompetitionTab
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage()
     {

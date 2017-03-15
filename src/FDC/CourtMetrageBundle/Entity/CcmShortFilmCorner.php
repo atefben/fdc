@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
@@ -43,9 +42,9 @@ class CcmShortFilmCorner implements TranslateMainInterface
     protected $type;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $image;
 
@@ -271,10 +270,10 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * Set image
      *
-     * @param MediaImageSimple $image
+     * @param CcmMediaImageSimple $image
      * @return CcmShortFilmCorner
      */
-    public function setImage(MediaImageSimple $image = null)
+    public function setImage(CcmMediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -284,7 +283,7 @@ class CcmShortFilmCorner implements TranslateMainInterface
     /**
      * Get image
      *
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getImage()
     {

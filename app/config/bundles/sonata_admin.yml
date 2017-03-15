@@ -104,6 +104,9 @@ sonata_admin:
             dashboard.group.media:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            dashboard.group.ccm_media:
+                items: ~
+                label_catalogue: BaseAdminBundle
             dashboard.group.soif:
                 items: ~
                 label_catalogue: BaseAdminBundle

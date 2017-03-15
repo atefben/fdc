@@ -2340,6 +2340,86 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Configurer Programme}
 
+    #CCM Media
+    base.admin.ccm_media_image:
+        class: Base\AdminBundle\Admin\CCM\MediaImageAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMediaImage, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.media_image, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_media_image_simple:
+        class: Base\AdminBundle\Admin\CCM\MediaImageSimpleAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.media_image_simple, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_media_audio:
+        class: Base\AdminBundle\Admin\CCM\MediaAudioAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMediaAudio, BaseAdminBundle:CCM\MediaAudioAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.media_audio, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_media_video:
+        class: Base\AdminBundle\Admin\CCM\MediaVideoAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMediaVideo, BaseAdminBundle:CCM\MediaVideoAdmin]
+        tags:
+           - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.media_video, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+           - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_gallery:
+        class: Base\AdminBundle\Admin\CCM\GalleryAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmGallery, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.gallery, label_translator_strategy: sonata.admin.label.strategy.underscore }
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_gallery_media:
+        class: Base\AdminBundle\Admin\CCM\GalleryMediaAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmGalleryMedia, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CCMGalleryMediaAdmin, show_in_dashboard: false}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_gallery_dual_align:
+        class: Base\AdminBundle\Admin\CCM\GalleryDualAlignAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlign, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CCMGalleryDualAlign, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_gallery_dual_align_media:
+        class: Base\AdminBundle\Admin\CCM\GalleryDualAlignMediaAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlignMedia, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: CCMGalleryDualAlignMediaAdmin, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_media_pdf:
+        class: Base\AdminBundle\Admin\CCM\MediaPdfAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmMediaPdf, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.ccm_media, label: entity.media_pdf, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.ccm_theme:
+        class: Base\AdminBundle\Admin\CCM\ThemeAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmTheme, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dashboard.group.general, label: entity.theme, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
     #CCM News
     base.admin.ccm_news:
         class: Base\AdminBundle\Admin\CCM\CcmNewsAdmin

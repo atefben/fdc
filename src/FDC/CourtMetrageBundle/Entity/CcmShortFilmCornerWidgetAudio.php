@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 
-use Base\CoreBundle\Entity\MediaAudio;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmShortFilmCornerWidgetAudio
@@ -15,19 +14,19 @@ use Doctrine\ORM\Mapping as ORM;
 class CcmShortFilmCornerWidgetAudio extends CcmShortFilmCornerWidget
 {
     /**
-     * @var MediaAudio
+     * @var CcmMediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaAudio", cascade={"persist"})
      */
     protected $file;
 
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\MediaAudio $file
+     * @param CcmMediaAudio $file
      * @return CcmShortFilmCornerWidgetAudio
      */
-    public function setFile(MediaAudio $file = null)
+    public function setFile(CcmMediaAudio $file = null)
     {
         $this->file = $file;
 
@@ -37,7 +36,7 @@ class CcmShortFilmCornerWidgetAudio extends CcmShortFilmCornerWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return CcmMediaAudio 
      */
     public function getFile()
     {

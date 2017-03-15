@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaImage;
+
 use Base\CoreBundle\Util\TruncatePro;
 use \DateTime;
 
@@ -31,16 +31,16 @@ class CcmNewsImage extends CcmNews
     use TruncatePro;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
     protected $header;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGallery")
      * @Groups({"news_list", "search", "news_show", "home"})
      *
      * @Assert\NotNull()
@@ -65,10 +65,10 @@ class CcmNewsImage extends CcmNews
     /**
      * Set header
      *
-     * @param MediaImage $header
+     * @param CcmMediaImage $header
      * @return CcmNewsArticle
      */
-    public function setHeader(MediaImage $header = null)
+    public function setHeader(CcmMediaImage $header = null)
     {
         $this->header = $header;
 
@@ -78,7 +78,7 @@ class CcmNewsImage extends CcmNews
     /**
      * Get header
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getHeader()
     {
@@ -88,10 +88,10 @@ class CcmNewsImage extends CcmNews
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param CcmGallery $gallery
      * @return CcmNewsImage
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(CcmGallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -101,7 +101,7 @@ class CcmNewsImage extends CcmNews
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery 
+     * @return CcmGallery 
      */
     public function getGallery()
     {

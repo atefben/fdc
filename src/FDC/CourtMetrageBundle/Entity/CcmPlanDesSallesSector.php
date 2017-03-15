@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -28,16 +27,16 @@ class CcmPlanDesSallesSector
     protected $id;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $festivalZone;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $detailedPlan;
 
@@ -111,7 +110,7 @@ class CcmPlanDesSallesSector
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getDetailedPlan()
     {
@@ -119,7 +118,7 @@ class CcmPlanDesSallesSector
     }
 
     /**
-     * @param MediaImageSimple $detailedPlan
+     * @param CcmMediaImageSimple $detailedPlan
      *
      * @return $this
      */
@@ -131,7 +130,7 @@ class CcmPlanDesSallesSector
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getFestivalZone()
     {
@@ -139,7 +138,7 @@ class CcmPlanDesSallesSector
     }
 
     /**
-     * @param MediaImageSimple $festivalZone
+     * @param CcmMediaImageSimple $festivalZone
      *
      * @return $this
      */

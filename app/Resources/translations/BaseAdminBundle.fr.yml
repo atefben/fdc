@@ -589,6 +589,7 @@ dashboard:
         soif: SOIF
         general: Général
         media: Médias
+        ccm_media: Médias
         news: Actualités
         statement: Communiqués
         info: Infos

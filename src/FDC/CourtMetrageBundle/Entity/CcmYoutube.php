@@ -7,7 +7,6 @@ use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\SeoMain;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\Theme;
 
 /**
  * CcmYoutube
@@ -37,9 +36,9 @@ class CcmYoutube
     protected $position;
 
     /**
-     * @var Theme
+     * @var CcmTheme
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmTheme")
      * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
      *
      */
@@ -156,7 +155,7 @@ class CcmYoutube
     }
 
     /**
-     * @return Theme
+     * @return CcmTheme
      */
     public function getTheme()
     {
@@ -164,7 +163,7 @@ class CcmYoutube
     }
 
     /**
-     * @param Theme $theme
+     * @param CcmTheme $theme
      */
     public function setTheme($theme)
     {
