@@ -155,8 +155,7 @@ class CcmNewsAudioAdmin extends CcmNewsAdmin
                 'by_reference' => false,
             ))
             ->add('theme', 'sonata_type_model_list', array(
-                'required'   => true,
-                'btn_delete' => false
+                'required'   => false,
             ))
             ->add('header', 'sonata_type_model_list', array(
                 'label' => 'form.label_header_image',

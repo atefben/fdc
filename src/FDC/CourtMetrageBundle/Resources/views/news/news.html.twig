@@ -28,7 +28,7 @@
             <div class="grid-sizer"></div>
             {% for article in news %}
                 {% set articleTranslation = article.findTranslationByLocale(app.request.locale) %}
-                <div class="item date{{ article.publishedAt|date('Y') }} theme{{ article.theme.id }} date theme article {{ loop.index > 15 ? 'hidden' : '' }}" >
+                <div class="item date{{ article.publishedAt|date('Y') }} {% if article.theme %}theme{{ article.theme.id }}{% endif %} date theme article {{ loop.index > 15 ? 'hidden' : '' }}" >
                     <article class="article">
                         <div class="img">
                             <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
@@ -45,7 +45,9 @@
                             </a>
                         </div>
                         <div class="info">
-                            <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
+                            {% if article.theme %}
+                                <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
+                            {% endif %}
                             <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                 <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
                                 <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
