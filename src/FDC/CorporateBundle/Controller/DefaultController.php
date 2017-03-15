@@ -192,12 +192,16 @@ class DefaultController extends Controller
         if ($request->query->has('timestamp') && $request->query->get('timestamp')) {
             $dateTime->setTimestamp($request->query->get('timestamp') - 1);
         }
+        $filterTheme = null;
+        $filterFormat = null;
         if ($request->query->has('theme') && $request->query->get('theme')) {
             $themeTranslation = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:ThemeTranslation')
             ->findOneBy(['slug' => $request->query->get('theme')]);
-            $filterTheme = $themeTranslation->getTranslatable();
+            if ($themeTranslation) {
+                $filterTheme = $themeTranslation->getTranslatable();
+            }
         }
         if ($request->query->has('format') && $request->query->get('format')) {
             $filterFormat = $request->query->get('format');

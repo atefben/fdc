@@ -298,7 +298,7 @@ class InfoRepository extends EntityRepository
         if ($theme) {
             $qb
                 ->andWhere('n.theme = :themeId')
-                ->setParameter(':themeid', $theme->getId())
+                ->setParameter(':themeId', $theme->getId())
             ;
         }
 
