@@ -467,8 +467,6 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
-
-                console.log(index);
                 index = parseInt(index)
 
                 playerInstance.playlistItem(index);
@@ -529,7 +527,7 @@ var initVideo = function(hash) {
             height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
         });
-
+        console.log(havePlaylist);
 
         if(havePlaylist) {
             var tempSlider = $(slider),
@@ -551,7 +549,7 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                //playerInstance.load(playlist);
+                playerInstance.load(playlist);
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
@@ -575,7 +573,6 @@ var initVideo = function(hash) {
             });
 
             $playlist = playlist;
-            console.log($playlist);
             tempSlider.insertAfter($topBar);
 
             var chan =  $('.channels');
@@ -959,7 +956,7 @@ var initVideo = function(hash) {
 
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
-            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);console.log('t1');
+            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
             $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
             $('.popin-mail').find('form #contact_section').val(data['category']);
             $('.popin-mail').find('form #contact_detail').val(data['date']);
