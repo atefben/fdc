@@ -66,12 +66,12 @@
 		top: 43%;
 	}
 	#fakebar {
-		width: 252px;
+		width: 586px;
 		position: absolute;
 		background: rgba(255, 255, 255, 0.2);
 		height: 5px;
-		top: 222px;
-		left: 90px;
+		top: 484px;
+		left: 94px;
 		z-index: 99;
 	}
 }

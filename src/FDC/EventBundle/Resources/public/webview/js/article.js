@@ -158,7 +158,6 @@ var ow = ow || {};
 					
 				}).on('play', function() {
 					$('#fakebar').hide();
-					alert('play');
 				});;
 				
 			});
