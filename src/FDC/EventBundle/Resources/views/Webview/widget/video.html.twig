@@ -1,7 +1,7 @@
-{% set file = widget.file %}
-{% set trans = get_available_video(file, false, app.request.locale) %}
 {% set image = '' %}
 {% set imageTrans = '' %}
+{% set file = widget.file %}
+{% set trans = get_available_video(file, false, app.request.locale) %}
 {% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
 	{% set trans = file.findTranslationByLocale('fr') %}
 {% endif %}
@@ -13,7 +13,7 @@
 		{% set imageTrans = header.findTranslationByLocale('fr') %}
 	{% endif %}
 {% endif %}
-{% if imageTrans is defined and imageTrans is not null %}
+{% if imageTrans.file is defined and imageTrans.file is not null %}
 	{% set image = imageTrans.file %}
 {% endif %}
 {% if image is not defined and trans.imageAmazonUrl is not null %}
