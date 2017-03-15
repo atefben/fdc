@@ -65,6 +65,15 @@
 		height: 90px;
 		top: 43%;
 	}
+	#fakebar {
+		width: 252px;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.2);
+		height: 5px;
+		top: 222px;
+		left: 105px;
+		z-index: 99;
+	}
 }
 @media screen and (max-width: 375px){
 	.Article-content .Article-picture-dual-col {
@@ -128,5 +137,14 @@
 	}
 	.Article-content .Article-slider-prev, .Article-slider-next {
 		top: 42%;
+	}
+	#fakebar {
+		width: 252px;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.2);
+		height: 5px;
+		top: 222px;
+		left: 105px;
+		z-index: 99;
 	}
 }
