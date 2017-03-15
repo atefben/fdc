@@ -45,6 +45,7 @@ class SyncMissingThumbsCommand extends BaseCommand
             ->addOption('from-bo', null, InputOption::VALUE_NONE, 'Sync only from bo')
             ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 10)
             ->addOption('order-by', null, InputOption::VALUE_OPTIONAL, 'desc')
+            ->addOption('ignore-lock', null, InputOption::VALUE_NONE)
         ;
     }
 
@@ -56,12 +57,15 @@ class SyncMissingThumbsCommand extends BaseCommand
         $this->output = $output;
         $this->input = $input;
 
-        if ($this->isLocked()) {
+        if ($this->isLocked() && !$this->input->getOption('ignore-lock')) {
             $output->writeln('The sync is locked');
             die;
         }
 
-        $this->lock();
+        if (!$this->input->getOption('ignore-lock')) {
+            $this->lock();
+        }
+
         $medias = $this->getMedias();
 
         $progress = new ProgressBar($output, count($medias));
@@ -94,7 +98,9 @@ class SyncMissingThumbsCommand extends BaseCommand
         }
         $progress->finish();
         $output->writeln('');
-        $this->unlock();
+        if (!$this->input->getOption('ignore-lock')) {
+            $this->unlock();
+        }
     }
 
     /**
