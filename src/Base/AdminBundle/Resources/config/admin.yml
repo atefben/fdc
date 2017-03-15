@@ -2694,14 +2694,6 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.ccm_domain:
-        class: Base\AdminBundle\Admin\CCM\CcmDomainAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmDomain, ApplicationSonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Domain, show_in_dashboard: false}
-        calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
-
     base.admin.ccm_pros_detail:
         class: Base\AdminBundle\Admin\CCM\CcmProsDetailAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsDetail, ApplicationSonataAdminBundle:CRUD]
@@ -2718,11 +2710,19 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.ccm_domain:
+        class: Base\AdminBundle\Admin\CCM\CcmDomainAdmin
+        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmDomain, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Domaines d'activités}
+        calls:
+             - [ setTranslationDomain, ['BaseAdminBundle']]
+
     base.admin.ccm_pros_contact:
         class: Base\AdminBundle\Admin\CCM\CcmProsContactAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsContact, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Contact, show_in_dashboard: false}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Contacts}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
