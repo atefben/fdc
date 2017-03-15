@@ -2520,7 +2520,8 @@ var owInitFilter = function (isTabSelection) {
                         //recompute height
                         $('.articles-wrapper .articles').each(function(){
                             newSectionHeight += $(this).outerHeight();
-                        })
+                        });
+                        $('.articles-wrapper').css('height',newSectionHeight);
                     }
                     var id = $('#filters').data('id'),
                         f = $(this).data('filter');
