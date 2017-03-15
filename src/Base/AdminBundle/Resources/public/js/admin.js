@@ -1,24 +1,25 @@
 var Admin = Admin || {};
 
 // disable popover error messages
-Admin.add_pretty_errors = function(){};
+Admin.add_pretty_errors = function () {
+};
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    if( $('#homepageSlideArea').length > 0) {
+    if ($('#homepageSlideArea').length > 0) {
         var timesRun = 0;
         var countTopVideos = $('#homepageSlideArea a[onclick$="_homepageSlide(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos > 5) {
+        if (countTopVideos > 5) {
             $('#homepageSlideArea a[onclick$="_homepageSlide(this);"]').hide();
         }
 
         $(document).on('click', '#homepageSlideArea a[onclick$="_homepageSlide(this);"]', function () {
             var countTopVideos = $('#homepageSlideArea a[onclick$="_homepageSlide(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 5) {
-                window.setInterval(function(){
+            if (countTopVideos >= 5) {
+                window.setInterval(function () {
                     $('#homepageSlideArea a[onclick$="_homepageSlide(this);"]').hide();
                     timesRun += 1;
-                    if(timesRun == 10){
+                    if (timesRun == 10) {
                         clearInterval(interval);
                     }
                 }, 100);
@@ -26,20 +27,20 @@ $(document).ready(function() {
         });
     }
 
-    if( $('#topVideosAssociatedArea').length > 0) {
+    if ($('#topVideosAssociatedArea').length > 0) {
         var timesRun = 0;
         var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos > 4) {
+        if (countTopVideos > 4) {
             $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
         }
 
         $(document).on('click', '#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]', function () {
             var countTopVideos = $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 4) {
-                window.setInterval(function(){
+            if (countTopVideos >= 4) {
+                window.setInterval(function () {
                     $('#topVideosAssociatedArea a[onclick$="_topVideosAssociated(this);"]').hide();
                     timesRun += 1;
-                    if(timesRun == 10){
+                    if (timesRun == 10) {
                         clearInterval(interval);
                     }
                 }, 100);
@@ -47,20 +48,20 @@ $(document).ready(function() {
         });
     }
 
-    if( $('#topWebTvsAssociatedArea').length > 0) {
+    if ($('#topWebTvsAssociatedArea').length > 0) {
         var timesRun = 0;
         var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos > 9) {
+        if (countTopVideos > 9) {
             $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
         }
 
         $(document).on('click', '#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]', function () {
             var countTopVideos = $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 9) {
-                window.setInterval(function(){
+            if (countTopVideos >= 9) {
+                window.setInterval(function () {
                     $('#topWebTvsAssociatedArea a[onclick$="_topWebTvsAssociated(this);"]').hide();
                     timesRun += 1;
-                    if(timesRun == 10){
+                    if (timesRun == 10) {
                         clearInterval(interval);
                     }
                 }, 100);
@@ -68,20 +69,20 @@ $(document).ready(function() {
         });
     }
 
-    if( $('#filmsAssociatedArea').length > 0) {
+    if ($('#filmsAssociatedArea').length > 0) {
         var timesRun = 0;
         var countTopVideos = $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-        if(countTopVideos > 4) {
+        if (countTopVideos > 4) {
             $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').hide();
         }
 
         $(document).on('click', '#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]', function () {
             var countTopVideos = $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').closest('div').find('tbody').find('tr').size();
-            if(countTopVideos >= 4) {
-                window.setInterval(function(){
+            if (countTopVideos >= 4) {
+                window.setInterval(function () {
                     $('#filmsAssociatedArea a[onclick$="_filmsAssociated(this);"]').hide();
                     timesRun += 1;
-                    if(timesRun == 10){
+                    if (timesRun == 10) {
                         clearInterval(interval);
                     }
                 }, 100);
@@ -95,7 +96,7 @@ $(document).ready(function() {
         $('.form-group[id$="webTv"]').hide();
     }
 
-    $('input[name$="[displayedWebTv]"]').on('ifChanged', function() {
+    $('input[name$="[displayedWebTv]"]').on('ifChanged', function () {
         if (!$(this).is(':checked')) {
             $('.form-group[id$="webTv"]').hide();
         } else {
@@ -103,53 +104,78 @@ $(document).ready(function() {
         }
     });
 
-    if ($("input[id*='sites_1']").is(':checked')) {
-        $('.form-group[id$="displayedHomepageLabel"]').show();
-    } else {
-        $('.form-group[id$="displayedHomepageLabel"]').hide();
+    if ($('.displayed-home-info').length || $('.displayed-home-statement').length) {
+        function checkDisplayHomeInfoStatementCheckbox() {
+            var $displayedHomeLabel = $('.form-group[id$="displayedHomepageLabel"]');
+            var $displayedOnCorpoHomeLabel = $('.form-group[id$="displayedOnCorpoHomeLabel"]');
+            if ($("input[id*='sites_1']").is(':checked')) {
+                $displayedHomeLabel.show();
+            } else {
+                $displayedHomeLabel.hide();
+            }
+            if ($("input[id*='sites_3']").is(':checked')) {
+                $displayedOnCorpoHomeLabel.show();
+            } else {
+                $displayedOnCorpoHomeLabel.hide();
+            }
+        }
+
+        checkDisplayHomeInfoStatementCheckbox();
+        $("input[id*='sites_1'], input[id*='sites_3']").on('ifChanged', function () {
+            checkDisplayHomeInfoStatementCheckbox()
+        });
+    }
+    else {
+        function checkDisplayHomeNewsCheckbox() {
+            var $displayedHomeLabel = $('.form-group[id$="displayedHomepageLabel"]');
+            if ($("input[id*='sites_1']").is(':checked')) {
+                $displayedHomeLabel.show();
+            } else {
+                $displayedHomeLabel.hide();
+            }
+        }
+
+        checkDisplayHomeNewsCheckbox();
+        $("input[id*='sites_1']").on('ifChanged', function () {
+            checkDisplayHomeNewsCheckbox()
+        });
     }
 
-    $("input[id*='sites_1']").on('ifChanged', function() {
-        if (!$(this).is(':checked')) {
-            $('.form-group[id$="displayedHomepageLabel"]').hide();
-        } else {
-            $('.form-group[id$="displayedHomepageLabel"]').show();
-        }
-    });
-
     //change link to original edit for home
-    if( $('#homepageSlide').length > 0) {
-        $(document).on('change', '#homepageSlide table', function() {
+    if ($('#homepageSlide').length > 0) {
+        $(document).on('change', '#homepageSlide table', function () {
             var timesRun = 0;
-            var interval = window.setInterval(function(){
-                $('#homepageSlide div .field-short-description span a').each(function(index){
-                    var old = $( this ).attr('href');
+            var interval = window.setInterval(function () {
+                $('#homepageSlide div .field-short-description span a').each(function (index) {
+                    var old = $(this).attr('href');
                     old = old.split('/');
 
-                    var text = $( this ).text();
+                    var text = $(this).text();
                     text = text.split(' ')[0].toLowerCase();
+                    $(this).text($(this).text().replace($(this).text().split(' ')[0], ''));
 
                     old[4] = text;
 
-                    $( this ).attr('href', old.join('/'));
+                    $(this).attr('href', old.join('/'));
                 });
                 timesRun += 1;
-                if(timesRun == 10){
+                if (timesRun == 10) {
                     clearInterval(interval);
                 }
-            },500);
+            }, 500);
         });
 
-        $('#homepageSlide div .field-short-description span a').each(function(index){
-            var old = $( this ).attr('href');
+        $('#homepageSlide div .field-short-description span a').each(function (index) {
+            var old = $(this).attr('href');
             old = old.split('/');
 
-            var text = $( this ).text();
+            var text = $(this).text();
             text = text.split(' ')[0].toLowerCase();
+            $(this).text($(this).text().replace($(this).text().split(' ')[0], ''));
 
             old[4] = text;
 
-            $( this ).attr('href', old.join('/'));
+            $(this).attr('href', old.join('/'));
 
         });
     }
@@ -159,10 +185,8 @@ $(document).ready(function() {
 });
 
 
-
 // call the ajax method to handle lock
-function lockEvents()
-{
+function lockEvents() {
 
     // tooltip display
     $('.fdc-list-translation-type-square').tooltip({
@@ -173,19 +197,21 @@ function lockEvents()
         },
         // prevent close
         close: function (event, ui) {
-            ui.tooltip.hover(function() {
+            ui.tooltip.hover(function () {
                     $(this).stop(true).fadeTo(400, 1);
-                }, function() {
-                    $(this).fadeOut('400', function() {
+                }, function () {
+                    $(this).fadeOut('400', function () {
                         $(this).remove();
                     });
                 }
             );
         },
-        content: function() { return $(this).attr('fdc-tooltip') }
+        content: function () {
+            return $(this).attr('fdc-tooltip')
+        }
     });
 
-    $('a.fdc-is-locked').click(function(e) {
+    $('a.fdc-is-locked').click(function (e) {
         e.preventDefault();
     })
 
@@ -211,10 +237,10 @@ function lockEvents()
             title: 'Attention',
             autoOpen: true,
             buttons: {
-                'Confirmer': function() {
+                'Confirmer': function () {
                     deleteLock(entity, id, locale, true);
                 },
-                'Annuler': function() {
+                'Annuler': function () {
                     $(this).dialog('close');
                 }
             }
@@ -222,7 +248,7 @@ function lockEvents()
     });
 
     // verify existing locks on click list
-    $('.fdc-check-lock-list:not(".fdc-is-locked")').click(function(e) {
+    $('.fdc-check-lock-list:not(".fdc-is-locked")').click(function (e) {
         e.preventDefault();
         // set vars
         var url = $(this).attr('href').split('/');
@@ -248,7 +274,7 @@ function lockEvents()
     });
 
     // verify locks on submit
-    $('.fdc-lock button[type="submit"].btn-success').click(function(e) {
+    $('.fdc-lock button[type="submit"].btn-success').click(function (e) {
         e.preventDefault();
 
         // add a get parameter when clicking on submit button btn_create_and_list / btn_update_and_list
@@ -277,11 +303,11 @@ function lockEvents()
             var entity = url[url.length - 3];
             var locale = $('.a2lix_translationsLocales').find('li.active').attr('data-locale');
 
-             // create lock on open
+            // create lock on open
             createLock(entity, id, locale);
 
             // delete lock on click on list
-            $('a[href$="/list"]').click(function() {
+            $('a[href$="/list"]').click(function () {
                 deleteLock(entity, id, locale);
             });
 
@@ -293,7 +319,7 @@ function lockEvents()
     }
 
     // add border on changing lang
-    $('body').on('click', '.a2lix_translationsLocales li', function() {
+    $('body').on('click', '.a2lix_translationsLocales li', function () {
         $(this).closest('.a2lix_translationsLocales').find('li').removeClass('nav-tab-active');
         $(this).addClass('nav-tab-active');
     });
@@ -315,10 +341,9 @@ function getQueryParams(url, param) {
     return found;
 };
 
-function hasLockEntity(entity, id, locale, button)
-{
+function hasLockEntity(entity, id, locale, button) {
     var request = $.ajax({
-        url: Routing.generate('base_admin_lock_checkentity', { id: id }),
+        url: Routing.generate('base_admin_lock_checkentity', {id: id}),
         dataType: 'json',
         method: 'POST',
         data: {
@@ -341,7 +366,7 @@ function hasLockEntity(entity, id, locale, button)
                 title: 'Modifications entre temps',
                 autoOpen: true,
                 buttons: {
-                    'OK': function() {
+                    'OK': function () {
                         $(this).dialog('close');
                     }
                 }
@@ -359,7 +384,7 @@ function hasLockEntity(entity, id, locale, button)
                 title: 'Modifications en cours',
                 autoOpen: true,
                 buttons: {
-                    'OK': function() {
+                    'OK': function () {
                         $(this).dialog('close');
                     }
                 }
@@ -370,7 +395,7 @@ function hasLockEntity(entity, id, locale, button)
         }
     });
 
-    request.fail(function(xhr) {
+    request.fail(function (xhr) {
         $('#fdc-dialog-text').html(xhr.responseJSON.message);
         $('#fdc-dialog').dialog({
             autoOpen: true
@@ -378,12 +403,11 @@ function hasLockEntity(entity, id, locale, button)
     });
 }
 
-function hasLockList(entity, id, locale, isLocked, redirect, target)
-{
+function hasLockList(entity, id, locale, isLocked, redirect, target) {
     target = typeof target !== 'undefined' ? target : false;
 
     var request = $.ajax({
-        url: Routing.generate('base_admin_lock_check', { id: id }),
+        url: Routing.generate('base_admin_lock_check', {id: id}),
         dataType: 'json',
         method: 'POST',
         data: {
@@ -399,10 +423,10 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
                 <br/>\
                 Rafraichissez la page pour voir le nouveau statut des articles.";
                 var buttons = {
-                    'Recharger la page': function() {
+                    'Recharger la page': function () {
                         window.location.reload(true);
                     },
-                    'Annuler': function() {
+                    'Annuler': function () {
                         $(this).dialog('close');
                     }
                 };
@@ -434,7 +458,7 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
                 var html = "Cet élément est en cours d'édition par " + xhr.lockedBy + ".<br/>\
                 <br/>";
                 var buttons = {
-                    'Fermer': function() {
+                    'Fermer': function () {
                         $(this).dialog('close');
                     }
                 };
@@ -449,7 +473,7 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
                 buttons: buttons
             });
 
-            $('.fdc-dialog-button.close').click(function() {
+            $('.fdc-dialog-button.close').click(function () {
 
             });
         } else {
@@ -461,7 +485,7 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
         }
     });
 
-    request.fail(function(xhr) {
+    request.fail(function (xhr) {
         $('#fdc-dialog-text').html(xhr.responseJSON.message);
         $('#fdc-dialog').dialog({
             autoOpen: true
@@ -469,10 +493,9 @@ function hasLockList(entity, id, locale, isLocked, redirect, target)
     });
 }
 
-function createLock(entity, id, locale)
-{
+function createLock(entity, id, locale) {
     var request = $.ajax({
-        url: Routing.generate('base_admin_lock_create', { id: id }),
+        url: Routing.generate('base_admin_lock_create', {id: id}),
         dataType: 'json',
         method: 'POST',
         data: {
@@ -489,12 +512,11 @@ function createLock(entity, id, locale)
     });
 }
 
-function deleteLock(entity, id, locale, success)
-{
+function deleteLock(entity, id, locale, success) {
     success = (typeof success === 'undefined') ? false : success;
 
     var request = $.ajax({
-        url: Routing.generate('base_admin_lock_delete', { id: id }),
+        url: Routing.generate('base_admin_lock_delete', {id: id}),
         dataType: 'json',
         method: 'POST',
         data: {
@@ -506,7 +528,7 @@ function deleteLock(entity, id, locale, success)
 
 
     if (success) {
-        request.success(function() {
+        request.success(function () {
             window.location.reload(true);
         });
     }
@@ -519,20 +541,19 @@ function deleteLock(entity, id, locale, success)
     });
 }
 
-function dashboardTranslator()
-{
+function dashboardTranslator() {
     // on click clear dashboard filter
-    $('#dashboard-search button[type="submit"].btn-default').click(function() {
+    $('#dashboard-search button[type="submit"].btn-default').click(function () {
         $('#dashboard_search_type_reset').val(1);
     });
 
     // submit form on value change of status
-    $('#dashboard_search_type_status').on('change', function() {
+    $('#dashboard_search_type_status').on('change', function () {
         $(this).closest('form').submit();
     });
 
     // submit form on select filter of search
-    $('.dashboard-search-filter').click(function() {
+    $('.dashboard-search-filter').click(function () {
         $('input[name$="[sortField]"]').val($(this).attr('data-field'));
         $('input[name$="[sortValue]"]').val($(this).attr('data-val'));
         $('form[action="/admin/dashboard"]').submit();

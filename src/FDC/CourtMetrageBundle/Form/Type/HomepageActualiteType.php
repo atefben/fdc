@@ -128,6 +128,7 @@ class HomepageActualiteType extends AbstractType
             ->add('isActive', 'checkbox', array(
                 'label'    => 'form.ccm.label.actualite.is_active_actualite',
                 'translation_domain' => 'BaseAdminBundle',
+                'required' => false,
             ))
         ;
     }

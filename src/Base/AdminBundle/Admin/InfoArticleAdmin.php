@@ -224,6 +224,7 @@ class InfoArticleAdmin extends Admin
             )
             ->add('hideSameDay')
             ->add('displayedHome')
+            ->add('displayedOnCorpoHome')
             ->add('displayedMobile')
             ->add('translate')
             ->add('translateOptions', 'choice', array(

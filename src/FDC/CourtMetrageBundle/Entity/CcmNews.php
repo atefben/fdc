@@ -64,14 +64,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", options={"default":0})
-     *
-     */
-    protected $displayedHome;
-
-    /**
-     * @var boolean
-     *
      * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
      */
     protected $excludeFromSearch;
@@ -305,29 +297,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     public function getPriorityStatus()
     {
         return $this->priorityStatus;
-    }
-
-    /**
-     * Set displayedHome
-     *
-     * @param boolean $displayedHome
-     * @return CcmNews
-     */
-    public function setDisplayedHome($displayedHome)
-    {
-        $this->displayedHome = $displayedHome;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHome
-     *
-     * @return boolean
-     */
-    public function getDisplayedHome()
-    {
-        return $this->displayedHome;
     }
 
     /**

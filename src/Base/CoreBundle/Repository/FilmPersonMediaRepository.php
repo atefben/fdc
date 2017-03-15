@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmPersonMedia;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
@@ -14,25 +15,43 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class FilmPersonMediaRepository extends EntityRepository
 {
-    public function getMedias($search, $yearStart, $yearEnd)
+    /**
+     * @param $search
+     * @param $yearStart
+     * @param $yearEnd
+     * @param $since
+     * @return FilmPersonMedia[]
+     */
+    public function getMedias($search, $yearStart, $yearEnd, $since = null)
     {
-        $qb = $this->createQueryBuilder('fpm')
-            ->leftJoin('fpm.media', 'fm')
-            ->leftJoin('fpm.person', 'p')
-            ->leftJoin('p.translations', 'pt')
-            ->andWhere('fpm.media IS NOT NULL')
-            ->andWhere('fpm.person IS NOT NULL')
+        $qb = $this
+            ->createQueryBuilder('fpm')
+            ->innerJoin('fpm.media', 'fm')
+            ->innerJoin('fpm.person', 'p')
+            ->innerJoin('p.films', 'ffp')
+            ->innerJoin('ffp.film', 'film')
+            ->innerJoin('film.festival', 'festival')
             ->andWhere('p.firstname LIKE :search OR p.lastname LIKE :search OR p.asianName LIKE :search')
             ->setParameter('search', '%'.$search.'%');
 
         if($yearStart && $yearEnd) {
-            $qb->andWhere('fpm.createdAt BETWEEN :yearStart AND :yearEnd')
+            $qb->andWhere('festival.year BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', '%'.$yearStart.'%')
                 ->setParameter('yearEnd', '%'.$yearEnd.'%')
             ;
         }
 
-        return $qb->getQuery()->getResult();
+        if ($since) {
+            $qb
+                ->andWhere('fpm.updatedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('fpm.updatedAt', 'desc')
+            ->getQuery()
+            ->getResult();
     }
 
 }

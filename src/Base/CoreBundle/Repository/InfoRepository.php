@@ -254,7 +254,16 @@ class InfoRepository extends EntityRepository
             ;
     }
 
-    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press')
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $dateTime
+     * @param null $count
+     * @param string $site
+     * @param bool $displayedOnCorpoHome
+     * @return Info[]
+     */
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -314,6 +323,13 @@ class InfoRepository extends EntityRepository
 
         if ($count) {
             $qb->setMaxResults($count);
+        }
+
+        if ($displayedOnCorpoHome) {
+            $qb
+                ->andWhere('n.displayedOnCorpoHome = :displayedOnCorpoHome')
+                ->setParameter(':displayedOnCorpoHome', true)
+            ;
         }
 
         return $qb
@@ -495,9 +511,10 @@ class InfoRepository extends EntityRepository
      * @param $festival
      * @param $since
      * @param int $maxResults
+     * @param $before
      * @return Info[]
      */
-    public function getInfoRetrospective($locale, $festival, $since, $maxResults = 30)
+    public function getInfoRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -540,8 +557,18 @@ class InfoRepository extends EntityRepository
             ;
         }
 
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt > :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
         return $qb
-            ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult()
             ;
@@ -619,7 +646,7 @@ class InfoRepository extends EntityRepository
      * @param $locale
      * @return mixed
      */
-    public function getApiLastInfos($festival, $dateTime, $locale, $count)
+    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -633,6 +660,13 @@ class InfoRepository extends EntityRepository
             ->leftJoin('ni.translations', 'nit')
             ->andWhere('n.displayedMobile = :displayedMobile')
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         $qb = $qb
             ->andWhere(
@@ -679,13 +713,13 @@ class InfoRepository extends EntityRepository
      * @param $since
      * @param int $page
      * @param int $count
+     * @param \DateTime|null $limitDate
      * @return Info[]
      */
-    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10)
+    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
-            ->join('n.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\InfoArticle', 'na', 'WITH', 'na.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoAudio', 'naa', 'WITH', 'naa.id = n.id')
             ->leftJoin('Base\CoreBundle\Entity\InfoVideo', 'nv', 'WITH', 'nv.id = n.id')
@@ -709,6 +743,13 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
 
         if ($locale != 'fr') {
             $qb
@@ -742,7 +783,7 @@ class InfoRepository extends EntityRepository
 
     }
 
-    public function getOlderInfo($locale, $festival, $date)
+    public function getOlderInfo($locale, $festival, $date, $site = 'site-press', $exclude)
     {
 
         $qb = $this
@@ -758,11 +799,17 @@ class InfoRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt < :date')
-            ->andWhere('n.festival = :festival')
+            ->andWhere('n.publishedAt <= :date')
         ;
 
-        $qb = $qb
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
+
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -774,7 +821,7 @@ class InfoRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -790,23 +837,25 @@ class InfoRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        return $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setMaxResults('1')
             ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
-        ;
-
-        $qb = $qb
+            ->setParameter('site_slug', $site)
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
-        return $qb;
     }
 
-    public function getNextInfo($locale, $festival, $date)
+    public function getNextInfo($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
@@ -822,11 +871,19 @@ class InfoRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->where('s.slug = :site_slug')
-            ->andWhere('n.publishedAt > :date')
-            ->andWhere('n.festival = :festival')
+            ->setParameter('site_slug', $site)
+            ->andWhere('n.publishedAt >= :date')
+            ->setParameter('date', $date)
         ;
 
-        $qb = $qb
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id <> :nid')
+                ->setParameter(':nid', $exclude)
+            ;
+        }
+
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -838,7 +895,7 @@ class InfoRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -854,20 +911,22 @@ class InfoRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+        if ($festival) {
+            $qb
+                ->andWhere('n.festival = :festival')
+                ->setParameter('festival', $festival)
+            ;
+        }
+
+        $qb
             ->orderBy('n.publishedAt', 'ASC')
             ->setMaxResults('1')
-            ->setParameter('date', $date)
-            ->setParameter('festival', $festival)
-            ->setParameter('site_slug', 'site-press')
         ;
 
-        $qb = $qb
+        return $qb
             ->getQuery()
             ->getResult()
-        ;
-
-        return $qb;
+            ;
     }
 
     public function getAllInfo($locale, $festival)

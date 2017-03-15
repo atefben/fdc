@@ -135,12 +135,6 @@ class CcmNewsRepository extends EntityRepository
             ->setFirstResult($offset)
         ;
 
-        if ($displayedOnHomepage) {
-            $qb
-                ->andWhere('n.displayedHome = 1')
-            ;
-        }
-
         if($limit) {
             $qb->setMaxResults($limit);
         }

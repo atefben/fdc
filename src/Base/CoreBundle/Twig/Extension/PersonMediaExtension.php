@@ -315,7 +315,6 @@ class PersonMediaExtension extends Twig_Extension
             foreach ($person->getSelfkitImages() as $selfkitImage) {
                 if ($selfkitImage instanceof Media) {
                     $key = $selfkitImage->getCreatedAt()->getTimestamp() . '-0-' . $selfkitImage->getId();
-                    //$medias[$selfkitImage->getOldMediaPhotoType()][$key] = [
                     $toAdd = [
                         'file'      => $selfkitImage,
                         'copyright' => $selfkitImage->getCopyright(),
@@ -350,7 +349,7 @@ class PersonMediaExtension extends Twig_Extension
                     if ($image) {
                         continue;
                     }
-                    krsort($subMedias);
+                    ksort($subMedias);
                     $image = array_values($subMedias);
                 }
             }

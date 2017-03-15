@@ -1,23 +1,36 @@
-
-  $('#slider-discover').owlCarousel({
-      dots: true,
-      navigation : true,
-      slideSpeed : 600,
-      navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"],
-      paginationSpeed : 400,
-      items : 3
-  });
+if ($('#slider-discover .item').length < 4) {
 
 
-  $('#slider-competition').owlCarousel({
-      dots: false,
-      navigation : false,
-      slideSpeed : 600,
-      paginationSpeed : 400,
-      margin: 22,
-      items : 6
+    var owl = $('#slider-discover').owlCarousel({
+        items:3,
+        dots: false,
+    });
+} else {
+    var owl = $('#slider-discover').owlCarousel({
+        dots: true,
+        navigation : true,
+        slideSpeed : 600,
+        navText: ["<div class='goldarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='goldarrowLeft'><i class='icon icon_flecheGauche reverse'></div>"],
+        paginationSpeed : 400,
+        items : 3
+    });
+}
 
-  });
+owl.on('changed.owl.carousel', function (event) {
+    if (event.item.count - event.page.size == event.item.index)
+        $(event.target).find('.owl-dots div:last')
+            .addClass('active').siblings().removeClass('active');
+});
+
+
+$('#slider-competition').owlCarousel({
+    dots: false,
+    navigation : false,
+    slideSpeed : 600,
+    paginationSpeed : 400,
+    margin: 22
+
+});
 
 
   $('#slider-movies').owlCarousel({
@@ -33,18 +46,16 @@
   });
 
 
-  var fixOwl = function(){
-        var $stage = $('.owl-stage'),
-            stageW = $stage.width(),
-            $el = $('.owl-item'),
-            elW = 0;
-        $el.each(function() {
-            elW += $(this).width()+ +($(this).css("margin-right").slice(0, -2))
-        });
-        if ( elW > stageW ) {
-            $stage.width( elW );
-        };
-    }
+var fixOwl = function(){
+    $('.owl-dot').click(function() {
+
+        var clicked = $(this);
+
+        $('.owl-dot').removeClass('active');
+        $(this).addClass('active');
+
+    });
+}
 
   $('#slider-aboutVideos').owlCarousel({
       dots: true,
@@ -413,13 +424,13 @@ $(window).scroll(function (e) {
 
 $( "#slider-movies > .owl-controls" ).wrap( "<div class='container'></div>" );
 
-$(window).scroll(function (e) {
+/*$(window).scroll(function (e) {
   if($(window).scrollTop() > 100) {
         $(".topiconsContainer").hide();
       } else {
         $(".topiconsContainer").show();
       }
-});
+});*/
 
 $(".topiconsContainer .first").hover(function () {
     $(this).toggleClass("goldBdrs");

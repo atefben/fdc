@@ -180,31 +180,31 @@
                             </div></br>
                             <div class="col-md-12">
                                 <div class="box-body">
+                                    {{ form_label(form.parent.actualiteIsActive) }}
+                                    {{ form_widget(form.parent.actualiteIsActive) }}
+                                    </br>
+                                    {{ form_label(form.parent.positionActualites) }}
+                                    {{ form_widget(form.parent.positionActualites) }}
+                                    </br>
                                     <div class="fdc-widgets" data-form-widget="collection">
-                                        {{ form_label(form.parent.actualiteIsActive) }}
-                                        {{ form_widget(form.parent.actualiteIsActive) }}
-                                        </br>
-                                        {{ form_label(form.parent.positionActualites) }}
-                                        {{ form_widget(form.parent.positionActualites) }}
-                                        </br>
-                                        {#{% for widget in form.parent.children.actualites.children %}#}
-                                            {#<div class="item base-widget" data-itemtype="actualite">#}
-                                                {#{{ form_row(widget._type) }}#}
-                                                {#{{ form_row(widget.isActive) }}#}
-                                                {#{{ form_row(widget.image) }}#}
-                                                {#{{ form_row(widget.theme) }}#}
-                                                {#{{ form_row(widget.date) }}#}
-                                                {#{{ form_widget(attribute(widget.children.translations, locale)) }}#}
-                                                {#<a class="btn btn-danger btn-sm btn-outline remove_item">#}
-                                                    {#<i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}#}
-                                                {#</a>#}
-                                            {#</div>#}
-                                        {#{% endfor %}#}
+                                        {% for widget in form.parent.children.actualites.children %}
+                                            <div class="item base-widget" data-itemtype="actualite">
+                                                {{ form_row(widget._type) }}
+                                                {{ form_row(widget.isActive) }}
+                                                {{ form_row(widget.image) }}
+                                                {{ form_row(widget.theme) }}
+                                                {{ form_row(widget.date) }}
+                                                {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                                                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                                                </a>
+                                            </div>
+                                        {% endfor %}
                                     </div>
 
-                                    {#<a class="btn btn-primary btn-add-base-widget"#}
-                                       {#data-prototype="{{ form_widget(form.parent.children.actualites.vars.prototypes.ccm_homepage_actualite_type)|escape }}"><i#}
-                                                {#class="icon-plus"></i>{{ 'form.ccm.label.homepage_actualite_type'|trans }}</a>#}
+                                    <a class="btn btn-primary btn-add-base-widget"
+                                       data-prototype="{{ form_widget(form.parent.children.actualites.vars.prototypes.ccm_homepage_actualite_type)|escape }}"><i
+                                                class="icon-plus"></i>{{ 'form.ccm.label.homepage_actualite_type'|trans }}</a>
                                 </div>
                             </div>
 
@@ -307,21 +307,21 @@
                                         </div>
                                     {% endfor %}
                                 </div>
-                                {#<div class="box box-success">#}
-                                    {#<h4> {{ 'form.ccm.label.actualite.title'|trans}}</h4>#}
-                                {#</div>#}
-                                {#<div class="fdc-widgets" data-form-widget="collection">#}
-                                    {#{% for widget in form.parent.children.actualites.children %}#}
-                                        {#<div class="item base-widget" data-itemtype="actualite">#}
-                                            {#{{ form_row(widget._type) }}#}
-                                            {#{{ form_row(widget.date) }}#}
-                                            {#{{ form_row(widget.image) }}#}
-                                            {#{{ form_row(widget.theme) }}#}
-                                            {#{{ form_row(widget.isActive) }}#}
-                                            {#{{ form_widget(attribute(widget.children.translations, locale)) }}#}
-                                        {#</div>#}
-                                    {#{% endfor %}#}
-                                {#</div>#}
+                                <div class="box box-success">
+                                    <h4> {{ 'form.ccm.label.actualite.title'|trans}}</h4>
+                                </div>
+                                <div class="fdc-widgets" data-form-widget="collection">
+                                    {% for widget in form.parent.children.actualites.children %}
+                                        <div class="item base-widget" data-itemtype="actualite">
+                                            {{ form_row(widget._type) }}
+                                            {{ form_row(widget.date) }}
+                                            {{ form_row(widget.image) }}
+                                            {{ form_row(widget.theme) }}
+                                            {{ form_row(widget.isActive) }}
+                                            {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
                                 <div class="box box-success">
                                     <h4> {{ 'form.ccm.label.sejour.title'|trans}}</h4>
                                 </div>

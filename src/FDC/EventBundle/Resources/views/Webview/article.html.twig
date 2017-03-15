@@ -26,11 +26,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Festival de Canne - Page plan</title>
-    <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,700,900" rel="stylesheet">
+    <title>Festival de Cannes</title>
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview/css/webview.css') }}" />
+     <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview/css/dev.css') }}" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   </head>
   <body class="Article">
@@ -38,7 +38,6 @@
       <header class="Article-header">
         {% if object is news_article %}
           <img src="{% path object.header|trans_fallback('file'), 'reference' %}"/>
-          <div class="Article-picture-caption"><strong>{{ object.header|trans_fallback('legend') }}</strong> {{ object.header|trans_fallback('copyright') }}</div>
         {% elseif object is news_audio %}
           {% include 'FDCEventBundle:Webview:widget/audio-header.html.twig' with { 'widget':object } %}
         {% elseif object is news_video %}
@@ -49,8 +48,47 @@
         
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
-          <span class="Article-header-meta-date"><strong>{{ object.publishedAt|date('d.m.y') }}</strong> {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}</span>
-          <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> {{ object.header|trans_fallback('copyright') }}</span>
+          <span class="Article-header-meta-date">
+            {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
+            {% set today = "now"|date('d-m-Y H:i:s') %}
+            {% set difference = date(today).diff(date(postDate)) %}
+            {% set daysElapsed = difference.d %}
+            {% set hoursElapsed = difference.h %}
+            {% set minutesElapsed = difference.i %}
+
+            {% if daysElapsed > 1 %}
+              <strong>{{ 'webview.article.date_prefix'|trans }} {{ object.publishedAt|date('d.m.y') }}</strong> {{ 'webview.article.date_separator'|trans }} {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+            {% elseif daysElapsed == 1 %}
+              <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+              {{ object.publishedAt|date('H') }}:{{ object.publishedAt|date('i') }}
+            {% else %}
+              {% if hoursElapsed <= 1 %}
+                <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }} <strong>{{ 'webview.article.minutes_elapsed_suffix'|trans }}</strong>
+              {% else %}
+                {# detect differents days even if less than 24 hours between them #}
+                {% if object.publishedAt|date('d') != "now"|date('d') %}
+                <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+                {{ object.publishedAt|date('H') }}
+                <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
+                {% else %}
+                <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </span>
+          {% if object is news_image %}
+            <span class="Article-header-meta-misc">
+            {% for media in object.gallery.medias %}
+              <div class="copyright{% if loop.index == 1 %} active{% endif %}">
+              <strong>{{ media.media|trans_fallback('legend') }}</strong> ©{{ media.media|trans_fallback('copyright')|replace({'©': ''}) }}
+              </div>
+            {% endfor %}
+            </span>
+          {% else %}
+            {% if object.header|trans_fallback('copyright') %}
+            <span class="Article-header-meta-misc"><strong>{{ object.header|trans_fallback('legend') }}</strong> ©{{ object.header|trans_fallback('copyright')|replace({'©': ''}) }}</span>
+            {% endif %}
+          {% endif %}
         </div>
       </header>
 
@@ -100,12 +138,14 @@
         </div>
       </div-->
     </article>
+
     {% if sameDayObjects != null and object.hideSameDay == false %}
     <aside class="Article-related">
       <h2>Le même jour</h2>
       <div class="Article-related-slider-wrapper">
         <div class="Article-related-slider">
         {% for associatedNews in sameDayObjects %}
+          {% set file = null %}
           {% set type = 'news' %}
           {% set variant = 'article' %}
           {% if associatedNews is news_article %}
@@ -119,7 +159,7 @@
             {% set variant = 'audio' %}
           {% elseif associatedNews is news_image %}
             {% set type = 'news' %}
-            {% set variant = 'image' %} 
+            {% set variant = 'image' %}
           {% endif %}
           {%  set iconClass = 'icon-article' %}
           {%  if class(associatedNews) ends with 'Article'  %}
@@ -127,6 +167,12 @@
           {% endif %}
           {%  if class(associatedNews) ends with 'Image'  %}
             {%  set iconClass = 'icon-photo' %}
+          {% endif %}
+          {%  if class(associatedNews) ends with 'Audio'  %}
+            {%  set iconClass = 'icon-audio' %}
+          {% endif %}
+          {%  if class(associatedNews) ends with 'Video'  %}
+            {%  set iconClass = 'icon-video' %}
           {% endif %}
           <a href="{{ path('fdc_event_webview_article' , {'type': type, 'variant': variant, 'id':associatedNews.id }) }}" class="Article-related-slider-item">
             <div class="Article-related-slider-item-pictureWrap">
@@ -153,46 +199,31 @@
                   {% endif %}
               {% endif %}
 
-              {% if associatedNews is news_article %}
-                  {% set img = associatedNews.header %}
-                  {% if img is not null %}
-                      {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                      {% if trans is null or trans.file is null %}
-                          {% set trans = img.findTranslationByLocale('fr') %}
-                      {% endif %}
-                      {% set file = trans.file %}
-                      {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
-                  {% endif %}
-              {% endif %}
-              {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
+              
+            {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
                 {% if header is not null %}
-                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is not null and trans.file is not null %}
-                        {% set imageTrans = trans %}
-                    {% else %}
-                        {% set trans = associatedNews.header.findTranslationByLocale('fr') %}
-                        {% if trans is not null and trans.file is not null %}
-                            {% set imageTrans = trans %}
-                        {% endif %}
-                    {% endif %}
+                    {% set file = header|trans_fallback('file') %}
                 {% endif %}
-                {% if imageTrans is defined and imageTrans is not null %}
-                    {% set file = imageTrans.file %}
-                    {% set img = associatedNews.header %}
-                {% else %}
-                    {% set img = associatedNews.audio.image %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
-                    {% endif %}
-                    {% set file = trans.file %}
+                {% set tmp = associatedNews.audio %}
+                {% if tmp %}
+                  {% if associatedNews.audio.image is not null %}
+                    {% set file = associatedNews.audio.image|trans_fallback('file') %}
+                  {% endif %}
                 {% endif %}
             {% endif %}
+            {% if associatedNews.video is not null %}
+              {% if associatedNews.video.image|trans_fallback('file') %}
+                {% set finalImage = associatedNews.video.image|trans_fallback('file') %}
+              {% endif %}
+              {% endif %}
             {% if file is defined and file is not null %}
-                <img src="{% path file, 'reference' %}"/>
+                {% set finalImage = file %}
+            {% endif %}
+            {% if finalImage is defined and finalImage is not null %}
+                <img src="{% path finalImage, 'reference' %}"/>
             {% else %}
-              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.png') }}"/>
+              <img src="{{ asset('bundles/fdcevent/img/article/placeholder.jpg') }}"/>
             {% endif %}
               <i class="Article-related-slider-icon {{ iconClass }}"></i>
             </div>

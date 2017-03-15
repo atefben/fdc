@@ -66,6 +66,12 @@
                             </div>
                         </div>
                     {% endif %}
+                    {% if form.parent.children.displayedOnCorpoHome is defined %}
+                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
+                            {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                            {{ form_label(form.parent.children.displayedOnCorpoHome) }}
+                        </div>
+                    {% endif %}
                 </div>
                 {% if form.parent.children.displayedMobile is defined %}
                     <div class="form-group">
@@ -143,9 +149,15 @@
                         </div>
                     {% endif %}
                     {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
-                        <div class="form-group col-xs-6" id="displayedHomepageLabel" style="margin-top: 25px;">
+                        <div class="form-group col-xs-6{% if displayedHomeClass is defined %} {{ displayedHomeClass }}{% endif %}" id="displayedHomepageLabel" style="margin-top: 25px;">
                             {{ form_widget(form.parent.children.displayedHome) }}
                             {{ form_label(form.parent.children.displayedHome) }}
+                        </div>
+                    {% endif %}
+                    {% if form.parent.children.displayedOnCorpoHome is defined %}
+                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel"">
+                            {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                            {{ form_label(form.parent.children.displayedOnCorpoHome) }}
                         </div>
                     {% endif %}
                 </div>

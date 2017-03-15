@@ -81,16 +81,22 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
         $this->sortByDate($homeContents);
-        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
+        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
+        if (count($homeContents) > 6) {
+            $last = false;
+            $homeContents = array_slice($homeContents, 0, 6);
+        } else {
+            $last = true;
+        }
 
         //set default filters
         $filters = [];
@@ -134,7 +140,6 @@ class DefaultController extends Controller
             }
         }
 
-
         $movies = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
@@ -153,6 +158,8 @@ class DefaultController extends Controller
             'galleryMedias'     => $galleryMedias,
             'filters'           => $filters,
             'lastPublishedAt'   => $lastPublishedAt,
+            'last'              => $last,
+            'festivalYear'              => $this->getFestival()->getYear(),
         ]);
     }
 
@@ -193,17 +200,23 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel')
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
 
         $this->sortByDate($homeContents);
-        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale, 6);
+        $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
+        if (count($homeContents) > 6) {
+            $last = false;
+            $homeContents = array_slice($homeContents, 0, 6);
+        } else {
+            $last = true;
+        }
 
         //set default filters
         $filters = [];
@@ -231,7 +244,8 @@ class DefaultController extends Controller
             'homeArticles'    => $homeContents,
             'filters'         => $filters,
             'lastPublishedAt' => $lastPublishedAt,
-            'festivalYear' => $settings->getFestival()->getYear(),
+            'festivalYear'    => $settings->getFestival()->getYear(),
+            'last'            => $last,
         ]);
     }
 }

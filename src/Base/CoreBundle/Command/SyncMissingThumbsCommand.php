@@ -43,6 +43,9 @@ class SyncMissingThumbsCommand extends BaseCommand
             ->setName('base:media:sync-missing-thumbnails')
             ->setDescription('Sync missing uploaded image thumbs with new media formats')
             ->addOption('from-bo', null, InputOption::VALUE_NONE, 'Sync only from bo')
+            ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 10)
+            ->addOption('order-by', null, InputOption::VALUE_OPTIONAL, 'desc')
+            ->addOption('ignore-lock', null, InputOption::VALUE_NONE)
         ;
     }
 
@@ -54,12 +57,15 @@ class SyncMissingThumbsCommand extends BaseCommand
         $this->output = $output;
         $this->input = $input;
 
-        if ($this->isLocked()) {
+        if ($this->isLocked() && !$this->input->getOption('ignore-lock')) {
             $output->writeln('The sync is locked');
             die;
         }
 
-        $this->lock();
+        if (!$this->input->getOption('ignore-lock')) {
+            $this->lock();
+        }
+
         $medias = $this->getMedias();
 
         $progress = new ProgressBar($output, count($medias));
@@ -92,7 +98,9 @@ class SyncMissingThumbsCommand extends BaseCommand
         }
         $progress->finish();
         $output->writeln('');
-        $this->unlock();
+        if (!$this->input->getOption('ignore-lock')) {
+            $this->unlock();
+        }
     }
 
     /**
@@ -100,17 +108,20 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     private function getMedias()
     {
+        $order = ['createdAt' => $this->input->getOption('order-by')?:'desc'];
         if ($this->input->getOption('from-bo')) {
+            $criteria = ['thumbsGenerated' => false, 'uploadedFromBO' => true];
             return $this
                 ->getDoctrineManager()
                 ->getRepository('ApplicationSonataMediaBundle:Media')
-                ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => true], null, 10)
+                ->findBy($criteria, $order, $this->input->getOption('max-results'))
                 ;
         }
+        $criteria = ['thumbsGenerated' => false, 'uploadedFromBO' => false];
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => false], null, 10)
+            ->findBy($criteria, $order, $this->input->getOption('max-results'))
             ;
     }
 

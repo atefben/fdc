@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Application\Sonata\MediaBundle\Entity\Media as SonataMedia;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\TranslateMain;
 use Base\CoreBundle\Util\Time;
@@ -16,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FilmFestivalPoster
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FilmFestivalPosterRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class FilmFestivalPoster implements FilmFestivalPosterInterface, TranslateMainInterface
@@ -54,7 +55,7 @@ class FilmFestivalPoster implements FilmFestivalPosterInterface, TranslateMainIn
     protected $festival;
 
     /**
-     * @var string
+     * @var SonataMedia
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */

@@ -314,7 +314,8 @@ class GlobalController extends Controller
             'routesArticles'  => $routesArticles,
             'routesWebTv'     => $routesWebTv,
             'route'           => $route,
-            'participateMenu' => $participateMenu
+            'participateMenu' => $participateMenu,
+            'currentYear' => $this->getSettings()->getFestival()->getYear(),
         ];
     }
 

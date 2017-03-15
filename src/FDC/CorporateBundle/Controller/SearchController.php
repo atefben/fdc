@@ -3,6 +3,7 @@
 namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmPerson;
 use Elastica\Query;
 use Elastica\Query\QueryString;
 use FDC\CorporateBundle\Form\Type\SearchType;
@@ -124,7 +125,24 @@ class SearchController extends Controller
                 $mediaResults = false;
             }
             $filmResults = $data['movies'] ? $this->getSearchResults($_locale, 'film', $data, 5, 1) : false;
-            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 5, 1) : false;
+            $artistResults = $data['artists'] ? $this->getSearchResults($_locale, 'artist', $data, 40000, 1) : false;
+            if ($data['artistCountry']) {
+                foreach ($artistResults['items'] as $key => $item) {
+                    if ($item instanceof FilmPerson) {
+                        if ($item->getNationality() && $item->getNationality()->findTranslationByLocale($_locale)) {
+                            $name = $item->getNationality()->findTranslationByLocale($_locale)->getName();
+                            if (strpos(strtoupper($name), strtoupper($data['artistCountry'])) === false) {
+                                unset($artistResults['items'][$key]);
+                                --$artistResults['count'];
+                            }
+                        } else {
+                            unset($artistResults['items'][$key]);
+                            --$artistResults['count'];
+                        }
+                    }
+                }
+                $artistResults['items'] = array_slice(array_values($artistResults['items']), 0, 5);
+            }
 
             $result = [
                 'news'           => $newsResults,
@@ -223,6 +241,22 @@ class SearchController extends Controller
         foreach ($searchResults['items'] as $item) {
             if ($item instanceof FilmFilm && $item->getSelectionSection()) {
                 $s[$item->getSelectionSection()->findTranslationByLocale('fr')->getName()] = '';
+            }
+        }
+        if ($data['artistCountry']) {
+            foreach ($searchResults['items'] as $key => $item) {
+                if ($item instanceof FilmPerson) {
+                    if ($item->getNationality() && $item->getNationality()->findTranslationByLocale($_locale)) {
+                        $name = $item->getNationality()->findTranslationByLocale($_locale)->getName();
+                        if (strpos(strtoupper($name), strtoupper($data['artistCountry'])) === false) {
+                            unset($searchResults['items'][$key]);
+                            --$searchResults['count'];
+                        }
+                    } else {
+                        unset($searchResults['items'][$key]);
+                        --$searchResults['count'];
+                    }
+                }
             }
         }
 

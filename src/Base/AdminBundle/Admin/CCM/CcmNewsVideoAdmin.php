@@ -82,6 +82,12 @@ class CcmNewsVideoAdmin extends CcmNewsAdmin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.news.helper_title'
                     ),
+                    'chapo'   => array(
+                        'field_type'         => 'ckeditor',
+                        'label'              => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                    ),
                     'createdAt' => array(
                         'display' => false
                     ),
@@ -182,7 +188,6 @@ class CcmNewsVideoAdmin extends CcmNewsAdmin
                     'inline' => 'table'
                 )
             )
-            ->add('displayedHome')
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',

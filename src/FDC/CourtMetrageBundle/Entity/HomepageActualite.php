@@ -53,11 +53,11 @@ class HomepageActualite
      */
     protected $theme;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="actualites")
-//     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
-//     */
-//    protected $homepage;
+    /**
+     * @ORM\ManyToOne(targetEntity="Homepage", inversedBy="actualites")
+     * @ORM\JoinColumn(name="homepage_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $homepage;
 
     /**
      * @var boolean
@@ -128,25 +128,25 @@ class HomepageActualite
         return $this;
     }
 
-//    /**
-//     * Get homepage.
-//     *
-//     * @return mixed
-//     */
-//    public function getHomepage()
-//    {
-//        return $this->homepage;
-//    }
-//
-//    /**
-//     * Set homepage.
-//     *
-//     * @param mixed $homepage
-//     */
-//    public function setHomepage($homepage)
-//    {
-//        $this->homepage = $homepage;
-//    }
+    /**
+     * Get homepage.
+     *
+     * @return mixed
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
+
+    /**
+     * Set homepage.
+     *
+     * @param mixed $homepage
+     */
+    public function setHomepage($homepage)
+    {
+        $this->homepage = $homepage;
+    }
 
     /**
      * Get date.

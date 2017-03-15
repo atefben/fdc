@@ -16,12 +16,96 @@
   }
 }
 
+.block-accordion .title-contain.border-top {
+    border-top: 3px solid #e5e5e5;
+}
+
+.articles-list-medias.dark.retrospective .isotope-01.add-ajax-request {
+    background: #000;
+}
+
+.block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
+    color: #000;
+    border-color: #000;
+}
+
+.participate .contain-descript {
+    .descrip {
+        width: 785px;
+        margin: 0 auto;
+        padding: 46px 0;
+        line-height: 30px;
+        color: #333;
+        text-align: center;
+    }
+}
+
+.block-accordion .active .contain-infos a {
+    display: inline-block;
+    color: $gold;    
+}
+
+.block-push-top h1 i.icon {
+    font-size: 2.75rem;
+    margin-top: -6px;
+}
+
+.slider-01 .center figcaption strong {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+}
+
+.article-single.dark section .caption {
+    margin-top: 10px;
+}
+
+#home {
+    .card {
+        .info strong {
+            color: #333;
+            /*font-family: "Playfair Display",Times New Roman,Times,serif;*/
+            font-size: 1.125rem;
+            font-weight: 400;
+            letter-spacing: .02em;
+            line-height: 1.3em;
+            margin: 15px auto 0;
+            text-align: center;
+
+            a {
+                color: #333;
+            }
+        }
+
+        &.w2 {
+            .info strong {
+                font-size: 2.25rem;
+                line-height: 1.3em;
+            }
+        }
+    }   
+}
+
+.slider-home .texts .item p {
+    padding-bottom: 0px;
+    margin-bottom: 72px;
+}
+
 .block-search .content-result .artist .item, .block-search  .content-result .movies .item{
     width: 162px;
 }
 
 .isotope-01 .item.block-poster img {
   display: block;
+  background: #000;
+
+  &.landscape {
+    height: 100%;
+    width: auto;
+  }
+
+  &.portrait {
+    height: 100%;
+    width: auto;
+  }
 }
 
 .item.block-poster .contain-txts {
@@ -34,6 +118,10 @@
 
 .block-movie-preview .wrapper-item .description {
 	width: 475px;
+}
+
+.card.double strong {
+    
 }
 
 .block-search .content-result .top-texts .see-all {
@@ -161,13 +249,16 @@ h2.sub-title {
 }
 
 .block-diaporama .slider-01 .owl-item .item {
-    width: 640px;
+    width: auto;
     height: 428px;
-    overflow: hidden;
+    overflow: visible;
 
-    figure {
+    figure, img {
         height: 100%;
         width: auto;
+        max-width: none;
+        margin: 0px;
+        padding: 0px;
     }
 }
 
@@ -184,18 +275,62 @@ header #navigation ul.user li a {
 }
 
 header #navigation ul.user li a .icon {
-    margin-right: 7px!important;
-    margin-left: 12tpx!important;
     top: 1px!important;
-    color: #d1d1d1;
 }
 
-header #navigation ul.user li a .icon-pencil:before {
-    content: "";
-    background: url(../img/pencil.svg) no-repeat left top;
-    background-size: 100%;
-    width: 12px;
-    height: 12px;
+.article-single .text a {
+    color: $gold;
+}
+
+.block-diaporama .owl-stage-outer .owl-stage {
+    min-width: 9999px;    
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description{
+
+    color: #666;
+    display: inline-block;
+    font-size: 0.625rem;
+
+    .category {
+        color: $gold;
+        cursor: default;
+        display: inline-block;
+        font-size: .625rem;
+        letter-spacing: .1em;
+        margin-right: 12px;
+        text-transform: uppercase;
+    }
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description span.hour {
+    font-size: 0.625rem;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a{
+    cursor: default;
+}
+
+.c-fullscreen-slider .chocolat-bottom .chocolat-description strong a{
+    color: #fff;
+    cursor: default;
+}
+
+header #navigation ul.user li a {
+    .icon-pencil:before {
+        content: "";
+        background: url(../img/pencil.svg) no-repeat left top;
+        background-size: 100%;
+        width: 10px;
+        height: 10px;
+        transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    }
+
+    &:hover {
+        .icon-pencil:before {
+            background: url(../img/pencil-hover.svg) no-repeat left top;
+        }
+    }
 }
 
 .slider-01 figcaption {
@@ -204,4 +339,128 @@ header #navigation ul.user li a .icon-pencil:before {
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     height: 15px;
 }
+
+.retrospective {
+    .slider-restropective {
+        .calc3 img.i1 {
+            position: relative;
+            top: 2%;
+            left: -21%;
+        }
+
+        .calc3 img.i2 {
+            top: 10%;
+            position: relative;
+            right: 24%;
+        }
+
+        .calc3 img.i3 {
+            position: relative;
+            top: 8%;
+            left: -35%;
+        }
+
+        .calc4 img.i1 {
+            position: relative;
+            top: 1%;
+            left: 33%;
+        }
+
+        .calc4 img.i2 {
+            top: 21%;
+            position: relative;
+            right: -24%;
+        }
+
+        
+    }
+
+    .slider-restropective[data-slide="10"] {
+            .calc3 {
+                img.i1 {
+                    left: -23%;
+                }
+
+                img.i2 {
+                    right: -9%;
+
+                    @media only screen and (max-width : 1440px) {
+                        top: 8%;
+                        position: relative;
+                        right: -16%;
+                    }
+                }
+            }
+        }
+}
+
+.dark .grid-01 {
+    margin-top: 0px;
+}
+
+.block-diaporama .owl-carousel .owl-item img {
+    width: auto;
+    height: 100%;
+}
+
+.articles-list .grid-01 .card .info .category {
+    display: inline-block!important;
+}
+
+.block-search .content-result section.artist {
+    overflow: hidden;
+}
+
+.slider-selection .number#slider-snap-value-upper {
+    position: absolute;
+    right: 35px;
+    top: 95px;
+}
+
+.articles-wrapper {
+    transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    .articles {
+        transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+@media only screen and (max-width : 1440px) {
+    .retrospective .slider-restropective {
+        .calc3 {
+            zoom: 0.9;
+            left: 12%;
+            top: 5%;
+        }
+
+        .calc4 {
+            zoom: 0.8;
+            left: 17%;
+            top: -4%;
+        }
+    }
+}
+
+@media only screen and (max-width : 1280px) {
+    .retrospective .slider-restropective {
+        .calc3 {
+            zoom: 0.8;
+            left: 30%;
+            top: 3%;
+
+            .i2 {
+                top: 21%;
+                position: relative;
+                right: 47%;
+            }
+        }
+
+        .calc4 {
+            zoom: 0.7;
+            left: 25%;
+            top: -1%;
+        }
+    }
+}
+
 /* thomon - end fixes */

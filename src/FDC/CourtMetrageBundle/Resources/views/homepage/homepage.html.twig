@@ -35,7 +35,7 @@
             <div class="maxContainer">
                 <h3>{{ 'ccm.homepage.competition_section'|trans }}</h3>
             </div>
-            <div id="slider-competition" class="owl-carousel">
+            <div id="slider-competition" class="owl-carousel sliderDrag owl-theme owl-loaded">
                 {% if movies is defined and movies is not null %}
                     {% include 'FDCCourtMetrageBundle::homepage/_courts_en_competition.html.twig' %}
                 {% endif %}

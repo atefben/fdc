@@ -14,32 +14,31 @@
                         {% set sliderItems = {} %}
                         {% set dataItem = 1 %}
                         {% for homeSlide in homeSlider %}
-                            {% set img = homeSlide.header %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = '' %}
-                            {% if trans.status == 1 and img.publishedAt and img.publishedAt.getTimestamp() <= "now"|date('U') %}
-                                {% set file = trans.file %}
-                            {% endif %}
-
-                            <div class="item animated active" data-item="{{ dataItem }}"
-                                 style="background-image:url('{% path file , '1280x808' %}')"></div>
-                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'S' %}
+                            {% if class(homeSlide) starts with 'S' %}
                                 {% set type = 'communique' %}
                             {% else %}
                                 {% set type = 'info' %}
                             {% endif %}
+
+                            {% if homeSlide.header %}
+                                {% set img = homeSlide.header %}
+                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                {% if trans is null or trans.file is null %}
+                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% endif %}
+                                {% set file = '' %}
+                                {% if trans.status == 1 and img.publishedAt and img.publishedAt.getTimestamp() <= "now"|date('U') %}
+                                    {% set file = trans.file %}
+                                {% endif %}
+                            {% endif %}
+
+                            <div class="item animated active" data-item="{{ dataItem }}"
+                                 style="background-image:url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')"></div>
                             {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
                             {% endif %}
-                            {% if class is defined and attribute(homeSlide, class) is defined and class(homeSlide) starts with 'Statement' %}
-                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'communique', format: homeSlide.newsFormat, slug: trans.slug }) %}
-                            {% else %}
-                                {% set sliderUrl = url('fdc_corporate_news_presssingle', { year: homeSlide.festival.year, type: 'info', format: homeSlide.newsFormat, slug: trans.slug }) %}
-                            {% endif %}
+                            {% set sliderUrl = path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(homeSlide), 'slug': homeSlide|trans_fallback('slug')}) %}
 
                             {% set sliderItem = {(dataItem):{'item':dataItem,'title':homeSlide|trans_fallback('title'), 'theme':homeSlide.theme|trans_fallback('name'), 'introduction':homeSlide|trans_fallback('introduction'), 'url':sliderUrl}} %}
                             {% set sliderItems = sliderItems|merge(sliderItem) %}
@@ -58,9 +57,9 @@
                                         <a href="{{ sliderItem.url }}">
                                             <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                         </a>
-                                        <span class="text-trunc">
-                                    {{ sliderItem.introduction|raw }}
-                                </span>
+                                        <p class="text-trunc">
+                                    {{ sliderItem.introduction }}
+                                    </p>
                                     </div>
                                 {% endfor %}
                             </div> <!-- end slider carousel -->
@@ -111,7 +110,7 @@
 
                                     <div class="item">
                                         <figure>
-                                            <img src="{% path file, '640x404' %}" alt="image"
+                                            <img src="{% path file, 'x404' %}" alt="image"
                                                  data-id="pid={{ photo.id }}"
                                                  data-credit="{{ copyright }}"
                                                  data-title="{{ photo|trans_fallback('legend') }}"
@@ -165,10 +164,16 @@
                         </div> <!-- end articles -->
                     </div> <!-- end article wrapper-->
 
-                    <a id="home-news-statements-more"
-                       href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
-                       data-reverse=""
-                       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
+                    {% if not last %}
+                        <a id="home-news-statements-more"
+                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                           data-reverse=""
+                           class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
+                    {% else %}
+                        <a id="home-news-statements-more"
+                        href="{{ path('fdc_corporate_news_infosandstatements') }}"
+                        class="read-more">{{ "home.coporate.statements.and.infos.all.button"|trans|raw }}</a>
+                    {% endif %}
                 {% endif %}
             </div>
 
@@ -215,11 +220,9 @@
 
                             <div class="block-legend">
                                 <div class="info">
-
                                     <span class="category">{{ featuredVideo.themeHomeCorpo|trans_fallback('name') }}</span><span
                                             class="date">{{ featuredVideo.dateHomeCorpo|date('d.m.y') }}</span> . <span
                                             class="hour">{{ agenda_leftbar_translate_hour(featuredVideo.dateHomeCorpo|date('H:i'), true, true) }}</span>
-
                                     <div class="texts">
                                         <h2><a>{{ featuredVideo|trans_fallback('titleHomeCorpo') }}</a></h2>
                                         <div class="text-01">
@@ -433,17 +436,23 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 <ul>
                                     <li><a class="facebook"
                                            href="http://www.facebook.com/pages/Festival-de-Cannes-PageOfficielle/197710070249937"
-                                           target="_blank">Facebook<i style="position:relative;top:2px;" class="icon icon-facebook"></i></a></li>
-                                    <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i style="position:relative;top:2px;"
+                                           target="_blank">Facebook<i style="position:relative;top:2px;"
+                                                                      class="icon icon-facebook"></i></a></li>
+                                    <li><a class="twitter" href="https://twitter.com/Festival_Cannes" target="_blank">Twitter<i
+                                                    style="position:relative;top:2px;"
                                                     class="icon icon-twitter"></i></a></li>
                                     <li><a class="instagram" href="https://instagram.com/festivaldecannes"
-                                           target="_blank">Instagram<i style="position:relative;top:2px;" class="icon icon-instagram"></i></a></li>
+                                           target="_blank">Instagram<i style="position:relative;top:2px;"
+                                                                       class="icon icon-instagram"></i></a></li>
                                     <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/"
-                                           target="_blank">Tumblr<i style="position:relative;top:2px;" class="icon icon-tumblr"></i></a></li>
+                                           target="_blank">Tumblr<i style="position:relative;top:2px;"
+                                                                    class="icon icon-tumblr"></i></a></li>
                                     <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes"
-                                           target="_blank">Youtube<i style="position:relative;top:3px;" class="icon icon-youtube"></i></a></li>
+                                           target="_blank">Youtube<i style="position:relative;top:3px;"
+                                                                     class="icon icon-youtube"></i></a></li>
                                     <li><a class="dailymotion" href="http://www.dailymotion.com/CannesFestTV"
-                                           target="_blank">Dailymotion<i style="position:relative;top:1px;" class="icon icon-dailymotion"></i></a></li>
+                                           target="_blank">Dailymotion<i style="position:relative;top:1px;"
+                                                                         class="icon icon-dailymotion"></i></a></li>
                                 </ul>
                             </div>
 
@@ -474,8 +483,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    -->
-                    <div class="half-div block-push">
+                    --><div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -513,7 +521,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                                     {% set trans = homepage.pushSecondaryImage1.findTranslationByLocale('fr') %}
                                                 {% endif %}
 
-                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                <img src="{% path trans.file , '702x444' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle1')|raw }}</strong>
@@ -521,8 +529,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                -->
-                                <div class="small-push half-div">
+                                --><div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -531,7 +538,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                                 {% if trans is null or trans.file is null %}
                                                     {% set trans = homepage.pushSecondaryImage2.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                <img src="{% path trans.file , '325x205' %}" alt=""/>
+                                                <img src="{% path trans.file , '702x444' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle2')|raw }}</strong>
@@ -551,7 +558,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                                 {% if trans is null or trans.file is null %}
                                                     {% set trans = homepage.pushSecondaryImage3.findTranslationByLocale('fr') %}
                                                 {% endif %}
-                                                <img src="{% path trans.file , '650x410' %}" alt=""/>
+                                                <img src="{% path trans.file , '1406x886' %}" alt=""/>
                                             {% endif %}
                                             <div class="vFlexAlign">
                                                 <strong class="title-8">{{ homepage|trans_fallback('pushSecondaryTitle3')|raw }}</strong>

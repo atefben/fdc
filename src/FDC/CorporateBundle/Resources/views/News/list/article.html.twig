@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block bodyClass %}loading dark retrospective fs-off retrospective-home restrospective-init{% endblock %}
 
 {% block body %}
     <section class=" border-bottom s-slider-retrospective">
@@ -20,12 +20,14 @@
                         {% include 'FDCCorporateBundle:News/list/include:article.html.twig' %}
                     {% endfor %}
                 </div>
-
-                <div class="bright" style="display:none">
-                    <a href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"
-                       class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
-                    </a>
-                </div>
+                {% if not last %}
+                    <div class="bright" style="display:none">
+                        <a id="news-more"
+                           href="{{ path('fdc_corporate_news_getarticlesajax', {'time': time, 'year': festival.year}) }}"
+                           class="read-more block-01 ajax-request">{{ 'mediatheque.moreresults'|trans|raw }}
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
 

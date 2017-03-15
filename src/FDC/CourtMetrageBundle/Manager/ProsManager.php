@@ -20,7 +20,7 @@ class ProsManager
      * @var EntityManager
      */
     protected $em;
-    
+
     /**
      * @var RequestStack
      */
@@ -61,6 +61,7 @@ class ProsManager
 
     /**
      * @param $pros
+     * @param $page
      * @return array|null
      */
     public function getDomains($pros, $page)
@@ -69,44 +70,101 @@ class ProsManager
             $domains = [];
             $pageDomains = [];
             $repo = $this->em->getRepository(CcmDomainTranslation::class);
-            $domainsCollection = $this->em->getRepository(CcmDomainCollection::class)
+            $domainsRepo = $this->em->getRepository(CcmDomainCollection::class);
+            $domainsCollectionPage = $domainsRepo
                 ->findBy(
                     array(
                         'prosPage' => $page->getTranslatable()->getId()
                     )
                 );
-            
+
             foreach ($pros as $pro) {
-                $domain = $repo
-                    ->findOneBy(
+                $domainsCollectionPro = $domainsRepo
+                    ->findBy(
                         array(
-                            'locale' => $this->requestStack->getMasterRequest()->getLocale(),
-                            'slug' => $pro->getDomain()
+                            'prosDetail' => $pro->getTranslatable()->getId()
                         )
                     );
 
-                if ($domain) {
-                    $domains[$domain->getSlug()] = $domain->getName();
+                if ($domainsCollectionPro) {
+                    foreach ($domainsCollectionPro as $domainPro) {
+                        $domain = $repo
+                            ->findOneBy(
+                                array(
+                                    'locale' => $this->requestStack->getMasterRequest()->getLocale(),
+                                    'translatable' => $domainPro->getDomain()
+                                )
+                            );
+
+                        if ($domain) {
+                            $domains[$domain->getSlug()] = $domain->getName();
+                        }
+                    }
                 }
             }
 
-            foreach ($domainsCollection as $pd) {
-                $pageDomain = $this->em->getRepository(CcmDomainTranslation::class)
-                    ->findOneBy(
-                        array(
-                            'locale' => $this->requestStack->getMasterRequest()->getLocale(),
-                            'translatable' => $pd->getDomain(),
-                        )
-                    );
+            if ($domainsCollectionPage) {
+                foreach ($domainsCollectionPage as $pd) {
+                    $pageDomain = $this->em->getRepository(CcmDomainTranslation::class)
+                        ->findOneBy(
+                            array(
+                                'locale' => $this->requestStack->getMasterRequest()->getLocale(),
+                                'translatable' => $pd->getDomain(),
+                            )
+                        );
 
-                if ($pageDomain) {
-                    $pageDomains[$pageDomain->getSlug()] = $pageDomain->getName();
+                    if ($pageDomain) {
+                        $pageDomains[$pageDomain->getSlug()] = $pageDomain->getName();
+                    }
                 }
             }
 
             return array_intersect_key($domains, $pageDomains);
         }
-        
+
+        return null;
+    }
+
+    /**
+     * @param $pros
+     * @return array|null
+     */
+    public function getProsDomains($pros)
+    {
+        if ($pros) {
+            $domains = [];
+            $repo = $this->em->getRepository(CcmDomainTranslation::class);
+            $domainsRepo = $this->em->getRepository(CcmDomainCollection::class);
+
+            foreach ($pros as $pro) {
+                $domainsCollectionPro = $domainsRepo
+                    ->findBy(
+                        array(
+                            'prosDetail' => $pro->getTranslatable()->getId()
+                        )
+                    );
+
+                if ($domainsCollectionPro) {
+                    $domains[$pro->getTranslatable()->getId()] = [];
+                    foreach ($domainsCollectionPro as $domainPro) {
+                        $domain = $repo
+                            ->findOneBy(
+                                array(
+                                    'locale' => $this->requestStack->getMasterRequest()->getLocale(),
+                                    'translatable' => $domainPro->getDomain()
+                                )
+                            );
+
+                        if ($domain) {
+                            $domains[$pro->getTranslatable()->getId()][$domain->getSlug()] = $domain->getName();
+                        }
+                    }
+                }
+            }
+
+           return $domains;
+        }
+
         return null;
     }
 

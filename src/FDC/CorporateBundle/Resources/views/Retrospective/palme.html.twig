@@ -187,7 +187,10 @@
                                                 <figure>
                                                     <img src="{% path image, '363x260' %}"
                                                          alt="{{ widget.image|trans_fallback('alt') }}">
-                                                    <figcaption>{{ widget.image|trans_fallback('legend') }}</figcaption>
+                                                    {% set copyright = widget.image|trans_fallback('copyright') %}
+                                                    {% if copyright is not empty -%}
+                                                        <span class="copy"> © {{ copyright }}</span>
+                                                    {%- endif %}
                                                 </figure>
                                                 {% endif %}
                                             </div>

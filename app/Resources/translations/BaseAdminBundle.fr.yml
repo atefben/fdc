@@ -220,7 +220,7 @@ entity:
     theme: Thèmes
     tag: Tags de recherche
     web_tv: Chaînes
-    media_pdf: Pdfs
+    media_pdf: Pdfs, eps
     media_image: Photos
     media_image_simple: Images semi-riches
     media_audio: Audios
@@ -839,6 +839,9 @@ form:
             short_film_corner:
                 position_du_menu: Position
             menu:
+                urlProgram: URL de bouton Programme
+                urlCatalog: URL de bouton Catalogue
+                urlRegister: URL de bouton Registre
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
                 register_pic_is_active: Le bouton Registre est visible?
@@ -1477,7 +1480,7 @@ form:
             color6: Couleur n°4
             color7: Couleur n°11
     media_pdf:
-        helper_file: Format attendu : .pdf
+        helper_file: Format attendu : .pdf, .eps
     fdc_page_participate_section:
         image_big: Grande image
     label_mobile: Utiliser cette strate sur mobile
@@ -1510,7 +1513,10 @@ form:
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes: Format de l'image recommandé : 650x410
         helper_pushes_306x206: Format de l'image recommandé : 306x206
-        helper_pushes_3 : Format de l'image recommandé : 652x206
+        helper_pushes_325x205: Format de l'image recommandé : 351x222
+        helper_pushes_702x444: Format de l'image recommandé : 702x444
+        helper_pushes_703x443: Format de l'image recommandé : 703x443
+        helper_pushes_1406x886: Format de l'image recommandé : 1406x886
         helper_push3: Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
@@ -1647,6 +1653,7 @@ form:
     label_news_film_film_associated: Association à une ou plusieurs fiches films
     label_news_news_associated: Actualités associés
     label_displayed_home: Remonter en homepage
+    label_displayed_on_corpo_home: Remonter en homepage du site institutionnel
     label_displayed_mobile: Flux mobiles
     label_translate: Envoyer en traduction
     label_theme: Thème
@@ -1664,6 +1671,7 @@ form:
     label_seo_file: Vignette partage
     label_theme_name: Nom du thème
     label_file: Fichier
+    label_file_eps: Fichier eps
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
     label_film_film_media_audio: Audios associés

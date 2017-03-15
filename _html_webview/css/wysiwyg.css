@@ -2,6 +2,9 @@
   text-decoration: none;
   color: #c8a461; }
 
+.Article-content ol, .Article-content ul {
+  padding-left: 2rem; }
+
 .Article-content table {
   width: 100% !important; }
 
@@ -122,6 +125,14 @@
   width: 246px;
   margin: 0 auto;
   line-height: 20px; }
+
+.Article-content .descrip-participate {
+  text-align: center; }
+
+.Article-content .txt-grey-bkg-container-paragraph {
+  background: #ededed;
+  padding: 1rem;
+  display: inline-block; }
 
 .Article-content em {
   font-style: italic; }
