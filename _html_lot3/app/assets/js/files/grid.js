@@ -93,7 +93,6 @@ var owInitGrid = function (id) {
                                 //test if filter exists
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                     $('#theme .select .icon-arrow-down').before($(this));
-
                                 }
                             });
                         }
@@ -113,11 +112,26 @@ var owInitGrid = function (id) {
 
                             $('.articles-wrapper .articles').css('opacity',1);
 
-                            var h = 0
+                            var h = 0;
                             $('.articles-wrapper .articles').each(function(){
                                 h += $(this).height();
                             });
                             $('.articles-wrapper').css('height',h);
+                        });
+
+                        $('.isotope-01').each(function(){
+                                $(this).isotope('destroy').isotope({
+                                    itemSelector: '.item',
+                                    layoutMode: 'masonry',
+                                    packery: {
+                                        columnWidth: '.grid-sizer'
+                                    },
+                                    getSortData: {
+                                        number: '[data-sort]'
+                                    },
+                                    // sort by color then number
+                                    sortBy: ['number']
+                                });
                         });
 
                         //BUTTON BEHAVIOUR
