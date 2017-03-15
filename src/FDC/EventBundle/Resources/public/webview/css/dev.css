@@ -46,6 +46,9 @@
       margin: -4px 0 0 3px;
       font-size: 1.8rem;
   }
+	.jwplayer.jw-skin-fdc-video .jw-title-primary {
+		white-space: initial;
+	}
   .jwplayer.jw-skin-fdc .jw-title-secondary {
   	margin-left: 5px;
 	font-size: 1.2rem;
@@ -106,5 +109,8 @@
 	.Article-related h2 {
 		padding-top: 40px;
 		font-size: 1.2rem;
+	}
+	.jwplayer.jw-skin-fdc-video .jw-title-primary {
+		white-space: initial;
 	}
 }
