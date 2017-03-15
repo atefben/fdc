@@ -19,8 +19,9 @@
 {% if image is not defined and image is null %}
 	{% set image_s3 = s3_server_video ~ trans.imageAmazonUrl %}
 {% endif %}
+{{ image_s3 }}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
-data-poster="{% if image is not defined and image is null %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
+data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif image_s3 is defined %}{{ image_s3 }}{% endif %}"
 data-file="{{ s3_server_video ~ trans.mp4Url }}"
 {% if redactional is defined and redactional is not null %}
 data-title="<h4>Discours</h4> <p>{{ redactional.updatedAt|date('d.m.y') }}&nbsp;&nbsp;.&nbsp;&nbsp;{{ redactional.updatedAt|date('H:i') }}</p>"
