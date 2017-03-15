@@ -380,7 +380,7 @@ var openSlideShow = function (slider, hash, affiche) {
                 if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
                     images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
                 }
-
+                console.log(images[centerElement].caption);
             }
 
             if(typeof images[centerElement].title !== 'undefined'){
