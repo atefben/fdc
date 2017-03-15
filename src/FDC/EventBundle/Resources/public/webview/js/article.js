@@ -154,7 +154,7 @@ var ow = ow || {};
 							jwplayer(player.attr('id')).play();
 							setTimeout(function(){
 							  jwplayer(player.attr('id')).pause();
-							}, 100);
+							}, 500);
 						}
 						
 					}
