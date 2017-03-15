@@ -29,7 +29,7 @@ class CcmLabelTranslation implements TranslateChildInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $header;
 
@@ -76,15 +76,11 @@ class CcmLabelTranslation implements TranslateChildInterface
     }
 
     /**
-     * @param $header
-     *
-     * @return $this
+     * @param string $header
      */
     public function setHeader($header)
     {
         $this->header = $header;
-
-        return $this;
     }
 
     /**
