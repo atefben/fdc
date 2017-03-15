@@ -91,7 +91,6 @@ var owInitGrid = function (id) {
                         if($(data).filter('.compute-filters').length){
                             $(data).filter('.compute-filters').find('span').each(function(){
                                 //test if filter exists
-                                console.log($(this).data('filter'),$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length);
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                     $('#theme .select').append($(this));
                                 }

@@ -2329,7 +2329,6 @@ var initFaq = function() {
 // =========================
 
 var owInitFilter = function (isTabSelection) {
-    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
     var isotopeHomepageItems = [];
@@ -2381,7 +2380,6 @@ var owInitFilter = function (isTabSelection) {
             $('.articles-wrapper').bind("DOMSubtreeModified",function(){
                 if(!lock){
                     lock = true;
-                    console.log('appended callback');
                     $(this).find('.articles').each(function(){
                         var $this = $(this);
                         var grid = $this.find('.isotope-01');
@@ -2390,6 +2388,7 @@ var owInitFilter = function (isTabSelection) {
                             //isotopeHomepageItems.push(value);
                         });
                     });
+                    owInitFilter();
                 }
             });
             var lockInterval = window.setInterval(function(){
@@ -2441,7 +2440,7 @@ var owInitFilter = function (isTabSelection) {
                     $('#filters span').addClass('show');
                 }, 400);
 
-                $('#filters span').on('click', function () {
+                $('#filters span').off('click').on('click', function () {
                     if($('.home').length){
                         var selectedClass = $(this).data('filter');
                         /* TODO 
@@ -2775,7 +2774,6 @@ var owInitGrid = function (id) {
                         if($(data).filter('.compute-filters').length){
                             $(data).filter('.compute-filters').find('span').each(function(){
                                 //test if filter exists
-                                console.log($(this).data('filter'),$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length);
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                     $('#theme .select').append($(this));
                                 }
