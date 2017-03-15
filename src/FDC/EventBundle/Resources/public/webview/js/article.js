@@ -151,13 +151,10 @@ var ow = ow || {};
 							'top': -90
 						});
 						if(newPlayer.parent().attr('class') == 'Article-header') {
+							jwplayer(player.attr('id')).play();
 							setTimeout(function(){
-								jwplayer(player.attr('id')).play();
-								setTimeout(function(){
-									jwplayer(player.attr('id')).pause();
-								}, 200);
-
-							}, 200);
+							  jwplayer(player.attr('id')).pause();
+							}, 500);
 						}
 						
 					}
