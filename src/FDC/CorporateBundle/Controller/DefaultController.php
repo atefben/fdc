@@ -188,12 +188,22 @@ class DefaultController extends Controller
      */
     public function getArticlesFromAction(Request $request)
     {
-        if (!$request->query->has('timestamp')) {
-            throw new NotFoundException();
+        $dateTime = new DateTime();
+        if ($request->query->has('timestamp') && $request->query->get('timestamp')) {
+            $dateTime->setTimestamp($request->query->get('timestamp') - 1);
+        }
+        if ($request->query->has('theme') && $request->query->get('theme')) {
+            $themeTranslation = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:ThemeTranslation')
+            ->findOneBy(['slug' => $request->query->get('theme')]);
+            $filterTheme = $themeTranslation->getTranslatable();
+        }
+        if ($request->query->has('format') && $request->query->get('format')) {
+            $filterFormat = $request->query->get('format');
         }
 
-        $dateTime = new DateTime();
-        $dateTime->setTimestamp($request->query->get('timestamp') - 1);
+
 
         $locale = $request->getLocale();
         $settings = $this->getSettings();
@@ -202,12 +212,12 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
 
