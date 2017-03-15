@@ -5,9 +5,7 @@ namespace FDC\CourtMetrageBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Entity\Theme;
 use \DateTime;
 
 /**
@@ -35,8 +33,8 @@ class HomepageActualite
     protected $date;
 
     /**
-     * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="homepageActualites")
+     * @var CcmMediaImage
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", inversedBy="homepageActualites")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $image;
@@ -47,9 +45,9 @@ class HomepageActualite
     protected $translations;
 
     /**
-     * @var Theme
+     * @var CcmTheme
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme", inversedBy="homepageActualites")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmTheme", inversedBy="homepageActualites")
      * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
      *
      */
@@ -89,7 +87,7 @@ class HomepageActualite
     /**
      * Get image.
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage()
     {
@@ -99,7 +97,7 @@ class HomepageActualite
     /**
      * Set iamge.
      *
-     * @param MediaImage $image
+     * @param CcmMediaImage $image
      */
     public function setImage($image)
     {
@@ -111,7 +109,7 @@ class HomepageActualite
     /**
      * Get theme.
      *
-     * @return Theme
+     * @return CcmTheme
      */
     public function getTheme()
     {
@@ -121,7 +119,7 @@ class HomepageActualite
     /**
      * Set theme.
      *
-     * @param Theme $theme
+     * @param CcmTheme $theme
      */
     public function setTheme($theme)
     {

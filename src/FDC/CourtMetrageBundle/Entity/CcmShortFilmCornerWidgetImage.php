@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 
-use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * CcmShortFilmCornerWidgetImage
@@ -15,18 +14,18 @@ use Doctrine\ORM\Mapping as ORM;
 class CcmShortFilmCornerWidgetImage extends CcmShortFilmCornerWidget
 {
     /**
-     * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", cascade={"persist"})
+     * @var CcmMediaImage
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", cascade={"persist"})
      */
     protected $file;
 
     /**
      * Set file
      *
-     * @param MediaImage $file
+     * @param CcmMediaImage $file
      * @return CcmShortFilmCornerWidgetImage
      */
-    public function setFile(MediaImage $file = null)
+    public function setFile(CcmMediaImage $file = null)
     {
         $this->file = $file;
 
@@ -36,7 +35,7 @@ class CcmShortFilmCornerWidgetImage extends CcmShortFilmCornerWidget
     /**
      * Get file
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getFile()
     {

@@ -37,7 +37,7 @@ class CcmMediaImage extends CcmMedia
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="media")
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryMedia", mappedBy="media")
      */
     protected $galleries;
 
@@ -181,10 +181,10 @@ class CcmMediaImage extends CcmMedia
     /**
      * Add galleries
      *
-     * @param \Base\CoreBundle\Entity\GalleryMedia $galleries
+     * @param CcmGalleryMedia $galleries
      * @return CcmMediaImage
      */
-    public function addGallery(\Base\CoreBundle\Entity\GalleryMedia $galleries)
+    public function addGallery(CcmGalleryMedia $galleries)
     {
         $this->galleries[] = $galleries;
         $galleries->setMedia($this);
@@ -195,9 +195,9 @@ class CcmMediaImage extends CcmMedia
     /**
      * Remove galleries
      *
-     * @param \Base\CoreBundle\Entity\GalleryMedia $galleries
+     * @param CcmGalleryMedia $galleries
      */
-    public function removeGallery(\Base\CoreBundle\Entity\GalleryMedia $galleries)
+    public function removeGallery(CcmGalleryMedia $galleries)
     {
         $this->galleries->removeElement($galleries);
     }

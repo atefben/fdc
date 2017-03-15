@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaImageSimple;
+
 use \DateTime;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
@@ -32,9 +32,9 @@ class CcmShortFilmCornerWidgetVideoYoutube extends CcmShortFilmCornerWidget
     protected $translations;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $image;
 
@@ -49,10 +49,10 @@ class CcmShortFilmCornerWidgetVideoYoutube extends CcmShortFilmCornerWidget
     /**
      * Set image
      *
-     * @param MediaImageSimple $image
+     * @param CcmMediaImageSimple $image
      * @return CcmShortFilmCornerWidgetVideoYoutube
      */
-    public function setImage(MediaImageSimple $image = null)
+    public function setImage(CcmMediaImageSimple $image = null)
     {
         $this->image = $image;
 
@@ -62,7 +62,7 @@ class CcmShortFilmCornerWidgetVideoYoutube extends CcmShortFilmCornerWidget
     /**
      * Get image
      *
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getImage()
     {

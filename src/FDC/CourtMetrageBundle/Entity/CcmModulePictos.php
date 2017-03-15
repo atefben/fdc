@@ -4,7 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

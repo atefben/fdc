@@ -4,7 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Entity\Gallery;
 /**
  * CcmShortFilmCornerWidgetGallery
  *
@@ -15,7 +14,7 @@ use Base\CoreBundle\Entity\Gallery;
 class CcmShortFilmCornerWidgetGallery extends CcmShortFilmCornerWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGallery")
      * @ORM\JoinColumn(name="gallery_id", onDelete="SET NULL")
      */
     protected $gallery;
@@ -23,10 +22,10 @@ class CcmShortFilmCornerWidgetGallery extends CcmShortFilmCornerWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param CcmGallery $gallery
      * @return CcmShortFilmCornerWidgetGallery
      */
-    public function setGallery(Gallery $gallery = null)
+    public function setGallery(CcmGallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -36,7 +35,7 @@ class CcmShortFilmCornerWidgetGallery extends CcmShortFilmCornerWidget
     /**
      * Get gallery
      *
-     * @return Gallery
+     * @return CcmGallery
      */
     public function getGallery()
     {

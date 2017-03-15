@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Base\CoreBundle\Entity\FilmSelectionSection;
-use Base\CoreBundle\Entity\Gallery;
 
 /**
  * Homepage
@@ -102,8 +101,8 @@ class Homepage implements CcmAProposInterface
     protected $catalogPushes;
 
     /**
-     * @var MediaImage
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", inversedBy="catalogPushes")
+     * @var CcmMediaImage
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", inversedBy="catalogPushes")
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     protected $catalogImage;
@@ -171,8 +170,8 @@ class Homepage implements CcmAProposInterface
     protected $youtubesCollection;
 
     /**
-     * @var Gallery
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery")
+     * @var CcmGallery
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGallery")
      * @ORM\JoinColumn(name="gallery_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $gallery;
@@ -508,7 +507,7 @@ class Homepage implements CcmAProposInterface
     /**
      * Get catalogImage.
      *
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getCatalogImage()
     {
@@ -518,7 +517,7 @@ class Homepage implements CcmAProposInterface
     /**
      * Set catalogImage.
      *
-     * @param MediaImage $catalogImage
+     * @param CcmMediaImage $catalogImage
      */
     public function setCatalogImage($catalogImage)
     {
@@ -794,7 +793,7 @@ class Homepage implements CcmAProposInterface
     }
 
     /**
-     * @return Gallery
+     * @return CcmGallery
      */
     public function getGallery()
     {
@@ -802,7 +801,7 @@ class Homepage implements CcmAProposInterface
     }
 
     /**
-     * @param Gallery $gallery
+     * @param CcmGallery $gallery
      */
     public function setGallery($gallery)
     {

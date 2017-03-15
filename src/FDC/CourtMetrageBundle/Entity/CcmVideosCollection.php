@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaVideo;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,9 +25,9 @@ class CcmVideosCollection
     private $id;
 
     /**
-     * @var MediaVideo
+     * @var CcmMediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaVideo")
      * @ORM\JoinColumn(name="video_id", referencedColumnName="id", onDelete="SET NULL")
      *
      */
@@ -71,7 +71,7 @@ class CcmVideosCollection
     }
 
     /**
-     * @return MediaVideo
+     * @return CcmMediaVideo
      */
     public function getVideo()
     {
@@ -79,7 +79,7 @@ class CcmVideosCollection
     }
 
     /**
-     * @param MediaVideo $video
+     * @param CcmMediaVideo $video
      */
     public function setVideo($video)
     {

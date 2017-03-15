@@ -8,7 +8,6 @@ use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,9 +38,9 @@ class CcmParticiperPage implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      */
     protected $image;
 
@@ -99,7 +98,7 @@ class CcmParticiperPage implements TranslateMainInterface
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage()
     {
@@ -107,7 +106,7 @@ class CcmParticiperPage implements TranslateMainInterface
     }
 
     /**
-     * @param MediaImage $image
+     * @param CcmMediaImage $image
      */
     public function setImage($image)
     {

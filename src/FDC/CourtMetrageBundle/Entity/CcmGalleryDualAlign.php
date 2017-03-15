@@ -2,22 +2,19 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
 
 /**
  * GalleryDualAlign
  *
- * @ORM\Table()
+ * @ORM\Table(name="ccm_gallery_dual_align")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class GalleryDualAlign
+class CcmGalleryDualAlign
 {
     use Time;
 
@@ -31,10 +28,7 @@ class GalleryDualAlign
     protected $id;
 
     /**
-     * @var Media
-     *
-     * @ORM\OneToMany(targetEntity="GalleryDualAlignMedia", mappedBy="gallery", cascade={"persist"})
-     * @Groups({"news_show"})
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlignMedia", mappedBy="gallery", cascade={"persist"})
      */
     protected $medias;
 
@@ -68,10 +62,10 @@ class GalleryDualAlign
     /**
      * Add medias
      *
-     * @param \Base\CoreBundle\Entity\GalleryDualAlignMedia $medias
-     * @return GalleryDualAlign
+     * @param CcmGalleryDualAlignMedia $medias
+     * @return CcmGalleryDualAlign
      */
-    public function addMedia(\Base\CoreBundle\Entity\GalleryDualAlignMedia $medias)
+    public function addMedia(CcmGalleryDualAlignMedia $medias)
     {
         $medias->setGallery($this);
         $this->medias[] = $medias;
@@ -82,9 +76,9 @@ class GalleryDualAlign
     /**
      * Remove medias
      *
-     * @param \Base\CoreBundle\Entity\GalleryDualAlignMedia $medias
+     * @param CcmGalleryDualAlignMedia $medias
      */
-    public function removeMedia(\Base\CoreBundle\Entity\GalleryDualAlignMedia $medias)
+    public function removeMedia(CcmGalleryDualAlignMedia $medias)
     {
         $this->medias->removeElement($medias);
     }

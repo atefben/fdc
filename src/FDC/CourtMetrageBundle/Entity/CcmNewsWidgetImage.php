@@ -2,8 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\Gallery;
-use Base\CoreBundle\Entity\MediaImage;
+
 use Doctrine\ORM\Mapping as ORM;
 
 use JMS\Serializer\Annotation\Groups;
@@ -17,8 +16,7 @@ use JMS\Serializer\Annotation\Groups;
 class CcmNewsWidgetImage extends CcmNewsWidget
 {
     /**
-     * @var Gallery
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $file;
@@ -26,10 +24,10 @@ class CcmNewsWidgetImage extends CcmNewsWidget
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $file
+     * @param CcmMediaImage $file
      * @return CcmNewsWidgetAudio
      */
-    public function setFile(MediaImage $file = null)
+    public function setFile(CcmMediaImage $file = null)
     {
         $this->file = $file;
 
@@ -39,7 +37,7 @@ class CcmNewsWidgetImage extends CcmNewsWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\MediaImage
+     * @return CcmMediaImage
      */
     public function getFile()
     {

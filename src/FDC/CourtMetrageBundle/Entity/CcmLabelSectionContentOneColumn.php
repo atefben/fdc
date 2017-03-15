@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaImageSimple;
+
 use Doctrine\ORM\Mapping as ORM;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -17,9 +17,9 @@ class CcmLabelSectionContentOneColumn extends CcmLabelSectionContent
     use Translatable;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      *
      */
     protected $image;
@@ -46,7 +46,7 @@ class CcmLabelSectionContentOneColumn extends CcmLabelSectionContent
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getImage()
     {

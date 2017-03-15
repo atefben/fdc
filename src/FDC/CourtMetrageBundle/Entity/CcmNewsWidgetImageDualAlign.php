@@ -19,7 +19,7 @@ use JMS\Serializer\Annotation\Since;
 class CcmNewsWidgetImageDualAlign extends CcmNewsWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\GalleryDualAlign", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlign", cascade={"persist"})
      * @Groups({"news_show"})
      */
     protected $gallery;
@@ -27,10 +27,10 @@ class CcmNewsWidgetImageDualAlign extends CcmNewsWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\GalleryDualAlign $gallery
+     * @param CcmGalleryDualAlign $gallery
      * @return CcmNewsWidgetImageDualAlign
      */
-    public function setGallery(\Base\CoreBundle\Entity\GalleryDualAlign $gallery = null)
+    public function setGallery(CcmGalleryDualAlign $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -40,7 +40,7 @@ class CcmNewsWidgetImageDualAlign extends CcmNewsWidget
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\GalleryDualAlign 
+     * @return CcmGalleryDualAlign 
      */
     public function getGallery()
     {

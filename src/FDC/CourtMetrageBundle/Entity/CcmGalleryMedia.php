@@ -2,19 +2,18 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
 
 /**
- * GalleryMedia
+ * CcmGalleryMedia
  *
- * @ORM\Table()
+ * @ORM\Table(name="ccm_gallery_media")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class GalleryMedia
+class CcmGalleryMedia
 {
     use Time;
 
@@ -28,13 +27,12 @@ class GalleryMedia
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"all"}, inversedBy="galleries")
-     * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage", cascade={"persist"}, inversedBy="galleries")
      */
     protected $media;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="medias")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGallery", inversedBy="medias")
      */
     protected $gallery;
 
@@ -59,10 +57,10 @@ class GalleryMedia
     /**
      * Set media
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $media
-     * @return GalleryMedia
+     * @param CcmMediaImage $media
+     * @return CcmGalleryMedia
      */
-    public function setMedia(\Base\CoreBundle\Entity\MediaImage $media = null)
+    public function setMedia(CcmMediaImage $media = null)
     {
         $this->media = $media;
 
@@ -72,7 +70,7 @@ class GalleryMedia
     /**
      * Get media
      *
-     * @return \Base\CoreBundle\Entity\MediaImage
+     * @return CcmMediaImage
      */
     public function getMedia()
     {
@@ -80,10 +78,10 @@ class GalleryMedia
     }
 
     /**
-     * @param \Base\CoreBundle\Entity\Gallery|null $gallery
+     * @param CcmGallery|null $gallery
      * @return $this
      */
-    public function setGallery(\Base\CoreBundle\Entity\Gallery $gallery = null)
+    public function setGallery(CcmGallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -93,7 +91,7 @@ class GalleryMedia
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\Gallery
+     * @return CcmGallery
      */
     public function getGallery()
     {
@@ -104,7 +102,7 @@ class GalleryMedia
      * Set position
      *
      * @param integer $position
-     * @return GalleryMedia
+     * @return CcmGalleryMedia
      */
     public function setPosition($position)
     {

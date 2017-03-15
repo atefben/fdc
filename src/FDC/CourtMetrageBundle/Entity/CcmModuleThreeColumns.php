@@ -4,8 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImage;
-use Base\CoreBundle\Entity\MediaPdf;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,41 +22,41 @@ class CcmModuleThreeColumns extends CcmModule
     protected $translations;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      */
     protected $image1;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      */
     protected $image2;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      */
     protected $image3;
 
     /**
-     * @var MediaPdf
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf")
+     * @var CcmMediaPdf
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaPdf")
      */
     protected $pdf1;
 
     /**
-     * @var MediaPdf
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf")
+     * @var CcmMediaPdf
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaPdf")
      */
     protected $pdf2;
 
     /**
-     * @var MediaPdf
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf")
+     * @var CcmMediaPdf
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaPdf")
      */
     protected $pdf3;
 
@@ -71,7 +69,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage1()
     {
@@ -79,7 +77,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaImage $image1
+     * @param CcmMediaImage $image1
      */
     public function setImage1($image1)
     {
@@ -87,7 +85,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage2()
     {
@@ -95,7 +93,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaImage $image2
+     * @param CcmMediaImage $image2
      */
     public function setImage2($image2)
     {
@@ -103,7 +101,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getImage3()
     {
@@ -111,7 +109,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaImage $image3
+     * @param CcmMediaImage $image3
      */
     public function setImage3($image3)
     {
@@ -119,7 +117,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function getPdf1()
     {
@@ -127,7 +125,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaPdf $pdf1
+     * @param CcmMediaPdf $pdf1
      */
     public function setPdf1($pdf1)
     {
@@ -135,7 +133,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function getPdf2()
     {
@@ -143,7 +141,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaPdf $pdf2
+     * @param CcmMediaPdf $pdf2
      */
     public function setPdf2($pdf2)
     {
@@ -151,7 +149,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function getPdf3()
     {
@@ -159,7 +157,7 @@ class CcmModuleThreeColumns extends CcmModule
     }
 
     /**
-     * @param MediaPdf $pdf3
+     * @param CcmMediaPdf $pdf3
      */
     public function setPdf3($pdf3)
     {

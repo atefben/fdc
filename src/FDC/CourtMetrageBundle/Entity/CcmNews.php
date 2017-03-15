@@ -5,9 +5,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Entity\FilmFilm;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use \DateTime;
 
@@ -55,9 +52,9 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     protected $id;
 
      /**
-      * @var Theme
+      * @var CcmTheme
       *
-      * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Theme", inversedBy="ccmNews")
+      * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmTheme", inversedBy="ccmNews")
       * @ORM\JoinColumn(name="theme_id", referencedColumnName="id", nullable=true)
       *
       * @Groups({"news_list", "search", "news_show", "home", "film_show"})
@@ -153,22 +150,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
      *
      */
     protected $updatedBy;
-
-    /**
-     * @var MediaVideo
-     *
-     * @ORM\OneToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
-     * @ORM\JoinColumn(onDelete="SET NULL")
-     */
-    protected $homepageMediaAudio;
-
-    /**
-     * @var MediaVideo
-     *
-     * @ORM\OneToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo", cascade={"all"}, inversedBy="homepageNews", orphanRemoval=true)
-     * @ORM\JoinColumn(onDelete="SET NULL")
-     */
-    protected $homepageMediaVideo;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -283,10 +264,10 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
+     * @param CcmTheme $theme
      * @return CcmNews
      */
-    public function setTheme(Theme $theme = null)
+    public function setTheme(CcmTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -296,7 +277,7 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return CcmTheme
      */
     public function getTheme()
     {
@@ -612,53 +593,6 @@ abstract class CcmNews implements TranslateMainInterface,RoutedItemInterface
     {
         return $this->hidden;
     }
-
-    /**
-     * Set homepageMediaAudio
-     *
-     * @param \Base\CoreBundle\Entity\MediaAudio $homepageMediaAudio
-     * @return CcmNews
-     */
-    public function setHomepageMediaAudio(MediaAudio $homepageMediaAudio = null)
-    {
-        $this->homepageMediaAudio = $homepageMediaAudio;
-
-        return $this;
-    }
-
-    /**
-     * Get homepageMediaAudio
-     *
-     * @return \Base\CoreBundle\Entity\MediaAudio
-     */
-    public function getHomepageMediaAudio()
-    {
-        return $this->homepageMediaAudio;
-    }
-
-    /**
-     * Set homepageMediaVideo
-     *
-     * @param \Base\CoreBundle\Entity\MediaVideo $homepageMediaVideo
-     * @return CcmNews
-     */
-    public function setHomepageMediaVideo(MediaVideo $homepageMediaVideo = null)
-    {
-        $this->homepageMediaVideo = $homepageMediaVideo;
-
-        return $this;
-    }
-
-    /**
-     * Get homepageMediaVideo
-     *
-     * @return \Base\CoreBundle\Entity\MediaVideo
-     */
-    public function getHomepageMediaVideo()
-    {
-        return $this->homepageMediaVideo;
-    }
-
 
     /**
      * This method returns feed item title.

@@ -2,27 +2,22 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+use JMS\Serializer\Annotation as Serializer;
+use Base\CoreBundle\Entity\AmazonRemoteFile;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
-use JMS\Serializer\Annotation as Serializer;
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
-
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaVideoTranslationRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaVideoTranslation implements TranslateChildInterface
+class CcmMediaVideoTranslation implements TranslateChildInterface
 {
     use Seo;
     use Time;
@@ -37,7 +32,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="parentVideoTranslation", cascade={"persist"}, fetch="LAZY")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
      */
@@ -54,20 +49,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({
-     *     "news_list", "search",
-     *     "news_show",
-     *     "trailer_show",
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "film_list",
-     *     "film_show",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
      */
     protected $title;
 
@@ -75,19 +56,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     * @Groups({
-     *     "film_list",
-     *     "film_show",
-     *     "news_list", "search",
-     *     "news_show",
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
      * @Serializer\Accessor(getter="getEncodeImageAmazonUrl")
      */
     protected $imageAmazonUrl;
@@ -124,19 +92,6 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     * @Groups({
-     *     "film_list",
-     *     "film_show",
-     *     "news_list", "search",
-     *     "news_show",
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
      */
     protected $mp4Url;
 
@@ -144,56 +99,21 @@ class MediaVideoTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
-     * @Groups({
-     *     "film_list",
-     *     "film_show",
-     *     "news_list", "search",
-     *     "news_show",
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
      */
     protected $webmUrl;
 
     /**
-     * @var Theme
+     * @var CcmTheme
      *
-     * @ORM\ManyToOne(targetEntity="Theme")
-     * @Groups({
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "home"
-     * })
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmTheme")
      */
     protected $theme;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $titleHomeCorpo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     *
-     */
-    protected $introductionHomeCorpo;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->state = 1;
     }
 
 
@@ -202,7 +122,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      *
      * @access public
      * @static
-     * @return void
+     * @return array
      */
     public static function getEncodingStates()
     {
@@ -213,35 +133,11 @@ class MediaVideoTranslation implements TranslateChildInterface
         );
     }
 
-
-    /**
-     * Set akamaiId
-     *
-     * @param integer $akamaiId
-     * @return MediaVideoTranslation
-     */
-    public function setAkamaiId($akamaiId)
-    {
-        $this->akamaiId = $akamaiId;
-
-        return $this;
-    }
-
-    /**
-     * Get akamaiId
-     *
-     * @return integer
-     */
-    public function getAkamaiId()
-    {
-        return $this->akamaiId;
-    }
-
     /**
      * Set title
      *
      * @param string $title
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setTitle($title)
     {
@@ -261,60 +157,13 @@ class MediaVideoTranslation implements TranslateChildInterface
     }
 
     /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return MediaVideoTranslation
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set copyright
-     *
-     * @param string $copyright
-     * @return MediaVideoTranslation
-     */
-    public function setCopyright($copyright)
-    {
-        $this->copyright = $copyright;
-
-        return $this;
-    }
-
-    /**
-     * Get copyright
-     *
-     * @return string
-     */
-    public function getCopyright()
-    {
-        return $this->copyright;
-    }
-
-    /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
-        $file->setParentVideoTranslation($this);
         $this->file = $file;
 
         return $this;
@@ -338,10 +187,10 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Set theme
      *
-     * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return MediaVideoTranslation
+     * @param CcmTheme $theme
+     * @return CcmMediaVideoTranslation
      */
-    public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
+    public function setTheme(CcmTheme $theme = null)
     {
         $this->theme = $theme;
 
@@ -351,7 +200,7 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Get theme
      *
-     * @return \Base\CoreBundle\Entity\Theme
+     * @return CcmTheme
      */
     public function getTheme()
     {
@@ -362,7 +211,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set imageAmazonUrl
      *
      * @param string $imageAmazonUrl
-     * @return MediaVideo
+     * @return CcmMediaVideoTranslation
      */
     public function setImageAmazonUrl($imageAmazonUrl)
     {
@@ -396,7 +245,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set webmUrl
      *
      * @param integer $webmUrl
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setWebmURL($webmUrl)
     {
@@ -418,8 +267,8 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Set mp4Url
      *
-     * @param string $webmUrl
-     * @return MediaVideoTranslation
+     * @param string $mp4Url
+     * @return CcmMediaVideoTranslation
      */
     public function setMp4Url($mp4Url)
     {
@@ -442,7 +291,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobWebmState
      *
      * @param string $jobWebmState
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setJobWebmState($jobWebmState)
     {
@@ -465,7 +314,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobMp4State
      *
      * @param integer $jobMp4State
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setJobMp4State($jobMp4State)
     {
@@ -488,7 +337,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobMp4Id
      *
      * @param string $jobMp4Id
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setJobMp4Id($jobMp4Id)
     {
@@ -511,7 +360,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobWebmId
      *
      * @param string $jobWebmId
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setJobWebmId($jobWebmId)
     {
@@ -534,7 +383,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set amazonRemoteFile
      *
      * @param \Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile
-     * @return MediaVideoTranslation
+     * @return CcmMediaVideoTranslation
      */
     public function setAmazonRemoteFile(\Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile = null)
     {
@@ -551,51 +400,5 @@ class MediaVideoTranslation implements TranslateChildInterface
     public function getAmazonRemoteFile()
     {
         return $this->amazonRemoteFile;
-    }
-
-    /**
-     * Set titleHomeCorpo
-     *
-     * @param string $titleHomeCorpo
-     * @return MediaVideoTranslation
-     */
-    public function setTitleHomeCorpo($titleHomeCorpo)
-    {
-        $this->titleHomeCorpo = $titleHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get titleHomeCorpo
-     *
-     * @return string 
-     */
-    public function getTitleHomeCorpo()
-    {
-        return $this->titleHomeCorpo;
-    }
-
-    /**
-     * Set introductionHomeCorpo
-     *
-     * @param string $introductionHomeCorpo
-     * @return MediaVideoTranslation
-     */
-    public function setIntroductionHomeCorpo($introductionHomeCorpo)
-    {
-        $this->introductionHomeCorpo = $introductionHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get introductionHomeCorpo
-     *
-     * @return string 
-     */
-    public function getIntroductionHomeCorpo()
-    {
-        return $this->introductionHomeCorpo;
     }
 }

@@ -49,13 +49,6 @@ abstract class CcmMedia implements TranslateMainInterface
     protected $theme;
 
     /**
-     * @var CcmMediaTag
-     *
-     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaTag", mappedBy="media", cascade={"persist"})
-     */
-    protected $tags;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
@@ -70,34 +63,6 @@ abstract class CcmMedia implements TranslateMainInterface
      *
      */
     protected $publishEndedAt;
-    
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    protected $displayedAll;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    protected $displayedHome;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0})
-     */
-    protected $displayedMobile;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", options={"default":0}, nullable=true)
-     */
-    protected $excludeFromSearch;
 
     /**
      * @var ArrayCollection
@@ -123,10 +88,6 @@ abstract class CcmMedia implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->tags = new ArrayCollection();
-        $this->displayedAll = false;
-        $this->displayedHome = false;
-        $this->displayedMobile = false;
     }
 
     public function __toString()
@@ -167,48 +128,6 @@ abstract class CcmMedia implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param CcmMediaTag $tags
-     * @return CcmMedia
-     */
-    public function addTag(CcmMediaTag $tags)
-    {
-        if ($this->tags->contains($tags)) {
-            return;
-        }
-
-        $tags->setMedia($this);
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param CcmMediaTag $tags
-     */
-    public function removeTag(CcmMediaTag $tags)
-    {
-        if (!$this->tags->contains($tags)) {
-            return;
-        }
-
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 
     /**
@@ -268,52 +187,6 @@ abstract class CcmMedia implements TranslateMainInterface
     }
 
     /**
-     * Set displayedAll
-     *
-     * @param boolean $displayedAll
-     * @return CcmMedia
-     */
-    public function setDisplayedAll($displayedAll)
-    {
-        $this->displayedAll = $displayedAll;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedAll
-     *
-     * @return boolean
-     */
-    public function getDisplayedAll()
-    {
-        return $this->displayedAll;
-    }
-
-    /**
-     * Set displayedHome
-     *
-     * @param boolean $displayedHome
-     * @return CcmMedia
-     */
-    public function setDisplayedHome($displayedHome)
-    {
-        $this->displayedHome = $displayedHome;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHome
-     *
-     * @return boolean
-     */
-    public function getDisplayedHome()
-    {
-        return $this->displayedHome;
-    }
-
-    /**
      * Set theme
      *
      * @param CcmTheme $theme
@@ -334,29 +207,6 @@ abstract class CcmMedia implements TranslateMainInterface
     public function getTheme()
     {
         return $this->theme;
-    }
-
-    /**
-     * Set displayedMobile
-     *
-     * @param boolean $displayedMobile
-     * @return CcmMedia
-     */
-    public function setDisplayedMobile($displayedMobile)
-    {
-        $this->displayedMobile = $displayedMobile;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedMobile
-     *
-     * @return boolean
-     */
-    public function getDisplayedMobile()
-    {
-        return $this->displayedMobile;
     }
 
     /**
@@ -403,41 +253,5 @@ abstract class CcmMedia implements TranslateMainInterface
     public function getUpdatedBy()
     {
         return $this->updatedBy;
-    }
-
-    public function isElasticable()
-    {
-        $isElasticable = true;
-        $fr = $this->findTranslationByLocale('fr');
-        if (!$fr || $fr->getStatus() !== TranslateChildInterface::STATUS_PUBLISHED) {
-            $isElasticable = false;
-        }
-        if ($this->getExcludeFromSearch()) {
-            $isElasticable = false;
-        }
-        return $isElasticable;
-    }
-
-    /**
-     * Set excludeFromSearch
-     *
-     * @param boolean $excludeFromSearch
-     * @return CcmMedia
-     */
-    public function setExcludeFromSearch($excludeFromSearch)
-    {
-        $this->excludeFromSearch = $excludeFromSearch;
-
-        return $this;
-    }
-
-    /**
-     * Get excludeFromSearch
-     *
-     * @return boolean 
-     */
-    public function getExcludeFromSearch()
-    {
-        return $this->excludeFromSearch;
     }
 }

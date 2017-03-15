@@ -3,8 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\MediaImage;
-use Base\CoreBundle\Entity\MediaPdf;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,16 +24,16 @@ class CcmRegisterProcedure
     protected $id;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      */
     protected $registerFormBackground;
 
     /**
-     * @var MediaPdf
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaPdf")
+     * @var CcmMediaPdf
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaPdf")
      */
     protected $regulationDetailsFile;
 
@@ -81,7 +79,7 @@ class CcmRegisterProcedure
     }
 
     /**
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function getRegulationDetailsFile()
     {
@@ -101,7 +99,7 @@ class CcmRegisterProcedure
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getRegisterFormBackground()
     {

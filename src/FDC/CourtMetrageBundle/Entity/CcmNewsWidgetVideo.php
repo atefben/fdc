@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaVideo;
+
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 
@@ -16,9 +16,9 @@ use JMS\Serializer\Annotation\Groups;
 class CcmNewsWidgetVideo extends CcmNewsWidget
 {
     /**
-     * @var MediaVideo
+     * @var CcmMediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaVideo", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $file;
@@ -26,10 +26,10 @@ class CcmNewsWidgetVideo extends CcmNewsWidget
     /**
      * Set file
      *
-     * @param MediaVideo $file
+     * @param CcmMediaVideo $file
      * @return CcmNewsWidgetVideo
      */
-    public function setFile(MediaVideo $file = null)
+    public function setFile(CcmMediaVideo $file = null)
     {
         $this->file = $file;
 
@@ -39,7 +39,7 @@ class CcmNewsWidgetVideo extends CcmNewsWidget
     /**
      * Get file
      *
-     * @return MediaVideo
+     * @return CcmMediaVideo
      */
     public function getFile()
     {

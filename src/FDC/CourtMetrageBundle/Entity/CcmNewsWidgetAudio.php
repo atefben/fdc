@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Base\CoreBundle\Entity\MediaAudio;
+
 use Doctrine\ORM\Mapping as ORM;
 
 use Base\CoreBundle\Util\Time;
@@ -20,9 +20,9 @@ use JMS\Serializer\Annotation\Since;
 class CcmNewsWidgetAudio extends CcmNewsWidget
 {
     /**
-     * @var MediaAudio
+     * @var CcmMediaAudio
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaAudio", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaAudio", cascade={"persist"})
      * @Groups({"news_list", "search", "news_show"})
      */
     protected $file;
@@ -30,10 +30,10 @@ class CcmNewsWidgetAudio extends CcmNewsWidget
     /**
      * Set file
      *
-     * @param \Base\CoreBundle\Entity\MediaAudio $file
+     * @param CcmMediaAudio $file
      * @return CcmNewsWidgetAudio
      */
-    public function setFile(\Base\CoreBundle\Entity\MediaAudio $file = null)
+    public function setFile(CcmMediaAudio $file = null)
     {
         $this->file = $file;
 
@@ -43,7 +43,7 @@ class CcmNewsWidgetAudio extends CcmNewsWidget
     /**
      * Get file
      *
-     * @return \Base\CoreBundle\Entity\MediaAudio 
+     * @return CcmMediaAudio 
      */
     public function getFile()
     {

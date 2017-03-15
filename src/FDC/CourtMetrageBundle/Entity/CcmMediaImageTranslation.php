@@ -4,25 +4,20 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Base\CoreBundle\Util\Seo;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateChild;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
-use JMS\Serializer\Annotation as Serializer;
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
-
-use Symfony\Component\Validator\Constraints as Assert;
-
 /**
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\MediaImageTranslationRepository")
+ * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaImageTranslation implements TranslateChildInterface
+class CcmMediaImageTranslation implements TranslateChildInterface
 {
     use Seo;
     use Time;
@@ -36,9 +31,6 @@ class MediaImageTranslation implements TranslateChildInterface
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
-     *
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      */
     protected $file;
 
@@ -46,8 +38,6 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      */
     protected $legend;
 
@@ -55,8 +45,6 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      */
     protected $alt;
 
@@ -64,32 +52,22 @@ class MediaImageTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      * @Serializer\Accessor(getter="getApiCopyright")
      */
     protected $copyright;
-
-   /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     */
-    protected $sites;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
     }
 
     /**
      * Set legend
      *
      * @param string $legend
-     * @return MediaImageTranslation
+     * @return CcmMediaImageTranslation
      */
     public function setLegend($legend)
     {
@@ -112,7 +90,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * Set alt
      *
      * @param string $alt
-     * @return MediaImageTranslation
+     * @return CcmMediaImageTranslation
      */
     public function setAlt($alt)
     {
@@ -135,7 +113,7 @@ class MediaImageTranslation implements TranslateChildInterface
      * Set copyright
      *
      * @param string $copyright
-     * @return MediaImageTranslation
+     * @return CcmMediaImageTranslation
      */
     public function setCopyright($copyright)
     {
@@ -166,43 +144,10 @@ class MediaImageTranslation implements TranslateChildInterface
     }
 
     /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaImageTranslation
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
-
-    /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
+     * @return CcmMediaImageTranslation
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {

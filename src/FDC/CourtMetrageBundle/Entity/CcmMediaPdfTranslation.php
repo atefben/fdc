@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaPdfTranslation implements TranslateChildInterface
+class CcmMediaPdfTranslation implements TranslateChildInterface
 {
     use Seo;
     use Time;
@@ -36,9 +36,6 @@ class MediaPdfTranslation implements TranslateChildInterface
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
      * @Assert\Valid()
-     *
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      */
     protected $file;
 
@@ -46,64 +43,21 @@ class MediaPdfTranslation implements TranslateChildInterface
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"home", "news_list", "search", "news_show", "film_show", "event_list", "search", "event_show", "home", "today_images", "live",
-     *     "search"})
      */
     protected $name;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     */
-    protected $sites;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new ArrayCollection();
-    }
-
-    /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaImageTranslation
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSites()
-    {
-        return $this->sites;
     }
 
     /**
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaImageTranslation
+     * @return CcmMediaPdfTranslation
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file)
     {
@@ -126,7 +80,7 @@ class MediaPdfTranslation implements TranslateChildInterface
      * Set name
      *
      * @param string $name
-     * @return MediaPdfTranslation
+     * @return CcmMediaPdfTranslation
      */
     public function setName($name)
     {

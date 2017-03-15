@@ -2,31 +2,26 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Util\TranslationByLocale;
-
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
-
-use JMS\Serializer\Annotation as Serializer;
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
-use Symfony\Component\Validator\Constraints as Assert;
-use Zend\Stdlib\ArrayObject;
 
 /**
- * MediaPdf
+ * CcmMediaPdf
  *
- * @ORM\Table()
+ * @ORM\Table(name="ccm_media_pdf")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class MediaPdf implements TranslateMainInterface
+class CcmMediaPdf implements TranslateMainInterface
 {
     use Translatable;
     use TranslateMain;
@@ -38,31 +33,11 @@ class MediaPdf implements TranslateMainInterface
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @Groups({"news_list", "search"})
      */
     protected $id;
 
     /**
      * @var ArrayCollection
-     * @Groups({
-     *     "news_show",
-     *     "news_list", "search",
-     *     "trailer_show",
-     *     "live",
-     *     "web_tv_show",
-     *     "live",
-     *     "film_list",
-     *     "film_show",
-     *     "event_list", "search",
-     *     "event_show",
-     *     "home",
-     *     "today_images",
-     *     "live",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
-     *
      * @Assert\Valid()
      * @Serializer\Accessor(getter="getApiTranslations")
      */
@@ -72,18 +47,6 @@ class MediaPdf implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
-     * @Groups({
-     *     "live",
-     *     "web_tv_show",
-     *     "film_list",
-     *     "film_show",
-     *     "news_list", "search",
-     *     "news_show",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
      * @Serializer\Accessor(getter="getApiPublishedAt")
      */
     protected $publishedAt;
@@ -92,35 +55,8 @@ class MediaPdf implements TranslateMainInterface
      * @var \DateTime
      *
      * @ORM\Column(name="publish_ended_at", type="datetime", nullable=true)
-     * @Groups({
-     *     "live",
-     *     "web_tv_show",
-     *     "film_list",
-     *     "film_show",
-     *     "news_list", "search",
-     *     "news_show",
-     *     "event_show",
-     *     "home",
-     *     "orange_video_on_demand",
-     *     "search"
-     * })
-     *
      */
     protected $publishEndedAt;
-
-    /**
-     * @var Site
-     *
-     * @ORM\ManyToMany(targetEntity="Site")
-     */
-    protected $sites;
-
-    /**
-     * @var FilmFestival
-     *
-     * @ORM\ManyToOne(targetEntity="FilmFestival")
-     */
-    protected $festival;
 
     /**
      * @var User
@@ -140,7 +76,7 @@ class MediaPdf implements TranslateMainInterface
     {
         $en = $this->findTranslationByLocale('en');
         $fr = $this->findTranslationByLocale('fr');
-        if ((!$en || !$en->getFile() || $en->getStatus() !== MediaImageTranslation::STATUS_TRANSLATED) && $fr) {
+        if ((!$en || !$en->getFile() || $en->getStatus() !== CcmMediaImageTranslation::STATUS_TRANSLATED) && $fr) {
             $this->translations->set('en', $fr);
         }
         return $this->translations;
@@ -157,11 +93,6 @@ class MediaPdf implements TranslateMainInterface
     public function getExportName()
     {
         return Export::translationField($this, 'name', 'fr');
-    }
-
-    public function getExportTheme()
-    {
-        return Export::translationField($this->getTheme(), 'name', 'fr');
     }
 
     public function getExportAuthor()
@@ -196,41 +127,11 @@ class MediaPdf implements TranslateMainInterface
         return Export::formatTranslationStatus($status);
     }
 
-    public function getExportStatusEs()
-    {
-        $status = $this->findTranslationByLocale('es')->getStatus();
-        return Export::formatTranslationStatus($status);
-    }
-
-    public function getExportStatusZh()
-    {
-        $status = $this->findTranslationByLocale('zh')->getStatus();
-        return Export::formatTranslationStatus($status);
-    }
-
-    public function getExportDisplayedHome()
-    {
-        return Export::yesOrNo($this->getDisplayedHome());
-    }
-
-    public function getExportSites()
-    {
-        return Export::sites($this->getSites());
-    }
-
-    public function getExportDisplayedAll()
-    {
-        return Export::yesOrNo($this->getDisplayedAll());
-    }
-
-
-
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -247,7 +148,7 @@ class MediaPdf implements TranslateMainInterface
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function setPublishedAt($publishedAt)
     {
@@ -270,7 +171,7 @@ class MediaPdf implements TranslateMainInterface
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
     public function setPublishEndedAt($publishEndedAt)
     {
@@ -290,68 +191,12 @@ class MediaPdf implements TranslateMainInterface
     }
 
     /**
-     * Add sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaPdf
-     */
-    public function addSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites[] = $sites;
-
-        return $this;
-    }
-
-    /**
-     * Remove sites
-     *
-     * @param \Base\CoreBundle\Entity\Site $sites
-     */
-    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
-    {
-        $this->sites->removeElement($sites);
-    }
-
-    /**
-     * Get sites
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSites()
-    {
-        return $this->sites;
-    }
-
-    /**
-     * Set festival
-     *
-     * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return MediaPdf
-     */
-    public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
-    {
-        $this->festival = $festival;
-
-        return $this;
-    }
-
-    /**
-     * Get festival
-     *
-     * @return \Base\CoreBundle\Entity\FilmFestival 
-     */
-    public function getFestival()
-    {
-        return $this->festival;
-    }
-
-    /**
      * Set createdBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $createdBy
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
-    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    public function setCreatedBy(User $createdBy = null)
     {
         $this->createdBy = $createdBy;
 
@@ -372,9 +217,9 @@ class MediaPdf implements TranslateMainInterface
      * Set updatedBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
-     * @return MediaPdf
+     * @return CcmMediaPdf
      */
-    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    public function setUpdatedBy(User $updatedBy = null)
     {
         $this->updatedBy = $updatedBy;
 

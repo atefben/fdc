@@ -4,7 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
-use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,9 +25,9 @@ class CcmNewsArticle extends CcmNews
     use TruncatePro;
     
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      * @Groups({"news_list", "search", "news_show", "film_show", "home"})
      */
@@ -54,10 +53,10 @@ class CcmNewsArticle extends CcmNews
     /**
      * Set header
      *
-     * @param MediaImage $header
+     * @param CcmMediaImage $header
      * @return CcmNewsArticle
      */
-    public function setHeader(MediaImage $header = null)
+    public function setHeader(CcmMediaImage $header = null)
     {
         $this->header = $header;
 
@@ -67,7 +66,7 @@ class CcmNewsArticle extends CcmNews
     /**
      * Get header
      *
-     * @return MediaImage 
+     * @return CcmMediaImage 
      */
     public function getHeader()
     {

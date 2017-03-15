@@ -2,18 +2,14 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\SeoMain;
 
-use Base\CoreBundle\Util\TranslateMain;
-use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
+use Base\CoreBundle\Util\TranslateMain;
+use Base\AdminBundle\Component\Admin\Export;
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
 
 /**
  * CcmGallery
@@ -46,35 +42,12 @@ class CcmGallery implements TranslateMainInterface
     protected $name;
 
     /**
-     * @var GalleryMedia
+     * @var CcmGalleryMedia
      *
-     * @ORM\OneToMany(targetEntity="GalleryMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @Groups({"news_list", "search", "news_show", "event_show", "home"})
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryMedia", mappedBy="gallery", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $medias;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=false, options={"default":0})
-     */
-    protected $displayedHomeCorpo;
-
-    /**
-     * @var Theme
-     *
-     * @ORM\ManyToOne(targetEntity="Theme")
-     *
-     */
-    protected $themeHomeCorpo;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $dateHomeCorpo;
 
     /**
      * ArrayCollection
@@ -114,10 +87,10 @@ class CcmGallery implements TranslateMainInterface
     /**
      * Add medias
      *
-     * @param \Base\CoreBundle\Entity\GalleryMedia $medias
-     * @return MediaGallery
+     * @param CcmGalleryMedia $medias
+     * @return CcmGallery
      */
-    public function addMedia(\Base\CoreBundle\Entity\GalleryMedia $medias)
+    public function addMedia(CcmGalleryMedia $medias)
     {
         $medias->setGallery($this);
         $this->medias[] = $medias;
@@ -128,9 +101,9 @@ class CcmGallery implements TranslateMainInterface
     /**
      * Remove medias
      *
-     * @param \Base\CoreBundle\Entity\GalleryMedia $medias
+     * @param CcmGalleryMedia $medias
      */
-    public function removeMedia(\Base\CoreBundle\Entity\GalleryMedia $medias)
+    public function removeMedia(CcmGalleryMedia $medias)
     {
         $this->medias->removeElement($medias);
     }
@@ -176,75 +149,5 @@ class CcmGallery implements TranslateMainInterface
     public function getExportUpdatedAt()
     {
         return Export::formatDate($this->getUpdatedAt());
-    }
-
-
-    /**
-     * Set displayedHomeCorpo
-     *
-     * @param boolean $displayedHomeCorpo
-     * @return CcmGallery
-     */
-    public function setDisplayedHomeCorpo($displayedHomeCorpo)
-    {
-        $this->displayedHomeCorpo = $displayedHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get displayedHomeCorpo
-     *
-     * @return boolean 
-     */
-    public function getDisplayedHomeCorpo()
-    {
-        return $this->displayedHomeCorpo;
-    }
-
-    /**
-     * Set dateHomeCorpo
-     *
-     * @param \DateTime $dateHomeCorpo
-     * @return CcmGallery
-     */
-    public function setDateHomeCorpo($dateHomeCorpo)
-    {
-        $this->dateHomeCorpo = $dateHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get dateHomeCorpo
-     *
-     * @return \DateTime 
-     */
-    public function getDateHomeCorpo()
-    {
-        return $this->dateHomeCorpo;
-    }
-
-    /**
-     * Set themeHomeCorpo
-     *
-     * @param \Base\CoreBundle\Entity\Theme $themeHomeCorpo
-     * @return CcmGallery
-     */
-    public function setThemeHomeCorpo(\Base\CoreBundle\Entity\Theme $themeHomeCorpo = null)
-    {
-        $this->themeHomeCorpo = $themeHomeCorpo;
-
-        return $this;
-    }
-
-    /**
-     * Get themeHomeCorpo
-     *
-     * @return \Base\CoreBundle\Entity\Theme 
-     */
-    public function getThemeHomeCorpo()
-    {
-        return $this->themeHomeCorpo;
     }
 }

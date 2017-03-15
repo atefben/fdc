@@ -6,7 +6,7 @@ services:
             - { name: form.type, alias: 'ccm_homepage_sejour_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_homepage_sejour_top_dummy']]
-            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
 
     base.admin.form.ccm_homepage_actualite_type:
         scope: prototype
@@ -15,8 +15,8 @@ services:
             - { name: form.type, alias: 'ccm_homepage_actualite_type'}
         calls:
             - ['setSonataAdminTheme', ['@base.admin.ccm_homepage_actualite_theme_top_dummy']]
-            - ['setThemeAdmin', ['@base.admin.theme']]
-            - ['setImageAdmin', ['@base.admin.media_image']]
+            - ['setThemeAdmin', ['@base.admin.ccm_theme']]
+            - ['setImageAdmin', ['@base.admin.ccm_media_image']]
 
     base.admin.form.ccm_catalog_push_type:
         scope: prototype
@@ -31,7 +31,7 @@ services:
             - { name: form.type, alias: 'ccm_homepage_slider_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_homepage_slider_top_dummy']]
-            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
 
     base.admin.form.ccm_homepage_push_type:
         scope: prototype
@@ -40,7 +40,7 @@ services:
             - { name: form.type, alias: 'ccm_homepage_push_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_homepage_push_top_dummy']]
-            - ['setMediaImageAdmin', ['@base.admin.media_image']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
 
     # News Widget Forms
     base.admin.form.ccm_news_widget_type:
@@ -76,7 +76,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_audio_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_news_widget_audio_dummy']]
-            - ['setMediaAudioAdmin', ['@base.admin.media_audio']]
+            - ['setMediaAudioAdmin', ['@base.admin.ccm_media_audio']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_image_type:
@@ -86,7 +86,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_image_type'}
         calls:
             - ['setNewsWidgetImageDummyAdmin', ['@base.admin.ccm_news_widget_image_dummy']]
-            - ['setImageAdmin', ['@base.admin.media_image']]
+            - ['setImageAdmin', ['@base.admin.ccm_media_image']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_image_dual_align_type:
@@ -96,7 +96,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_image_dual_align_type'}
         calls:
             - ['setNewsWidgetImageDummyAdmin', ['@base.admin.ccm_news_widget_image_dual_align_dummy']]
-            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.ccm_gallery_dual_align']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_gallery_type:
@@ -106,7 +106,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_gallery_type'}
         calls:
             - ['setNewsWidgetGalleryDummyAdmin', ['@base.admin.ccm_news_widget_gallery_dummy']]
-            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setGalleryAdmin', ['@base.admin.ccm_gallery']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_video_type:
@@ -116,7 +116,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_video_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_news_widget_video_dummy']]
-            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
+            - ['setMediaVideoAdmin', ['@base.admin.ccm_media_video']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_news_widget_video_youtube_type:
@@ -126,7 +126,7 @@ services:
             - { name: form.type, alias: 'ccm_news_widget_video_youtube_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_news_widget_video_youtube_dummy']]
-            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
     # end News Widget Forms
 
     # Short film corner widget forms
@@ -158,7 +158,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_audio_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_audio_dummy']]
-            - ['setMediaAudioAdmin', ['@base.admin.media_audio']]
+            - ['setMediaAudioAdmin', ['@base.admin.ccm_media_audio']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_image_type:
@@ -168,7 +168,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_image_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_image_dummy']]
-            - ['setImageAdmin', ['@base.admin.media_image']]
+            - ['setImageAdmin', ['@base.admin.ccm_media_image']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_image_dual_align_type:
@@ -178,7 +178,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_image_dual_align_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_image_dual_align_dummy']]
-            - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
+            - ['setGalleryDualAlignAdmin', ['@base.admin.ccm_gallery_dual_align']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_gallery_type:
@@ -188,7 +188,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_gallery_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_gallery_dummy']]
-            - ['setGalleryAdmin', ['@base.admin.gallery']]
+            - ['setGalleryAdmin', ['@base.admin.ccm_gallery']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_video_type:
@@ -198,7 +198,7 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_video_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_video_dummy']]
-            - ['setMediaVideoAdmin', ['@base.admin.media_video']]
+            - ['setMediaVideoAdmin', ['@base.admin.ccm_media_video']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_video_youtube_type:
@@ -208,5 +208,5 @@ services:
             - { name: form.type, alias: 'ccm_sfc_widget_video_youtube_type'}
         calls:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_video_youtube_dummy']]
-            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
     # end Short film corner widget forms

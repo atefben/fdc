@@ -5,7 +5,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Base\CoreBundle\Entity\MediaImage;
 
 /**
  * CcmFilmRegister
@@ -32,9 +31,9 @@ class CcmFilmRegister
     protected $isTextActive = false;
 
     /**
-     * @var MediaImage
+     * @var CcmMediaImage
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImage")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      *
      */
     protected $headerPhoto;
@@ -88,7 +87,7 @@ class CcmFilmRegister
     }
 
     /**
-     * @return MediaImage
+     * @return CcmMediaImage
      */
     public function getHeaderPhoto()
     {

@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 
-use Base\CoreBundle\Entity\MediaVideo;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * NewsWidgetVideo
@@ -15,19 +14,19 @@ use Doctrine\ORM\Mapping as ORM;
 class CcmShortFilmCornerWidgetVideo extends CcmShortFilmCornerWidget
 {
     /**
-     * @var MediaVideo
+     * @var CcmMediaVideo
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaVideo")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaVideo")
      */
     protected $file;
 
     /**
      * Set file
      *
-     * @param MediaVideo $file
+     * @param CcmMediaVideo $file
      * @return CcmShortFilmCornerWidgetVideo
      */
-    public function setFile(MediaVideo $file = null)
+    public function setFile(CcmMediaVideo $file = null)
     {
         $this->file = $file;
 
@@ -37,7 +36,7 @@ class CcmShortFilmCornerWidgetVideo extends CcmShortFilmCornerWidget
     /**
      * Get file
      *
-     * @return MediaVideo
+     * @return CcmMediaVideo
      */
     public function getFile()
     {

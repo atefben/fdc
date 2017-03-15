@@ -4,6 +4,35 @@
     {{ form_widget(form.children.fr) }}
 {% endblock %}
 #}
+
+{% block base_admin_ccm_theme_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/theme.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_media_image_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/media_image.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_media_image_simple_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/media_image_simple.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_media_audio_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/media_audio.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_media_video_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/media_video.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_gallery_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/gallery.html.twig' %}
+{% endblock %}
+
+{% block base_admin_ccm_media_pdf_translations_a2lix_translations_widget %}
+    {% include '@BaseAdmin/TranslationFormBundle/CCM/media_pdf.html.twig' %}
+{% endblock %}
+
 {% block base_admin_ccm_program_translations_a2lix_translations_widget %}
     {% include '@BaseAdmin/TranslationFormBundle/CCM/ccm_program.html.twig' %}
 {% endblock %}

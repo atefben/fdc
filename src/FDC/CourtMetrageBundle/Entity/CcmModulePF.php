@@ -4,7 +4,6 @@ namespace FDC\CourtMetrageBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Base\CoreBundle\Entity\MediaImageSimple;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,16 +22,16 @@ class CcmModulePF extends CcmModule
     protected $translations;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $logo;
 
     /**
-     * @var MediaImageSimple
+     * @var CcmMediaImageSimple
      *
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple")
      */
     protected $photo;
 
@@ -45,7 +44,7 @@ class CcmModulePF extends CcmModule
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getLogo()
     {
@@ -53,7 +52,7 @@ class CcmModulePF extends CcmModule
     }
 
     /**
-     * @param MediaImageSimple $logo
+     * @param CcmMediaImageSimple $logo
      */
     public function setLogo($logo)
     {
@@ -61,7 +60,7 @@ class CcmModulePF extends CcmModule
     }
 
     /**
-     * @return MediaImageSimple
+     * @return CcmMediaImageSimple
      */
     public function getPhoto()
     {
@@ -69,7 +68,7 @@ class CcmModulePF extends CcmModule
     }
 
     /**
-     * @param MediaImageSimple $photo
+     * @param CcmMediaImageSimple $photo
      */
     public function setPhoto($photo)
     {

@@ -181,7 +181,18 @@ class LockController extends Controller
         'ccmprogramscheduletype' => 'CcmProgramScheduleType',
         'ccmprogramday' => 'CcmProgramDay',
         'ccmprogram' => 'CcmProgram',
-        'ccmprogramschedule' => 'CcmProgramSchedule'
+        'ccmprogramschedule' => 'CcmProgramSchedule',
+        'ccmtheme' => 'CcmTheme',
+        'ccmmedia' => 'CcmMedia',
+        'ccmmediaaudio' => 'CcmMediaAudio',
+        'ccmmediaimage' => 'CcmMediaImage',
+        'ccmmediaimagesimple' => 'CcmMediaImageSimple',
+        'ccmmediapdf' => 'CcmMediaPdf',
+        'ccmmediavideo' => 'CcmMediaVideo',
+        'ccmgallery' => 'CcmGallery',
+        'ccmgallerydualalign' => 'CcmGalleryDualAlign',
+        'ccmgallerydualalignmedia' => 'CcmGalleryDualAlignMedia',
+        'ccmgallerymedia' => 'CcmGalleryMedia'
     );
 
     /**

@@ -2,19 +2,18 @@
 
 namespace FDC\CourtMetrageBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
-use JMS\Serializer\Annotation\Groups;
 
 /**
- * GalleryDualAlignMedia
+ * CcmGalleryDualAlignMedia
  *
- * @ORM\Table()
+ * @ORM\Table(name="ccm_gallery_dual_align_media")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class GalleryDualAlignMedia
+class CcmGalleryDualAlignMedia
 {
     use Time;
 
@@ -28,13 +27,12 @@ class GalleryDualAlignMedia
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImage")
-     * @Groups({"news_show"})
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
      */
     protected $media;
 
     /**
-     * @ORM\ManyToOne(targetEntity="GalleryDualAlign", inversedBy="medias")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGalleryDualAlign", inversedBy="medias")
      */
     protected $gallery;
 
@@ -51,10 +49,10 @@ class GalleryDualAlignMedia
     /**
      * Set media
      *
-     * @param \Base\CoreBundle\Entity\MediaImage $media
-     * @return GalleryDualAlignMedia
+     * @param CcmMediaImage $media
+     * @return CcmGalleryDualAlignMedia
      */
-    public function setMedia(\Base\CoreBundle\Entity\MediaImage $media = null)
+    public function setMedia(CcmMediaImage $media = null)
     {
         $this->media = $media;
 
@@ -64,7 +62,7 @@ class GalleryDualAlignMedia
     /**
      * Get media
      *
-     * @return \Base\CoreBundle\Entity\MediaImage 
+     * @return CcmMediaImage 
      */
     public function getMedia()
     {
@@ -74,10 +72,10 @@ class GalleryDualAlignMedia
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\GalleryDualAlign $gallery
-     * @return GalleryDualAlignMedia
+     * @param CcmGalleryDualAlign $gallery
+     * @return CcmGalleryDualAlignMedia
      */
-    public function setGallery(\Base\CoreBundle\Entity\GalleryDualAlign $gallery = null)
+    public function setGallery(CcmGalleryDualAlign $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -87,7 +85,7 @@ class GalleryDualAlignMedia
     /**
      * Get gallery
      *
-     * @return \Base\CoreBundle\Entity\GalleryDualAlign 
+     * @return CcmGalleryDualAlign 
      */
     public function getGallery()
     {

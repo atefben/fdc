@@ -3,7 +3,6 @@
 namespace FDC\CourtMetrageBundle\Entity;
 
 
-use Base\CoreBundle\Entity\Gallery;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 /**
@@ -16,7 +15,7 @@ use JMS\Serializer\Annotation\Groups;
 class CcmNewsWidgetGallery extends CcmNewsWidget
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\Gallery")
+     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmGallery")
      * @ORM\JoinColumn(name="gallery_id", onDelete="SET NULL")
      * @Groups({"news_show"})
      */
@@ -25,10 +24,10 @@ class CcmNewsWidgetGallery extends CcmNewsWidget
     /**
      * Set gallery
      *
-     * @param \Base\CoreBundle\Entity\Gallery $gallery
+     * @param CcmGallery $gallery
      * @return CcmNewsWidgetGallery
      */
-    public function setGallery(Gallery $gallery = null)
+    public function setGallery(CcmGallery $gallery = null)
     {
         $this->gallery = $gallery;
 
@@ -38,7 +37,7 @@ class CcmNewsWidgetGallery extends CcmNewsWidget
     /**
      * Get gallery
      *
-     * @return Gallery
+     * @return CcmGallery
      */
     public function getGallery()
     {
