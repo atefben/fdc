@@ -3,7 +3,7 @@
 namespace FDC\CorporateBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
-use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\MediaImageSimpleTranslation;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -47,7 +47,7 @@ class FixMediaImageSimpleCommand extends ContainerAwareCommand
             foreach ($medias as $media) {
                 $progress->advance();
                 foreach ($media->getTranslations() as $mediaTrans) {
-                    if ($mediaTrans instanceof MediaImageTranslation && $mediaTrans->getFile()) {
+                    if ($mediaTrans instanceof MediaImageSimpleTranslation && $mediaTrans->getFile()) {
                         $file = $mediaTrans->getFile();
                         $url = $this->getMediaPublicUrl($file, 'reference');
                         $urlProd = str_replace('preprod', 'prod', $url);
@@ -92,7 +92,7 @@ class FixMediaImageSimpleCommand extends ContainerAwareCommand
         }
         return $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:MediaImage')
+            ->getRepository('BaseCoreBundle:MediaImageSimple')
             ->findBy($criteria, null, $this->input->getOption('max-results'), $this->input->getOption('first-result'))
             ;
     }
