@@ -1943,6 +1943,31 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
 }
 
+@media screen and (min-width: 1920px) {
+  .block-push-top {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .block-push-top {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .block-push-top {
+    height: 230px !important;
+  }
+}
 .block-p-register {
   margin-top: 70px;
 }
@@ -2584,6 +2609,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-bottom: 20px;
 }
 
+sup {
+  vertical-align: super;
+  font-size: x-small;
+  margin-left: 3px !important;
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
@@ -2912,7 +2943,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   }
 }
 
-#slider-movies .owl-item .item img , #featured-movies .owl-item .item img  {
+#slider-movies .owl-item .item img , #featured-movies .owl-item .item img  {
   width: 100% !important;
 }
 #slider-movies .owl-item:after, #featured-movies .owl-item:after {
@@ -2937,8 +2968,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-top: 100px;
   padding-bottom: 100px;
   letter-spacing: 1px !important;
-  font-size: 60px !important;
+  font-size: 60px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+#slider-movies .vCenterKid .small-title, #featured-movies .vCenterKid .small-title {
+  font-size: 20px;
+}
+#slider-movies .vCenterKid .medium-title, #featured-movies .vCenterKid .medium-title {
+  font-size: 40px;
 }
 #slider-movies .vCenterKid .alignButton, #featured-movies .vCenterKid .alignButton {
   text-align: left;
@@ -2980,6 +3017,18 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin: 0 auto;
   text-align: center;
   display: block;
+  position: relative;
+}
+.discover:before {
+  content: "";
+  background: url(../img/palmeBckg-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f6f6f6;
+  position: absolute;
+  height: 1000px;
+  width: 100%;
+  left: 0;
 }
 
 #slider-discover {
@@ -2987,6 +3036,27 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: center;
   margin: 0 auto;
   z-index: 3;
+}
+#slider-discover .owl-dot:focus:before {
+  content: "\f155";
+  font-family: icons;
+  font-size: .5rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  color: #c6b5b5;
+  line-height: 13px;
 }
 #slider-discover .owl-next, #slider-discover .owl-prev {
   color: #c8a461;
@@ -3242,7 +3312,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   }
 }
 #slider-competition .owl-stage {
-  width: 50000px !important;
   margin-left: 471.5px;
 }
 @media screen and (max-width: 1680px) {
@@ -3354,6 +3423,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   height: 100%;
   position: absolute;
   right: 0px;
+}
+.aboutPhotos .slideshow .slideshow-img .images .img img {
+  object-fit: cover !important;
 }
 .aboutPhotos .slideshow .caption {
   text-align: left;
@@ -3485,7 +3557,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   @include transition(all 0.1s $smoothTransition);
 }
 
-.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
   border: 6px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
 }
@@ -3547,6 +3619,10 @@ div.chocolat-wrapper.show {
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #slider-news .sliderDrag .owl-item {
+  opacity: 1 !important;
+}
+
+.sliderDrag .owl-item {
   opacity: 1 !important;
 }
 
@@ -7506,7 +7582,7 @@ a {
 }
 
 .title {
-  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
@@ -9165,7 +9241,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   overflow: hidden;
 }
 
-.noBdrs  {
+.noBdrs  {
   position: relative !important;
   z-index: 1 !important;
 }
@@ -11658,7 +11734,7 @@ video {
 .video .picto .icon {
   font-size: 0.8rem;
   margin-top: 16px;
-  margin-left: 4px !important;
+  margin-left: 1px !important;
 }
 
 #selection {
@@ -15167,7 +15243,7 @@ a {
   font-size: 9px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
-.biggerBox .socialContent h5  {
+.biggerBox .socialContent h5  {
   line-height: 20px !important;
   color: #000000 !important;
   font-size: 17px !important;
@@ -15207,7 +15283,7 @@ a {
   font-size: 9px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
-.bigBox .socialContent h5  {
+.bigBox .socialContent h5  {
   line-height: 20px !important;
   color: #000000 !important;
   font-size: 17px !important;
@@ -15339,9 +15415,7 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  margin-bottom: 100px;
-  margin-top: 70px;
-  /*background: url("/img/catalogueImg.png") no-repeat;
+  /*background: url("../img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align: center;
   width: 100%;
@@ -15364,7 +15438,7 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  /*-ms-transform: scale(1.1);
+  /*-ms-transform: scale(1.1); 
   -webkit-transform: scale(1.1);
   transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15440,11 +15514,11 @@ a {
   /*&:hover .plusSign {
     @include transition(all 0.9s $smoothTransition);
     -webkit-transition: all 0.5s;
-    -ms-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2); 
     transform: scale(1.2);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg); 
     transform: rotate(360deg);
   }*/
 }
@@ -15593,15 +15667,7 @@ a {
 }
 
 .competition {
-  /*@media screen and (max-width: 1366px) {
-    width: 1330px;
-  }
-  @media screen and (max-width: 1280px) {
-    width: 1200px;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 1000px;
-  }*/
+  position: relative;
 }
 .competition h3 {
   font-size: 18px;
@@ -15619,21 +15685,13 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  height: 710px;
+  min-height: 700px;
+  height: auto;
   width: 100%;
   z-index: 3;
-}
-.about:before {
-  content: "";
-  background: url(../img/palmeBckg-2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #f6f6f6;
-  position: absolute;
-  height: 1000px;
-  width: 100%;
-  left: 0;
-  top: 8%;
+  position: relative;
+  overflow: auto;
+  margin-bottom: 80px;
 }
 .about .innerWrapper {
   width: 1152px;
@@ -15648,13 +15706,13 @@ a {
   }
 }
 .about .aboutContent {
-  height: 475px;
+  height: auto;
   width: 650px;
   background: #c3a05f;
   text-align: right;
   color: white;
   float: right;
-  padding: 50px 60px 80px 0px;
+  padding: 50px 60px 50px 0px;
   z-index: 2;
   position: relative;
 }
@@ -15844,7 +15902,7 @@ article .info span {
 }
 article h2 {
   color: #333;
-  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -15857,7 +15915,7 @@ article h2 a {
 }
 article h3 {
   color: #333;
-  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -16091,6 +16149,7 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   color: #c8a461;
   font-size: 0.625rem;
+  margin-bottom: 20px;
 }
 .single-article #share-article .icon {
   font-size: 1rem;
@@ -16130,10 +16189,11 @@ article .read-later.rAlign span:after {
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.3em;
-  margin: 0 auto;
   max-width: 775px;
   text-align: center;
-  margin-bottom: 80px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 .single-article .info {
   color: #969696;
@@ -16317,7 +16377,8 @@ article .read-later.rAlign span:after {
   font-weight: normal;
 }
 .single-article .big-txt {
-  width: 776px;
+  /*width: 776px;*/
+  width: 100%;
   margin: 0 auto 70px;
 }
 .single-article .big-txt p {
@@ -16398,6 +16459,8 @@ article .read-later.rAlign span:after {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 .single-article .share p {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -16675,6 +16738,10 @@ article .read-later.rAlign span:after {
   color: #666;
   font-size: .74rem !important;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+}
+
+.grid h2.title {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
 }
 
 .single-movie {
@@ -18563,6 +18630,7 @@ input[type=submit] {
   font-size: 1.625rem;
   font-weight: 700;
   margin-bottom: 60px;
+  /*font-family: $CamphorHeavy!important;*/
 }
 .contact .coords, .contact .success {
   background-color: #f4f4f4;
@@ -22553,31 +22621,31 @@ body:not(.tablette) .webtv #live .img {
 @media screen and (min-width: 1920px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 448px !important;
+    height: 300px !important;
   }
 }
 @media screen and (min-width: 1600px) and (max-width: 1919px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 373px !important;
+    height: 300px !important;
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
   .participate.bandeau-list,
   .participate .bandeau-list-img {
-    height: 297px !important;
+    height: 230px !important;
   }
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 294px !important;
+    height: 230px !important;
   }
 }
 @media screen and (max-width: 1023px) {
   .participate .bandeau-list,
   .participate .bandeau-list-img {
-    height: 296px !important;
+    height: 230px !important;
   }
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -26566,10 +26634,10 @@ body:not(.tablette) .webtv #live .img {
   position: relative;
   width: 100%;
   height: 350px;
-  /*background: url("/img/plageCannes.png");
+  /*background: url("../img/plageCannes.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-image: url("/img/plageCannes.png");
+  background-image: url("../img/plageCannes.png");
   background-size: 100%;
   background: center 0 no-repeat fixed;
   background-size: cover;*/
@@ -26708,7 +26776,7 @@ body:not(.tablette) .webtv #live .img {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;
+  z-index: 1004;  
   right: 1%;
   top: 100%;*/
   display: none;
@@ -26887,7 +26955,7 @@ body:not(.tablette) .webtv #live .img {
   padding: 70px 0;
   /* height: 120px; */
   position: relative;
-  float: left;
+  /*float: left;*/
   width: 100%;
   margin: 50px 0px;
 }
@@ -27600,7 +27668,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-
+      
         &:after {
         content: '';
     }
@@ -29093,6 +29161,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   height: auto;
   border: 1px solid #c8a461;
   position: relative;
+  overflow: auto;
 }
 .onlinegoldBorders:after {
   content: '';
@@ -29179,7 +29248,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 30px;
   letter-spacing: 0px;
 }
-.contactUs .contactContent h6  {
+.contactUs .contactContent h6  {
   color: #666666 !important;
   font-size: 14px;
   opacity: 0.9;
@@ -29339,6 +29408,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     display: none !important;
   }
 }
+#share {
+  margin: 0 auto !important;
+}
+
 .confcourtaccordion .selectbtn {
   float: none !important;
   min-width: 0px !important;
@@ -29359,7 +29432,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: white;
 }
 @media screen and (max-width: 1024px) {
-  .confcourtaccordion #eventSelector  {
+  .confcourtaccordion #eventSelector  {
     padding: 0px 160px !important;
   }
 }
@@ -29385,6 +29458,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   position: relative;
   height: auto;
   margin: 0 auto;
+  /*float: left;
+  margin-bottom: 100px;*/
+  padding-bottom: 110px;
+  overflow: auto;
 }
 @media screen and (min-width: 1600px) {
   .confcourt {
@@ -29588,7 +29665,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     margin-left: 4%;
   }
 }
-.modal-content .half .htitle  {
+.modal-content .half .htitle  {
   width: 100%;
   text-align: center;
   font-family: "Playfair Display", Times New Roman, Times, serif !important;
@@ -29596,7 +29673,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #141414 !important;
   letter-spacing: 0px !important;
 }
-.modal-content .half .htitle  h2 {
+.modal-content .half .htitle  h2 {
   font-family: "Playfair Display", Times New Roman, Times, serif !important;
   letter-spacing: 0px !important;
   font-size: 30px;
@@ -29759,8 +29836,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 25px;
 }
 .modal-content .half .halfContent {
-  width: 50%;
+  width: 265px;
+  max-width: 265px;
   float: left;
+  word-wrap: break-word;
+  padding: 0px 40px 0px 0px;
 }
 .modal-content .half .photo {
   width: 100%;
@@ -29810,7 +29890,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     &:before {
       width: 30px;
       content: " ";
-      background-image: url(/img/world.png);
+      background-image: url(../img/world.png);
       position: absolute;
       height: 20px;
       left: 5%;
@@ -29821,7 +29901,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     &:before {
       width: 30px;
       content: " ";
-      background-image: url(/img/computer.png);
+      background-image: url(../img/computer.png);
       position: absolute;
       height: 20px;
       left: 5%;
@@ -29852,6 +29932,15 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   float: left;
   padding-top: 2px;
   width: 10%;
+}
+
+.IEfit {
+  width: 155px !important;
+  height: 100% !important;
+}
+
+.backgroundPhotoContainer {
+  background-size: cover !important;
 }
 
 /*
@@ -29899,7 +29988,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 30px!important;
       color: #141414!important;
       letter-spacing: 0px!important;
-
+      
       h2 {
         font-family: $Playfair!important;
         letter-spacing: 0px!important;
@@ -29922,8 +30011,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 10px;
       text-align: left;
       padding: 20px 0px 20px 0px;
-      text-transform: uppercase;
-      font-family: $CamphorBold;
+      text-transform: uppercase;     
+      font-family: $CamphorBold;  
     }
 
     .titleHalf {
@@ -29934,8 +30023,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
         color:#141414;
         font-size: 50px;
         text-align: left;
-        line-height: 60px;
-        font-family: $Playfair;
+        line-height: 60px;   
+        font-family: $Playfair;   
       }
       a {
         text-decoration: none;

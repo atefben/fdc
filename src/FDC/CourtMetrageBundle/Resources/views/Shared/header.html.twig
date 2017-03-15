@@ -52,7 +52,7 @@
                     {% endif %}
                     {% if menuPage.catalogPicIsActive %}
                         <div class="topIcons second">
-                            <a href="{{ menuTranslation.urlCatalog }}"><img src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
+                            <a href="{{ menuTranslation.urlCatalog }}"><img class="biggerIcon" src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
                         </div>
                     {% endif %}
                     {% if menuPage.registerPicIsActive %}
@@ -62,23 +62,23 @@
                     {% endif %}
                 </div>
             {% endif %}
-            <div id="sticky-user">
-                <ul class="user-nav">
-                    {#<li>#}
-                        {#<a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>#}
-                    {#</li>#}
-                    <li class="lang">
-                        <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
-                        <ul class="sub-languages">
-                            {% for locale in ccm_locales if locale != app.request.locale %}
-                                <li>
-                                    <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        </div>
+        <div id="sticky-user">
+            <ul class="user-nav">
+                {#<li>#}
+                    {#<a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>#}
+                {#</li>#}
+                <li class="lang">
+                    <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
+                    <ul class="sub-languages">
+                        {% for locale in ccm_locales if locale != app.request.locale %}
+                            <li>
+                                <a href="{{ path(routeName, routeParams|merge({ _locale: locale })) }}">{{ locale|upper }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
     <div id="navigation">

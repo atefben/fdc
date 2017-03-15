@@ -57,12 +57,7 @@
                         {% for pro in prosList %}
                             <div class="box {{ pro.domain }} {% if pro.translatable.isShortFilmCorner %}short-fim-corner {% endif %}events modal-toggle" data-pro-id="{{ pro.id }}">
                                 <div class="eventPhoto">
-                                    <div class="eventPhotoContainer">
-                                        {% if pro.translatable.image is defined and pro.translatable.image is not null%}
-                                            <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" style="height: 230px;" alt="">
-                                        {% else %}
-                                            <img class="containerFit" src="{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}" alt="">
-                                        {% endif %}
+                                    <div class="eventPhotoContainer backgroundPhotoContainer" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "reference" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})">
                                     </div>
                                     {% if pro.translatable.isShortFilmCorner %}
                                         <div class="sfcLogo">

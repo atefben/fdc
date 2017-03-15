@@ -10,7 +10,7 @@
                         <div class="vCenter">
                             <div class="container">
                                 <div class="vCenterKid">
-                                    <h2>{{ slide.whiteTitle }}</br><span class="goldColor">{{ slide.goldenTitle }}</span></h2>
+                                    <h2><span class="{% if slide.whiteTitleSize == 'small' %}small-title{% elseif slide.whiteTitleSize == 'medium' %}medium-title{% else %}{% endif %}">{{ slide.whiteTitle }}</span></br><span class="goldColor{% if slide.goldenTitleSize == 'small' %} small-title{% elseif slide.goldenTitleSize == 'medium' %} medium-title{% else %}{% endif %}">{{ slide.goldenTitle }}</span></h2>
                                     <div class="alignButton">
                                         <div class="programmButton">{{ slide.buttonLabel }}</div>
                                     </div>
