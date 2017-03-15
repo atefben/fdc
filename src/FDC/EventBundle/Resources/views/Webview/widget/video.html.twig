@@ -13,7 +13,7 @@
 		{% set imageTrans = header.findTranslationByLocale('fr') %}
 	{% endif %}
 {% endif %}
-{% if imageTrans is defined %}
+{% if imageTrans is defined and imageTrans is not null %}
 	{% set image = imageTrans.file %}
 {% endif %}
 {% if image is not defined and trans.imageAmazonUrl is not null %}
