@@ -2773,6 +2773,7 @@ var owInitGrid = function (id) {
                                         console.log('click new filter');
                                     }));
                                 }
+                                
                             });
                         }
 
