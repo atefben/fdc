@@ -96,9 +96,11 @@ var owInitGrid = function (id) {
                                     $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
-                            $('#theme .select span').on('click',function(){
-                                console.log('click new filter');
-                            })
+                            $('#filters span').on('click', function () {
+                                var data = $(this).data('select');
+                                var selected = $('#' + block + ' .select option[value="' + data + '"]');
+                                selected.attr('selected', 'selected');
+                            });
                         }
 
                         $('.articles-wrapper').append(data);
@@ -123,61 +125,7 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        /*$('.filters .select span').off('click').on('click', function () {
-                            $('.filter .select').each(function () {
-                                $that = $(this);
-                                $id = $(this).closest('.filter').attr('id');
-
-                                $that.find(".pages:not([data-filter='all'])").each(function () {
-                                    $this = $(this);
-
-                                    var getVal = $this.data('filter');
-                                    var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
-
-                                    if (numItems === 0) {
-                                        $this.addClass('disabled');
-                                    } else {
-                                        $this.removeClass('disabled');
-                                    }
-                                });
-                            });
-
-                            var h = $(this).parent().html();
-
-                            $('#filters').remove();
-                            $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
-                            $('#filters .vCenterKid').html(h);
-                            $('#filters .vCenterKid').find(':not(span)').remove();
-                            $('#filters .vCenterKid').find('span.disabled').remove();
-                            $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
-
-                            setTimeout(function () {
-                                $('#filters').addClass('show');
-                            }, 100);
-
-                            setTimeout(function () {
-                                $('#filters span').addClass('show');
-                            }, 400);
-
-                            $('#filters span').on('click', function () {
-                                var id = $('#filters').data('id'),
-                                    f = $(this).data('filter');
-
-                                $('#' + id + ' .select span').removeClass('active');
-                                $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
-
-                                $('.pages:not(.' + f + ')').css('display', 'none');
-                                $('.pages.' + f).css('display', 'block');
-                            });
-
-                            // close filters
-                            $('body').on('click', '#filters', function () {
-                                $('#filters').removeClass('show');
-                                setTimeout(function () {
-                                    $('#filters').remove();
-                                }, 700);
-                            });
-                        });*/
+                        fnFilters();
 
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
