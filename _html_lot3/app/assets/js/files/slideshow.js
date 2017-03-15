@@ -499,6 +499,7 @@ var openSlideShow = function (slider, hash, affiche) {
         
         if(typeof images[centerElement].title !== 'undefined'){
             if($(images[centerElement].title).filter('*').size()){
+                console.log(images[centerElement].title);
                 images[centerElement].title = $(images[centerElement].title).text();
             }
         }
