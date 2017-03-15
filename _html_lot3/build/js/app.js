@@ -5598,8 +5598,11 @@ var openSlideShow = function (slider, hash, affiche) {
         
         if(typeof images[centerElement].title !== 'undefined'){
             if($(images[centerElement].title).filter('*').size()){
-                console.log($(images[centerElement].title).filter('strong'));
-                images[centerElement].title = $(images[centerElement].title).text();
+                if($(images[centerElement].title).filter('strong').length){
+                    images[centerElement].title = $(images[centerElement].title).filter('strong').text();
+                }else{
+                    images[centerElement].title = $(images[centerElement].title).text();
+                }
             }
         }
         $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
