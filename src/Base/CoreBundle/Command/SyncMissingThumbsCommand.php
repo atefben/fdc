@@ -43,6 +43,8 @@ class SyncMissingThumbsCommand extends BaseCommand
             ->setName('base:media:sync-missing-thumbnails')
             ->setDescription('Sync missing uploaded image thumbs with new media formats')
             ->addOption('from-bo', null, InputOption::VALUE_NONE, 'Sync only from bo')
+            ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 10)
+            ->addOption('order-by', null, InputOption::VALUE_OPTIONAL, 'desc')
         ;
     }
 
@@ -100,17 +102,20 @@ class SyncMissingThumbsCommand extends BaseCommand
      */
     private function getMedias()
     {
+        $order = ['createdAt' => $this->input->getOption('order-by')];
         if ($this->input->getOption('from-bo')) {
+            $criteria = ['thumbsGenerated' => false, 'uploadedFromBO' => true];
             return $this
                 ->getDoctrineManager()
                 ->getRepository('ApplicationSonataMediaBundle:Media')
-                ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => true], ['createdAt' => 'desc'], 10)
+                ->findBy($criteria, $order, $this->input->getOption('max-results'))
                 ;
         }
+        $criteria = ['thumbsGenerated' => false, 'uploadedFromBO' => false];
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy(['thumbsGenerated' => false, 'uploadedFromBO' => false], ['createdAt' => 'desc'], 10)
+            ->findBy($criteria, $order, $this->input->getOption('max-results'))
             ;
     }
 
