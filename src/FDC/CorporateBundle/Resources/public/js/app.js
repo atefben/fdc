@@ -548,9 +548,8 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                if($('.media-library').length){
-                    playerInstance.load(playlist);
-                }
+                console.log(playlist);
+                playerInstance.load(playlist);
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
