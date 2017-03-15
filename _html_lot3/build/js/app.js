@@ -2367,7 +2367,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
         // close filters
-        $('body').on('click', '#filters', function () {
+        $('body').off('click').on('click', '#filters', function () {
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -2399,7 +2399,7 @@ var owInitFilter = function (isTabSelection) {
         if (!$('.who-filter').length) {
 
 
-            $('.filters .select span').on('click', function () {
+            $('.filters .select span').off('click').on('click', function () {
                 console.log('filter click');
                 $('.filter .select').each(function () {
                     $that = $(this);
@@ -2797,7 +2797,7 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        $('.articles-wrapper .isotope-01').each(function(){
+                        /*$('.articles-wrapper .isotope-01').each(function(){
                             if($(this).data('isotope')){
                                 $(this).isotope('destroy').isotope({
                                     itemSelector: '.item',
@@ -2825,8 +2825,8 @@ var owInitGrid = function (id) {
                                     sortBy: ['number']
                                 });
                             }
-                        });
-
+                        });*/
+                        owInitFilter();
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){

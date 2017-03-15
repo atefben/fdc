@@ -119,7 +119,7 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        $('.articles-wrapper .isotope-01').each(function(){
+                        /*$('.articles-wrapper .isotope-01').each(function(){
                             if($(this).data('isotope')){
                                 $(this).isotope('destroy').isotope({
                                     itemSelector: '.item',
@@ -147,8 +147,8 @@ var owInitGrid = function (id) {
                                     sortBy: ['number']
                                 });
                             }
-                        });
-
+                        });*/
+                        owInitFilter();
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){

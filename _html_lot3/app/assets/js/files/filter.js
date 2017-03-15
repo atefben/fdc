@@ -40,7 +40,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
         // close filters
-        $('body').on('click', '#filters', function () {
+        $('body').off('click').on('click', '#filters', function () {
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -72,7 +72,7 @@ var owInitFilter = function (isTabSelection) {
         if (!$('.who-filter').length) {
 
 
-            $('.filters .select span').on('click', function () {
+            $('.filters .select span').off('click').on('click', function () {
                 console.log('filter click');
                 $('.filter .select').each(function () {
                     $that = $(this);
