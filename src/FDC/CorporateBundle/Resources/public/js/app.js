@@ -2772,6 +2772,26 @@ var owInitGrid = function (id) {
                                     $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
+
+                            $('.filters .select span').off('click').on('click', function () {
+
+                                $('.filter .select').each(function () {
+                                    $that = $(this);
+                                    $id = $(this).closest('.filter').attr('id');
+
+                                    $that.find(".pages:not([data-filter='all'])").each(function () {
+                                        $this = $(this);
+
+                                        var getVal = $this.data('filter');
+                                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
+
+                                        if (numItems === 0) {
+                                            $this.addClass('disabled');
+                                        } else {
+                                            $this.removeClass('disabled');
+                                        }
+                                    });
+                                });
                         }
 
                         $('.articles-wrapper').append(data);
