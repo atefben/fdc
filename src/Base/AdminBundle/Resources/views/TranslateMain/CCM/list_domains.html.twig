@@ -3,14 +3,14 @@
 
 {% block field %}
     {% if admin.hasRoute('edit') %}
-        {#{{ dump() }}#}
-            {% if object.translations[app.request.getLocale()] is defined and object.translations[app.request.getLocale()] is not null %}
-                {% set translation = object.translations[app.request.getLocale()] %}
-                {% if field_description is not null and field_description.options['choices'] is not null %}
-                    {% if field_description.options['choices'][translation.domain] is defined %}
-                        {{ field_description.options['choices'][translation.domain] }}
-                    {% endif %}
-                {% endif %}
+        {% for domain in value %}
+            {% if domain.domain and domain.domain.translations[app.request.getLocale()] is defined and domain.domain.translations[app.request.getLocale()] is not null %}
+                {% set translation = domain.domain.translations[app.request.getLocale()] %}
+                <a class="fdc-check-lock-list{% if translation.lockedBy is not null %} fdc-is-locked{% endif %}" href="{% if translation.lockedBy is not null %}#{% else %}{{ path('admin_fdc_courtmetrage_ccmdomain_edit', {'id' : domain.domain.id}) }}?locale={{ app.request.getLocale() }}{% endif %}">
+                    {{ translation.name }}
+                </a>
+                <br/>
             {% endif %}
+        {% endfor %}
     {% endif %}
 {% endblock %}

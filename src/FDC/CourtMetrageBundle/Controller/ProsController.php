@@ -2,6 +2,8 @@
 
 namespace FDC\CourtMetrageBundle\Controller;
 
+use FDC\CourtMetrageBundle\Manager\HomepageManager;
+use FDC\CourtMetrageBundle\Manager\ProsManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,7 +19,10 @@ class ProsController extends Controller
      */
     public function showAction(Request $request)
     {
+        /** @var HomepageManager $homepageManger */
         $homepageManger = $this->get('ccm.manager.homepage');
+        
+        /** @var ProsManager $prosManager */
         $prosManager = $this->get('ccm.manager.pros');
 
         $sejour = $homepageManger->getSejouresFromProsPage();
@@ -33,12 +38,14 @@ class ProsController extends Controller
         $catalogIsActive = $prosPage->getTranslatable()->getCatalogIsActive();
         $actualiteIsActive = $prosPage->getTranslatable()->getActualiteIsActive();
         $prosList = $prosManager->getProsByLocale();
-        $prosDomains = $prosManager->getDomains($prosList, $prosPage);
+        $pageDomains = $prosManager->getDomains($prosList, $prosPage);
+        $prosDomains = $prosManager->getProsDomains($prosList);
         $hasSFC = $prosManager->hasSFC($prosList);
         
         return $this->render('FDCCourtMetrageBundle:Pros:show.html.twig', [
                 'prosPage' => $prosPage,
                 'prosList' => $prosList,
+                'pageDomains' => $pageDomains,
                 'prosDomains' => $prosDomains,
                 'hasSFC' => $hasSFC,
                 'sejour' => $sejour,

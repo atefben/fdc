@@ -60,13 +60,7 @@ class CcmProsDetailTranslation implements TranslateChildInterface
      * @ORM\Column(name="url_name", type="string", length=255, nullable=true)
      */
     protected $urlName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="domain", type="string", length=255, nullable=true)
-     */
-    protected $domain;
+    
 
     /**
      * @return string
@@ -146,22 +140,6 @@ class CcmProsDetailTranslation implements TranslateChildInterface
     public function setUrlName($urlName)
     {
         $this->urlName = $urlName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->domain;
-    }
-
-    /**
-     * @param string $domain
-     */
-    public function setDomain($domain)
-    {
-        $this->domain = $domain;
     }
 }
 

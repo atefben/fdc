@@ -2710,22 +2710,6 @@ services:
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
-    base.admin.ccm_pros_activity_collection:
-        class: Base\AdminBundle\Admin\CCM\CcmProsActivityCollectionAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsActivityCollection, ApplicationSonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Activity Collection, show_in_dashboard: false}
-        calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
-
-    base.admin.ccm_pros_activity:
-        class: Base\AdminBundle\Admin\CCM\CcmProsActivityAdmin
-        arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsActivity, ApplicationSonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.pros, label: Pros Activity, show_in_dashboard: false}
-        calls:
-             - [ setTranslationDomain, ['BaseAdminBundle']]
-
     base.admin.ccm_pros_contact_collection:
         class: Base\AdminBundle\Admin\CCM\CcmProsContactCollectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProsContactCollection, ApplicationSonataAdminBundle:CRUD]
