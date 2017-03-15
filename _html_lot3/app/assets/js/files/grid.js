@@ -88,7 +88,16 @@ var owInitGrid = function (id) {
                     }else{
                         $data = $(data);
 
-                        console.log($(data).filter('.compute-filters'));
+                        //add new filters
+                        if($(data).filter('.compute-filters').length){
+                            $(data).filter('.compute-filters').find('span').each(function(){
+                                //test if filter exists
+                                console.log($('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length);
+                                if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                    $('#theme .select').append($(this));
+                                }
+                            });
+                        }
                         $('.articles-wrapper').append(data);
                         $('.articles-wrapper').find('.read-more').remove();
                         $('.articles-wrapper').find('.compute-filters').remove();
