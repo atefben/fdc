@@ -458,7 +458,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
         while (i < $img.length) {
             if (j < 10) {
-                if (j == 0 || j == 3) {
+                if (j == 1 || j == 3) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
