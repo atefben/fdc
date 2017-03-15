@@ -9563,7 +9563,7 @@ header #searchContainer {
   font-size: 1.625rem;
   padding-top: 60px;
 }
-.retrospective .articles-list h2.title {
+.hide-title .articles-list h2.title {
   display: none;
 }
 .articles-list .card .info strong {
