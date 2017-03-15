@@ -11,8 +11,6 @@
             <div class="contain-ajax articles-list evenements padding-bottom" id="main">
 
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-                {# TODO traduire titre #}
-                <h2 class="title">Toute l’actualité</h2>
 
                 {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
 
