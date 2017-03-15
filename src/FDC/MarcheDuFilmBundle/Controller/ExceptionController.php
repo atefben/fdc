@@ -58,6 +58,11 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
 
                 return $this->ccmExceptionManager->render404Page($locale);
             }
+            
+            if ($exception->getStatusCode() === 500) {
+                
+                return $this->ccmExceptionManager->render500Page($locale);
+            }
         }
 
         $currentContent = $this->getAndCleanOutputBuffering($request->headers->get('X-Php-Ob-Level', -1));

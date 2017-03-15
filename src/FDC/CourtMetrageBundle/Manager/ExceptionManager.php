@@ -45,4 +45,17 @@ class ExceptionManager
             'params' => []
         ]);        
     }
+
+    /**
+     * @param $locale
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function render500Page($locale)
+    {
+        // add logic ?
+
+        return $this->templating->renderResponse('@FDCCourtMetrage/exceptions/error500.html.twig', [
+            'params' => []
+        ]);
+    }
 }
