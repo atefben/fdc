@@ -4,6 +4,7 @@ namespace Base\AdminBundle\Admin\CCM;
 
 
 use FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab;
+use Sonata\AdminBundle\Form\FormMapper;
 
 class CcmShortFilmCompetitionTabPalmaresAdmin extends CcmShortFilmCompetitionTabAdmin
 {
@@ -19,6 +20,22 @@ class CcmShortFilmCompetitionTabPalmaresAdmin extends CcmShortFilmCompetitionTab
         $query->setParameter('type', CcmShortFilmCompetitionTab::TYPE_PALMARES);
 
         return $query;
+    }
+
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper)
+    {
+        parent::configureFormFields($formMapper);
+        $formMapper
+            ->add('selectionSection', 'sonata_type_model_list', array(
+                    'label'    => 'form.ccm.label.film_selection',
+                    'required' => true,
+                    'btn_add' => false,
+                )
+            )
+        ;
     }
 
     public function prePersist($page)

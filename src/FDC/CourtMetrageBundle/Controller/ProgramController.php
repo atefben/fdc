@@ -12,7 +12,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ProgramController extends Controller
 {
     /**
-     * @Route("program", name="fdc_court_metrage_program")
+     * @Route("/short-film-corner/programme", name="fdc_court_metrage_program")
+     * @Route("/short-film-corner/program", name="fdc_court_metrage_program_en")
      * @param Request $request
      * @return Response
      */
@@ -21,7 +22,10 @@ class ProgramController extends Controller
         $locale = $request->get('_locale', 'fr');
         /** @var ProgramManager $programManager */
         $programManager = $this->get('ccm.manager.program');
+        if ($locale == 'en' && $request->get('_route') != 'fdc_court_metrage_program_en') {
 
+            return $this->redirectToRoute('fdc_court_metrage_program_en');
+        }
         $filters = $programManager->getAvailableListFilters($locale);
         $program = $programManager->getProgramPage($locale);
         $programTranslatable = $program->getTranslatable();

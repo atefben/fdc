@@ -18,7 +18,7 @@
                                    data-pid="{{ photo.id }}"
                                    class="chocolat-image ajax"
                                    href="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
-                                   title='<span class="category">{{ title }}</span>'
+                                   title='<h2>{{ mainTitle }}</h2>'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                     <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}" alt="" />
                                 </a>
@@ -31,7 +31,7 @@
                             <a id="photo-selfkit-{{ selfkit.id }}" data-pid="selfkit-{{ selfkit.id }}"
                                class="chocolat-image ajax"
                                href="{% path selfkit, selfkit.context ~ '_big' %}"
-                               title='<span>{{ selfkit.name?:'Affiche du film' }}"</span>'
+                               title='<h2>{{ mainTitle }}</h2>'
                                data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.copyright : '' }}">
                                 <img src="{% path selfkit, selfkit.context ~ '_big' %}" alt=""/>
                             </a>

@@ -17,6 +17,10 @@ class MdfImageDummyAdmin extends Admin
                     'required' => true,
                 )
             )
+            ->add('epsFile', 'sonata_type_model_list', array(
+                     'required' => true,
+                 )
+            )
         ;
     }
 }

@@ -167,26 +167,15 @@ class OldFilmPhotoRepository extends EntityRepository
     }
 
     /**
-     * @param \Base\CoreBundle\Entity\FilmPerson|null $filmPerson
+     * @param FilmPerson|null $filmPerson
      * @param int|null $firstResult
      * @param int|null $maxResults
      * @return OldFilmPhoto[]
      */
     public function getLegacyPersonImages(FilmPerson $filmPerson = null, $firstResult = null, $maxResults = null)
     {
-//        $types = [
-//            FilmFilmMedia::TYPE_JURY,
-//            FilmFilmMedia::TYPE_DIRECTOR,
-//            FilmFilmMedia::TYPE_PERSON,
-//        ];
-
-        $qb = $this->createQueryBuilder('fp');
-
-//        $qb
-//            ->andWhere('fp.idtypephoto in (:types)')
-//            ->setParameter(':types', $types)
-//        ;
-        $qb
+        $qb = $this
+            ->createQueryBuilder('fp')
             ->andWhere('fp.internet = :internet')
             ->setParameter(':internet', 'O')
         ;
@@ -215,25 +204,16 @@ class OldFilmPhotoRepository extends EntityRepository
     }
 
     /**
-     * @param \Base\CoreBundle\Entity\FilmPerson|null $filmPerson
+     * @param FilmPerson|null $filmPerson
      * @return integer
      */
     public function getLegacyPersonImagesCount(FilmPerson $filmPerson = null)
     {
-//        $types = [
-//            FilmFilmMedia::TYPE_JURY,
-//            FilmFilmMedia::TYPE_DIRECTOR,
-//            FilmFilmMedia::TYPE_PERSON,
-//        ];
-
-        $qb = $this->createQueryBuilder('fp');
-
-        $qb
+        $qb = $this
+            ->createQueryBuilder('fp')
             ->select('count(fp)')
             ->andWhere('fp.internet = :internet')
             ->setParameter(':internet', 'O')
-//            ->andWhere('fp.idtypephoto in (:types)')
-//            ->setParameter(':types', $types)
         ;
 
         if ($filmPerson) {

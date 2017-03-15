@@ -71,14 +71,17 @@ class HomepagePushType extends AbstractType
                     'whiteTitle'          => array(
                         'label'              => 'form.ccm.label.push.whiteTitle',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'goldenTitle'          => array(
                         'label'              => 'form.ccm.label.push.goldenTitle',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'url'          => array(
                         'label'              => 'form.ccm.label.push.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                 ),
             ))

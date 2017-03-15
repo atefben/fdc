@@ -1,6 +1,6 @@
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
-        var $grid = $('.isotope-01:not(.add-ajax-request)');
+        var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {
             $grid.isotope({
                 itemSelector: '.item',
@@ -29,7 +29,7 @@ var owInitGrid = function (id) {
         var $items = $('.item');
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
-        var $gridMore = $gridDom.imagesLoaded(function () {
+        var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
@@ -45,7 +45,7 @@ var owInitGrid = function (id) {
             $gridMore.isotope();
 
             if($gridDom.parent().find('.ajax-request').length){
-                if(!$gridDom.find('.ajax-request').is(':visible')){
+                if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
@@ -56,40 +56,91 @@ var owInitGrid = function (id) {
                             }
                         }
                     });
+
+                    var ticker = window.setInterval(function(){
+                        clickAllow = true;
+                    },2000);
                 }
             }
         });
 
-        var ticker = window.setInterval(function(){
-            clickAllow = true;
-        },1000);
+        
 
 
         var number = 0;
 
         if($('.home').length){
+            //#home-news-statements-more
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
 
                 var url = $(this).attr('href');
-
+                var container = $(this).closest('.block-01');
                 var dateTime = $('.last-element').data('time');
 
-                $.get( url, {date: dateTime}, function( data ) {
+                //fake animation before the real computing
+                $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
 
+                $.get( url, {date: dateTime}, function( data ) {
                     if(data == null){
                         return false;
+
                     }else{
-                        data = $(data);
-                        $gridMore.append(data).isotope( 'addItems', data );
-                        $gridMore.isotope();
+                        $data = $(data);
+
+                        $('.articles-wrapper').append(data);
+                        $('.articles-wrapper').find('.read-more').remove();
+                        $('.articles-wrapper').find('img').imagesLoaded(function(){
+                            $('.articles-wrapper').find('.to-init').isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'packery',
+                                packery: {
+                                    columnWidth: '.grid-sizer',
+                                    gutter: 0
+                                }
+                            }).removeClass('to-init');
+
+                            $('.articles-wrapper .articles').css('opacity',1);
+
+                            var h = 0
+                            $('.articles-wrapper .articles').each(function(){
+                                h += $(this).height();
+                            });
+                            $('.articles-wrapper').css('height',h);
+                        });
+
+                        //BUTTON BEHAVIOUR
+                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        if(typeof moreBtn !== 'undefined'){
+                            //ajax btn found, more content to come
+                            $this.attr('href',moreBtn);
+                            
+                        }else{
+                            //no more content but let's take read more link and wording
+                            var allNewsButton = $data.filter('.read-more');
+                            $('#home-news-statements-more').remove();
+                            container.append(allNewsButton);
+                        }
                     }
                 });
-
             });
+
+            //populate isotope data array on change
+            $('.articles-wrapper').on('change',function(){
+                $(this).find('.articles').each(function(){
+                    var $this = $(this);
+                    var grid = $this.find('.isotope-01');
+                    var currentFilters = 
+                    $this.find('article').each(function(){
+
+                    });
+                });
+            });
+
         }else{
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 e.preventDefault();
+                var $this = $(this);
                 var url = $(this).attr('href');
 
                 $.post({
@@ -106,12 +157,17 @@ var owInitGrid = function (id) {
                     },
                     success: function(data) {
                         $data = $(data);
-
-                        $grid.append($data);
-                        $grid.isotope('destroy');
-
-                        $grid.imagesLoaded(function () {
-                            $grid.isotope({
+                        
+                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        $gridMore.append(articles);
+                        $gridMore.isotope('destroy');
+                        if(typeof moreBtn !== 'undefined'){
+                            
+                            $this.attr('href',moreBtn);
+                        }
+                        $gridMore.imagesLoaded(function () {
+                            $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'packery',
                                 packery: {
@@ -132,20 +188,8 @@ var owInitGrid = function (id) {
                                 var titleText;
                                 var catText;
 
-                                //if (!title.hasClass('init')) {
-                                    titleText = $this.find('.info strong a').text();
-                                    title.addClass('init');
-                                    title.attr('data-title', titleText);
-
-                                //if (!cat.hasClass('init')) {
-                                    catText = cat.text();
-                                    cat.addClass('init');
-                                    cat.attr('data-cat', catText);
-
-                                cat.addClass('init').attr('data-cat', cat.text());
-
-                                title.html(titleText.trunc(30, true));
-                                cat.html(catText.trunc(30, true));
+                                $clamp(title.get(0), {clamp: 1});
+                                $clamp(cat.get(0), {clamp: 1});
                             });
 
                         });
@@ -153,8 +197,8 @@ var owInitGrid = function (id) {
                         
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
-
-                        owinitSlideShow($grid);
+                        
+                        owinitSlideShow($gridMore);
                         initVideo();
                         initAudio();
 
@@ -188,45 +232,13 @@ var owInitGrid = function (id) {
         }
 
         if(!$('#home').length > 0) {
-            
             var trunTitle = function() {
                 $.each($('.card.item'), function (i, e) {
                     var title = $(e).find('.info strong a');
-    
-                    if (!title.hasClass('init')) {
-                        var text = $(e).find('.info strong a').text();
-                        title.addClass('init');
-                        title.attr('data-title', text);
-                    } else {
-                        var text = title.attr('data-title');
-                    }
-
                     var cat = $(e).find('.info .category');
 
-                    if (!cat.hasClass('init')) {
-                        text2 = cat.text();
-                        cat.addClass('init');
-                        cat.attr('data-cat', text2);
-                    } else {
-                        text2 = cat.attr('data-title');
-                    }
-    
-    
-                    if($('.medias').length > 0) {
-    
-                        if (window.matchMedia("(max-width: 1405px)").matches) {
-                            title.html(text.trunc(25, true));
-                        }else{
-                            title.html(text.trunc(30, true));
-                        }
-    
-                    } else {
-                        title.html(text.trunc(30, true));
-
-                        if (typeof text2 !== "undefined") {
-                            cat.html(text2.trunc(30, true));
-                        }
-                    }
+                    $clamp(title.get(0), {clamp: 1});
+                    $clamp(cat.get(0), {clamp: 1});
                 });
             }
     
@@ -243,21 +255,64 @@ var owInitGrid = function (id) {
 
 
         if($('.item.block-poster').length) {
-            var stop = false;
 
-            $.each($('.item.block-poster'), function (i,e) {
-                var p = $(e).find('.title-12');
+            function selectionGridComputing(){
+                var stop = false;
+                var lineClassIndex = 0;
+                var lineContentHeights = [];
+                var previousItem;
 
-                if(p.length > 3){ 
-                    stop = true;
-                }
+                //get max heights
+                $.each($('.item.block-poster'), function (i,e) {
+                    var naturalIndex = i+1;
+                    var ww = window.innerWidth;
+                    var colNumber = 4;
+                    if(ww > 1280){
+                        colNumber = 5;
+                    }
 
-                if(stop) {
-                    $('.block-poster .contain-txts').css('height',' 140px');
-                    $(window).trigger('resize');
-                    return false;
-                }
-            })
+                    if(ww > 1600){
+                        colNumber = 6;
+                    }
+
+                    if(ww >= 1920){
+                        colNumber = 8;
+                    }
+
+                    if(i%colNumber == 0){
+                        lineClassIndex += 1;
+                    }
+
+                    if(typeof lineContentHeights[lineClassIndex] !== 'undefined'){
+                        if($(this).find('.contain-txts').removeAttr('style').outerHeight() > lineContentHeights[lineClassIndex]){
+                            lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
+                        }
+                    }else{
+                        lineContentHeights[lineClassIndex] = $(this).find('.contain-txts').outerHeight();
+                    }
+
+                    //ratio class
+                    var img = $(this).find('img');
+                    var imgClass = 'portrait';
+                    if(img.width() > img.height()){
+                        var imgClass = 'landscape';
+                    }
+                    img.addClass(imgClass);
+                    $(this).attr('rel',lineClassIndex);
+                    previousItem = $(this);
+                });
+                
+                //apply heights
+                $.each($('.item.block-poster'), function (i,e) {
+                    var height = lineContentHeights[$(this).attr('rel')];
+                    $(this).find('.contain-txts').css('height',height);
+                });
+            }
+
+            selectionGridComputing();
+            $(window).on('resize',function(){
+                selectionGridComputing();
+            });
         }
 
         return $grid;
@@ -285,7 +340,6 @@ var owInitGrid = function (id) {
             $('.pages:not(.'+active+')').css('display','none');
             $('.pages.'+active).css('display','block');
 
-            console.log(active);
         }
 
         return $grid;
@@ -310,27 +364,10 @@ var owInitGrid = function (id) {
         var trunTitle = function() {
             $.each($('.card.item'), function (i, e) {
                 var title = $(e).find('.info strong a');
+                var cat = $(e).find('.info .category');
 
-                if (!title.hasClass('init')) {
-                    var text = $(e).find('.info strong a').text();
-                    title.addClass('init');
-                    title.attr('data-title', text);
-                } else {
-                    var text = title.attr('data-title');
-                }
-
-
-                if($('.medias').length > 0) {
-
-                    if (window.matchMedia("(max-width: 1405px)").matches) {
-                        title.html(text.trunc(25, true));
-                    }else{
-                        title.html(text.trunc(40, true));
-                    }
-
-                } else {
-                    title.html(text.trunc(60, true));
-                }
+                $clamp(title.get(0), {clamp: 1});
+                $clamp(cat.get(0), {clamp: 1});
             });
         }
 
@@ -385,12 +422,10 @@ var owInitGrid = function (id) {
         }
     }
 
-
 };
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -439,7 +474,7 @@ var owsetGridBigImg = function (grid, dom, init) {
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 0 || j == 3 || j == 12 || j == 17 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -452,10 +487,9 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
-
         while (i < $img.length) {
             if (j < 15) {
-                if (j == 0 || j == 5 || j == 14) {
+                if (j == 1 || j == 5 || j == 14) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -466,6 +500,8 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
+    grid.isotope('layout');
+
 };
 
 var owInitAleaGrid = function (grid, dom, init) {

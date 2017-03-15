@@ -46,17 +46,6 @@ class StatementImage extends Statement
      */
     protected $gallery;
 
-    public function __toString() {
-        $string = substr(strrchr(get_class($this), '\\'), 1);
-
-        if ($this->getId()) {
-            $string .= ' "' . $this->findTranslationByLocale('fr')->getTitle() . '"';
-            $string = $this->truncate($string, 40, '..."', true);
-        }
-
-        return $string;
-    }
-
     public function getNewsFormat()
     {
         return 'photos';

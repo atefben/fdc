@@ -23,15 +23,34 @@ class CcmSocialWallAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('url')
-            ->add('network', 'doctrine_orm_choice', array(),'choice',array(
-                'choices' => CcmSocialWall::getNetworks(),
-                'choice_translation_domain' => 'BaseAdminBundle'
-            ))
-            ->add('festival')
-            ->add('enabledDesktop')
-            ->add('tags')
+            ->add('id', null, array(
+                    'label' => 'filter.ccm.social.id'
+                )
+            )
+            ->add('url', null, array(
+                    'label' => 'filter.ccm.social.url'
+                )
+            )
+            ->add('network', 'doctrine_orm_choice', array(
+                    'label' => 'filter.ccm.social.network'
+                )
+                    ,'choice',array(
+                    'choices' => CcmSocialWall::getNetworks(),
+                    'choice_translation_domain' => 'BaseAdminBundle'
+                )
+            )
+            ->add('festival', null, array(
+                    'label' => 'filter.ccm.social.festival'
+                )
+            )
+            ->add('enabledDesktop', null,array(
+                    'label' => 'filter.ccm.social.enabled_desktop',
+                )
+            )
+            ->add('tags', null, array(
+                    'label' => 'filter.ccm.social.tags'
+                )
+            )
             ->add('createdBefore', 'doctrine_orm_callback', array(
                 'callback'      => function ($queryBuilder, $alias, $field, $value) {
                     if ($value['value'] === null) {
@@ -109,17 +128,45 @@ class CcmSocialWallAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('url', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/url_display_social.html.twig'))
-            ->add('network', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/network_display_social.html.twig'))
-            ->add('content', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/content_display_social.html.twig'))
-            ->add('tags')
-            ->add('message', null, array('template' => 'BaseAdminBundle:SocialWall:CCM/message.html.twig'))
-            ->add('enabledDesktop', null, array('editable' => true))
+            ->add('id', null, array(
+                    'label' => 'list.ccm.social.id'
+                )
+            )
+            ->add('url', null, array(
+                    'template' => 'BaseAdminBundle:SocialWall:CCM/url_display_social.html.twig',
+                    'label' => 'list.ccm.social.url',
+                )
+            )
+            ->add('network', null, array(
+                    'template' => 'BaseAdminBundle:SocialWall:CCM/network_display_social.html.twig',
+                    'label' => 'list.ccm.social.network',
+                )
+            )
+            ->add('content', null, array(
+                    'template' => 'BaseAdminBundle:SocialWall:CCM/content_display_social.html.twig',
+                    'label' => 'list.ccm.social.content',
+                )
+            )
+            ->add('tags', null, array(
+                    'label' => 'list.ccm.social.tags'
+                )
+            )
+            ->add('message', null, array(
+                    'template' => 'BaseAdminBundle:SocialWall:CCM/message.html.twig',
+                    'label' => 'list.ccm.social.message',
+                )
+            )
+            ->add('enabledDesktop', null, array(
+                    'editable' => true,
+                    'label' => 'list.ccm.social.enabled_desktop',
+                )
+            )
             ->add('createdAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:CCM/list_created_at.html.twig',
-                'sortable' => 'createdAt',
-            ))
+                    'template' => 'BaseAdminBundle:TranslateMain:CCM/list_created_at.html.twig',
+                    'sortable' => 'createdAt',
+                    'label' => 'list.ccm.social.created_at',
+                )
+            )
         ;
     }
 

@@ -78,7 +78,8 @@ class HomepageAdmin extends Admin
                     'aProposUrl' => array(
                         'label'              => 'form.ccm.label.a_propos.url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
 
                 )
@@ -175,18 +176,19 @@ class HomepageAdmin extends Admin
                 'prototype'    => true,
                 'by_reference' => false,
             ))
-//            ->add('actualites', 'infinite_form_polycollection', array(
-//                'label'        => false,
-//                'types'        => array(
-//                    'ccm_homepage_actualite_type',
-//                ),
-//                'allow_add'    => true,
-//                'allow_delete' => true,
-//                'prototype'    => true,
-//                'by_reference' => false,
-//            ))
+            ->add('actualites', 'infinite_form_polycollection', array(
+                'label'        => false,
+                'types'        => array(
+                    'ccm_homepage_actualite_type',
+                ),
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'by_reference' => false,
+            ))
             ->add('catalogImage', 'sonata_type_model_list', array(
                     'required' => true,
+                    'label'    => 'form.ccm.label.catalog.catalog_image',
                 ), array(
                     'sortable' => 'order',
                 )

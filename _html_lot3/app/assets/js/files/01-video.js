@@ -1,4 +1,3 @@
-var videoNews;
 
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
@@ -274,7 +273,7 @@ var initVideo = function(hash) {
         }
 
         function updateShareLink(index, secondaryContainer) {
-            index = index || 0;
+            console.log('updateShareLink');
             sc    = secondaryContainer || 0;
 
             // CUSTOM LINK FACEBOOK
@@ -286,14 +285,25 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
-            fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
-            fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+            
+            if(typeof index === 'undefined'){
+                index = $('.activeVideo').index('.video');
+            }
+
+            if(typeof $playlist[index] !== 'undefined'){
+                fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
+                fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
+                fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+            }
+            console.log('fb url',fbHref);
+
             $topBar.find('.buttons .facebook').attr('href', fbHref);
 
             // CUSTOM LINK TWITTER
             var twHref   = twitterLink;
-            twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+            if(typeof $playlist[index] !== 'undefined'){
+                twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+            }
             $topBar.find('.buttons .twitter').attr('href', twHref);
 
             // CUSTOM LINK COPY
@@ -458,11 +468,11 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
+
+                console.log(index);
                 index = parseInt(index)
 
                 playerInstance.playlistItem(index);
-                console.log(playerInstance);
-                console.log(playerInstance.getPlaylist());
                 
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
@@ -506,17 +516,22 @@ var initVideo = function(hash) {
             var videoFile =  $container.data('file');
             var videoImage =  $container.data('img');
         }
-        
-        playerInstance.setup({
-            //sources: videoFile,
-            file: videoFile[0],
+
+        console.log(videoFile);
+        console.log(havePlaylist);
+        var playerHeight = $(vid).parent('div').height();
+        if($('.home').length){
+            playerHeight = 550;
+        }
+        /*playerInstance.setup({
+            sources: videoFile,
             image: videoImage,
             primary: 'html5',
             aspectratio: '16:9',
             width: $(vid).parent('div').width(),
-            height: $(vid).parent('div').height(),
+            height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
-        });
+        });*/
 
         if(havePlaylist) {
             var tempSlider = $(slider),
@@ -589,6 +604,7 @@ var initVideo = function(hash) {
 
             if($('.infos-videos .buttons').length > 0) {
                 linkPopinInit(0, '.infos-videos .buttons .link');
+
                 updateShareLink(0, '.infos-videos');
 
                 $('.infos-videos .buttons .email').on('click', function(e) {
@@ -624,7 +640,6 @@ var initVideo = function(hash) {
             $stateBtn.removeClass('icon-pause').addClass('icon-play');
             mouseMoving(false);
         }).on('buffer', function() {
-            // console.log("");
         }).on('complete', function () {
             this.stop();
             $stateBtn.removeClass('icon-pause').addClass('icon-play');
@@ -732,7 +747,7 @@ var initVideo = function(hash) {
 
 
     var initPopinVideo = function(hash) {
-
+        var videoNews;
         if(hash != undefined) {
 
             $this = $('.item.video[data-vid="'+hash+'"');
@@ -748,7 +763,7 @@ var initVideo = function(hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-
+            console.log(name);
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
 
             var hashPush = '#vid='+vid;
@@ -850,6 +865,9 @@ var initVideo = function(hash) {
                 date = $(e.target).closest('.video').find('.date').text(),
                 hour = $(e.target).closest('.video').find('.hour').text(),
                 name = $(this).find('.contain-txt strong a').data('title');
+                if(typeof name === 'undefined'){
+                    name = $(this).find('.contain-txt strong a').text();
+                }
 
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
 
@@ -872,7 +890,7 @@ var initVideo = function(hash) {
 
             var fbHref = facebookLink;
 
-
+            console.log($(this));
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));

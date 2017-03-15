@@ -15,21 +15,31 @@
     {% endif %}
 
     <div class="item">
-        <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"> <img src="{% path media, 'reference' %}" style="object-fit: cover; height: 284px;"></a>
+        <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"> <img src="{% path media, 'reference' %}" style="object-fit: cover; height: 284px; width: 213px;"></a>
         <div class="title">
             <a href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}">
                 {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                    <h5>{{ movie.titleVo }}</h5>
-                    <h6>({{ movie|trans_fallback_movie('title') }})</h6>
+                    <h5>{{ movie.titleVo|shorten(54, '...') }}</h5>
+                    <h6>({{ movie|trans_fallback_movie('title')|shorten(66, '...') }})</h6>
                 {% else %}
-                    <h5>{{ movie|trans_fallback('title')?:movie.titleVo }}</h5>
+                    <h5>{{ movie|trans_fallback('title')?:movie.titleVo|shorten(54, '...') }}</h5>
                 {% endif %}
             </a>
-            {% for director in movie.getDirectors() %}
-                <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
-                    <h4 class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</h4>
-                </a>
-            {% endfor %}
+            {% if movie.getDirectors()|length > 2 %}
+                {% set index = 1 %}
+                {% for director in movie.getDirectors() if index < 2 %}
+                    {% set index = loop.index %}
+                    <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                        <h4 class="author">{{ director.person.fullName|trim }}{{ index == 2 ? '...':', '}}</h4>
+                    </a>
+                {% endfor %}
+            {% else %}
+                {% for director in movie.getDirectors() %}
+                    <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                        <h4 class="author">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}</h4>
+                    </a>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endfor %}

@@ -48,6 +48,7 @@ class CcmProgramSchedulesCollectionAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
             ->add('schedule', 'sonata_type_model_list', array(
                     'label' => 'form.ccm.label.program.schedule.list',
                     'btn_delete' => false

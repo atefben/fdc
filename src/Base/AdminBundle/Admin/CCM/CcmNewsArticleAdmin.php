@@ -85,6 +85,12 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
                             new NotBlank(),
                         ),
                     ),
+                    'chapo'   => array(
+                        'field_type'         => 'ckeditor',
+                        'label'              => 'form.label_introduction',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                    ),
                     'createdAt'      => array(
                         'display' => false,
                     ),
@@ -178,7 +184,6 @@ class CcmNewsArticleAdmin extends CcmNewsAdmin
                     'inline' => 'table',
                 )
             )
-            ->add('displayedHome')
             ->add('seoFile', 'sonata_media_type', array(
                 'provider' => 'sonata.media.provider.image',
                 'context'  => 'seo_file',

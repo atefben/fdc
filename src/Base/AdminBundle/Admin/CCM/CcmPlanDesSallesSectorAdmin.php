@@ -41,6 +41,7 @@ class CcmPlanDesSallesSectorAdmin extends Admin
     {
         $formMapper
             ->add('translations', 'a2lix_translations', array(
+                'label' => false,
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
                 'locales' => ['fr', 'en'],

@@ -18,6 +18,7 @@ jQuery(document).ready(function ($) {
 
                     var text = $(this).text();
                     text = text.split(' ')[0].toLowerCase();
+                    $(this).text($(this).text().replace($(this).text().split(' ')[0], ''));
 
                     old[4] = text;
 
@@ -35,6 +36,7 @@ jQuery(document).ready(function ($) {
 
             var text = $(this).text();
             text = text.split(' ')[0].toLowerCase();
+            $(this).text($(this).text().replace($(this).text().split(' ')[0], ''));
 
             old[4] = text;
 

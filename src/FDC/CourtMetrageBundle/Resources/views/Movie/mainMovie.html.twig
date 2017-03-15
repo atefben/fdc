@@ -13,7 +13,7 @@
             <span id="plx"></span>
             {% include 'FDCCourtMetrageBundle:Movie:partials/banner.html.twig' with ({
                     film: movie,
-                    film_format: '975x535',
+                    film_format: '976x535',
                     film_image_default: 'bundles/fdccourtmetrage/img/palmares/film_w293.jpg'
                 })
             %}
@@ -67,7 +67,7 @@
                         <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
                             <i class="icon icon_facebook"></i>
                         </a>
-                        <a href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ movie.festival.year )|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
+                        <a href="https://twitter.com/intent/tweet?text={{ ('#CannesCourt')|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" rel="nofollow" class="button twitter">
                             <i class="icon icon_twitter"></i>
                         </a>
                         <a href="#" class="button link self"><i class="icon icon_link"></i></a>
@@ -82,7 +82,7 @@
             <div class="container">
                 {% include 'FDCCourtMetrageBundle:Movie:partials/casting.html.twig' %}
 
-                {% include 'FDCCourtMetrageBundle:Movie:partials/photos.html.twig' with { 'photos' : movie.medias, 'selfkits' : movie.selfkitImages } %}
+                {% include 'FDCCourtMetrageBundle:Movie:partials/photos.html.twig' with { 'photos' : movie.medias, 'selfkits' : movie.selfkitImages, 'mainTitle': mainTitle } %}
             </div>
             <div class="news" data-section="news">
                 <div class="articles center">

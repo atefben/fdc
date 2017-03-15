@@ -10,11 +10,11 @@
                     {% if mainNav.translatable.isActive %}
                         {% set menuURL = ('http' in mainNav.route or 'https' in mainNav.route ? mainNav.route : url(mainNav.route)) %}
                         {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
-                        <h3 class="title sitemap-item-title">
-                            <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
-                                {{ mainNav.name }}
-                            </a>
-                        </h3>
+                        <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
+                            <h3 class="title sitemap-item-title">
+                                    {{ mainNav.name }}
+                            </h3>
+                        </a>
 
                         {% if mainNav.route == 'fdc_court_metrage_competition_selection' or mainNav.route == 'fdc_court_metrage_competition_jury' or mainNav.route == 'fdc_court_metrage_competition_palmares' %}
                             <ul>
@@ -68,9 +68,7 @@
             {% endfor %}
             <article class="sitemap-item">
                 <h3 class="title sitemap-item-title">
-                    <a href="#">
-                        {{ 'site_plan.footer'|trans }}
-                    </a>
+                    {{ 'site_plan.footer'|trans }}
                 </h3>
                 <ul>
                     <li>
@@ -94,6 +92,11 @@
                         </a>
                     </li>
                     <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_site_plan') }}">
+                            {{ 'site_plan.plan_du_site'|trans }}
+                        </a>
+                    </li>
+                    <li>
                         <a class="sub-cat" href="{{ path('fdc_court_metrage_footer_politique_de_confidentialite') }}">
                             {{ 'site_plan.politique_de_confidentialite'|trans }}
                         </a>
@@ -102,4 +105,18 @@
             </article>
         </section>
     </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : 'breadcrumb.plan_du_site'|trans,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
 {% endblock %}

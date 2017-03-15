@@ -22,7 +22,45 @@
         {% set image = imageTrans.file %}
     {% endif %}
 {% endif %}
-<div id="audioplayer-{{ random() }}" class="Article-audioPlayer" 
-      data-date="<strong>Le</strong> 10.05.16"  
-      data-title="{{ widget|trans_fallback('title') }}" 
+
+{% if widget.file %}
+    {% set wfi = widget.file.image %}
+    {% if wfi is not null %}
+        {% set imageTrans = wfi.findTranslationByLocale(app.request.locale) %}
+        {% if imageTrans is null or imageTrans.file is null %}
+            {% set imageTrans = wfi.findTranslationByLocale('fr') %}
+        {% endif %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
+{% else %}
+    {% set headerAimg = widget.audio.image %}
+    {% set imageTrans = headerAimg.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+      {% set imageTrans = headerAimg.findTranslationByLocale('fr') %}
+    {% endif %}
+    {% if imageTrans is defined %}
+        {% set image = imageTrans.file %}
+    {% endif %}
+{% endif %}
+{%if image is defined %}
+<script type="text/javascript">
+    //jwplayer audio cover img hack
+    
+    /*var interval = window.setInterval(function(){
+        var backgroundElems = document.querySelectorAll('.Article-header .jw-background-color');
+        if(backgroundElems){
+            for (index = 0; index < backgroundElems.length; ++index) {
+                backgroundElems[index].style.backgroundImage = 'url({% path image, 'reference' %})';
+                backgroundElems[index].style.backgroundSize = 'cover';
+            }
+        }
+    },200);*/
+</script>
+<img src="{% path image, 'reference' %}"/>
+{% endif %}
+<div id="audioplayer-{{ random() }}" class="Article-audioPlayer Article-audioPlayer-head" 
+      data-date=""  
+      data-title="" 
       data-file-mp3="{{ s3_server_audio ~ url }}">&nbsp;</div>

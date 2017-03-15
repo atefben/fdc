@@ -1738,6 +1738,34 @@
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="119">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="webview.article.signature_prefix" resname="webview.article.signature_prefix">
+        <source>webview.article.signature_prefix</source>
+        <target>Written by</target>
+      </trans-unit>
+      <trans-unit id="webview.article.yesterday_at" resname="webview.article.yesterday_at">
+        <source>webview.article.yesterday_at</source>
+        <target>Yesterday, at</target>
+      </trans-unit>
+      <trans-unit id="webview.article.yesterday_at_suffix" resname="webview.article.yesterday_at_suffix">
+        <source>webview.article.yesterday_at_suffix</source>
+        <target>hour(s)</target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
+        <source>webview.article.hours_elapsed</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="webview.article.hours_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+        <source>webview.article.hours_elapsed_suffix</source>
+        <target>minutes ago</target>
+      </trans-unit>
+      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
+        <source>webview.article.minutes_elapsed</source>
+        <target>Il y a</target>
+      </trans-unit>
+      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.minutes_elapsed_suffix">
+        <source>webview.article.minutes_elapsed_suffix</source>
+        <target>minute(s)</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

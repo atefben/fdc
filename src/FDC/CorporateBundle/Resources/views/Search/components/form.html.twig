@@ -44,7 +44,7 @@
         <td>
             <div class="tab-1 tab">
 
-                <div class="tab-selection" id='tab1'>
+                <div class="tab-country" id='tab1'>
                     {{ form_widget(form.artistCountry) }}
                     <span class="close-suggest">✕</span>
                     <div>
@@ -86,7 +86,7 @@
         <td>
             <div class="tab-2 tab">
 
-                <div class="tab-selection" id="tab2">
+                <div class="tab-country" id="tab2">
                     {{ form_widget(form.movieCountry) }}
                     <span class="close-suggest">✕</span>
                     <div>
@@ -110,7 +110,7 @@
 
                 <div class="sub-tab">
                     <div class="format">
-                        <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-minus"></i>
+                        <div class="title-cont">{{ 'search.form.label.format'|trans }} <i class="icon icon-create"></i>
                         </div>
                         {% for format in form.formats %}
                             {% set temp = form_widget(format) %}
@@ -125,7 +125,7 @@
                 <div class="sub-tab">
                     <div class="selection-type">
                         <div class="title-cont">{{ 'search.form.label.selection'|trans }} <i
-                                    class="icon icon-minus"></i></div>
+                                    class="icon icon-create"></i></div>
                         {% for selection in form.selections %}
                             {% set temp = form_widget(selection) %}
                             <input type="checkbox" id="selections_{{ selection.vars.value }}"

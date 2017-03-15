@@ -135,12 +135,6 @@ class CcmNewsRepository extends EntityRepository
             ->setFirstResult($offset)
         ;
 
-        if ($displayedOnHomepage) {
-            $qb
-                ->andWhere('n.displayedHome = 1')
-            ;
-        }
-
         if($limit) {
             $qb->setMaxResults($limit);
         }
@@ -151,10 +145,11 @@ class CcmNewsRepository extends EntityRepository
     /**
      * @param $slug
      * @param string $locale
+     * @param bool $isAdmin
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr')
+    public function getNewsArticleBySlugAndLocale($slug, $locale = 'fr', $isAdmin = false)
     {
         $now = new \DateTime();
 
@@ -170,31 +165,43 @@ class CcmNewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->setParameter('slug', $slug)
-            ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
-            ->setParameter('now', $now)
             ->setMaxResults(1)
         ;
-        if ($locale != 'fr') {
-            $qb
-                ->andWhere(
-                    '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status) OR
+        if ($isAdmin !== true) {
+            if ($locale != 'fr') {
+                $qb
+                    ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
+                    ->setParameter('now', $now)
+                    ->andWhere(
+                        '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status) OR
                     (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status) OR
                     (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status) OR
                     (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status)'
-                )
-                ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
-            ;
-        } else {
-            $qb
-                ->andWhere(
-                    '(na1t.slug = :slug AND na1t.locale = :locale_fr AND na1t.status = :status) OR
+                    )
+                    ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
+                    ->setParameter('locale', $locale)
+                ;
+            } else {
+                $qb
+                    ->andWhere(
+                        '(na1t.slug = :slug AND na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.slug = :slug AND na2t.locale = :locale_fr AND na2t.status = :status) OR
                     (na3t.slug = :slug AND na3t.locale = :locale_fr AND na3t.status = :status) OR
                     (na4t.slug = :slug AND na4t.locale = :locale_fr AND na4t.status = :status)'
+                    )
+                    ->setParameter('locale_fr', 'fr')
+                    ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
+                ;
+            }
+        } else {
+            $qb
+                ->andWhere(
+                    '(na1t.slug = :slug AND na1t.locale = :locale) OR
+                    (na2t.slug = :slug AND na2t.locale = :locale) OR
+                    (na3t.slug = :slug AND na3t.locale = :locale) OR
+                    (na4t.slug = :slug AND na4t.locale = :locale)'
                 )
-                ->setParameter('locale_fr', 'fr')
-                ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
+                ->setParameter('locale', $locale)
             ;
         }
 

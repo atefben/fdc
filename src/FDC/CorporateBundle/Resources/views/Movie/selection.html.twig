@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark not-mobile{% endblock %}
+{% block bodyClass %}loading retrospective selection retrospective-home fs-off restrospective-init dark not-mobile{% endblock %}
 
 {% block body %}
     <section class="padding-bottom border-bottom s-slider-retrospective">
@@ -15,7 +15,7 @@
                 {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
 
                 <div class="all-contain">
-                    <div class="isotope-01">
+                    <div class="isotope-01 noComputing">
 
                         <div class="grid-sizer"></div>
 

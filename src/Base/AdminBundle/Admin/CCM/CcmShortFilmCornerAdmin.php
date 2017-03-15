@@ -26,20 +26,22 @@ class CcmShortFilmCornerAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('title', 'doctrine_orm_callback', array(
-                'callback' => function($queryBuilder, $alias, $field, $value) {
-                    if (!$value['value']) {
-                        return;
-                    }
-                    $queryBuilder->join("{$alias}.translations", 't');
-                    $queryBuilder->andWhere('t.locale = :locale');
-                    $queryBuilder->setParameter('locale', 'fr');
-                    $queryBuilder->andWhere('t.title LIKE :title');
-                    $queryBuilder->setParameter('title', '%'. $value['value']. '%');
+                    'callback' => function($queryBuilder, $alias, $field, $value) {
+                        if (!$value['value']) {
+                            return;
+                        }
+                        $queryBuilder->join("{$alias}.translations", 't');
+                        $queryBuilder->andWhere('t.locale = :locale');
+                        $queryBuilder->setParameter('locale', 'fr');
+                        $queryBuilder->andWhere('t.title LIKE :title');
+                        $queryBuilder->setParameter('title', '%'. $value['value']. '%');
 
-                    return true;
-                },
-                'field_type' => 'text'
-            ))
+                        return true;
+                    },
+                    'field_type' => 'text',
+                    'label' => 'filter.ccm.sfc.title',
+                )
+            )
         ;
         $this->addCreatedBetweenFilters($datagridMapper);
         $this->addStatusFilter($datagridMapper);
@@ -69,25 +71,31 @@ class CcmShortFilmCornerAdmin extends Admin
         $listMapper
             ->add('id')
             ->add('title', null, array(
-                'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
-                'label' => 'Titre'
-            ))
-            ->add('menuOrder',null,array('label' => 'Position'))
+                    'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
+                    'label' => 'list.ccm.sfc.title'
+                )
+            )
+            ->add('menuOrder',null,array(
+                    'label' => 'list.ccm.sfc.position'
+                )
+            )
             ->add('createdAt', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
-                'sortable' => 'createdAt',
-                'label' => 'Date de création'
-            ))
+                    'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                    'sortable' => 'createdAt',
+                    'label' => 'list.ccm.sfc.date_creation'
+                )
+            )
             ->add('statusMain', 'choice', array(
-                'choices'   => CcmShortFilmCornerTranslation::getStatuses(),
-                'catalogue' => 'BaseAdminBundle',
-                'label' => 'Statut'
-            ))
+                    'choices'   => CcmShortFilmCornerTranslation::getStatuses(),
+                    'catalogue' => 'BaseAdminBundle',
+                    'label' => 'list.ccm.sfc.status'
+                )
+            )
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
-                'label' => 'Editer'
-
-            ))
+                    'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                    'label' => 'list.ccm.sfc.edit'
+                )
+            )
         ;
     }
 
@@ -112,11 +120,14 @@ class CcmShortFilmCornerAdmin extends Admin
                         'label'              => 'form.mdf.content_template.title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
+                    'titleNavigation'          => array(
+                        'label'              => 'form.mdf.content_template.title_navigation',
+                        'translation_domain' => 'BaseAdminBundle',
+                    ),
                     'header'          => array(
                         'field_type'         => 'ckeditor',
                         'label'              => 'form.mdf.content_template.header',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press',
                         'required' => false
                     ),
                     'status'         => array(
@@ -131,6 +142,11 @@ class CcmShortFilmCornerAdmin extends Admin
                     )
                 )
             ))
+            ->add('hideTitle', 'checkbox', array(
+                    'label' => 'form.mdf.content_template.hide_title',
+                    'required' => false,
+                )
+            )
             ->add(
                 'image',
                 'sonata_type_model_list'
@@ -203,6 +219,7 @@ class CcmShortFilmCornerAdmin extends Admin
                     'ccm_sfc_widget_audio_type',
                     'ccm_sfc_widget_image_type',
                     'ccm_sfc_widget_image_dual_align_type',
+                    'ccm_sfc_widget_gallery_type',
                     'ccm_sfc_widget_video_type',
                     'ccm_sfc_widget_video_youtube_type',
                 ),

@@ -54,6 +54,7 @@ class ModuleTransportType extends ModuleType
                         'label'              => 'form.ccm.label.module.transport.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                 ),
             ))

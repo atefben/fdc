@@ -151,6 +151,13 @@ class CcmShortFilmCorner implements TranslateMainInterface
     protected $catalogIsActive = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hide_title", type="boolean")
+     */
+    protected $hideTitle = false;
+
+    /**
      * CcmShortFilmCorner constructor.
      */
     public function __construct()
@@ -556,5 +563,21 @@ class CcmShortFilmCorner implements TranslateMainInterface
     public function setCatalogIsActive($catalogIsActive)
     {
         $this->catalogIsActive = $catalogIsActive;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isHideTitle()
+    {
+        return $this->hideTitle;
+    }
+
+    /**
+     * @param boolean $hideTitle
+     */
+    public function setHideTitle($hideTitle)
+    {
+        $this->hideTitle = $hideTitle;
     }
 }

@@ -1,0 +1,36 @@
+{% macro navigation(movie, class) %}
+    {% trans_default_domain 'FDCEventBundle' %}
+    {% import 'FDCCorporateBundle:Macro:person.html.twig' as macroPerson %}
+    <div class="{{ class }}">
+        <a href="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}" class="img">
+            {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+            film: movie,
+            film_format: '156x206',
+            film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
+            }) %}
+        </a>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    {% set title = movie.titleVO %}
+                    <a href="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}"><h2>{{ title }}</h2></a>
+                    {% set directors = movie.getDirectors() %}
+                    {% spaceless %}
+                        {% for director in directors %}
+                            {% if director.person %}
+                                {{ macroPerson.name(director.person) }}
+                                {%- if loop.index != directors|length -%}
+                                    <a href="#"><span class="nom-item">, </span></a>
+                                {%- endif -%}
+                            {% endif %}
+                        {% endfor %}
+                    {% endspaceless %}
+                    {% if movie.countries|length > 0 %}
+                        <p>{{ 'movie.label.pays'|trans }}
+                            : {% for country in movie.countries %}{{ country.country|trans_fallback('name')|capitalize }}{% if loop.index != movie.countries|length %}, {% endif %}{% endfor %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

@@ -220,7 +220,7 @@ entity:
     theme: Thèmes
     tag: Tags de recherche
     web_tv: Chaînes
-    media_pdf: Pdfs
+    media_pdf: Pdfs, eps
     media_image: Photos
     media_image_simple: Images semi-riches
     media_audio: Audios
@@ -405,6 +405,21 @@ list:
             domains_activities: Domaines d'activité
             status: Statut
             edit_translations: Éditer
+        sfc:
+            title: Titre
+            position: Position
+            date_creation: Date de création
+            status: Statut
+            edit: Editer
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            content: Contenu
+            tags: Tags
+            message: Message
+            enabled_desktop: Visible sur le site
+            created_at: Date de création
 filter:
     media_pdf:
         name: Nom
@@ -470,6 +485,7 @@ filter:
     label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
     label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     label_selfkit: Selfkit
+    label_status: Statut
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
@@ -505,22 +521,37 @@ filter:
             id: Identifiant
             name: Entité
             domains_activities: Domaines d'activité
-
+        sfc:
+            title: Titre
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            festival: Festival
+            enabled_desktop: Visible sur le site
+            tags: Hashtag
 admin:
     ccm:
         menu:
             pros: Les pros du court
-            program: Programmation
+            program: Programme
             menu: Menu
             homepage: Homepage
             faq: FAQ
             contact_page: Contact
             film_register: Inscrire un film
-            label_page: La charte graphique
+            label_page: Charte Graphique
             confidentialite: Politique de confidentialité
             credits: Crédits
             legal_mentions: Mentions Légales
-            plan_des_salles: Se reperer à Cannes
+            plan_des_salles: Se repérer à Cannes
+            social_wall_hashtag: Social wall hashtag
+            register_procedure: Procédures d'inscription
+            participate_pages: Pages Participer
+            strates_participer: Strates Participer
+            who_are_we: Qui sommes nous ?
+            our_events: Nos évènements
+            relive_edition: Revivez l’édition
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
@@ -681,6 +712,8 @@ form:
     label_pdf: Pdf
     ccm:
         graphical_charter:
+            content_files_one_column: Fichiers
+            page_title: Titre de la page
             content_files: Fichiers colonne 1
             content_files_2: Fichiers colonne 2
             content_files_3: Fichiers colonne 3
@@ -751,6 +784,7 @@ form:
         film_register:
             title: Têtière titre
             text: Text
+            procedures_title: Titre au dessus du tableau des procédures
             header_photo: Têtière photo
             is_text_active: Est le texte affiché?
             procedure_widget: Procédures d’inscription
@@ -785,17 +819,28 @@ form:
             description: Module chapô
             image: Module 1 photo
         label:
-            contact_subject_theme: Page de contact thème
-            contact_page_email_receiver: Récepteur email
+            external_url: La valeur doit commencer par http ou https
+            plan_des_salles_sector: Sections
+            plan_des_salles_sector_list: Navigation de gauche
+            plan_des_salles_info: Nom de la section
+            plan_des_salles_title: Titre
+
+            contact_subject_theme: Thème de contact
+            contact_page_email_receiver: Email du destinataire
             contact_page_subjects_list: Page de contact liste de sujets
-            contact_page_subject_info: Sujet du message info
+            contact_page_subject_info: Informations de contact
             contact_subject: Sujet du message
             competition_tab_name: Surcharger le nom de la sélection
             image: Image cover
             film_selection: Sélection
+            film_jury: Type de jury
+            film_jury_date: Date
             short_film_corner:
                 position_du_menu: Position
             menu:
+                urlProgram: URL de bouton Programme
+                urlCatalog: URL de bouton Catalogue
+                urlRegister: URL de bouton Registre
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
                 register_pic_is_active: Le bouton Registre est visible?
@@ -815,7 +860,7 @@ form:
                 sub_nav_route: Route ou URL
                 sub_nav_is_active: Cet onglet de navigation secondaire est actif?
             pros:
-                detail_image: Image
+                detail_image: Image (carrée ou 230x230)
                 detail_is_sfc: Présent au Short Film Corner
                 detail_name: Entité Pro
                 detail_quote: Citation
@@ -855,7 +900,7 @@ form:
                 domains_collection: Filtres
                 page_image: Page image
             actualite:
-                title: Les actualités
+                title: Module Actualités
                 date: Date
                 title: Titre
                 description: Description
@@ -865,29 +910,30 @@ form:
                 associated_movie_help: Sélectionnez un film associé à l'article.
                 url: URL
             social:
-                title: Le social wall
+                title: Module Social Wall
                 position_social: La position du module Social
                 social_is_activated: Activer le module
             catalog:
                 pushes: Module Catalogue
                 push: Ajouter
                 push_is_activated: Activer le module
-                homepage: Catalogue
+                homepage: Push Catalogue
                 whiteTitle: Nom du push
                 url: URL
                 homepage: Le catalogue
+                catalog_image: Image de background
             sejour:
                 title1: Titre 1
                 title2: Titre 2
                 url: URL
                 sejour_is_activated: Activer le module
-                title: Grand push
+                title: Module Grand Push
                 button : Bouton titre
             push:
                 homepage: Push
                 whiteTitle: Titre Blanc
                 goldenTitle: Titre Doré
-                url: URL de la push
+                url: URL du push
                 isActive: Activer le module
                 add_message: Pushes
             homepage:
@@ -904,7 +950,7 @@ form:
                 url: URL de la slide
             court:
                 homepage: Module Courts en compétition
-                film_selection: Liste des films
+                film_selection: Section de sélection
                 court_is_activated: Activer le module
                 court_year: L’année
             homepage_slider_type: Ajouter
@@ -912,7 +958,7 @@ form:
             homepage_actualite_type: Ajouter
             homepage_sejour_type: Ajouter
             homepage_push: Push
-            pushes: Module Push
+            pushes: Module Pushs
             homepage_slider: Slide
             slide: Module Slider
             footer:
@@ -1034,21 +1080,21 @@ form:
                 bus: Bus
                 taxi: Taxi
             a_propos:
-                config: A propos informations sur le module
-                label: Une étiquette de module propos
-                title: A propos module titre
-                description: A propos description du module
-                url: A propos module url
-                type: Un type de module propos
-                is_activated: c'est actif
-                youtube: Youtube
-                video: Vidéo
-                image: Image
-                youtubes_collection: Collection youtube
-                youtubes_list: Liste de youtube
-                videos_collection: Collection de vidéos
-                videos_list: Liste de vidéos
-                images_collection: Collection d'images
+                config: Module A Propos
+                label: Surtitre
+                title: Titre
+                description: Description
+                url: URL en savoir plus
+                type: Type de médias
+                is_activated: Activer le module
+                youtube: Vidéo(s) Youtube
+                video: Vidéo(s) Amazon
+                image: Image(s)
+                youtubes_collection: Vidéos Youtube
+                youtubes_list: Liste
+                videos_collection: Vidéos Amazon
+                videos_list: Liste
+                images_collection: Galerie d'image
                 gallery: Galerie
                 youtube_page_config: Informations sur youtube
                 youtube_title: Youtube title
@@ -1079,7 +1125,7 @@ form:
                     title: Titre
                 catalog_title: Module Catalogue
                 catalog_is_activated: Activer le module
-                position_catalog: La position du module Catalog
+                position_catalog: Position
                 social_title: Le social wall
                 social_is_activated: Activer le module
                 position_social: La position du module Social
@@ -1209,6 +1255,8 @@ form:
             legal_mentions: Mentions légales
             general_conditions: Conditions générales
             title: Titre de page
+            title_navigation: Titre dans la navigation
+            hide_title: Cacher le titre
             theme_title: Nom du thème
             theme: Thème
             header: Chapô
@@ -1431,7 +1479,7 @@ form:
             color6: Couleur n°4
             color7: Couleur n°11
     media_pdf:
-        helper_file: Format attendu : .pdf
+        helper_file: Format attendu : .pdf, .eps
     fdc_page_participate_section:
         image_big: Grande image
     label_mobile: Utiliser cette strate sur mobile
@@ -1464,7 +1512,10 @@ form:
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes: Format de l'image recommandé : 650x410
         helper_pushes_306x206: Format de l'image recommandé : 306x206
-        helper_pushes_3 : Format de l'image recommandé : 652x206
+        helper_pushes_325x205: Format de l'image recommandé : 351x222
+        helper_pushes_702x444: Format de l'image recommandé : 702x444
+        helper_pushes_703x443: Format de l'image recommandé : 703x443
+        helper_pushes_1406x886: Format de l'image recommandé : 1406x886
         helper_push3: Format de l'image recommandé : 954x606
         helper_prefooter: Format de l'image recommandé : 1954x1200
         helper_pushes_grand: Format de l'image recommandé : 1300x410
@@ -1601,6 +1652,7 @@ form:
     label_news_film_film_associated: Association à une ou plusieurs fiches films
     label_news_news_associated: Actualités associés
     label_displayed_home: Remonter en homepage
+    label_displayed_on_corpo_home: Remonter en homepage du site institutionnel
     label_displayed_mobile: Flux mobiles
     label_translate: Envoyer en traduction
     label_theme: Thème
@@ -1618,6 +1670,7 @@ form:
     label_seo_file: Vignette partage
     label_theme_name: Nom du thème
     label_file: Fichier
+    label_file_eps: Fichier eps
     label_media_video_image: Image cover
     label_display: Ne pas afficher cette strate
     label_film_film_media_audio: Audios associés

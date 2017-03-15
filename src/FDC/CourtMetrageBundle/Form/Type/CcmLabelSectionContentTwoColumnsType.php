@@ -107,6 +107,7 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
                     'title'             => array(
                         'label'              => 'form.ccm.graphical_charter.title_1',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'legend'          => array(
                         'label'              => 'form.ccm.graphical_charter.legend_1',
@@ -139,6 +140,7 @@ class CcmLabelSectionContentTwoColumnsType extends CcmLabelSectionContentType
                     'title2'             => array(
                         'label'              => 'form.ccm.graphical_charter.title_2',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'legend2'          => array(
                         'label'              => 'form.ccm.graphical_charter.legend_2',

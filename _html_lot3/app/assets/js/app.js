@@ -117,14 +117,29 @@ $(document).ready(function () {
     }
 
     if ($('.block-diaporama').length > 0) {
-
         var hash = window.location.hash;
         hash = hash.substring(1, hash.length);
 
         verif = hash.slice(0, 3);
+        var slider = $('.block-diaporama .slider-01');
 
+        slider.find('.item').each(function(){
+            var img = $(this).find('img').css('height',428);
+            var w = img.width();
+            if(parseInt(w) == 0){
+                var itv = window.setInterval(function(){
+                    w = img.width();
+                    if(w > 0){
+                        window.clearInterval(itv);
+                    }
+                },200);
+            }else{
+                $(this).css('width',img.width());
+            }
+        });
         if (hash.length > 0 && verif == "pid") {
-            var slider = $('.block-diaporama .slider-01');
+            
+
             owinitSlideShow(slider, hash);
 
         }
@@ -212,8 +227,10 @@ $(document).ready(function () {
     if ($('.single-movie').length) {
         var slider = $('.slideshow-img .images');
         owinitSlideShow(slider);
-        owInitSlider('slider-03');
         scrollSingleMovie();
+    }
+    if ($('.slider-03').length) {
+        owInitSlider('slider-03');
     }
 
     if ($('.jury').length) {
@@ -245,10 +262,6 @@ $(document).ready(function () {
             } else {
                 initAudio();
             }
-        }
-
-        if ($('.artist-page').length > 0) {
-            owInitSlider('slider-03');
         }
     }
 

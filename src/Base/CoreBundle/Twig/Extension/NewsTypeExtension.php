@@ -87,7 +87,7 @@ class NewsTypeExtension extends Twig_Extension
         if ($item instanceof NewsArticle || $item instanceof InfoArticle || $item instanceof StatementArticle) {
             return 'articles';
         } elseif ($item instanceof NewsImage || $item instanceof InfoImage || $item instanceof StatementImage) {
-            return 'images';
+            return 'photos';
         } elseif ($item instanceof NewsAudio || $item instanceof InfoAudio || $item instanceof StatementAudio) {
             return 'audios';
         } elseif ($item instanceof NewsVideo || $item instanceof InfoVideo || $item instanceof StatementVideo) {

@@ -70,20 +70,22 @@ class HomepageManager
      *
      * @return mixed
      */
-    public function getFilmsByCourtYear()
+    public function getFilmsByCourtYear($selectionTab)
     {
         $homepage = $this->getHomepageTranslation();
 
-        if($homepage) {
+        if($homepage && $selectionTab) {
             $year = $homepage->getTranslatable()->getCourtYear();
 
             $films = $this
                 ->em
                 ->getRepository('BaseCoreBundle:FilmFilm')
-                ->getFilmsByCourtYearRandom($year);
+                ->getFilmsByCourtYearRandom($year, $selectionTab->getTranslatable()->getSelectionSection()->getId());
 
             return $films;
         }
+        
+        return null;
     }
 
     public function getCatalogPushes()
@@ -116,6 +118,15 @@ class HomepageManager
         return $this->em
             ->getRepository(HomepageSejourTranslation::class)
             ->findSejourForHomepage($this->requestStack->getMasterRequest()->get('_locale')
+            );
+    }
+
+    public function getHomepageActualite()
+    {
+
+        return $this->em
+            ->getRepository(HomepageActualiteTranslation::class)
+            ->findActualiteForHomepage($this->requestStack->getMasterRequest()->get('_locale')
             );
     }
 

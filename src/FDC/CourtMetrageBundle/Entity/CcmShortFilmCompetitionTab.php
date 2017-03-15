@@ -52,6 +52,19 @@ class CcmShortFilmCompetitionTab
     protected $selectionSection;
 
     /**
+     * @var FilmSelectionSection
+     *
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\FilmJuryType")
+     */
+    protected $juryType;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $dateJury;
+
+    /**
      * @var ArrayCollection
      */
     protected $translations;
@@ -185,5 +198,37 @@ class CcmShortFilmCompetitionTab
         }
 
         return null;
+    }
+
+    /**
+     * @return FilmSelectionSection
+     */
+    public function getJuryType()
+    {
+        return $this->juryType;
+    }
+
+    /**
+     * @param FilmSelectionSection $juryType
+     */
+    public function setJuryType($juryType)
+    {
+        $this->juryType = $juryType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateJury()
+    {
+        return $this->dateJury;
+    }
+
+    /**
+     * @param string $dateJury
+     */
+    public function setDateJury($dateJury)
+    {
+        $this->dateJury = $dateJury;
     }
 }

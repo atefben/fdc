@@ -399,11 +399,12 @@ class FilmPerson implements TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="selfkitPersons")
      * @ORM\JoinTable(name="film_person_selfkit_images",
      *      joinColumns={@ORM\JoinColumn(name="person", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
      *      )
+     * @ORM\OrderBy({"createdAt"="asc"})
      */
     protected $selfkitImages;
 

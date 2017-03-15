@@ -258,13 +258,16 @@
     left: 15px;
     z-index: 3;
 
+    .contain-txt {
+      padding-left: 55px;
+    }
     strong {
       font-size: .875rem;
       margin: 0px 0px;
       max-width: 100%;
       font-family: $CamphorMedium;
       text-align: left;
-      margin-left: 55px;
+      
 
       .medias & {
         font-family: $CamphorRegular;
@@ -273,10 +276,6 @@
       a {
         color: #fff;
       }
-    }
-
-    .category {
-      margin-left: 55px;
     }
 
     span {

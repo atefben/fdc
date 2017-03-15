@@ -67,7 +67,9 @@ class CcmFilmRegisterProcedureType extends AbstractType
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
                 'required' => true
-            ));
+            ))
+            ->add('position', 'hidden')
+        ;
     }
 
     /**

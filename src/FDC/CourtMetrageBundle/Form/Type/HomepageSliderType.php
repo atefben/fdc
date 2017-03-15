@@ -71,26 +71,31 @@ class HomepageSliderType extends AbstractType
                     'whiteTitle'          => array(
                         'label'              => 'form.ccm.label.slider.whiteTitle',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'whiteTitleSize'          => array(
                         'field_type' => 'choice',
                         'choices' => HomepageSliderTranslation::getTextSizes(),
                         'label'              => 'form.ccm.label.slider.whiteTitleSize',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'goldenTitle'          => array(
                         'label'              => 'form.ccm.label.slider.goldenTitle',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'goldenTitleSize'          => array(
                         'field_type' => 'choice',
                         'choices' => HomepageSliderTranslation::getTextSizes(),
                         'label'              => 'form.ccm.label.slider.goldenTitleSize',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'url'          => array(
                         'label'              => 'form.ccm.label.slider.url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                     'buttonLabel'          => array(
                         'label'              => 'form.ccm.label.slider.buttonLabel',

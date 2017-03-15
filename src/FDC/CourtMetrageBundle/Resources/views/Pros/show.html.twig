@@ -27,8 +27,8 @@
                             <div class="selectText" id="short-fim-corner">{{ 'ccm.pros.present_sfc'|trans }}</div>
                         {% endif %}
 
-                        {% if prosDomains is defined and prosDomains is not null %}
-                            {% for key, domain in prosDomains %}
+                        {% if pageDomains is defined and pageDomains is not null %}
+                            {% for key, domain in pageDomains %}
                                 <div class="selectText" id="{{ key }}">{{ domain }}{% if loop.last == false %}, {% endif %}</div>
                             {% endfor %}
                         {% endif %}
@@ -42,8 +42,8 @@
                         </div>
                     {% endif %}
 
-                    {% if prosDomains is defined and prosDomains is not null %}
-                        {% for key, domain in prosDomains %}
+                    {% if pageDomains is defined and pageDomains is not null %}
+                        {% for key, domain in pageDomains %}
                             <div class="selectbtn" id="{{ key }}" rel="{{ key }}">{{ domain }}</div>
                         {% endfor %}
                     {% endif %}
@@ -55,14 +55,9 @@
                 <div class="parent">
                     {% if prosList is defined and prosList is not null %}
                         {% for pro in prosList %}
-                            <div class="box {{ pro.domain }} {% if pro.translatable.isShortFilmCorner %}short-fim-corner {% endif %}events modal-toggle" data-pro-id="{{ pro.id }}">
+                            <div class="box {% if prosDomains[pro.translatable.id] is defined %}{% for key, domain in prosDomains[pro.translatable.id] %}{{ key ~ ' ' }}{% endfor %}{% endif %}{% if pro.translatable.isShortFilmCorner %}short-fim-corner {% endif %}events modal-toggle" data-pro-id="{{ pro.id }}">
                                 <div class="eventPhoto">
-                                    <div class="eventPhotoContainer">
-                                        {% if pro.translatable.image is defined and pro.translatable.image is not null%}
-                                            <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" style="height: 230px;" alt="">
-                                        {% else %}
-                                            <img class="containerFit" src="{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}" alt="">
-                                        {% endif %}
+                                    <div class="eventPhotoContainer backgroundPhotoContainer" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "reference" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})">
                                     </div>
                                     {% if pro.translatable.isShortFilmCorner %}
                                         <div class="sfcLogo">
@@ -72,18 +67,13 @@
                                 </div>
                                 <div class="eventTitle"><h3>{{ pro.name|shorten(52, '...') }}</h3></div>
                                 <div class="eventCat">
-                                    {% if pro.translatable.getActivitiesCollection is not null %}
-                                        {% set activityString = '' %}
-                                        {% for activityCollection in pro.translatable.getActivitiesCollection %}
-                                            {% if activityCollection.activity is defined and activityCollection.activity is not null %}
-                                                {% if activityCollection.activity.translations[app.request.locale] is defined and activityCollection.activity.translations[app.request.locale] is not null %}
-                                                    {% set proActivity = activityCollection.activity.translations[app.request.locale] %}
-                                                    {% set activityString = activityString ~ "<span>" ~ proActivity.name ~ "</span>" %}
-                                                {% endif %}
-                                            {% endif %}
+                                    {% if prosDomains[pro.translatable.id] is defined and prosDomains[pro.translatable.id] is not null %}
+                                        {% set domainString = '' %}
+                                        {% for domain in prosDomains[pro.translatable.id] %}
+                                            {% set domainString = domainString ~ "<span>" ~ domain ~ "</span>" %}
                                         {% endfor %}
                                     {% endif %}
-                                    {{ activityString|shortenWithHtml(50, '...', '<span>', '</span>')|raw }}
+                                    {{ domainString|shortenWithHtml(50, '...', '<span>', '</span>')|raw }}
                                 </div>
                             </div>
                         {% endfor %}

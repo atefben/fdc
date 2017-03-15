@@ -181,6 +181,16 @@ services:
             - ['setGalleryDualAlignAdmin', ['@base.admin.gallery_dual_align']]
 
     # need to add scope prototype to avoid ScopeCrossingInjectionException
+    base.admin.form.ccm_sfc_widget_gallery_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetGalleryType
+        tags:
+            - { name: form.type, alias: 'ccm_sfc_widget_gallery_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_gallery_dummy']]
+            - ['setGalleryAdmin', ['@base.admin.gallery']]
+
+    # need to add scope prototype to avoid ScopeCrossingInjectionException
     base.admin.form.ccm_sfc_widget_video_type:
         scope: prototype
         class: FDC\CourtMetrageBundle\Form\Type\CcmShortFilmCornerWidgetVideoType

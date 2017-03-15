@@ -32,7 +32,7 @@ class FilmFestivalPosterTranslation implements TranslateChildInterface
     protected $title;
     
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(type="text", nullable=true)
      */

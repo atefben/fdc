@@ -70,14 +70,14 @@ class CcmProsDetailAdmin extends Admin
                     'label'      => 'filter.ccm.pro.name',
                 )
             )
-            ->add('domain', 'doctrine_orm_callback', array(
+            ->add('domainCollection', 'doctrine_orm_callback', array(
                     'callback' => function($queryBuilder, $alias, $field, $value) {
                         if ($value['value'] === null || $value['value'] === '') {
                             return;
                         }
-                        $queryBuilder = $this->filterCallbackJoinTranslations($queryBuilder, $alias, $field, $value);
-                        $queryBuilder->andWhere("t.domain = :domain");
-                        $queryBuilder->setParameter('domain', $value['value']);
+                        $queryBuilder->join("{$alias}.domainsCollection", 'do')
+                            ->andWhere("do.domain = :domain")
+                            ->setParameter('domain', $value['value']);
 
                         return true;
                     },
@@ -128,8 +128,7 @@ class CcmProsDetailAdmin extends Admin
                     'label'    => 'list.ccm.pro.name',
                 )
             )
-            ->add('domain', 'choice', array(
-                'choices'   => $this->getDomains(),
+            ->add('domainsCollection', 'null', array(
                 'template' => 'BaseAdminBundle:TranslateMain:CCM/list_domains.html.twig',
                 'catalogue' => 'BaseAdminBundle',
                 'label'     => 'list.ccm.pro.domains_activities'
@@ -180,13 +179,6 @@ class CcmProsDetailAdmin extends Admin
                         ),
                         'required' => true
                     ),
-                    'domain'            => array(
-                        'label' => 'form.ccm.label.pros.domain',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices' => $this->getDomains(),
-                        'choice_translation_domain' => 'BaseAdminBundle',
-                    ),
                     'quote'          => array(
                         'label'              => 'form.ccm.label.pros.detail_quote',
                         'translation_domain' => 'BaseAdminBundle',
@@ -200,7 +192,8 @@ class CcmProsDetailAdmin extends Admin
                     'url'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'required' => false
+                        'required' => false,
+                        'sonata_help' => 'form.ccm.label.external_url',
                     ),
                     'urlName'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url_name',
@@ -222,20 +215,20 @@ class CcmProsDetailAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('activitiesCollection', 'sonata_type_collection', array(
-                    'by_reference'       => false,
-                    'label'              => 'form.ccm.label.pros.detail_activities_list',
-                    'translation_domain' => 'BaseAdminBundle',
-                    'required' => true,
-                    'constraints'        => array(
-                        new Count(
-                            array(
-                                'min' => 1,
-                                'minMessage' => "validation.pros.min"
-                            )
-                        ),
+            ->add('domainsCollection', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'label'              => 'form.ccm.label.pros.page_domains_list',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => true,
+                'constraints'        => array(
+                    new Count(
+                        array(
+                            'min' => 1,
+                            'minMessage' => "validation.pros.min"
+                        )
                     ),
-                ), array(
+                ),
+            ), array(
                     'edit'     => 'inline',
                     'inline'   => 'table',
                     'sortable' => 'position',
@@ -281,12 +274,13 @@ class CcmProsDetailAdmin extends Admin
         if ($domainsCollection) {
             $domains = [];
             foreach ($domainsCollection as $item) {
-                $domains[$item->getSlug()] = $item->getName();
-             }
+                $domains[$item->getTranslatable()->getId()] = $item->getName();
+            }
 
             return $domains;
         }
 
         return [];
     }
+
 }

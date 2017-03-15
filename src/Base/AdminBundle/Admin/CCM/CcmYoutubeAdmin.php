@@ -67,7 +67,8 @@ class CcmYoutubeAdmin extends Admin
                             'constraints'        => array(
                                 new NotBlank(),
                             ),
-                            'required' => true
+                            'required' => true,
+                            'sonata_help' => 'form.ccm.label.external_url',
                         ),
                     ),
                 )

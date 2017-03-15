@@ -36,7 +36,7 @@ class FooterContentController extends Controller
         }
         
         $pageDescription = $footerContentManager->getPageDescription($pageContent);
-        
+
         return $this->render('FDCCourtMetrageBundle:Footer:footerContentPage.html.twig', [
                 'pageContent' => $pageContent,
                 'pageDescription' => $pageDescription,
@@ -93,7 +93,7 @@ class FooterContentController extends Controller
     }
 
     /**
-     * @Route("/plan-du-site", name="fdc_court_metrage_site_plan")
+     * @Route("/sitemap", name="fdc_court_metrage_site_plan")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

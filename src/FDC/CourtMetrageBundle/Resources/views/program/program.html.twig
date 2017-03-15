@@ -16,7 +16,7 @@
         {%  if program.body %}
             <div class="minPadding">
                 <div class="container">
-                    <h5 class="minMargin">{{ program.body }}</h5>
+                    <h5 class="minMargin">{{ program.body|raw }}</h5>
                 </div>
             </div>
         {% endif %}
@@ -42,6 +42,7 @@
                         </div>
                     {% endfor %}
                 </div>
+
                 <div class="conferencesMenu">
                     {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
                     <ul>
@@ -66,7 +67,9 @@
                                                 <div class="conf60">
                                                     <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
                                                     <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
-                                                    {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
+                                                    {% if scheduleCollection.schedule|trans_fallback('description') %}
+                                                        {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
+                                                    {% endif %}
                                                     {% if scheduleCollection.schedule|trans_fallback('url') %}
                                                         <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" target="_blank">
                                                             <div class="confButton">
@@ -77,18 +80,24 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="conf30">
-                                                    <div>
-                                                        <span>{{ 'ccm.program.access_type'|trans }}</span>
-                                                        <p>{{ scheduleCollection.schedule|trans_fallback('accessType') }}</p>
-                                                    </div>
-                                                    <div>
-                                                        <span>{{ 'ccm.program.time'|trans }}</span>
-                                                        <p>{{ scheduleCollection.schedule|trans_fallback('timeDetails') }}</p>
-                                                    </div>
-                                                    <div>
-                                                        <span>{{ 'ccm.program.location'|trans }}</span>
-                                                        <p>{{ scheduleCollection.schedule|trans_fallback('location') }}</p>
-                                                    </div>
+                                                    {% if scheduleCollection.schedule|trans_fallback('accessType') %}
+                                                        <div>
+                                                            <span>{{ 'ccm.program.access_type'|trans }}</span>
+                                                            <p>{{ scheduleCollection.schedule|trans_fallback('accessType') }}</p>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if scheduleCollection.schedule|trans_fallback('timeDetails') %}
+                                                        <div>
+                                                            <span>{{ 'ccm.program.time'|trans }}</span>
+                                                            <p>{{ scheduleCollection.schedule|trans_fallback('timeDetails') }}</p>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if scheduleCollection.schedule|trans_fallback('location') %}
+                                                        <div>
+                                                            <span>{{ 'ccm.program.location'|trans }}</span>
+                                                            <p>{{ scheduleCollection.schedule|trans_fallback('location') }}</p>
+                                                        </div>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         {% endfor %}
@@ -151,6 +160,10 @@
                     {
                         "name" : 'breadcrumb.home'|trans,
                         "url"  : path('fdc_court_metrage_homepage')
+                    },
+                    {
+                        "name" : 'breadcrumb.sfc'|trans,
+                        "url"  : path('fdc_court_metrage_sfc_who_are_we')
                     },
                     {
                         "name" : 'breadcrumb.programe'|trans,

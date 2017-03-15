@@ -208,13 +208,18 @@ div.chocolat-wrapper, .c-fullscreen-slider {
 
     .chocolat-description {
       box-sizing: border-box;
-      padding-top: 30px;
+      padding-top: 21px;
       padding-left: 135px;
       text-align: left;
       line-height: 12px;
       position: relative;
       z-index: 2;
+      
       @include transition(opacity 0.6s $smoothTransition);
+
+      &.oneline {
+        padding-top: 38px;
+      }
 
       &.hide {
         opacity: 0;
@@ -225,7 +230,10 @@ div.chocolat-wrapper, .c-fullscreen-slider {
       }
 
       @include breakpoint(1600px) {
-        width: 830px;
+        body & {
+          width: 830px;
+          padding-top: 12px;
+        }
       }
 
       @include breakpoint(1280px) {
@@ -234,7 +242,6 @@ div.chocolat-wrapper, .c-fullscreen-slider {
 
       @include breakpoint(1024px) {
         width: 430px;
-        padding-top: 17px;
       }
 
       span {
@@ -500,6 +507,10 @@ div.chocolat-wrapper, .c-fullscreen-slider {
       .chocolat-description {
         padding-top: 23px;
         padding-left: 115px;
+
+        &.oneline {
+          padding-top: 15px;
+        }
       }
 
       .chocolat-pagination {

@@ -82,8 +82,9 @@ class ShortFilmCornerManager
             'socialIsActive' => $socialIsActive,
             'actualiteIsActive' => $actualiteIsActive,
             'catalogIsActive' => $catalogIsActive,
+            'hideTitle' => $shortFilmCornerPage->isHideTitle(),
         ];
-        $pageData['sfcPages'] = $this->getTitleAndSlugsForSFCPages($type, $locale);
+        $pageData['sfcPages'] = $this->getTitlesAndSlugsForSFCPages($type, $locale);
 
         return $pageData;
     }
@@ -113,7 +114,7 @@ class ShortFilmCornerManager
      * @param string $locale
      * @return array
      */
-    public function getTitleAndSlugsForSFCPages($type, $locale = 'fr')
+    public function getTitlesAndSlugsForSFCPages($type, $locale = 'fr')
     {
         $pages = [];
         /** @var CcmShortFilmCorner[]|null $results */
@@ -124,7 +125,8 @@ class ShortFilmCornerManager
             $translation = $result->findTranslationByLocale($locale);
             $pages[] = [
                 'slug'  => $translation->getSlug(),
-                'title' => $translation->getTitle()
+                'title' => $translation->getTitle(),
+                'titleNavigation' => $translation->getTitleNavigation()
             ];
         }
 

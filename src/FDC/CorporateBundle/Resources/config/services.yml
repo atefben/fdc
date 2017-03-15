@@ -1,1 +1,12 @@
 services:
+    fdc_corpo.media_library_manager:
+        class: FDC\CorporateBundle\Manager\CorpoMediaLibraryItemManager
+        calls:
+            - ['setContainer', ['@service_container']]
+    fdc_corpo.media_library_listener:
+        class: FDC\CorporateBundle\Doctrine\Listener\CorpoMediaLibraryItemListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postUpdate }
+        calls:
+            - ['setCorpoMediaLibraryItemManager', ['@fdc_corpo.media_library_manager']]
