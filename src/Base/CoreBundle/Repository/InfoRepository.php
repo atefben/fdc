@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -271,7 +272,7 @@ class InfoRepository extends EntityRepository
      * @param bool $displayedOnCorpoHome
      * @return Info[]
      */
-    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false)
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -293,6 +294,20 @@ class InfoRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
         ;
+
+        if ($theme) {
+            $qb
+                ->andWhere('n.theme = :themeId')
+                ->setParameter(':themeid', $theme->getId())
+            ;
+        }
+
+        if ($format) {
+            $qb
+                ->andWhere('n.typeClone <> :format')
+                ->setParameter(':format', $format)
+            ;
+        }
 
         if ($festival) {
             $qb
