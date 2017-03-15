@@ -148,7 +148,7 @@ var owInitGrid = function (id) {
                                 });
                             }
                         });*/
-                        owInitFilter();
+                        filterClick();
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         if(typeof moreBtn !== 'undefined'){
