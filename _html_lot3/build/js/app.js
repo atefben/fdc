@@ -2504,7 +2504,7 @@ var owInitFilter = function (isTabSelection) {
                     owInitGrid('filter');
                 });
 
-                
+                console.log('before DOMSubtreeModified');
                 //populate isotope data array on change
                 $('.articles-wrapper').bind("DOMSubtreeModified",function(){
                     console.log('ajax load');
