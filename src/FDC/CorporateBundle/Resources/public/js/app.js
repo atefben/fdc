@@ -2776,11 +2776,7 @@ var owInitGrid = function (id) {
                                     $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
-                            $('#filters span').on('click', function () {
-                                var data = $(this).data('select');
-                                var selected = $('#' + block + ' .select option[value="' + data + '"]');
-                                selected.attr('selected', 'selected');
-                            });
+                            fnFilters();
                         }
 
                         $('.articles-wrapper').append(data);
