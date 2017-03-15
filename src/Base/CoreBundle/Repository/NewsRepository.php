@@ -34,7 +34,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('locales', $locales)
         ;
 
-        $this->addDashboardTranslatorQueries($qb, array('na1t', 'na2t', 'na3t', 'na4t'), $params);
+        $this->addDashboardTranslatorQueries($qb, ['na1t', 'na2t', 'na3t', 'na4t'], $params);
 
         if (isset($params['id']) && !empty($params['id'])) {
             $qb
@@ -67,11 +67,12 @@ class NewsRepository extends EntityRepository
 
     /**
      * @param $locale
-     * @param $festival
-     * @param $dateTime
-     * @return array
+     * @param FilmFestival $festival
+     * @param DateTime $dateTime
+     * @param DateTime $limitDate
+     * @return News[]
      */
-    public function getNewsApiSameDayNews($locale, FilmFestival $festival, \DateTime $dateTime)
+    public function getNewsApiSameDayNews($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
     {
 
         $qb = $this
@@ -89,6 +90,14 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
+
 
         $festivalEndsAt = new \DateTime('2016-05-23 00:00:00');
 
@@ -119,7 +128,7 @@ class NewsRepository extends EntityRepository
             $this->addMasterQueries($qb, 'n', $festival, true);
         }
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -131,7 +140,7 @@ class NewsRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -146,13 +155,12 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'desc')
+        return $qb
+            ->addOrderBy('n.publishedAt', 'desc')
             ->setParameter('festival', $festival->getId())
             ->getQuery()
             ->getResult()
         ;
-        return $qb;
     }
 
     public function getApiLastsNews($locale, $festival, $dateTime, $count, DateTime $limitDate = null)
@@ -715,7 +723,7 @@ class NewsRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
     }
 
@@ -789,7 +797,7 @@ class NewsRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     public function getLastsNews($locale, $festival, $dateTime, $count)
@@ -1061,7 +1069,7 @@ class NewsRepository extends EntityRepository
             ->addOrderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     public function getNewsAudios($locale, $festival, $dateTime)
@@ -1123,16 +1131,16 @@ class NewsRepository extends EntityRepository
     public function getApiNews($festival, $locale, $start, $end)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('nai.translations', 'nait')
-                   ->leftJoin('nav.translations', 'navt')
-                   ->where('n.festival = :festival')
-                   ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('nai.translations', 'nait')
+            ->leftJoin('nav.translations', 'navt')
+            ->where('n.festival = :festival')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $now = new \DateTime();
@@ -1202,17 +1210,17 @@ class NewsRepository extends EntityRepository
     public function getApiNewsById($id, $festival, $dateTime, $locale)
     {
         $qb = $this->createQueryBuilder('n')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
-                   ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
-                   ->leftJoin('naa.translations', 'naat')
-                   ->leftJoin('na.translations', 'nat')
-                   ->leftJoin('nai.translations', 'nait')
-                   ->leftJoin('nav.translations', 'navt')
-                   ->where('n.festival = :festival')
-                   ->andWhere('n.id = :id')
-                   ->andWhere('n.displayedMobile = :displayed_mobile')
+            ->leftJoin('Base\CoreBundle\Entity\NewsArticle', 'na', 'WITH', 'na.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsAudio', 'naa', 'WITH', 'naa.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsImage', 'nai', 'WITH', 'nai.id = n.id')
+            ->leftJoin('Base\CoreBundle\Entity\NewsVideo', 'nav', 'WITH', 'nav.id = n.id')
+            ->leftJoin('naa.translations', 'naat')
+            ->leftJoin('na.translations', 'nat')
+            ->leftJoin('nai.translations', 'nait')
+            ->leftJoin('nav.translations', 'navt')
+            ->where('n.festival = :festival')
+            ->andWhere('n.id = :id')
+            ->andWhere('n.displayedMobile = :displayed_mobile')
         ;
 
         $qb
