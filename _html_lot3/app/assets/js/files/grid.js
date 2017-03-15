@@ -499,7 +499,7 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    grid.isotope('layout');
+    //grid.isotope('layout');
 
 };
 
