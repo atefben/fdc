@@ -2380,18 +2380,25 @@ var owInitFilter = function (isTabSelection) {
 
     } else {
         if($('.articles-wrapper').length){
+            var lock = false;
             //populate isotope data array on change
             $('.articles-wrapper').bind("DOMSubtreeModified",function(){
-                console.log('ajax load');
-                $(this).find('.articles').each(function(){
-                    var $this = $(this);
-                    var grid = $this.find('.isotope-01');
-                    $this.find('article').each(function(index,value){
-                        console.log(isotopeHomepageItems.indexOf(value));
-                        //isotopeHomepageItems.push(value);
+                if(!lock){
+                    lock = true;
+                    console.log('appended callback');
+                    $(this).find('.articles').each(function(){
+                        var $this = $(this);
+                        var grid = $this.find('.isotope-01');
+                        $this.find('article').each(function(index,value){
+                            console.log(isotopeHomepageItems.indexOf(value));
+                            //isotopeHomepageItems.push(value);
+                        });
                     });
-                });
+                }
             });
+            var lockInterval = window.setInterval(function(){
+                lock = false;
+            },1000);
         }
         
         if (!$('.who-filter').length) {
