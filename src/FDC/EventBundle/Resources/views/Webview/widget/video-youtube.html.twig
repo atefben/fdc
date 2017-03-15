@@ -1,26 +1,20 @@
-{% set image = '' %}
-{% set imageTrans = '' %}
-{% set file = widget.file %}
-{% set trans = get_available_video(file, false, app.request.locale) %}
-{% if trans is null or trans.file is null or trans.jobMp4State != 3 or trans.mp4Url is null or trans.webmUrl is null %}
-    {% set trans = file.findTranslationByLocale('fr') %}
+{% set trans = widget.findTranslationByLocale(app.request.locale) %}
+{% if trans is null %}
+    {% set trans = widget.findTranslationByLocale('fr') %}
 {% endif %}
-{% set header = file.image %}
+
+{% set header = widget.image %}
 {% if header is not null %}
     {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
         {% set imageTrans = header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if imageTrans.file is defined and imageTrans.file is not null %}
+{% if imageTrans is defined %}
     {% set image = imageTrans.file %}
 {% endif %}
-
-
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer"
-{% if image is defined and image != '' %}
-data-poster="{% path image, 'reference' %}"
-{% endif %}
+     data-poster="{% if image is defined %}{% path image, 'reference' %}{% endif %}"
 data-file="{{ widget|trans_fallback('url') }}" 
 {% if widget.title is defined %}
 data-desc="{{ widget.title }}</p>"
