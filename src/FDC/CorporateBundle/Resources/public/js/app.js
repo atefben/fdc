@@ -2796,37 +2796,7 @@ var owInitGrid = function (id) {
                             $('.articles-wrapper').css('height',h);
                         });
 
-                        /*$('.articles-wrapper .isotope-01').each(function(){
-                            if($(this).data('isotope')){
-                                $(this).isotope('destroy').isotope({
-                                    itemSelector: '.item',
-                                    layoutMode: 'masonry',
-                                    packery: {
-                                        columnWidth: '.grid-sizer'
-                                    },
-                                    getSortData: {
-                                        number: '[data-sort]'
-                                    },
-                                    // sort by color then number
-                                    sortBy: ['number']
-                                });
-                            }else{
-                                $(this).isotope({
-                                    itemSelector: '.item',
-                                    layoutMode: 'masonry',
-                                    packery: {
-                                        columnWidth: '.grid-sizer'
-                                    },
-                                    getSortData: {
-                                        number: '[data-sort]'
-                                    },
-                                    // sort by color then number
-                                    sortBy: ['number']
-                                });
-                            }
-                        });*/
-
-                        $('.filters .select span').off('click').on('click', function () {
+                        /*$('.filters .select span').off('click').on('click', function () {
                             $('.filter .select').each(function () {
                                 $that = $(this);
                                 $id = $(this).closest('.filter').attr('id');
@@ -2880,7 +2850,7 @@ var owInitGrid = function (id) {
                                     $('#filters').remove();
                                 }, 700);
                             });
-                        });
+                        });*/
 
                         //BUTTON BEHAVIOUR
                         var moreBtn = $data.find('.ajax-request').attr('href');
