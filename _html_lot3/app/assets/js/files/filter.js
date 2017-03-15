@@ -175,7 +175,7 @@ var owInitFilter = function (isTabSelection) {
 
                 
                 //populate isotope data array on change
-                $('.articles-wrapper').on('change',function(){
+                $('.articles-wrapper').bind("DOMSubtreeModified",function(){
                     console.log('ajax load');
                     $(this).find('.articles').each(function(){
                         var $this = $(this);
