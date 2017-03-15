@@ -652,7 +652,7 @@ class InfoRepository extends EntityRepository
      * @param $dateTime
      * @param $count
      * @param $locale
-     * @return mixed
+     * @return Info[]
      */
     public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
     {
@@ -667,6 +667,10 @@ class InfoRepository extends EntityRepository
             ->leftJoin('nv.translations', 'nvt')
             ->leftJoin('ni.translations', 'nit')
             ->andWhere('n.displayedMobile = :displayedMobile')
+            ->andWhere('n.festival = :festival')
+            ->setParameter('festival', $festival)
+            ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->setParameter('datetime', $dateTime)
         ;
 
         if ($limitDate) {
@@ -703,7 +707,6 @@ class InfoRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         }
-        $qb = $this->addMasterQueries($qb, 'n', $festival);
         $qb = $qb
             ->addOrderBy('n.publishedAt', 'DESC')
             ->setMaxResults($count)
@@ -711,6 +714,7 @@ class InfoRepository extends EntityRepository
             ->getQuery()
             ->getResult()
         ;
+        
 
         return $qb;
     }
