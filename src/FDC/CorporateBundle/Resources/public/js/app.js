@@ -3118,9 +3118,9 @@ var owsetGridBigImg = function (grid, dom, init) {
 
     if (window.matchMedia("(max-width: 1279px)").matches) {
 
-        while (i < $img.length) {
+        /*while (i < $img.length) {
             if (j < 15) {
-                if (j == 0 || j == 5 || j == 11) {
+                if (j == 0 || j == 5) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -3129,7 +3129,7 @@ var owsetGridBigImg = function (grid, dom, init) {
                 j = 0;
             }
             i++;
-        }
+        }*/
 
 
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
