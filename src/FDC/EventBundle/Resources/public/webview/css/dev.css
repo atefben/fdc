@@ -57,6 +57,11 @@
     padding-top: 40px;
 	font-size: 2.2rem;
 }
+	.Article-slider-prev, .Article-slider-next {
+		width: 46px;
+		height: 90px;
+		top: 43%;
+	}
 }
 @media screen and (max-width: 375px){
 	.Article-content .Article-picture-dual-col {
@@ -112,5 +117,10 @@
 	}
 	.jwplayer.jw-skin-fdc-video .jw-title-primary {
 		white-space: initial;
+	}
+	.Article-slider-prev, .Article-slider-next {
+		width: 21px;
+		height: 40px;
+		top: 50%;
 	}
 }
