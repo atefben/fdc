@@ -3,7 +3,7 @@
 {% if filters.themes.content is defined and filters.themes.content|length %}
     <div class="compute-filters">
         {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
-            <span class="" data-filter="{{ theme|trans_fallback('name') }}">{{ theme|trans_fallback('name') }}</span>
+            <span class="" data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
         {% endfor %}
     </div>
 {% endif %}
