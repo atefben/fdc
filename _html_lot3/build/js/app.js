@@ -961,7 +961,7 @@ var initVideo = function(hash) {
 
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
-            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
+            $('.popin-mail').find('.contain-popin .date-article').text(data['date']);console.log('t1');
             $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
             $('.popin-mail').find('form #contact_section').val(data['category']);
             $('.popin-mail').find('form #contact_detail').val(data['date']);
@@ -1503,7 +1503,7 @@ var initAudio = function (hash) {
             if ($('.popin-mail').length) {
                 $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                 $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
-                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);console.log('t2');
                 $('.popin-mail').find('form #contact_section').val(data['category']);
                 $('.popin-mail').find('form #contact_detail').val(data['date']);
                 $('.popin-mail').find('form #contact_title').val(data['title']);
@@ -5329,7 +5329,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t3');
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -5377,7 +5377,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text('test');
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t5');
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -5572,7 +5572,7 @@ var openSlideShow = function (slider, hash, affiche) {
     if($('.popin-mail').length) {
         $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
         $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-        $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
+        $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t6');
         $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
         $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -6759,7 +6759,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 if ($('.popin-mail').length) {
                     $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                     $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
-                    $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+                    $('.popin-mail').find('.contain-popin .title-article').text(data['title']);console.log('t6');
                     $('.popin-mail').find('form #contact_section').val(data['category']);
                     $('.popin-mail').find('form #contact_detail').val(data['date']);
                     $('.popin-mail').find('form #contact_title').val(data['title']);

@@ -506,7 +506,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 if ($('.popin-mail').length) {
                     $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                     $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
-                    $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+                    $('.popin-mail').find('.contain-popin .title-article').text(data['title']);console.log('t6');
                     $('.popin-mail').find('form #contact_section').val(data['category']);
                     $('.popin-mail').find('form #contact_detail').val(data['date']);
                     $('.popin-mail').find('form #contact_title').val(data['title']);
