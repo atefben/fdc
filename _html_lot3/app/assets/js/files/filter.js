@@ -84,6 +84,10 @@ var owInitFilter = function (isTabSelection) {
                     $('#filters').addClass('show');
                 }, 100);
 
+
+
+
+
                 setTimeout(function () {
                     $('#filters span').addClass('show');
                 }, 400);
