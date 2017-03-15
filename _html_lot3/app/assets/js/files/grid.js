@@ -95,27 +95,30 @@ var owInitGrid = function (id) {
                                     $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
+                            window.setTimeout(function(){
+                                console.log('redeclare filters');
+                                $('.filters .select span').off('click').on('click', function () {
 
-                            $('.filters .select span').off('click').on('click', function () {
+                                    $('.filter .select').each(function () {
+                                        $that = $(this);
+                                        $id = $(this).closest('.filter').attr('id');
 
-                                $('.filter .select').each(function () {
-                                    $that = $(this);
-                                    $id = $(this).closest('.filter').attr('id');
+                                        $that.find(".pages:not([data-filter='all'])").each(function () {
+                                            $this = $(this);
 
-                                    $that.find(".pages:not([data-filter='all'])").each(function () {
-                                        $this = $(this);
+                                            var getVal = $this.data('filter');
+                                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
-                                        var getVal = $this.data('filter');
-                                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
-
-                                        if (numItems === 0) {
-                                            $this.addClass('disabled');
-                                        } else {
-                                            $this.removeClass('disabled');
-                                        }
+                                            if (numItems === 0) {
+                                                $this.addClass('disabled');
+                                            } else {
+                                                $this.removeClass('disabled');
+                                            }
+                                        });
                                     });
                                 });
-                            });
+                            },200);
+                            
                         }
 
                         $('.articles-wrapper').append(data);
