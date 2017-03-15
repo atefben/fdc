@@ -523,7 +523,7 @@ var initVideo = function(hash) {
         if($('.home').length){
             playerHeight = 550;
         }
-        /*playerInstance.setup({
+        playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
@@ -531,7 +531,7 @@ var initVideo = function(hash) {
             width: $(vid).parent('div').width(),
             height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
-        });*/
+        });
 
         if(havePlaylist) {
             var tempSlider = $(slider),
@@ -4291,11 +4291,11 @@ var initRs = function () {
     })
 
     //POPIN facebook SHARE
-    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
+    /*$('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
         e.preventDefault();
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
-    });
+    });*/
 
 
     $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
