@@ -3312,7 +3312,6 @@ sup {
   }
 }
 #slider-competition .owl-stage {
-  width: 50000px !important;
   margin-left: 471.5px;
 }
 @media screen and (max-width: 1680px) {
@@ -3620,6 +3619,10 @@ div.chocolat-wrapper.show {
   transition: all 1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 #slider-news .sliderDrag .owl-item {
+  opacity: 1 !important;
+}
+
+.sliderDrag .owl-item {
   opacity: 1 !important;
 }
 

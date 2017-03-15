@@ -363,7 +363,7 @@
       <div class="maxContainer">
         <h3>courts en compétition</h3>
       </div>
-      <div id="slider-competition" class="owl-carousel">
+      <div id="slider-competition" class="owl-carousel sliderDrag owl-theme owl-loaded">
         <div class="item">
          <a href="#"> <img src="img/film2.png"></a>
           <div class="title">

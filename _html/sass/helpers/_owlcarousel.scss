@@ -696,7 +696,7 @@
   }
 
   .owl-stage {
-    width: 50000px!important;
+    //width: 50000px!important; 
         margin-left: 471.5px;
     @media screen and (max-width: 1680px) {
         margin-left: 351.5px;
@@ -1027,4 +1027,8 @@ div.chocolat-wrapper.show {
       }
 
     }
+}
+
+.sliderDrag .owl-item {
+    opacity: 1!important;
 }
