@@ -2769,7 +2769,7 @@ var owInitGrid = function (id) {
                             $(data).filter('.compute-filters').find('span').each(function(){
                                 //test if filter exists
                                 if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                    $('#theme .select .icon-arrow-down').insertBefore($(this));
+                                    $('#theme .select .icon-arrow-down').before($(this));
                                 }
                             });
                         }
