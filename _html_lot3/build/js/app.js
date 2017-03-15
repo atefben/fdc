@@ -185,10 +185,10 @@ var initVideo = function(hash) {
          linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
          */
 
-        $topBar.find('.buttons .facebook').on('click',function() {
+        /*$topBar.find('.buttons .facebook').on('click',function() {
             window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
             return false;
-        });
+        });*/
         $topBar.find('.buttons .twitter').on('click', function() {
             window.open(this.href,'','width=700,height=500');
             return false;
@@ -273,7 +273,6 @@ var initVideo = function(hash) {
         }
 
         function updateShareLink(index, secondaryContainer) {
-            console.log('updateShareLink');
             sc    = secondaryContainer || 0;
 
             // CUSTOM LINK FACEBOOK
@@ -295,7 +294,7 @@ var initVideo = function(hash) {
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
                 fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
             }
-            console.log('fb url',fbHref);
+
 
             $topBar.find('.buttons .facebook').attr('href', fbHref);
 
@@ -533,6 +532,7 @@ var initVideo = function(hash) {
             controls: ($('body').hasClass('mobile')) ? true : false
         });
 
+
         if(havePlaylist) {
             var tempSlider = $(slider),
                 playlist   = [];
@@ -577,7 +577,7 @@ var initVideo = function(hash) {
             });
 
             $playlist = playlist;
-
+            console.log($playlist);
             tempSlider.insertAfter($topBar);
 
             var chan =  $('.channels');
@@ -763,7 +763,6 @@ var initVideo = function(hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-            console.log(name);
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
 
             var hashPush = '#vid='+vid;
@@ -890,7 +889,6 @@ var initVideo = function(hash) {
 
             var fbHref = facebookLink;
 
-            console.log($(this));
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
@@ -4291,11 +4289,11 @@ var initRs = function () {
     })
 
     //POPIN facebook SHARE
-    /*$('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
+    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
         e.preventDefault();
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
-    });*/
+    });
 
 
     $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
