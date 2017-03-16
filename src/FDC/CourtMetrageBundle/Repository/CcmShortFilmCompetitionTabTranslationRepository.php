@@ -6,7 +6,7 @@ use FDC\MarcheDuFilmBundle\Component\Doctrine\EntityRepository;
 
 class CcmShortFilmCompetitionTabTranslationRepository extends EntityRepository
 {
-    public function findTabByLocaleAndType($locale, $type, $year = null)
+    public function findTabByLocaleAndType($locale, $type, $year)
     {
         $qb = $this->createQueryBuilder('sfctt')
                    ->where('sfctt.locale = :locale')
@@ -17,10 +17,6 @@ class CcmShortFilmCompetitionTabTranslationRepository extends EntityRepository
                    ->setParameter('locale', $locale)
                    ->setParameter('type', $type)
         ;
-
-//        if ($year) {
-//            $qb
-//        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }
