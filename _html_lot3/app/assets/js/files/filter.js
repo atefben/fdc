@@ -233,7 +233,7 @@ var owInitFilter = function (isTabSelection) {
                         owInitGrid('filter');
                         var t = window.setTimeout(function(){
                             //hotfix bug first card container empty
-                            console.log(('.contain-card').find('article').size());
+                            console.log($('.contain-card').find('article').size());
                             if($('.contain-card').find('article').size() == 0){
                                 $('.articles-wrapper .articles:first-child').find('article').each(function(){
                                     $(this).detach().appendTo($('.contain-card'));
