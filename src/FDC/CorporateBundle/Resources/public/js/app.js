@@ -2510,13 +2510,13 @@ var owInitFilter = function (isTabSelection) {
 
 
                                         //switch container
-                                        if(innerIndex > 2 && innerIndex < 6){
-                                            activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
-                                        }else{
-                                            console.log(activeAppendedGridContainer);
-                                            //activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
-                                        }
+                                    if(innerIndex > 2 && innerIndex < 6){
+                                        activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
+                                    }else{
+                                        console.log(activeAppendedGridContainer.find('article').size());
+                                        //activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                     }
+                                    
                                     console.log('add card to',activeAppendedGridContainer);
                                     activeAppendedGridContainer.find('.grid-01').append(value);
                                     innerIndex++;
