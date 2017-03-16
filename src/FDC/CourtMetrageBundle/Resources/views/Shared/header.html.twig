@@ -89,12 +89,12 @@
                             {% if mainTab.translatable.isActive and isValidMenuElement(mainTab.route) %}
                                 <li>
                                     {% set menuIsExtern = (fdc_court_metrage_domain in mainTab.route ? false : true) %}
-                                    {% set menuIsActive = ((mainTab.route|routeFromURL == routeName)
+                                    {% set menuIsActive = ((mainTab.route|routeFromURL == routeName and routeName is not null)
                                     or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
                                     or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false) %}
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         {% for subTab in subNavs[key] %}
-                                            {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName %}
+                                            {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName  and routeName is not null %}
                                                 {% set menuIsActive = true %}
                                             {% endif %}
                                         {% endfor %}
@@ -105,7 +105,7 @@
                                             {% for subTab in subNavs[key] %}
                                                 {% if subTab.translatable.isActive and isValidMenuElement(subTab.route)%}
                                                     {% set submenuIsExtern = (fdc_court_metrage_domain in subTab.route ? false : true) %}
-                                                    <li><a {% if subTab.route|routeFromURL == routeName %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
+                                                    <li><a {% if subTab.route|routeFromURL == routeName and routeName is not null %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
                                             </ul>
