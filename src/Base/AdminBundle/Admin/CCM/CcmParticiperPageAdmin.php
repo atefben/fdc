@@ -74,14 +74,6 @@ class CcmParticiperPageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('image', 'sonata_type_model_list',array(
-                    'label' => 'form.ccm.label.participer.page_image',
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
-                    'required' => true
-                )
-            )
             ->add('translations', 'a2lix_translations', array(
                     'locales' => ['fr','en'],
                     'label'  => false,
@@ -130,6 +122,14 @@ class CcmParticiperPageAdmin extends Admin
                             'choice_translation_domain' => 'BaseAdminBundle',
                         ),
                     ),
+                )
+            )
+            ->add('image', 'sonata_type_model_list',array(
+                    'label' => 'form.ccm.label.participer.page_image',
+                    'constraints'        => array(
+                        new NotBlank(),
+                    ),
+                    'required' => true
                 )
             )
             ->add('pageLayersCollection', 'sonata_type_collection', array(

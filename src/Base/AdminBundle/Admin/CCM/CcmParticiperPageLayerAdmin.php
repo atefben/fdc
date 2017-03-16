@@ -57,12 +57,6 @@ class CcmParticiperPageLayerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('icon', 'choice', array(
-                'label' => 'form.ccm.label.layer.icon',
-                'translation_domain'        => 'BaseAdminBundle',
-                'choices' => CcmParticiperPageLayer::getIcons(),
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
             ->add('translations', 'a2lix_translations', array(
                 'locales' => ['fr','en'],
                 'label'  => false,
@@ -95,6 +89,12 @@ class CcmParticiperPageLayerAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
+            ))
+            ->add('icon', 'choice', array(
+                'label' => 'form.ccm.label.layer.icon',
+                'translation_domain'        => 'BaseAdminBundle',
+                'choices' => CcmParticiperPageLayer::getIcons(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('modules', 'infinite_form_polycollection', array(
                     'label' => false,
