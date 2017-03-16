@@ -7087,6 +7087,10 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type strong {
   font-size: 1.2rem;
 }
 
+.info .picto {
+  color: #c8a461;
+}
+
 .p-register .info strong {
   font-size: 1.1rem;
 }
