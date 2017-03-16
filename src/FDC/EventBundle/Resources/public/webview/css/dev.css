@@ -75,7 +75,7 @@
 		z-index: 99;
 	}
 	.android #fakebar {
-		top: 478px;
+		top: 474px;
 	}
 }
 @media screen and (max-width: 375px){
@@ -158,6 +158,6 @@
 @media screen and (max-width: 320px) {
 	#fakebar {
 		width: 200px;
-		top: 185px;
+		top: 181px;
 	}
 }
