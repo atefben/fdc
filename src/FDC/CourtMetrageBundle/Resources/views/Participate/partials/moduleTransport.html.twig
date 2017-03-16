@@ -1,6 +1,6 @@
 {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
     {% set translation = module.translations[app.request.getLocale()] %}
-    <div class="item large">
+    <div class="item {% if loop.index <= 2 %}large {% endif %}visible">
         <i class="icon {{ translation.picto }}"></i>
         <strong class="transport">{{ translation.title }}</strong>
         <span class="info">{{ translation.description|raw }}</span>
