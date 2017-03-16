@@ -2486,6 +2486,7 @@ var owInitFilter = function (isTabSelection) {
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
+                                    console.log(activeAppendedGridContainer);
                                     activeAppendedGridContainer.find('.isotope-01').append(value);
                                     innerIndex++;
                                 }
