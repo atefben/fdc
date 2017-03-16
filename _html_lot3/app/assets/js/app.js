@@ -47,7 +47,7 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
     //default filters (no params)
     themeFilter = typeof themeFilter !== 'undefined' ? themeFilter : 'all';
     formatFilter = typeof formatFilter !== 'undefined' ? formatFilter : 'all';
-
+    
     
 }
 

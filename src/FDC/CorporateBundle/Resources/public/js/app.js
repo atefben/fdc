@@ -2403,7 +2403,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        /*if($('.articles-wrapper').length){
+        if($('.articles-wrapper').length){
             var lock = false;
             //populate isotope data array on change
             $('.articles-wrapper').bind("DOMSubtreeModified",function(){
@@ -2424,8 +2424,8 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }*/
-        if (!$('.home').length) {
+        }
+        //if (!$('.home').length) {
             if (!$('.who-filter').length) {
 
                 $('.filters .select span').off('click').on('click', function () {
@@ -2665,7 +2665,7 @@ var owInitFilter = function (isTabSelection) {
                     });
                 });
             }
-        }
+        //}
     }
 };
 
@@ -2819,7 +2819,7 @@ var owInitGrid = function (id) {
 
         if($('.home').length){
             //#home-news-statements-more
-            /*var fnClickHome = function(){
+            var fnClickHome = function(){
                 $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -2890,7 +2890,7 @@ var owInitGrid = function (id) {
                     });
                 });
             }
-            fnClickHome();*/
+            fnClickHome();
 
         }else{
 
@@ -7108,7 +7108,7 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
     //default filters (no params)
     themeFilter = typeof themeFilter !== 'undefined' ? themeFilter : 'all';
     formatFilter = typeof formatFilter !== 'undefined' ? formatFilter : 'all';
-
+    
     
 }
 

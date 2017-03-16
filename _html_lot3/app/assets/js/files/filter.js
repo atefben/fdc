@@ -76,7 +76,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        /*if($('.articles-wrapper').length){
+        if($('.articles-wrapper').length){
             var lock = false;
             //populate isotope data array on change
             $('.articles-wrapper').bind("DOMSubtreeModified",function(){
@@ -97,8 +97,8 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }*/
-        if (!$('.home').length) {
+        }
+        //if (!$('.home').length) {
             if (!$('.who-filter').length) {
 
                 $('.filters .select span').off('click').on('click', function () {
@@ -338,7 +338,7 @@ var owInitFilter = function (isTabSelection) {
                     });
                 });
             }
-        }
+        //}
     }
 };
 
