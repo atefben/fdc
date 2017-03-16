@@ -45,6 +45,7 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
             ->addOption('first-result', null, InputOption::VALUE_OPTIONAL, 10)
             ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 10)
             ->addOption('id', null, InputOption::VALUE_OPTIONAL)
+            ->addOption('preset', null, InputOption::VALUE_OPTIONAL)
         ;
     }
 
@@ -61,6 +62,11 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
         $progress->start();
         foreach ($medias as $media) {
             $progress->advance();
+            if ($input->getOption('preset')) {
+                if (!$this->is404($this->getMediaPublicUrl($media, $input->getOption('preset')))) {
+                    continue;
+                }
+            }
             $provider = $this->getMediaPool()->getProvider($media->getProviderName());
             try {
                 $provider->removeThumbnails($media);
@@ -139,27 +145,37 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
         return $this->getContainer()->get('kernel')->getRootDir() . '/../cron_thumbs_lock';
     }
 
-    /**
-     * @return string
-     */
-    private function isLocked()
+    private function is404($url)
     {
-        return is_file($this->getLockFile()) && file_get_contents($this->getLockFile()) == '1';
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+
+        /* Get the HTML or whatever is linked in $url. */
+        $response = curl_exec($handle);
+
+        /* Check for 404 (file not found). */
+        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+        curl_close($handle);
+
+        /* If the document has loaded successfully without any redirection or error */
+        if ($httpCode >= 200 && $httpCode < 300) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    /**
-     * @return string
-     */
-    private function lock()
-    {
-        file_put_contents($this->getLockFile(), '1');
-    }
+
 
     /**
-     * @return string
+     * @param $media
+     * @param $format
+     * @return mixed
      */
-    private function unlock()
+    private function getMediaPublicUrl($media, $format)
     {
-        file_put_contents($this->getLockFile(), '0');
+        $provider = $this->getContainer()->get($media->getProviderName());
+
+        return $provider->generatePublicUrl($media, $format);
     }
 }
