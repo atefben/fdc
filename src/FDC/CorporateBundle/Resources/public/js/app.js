@@ -2758,8 +2758,7 @@ var owInitGrid = function (id) {
         if($('.home').length){
             //#home-news-statements-more
             var fnClickHome = function(){
-                console.log('fnClickHome');
-                $('.read-more.ajax-request').off('click').on('click', function(e){
+                $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
 
                     var url = $(this).attr('href');
@@ -2823,7 +2822,7 @@ var owInitGrid = function (id) {
                             }
                         }
                     });
-                    fnClickHome();
+                    //fnClickHome();
                 });
             }
             fnClickHome();
