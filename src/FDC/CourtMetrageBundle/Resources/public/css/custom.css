@@ -273,3 +273,7 @@ body.chocolat-open.fixed {
 .confcourt .eventPhoto .eventPhotoContainer.has-pro-image {
     background-position: center center;
 }
+
+.error-not-found {
+    height: 675px;
+}
