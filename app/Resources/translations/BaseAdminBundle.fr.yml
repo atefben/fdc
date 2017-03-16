@@ -885,7 +885,7 @@ form:
                 detail_description_first_double: Première description
                 detail_title_second_double: Deuxième titre
                 detail_description_second_double: Deuxième description
-                detail_config: Informations sur pro
+                detail_config: Informations générales
                 activities_collection: Collection d'activités
                 contacts_collection: Contacts
                 description_1_column_widget: Widget une colonne
@@ -976,9 +976,9 @@ form:
                 content_text_type: Ajouter un widget description
             layer:
                 page: Strate pour la page
-                icon: Icône de la strate
+                icon: Pictogramme du titre
                 position: Position de la strate
-                name: Nom de la strate
+                name: Titre
                 module_image_text_type_widget: Widget d'image et de texte
                 module_partenaires_fournisseur_type_widget: Partenaires et fournisseur widget
                 module_pictos_type_widget: Pictos widget
@@ -1054,7 +1054,7 @@ form:
                     description: la description
                     url: Url
             participer:
-                page_image: Page image
+                page_image: Image
                 page_config: Informations sur la page
                 page_title: Titre de la page
                 page_name: Nom de la page

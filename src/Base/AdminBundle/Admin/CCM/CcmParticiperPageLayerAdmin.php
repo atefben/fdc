@@ -57,20 +57,6 @@ class CcmParticiperPageLayerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('icon', 'choice', array(
-                'label' => 'form.ccm.label.layer.icon',
-                'translation_domain'        => 'BaseAdminBundle',
-                'choices' => CcmParticiperPageLayer::getIcons(),
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
-            ->add('layerPosition', 'integer', array(
-                    'label' => 'form.ccm.label.layer.position',
-                    'required' => true,
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
-                )
-            )
             ->add('translations', 'a2lix_translations', array(
                 'locales' => ['fr','en'],
                 'label'  => false,
@@ -95,6 +81,25 @@ class CcmParticiperPageLayerAdmin extends Admin
                     'updatedAt'         => array(
                         'display' => false,
                     ),
+                    'seoTitle' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_title'
+                        ),
+                        'label' => 'form.label_seo_title',
+                        'sonata_help' => 'form.news.helper_seo_title',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+                    ),
+                    'seoDescription' => array(
+                        'attr' => array(
+                            'placeholder' => 'form.placeholder_seo_description'
+                        ),
+                        'label' => 'form.label_seo_description',
+                        'sonata_help' => 'form.news.helper_description',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
+
+                    ),
                     'status'            => array(
                         'label'                     => 'form.ccm.label_status',
                         'translation_domain'        => 'BaseAdminBundle',
@@ -103,6 +108,18 @@ class CcmParticiperPageLayerAdmin extends Admin
                         'choice_translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
+            ))
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
+            ->add('icon', 'choice', array(
+                'label' => 'form.ccm.label.layer.icon',
+                'translation_domain'        => 'BaseAdminBundle',
+                'choices' => CcmParticiperPageLayer::getIcons(),
+                'choice_translation_domain' => 'BaseAdminBundle',
             ))
             ->add('modules', 'infinite_form_polycollection', array(
                     'label' => false,

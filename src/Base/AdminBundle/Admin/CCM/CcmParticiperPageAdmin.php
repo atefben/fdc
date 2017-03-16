@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -51,18 +52,44 @@ class CcmParticiperPageAdmin extends Admin
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Titre de la page',
+            ))
+        ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
+    }
+
     /**
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                )
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label' => 'Titre de la page',
+            ))
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
@@ -78,14 +105,6 @@ class CcmParticiperPageAdmin extends Admin
         $url = 'http://' . $this->ccmDomain . $this->router->generate('fdc_court_metrage_participer_page', ['slug' => $slug ? $slug : 'page-slug']);
 
         $formMapper
-            ->add('image', 'sonata_type_model_list',array(
-                    'label' => 'form.ccm.label.participer.page_image',
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
-                    'required' => true
-                )
-            )
             ->add('translations', 'a2lix_translations', array(
                     'locales' => ['fr','en'],
                     'label'  => false,
@@ -127,6 +146,25 @@ class CcmParticiperPageAdmin extends Admin
                         'updatedAt'         => array(
                             'display' => false,
                         ),
+                        'seoTitle' => array(
+                            'attr' => array(
+                                'placeholder' => 'form.placeholder_seo_title'
+                            ),
+                            'label' => 'form.label_seo_title',
+                            'sonata_help' => 'form.news.helper_seo_title',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'required' => false
+                        ),
+                        'seoDescription' => array(
+                            'attr' => array(
+                                'placeholder' => 'form.placeholder_seo_description'
+                            ),
+                            'label' => 'form.label_seo_description',
+                            'sonata_help' => 'form.news.helper_description',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'required' => false
+
+                        ),
                         'status'            => array(
                             'label'                     => 'form.ccm.label_status',
                             'translation_domain'        => 'BaseAdminBundle',
@@ -135,6 +173,20 @@ class CcmParticiperPageAdmin extends Admin
                             'choice_translation_domain' => 'BaseAdminBundle',
                         ),
                     ),
+                )
+            )
+            ->add('seoFile', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'seo_file',
+                'help' => 'form.seo.helper_file',
+                'required' => false,
+            ))
+            ->add('image', 'sonata_type_model_list',array(
+                    'label' => 'form.ccm.label.participer.page_image',
+                    'constraints'        => array(
+                        new NotBlank(),
+                    ),
+                    'required' => true
                 )
             )
             ->add('pageLayersCollection', 'sonata_type_collection', array(
@@ -147,7 +199,7 @@ class CcmParticiperPageAdmin extends Admin
                     'inline'   => 'table',
                     'sortable' => 'position',
                 )
-            )
+            )->end()
         ;
     }
 
