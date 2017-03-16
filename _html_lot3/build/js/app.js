@@ -2390,7 +2390,6 @@ var owInitFilter = function (isTabSelection) {
                             isotopeHomepageItems.push(value);
                         });
                     });
-                    console.log(isotopeHomepageItems);
                 }
             });
             var lockInterval = window.setInterval(function(){
@@ -2484,8 +2483,10 @@ var owInitFilter = function (isTabSelection) {
                                     if(innerIndex%3 == 0 && innerIndex != 0){
                                         //switch container
                                         if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
+                                            console.log('first articles container');
                                             activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                                         }else{
+                                            console.log('next articles container');
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
