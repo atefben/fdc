@@ -109,6 +109,7 @@ var owInitFilter = function (isTabSelection) {
 
                 var fnArraySortFilters = function(){
                     $('#filters span').off('click').on('click', function () {
+                        console.log('filterclick');
                         if($('.home').length){
                             var selectedClass = $(this).data('filter');
                             /* TODO 
