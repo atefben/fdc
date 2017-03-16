@@ -16,7 +16,6 @@ class TransverseController extends Controller
         $menuPage = $menuManager->getMenuPage();
         $mainNavs = $menuManager->getMainNavs($menuPage);
         $subNavs = $menuManager->getSubNavs($mainNavs);
-        $participatePages = $menuManager->getParticipatePages();
 
         return $this->render('FDCCourtMetrageBundle::Shared/header.html.twig', array(
                 'menuPage' => $menuPage,
@@ -24,7 +23,6 @@ class TransverseController extends Controller
                 'subNavs' => $subNavs,
                 'routeName' => $routeName,
                 'routeParams' => $routeParams,
-                'participatePages' => $participatePages,
             )
         );
     }

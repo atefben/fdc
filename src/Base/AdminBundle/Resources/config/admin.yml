@@ -2932,6 +2932,9 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPage, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Pages Participer, show_in_dashboard: false}
+        calls:
+            - ['setCcmDomain', ['%fdc_court_metrage_domain%']]
+            - ['setRouter', ['@router']]
 
     base.admin.ccm_participer_page_layer_collection:
             class: Base\AdminBundle\Admin\CCM\CcmParticiperPageLayerCollectionAdmin
