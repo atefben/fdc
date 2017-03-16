@@ -51,7 +51,7 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
                     'availableMenu' => $availableMenu,
                 )));
             }
-        } elseif ($requestHeaders['HOST'] == $this->ccmDomain && $this->debug == false) {
+        } elseif ($requestHeaders['HOST'] == $this->ccmDomain /*&& $this->debug == false*/) {
             $locale = $request->getLocale();
 
             if ($exception->getStatusCode() === 404) {

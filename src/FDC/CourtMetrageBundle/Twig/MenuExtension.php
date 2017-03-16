@@ -34,6 +34,7 @@ class MenuExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction('isParticipate', array($this, 'isParticipate')),
             new \Twig_SimpleFunction('isValidMenuElement', array($this, 'isValidMenuElement')),
+            new \Twig_SimpleFunction('hasEqualURI', array($this, 'hasEqualURI')),
         );
     }
 
@@ -80,6 +81,12 @@ class MenuExtension extends \Twig_Extension
 
         
         return $routeName;
+    }
+    
+    public function hasEqualURI($first, $second)
+    {
+        
+        return parse_url($first, PHP_URL_PATH) == parse_url($second, PHP_URL_PATH);
     }
 
     public function getName()
