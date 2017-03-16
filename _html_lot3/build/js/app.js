@@ -7083,7 +7083,8 @@ homepageCards.config = {
     cards: [],
     cardsByFilter: [],
     filters: [],
-    cardsContainer: $('.ajax-filter-cards-container')
+    cardsContainer: $('.ajax-filter-cards-container'),
+    ghostContainer: $('.ajax-cards-ghost-container')
 }
 
 homepageCards.init = function(){
@@ -7108,8 +7109,8 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
     //default filters (no params)
     themeFilter = typeof themeFilter !== 'undefined' ? themeFilter : 'all';
     formatFilter = typeof formatFilter !== 'undefined' ? formatFilter : 'all';
-    
-    
+
+
 }
 
 /* thomon - end homepage ajax module rework */
