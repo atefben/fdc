@@ -40,11 +40,11 @@ class CompetitionManager
     /**
      * @return mixed
      */
-    public function getSelectionTab()
+    public function getSelectionTab($year = null)
     {
         return $this->em
             ->getRepository(CcmShortFilmCompetitionTabTranslation::class)
-            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_SELECTION);
+            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_SELECTION, $year?:date("Y"));
     }
 
     /**
@@ -60,11 +60,11 @@ class CompetitionManager
     /**
      * @return mixed
      */
-    public function getPalmaresTab()
+    public function getPalmaresTab($year = null)
     {
         return $this->em
             ->getRepository(CcmShortFilmCompetitionTabTranslation::class)
-            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_PALMARES);
+            ->findTabByLocaleAndType($this->requestStack->getMasterRequest()->get('_locale'), CcmShortFilmCompetitionTab::TYPE_PALMARES, $year?:date("Y"));
     }
 
     /**
@@ -72,9 +72,9 @@ class CompetitionManager
      *
      * @return mixed
      */
-    public function getSelectionFilms($festivalId)
+    public function getSelectionFilms($festivalId, $selectionTab)
     {
-        $selectionSectionId = $this->getSelectionTab()->getTranslatable()->getSelectionSection()->getId();
+        $selectionSectionId = $selectionTab->getTranslatable()->getSelectionSection()->getId();
 
         $films = $this
             ->em
@@ -138,9 +138,9 @@ class CompetitionManager
      *
      * @return mixed
      */
-    public function getPalmares($festivalId)
+    public function getPalmares($festivalId, $palmaresTab)
     {
-        $selectionSectionId = $this->getPalmaresTab()->getTranslatable()->getSelectionSection()->getId();
+        $selectionSectionId = $palmaresTab->getTranslatable()->getSelectionSection()->getId();
 
         $palmares = $this
             ->em

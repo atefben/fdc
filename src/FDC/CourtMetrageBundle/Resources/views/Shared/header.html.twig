@@ -44,20 +44,19 @@
             {% if menuPage is defined and menuPage is not null %}
                 {% set menuTranslation = menuPage.findTranslationByLocale(app.request.locale) %}
                 <div class="topiconsContainer">
-                    {% if menuPage.programPicIsActive %}
-
-                        <div class="topIcons first{% if not menuPage.catalogPicIsActive %} icon-border-right{% endif %}">
-                            <a href="{{ menuTranslation.urlProgram }}" {% if fdc_court_metrage_domain not in menuTranslation.urlProgram %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
+                    {% if menuTranslation.registerPicIsActive %}
+                        <div class="topIcons third{% if not menuTranslation.programPicIsActive and not menuTranslation.catalogPicIsActive %} icon-border-left{% endif %}">
+                            <a href="{{ menuTranslation.urlRegister }}" {% if fdc_court_metrage_domain not in menuTranslation.urlRegister %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
                         </div>
                     {% endif %}
-                    {% if menuPage.catalogPicIsActive %}
+                    {% if menuTranslation.catalogPicIsActive %}
                         <div class="topIcons second">
                             <a href="{{ menuTranslation.urlCatalog }}" {% if fdc_court_metrage_domain not in menuTranslation.urlCatalog %}target="_blank"{% endif %}><img class="biggerIcon" src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
                         </div>
                     {% endif %}
-                    {% if menuPage.registerPicIsActive %}
-                        <div class="topIcons third{% if not menuPage.programPicIsActive and not menuPage.catalogPicIsActive %} icon-border-left{% endif %}">
-                            <a href="{{ menuTranslation.urlRegister }}" {% if fdc_court_metrage_domain not in menuTranslation.urlRegister %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
+                    {% if menuTranslation.programPicIsActive %}
+                        <div class="topIcons first{% if not menuTranslation.catalogPicIsActive %} icon-border-right{% endif %}">
+                            <a href="{{ menuTranslation.urlProgram }}" {% if fdc_court_metrage_domain not in menuTranslation.urlProgram %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
                         </div>
                     {% endif %}
                 </div>

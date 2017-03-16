@@ -552,6 +552,9 @@ admin:
             who_are_we: Qui sommes nous ?
             our_events: Nos évènements
             relive_edition: Revivez l’édition
+            selection: LES COURTS EN COMPETITION – La sélection
+            jury: LES COURTS EN COMPETITION – Jury
+            palmares: LES COURTS EN COMPETITION – Palmarès
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
@@ -835,16 +838,16 @@ form:
             image: Image cover
             film_selection: Sélection
             film_jury: Type de jury
-            film_jury_date: Date
+            film_date: Date
             short_film_corner:
                 position_du_menu: Position
             menu:
                 urlProgram: URL de bouton Programme
                 urlCatalog: URL de bouton Catalogue
-                urlRegister: URL de bouton Registre
+                urlRegister: URL de bouton Inscrire un film
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
-                register_pic_is_active: Le bouton Registre est visible?
+                register_pic_is_active: Le bouton Inscrire un film est visible?
                 main_nav_list: Liste des onglets de navigation principale
                 main_nav_item: Onglet de navigation principal
                 main_nav_name: Nom de l'onglet de navigation principal
@@ -901,12 +904,12 @@ form:
                 domains_collection: Filtres
                 page_image: Page image
             actualite:
-                title: Module Actualités
+                title_block: Module Actualités
                 date: Date
-                title: Titre
+                title: Titre de l'actualité
                 description: Description
                 is_active: Activer le module
-                is_active_actualite: Activer le actualite
+                is_active_actualite: Activer l'actualité
                 associated_movie: Film associé
                 associated_movie_help: Sélectionnez un film associé à l'article.
                 url: URL

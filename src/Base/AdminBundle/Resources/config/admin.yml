@@ -2628,7 +2628,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabSelectionAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – La sélection}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – La sélection, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2636,7 +2636,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabJuryAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Jury}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Jury, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
@@ -2644,7 +2644,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmShortFilmCompetitionTabPalmaresAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.seo_tetieres, label: LES COURTS EN COMPETITION – Palmarès, show_in_dashboard: false}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 

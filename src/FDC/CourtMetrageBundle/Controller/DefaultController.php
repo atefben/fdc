@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FDC\CourtMetrageBundle\Form\Type\ShareEmailType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class DefaultController extends Controller
+class DefaultController extends CcmController
 {
     /**
      * @Route("/", name="fdc_court_metrage_homepage")
@@ -34,7 +34,8 @@ class DefaultController extends Controller
         $aPropos = $homepageManger->getAPropos($homepage);
         $homepagePushes = $homepageManger->getPushes();
         $homepageSliders = $homepageManger->getSliders();
-        $selectionTab = $competitionManager->getSelectionTab();
+        $festival = $this->getFestival();
+        $selectionTab = $competitionManager->getSelectionTab($festival->getYear());
         $movies = $homepageManger->getFilmsByCourtYear($selectionTab);
         $sejour = $homepageManger->getSejour();
 

@@ -61,7 +61,7 @@ class CcmShortFilmCompetitionTab
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    protected $dateJury;
+    protected $date;
 
     /**
      * @var ArrayCollection
@@ -218,16 +218,16 @@ class CcmShortFilmCompetitionTab
     /**
      * @return string
      */
-    public function getDateJury()
+    public function getDate()
     {
-        return $this->dateJury;
+        return $this->date;
     }
 
     /**
-     * @param string $dateJury
+     * @param string $date
      */
-    public function setDateJury($dateJury)
+    public function setDate($date)
     {
-        $this->dateJury = $dateJury;
+        $this->date = $date;
     }
 }

@@ -73,23 +73,23 @@ class CcmMenuAdmin extends Admin
                         'sonata_help'        => 'form.ccm.label.external_url',
                         'required' => false,
                     ),
+                    'programPicIsActive'    => array(
+                        'label'              => 'form.ccm.label.menu.program_pic_is_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'catalogPicIsActive'    => array(
+                        'label'              => 'form.ccm.label.menu.catalog_pic_is_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
+                    'registerPicIsActive'   => array(
+                        'label'              => 'form.ccm.label.menu.register_pic_is_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
+                    ),
                 )
             ))
-            ->add('programPicIsActive', 'checkbox', array(
-                    'label' => 'form.ccm.label.menu.program_pic_is_active',
-                    'required' => false,
-                )
-            )
-            ->add('catalogPicIsActive', 'checkbox', array(
-                    'label' => 'form.ccm.label.menu.catalog_pic_is_active',
-                    'required' => false,
-                )
-            )
-            ->add('registerPicIsActive', 'checkbox', array(
-                    'label' => 'form.ccm.label.menu.register_pic_is_active',
-                    'required' => false,
-                )
-            )
             ->add('mainNavsCollection', 'sonata_type_collection', array(
                     'by_reference'       => false,
                     'label'              => 'form.ccm.label.menu.main_nav_list',

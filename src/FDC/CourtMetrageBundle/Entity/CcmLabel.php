@@ -114,6 +114,9 @@ class CcmLabel
 
         if ($translation !== null) {
             $string = $translation->getHeader();
+            if (strlen($string) > 14) {
+                $string = substr($string, 0, 14) . '...';
+            }
         } else {
             $string = strval($this->getId());
         }
