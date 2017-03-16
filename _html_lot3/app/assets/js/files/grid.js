@@ -72,7 +72,7 @@ var owInitGrid = function (id) {
 
         if($('.home').length){
             //#home-news-statements-more
-            var fnClickHome = function(){
+            /*var fnClickHome = function(){
                 $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -143,7 +143,7 @@ var owInitGrid = function (id) {
                     });
                 });
             }
-            fnClickHome();
+            fnClickHome();*/
 
         }else{
 
@@ -176,11 +176,10 @@ var owInitGrid = function (id) {
                             $this.attr('href',moreBtn);
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
-                            console.log('no btn');
-                            if($this.is(':visible')){
+                            //if($this.is(':visible')){
                                 $this.remove();
-                            }
-                        }moreBtn
+                            //}
+                        }
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',

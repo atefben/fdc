@@ -76,7 +76,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        if($('.articles-wrapper').length){
+        /*if($('.articles-wrapper').length){
             var lock = false;
             //populate isotope data array on change
             $('.articles-wrapper').bind("DOMSubtreeModified",function(){
@@ -97,247 +97,247 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }
-        
-        if (!$('.who-filter').length) {
+        }*/
+        if (!$('.home').length) {
+            if (!$('.who-filter').length) {
 
-            $('.filters .select span').off('click').on('click', function () {
-                $('.filter .select').each(function () {
-                    $that = $(this);
-                    $id = $(this).closest('.filter').attr('id');
+                $('.filters .select span').off('click').on('click', function () {
+                    $('.filter .select').each(function () {
+                        $that = $(this);
+                        $id = $(this).closest('.filter').attr('id');
 
-                    $that.find("span:not(.active):not([data-filter='all'])").each(function () {
-                        $this = $(this);
+                        $that.find("span:not(.active):not([data-filter='all'])").each(function () {
+                            $this = $(this);
 
-                        var getVal = $this.data('filter');
-                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
+                            var getVal = $this.data('filter');
+                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
-                        if (numItems === 0) {
-                            $this.addClass('disabled');
-                        } else {
-                            $this.removeClass('disabled');
-                        }
+                            if (numItems === 0) {
+                                $this.addClass('disabled');
+                            } else {
+                                $this.removeClass('disabled');
+                            }
+                        });
+                    });
+
+                    var h = $(this).parent().html();
+
+                    $('#filters').remove();
+                    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
+                    $('#filters .vCenterKid').html(h);
+                    $('#filters .vCenterKid').find(':not(span)').remove();
+                    $('#filters .vCenterKid').find('span.disabled').remove();
+                    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
+
+                    setTimeout(function () {
+                        $('#filters').addClass('show');
+                    }, 100);
+
+                    setTimeout(function () {
+                        $('#filters span').addClass('show');
+                    }, 400);
+
+                    var fnArraySortFilters = function(){
+                        $('#filters span').off('click').on('click', function () {
+                            if($('.home').length){
+                                var selectedClass = $(this).data('filter');
+                                /* TODO 
+                                    destroy all isotope
+                                    stock html in js array
+                                    repopulate first grid
+                                    compute new height for last section
+                                */
+
+                                //fill array with homepage items if not set
+                                if(!homepageItemsFilled){
+                                    homepageItemsFilled = true;
+                                    $('.contain-card article').each(function(index,value){
+                                        isotopeHomepageItems.push(value);
+                                    });
+
+                                    $('.articles-wrapper article').each(function(index,value){
+                                        isotopeHomepageItems.push(value);
+                                    });
+                                }
+
+                                $('.contain-card .isotope-01').each(function(){
+                                    $(this).isotope('destroy');
+                                    $(this).find('article').each(function(){
+                                        $(this).remove();
+                                    });
+                                });
+                                $('.articles-wrapper .isotope-01').each(function(){
+                                    $(this).isotope('destroy');
+                                    $(this).find('article').each(function(){
+                                        $(this).remove();
+                                    });
+                                });
+
+                                //get accurate data
+                                var innerIndex = 0;
+                                var activeAppendedGridContainer = $('.contain-card');
+                                $.each(isotopeHomepageItems,function(index,value){
+                                    if($(value).hasClass(selectedClass)){
+
+
+                                        //switch container
+                                        if(innerIndex > 2 && innerIndex < 6){
+                                            activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
+                                        }else{
+                                            if(activeAppendedGridContainer.find('article').size() > 2){
+                                                activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                            }
+
+                                        }
+                                        
+                                        //console.log('add card to',activeAppendedGridContainer);
+                                        activeAppendedGridContainer.find('.grid-01').append(value);
+                                        innerIndex++;
+                                    }
+                                });
+                                
+                                $('.contain-card .isotope-01').each(function(){
+                                    $(this).isotope({
+                                        itemSelector: '.item',
+                                        layoutMode: 'packery',
+                                        packery: {
+                                            columnWidth: '.grid-sizer',
+                                            gutter: 0
+                                        }
+                                    });
+                                });
+
+                                $('.articles-wrapper .isotope-01').each(function(){
+                                    $(this).isotope({
+                                        itemSelector: '.item',
+                                        layoutMode: 'packery',
+                                        packery: {
+                                            columnWidth: '.grid-sizer',
+                                            gutter: 0
+                                        }
+                                    });
+                                });
+                                var newSectionHeight = 0;
+                                //recompute height
+                                $('.articles-wrapper .articles').each(function(){
+                                    newSectionHeight += $(this).outerHeight();
+                                });
+                                $('.articles-wrapper').css('height',newSectionHeight);
+                            }
+                            var id = $('#filters').data('id'),
+                                f = $(this).data('filter');
+
+                            $('#' + id + ' .select span').removeClass('active');
+                            $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
+
+                            owInitGrid('filter');
+                            var t = window.setTimeout(function(){
+                                //hotfix bug first card container empty
+                                console.log($('.contain-card').find('article').size(),$('.contain-card').find('article').size() == 0);
+                                if($('.contain-card').find('article').size() == 0){
+                                    var firstFilledWrapper;
+                                    $('.articles-wrapper .articles').each(function(){
+                                        if($(this).find('article').size() == 3){
+                                            firstFilledWrapper = $(this);
+                                            return false;
+                                        }
+                                    })
+                                    firstFilledWrapper.find('article').each(function(){
+                                        $(this).removeAttr('style').detach().appendTo($('.contain-card .isotope-01'));
+
+                                        //recompute heights
+                                        $('.contain-card').css('height',650);
+                                        var wrapperHeight = 0;
+                                        $('.articles-wrapper .articles').each(function(){
+                                            if($(this).find('article').size() == 0){
+                                                $(this).css('height',0);
+                                            }
+                                            wrapperHeight += $(this).outerHeight();
+                                            
+                                        });
+                                        $('.articles-wrapper').css('height',wrapperHeight);
+                                        $('.isotope-01').each(function(){
+                                            //$(this).isotope();
+                                        });
+
+                                    });
+                                }
+                                window.clearTimeout(t);
+                            },200);
+                            fnArraySortFilters();
+                        });
+                    }
+                    fnArraySortFilters();
+
+                    // close filters
+                    $('body').on('click', '#filters', function () {
+                        $('#filters').removeClass('show');
+                        setTimeout(function () {
+                            $('#filters').remove();
+                        }, 700);
                     });
                 });
 
-                var h = $(this).parent().html();
+            } else {
 
-                $('#filters').remove();
-                $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
-                $('#filters .vCenterKid').html(h);
-                $('#filters .vCenterKid').find(':not(span)').remove();
-                $('#filters .vCenterKid').find('span.disabled').remove();
-                $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
-                setTimeout(function () {
-                    $('#filters').addClass('show');
-                }, 100);
+                $('.filters .select span').off('click').on('click', function () {
 
-                setTimeout(function () {
-                    $('#filters span').addClass('show');
-                }, 400);
+                    $('.filter .select').each(function () {
+                        $that = $(this);
+                        $id = $(this).closest('.filter').attr('id');
 
-                var fnArraySortFilters = function(){
-                    $('#filters span').off('click').on('click', function () {
-                        if($('.home').length){
-                            var selectedClass = $(this).data('filter');
-                            /* TODO 
-                                destroy all isotope
-                                stock html in js array
-                                repopulate first grid
-                                compute new height for last section
-                            */
+                        $that.find(".pages:not([data-filter='all'])").each(function () {
+                            $this = $(this);
 
-                            //fill array with homepage items if not set
-                            if(!homepageItemsFilled){
-                                homepageItemsFilled = true;
-                                $('.contain-card article').each(function(index,value){
-                                    isotopeHomepageItems.push(value);
-                                });
+                            var getVal = $this.data('filter');
+                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
-                                $('.articles-wrapper article').each(function(index,value){
-                                    isotopeHomepageItems.push(value);
-                                });
+                            if (numItems === 0) {
+                                $this.addClass('disabled');
+                            } else {
+                                $this.removeClass('disabled');
                             }
+                        });
+                    });
 
-                            $('.contain-card .isotope-01').each(function(){
-                                $(this).isotope('destroy');
-                                $(this).find('article').each(function(){
-                                    $(this).remove();
-                                });
-                            });
-                            $('.articles-wrapper .isotope-01').each(function(){
-                                $(this).isotope('destroy');
-                                $(this).find('article').each(function(){
-                                    $(this).remove();
-                                });
-                            });
+                    var h = $(this).parent().html();
 
-                            //get accurate data
-                            var innerIndex = 0;
-                            var activeAppendedGridContainer = $('.contain-card');
-                            $.each(isotopeHomepageItems,function(index,value){
-                                if($(value).hasClass(selectedClass)){
+                    $('#filters').remove();
+                    $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
+                    $('#filters .vCenterKid').html(h);
+                    $('#filters .vCenterKid').find(':not(span)').remove();
+                    $('#filters .vCenterKid').find('span.disabled').remove();
+                    $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
 
+                    setTimeout(function () {
+                        $('#filters').addClass('show');
+                    }, 100);
 
-                                    //switch container
-                                    if(innerIndex > 2 && innerIndex < 6){
-                                        activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
-                                    }else{
-                                        if(activeAppendedGridContainer.find('article').size() > 2){
-                                            activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
-                                        }
+                    setTimeout(function () {
+                        $('#filters span').addClass('show');
+                    }, 400);
 
-                                    }
-                                    
-                                    //console.log('add card to',activeAppendedGridContainer);
-                                    activeAppendedGridContainer.find('.grid-01').append(value);
-                                    innerIndex++;
-                                }
-                            });
-                            
-                            $('.contain-card .isotope-01').each(function(){
-                                $(this).isotope({
-                                    itemSelector: '.item',
-                                    layoutMode: 'packery',
-                                    packery: {
-                                        columnWidth: '.grid-sizer',
-                                        gutter: 0
-                                    }
-                                });
-                            });
-
-                            $('.articles-wrapper .isotope-01').each(function(){
-                                $(this).isotope({
-                                    itemSelector: '.item',
-                                    layoutMode: 'packery',
-                                    packery: {
-                                        columnWidth: '.grid-sizer',
-                                        gutter: 0
-                                    }
-                                });
-                            });
-                            var newSectionHeight = 0;
-                            //recompute height
-                            $('.articles-wrapper .articles').each(function(){
-                                newSectionHeight += $(this).outerHeight();
-                            });
-                            $('.articles-wrapper').css('height',newSectionHeight);
-                        }
+                    $('#filters span').on('click', function () {
                         var id = $('#filters').data('id'),
                             f = $(this).data('filter');
 
                         $('#' + id + ' .select span').removeClass('active');
                         $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
-                        owInitGrid('filter');
-                        var t = window.setTimeout(function(){
-                            //hotfix bug first card container empty
-                            console.log($('.contain-card').find('article').size(),$('.contain-card').find('article').size() == 0);
-                            if($('.contain-card').find('article').size() == 0){
-                                var firstFilledWrapper;
-                                $('.articles-wrapper .articles').each(function(){
-                                    if($(this).find('article').size() == 3){
-                                        firstFilledWrapper = $(this);
-                                        return false;
-                                    }
-                                })
-                                firstFilledWrapper.find('article').each(function(){
-                                    $(this).removeAttr('style').detach().appendTo($('.contain-card .isotope-01'));
-
-                                    //recompute heights
-                                    $('.contain-card').css('height',650);
-                                    var wrapperHeight = 0;
-                                    $('.articles-wrapper .articles').each(function(){
-                                        if($(this).find('article').size() == 0){
-                                            $(this).css('height',0);
-                                        }
-                                        wrapperHeight += $(this).outerHeight();
-                                        
-                                    });
-                                    $('.articles-wrapper').css('height',wrapperHeight);
-                                    $('.isotope-01').each(function(){
-                                        //$(this).isotope();
-                                    });
-
-                                });
-                            }
-                            window.clearTimeout(t);
-                        },200);
-                        fnArraySortFilters();
+                        $('.pages:not(.' + f + ')').css('display', 'none');
+                        $('.pages.' + f).css('display', 'block');
                     });
-                }
-                fnArraySortFilters();
 
-                // close filters
-                $('body').on('click', '#filters', function () {
-                    $('#filters').removeClass('show');
-                    setTimeout(function () {
-                        $('#filters').remove();
-                    }, 700);
-                });
-            });
-
-        } else {
-
-
-            $('.filters .select span').off('click').on('click', function () {
-
-                $('.filter .select').each(function () {
-                    $that = $(this);
-                    $id = $(this).closest('.filter').attr('id');
-
-                    $that.find(".pages:not([data-filter='all'])").each(function () {
-                        $this = $(this);
-
-                        var getVal = $this.data('filter');
-                        var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
-
-                        if (numItems === 0) {
-                            $this.addClass('disabled');
-                        } else {
-                            $this.removeClass('disabled');
-                        }
+                    // close filters
+                    $('body').on('click', '#filters', function () {
+                        $('#filters').removeClass('show');
+                        setTimeout(function () {
+                            $('#filters').remove();
+                        }, 700);
                     });
                 });
-
-                var h = $(this).parent().html();
-
-                $('#filters').remove();
-                $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
-                $('#filters .vCenterKid').html(h);
-                $('#filters .vCenterKid').find(':not(span)').remove();
-                $('#filters .vCenterKid').find('span.disabled').remove();
-                $('#filters').attr('data-id', $(this).parents('.filter').attr('id'));
-
-                setTimeout(function () {
-                    $('#filters').addClass('show');
-                }, 100);
-
-                setTimeout(function () {
-                    $('#filters span').addClass('show');
-                }, 400);
-
-                $('#filters span').on('click', function () {
-                    var id = $('#filters').data('id'),
-                        f = $(this).data('filter');
-
-                    $('#' + id + ' .select span').removeClass('active');
-                    $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
-
-                    $('.pages:not(.' + f + ')').css('display', 'none');
-                    $('.pages.' + f).css('display', 'block');
-                });
-
-                // close filters
-                $('body').on('click', '#filters', function () {
-                    $('#filters').removeClass('show');
-                    setTimeout(function () {
-                        $('#filters').remove();
-                    }, 700);
-                });
-            });
-
+            }
         }
     }
 };
