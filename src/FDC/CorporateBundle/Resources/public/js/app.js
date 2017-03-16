@@ -2760,7 +2760,7 @@ var owInitGrid = function (id) {
             var fnClickHome = function(){
                 $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
-
+                    var $this = $(this);
                     var url = $(this).attr('href');
                     var container = $(this).closest('.block-01');
                     var dateTime = $('.last-element').data('time');
@@ -2813,7 +2813,7 @@ var owInitGrid = function (id) {
                             if(typeof moreBtn === 'undefined'){
                                 moreBtn = $data.filter('.ajax-request').attr('href');
                             }
-                            console.log(moreBtn);
+                            //console.log(moreBtn);
                             if(typeof moreBtn !== 'undefined'){
                                 //ajax btn found, more content to come
                                 $this.attr('href',moreBtn);
