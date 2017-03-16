@@ -600,7 +600,7 @@ class StatementRepository extends EntityRepository
 
         if ($before) {
             $qb
-                ->andWhere('n.publishedAt > :before')
+                ->andWhere('n.publishedAt < :before')
                 ->setParameter(':before', $before)
             ;
         }
@@ -653,7 +653,7 @@ class StatementRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->setParameter('inWebTv', true)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', ::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
