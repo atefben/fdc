@@ -46,13 +46,6 @@ class CcmProsPage implements TranslateMainInterface
     protected $image;
 
     /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmDomainCollection", mappedBy="prosPage", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @ORM\OrderBy({"position" = "ASC"})
-     */
-    protected $domainsCollection;
-
-    /**
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\HomepageSejour", mappedBy="prosPage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
      *      max = "1",
@@ -121,7 +114,6 @@ class CcmProsPage implements TranslateMainInterface
     public function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->domainsCollection = new ArrayCollection();
         $this->sejoures =  new ArrayCollection();
     }
 
@@ -155,34 +147,6 @@ class CcmProsPage implements TranslateMainInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param CcmDomainCollection $domainCollection
-     * @return $this
-     */
-    public function addDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
-    {
-        $domainCollection->setProsPage($this);
-        $this->domainsCollection[] = $domainCollection;
-
-        return $this;
-    }
-
-    /**
-     * @param CcmDomainCollection $domainCollection
-     */
-    public function removeDomainsCollection(\FDC\CourtMetrageBundle\Entity\CcmDomainCollection $domainCollection)
-    {
-        $this->domainsCollection->removeElement($domainCollection);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getDomainsCollection()
-    {
-        return $this->domainsCollection;
     }
 
     /**

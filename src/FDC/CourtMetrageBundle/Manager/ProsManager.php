@@ -64,19 +64,12 @@ class ProsManager
      * @param $page
      * @return array|null
      */
-    public function getDomains($pros, $page)
+    public function getDomains($pros)
     {
         if ($pros) {
             $domains = [];
-            $pageDomains = [];
             $repo = $this->em->getRepository(CcmDomainTranslation::class);
             $domainsRepo = $this->em->getRepository(CcmDomainCollection::class);
-            $domainsCollectionPage = $domainsRepo
-                ->findBy(
-                    array(
-                        'prosPage' => $page->getTranslatable()->getId()
-                    )
-                );
 
             foreach ($pros as $pro) {
                 $domainsCollectionPro = $domainsRepo
@@ -102,24 +95,8 @@ class ProsManager
                     }
                 }
             }
-
-            if ($domainsCollectionPage) {
-                foreach ($domainsCollectionPage as $pd) {
-                    $pageDomain = $this->em->getRepository(CcmDomainTranslation::class)
-                        ->findOneBy(
-                            array(
-                                'locale' => $this->requestStack->getMasterRequest()->getLocale(),
-                                'translatable' => $pd->getDomain(),
-                            )
-                        );
-
-                    if ($pageDomain) {
-                        $pageDomains[$pageDomain->getSlug()] = $pageDomain->getName();
-                    }
-                }
-            }
-
-            return array_intersect_key($domains, $pageDomains);
+            
+            return $domains;
         }
 
         return null;

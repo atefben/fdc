@@ -100,16 +100,6 @@ class CcmProsPageAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('domainsCollection', 'sonata_type_collection', array(
-                    'by_reference'       => false,
-                    'label'              => 'form.ccm.label.pros.page_domains_list',
-                    'translation_domain' => 'BaseAdminBundle',
-                ), array(
-                    'edit'     => 'inline',
-                    'inline'   => 'table',
-                    'sortable' => 'position',
-                )
-            )
             ->add(
                 'sejoures',
                 'infinite_form_polycollection',

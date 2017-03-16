@@ -32,12 +32,6 @@ class CcmDomainCollection
     private $domain;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsPage", inversedBy="domainsCollection")
-     * @ORM\JoinColumn(name="pros_page_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $prosPage;
-
-    /**
      * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmProsDetail", inversedBy="domainsCollection")
      * @ORM\JoinColumn(name="pros_detail_id", referencedColumnName="id", onDelete="SET NULL")
      */
@@ -72,22 +66,6 @@ class CcmDomainCollection
     public function setDomain($domain)
     {
         $this->domain = $domain;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProsPage()
-    {
-        return $this->prosPage;
-    }
-
-    /**
-     * @param mixed $prosPage
-     */
-    public function setProsPage($prosPage)
-    {
-        $this->prosPage = $prosPage;
     }
 
     /**

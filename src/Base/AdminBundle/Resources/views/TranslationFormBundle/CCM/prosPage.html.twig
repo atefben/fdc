@@ -39,16 +39,6 @@
                     </div>
                     {% if form.vars.default_locale == locale %}
                     <div class="col-md-12">
-                        <div class="box-body">
-                            <div class="fdc-widgets" data-form-widget="collection">
-                                <div class="item base-widget">
-                                    <h4><strong>{{ 'form.ccm.label.pros.domains_collection'|trans }}</strong></h4>
-                                    {{ form_row(form.parent.children.domainsCollection) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
                         <div class="box box-success">
                             <h4> {{'form.ccm.label.sejour.title'|trans}}</h4>
                         </div>
@@ -104,10 +94,6 @@
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}
-                                </div>
-                                <div class="item base-widget">
-                                    <h4><strong>{{ 'form.ccm.label.pros.domains_collection'|trans }}</strong></h4>
-                                    {{ form_row(form.parent.children.domainsCollection) }}
                                 </div>
                             </div>
                         </div>

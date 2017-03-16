@@ -38,7 +38,7 @@ class ProsController extends Controller
         $catalogIsActive = $prosPage->getTranslatable()->getCatalogIsActive();
         $actualiteIsActive = $prosPage->getTranslatable()->getActualiteIsActive();
         $prosList = $prosManager->getProsByLocale();
-        $pageDomains = $prosManager->getDomains($prosList, $prosPage);
+        $pageDomains = $prosManager->getDomains($prosList);
         $prosDomains = $prosManager->getProsDomains($prosList);
         $hasSFC = $prosManager->hasSFC($prosList);
         
