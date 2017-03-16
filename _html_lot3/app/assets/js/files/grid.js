@@ -176,6 +176,7 @@ var owInitGrid = function (id) {
                             $this.attr('href',moreBtn);
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
+                            console.log('no btn');
                             if($(this).is(':visible')){
                                 $(this).remove();
                             }
