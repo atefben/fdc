@@ -4446,13 +4446,12 @@ var initRs = function () {
             } else {
                 // TODO envoie du mail //
                 var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
-
+                console.log(u+$(cls).find('form#form').serialize());
                 $.ajax({
-                    type: "GET",
-                    //dataType: "json",
+                    type: "POST",
+                    dataType: "json",
                     cache: false,
-                    url: u,
-                    data: $(cls).find('form#form').serialize(),
+                    url: u+$(cls).find('form#form').serialize(),
                     success: function (data) {
                         if (data.success == false) {
 
