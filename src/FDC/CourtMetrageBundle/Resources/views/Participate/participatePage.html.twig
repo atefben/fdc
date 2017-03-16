@@ -5,7 +5,7 @@
     <div id="main" class="list-article participate {% if hasPF %}partners{% else %}loading{% endif %}">
         <div class="bandeau-list vCenter">
             <div class="bandeau-list-img vCenterKid" style="background-image:url('{% path page.translatable.image|trans_fallback("file"), "reference" %}')">
-                <h2 class="title title-list-header"> <i class="icon icon_palme"></i><br> {{ page.title }}</h2>
+                <h2 class="title title-list-header">{{ page.title }}</h2>
             </div>
         </div>
         {% if hasPF == false %}
