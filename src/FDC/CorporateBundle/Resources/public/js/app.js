@@ -2757,72 +2757,75 @@ var owInitGrid = function (id) {
 
         if($('.home').length){
             //#home-news-statements-more
-            $('.read-more.ajax-request').off('click').on('click', function(e){
-                e.preventDefault();
+            var fnClickHome = function(){
+                console.log('fnClickHome');
+                $('.read-more.ajax-request').off('click').on('click', function(e){
+                    e.preventDefault();
 
-                var url = $(this).attr('href');
-                var container = $(this).closest('.block-01');
-                var dateTime = $('.last-element').data('time');
-                var theme = $('.filter#theme .select span.active').data('filter');
-                var format = $('.filter#format .select span.active').data('filter');
-                //fake animation before the real computing
-                $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+                    var url = $(this).attr('href');
+                    var container = $(this).closest('.block-01');
+                    var dateTime = $('.last-element').data('time');
+                    var theme = $('.filter#theme .select span.active').data('filter');
+                    var format = $('.filter#format .select span.active').data('filter');
+                    //fake animation before the real computing
+                    $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
 
-                $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
-                    if(data == null){
-                        return false;
-                    }else{
-                        $data = $(data);
-                        //add new filters
-                        if($(data).filter('.compute-filters').length){
-                            $(data).filter('.compute-filters').find('span').each(function(){
-                                //test if filter exists
-                                if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                    $('#theme .select .icon-arrow-down').before($(this));
-                                }
-                            });
-                            owInitFilter();
-                        }
-
-                        $('.articles-wrapper').append(data);
-                        $('.articles-wrapper').find('.read-more').remove();
-                        $('.articles-wrapper').find('.compute-filters').remove();
-                        $('.articles-wrapper').find('img').imagesLoaded(function(){
-                            $('.articles-wrapper').find('.to-init').isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'packery',
-                                packery: {
-                                    columnWidth: '.grid-sizer',
-                                    gutter: 0
-                                }
-                            }).removeClass('to-init');
-
-                            $('.articles-wrapper .articles').css('opacity',1);
-
-                            var h = 0;
-                            $('.articles-wrapper .articles').each(function(){
-                                h += $(this).height();
-                            });
-                            $('.articles-wrapper').css('height',h);
-                        });
-
-
-                        //BUTTON BEHAVIOUR
-                        var moreBtn = $data.find('.ajax-request').attr('href');
-                        if(typeof moreBtn !== 'undefined'){
-                            //ajax btn found, more content to come
-                            $this.attr('href',moreBtn);
-                            
+                    $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
+                        if(data == null){
+                            return false;
                         }else{
-                            //no more content but let's take read more link and wording
-                            var allNewsButton = $data.filter('.read-more');
-                            $('#home-news-statements-more').remove();
-                            container.append(allNewsButton);
+                            $data = $(data);
+                            //add new filters
+                            if($(data).filter('.compute-filters').length){
+                                $(data).filter('.compute-filters').find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#theme .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#theme .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                                owInitFilter();
+                            }
+
+                            $('.articles-wrapper').append(data);
+                            $('.articles-wrapper').find('.read-more').remove();
+                            $('.articles-wrapper').find('.compute-filters').remove();
+                            $('.articles-wrapper').find('img').imagesLoaded(function(){
+                                $('.articles-wrapper').find('.to-init').isotope({
+                                    itemSelector: '.item',
+                                    layoutMode: 'packery',
+                                    packery: {
+                                        columnWidth: '.grid-sizer',
+                                        gutter: 0
+                                    }
+                                }).removeClass('to-init');
+
+                                $('.articles-wrapper .articles').css('opacity',1);
+
+                                var h = 0;
+                                $('.articles-wrapper .articles').each(function(){
+                                    h += $(this).height();
+                                });
+                                $('.articles-wrapper').css('height',h);
+                            });
+
+
+                            //BUTTON BEHAVIOUR
+                            var moreBtn = $data.find('.ajax-request').attr('href');
+                            if(typeof moreBtn !== 'undefined'){
+                                //ajax btn found, more content to come
+                                $this.attr('href',moreBtn);
+                                
+                            }else{
+                                //no more content but let's take read more link and wording
+                                var allNewsButton = $data.filter('.read-more');
+                                $('#home-news-statements-more').remove();
+                                container.append(allNewsButton);
+                            }
                         }
-                    }
+                    });
+                    fnClickHome();
                 });
-                owInitGrid('filter');
-            });
+            }
 
         }else{
 
