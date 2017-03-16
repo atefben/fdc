@@ -521,7 +521,7 @@ file that was distributed with this source code.
                                                 {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_JURY_ADMIN') %}
                                                     <li class="{{ app.request.attributes.get('_route') == 'ccm_competition_jury_edit' ? 'active' }}">
                                                         <a data-edit="true"
-                                                           href="{{ path('ccm_competition_jury_edit', {id: 1}) }}">
+                                                           href="{{ path('ccm_competition_jury_edit', {id: 2}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'admin.ccm.menu.jury'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
@@ -530,7 +530,7 @@ file that was distributed with this source code.
                                                 {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_PALMARES_ADMIN') %}
                                                     <li class="{{ app.request.attributes.get('_route') == 'ccm_competition_palmares_edit' ? 'active' }}">
                                                         <a data-edit="true"
-                                                           href="{{ path('ccm_competition_palmares_edit', {id: 1}) }}">
+                                                           href="{{ path('ccm_competition_palmares_edit', {id: 3}) }}">
                                                             <i class="fa fa-angle-double-right"></i>
                                                             {{ 'admin.ccm.menu.palmares'|trans({}, 'BaseAdminBundle') }}
                                                         </a>
