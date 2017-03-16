@@ -125,7 +125,8 @@ var owInitGrid = function (id) {
 
                             //BUTTON BEHAVIOUR
                             var moreBtn = $data.find('.ajax-request').attr('href');
-                            console.log($data);
+                            console.log($data.find('.ajax-request'));
+                            console.log($data.filter('.ajax-request'));
                             console.log(moreBtn);
                             if(typeof moreBtn !== 'undefined'){
                                 //ajax btn found, more content to come
