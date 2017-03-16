@@ -2567,12 +2567,17 @@ var owInitFilter = function (isTabSelection) {
 
                                     //recompute heights
                                     $('.contain-card').css('height',650);
-                                    $('.articles-wrapper .articles:first-child').css('height',0);
+                                    var wrapperHeight = 0;
+                                    $('.articles-wrapper .articles').each(function(){
+                                        wrapperHeight += $(this).outerHeight();
+                                        $(this).css('height',0);
+                                    });
+                                    $('.articles-wrapper').css('height',wrapperHeight);
                                     $('.isotope-01').each(function(){
                                         //$(this).isotope();
                                     });
 
-                                })
+                                });
                             }
                             window.clearTimeout(t);
                         },200);
