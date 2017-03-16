@@ -242,7 +242,7 @@ var owInitFilter = function (isTabSelection) {
                                     $('.contain-card').css('height',650);
                                     $('.articles-wrapper .articles:first-child').css('height',0);
                                     $('.isotope-01').each(function(){
-                                        $(this).isotope();
+                                        //$(this).isotope();
                                     });
 
                                 })
