@@ -41,7 +41,8 @@ class MenuExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('routeFromURL', array($this, 'getRouteNameFromURL'))
+            new \Twig_SimpleFilter('routeFromURL', array($this, 'getRouteNameFromURL')),
+            new \Twig_SimpleFilter('equalRouteParams', array($this, 'equalRouteParams'))
         ];
     }
 
@@ -83,10 +84,19 @@ class MenuExtension extends \Twig_Extension
         return $routeName;
     }
     
-    public function hasEqualURI($first, $second)
+    public function equalRouteParams($url, $routeParams)
     {
-        
-        return parse_url($first, PHP_URL_PATH) == parse_url($second, PHP_URL_PATH);
+        $sameParams = false;
+        try {
+            $routeData = $this->router->match(parse_url($url, PHP_URL_PATH));
+            unset($routeData['_controller']);
+            unset($routeData['_route']);
+
+            return $routeData == $routeParams;
+        } catch (\Exception $e) {
+        }
+
+        return $sameParams;
     }
 
     public function getName()
