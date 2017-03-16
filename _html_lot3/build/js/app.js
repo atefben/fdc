@@ -4450,11 +4450,11 @@ var initRs = function () {
                 var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
 
                 $.ajax({
-                    type: "GET",
-                    //dataType: "json",
+                    type: "POST",
+                    dataType: "json",
                     cache: false,
                     url: u,
-                    data: $(cls).find('form#form').serialize(),
+                    data: $(cls).find('form#form').serializeArray(),
                     success: function (data) {
                         if (data.success == false) {
 
