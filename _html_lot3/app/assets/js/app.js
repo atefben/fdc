@@ -25,7 +25,10 @@ homepageCards.config = {
 
 homepageCards.init = function(){
     homepageCards.config.cardsContainer.each(function(index,value){
-        homepageCards.config.cards.push($(this));
+        var container = $(this);
+        container.find('article').each(function(){
+            homepageCards.config.cards.push($(this));
+        });
     });
 
     console.log('cards after init', homepageCards.config.cards);
