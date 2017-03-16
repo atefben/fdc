@@ -15,6 +15,27 @@ class LoadCcmContentData implements FixtureInterface
             $manager->persist($menu);
         }
 
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::class)
+                ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_SELECTION])) == 0) {
+            $selectionTab = new \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab();
+            $selectionTab->setType(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_SELECTION);
+            $manager->persist($selectionTab);
+        }
+
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::class)
+                ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_JURY])) == 0) {
+            $juryTab = new \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab();
+            $juryTab->setType(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_JURY);
+            $manager->persist($juryTab);
+        }
+
+        if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::class)
+                ->findBy(['type' => \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_PALMARES])) == 0) {
+            $palmaresTab = new \FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab();
+            $palmaresTab->setType(\FDC\CourtMetrageBundle\Entity\CcmShortFilmCompetitionTab::TYPE_PALMARES);
+            $manager->persist($palmaresTab);
+        }
+
         if (count($manager->getRepository(\FDC\CourtMetrageBundle\Entity\CcmProsPage::class)->findAll()) == 0) {
             $prosPage = new \FDC\CourtMetrageBundle\Entity\CcmProsPage();
             $manager->persist($prosPage);
