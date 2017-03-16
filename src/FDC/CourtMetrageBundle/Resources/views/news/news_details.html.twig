@@ -27,9 +27,6 @@
                         {% set hourFormat = 'h:i A' %}
                     {% endif %}
                     <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.publishedAt|date(hourFormat) }}</span>
-                    {% if article.updatedAt is not null %}
-                        <span class="update">{#Mise à jour#}{{ 'ccm.news.update'|trans }} :</span><span class="date">{{ article.updatedAt|date('d.m.y') }}</span> . <span class="hour">{{ article.updatedAt|date(hourFormat) }}</span>
-                    {% endif %}
                 </div>
                 <h2 class="title-article">{{ article|trans_fallback('title') }}</h2>
                 <div class="buttons">
