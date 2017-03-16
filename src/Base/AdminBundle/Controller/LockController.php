@@ -192,7 +192,10 @@ class LockController extends Controller
         'ccmgallery' => 'CcmGallery',
         'ccmgallerydualalign' => 'CcmGalleryDualAlign',
         'ccmgallerydualalignmedia' => 'CcmGalleryDualAlignMedia',
-        'ccmgallerymedia' => 'CcmGalleryMedia'
+        'ccmgallerymedia' => 'CcmGalleryMedia',
+        'ccmparticiperpage' => 'CcmParticiperPage',
+        'ccmparticiperpagelayer' => 'CcmParticiperPageLayer',
+        'ccmwaitingpage' => 'CcmWaitingPage'
     );
 
     /**

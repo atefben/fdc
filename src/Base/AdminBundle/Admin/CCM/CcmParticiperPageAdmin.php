@@ -82,14 +82,29 @@ class CcmParticiperPageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id', null, array(
+                    'label' => 'list.ccm.id'
+                )
+            )
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
-                'label' => 'Titre de la page',
+                'label' => 'list.ccm.participer.title',
             ))
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('createdAt', null, array(
+                    'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                    'sortable' => 'createdAt',
+                    'label' => 'list.ccm.participer.date_creation'
+                )
+            )
+            ->add('updatedAt', null, array(
+                    'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                    'sortable' => 'updatedAt',
+                    'label' => 'list.ccm.participer.date_update'
+                )
+            )
             ->add('_edit_translations', null, array(
-                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'list.ccm.participer.edit'
             ))
         ;
     }

@@ -399,6 +399,7 @@ list:
     person_duplicates: IDs doublon SOIF
     person_selfkit: IDs doublon Selfkit
     ccm:
+        id: Identifiant
         pro:
             identifiant: Identifiant
             name: Entité
@@ -409,7 +410,33 @@ list:
             title: Titre
             position: Position
             date_creation: Date de création
+            date_update: Date de mise à jour
             status: Statut
+            edit: Editer
+        participer:
+            title: Titre
+            date_creation: Date de création
+            date_update: Date de mise à jour
+            edit: Editer
+            layer_name: Nom de la strate
+        register:
+            edit: Editer
+            name: Nom de la procédures
+            date_creation: Date de création
+            date_update: Date de mise à jour
+        label:
+            edit: Editer
+            name: Nom de la section
+            files_group_name: Nom de groupe de boutons
+        waiting_page:
+            edit: Editer
+            title: Titre
+        pros:
+            edit: Editer
+            domain_name: Nom de domaine d'activités
+            contact_name: Nom de contact
+        program:
+            date_string: Date
             edit: Editer
         social:
             id: Identifiant

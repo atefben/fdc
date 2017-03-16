@@ -69,7 +69,7 @@ class CcmShortFilmCornerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('id', null, array('label' => 'list.ccm.id'))
             ->add('title', null, array(
                     'template' => 'BaseAdminBundle:FDCPageLaSelectionCannesClassics:list_title.html.twig',
                     'label' => 'list.ccm.sfc.title'
@@ -83,6 +83,12 @@ class CcmShortFilmCornerAdmin extends Admin
                     'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
                     'sortable' => 'createdAt',
                     'label' => 'list.ccm.sfc.date_creation'
+                )
+            )
+            ->add('updatedAt', null, array(
+                    'template' => 'BaseAdminBundle:TranslateMain:list_created_at.html.twig',
+                    'sortable' => 'updatedAt',
+                    'label' => 'list.ccm.sfc.date_update'
                 )
             )
             ->add('statusMain', 'choice', array(

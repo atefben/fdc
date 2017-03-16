@@ -23,12 +23,17 @@ class CcmLabelContentFilesAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('boName')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit'   => array(),
-                ),
+            ->add('id', null, array(
+                    'label' => 'list.ccm.id'
+                )
+            )
+            ->add('boName', null, array(
+                    'label' => 'list.ccm.label.files_group_name'
+                )
+            )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'list.ccm.label.edit'
             ))
         ;
     }

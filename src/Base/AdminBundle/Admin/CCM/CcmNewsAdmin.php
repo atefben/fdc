@@ -175,7 +175,7 @@ class CcmNewsAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'list.common.label_id'))
+            ->add('id', null, array('label' => 'list.ccm.id'))
             ->add('title', null, array(
                 'template' => 'BaseAdminBundle:News:list_title.html.twig',
                 'label'    => 'list.news_common.label_title',

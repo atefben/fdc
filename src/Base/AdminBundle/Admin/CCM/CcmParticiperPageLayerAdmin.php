@@ -41,12 +41,17 @@ class CcmParticiperPageLayerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
+            ->add('id', null, array(
+                    'label' => 'list.ccm.id'
                 )
+            )
+            ->add('name', null, array(
+                    'label' => 'list.ccm.participer.layer_name'
+                )
+            )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'list.ccm.participer.edit'
             ))
         ;
     }

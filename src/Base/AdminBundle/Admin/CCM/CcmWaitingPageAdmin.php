@@ -37,12 +37,17 @@ class CcmWaitingPageAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
-            ->add('title')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit'   => array(),
-                ),
+            ->add('id', null, array(
+                    'label' => 'list.ccm.id'
+                )
+            )
+            ->add('title', null, array(
+                    'label' => 'list.ccm.waiting_page.title'
+                )
+            )
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
+                'label' => 'list.ccm.waiting_page.edit'
             ))
         ;
     }

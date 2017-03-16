@@ -22,13 +22,18 @@ class CcmProgramDayAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('dateString')
+            ->add('id', null, array(
+                    'label' => 'list.ccm.id'
+                )
+            )
+            ->add('dateString', null, array(
+                    'label' => 'list.ccm.program.date_string'
+                )
+            )
             ->add('_action', 'actions', array(
+                'label' => 'list.ccm.program.edit',
                 'actions' => array(
-                    'show'   => array(),
-                    'edit'   => array(),
-                    'delete' => array(),
+                    'edit'   => array()
                 )
             ))
         ;
