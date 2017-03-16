@@ -2479,7 +2479,7 @@ var owInitFilter = function (isTabSelection) {
                             var activeAppendedGridContainer = $('.contain-card');
                             $.each(isotopeHomepageItems,function(index,value){
                                 if($(value).hasClass(selectedClass) || selectedClass == 'all'){
-
+                                    console.log(innerIndex);
                                     if(innerIndex%3 == 0 && innerIndex != 0){
                                         //switch container
                                         if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
