@@ -89,7 +89,7 @@
     {% endif %}
 {% endif %}
 <article
-        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{{ articleClass is defined ? ' ' ~ articleClass : '' }}"
+        class="card item all {{ article.theme|trans_fallback('slug') }} {{ contentType }}{{ articleClass is defined ? ' ' ~ articleClass : '' }} {{ type }}"
         data-format="{{ contentType }}"
         data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="1455909420"
         data-end="false">
