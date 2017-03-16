@@ -157,12 +157,13 @@ var initRs = function () {
             } else {
                 // TODO envoie du mail //
                 var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
-                console.log(u+$(cls).find('form#form').serialize());
+
                 $.ajax({
-                    type: "POST",
-                    dataType: "json",
+                    type: "GET",
+                    //dataType: "json",
                     cache: false,
-                    url: u+$(cls).find('form#form').serialize(),
+                    url: u,
+                    data: $(cls).find('form#form').serialize(),
                     success: function (data) {
                         if (data.success == false) {
 
