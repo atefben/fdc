@@ -7087,7 +7087,6 @@ homepageCards.config = {
 }
 
 homepageCards.init = function(){
-
     //populate cars array
     homepageCards.config.cardsContainer.each(function(index,value){
         var container = $(this);
@@ -7096,22 +7095,24 @@ homepageCards.init = function(){
         });
     });
 
-    console.log('cards after init', homepageCards.config.cards);
-
     homepageCards.buildFilters();
-    homepageCards.buildFilteredArray();
 }
 
 homepageCards.buildFilters = function(){
-
+    $('#theme .select span').each(function(){
+        homepageCards.config.filters.push($(this).data('filter'));
+    });
 }
 
-homepageCards.buildFilteredArray = function(){
+homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
+    //default filters (no params)
+    themeFilter = typeof themeFilter !== 'undefined' ? themeFilter : 'all';
+    formatFilter = typeof formatFilter !== 'undefined' ? formatFilter : 'all';
 
+    
 }
 
 /* thomon - end homepage ajax module rework */
-
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
