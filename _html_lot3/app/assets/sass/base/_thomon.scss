@@ -137,7 +137,10 @@ body#home .articles-wrapper{
     background-color: #c8a461;
     color: #000;
     text-align: center;
-    font-size: 1.2rem;
+    
+    .icon {
+        font-size: 1.2rem;
+    }
 }
 
 .home .item.communique .picto {
@@ -145,6 +148,10 @@ body#home .articles-wrapper{
     color: #000;
     text-align: center;
     font-size: 1.2rem;
+
+    .icon {
+        font-size: 1.2rem;
+    }
 }
 
 .p-register .info strong {
