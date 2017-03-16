@@ -3,7 +3,7 @@
     <div class="innerWrapper">
         {% if actualites is defined and actualites is not null%}
             {% for actualite in actualites %}
-                    <a href="{{ actualite.url }}" target="_blank">
+                    <a href="{{ actualite.url }}" {% if fdc_court_metrage_domain not in actualite.url %}target="_blank"{% endif %}>
                         <div class="articles">
                             {% if  actualite.translatable.image is not null %}
                                 <div class="articles-img"><img src="{% path actualite.translatable.image|trans_fallback('file'), 'reference' %}"></div>
