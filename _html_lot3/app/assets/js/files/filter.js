@@ -63,6 +63,7 @@ var owInitFilter = function (isTabSelection) {
                             isotopeHomepageItems.push(value);
                         });
                     });
+                    console.log(isotopeHomepageItems);
                 }
             });
             var lockInterval = window.setInterval(function(){

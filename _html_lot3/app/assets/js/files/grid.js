@@ -1,5 +1,4 @@
 var owInitGrid = function (id) {
-    console.log('owInitGrid');
     if (id == 'isotope-01') {
         var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {
@@ -128,7 +127,7 @@ var owInitGrid = function (id) {
                             if(typeof moreBtn === 'undefined'){
                                 moreBtn = $data.filter('.ajax-request').attr('href');
                             }
-                            //console.log(moreBtn);
+
                             if(typeof moreBtn !== 'undefined'){
                                 //ajax btn found, more content to come
                                 $this.attr('href',moreBtn);
@@ -141,7 +140,6 @@ var owInitGrid = function (id) {
                             }
                         }
                     });
-                    //fnClickHome();
                 });
             }
             fnClickHome();
