@@ -7053,6 +7053,11 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type .image {
   color: #c8a461;
 }
 
+.articles-list .item.communique .picto {
+  background-color: #c8a461;
+  color: #000;
+}
+
 .p-register .info strong {
   font-size: 1.1rem;
 }
