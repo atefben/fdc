@@ -2561,6 +2561,10 @@ var owInitFilter = function (isTabSelection) {
                         $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
                         owInitGrid('filter');
+                        var t = window.setTimeout(function(){
+                            console.log($('.contain-card').find('article').size());
+                            window.clearTimeout(t);
+                        },200);
                         fnArraySortFilters();
                     });
                 }
