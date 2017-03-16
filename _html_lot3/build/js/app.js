@@ -7081,7 +7081,7 @@ $(document).ready(function () {
 var homepageCards = homepageCards || {};
 homepageCards.config = {
     cards: [],
-    cardsContainer: $('.ajax-filter-cards-container');
+    cardsContainer: $('.ajax-filter-cards-container')
 }
 
 homepageCards.init = function(){
