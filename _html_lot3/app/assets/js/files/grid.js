@@ -71,7 +71,7 @@ var owInitGrid = function (id) {
 
         if($('.home').length){
             //#home-news-statements-more
-            /*var fnClickHome = function(){
+            var fnClickHome = function(){
                 $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -142,7 +142,7 @@ var owInitGrid = function (id) {
                     });
                 });
             }
-            fnClickHome();*/
+            fnClickHome();
 
         }else{
 
