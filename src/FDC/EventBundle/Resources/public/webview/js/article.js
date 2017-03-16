@@ -103,6 +103,10 @@ var ow = ow || {};
 
 	ow.audioPlayer = function(){
 		if($('.Article-audioPlayer').length){
+			var isAndroid = /(android)/i.test(navigator.userAgent);
+			if(isAndroid) {
+				$('body').addClass('android');
+			}
 			$('.Article-audioPlayer').each(function(){
 				var height = 90;
 				/*if($(this).closest('.Article-header').length){

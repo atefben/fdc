@@ -74,6 +74,9 @@
 		left: 94px;
 		z-index: 99;
 	}
+	.android #fakebar {
+		top: 478px;
+	}
 }
 @media screen and (max-width: 375px){
 	.Article-content .Article-picture-dual-col {
@@ -146,6 +149,9 @@
 		top: 222px;
 		left: 90px;
 		z-index: 99;
+	}
+	.android #fakebar {
+		top: 218px;
 	}
 }
 
