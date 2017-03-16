@@ -5,6 +5,7 @@
 var isotopeHomepageItems = [];
 
 var owInitFilter = function (isTabSelection) {
+    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
 
@@ -108,6 +109,7 @@ var owInitFilter = function (isTabSelection) {
                 }, 400);
 
                 var fnArraySortFilters = function(){
+                    console.log('fnArraySortFilters');
                     $('#filters span').off('click').on('click', function () {
                         console.log('filterclick');
                         if($('.home').length){

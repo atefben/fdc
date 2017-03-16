@@ -1,4 +1,5 @@
 var owInitGrid = function (id) {
+    console.log('owInitGrid');
     if (id == 'isotope-01') {
         var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {

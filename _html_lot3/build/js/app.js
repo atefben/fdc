@@ -2332,6 +2332,7 @@ var initFaq = function() {
 var isotopeHomepageItems = [];
 
 var owInitFilter = function (isTabSelection) {
+    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
 
@@ -2435,6 +2436,7 @@ var owInitFilter = function (isTabSelection) {
                 }, 400);
 
                 var fnArraySortFilters = function(){
+                    console.log('fnArraySortFilters');
                     $('#filters span').off('click').on('click', function () {
                         console.log('filterclick');
                         if($('.home').length){
@@ -2682,6 +2684,7 @@ var owFixMobile = function() {
 }
 
 var owInitGrid = function (id) {
+    console.log('owInitGrid');
     if (id == 'isotope-01') {
         var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');
         $grid.imagesLoaded(function () {
