@@ -904,12 +904,12 @@ form:
                 domains_collection: Filtres
                 page_image: Page image
             actualite:
-                title: Module Actualités
+                title_block: Module Actualités
                 date: Date
-                title: Titre
+                title: Titre de l'actualité
                 description: Description
                 is_active: Activer le module
-                is_active_actualite: Activer le actualite
+                is_active_actualite: Activer l'actualité
                 associated_movie: Film associé
                 associated_movie_help: Sélectionnez un film associé à l'article.
                 url: URL
