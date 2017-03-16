@@ -9,7 +9,7 @@ use FDC\MarcheDuFilmBundle\Form\Type\ContactFormType;
 
 class TransverseController extends Controller
 {
-    public function headerAction($routeName, $routeParams)
+    public function headerAction($routeName, $routeParams, $route_params)
     {
         $menuManager = $this->get('ccm.manager.menu');
 
@@ -23,6 +23,7 @@ class TransverseController extends Controller
                 'subNavs' => $subNavs,
                 'routeName' => $routeName,
                 'routeParams' => $routeParams,
+                'route_params' => $routeParams,
             )
         );
     }
