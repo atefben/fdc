@@ -2482,7 +2482,7 @@ var owInitFilter = function (isTabSelection) {
                                     console.log(innerIndex);
                                     if(innerIndex%3 == 0 && innerIndex != 0){
                                         //switch container
-                                        if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
+                                        if(innerIndex > 2 && innerIndex < 6){
                                             console.log('first articles container');
                                             activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                                         }else{
