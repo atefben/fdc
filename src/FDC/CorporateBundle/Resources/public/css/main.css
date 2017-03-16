@@ -7072,6 +7072,8 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type strong {
   background-color: #c8a461;
   color: #000;
   text-align: center;
+}
+.articles-list .item.communique .picto .icon {
   font-size: 1.2rem;
 }
 
@@ -7079,6 +7081,9 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type strong {
   background-color: #c8a461;
   color: #000;
   text-align: center;
+  font-size: 1.2rem;
+}
+.home .item.communique .picto .icon {
   font-size: 1.2rem;
 }
 
