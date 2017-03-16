@@ -46,6 +46,7 @@ class CcmDomainAdmin extends Admin
                 'locales' => ['fr','en'],
                 'translation_domain' => 'BaseAdminBundle',
                 'required_locales' => array('fr'),
+                'label' => false,
                 'fields' => array(
                     'applyChanges' => array(
                         'field_type' => 'hidden',

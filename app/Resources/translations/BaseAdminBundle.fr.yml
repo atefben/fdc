@@ -894,8 +894,8 @@ form:
                 description_2_column: Widget deux colonnes
                 contact_config: Informations de contact
                 activity_config: Informations sur l'activité
-                domain_config: Informations sur le domaine
-                domain_name: Nom de domaine
+                domain_config: Information sur le domaine
+                domain_name: Nom du domaine d'activité
                 domain: Domaine
                 page_title: titre de la page
                 page_description: Description de la page
