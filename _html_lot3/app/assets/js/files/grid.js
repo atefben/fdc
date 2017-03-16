@@ -135,6 +135,7 @@ var owInitGrid = function (id) {
                         }
                     }
                 });
+                owInitGrid('filter');
             });
 
         }else{
