@@ -2566,6 +2566,12 @@ var owInitFilter = function (isTabSelection) {
                             if($('.contain-card').find('article').size() == 0){
                                 $('.articles-wrapper .articles:first-child').find('article').each(function(){
                                     $(this).detach().appendTo($('.contain-card'));
+
+                                    //recompute heights
+                                    $('.isotope-01').each(function(){
+                                        $(this).isotope();
+                                    })
+
                                 })
                             }
                             window.clearTimeout(t);
