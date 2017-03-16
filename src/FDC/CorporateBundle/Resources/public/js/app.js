@@ -2332,7 +2332,6 @@ var initFaq = function() {
 var isotopeHomepageItems = [];
 
 var owInitFilter = function (isTabSelection) {
-    console.log('owInitFilter');
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
 
@@ -2436,9 +2435,7 @@ var owInitFilter = function (isTabSelection) {
                 }, 400);
 
                 var fnArraySortFilters = function(){
-                    console.log('fnArraySortFilters');
                     $('#filters span').off('click').on('click', function () {
-                        console.log('filterclick');
                         if($('.home').length){
                             var selectedClass = $(this).data('filter');
                             /* TODO 
@@ -2483,14 +2480,12 @@ var owInitFilter = function (isTabSelection) {
                                     if(innerIndex%3 == 0 && innerIndex != 0){
                                         //switch container
                                         if(innerIndex > 2 && innerIndex < 6){
-                                            console.log('first articles container');
                                             activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                                         }else{
-                                            console.log('next articles container');
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
-
+                                    console.log(activeAppendedGridContainer);
                                     activeAppendedGridContainer.find('.isotope-01').append(value);
                                     innerIndex++;
                                 }
