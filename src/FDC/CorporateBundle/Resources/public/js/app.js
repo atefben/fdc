@@ -2796,6 +2796,7 @@ var owInitGrid = function (id) {
                     //hidden button, infinite load
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
+                        console.log('scrollin');
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
                             if(clickAllow){
                                 clickAllow = false;
@@ -2897,7 +2898,7 @@ var owInitGrid = function (id) {
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');
-
+                console.log('loadin');
                 $.post({
                     type: 'POST',
                     url: url,
@@ -2950,6 +2951,7 @@ var owInitGrid = function (id) {
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
+                        //if no button ajax-request, then remove current button
                         owinitSlideShow($gridMore);
                         initVideo();
                         initAudio();
