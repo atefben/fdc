@@ -552,6 +552,9 @@ admin:
             who_are_we: Qui sommes nous ?
             our_events: Nos évènements
             relive_edition: Revivez l’édition
+            selection: LES COURTS EN COMPETITION – La sélection
+            jury: LES COURTS EN COMPETITION – Jury
+            palmares: LES COURTS EN COMPETITION – Palmarès
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop

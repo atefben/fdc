@@ -420,7 +420,6 @@ file that was distributed with this source code.
                                                             </li>
                                                         {% endif %}
                                                     {% endif %}
-
                                                     {% if group.label == 'dashboard.group.general' %}
                                                         {% if is_granted('ROLE_BASE_ADMIN_HOMEPAGE_ADMIN') %}
                                                             <li>
@@ -498,6 +497,48 @@ file that was distributed with this source code.
                                         {% endif %}
                                     {% endfor %}
 
+                                    {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_SELECTION_ADMIN') %}
+                                        {% set active = app.request.attributes.get('_route') in
+                                        ['ccm_competition_selection_edit',
+                                        'ccm_competition_jury_edit',
+                                        'ccm_competition_palmares_edit'] ? true : false %}
+                                        <li class="treeview {% if active %} active{% endif %}">
+                                            <a href="#">
+                                                <i class="fa fa-folder"></i>
+                                                <span>{{ 'admin.group.ccm.seo_tetieres'|trans({}, 'BaseAdminBundle') }}</span>
+                                                <i class="fa pull-right fa-angle-left"></i>
+                                            </a>
+                                            <ul class="treeview-menu {% if active %} active{% endif %}">
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_SELECTION_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_competition_selection_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_competition_selection_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.selection'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_JURY_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_competition_jury_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_competition_jury_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.jury'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_CCM_SHORT_FILM_COMPETITION_TAB_PALMARES_ADMIN') %}
+                                                    <li class="{{ app.request.attributes.get('_route') == 'ccm_competition_palmares_edit' ? 'active' }}">
+                                                        <a data-edit="true"
+                                                           href="{{ path('ccm_competition_palmares_edit', {id: 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            {{ 'admin.ccm.menu.palmares'|trans({}, 'BaseAdminBundle') }}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        </li>
+                                    {% endif %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CCM_FAQ_PAGE_ADMIN') %}
                                         {% set active = app.request.attributes.get('_route') in
