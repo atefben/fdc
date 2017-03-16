@@ -2528,6 +2528,7 @@ var owInitFilter = function (isTabSelection) {
                         fnArraySortFilters();
                     });
                 }
+                fnArraySortFilters();
 
                 // close filters
                 $('body').on('click', '#filters', function () {
