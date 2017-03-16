@@ -2933,6 +2933,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Pages Participer, show_in_dashboard: false}
 
+    base.admin.ccm_participer_page_layer_collection:
+            class: Base\AdminBundle\Admin\CCM\CcmParticiperPageLayerCollectionAdmin
+            arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerCollection, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.participer, label: Strates Participer Collection, show_in_dashboard: false}
+
     base.admin.ccm_participer_page_layer:
         class: Base\AdminBundle\Admin\CCM\CcmParticiperPageLayerAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayer, ApplicationSonataAdminBundle:CRUD]

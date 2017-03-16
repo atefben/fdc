@@ -15,6 +15,7 @@ use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTwoColumnsTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmModule;
+use FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerCollection;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmRegisterProcedureTranslation;
@@ -151,8 +152,29 @@ class ParticipateManager
     {
         if ($page) {
 
-            return $this->em->getRepository(CcmParticiperPageLayerTranslation::class)
-                ->getByPageAndLocale($page->getSlug(), $this->requestStack->getMasterRequest()->getLocale());
+            $pageLayersCollection = $this->em->getRepository(CcmParticiperPageLayerCollection::class)
+                ->findBy(
+                    array(
+                        'page' => $page->getTranslatable()->getId(),
+                    )
+                );
+
+            if ($pageLayersCollection) {
+                $pageLayers = [];
+
+                foreach ($pageLayersCollection as $item) {
+                    $pageLayer = $this->em->getRepository(CcmParticiperPageLayerTranslation::class)
+                        ->getByTranslatableAndLocale($item->getLayer(), $this->requestStack->getMasterRequest()->getLocale());
+                    
+                    if ($pageLayer) {
+                        $pageLayers[] = $pageLayer;
+                    }
+                }
+                
+                return $pageLayers;
+            }
+
+            return null;
         }
 
         return null;
@@ -187,13 +209,15 @@ class ParticipateManager
     {
         $hasPF = false;
 
-        foreach ($layers as $modules) {
-            if ($hasPF)
-                break;
-            foreach ($modules as $module) {
-                if ($module->getType() == 'pf') {
-                    $hasPF = true;
+        if ($layers) {
+            foreach ($layers as $modules) {
+                if ($hasPF)
                     break;
+                foreach ($modules as $module) {
+                    if ($module->getType() == 'pf') {
+                        $hasPF = true;
+                        break;
+                    }
                 }
             }
         }

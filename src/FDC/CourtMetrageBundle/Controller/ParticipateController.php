@@ -121,11 +121,11 @@ class ParticipateController extends Controller
         $participateManager = $this->get('ccm.manager.participate');
 
         $participatePage = $participateManager->getParticipatePage($slug);
+        $pageLayers = $participateManager->getPageLayers($participatePage);
 
-        if (!$participatePage) {
+        if (!$participatePage || !$pageLayers) {
             throw new NotFoundHttpException();
         }
-        $pageLayers = $participateManager->getPageLayers($participatePage);
         $layerModules = $participateManager->getLayerModules($pageLayers);
         $hasPF = $participateManager->hasPF($layerModules);
 

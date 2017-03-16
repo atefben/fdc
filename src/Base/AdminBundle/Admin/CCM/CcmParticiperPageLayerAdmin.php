@@ -57,12 +57,6 @@ class CcmParticiperPageLayerAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('page', 'choice', array(
-                'label' => 'form.ccm.label.layer.page',
-                'translation_domain'        => 'BaseAdminBundle',
-                'choices' => $this->getPages(),
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ))
             ->add('icon', 'choice', array(
                 'label' => 'form.ccm.label.layer.icon',
                 'translation_domain'        => 'BaseAdminBundle',

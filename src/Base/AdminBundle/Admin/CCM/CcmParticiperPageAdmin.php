@@ -56,54 +56,66 @@ class CcmParticiperPageAdmin extends Admin
                 )
             )
             ->add('translations', 'a2lix_translations', array(
-                'locales' => ['fr','en'],
-                'label'  => false,
-                'fields' => array(
-                    'applyChanges'      => array(
-                        'field_type' => 'hidden',
-                        'attr'       => array(
-                            'class' => 'hidden',
+                    'locales' => ['fr','en'],
+                    'label'  => false,
+                    'fields' => array(
+                        'applyChanges'      => array(
+                            'field_type' => 'hidden',
+                            'attr'       => array(
+                                'class' => 'hidden',
+                            ),
+                        ),
+                        'title'          => array(
+                            'label'              => 'form.ccm.label.participer.page_title',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'constraints'        => array(
+                                new NotBlank(),
+                            ),
+                            'required' => true
+                        ),
+                        'name'          => array(
+                            'label'              => 'form.ccm.label.participer.page_name',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'constraints'        => array(
+                                new NotBlank(),
+                            ),
+                            'required' => true
+                        ),
+                        'slug'          => array(
+                            'label'              => 'form.ccm.label.participer.page_slug',
+                            'translation_domain' => 'BaseAdminBundle',
+                            'constraints'        => array(
+                                new NotBlank(),
+                            ),
+                            'required' => true
+                        ),
+                        'createdAt'         => array(
+                            'display' => false,
+                        ),
+                        'updatedAt'         => array(
+                            'display' => false,
+                        ),
+                        'status'            => array(
+                            'label'                     => 'form.ccm.label_status',
+                            'translation_domain'        => 'BaseAdminBundle',
+                            'field_type'                => 'choice',
+                            'choices'                   => CcmParticiperPageTranslation::getStatuses(),
+                            'choice_translation_domain' => 'BaseAdminBundle',
                         ),
                     ),
-                    'title'          => array(
-                        'label'              => 'form.ccm.label.participer.page_title',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
-                    'name'          => array(
-                        'label'              => 'form.ccm.label.participer.page_name',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
-                    'slug'          => array(
-                        'label'              => 'form.ccm.label.participer.page_slug',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
-                    ),
-                    'createdAt'         => array(
-                        'display' => false,
-                    ),
-                    'updatedAt'         => array(
-                        'display' => false,
-                    ),
-                    'status'            => array(
-                        'label'                     => 'form.ccm.label_status',
-                        'translation_domain'        => 'BaseAdminBundle',
-                        'field_type'                => 'choice',
-                        'choices'                   => CcmParticiperPageTranslation::getStatuses(),
-                        'choice_translation_domain' => 'BaseAdminBundle',
-                    ),
-                ),
-            ))
+                )
+            )
+            ->add('pageLayersCollection', 'sonata_type_collection', array(
+                'by_reference'       => false,
+                'required' => false,
+                'label'              => 'form.ccm.label.participer.layers_list',
+                'translation_domain' => 'BaseAdminBundle',
+            ), array(
+                    'edit'     => 'inline',
+                    'inline'   => 'table',
+                    'sortable' => 'position',
+                )
+            )
         ;
     }
 
