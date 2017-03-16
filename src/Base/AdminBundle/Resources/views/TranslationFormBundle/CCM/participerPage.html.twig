@@ -17,29 +17,22 @@
             {% endif %}
             <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h4 class="box-title">
-                                            {{ 'form.ccm.label.participer.page_config'|trans }}
-                                        </h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="col-md-12">
-                                            {{ form_row(form.parent.children.image) }}
-                                            {{ form_row(translationsFields.title) }}
-                                            {{ form_row(translationsFields.name) }}
-                                            {{ form_row(translationsFields.slug) }}
-                                        </div>
-                                    </div>
+                    {% if form.vars.default_locale == locale %}
+                        <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                    {{ 'form.ccm.label.participer.page_config'|trans }}
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    {{ form_row(translationsFields.title) }}
+                                    {{ form_row(translationsFields.name) }}
+                                    {{ form_row(translationsFields.slug) }}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% if form.vars.default_locale == locale %}
-                    <div class="col-md-12">
                         <div class="box-body">
                             <div class="fdc-widgets" data-form-widget="collection">
                                 <div class="item base-widget">
@@ -58,8 +51,21 @@
                             {% endif %}
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(form.parent.children.image) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% else %}
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="box-body">
                             <div class="fdc-widgets" data-form-widget="collection">
                                 <div class="item base-widget">

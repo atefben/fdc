@@ -3,6 +3,7 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -25,18 +26,44 @@ class CcmParticiperPageAdmin extends Admin
         $this->setTemplate('edit', 'BaseAdminBundle:CRUD:edit_polycollection.html.twig');
     }
 
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('id')
+            ->add('title', 'doctrine_orm_callback', array(
+                'callback'   => function ($queryBuilder, $alias, $field, $value) {
+                    if (!$value['value']) {
+                        return;
+                    }
+                    $queryBuilder->join("{$alias}.translations", 't');
+                    $queryBuilder->andWhere('t.locale = :locale');
+                    $queryBuilder->setParameter('locale', 'fr');
+                    $queryBuilder->andWhere('t.title LIKE :title');
+                    $queryBuilder->setParameter('title', '%' . $value['value'] . '%');
+                    return true;
+                },
+                'field_type' => 'text',
+                'label' => 'Titre de la page',
+            ))
+        ;
+        $datagridMapper = $this->addCreatedBetweenFilters($datagridMapper);
+        $datagridMapper = $this->addUpdatedBetweenFilters($datagridMapper);
+    }
+
     /**
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id', null, array('label' => 'filter.common.label_id'))
-            ->add('name')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'edit' => array(),
-                )
+            ->add('title', null, array(
+                'template' => 'BaseAdminBundle:News:list_title.html.twig',
+                'label' => 'Titre de la page',
+            ))
+            ->add('createdAt')
+            ->add('updatedAt')
+            ->add('_edit_translations', null, array(
+                'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig'
             ))
         ;
     }
@@ -115,7 +142,7 @@ class CcmParticiperPageAdmin extends Admin
                     'inline'   => 'table',
                     'sortable' => 'position',
                 )
-            )
+            )->end()
         ;
     }
 

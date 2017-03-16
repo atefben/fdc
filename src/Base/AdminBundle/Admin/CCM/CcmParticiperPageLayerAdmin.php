@@ -63,14 +63,6 @@ class CcmParticiperPageLayerAdmin extends Admin
                 'choices' => CcmParticiperPageLayer::getIcons(),
                 'choice_translation_domain' => 'BaseAdminBundle',
             ))
-            ->add('layerPosition', 'integer', array(
-                    'label' => 'form.ccm.label.layer.position',
-                    'required' => true,
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
-                )
-            )
             ->add('translations', 'a2lix_translations', array(
                 'locales' => ['fr','en'],
                 'label'  => false,
