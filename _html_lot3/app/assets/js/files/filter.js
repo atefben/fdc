@@ -182,15 +182,18 @@ var owInitFilter = function (isTabSelection) {
                                 if($(value).hasClass(selectedClass)){
 
 
-                                        //switch container
+                                    //switch container
                                     if(innerIndex > 2 && innerIndex < 6){
                                         activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                                     }else{
-                                        console.log(activeAppendedGridContainer.find('article').size());
-                                        //activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                        if(activeAppendedGridContainer.find('article').size() > 2){
+                                            activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                        }
+                                        console.log(activeAppendedGridContainer);
+
                                     }
                                     
-                                    console.log('add card to',activeAppendedGridContainer);
+                                    //console.log('add card to',activeAppendedGridContainer);
                                     activeAppendedGridContainer.find('.grid-01').append(value);
                                     innerIndex++;
                                 }
