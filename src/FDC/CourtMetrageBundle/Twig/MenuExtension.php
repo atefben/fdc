@@ -2,7 +2,8 @@
 
 namespace FDC\CourtMetrageBundle\Twig;
 
-use JMS\I18nRoutingBundle\Router\I18nLoader;
+
+use Symfony\Component\Routing\Router;
 
 class MenuExtension extends \Twig_Extension
 {
@@ -11,11 +12,21 @@ class MenuExtension extends \Twig_Extension
         'fdc_court_metrage_participer_page' => 'Participer page',
     );
 
+    /**
+     * @var Router
+     */
     private $router;
+
+    private $ccmDomain;
 
     public function setRouter($router)
     {
         $this->router = $router;
+    }
+
+    public function setCcmDomain($domain)
+    {
+        $this->ccmDomain = $domain;
     }
 
     public function getFunctions()
@@ -24,6 +35,13 @@ class MenuExtension extends \Twig_Extension
             new \Twig_SimpleFunction('isParticipate', array($this, 'isParticipate')),
             new \Twig_SimpleFunction('isValidMenuElement', array($this, 'isValidMenuElement')),
         );
+    }
+
+    public function getFilters()
+    {
+        return [
+            new \Twig_SimpleFilter('routeFromURL', array($this, 'getRouteNameFromURL'))
+        ];
     }
 
     public function isParticipate($route)
@@ -36,15 +54,32 @@ class MenuExtension extends \Twig_Extension
         return false;
     }
 
-    public function isValidMenuElement($route, $locale)
+    public function isValidMenuElement($route)
     {
         //check if external link
         if (!(false === filter_var($route, FILTER_VALIDATE_URL))) {
             return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getRouteNameFromURL($url)
+    {
+        $routeName = null;
+
+        if (parse_url($url, PHP_URL_HOST) == $this->ccmDomain) {
+            try {
+                $routeData = $this->router->match(parse_url($url, PHP_URL_PATH));
+                if (isset($routeData['_route'])) {
+                    $routeName = $routeData['_route'];
+                }
+            } catch (\Exception $e) {
+            }
         }
 
-        //check if localized route name exists in project's route collection
-        return (null === $this->router->getRouteCollection()->get($locale . I18nLoader::ROUTING_PREFIX . $route)) ? false : true;
+        
+        return $routeName;
     }
 
     public function getName()

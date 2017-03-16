@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use FDC\CourtMetrageBundle\Entity\CcmMainNavTranslation;
+use Symfony\Component\Validator\Constraints\Url;
 
 class CcmMainNavAdmin extends Admin
 {
@@ -68,6 +69,7 @@ class CcmMainNavAdmin extends Admin
                         'sonata_help'        => 'form.ccm.label.menu.main_nav_help',
                         'constraints'        => array(
                             new NotBlank(),
+                            new Url()
                         ),
                     ),
                     'createdAt'      => array(

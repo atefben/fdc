@@ -86,47 +86,28 @@
                 <ul class="main">
                     {% if mainNavs is defined and mainNavs is not null %}
                         {% for key, mainTab in mainNavs %}
-                            {% if mainTab.translatable.isActive and isValidMenuElement(mainTab.route, app.request.locale) %}
+                            {% if mainTab.translatable.isActive and isValidMenuElement(mainTab.route) %}
                                 <li>
-                                    {% set menuURL = ('http' in mainTab.route or 'https' in mainTab.route ? mainTab.route : url(mainTab.route)) %}
-                                    {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
-                                    {% set menuIsActive = ((mainTab.route == routeName)
-                                    or (mainTab.route == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
-                                    or (mainTab.route == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false) %}
+                                    {% set menuIsExtern = (fdc_court_metrage_domain in mainTab.route ? false : true) %}
+                                    {% set menuIsActive = ((mainTab.route|routeFromURL == routeName and routeName is not null)
+                                    or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
+                                    or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false) %}
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         {% for subTab in subNavs[key] %}
-                                            {% if subTab.translatable.isActive and subTab.route == routeName %}
+                                            {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName  and routeName is not null %}
                                                 {% set menuIsActive = true %}
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
-                                    {% if 'inscrire-un-film' in menuURL %}
-                                        {% if participatePages is defined and participatePages is not null %}
-                                            {% for page in participatePages %}
-                                                {% if routeName == 'fdc_court_metrage_participer_page' and routeParams['slug'] == page.slug %}
-                                                    {% set menuIsActive = true %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endif %}
-                                    <a href="{{ menuURL }}" {% if menuIsActive %}class="active"{% endif %} {% if menuIsExtern %}target="_blank"{% endif %}>{{ mainTab.name }}</a>
+                                    <a href="{{ mainTab.route }}" {% if menuIsActive %}class="active"{% endif %} {% if menuIsExtern %}target="_blank"{% endif %}>{{ mainTab.name }}</a>
                                     {% if subNavs[key] is defined and subNavs[key] is not null %}
                                         <ul class="tcenter">
                                             {% for subTab in subNavs[key] %}
-                                                {% if subTab.translatable.isActive and isValidMenuElement(subTab.route, app.request.locale)%}
-                                                    {% set submenuURL = ('http' in subTab.route or 'https' in subTab.route ? subTab.route : url(subTab.route)) %}
-                                                    {% set submenuIsExtern = (fdc_court_metrage_domain in submenuURL ? false : true) %}
-                                                    <li><a {% if subTab.route == routeName %}class="active"{% endif %} href="{{ submenuURL }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
+                                                {% if subTab.translatable.isActive and isValidMenuElement(subTab.route)%}
+                                                    {% set submenuIsExtern = (fdc_court_metrage_domain in subTab.route ? false : true) %}
+                                                    <li><a {% if subTab.route|routeFromURL == routeName and routeName is not null %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
                                                 {% endif %}
                                             {% endfor %}
-
-                                            {% if 'inscrire-un-film' in menuURL %}
-                                                {% if participatePages is defined and participatePages is not null %}
-                                                    {% for page in participatePages %}
-                                                        <li><a href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}" {% if routeName == 'fdc_court_metrage_participer_page' and routeParams['slug'] == page.slug %}class="active"{% endif %}>{{ page.name }}</a></li>
-                                                    {% endfor %}
-                                                {% endif %}
-                                            {% endif %}
                                             </ul>
                                     {% endif %}
                                 </li>

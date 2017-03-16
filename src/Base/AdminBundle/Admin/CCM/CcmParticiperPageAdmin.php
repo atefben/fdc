@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Debug\Exception\FatalErrorException;
+use Symfony\Component\Routing\Router;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
 
@@ -19,6 +21,30 @@ class CcmParticiperPageAdmin extends Admin
     );
 
     protected $translationDomain = 'BaseAdminBundle';
+
+    protected $ccmDomain;
+
+    /**
+     * @var Router
+     */
+    protected $router;
+
+    /**
+     * @param string $domain
+     */
+    public function setCcmDomain($domain)
+    {
+        $this->ccmDomain = $domain;
+    }
+
+    /**
+     * @param Router $router
+     */
+    public function setRouter($router)
+    {
+        $this->router = $router;
+    }
+
 
     public function configure()
     {
@@ -46,6 +72,11 @@ class CcmParticiperPageAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        /** @var CcmParticiperPageTranslation $trans */
+        $trans = $this->getSubject()->findTranslationByLocale('fr');
+        $slug = $trans ? $trans->getSlug() : null;
+        $url = 'http://' . $this->ccmDomain . $this->router->generate('fdc_court_metrage_participer_page', ['slug' => $slug ? $slug : 'page-slug']);
+
         $formMapper
             ->add('image', 'sonata_type_model_list',array(
                     'label' => 'form.ccm.label.participer.page_image',
@@ -83,6 +114,7 @@ class CcmParticiperPageAdmin extends Admin
                         ),
                         'slug'          => array(
                             'label'              => 'form.ccm.label.participer.page_slug',
+                            'sonata_help'        => 'L\'url sera: ' . $url,
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank(),

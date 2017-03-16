@@ -5,6 +5,7 @@ services:
           - name: twig.extension
       calls:
           - ['setRouter', ['@router']]
+          - ['setCcmDomain', ['%fdc_court_metrage_domain%']]
 
     base.twig.filter_extension:
       class: FDC\CourtMetrageBundle\Twig\FilterExtension
