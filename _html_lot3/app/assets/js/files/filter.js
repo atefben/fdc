@@ -235,7 +235,14 @@ var owInitFilter = function (isTabSelection) {
                             //hotfix bug first card container empty
                             console.log($('.contain-card').find('article').size(),$('.contain-card').find('article').size() == 0);
                             if($('.contain-card').find('article').size() == 0){
-                                $('.articles-wrapper .articles:first-child').find('article').each(function(){
+                                var firstFilledWrapper;
+                                $('.articles-wrapper .articles').each(function(){
+                                    if($(this).find('article').size() == 3){
+                                        firstFilledWrapper = $(this);
+                                        return false;
+                                    }
+                                })
+                                firstFilledWrapper.find('article').each(function(){
                                     $(this).removeAttr('style').detach().appendTo($('.contain-card .isotope-01'));
 
                                     //recompute heights
