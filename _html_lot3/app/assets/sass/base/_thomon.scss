@@ -40,6 +40,74 @@
     }
 }
 
+body#home .contain-card{
+    .isotope-01 .card{
+        &:first-of-type {
+            width: 650px;
+            height: auto;
+            padding-left: 0px;
+
+            .image {
+                height: 426px;
+            }
+        }
+
+    }   
+}
+
+body#home .articles-wrapper{
+    .articles {
+        .isotope-01 .card{
+            &:first-of-type {
+                width: 650px;
+                height: auto;
+                padding-left: 0px;
+                .image {
+                    height: 426px;
+                }
+            }
+        }
+
+        &.article-inverse {
+            .isotope-01 .card{
+                padding: 0px;
+                padding-right: 60px;
+
+                &:first-of-type {
+                
+                    width: 325px;
+                    height: 300px;
+                    min-height: 321px;
+
+                    .image {
+                        height: 167px;
+                    }
+                }
+
+                &:nth-child(odd) {
+                    width: 650px;
+                    height: auto;
+
+
+                    .image {
+                        height: 426px;
+                    }
+                }
+            }
+        }
+    }
+    .isotope-01 .card{
+        &:first-of-type {
+            width: 650px;
+            height: auto;
+
+            .image {
+                height: 426px;
+            }
+        }
+    }
+}
+
 .block-accordion .active .contain-infos a {
     display: inline-block;
     color: $gold;    
