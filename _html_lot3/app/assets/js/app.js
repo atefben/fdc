@@ -28,7 +28,7 @@ homepageCards.init = function(){
         homepageCards.config.cards.push($(this));
     });
 
-    console.log('cards after init',cards);
+    console.log('cards after init',homepageCards.config.cards);
 }
 /* thomon - end homepage ajax module rework */
 
