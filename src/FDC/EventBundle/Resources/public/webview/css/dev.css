@@ -153,6 +153,7 @@
 	}
 	.android #fakebar {
 		top: 212px;
+		width: 78%;
 	}
 }
 
