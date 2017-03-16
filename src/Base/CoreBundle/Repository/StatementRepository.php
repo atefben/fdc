@@ -653,7 +653,7 @@ class StatementRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->setParameter('inWebTv', true)
-            ->setParameter('status', ::STATUS_PUBLISHED)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()
