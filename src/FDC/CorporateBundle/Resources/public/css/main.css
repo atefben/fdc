@@ -7061,11 +7061,13 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type .image {
 .articles-list .item.communique .picto {
   background-color: #c8a461;
   color: #000;
+  text-align: center;
 }
 
 .home .item.communique .picto {
   background-color: #c8a461;
   color: #000;
+  text-align: center;
 }
 
 .p-register .info strong {
