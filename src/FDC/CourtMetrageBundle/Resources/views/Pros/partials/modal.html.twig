@@ -1,13 +1,7 @@
 
             <div class="half">
                 <div class="photo">
-                    <div class="photoContainer">
-                        {% if pro.translatable.image is defined and pro.translatable.image is not null %}
-                            <img src="{% path pro.translatable.image|trans_fallback("file"), "reference" %}" alt="">
-                        {% else %}
-                            <img class="containerFit" src="{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}" alt="">
-                        {% endif %}
-                    </div>
+                    <div class="photoContainer backgroundPhotoContainer {{ pro.translatable.image is defined and pro.translatable.image is not null ? 'has-pro-image' : '' }}" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "reference" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})"></div>
                     {% if pro.translatable.isShortFilmCorner %}
                         <div class="sfcLogo">
                             <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
