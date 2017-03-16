@@ -4442,13 +4442,14 @@ var initRs = function () {
             } else {
                 // TODO envoie du mail //
                 var u = $(cls).hasClass('media') ? GLOBALS.urls.shareEmailMediaUrl : GLOBALS.urls.shareEmailUrl;
-
+                console.log($(cls).find('form#form').serialize());
+                console.log($(cls).find('form#form').serializeArray());
                 $.ajax({
                     type: "POST",
                     dataType: "json",
                     cache: false,
                     url: u,
-                    data: $(cls).find('form#form').serialize(),
+                    data: $(cls).find('form#form').serializeArray(),
                     success: function (data) {
                         if (data.success == false) {
 
