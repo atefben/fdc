@@ -2477,20 +2477,16 @@ var owInitFilter = function (isTabSelection) {
                             var activeAppendedGridContainer = $('.contain-card');
                             $.each(isotopeHomepageItems,function(index,value){
                                 if($(value).hasClass(selectedClass) || selectedClass == 'all'){
-                                    //OK card
-                                    if(innerIndex < 3){
-                                        $('.contain-card .isotope-01').append(value);
-                                    }else{
-                                        if(innerIndex%3 == 0 && innerIndex != 3){
-                                            //switch container
-                                            if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
-                                                activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
-                                            }else{
-                                                activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
-                                            }
+
+                                    if(innerIndex%3 == 0 && innerIndex != 0){
+                                        //switch container
+                                        if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
+                                            activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
+                                        }else{
+                                            activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
-                                        activeAppendedGridContainer.find('.isotope-01').append(value);
                                     }
+                                    activeAppendedGridContainer.find('.isotope-01').append(value);
                                     innerIndex++;
                                 }
                             });
