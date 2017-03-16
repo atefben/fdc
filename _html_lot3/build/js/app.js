@@ -2563,12 +2563,13 @@ var owInitFilter = function (isTabSelection) {
                             console.log($('.contain-card').find('article').size(),$('.contain-card').find('article').size() == 0);
                             if($('.contain-card').find('article').size() == 0){
                                 $('.articles-wrapper .articles:first-child').find('article').each(function(){
-                                    $(this).detach().appendTo($('.contain-card .isotope-01'));
+                                    $(this).removeAttr('style').detach().appendTo($('.contain-card .isotope-01'));
 
                                     //recompute heights
+                                    $('.contain-card').css('height',650);
+                                    $('.articles-wrapper .articles:first-child').css('height',0);
                                     $('.isotope-01').each(function(){
-                                        $('.contain-card').css('height',650);
-                                        $('.articles-wrapper .articles:first-child').css('height',0);
+                                        $(this).isotope();
                                     });
 
                                 })
