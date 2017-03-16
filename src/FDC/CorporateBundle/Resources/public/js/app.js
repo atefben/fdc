@@ -2826,11 +2826,11 @@ var owInitGrid = function (id) {
                     fnClickHome();
                 });
             }
+            fnClickHome();
 
         }else{
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                console.log('click mediatheque');
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');
