@@ -151,7 +151,7 @@ var owInitGrid = function (id) {
                 e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');
-                console.log('loadin');
+
                 $.post({
                     type: 'POST',
                     url: url,
@@ -174,7 +174,12 @@ var owInitGrid = function (id) {
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
-                        }
+                        }else{
+                            //visible buton = no infinite load & undefined button, let's remove it
+                            if($(this).is(':visible')){
+                                $(this).remove();
+                            }
+                        }moreBtn
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
