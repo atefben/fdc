@@ -147,7 +147,7 @@ var owInitFilter = function (isTabSelection) {
 
                             //get accurate data
                             var innerIndex = 0;
-                            var activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
+                            var activeAppendedGridContainer = $('.contain-card');
                             $.each(isotopeHomepageItems,function(index,value){
                                 if($(value).hasClass(selectedClass) || selectedClass == 'all'){
                                     //OK card
@@ -155,7 +155,12 @@ var owInitFilter = function (isTabSelection) {
                                         $('.contain-card .isotope-01').append(value);
                                     }else{
                                         if(innerIndex%3 == 0 && innerIndex != 3){
-                                            activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                            //switch container
+                                            if(activeAppendedGridContainer.is('.contain-card .articles:first-child')){
+                                                activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
+                                            }else{
+                                                activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                            }
                                         }
                                         activeAppendedGridContainer.find('.isotope-01').append(value);
                                     }
