@@ -53,7 +53,7 @@ class MenuManager
 
                 foreach ($mainNavCollection as $item) {
                     $tab = $this->em->getRepository(CcmMainNavTranslation::class)
-                        ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale'), $item->getMainNav());
+                        ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale', 'fr'), $item->getMainNav());
 
                     if ($tab) {
                         $mainNavs[] = $tab;
@@ -89,7 +89,7 @@ class MenuManager
 
                     foreach ($subNavCollection as $item) {
                         $subTab = $this->em->getRepository(CcmSubNavTranslation::class)
-                            ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale'), $item->getSubNav());
+                            ->getByTranslatableAndLocale($this->requestStack->getMasterRequest()->get('_locale', 'fr'), $item->getSubNav());
 
                         if ($subTab) {
                             $subNavs[$key][] = $subTab;
@@ -106,6 +106,6 @@ class MenuManager
     public function getParticipatePages()
     {
         return $this->em->getRepository(CcmParticiperPageTranslation::class)
-            ->getAllPagesByLocale($this->requestStack->getMasterRequest()->getLocale());
+            ->getAllPagesByLocale($this->requestStack->getMasterRequest()->get('_locale', 'fr'));
     }
 }
