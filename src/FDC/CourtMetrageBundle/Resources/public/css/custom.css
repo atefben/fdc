@@ -269,3 +269,7 @@ body.chocolat-open.fixed {
 .custom-block {
     margin: 0px auto;
 }
+
+.confcourt .eventPhoto .eventPhotoContainer.has-pro-image {
+    background-position: center center;
+}
