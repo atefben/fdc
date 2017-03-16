@@ -24,7 +24,13 @@
                 {{ macroSelf.imageArticle(article, '572x362', '1144x724') }}
             </div>
             <a href="{{ articleUrl }}" class="linkImage"></a>
-            <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
+            <span class="picto">
+                {% if type == 'communique' %}
+                <i class="icon icon-communique"></i>
+                {% else %}
+                <i class="icon icon-{{ article|get_news_type }}"></i>
+                {% endif %}
+            </span>
         </div>
         <div class="info">
             <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a>
