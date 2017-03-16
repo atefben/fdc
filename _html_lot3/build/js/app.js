@@ -2485,7 +2485,7 @@ var owInitFilter = function (isTabSelection) {
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
-                                    console.log(activeAppendedGridContainer);
+                                    console.log('add card',value,activeAppendedGridContainer,activeAppendedGridContainer.find('.isotope-01'));
                                     activeAppendedGridContainer.find('.isotope-01').append(value);
                                     innerIndex++;
                                 }
