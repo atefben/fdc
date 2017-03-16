@@ -41,6 +41,12 @@
                     {% if form.vars.default_locale == locale %}
                     <div class="col-md-12">
                         <div class="box-body">
+                            <div class="fdc-widgets" data-form-widget="collection">
+                                <div class="item base-widget">
+                                    <h4><strong>{{ 'form.ccm.label.participer.layers_widget'|trans }}</strong></h4>
+                                    {{ form_row(form.parent.children.pageLayersCollection) }}
+                                </div>
+                            </div>
                             {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                 {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                             {% elseif is_granted('ROLE_JOURNALIST') %}
@@ -53,8 +59,14 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="box-body">
+                            <div class="fdc-widgets" data-form-widget="collection">
+                                <div class="item base-widget">
+                                    <h4><strong>{{ 'form.ccm.label.participer.layers_widget'|trans }}</strong></h4>
+                                    {{ form_row(form.parent.children.pageLayersCollection) }}
+                                </div>
+                            </div>
                             {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                 {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                             {% elseif is_granted('ROLE_JOURNALIST') %}

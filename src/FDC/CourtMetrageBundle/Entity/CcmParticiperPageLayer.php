@@ -54,11 +54,10 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
     protected $icon;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="page", type="string", length=255, nullable=true)
+     * @var
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="layer")
      */
-    protected $page;
+    protected $pageLayersCollection;
 
     /**
      * @var ArrayCollection
@@ -71,6 +70,7 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
     {
         $this->translations = new ArrayCollection();
         $this->modules = new ArrayCollection();
+        $this->pageLayersCollection = new ArrayCollection();
     }
 
     public function __toString()
@@ -182,18 +182,30 @@ class CcmParticiperPageLayer implements CcmIconInterface, TranslateMainInterface
     }
 
     /**
-     * @return string
+     * @param CcmParticiperPageLayerCollection $layerCollection
+     * @return $this
      */
-    public function getPage()
+    public function addPageLayersCollection(\FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerCollection $layerCollection)
     {
-        return $this->page;
+        $layerCollection->setLayer($this);
+        $this->pageLayersCollection[] = $layerCollection;
+
+        return $this;
     }
 
     /**
-     * @param string $page
+     * @param CcmParticiperPageLayerCollection $layerCollection
      */
-    public function setPage($page)
+    public function removePageLayersCollection(\FDC\CourtMetrageBundle\Entity\CcmParticiperPageLayerCollection $layerCollection)
     {
-        $this->page = $page;
+        $this->pageLayersCollection->removeElement($layerCollection);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPageLayersCollection()
+    {
+        return $this->pageLayersCollection;
     }
 }

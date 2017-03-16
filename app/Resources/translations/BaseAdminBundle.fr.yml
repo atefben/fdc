@@ -1056,6 +1056,9 @@ form:
                 page_title: Titre de la page
                 page_name: Nom de la page
                 page_slug: Page slug
+                layers_widget: Ajouter strates participer
+                layers_list: Participer à la liste des couches
+                layer_collection: Strates participer
             icon:
                 rendre: Rendre
                 plans: Plans
