@@ -7103,15 +7103,11 @@ homepageCards.init = function(){
 }
 
 homepageCards.buildFilters = function(){
-    homepageCards.config.cards.each(function(){
 
-    });
 }
 
 homepageCards.buildFilteredArray = function(){
-    homepageCards.config.cards.each(function(){
 
-    });
 }
 
 /* thomon - end homepage ajax module rework */
