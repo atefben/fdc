@@ -26,11 +26,18 @@ $(document).ready(function () {
         $('body').addClass('ie');
     }
 
+    /* thomon - homepage ajax module rework */
+    if($('.ajax-filter-cards-container').length){
+        var homepageCards = [];
+
+        //store existing cards
+
+    }
+    /* thomon - end homepage ajax module rework */
 
     initHeaderSticky();
-    // owInitLinkChangeEffect(); add ??
+    // owInitLinkChangeEffect();
 
-    //gestion des cookie a faire ici
 
     owInitPopin('popin-landing-e');
     owInitPopin('popin-timer-banner');
