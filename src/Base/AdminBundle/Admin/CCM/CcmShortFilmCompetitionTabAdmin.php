@@ -80,6 +80,19 @@ class CcmShortFilmCompetitionTabAdmin extends Admin
                     'required' => true
                 )
             )
+            ->add('date', 'choice', array(
+                    'label'    => 'form.ccm.label.film_date',
+                    'required' => true,
+                    'choices' => $this->buildYearChoices()
+                )
+            );
         ;
+    }
+
+    protected function buildYearChoices() {
+        $distance = 5;
+        $yearsBefore = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") - $distance));
+        $yearsAfter = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") + $distance));
+        return array_combine(range($yearsBefore, $yearsAfter), range($yearsBefore, $yearsAfter));
     }
 }

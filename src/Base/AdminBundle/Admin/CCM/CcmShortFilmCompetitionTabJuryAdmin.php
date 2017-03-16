@@ -40,20 +40,7 @@ class CcmShortFilmCompetitionTabJuryAdmin extends CcmShortFilmCompetitionTabAdmi
                     'btn_add' => false,
                 )
             )
-            ->add('dateJury', 'choice', array(
-                    'label'    => 'form.ccm.label.film_jury_date',
-                    'required' => true,
-                    'choices' => $this->buildYearChoices()
-                )
-            );
         ;
-    }
-
-    protected function buildYearChoices() {
-        $distance = 5;
-        $yearsBefore = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") - $distance));
-        $yearsAfter = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y") + $distance));
-        return array_combine(range($yearsBefore, $yearsAfter), range($yearsBefore, $yearsAfter));
     }
 
     public function prePersist($page)
