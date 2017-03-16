@@ -2413,10 +2413,10 @@ var owInitFilter = function (isTabSelection) {
                         var $this = $(this);
                         var grid = $this.find('.isotope-01');
                         $this.find('article').each(function(index,value){
-                            if(!contains.call(isotopeHomepageItems, value)){
+                            if(!$.inArray(value,isotopeHomepageItems)){
                                 isotopeHomepageItems.push(value);
                             }
-                            console.log(contains.call(isotopeHomepageItems, value));
+                            console.log($.inArray(value,isotopeHomepageItems));
                         });
                     });
                 }
@@ -2516,8 +2516,8 @@ var owInitFilter = function (isTabSelection) {
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
-                                    console.log('add card',value,activeAppendedGridContainer,activeAppendedGridContainer.find('.isotope-01'));
-                                    activeAppendedGridContainer.find('.isotope-01').append(value);
+                                    console.log('add card',value,activeAppendedGridContainer);
+                                    activeAppendedGridContainer.find('.grid-01').append(value);
                                     innerIndex++;
                                 }
                             });
@@ -2784,7 +2784,7 @@ var owInitGrid = function (id) {
 
         if($('.home').length){
             //#home-news-statements-more
-            var fnClickHome = function(){
+            /*var fnClickHome = function(){
                 $('.read-more.ajax-request').on('click', function(e){
                     e.preventDefault();
                     var $this = $(this);
@@ -2855,7 +2855,7 @@ var owInitGrid = function (id) {
                     });
                 });
             }
-            fnClickHome();
+            fnClickHome();*/
 
         }else{
 
