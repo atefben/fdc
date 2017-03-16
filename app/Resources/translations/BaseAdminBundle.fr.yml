@@ -844,10 +844,10 @@ form:
             menu:
                 urlProgram: URL de bouton Programme
                 urlCatalog: URL de bouton Catalogue
-                urlRegister: URL de bouton Registre
+                urlRegister: URL de bouton Inscrire un film
                 program_pic_is_active: Le bouton Programme est visible?
                 catalog_pic_is_active: Le bouton Catalogue est visible?
-                register_pic_is_active: Le bouton Registre est visible?
+                register_pic_is_active: Le bouton Inscrire un film est visible?
                 main_nav_list: Liste des onglets de navigation principale
                 main_nav_item: Onglet de navigation principal
                 main_nav_name: Nom de l'onglet de navigation principal

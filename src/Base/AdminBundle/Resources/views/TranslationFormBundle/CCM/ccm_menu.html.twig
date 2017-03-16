@@ -18,27 +18,55 @@
                 <div class="row">
                     {% if form.vars.default_locale == locale %}
                         <div class="col-md-12">
+                            <br>
+                            {{ form_label(translationsFields.programPicIsActive) }}
+                            {{ form_widget(translationsFields.programPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlProgram) }}
                             {{ form_widget(translationsFields.urlProgram) }}
-                            </br>
+                            <br>
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_label(translationsFields.catalogPicIsActive) }}
+                            {{ form_widget(translationsFields.catalogPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlCatalog) }}
                             {{ form_widget(translationsFields.urlCatalog) }}
-                            </br>
+                            <br>
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_label(translationsFields.registerPicIsActive) }}
+                            {{ form_widget(translationsFields.registerPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlRegister) }}
                             {{ form_widget(translationsFields.urlRegister) }}
-                            </br>
+                            <br>
                         </div>
                     {% else %}
-                        <div class="col-md-8">
+                        <div class="col-md-12">
+                            <br>
+                            {{ form_label(translationsFields.programPicIsActive) }}
+                            {{ form_widget(translationsFields.programPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlProgram) }}
                             {{ form_widget(translationsFields.urlProgram) }}
-                            </br>
+                            <br>
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_label(translationsFields.catalogPicIsActive) }}
+                            {{ form_widget(translationsFields.catalogPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlCatalog) }}
                             {{ form_widget(translationsFields.urlCatalog) }}
-                            </br>
+                            <br>
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_label(translationsFields.registerPicIsActive) }}
+                            {{ form_widget(translationsFields.registerPicIsActive) }}
+                            <br>
                             {{ form_label(translationsFields.urlRegister) }}
                             {{ form_widget(translationsFields.urlRegister) }}
-                            </br>
+                            <br>
                         </div>
                     {% endif %}
                 </div>
