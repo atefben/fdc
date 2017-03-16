@@ -2563,12 +2563,12 @@ var owInitFilter = function (isTabSelection) {
                             console.log($('.contain-card').find('article').size());
                             if($('.contain-card').find('article').size() == 0){
                                 $('.articles-wrapper .articles:first-child').find('article').each(function(){
-                                    $(this).detach().appendTo($('.contain-card'));
+                                    $(this).detach().appendTo($('.contain-card .isotope-01'));
 
                                     //recompute heights
                                     $('.isotope-01').each(function(){
                                         $(this).isotope();
-                                    })
+                                    });
 
                                 })
                             }
