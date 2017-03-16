@@ -2924,8 +2924,8 @@ var owInitGrid = function (id) {
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
                             console.log('no btn');
-                            if($(this).is(':visible')){
-                                $(this).remove();
+                            if($this.is(':visible')){
+                                $this.remove();
                             }
                         }moreBtn
                         $gridMore.imagesLoaded(function () {
