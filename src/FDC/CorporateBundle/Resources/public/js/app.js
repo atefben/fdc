@@ -2508,12 +2508,13 @@ var owInitFilter = function (isTabSelection) {
                             $.each(isotopeHomepageItems,function(index,value){
                                 if($(value).hasClass(selectedClass)){
 
-                                    if(innerIndex%3 == 0 && innerIndex != 0){
+
                                         //switch container
                                         if(innerIndex > 2 && innerIndex < 6){
                                             activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
                                         }else{
-                                            activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
+                                            console.log(activeAppendedGridContainer);
+                                            //activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
                                     }
                                     console.log('add card to',activeAppendedGridContainer);
