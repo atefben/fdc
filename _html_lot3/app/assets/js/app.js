@@ -20,10 +20,14 @@
 var homepageCards = homepageCards || {};
 homepageCards.config = {
     cards: [],
+    cardsByFilter: [],
+    filters: [],
     cardsContainer: $('.ajax-filter-cards-container')
 }
 
 homepageCards.init = function(){
+
+    //populate cars array
     homepageCards.config.cardsContainer.each(function(index,value){
         var container = $(this);
         container.find('article').each(function(){
@@ -32,7 +36,23 @@ homepageCards.init = function(){
     });
 
     console.log('cards after init', homepageCards.config.cards);
+
+    homepageCards.buildFilters();
+    homepageCards.buildFilteredArray();
 }
+
+homepageCards.buildFilters = function(){
+    homepageCards.config.cards.each(function(){
+
+    });
+}
+
+homepageCards.buildFilteredArray = function(){
+    homepageCards.config.cards.each(function(){
+
+    });
+}
+
 /* thomon - end homepage ajax module rework */
 
 $(document).ready(function () {
