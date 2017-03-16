@@ -7035,6 +7035,7 @@ body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:first-of
 body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) {
   width: 650px;
   height: auto;
+  padding-right: 0px;
 }
 body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) .image {
   height: 426px;
