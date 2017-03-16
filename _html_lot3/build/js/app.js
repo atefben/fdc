@@ -7077,6 +7077,22 @@ $(document).ready(function () {
 /*  =INIT
  ----------------------------------------------------------------------------- */
 
+/* thomon - homepage ajax module rework */
+var homepageCards = homepageCards || {};
+homepageCards.config = {
+    cards: [],
+    cardsContainer: $('.ajax-filter-cards-container');
+}
+
+homepageCards.init = function(){
+    homepageCards.config.cardsContainer.each(function(index,value){
+        homepageCards.config.cards.push($(this));
+    });
+
+    console.log('cards after init',cards);
+}
+/* thomon - end homepage ajax module rework */
+
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
@@ -7087,14 +7103,10 @@ $(document).ready(function () {
         $('body').addClass('ie');
     }
 
-    /* thomon - homepage ajax module rework */
     if($('.ajax-filter-cards-container').length){
-        var homepageCards = [];
-
-        //store existing cards
-
+        homepageCards.init();
     }
-    /* thomon - end homepage ajax module rework */
+    
 
     initHeaderSticky();
     // owInitLinkChangeEffect();

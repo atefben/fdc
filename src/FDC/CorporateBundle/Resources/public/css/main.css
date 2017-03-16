@@ -7011,6 +7011,9 @@ body#home .contain-card .isotope-01 .card:first-of-type {
 body#home .contain-card .isotope-01 .card:first-of-type .image {
   height: 426px;
 }
+body#home .contain-card .isotope-01 .card:first-of-type strong {
+  font-size: 2.25rem;
+}
 
 body#home .articles-wrapper .articles .isotope-01 .card:first-of-type {
   width: 650px;
@@ -7019,6 +7022,9 @@ body#home .articles-wrapper .articles .isotope-01 .card:first-of-type {
 }
 body#home .articles-wrapper .articles .isotope-01 .card:first-of-type .image {
   height: 426px;
+}
+body#home .articles-wrapper .articles .isotope-01 .card:first-of-type strong {
+  font-size: 2.25rem;
 }
 body#home .articles-wrapper .articles.article-inverse .isotope-01 .card {
   padding: 0px;
@@ -7039,6 +7045,9 @@ body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-chil
 }
 body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) .image {
   height: 426px;
+}
+body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) strong {
+  font-size: 2.25rem;
 }
 body#home .articles-wrapper .isotope-01 .card:first-of-type {
   width: 650px;

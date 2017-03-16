@@ -50,6 +50,10 @@ body#home .contain-card{
             .image {
                 height: 426px;
             }
+
+            strong{
+                font-size: 2.25rem;
+            }
         }
 
     }   
@@ -64,6 +68,10 @@ body#home .articles-wrapper{
                 padding-left: 0px;
                 .image {
                     height: 426px;
+                }
+
+                strong{
+                    font-size: 2.25rem;
                 }
             }
         }
@@ -91,6 +99,10 @@ body#home .articles-wrapper{
 
                     .image {
                         height: 426px;
+                    }
+
+                    strong{
+                        font-size: 2.25rem;
                     }
                 }
             }
