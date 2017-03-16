@@ -2416,7 +2416,6 @@ var owInitFilter = function (isTabSelection) {
                             if(!$.inArray(value,isotopeHomepageItems)){
                                 isotopeHomepageItems.push(value);
                             }
-                            console.log($.inArray(value,isotopeHomepageItems));
                         });
                     });
                 }
@@ -2486,7 +2485,6 @@ var owInitFilter = function (isTabSelection) {
                                 $('.articles-wrapper article').each(function(index,value){
                                     isotopeHomepageItems.push(value);
                                 });
-                                console.log(isotopeHomepageItems);
                             }
 
                             $('.contain-card .isotope-01').each(function(){
@@ -2516,7 +2514,6 @@ var owInitFilter = function (isTabSelection) {
                                         if(activeAppendedGridContainer.find('article').size() > 2){
                                             activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
                                         }
-                                        console.log(activeAppendedGridContainer);
 
                                     }
                                     
@@ -2563,6 +2560,7 @@ var owInitFilter = function (isTabSelection) {
                         owInitGrid('filter');
                         var t = window.setTimeout(function(){
                             //hotfix bug first card container empty
+                            console.log(('.contain-card').find('article').size());
                             if($('.contain-card').find('article').size() == 0){
                                 $('.articles-wrapper .articles:first-child').find('article').each(function(){
                                     $(this).detach().appendTo($('.contain-card'));
