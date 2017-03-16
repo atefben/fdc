@@ -242,8 +242,11 @@ var owInitFilter = function (isTabSelection) {
                                     $('.contain-card').css('height',650);
                                     var wrapperHeight = 0;
                                     $('.articles-wrapper .articles').each(function(){
+                                        if($(this).find('article').size() == 0){
+                                            $(this).css('height',0);
+                                        }
                                         wrapperHeight += $(this).outerHeight();
-                                        $(this).css('height',0);
+                                        
                                     });
                                     $('.articles-wrapper').css('height',wrapperHeight);
                                     $('.isotope-01').each(function(){
