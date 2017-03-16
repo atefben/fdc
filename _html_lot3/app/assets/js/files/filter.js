@@ -235,7 +235,12 @@ var owInitFilter = function (isTabSelection) {
 
                         owInitGrid('filter');
                         var t = window.setTimeout(function(){
-                            console.log($('.contain-card').find('article').size());
+                            //hotfix bug first card container empty
+                            if($('.contain-card').find('article').size() == 0){
+                                $('.articles-wrapper .articles:first-child').find('article').each(function(){
+                                    $(this).detach().appendTo($('.contain-card'));
+                                })
+                            }
                             window.clearTimeout(t);
                         },200);
                         fnArraySortFilters();
