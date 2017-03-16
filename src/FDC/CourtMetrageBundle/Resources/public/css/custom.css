@@ -61,10 +61,7 @@
 .half-div.v2 .half-photo .photo-container {
     overflow: hidden;
 }
-.single-article .chapeau, .single-article .text {
-    text-align: left;
-    max-width: 100%;
-}
+
 .visible-popin {
     z-index: 1007;
 }
