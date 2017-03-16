@@ -210,3 +210,168 @@ services:
             - ['setSonataAdmin', ['@base.admin.ccm_sfc_widget_video_youtube_dummy']]
             - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
     # end Short film corner widget forms
+
+    base.admin.form.film_register_procedure_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmFilmRegisterProcedureType
+        tags:
+            - { name: form.type, alias: 'film_register_procedure'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_film_register_procedure_dummy']]
+            - ['setRegisterProcedureAdmin', ['@base.admin.ccm_register_procedure']]
+
+    base.admin.form.homepage_slider_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepageSliderType
+        tags:
+            - { name: form.type, alias: 'homepage_slider_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage_slider_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
+
+
+    base.admin.form.homepage_push_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\HomepagePushType
+        tags:
+            - { name: form.type, alias: 'homepage_push_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_homepage_push_top_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
+
+    #CCM - pro's single description block
+    base.admin.form.ccm_single_description_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\SingleDescriptionType
+        tags:
+            - { name: form.type, alias: 'single_description_type'}
+
+    #CCM - pro's double description block
+    base.admin.form.ccm_double_description_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\DoubleDescriptionType
+        tags:
+            - { name: form.type, alias: 'double_description_type'}
+
+    base.admin.form.ccm_label_section_content_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_type'}
+
+    base.admin.form.ccm_label_section_content_text_type:
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentTextType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_text_type'}
+
+    base.admin.form.ccm_label_section_position:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionPositionType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_position_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_label_section_position_dummy']]
+            - ['setLabelSectionAdmin', ['@base.admin.ccm_label_section']]
+
+    #CCM - footer content type text
+    base.admin.form.ccm_content_text_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ContentTextType
+        tags:
+            - { name: form.type, alias: 'content_text_type'}
+
+    base.admin.form.ccm_label_section_content_one_column_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentOneColumnType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_one_column_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_one_column_image_dummy_admin']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_one_column_dummy_admin']]
+            - ['setContentFilesAdmin', ['@base.admin.ccm_label_content_files']]
+
+    base.admin.form.ccm_label_section_content_two_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentTwoColumnsType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_two_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_two_columns_image_dummy_admin']]
+            - ['setSonataTwoAdmin', ['@base.admin.ccm_label_section_content_two_columns_two_image_dummy_admin']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_two_columns_dummy_admin']]
+            - ['setSonataAdminContentFilesTwo', ['@base.admin.ccm_label_section_content_two_columns_two_dummy_admin']]
+            - ['setContentFilesAdmin', ['@base.admin.ccm_label_content_files']]
+
+    base.admin.form.ccm_label_section_content_three_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\CcmLabelSectionContentThreeColumnsType
+        tags:
+            - { name: form.type, alias: 'ccm_label_section_content_three_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_label_section_content_three_columns_image_dummy_admin']]
+            - ['setSonataTwoAdmin', ['@base.admin.ccm_label_section_content_three_columns_two_image_dummy_admin']]
+            - ['setSonataThreeAdmin', ['@base.admin.ccm_label_section_content_three_columns_three_image_dummy_admin']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.ccm_media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.ccm_label_section_content_three_columns_dummy_admin']]
+            - ['setSonataAdminContentFilesTwo', ['@base.admin.ccm_label_section_content_three_columns_two_dummy_admin']]
+            - ['setSonataAdminContentFilesThree', ['@base.admin.ccm_label_section_content_three_columns_three_dummy_admin']]
+            - ['setContentFilesAdmin', ['@base.admin.ccm_label_content_files']]
+
+    base.admin.form.ccm_module_image_text_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleImageTextType
+        tags:
+            - { name: form.type, alias: 'module_image_text_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_image_text']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image_simple']]
+
+    base.admin.form.ccm_module_partenaires_fournisseur_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModulePFType
+        tags:
+            - { name: form.type, alias: 'module_partenaires_fournisseur_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_partenaires_fournisseur']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image_simple']]
+
+    base.admin.form.ccm_module_pictos_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModulePictosType
+        tags:
+            - { name: form.type, alias: 'module_pictos_type'}
+
+    base.admin.form.ccm_module_three_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleThreeColumnsType
+        tags:
+            - { name: form.type, alias: 'module_three_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.ccm_module_three_columns']]
+            - ['setMediaImageAdmin', ['@base.admin.ccm_media_image']]
+            - ['setMediaFileAdmin', ['@base.admin.ccm_media_pdf']]
+
+    base.admin.form.ccm_module_four_columns_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleFourColumnsType
+        tags:
+            - { name: form.type, alias: 'module_four_columns_type'}
+
+    base.admin.form.ccm_module_subtitle_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleSubtitleType
+        tags:
+            - { name: form.type, alias: 'module_subtitle_type'}
+
+    base.admin.form.ccm_module_transport_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleTransportType
+        tags:
+            - { name: form.type, alias: 'module_transport_type'}
+
+    base.admin.form.ccm_module_google_maps_type:
+        scope: prototype
+        class: FDC\CourtMetrageBundle\Form\Type\ModuleGoogleMapsType
+        tags:
+            - { name: form.type, alias: 'module_google_maps_type'}
