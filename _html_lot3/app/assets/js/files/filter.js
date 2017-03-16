@@ -240,7 +240,8 @@ var owInitFilter = function (isTabSelection) {
 
                                     //recompute heights
                                     $('.isotope-01').each(function(){
-                                        $(this).isotope();
+                                        $('.contain-card').css('height',650);
+                                        $('.articles-wrapper .articles:first-child').css('height',0);
                                     });
 
                                 })
