@@ -51,7 +51,10 @@ homepageCards.ajaxClickEvent = function(button){
         var $this = $(this);
         var url = $(this).attr('href');
         var container = $(this).closest('.block-01');
-        var dateTime = $('.last-element').data('time');
+        var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
+        if(typeof dateTime === 'undefined'){
+            dateTime = $('.contain-card article:last-child').data('time');
+        }
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         //fake animation before the real computing
