@@ -63,7 +63,7 @@ homepageCards.events = function(){
                 $('html,body').animate({
                     scrollTop: offset
                 });
-                
+
                 //add new filters
                 if($(data).filter('.compute-filters').length){
                     $(data).filter('.compute-filters').find('span').each(function(){
@@ -80,6 +80,7 @@ homepageCards.events = function(){
                 $(data).find('article').each(function(){
                     newCards.push($(this));
                 });
+                console.log(newCards.length);
                 homepageCards.insertCards(newCards);
                 var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
                 homepageCards.emptyCards();
