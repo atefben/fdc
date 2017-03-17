@@ -186,8 +186,9 @@ homepageCards.showFiltersOverlay = function(element){
 
         var $this = $('#home-news-statements-more');
         var url = $this.attr('href');
-        console.log(typeof url === 'undefined');
+        
         if(typeof url === 'undefined'){
+            console.log(urlStamp);
             url = urlStamp;
         }
         var container = $this.closest('.block-01');
