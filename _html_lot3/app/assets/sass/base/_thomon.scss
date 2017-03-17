@@ -41,7 +41,7 @@
 }
 
 body#home .contain-card{
-    .isotope-01 .card{
+    .grid-01 .card{
         &:first-of-type {
             width: 650px;
             height: auto;
@@ -49,6 +49,10 @@ body#home .contain-card{
 
             .image {
                 height: 426px;
+            }
+
+            .info {
+                height: auto;
             }
 
             strong{
@@ -61,13 +65,18 @@ body#home .contain-card{
 
 body#home .articles-wrapper{
     .articles {
-        .isotope-01 .card{
+        .grid-01 .card{
             &:first-of-type {
                 width: 650px;
                 height: auto;
                 padding-left: 0px;
+
                 .image {
                     height: 426px;
+                }
+
+                .info {
+                    height: auto;
                 }
 
                 strong{
@@ -77,7 +86,7 @@ body#home .articles-wrapper{
         }
 
         &.article-inverse {
-            .isotope-01 .card{
+            .grid-01 .card{
                 padding: 0px;
                 padding-right: 60px;
 
@@ -100,6 +109,11 @@ body#home .articles-wrapper{
                     width: 650px;
                     height: auto;
                     padding-right: 0px;
+                    float: right;
+
+                    .info {
+                        height: auto;
+                    }
 
                     .image {
                         height: 426px;
@@ -112,13 +126,17 @@ body#home .articles-wrapper{
             }
         }
     }
-    .isotope-01 .card{
+    .grid-01 .card{
         &:first-of-type {
             width: 650px;
             height: auto;
 
             .image {
                 height: 426px;
+            }
+
+            .info {
+                height: auto;
             }
 
             strong{
@@ -158,6 +176,7 @@ body#home .articles-wrapper{
     color: $gold;
 }
 
+.picto,
 .cards .picto {
     text-align: center;
 }

@@ -97,8 +97,8 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }
-        //if (!$('.home').length) {
+        }console.log($('.home').length);
+        if(!$('.home').length) {
             if (!$('.who-filter').length) {
 
                 $('.filters .select span').off('click').on('click', function () {
@@ -338,7 +338,7 @@ var owInitFilter = function (isTabSelection) {
                     });
                 });
             }
-        //}
+        }
     }
 };
 
