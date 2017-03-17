@@ -1496,6 +1496,7 @@ var initAudio = function (hash) {
         function updatePopinMedia(data) {
             data['url'] = data['url'] || document.location.href;
             console.log(data);
+            
             if ($('.popin-mail').length) {
                 $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                 $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
