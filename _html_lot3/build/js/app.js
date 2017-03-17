@@ -7341,13 +7341,17 @@ homepageCards.populateCards = function(cards){
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
-        $.each(neededContainersNumber, function(){
-            var revertClass = '';
-            if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
-                revertClass = ' article-inverse';
-            }
-            homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>');
-        });
+        //returns 1 for positive, 0 for neutral and -1 for negative
+        var sign = neededContainersNumber > 0 ? 1 : neededContainersNumber == 0 ? 0 : -1; 
+        if(sign > 0){
+            $.each(neededContainersNumber, function(){
+                var revertClass = '';
+                if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
+                    revertClass = ' article-inverse';
+                }
+                homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>');
+            });
+        }
     }
 
     homepageCards.config.cardsContainer = $('.ajax-filter-cards-container');
