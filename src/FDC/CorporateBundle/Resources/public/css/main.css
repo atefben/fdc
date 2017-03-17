@@ -7018,6 +7018,9 @@ body#home .contain-card .grid-01 .card:first-of-type strong {
   font-size: 2.25rem;
 }
 
+body#home .articles-wrapper {
+  height: auto !important;
+}
 body#home .articles-wrapper .articles .grid-01 .card:first-of-type {
   width: 650px;
   height: auto;

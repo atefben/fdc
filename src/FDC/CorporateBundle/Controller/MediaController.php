@@ -74,11 +74,11 @@ class MediaController extends Controller
     {
         $locale = $request->getLocale();
         $search = $request->get('search');
-        $photo = (bool)$request->get('photo');
-        $video = (bool)$request->get('video');
-        $audio = (bool)$request->get('audio');
-        $start = $request->get('yearStart');
-        $end = $request->get('yearEnd');
+        $photo = (bool)$request->query->get('photo');
+        $video = (bool)$request->query->get('video');
+        $audio = (bool)$request->query->get('audio');
+        $start = $request->query->get('yearStart');
+        $end = $request->query->get('yearEnd');
 
         $parameters = $this->getCorpoMediaLibraryItemParameters($locale, $search, $photo, $video, $audio, $start, $end, $since);
         return $this->render('FDCCorporateBundle:Media:index.more.html.twig', $parameters);

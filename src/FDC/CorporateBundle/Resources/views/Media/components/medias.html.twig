@@ -72,7 +72,7 @@
                              data-credit="{{ copyright }}"
                              data-title="{{ title }}"
                              data-label="{{ legend }}" data-date="{{ dateMedia }}"
-                             data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ app.request.uri ~ '#pid=' ~ mediaPid }}&picture={% path media, media.context ~ '_' ~ '640x404' %}&name=&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                             data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ app.request.uri|url_encode(true) ~ '#pid=' ~ mediaPid }}&picture={% path media, media.context ~ '_' ~ '640x404' %}&name=&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                              data-twitterurl="https://twitter.com/intent/tweet?text={{ app.request.uri ~ '#pid=' ~ mediaPid }}"/>
                     </div>
                     <a href="{% path media , 'reference' %}" class="linkImage"></a>
