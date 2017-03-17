@@ -96,13 +96,13 @@ homepageCards.ajaxClickEvent = function(button){
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
                 }
 
-                if(){
+                //if(){
                     //scrolltop
                     var offset = $('.contain-card').offset().top - 250;
                     $('html,body').animate({
                         scrollTop: offset
                     });
-                }
+                //}
 
 
 
