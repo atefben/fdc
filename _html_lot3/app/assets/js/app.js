@@ -170,6 +170,7 @@ homepageCards.showFiltersOverlay = function(element){
         homepageCards.emptyCards();
         homepageCards.populateCards(newCards);
     });
+    
     // close filters
     $('body').on('click', '#filters', function () {
         $('#filters').removeClass('show');
