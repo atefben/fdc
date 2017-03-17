@@ -358,8 +358,87 @@
       </div>
     </div>
 
-
     <div class="competition">
+          <h2 class="title">En compétition 2016</h2>
+          <div id="slider-competition" class="owl-carousel sliderDrag">
+            <div class="slide">
+              <img src="http://dummyimage.com/210x84/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!--<div class="competition">
       <div class="maxContainer">
         <h3>courts en compétition</h3>
       </div>
@@ -1107,7 +1186,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
 
 
     

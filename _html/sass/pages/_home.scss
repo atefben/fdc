@@ -1802,6 +1802,7 @@ a {
 .socialBox {
   width: 1020px;
   height: 500px;
+  padding-top: 80px;
   @include align();
   a {
     color: #c8a461;
@@ -2276,6 +2277,72 @@ a {
   }
 }
 
+
+.competition {
+  background-color: white;
+  padding: 70px 0 0px 0;
+
+  #slider-competition {
+    margin-top: 65px;
+
+    .owl-item {
+      opacity: 1;
+      min-height: 380px;
+    
+      .slide {
+        &.compat-object-fit {
+          background-size: cover;
+          background-position: top center;
+          background-repeat: no-repeat;
+          height: 284px;
+          margin-bottom: 60px;
+
+          img {
+            opacity: 0;
+          }
+        }
+      }
+
+      img {
+        height: 284px;
+        width: 210px;
+      }
+
+      .linkVid {
+        height: 284px;
+        display: block;
+        z-index: 3;
+        width: 210px;
+      }
+    }
+
+    .info-movie {
+      padding-top: 30px;
+      text-align: center;
+      width: 210px;
+
+      p {
+        color: #2c2c2c;
+        font-family: $CamphorBold;
+        font-size: 0.875rem;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+      }
+      
+      a {
+        color: #2c2c2c;
+      }
+
+      a.director {
+        color: $gold;
+        display: block;
+        font-family: $CamphorItalic;
+        font-size: 0.813rem;
+      }
+    }
+  }
+}
+
 .about {
   @include align();
   min-height: 700px;
@@ -2308,6 +2375,10 @@ a {
     position: relative;
     @media screen and(max-width: 1024px) {
       transform: scale(0.8);
+    }
+
+    strong {
+      color: white;
     }
 
     span {

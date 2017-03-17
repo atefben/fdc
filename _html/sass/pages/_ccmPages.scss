@@ -973,16 +973,28 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 
-@media print
-{    
-    .buttons
-    {
-        display: none !important;
+@media print {    
+  .buttons {
+      display: none !important;
     }
 }
 
-
-
 #share {
   margin: 0 auto!important;
+}
+
+.title, .all-articles .title {
+  font-family: $Playfair;
+}
+
+.all-articles .title {
+  font-family: $Playfair!important;
+}
+
+.title-list-header {
+  font-family: $CamphorHeavy!important;
+}
+
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
 }

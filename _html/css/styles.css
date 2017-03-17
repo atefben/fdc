@@ -1943,6 +1943,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #c8a461;
 }
 
+.descript-acces {
+  margin: 35px 0px;
+}
+
 @media screen and (min-width: 1920px) {
   .block-push-top {
     height: 300px !important;
@@ -1968,6 +1972,14 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
     height: 230px !important;
   }
 }
+.block-push-top .title-3, .list-article .bandeau-list .bandeau-list-img .title-list-header {
+  font-size: 40px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .block-p-register {
   margin-top: 70px;
 }
@@ -15180,6 +15192,7 @@ a {
 .socialBox {
   width: 1020px;
   height: 500px;
+  padding-top: 80px;
   margin: 0 auto;
   text-align: center;
   display: block;
@@ -15681,6 +15694,59 @@ a {
   margin-bottom: 70px;
 }
 
+.competition {
+  background-color: white;
+  padding: 70px 0 0px 0;
+}
+.competition #slider-competition {
+  margin-top: 65px;
+}
+.competition #slider-competition .owl-item {
+  opacity: 1;
+  min-height: 380px;
+}
+.competition #slider-competition .owl-item .slide.compat-object-fit {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 284px;
+  margin-bottom: 60px;
+}
+.competition #slider-competition .owl-item .slide.compat-object-fit img {
+  opacity: 0;
+}
+.competition #slider-competition .owl-item img {
+  height: 284px;
+  width: 210px;
+}
+.competition #slider-competition .owl-item .linkVid {
+  height: 284px;
+  display: block;
+  z-index: 3;
+  width: 210px;
+}
+.competition #slider-competition .info-movie {
+  padding-top: 30px;
+  text-align: center;
+  width: 210px;
+}
+.competition #slider-competition .info-movie p {
+  color: #2c2c2c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+.competition #slider-competition .info-movie a {
+  color: #2c2c2c;
+}
+.competition #slider-competition .info-movie a.director {
+  color: #c8a461;
+  display: block;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+}
+
 .about {
   margin: 0 auto;
   text-align: center;
@@ -15720,6 +15786,9 @@ a {
   .about .aboutContent {
     transform: scale(0.8);
   }
+}
+.about .aboutContent strong {
+  color: white;
 }
 .about .aboutContent span {
   font-size: 16px;
@@ -16112,7 +16181,8 @@ article .read-later.rAlign span:after {
   right: 0;
 }
 .single-article .small-container {
-  width: 730px;
+  /*width: 730px;*/
+  width: 977px;
 }
 .single-article.single-actualite .small-container {
   width: 977px;
@@ -16314,6 +16384,8 @@ article .read-later.rAlign span:after {
   margin: 0 auto;
   border-bottom: 0px solid #e5e5e5;
   border-top: 0px solid #e5e5e5;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .single-article .quote blockquote {
   /*border-bottom: 1px solid #e5e5e5;
@@ -16740,10 +16812,11 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 
-.grid h2.title {
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
-}
-
+/*.grid {
+  h2.title {
+    font-family: $CamphorHeavy!important;
+  }
+}*/
 .single-movie {
   padding-top: 410px;
   position: relative;
@@ -19421,6 +19494,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   z-index: 1;
   background-size: cover;
   background-position: center center;
+  margin-bottom: -2px;
 }
 .selection-officielle figure .image.compat-object-fit img {
   opacity: 0;
@@ -29410,6 +29484,22 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 #share {
   margin: 0 auto !important;
+}
+
+.title, .all-articles .title {
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+}
+
+.all-articles .title {
+  font-family: "Playfair Display", Times New Roman, Times, serif !important;
+}
+
+.title-list-header {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
 }
 
 .confcourtaccordion .selectbtn {

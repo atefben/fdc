@@ -2241,6 +2241,10 @@
   }
 }
 
+.descript-acces {
+      margin: 35px 0px;
+}
+
 
 // 5. Media Bandeau
 // ================
@@ -2280,4 +2284,12 @@
     //height: 296px !important;
     height: 230px !important;
   }
+}
+
+.block-push-top .title-3, .list-article .bandeau-list .bandeau-list-img .title-list-header {
+    font-size: 40px;
+    font-family: $CamphorHeavy;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }

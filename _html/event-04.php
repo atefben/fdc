@@ -11,7 +11,7 @@
       <div id="prehome"></div>
     </div>
     <?php include('header.html'); ?>
-    <div id="main" class="home single-article loading noPadding">
+    <div id="main" class="home single-article single-actualite loading noPadding">
       <div class="list-article">
         <div class="bandeau-list">
           <div class="bandeau-list-img bandeau-head vCenter subHeader eventsHeader" style="background-image:url('img/skyCam7.png')">
@@ -45,7 +45,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
       </div>-->
       <div class="content-article">
-        <div class="container "><!--small-container maybe ?-->
+        <div class="container small-container"><!--small-container maybe ?-->
           
           <!--<div class="info">
             <a href="#" class="category">Cinéma de la plage</a><span class="date">18.05.15</span> . <span class="hour">09:00</span>
@@ -139,6 +139,181 @@
             <p class="caption"><strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange</p>
           </div>
 
+
+          <div class="single-video">
+                                      
+
+                                      
+                      
+          <div class="video-container video-single state-init video" data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/TV-Festival/CEREMONIE_OUVERTURE_VF.mp4" data-email="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/TV-Festival/CEREMONIE_OUVERTURE_VF.mp4" data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/TV-Festival/CEREMONIE_OUVERTURE_VF.webm&quot;},{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/TV-Festival/CEREMONIE_OUVERTURE_VF.mp4&quot;}]" data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/cb74a38347137773ae910b40f475e1802df65939.jpg" data-name="Cérémonie d'ouverture du 69e Festival de Cannes">
+              <div id="video-player-643" class="jwplayer jw-reset jw-skin-seven jw-flag-controls-disabled jw-state-idle jw-flag-user-inactive" tabindex="0" style="width: 980px; height: 620px;">
+              <div class="jw-aspect jw-reset"></div>
+              <div class="jw-media jw-reset"><video class="jw-video jw-reset" x-webkit-airplay="allow" webkit-playsinline=""></video></div>
+              <div class="jw-preview jw-reset" style="background-image: url(&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/cb74a38347137773ae910b40f475e1802df65939.jpg&quot;);"></div>
+              <div class="jw-captions jw-reset"><div class="jw-captions-window jw-reset"><span class="jw-captions-text jw-reset"></span></div></div><div class="jw-title jw-reset" style="display: none;">
+                  <div class="jw-title-primary jw-reset"></div>
+                  <div class="jw-title-secondary jw-reset"></div>
+              </div>
+              <div class="jw-overlays jw-reset"><div id="video-player-643_jwpsrv" class="jw-plugin jw-reset"></div></div>
+              <div class="jw-controls jw-reset"><div class="jw-display-icon-container jw-background-color jw-reset">
+              <div class="jw-icon jw-icon-display jw-button-color jw-reset"></div>
+          </div><div class="jw-controls-right jw-reset"><div class="jw-dock jw-reset">
+          </div></div><div class="jw-controlbar jw-background-color jw-reset"><div class="jw-group jw-controlbar-left-group jw-reset"><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-playback"></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-prev" style="display: none;"></div><div class="jw-icon jw-icon-tooltip jw-icon-playlist jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-next" style="display: none;"></div><span class="jw-text jw-reset jw-text-elapsed">00:00</span></div><div class="jw-group jw-controlbar-center-group jw-reset"><div class="jw-slider-time jw-background-color jw-reset jw-slider-horizontal jw-reset">
+              <div class="jw-slider-container jw-reset">
+                  <div class="jw-rail jw-reset"></div>
+                  <div class="jw-buffer jw-reset" style="width: 0%;"></div>
+                  <div class="jw-progress jw-reset" style="width: 0%;"></div>
+                  <div class="jw-knob jw-reset" style="left: 0%;"></div>
+              <div class="jw-icon jw-icon-tooltip jw-tooltip-time jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-time-tip jw-background-color jw-reset"><div class="jw-reset" style="width: 0px; height: 0px;"></div><span class="jw-text jw-reset"></span></div></div></div></div>
+          </div><span class="jw-text jw-reset jw-text-alt"></span></div><div class="jw-group jw-controlbar-right-group jw-reset"><span class="jw-text jw-reset jw-text-duration">00:00</span><div class="jw-icon jw-icon-tooltip jw-icon-hd jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-cc jw-button-color jw-reset jw-hidden jw-off"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-audio-tracks jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-more jw-button-color jw-reset jw-hidden"><div class="jw-overlay-horizontal jw-reset"></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-volume"></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-cast jw-off" style="display: none;"></div><div class="jw-slider-volume jw-background-color jw-reset jw-slider-horizontal jw-reset">
+              <div class="jw-slider-container jw-reset">
+                  <div class="jw-rail jw-reset"></div>
+                  <div class="jw-buffer jw-reset"></div>
+                  <div class="jw-progress jw-reset" style="width: 100%;"></div>
+                  <div class="jw-knob jw-reset" style="left: 100%;"></div>
+              </div>
+          </div><div class="jw-icon jw-icon-tooltip jw-icon-volume jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-slider-volume jw-volume-tip jw-background-color jw-reset jw-slider-vertical jw-reset">
+              <div class="jw-slider-container jw-reset">
+                  <div class="jw-rail jw-reset"></div>
+                  <div class="jw-buffer jw-reset"></div>
+                  <div class="jw-progress jw-reset" style="height: 100%;"></div>
+                  <div class="jw-knob jw-reset" style="bottom: 100%;"></div>
+              </div>
+          </div></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-fullscreen"></div></div></div></div>
+          </div><div class="top-bar">                        <div class="info">
+                      <div class="vCenter">
+                          <div class="vCenterKid">
+                              <span class="category">Ouverture</span>
+                              <span class="date">11.05.2016</span> . <span class="hour">21:00</span>
+                              <p>Cérémonie d'ouverture du 69e Festival de Cannes</p>
+                          </div>
+                      </div>
+                  </div>            <div class="buttons square">                <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>                <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>                <a href="#" class="button link"><i class="icon icon_link"></i></a>                <a href="#" class="button email"><i class="icon icon_lettre"></i></a>            </div>        </div>
+              <div class="video-overlay"></div>
+              <div class="infos-bar">
+                  <div class="picto"><i class="icon icon_video"></i></div>
+                  <div class="info">
+                      <div class="vCenter">
+                          <div class="vCenterKid">
+                              <span class="category">Ouverture</span>
+                              <span class="date">11.05.2016</span> . <span class="hour">21:00</span>
+                              <p>Cérémonie d'ouverture du 69e Festival de Cannes</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <div class="control-bar">            
+          <div class="playstate">               
+            <button class="play-btn play icon icon_play"></button>            </div>            <div class="time">                <p class="time-info">                    <span class="current-time">0:00</span> / <span class="duration-time">0:00</span>                </p>            </div>            <div class="progress">                <div class="progress-bar">                    <div class="buffer-bar"></div>                    <div class="current-bar"></div>                </div>            </div>            <div class="sound">                <button class="icon icon_son"></button>                <div class="sound-bar">                    <div class="sound-seek"></div>                </div>            </div>            <div class="fs">                <button class="icon icon_fullscreen"></button>            </div>        </div></div>
+                                  </div>
+
+
+<div class="audio-container actu-article-audio" data-link="http://www.festival-cannes.com/fr/actualites/audios/a-la-rencontre-de-l-equipe-de-forushande-d-asghar-farhadi" data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_audio_encoded/direct_encoded/2016/FORUSHANDE_CONF_01_VF.MP3&quot;}]" data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/thumb_6015_media_image_1950x1232.jpg" data-aid="117">
+        <div class="audio-player">
+            <div id="audio-player-117" class="jwplayer jw-reset jw-skin-seven jw-flag-controls-disabled jw-flag-user-inactive jw-flag-media-audio jw-state-playing" tabindex="0" style="width: 980px; height: 600px;">
+    <div class="jw-aspect jw-reset"></div>
+    <div class="jw-media jw-reset"><video class="jw-video jw-reset" x-webkit-airplay="allow" webkit-playsinline="" src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_audio_encoded/direct_encoded/2016/FORUSHANDE_CONF_01_VF.MP3"></video></div>
+    <div class="jw-preview jw-reset" style="background-image: url(&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/thumb_6015_media_image_1950x1232.jpg&quot;);"></div>
+    <div class="jw-captions jw-captions-enabled jw-reset"><div class="jw-captions-window jw-reset"><span class="jw-captions-text jw-reset"></span></div></div><div class="jw-title jw-reset" style="display: none;">
+        <div class="jw-title-primary jw-reset"></div>
+        <div class="jw-title-secondary jw-reset"></div>
+    </div>
+    <div class="jw-overlays jw-reset"><div id="audio-player-117_jwpsrv" class="jw-plugin jw-reset"></div></div>
+    <div class="jw-controls jw-reset"><div class="jw-display-icon-container jw-background-color jw-reset">
+    <div class="jw-icon jw-icon-display jw-button-color jw-reset"></div>
+</div><div class="jw-controls-right jw-reset"><div class="jw-dock jw-reset">
+</div></div><div class="jw-controlbar jw-background-color jw-reset"><div class="jw-group jw-controlbar-left-group jw-reset"><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-playback"></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-prev" style="display: none;"></div><div class="jw-icon jw-icon-tooltip jw-icon-playlist jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-next" style="display: none;"></div><span class="jw-text jw-reset jw-text-elapsed">00:33</span></div><div class="jw-group jw-controlbar-center-group jw-reset"><div class="jw-slider-time jw-background-color jw-reset jw-slider-horizontal jw-reset">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div class="jw-buffer jw-reset" style="width: 6.49756%;"></div>
+        <div class="jw-progress jw-reset" style="width: 1.0916%;"></div>
+        <div class="jw-knob jw-reset" style="left: 1.0916%;"></div>
+    <div class="jw-icon jw-icon-tooltip jw-tooltip-time jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-time-tip jw-background-color jw-reset"><div class="jw-reset" style="width: 0px; height: 0px;"></div><span class="jw-text jw-reset"></span></div></div></div></div>
+</div><span class="jw-text jw-reset jw-text-alt"></span></div><div class="jw-group jw-controlbar-right-group jw-reset"><span class="jw-text jw-reset jw-text-duration">50:58</span><div class="jw-icon jw-icon-tooltip jw-icon-hd jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-cc jw-button-color jw-reset jw-hidden jw-off"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-audio-tracks jw-button-color jw-reset jw-hidden"><div class="jw-overlay jw-reset"></div></div><div class="jw-icon jw-icon-tooltip jw-icon-more jw-button-color jw-reset jw-hidden"><div class="jw-overlay-horizontal jw-reset"></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-volume"></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-cast jw-off" style="display: none;"></div><div class="jw-slider-volume jw-background-color jw-reset jw-slider-horizontal jw-reset">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div class="jw-buffer jw-reset"></div>
+        <div class="jw-progress jw-reset" style="width: 100%;"></div>
+        <div class="jw-knob jw-reset" style="left: 100%;"></div>
+    </div>
+</div><div class="jw-icon jw-icon-tooltip jw-icon-volume jw-button-color jw-reset"><div class="jw-overlay jw-reset"><div class="jw-slider-volume jw-volume-tip jw-background-color jw-reset jw-slider-vertical jw-reset">
+    <div class="jw-slider-container jw-reset">
+        <div class="jw-rail jw-reset"></div>
+        <div class="jw-buffer jw-reset"></div>
+        <div class="jw-progress jw-reset" style="height: 100%;"></div>
+        <div class="jw-knob jw-reset" style="bottom: 100%;"></div>
+    </div>
+</div></div></div><div class="jw-icon jw-icon-inline jw-button-color jw-reset jw-icon-fullscreen"></div></div></div></div>
+</div>
+            <div class="image" style="background-image: url(http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/thumb_6015_media_image_1950x1232.jpg);"></div>
+            <button class="play-btn play"><i class="icon icon_pause"></i></button>
+            <div class="off">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="picto hide"><i class="icon icon_audio"></i></div>
+                        <div class="info">
+                            <span class="category">Compétition</span>
+                            <span class="date">21.05.16</span> . <span class="hour">13:30</span>
+                            <p>Conférence de Forushande (Le Client) d'Asghar Farhadi</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="on show"><div class="vCenter">            <div class="vCenterKid">                <div class="control-bar">                    <div class="duration">                        <span class="curr">0:33</span>/<span class="total">50:58</span>                    </div>                    <div class="progress">                        <div class="progress-bar">                            <div class="buffer-bar" style="width: 6.49756%;"></div>                            <div class="current-bar" style="width: 1.0916%;"></div>                        </div>                    </div>                    <div class="sound">                        <button class="icon icon_son"></button>                        <div class="sound-bar">                            <div class="sound-seek"></div>                        </div>                    </div>                </div>            </div>        </div></div>
+        </div>
+    </div>
+
+
+    <div class="slideshow">
+        <div class="slideshow-img">
+        <div class="images">
+
+                                                                                                                                                                <div class="img active">
+                            <a id="photo505" data-pid="505" class="chocolat-image ajax hoverZoomLink" href="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4674_media_image_2560x1620.JPG" data-credit="Crédit Image : Thomas Leibreich / FDC" data-title="<span class='category'>Photocall</span><span class='date'>11.05.16 13:09</span><h2>Équipe du film - Café Society</h2>" title="<span class='category'>Photocall</span><span class='date'>11.05.16 13:09</span><h2>Équipe du film - Café Society</h2>">
+                                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4674_media_image_1266x798.JPG" alt="" title="Équipe du film - Café Society">
+                            </a>
+                        </div>
+                                                                                                                                                                                                    <div class="img ">
+                            <a id="photo516" data-pid="516" class="chocolat-image ajax hoverZoomLink" href="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4682_media_image_2560x1620.jpg" data-credit="Crédit Image : Valery Hache / AFP" title="<span class='category'>Photocall</span><span class='date'>11.05.16 14:28</span><h2>Kristen Stewart - Café Society</h2>">
+                                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4682_media_image_1266x798.jpg" alt="" title="Kristen Stewart - Café Society">
+                            </a>
+                        </div>
+                                                                                                                                                                                                                                <div class="img ">
+                            <a id="photo503" data-pid="503" class="chocolat-image ajax hoverZoomLink" href="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4672_media_image_2560x1620.JPG" data-credit="Crédit Image : Thomas Leibreich / FDC" title="<span class='category'>Photocall</span><span class='date'>11.05.16 12:59</span><h2>Blake Lively, Woody Allen et Kristen Stewart - Café Society</h2>">
+                                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4672_media_image_1266x798.JPG" alt="" title="Blake Lively, Woody Allen et Kristen Stewart - Café Society">
+                            </a>
+                        </div>
+                                                                                                                                                                                                    <div class="img ">
+                            <a id="photo509" data-pid="509" class="chocolat-image ajax hoverZoomLink" href="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4677_media_image_2560x1620.JPG" data-credit="Crédit Image : Mathilde Petit / FDC" title="<span class='category'>Conférence de Presse</span><span class='date'>11.05.16 13:51</span><h2>Équipe du film - Café Society</h2>">
+                                <img src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4677_media_image_1266x798.JPG" alt="" title="Équipe du film - Café Society">
+                            </a>
+                        </div>
+                                                                                                        
+        </div>
+                        <div class="owl-carousel thumbnails owl-theme owl-loaded">
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                    
+                                                                                                                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 428px;"><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo505" data-caption="<strong>Équipe du film - Café Society</strong> © Thomas Leibreich / FDC" class="thumb active">
+                            
+<img width="97" height="61" src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4674_media_image_97x61.JPG" title="TL_FCD_2016_05_11_HC_CAFE_SOCIETY_CALL_Equipe_Film_0393.JPG">
+                        </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo516" data-caption="<strong>Kristen Stewart - Café Society</strong> © Valery Hache / AFP" class="thumb ">
+                            
+<img width="97" height="61" src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4682_media_image_97x61.jpg" title="stewart-1.jpg">
+                        </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo503" data-caption="<strong>Blake Lively, Woody Allen et Kristen Stewart - Café Society</strong> © Thomas Leibreich / FDC" class="thumb ">
+                            
+<img width="97" height="61" src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4672_media_image_97x61.JPG" title="TL_FCD_2016_05_11_HC_CAFE_SOCIETY_CALL_Blake_LIVELY_Woody_ALLEN_Kristen_STEWART_0407.JPG">
+                        </div></div><div class="owl-item active" style="width: auto; margin-right: 10px;"><div data-id="photo509" data-caption="<strong>Équipe du film - Café Society</strong> © Mathilde Petit / FDC" class="thumb ">
+                            
+<img width="97" height="61" src="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/05/thumb_4677_media_image_97x61.JPG" title="MP_FCD_2016_05_11_HC_CAFE_SOCIETY_CONF_Equipe_Film_0453.JPG">
+                        </div></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style="display: none;"></div></div></div>
+    </div>
+    <p class="caption">
+        <strong>Équipe du film - Café Society</strong>
+         © Thomas Leibreich / FDC    </p>
+
+</div>
 
           
           <div class="text">
