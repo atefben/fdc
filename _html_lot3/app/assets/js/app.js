@@ -38,6 +38,7 @@ homepageCards.init = function(){
 }
 
 homepageCards.events = function(){
+    console.log('events');
     $('.filters .select span').off('click').on('click', function (){
         homepageCards.showFiltersOverlay($(this));
     });
@@ -46,8 +47,8 @@ homepageCards.events = function(){
 }
 
 homepageCards.ajaxClickEvent = function(button){
-
-    button.on('click', function(){
+    console.log('ajaxClickEvent');
+    button.off('click').on('click', function(){
 
         var $this = $(this);
         var url = $(this).attr('href');
@@ -127,7 +128,7 @@ homepageCards.ajaxClickEvent = function(button){
 }
 
 homepageCards.showFiltersOverlay = function(element){
-    
+    console.log('showFiltersOverlay');
     $('.filter .select').each(function () {
         $that = $(this);
         $id = $(this).closest('.filter').attr('id');
