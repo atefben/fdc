@@ -111,8 +111,8 @@ var openSlideShow = function (slider, hash, affiche) {
                 var date =  $(value).parent().data('date');
                 var caption = $(value).parent().data('credit');
                 var id = $(value).parent().data('pid');
-                var facebookurl = $(value).parent().data('facebook');
-                var twitterurl = $(value).parent().data('twitter');
+                var facebookurl = encodeURIComponent($(value).parent().data('facebook'));
+                var twitterurl = encodeURIComponent($(value).parent().data('twitter'));
                 var url = $(value).parent().data('url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
@@ -125,8 +125,8 @@ var openSlideShow = function (slider, hash, affiche) {
                 var date = $(value).find('a').data('date');
                 var caption = $(value).find('a').data('credit');
                 var id = $(value).find('a').data('pid');
-                var facebookurl = $(value).find('a').data('facebook');
-                var twitterurl = $(value).find('a').data('twitter');
+                var facebookurl = encodeURIComponent($(value).find('a').data('facebook'));
+                var twitterurl = encodeURIComponent($(value).find('a').data('twitter'));
                 var url = $(value).find('a').data('link');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
@@ -148,8 +148,8 @@ var openSlideShow = function (slider, hash, affiche) {
                 var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
                 var caption = $(value).find('img').attr('data-credit');
                 var id = $(value).find('img').attr('data-id');
-                var facebookurl = $(value).find('img').attr('data-facebookurl');
-                var twitterurl = $(value).find('img').attr('data-twitterurl');
+                var facebookurl = encodeURIComponent($(value).find('img').attr('data-facebookurl'));
+                var twitterurl = encodeURIComponent($(value).find('img').attr('data-twitterurl'));
                 var url = $(value).find('img').attr('data-url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
