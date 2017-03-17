@@ -7257,7 +7257,6 @@ homepageCards.showFiltersOverlay = function(element){
         var dateTime = $('.last-element').data('time');
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
-        console.log($('#home-news-statements-more'));
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
@@ -7271,9 +7270,8 @@ homepageCards.showFiltersOverlay = function(element){
                 if(typeof moreBtn === 'undefined'){
                     moreBtn = $data.filter('.ajax-request');
                 }
-                //console.log(moreBtn);
+
                 if(typeof moreBtn !== 'undefined'){
-                    console.log(currentMoreBtn, moreBtn,moreBtn.length);
                     currentMoreBtn.after(moreBtn);
                     $('#home-news-statements-more-end').remove();
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
@@ -7321,6 +7319,11 @@ homepageCards.emptyCards = function(){
 homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
+    //deduplicate array
+    var tempCardsArray = a.filter(function(itm, i, a) {
+        return i == a.indexOf(itm);
+    });
+    console.log(tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';
