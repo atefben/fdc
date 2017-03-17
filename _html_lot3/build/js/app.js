@@ -7145,7 +7145,6 @@ homepageCards.events = function(){
                 homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
-                console.log(cardsToDisplay.length);
                 if(cardsToDisplay.length < 4){
                     //fake animation before the real computing
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
@@ -7248,6 +7247,7 @@ homepageCards.showFiltersOverlay = function(element){
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
 
+        console.log(url);
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
