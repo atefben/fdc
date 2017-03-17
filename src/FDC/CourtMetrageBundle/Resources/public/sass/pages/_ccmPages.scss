@@ -11,10 +11,10 @@
 }
 
 body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
-    background: center 0 no-repeat fixed;
-    background-size: cover;
-    transition: all 1s cubic-bezier(.25,.46,.45,.94);
-    height: 270px;
+  background: center 0 no-repeat fixed;
+  background-size: cover;
+  transition: all 1s cubic-bezier(.25,.46,.45,.94);
+  height: 270px;
 }
 
 @media screen and (min-width: 1920px) {
@@ -28,60 +28,60 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .subHeader {
-    text-align:center;
-    height: 250px;
-    vertical-align: middle;
-    width: 100%;
-    position: relative;
-    z-index: 999;
-    @include align();
+  text-align:center;
+  height: 250px;
+  vertical-align: middle;
+  width: 100%;
+  position: relative;
+  z-index: 999;
+  @include align();
 
+  h3 {
+    font-size: 40px;
+    font-family: $CamphorHeavy;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 250px;
+  }
+
+  @media screen and (min-width: 1600px) {
+    height: 350px;
     h3 {
-      font-size: 40px;
-      font-family: $CamphorHeavy;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      line-height: 250px;
+      line-height: 300px;
     }
-
-    @media screen and (min-width: 1600px) {
-      height: 350px;
-      h3 {
-        line-height: 300px;
-      }
-    }
+  }
 }
 
 .subNavigation {
- position: relative;
- z-index: 1002;
- top: 0px; 
- background: #141414;
- @include transition(all 0s $smoothTransition);
+  position: relative;
+  z-index: 1002;
+  top: 0px;
+  background: #141414;
+  @include transition(all 0s $smoothTransition);
 }
 
 .subNavigationFixed {
-    position: fixed;
-    z-index: 1002;
-    width: 100%;
-    top: 90px; 
-    @include transition(all 0s $smoothTransition);
+  position: fixed;
+  z-index: 1002;
+  width: 100%;
+  top: 90px;
+  @include transition(all 0s $smoothTransition);
 }
 
 .eventsHeader{
-    height: 230px!important;
-    h3 {
-      line-height: 230px!important;
-    }
+  height: 230px!important;
+  h3 {
+    line-height: 230px!important;
+  }
 
-    @media screen and (min-width: 1600px) {
-      height: 300px!important;
-       h3 {
-        line-height: 300px!important;
-       }
+  @media screen and (min-width: 1600px) {
+    height: 300px!important;
+    h3 {
+      line-height: 300px!important;
     }
-}  
+  }
+}
 
 .formBtn {
 
@@ -108,7 +108,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: left;
 
   a {
-   color: #c3a05f;
+    color: #c3a05f;
   }
 
   ul {
@@ -128,7 +128,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     font-size: 12px;
     font-family: $CamphorBold;
     letter-spacing: 2px;
-     margin-bottom: 25px;
+    margin-bottom: 25px;
   }
 
   li, p {
@@ -176,9 +176,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 
   .underlined {
-      font-family: $CamphorBold;
-      color: #0c0c0c;
-      text-decoration: underline;
+    font-family: $CamphorBold;
+    color: #0c0c0c;
+    text-decoration: underline;
   }
 
   .numbers {
@@ -216,21 +216,21 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 
   h1 {
-      padding-top: 100px;
-      color: #0c0c0c;
-      text-transform: uppercase;
-      font-family: $CamphorBold;
-      font-size: 16px;
-      letter-spacing: 2px;
-      padding-bottom: 30px;
-      text-align: center;
-      padding-bottom: 100px;
+    padding-top: 100px;
+    color: #0c0c0c;
+    text-transform: uppercase;
+    font-family: $CamphorBold;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-bottom: 30px;
+    text-align: center;
+    padding-bottom: 100px;
   }
 }
 
 .reducedPadding {
   padding-bottom:0px;
-} 
+}
 
 .text {
 
@@ -239,7 +239,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-style: italic;
       color:#666666;
       font-family: $CamphorBold;
-    }  
+    }
   }
 
 }
@@ -262,7 +262,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     padding: 5px 0px 30px 0px;
     color: #333333;
     font-family: $Playfair;
-    text-align: left;  
+    text-align: left;
   }
 
   h4 {
@@ -271,7 +271,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     color: #333333;
     font-family: $Playfair;
     text-align: center;
-    text-transform: uppercase;     
+    text-transform: uppercase;
   }
 
   p {
@@ -284,9 +284,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 50px;
   @include align();
   text-align: left;
-  
+
   a {
-   color: #c3a05f;
+    color: #c3a05f;
   }
 
   h2 {
@@ -411,16 +411,16 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .wysiwyg-categorie-items {
 
-   .title-list-cat {
-      border-bottom: #202020 0px solid;
-      border-top: #202020 0px solid;
-   }
+  .title-list-cat {
+    border-bottom: #202020 0px solid;
+    border-top: #202020 0px solid;
+  }
 
-   h2, p {
+  h2, p {
     color: #202020;
-   }
+  }
 
- }
+}
 
 .centerWrapper {
   @include align();
@@ -447,14 +447,14 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: center;
   margin: 0 auto;
 
-    .tableauArticle {
-      width: 310px;
-      height: 120px;
-      margin: 0 auto;
-      float: left;
-      text-align: center;
-      border: 1px solid #e5e5e5;
-      border-bottom: 0px solid #e5e5e5;
+  .tableauArticle {
+    width: 310px;
+    height: 120px;
+    margin: 0 auto;
+    float: left;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-bottom: 0px solid #e5e5e5;
 
     h3 {
       border-bottom: 1px solid #e5e5e5;
@@ -491,7 +491,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: left;
   height: auto;
   border-top: 2px solid #ececec;
-  
+
   .centered {
     margin: 0 auto;
     text-align: center;
@@ -519,7 +519,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom:170px;
   @include align();
   a {
-   color: #c3a05f;
+    color: #c3a05f;
   }
   h6 {
     height: 55px;
@@ -621,7 +621,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   border: 1px solid #c8a461;
 
   a {
-   color: #c3a05f;
+    color: #c3a05f;
   }
 
   h3 {
@@ -665,7 +665,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       margin-bottom: 0px!important;
       margin-top: 40px;
       letter-spacing: 0px;
-      
+
     }
 
     span {
@@ -675,7 +675,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       line-height: 30px;
     }
   }
-} 
+}
 
 .goldQuote {
 
@@ -684,30 +684,31 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   .goldBorders {
     min-height: 350px;
     height: auto;
-      h3 {
+    h3 {
       color: #c8a461;
       padding: 80px 0px 50px 0px;
       font-size: 16px;
       letter-spacing: 2px;
       font-family: $CamphorRegular;
     }
-      p {
-        font-size: 14px;
-        color: #b1b1b1;
-        line-height: 30px;
-        padding: 0px 80px;
-        font-family: $CamphorRegular;
-      }
+    p {
+      font-size: 14px;
+      color: #b1b1b1;
+      line-height: 30px;
+      padding: 0px 80px;
+      font-family: $CamphorRegular;
+    }
   }
 
 }
-  
+
 .onlinegoldBorders  {
   width: 745px;
   min-height: 450px;
   height: auto;
   border: 1px solid #c8a461;
   position: relative;
+  overflow: auto;
 
   &:after {
     content: '';
@@ -721,7 +722,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 
   a {
-   color: #c3a05f;
+    color: #c3a05f;
   }
 
   h3 {
@@ -764,7 +765,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       margin-bottom: 0px!important;
       margin-top: 30px;
       letter-spacing: 0px!important;
-      
+
     }
 
     span {
@@ -774,7 +775,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       line-height: 30px;
     }
   }
-} 
+}
 
 .contactUs {
   height: 420px;
@@ -784,7 +785,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   .contactContent{
     width: 312px;
   }
-  
+
   .contactContent:nth-child(2){
     width: 338px;
   }
@@ -802,9 +803,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       text-transform: initial;
       padding-bottom:30px;
       letter-spacing: 0px;
-    } 
+    }
 
-    h6 {
+    h6 {
       color: #666666!important;
       font-size: 14px;
       opacity: 0.9;
@@ -824,23 +825,23 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     padding-bottom:50px;
     letter-spacing: 4px;
   }
-} 
+}
 
 
 /* 1. Ensure this sits above everything when visible */
 .modal {
-    position: fixed;
-    z-index: 10000; /* 1 */
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+  position: fixed;
+  z-index: 10000; /* 1 */
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .modal.is-visible {
-    visibility: visible;
+  visibility: visible;
 }
 
 .modal-overlay {
@@ -873,9 +874,9 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   min-height: 1000px;
   background-color: #fff;
   box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
-  
+
   @media screen and (max-width: 1024px) {
-      width: 1000px;
+    width: 1000px;
   }
 }
 
@@ -940,7 +941,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .single-article {
-  
+
   .print {
     border-right: 1px solid #dfdfdf;
 
@@ -950,19 +951,50 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 }
 
-.list-article .bandeau-list, .list-article { 
-    background-color:transparent!important;
+.list-article .bandeau-list, .list-article {
+  background-color:transparent!important;
 }
 
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .bandeau-list {
-      margin-top: -30px!important;
-      }
+  .bandeau-list {
+    margin-top: -30px!important;
+  }
 }
 
 .single-article {
   .title-article {
     font-family: $CamphorThin!important;
   }
-} 
+}
+
+.item figcaption, .item .caption {
+  margin-top: 0px;
+}
+
+
+@media print {
+  .buttons {
+    display: none !important;
+  }
+}
+
+#share {
+  margin: 0 auto!important;
+}
+
+.title, .all-articles .title {
+  font-family: $Playfair;
+}
+
+.all-articles .title {
+  font-family: $Playfair!important;
+}
+
+.title-list-header {
+  font-family: $CamphorHeavy!important;
+}
+
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title {
+  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
+}

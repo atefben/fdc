@@ -757,7 +757,7 @@
         width: 256px;
         max-width: 100%;
         min-height: 100%;
-        object-fit: cover; 
+        object-fit: cover;
       }
     }
   }
@@ -1324,28 +1324,28 @@
   }
 
   @media screen and (max-width:1023px) {
+    max-height: 603px;
+    min-height: 603px;
+
+    .contain-txt {
+      padding-top: 25px;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 66px;
       max-height: 603px;
       min-height: 603px;
+      width: 49%;
+    }
 
-      .contain-txt {
-        padding-top: 25px;
-        padding-left: 50px;
-        padding-right: 50px;
-        padding-bottom: 66px;
-        max-height: 603px;
-        min-height: 603px;
-        width: 49%;
-      }
+    .contain-img {
+      max-height: 603px;
+      min-height: 603px;
+      max-width: 512px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      .contain-img {
-        max-height: 603px;
-        min-height: 603px;
-        max-width: 512px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-      }
+    }
   }
 
 }
@@ -1370,8 +1370,8 @@
   }
 
   .title-contain, .title-contain strong {
-      padding: 47px 0;
-      transition: .5s;
+    padding: 47px 0;
+    transition: .5s;
     &:hover {
       cursor: pointer;
       color: $gold;
@@ -2239,4 +2239,57 @@
   a {
     color: $gold;
   }
+}
+
+.descript-acces {
+  margin: 35px 0px;
+}
+
+
+// 5. Media Bandeau
+// ================
+@media screen and (min-width: 1920px) {
+  .block-push-top {
+    //height: 448px !important;
+    height: 300px !important;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width:1919px) {
+  .block-push-top {
+    //height: 373px !important;
+    height: 300px !important;
+  }
+
+}
+
+@media screen and (min-width: 1280px) and (max-width:1599px) {
+  .block-push-top {
+    //height: 297px !important;
+    height: 230px !important;
+  }
+
+}
+
+@media screen and (min-width: 1024px) and (max-width:1279px) {
+  .block-push-top {
+    //height: 294px !important;
+    height: 230px !important;
+  }
+
+}
+
+@media screen and (max-width:1023px) {
+  .block-push-top {
+    //height: 296px !important;
+    height: 230px !important;
+  }
+}
+
+.block-push-top .title-3, .list-article .bandeau-list .bandeau-list-img .title-list-header {
+  font-size: 40px;
+  font-family: $CamphorHeavy;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }

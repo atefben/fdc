@@ -1725,17 +1725,17 @@ a {
     vertical-align: bottom;
 
     li a {
-        font-size: .9rem;
-        font-family: $CamphorBold;
-        color: #fff;
-        text-transform: uppercase;
-        padding-bottom: 17px;
-        display: block;
-        transition: .5s;
+      font-size: .9rem;
+      font-family: $CamphorBold;
+      color: #fff;
+      text-transform: uppercase;
+      padding-bottom: 17px;
+      display: block;
+      transition: .5s;
 
-        &:hover {
-          opacity: .7;
-        }
+      &:hover {
+        opacity: .7;
+      }
     }
 
     ul {
@@ -1787,21 +1787,22 @@ a {
 /* BOX TWITTER / INSTAGRAM - SOCIAL BOX */
 
 .socialIcon {
-    position: absolute;
-    text-align: left;
-    margin-left: 10px;
-    margin-top: 100px;
-    z-index: 2;
+  position: absolute;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 100px;
+  z-index: 2;
 }
 
-.bigBox .socialIcon, .biggerBox .socialIcon  { 
-    margin-top: 220px;
-    margin-left: 30px;
+.bigBox .socialIcon, .biggerBox .socialIcon  {
+  margin-top: 220px;
+  margin-left: 30px;
 }
 
 .socialBox {
   width: 1020px;
   height: 500px;
+  padding-top: 80px;
   @include align();
   a {
     color: #c8a461;
@@ -1842,168 +1843,168 @@ a {
     .icon_twitter {
       color: #c8a461;
     }
-  } 
+  }
 }
-  .biggerBox {
-    display: block;
-    width: 250px;
-    height: 250px;
-    float: left;
-    position: relative;
+.biggerBox {
+  display: block;
+  width: 250px;
+  height: 250px;
+  float: left;
+  position: relative;
 
-    .socialIcon {
-      /*margin-left: 30px;*/
-    }
+  .socialIcon {
+    /*margin-left: 30px;*/
+  }
 
-    .socialContent {
-      padding: 30px 15px 0px 30px;
-      text-align: left;
-      line-height: 27px;
+  .socialContent {
+    padding: 30px 15px 0px 30px;
+    text-align: left;
+    line-height: 27px;
+    font-family: $CamphorBold !important;
+    font-size: 17px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+
+    h6 {
+      color: #bdbdbd !important;
+      font-size: 9px !important;
       font-family: $CamphorBold !important;
-      font-size: 17px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-
-      h6 {
-        color: #bdbdbd !important;
-        font-size: 9px !important;
-        font-family: $CamphorBold !important;
-      }
-
-      h5 {
-        line-height: 20px !important;
-        color: #000000 !important;
-        font-size: 17px !important;
-        font-family: $CamphorBold !important;
-      }
     }
-    &:hover .socialIcon {
-      visibility: hidden;
-      opacity: 0;
-      @include transition(all .9s $smoothTransition);
-    }
-  }
 
-  .bigBox {
-    display: block;
-    width: 250px;
-    height: 250px;
-    float: left;
-    position: relative;
-
-    .socialContent {
-      padding: 30px 25px 0px 30px;
-      text-align: left;
-      line-height: 27px;
+    h5 {
+      line-height: 20px !important;
+      color: #000000 !important;
+      font-size: 17px !important;
       font-family: $CamphorBold !important;
-      font-size: 17px;
-      position: relative;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+    }
+  }
+  &:hover .socialIcon {
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all .9s $smoothTransition);
+  }
+}
 
-      h6 {
-        color: #bdbdbd !important;
-        font-size: 9px !important;
-        font-family: $CamphorBold !important;
-      }
+.bigBox {
+  display: block;
+  width: 250px;
+  height: 250px;
+  float: left;
+  position: relative;
 
-      h5 {
-        line-height: 20px !important;
-        color: #000000 !important;
-        font-size: 17px !important;
-        font-family: $CamphorBold !important;
-      }
+  .socialContent {
+    padding: 30px 25px 0px 30px;
+    text-align: left;
+    line-height: 27px;
+    font-family: $CamphorBold !important;
+    font-size: 17px;
+    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    h6 {
+      color: #bdbdbd !important;
+      font-size: 9px !important;
+      font-family: $CamphorBold !important;
     }
 
-    &:hover .socialIcon {
-      visibility: hidden;
-      opacity: 0;
-      @include transition(all .9s $smoothTransition);
+    h5 {
+      line-height: 20px !important;
+      color: #000000 !important;
+      font-size: 17px !important;
+      font-family: $CamphorBold !important;
     }
   }
 
-  .imgShown {
+  &:hover .socialIcon {
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all .9s $smoothTransition);
+  }
+}
 
-    .socialContent{
-      visibility:hidden;
-      opacity:0;
+.imgShown {
+
+  .socialContent{
+    visibility:hidden;
+    opacity:0;
+    @include transition(all .9s $smoothTransition);
+  }
+
+  &:hover {
+    .socialContent {
+      visibility:visible;
+      opacity:1;
       @include transition(all .9s $smoothTransition);
     }
 
-    &:hover {
-      .socialContent {
-        visibility:visible;
-        opacity:1;
-        @include transition(all .9s $smoothTransition);
-      }
-
-      img {
-        visibility:hidden;
-        opacity:0;
-        @include transition(all .9s $smoothTransition);
-      }
-    }
-  }
-
-  .imgHidden {
     img {
       visibility:hidden;
       opacity:0;
       @include transition(all .9s $smoothTransition);
     }
+  }
+}
 
-    &:hover {
-      img {
-        visibility:visible;
-        opacity:1;
-        @include transition(all .9s $smoothTransition);
-      }
-
-      .socialContent {
-        visibility:hidden;
-        opacity:0;
-        @include transition(all .9s $smoothTransition);
-      }
-    }
+.imgHidden {
+  img {
+    visibility:hidden;
+    opacity:0;
+    @include transition(all .9s $smoothTransition);
   }
 
-  .smallBox {
-    display: block;
-    width: 125px;
-    height: 125px;
-    float: left;
-    position: relative;
-
+  &:hover {
+    img {
+      visibility:visible;
+      opacity:1;
+      @include transition(all .9s $smoothTransition);
+    }
 
     .socialContent {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px!important;
-
-      h5 {
-        color: #000000 !important;
-        font-size: 11px !important;
-        line-height: 15px;
-        font-family: $CamphorMedium !important;
-        text-align: left!important;
-      }
-    }
-    &:hover .socialIcon {
-      visibility: hidden;
-      opacity: 0;
+      visibility:hidden;
+      opacity:0;
       @include transition(all .9s $smoothTransition);
     }
   }
+}
+
+.smallBox {
+  display: block;
+  width: 125px;
+  height: 125px;
+  float: left;
+  position: relative;
+
+
+  .socialContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px!important;
+
+    h5 {
+      color: #000000 !important;
+      font-size: 11px !important;
+      line-height: 15px;
+      font-family: $CamphorMedium !important;
+      text-align: left!important;
+    }
+  }
+  &:hover .socialIcon {
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all .9s $smoothTransition);
+  }
+}
 
 .empty {
   background: #eeeeee;
@@ -2041,8 +2042,6 @@ a {
 .catalogue {
   height: 630px;
   @include align();
-  margin-bottom: 100px;
-  margin-top: 70px;
   /*background: url("/img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align:center;
@@ -2053,7 +2052,7 @@ a {
   padding-top:70px;
 
   img {
-      @include transition(all 8s $smoothTransition);
+    @include transition(all 8s $smoothTransition);
     -webkit-transition: all 2s;
     -ms-transform: scale(1); /* IE 9 */
     -webkit-transform: scale(1); /* Safari */
@@ -2062,11 +2061,11 @@ a {
 
   &:hover img {
     -webkit-transition: all 2s;
-    /*-ms-transform: scale(1.1); 
+    /*-ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);*/
     @include transition(all 8s $smoothTransition);
-    }
+  }
 
   .imgIllustration {
     height: 100%;
@@ -2078,22 +2077,22 @@ a {
     z-index: 2;
     margin-top: 0px;
     @include transition(all 8s $smoothTransition);
-      &:after {
-        content:'\A';
-        width:100%; height:100%;
-        top:0; left:0;
-        background:rgba(0,0,0,0.6);
-        position:absolute;
-        opacity:1;
-        @include transition(all 8s $smoothTransition);
-      }
+    &:after {
+      content:'\A';
+      width:100%; height:100%;
+      top:0; left:0;
+      background:rgba(0,0,0,0.6);
+      position:absolute;
+      opacity:1;
+      @include transition(all 8s $smoothTransition);
+    }
   }
 
   &:hover .imgIllustration:after {
     /*opacity: 0.6;*/
     @include transition(all 8s $smoothTransition);
   }
-  
+
   .img {
     position: absolute;
     height: 100%;
@@ -2128,11 +2127,11 @@ a {
     /*&:hover .plusSign {
       @include transition(all 0.9s $smoothTransition);
       -webkit-transition: all 0.5s;
-      -ms-transform: scale(1.2); 
-      -webkit-transform: scale(1.2); 
+      -ms-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
       transform: scale(1.2);
-      -ms-transform: rotate(360deg); 
-      -webkit-transform: rotate(360deg); 
+      -ms-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }*/
 
@@ -2193,7 +2192,7 @@ a {
       content: url(/img/trait.png);
       z-index: -1;
       @include transition(all 0s $smoothTransition);
-    }  
+    }
 
     h6 {
       opacity: 0.8;
@@ -2226,7 +2225,7 @@ a {
 }
 
 .rotationplusSign {
-    @include transition(all 0.3s $smoothTransition);
+  @include transition(all 0.3s $smoothTransition);
   -webkit-transition: all 0.3s;
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari */
@@ -2237,16 +2236,16 @@ a {
 }
 
 .opacity {
-    /*-moz-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
-    box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
-    -moz-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
-    box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
-    -moz-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
-    -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
-    box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
-  @include transition(all 0.9s $smoothTransition); */
+  /*-moz-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 500px 500px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 500px 500px 300px 300px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+  -webkit-box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+  box-shadow: inset 0px 0px 0px 800px rgba(255,255,255,0.3);
+@include transition(all 0.9s $smoothTransition); */
 
 }
 
@@ -2260,19 +2259,11 @@ a {
 
 .fifthBlocks {
   width: 20%;
-} 
+}
 
 .competition {
-  /*@media screen and (max-width: 1366px) {
-    width: 1330px;
-  }
-  @media screen and (max-width: 1280px) {
-    width: 1200px;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 1000px;
-  }*/
-  
+  position: relative;
+
   h3 {
     font-size: 18px;
     font-family: $Playfair;
@@ -2282,28 +2273,84 @@ a {
     text-transform: uppercase;
     position: relative;
     z-index: 2;
-    margin-bottom: 70px;  
+    margin-bottom: 70px;
+  }
+}
+
+
+.competition {
+  background-color: white;
+
+  #slider-competition {
+    margin-top: 65px;
+
+    .owl-item {
+      opacity: 1;
+      min-height: 380px;
+
+      .slide {
+        &.compat-object-fit {
+          background-size: cover;
+          background-position: top center;
+          background-repeat: no-repeat;
+          height: 284px;
+          margin-bottom: 60px;
+
+          img {
+            opacity: 0;
+          }
+        }
+      }
+
+      img {
+        height: 284px;
+        width: 210px;
+      }
+
+      .linkVid {
+        height: 284px;
+        display: block;
+        z-index: 3;
+        width: 210px;
+      }
+    }
+
+    .info-movie {
+      padding-top: 30px;
+      text-align: center;
+      width: 210px;
+
+      p {
+        color: #2c2c2c;
+        font-family: $CamphorBold;
+        font-size: 0.875rem;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+      }
+
+      a {
+        color: #2c2c2c;
+      }
+
+      a.director {
+        color: $gold;
+        display: block;
+        font-family: $CamphorItalic;
+        font-size: 0.813rem;
+      }
+    }
   }
 }
 
 .about {
   @include align();
-  height: 710px;
+  min-height: 700px;
+  height: auto;
   width: 100%;
   z-index: 3;
-
-  &:before {
-    content: "";
-    background: url(/img/palmeBckg-2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #f6f6f6;
-    position: absolute;
-    height: 1000px;
-    width: 100%;
-    left: 0;
-    top: 8%;
-  }
+  position: relative;
+  overflow: auto;
+  margin-bottom: 80px;
 
 
   .innerWrapper {
@@ -2316,17 +2363,21 @@ a {
   }
 
   .aboutContent {
-    height: 475px;
+    height: auto;
     width: 650px;
     background: #c3a05f;
     text-align: right;
     color: white;
     float: right;
-    padding:50px 60px 80px 0px;
+    padding:50px 60px 50px 0px;
     z-index: 2;
     position: relative;
     @media screen and(max-width: 1024px) {
       transform: scale(0.8);
+    }
+
+    strong {
+      color: white;
     }
 
     span {
@@ -2356,12 +2407,12 @@ a {
     }
 
     .aboutMore {
-        z-index: 3;
-        text-transform: uppercase;
-        font-size: 12px;
-        font-family: $CamphorBold;
-        letter-spacing: 1px;
-        color: white;
+      z-index: 3;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: $CamphorBold;
+      letter-spacing: 1px;
+      color: white;
     }
   }
 
@@ -2374,13 +2425,13 @@ a {
     @media screen and(max-width: 1024px) {
       transform: scale(0.7);
     }
-    
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
+  }
 
   .aboutVideos{
     display: none;
@@ -2388,12 +2439,12 @@ a {
 
   .aboutVideos {
 
-      article, img {
-        padding-left:0px!important;
-        width: 726px!important;
-        height: 465px!important;
-      }
-      .video-container {
+    article, img {
+      padding-left:0px!important;
+      width: 726px!important;
+      height: 465px!important;
+    }
+    .video-container {
       position: relative;
       overflow: hidden;
       width: 726px;
@@ -2403,29 +2454,29 @@ a {
 }
 
 .palmeBckg {
-    width: 1366px;
-    @include align();
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    text-align: center;
-    top: 800px;
-    z-index: 2;
-    margin-top: 0px;
-    width: 100%;
-    margin-top: -500px;
+  width: 1366px;
+  @include align();
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  top: 800px;
+  z-index: 2;
+  margin-top: 0px;
+  width: 100%;
+  margin-top: -500px;
 
-    .img {
-      position: absolute;
-      border: 0px solid white!important;
-      height: 100%;
-      width: 100%;
-      background-size: cover;
-      top: 0;
-      left: 0;
-    }
+  .img {
+    position: absolute;
+    border: 0px solid white!important;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    top: 0;
+    left: 0;
+  }
 }
 
 img[src=""], .img {
-    content: "";
+  content: "";
 }

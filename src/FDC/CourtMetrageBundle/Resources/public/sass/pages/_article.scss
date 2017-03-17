@@ -112,7 +112,7 @@ article {
 
   h2 {
     color: #333;
-    font-family: $Playfair;
+    font-family: $CamphorRegular;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -127,7 +127,7 @@ article {
 
   h3 {
     color: #333;
-    font-family: $Playfair;
+    font-family: $CamphorRegular;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -270,6 +270,23 @@ article {
 .single-article {
   padding: 65px 0;
 
+  .text {
+    margin: 35px 0px;
+  }
+
+  .txt-grey-bkg-container {
+    background-color: #f4f4f4;
+    padding: 88px 80px;
+    margin-bottom: 70px;
+    max-width: 776px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .strong {
+    margin-bottom: 10px;
+  }
+
   ul {
     li {
       font-family: $CamphorRegular;
@@ -316,7 +333,8 @@ article {
   }
 
   .small-container {
-    width: 730px;
+    /*width: 730px;*/
+    width: 977px;
   }
 
   &.single-actualite {
@@ -369,6 +387,7 @@ article {
     font-family: $CamphorHeavy;
     color: $gold;
     font-size: 0.625rem;
+    margin-bottom: 20px;
 
     .icon {
       font-size: 1rem;
@@ -421,10 +440,11 @@ article {
     font-size: 3rem;
     font-weight: 400;
     line-height: 1.3em;
-    margin: 0 auto;
     max-width: 775px;
     text-align: center;
-    margin-bottom: 80px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   .info {
@@ -448,6 +468,10 @@ article {
       margin-left: 4px;
       margin-right: 5px;
       padding-left: 8px;
+    }
+
+    a {
+      color: black;
     }
 
     span {
@@ -570,10 +594,11 @@ article {
     margin: 0 auto;
     border-bottom: 0px solid #e5e5e5;
     border-top: 0px solid #e5e5e5;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
     blockquote {
       /*border-bottom: 1px solid #e5e5e5;
-      border-top: 1px solid #e5e5e5;*/ 
+      border-top: 1px solid #e5e5e5;*/
       color: #666;
       color: #333;
       font-size: 1.688rem;
@@ -643,7 +668,8 @@ article {
   }
 
   .big-txt {
-    width: 776px;
+    /*width: 776px;*/
+    width: 100%;
     margin: 0 auto 70px;
 
     p {
@@ -737,6 +763,8 @@ article {
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     padding: 70px 0;
+    margin-bottom: 50px;
+    margin-top: 30px;
 
     p {
       font-family: $CamphorBold;
@@ -881,7 +909,7 @@ article {
       &+ .programmation-film {
         float: left;
         width: 50%;
-        
+
         .wrapper {
           color: #fff;
           height: 100%;
@@ -1060,3 +1088,9 @@ article {
     }
   }
 }
+
+/*.grid {
+  h2.title {
+    font-family: $CamphorHeavy!important;
+  }
+}*/
