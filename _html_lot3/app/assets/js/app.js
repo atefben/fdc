@@ -93,16 +93,16 @@ homepageCards.ajaxClickEvent = function(button){
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
                 if(cardsToDisplay.length < 4){
-                    //fake animation before the real computing
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+                }
 
+                if(){
                     //scrolltop
                     var offset = $('.contain-card').offset().top - 250;
                     $('html,body').animate({
                         scrollTop: offset
                     });
                 }
-                
 
 
 
@@ -161,9 +161,9 @@ homepageCards.showFiltersOverlay = function(element){
         $('#filters').addClass('show');
     }, 100);
 
-    setTimeout(function () {
+    setTimeout(function(){
         $('#filters span').addClass('show');
-    }, 400);
+    },400);
 
     $('#filters span').off('click').on('click', function () {
         var id = element.closest('.filter').attr('id'),
