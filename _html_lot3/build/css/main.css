@@ -7079,7 +7079,8 @@ body#home .articles-wrapper .grid-01 .card:first-of-type .info {
   height: auto;
 }
 body#home .articles-wrapper .grid-01 .card:first-of-type strong {
-  font-size: 2.25rem;
+  font-size: 1.8rem;
+  letter-spacing: 0px;
 }
 
 .block-accordion .active .contain-infos a {
@@ -7411,20 +7412,28 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   height: 15px;
 }
 
+.retrospective .slider-restropective .calc3 {
+  width: 50%;
+  left: 0px;
+}
 .retrospective .slider-restropective .calc3 img.i1 {
-  position: relative;
-  top: 2%;
-  left: -21%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 .retrospective .slider-restropective .calc3 img.i2 {
-  top: 10%;
-  position: relative;
-  right: 24%;
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
 }
 .retrospective .slider-restropective .calc3 img.i3 {
-  position: relative;
-  top: 8%;
-  left: -35%;
+  position: absolute;
+  top: 5%;
+  left: 15%;
+}
+.retrospective .slider-restropective .calc4 {
+  width: 50%;
+  right: 0px;
 }
 .retrospective .slider-restropective .calc4 img.i1 {
   position: relative;

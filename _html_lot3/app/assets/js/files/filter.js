@@ -97,7 +97,7 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }console.log($('.home').length);
+        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
 

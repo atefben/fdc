@@ -2425,7 +2425,7 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }console.log($('.home').length);
+        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
 
@@ -7085,9 +7085,10 @@ homepageCards.config = {
     cardsByFilter: [],
     filters: [],
     cardsContainer: $('.ajax-filter-cards-container'),
-    bottomCardsWrapper: $('.articles-wrapper')
-    //ghostContainer: $('.ajax-cards-ghost-container')
+    bottomCardsWrapper: $('.articles-wrapper'),
 }
+
+homepageCards.config.urlStamp;
 
 homepageCards.init = function(){
     
@@ -7099,11 +7100,17 @@ homepageCards.init = function(){
 }
 
 homepageCards.events = function(){
+    console.log('events');
     $('.filters .select span').off('click').on('click', function (){
         homepageCards.showFiltersOverlay($(this));
     });
 
-    $('.read-more.ajax-request').on('click', function(){
+    homepageCards.ajaxClickEvent($('.read-more.ajax-request'));
+}
+
+homepageCards.ajaxClickEvent = function(button){
+    console.log('ajaxClickEvent');
+    button.off('click').on('click', function(){
 
         var $this = $(this);
         var url = $(this).attr('href');
@@ -7146,16 +7153,16 @@ homepageCards.events = function(){
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
                 if(cardsToDisplay.length < 4){
-                    //fake animation before the real computing
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+                }
 
+                if(!$('.articles-wrapper .articles article').length){
                     //scrolltop
                     var offset = $('.contain-card').offset().top - 250;
                     $('html,body').animate({
                         scrollTop: offset
                     });
                 }
-                
 
 
 
@@ -7183,7 +7190,7 @@ homepageCards.events = function(){
 }
 
 homepageCards.showFiltersOverlay = function(element){
-    
+    console.log('showFiltersOverlay');
     $('.filter .select').each(function () {
         $that = $(this);
         $id = $(this).closest('.filter').attr('id');
@@ -7214,9 +7221,9 @@ homepageCards.showFiltersOverlay = function(element){
         $('#filters').addClass('show');
     }, 100);
 
-    setTimeout(function () {
+    setTimeout(function(){
         $('#filters span').addClass('show');
-    }, 400);
+    },400);
 
     $('#filters span').off('click').on('click', function () {
         var id = element.closest('.filter').attr('id'),
@@ -7233,8 +7240,9 @@ homepageCards.showFiltersOverlay = function(element){
         homepageCards.populateCards(newCards);
     });
 
+
     // close filters
-    $('body').on('click', '#filters', function () {
+    $('body').off('click').on('click', '#filters', function () {
         $('#filters').removeClass('show');
         setTimeout(function () {
             $('#filters').remove();
@@ -7242,13 +7250,20 @@ homepageCards.showFiltersOverlay = function(element){
 
         var $this = $('#home-news-statements-more');
         var url = $this.attr('href');
+        
+        if(typeof url === 'undefined'){
+            url = homepageCards.config.urlStamp;
+        }
         var container = $this.closest('.block-01');
-        var dateTime = $('.last-element').data('time');
+        var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
+        if(typeof dateTime === 'undefined'){
+            dateTime = $('.contain-card article:last-child').data('time');
+        }
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
-
-        console.log('ajax call filters',url,theme,format);
+        var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
+        console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
@@ -7256,17 +7271,20 @@ homepageCards.showFiltersOverlay = function(element){
                 $data = $(data);
 
                 //BUTTON BEHAVIOUR
-                var moreBtn = $data.find('.ajax-request').attr('href');
+                var moreBtn = $data.find('.ajax-request');
                 if(typeof moreBtn === 'undefined'){
-                    moreBtn = $data.filter('.ajax-request').attr('href');
+                    moreBtn = $data.filter('.ajax-request');
                 }
 
                 if(typeof moreBtn !== 'undefined'){
-
+                    $('.articles-wrapper').append(moreBtn);
+                    $('#home-news-statements-more-end').remove();
+                    homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
-                    $('#home-news-statements-more').after(allNewsButton).remove();
+                    homepageCards.config.urlStamp = currentMoreBtn.attr('href');
+                    $('.articles-wrapper').append(moreBtn);
                 }
             }
         });
@@ -7306,6 +7324,12 @@ homepageCards.emptyCards = function(){
 homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
+    //deduplicate array
+    console.log(tempCardsArray);
+    var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
+        return i == a.indexOf(itm);
+    });
+    console.log(tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';

@@ -69,7 +69,7 @@ body#home .contain-card{
 }
 
 body#home .articles-wrapper{
-        height: auto!important;
+    height: auto!important;
     .articles {
         .grid-01 .card{
             &:first-of-type {
@@ -503,37 +503,44 @@ header #navigation ul.user li a {
 
 .retrospective {
     .slider-restropective {
-        .calc3 img.i1 {
-            position: relative;
-            top: 2%;
-            left: -21%;
+        .calc3{
+            width: 50%;
+            left: 0px;
+
+            img.i1 {
+                position: absolute;
+                top: 10%;
+                left: 10%;
+            }
+
+            img.i2 {
+                position: absolute;
+                bottom: 20%;
+                left: 15%;
+            }
+
+            img.i3 {
+                position: absolute;
+                top: 5%;
+                left: 15%;
+            }
         }
 
-        .calc3 img.i2 {
-            top: 10%;
-            position: relative;
-            right: 24%;
-        }
+        .calc4{
+            width: 50%;
+            right: 0px;
+            img.i1 {
+                position: relative;
+                top: 1%;
+                left: 33%;
+            }
 
-        .calc3 img.i3 {
-            position: relative;
-            top: 8%;
-            left: -35%;
+            img.i2 {
+                top: 21%;
+                position: relative;
+                right: -24%;
+            }
         }
-
-        .calc4 img.i1 {
-            position: relative;
-            top: 1%;
-            left: 33%;
-        }
-
-        .calc4 img.i2 {
-            top: 21%;
-            position: relative;
-            right: -24%;
-        }
-
-        
     }
 
     .slider-restropective[data-slide="10"] {
