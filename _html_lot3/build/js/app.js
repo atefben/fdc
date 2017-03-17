@@ -7103,7 +7103,11 @@ homepageCards.events = function(){
         homepageCards.showFiltersOverlay($(this));
     });
 
-    $('.read-more.ajax-request').on('click', function(){
+    homepageCards.ajaxClickEvent($('.read-more.ajax-request'));
+}
+
+homepageCards.ajaxClickEvent = function(button){
+    button.on('click', function(){
 
         var $this = $(this);
         var url = $(this).attr('href');
@@ -7246,7 +7250,7 @@ homepageCards.showFiltersOverlay = function(element){
         var dateTime = $('.last-element').data('time');
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
-
+        var currentMoreBtn = $('#home-news-statements-more');
         console.log('ajax call filters',url,theme,format);
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
@@ -7262,11 +7266,12 @@ homepageCards.showFiltersOverlay = function(element){
                 }
 
                 if(typeof moreBtn !== 'undefined'){
-
+                    currentMoreBtn.after(moreBtn).remove();
+                    homepageCards.ajaxClickEvent(moreBtn);
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
-                    $('#home-news-statements-more').after(allNewsButton).remove();
+                    currentMoreBtn.after(allNewsButton).remove();
                 }
             }
         });
