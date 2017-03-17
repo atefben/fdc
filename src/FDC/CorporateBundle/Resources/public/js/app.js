@@ -7272,9 +7272,10 @@ homepageCards.showFiltersOverlay = function(element){
                 if(typeof moreBtn === 'undefined'){
                     moreBtn = $data.filter('.ajax-request').attr('href');
                 }
-
+                console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
                     currentMoreBtn.after(moreBtn).remove();
+                    console.log($('#home-news-statements-more'));
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
