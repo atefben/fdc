@@ -111,11 +111,11 @@ homepageCards.ajaxClickEvent = function(button){
                 if(typeof moreBtn === 'undefined'){
                     moreBtn = $data.filter('#home-news-statements-more');
                 }
-                console.log($data,moreBtn);
+
 
                 if(typeof moreBtn.attr('href') !== 'undefined'){
                     //ajax btn found, more content to come
-                    $this.attr('href',moreBtn.attr('href'));
+                    $('.articles-wrapper').append(moreBtn);
 
                 }else{
                     //no more content but let's take read more link and wording
