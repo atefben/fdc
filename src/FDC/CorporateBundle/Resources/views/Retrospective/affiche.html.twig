@@ -57,11 +57,11 @@
             <strong class="title-9">{{ 'retrospective.affiche.partager'|trans }}</strong>
             <div class="block-social-network block-social-network-all ">
                 <a class="facebook"
-                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentURL|url_encode(true) }}&picture=
+                   href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentURL }}&picture=
 {% if affiche is not null %}{% path affiche.file, 'small' %}{% endif %}&name=L'affiche du Festival {{ app.request.attributes.get('year') }}&caption={% if affiche is not null %}{{ affiche.copyright }}{% endif %}&description={{ currentURL }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i
                             class="icon icon-facebook"></i></a><!--
             --><a class="twitter"
-                  href="https://twitter.com/intent/tweet?text={{ ('affiche.festival'|trans) ~ ' ' ~  year ~ (affiche ?  ' - ' ~ affiche.copyright : '') ~ ' - ' ~ urlshare|url_encode(true) }}"><i
+                  href="https://twitter.com/intent/tweet?text={{ ('affiche.festival'|trans) ~ ' ' ~  year ~ (affiche ?  ' - ' ~ affiche.copyright : '') ~ ' - ' ~ urlshare }}"><i
                             class="icon icon-twitter"></i></a><!--
             --><a href="#" rel="nofollow" class="link self" data-clipboard-text="{{ currentURL }}"><i
                             class="icon icon-link"></i></a><!--
