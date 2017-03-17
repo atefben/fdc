@@ -60,7 +60,7 @@ homepageCards.ajaxClickEvent = function(button){
         var format = $('.filter#format .select span.active').data('filter');
         //fake animation before the real computing
         $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
-
+        console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
@@ -114,7 +114,7 @@ homepageCards.ajaxClickEvent = function(button){
 
                 if(typeof moreBtn !== 'undefined'){
                     //ajax btn found, more content to come
-                    $this.attr('href',moreBtn);
+                    $this.attr('href',moreBtn.attr('href'));
 
                 }else{
                     //no more content but let's take read more link and wording
@@ -203,7 +203,7 @@ homepageCards.showFiltersOverlay = function(element){
         if(typeof dateTime === 'undefined'){
             dateTime = $('.contain-card article:last-child').data('time');
         }
-        console.log(dateTime);
+
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
