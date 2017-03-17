@@ -7119,13 +7119,6 @@ homepageCards.events = function(){
                 return false;
             }else{
                 $data = $(data);
-
-                //scrolltop
-                var offset = $('.contain-card').offset().top - 250;
-                $('html,body').animate({
-                    scrollTop: offset
-                });
-
                 //add new filters
                 if($(data).filter('.compute-filters').length){
                     $(data).filter('.compute-filters').find('span').each(function(){
@@ -7138,33 +7131,48 @@ homepageCards.events = function(){
                         }
                     });
                 }
-                var newCards = [];
-                $(data).find('article').each(function(){
-                    newCards.push($(this));
-                });
-                console.log(newCards.length);
-                homepageCards.insertCards(newCards);
-                var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
-                homepageCards.emptyCards();
-                homepageCards.populateCards(cardsToDisplay);
-                homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
-                homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
-                //BUTTON BEHAVIOUR
-                var moreBtn = $data.find('.ajax-request').attr('href');
-                if(typeof moreBtn === 'undefined'){
-                    moreBtn = $data.filter('.ajax-request').attr('href');
-                }
+                if(newCards.length){
+                
+                    var newCards = [];
+                    $(data).find('article').each(function(){
+                        newCards.push($(this));
+                    });
 
-                if(typeof moreBtn !== 'undefined'){
-                    //ajax btn found, more content to come
-                    $this.attr('href',moreBtn);
-                    
-                }else{
-                    //no more content but let's take read more link and wording
-                    var allNewsButton = $data.filter('.read-more');
-                    $('#home-news-statements-more').remove();
-                    container.append(allNewsButton);
+                    homepageCards.insertCards(newCards);
+                    var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
+                    homepageCards.emptyCards();
+                    homepageCards.populateCards(cardsToDisplay);
+                    homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
+                    homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
+
+                    //scrolltop
+                    var offset = $('.contain-card').offset().top - 250;
+                    $('html,body').animate({
+                        scrollTop: offset
+                    });
+
+                    //fake animation before the real computing
+                    $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+
+
+
+                    //BUTTON BEHAVIOUR
+                    var moreBtn = $data.find('.ajax-request').attr('href');
+                    if(typeof moreBtn === 'undefined'){
+                        moreBtn = $data.filter('.ajax-request').attr('href');
+                    }
+
+                    if(typeof moreBtn !== 'undefined'){
+                        //ajax btn found, more content to come
+                        $this.attr('href',moreBtn);
+                        
+                    }else{
+                        //no more content but let's take read more link and wording
+                        var allNewsButton = $data.filter('.read-more');
+                        $('#home-news-statements-more').remove();
+                        container.append(allNewsButton);
+                    }
                 }
             }
         });
