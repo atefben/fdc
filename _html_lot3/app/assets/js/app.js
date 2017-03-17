@@ -24,8 +24,9 @@ homepageCards.config = {
     filters: [],
     cardsContainer: $('.ajax-filter-cards-container'),
     bottomCardsWrapper: $('.articles-wrapper'),
-    urlStamp = null
 }
+
+homepageCards.config.urlStamp;
 
 homepageCards.init = function(){
     
