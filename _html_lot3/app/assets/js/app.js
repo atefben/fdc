@@ -176,7 +176,7 @@ homepageCards.showFiltersOverlay = function(element){
     });
 
     // close filters
-    $('body').on('click', '#filters', function () {
+    $('body').off('click').on('click', '#filters', function () {
         $('#filters').removeClass('show');
         setTimeout(function () {
             $('#filters').remove();
