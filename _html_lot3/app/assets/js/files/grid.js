@@ -191,9 +191,9 @@ var owInitGrid = function (id) {
                             });
 
                             //scroll bottom
-                            /*$('html,body').animate({
+                            $('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()
-                            },300);*/
+                            },300);
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
