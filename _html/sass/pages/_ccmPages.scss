@@ -993,8 +993,18 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .title-list-header {
   font-family: $CamphorHeavy!important;
+  font-size: 40px!important;
+  letter-spacing: 1px;
 }
 
 .contact .title, .faq .title, .legal-notice .title, .sitemap .title {
   font-family: $Playfair!important;
+}
+
+.palmares-list .bandeau-list {
+    background-color: #202020!important;
+}
+
+.palmares-list .title-list-cat h2 {
+  color: #141414!important;
 }
