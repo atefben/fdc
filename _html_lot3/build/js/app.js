@@ -2425,7 +2425,7 @@ var owInitFilter = function (isTabSelection) {
             var lockInterval = window.setInterval(function(){
                 lock = false;
             },1000);
-        }console.log($('.home').length);
+        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
 
@@ -7267,7 +7267,7 @@ homepageCards.showFiltersOverlay = function(element){
 
                 if(typeof moreBtn !== 'undefined'){
                     currentMoreBtn.after(moreBtn).remove();
-                    homepageCards.ajaxClickEvent(moreBtn);
+                    homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
