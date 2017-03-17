@@ -283,13 +283,13 @@ homepageCards.populateCards = function(cards){
         console.log(neededContainersNumber);
         var sign = neededContainersNumber > 0 ? 1 : neededContainersNumber == 0 ? 0 : -1; 
         if(sign > 0){
-            $.each(neededContainersNumber, function(){
+            for(i == 0, i <= neededContainersNumber, i++){
                 var revertClass = '';
                 if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
                     revertClass = ' article-inverse';
                 }
                 homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>');
-            });
+            };
         }
     }
 
