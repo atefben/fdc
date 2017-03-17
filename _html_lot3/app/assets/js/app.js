@@ -59,7 +59,7 @@ homepageCards.events = function(){
                 $data = $(data);
 
                 //scrolltop
-                var offset = $('.contain-card').offset().top + 250;
+                var offset = $('.contain-card').offset().top - 250;
                 $('html,body').animate({
                     scrollTop: offset
                 });
