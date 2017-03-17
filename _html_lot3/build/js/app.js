@@ -7251,6 +7251,9 @@ homepageCards.showFiltersOverlay = function(element){
         }, 700);
 
         var $this = $('#home-news-statements-more');
+        if(typeof $this === 'undefined'){
+            $this = $('#home-news-statements-more-end');
+        }
         var url = $this.attr('href');
         var container = $this.closest('.block-01');
         var dateTime = $('.last-element').data('time');
