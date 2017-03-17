@@ -175,6 +175,7 @@ homepageCards.showFiltersOverlay = function(element){
         homepageCards.populateCards(newCards);
     });
 
+    var urlStamp;
     // close filters
     $('body').off('click').on('click', '#filters', function () {
         $('#filters').removeClass('show');
@@ -205,6 +206,7 @@ homepageCards.showFiltersOverlay = function(element){
 
                 if(typeof moreBtn !== 'undefined'){
                     currentMoreBtn.after(moreBtn).remove();
+                    console.log($('#home-news-statements-more'));
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
