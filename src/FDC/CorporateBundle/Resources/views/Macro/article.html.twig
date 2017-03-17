@@ -12,38 +12,41 @@
     'format': (article|get_news_type)~'s',
     'slug': article|trans_fallback('slug')
     }) %}
-    <article
-            class="card item date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }}"
-            data-format="{{ article.newsType|get_news_type }}"
-            data-theme="{{ article.theme|trans_fallback('slug') }}"
-            data-time="{{ article.publishedAt|date('U') }}"
-            data-end="{{ last|default(false) ? 'true':'false' }}"
-            data-date="{{ article.publishedAt|date('d-m-y') }}">
-        <div class="image">
-            <div class="image-wrapper">
-                {{ macroSelf.imageArticle(article, '572x362', '1144x724') }}
-            </div>
-            <a href="{{ articleUrl }}" class="linkImage"></a>
-            <span class="picto">
+    {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
+    {% if tagImageArticle|trim %}
+        <article
+                class="card item date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }}"
+                data-format="{{ article.newsType|get_news_type }}"
+                data-theme="{{ article.theme|trans_fallback('slug') }}"
+                data-time="{{ article.publishedAt|date('U') }}"
+                data-end="{{ last|default(false) ? 'true':'false' }}"
+                data-date="{{ article.publishedAt|date('d-m-y') }}">
+            <div class="image">
+                <div class="image-wrapper">
+                    {{ tagImageArticle|raw }}
+                </div>
+                <a href="{{ articleUrl }}" class="linkImage"></a>
+                <span class="picto">
                 {% if type == 'communique' %}
-                <i class="icon icon-communique"></i>
+                    <i class="icon icon-communique"></i>
                 {% else %}
-                <i class="icon icon-{{ article|get_news_type }}"></i>
+                    <i class="icon icon-{{ article|get_news_type }}"></i>
                 {% endif %}
             </span>
-        </div>
-        <div class="info">
-            <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a>
-            <span class="date">
+            </div>
+            <div class="info">
+                <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a>
+                <span class="date">
                 {{ article.publishedAt|date('d.m.y') }}
             </span>
-            .
-            <span class="hour">
+                .
+                <span class="hour">
                 {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}
             </span>
-            <strong><a href="{{ articleUrl }}">{{ article|trans_fallback('title') }}</a></strong>
-        </div>
-    </article>
+                <strong><a href="{{ articleUrl }}">{{ article|trans_fallback('title') }}</a></strong>
+            </div>
+        </article>
+    {% endif %}
 {% endmacro %}
 
 {% macro imageArticle(article, preset, presetBig) %}
