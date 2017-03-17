@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
-{% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+{% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')|url_encode(true)) %}
 
 <div class="grid-01 isotope-01 add-ajax-request">
     <div class="grid-sizer"></div>
