@@ -7,12 +7,15 @@
 
 {% set header = widget.image %}
 {% if header is not null %}
+    A
     {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
     {% if imageTrans is null or imageTrans.file is null %}
+        B
         {% set imageTrans = header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
 {% if imageTrans is defined %}
+    C
     {% set image = imageTrans.file %}
 {% endif %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer"
