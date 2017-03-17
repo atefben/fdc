@@ -1495,8 +1495,7 @@ var initAudio = function (hash) {
     if ($('#audio-player-popin').length > 0) {
         function updatePopinMedia(data) {
             data['url'] = data['url'] || document.location.href;
-            console.log(data);
-            
+
             if ($('.popin-mail').length) {
                 $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                 $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
@@ -1525,7 +1524,7 @@ var initAudio = function (hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-
+                console.log(name);
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
 
