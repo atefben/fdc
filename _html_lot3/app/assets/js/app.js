@@ -69,13 +69,14 @@ homepageCards.events = function(){
                         }
                     });
                 }
-
+                var newCards = [];
+                $(data).find('article').each(function(){
+                    newCards.push($(this));
+                });
+                
                 if(newCards.length){
                 
-                    var newCards = [];
-                    $(data).find('article').each(function(){
-                        newCards.push($(this));
-                    });
+                    
 
                     homepageCards.insertCards(newCards);
                     var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
