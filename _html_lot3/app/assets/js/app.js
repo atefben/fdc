@@ -205,9 +205,9 @@ homepageCards.showFiltersOverlay = function(element){
                 $data = $(data);
 
                 //BUTTON BEHAVIOUR
-                var moreBtn = $data.find('.ajax-request').attr('href');
+                var moreBtn = $data.find('.ajax-request');
                 if(typeof moreBtn === 'undefined'){
-                    moreBtn = $data.filter('.ajax-request').attr('href');
+                    moreBtn = $data.filter('.ajax-request');
                 }
                 //console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
