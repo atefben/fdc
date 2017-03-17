@@ -279,14 +279,14 @@ homepageCards.populateCards = function(cards){
     console.log('cards after deduplicate',tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
-        console.log(homepageCards.config.cardsContainer.size() * 3);
-        console.log(cards.length);
-        console.log((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
+        var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
         var revertClass = '';
-        if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
-            revertClass = ' article-inverse';
-        }
-        homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>')
+        $.each(neededContainersNumber, function(){
+            if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
+                revertClass = ' article-inverse';
+            }
+            homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>');
+        });
     }
     homepageCards.config.cardsContainer = $('.ajax-filter-cards-container');
     homepageCards.config.cardsContainer.each(function(index,value){
