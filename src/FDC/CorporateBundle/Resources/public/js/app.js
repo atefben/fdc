@@ -7257,6 +7257,7 @@ homepageCards.showFiltersOverlay = function(element){
         var dateTime = $('.last-element').data('time');
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
+        console.log($('#home-news-statements-more'));
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
@@ -7272,7 +7273,7 @@ homepageCards.showFiltersOverlay = function(element){
                 }
                 //console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
-                    console.log(moreBtn,moreBtn.length);
+                    console.log(currentMoreBtn, moreBtn,moreBtn.length);
                     currentMoreBtn.after(moreBtn).remove();
                     
                     homepageCards.ajaxClickEvent(moreBtn);
