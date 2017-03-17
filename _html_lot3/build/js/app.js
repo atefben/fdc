@@ -7108,7 +7108,7 @@ homepageCards.events = function(){
 }
 
 homepageCards.ajaxClickEvent = function(button){
-
+    console.log('ajaxClickEvent',button);
     button.off('click').on('click', function(){
         var $this = $(this);
         var url = $(this).attr('href');
@@ -7176,6 +7176,7 @@ homepageCards.ajaxClickEvent = function(button){
 
                 if(typeof moreBtn !== 'undefined'){
                     //ajax btn found, more content to come
+                    console.log(moreBtn.attr('href'));
                     $this.attr('href',moreBtn.attr('href'));
 
                 }else{
