@@ -88,6 +88,7 @@ homepageCards.ajaxClickEvent = function(button){
 
                 homepageCards.emptyCards();
                 homepageCards.populateCards(cardsToDisplay);
+                console.log('build done');
                 homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
