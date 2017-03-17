@@ -1,0 +1,301 @@
+.audio-container .audio-player2 {
+    box-sizing: border-box;
+    height: 87px;
+    overflow: hidden;
+    position: relative;
+}
+.audio-container .audio-player2:before {
+    background: #000;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    visibility: visible;
+    width: 100%;
+    z-index: 2;
+    -moz-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-container .audio-player2.on .on {
+    opacity: 1;
+    visibility: visible;
+}
+.audio-container .audio-player2 .image {
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.audio-container .audio-player2 .play-btn {
+    display: block;
+    position: absolute;
+    height: 87px;
+    width: 87px;
+    line-height: 87px;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background: none;
+    outline: none;
+    border: none;
+}
+.audio-container .audio-player2 .play-btn:hover {
+    cursor: pointer;
+}
+.audio-container .audio-player2 .play-btn .icon {
+    color: #fff;
+    font-size: 1rem;
+}
+.audio-container .audio-player2 .off {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    float: left;
+    margin-left: 87px;
+    height: 100%;
+    z-index: 3;
+    -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-container .audio-player2 .off .picto {
+    bottom: auto;
+    left: auto;
+    display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    pointer-events: auto;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 44px;
+}
+.audio-container .audio-player2 .off .picto.hide {
+    display: none;
+}
+.audio-container .audio-player2 .off .picto .icon {
+    color: #c8a461;
+}
+.audio-container .audio-player2 .off .info {
+    color: #969696;
+    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 13px;
+    margin-top: -3px;
+}
+.audio-container .audio-player2 .on {
+    opacity: 0;
+    visibility: hidden;
+    float: left;
+    position: relative;
+    height: 100%;
+    z-index: 3;
+    -moz-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: all 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-container .audio-player2 .on.show {
+    opacity: 1;
+    visibility: visible;
+}
+.audio-container .audio-player2 .on .duration {
+    position: absolute;
+    font-size: 0.625rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: -3px;
+    left: 25px;
+    z-index: 3;
+}
+.audio-container .audio-player2 .on .duration .curr {
+    color: #fff;
+    display: inline-block;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+.audio-container .audio-player2 .on .duration .total {
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+.audio-container .audio-player2 .on .progress {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    margin: 0 0 0 13px;
+    vertical-align: middle;
+    height: 55px;
+    position: relative;
+    width: 200px;
+    -moz-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -o-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    -webkit-transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+    transition: opacity 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95), visibility 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.audio-container .audio-player2 .on .progress.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+.audio-container .audio-player2 .on .progress .progress-bar {
+    position: absolute;
+    cursor: pointer;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 1px;
+    bottom: 27px;
+}
+.audio-container .audio-player2 .on .progress .progress-bar .buffer-bar {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 1px;
+    height: 3px;
+    width: 0%;
+    position: absolute;
+    z-index: 1;
+}
+.audio-container .audio-player2 .on .progress .progress-bar .current-bar {
+    background-color: #fff;
+    border-radius: 1px;
+    height: 3px;
+    width: 0%;
+    position: absolute;
+    z-index: 2;
+}
+.mob .audio-container .audio-player2 .on .progress {
+    width: 285px;
+    border-right: none;
+}
+.audio-container .audio-player2 .on .sound {
+    position: relative;
+    display: inline-block;
+    width: 85px;
+    height: 14px;
+}
+.audio-container .audio-player2 .on .sound .icon {
+    position: absolute;
+    font-size: 1rem;
+    height: 16px;
+    width: 10px;
+    margin: auto;
+    color: #fff;
+    background: none;
+    outline: none;
+    border: none;
+}
+.audio-container .audio-player2 .on .sound .sound-bar {
+    position: absolute;
+    cursor: pointer;
+    width: 55px;
+    height: 3px;
+    bottom: 3px;
+    margin: auto;
+    margin-left: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.audio-container .audio-player2 .on .sound .sound-bar .sound-seek {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: auto;
+    background-color: #fff;
+    z-index: 10;
+}
+.mob .audio-container .audio-player2 .on .sound {
+    display: none !important;
+}
+.audio-container .jwplayer {
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    cursor: none !important;
+    overflow: hidden !important;
+}
+
+/* added */
+.audio-player2 {
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.audio-container .audio-player2 {
+    height: 112px;
+    padding: 20px;
+}
+
+.audio-container .audio-player2 .play-btn {
+    left: 10px;
+    top: 10px;
+}
+
+.audio-player2 .category {
+    color: #c8a461;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 10px;
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+}
+
+.audio-player2 p {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 23px;
+    max-width: 425px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10px;
+    z-index: 1;
+    position: relative;
+}
+
+.audio-container .audio-player2 .on .duration {
+    position: relative;
+    font-size: 1.2rem;
+}
+.audio-container .audio-player2 .on .progress {
+    width: 90%;
+}
+
+.audio-container .audio-player2 .on .sound {
+    display: none;
+}
+
+.audio-container .audio-player2 .off, .audio-container .audio-player2 .on {
+    width: calc(100% - 87px);
+    margin-left: 80px;
+}
+
+.audio-container .audio-player2 .play-btn .icon {
+    color: #c8a461;
+    font-size: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.audio-container .audio-player2 .play-btn .icon_play, .audio-container .audio-player2 .play-btn .icon_pause{
+    font-size: 20px;
+    z-index: 1;
+}
+
+.audio-container .audio-player2 .off.hide {
+    display: none;
+}
