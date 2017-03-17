@@ -57,6 +57,13 @@ homepageCards.events = function(){
                 return false;
             }else{
                 $data = $(data);
+
+                //scrolltop
+                var offset = $('.contain-card').offset().top + 250;
+                $('html,body').animate({
+                    scrollTop: offset
+                });
+                
                 //add new filters
                 if($(data).filter('.compute-filters').length){
                     $(data).filter('.compute-filters').find('span').each(function(){
