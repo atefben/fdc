@@ -17959,7 +17959,6 @@ article .read-later.rAlign span:after {
 
 .grid {
   padding-top: 60px;
-  background-color: #141414 !important;
 }
 .grid h2.title {
   color: #333;
@@ -17973,6 +17972,9 @@ article .read-later.rAlign span:after {
 .grid .grid-wrapper {
   margin-top: 60px;
   overflow: hidden;
+}
+.grid #gridFilmSelection {
+  background-color: #141414 !important;
 }
 .grid .item {
   padding: 0;
@@ -29510,6 +29512,10 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .palmares-list .title-list-cat h2 {
   color: #141414 !important;
+}
+
+.all-articles {
+  background: white !important;
 }
 
 .confcourtaccordion .selectbtn {
