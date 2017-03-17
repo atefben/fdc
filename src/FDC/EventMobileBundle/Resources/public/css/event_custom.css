@@ -238,6 +238,10 @@
     padding: 20px;
 }
 
+.audio-container .audio-player2 .off .info {
+    max-width: calc(100% - 87px);
+}
+
 .audio-container .audio-player2 .play-btn {
     left: 10px;
     top: 10px;
