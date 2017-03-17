@@ -7107,10 +7107,6 @@ homepageCards.events = function(){
 }
 
 homepageCards.ajaxClickEvent = function(button){
-    if(typeof button === 'undefined'){
-        console.log($('#home-news-statements-more'));
-        console.log($('#home-news-statements-more-end'));
-    }
 
     button.on('click', function(){
 
