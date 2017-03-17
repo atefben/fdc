@@ -7144,17 +7144,18 @@ homepageCards.events = function(){
                 homepageCards.populateCards(cardsToDisplay);
                 homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
-
+                
+                console.log(cardsToDisplay.length);
                 if(cardsToDisplay.length < 4){
                     //fake animation before the real computing
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
-                }
 
-                //scrolltop
-                var offset = $('.contain-card').offset().top - 250;
+                    //scrolltop
+                    var offset = $('.contain-card').offset().top - 250;
                     $('html,body').animate({
                         scrollTop: offset
                     });
+                }
                 
 
 
@@ -7232,7 +7233,7 @@ homepageCards.showFiltersOverlay = function(element){
         homepageCards.emptyCards();
         homepageCards.populateCards(newCards);
     });
-    
+
     // close filters
     $('body').on('click', '#filters', function () {
         $('#filters').removeClass('show');
