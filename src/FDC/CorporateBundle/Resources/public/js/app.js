@@ -7139,42 +7139,40 @@ homepageCards.events = function(){
                 homepageCards.insertCards(newCards);
                 var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
 
-                if(cardsToDisplay.length){
+
+                homepageCards.emptyCards();
+                homepageCards.populateCards(cardsToDisplay);
+                homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
+                homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
+
+                if(cardsToDisplay.length > 2){
+                    //scrolltop
+                    var offset = $('.contain-card').offset().top - 250;
+                    $('html,body').animate({
+                        scrollTop: offset
+                    });
+                }
+
+                //fake animation before the real computing
+                $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
+
+
+
+                //BUTTON BEHAVIOUR
+                var moreBtn = $data.find('.ajax-request').attr('href');
+                if(typeof moreBtn === 'undefined'){
+                    moreBtn = $data.filter('.ajax-request').attr('href');
+                }
+
+                if(typeof moreBtn !== 'undefined'){
+                    //ajax btn found, more content to come
+                    $this.attr('href',moreBtn);
                     
-                    homepageCards.emptyCards();
-                    homepageCards.populateCards(cardsToDisplay);
-                    homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
-                    homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
-
-                    if(cardsToDisplay.length > 3){
-                        //scrolltop
-                        var offset = $('.contain-card').offset().top - 250;
-                        $('html,body').animate({
-                            scrollTop: offset
-                        });
-                    }
-
-                    //fake animation before the real computing
-                    $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
-
-
-
-                    //BUTTON BEHAVIOUR
-                    var moreBtn = $data.find('.ajax-request').attr('href');
-                    if(typeof moreBtn === 'undefined'){
-                        moreBtn = $data.filter('.ajax-request').attr('href');
-                    }
-
-                    if(typeof moreBtn !== 'undefined'){
-                        //ajax btn found, more content to come
-                        $this.attr('href',moreBtn);
-                        
-                    }else{
-                        //no more content but let's take read more link and wording
-                        var allNewsButton = $data.filter('.read-more');
-                        $('#home-news-statements-more').remove();
-                        container.append(allNewsButton);
-                    }
+                }else{
+                    //no more content but let's take read more link and wording
+                    var allNewsButton = $data.filter('.read-more');
+                    $('#home-news-statements-more').remove();
+                    container.append(allNewsButton);
                 }
             }
         });
@@ -7276,6 +7274,7 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     var bottomContainerHeight = 0;
+    console.log(cards.length);
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';
         if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
