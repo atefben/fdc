@@ -215,6 +215,7 @@ homepageCards.showFiltersOverlay = function(element){
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
                     urlStamp = currentMoreBtn.attr('href');
+                    console.log('stamp prev button url',currentMoreBtn.attr('href'),urlStamp)
                     currentMoreBtn.after(allNewsButton).remove();
                 }
             }
