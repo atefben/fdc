@@ -15696,7 +15696,6 @@ a {
 
 .competition {
   background-color: white;
-  padding: 70px 0 0px 0;
 }
 .competition #slider-competition {
   margin-top: 65px;
@@ -29499,7 +29498,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .contact .title, .faq .title, .legal-notice .title, .sitemap .title {
-  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
+  font-family: "Playfair Display", Times New Roman, Times, serif !important;
 }
 
 .confcourtaccordion .selectbtn {
