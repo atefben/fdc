@@ -29462,7 +29462,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   border-right: 1px solid #c8a461;
 }
 
-.list-article .bandeau-list, .list-article {
+.list-article {
   background-color: transparent !important;
 }
 
