@@ -7341,6 +7341,8 @@ homepageCards.populateCards = function(cards){
     console.log('cards after deduplicate',tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
+        console.log(homepageCards.config.cardsContainer.size() * 3);
+        console.log(cards.length);
         var revertClass = '';
         if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
             revertClass = ' article-inverse';
