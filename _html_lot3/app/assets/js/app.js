@@ -55,12 +55,12 @@ homepageCards.ajaxClickEvent = function(button){
         if(typeof dateTime === 'undefined'){
             dateTime = $('.contain-card article:last-child').data('time');
         }
-        console.log(dateTime);
+
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         //fake animation before the real computing
         $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
-        console.log(url,dateTime,theme,format);
+        //console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
@@ -124,9 +124,7 @@ homepageCards.ajaxClickEvent = function(button){
                     if(typeof allNewsButton === 'undefined'){
                         allNewsButton = $data.filter('#home-news-statements-more-end');
                     }
-                    console.log(allNewsButton);
 
-                    
                     $('.articles-wrapper').append(allNewsButton);
                 }
             }
