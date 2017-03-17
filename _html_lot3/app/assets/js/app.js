@@ -118,7 +118,6 @@ homepageCards.ajaxClickEvent = function(button){
                     $('.articles-wrapper').append(moreBtn);
                     console.log('append more btn');
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
-
                 }else{
                     //no more content but let's take read more link and wording
                     $('#home-news-statements-more').remove();
