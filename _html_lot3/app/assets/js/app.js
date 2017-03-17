@@ -55,6 +55,7 @@ homepageCards.ajaxClickEvent = function(button){
         if(typeof dateTime === 'undefined'){
             dateTime = $('.contain-card article:last-child').data('time');
         }
+        console.log(dateTime);
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         //fake animation before the real computing
@@ -202,6 +203,7 @@ homepageCards.showFiltersOverlay = function(element){
         if(typeof dateTime === 'undefined'){
             dateTime = $('.contain-card article:last-child').data('time');
         }
+        console.log(dateTime);
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
