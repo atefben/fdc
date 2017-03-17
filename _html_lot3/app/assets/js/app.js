@@ -210,14 +210,14 @@ homepageCards.showFiltersOverlay = function(element){
                 }
 
                 if(typeof moreBtn !== 'undefined'){
-                    currentMoreBtn.after(moreBtn);
+                    $('.articles-wrapper').append(moreBtn);
                     $('#home-news-statements-more-end').remove();
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
                     homepageCards.config.urlStamp = currentMoreBtn.attr('href');
-                    currentMoreBtn.after(allNewsButton).remove();
+                    $('.articles-wrapper').append(moreBtn);
                 }
             }
         });
