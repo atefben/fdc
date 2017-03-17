@@ -258,7 +258,8 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     //deduplicate array
-    var tempCardsArray = a.filter(function(itm, i, a) {
+    console.log(tempCardsArray);
+    var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
         return i == a.indexOf(itm);
     });
     console.log(tempCardsArray);
