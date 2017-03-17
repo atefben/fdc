@@ -7183,8 +7183,9 @@ homepageCards.ajaxClickEvent = function(button){
                     var allNewsButton = $data.find('#home-news-statements-more-end');
                     
                     if(typeof allNewsButton === 'undefined'){
-                        allNewsButton = $data.filter('#home-news-statements-more');
+                        allNewsButton = $data.filter('#home-news-statements-more-end');
                     }
+                    console.log(allNewsButton);
 
                     $('#home-news-statements-more').remove();
                     container.append(allNewsButton);
