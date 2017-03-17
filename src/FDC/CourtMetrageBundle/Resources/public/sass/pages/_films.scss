@@ -18,13 +18,13 @@
 
 .categorie-items {
   clear: both;
-  
+
   .titre-document {
     color: #999;
     width: 958px;
     margin: 0 auto;
   }
-  
+
   .title-list-cat {
     color: #ffffff;
     padding: 42px;
@@ -32,7 +32,7 @@
     border-top: #202020 1px solid;
     font-size: 1rem;
     text-align: center;
-  
+
     .title {
       margin-bottom: 0px;
       width: 549px;
@@ -40,7 +40,7 @@
       font-size: 1rem;
       line-height: 30px;
     }
-  
+
     .title-item {
       text-align: center;
       padding: 20px;
@@ -52,7 +52,7 @@
       margin-bottom: 2px;
       padding-bottom: 0px;
     }
-  
+
     .title-big {
       color: #ffffff;
       font-family: "Playfair Display";
@@ -64,7 +64,7 @@
       text-align: center;
       padding-bottom: 20px;
     }
-  
+
     .button{
       border-color: #2c2c2c;
 
@@ -74,7 +74,7 @@
       }
     }
   }
-  
+
   .sub-cat-title {
     padding: 20px;
     background-color: #656565;
@@ -83,7 +83,7 @@
     text-transform: uppercase;
     letter-spacing: 3px;
   }
-  
+
   article {
     box-sizing: border-box;
     float: none;
@@ -107,23 +107,23 @@
       @include transition-duration(.5s);
       box-sizing: border-box;
     }
-  
+
     .bck-hover:hover {
       background-color: rgba(0, 0, 0, 0.5);
     }
-  
+
     .contain_item {
       width: 977px;
       max-width: 100%;
       margin: 0 auto;
       display: table;
-     
+
       img {
         height:341px;
         width:256px;
         object-fit: cover;
       }
-      
+
       .list-camera-or {
         //Centrer les informations seulement pour la version Camera Or
         .title-item {
@@ -131,20 +131,20 @@
         }
       }
     }
-    
+
     img {
       float: left;
       margin-right: 50px;
       margin-left: 96px;
     }
-    
+
     .infos-item-list {
       text-align: center;
       vertical-align: middle;
       width: 475px;
       display: table-cell;
       padding-right: 100px;
-      
+
       .title-item {
         text-transform: uppercase;
         padding-bottom: 4px;
@@ -152,13 +152,13 @@
         line-height: 16px;
         font-family: $CamphorBold;
       }
-      
+
       .sub-title-item {
         padding-bottom: 4px;
         font-size: 0.63rem;
         text-transform: uppercase;
       }
-      
+
       .nom-item {
         display: inline-block;
         color: $gold;
@@ -167,7 +167,7 @@
         font-weight: 700;
         font-size: 0.8125rem;
       }
-      
+
       .date-item {
         display: block;
         font-weight: 100;
@@ -175,7 +175,7 @@
         color: #999999;
         font-size: 0.6875rem;
       }
-      
+
       .description-item {
         padding-top: 40px;
         line-height: 26px;
@@ -185,7 +185,7 @@
           font-family: $CamphorBold;
         }
       }
-      
+
       .date-pres-item {
         text-transform: uppercase;
         color: #fff;
@@ -196,7 +196,7 @@
         font-family: $CamphorBold;
         margin-right: 6px;
       }
-      
+
       .heure-pres-item {
         color: #999;
         letter-spacing: 3px;
@@ -206,7 +206,7 @@
       }
     }
   }
-  
+
   .contain-article-invit {
     color: #ffffff;
 
@@ -271,7 +271,7 @@
         text-transform: uppercase;
         color: #fff !important;
       }
-      
+
       th,
       td {
         border: 1px solid #2c2c2c;
@@ -290,7 +290,7 @@
       font-size: 1.125rem;
       line-height: 36px;
       padding-bottom: 40px;
-    
+
       a {
         text-decoration: underline;
         color: $gold;
@@ -301,7 +301,7 @@
         font-weight: normal;
       }
     }
-    
+
     .small-pres {
       width: 632px;
       margin: 0 auto;
@@ -312,11 +312,11 @@
       &.half-div {
         width: 730px;
       }
-    
+
       p {
         color: #999;
         padding: 16px 0px;
-    
+
         strong {
           color: #999;
           font-weight: bold;
@@ -330,50 +330,50 @@
           }
         }
       }
-    
+
       h3 {
         color: #cccccc;
-    
+
         strong {
           color: $gold;
         }
       }
-    
+
       h4 {
         color: #cccccc;
       }
-    
+
       .video {
         line-height: 18px;
         position: relative;
         margin-top: 30px;
         margin-bottom: 80px;
-    
+
         p {
           padding: 0px;
         }
       }
     }
-    
+
     .share {
       color: white;
       border-top: 1px solid #2C2C2C;
-    
+
       .button {
         border: 1px solid #2c2c2c;
       }
     }
   }
- }
+}
 
 // 1. Bandeau
 // =========================
 .list-article {
-   background-color: #141414 !important;
-  
-   h3{
+  background-color: #141414 !important;
+
+  h3{
     color: #fff;
-   }
+  }
 
   .bandeau-list {
     background-color: #1b1b1b;
@@ -393,7 +393,7 @@
       body:not(.mob) & {
         background: center 0 no-repeat fixed;
         background-size: cover;
-         @include transition(all 1s $linear);
+        @include transition(all 1s $linear);
       }
 
 
@@ -436,6 +436,7 @@
       text-align: center;
       padding-left: 0;
       padding-right: 0;
+      top: 0px!important;
 
       &:after {
         background-color: $black;
@@ -485,7 +486,7 @@
       a.active {
         color: $gold;
       }
-      
+
       li {
         display: inline-block;
         padding: 18px 6.5px;
@@ -519,7 +520,7 @@
       width: 100%;
       z-index: 5;
       transition: .3s;
-    
+
       a {
         color: #999999;
         font-size: 0.75rem;
@@ -644,6 +645,7 @@
       height: 103px;
       text-align: center;
       background: #141414;
+      margin-top: 0px!important;
 
       .name {
         color: #fff;
@@ -687,6 +689,7 @@
         z-index: 1;
         background-size: cover;
         background-position: center center;
+        margin-bottom: -2px;
 
         img {
           opacity: 0;
@@ -721,7 +724,7 @@
   }
 
   .buttons.square {
-      margin-bottom: 0px;
+    margin-bottom: 0px;
     .button {
       border-right: 0px solid #000;
     }

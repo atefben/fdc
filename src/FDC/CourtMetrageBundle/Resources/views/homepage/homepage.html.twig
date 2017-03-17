@@ -32,10 +32,8 @@
 
     {% if courtIsActive == 1 %}
         <div class="competition">
-            <div class="maxContainer">
-                <h3>{{ 'ccm.homepage.competition_section'|trans }}</h3>
-            </div>
-            <div id="slider-competition" class="owl-carousel sliderDrag owl-theme owl-loaded">
+            <h2 class="title">{{ 'ccm.homepage.competition_section'|trans }}</h2>
+            <div id="slider-competition" class="owl-carousel sliderDrag">
                 {% if movies is defined and movies is not null %}
                     {% include 'FDCCourtMetrageBundle::homepage/_courts_en_competition.html.twig' %}
                 {% endif %}
