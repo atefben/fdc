@@ -7266,8 +7266,7 @@ homepageCards.showFiltersOverlay = function(element){
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
-                    $('#home-news-statements-more').remove();
-                    console.log(allNewsButton);
+                    $('#home-news-statements-more').after(allNewsButton).remove();
                 }
             }
         });
