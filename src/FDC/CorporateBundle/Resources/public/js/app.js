@@ -7174,7 +7174,7 @@ homepageCards.ajaxClickEvent = function(button){
                     moreBtn = $data.filter('#home-news-statements-more');
                 }
 
-
+                console.log(moreBtn,moreBtn.attr('href'));
                 if(typeof moreBtn.attr('href') !== 'undefined'){
                     //ajax btn found, more content to come
                     $('.articles-wrapper').append(moreBtn);
