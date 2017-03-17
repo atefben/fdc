@@ -7251,16 +7251,16 @@ homepageCards.showFiltersOverlay = function(element){
         }, 700);
 
         var $this = $('#home-news-statements-more');
-        if(typeof $this === 'undefined'){
-            $this = $('#home-news-statements-more-end');
-        }
         var url = $this.attr('href');
+        if(typeof url == 'undefined'){
+            url = urlStamp;
+        }
         var container = $this.closest('.block-01');
         var dateTime = $('.last-element').data('time');
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
-        console.log('ajax call filters',$this,url,theme,format);
+        console.log('ajax call filters',url,theme,format);
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
@@ -7276,11 +7276,11 @@ homepageCards.showFiltersOverlay = function(element){
 
                 if(typeof moreBtn !== 'undefined'){
                     currentMoreBtn.after(moreBtn).remove();
-                    console.log($('#home-news-statements-more'));
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
+                    urlStamp = currentMoreBtn.attr('href');
                     currentMoreBtn.after(allNewsButton).remove();
                 }
             }
