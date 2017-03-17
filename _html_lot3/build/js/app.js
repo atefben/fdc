@@ -7260,7 +7260,7 @@ homepageCards.showFiltersOverlay = function(element){
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
-        console.log('ajax call filters',url,theme,format);
+        console.log('ajax call filters',$this,url,theme,format);
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
