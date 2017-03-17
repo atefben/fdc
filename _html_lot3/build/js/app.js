@@ -7100,7 +7100,6 @@ homepageCards.init = function(){
 }
 
 homepageCards.events = function(){
-    console.log('events');
     $('.filters .select span').off('click').on('click', function (){
         homepageCards.showFiltersOverlay($(this));
     });
@@ -7109,9 +7108,8 @@ homepageCards.events = function(){
 }
 
 homepageCards.ajaxClickEvent = function(button){
-    console.log('ajaxClickEvent');
-    button.off('click').on('click', function(){
 
+    button.off('click').on('click', function(){
         var $this = $(this);
         var url = $(this).attr('href');
         var container = $(this).closest('.block-01');
@@ -7195,7 +7193,6 @@ homepageCards.ajaxClickEvent = function(button){
 }
 
 homepageCards.showFiltersOverlay = function(element){
-    console.log('showFiltersOverlay');
     $('.filter .select').each(function () {
         $that = $(this);
         $id = $(this).closest('.filter').attr('id');
@@ -7268,7 +7265,6 @@ homepageCards.showFiltersOverlay = function(element){
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
-        console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
@@ -7281,11 +7277,13 @@ homepageCards.showFiltersOverlay = function(element){
                     moreBtn = $data.filter('.ajax-request');
                 }
 
+                //implant good button behaviour
                 if(typeof moreBtn !== 'undefined'){
                     $('.articles-wrapper').append(moreBtn);
                     $('#home-news-statements-more-end').remove();
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
+                    console.log('no ajax request in response, put all posts button');
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
                     homepageCards.config.urlStamp = currentMoreBtn.attr('href');
@@ -7349,7 +7347,6 @@ homepageCards.populateCards = function(cards){
         var container = $(this);
         if(container.find('article').size() <= 3){
             var cardSlice = tempCardsArray.splice(0,3);
-
             $.each(cardSlice,function(i,val){
                 if(i <= 3){
                     container.append($(this).removeAttr('style'));
@@ -7358,7 +7355,6 @@ homepageCards.populateCards = function(cards){
             if(container.closest('.articles-wrapper').length){
                 bottomContainerHeight = bottomContainerHeight + container.outerHeight();
             }
-            
         }
         homepageCards.config.bottomCardsWrapper.css('height',bottomContainerHeight);
     });
