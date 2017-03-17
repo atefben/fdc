@@ -7180,13 +7180,15 @@ homepageCards.ajaxClickEvent = function(button){
 
                 }else{
                     //no more content but let's take read more link and wording
+                    $('#home-news-statements-more').remove();
                     var allNewsButton = $data.find('#home-news-statements-more-end');
                     
                     if(typeof allNewsButton === 'undefined'){
                         allNewsButton = $data.filter('#home-news-statements-more-end');
                     }
+                    console.log(allNewsButton);
 
-                    $('#home-news-statements-more').remove();
+                    
                     $('.articles-wrapper').append(allNewsButton);
                 }
             }
