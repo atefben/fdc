@@ -82,7 +82,7 @@ homepageCards.events = function(){
                 homepageCards.populateCards(cardsToDisplay);
                 homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
                 homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
-                
+
                 console.log(cardsToDisplay.length);
                 if(cardsToDisplay.length < 4){
                     //fake animation before the real computing
@@ -178,6 +178,37 @@ homepageCards.showFiltersOverlay = function(element){
         setTimeout(function () {
             $('#filters').remove();
         }, 700);
+
+        var $this = $('#home-news-statements-more');
+        var url = $this.attr('href');
+        var container = $this.closest('.block-01');
+        var dateTime = $('.last-element').data('time');
+        var theme = $('.filter#theme .select span.active').data('filter');
+        var format = $('.filter#format .select span.active').data('filter');
+
+        //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
+        $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
+            if(data == null){
+                return false;
+            }else{
+                $data = $(data);
+
+                //BUTTON BEHAVIOUR
+                var moreBtn = $data.find('.ajax-request').attr('href');
+                if(typeof moreBtn === 'undefined'){
+                    moreBtn = $data.filter('.ajax-request').attr('href');
+                }
+
+                if(typeof moreBtn !== 'undefined'){
+
+                }else{
+                    //no more content but let's take read more link and wording
+                    var allNewsButton = $data.filter('.read-more');
+                    $('#home-news-statements-more').remove();
+                    console.log(allNewsButton);
+                }
+            }
+        });
     });
 }
 
