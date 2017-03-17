@@ -192,11 +192,15 @@ homepageCards.showFiltersOverlay = function(element){
             url = homepageCards.config.urlStamp;
         }
         var container = $this.closest('.block-01');
-        var dateTime = $('.last-element').data('time');
+        var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
+        if(typeof dateTime === 'undefined'){
+            dateTime = $('.contain-card article:last-child').data('time');
+        }
         var theme = $('.filter#theme .select span.active').data('filter');
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
+        console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
