@@ -116,6 +116,7 @@ homepageCards.ajaxClickEvent = function(button){
                 if(typeof moreBtn.attr('href') !== 'undefined'){
                     //ajax btn found, more content to come
                     $('.articles-wrapper').append(moreBtn);
+                    console.log('append more btn');
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
 
                 }else{
