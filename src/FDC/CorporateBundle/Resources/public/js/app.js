@@ -7178,6 +7178,7 @@ homepageCards.ajaxClickEvent = function(button){
                 if(typeof moreBtn.attr('href') !== 'undefined'){
                     //ajax btn found, more content to come
                     $('.articles-wrapper').append(moreBtn);
+                    homepageCards.ajaxClickEvent($('#home-news-statements-more'));
 
                 }else{
                     //no more content but let's take read more link and wording
@@ -7271,7 +7272,6 @@ homepageCards.showFiltersOverlay = function(element){
         var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
-        console.log(url,dateTime,theme,format);
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
             if(data == null){
                 return false;
@@ -7283,7 +7283,8 @@ homepageCards.showFiltersOverlay = function(element){
                 if(typeof moreBtn === 'undefined'){
                     moreBtn = $data.filter('.ajax-request');
                 }
-                console.log(moreBtn);
+                
+                //console.log(moreBtn);
 
                 //implant good button behaviour
                 if(typeof moreBtn !== 'undefined'){
