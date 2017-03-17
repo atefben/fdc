@@ -280,6 +280,7 @@ homepageCards.populateCards = function(cards){
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
         //returns 1 for positive, 0 for neutral and -1 for negative
+        console.log(neededContainersNumber);
         var sign = neededContainersNumber > 0 ? 1 : neededContainersNumber == 0 ? 0 : -1; 
         if(sign > 0){
             $.each(neededContainersNumber, function(){
