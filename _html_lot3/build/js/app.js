@@ -7135,23 +7135,24 @@ homepageCards.events = function(){
                 $(data).find('article').each(function(){
                     newCards.push($(this));
                 });
-                
-                if(newCards.length){
-                
-                    
 
-                    homepageCards.insertCards(newCards);
-                    var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
+                homepageCards.insertCards(newCards);
+                var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
+
+                if(cardsToDisplay.length){
+                    
                     homepageCards.emptyCards();
                     homepageCards.populateCards(cardsToDisplay);
                     homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
                     homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
 
-                    //scrolltop
-                    var offset = $('.contain-card').offset().top - 250;
-                    $('html,body').animate({
-                        scrollTop: offset
-                    });
+                    if(cardsToDisplay.length > 3){
+                        //scrolltop
+                        var offset = $('.contain-card').offset().top - 250;
+                        $('html,body').animate({
+                            scrollTop: offset
+                        });
+                    }
 
                     //fake animation before the real computing
                     $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
@@ -7275,7 +7276,6 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     var bottomContainerHeight = 0;
-    console.log(cards.length);
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';
         if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
