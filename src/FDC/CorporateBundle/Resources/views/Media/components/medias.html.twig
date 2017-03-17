@@ -1,4 +1,4 @@
-{% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')|url_encode(true)) %}
+{% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 {% for id, media in medias %}
     {% if class(media) == 'MediaImageSimple' %}
         {% set mediaPid  = 'mis' ~ media.id %}
