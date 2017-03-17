@@ -7274,8 +7274,8 @@ homepageCards.showFiltersOverlay = function(element){
                 //console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
                     console.log(currentMoreBtn, moreBtn,moreBtn.length);
-                    currentMoreBtn.after(moreBtn).remove();
-                    
+                    currentMoreBtn.after(moreBtn);
+                    $('#home-news-statements-more-end').remove();
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
                 }else{
                     //no more content but let's take read more link and wording
