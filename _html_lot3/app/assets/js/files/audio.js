@@ -380,6 +380,7 @@ var initAudio = function (hash) {
 
             e.preventDefault();
 
+
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
