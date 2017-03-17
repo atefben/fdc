@@ -208,11 +208,11 @@ homepageCards.showFiltersOverlay = function(element){
                 if(typeof moreBtn === 'undefined'){
                     moreBtn = $data.filter('.ajax-request').attr('href');
                 }
-                console.log(moreBtn);
+                //console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
+                    console.log(moreBtn,moreBtn.length);
                     currentMoreBtn.after(moreBtn).remove();
-                    moreBtn = $('#home-news-statements-more');
-                    console.log($('#home-news-statements-more'));
+                    
                     homepageCards.ajaxClickEvent(moreBtn);
                 }else{
                     //no more content but let's take read more link and wording
