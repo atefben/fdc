@@ -6868,7 +6868,6 @@ sub {
 }
 
 blockquote, .quote {
-  padding: 30px 90px;
   color: #141414;
   text-align: center;
   font-size: 1.5rem;
@@ -7514,12 +7513,42 @@ a {
   margin-bottom: 25px;
 }
 
+.big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 70px;
+}
+
+.big-quote strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
+}
+
 .autoBtn {
   height: 50px;
   line-height: 50px;
   width: auto !important;
   text-align: center;
   padding: 0px 30px !important;
+}
+
+.single-article .big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 a {
@@ -16185,6 +16214,9 @@ article .read-later.rAlign span:after {
 }
 .single-article.single-actualite .small-container {
   width: 977px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 50px;
 }
 .single-article.single-actualite .small-container > div {
   width: 630px;
@@ -16196,6 +16228,13 @@ article .read-later.rAlign span:after {
 }
 .single-article.single-actualite .small-container > div.half-div, .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-article.single-actualite .small-container > div.slideshow {
   width: 730px;
+}
+.single-article.single-actualite .small-container .half-photo {
+  display: block;
+  margin: 0 0 50px;
+  vertical-align: top;
+  width: 50%;
+  float: left;
 }
 .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
@@ -29518,6 +29557,31 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background: white !important;
 }
 
+@media screen and (min-width: 1920px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 230px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 230px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 230px !important;
+  }
+}
 .confcourtaccordion .selectbtn {
   float: none !important;
   min-width: 0px !important;

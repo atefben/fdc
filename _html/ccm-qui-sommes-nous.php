@@ -52,7 +52,7 @@
                </nav>
               <section id="main" class="single-article">
                <div class="all-contain">
-                  <div class="contain-title vFlexAlign block-01-s">
+                  <div class="contain-title vFlexAlign block-01-mms">
                      <h2 class="title-02">Thierry Frémaux, délégué général du Festival de Cannes, revient sur ce rassemblement médiatique. Notamment lors de la cérémonie d'ouverture et la montée des marches : le tapis rouge et ses vingt-quatre « marches de la gloire ».</h2>
                   </div>
                   <div class="buttons buttons-01">
@@ -510,6 +510,9 @@
                         </div>
                      </div>
                   </div>-->
+
+ <div class="author">Rédigé par Tarik Khaldi</div>
+                  
                </div>
               <div class="share">
                 <p>Partagez l'article</p>
