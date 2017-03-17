@@ -32,6 +32,7 @@ class ContentTemplateWidgetTextType extends ContentTemplateWidgetType
                     'title' => array(
                         'label' => 'form.mdf.content_template.label.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                     ),
                     'contentText' => array(
                         'label' => 'form.mdf.content_template.label.text',
