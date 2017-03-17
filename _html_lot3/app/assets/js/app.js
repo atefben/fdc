@@ -211,8 +211,9 @@ homepageCards.showFiltersOverlay = function(element){
                 console.log(moreBtn);
                 if(typeof moreBtn !== 'undefined'){
                     currentMoreBtn.after(moreBtn).remove();
+                    moreBtn = $('#home-news-statements-more');
                     console.log($('#home-news-statements-more'));
-                    homepageCards.ajaxClickEvent($('#home-news-statements-more'));
+                    homepageCards.ajaxClickEvent(moreBtn);
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
