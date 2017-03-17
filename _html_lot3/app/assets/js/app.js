@@ -212,7 +212,6 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     var bottomContainerHeight = 0;
-    console.log(cards.length);
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';
         if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
