@@ -7085,8 +7085,8 @@ homepageCards.config = {
     cardsByFilter: [],
     filters: [],
     cardsContainer: $('.ajax-filter-cards-container'),
-    bottomCardsWrapper: $('.articles-wrapper')
-    //ghostContainer: $('.ajax-cards-ghost-container')
+    bottomCardsWrapper: $('.articles-wrapper'),
+    urlStamp = null
 }
 
 homepageCards.init = function(){
@@ -7238,7 +7238,7 @@ homepageCards.showFiltersOverlay = function(element){
         homepageCards.populateCards(newCards);
     });
 
-    var urlStamp;
+
     // close filters
     $('body').off('click').on('click', '#filters', function () {
         $('#filters').removeClass('show');
@@ -7250,8 +7250,8 @@ homepageCards.showFiltersOverlay = function(element){
         var url = $this.attr('href');
         
         if(typeof url === 'undefined'){
-            console.log(urlStamp);
-            url = urlStamp;
+            console.log(homepageCards.config.urlStamp);
+            url = homepageCards.config.urlStamp;
         }
         var container = $this.closest('.block-01');
         var dateTime = $('.last-element').data('time');
@@ -7278,7 +7278,7 @@ homepageCards.showFiltersOverlay = function(element){
                 }else{
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
-                    urlStamp = currentMoreBtn.attr('href');
+                    homepageCards.config.urlStamp = currentMoreBtn.attr('href');
                     currentMoreBtn.after(allNewsButton).remove();
                 }
             }
