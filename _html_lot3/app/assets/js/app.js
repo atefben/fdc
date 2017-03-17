@@ -248,6 +248,8 @@ homepageCards.getCards = function(){
 
 homepageCards.insertCards = function(cards){
     //merge cards array with new cards
+    console.log('existing cards data array',homepageCards.config.cards);
+    console.log('insert new cards to data array',cards);
     var output = homepageCards.config.cards.concat(cards.filter(function (item) {
         return homepageCards.config.cards.indexOf(item) < 0;
     }));
@@ -270,11 +272,11 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     //deduplicate array
-    console.log(tempCardsArray);
+    console.log('cards before deduplicate',tempCardsArray);
     var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
         return i == a.indexOf(itm);
     });
-    console.log(tempCardsArray);
+    console.log('cards after deduplicate',tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var revertClass = '';
