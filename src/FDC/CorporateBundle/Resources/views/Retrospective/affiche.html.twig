@@ -13,7 +13,7 @@
     <div class="contain-ajax">
 
     {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-    {% set currentURL = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    {% set currentURL = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
     <div class="all-contain affiche-fdc">
         {% set affiche = null %}
         {% for poster in posters %}
