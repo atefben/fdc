@@ -17959,6 +17959,7 @@ article .read-later.rAlign span:after {
 
 .grid {
   padding-top: 60px;
+  background-color: #141414 !important;
 }
 .grid h2.title {
   color: #333;
