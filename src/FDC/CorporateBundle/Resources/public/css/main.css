@@ -3093,7 +3093,7 @@ video {
     opacity: 0;
   }
 }
-/* empêche la sélection */
+/* emp├¬che la s├®lection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -5871,349 +5871,353 @@ strong.title-center {
   content: "\E01D";
 }
 
-.icon-create:before {
+.icon-communique:before {
   content: "\E01E";
 }
 
-.icon-dailymotion:before {
+.icon-create:before {
   content: "\E01F";
 }
 
-.icon-documen-acces:before {
+.icon-dailymotion:before {
   content: "\E020";
 }
 
-.icon-document-black:before {
+.icon-documen-acces:before {
   content: "\E021";
 }
 
-.icon-door:before {
+.icon-document-black:before {
   content: "\E022";
 }
 
-.icon-dot-big:before {
+.icon-door:before {
   content: "\E023";
 }
 
-.icon-dot-small:before {
+.icon-dot-big:before {
   content: "\E024";
 }
 
-.icon-download:before {
+.icon-dot-small:before {
   content: "\E025";
 }
 
-.icon-drag-hand:before {
+.icon-download:before {
   content: "\E026";
 }
 
-.icon-drag:before {
+.icon-drag-hand:before {
   content: "\E027";
 }
 
-.icon-dress-code:before {
+.icon-drag:before {
   content: "\E028";
 }
 
-.icon-emergency:before {
+.icon-dress-code:before {
   content: "\E029";
 }
 
-.icon-event:before {
+.icon-emergency:before {
   content: "\E02A";
 }
 
-.icon-facebook:before {
+.icon-event:before {
   content: "\E02B";
 }
 
-.icon-finder:before {
+.icon-facebook:before {
   content: "\E02C";
 }
 
-.icon-firefox:before {
+.icon-finder:before {
   content: "\E02D";
 }
 
-.icon-fullscreen:before {
+.icon-firefox:before {
   content: "\E02E";
 }
 
-.icon-hand-drag:before {
+.icon-fullscreen:before {
   content: "\E02F";
 }
 
-.icon-hands:before {
+.icon-hand-drag:before {
   content: "\E030";
 }
 
-.icon-hours-black:before {
+.icon-hands:before {
   content: "\E031";
 }
 
-.icon-hours:before {
+.icon-hours-black:before {
   content: "\E032";
 }
 
-.icon-information:before {
+.icon-hours:before {
   content: "\E033";
 }
 
-.icon-instagram:before {
+.icon-information:before {
   content: "\E034";
 }
 
-.icon-internet-explorer:before {
+.icon-instagram:before {
   content: "\E035";
 }
 
-.icon-language:before {
+.icon-internet-explorer:before {
   content: "\E036";
 }
 
-.icon-letter-open:before {
+.icon-language:before {
   content: "\E037";
 }
 
-.icon-letter:before {
+.icon-letter-open:before {
   content: "\E038";
 }
 
-.icon-link:before {
+.icon-letter:before {
   content: "\E039";
 }
 
-.icon-lodging:before {
+.icon-link:before {
   content: "\E03A";
 }
 
-.icon-map:before {
+.icon-lodging:before {
   content: "\E03B";
 }
 
-.icon-marker-black:before {
+.icon-map:before {
   content: "\E03C";
 }
 
-.icon-media:before {
+.icon-marker-black:before {
   content: "\E03D";
 }
 
-.icon-mike-fill:before {
+.icon-media:before {
   content: "\E03E";
 }
 
-.icon-mike-white:before {
+.icon-mike-fill:before {
   content: "\E03F";
 }
 
-.icon-mike:before {
+.icon-mike-white:before {
   content: "\E040";
 }
 
-.icon-minus:before {
+.icon-mike:before {
   content: "\E041";
 }
 
-.icon-more-square:before {
+.icon-minus:before {
   content: "\E042";
 }
 
-.icon-movie-clap:before {
+.icon-more-square:before {
   content: "\E043";
 }
 
-.icon-padlock:before {
+.icon-movie-clap:before {
   content: "\E044";
 }
 
-.icon-palme-bg:before {
+.icon-padlock:before {
   content: "\E045";
 }
 
-.icon-palme:before {
+.icon-palme-bg:before {
   content: "\E046";
 }
 
-.icon-pause:before {
+.icon-palme:before {
   content: "\E047";
 }
 
-.icon-pdf:before {
+.icon-pause:before {
   content: "\E048";
 }
 
-.icon-pencil:before {
+.icon-pdf:before {
   content: "\E049";
 }
 
-.icon-personal-calendar:before {
+.icon-pencil:before {
   content: "\E04A";
 }
 
-.icon-persons:before {
+.icon-personal-calendar:before {
   content: "\E04B";
 }
 
-.icon-phone-fill:before {
+.icon-persons:before {
   content: "\E04C";
 }
 
-.icon-photo-single:before {
+.icon-phone-fill:before {
   content: "\E04D";
 }
 
-.icon-photo-support:before {
+.icon-photo-single:before {
   content: "\E04E";
 }
 
-.icon-photo:before {
+.icon-photo-support:before {
   content: "\E04F";
 }
 
-.icon-plane:before {
+.icon-photo:before {
   content: "\E050";
 }
 
-.icon-play:before {
+.icon-plane:before {
   content: "\E051";
 }
 
-.icon-player:before {
+.icon-play:before {
   content: "\E052";
 }
 
-.icon-playlist:before {
+.icon-player:before {
   content: "\E053";
 }
 
-.icon-podcast:before {
+.icon-playlist:before {
   content: "\E054";
 }
 
-.icon-print:before {
+.icon-podcast:before {
   content: "\E055";
 }
 
-.icon-read-latter:before {
+.icon-print:before {
   content: "\E056";
 }
 
-.icon-release-press:before {
+.icon-read-latter:before {
   content: "\E057";
 }
 
-.icon-reverseFullscreen:before {
+.icon-release-press:before {
   content: "\E058";
 }
 
-.icon-rss:before {
+.icon-reverseFullscreen:before {
   content: "\E059";
 }
 
-.icon-safari:before {
+.icon-rss:before {
   content: "\E05A";
 }
 
-.icon-search:before {
+.icon-safari:before {
   content: "\E05B";
 }
 
-.icon-selfie:before {
+.icon-search:before {
   content: "\E05C";
 }
 
-.icon-share:before {
+.icon-selfie:before {
   content: "\E05D";
 }
 
-.icon-slideshow:before {
+.icon-share:before {
   content: "\E05E";
 }
 
-.icon-sound:before {
+.icon-slideshow:before {
   content: "\E05F";
 }
 
-.icon-speacker:before {
+.icon-sound:before {
   content: "\E060";
 }
 
-.icon-stool:before {
+.icon-speacker:before {
   content: "\E061";
 }
 
-.icon-taxi-fill:before {
+.icon-stool:before {
   content: "\E062";
 }
 
-.icon-tools:before {
+.icon-taxi-fill:before {
   content: "\E063";
 }
 
-.icon-trailer-player:before {
+.icon-tools:before {
   content: "\E064";
 }
 
-.icon-trailer:before {
+.icon-trailer-player:before {
   content: "\E065";
 }
 
-.icon-train:before {
+.icon-trailer:before {
   content: "\E066";
 }
 
-.icon-truck:before {
+.icon-train:before {
   content: "\E067";
 }
 
-.icon-tumblr:before {
+.icon-truck:before {
   content: "\E068";
 }
 
-.icon-tv:before {
+.icon-tumblr:before {
   content: "\E069";
 }
 
-.icon-twitter:before {
+.icon-tv:before {
   content: "\E06A";
 }
 
-.icon-user-fill:before {
+.icon-twitter:before {
   content: "\E06B";
 }
 
-.icon-user-round:before {
+.icon-user-fill:before {
   content: "\E06C";
 }
 
-.icon-video:before {
+.icon-user-round:before {
   content: "\E06D";
 }
 
-.icon-wen-fill:before {
+.icon-video:before {
   content: "\E06E";
 }
 
-.icon-wen-minus:before {
+.icon-wen-fill:before {
   content: "\E06F";
 }
 
-.icon-wen-more:before {
+.icon-wen-minus:before {
   content: "\E070";
 }
 
-.icon-wifi:before {
+.icon-wen-more:before {
   content: "\E071";
 }
 
-.icon-youtube:before {
+.icon-wifi:before {
   content: "\E072";
+}
+
+.icon-youtube:before {
+  content: "\E073";
 }
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -6977,6 +6981,10 @@ body.chocolat-open > .chocolat-content {
 
 .block-accordion .title-contain.border-top {
   border-top: 3px solid #e5e5e5;
+}
+
+#home-news-statements-more-end {
+  margin-top: 20px;
 }
 
 .articles-list-medias.dark.retrospective .isotope-01.add-ajax-request {
@@ -11188,9 +11196,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -11216,11 +11224,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -11243,19 +11251,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -13903,9 +13911,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .block-search .more-search.active {
   display: table;
@@ -13984,11 +13992,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -14011,19 +14019,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
