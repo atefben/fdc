@@ -186,7 +186,8 @@ homepageCards.showFiltersOverlay = function(element){
 
         var $this = $('#home-news-statements-more');
         var url = $this.attr('href');
-        if(typeof url == 'undefined'){
+        console.log(typeof url === 'undefined');
+        if(typeof url === 'undefined'){
             url = urlStamp;
         }
         var container = $this.closest('.block-01');
@@ -215,7 +216,6 @@ homepageCards.showFiltersOverlay = function(element){
                     //no more content but let's take read more link and wording
                     var allNewsButton = $data.filter('.read-more');
                     urlStamp = currentMoreBtn.attr('href');
-                    console.log('stamp prev button url',currentMoreBtn.attr('href'),urlStamp)
                     currentMoreBtn.after(allNewsButton).remove();
                 }
             }
