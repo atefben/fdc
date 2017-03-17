@@ -7,6 +7,7 @@ $(document).ready(function () {
     adaptContactFormFieldValidator();
     removeShareFromYoutubeWidget();
     handleDualShareEmailForms();
+    SFCProgramPageLink();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -227,6 +228,22 @@ function adaptContactFormFieldValidator()
                 $('.errors').addClass('show');
             } else {
                 $('.errors').removeClass('show');
+            }
+        });
+    }
+}
+
+/**
+ * workaround for "En savoir plus" accordion button not working
+ * the file festival-cannes/custom.js defines a "click" listener
+ * that prevents link click in certain situations --see #7575
+ */
+function SFCProgramPageLink()
+{
+    if ($('.eventsPage .conferencesMenu li').length) {
+        $('.conferencesMenu li a').on('click', function (e) {
+            if ($(this).attr('href').length > 1) {
+                e.stopPropagation();
             }
         });
     }
