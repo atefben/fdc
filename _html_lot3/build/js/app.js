@@ -7185,10 +7185,9 @@ homepageCards.ajaxClickEvent = function(button){
                     if(typeof allNewsButton === 'undefined'){
                         allNewsButton = $data.filter('#home-news-statements-more-end');
                     }
-                    console.log(allNewsButton);
 
                     $('#home-news-statements-more').remove();
-                    container.append(allNewsButton);
+                    $('.articles-wrapper').append(allNewsButton);
                 }
             }
         });
