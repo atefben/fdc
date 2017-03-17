@@ -2939,7 +2939,7 @@ var owInitGrid = function (id) {
 
                             //scroll bottom
                             $('html,body').animate({
-                                scrollTop: $('.isotope-01').outerHeight()
+                                scrollTop: $('.isotope-01').outerHeight()-500
                             },300);
 
                             $('.card.item').each(function(){
