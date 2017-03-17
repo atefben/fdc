@@ -1271,7 +1271,7 @@ var initAudio = function (hash) {
             if (!$(audioPlayer).data('loaded') || $('.activeAudio').length > 0) {
                 audioLoad($("#" + id)[0], audioPlayer, havePlaylist, function (aid) {
                     $(aid).data('loaded', true);
-                    tmp = aid;
+                    tmp = aid;console.log(name);
                 });
             } else {
                 tmp = audioPlayer
@@ -1499,7 +1499,7 @@ var initAudio = function (hash) {
             if ($('.popin-mail').length) {
                 $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
                 $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
-                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);console.log('t2');
+                $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
                 $('.popin-mail').find('form #contact_section').val(data['category']);
                 $('.popin-mail').find('form #contact_detail').val(data['date']);
                 $('.popin-mail').find('form #contact_title').val(data['title']);
@@ -1619,8 +1619,8 @@ var initAudio = function (hash) {
                 category = $(e.target).closest('.audio').find('.category').text(),
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
-                name = $(this).find('.contain-txt strong a').data('title');
-
+                name = $(this).find('.contain-txt strong a').text();
+            console.log(name);
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
 
