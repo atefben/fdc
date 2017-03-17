@@ -7343,7 +7343,7 @@ homepageCards.populateCards = function(cards){
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         console.log(homepageCards.config.cardsContainer.size() * 3);
         console.log(cards.length);
-        console.log((parseInt(homepageCards.config.cardsContainer.size() * 3) - parseInt(cards.length)) / 3);
+        console.log((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
         var revertClass = '';
         if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
             revertClass = ' article-inverse';
