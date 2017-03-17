@@ -41,7 +41,7 @@ homepageCards.events = function(){
         homepageCards.showFiltersOverlay($(this));
     });
 
-    $('.read-more.ajax-request').on('click', function(e){
+    $('.read-more.ajax-request').on('click', function(){
 
         var $this = $(this);
         var url = $(this).attr('href');
@@ -98,7 +98,7 @@ homepageCards.events = function(){
                 }
             }
         });
-        console.log('rf');
+
         return false;
     });
 }

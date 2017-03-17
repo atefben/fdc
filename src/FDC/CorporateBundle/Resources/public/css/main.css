@@ -2741,8 +2741,6 @@ body .icon:before {
 }
 .photo .picto .icon {
   font-size: 1rem;
-  margin-top: 14px;
-  margin-left: 14px;
 }
 
 .playlist .picto {
@@ -7003,63 +7001,76 @@ body.chocolat-open > .chocolat-content {
   text-align: center;
 }
 
-body#home .contain-card .isotope-01 .card:first-of-type {
+body#home .contain-card .grid-01 .card:first-of-type {
   width: 650px;
   height: auto;
   padding-left: 0px;
 }
-body#home .contain-card .isotope-01 .card:first-of-type .image {
+body#home .contain-card .grid-01 .card:first-of-type .image {
   height: 426px;
 }
-body#home .contain-card .isotope-01 .card:first-of-type strong {
+body#home .contain-card .grid-01 .card:first-of-type .info {
+  height: auto;
+}
+body#home .contain-card .grid-01 .card:first-of-type strong {
   font-size: 2.25rem;
 }
 
-body#home .articles-wrapper .articles .isotope-01 .card:first-of-type {
+body#home .articles-wrapper .articles .grid-01 .card:first-of-type {
   width: 650px;
   height: auto;
   padding-left: 0px;
 }
-body#home .articles-wrapper .articles .isotope-01 .card:first-of-type .image {
+body#home .articles-wrapper .articles .grid-01 .card:first-of-type .image {
   height: 426px;
 }
-body#home .articles-wrapper .articles .isotope-01 .card:first-of-type strong {
+body#home .articles-wrapper .articles .grid-01 .card:first-of-type .info {
+  height: auto;
+}
+body#home .articles-wrapper .articles .grid-01 .card:first-of-type strong {
   font-size: 2.25rem;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card {
   padding: 0px;
   padding-right: 60px;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:first-of-type {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:first-of-type {
   width: 325px;
   height: 300px;
   min-height: 321px;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:first-of-type .image {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:first-of-type .image {
   height: 167px;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:first-of-type strong {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:first-of-type strong {
   font-size: 1.125rem;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) {
   width: 650px;
   height: auto;
   padding-right: 0px;
+  float: right;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) .image {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) .info {
+  height: auto;
+}
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) .image {
   height: 426px;
 }
-body#home .articles-wrapper .articles.article-inverse .isotope-01 .card:nth-child(odd) strong {
+body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) strong {
   font-size: 2.25rem;
 }
-body#home .articles-wrapper .isotope-01 .card:first-of-type {
+body#home .articles-wrapper .grid-01 .card:first-of-type {
   width: 650px;
   height: auto;
 }
-body#home .articles-wrapper .isotope-01 .card:first-of-type .image {
+body#home .articles-wrapper .grid-01 .card:first-of-type .image {
   height: 426px;
 }
-body#home .articles-wrapper .isotope-01 .card:first-of-type strong {
+body#home .articles-wrapper .grid-01 .card:first-of-type .info {
+  height: auto;
+}
+body#home .articles-wrapper .grid-01 .card:first-of-type strong {
   font-size: 2.25rem;
 }
 
@@ -7091,6 +7102,7 @@ body#home .articles-wrapper .isotope-01 .card:first-of-type strong {
   color: #c8a461;
 }
 
+.picto,
 .cards .picto {
   text-align: center;
 }
