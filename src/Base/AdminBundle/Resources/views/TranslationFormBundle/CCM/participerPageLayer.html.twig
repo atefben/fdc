@@ -29,6 +29,7 @@
                                 </div>
                                 <div class="box-body">
                                     {{ form_row(translationsFields.name) }}
+                                    {{ form_row(form.parent.children.icon) }}
                                 </div>
                             </div>
                             <div class="box box-success">
@@ -103,10 +104,10 @@
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4 class="box-title">
+                                        {{ 'group.news.publish_parameters'|trans }}
                                     </h4>
                                 </div>
                                 <div class="box-body">
-                                    {{ form_row(form.parent.children.icon) }}
                                     {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                         {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                                     {% elseif is_granted('ROLE_JOURNALIST') %}
@@ -232,7 +233,7 @@
                         </div>
                         <div class="col-md-4">
                             <p>
-                                {{ 'group.helper_seo_example'|trans|nl2br }}
+                                {{ 'group.ccm.helper_seo_example'|trans|nl2br }}
                             </p>
                         </div>
                     {% else %}

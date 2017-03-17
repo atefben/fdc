@@ -181,6 +181,7 @@ group:
     mobile_notificaton:
         publish: Publication
     ccm:
+        placeholder_seo_title: "[valeur champ titre actualité] - Cannes Court Métrage"
         helper_seo_example: |
             <title> : [valeur champ titre actualité] - Cannes Court Métrage
             meta desc  : [valeur champ chapô actualité]

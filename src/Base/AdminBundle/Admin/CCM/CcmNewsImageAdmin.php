@@ -102,7 +102,7 @@ class CcmNewsImageAdmin extends CcmNewsAdmin
                     ),
                     'seoTitle' => array(
                         'attr' => array(
-                            'placeholder' => 'form.placeholder_seo_title'
+                            'placeholder' => 'group.ccm.placeholder_seo_title'
                         ),
                         'label' => 'form.label_seo_title',
                         'sonata_help' => 'form.news.helper_seo_title',
