@@ -46,7 +46,6 @@ homepageCards.events = function(){
 }
 
 homepageCards.ajaxClickEvent = function(button){
-    console.log('ajaxClickEvent',button);
     button.off('click').on('click', function(){
         var $this = $(this);
         var url = $(this).attr('href');
