@@ -272,22 +272,22 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     //deduplicate array
-    console.log('cards before deduplicate',tempCardsArray);
     var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
         return i == a.indexOf(itm);
     });
-    console.log('cards after deduplicate',tempCardsArray);
+    
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
-        var revertClass = '';
         $.each(neededContainersNumber, function(){
+            var revertClass = '';
             if(!homepageCards.config.bottomCardsWrapper.find('.articles').last().hasClass('article-inverse')){
                 revertClass = ' article-inverse';
             }
             homepageCards.config.bottomCardsWrapper.append('<div class="articles'+revertClass+'"><div class="cards grid-01 isotope-01 ajax-filter-cards-container"><div class="grid-sizer"></div></div></div>');
         });
     }
+
     homepageCards.config.cardsContainer = $('.ajax-filter-cards-container');
     homepageCards.config.cardsContainer.each(function(index,value){
         $(this).removeAttr('style');
