@@ -7084,6 +7084,7 @@ homepageCards.config = {
     cards: [],
     cardsByFilter: [],
     filters: [],
+    maxCardsContainersToDisplay: 2,
     cardsContainer: $('.ajax-filter-cards-container'),
     bottomCardsWrapper: $('.articles-wrapper'),
 }
@@ -7121,7 +7122,7 @@ homepageCards.ajaxClickEvent = function(button){
         var format = $('.filter#format .select span.active').data('filter');
         //fake animation before the real computing
         $('.articles-wrapper').css('height',$('.articles-wrapper').height()+600);
-
+        homepageCards.config.maxCardsContainersToDisplay = homepageCards.config.maxCardsContainersToDisplay + 2;
         homepageCards.renderAjaxResponse(url,dateTime,theme,format);
 
         return false;
@@ -7391,20 +7392,22 @@ homepageCards.populateCards = function(cards){
 
     homepageCards.config.cardsContainer = $('.ajax-filter-cards-container');
     homepageCards.config.cardsContainer.each(function(index,value){
-        $(this).removeAttr('style');
-        var container = $(this);
-        if(container.find('article').size() <= 3){
-            var cardSlice = tempCardsArray.splice(0,3);
-            $.each(cardSlice,function(i,val){
-                if(i <= 3){
-                    container.append($(this).removeAttr('style'));
+        if(index < homepageCards.config.maxCardsContainersToDisplay){
+            $(this).removeAttr('style');
+            var container = $(this);
+            if(container.find('article').size() <= 3){
+                var cardSlice = tempCardsArray.splice(0,3);
+                $.each(cardSlice,function(i,val){
+                    if(i <= 3){
+                        container.append($(this).removeAttr('style'));
+                    }
+                });
+                if(container.closest('.articles-wrapper').length){
+                    bottomContainerHeight = bottomContainerHeight + container.outerHeight();
                 }
-            });
-            if(container.closest('.articles-wrapper').length){
-                bottomContainerHeight = bottomContainerHeight + container.outerHeight();
             }
+            homepageCards.config.bottomCardsWrapper.css('height',bottomContainerHeight);
         }
-        homepageCards.config.bottomCardsWrapper.css('height',bottomContainerHeight);
     });
 }
 
