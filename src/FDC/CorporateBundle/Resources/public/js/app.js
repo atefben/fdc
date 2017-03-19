@@ -7186,7 +7186,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                     homepageCards.config.urlStamp = oldButton.attr('href');
                 }
             }
-            oldButton.remove();
+            $('.articles-wrapper').siblings('.read-more').remove();
             $('.articles-wrapper').append(moreBtn);
 
             if(resetAjax){
@@ -7299,8 +7299,7 @@ homepageCards.showFiltersOverlay = function(element){
                         homepageCards.config.urlStamp = oldButton.attr('href');
                     }
                 }
-                console.log(moreBtn,moreBtn.length);
-                oldButton.remove();
+                $('.articles-wrapper').siblings('.read-more').remove();
                 $('.articles-wrapper').append(moreBtn);
 
                 if(resetAjax){
