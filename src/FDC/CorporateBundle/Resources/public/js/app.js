@@ -7173,11 +7173,22 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 });
             }
 
+            //remove old button
+            console.log($('.articles-wrapper').siblings('.read-more'));
+            $('.articles-wrapper').siblings('.read-more').remove();
+            var moreBtn;
+            //get ajax response button & append it
+            if($data.filter('#home-news-statements-more').length){
+                var resetAjax = true;
+                moreBtn = $data.filter('#home-news-statements-more');
+            }else if($data.filter('#home-news-statements-more-end')){
+                moreBtn = $data.filter('#home-news-statements-more-end');
+            }
+            $('.articles-wrapper').append(moreBtn);
 
-
-            //get ajax response button
-            console.log($data.filter('#home-news-statements-more'));
-            console.log($data.filter('#home-news-statements-more-end'));
+            if(resetAjax){
+                homepageCards.ajaxClickEvent($('#home-news-statements-more'));
+            }
             /*var moreBtn = $data.filter('#home-news-statements-more');
             if(typeof moreBtn === 'undefined'){
                 moreBtn = $data.filter('#home-news-statements-more');
