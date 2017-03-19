@@ -7302,6 +7302,7 @@ homepageCards.showFiltersOverlay = function(element){
                 }else if($data.filter('#home-news-statements-more-end')){
                     moreBtn = $data.filter('#home-news-statements-more-end');
                 }
+                console.log(moreBtn,moreBtn.length);
                 $('.articles-wrapper').append(moreBtn);
 
                 if(resetAjax){
