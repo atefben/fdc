@@ -7271,9 +7271,7 @@ homepageCards.showFiltersOverlay = function(element){
         
         if(typeof url === 'undefined' || $this.is('#home-news-statements-more-end')){
             url = homepageCards.config.urlStamp;
-            console.log('url token from stamp');
         }
-        console.log(url);
         var container = $this.closest('.block-01');
         var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
         if(typeof dateTime === 'undefined'){
@@ -7294,7 +7292,6 @@ homepageCards.showFiltersOverlay = function(element){
                 });
 
                 homepageCards.insertCards(newCards);
-                console.log(theme,format);
                 var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
 
                 homepageCards.emptyCards();
@@ -7311,7 +7308,6 @@ homepageCards.showFiltersOverlay = function(element){
                 }else if($data.filter('#home-news-statements-more-end')){
                     moreBtn = $data.filter('#home-news-statements-more-end');
                     if(oldButton.length){
-                        console.log('new urlstamp',oldButton.attr('href'));
                         homepageCards.config.urlStamp = oldButton.attr('href');
                     }
                 }
@@ -7347,8 +7343,6 @@ homepageCards.getCards = function(){
 
 homepageCards.insertCards = function(cards){
     //merge cards array with new cards
-    console.log('existing cards data array',homepageCards.config.cards);
-    console.log('insert new cards to data array',cards);
     var output = homepageCards.config.cards.concat(cards.filter(function (item) {
         return homepageCards.config.cards.indexOf(item) < 0;
     }));
@@ -7371,10 +7365,12 @@ homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
     //deduplicate array
-    var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
+    /*var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
         return i == a.indexOf(itm);
-    });
-    
+    });*/
+    console.log(tempCardsArray);
+    tempCardsArray = jQuery.unique(tempCardsArray);
+    console.log(tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
