@@ -7271,12 +7271,12 @@ homepageCards.showFiltersOverlay = function(element){
             $('#filters').remove();
         }, 700);
 
-        var $this = $('#home-news-statements-more');
+        var $this = $('.articles-wrapper').siblings('.read-more');
         var url = $this.attr('href');
         
-        if(typeof url === 'undefined'){
+        /*if(typeof url === 'undefined'){
             url = homepageCards.config.urlStamp;
-        }
+        }*/
         var container = $this.closest('.block-01');
         var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
         if(typeof dateTime === 'undefined'){
