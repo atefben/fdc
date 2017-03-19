@@ -7187,7 +7187,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 }
             }
             $('.articles-wrapper').siblings('.read-more').remove();
-            $('.articles-wrapper').append(moreBtn);
+            $('.articles-wrapper').after(moreBtn);
 
             if(resetAjax){
                 homepageCards.ajaxClickEvent($('#home-news-statements-more'));
@@ -7300,7 +7300,7 @@ homepageCards.showFiltersOverlay = function(element){
                     }
                 }
                 $('.articles-wrapper').siblings('.read-more').remove();
-                $('.articles-wrapper').append(moreBtn);
+                $('.articles-wrapper').after(moreBtn);
 
                 if(resetAjax){
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
