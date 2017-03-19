@@ -7174,7 +7174,6 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             }
 
             //remove old button
-            console.log($('.articles-wrapper').siblings('.read-more'));
             $('.articles-wrapper').siblings('.read-more').remove();
             var moreBtn;
             //get ajax response button & append it
@@ -7294,25 +7293,19 @@ homepageCards.showFiltersOverlay = function(element){
             }else{
                 $data = $(data);
 
-                //BUTTON BEHAVIOUR
-                var moreBtn = $data.find('.ajax-request');
-                if(typeof moreBtn === 'undefined'){
-                    moreBtn = $data.filter('.ajax-request');
+                $('.articles-wrapper').siblings('.read-more').remove();
+                var moreBtn;
+                //get ajax response button & append it
+                if($data.filter('#home-news-statements-more').length){
+                    var resetAjax = true;
+                    moreBtn = $data.filter('#home-news-statements-more');
+                }else if($data.filter('#home-news-statements-more-end')){
+                    moreBtn = $data.filter('#home-news-statements-more-end');
                 }
-                
-                //console.log(moreBtn);
+                $('.articles-wrapper').append(moreBtn);
 
-                //implant good button behaviour
-                if(typeof moreBtn !== 'undefined'){
-                    $('.articles-wrapper').append(moreBtn);
-                    $('#home-news-statements-more-end').remove();
+                if(resetAjax){
                     homepageCards.ajaxClickEvent($('#home-news-statements-more'));
-                }else{
-                    console.log('no ajax request in response, put all posts button');
-                    //no more content but let's take read more link and wording
-                    var allNewsButton = $data.filter('.read-more');
-                    homepageCards.config.urlStamp = currentMoreBtn.attr('href');
-                    $('.articles-wrapper').append(moreBtn);
                 }
             }
         });
