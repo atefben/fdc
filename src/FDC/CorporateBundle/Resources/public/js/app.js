@@ -7174,7 +7174,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             }
 
             //remove old button
-            var oldButton = $('.articles-wrapper').siblings('#home-news-statements-more-end');
+            var oldButton = $('.articles-wrapper').siblings('#home-news-statements-more');
             var moreBtn;
             //get ajax response button & append it
             if($data.filter('#home-news-statements-more').length){
