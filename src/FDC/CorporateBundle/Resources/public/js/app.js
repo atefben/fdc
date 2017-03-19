@@ -7174,7 +7174,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             }
 
             //remove old button
-            var oldButton = $('.articles-wrapper').siblings('.read-more');
+            var oldButton = $('.articles-wrapper').siblings('#home-news-statements-more-end');
             var moreBtn;
             //get ajax response button & append it
             if($data.filter('#home-news-statements-more').length){
@@ -7182,7 +7182,9 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 moreBtn = $data.filter('#home-news-statements-more');
             }else if($data.filter('#home-news-statements-more-end')){
                 moreBtn = $data.filter('#home-news-statements-more-end');
-                homepageCards.config.urlStamp = oldButton.attr('href');
+                if(typeof oldButton !== 'undefined'){
+                    homepageCards.config.urlStamp = oldButton.attr('href');
+                }
             }
             oldButton.remove();
             $('.articles-wrapper').append(moreBtn);
@@ -7263,15 +7265,6 @@ homepageCards.showFiltersOverlay = function(element){
         var newCards = homepageCards.getFilteredCollection(theme,format);
         homepageCards.emptyCards();
         homepageCards.populateCards(newCards);
-    });
-
-
-    // close filters
-    $('body').off('click').on('click', '#filters', function () {
-        $('#filters').removeClass('show');
-        setTimeout(function () {
-            $('#filters').remove();
-        }, 700);
 
         var $this = $('.articles-wrapper').siblings('.read-more');
         var url = $this.attr('href');
@@ -7286,8 +7279,6 @@ homepageCards.showFiltersOverlay = function(element){
             dateTime = $('.contain-card article:last-child').data('time');
         }
 
-        var theme = $('.filter#theme .select span.active').data('filter');
-        var format = $('.filter#format .select span.active').data('filter');
         var currentMoreBtn = $('#home-news-statements-more');
         //AJAX CALL + GET BUTTON + APPEND BUTON IF NO MORE NEWS
         $.get( url, {date: dateTime, theme: theme, format: format}, function( data ) {
@@ -7296,7 +7287,7 @@ homepageCards.showFiltersOverlay = function(element){
             }else{
                 $data = $(data);
 
-                var oldButton = $('.articles-wrapper').siblings('.read-more');
+                var oldButton = $('.articles-wrapper').siblings('#home-news-statements-more');
                 var moreBtn;
                 //get ajax response button & append it
                 if($data.filter('#home-news-statements-more').length){
@@ -7304,7 +7295,9 @@ homepageCards.showFiltersOverlay = function(element){
                     moreBtn = $data.filter('#home-news-statements-more');
                 }else if($data.filter('#home-news-statements-more-end')){
                     moreBtn = $data.filter('#home-news-statements-more-end');
-                    homepageCards.config.urlStamp = oldButton.attr('href');
+                    if(typeof oldButton !== 'undefined'){
+                        homepageCards.config.urlStamp = oldButton.attr('href');
+                    }
                 }
                 console.log(moreBtn,moreBtn.length);
                 oldButton.remove();
@@ -7315,6 +7308,15 @@ homepageCards.showFiltersOverlay = function(element){
                 }
             }
         });
+    });
+
+
+    // close filters
+    $('body').off('click').on('click', '#filters', function () {
+        $('#filters').removeClass('show');
+        setTimeout(function () {
+            $('#filters').remove();
+        }, 700);
     });
 }
 
