@@ -7344,6 +7344,10 @@ homepageCards.getCards = function(){
 homepageCards.insertCards = function(cards){
     //merge cards array with new cards
     var output = homepageCards.config.cards.concat(cards.filter(function (item) {
+        console.log(item.find('.info strong a').attr('href'));
+        for(var i = 0;i<homepageCards.config.cards.length;i++){
+            console.log(homepageCards.config.cards[i].find('.info strong a').attr('href'),i);
+        }
         return homepageCards.config.cards.indexOf(item) < 0;
     }));
     /*console.log(homepageCards.config.cards);
@@ -7364,13 +7368,6 @@ homepageCards.emptyCards = function(){
 homepageCards.populateCards = function(cards){
     //populate dom
     var tempCardsArray = cards;
-    //deduplicate array
-    /*var tempCardsArray = tempCardsArray.filter(function(itm, i, a) {
-        return i == a.indexOf(itm);
-    });*/
-    console.log(tempCardsArray);
-    tempCardsArray = jQuery.unique(tempCardsArray);
-    console.log(tempCardsArray);
     var bottomContainerHeight = 0;
     if((homepageCards.config.cardsContainer.size() * 3) < cards.length){
         var neededContainersNumber = ((parseInt(cards.length) - parseInt(homepageCards.config.cardsContainer.size() * 3)) / 3);
