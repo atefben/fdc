@@ -7288,6 +7288,20 @@ homepageCards.showFiltersOverlay = function(element){
             }else{
                 $data = $(data);
 
+                var newCards = [];
+                $data.find('article').each(function(){
+                    newCards.push($(this));
+                });
+
+                homepageCards.insertCards(newCards);
+                console.log(theme,format);
+                var cardsToDisplay = homepageCards.getFilteredCollection(theme,format);
+
+                homepageCards.emptyCards();
+                homepageCards.populateCards(cardsToDisplay);
+                homepageCards.config.bottomCardsWrapper.find('.read-more').remove();
+                homepageCards.config.bottomCardsWrapper.find('.compute-filters').remove();
+
                 var oldButton = $('.articles-wrapper').siblings('#home-news-statements-more');
                 var moreBtn;
                 //get ajax response button & append it
