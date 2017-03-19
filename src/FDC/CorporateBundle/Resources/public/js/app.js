@@ -7174,7 +7174,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             }
 
             //remove old button
-            $('.articles-wrapper').siblings('.read-more').remove();
+            var oldButton = $('.articles-wrapper').siblings('.read-more');
             var moreBtn;
             //get ajax response button & append it
             if($data.filter('#home-news-statements-more').length){
@@ -7182,8 +7182,9 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 moreBtn = $data.filter('#home-news-statements-more');
             }else if($data.filter('#home-news-statements-more-end')){
                 moreBtn = $data.filter('#home-news-statements-more-end');
-                homepageCards.config.urlStamp = moreBtn.attr('href');
+                homepageCards.config.urlStamp = oldButton.attr('href');
             }
+            oldButton.remove();
             $('.articles-wrapper').append(moreBtn);
 
             if(resetAjax){
@@ -7295,7 +7296,7 @@ homepageCards.showFiltersOverlay = function(element){
             }else{
                 $data = $(data);
 
-                $('.articles-wrapper').siblings('.read-more').remove();
+                var oldButton = $('.articles-wrapper').siblings('.read-more');
                 var moreBtn;
                 //get ajax response button & append it
                 if($data.filter('#home-news-statements-more').length){
@@ -7303,9 +7304,10 @@ homepageCards.showFiltersOverlay = function(element){
                     moreBtn = $data.filter('#home-news-statements-more');
                 }else if($data.filter('#home-news-statements-more-end')){
                     moreBtn = $data.filter('#home-news-statements-more-end');
-                    homepageCards.config.urlStamp = moreBtn.attr('href');
+                    homepageCards.config.urlStamp = oldButton.attr('href');
                 }
                 console.log(moreBtn,moreBtn.length);
+                oldButton.remove();
                 $('.articles-wrapper').append(moreBtn);
 
                 if(resetAjax){
