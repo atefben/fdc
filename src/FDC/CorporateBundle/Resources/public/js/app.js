@@ -7269,7 +7269,7 @@ homepageCards.showFiltersOverlay = function(element){
         var $this = $('.articles-wrapper').siblings('.read-more');
         var url = $this.attr('href');
         
-        if(typeof url === 'undefined'){
+        if(typeof url === 'undefined' || $this.is('#home-news-statements-more-end')){
             url = homepageCards.config.urlStamp;
             console.log('url token from stamp');
         }
