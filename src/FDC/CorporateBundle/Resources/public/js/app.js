@@ -7344,11 +7344,15 @@ homepageCards.getCards = function(){
 homepageCards.insertCards = function(cards){
     //merge cards array with new cards
     var output = homepageCards.config.cards.concat(cards.filter(function (item) {
-        console.log(item.find('.info strong a').attr('href'));
+        //console.log(item.find('.info strong a').attr('href'));
+        var $return = true;
         for(var i = 0;i<homepageCards.config.cards.length;i++){
-            console.log(homepageCards.config.cards[i].find('.info strong a').attr('href'),i);
+            if(homepageCards.config.cards[i].find('.info strong a').attr('href') == item.find('.info strong a').attr('href')){
+                //same url detected
+                $return = false;
+            }
         }
-        return homepageCards.config.cards.indexOf(item) < 0;
+        return $return;
     }));
     /*console.log(homepageCards.config.cards);
     console.log(cards);
