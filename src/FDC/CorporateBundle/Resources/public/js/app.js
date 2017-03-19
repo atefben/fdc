@@ -7187,6 +7187,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 }
             }
             $('.articles-wrapper').siblings('.read-more').remove();
+            console.log(moreBtn);
             $('.articles-wrapper').parent().append(moreBtn);
 
             if(resetAjax){
@@ -7299,6 +7300,7 @@ homepageCards.showFiltersOverlay = function(element){
                         homepageCards.config.urlStamp = oldButton.attr('href');
                     }
                 }
+                console.log(moreBtn);
                 $('.articles-wrapper').siblings('.read-more').remove();
                 $('.articles-wrapper').parent().append(moreBtn);
 
