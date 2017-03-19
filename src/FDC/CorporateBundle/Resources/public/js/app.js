@@ -7181,7 +7181,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
                 moreBtn = $data.filter('#home-news-statements-more');
             }else if($data.filter('#home-news-statements-more-end')){
                 moreBtn = $data.filter('#home-news-statements-more-end');
-                if(typeof oldButton !== 'undefined'){
+                if(oldButton.length){
                     console.log('new urlstamp',oldButton.attr('href'));
                     homepageCards.config.urlStamp = oldButton.attr('href');
                 }
@@ -7271,6 +7271,7 @@ homepageCards.showFiltersOverlay = function(element){
         
         if(typeof url === 'undefined'){
             url = homepageCards.config.urlStamp;
+            console.log('url token from stamp');
         }
         console.log(url);
         var container = $this.closest('.block-01');
@@ -7295,7 +7296,7 @@ homepageCards.showFiltersOverlay = function(element){
                     moreBtn = $data.filter('#home-news-statements-more');
                 }else if($data.filter('#home-news-statements-more-end')){
                     moreBtn = $data.filter('#home-news-statements-more-end');
-                    if(typeof oldButton !== 'undefined'){
+                    if(oldButton.length){
                         console.log('new urlstamp',oldButton.attr('href'));
                         homepageCards.config.urlStamp = oldButton.attr('href');
                     }
