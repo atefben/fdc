@@ -141,7 +141,7 @@
                 </div>
 
                 {% if focusArticles is not empty %}
-                    <div class="focus">
+                    <div class="focus border-bottom">
                         <div class="block-01">
                         <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                             <div class="articles center">
@@ -149,7 +149,7 @@
                                     {% if article is not null %}
                                         {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
                                     {% endif %}
-                                {% endfor %}focus
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
