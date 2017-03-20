@@ -2934,6 +2934,7 @@ var owInitGrid = function (id) {
                                 $this.remove();
                             //}
                         }
+                        
                         $gridMore.imagesLoaded(function () {
                             console.log('imagesLoaded');
                             $gridMore.isotope({
