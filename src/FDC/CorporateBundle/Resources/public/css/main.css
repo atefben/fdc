@@ -7168,12 +7168,12 @@ body#home .articles-wrapper .grid-01 .card:first-of-type strong {
   color: #c8a461;
 }
 
-.articles-list .item.communique .picto {
+.articles-list article.communique .picto {
   background-color: #c8a461;
   color: #000;
   text-align: center;
 }
-.articles-list .item.communique .picto .icon {
+.articles-list article.communique .picto .icon {
   font-size: 1.2rem;
 }
 
