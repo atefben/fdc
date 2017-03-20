@@ -2797,7 +2797,6 @@ var owInitGrid = function (id) {
                     //hidden button, infinite load
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
-                        console.log('scrollin');
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
                             if(clickAllow){
                                 clickAllow = false;
@@ -2934,9 +2933,8 @@ var owInitGrid = function (id) {
                                 $this.remove();
                             //}
                         }
-                        
+
                         $gridMore.imagesLoaded(function () {
-                            console.log('imagesLoaded');
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
