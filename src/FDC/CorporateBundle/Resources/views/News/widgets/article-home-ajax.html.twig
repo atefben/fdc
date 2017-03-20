@@ -11,10 +11,10 @@
 
 {% if homeArticles|length %}
     <div class="articles ajax-filter-cards-container" style="opacity:0">
-        <div class="cards grid-01 isotope-01 to-init">
+        <div class="cards grid-01 isotope-01">
             <div class="grid-sizer"></div>
             {% for article in homeArticles|slice(0, 3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
             {% endfor %}
         </div>
     </div>
@@ -22,10 +22,10 @@
 
 {% if homeArticles|length > 3 %}
     <div class="articles article-inverse ajax-filter-cards-container" style="opacity:0">
-        <div class="cards grid-01 isotope-01 to-init">
+        <div class="cards grid-01 isotope-01">
             <div class="grid-sizer"></div>
             {% for article in homeArticles|slice(3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
             {% endfor %}
         </div>
     </div>

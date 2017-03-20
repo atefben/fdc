@@ -348,6 +348,7 @@ homepageCards.populateCards = function(cards){
             homepageCards.config.bottomCardsWrapper.css('height',bottomContainerHeight);
         //}
     });
+    homepageCards.config.cardsContainer.find('.to-init').removeClass('to-init');
 }
 
 homepageCards.buildFilters = function(){

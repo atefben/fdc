@@ -6981,8 +6981,17 @@ body.chocolat-open > .chocolat-content {
   border-top: 3px solid #e5e5e5;
 }
 
+#home .articles-wrapper .card.to-init {
+  opacity: 0;
+}
+
+#home .articles-wrapper .card {
+  opacity: 1;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 #home-news-statements-more-end {
-  margin-top: 20px;
+  margin-top: 71px;
 }
 
 .articles-list-medias.dark.retrospective .isotope-01.add-ajax-request {
