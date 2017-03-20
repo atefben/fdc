@@ -123,7 +123,7 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
-        if(fileArray.length < 2){
+        /*if(fileArray.length < 2){
             var tempArray = fileArray[0];
             if(typeof tempArray !== 'undefined'){
                 if(typeof tempArray[0] !== 'undefined'){
@@ -141,7 +141,7 @@ var initAudio = function (hash) {
                     };
                 }
             }
-        }
+        }*/
 
         console.log('audioplayer config',config);
         playerInstance.setup(config);
