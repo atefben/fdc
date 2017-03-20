@@ -2917,6 +2917,7 @@ var owInitGrid = function (id) {
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
+                        var rawHtml = '';
                         $gridMore.append(articles);
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;

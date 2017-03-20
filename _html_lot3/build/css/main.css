@@ -7004,7 +7004,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .media-library #main {
-  overflow-y: visible;
+  overflow-y: hidden;
 }
 
 .participate .contain-descript .descrip {
