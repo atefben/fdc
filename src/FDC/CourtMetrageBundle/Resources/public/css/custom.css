@@ -286,6 +286,14 @@ body.chocolat-open.fixed {
     padding-bottom: 25px;
 }
 
+.block-01-mms .audio-container {
+    margin-top: 70px;
+}
+
+.block-01-mms .custom-subtitle {
+    padding-top: 70px;
+    font-weight: bold;
+}
 .manual .content-manual .contain-section .module-custom-text-style p {
     font-size: 100%;
     margin: 0;
