@@ -2931,10 +2931,14 @@ var owInitGrid = function (id) {
                         $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
-                                layoutMode: 'packery',
+                                layoutMode: 'masonry',
                                 packery: {
                                     columnWidth: '.grid-sizer'
-                                }
+                                },
+                                /*getSortData: {
+                                    number: '[data-sort]'
+                                },
+                                sortBy: ['number']*/
                             });
 
                             //scroll bottom
