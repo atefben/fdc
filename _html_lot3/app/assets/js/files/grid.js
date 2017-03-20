@@ -169,7 +169,7 @@ var owInitGrid = function (id) {
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
-                        
+
                         var rawHtml = '';
                         $gridMore.append(articles);
                         articles.each(function(){
@@ -197,9 +197,9 @@ var owInitGrid = function (id) {
                             });
 
                             //scroll bottom
-                            $('html,body').animate({
+                            /*$('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()-500
-                            },300);
+                            },300);*/
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
