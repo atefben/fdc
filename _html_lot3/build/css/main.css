@@ -7037,6 +7037,7 @@ body.chocolat-open > .chocolat-content {
 }
 .focus .articles article .image {
   height: 290px;
+  margin-bottom: 20px;
 }
 .focus .articles article .image .image-wrapper {
   overflow: hidden;
@@ -7055,6 +7056,15 @@ body.chocolat-open > .chocolat-content {
   width: auto;
   height: auto;
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.focus .articles article .info h2,
+.focus .articles article .info strong {
+  margin: 15px auto 0;
+}
+.focus .articles article .info h2 a,
+.focus .articles article .info strong a {
+  color: #000;
+  font-size: 1.125rem;
 }
 
 .same-day .articles.center {

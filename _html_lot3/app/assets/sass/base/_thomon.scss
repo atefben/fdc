@@ -76,6 +76,8 @@
 
         .image {
             height: 290px;
+            margin-bottom: 20px;
+
             .image-wrapper {
                 overflow: hidden;
                 position: relative;
@@ -96,6 +98,17 @@
                     -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
                     -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
                     transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                }
+            }
+        }
+
+        .info {
+            h2,
+            strong {
+                margin: 15px auto 0;
+                a {
+                    color: #000;
+                    font-size: 1.125rem;
                 }
             }
         }
