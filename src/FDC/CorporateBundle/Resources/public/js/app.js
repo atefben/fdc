@@ -2923,7 +2923,7 @@ var owInitGrid = function (id) {
                         });
                         console.log('raw HTML to append in grid',rawHtml);
                         $gridMore.append(rawHtml);
-                        $gridMore.isotope('appended',rawHtml);
+                        
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -2933,24 +2933,15 @@ var owInitGrid = function (id) {
                                 $this.remove();
                             //}
                         }
-                        /*$gridMore.imagesLoaded(function () {
-                            $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                },
-                                getSortData: {
-                                    number: '[data-sort]'
-                                },
-                                sortBy: ['number']
-                            });*/
+                        $gridMore.imagesLoaded(function () {
+                            $gridMore.isotope('appended',rawHtml);
 
-                        //scroll bottom
-                        $('html,body').animate({
-                            scrollTop: $('.isotope-01').outerHeight()-500
-                        },300);
-
+                            //scroll bottom
+                            $('html,body').animate({
+                                scrollTop: $('.isotope-01').outerHeight()-500
+                            },300);
+                        }
+                        
                         $('.card.item').each(function(){
                             var $this = $(this);
                             var title = $this.find('.info strong a');
