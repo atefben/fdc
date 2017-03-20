@@ -103,6 +103,16 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
         height: $(aid).parent('div').height(),
         controls: false
     });
+     console.log({
+        // file: $container.data('file'),
+        sources: $container.data('file'),
+        image: $container.data('img'),
+        primary: 'html5',
+        aspectratio: '16:9',
+        width: $(aid).parent('div').width(),
+        height: $(aid).parent('div').height(),
+        controls: false
+    });
 
     playerInstance.on('ready', function() {
         updateShareLink();
