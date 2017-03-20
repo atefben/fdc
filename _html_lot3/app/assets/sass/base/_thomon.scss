@@ -72,9 +72,11 @@
             font-size: 1.125rem;
             font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
         }
-
     }
-    
+}
+
+header .user-nav li a.account {
+    display: none;
 }
 
 body#home .contain-card{
