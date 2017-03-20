@@ -206,7 +206,7 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
                         $gridMore.append(rawHtml);
-                        $gridMore.isotope('destroy');
+                        //$gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -217,7 +217,7 @@ var owInitGrid = function (id) {
                             //}
                         }
 
-                        $gridMore.imagesLoaded(function () {
+                        /*$gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
@@ -236,7 +236,7 @@ var owInitGrid = function (id) {
                                 $clamp(title.get(0), {clamp: 1});
                                 $clamp(cat.get(0), {clamp: 1});
                             });
-                        });
+                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
