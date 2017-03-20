@@ -5205,7 +5205,7 @@ var owinitSlideShow = function (slider, hash) {
 
         } else if($('.article-single').length){
 
-            $('.slideshow-img').on('click', function (e) {
+            $('.slideshow-img .images').on('click', function (e) {
                 console.log('if click thumbs',!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length);
                 if(!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length){
                     e.preventDefault();
