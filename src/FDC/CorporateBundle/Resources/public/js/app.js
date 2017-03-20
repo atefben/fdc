@@ -1340,10 +1340,10 @@ var initAudio = function (hash) {
             var audioImage = $('.activeAudio').data('img');
         }
 
-
+        console.log('load audio file',$('.activeAudio').length > 0 ? audioFile : $container.data('file'));
         playerInstance.setup({
-            file: $container.data('file'),
-            //sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
+            //file: $container.data('file'),
+            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
             image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
             primary: 'html5',
             aspectratio: '16:9',
