@@ -7022,6 +7022,9 @@ body.chocolat-open > .chocolat-content {
   margin: 50px 0;
 }
 
+.same-day .articles.center {
+  padding-bottom: 65px;
+}
 .same-day .articles.center article {
   padding: 0;
   width: 29%;
@@ -7050,6 +7053,8 @@ body.chocolat-open > .chocolat-content {
   max-width: 100%;
   width: auto;
   height: auto;
+  top: 0px;
+  left: 0px;
   transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 

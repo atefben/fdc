@@ -63,7 +63,7 @@
 }
 
 .same-day .articles.center {
-    
+    padding-bottom: 65px;
     article {
         padding: 0;
         width: 29%;
@@ -97,6 +97,8 @@
                     max-width: 100%;
                     width: auto;
                     height: auto;
+                    top: 0px;
+                    left: 0px;
                     -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
                     -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
                     -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
