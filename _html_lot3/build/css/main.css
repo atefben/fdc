@@ -7082,10 +7082,10 @@ body.chocolat-open > .chocolat-content {
   display: none;
 }
 
-.articles-list .card.w2.double {
+.articles-list .card.item.w2.double {
   min-height: 620px;
 }
-.articles-list .card .card .info .category {
+.articles-list .card.item .card .info .category {
   position: relative;
   top: -2px;
 }
