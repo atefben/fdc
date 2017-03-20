@@ -1354,8 +1354,11 @@ var initAudio = function (hash) {
         };
         if(fileArray.length < 2){
             var tempArray = fileArray[0];
+
             if(typeof tempArray !== 'undefined'){
+                console.log('tempArray',tempArray);
                 if(typeof tempArray[0] !== 'undefined'){
+                    console.log('tempArray0',tempArray[0]);
                     var finalFile = tempArray[0].file;
                     config = {
                         file: finalFile,
