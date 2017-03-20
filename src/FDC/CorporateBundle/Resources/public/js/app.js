@@ -1319,7 +1319,7 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
-        console.log('audioLoad');
+
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -1342,8 +1342,8 @@ var initAudio = function (hash) {
 
 
         playerInstance.setup({
-            // file: $container.data('file'),
-            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
+            file: $container.data('file'),
+            //sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
             image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
             primary: 'html5',
             aspectratio: '16:9',
