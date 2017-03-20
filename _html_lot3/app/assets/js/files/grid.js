@@ -175,15 +175,15 @@ var owInitGrid = function (id) {
                 }
 
                 if($('#date.filter .select .active').length){
-                    $('#date.filter .select .active').data('filter');
+                    postData.date = $('#date.filter .select .active').data('filter');
                 }
                 if($('#theme.filter .select .active').length){
-                    $('#theme.filter .select .active').data('filter');
+                    postData.theme = $('#theme.filter .select .active').data('filter');
                 }
                 if($('#format.filter .select .active').length){
-                    $('#format.filter .select .active').data('filter');
+                    postData.format = $('#format.filter .select .active').data('filter');
                 }
-                console.log(postData);
+                console.log('data sent to post on ajax button click',postData);
 
                 $.post({
                     type: 'POST',
