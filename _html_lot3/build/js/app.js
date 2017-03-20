@@ -1356,21 +1356,19 @@ var initAudio = function (hash) {
             var tempArray = fileArray[0];
 
             if(typeof tempArray !== 'undefined'){
-                console.log('tempArray',tempArray);
-                if(typeof tempArray[0] !== 'undefined'){
-                    console.log('tempArray0',tempArray[0]);
-                    var finalFile = tempArray[0].file;
-                    config = {
-                        file: finalFile,
-                        image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
-                        primary: 'html5',
-                        aspectratio: '16:9',
-                        debug : true,
-                        width: $(aid).parent('div').width(),
-                        height: $(aid).parent('div').height(),
-                        controls: false
-                    };
-                }
+                console.log('tempArray',tempArray,tempArray[0],tempArray[0].file,tempArray.file);
+                var finalFile = tempArray[0].file;
+                config = {
+                    file: finalFile,
+                    image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                    primary: 'html5',
+                    aspectratio: '16:9',
+                    debug : true,
+                    width: $(aid).parent('div').width(),
+                    height: $(aid).parent('div').height(),
+                    controls: false
+                };
+                
             }
         }
 
