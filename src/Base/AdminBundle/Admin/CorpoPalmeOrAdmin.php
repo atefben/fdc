@@ -250,4 +250,18 @@ class CorpoPalmeOrAdmin extends Admin
             ->add('id')
         ;
     }
+
+    public function createQuery($context = 'list')
+    {
+
+        $query = parent::createQuery($context);
+        if ('list' == $context) {
+            $query->andWhere(
+                $query->expr()->neq($query->getRootAlias().'.id', ':id')
+            );
+            $query->setParameter(':id', 3);
+        }
+
+        return $query;
+    }
 }
