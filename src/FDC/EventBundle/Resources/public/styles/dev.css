@@ -560,3 +560,6 @@ a.notloaded {
 .categorie-items article .infos-item-list .sub-title-item {
     padding-bottom: 14px;
 }
+.header #logo-wrapper #partners img.kering {
+    margin-top:8px !important;
+}
