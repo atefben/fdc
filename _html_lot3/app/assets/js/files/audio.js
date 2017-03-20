@@ -123,11 +123,12 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
-        console.log('file number in array',fileArray.length);
         if(fileArray.length < 2){
-            console.log(fileArray);
+            var tempArray = fileArray[0];
+            var finalFile = tempArray[0].file;
+            console.log(tempArray[0]);
             config = {
-                file: fileArray[0],
+                file: finalFile,
                 image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
                 primary: 'html5',
                 aspectratio: '16:9',
