@@ -18,7 +18,11 @@ class AmazonController extends Controller
         $file = file_get_contents(trim($url));
 
         $response = new Response($file);
-        $response->headers->set( 'Content-Type', 'application/pdf');
+        if (strpos($url, '.pdf')) {
+            $response->headers->set('Content-Type', 'application/pdf');
+        } else {
+            $response->headers->set('Content-Type', 'application/eps');
+        }
         $response->headers->set( 'Content-Disposition', 'attachment; filename=' . $name);
 
         return $response;
