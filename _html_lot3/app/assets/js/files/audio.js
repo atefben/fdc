@@ -123,21 +123,22 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
-        console.log(fileArray);
         if(fileArray.length < 2){
             var tempArray = fileArray[0];
-            var finalFile = tempArray[0].file;
-            console.log(tempArray[0]);
-            config = {
-                file: finalFile,
-                image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
-                primary: 'html5',
-                aspectratio: '16:9',
-                debug : true,
-                width: $(aid).parent('div').width(),
-                height: $(aid).parent('div').height(),
-                controls: false
-            };
+            if(typeof tempArray[0] !== 'undefined'){
+                var finalFile = tempArray[0].file;
+                console.log(tempArray[0]);
+                config = {
+                    file: finalFile,
+                    image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                    primary: 'html5',
+                    aspectratio: '16:9',
+                    debug : true,
+                    width: $(aid).parent('div').width(),
+                    height: $(aid).parent('div').height(),
+                    controls: false
+                };
+            }
         }
 
         console.log('audioplayer config',config);
