@@ -71,6 +71,7 @@
         .info {
             strong,
             h2 {
+                margin: 15px auto 0;
                 a{
                     color: #000;
                     font-size: 1.125rem;
@@ -82,8 +83,9 @@
         .image.image-sameday-wrapper {
             width: 293px;
             height: 185px;
+            margin-bottom: 20px;
             position: relative;
-            
+
 
             .image-wrapper {
                 overflow: hidden;
@@ -254,7 +256,7 @@ body#home .articles-wrapper{
     color: $gold;    
 }
 
-.articles-list article.communique .picto {
+article.communique .picto {
     background-color: #c8a461;
     color: #000;
     text-align: center;
