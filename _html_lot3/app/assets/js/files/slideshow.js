@@ -21,13 +21,13 @@ var owinitSlideShow = function (slider, hash) {
         } else if($('.article-single').length){
 
             $('.slideshow-img').on('click', function (e) {
-                console.log('debug thumbs click',$(e.target).is('.thumbnails'),$(e.target).closest('.thumbnails').length);
-                e.preventDefault();
+                if(!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length){
+                    e.preventDefault();
 
-                slider = $(this);
+                    slider = $(this);
 
-                openSlideShow(slider);
-
+                    openSlideShow(slider);
+                }
                 return false;
             });
 
