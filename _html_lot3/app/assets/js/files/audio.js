@@ -127,8 +127,8 @@ var initAudio = function (hash) {
             var tempArray = fileArray[0];
 
             if(typeof tempArray !== 'undefined'){
-                console.log('tempArray',tempArray,tempArray[0],tempArray[0].file,tempArray.file);
-                var finalFile = tempArray[0].file;
+                console.log('tempArray',tempArray,tempArray.file);
+                var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
                     image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
