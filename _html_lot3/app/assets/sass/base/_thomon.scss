@@ -62,14 +62,19 @@
 }
 
 .same-day .articles.center {
-    padding: 0;
-    width: 29%;
+    
+    article {
+        padding: 0;
+        width: 29%;
 
-    .info strong a{
-        color: #000;
-        font-size: 1.125rem;
-        font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+        .info strong a{
+            color: #000;
+            font-size: 1.125rem;
+            font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+        }
+
     }
+    
 }
 
 body#home .contain-card{
