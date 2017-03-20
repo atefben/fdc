@@ -7031,6 +7031,14 @@ body.chocolat-open > .chocolat-content {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 
+.articles-list .card .w2.double {
+  min-height: 620px;
+}
+.articles-list .card .card .info .category {
+  position: relative;
+  top: -2px;
+}
+
 header .user-nav li a.account {
   display: none;
 }

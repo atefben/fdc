@@ -75,6 +75,17 @@
     }
 }
 
+.articles-list .card {
+    .w2.double {
+        min-height: 620px;
+    }
+
+    .card .info .category {
+        position: relative;
+        top: -2px;
+    }
+}
+
 header .user-nav li a.account {
     display: none;
 }
