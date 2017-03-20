@@ -2941,7 +2941,7 @@ var owInitGrid = function (id) {
                     postData['year-start'] = $('input[name="year-start"]').val();
                 }
                 if(typeof $('input[name="year-end"]').val() !== 'undefined'){
-                    postData.['year-end'] = $('input[name="year-end"]').val();
+                    postData['year-end'] = $('input[name="year-end"]').val();
                 }
                 if(typeof $('input[name="pg"]').val() !== 'undefined'){
                     postData.pg = parseInt($('input[name="pg"]').val())+1;
