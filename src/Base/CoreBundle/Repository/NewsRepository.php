@@ -460,6 +460,13 @@ class NewsRepository extends EntityRepository
             ;
     }
 
+    /**
+     * @param $locale
+     * @param $festival
+     * @param $dateTime
+     * @param $count
+     * @return News[]
+     */
     public function getNewsByDate($locale, $festival, $dateTime, $count)
     {
         $qb = $this
@@ -482,7 +489,7 @@ class NewsRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -497,7 +504,7 @@ class NewsRepository extends EntityRepository
                 ->setParameter('locale', $locale)
             ;
         } else {
-            $qb = $qb
+            $qb
                 ->andWhere(
                     '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -509,19 +516,22 @@ class NewsRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
+        $qb
             ->orderBy('n.publishedAt', 'DESC')
             ->setParameter('festival', $festival)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site_slug', 'site-evenementiel')
         ;
 
-        $qb = $qb
+        if ($count) {
+            $qb->setMaxResults($count);
+        }
+
+        return $qb
             ->getQuery()
             ->getResult()
         ;
 
-        return $qb;
     }
 
     public function getAllNews($locale, $festival)
