@@ -52,7 +52,6 @@ var initAudio = function (hash) {
             tmp = [];
             $("." + cls).each(function (i, v) {
                 var audioPlayer = jwplayer(this.id);
-                console.log('init audio player on id',this.id);
                 if (!$(audioPlayer).data('loaded')) {
                     audioLoad(this, audioPlayer, havePlaylist, function (aid) {
                         $(aid).data('loaded', true);
@@ -138,18 +137,7 @@ var initAudio = function (hash) {
             };
         }
 
-        console.log('load audio file',$('.activeAudio').length > 0 ? audioFile : $container.data('file'));
-        console.log('audioplayer config',{
-            //file: $container.data('file'),
-            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
-            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
-            primary: 'html5',
-            aspectratio: '16:9',
-            debug : true,
-            width: $(aid).parent('div').width(),
-            height: $(aid).parent('div').height(),
-            controls: false
-        });
+        console.log('audioplayer config',config);
         playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
