@@ -36,7 +36,7 @@
             {% endif %}
             <section id="main" class="single-article">
                 <div class="all-contain">
-                    <div class="contain-title vFlexAlign block-01-s">
+                    <div class="contain-title vFlexAlign block-01-mms">
                         {% if hideTitle == false %}
                             <h2 class="title-article">{{ title }}</h2>
                         {% endif %}
@@ -46,7 +46,7 @@
                         <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.news.share_article'|trans }}</a>
                         <a href="#" class="button" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.short_film_corner.print'|trans }}</a>
                     </div>
-                    <div class="block-01-xs">
+                    <div class="block-01-mms">
                         {% for widget in widgets %}
                             {% include '@FDCCourtMetrage/shortfilmcorner/blocks/' ~ widget.getType() ~ '.html.twig' with {'widget': widget} %}
                         {% endfor %}

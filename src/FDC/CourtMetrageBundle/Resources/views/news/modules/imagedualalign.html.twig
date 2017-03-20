@@ -1,4 +1,4 @@
-<div class="half-div v2">
+<div class="small-pres container half-photos">
     {% for image in widget.gallery.medias %}
         {% set translations = image.media.findTranslationByLocale(app.request.locale) %}
         <div class="half-photo">
