@@ -270,9 +270,12 @@ class InfoRepository extends EntityRepository
      * @param null $count
      * @param string $site
      * @param bool $displayedOnCorpoHome
+     * @param Theme|null $theme
+     * @param null $format
+     * @param bool $displayedHome
      * @return Info[]
      */
-    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null)
+    public function getInfosByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null, $displayedHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -294,6 +297,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
         ;
+
+        if ($displayedHome) {
+            $qb
+                ->andWhere('n.displayedHome = :displayedHome')
+                ->setParameter(':displayedHome', $displayedHome)
+            ;
+        }
 
         if ($theme) {
             $qb

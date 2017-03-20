@@ -36,6 +36,7 @@ class NewsController extends Controller
         $em = $this->get('doctrine')->getManager();
         $dateTime = new DateTime();
         $locale = $request->getLocale();
+        $festival = $this->getFestival();
 
         // GET FDC SETTINGS
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
@@ -108,9 +109,9 @@ class NewsController extends Controller
         if ($homepage->getTopNewsType() == false) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
         } else {
-            $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-            $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
-            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
+            $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $festival->getId(), $dateTime, $count, 'site-evenementiel',false, null, null, true);
+            $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $festival->getId(), $dateTime, $count, 'site-evenementiel',false, null, null, true);
+            $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $festival->getId(), $dateTime, $count);
 
             $homeArticles = array_merge($homeInfos, $homeStatement, $homeArticles);
             usort($homeArticles, [$this, 'compareArticle']);
