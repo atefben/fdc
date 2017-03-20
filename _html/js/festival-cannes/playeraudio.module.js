@@ -79,7 +79,6 @@ function updateShareLink() {
 }
 
 function audioLoad(aid, playerInstance, havePlaylist, callback) {
-    console.log('audioLoad');
     var $container    = $("#"+aid.id).closest('.audio-container');
 
     if($container.find('.control-bar').length <= 0) {
@@ -95,16 +94,6 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
         $sound        = $container.find('.sound');
 
      playerInstance.setup({
-        // file: $container.data('file'),
-        sources: $container.data('file'),
-        image: $container.data('img'),
-        primary: 'html5',
-        aspectratio: '16:9',
-        width: $(aid).parent('div').width(),
-        height: $(aid).parent('div').height(),
-        controls: false
-    });
-     console.log({
         // file: $container.data('file'),
         sources: $container.data('file'),
         image: $container.data('img'),

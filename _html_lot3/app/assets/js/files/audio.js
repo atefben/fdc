@@ -167,6 +167,8 @@ var initAudio = function (hash) {
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0' + duration_secs : duration_secs));
+        }).on('error',function(e){
+            console.log(e);
         }).on('bufferChange', function (e) {
             var currentBuffer = e.bufferPercent;
             $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');
