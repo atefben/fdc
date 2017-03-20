@@ -1,0 +1,63 @@
+{% spaceless %}
+
+    {% set media = film.imageMain|trans_fallback('file') %}
+
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = film.getSelfkitImages()|first %}
+    {% endif %}
+
+    {% if film_attrs is not defined %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
+    {% endif %}
+
+    {% if film_format is not defined %}
+        {% set film_format = 'small' %}
+    {% endif %}
+
+    {% if film.imageMain %}
+        <img src="{% path media, 'reference' %}" style="width: 256px;height: 348px;object-fit: cover;">
+    {% elseif display_film_path is defined and display_film_path %}
+        {% if media is not empty %}
+            {% path media, film_format %}
+        {% else %}
+            {{ asset(film_image_default) }}
+        {% endif %}
+    {% else %}
+        {% if corpo is defined %}
+            {% if film_attrs is defined %}
+                {% set film_attrs = {style:"width: 183px;height: 244px;object-fit: cover;"} %}
+            {% else %}
+                {% set film_attrs = film_attrs|merge({style:"width: 183px;height: 244px;object-fit: cover;"}) %}
+            {% endif %}
+        {% endif %}
+        {% if media is not empty and film_format is not empty and film_attrs is not empty %}
+            <img src="{% path media, film_format %}"{% for key, val in film_attrs %} {{ key }}="{{ val }}"{% endfor %}>
+        {% else %}
+            {% if corpo is defined %}
+                {% if film_image_default_attrs is defined %}
+                    {% set film_image_default_attrs = film_image_default_attrs ~ 'style="width: 183px;height: 244px;object-fit: cover;"' %}
+                {% else %}
+                    {% set film_image_default_attrs = 'style="width: 183px;height: 244px;object-fit: cover;"' %}
+                {% endif %}
+            {% endif %}
+            {% set legacy = get_legacy_film_image(film) %}
+            {% if legacy %}
+                <img src="{{ selfkit_amazon_url }}{{ legacy.fichier }}"
+                     alt="{{ legacy.titre?:'Affiche du film' }}"
+                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
+            {% else %}
+                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans }}"
+                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endspaceless %}

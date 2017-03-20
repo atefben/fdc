@@ -22,6 +22,8 @@
         {% elseif object is info_image %}
             image
         {% endif %}
+    {% elseif class(object) starts with 'CcmNews' %}
+        {{ object.getType() }}
     {% else %}
         {% if object is news_article %}
             article

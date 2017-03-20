@@ -16,12 +16,65 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\EntityRepository;
 
 use Sonata\UserBundle\Admin\Entity\UserAdmin as SonataUserAdmin;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class UserAdmin extends SonataUserAdmin
 {
+    const ROLE_CCM = 'ROLE_ADMIN_CCM';
 
+    protected $ccmUserTypes = [
+        self::ROLE_CCM => [
+            self::ROLE_CCM,
+        ],
+    ];
+
+    /**
+     * @param string $context
+     * @return QueryBuilder
+     */
+    public function createQuery($context = 'list')
+    {
+        $currentUser = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+
+        if ($currentUser) {
+            if ($roles = $currentUser->getRoles()) {
+                foreach ($roles as $role) {
+                    if (isset($this->ccmUserTypes[$role])) {
+                        $userRoles = $this->ccmUserTypes[$role];
+                        break;
+                    }
+                }
+
+                if (isset($userRoles) && $userRoles) {
+                    /** @var QueryBuilder $query */
+                    $query = parent::createQuery($context);
+                    $query
+                        ->andWhere($query->expr()->like('s_groups.roles', $query->expr()->literal('%'.$userRoles[0].'%')));
+
+                    if (count($userRoles) > 1) {
+                        foreach (array_slice($userRoles, 1) as $role) {
+                            $query
+                                ->orWhere($query->expr()->like('s_groups.roles', $query->expr()->literal('%'.$role.'%')));
+                        }
+                    }
+
+                } else {
+                    $query = parent::createQuery($context);
+                }
+            } else {
+                $query = parent::createQuery($context);
+            }
+        } else {
+            $query = parent::createQuery($context);
+        }
+
+        return $query;
+    }
+    
     public function prePersist($object)
     {
         $container = $this->getConfigurationPool()->getContainer();
@@ -125,10 +178,52 @@ class UserAdmin extends SonataUserAdmin
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-            ->end()
-            ->with('Groups')
-            ->add('groups', null, array('required' => true))
-            ->end()
+            ->end();
+        $currentUser = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+
+        if ($currentUser) {
+            if ($roles = $currentUser->getRoles()) {
+                foreach ($roles as $role) {
+                    if (isset($this->ccmUserTypes[$role])) {
+                        $userRoles = $this->ccmUserTypes[$role];
+                        break;
+                    }
+                }
+
+                if (isset($userRoles) && $userRoles) {
+                    /** @var QueryBuilder $query */
+
+                    $formMapper
+                        ->with('Groups')
+                        ->add('groups', null, array('required' => true,
+                                'query_builder' => function (EntityRepository $er) use ($userRoles) {
+                                    $qd = $er->createQueryBuilder('u');
+                                    $qd->andWhere($qd->expr()->like('u.roles', $qd->expr()->literal('%'.$userRoles[0].'%')));
+
+                                    if (count($userRoles) > 1) {
+                                        foreach (array_slice($userRoles, 1) as $role) {
+                                            $qd->orWhere($qd->expr()->like('u.roles', $qd->expr()->literal('%'.$role.'%')));
+                                        }
+                                    }
+
+                                    return $qd;
+                                },
+                            )
+                        )
+                        ->end();
+                } else {
+                    $formMapper
+                        ->with('Groups')
+                        ->add('groups', null, array(
+                                'required' => true
+                            )
+                        )
+                        ->end();
+                }
+            }
+        }
+
+        $formMapper
             ->with('Profile')
             ->add('firstname', null, array('required' => false))
             ->add('lastname', null, array('required' => false))

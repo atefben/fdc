@@ -1,0 +1,23 @@
+<div class="innerWrapper">
+    {% if homepage.translatable.aProposType == 'image' %}
+        {% include 'FDCCourtMetrageBundle::homepage/partials/photos.html.twig' with {'widget' : widget} %}
+    {% elseif homepage.translatable.aProposType == 'video' %}
+        {% include 'FDCCourtMetrageBundle::homepage/partials/videos.html.twig' with {'widget' : widget} %}
+    {% elseif homepage.translatable.aProposType == 'youtube' %}
+        {% include 'FDCCourtMetrageBundle::homepage/partials/youtube.html.twig' with {'widget' : widget} %}
+    {% endif %}
+    <div class="aboutContent wysiwyg-white">
+        {% if homepage.aProposLabel is not null %}
+            <span>{{ homepage.aProposLabel }}</span>
+        {% endif %}
+        {% if homepage.aProposTitle is not null %}
+            <a href="{% if homepage.aProposUrl is not null %}{{ homepage.aProposUrl }}{% else %}#{% endif %}" target="_blank"><h5>{{ homepage.aProposTitle }}</h5></a>
+        {% endif %}
+        {% if homepage.aProposDescription is not null %}
+            <a href="{% if homepage.aProposUrl is not null %}{{ homepage.aProposUrl }}{% else %}#{% endif %}" target="_blank">{{ homepage.aProposDescription|raw }}</a>
+        {% endif %}
+        {% if homepage.aProposUrl is not null %}
+            <a href="{{ homepage.aProposUrl }}" {% if fdc_court_metrage_domain not in homepage.aProposUrl %}target="_blank"{% endif %}><div class="aboutMore">{{ 'ccm_en_savoir_plus'|trans }}</div></a>
+        {% endif %}
+    </div>
+</div>

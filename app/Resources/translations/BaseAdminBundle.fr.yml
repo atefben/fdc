@@ -180,6 +180,30 @@ group:
     content: Contenu
     mobile_notificaton:
         publish: Publication
+    ccm:
+        placeholder_seo_title: "[valeur champ titre actualité] - Cannes Court Métrage"
+        helper_seo_example: |
+            <title> : [valeur champ titre actualité] - Cannes Court Métrage
+            meta desc  : [valeur champ chapô actualité]
+
+            og:site_name : Cannes Court Métrage
+            og:type : article
+            og:title : [valeur champ titre actualité]
+            og:url : [URL actualité]
+            og:description : [valeur champ chapô actualité]
+            og:updated_time : [valeur date de modif actualité]
+            og:image : [preset spécifique image principale (1200x630px)]
+
+            twitter:card : summary_large_image
+            twitter:site : Cannes Court Métrage
+            twitter:creator : @Cannes_Court
+            twitter:title : [valeur champ titre actualité]
+            twitter:description : [valeur champ chapô actualité]
+            twitter:image : [preset spécifique image principale (600x380px)]
+
+            article:author : [valeur signature actualité]
+            article:published_time : [valeur date de publication de l'actu]
+            article:modified_time : [valeur date de modif actualité]
 entity:
     corpo_festival_history: L'histoire du festival
     corpo_palme_or: La palme d'or
@@ -375,7 +399,55 @@ list:
         label_endsat: Date de fin du festival
     person_duplicates: IDs doublon SOIF
     person_selfkit: IDs doublon Selfkit
-
+    ccm:
+        id: Identifiant
+        pro:
+            identifiant: Identifiant
+            name: Entité
+            domains_activities: Domaines d'activité
+            status: Statut
+            edit_translations: Éditer
+        sfc:
+            title: Titre
+            position: Position
+            date_creation: Date de création
+            date_update: Date de mise à jour
+            status: Statut
+            edit: Editer
+        participer:
+            title: Titre
+            date_creation: Date de création
+            date_update: Date de mise à jour
+            edit: Editer
+            layer_name: Nom de la strate
+        register:
+            edit: Editer
+            name: Nom de la procédures
+            date_creation: Date de création
+            date_update: Date de mise à jour
+        label:
+            edit: Editer
+            name: Nom de la section
+            files_group_name: Nom de groupe de boutons
+        waiting_page:
+            edit: Editer
+            title: Titre
+        pros:
+            edit: Editer
+            domain_name: Nom de domaine d'activités
+            contact_name: Nom de contact
+        program:
+            date_string: Date
+            edit: Editer
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            content: Contenu
+            tags: Tags
+            message: Message
+            enabled_desktop: Visible sur le site
+            created_at: Date de création
 filter:
     media_pdf:
         name: Nom
@@ -441,6 +513,7 @@ filter:
     label_homepage_corpo_displayed_galleries: Galeries photos affichées sur la homepage institutionnelle
     label_homepage_corpo_displayed_videos: Vidéos à la une affichées sur la homepage institutionnelle
     label_selfkit: Selfkit
+    label_status: Statut
     media_image:
         label_created_before: Publié avant le
         label_created_after: Publié après le
@@ -471,8 +544,45 @@ filter:
         label_title: Nom de la salle
     fdc_page_participate:
         label_section: Nom de la section
-
+    ccm:
+        pro:
+            id: Identifiant
+            name: Entité
+            domains_activities: Domaines d'activité
+        sfc:
+            title: Titre
+        social:
+            id: Identifiant
+            url: Lien
+            network: Réseau Social
+            festival: Festival
+            enabled_desktop: Visible sur le site
+            tags: Hashtag
 admin:
+    ccm:
+        menu:
+            pros: Les pros du court
+            program: Programme
+            menu: Menu
+            homepage: Homepage
+            faq: FAQ
+            contact_page: Contact
+            film_register: Inscrire un film
+            label_page: Charte Graphique
+            confidentialite: Politique de confidentialité
+            credits: Crédits
+            legal_mentions: Mentions Légales
+            plan_des_salles: Se repérer à Cannes
+            social_wall_hashtag: Social wall hashtag
+            register_procedure: Procédures d'inscription
+            participate_pages: Pages Participer
+            strates_participer: Strates Participer
+            who_are_we: Qui sommes nous ?
+            our_events: Nos évènements
+            relive_edition: Revivez l’édition
+            selection: LES COURTS EN COMPETITION – La sélection
+            jury: LES COURTS EN COMPETITION – Jury
+            palmares: LES COURTS EN COMPETITION – Palmarès
     group:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
@@ -483,8 +593,15 @@ admin:
         mdf_goes_to_cannes: Goes to Cannes
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
-
-
+        ccm:
+            pros: Les pros du court
+            short: Short Film Corner
+            general: CCM General
+            participate: Participer
+            news: Actualités
+            seo_tetieres: SEO + TETIERES
+            participer: Participer
+            footer: Footer
 dashboard:
     translator:
         object:
@@ -503,6 +620,7 @@ dashboard:
         soif: SOIF
         general: Général
         media: Médias
+        ccm_media: Médias
         news: Actualités
         statement: Communiqués
         info: Infos
@@ -624,6 +742,438 @@ form:
     label_hide_common_content: Ne pas afficher cette strate
     label_our_selection: Notre Sélection
     label_pdf: Pdf
+    ccm:
+        graphical_charter:
+            content_files_one_column: Fichiers
+            page_title: Titre de la page
+            content_files: Fichiers colonne 1
+            content_files_2: Fichiers colonne 2
+            content_files_3: Fichiers colonne 3
+            section_file_title: Bouton titre
+            section_file: Fichier
+            files_on_section: Boutons disponible
+            files_section: Sections du fichiers
+            label_file_collection: Gestion de boutons
+            label_file: Boutons
+            label_content_file_widget_collection: Section du fichier
+            label_content_file_widget: Sections disponibles
+            button_section_title: Titre du section de fichier
+            section_title: Nom de la section
+            bo_name: Backoffice nom
+            files_section_widget: Module fichiers colonne
+            file_section_widget: Module fichiers colonne
+            file_1: Fichier 1
+            file_2: Fichier 2
+            file_title: Bouton 1 titre
+            file2_title: Bouton 2 titre
+            image_1: Image colonne 1
+            image_2: Image colonne 2
+            image_3: Image colonne 3
+            title: Titre
+            title_1: Titre colonne 1
+            title_2: Titre colonne 2
+            title_3: Titre colonne 3
+            legend: Légende
+            legend_1: Légende colonne 1
+            legend_2: Légende colonne 2
+            legend_3: Légende colonne 3
+            technical_constraints: Contraintes techniques
+            technical_constraints_1: Contraintes techniques colonne 1
+            technical_constraints_2: Contraintes techniques colonne 2
+            technical_constraints_3: Contraintes techniques colonne 3
+            is_technical_constraints_popup_active: Afficher vers la pop-in
+            is_technical_constraints_popup_active_1: Afficher vers la pop-in colonne 1
+            is_technical_constraints_popup_active_2: Afficher vers la pop-in colonne 2
+            is_technical_constraints_popup_active_3: Afficher vers la pop-in colonne 3
+            header: Chapô
+            text: Bloc de texte
+            form_title: Sections de charte graphique
+            label_sections: Sections de charte graphique
+            label_section: Section de charte graphique
+            widget_section: Accordéon item
+            section: Section
+            section_name: Nom
+            widget_text:
+                text: Texte
+            content:
+                text: Module de texte
+                one_column: Module une colonne
+                two_columns: Module deux colonnes
+                three_columns: Module trois colonnes
+            widget:
+                one_column: Module une colonne
+                two_columns: Module deux colonnes
+                three_columns: Module trois colonnes
+                text: Module de texte
+
+        register_procedure:
+            name: Catégorie des procédures d’inscription
+        waiting_page:
+            title: Titre
+            content: Contenu de la page
+            image: Photo
+            enabled: Actif?
+        film_register:
+            title: Têtière titre
+            text: Text
+            procedures_title: Titre au dessus du tableau des procédures
+            header_photo: Têtière photo
+            is_text_active: Est le texte affiché?
+            procedure_widget: Procédures d’inscription
+            widget: Module procédures d’inscription
+            label_procedure: Procédures
+            procedure_text: Texte de procédures d’inscription
+            characteristics_title: Caractéristiques de mise en ligne - Titre
+            characteristics_text: Caractéristiques de mise en ligne - Text
+            characteristics_url: Caractéristiques de mise en ligne - Url
+            characteristics_button_label: Caractéristiques de mise en ligne - Button label
+            is_characteristics_active: Active
+            regulation_title: Voir le règlement - Titre
+            regulation_text: Voir le règlement - Text
+            is_regulation_active: Active
+            register_form_title: Formulaire d’inscription - Titre
+            register_form_text: Formulaire d’inscription - Text
+            register_form_background: Formulaire d’inscription - image de fond
+            is_register_form_active: Active
+            contact_us_title: Contactez-nous - Titre
+            contact_us_left_text: Contactez-nous - Colonne de gauche
+            contact_us_right_text: Contactez-nous - Colonne de droite
+            technique_characteristics_title: Détail des caractéristiques techniques - Titre
+            technique_characteristics_video: Détail des caractéristiques techniques - Spécifications vidéo
+            technique_characteristics_audio: Détail des caractéristiques techniques - Spécifications audio
+            technique_characteristics_text: Détail des caractéristiques techniques - Détail
+            regulation_details_text: Détail du règlement - Text
+            regulation_details_file: Détail du règlement - Fichier
+            regulation_details_button_label: Détail du règlement - Bouton libellé
+            regulation_details_button_url: Détail du règlement - Bouton lien
+        label_status: Statut
+        widget:
+            description: Module chapô
+            image: Module 1 photo
+        label:
+            external_url: La valeur doit commencer par http ou https
+            plan_des_salles_sector: Sections
+            plan_des_salles_sector_list: Navigation de gauche
+            plan_des_salles_info: Nom de la section
+            plan_des_salles_title: Titre
+
+            contact_subject_theme: Thème de contact
+            contact_page_email_receiver: Email du destinataire
+            contact_page_subjects_list: Page de contact liste de sujets
+            contact_page_subject_info: Informations de contact
+            contact_subject: Sujet du message
+            competition_tab_name: Surcharger le nom de la sélection
+            image: Image cover
+            film_selection: Sélection
+            film_jury: Type de jury
+            film_date: Date
+            short_film_corner:
+                position_du_menu: Position
+            menu:
+                urlProgram: URL de bouton Programme
+                urlCatalog: URL de bouton Catalogue
+                urlRegister: URL de bouton Inscrire un film
+                program_pic_is_active: Le bouton Programme est visible?
+                catalog_pic_is_active: Le bouton Catalogue est visible?
+                register_pic_is_active: Le bouton Inscrire un film est visible?
+                main_nav_list: Liste des onglets de navigation principale
+                main_nav_item: Onglet de navigation principal
+                main_nav_name: Nom de l'onglet de navigation principal
+                main_nav_conf: Configuration de l'onglet de navigation principal
+                main_nav_fo_translation_key: Touche de traduction de l'onglet principal de navigation
+                main_nav_route: URL
+                main_nav_help: Assurez-vous d'ajouter un URL valide
+                main_nav_is_active: Cet onglet de navigation principal est actif?
+                sub_nav_conf: Configuration de l'onglet de navigation secondaire
+                sub_nav_list: Liste des onglets de navigation secondaire
+                sub_nav_item: Navigation secondaire
+                sub_nav_name: Nom de l'onglet de navigation secondaire
+                sub_nav_fo_translation_key: Seconde touche de traduction de l'onglet de navigation
+                sub_nav_route: URL
+                sub_nav_is_active: Cet onglet de navigation secondaire est actif?
+            pros:
+                detail_image: Image (carrée ou 230x230)
+                detail_is_sfc: Présent au Short Film Corner
+                detail_name: Entité Pro
+                detail_quote: Citation
+                detail_country: Pays
+                detail_url: Url du site Web
+                detail_url_name: Nom du site Web
+                detail_activities_list: Liste des activités
+                detail_contacts_list: Liste de contacts
+                activity: Activité
+                activity_name: Nom de l'activité
+                contact: Contact
+                contact_name: Nom du contact
+                contact_function: Fonction de contact
+                contact_email: Email du contact
+                detail_title_single: Titre colonne simple
+                detail_description_single: Description colonne simple
+                detail_title_first_double: Premier titre
+                detail_description_first_double: Première description
+                detail_title_second_double: Deuxième titre
+                detail_description_second_double: Deuxième description
+                detail_config: Informations générales
+                activities_collection: Collection d'activités
+                contacts_collection: Contacts
+                description_1_column_widget: Widget une colonne
+                description_2_column_widget: Widget deux colonnes
+                description_1_column: Widget une colonne
+                description_2_column: Widget deux colonnes
+                contact_config: Informations de contact
+                activity_config: Informations sur l'activité
+                domain_config: Information sur le domaine
+                domain_name: Nom du domaine d'activité
+                domain: Domaine
+                page_title: titre de la page
+                page_description: Description de la page
+                page_domains_list: Liste des domaines d'activité
+                page_config: Informations sur la page
+                domains_collection: Filtres
+                page_image: Page image
+            actualite:
+                title_block: Module Actualités
+                date: Date
+                title: Titre de l'actualité
+                description: Description
+                is_active: Activer le module
+                is_active_actualite: Activer l'actualité
+                associated_movie: Film associé
+                associated_movie_help: Sélectionnez un film associé à l'article.
+                url: URL
+            social:
+                title: Module Social Wall
+                position_social: La position du module Social
+                social_is_activated: Activer le module
+            catalog:
+                pushes: Module Catalogue
+                push: Ajouter
+                push_is_activated: Activer le module
+                homepage: Push Catalogue
+                whiteTitle: Nom du push
+                url: URL
+                homepage: Le catalogue
+                catalog_image: Image de background
+            sejour:
+                title1: Titre 1
+                title2: Titre 2
+                url: URL
+                sejour_is_activated: Activer le module
+                title: Module Grand Push
+                button : Bouton titre
+            push:
+                homepage: Push
+                whiteTitle: Titre Blanc
+                goldenTitle: Titre Doré
+                url: URL du push
+                isActive: Activer le module
+                add_message: Pushes
+            homepage:
+                position_sejour: La position du module Séjour
+                position_actualite: La position du module Actualité
+                position_catalog: La position du module Catalog
+            slider:
+                homepage: Slide
+                whiteTitle: Titre Blanc
+                whiteTitleSize: Taille du Titre Blanc
+                goldenTitle: Titre Doré
+                goldenTitleSize: Taille du Titre Doré
+                buttonLabel: Libellé de bouton
+                url: URL de la slide
+            court:
+                homepage: Module Courts en compétition
+                film_selection: Section de sélection
+                court_is_activated: Activer le module
+                court_year: L’année
+            homepage_slider_type: Ajouter
+            homepage_push_type: Ajouter
+            homepage_actualite_type: Ajouter
+            homepage_sejour_type: Ajouter
+            homepage_push: Push
+            pushes: Module Pushs
+            homepage_slider: Slide
+            slide: Module Slider
+            footer:
+                content_config: Informations sur la page
+                title: Titre de la page
+                subtitle: Sous-titre de la page
+                description: Description de la page
+                content_text_type_widget: Description widget
+                content_text_title: Titre du widget texte
+                content_text_body: Texte widget corps
+                content_text_type: Ajouter un widget description
+            layer:
+                page: Strate pour la page
+                icon: Pictogramme du titre
+                position: Position de la strate
+                name: Titre
+                module_image_text_type_widget: Widget d'image et de texte
+                module_partenaires_fournisseur_type_widget: Partenaires et fournisseur widget
+                module_pictos_type_widget: Pictos widget
+                module_three_columns_type_widget: Widget de trois colonnes
+                module_four_columns_type_widget: Widget de quatre colonnes
+                module_subtitle_type_widget: Widget de sous-titre
+                module_transport_type_widget: Widget de transport
+                module_google_maps_type_widget: Widget google maps
+                module_image_text_type_add: Ajouter un widget d'image et de texte
+                module_partenaires_fournisseur_type_add: Ajouter des partenaires et un fournisseur widget
+                module_pictos_type_add: Ajouter pictos widget
+                module_three_columns_type_add: Ajouter trois colonnes widget
+                module_four_columns_type_add: Ajouter un widget de quatre colonnes
+                module_subtitle_type_add: Ajouter un widget de sous-titre
+                module_transport_type_add: Ajouter widget de transport
+                module_google_maps_type_add: Ajouter google maps widget
+            module:
+                image_text:
+                    image: Image du module
+                    title: Titre du module
+                    description: Description du module
+                pf:
+                    logo: Logo du module
+                    photo: Photo de module
+                    name_pf: Partenaire ou nom du fournisseur
+                    description: Description partenaires et fournisseur
+                    name_surname: Nom et prénom du partenaire ou du fournisseur
+                    function: Partenaires ou fonction fournisseur
+                pictos:
+                    picto1: Picto 1
+                    title1: Titre 1
+                    description1: la description 1
+                    picto2: Picto 2
+                    title2: Titre 2
+                    description2: la description 2
+                    picto3: Picto 3
+                    title3: Titre 3
+                    description3: la description 3
+                    picto4: Picto 4
+                    title4: Titre 4
+                    description4: la description 4
+                three_columns:
+                    image1: Image 1
+                    pdf1: Pdf 1
+                    title1: Titre 1
+                    description1: la description 1
+                    image2: Image 2
+                    pdf2: Pdf 2
+                    title2: Titre 2
+                    description2: la description 2
+                    image3: Image 3
+                    pdf3: Pdf 3
+                    title3: Titre 3
+                    description3: la description 3
+                four_columns:
+                    picto1: Picto 1
+                    description1: la description 3
+                    picto2: Picto 2
+                    description2: la description 2
+                    picto3: Picto 3
+                    description3: la description 3
+                    picto4: Picto 4
+                    description4: la description 4
+                subtitle:
+                    title: Titre
+                    description: la description
+                transport:
+                    picto: Picto
+                    title: Titre
+                    description: la description
+                    url: Url
+                google_maps:
+                    description: la description
+                    url: Url
+            participer:
+                page_image: Image
+                page_config: Informations sur la page
+                page_title: Titre de la page
+                page_name: Nom de la page
+                page_slug: Page slug
+                layers_widget: Ajouter strates participer
+                layers_list: Participer à la liste des couches
+                layer_collection: Strates participer
+            icon:
+                rendre: Rendre
+                plans: Plans
+                hebergement: Hebergement
+                information: Information
+                carte_id: Carte ID
+                access: Accès
+                projecteur: Projecteur
+                check: Enregistrement
+                horloge: Horloge
+            picto:
+                point_infos: Point infos
+                consignes: Consignes
+                objets_trouves: Objets trouves
+                urgences: Urgences
+                enregistreur: Enregistreur
+                selfie: Selfie
+                telephone: Telephone
+                dress_code: Dress code
+                train: Train
+                voiture: Voiture
+                avion: Avion
+                bus: Bus
+                taxi: Taxi
+            a_propos:
+                config: Module A Propos
+                label: Surtitre
+                title: Titre
+                description: Description
+                url: URL en savoir plus
+                type: Type de médias
+                is_activated: Activer le module
+                youtube: Vidéo(s) Youtube
+                video: Vidéo(s) Amazon
+                image: Image(s)
+                youtubes_collection: Vidéos Youtube
+                youtubes_list: Liste
+                videos_collection: Vidéos Amazon
+                videos_list: Liste
+                images_collection: Galerie d'image
+                gallery: Galerie
+                youtube_page_config: Informations sur youtube
+                youtube_title: Youtube title
+                youtube_url: URL de YouTube
+                youtube_theme: Youtube theme
+            program:
+                program_title: Gestion du programme global de l'année
+                image: Image Cover
+                title: Titre
+                body: Chapô
+                days_collection: Dates
+                days_title: Liste des jours disponibles dans le programme
+                day:
+                    list: Dates
+                    date_event: Date
+                    schedule_collection: Gestion des événements de la journée
+                schedule:
+                    list: Événements
+                    schedule_title: Détail de l'événement dans le programme
+                    title: Titre
+                    description: Description
+                    url: URL
+                    access_type: Détail Type d’accès
+                    location: Détail Lieu
+                    time_details: Détail Heure
+                    schedule_type: Catégorie
+                schedule_type:
+                    title: Titre
+                catalog_title: Module Catalogue
+                catalog_is_activated: Activer le module
+                position_catalog: Position
+                social_title: Le social wall
+                social_is_activated: Activer le module
+                position_social: La position du module Social
+                actualite_title: Les actualités
+                position_actualite: La position du module Actualité
+                actualite_is_activated: Activer le module
+                sejour_is_activated: Activer le module
+                position_sejour: La position du module grand push
+                sejour_title: Module grand push
+        size:
+            small:  Titre petit
+            medium: Titre moyen
+            large: Tite gros
     mdf:
         label_status: Statut
         conference_partner:
@@ -740,6 +1290,8 @@ form:
             legal_mentions: Mentions légales
             general_conditions: Conditions générales
             title: Titre de page
+            title_navigation: Titre dans la navigation
+            hide_title: Cacher le titre
             theme_title: Nom du thème
             theme: Thème
             header: Chapô
@@ -1053,12 +1605,15 @@ form:
         subtitle: Module sous-titre
         intro: Module chapeau
         text: Module de texte
+        description: Module de description
         video: Module vidéo Amazon
         video_youtube: Module vidéo Youtube
         audio: Module audio
         image: Module photo(s)
         image_dual_align: Module 2 photos / ligne
+        gallery: Module de galerie
         quote: Module citation
+        signature: Module de signature
         subtitle: Module sous-titre
         orange_series_video_youtube: Module vidéo Youtube
         film_vod: Module film

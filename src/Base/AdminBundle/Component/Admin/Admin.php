@@ -178,6 +178,7 @@ class Admin extends BaseAdmin
                     'choices' => InfoAudioTranslation::getMainStatuses(),
                     'choice_translation_domain' => 'BaseAdminBundle'
                 ),
+                'label' => 'filter.label_status',
             ));
 
     }

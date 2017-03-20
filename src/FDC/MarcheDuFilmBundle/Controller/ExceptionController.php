@@ -2,6 +2,7 @@
 
 namespace FDC\MarcheDuFilmBundle\Controller;
 
+use FDC\CourtMetrageBundle\Manager\ExceptionManager;
 use FDC\MarcheDuFilmBundle\Manager\HeaderFooterManager;
 use FDC\MarcheDuFilmBundle\Manager\NotFoundExceptionManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,6 +17,11 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
     protected $notFound404Manager;
     protected $headerFooterManager;
     protected $mdfDomain;
+    protected $ccmDomain;
+    /**
+     * @var ExceptionManager
+     */
+    protected $ccmExceptionManager;
 
     public function __construct(\Twig_Environment $twig, $debug, NotFoundExceptionManager $notFound404Manager, HeaderFooterManager $headerFooterManager, $mdfDomain)
     {
@@ -44,6 +50,18 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
                     'banner' => $banner,
                     'availableMenu' => $availableMenu,
                 )));
+            }
+        } elseif ($requestHeaders['HOST'] == $this->ccmDomain && $this->debug == false) {
+            $locale = $request->getLocale();
+
+            if ($exception->getStatusCode() === 404) {
+
+                return $this->ccmExceptionManager->render404Page($locale);
+            }
+            
+            if ($exception->getStatusCode() === 500) {
+                
+                return $this->ccmExceptionManager->render500Page($locale);
             }
         }
 
@@ -89,5 +107,21 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
         $request->setRequestFormat('html');
 
         return new TemplateReference('TwigBundle', 'Exception', $showException ? 'exception_full' : $name, 'html', 'twig');
+    }
+    
+    /**
+     * @param string $ccmDomain
+     */
+    public function setCcmDomain($ccmDomain)
+    {
+        $this->ccmDomain = $ccmDomain;
+    }
+
+    /**
+     * @param ExceptionManager $ccmExceptionManager
+     */
+    public function setCcmExceptionManager($ccmExceptionManager)
+    {
+        $this->ccmExceptionManager = $ccmExceptionManager;
     }
 }

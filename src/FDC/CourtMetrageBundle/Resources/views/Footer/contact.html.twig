@@ -1,0 +1,55 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div id="main" class="contact loading">
+        <h2 class="title">{{ 'ccm.contact.title'|trans }}</h2>
+        {% if app.session.flashBag.get('success')|length == 0 %}
+            <div class="coords">
+                <h3>{{ 'contact.contact_block.title'|trans }}</h3>
+                <p>{{ 'contact.contact_block.address'|trans }}</p>
+                <p>{{ 'contact.contact_block.phone'|trans }}</p>
+            </div>
+            <div class="container">
+                <p>{{ 'ccm.contact.info'|trans }}</p>
+                <div id="form">
+                    {{ form_start(form) }}
+                        <div class="select {{ form.vars.errors|length > 0 ? 'invalid' : '' }}">
+                            <label for="select">{{ 'ccm.contact.message-theme'|trans }} :</label>
+                            {{ form_widget(form.select) }}
+                            <span id="triggerSelect"></span>
+                        </div>
+                        {{ form_widget(form.name, {'attr' : {'data-error' : 'ccm.contact.name_error'|trans }}) }}
+                        {{ form_widget(form.email, {'attr' : {'data-error' : 'ccm.contact.email_error'|trans }}) }}
+                        {{ form_widget(form.object, {'attr' : {'data-error' : 'ccm.contact.object_error'|trans }}) }}
+                        {{ form_widget(form.message, {'attr' : {'data-error' : 'ccm.contact.message_error'|trans }}) }}
+                        <span class="required">* {{ 'ccm.contact.required'|trans }}</span>
+
+                        <input type="submit" value="{{ 'ccm.contact.submit'|trans }}">
+                        {{ form_widget(form._token) }}
+                    {{ form_end(form) }}
+                    <div class="errors">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="success show">
+                <h3>{{ 'ccm.contact.success'|trans }}</h3>
+                <p>{{ 'ccm.contact.success-info'|trans }}</p>
+            </div><br/><br/>
+        {% endif %}
+    </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : 'ccm.breadcrumb.contact.contact'|trans,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
+{% endblock %}

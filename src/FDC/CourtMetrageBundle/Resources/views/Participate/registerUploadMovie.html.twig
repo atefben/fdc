@@ -1,0 +1,49 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="home loading noPadding whiteBckg">
+        <div class="list-article">
+            {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
+        </div>
+        <div class="wideWrapper onlineWrapper">
+            <h1>{{ registerProcedure.techniqueCharacteristicsTitle }}</h1>
+            <div class="onlinegoldBorders">
+                <div class="specs">
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/camera.svg') }}">{{ 'ccm.register_movie.video_specs'|trans }}</h2>
+                    {{ registerProcedure.techniqueCharacteristicsVideo|raw }}
+                </div>
+                <div class="specs">
+                    <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/sound.svg') }}">{{ 'ccm.register_movie.audio_specs'|trans }}</h2>
+                    {{ registerProcedure.techniqueCharacteristicsAudio|raw }}
+                </div>
+            </div>
+        </div>
+        <div class="block-register-pop">
+            <div class="block-s-info">
+                <div class="block-01-ms vFlexAlign">
+                    {{ registerProcedure.techniqueCharacteristicsText|raw }}
+                </div>
+            </div>
+        </div>
+        <!--<button class="modal-toggle">Update</button>-->
+    </div>
+
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+        {"breadcrumb":
+            [
+            {
+                "name" : 'breadcrumb.home'|trans,
+                "url"  : path('fdc_court_metrage_homepage')
+            },
+            {
+                "name" : 'breadcrumb.participate'|trans,
+                "url"  : path('fdc_court_metrage_register_movie')
+            },
+            {
+                "name" : registerProcedure.techniqueCharacteristicsTitle,
+                "url"  : ''
+            }
+            ]
+        }
+    %}
+{% endblock %}

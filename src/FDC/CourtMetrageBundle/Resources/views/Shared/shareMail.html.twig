@@ -1,0 +1,58 @@
+<div class="popin-mail popin">
+    <div class="contain-popin popin">
+        <div id="msg"></div>
+        <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}
+        </strong>
+        <span class="date-article popin">{% if artist is defined and artist is not null %} {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ share_email.detail }}{% endif %}</span>
+        <h2 class="title-article popin">{{ share_email.title }}</h2>
+        <div class="chap-article popin">{{ share_email.description|raw }}</div>
+    </div>
+
+    {{ form_start(form, {'action': path('fdc_court_metrage_shareemail'),attr: {class:'popin', id:'form'}}) }}
+        {% if form_errors(form.email) %}
+            {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.email) }}
+        {% endif %}
+        <span class="complet-infos popin">{{ 'ccm.share_mail.mail_info'|trans }}</span>
+
+        {% if form_errors(form.user) %}
+            {{ form_widget(form.user, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.user) }}
+        {% endif %}
+
+        <span class="complet-infos popin">
+            {{ form_widget(form.copy) }}
+            {{ form_label(form.copy) }}
+        </span>
+
+        {% if form_errors(form.message) %}
+            {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
+        {% else %}
+            {{ form_widget(form.message) }}
+        {% endif %}
+
+        {{ form_widget(form.section, {'value' : share_email.section}) }}
+        {{ form_widget(form.detail, {'value' : share_email.detail}) }}
+        {{ form_widget(form.title, {'value' : share_email.title}) }}
+        {{ form_widget(form.description, {'value' : share_email.description}) }}
+        {{ form_widget(form.url, {'value' : share_email.url}) }}
+        <span class="complet-infos newsletter popin">
+            {{ form_widget(form.newsletter) }}
+            {{ form_label(form.newsletter) }}
+        </span>
+
+        <span class="detail popin">* {{ 'ccm.share_mail.required'|trans }}</span>
+        <div id="errorMsg"></div>
+        <input type="submit" value='{{ 'ccm.share_mail.submit'|trans }}' class='popin' id="share_mail">
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+
+    <div class="info-popin popin">
+        <p class="popin">
+            {{ 'ccm.share_mail.rules'|trans }}
+        </p>
+    </div>
+</div>
+<!-- END POPIN MAIL SHARE -->

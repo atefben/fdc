@@ -1,0 +1,29 @@
+<div class="our-news">
+    <h3>{{ 'ccm_news'|trans }}</h3>
+    <div class="innerWrapper">
+        {% if actualites is defined and actualites is not null%}
+            {% for actualite in actualites %}
+                    <a href="{{ actualite.url }}" {% if fdc_court_metrage_domain not in actualite.url %}target="_blank"{% endif %}>
+                        <div class="articles">
+                            {% if  actualite.translatable.image is not null %}
+                                <div class="articles-img"><img src="{% path actualite.translatable.image|trans_fallback('file'), 'reference' %}"></div>
+                            {% endif %}
+                            <div class="articles-content">
+                                <span>
+                                    {{ actualite.translatable.theme.name }}
+                                    <br><span class="article-date">{{ actualite.translatable.date|date("d M Y") }}</span>
+                                </span>
+                                <h6>{{ actualite.title }}</h6>
+                                {% if  actualite.translatable.image is not null%}
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('182', '...')}}</p>
+                                {% else %}
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('562', '...')}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+

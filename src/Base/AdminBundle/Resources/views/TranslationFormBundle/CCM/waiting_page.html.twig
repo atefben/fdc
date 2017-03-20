@@ -1,0 +1,50 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+{{ form_errors(form) }}
+<div class="a2lix_translations tabbable">
+    {% set currentLocale = (app.request.get('locale')) ? app.request.get('locale') : form.vars.default_locale %}
+    {% include 'BaseAdminBundle:Block:mdf_languages.tabs.html.twig' %}
+
+    <div class="a2lix_translationsFields tab-content">
+        {% for translationsFields in form %}
+            {{ form_row(translationsFields.applyChanges) }}
+            {% set locale = translationsFields.vars.name %}
+            {% if is_granted('ROLE_TRANSLATOR_FR') %}
+                {% set currentLocale = 'fr' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_EN') %}
+                {% set currentLocale = 'en' %}
+            {% elseif is_granted('ROLE_TRANSLATOR_ZH') %}
+                {% set currentLocale = 'zh' %}
+            {% endif %}
+            <div class="{% if app.request.get('code') is not null %}popin-a2lix-{{ locale }}{% else %}main-a2lix-{{ locale }}{% endif %} a2lix_translationsFields-{{ locale }} tab-pane {% if currentLocale == locale %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h4 class="box-title">
+                                </h4>
+                            </div>
+                            <div class="box-body">
+                                <div class="sonata-ba-collapsed-fields">
+                                    {{ form_row(translationsFields.title) }}
+                                    {{ form_row(translationsFields.content) }}
+                                    {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                    {% elseif is_granted('ROLE_JOURNALIST') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                    {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                        {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                    {% else %}
+                                        {{ form_row(translationsFields.status) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_row(form.parent.children.image) }}
+                        {{ form_row(form.parent.children.page) }}
+                        {{ form_row(form.parent.children.enabled) }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

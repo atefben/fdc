@@ -138,6 +138,7 @@ jQuery(document).ready(function($) {
         });
     });
 
+    /** MDF **/
     $('form[action*="service"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
         inputs.each(function(idx) {
@@ -351,6 +352,99 @@ jQuery(document).ready(function($) {
     });
     $('form[action*="mdfslideraccreditationpage"]').submit(function() {
         var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+
+    /** CCM **/
+    $('form[action*="ccmprosdetail"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+
+    $('form[action*="ccmlabelsection"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmnewsarticle"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmnewsaudio"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmnewsimage"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmsfcwhoarewe"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmsfcreliveedition"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmsfcourevents"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmparticiperpagelayer"]').submit(function() {
+        var inputs = $('input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="homepage"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmlabel"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmlegalmentions"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmcredits"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmconfidentialite"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="ccmfilmregister"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
         inputs.each(function(idx) {
             $(this).val(idx + 1);
         });

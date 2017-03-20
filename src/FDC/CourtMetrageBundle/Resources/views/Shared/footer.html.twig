@@ -1,0 +1,30 @@
+<footer class="loading">
+    <div class="container">
+        <div class="social">
+            <a href="{{ path('fdc_court_metrage_homepage') }}"><img width="250" src="{{ asset('bundles/fdccourtmetrage/img/Cannes-Court-blanc.png') }}" alt="Festival de Cannes"></a>
+            <ul>
+                <li><a class="facebook" href="//www.facebook.com/cannescourtmetrage" target="_blank"><i class="icon icon_facebook"></i></a></li>
+                <li><a class="twitter" href="//twitter.com/cannes_court" target="_blank"><i class="icon icon_twitter"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu">
+            <ul>
+                <li class="copyright">{{ 'footer.copyright'|trans }} {{ "now"|date('Y') }}</li>
+                <li><a href="{{ path('fdc_court_metrage_contact') }}">{{ 'footer.contact'|trans }}</a></li>
+                <li><a href="{{ path('fdc_court_metrage_faq') }}">{{ 'footer.faq'|trans }}</a></li>
+                <li><a href="{{ path('fdc_court_metrage_footer_credits') }}">{{ 'footer.credits'|trans }}</a></li>
+                <li><a href="{{ path('fdc_court_metrage_footer_mentions_legales') }}">{{ 'footer.legal_mentions'|trans }}</a></li>
+                <li><a href="{{ path('fdc_court_metrage_site_plan') }}">{{ 'footer.site_map'|trans }}</a></li>
+                <li><a href="{{ path('fdc_court_metrage_footer_politique_de_confidentialite') }}">{{ 'footer.general_conditions'|trans }}</a></li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+<div id="siteLoader" class="canvasloader"></div>
+<div id="cookies-banner">
+    <p>{{ 'ccm_cookie_text'|trans }}
+  <span class="cookie-accept" title="Okay, close"><i class="icon icon_fermer-cookies"></i>
+</span></p>
+</div>

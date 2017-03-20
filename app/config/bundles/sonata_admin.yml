@@ -68,7 +68,22 @@ sonata_admin:
             dashboard.group.general:
                 items: ~
                 label_catalogue: BaseAdminBundle
-            dashboard.group.news:
+            admin.group.ccm.footer:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            admin.group.ccm.news:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            admin.group.ccm.seo_tetieres:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            admin.group.ccm.short:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            admin.group.ccm.pros:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            admin.group.ccm.participer:
                 items: ~
                 label_catalogue: BaseAdminBundle
             dashboard.group.event:
@@ -87,6 +102,9 @@ sonata_admin:
                 items: ~
                 label_catalogue: BaseAdminBundle
             dashboard.group.media:
+                items: ~
+                label_catalogue: BaseAdminBundle
+            dashboard.group.ccm_media:
                 items: ~
                 label_catalogue: BaseAdminBundle
             dashboard.group.soif:
