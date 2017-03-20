@@ -50,6 +50,7 @@ var initAudio = function (hash) {
             return tmp;
         } else {
             tmp = [];
+            console.log(cls);
             $("." + cls).each(function (i, v) {
                 var audioPlayer = jwplayer(this.id);
                 if (!$(audioPlayer).data('loaded')) {
