@@ -126,6 +126,7 @@ var initAudio = function (hash) {
             updateShareLink();
             this.setVolume(100);
         }).on('play', function () {
+            console.log('play');
             $container.removeClass('state-init').removeClass('state-complete');
             $stateBtn.find('i').removeClass('icon-play').addClass('icon-pause');
             $infoBar.find('.picto').addClass('hide');
