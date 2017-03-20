@@ -2805,7 +2805,37 @@ var owInitGrid = function (id) {
 
         //ratio calculation on media library
         if($('.media-library').length){
-            //var landscapeRatio = 1,5842 //width / height
+            //ratios token from eventbundle
+            var landscapeRatio = 0.7921; //height / width
+            var portraitRatio = 1.5842; //height / width
+            $items.each(function(){
+                var $this = $(this);
+                var itemRatio = $this.outerHeight() / $this.outerWidth();
+
+                if($this.outerWidth() > $this.outerHeight()){
+                    //landscape
+                    $this.addClass('landscape');
+                    //compute height based on width & ratio
+                    var newHeight = $this.outerWidth() * landscapeRatio;
+                    if(itemRatio < landscapeRatio){
+                        //less large than desired output, scale width
+                        //$this.find('.image, .image-wrapper, img').css('width','100%');
+                    }else{
+                        //more large than desired output, scale height
+                        //$this.find('img').css('height','100%');
+                    }
+                }else{
+                    //portrait
+                    $this.addClass('portrait');
+                    //compute height based on width & ratio
+                    var newHeight = $this.outerWidth() * portraitRatio;
+                    if(itemRatio < portraitRatio){
+                        //less large than desired output, scale width
+                    }else{
+                        //more large than desired output, scale width too (?)
+                    }
+                }
+            });
         }
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
@@ -2843,9 +2873,6 @@ var owInitGrid = function (id) {
                 }
             }
         });
-
-        
-
 
         var number = 0;
 
@@ -2981,7 +3008,7 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
                         $gridMore.append(rawHtml);
-                        //$gridMore.isotope('destroy');
+                        $gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -2992,7 +3019,7 @@ var owInitGrid = function (id) {
                             //}
                         }
 
-                        /*$gridMore.imagesLoaded(function () {
+                        $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
@@ -3011,7 +3038,7 @@ var owInitGrid = function (id) {
                                 $clamp(title.get(0), {clamp: 1});
                                 $clamp(cat.get(0), {clamp: 1});
                             });
-                        });*/
+                        });
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
