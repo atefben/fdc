@@ -1352,7 +1352,7 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
-
+        console.log('file number in array',fileArray.length);
         if(fileArray.length < 2){
             console.log(fileArray);
             config = {
