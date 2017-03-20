@@ -30,6 +30,7 @@ use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\NodeTranslation;
 use Base\CoreBundle\Entity\OrangeWidgetFilmOCSTranslation;
 use Base\CoreBundle\Entity\OrangeWidgetFilmStudioTranslation;
 use Base\CoreBundle\Entity\OrangeWidgetMovieYoutubeTranslation;
@@ -71,7 +72,7 @@ class EntityListener
         $this->locales = $locales;
     }
 
-    private $toTranslate = array();
+    private $toTranslate = [];
 
     /**
      * @param LifecycleEventArgs $args
@@ -79,7 +80,7 @@ class EntityListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        $allowedEntities = array(
+        $allowedEntities = [
             'NewsArticle', 'NewsImage', 'NewsVideo', 'NewsAudio',
             'StatementArticle', 'StatementImage', 'StatementVideo', 'StatementAudio',
             'InfoArticle', 'InfoImage', 'InfoVideo', 'InfoAudio',
@@ -89,7 +90,7 @@ class EntityListener
             'Event',
             'WebTv',
             'SocialWall', 'SocialGraph'
-        );
+        ];
         $entityName = substr(strrchr(get_class($entity), '\\'), 1);
 
         // set festival year
@@ -107,11 +108,11 @@ class EntityListener
         }
 
         if (method_exists($entity, 'setTypeClone')) {
-            $mapper = array(
-                'NewsArticle' => 'article', 'NewsAudio' => 'audio', 'NewsImage' => 'image', 'NewsVideo' => 'video',
+            $mapper = [
+                'NewsArticle'      => 'article', 'NewsAudio' => 'audio', 'NewsImage' => 'image', 'NewsVideo' => 'video',
                 'StatementArticle' => 'article', 'StatementAudio' => 'audio', 'StatementImage' => 'image', 'StatementVideo' => 'video',
-                'InfoArticle' => 'article', 'InfoAudio' => 'audio', 'InfoImage' => 'image', 'InfoVideo' => 'video',
-            );
+                'InfoArticle'      => 'article', 'InfoAudio' => 'audio', 'InfoImage' => 'image', 'InfoVideo' => 'video',
+            ];
 
             if (isset($mapper[$entityName])) {
                 $entity->setTypeClone($mapper[$entityName]);
@@ -119,7 +120,7 @@ class EntityListener
         }
 
         if (method_exists($entity, 'getTranslate')) {
-            $languages = array('en', 'zh', 'es');
+            $languages = ['en', 'zh', 'es'];
             if ($entity->getTranslate()) {
                 foreach ($entity->getTranslateOptions() as $option) {
                     if (array_key_exists($option, $languages)) {
@@ -140,8 +141,8 @@ class EntityListener
 
     private function setPublishedOn($entity, $args)
     {
-        if (method_exists($entity, 'getIsPublishedOnFDCEvent')) {
-            
+        if (method_exists($entity, 'getIsPublishedOnFDCEvent') && !($entity instanceof NodeTranslation)) {
+
             $em = $args->getEntityManager();
             $fdcEventSite = $em->getRepository('BaseCoreBundle:Site')->findOneBySlug('site-evenementiel');
             $master = $entity->getTranslatable();
@@ -203,7 +204,7 @@ class EntityListener
 
         if (method_exists($entity, 'getTranslate')) {
             if ($args->hasChangedField('translateOptions')) {
-                $languages = array('en', 'zh', 'es');
+                $languages = ['en', 'zh', 'es'];
                 foreach ($args->getNewValue('translateOptions') as $newOption) {
                     if (!in_array($newOption, $args->getOldValue('translateOptions'))) {
                         $translation = $entity->findTranslationByLocale($languages[$newOption]);
@@ -246,8 +247,8 @@ class EntityListener
                 foreach ($properties as $property) {
                     $property = ucfirst($property);
                     // introduction
-                    if ($trans->{'get'. $property}() == '') {
-                        $trans->{'set'. $property}($entity->{'get'. $property}());
+                    if ($trans->{'get' . $property}() == '') {
+                        $trans->{'set' . $property}($entity->{'get' . $property}());
                         $this->flush = true;
                     }
                 }
@@ -266,41 +267,41 @@ class EntityListener
     {
         if (method_exists($entity, 'getLocale') && $entity->getLocale() == 'fr') {
             // news
-            $entitiesNews = array(
+            $entitiesNews = [
                 'NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation',
                 'StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation',
                 'InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation',
                 'EventTranslation'
-            );
-            $entitiesIntroduction = array_merge($entitiesNews, array(
+            ];
+            $entitiesIntroduction = array_merge($entitiesNews, [
                 'OrangeProgrammationOCSTranslation',
                 'OrangeSeriesAndCieTranslation',
                 'OrangeStudioTranslation',
                 'OrangeVideoOnDemandTranslation'
-            ));
-            $this->setFrenchVersion($entitiesIntroduction, $entity, $entityName, array('introduction'));
+            ]);
+            $this->setFrenchVersion($entitiesIntroduction, $entity, $entityName, ['introduction']);
             // contact page
-            $this->setFrenchVersion(array('ContactPageTranslation'), $entity, $entityName, array('firstColumn', 'secondColumn', 'thirdColumn'));
+            $this->setFrenchVersion(['ContactPageTranslation'], $entity, $entityName, ['firstColumn', 'secondColumn', 'thirdColumn']);
             // faq page / fdc page footer / fdc page participate
-            $entitiesContent = array(
+            $entitiesContent = [
                 'FAQPageTranslation', 'FDCPageFooterTranslation', 'FDCPageFooterTranslation',
-            );
-            $this->setFrenchVersion($entitiesContent, $entity, $entityName, array('content'));
+            ];
+            $this->setFrenchVersion($entitiesContent, $entity, $entityName, ['content']);
             // fdc page participate section
-            $entitiesDescription = array(
+            $entitiesDescription = [
                 'FDCPageParticipateSection'
-            );
-            $this->setFrenchVersion($entitiesDescription, $entity, $entityName, array('description'));
+            ];
+            $this->setFrenchVersion($entitiesDescription, $entity, $entityName, ['description']);
             // fdc page prepare
-            $this->setFrenchVersion(array('FDCPagePreareTranslation'), $entity, $entityName, array('mainDescription', 'meetingDescription', 'informationDescription', 'serviceDescription'));
+            $this->setFrenchVersion(['FDCPagePreareTranslation'], $entity, $entityName, ['mainDescription', 'meetingDescription', 'informationDescription', 'serviceDescription']);
             // fdc page waiting
-            $this->setFrenchVersion(array('FDCPageWaitingTranslation'), $entity, $entityName, array('text'));
+            $this->setFrenchVersion(['FDCPageWaitingTranslation'], $entity, $entityName, ['text']);
             // press accredit
-            $this->setFrenchVersion(array('PressAccreditTranslation'), $entity, $entityName, array('commonContent'));
+            $this->setFrenchVersion(['PressAccreditTranslation'], $entity, $entityName, ['commonContent']);
             // press accredit procedure
-            $this->setFrenchVersion(array('PressAccreditProcedureTranslation'), $entity, $entityName, array('procedureContent'));
+            $this->setFrenchVersion(['PressAccreditProcedureTranslation'], $entity, $entityName, ['procedureContent']);
             // press homepage
-            $this->setFrenchVersion(array('PressHomepageTranslation'), $entity, $entityName, array('sectionStatisticDescription'));
+            $this->setFrenchVersion(['PressHomepageTranslation'], $entity, $entityName, ['sectionStatisticDescription']);
 
 
             // widgets
@@ -309,410 +310,410 @@ class EntityListener
             }
 
             $this->setWidgetsFrenchVersion(
-                array('EventTranslation'),
+                ['EventTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new EventWidgetQuoteTranslation(),
-                        'widgetName' => 'EventWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'EventWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new EventWidgetSubtitleTranslation(),
-                        'widgetName' => 'EventWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'EventWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new EventWidgetTextTranslation(),
-                        'widgetName' => 'EventWidgetText',
-                        'setters' => array(
+                        'widgetName'   => 'EventWidgetText',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new EventWidgetVideoYoutubeTranslation(),
-                        'widgetName' => 'EventWidgetVideoYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'EventWidgetVideoYoutube',
+                        'setters'      => [
                             'title',
                             'url'
-                        )
-                    ),
-                )
+                        ]
+                    ],
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPageLaSelectionCannesClassicsTranslation'),
+                ['FDCPageLaSelectionCannesClassicsTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetIntroTranslation(),
-                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetIntro',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageLaSelectionCannesClassicsWidgetIntro',
+                        'setters'      => [
                             'introduction'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation(),
-                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageLaSelectionCannesClassicsWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation(),
-                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetSubtitle',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageLaSelectionCannesClassicsWidgetSubtitle',
+                        'setters'      => [
                             'subtitle',
                             'paragraph'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetTextTranslation(),
-                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetText',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageLaSelectionCannesClassicsWidgetText',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation(),
-                        'widgetName' => 'FDCPageLaSelectionCannesClassicsWidgetVideoYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageLaSelectionCannesClassicsWidgetVideoYoutube',
+                        'setters'      => [
                             'url',
                             'title'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPageParticipateSectionTranslation'),
+                ['FDCPageParticipateSectionTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetSubTitleTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetSubTitle',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetSubTitle',
+                        'setters'      => [
                             'description',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypefiveTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetTypefive',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetTypefive',
+                        'setters'      => [
                             'oneDescription',
                             'twoDescription',
                             'threeDescription',
                             'fourDescription',
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypefourTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetTypefour',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetTypefour',
+                        'setters'      => [
                             'content',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypeoneTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetTypeone',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetTypeone',
+                        'setters'      => [
                             'content',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypethreeTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetTypethree',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetTypethree',
+                        'setters'      => [
                             'content',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPageParticipateSectionWidgetTypetwoTranslation(),
-                        'widgetName' => 'FDCPageParticipateSectionWidgetTypetwo',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPageParticipateSectionWidgetTypetwo',
+                        'setters'      => [
                             'content',
                             'title',
                             'sponsorFirstName',
                             'sponsorFirstName',
                             'sponsorRole'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('FDCPagePrepareTranslation'),
+                ['FDCPagePrepareTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new FDCPagePrepareWidgetColumnTranslation(),
-                        'widgetName' => 'FDCPagePrepareWidgetColumn',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPagePrepareWidgetColumn',
+                        'setters'      => [
                             'btnLabel',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPagePrepareWidgetImageTranslation(),
-                        'widgetName' => 'FDCPagePrepareWidgetImage',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPagePrepareWidgetImage',
+                        'setters'      => [
                             'content',
                             'title'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new FDCPagePrepareWidgetPictoTranslation(),
-                        'widgetName' => 'FDCPagePrepareWidgetPicto',
-                        'setters' => array(
+                        'widgetName'   => 'FDCPagePrepareWidgetPicto',
+                        'setters'      => [
                             'content',
                             'title',
                             'btnLabel'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'),
+                ['InfoArticleTranslation', 'InfoImageTranslation', 'InfoVideoTranslation', 'InfoAudioTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new InfoWidgetTextTranslation(),
-                        'widgetName' => 'InfoWidgetText',
-                        'setters' => array(
+                        'widgetName'   => 'InfoWidgetText',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new InfoWidgetQuoteTranslation(),
-                        'widgetName' => 'InfoWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'InfoWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new InfoWidgetVideoYoutubeTranslation(),
-                        'widgetName' => 'InfoWidgetVideoYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'InfoWidgetVideoYoutube',
+                        'setters'      => [
                             'url',
                             'title'
-                        )
-                    ),
+                        ]
+                    ],
 
-                )
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'),
+                ['NewsArticleTranslation', 'NewsImageTranslation', 'NewsVideoTranslation', 'NewsAudioTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new NewsWidgetQuoteTranslation(),
-                        'widgetName' => 'NewsWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'NewsWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new NewsWidgetTextTranslation(),
-                        'widgetName' => 'NewsWidgetText',
-                        'setters' => array(
+                        'widgetName'   => 'NewsWidgetText',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new NewsWidgetVideoYoutubeTranslation(),
-                        'widgetName' => 'NewsWidgetYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'NewsWidgetYoutube',
+                        'setters'      => [
                             'title',
                             'url'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
 
             $this->setWidgetsFrenchVersion(
-                array('OrangeAndCieTranslation'),
+                ['OrangeAndCieTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new OrangeWidgetMovieYoutubeTranslation(),
-                        'widgetName' => 'OrangeWidgetMovieYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'OrangeWidgetMovieYoutube',
+                        'setters'      => [
                             'title',
                             'subtitle'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('OrangeProgrammationOCSTranslation'),
+                ['OrangeProgrammationOCSTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new OrangeWidgetFilmOCSTranslation(),
-                        'widgetName' => 'OrangeWidgetFilmOCS',
-                        'setters' => array(
+                        'widgetName'   => 'OrangeWidgetFilmOCS',
+                        'setters'      => [
                             'legend',
                             'title',
                             'description'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('OrangeSeriesAndCieTranslation'),
+                ['OrangeSeriesAndCieTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new OrangeWidgetFilmOCSTranslation(),
-                        'widgetName' => 'OrangeWidgetFilmOCS',
-                        'setters' => array(
+                        'widgetName'   => 'OrangeWidgetFilmOCS',
+                        'setters'      => [
                             'legend',
                             'title',
                             'description'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('OrangeStudioTranslation'),
+                ['OrangeStudioTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new OrangeWidgetFilmStudioTranslation(),
-                        'widgetName' => 'OrangeWidgetFilmStudio',
-                        'setters' => array(
+                        'widgetName'   => 'OrangeWidgetFilmStudio',
+                        'setters'      => [
                             'title',
                             'description'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('PressDownloadSectionTranslation'),
+                ['PressDownloadSectionTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new PressDownloadSectionWidgetArchiveTranslation(),
-                        'widgetName' => 'PressDownloadSectionWidgetArchive',
-                        'setters' => array(
+                        'widgetName'   => 'PressDownloadSectionWidgetArchive',
+                        'setters'      => [
                             'label',
                             'copyright',
                             'btnLabel',
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new PressDownloadSectionWidgetDocumentTranslation(),
-                        'widgetName' => 'PressDownloadSectionWidgetDocument',
-                        'setters' => array(
+                        'widgetName'   => 'PressDownloadSectionWidgetDocument',
+                        'setters'      => [
                             'label',
                             'copyright',
                             'btnLabel',
                             'secondBtnLabel',
                             'thirdBtnLabel',
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new PressDownloadSectionWidgetVideoTranslation(),
-                        'widgetName' => 'PressDownloadSectionWidgetVideo',
-                        'setters' => array(
+                        'widgetName'   => 'PressDownloadSectionWidgetVideo',
+                        'setters'      => [
                             'label',
                             'copyright',
                             'btnLabel',
                             'secondBtnLabel'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('PressGuideTranslation'),
+                ['PressGuideTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new PressGuideWidgetColumnTranslation(),
-                        'widgetName' => 'PressGuideWidgetColumn',
-                        'setters' => array(
+                        'widgetName'   => 'PressGuideWidgetColumn',
+                        'setters'      => [
                             'firstColumn',
                             'secondColumn',
                             'thirdColumn'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new PressGuideWidgetImageTranslation(),
-                        'widgetName' => 'PressGuideWidgetImage',
-                        'setters' => array(
+                        'widgetName'   => 'PressGuideWidgetImage',
+                        'setters'      => [
                             'title',
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new PressGuideWidgetPictoTranslation(),
-                        'widgetName' => 'PressGuideWidgetPicto',
-                        'setters' => array(
+                        'widgetName'   => 'PressGuideWidgetPicto',
+                        'setters'      => [
                             'title',
                             'content'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
             $this->setWidgetsFrenchVersion(
-                array('StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'),
+                ['StatementArticleTranslation', 'StatementImageTranslation', 'StatementVideoTranslation', 'StatementAudioTranslation'],
                 $entity,
                 $entityName,
-                array(
-                    array(
+                [
+                    [
                         'widgetEntity' => new StatementWidgetTextTranslation(),
-                        'widgetName' => 'StatementWidgetText',
-                        'setters' => array(
+                        'widgetName'   => 'StatementWidgetText',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new StatementWidgetQuoteTranslation(),
-                        'widgetName' => 'StatementWidgetQuote',
-                        'setters' => array(
+                        'widgetName'   => 'StatementWidgetQuote',
+                        'setters'      => [
                             'content'
-                        )
-                    ),
-                    array(
+                        ]
+                    ],
+                    [
                         'widgetEntity' => new StatementWidgetVideoYoutubeTranslation(),
-                        'widgetName' => 'StatementWidgetVideoYoutube',
-                        'setters' => array(
+                        'widgetName'   => 'StatementWidgetVideoYoutube',
+                        'setters'      => [
                             'url',
                             'title'
-                        )
-                    )
-                )
+                        ]
+                    ]
+                ]
             );
 
         }
@@ -766,7 +767,6 @@ class EntityListener
     }
 
 
-
     /**
      * @param $entity
      * @param bool $update
@@ -807,15 +807,16 @@ class EntityListener
                 }
 
             }
-            $this->toTranslate = array();
+            $this->toTranslate = [];
             if ($mustPersist) {
                 $eventArgs->getEntityManager()->flush();
             }
         }
     }
 
-    public function postUpdate(LifecycleEventArgs $eventArgs) {
-        $object =  $eventArgs->getObject();
+    public function postUpdate(LifecycleEventArgs $eventArgs)
+    {
+        $object = $eventArgs->getObject();
 
         $entity = $eventArgs->getEntity();
         $entityName = substr(strrchr(get_class($entity), '\\'), 1);
@@ -831,7 +832,7 @@ class EntityListener
 
     public function postPersist(LifecycleEventArgs $eventArgs)
     {
-        $object =  $eventArgs->getObject();
+        $object = $eventArgs->getObject();
 
         $entity = $eventArgs->getEntity();
         $entityName = substr(strrchr(get_class($entity), '\\'), 1);
