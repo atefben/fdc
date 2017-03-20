@@ -7083,7 +7083,7 @@ body.chocolat-open > .chocolat-content {
 }
 .articles-list .card.item .info .category {
   position: relative;
-  top: -2px;
+  top: 2px;
 }
 
 header .user-nav li a.account {
