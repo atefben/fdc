@@ -39,18 +39,6 @@
     </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': festivalYear})
-    },
-    {
     "name" : 'header.mainnav.nav.lactualite'|trans,
     "url"  : ''
     },
