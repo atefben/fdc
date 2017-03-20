@@ -185,6 +185,7 @@ var owInitGrid = function (id) {
                             //}
                         }
                         $gridMore.imagesLoaded(function () {
+                            console.log('imagesLoaded');
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
