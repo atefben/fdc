@@ -57,11 +57,13 @@
     }
 }
 
+.article-single .focus .title,
 .article-single .same-day .title {
     color: #000;
     margin: 50px 0;
 }
 
+.focus .articles.center,
 .same-day .articles.center {
     padding-bottom: 65px;
     article {
@@ -122,7 +124,7 @@
 }
 
 .articles-list .card {
-    .w2.double {
+    &.w2.double {
         min-height: 620px;
     }
 
