@@ -7022,6 +7022,7 @@ body#home .contain-card .grid-01 .card:first-of-type .image {
 }
 body#home .contain-card .grid-01 .card:first-of-type .info {
   height: auto;
+  padding-bottom: 30px;
 }
 body#home .contain-card .grid-01 .card:first-of-type strong {
   font-size: 1.8rem;
@@ -7041,6 +7042,7 @@ body#home .articles-wrapper .articles .grid-01 .card:first-of-type .image {
 }
 body#home .articles-wrapper .articles .grid-01 .card:first-of-type .info {
   height: auto;
+  padding-bottom: 30px;
 }
 body#home .articles-wrapper .articles .grid-01 .card:first-of-type strong {
   font-size: 1.8rem;
@@ -7069,6 +7071,7 @@ body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(o
 }
 body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) .info {
   height: auto;
+  padding-bottom: 30px;
 }
 body#home .articles-wrapper .articles.article-inverse .grid-01 .card:nth-child(odd) .image {
   height: 426px;
@@ -7086,6 +7089,7 @@ body#home .articles-wrapper .grid-01 .card:first-of-type .image {
 }
 body#home .articles-wrapper .grid-01 .card:first-of-type .info {
   height: auto;
+  padding-bottom: 30px;
 }
 body#home .articles-wrapper .grid-01 .card:first-of-type strong {
   font-size: 1.8rem;
