@@ -9,12 +9,14 @@
                 <h5 class="customClass1">{{ pressReleasePage.description|raw }}</h5>
 
                 {% for item in pressReleasePage.translatable.files %}
-                    <a href="{% path item.file|trans_fallback('file'), 'reference' %}" target="_blank">
-                        <div class="programme communique">
+                    {% set translations = item.file.findTranslationByLocale(app.request.locale) %}
+                    {% set  file = item.file|trans_fallback('file') %}
+                    {% set url%}{%path item.file|trans_fallback('file'), 'reference'%}{% endset%}
+                    <a class="link"href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
+                    <div class="programme communique">
                             <div>
                                 <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
                             </div>
-                            {% set translations = item.file.findTranslationByLocale(app.request.locale) %}
                             <div class="customClass1">
                                 <h6 class="customClass1">{{ translations.name|length > 45 ? translations.name|slice(0, 45) ~ '...' : translations.name  }}</h6>
                             </div>
