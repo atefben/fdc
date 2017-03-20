@@ -1,9 +1,9 @@
 <a href="/{{app.request.locale}}/">
     {% if settings.festivalStartsAt and settings.festivalEndsAt %}
         {% if app.request.locale == 'zh' %}
-          {{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'Y') }}年5月{{ settings.festivalStartsAt|date('d') }}至{{ settings.festivalEndsAt|date('d') }}日
+            2017年5月17至28日
         {% else  %}
-            {{ settings.festivalStartsAt|date('d') }}-{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale) }}
+            17-28{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'F') }} 2017
         {% endif  %}
     {% endif %}
 </a>
