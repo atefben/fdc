@@ -1354,8 +1354,9 @@ var initAudio = function (hash) {
         };
 
         if(fileArray.length < 2){
+            console.log(fileArray);
             config = {
-                file: fileArray[0].file,
+                file: fileArray[0],
                 image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
                 primary: 'html5',
                 aspectratio: '16:9',
