@@ -7021,11 +7021,11 @@ body.chocolat-open > .chocolat-content {
   margin: 50px 0;
 }
 
-.same-day .articles.center {
+.same-day .articles.center article {
   padding: 0;
   width: 29%;
 }
-.same-day .articles.center .info strong a {
+.same-day .articles.center article .info strong a {
   color: #000;
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
