@@ -268,4 +268,13 @@ class NewsArticleAdmin extends Admin
             ->end()
         ;
     }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        $showMapper
+            ->add('id');
+    }
 }
