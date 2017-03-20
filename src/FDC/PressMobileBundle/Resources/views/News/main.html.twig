@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdcpressmobile/css/article.css" %}
+    {% stylesheets
+        "bundles/fdcpressmobile/css/article.css"
+        "bundles/fdceventmobile/css/event_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -190,7 +193,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCPressMobileBundle/Resources/public/js/article.js' %}
+    {% javascripts
+        '@FDCPressMobileBundle/Resources/public/js/article.js'
+        '@FDCEventMobileBundle/Resources/public/js/event_custom.js'
+    %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
