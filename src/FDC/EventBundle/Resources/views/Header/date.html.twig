@@ -3,7 +3,7 @@
         {% if app.request.locale == 'zh' %}
             2017年5月17至28日
         {% else  %}
-            17-28{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'F') }} 2017
+            17-28{{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'LLLL') }} 2017
         {% endif  %}
     {% endif %}
 </a>
