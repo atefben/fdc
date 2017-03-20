@@ -70,7 +70,7 @@ sub {
       }
     }
   }
-} 
+}
 
 .title-2 {
   font-family: $CamphorHeavy;
@@ -224,7 +224,7 @@ sub {
   text-align: center;
   margin-bottom: 44px;
   padding: 0px 155px;
-  
+
   .dark & {
     color: #fff;
   }
@@ -433,7 +433,7 @@ sub {
 
 blockquote, .quote {
 
-  padding: 30px 90px;
+  //padding: 30px 90px;
   color:#141414;
   text-align: center;
   font-size: 1.5rem;
@@ -496,16 +496,16 @@ blockquote, .quote {
 }
 
 .texte-01 {
-   color: #666666;
-   font-size: 1rem;
-   line-height: 26px;
-   font-size: $CamphorRegular;
-   margin-top: 32px;
-   margin-bottom: 66px;
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-size: $CamphorRegular;
+  margin-top: 32px;
+  margin-bottom: 66px;
 
-   a, strong, span{
-     color:$gold;
-   }
+  a, strong, span{
+    color:$gold;
+  }
 }
 
 .subtitle {
@@ -825,7 +825,7 @@ a {
 }
 
 .buttons-02 {
-    
+
   padding-top: 20px;
 
   .button {
@@ -1165,10 +1165,43 @@ a {
   }
 }
 
+.big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 70px;
+}
+
+.big-quote strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
+}
+
+
+
 .autoBtn {
   height: 50px;
   line-height: 50px;
   width: auto!important;
   text-align: center;
   padding: 0px 30px!important;
+}
+
+
+.single-article .big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 50px!important;
+  margin-top: 50px!important;
 }

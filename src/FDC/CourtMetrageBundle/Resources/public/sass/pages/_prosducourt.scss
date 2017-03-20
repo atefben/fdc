@@ -15,7 +15,7 @@
     }
 
     &:hover {
-      background: #c3a05f; 
+      background: #c3a05f;
       /*border: 2px solid #c3a05f;*/
       color: white;
     }
@@ -51,9 +51,13 @@
   position: relative;
   height: auto;
   margin: 0 auto;
+  /*float: left;
+  margin-bottom: 100px;*/
+  padding-bottom: 110px;
+  overflow: auto;
   @media screen and (min-width: 1600px) {
     max-width: 100%;
-  } 
+  }
   @media screen and (min-width: 1920px) {
     max-width: 100%;
   }
@@ -65,7 +69,7 @@
     @include align();
     @media screen and (min-width: 1600px) {
       max-width: 100%;
-    } 
+    }
     @media screen and (min-width: 1920px) {
       max-width: 100%;
     }
@@ -79,21 +83,22 @@
     }
     @media screen and (min-width: 1280px) {
       width: 19.9%;
-    }   
+    }
     @media screen and (min-width: 1600px) {
       width: 16.6%;
-    } 
+    }
     @media screen and (min-width: 1920px) {
       width: 14.222222%;
     }
-      height: 340px;
-      float: left;
-      position: relative;
-      border: 1px solid #ECECEC;
-      margin-right: -1px;
-      margin-top: -1px;
+    height: 340px;
+    float: left;
+    position: relative;
+    border: 1px solid #ECECEC;
+    margin-right: -1px;
+    margin-top: -1px;
     &:hover {
       background: #ECECEC;
+      cursor: pointer;
     }
   }
 
@@ -123,7 +128,7 @@
         height: auto!important;
       }
 
-      &:hover { 
+      &:hover {
         cursor: pointer;
       }
     }
@@ -152,9 +157,9 @@
       font-size: 20px;
       line-height: 24px;
     }
-      &:hover { 
-        cursor: pointer;
-      }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .eventCat {
@@ -186,15 +191,25 @@
         }
       }
     }
-      &:hover { 
-        cursor: pointer;
-      }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
-
 .modal-wrapper {
-  margin-top: 100px;
+  margin-top: 100px!important;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  position: relative;
+  z-index: 9999;
+  width: 1034px;
+  height: auto;
+  overflow-y: visible;
+  min-height: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 1.5em rgba(0, 0, 0, 0.35);
 }
 
 
@@ -204,22 +219,23 @@
   width: 450px;
   height: 480px;
   position: absolute;
-  left: -2%;
-  top: -0.5%;
+  left: -22px;
+  top: -18px;
   z-index: 2;
 }
 
 .modal-overlay {
-    min-height: 10000px;
+  min-height: 10000px;
 }
 
 .modal-content {
-  min-height: 1000px;
+  min-height: 1px;
   z-index: 1005;
   padding: 3% 0%;
   background: white;
   position: relative;
   overflow: auto;
+  overflow-y: hidden;
 
   .half {
 
@@ -245,7 +261,7 @@
       font-size: 30px!important;
       color: #141414!important;
       letter-spacing: 0px!important;
-      
+
       h2 {
         font-family: $Playfair!important;
         letter-spacing: 0px!important;
@@ -268,11 +284,11 @@
       font-size: 10px;
       text-align: left;
       padding: 15px 0px 50px 0px;
-      text-transform: uppercase;     
+      text-transform: uppercase;
       font-family: $CamphorBold;
 
       span {
-        
+
         margin-right: 12px;
         letter-spacing: 1px;
 
@@ -280,13 +296,13 @@
           content: '•';
           margin-left: 10px;
         }
-      } 
+      }
 
       span:last-child {
-          &:after {
+        &:after {
           content: '';
         }
-      } 
+      }
     }
 
     .titleHalf {
@@ -298,8 +314,8 @@
         color:#141414;
         font-size: 48px;
         text-align: left;
-        line-height: 60px;   
-        font-family: $Playfair;   
+        line-height: 60px;
+        font-family: $Playfair;
       }
       a {
         text-decoration: none;
@@ -328,13 +344,13 @@
       }
 
       .bckgQuote {
-          position: absolute;
-          top: -65px;
-          z-index: -1;
-          color: #c8a461;
-          font-size: 300px;
-          left: -30px;
-          opacity: 0.2;   
+        position: absolute;
+        top: -65px;
+        z-index: -1;
+        color: #c8a461;
+        font-size: 300px;
+        left: -30px;
+        opacity: 0.2;
       }
     }
 
@@ -390,14 +406,14 @@
         float: left;
       }
       .mailName {
-          text-transform: uppercase;
-          color: #c3a05f;
-          font-size: 12px;
-          letter-spacing: 2px;
-          line-height: 20px;
-          width: 45%;
-          float: left;
-          padding-left: 8%;
+        text-transform: uppercase;
+        color: #c3a05f;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 20px;
+        width: 45%;
+        float: left;
+        padding-left: 8%;
         &:before {
           width: 30px;
           content: " ";
@@ -422,6 +438,7 @@
         color: #141414;
         font-family: $CamphorHeavy;
         font-size: 14px;
+        margin-bottom: 10px!important;
       }
 
       p {
@@ -434,8 +451,11 @@
     }
 
     .halfContent {
-      width: 50%;
+      width: 265px;
+      max-width: 265px;
       float: left;
+      word-wrap: break-word;
+      padding: 0px 40px 0px 0px;
     }
 
     .photo {
@@ -443,14 +463,14 @@
       padding-bottom: 45px;
       position: relative;
       .photoContainer {
-          position: relative;
-          overflow: hidden;
-          margin: 0 auto;
-          background: #f0eeee;
-          width: 230px;
-          height: 230px;
-          border-radius: 500px;
-          margin-top: 50px;
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        background: #f0eeee;
+        width: 230px;
+        height: 230px;
+        border-radius: 500px;
+        margin-top: 50px;
         img {
           object-fit: cover;
           width: 100%;
@@ -461,7 +481,7 @@
         .containerFit {
           width: 250px!important;
           height: auto;
-        } 
+        }
       }
       .sfcLogo {
         width: 45px;
@@ -484,16 +504,42 @@
       width: 100%;
       line-height: 40px;
       text-align: left;
+
+      /*.contactInfoEmail {
+        &:before {
+          width: 30px;
+          content: " ";
+          background-image: url(/img/world.png);
+          position: absolute;
+          height: 20px;
+          left: 5%;
+        }
+      }
+
+      .world {
+        &:before {
+          width: 30px;
+          content: " ";
+          background-image: url(/img/computer.png);
+          position: absolute;
+          height: 20px;
+          left: 5%;
+        }
+      }*/
       div {
-          width: 100%;
-          float: left;
-          margin-bottom: 10px;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+
         h3 {
           position: relative;
           font-family: $CamphorHeavy;
           font-size: 20px;
           color: #141414;
           float:left;
+          width: 85%;
+          margin-left: 3%;
+          line-height: 25px;
           a {
             text-decoration: none;
             color:#141414!important;
@@ -503,12 +549,21 @@
         img {
           position: relative;
           float:left;
-          padding-top: 10px;
-          margin-right: 10px;
+          padding-top:2px;
+          width: 10%;
         }
       }
     }
   }
+}
+
+.IEfit {
+  width: 155px !important;
+  height: 100% !important;
+}
+
+.backgroundPhotoContainer {
+  background-size: cover!important;
 }
 
 
