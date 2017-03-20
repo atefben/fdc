@@ -169,8 +169,13 @@ var owInitGrid = function (id) {
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
-                        $gridMore.append(articles);
-                        $gridMore.isotope('appended',articles);
+                        var rawHtml = '';
+                        articles.each(function(){
+                            rawHtml += $(this).get(0).outerHTML;
+                        });
+                        console.log('raw HTML to append in grid',rawHtml);
+                        $gridMore.append(rawHtml);
+                        $gridMore.isotope('appended',rawHtml);
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
