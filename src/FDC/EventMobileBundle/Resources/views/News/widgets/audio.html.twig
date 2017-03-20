@@ -25,9 +25,9 @@
 {% if (image is defined or image_s3 is defined) and trans.jobMp3State == 3 and trans.mp3Url %}
     <div class="audio-container"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
-         data-aid="49">
+         data-aid="{{ widget.id }}">
         <div class="audio-player2">
-            <div id="audio-player-49" class="audio-player-container"></div>
+            <div id="audio-player-{{ widget.id }}" class="audio-player-container"></div>
             <div class="image" {% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}></div>
             <button class="play-btn play"><i class="icon icon_audio"></i></button>
             <div class="off">

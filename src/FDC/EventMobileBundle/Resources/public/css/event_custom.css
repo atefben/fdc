@@ -303,3 +303,10 @@
 .audio-container .audio-player2 .off.hide {
     display: none;
 }
+
+.main-audio-player .audio-player2 {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
+}
