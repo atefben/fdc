@@ -7247,7 +7247,7 @@ article.communique .picto .icon {
   font-weight: 400;
   letter-spacing: .02em;
   line-height: 1.3em;
-  margin: 15px auto 0;
+  margin: 15px auto 20px auto;
   text-align: center;
 }
 #home .card .info strong a {
