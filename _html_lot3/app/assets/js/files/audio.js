@@ -123,12 +123,11 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
-        /*if(fileArray.length < 2){
+        if(fileArray.length < 2){
             var tempArray = fileArray[0];
             if(typeof tempArray !== 'undefined'){
                 if(typeof tempArray[0] !== 'undefined'){
                     var finalFile = tempArray[0].file;
-                    console.log(tempArray[0]);
                     config = {
                         file: finalFile,
                         image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
@@ -141,7 +140,7 @@ var initAudio = function (hash) {
                     };
                 }
             }
-        }*/
+        }
 
         console.log('audioplayer config',config);
         playerInstance.setup(config);
