@@ -1342,6 +1342,17 @@ var initAudio = function (hash) {
         }
 
         console.log('load audio file',$('.activeAudio').length > 0 ? audioFile : $container.data('file'));
+        console.log('audioplayer config',{
+            //file: $container.data('file'),
+            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
+            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+            primary: 'html5',
+            aspectratio: '16:9',
+            debug : true,
+            width: $(aid).parent('div').width(),
+            height: $(aid).parent('div').height(),
+            controls: false
+        });
         playerInstance.setup({
             //file: $container.data('file'),
             sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
