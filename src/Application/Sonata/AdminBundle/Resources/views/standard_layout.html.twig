@@ -442,28 +442,20 @@ file that was distributed with this source code.
                                                 </li>
                                             {% endif %}
                                             {% if is_granted('ROLE_BASE_ADMIN_CORPO_PALME_OR_ADMIN') %}
-                                                {#<li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpopalmeor_list','admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit'] and app.request.attributes.get('_route_params')['id'] == 1 %} active{% endif %}">#}
-                                                    {#<a href="{{ path('admin_base_core_corpopalmeor_edit',{id: 1}) }}">#}
-                                                        {#<i class="fa fa-angle-double-right"></i>#}
-                                                        {#La palme d’or - petite histoire de la palme#}
-                                                    {#</a>#}
-                                                {#</li>#}
+                                                <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpopalmeor_list'] %} active{% endif %}">
+                                                    <a href="{{ path('admin_base_core_corpopalmeor_list') }}">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                        La Palme d'Or
+                                                    </a>
+                                                </li>
                                             {% endif %}
                                             {% if is_granted('ROLE_BASE_ADMIN_CORPO_PALME_OR_ADMIN') %}
-                                                {#<li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpopalmeor_list','admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit'] and app.request.attributes.get('_route_params')['id'] == 2 %} active{% endif %}">#}
-                                                    {#<a href="{{ path('admin_base_core_corpopalmeor_edit',{id: 2}) }}">#}
-                                                        {#<i class="fa fa-angle-double-right"></i>#}
-                                                        {#La palme d’or - secret de fabrication#}
-                                                    {#</a>#}
-                                                {#</li>#}
-                                            {% endif %}
-                                            {% if is_granted('ROLE_BASE_ADMIN_CORPO_PALME_OR_ADMIN') %}
-                                                {#<li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpopalmeor_list','admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit'] and app.request.attributes.get('_route_params')['id'] == 3 %} active{% endif %}">#}
-                                                    {#<a href="{{ path('admin_base_core_corpopalmeor_edit',{id: 3}) }}">#}
-                                                    {#<i class="fa fa-angle-double-right"></i>#}
-                                                        {#Plus d‘archives#}
-                                                    {#</a>#}
-                                                {#</li>#}
+                                                <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit'] and app.request.attributes.get('_route_params')['id'] == 3 %} active{% endif %}">
+                                                    <a href="{{ path('admin_base_core_corpopalmeor_edit',{id: 3}) }}">
+                                                    <i class="fa fa-angle-double-right"></i>
+                                                        Plus d‘archives
+                                                    </a>
+                                                </li>
                                             {% endif %}
                                         </ul>
                                     </li>
