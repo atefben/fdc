@@ -355,13 +355,13 @@
                     <!--<h2<span>&#8220;</span>Soyez professionnels, exigeants et originaux et profressionnels et exigeants!<span>&#8221;</span></h2>-->
                     <div class="bckgQuote">&#8220;</div>
                   </div>
-                  <div class="contactInfo">
+                  <!--<div class="contactInfo">
                       <div class="world"><img src="img/world.png" alt=""> <h3>Japan zefazefartze  rzze</h3></div>
                       <div class="contactInfoEmail"><img src="img/computer.png" alt=""><h3><a href="www.shortshorts.org/en/" target="blank">shortshorts.org sgsergze ezrgze zert zer</a></h3></div>
-                      <!--<div><img src="img/flyingPaper.png" alt=""><h3><a href="mailto:aki@shortshorts.org" >aki@shortshorts.org</h3></a></div>
+                      <div><img src="img/flyingPaper.png" alt=""><h3><a href="mailto:aki@shortshorts.org" >aki@shortshorts.org</h3></a></div>
                       <div><img src="img/flyingPaper.png" alt=""><h3>jessica@shortshorts.org</h3></div>
-                      <div><img src="img/flyingPaper.png" alt=""><h3>clairechauvat@shortshorts.org</h3></div>-->
-                  </div>
+                      <div><img src="img/flyingPaper.png" alt=""><h3>clairechauvat@shortshorts.org</h3></div>
+                  </div>-->
                 </div>
                 <div class="half">
                   <div class="maj">Dernière mise à jour le 27 oct. 2016</div>
@@ -382,7 +382,7 @@
                       <div class="job"><h4>actrice</h4></div>
                     </div>
                   </div>
-                  <div class="content">
+                  <!--<div class="content">
                     <h5>title ergezrg</h5>
                     <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
                     <p>Pacific Voice Inc. est la société en charge des opérations du Short Shorts Film Festival & Asia. Le Short Shorts Film Festival (SSFF) a vu le jour à Harajuku, Tokyo en 1999. En 2004, il a été reconnu par l'Academy of Motion Pictures Arts and Sciences en tant que festival qualifiant pour la catégorie court métrage de l'Academy Awards annuel. Pacific Voice Inc. étant un distributeur de courts métrages, nous avons pour but d'introduire les courts internationaux au public japonais et les courts métrages japonais aux spectateurs tout autour du monde.</p>
@@ -440,7 +440,7 @@
                   <div class="content">
                     <h5>title ergezrg</h5>
                     <p>Pacific Voice Inc. ributeur de courts métrages, nous avons pour but d'introduirdu monde.</p>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>

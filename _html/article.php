@@ -8,7 +8,7 @@
   <body>
     <?php include('header.html'); ?>
 
-    <div id="main" class="single-article loading">
+    <div id="main" class="single-article loading single-actualite">
       <span id="addtext">Ajouter à ma sélection</span>
       <div id="canvasloader" class="canvasloader"></div>
       <div class="content-article">
@@ -230,7 +230,8 @@
               <p class="caption">Équipe du film - Photocall - The Lobster © FDC / Théophile Delange</p>
             </div>
           </div>
-          <div class="half-div">
+
+          <div class="small-pres container half-photos">
             <div class="half-photo">
               <div class="photo-container">
                 <img src="img/article/005.jpg" alt="" />
@@ -243,9 +244,23 @@
                 <p class="caption">© FDC / Théophile Delange</p>
               </div>
             </div>
-            <div class="author">Rédigé par Morgane Urbain</div>
           </div>
-        </div>
+
+
+          <div class="text">
+            <p><strong>Enragés est l’adaptation d’un film de Mario Bava intitulé Rabid Dogs. Pourquoi l’avoir choisi comme base de votre scénario ?</strong></p>
+            <p>Je suis tombé dessus par hasard dans ma boulimie de cinéma et je me suis aperçu qu’il y avait énormément de choses dans sa structure qui me séduisaient. C’est un film considéré comme culte car il a été censuré plus de vingt ans avant d'être visible. Puis, je suis rentré en travail d’écriture pour prendre la tangente par rapport à l’original.</p>
+          </div>
+ 
+          <div class="author">Rédigé par Morgane Urbain</div>
+
+
+     </div>
+
+
+
+       
+
         <div class="share">
           <p>Partagez l'article</p>
           <div class="buttons square">
@@ -305,6 +320,7 @@
             </div>
           </div>
         </div>
+        
         <div class="container">
           <div class="focus">
             <h2 class="title">Focus</h2>
