@@ -2918,7 +2918,7 @@ var owInitGrid = function (id) {
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         $gridMore.append(articles);
-                        $gridMore.isotope('destroy');
+                        $gridMore.isotope('appended',articles);
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -2928,34 +2928,33 @@ var owInitGrid = function (id) {
                                 $this.remove();
                             //}
                         }
-                        $gridMore.imagesLoaded(function () {
+                        /*$gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
                                 packery: {
                                     columnWidth: '.grid-sizer'
                                 },
-                                /*getSortData: {
+                                getSortData: {
                                     number: '[data-sort]'
                                 },
-                                sortBy: ['number']*/
-                            });
+                                sortBy: ['number']
+                            });*/
 
-                            //scroll bottom
-                            $('html,body').animate({
-                                scrollTop: $('.isotope-01').outerHeight()-500
-                            },300);
+                        //scroll bottom
+                        $('html,body').animate({
+                            scrollTop: $('.isotope-01').outerHeight()-500
+                        },300);
 
-                            $('.card.item').each(function(){
-                                var $this = $(this);
-                                var title = $this.find('.info strong a');
-                                var cat = $this.find('.info .category');
-                                var titleText;
-                                var catText;
+                        $('.card.item').each(function(){
+                            var $this = $(this);
+                            var title = $this.find('.info strong a');
+                            var cat = $this.find('.info .category');
+                            var titleText;
+                            var catText;
 
-                                $clamp(title.get(0), {clamp: 1});
-                                $clamp(cat.get(0), {clamp: 1});
-                            });
+                            $clamp(title.get(0), {clamp: 1});
+                            $clamp(cat.get(0), {clamp: 1});
                         });
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
