@@ -74,26 +74,29 @@
         padding: 0;
         width: 47%;
 
-        .image-wrapper {
-            overflow: hidden;
-            position: relative;
-            height: 100%;
-            width: 100%;
-            z-index: 0;
+        .image {
+            height: 290px;
+            .image-wrapper {
+                overflow: hidden;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
 
-            img {
-                top: 0px;
-                left: 0px;
-                position: absolute;
-                min-width: 100%;
-                min-height: 100%;
-                max-width: 100%;
-                width: auto;
-                height: auto;
-                -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-                -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-                -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
-                transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                img {
+                    top: 0px;
+                    left: 0px;
+                    position: absolute;
+                    min-width: 100%;
+                    min-height: 100%;
+                    max-width: 100%;
+                    width: auto;
+                    height: auto;
+                    -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                }
             }
         }
     }   

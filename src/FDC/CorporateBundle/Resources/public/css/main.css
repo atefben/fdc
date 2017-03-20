@@ -7035,14 +7035,17 @@ body.chocolat-open > .chocolat-content {
   padding: 0;
   width: 47%;
 }
-.focus .articles article .image-wrapper {
+.focus .articles article .image {
+  height: 290px;
+}
+.focus .articles article .image .image-wrapper {
   overflow: hidden;
   position: relative;
   height: 100%;
   width: 100%;
   z-index: 0;
 }
-.focus .articles article .image-wrapper img {
+.focus .articles article .image .image-wrapper img {
   top: 0px;
   left: 0px;
   position: absolute;
