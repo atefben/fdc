@@ -1319,6 +1319,7 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
+        console.log('audioLoad');
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -1346,6 +1347,7 @@ var initAudio = function (hash) {
             image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
             primary: 'html5',
             aspectratio: '16:9',
+            debug : true,
             width: $(aid).parent('div').width(),
             height: $(aid).parent('div').height(),
             controls: false
