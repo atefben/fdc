@@ -140,8 +140,8 @@ class NewsController extends Controller
                 $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
             } else {
                 $dateTimeNext = $homeArticles[count($homeArticles) - 1]->getPublishedAt();
-                $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-                $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
+                $homeInfos = $em->getRepository('BaseCoreBundle:Info')->getInfosByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext, 'site-evenementiel',false, null, null, true);
+                $homeStatement = $em->getRepository('BaseCoreBundle:Statement')->getStatementByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext, 'site-evenementiel',false, null, null, true);
                 $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
 
                 $homeArticlesNext = array_merge($homeInfos, $homeStatement, $homeArticles);
