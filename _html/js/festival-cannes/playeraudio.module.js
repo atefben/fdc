@@ -79,6 +79,7 @@ function updateShareLink() {
 }
 
 function audioLoad(aid, playerInstance, havePlaylist, callback) {
+    console.log('audioLoad');
     var $container    = $("#"+aid.id).closest('.audio-container');
 
     if($container.find('.control-bar').length <= 0) {
