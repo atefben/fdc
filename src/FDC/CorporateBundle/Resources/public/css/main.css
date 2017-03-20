@@ -7036,6 +7036,22 @@ body.chocolat-open > .chocolat-content {
   width: 293px;
   height: 185px;
 }
+.same-day .articles.center article .image.image-sameday-wrapper .image-wrapper {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+.same-day .articles.center article .image.image-sameday-wrapper .image-wrapper img {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  transition: all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
 #social-wall #wall .post .side.side-1 {
   background-color: #f6f6f6;
