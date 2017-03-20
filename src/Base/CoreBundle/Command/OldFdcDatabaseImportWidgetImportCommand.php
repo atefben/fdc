@@ -55,14 +55,18 @@ class OldFdcDatabaseImportWidgetImportCommand extends ContainerAwareCommand
                         $widget->getGallery()->setName($translation->getMosaiqueTitle());
                     } else {
                         $id = $widget->$getter()->getId();
+                        $titme = '';
                         if ($widget->$getter()->findTranslationByLocale('fr')) {
                             $title = $widget->$getter()->findTranslationByLocale('fr')->getTitle();
                         }
                         else if ($widget->$getter()->findTranslationByLocale('en')) {
                             $title = $widget->$getter()->findTranslationByLocale('en')->getTitle();
                         }
-                        else {
-                            $title = $widget->$getter()->getTranslations()[0]->getTitle();
+                        else if ($widget->$getter()->findTranslationByLocale('es')) {
+                            $title = $widget->$getter()->findTranslationByLocale('es')->getTitle();
+                        }
+                        else if ($widget->$getter()->findTranslationByLocale('zh')) {
+                            $title = $widget->$getter()->findTranslationByLocale('zh')->getTitle();
                         }
                         $itemTranslation = $translations[$item];
                         $prefix = '';
