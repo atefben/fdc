@@ -805,7 +805,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       letter-spacing: 0px;
     }
 
-    h6 {
+    h6 {
       color: #666666!important;
       font-size: 14px;
       opacity: 0.9;
@@ -951,7 +951,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   }
 }
 
-.list-article .bandeau-list, .list-article {
+.list-article {
   background-color:transparent!important;
 }
 
@@ -993,8 +993,48 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .title-list-header {
   font-family: $CamphorHeavy!important;
+  font-size: 40px!important;
+  letter-spacing: 1px;
 }
 
 .contact .title, .faq .title, .legal-notice .title, .sitemap .title {
-  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif !important;
+  font-family: $Playfair!important;
+}
+
+.palmares-list .bandeau-list {
+  background-color: #202020!important;
+}
+
+.palmares-list .title-list-cat h2 {
+  color: #141414!important;
+}
+
+.all-articles {
+  background: white!important;
+}
+
+@media screen and (min-width: 1920px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1599px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 230px !important;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .bandeau-list, .films-list .bandeau-list-img {
+    height: 230px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .bandeau-list,.films-list .bandeau-list-img {
+    height: 230px !important;
+  }
 }

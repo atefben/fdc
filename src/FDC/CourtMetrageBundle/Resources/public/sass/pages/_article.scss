@@ -340,9 +340,11 @@ article {
   &.single-actualite {
     .small-container {
       width: 977px;
+      margin: 0 auto;
+      padding-bottom: 50px;
 
       > div {
-        width: 630px;
+        width: 730px;
         margin-left: auto;
         margin-right: auto;
 
@@ -358,6 +360,13 @@ article {
         &.slideshow {
           width: 730px;
         }
+      }
+      .half-photo {
+        display: block;
+        margin: 0 0 50px;
+        vertical-align: top;
+        width: 50%;
+        float: left;
       }
     }
   }

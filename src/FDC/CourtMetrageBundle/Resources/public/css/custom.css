@@ -285,3 +285,11 @@ body.chocolat-open.fixed {
 .conferences .conf60 {
     padding-bottom: 25px;
 }
+
+.manual .content-manual .contain-section .module-custom-text-style p {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+    text-align: left;
+}

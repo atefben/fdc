@@ -112,41 +112,29 @@ class ModuleThreeColumnsType extends ModuleType
                 ),
             ))
             ->add('image1', 'sonata_type_model_list', array(
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
                     'label' => 'form.ccm.label.module.three_columns.image1',
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image1'],
                     'model_manager' => $this->mediaImageAdmin->getModelManager(),
                     'class' => $this->mediaImageAdmin->getClass(),
                     'translation_domain' => 'BaseAdminBundle',
-                    'btn_delete' => false,
                     'required' => false,
                 )
             )
             ->add('image2', 'sonata_type_model_list', array(
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
                     'label' => 'form.ccm.label.module.three_columns.image2',
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image2'],
                     'model_manager' => $this->mediaImageAdmin->getModelManager(),
                     'class' => $this->mediaImageAdmin->getClass(),
                     'translation_domain' => 'BaseAdminBundle',
-                    'btn_delete' => false,
                     'required' => false,
                 )
             )
             ->add('image3', 'sonata_type_model_list', array(
-                    'constraints'        => array(
-                        new NotBlank(),
-                    ),
                     'label' => 'form.ccm.label.module.three_columns.image3',
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image3'],
                     'model_manager' => $this->mediaImageAdmin->getModelManager(),
                     'class' => $this->mediaImageAdmin->getClass(),
                     'translation_domain' => 'BaseAdminBundle',
-                    'btn_delete' => false,
                     'required' => false,
                 )
             )
@@ -155,7 +143,6 @@ class ModuleThreeColumnsType extends ModuleType
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['pdf1'],
                     'model_manager' => $this->mediaFileAdmin->getModelManager(),
                     'class' => $this->mediaFileAdmin->getClass(),
-                    'btn_delete' => false,
                     'translation_domain' => 'BaseAdminBundle',
                     'required' => false,
                 )
@@ -165,7 +152,6 @@ class ModuleThreeColumnsType extends ModuleType
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['pdf2'],
                     'model_manager' => $this->mediaFileAdmin->getModelManager(),
                     'class' => $this->mediaFileAdmin->getClass(),
-                    'btn_delete' => false,
                     'translation_domain' => 'BaseAdminBundle',
                     'required' => false,
                 )
@@ -175,7 +161,6 @@ class ModuleThreeColumnsType extends ModuleType
                     'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['pdf3'],
                     'model_manager' => $this->mediaFileAdmin->getModelManager(),
                     'class' => $this->mediaFileAdmin->getClass(),
-                    'btn_delete' => false,
                     'translation_domain' => 'BaseAdminBundle',
                     'required' => false,
                 )
