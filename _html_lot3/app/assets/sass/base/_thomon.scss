@@ -41,6 +41,7 @@
     border-color: #000;
 }
 
+.article-single #main,
 .media-library #main {
     overflow-y: hidden;
 }
@@ -67,12 +68,21 @@
         padding: 0;
         width: 29%;
 
-        .info strong a{
-            color: #000;
-            font-size: 1.125rem;
-            font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-        }
+        .info {
+            strong,
+            h2 {
+                a{
+                    color: #000;
+                    font-size: 1.125rem;
+                    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+                }
+            }
+        } 
     }
+}
+
+#social-wall #wall .post .side.side-1 {
+    background-color: #f6f6f6;    
 }
 
 .test-selector {
