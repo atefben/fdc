@@ -3446,7 +3446,6 @@ display: inline-block;
 }
 .title-prize{
 	line-height: 35px;
-    padding: 0 5px;
 }
 .contain-winner .subtitle{
 	text-transform: uppercase;
@@ -3531,7 +3530,7 @@ section h3:not(.movie-title):not(.people-name){
 .all-slider .contain-winner{
 
 	width: 450px;
-	height: auto;
+	height: 780px;
 }
 .all-slider .owl-item img.portrait {
 
