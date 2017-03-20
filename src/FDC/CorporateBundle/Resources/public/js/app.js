@@ -2946,6 +2946,16 @@ var owInitGrid = function (id) {
                 if(typeof $('input[name="pg"]').val() !== 'undefined'){
                     postData.pg = parseInt($('input[name="pg"]').val())+1;
                 }
+
+                if($('#date.filter .select .active').length){
+                    $('#date.filter .select .active').data('filter');
+                }
+                if($('#theme.filter .select .active').length){
+                    $('#theme.filter .select .active').data('filter');
+                }
+                if($('#format.filter .select .active').length){
+                    $('#format.filter .select .active').data('filter');
+                }
                 console.log(postData);
 
                 $.post({
