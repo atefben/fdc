@@ -1,0 +1,77 @@
+.m-video .picto .icon {
+    font-size: .8rem;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+.m-video .picto {
+    color: #c8a461;
+}
+
+.m-video .jw-display-icon-container {
+    display: none;
+}
+
+.m-video .jw-state-playing + .infos-bar, .m-video .jw-state-paused + .infos-bar {
+    display: none;
+}
+
+.m-video .infos-bar .info.hide,
+.m-video .infos-bar .picto.hide {
+    opacity: 0;
+    visibility: hidden
+}
+.m-video .channels-video .owl-item .image-wrapper img {
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.m-video .channels-video .info {
+    bottom: 15px;
+    height: auto
+}
+.m-video .channels-video .info p {
+    font-size: .85rem
+}
+.m-video .infos-bar {
+    position: relative;
+    z-index: 5
+}
+.tablet .m-video .infos-bar {
+    display: none
+}
+.m-video .infos-bar .picto {
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    pointer-events: auto
+}
+.m-video .infos-bar .info {
+    color: #666;
+    height: 44px;
+    bottom: 20px;
+    left: 80px;
+    position: absolute;
+    z-index: 2;
+    text-align: left
+}
+.m-video .infos-bar .info .category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: .625rem;
+    letter-spacing: .1em;
+    margin-right: 12px;
+    text-transform: uppercase
+}
+.m-video .infos-bar .info span {
+    color: #666;
+    display: inline-block;
+    font-size: .625rem
+}
+.m-video .infos-bar .info p {
+    color: #fff;
+    font-size: .85rem;
+    text-align: left;
+    width: auto;
+    margin: 5px 0 0
+}
