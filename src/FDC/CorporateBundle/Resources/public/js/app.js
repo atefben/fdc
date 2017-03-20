@@ -2940,8 +2940,8 @@ var owInitGrid = function (id) {
                             $('html,body').animate({
                                 scrollTop: $('.isotope-01').outerHeight()-500
                             },300);
-                        }
-                        
+                        });
+
                         $('.card.item').each(function(){
                             var $this = $(this);
                             var title = $this.find('.info strong a');
