@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Url;
 
 class CcmYoutubeAdmin extends Admin
 {
@@ -66,6 +67,7 @@ class CcmYoutubeAdmin extends Admin
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank(),
+                                new Url()
                             ),
                             'required' => true,
                             'sonata_help' => 'form.ccm.label.external_url',

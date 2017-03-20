@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Url;
 
 class CcmProgramScheduleAdmin extends Admin
 {
@@ -73,6 +74,9 @@ class CcmProgramScheduleAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'sonata_help' => 'form.ccm.label.external_url',
+                        'constraints' => array(
+                            new Url()
+                        ),
                     ),
                     'accessType'     => array(
                         'label'              => 'form.ccm.label.program.schedule.access_type',

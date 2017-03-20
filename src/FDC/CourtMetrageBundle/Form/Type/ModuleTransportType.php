@@ -5,6 +5,7 @@ namespace FDC\CourtMetrageBundle\Form\Type;
 use FDC\CourtMetrageBundle\Entity\CcmModuleTransportTranslation;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Validator\Constraints\Url;
 
 class ModuleTransportType extends ModuleType
 {
@@ -55,6 +56,9 @@ class ModuleTransportType extends ModuleType
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'sonata_help' => 'form.ccm.label.external_url',
+                        'constraints' => array(
+                            new Url()
+                        ),
                     ),
                 ),
             ))

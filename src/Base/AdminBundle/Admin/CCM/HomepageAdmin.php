@@ -7,6 +7,7 @@ use FDC\CourtMetrageBundle\Entity\Homepage;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Validator\Constraints\Url;
 
 class HomepageAdmin extends Admin
 {
@@ -80,6 +81,9 @@ class HomepageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'sonata_help' => 'form.ccm.label.external_url',
+                        'constraints'        => array(
+                            new Url()
+                        ),
                     ),
 
                 )

@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Count;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Symfony\Component\Validator\Constraints\Url;
 
 class CcmProsDetailAdmin extends Admin
 {
@@ -194,6 +195,9 @@ class CcmProsDetailAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'sonata_help' => 'form.ccm.label.external_url',
+                        'constraints' => array(
+                            new Url()
+                        ),
                     ),
                     'urlName'          => array(
                         'label'              => 'form.ccm.label.pros.detail_url_name',

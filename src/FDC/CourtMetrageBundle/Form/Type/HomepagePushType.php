@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Base\AdminBundle\Admin\MediaImageAdmin;
 use FDC\CourtMetrageBundle\Entity\HomepageSliderTranslation;
+use Symfony\Component\Validator\Constraints\Url;
 
 class HomepagePushType extends AbstractType
 {
@@ -82,6 +83,9 @@ class HomepagePushType extends AbstractType
                         'label'              => 'form.ccm.label.push.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.ccm.label.external_url',
+                        'constraints' => array(
+                            new Url()
+                        ),
                     ),
                 ),
             ))
