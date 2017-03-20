@@ -7032,6 +7032,10 @@ body.chocolat-open > .chocolat-content {
   font-size: 1.125rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
+.same-day .articles.center article .image.image-sameday-wrapper {
+  width: 293px;
+  height: 185px;
+}
 
 #social-wall #wall .post .side.side-1 {
   background-color: #f6f6f6;
