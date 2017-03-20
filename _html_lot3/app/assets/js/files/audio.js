@@ -123,6 +123,7 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         };
+        console.log(fileArray);
         if(fileArray.length < 2){
             var tempArray = fileArray[0];
             var finalFile = tempArray[0].file;
