@@ -2925,7 +2925,6 @@ var owInitGrid = function (id) {
                         $gridMore.append(rawHtml);
                         
                         if(typeof moreBtn !== 'undefined'){
-                            
                             $this.attr('href',moreBtn);
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
