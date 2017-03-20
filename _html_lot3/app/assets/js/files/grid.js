@@ -30,7 +30,7 @@ var owInitGrid = function (id) {
 
         //ratio calculation on media library
         if($('.media-library').length){
-            var landscapeRatio = 1,5842 //width / height
+            //var landscapeRatio = 1,5842 //width / height
         }
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
