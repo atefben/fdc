@@ -151,7 +151,7 @@ var owInitGrid = function (id) {
                 var $this = $(this);
                 var url = $(this).attr('href');
 
-                /*$.post({
+                $.post({
                     type: 'POST',
                     url: url,
                     data: {
@@ -215,8 +215,8 @@ var owInitGrid = function (id) {
                         initAudio();
 
                     }
-                });*/
-                console.log('click infinite scroll, check behavour without post call');
+                });
+
                 return false;
             });
         }
