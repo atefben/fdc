@@ -12,6 +12,7 @@ use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\FilmPersonTranslation;
 use Base\CoreBundle\Entity\Media;
 use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageSimple;
@@ -19,6 +20,7 @@ use Base\CoreBundle\Entity\MediaImageSimpleTranslation;
 use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\MediaTag;
 use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\TagTranslation;
 use Base\CoreBundle\Entity\ThemeTranslation;
@@ -87,7 +89,6 @@ class CorpoMediaLibraryItemManager
                         $this->getDoctrineManager()->remove($item);
                         return null;
                     }
-
 
                     $item
                         ->setType('image')
@@ -227,6 +228,11 @@ class CorpoMediaLibraryItemManager
                             $search .= ' ' . $filmTranslation->getInfoRestauration();
                         }
                     }
+                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
+                        if ($associatedFilm instanceof MediaAudioFilmFilmAssociated && $associatedFilm->getAssociation()) {
+                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+                        }
+                    }
 
                     $item
                         ->setType('audio')
@@ -281,6 +287,11 @@ class CorpoMediaLibraryItemManager
                     }
                     foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaVideo($object) as $film) {
                         $films[$film->getId()] = $film;
+                    }
+                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
+                        if ($associatedFilm instanceof MediaVideoFilmFilmAssociated && $associatedFilm->getAssociation()) {
+                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+                        }
                     }
                     foreach ($films as $film) {
                         $filmTranslation = $film->findTranslationByLocale($locale);

@@ -173,7 +173,7 @@ class HomeController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getApiLastInfos($festival, null, $locale, 3, $limitDate)
+            ->getApiLastInfos($festival, new \DateTime(), $locale, 3, $limitDate)
         ;
 
         $infos = array();

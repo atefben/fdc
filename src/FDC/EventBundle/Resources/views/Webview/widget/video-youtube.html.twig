@@ -1,7 +1,22 @@
-<div id="videoplayer-{{ random() }}" class="Article-videoPlayer" 
-{% if widget.image is not null %}
-data-poster="{% path widget.image, 'reference' %}" 
+{% set image = '' %}
+{% set imageTrans = '' %}
+{% set trans = widget.findTranslationByLocale(app.request.locale) %}
+{% if trans is null %}
+    {% set trans = widget.findTranslationByLocale('fr') %}
 {% endif %}
+
+{% set header = widget.image %}
+{% if header is not null %}
+    {% set imageTrans = header.findTranslationByLocale(app.request.locale) %}
+    {% if imageTrans is null or imageTrans.file is null %}
+        {% set imageTrans = header.findTranslationByLocale('fr') %}
+    {% endif %}
+{% endif %}
+{% if imageTrans is defined %}
+    {% set image = imageTrans.file %}
+{% endif %}
+<div id="videoplayer-{{ random() }}" class="Article-videoPlayer"
+     {% if image is defined %}data-poster="{% path image, 'reference' %}"{% endif %}
 data-file="{{ widget|trans_fallback('url') }}" 
 {% if widget.title is defined %}
 data-desc="{{ widget.title }}</p>"

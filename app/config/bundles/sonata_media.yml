@@ -143,6 +143,9 @@ sonata_media:
                   # film images mobile
                   1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                   320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                  #corpo mediatheque
+                  640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                  320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_film:
             providers:
@@ -248,6 +251,7 @@ sonata_media:
                 463x292: { width: 463 , height: 292 , quality: 100, constraint: false}
                 # Last videos channels
                 926x584: { width: 926 , height: 584 , quality: 100, constraint: false}
+                x584: { height: 584 , quality: 100}
                 # Articles focus
                 918x580: { width: 918 , height: 580 , quality: 100, constraint: false}
                 # Articles le même jour

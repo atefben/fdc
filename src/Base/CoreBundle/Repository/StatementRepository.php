@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
+use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -122,7 +123,14 @@ class StatementRepository extends EntityRepository
             ;
     }
 
-    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime)
+    /**
+     * @param $locale
+     * @param FilmFestival $festival
+     * @param \DateTime $dateTime
+     * @param \DateTime $limitDate
+     * @return Statement[]
+     */
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -140,6 +148,14 @@ class StatementRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if ($limitDate) {
+            $qb
+                ->andWhere('n.publishedAt <= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
+
         if ($festival->getFestivalStartsAt() >= $dateTime) {
             $this->addMasterQueries($qb, 'n', $festival, true);
             $qb
@@ -152,7 +168,7 @@ class StatementRepository extends EntityRepository
                 ->andWhere(':festivalEndAt < n.publishedAt')
                 //->setParameter('festivalEndAt', $festival->getFestivalEndsAt())
                 ->setParameter('festivalEndAt', '2016-05-23 00:00:00')
-            ;;
+            ;
         } else {
             $morning = clone $dateTime;
             $morning->setTime(0, 0, 0);
@@ -169,7 +185,7 @@ class StatementRepository extends EntityRepository
         }
 
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 "(na1t.locale = 'fr' AND na1t.status = :status) OR
                 (na2t.locale = 'fr' AND na2t.status = :status) OR
@@ -180,7 +196,7 @@ class StatementRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftjoin('na1.translations', 'na5t')
                 ->leftjoin('na2.translations', 'na6t')
                 ->leftjoin('na3.translations', 'na7t')
@@ -197,13 +213,12 @@ class StatementRepository extends EntityRepository
         }
 
 
-        $qb = $qb
+        return $qb
             ->addOrderBy('n.publishedAt', 'desc')
             ->getQuery()
             ->getResult()
         ;
 
-        return $qb;
     }
 
     public function getStatementBySlug($slug, $festival, $locale, $isAdmin, $repository, $site = 'site-press')
@@ -337,9 +352,12 @@ class StatementRepository extends EntityRepository
      * @param null $count
      * @param string $site
      * @param bool $displayedOnCorpoHome
+     * @param Theme|null $theme
+     * @param null $format
+     * @param bool $displayedHome
      * @return Statement[]
      */
-    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false)
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null, $displayedHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -361,6 +379,27 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
         ;
+
+        if ($displayedHome) {
+            $qb
+                ->andWhere('n.displayedHome = :displayedHome')
+                ->setParameter(':displayedHome', $displayedHome)
+            ;
+        }
+
+        if ($theme) {
+            $qb
+                ->andWhere('n.theme = :themeId')
+                ->setParameter(':themeId', $theme->getId())
+            ;
+        }
+
+        if ($format) {
+            $qb
+                ->andWhere('n.typeClone <> :format')
+                ->setParameter(':format', $format)
+            ;
+        }
 
         if ($festival) {
             $qb
@@ -571,7 +610,7 @@ class StatementRepository extends EntityRepository
 
         if ($before) {
             $qb
-                ->andWhere('n.publishedAt > :before')
+                ->andWhere('n.publishedAt < :before')
                 ->setParameter(':before', $before)
             ;
         }
@@ -624,7 +663,7 @@ class StatementRepository extends EntityRepository
             ->setParameter('festival', $festival)
             ->setParameter('id', $id)
             ->setParameter('inWebTv', true)
-            ->setParameter('status', WebTvTranslationInterface::STATUS_PUBLISHED)
+            ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
             ->setParameter('datetime', $dateTime)
             ->setParameter('site', 'flux-mobiles')
             ->getQuery()

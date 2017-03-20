@@ -25,7 +25,7 @@ var initRs = function () {
     })
 
     //POPIN facebook SHARE
-    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').on('click', function (e) {
+    $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').off('click').on('click', function (e) {
         e.preventDefault();
         window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');
         return false;
@@ -163,7 +163,7 @@ var initRs = function () {
                     dataType: "json",
                     cache: false,
                     url: u,
-                    data: $(cls).find('form#form').serialize(),
+                    data: $(cls).find('form#form').serializeArray(),
                     success: function (data) {
                         if (data.success == false) {
 

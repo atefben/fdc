@@ -84,10 +84,10 @@
             <div class="block-01 padding-bottom block-scale">
                 {% if not homepage.displayedFeaturedContents %}
                     <div class="contain-card">
-                        <div class="cards grid-01 isotope-01">
+                        <div class="cards grid-01 isotope-01 ajax-filter-cards-container">
                             <div class="grid-sizer"></div>
                             {% for article in homeContents|slice(0, 3) %}
-                                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+                                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
                             {% endfor %}
                         </div> <!-- end articles-->
                     </div> <!-- end article wrapper-->
@@ -95,7 +95,6 @@
 
                 {% if homepage.displayedGallery == false and gallery is not null and galleryMedias|length %}
                     <div class="block-diaporama">
-
                         <div class="slider-01">
                             {% for image in galleryMedias %}
                                 {% if image.media is defined and image.media is not null %}
@@ -149,14 +148,14 @@
                 {% endif %}
 
                 {% if not homepage.displayedFeaturedContents %}
-                    <div class="articles-wrapper add-ajax-request">
+                    <div class="articles-wrapper">
                         <div class="articles article-inverse">
-                            <div class="cards grid-01 isotope-01">
+                            <div class="cards grid-01 isotope-01 ajax-filter-cards-container">
                                 <div class="grid-sizer"></div>
 
                                 {% if homeContents|length > 3 %}
                                     {% for article in homeContents|slice(3) %}
-                                        {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
+                                        {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
                                     {% endfor %}
                                 {% endif %}
 
@@ -431,7 +430,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 {% endfor %}
                             </div>
 
-                            <div id="networks">
+                            <div id="networks" class="test-edit">
                                 <p>{{ 'home.coporate.social.follow'|trans|raw }}</p>
                                 <ul>
                                     <li><a class="facebook"
@@ -444,9 +443,9 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     <li><a class="instagram" href="https://instagram.com/festivaldecannes"
                                            target="_blank">Instagram<i style="position:relative;top:2px;"
                                                                        class="icon icon-instagram"></i></a></li>
-                                    <li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/"
+                                    <!--li><a class="tumblr" href="http://festivaldecannesofficiel.tumblr.com/"
                                            target="_blank">Tumblr<i style="position:relative;top:2px;"
-                                                                    class="icon icon-tumblr"></i></a></li>
+                                                                    class="icon icon-tumblr"></i></a></li-->
                                     <li><a class="youtube" href="https://www.youtube.com/user/TVFestivaldeCannes"
                                            target="_blank">Youtube<i style="position:relative;top:3px;"
                                                                      class="icon icon-youtube"></i></a></li>

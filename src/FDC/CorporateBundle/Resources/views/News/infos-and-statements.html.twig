@@ -11,7 +11,12 @@
 
         <div class="ajax-section">
             <div class="contain-ajax articles-list evenements padding-bottom" id="main">
+                {# TODO traduire titre #}
+                <h2 class="title">{{ 'corpo.infos.and.statements.page'|trans }}</h2>
+                
                 {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+
+                
 
                 <div class="grid-01 isotope-01 add-ajax-request">
                     <div class="grid-sizer"></div>
@@ -33,18 +38,6 @@
 
     </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-    {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': festivalYear})
-    },
     {
     "name" : 'header.mainnav.nav.lactualite'|trans,
     "url"  : ''

@@ -122,7 +122,13 @@
         </div>
         <a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) }}"
            class="linkImage">
-            <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
+            <span class="picto">
+                {% if type == 'communique' %}
+                <i class="icon icon-communique"></i>
+                {% else %}
+                <i class="icon icon-{{ article|get_news_type }}"></i>
+                {% endif %}
+            </span>
         </a>
     </div>
     <div class="info">

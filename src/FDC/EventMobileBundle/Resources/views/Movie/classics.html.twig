@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/selection.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/selection.css"
+        "bundles/fdceventmobile/css/event_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -169,6 +172,7 @@
                 </section>
             </div>
         </div>
+        {% if next is not empty %}
         <div id="banner-bottom">
             <div class="banner-img vCenter"{% if next.image %} style="background-image:url('{% path next.image|trans_fallback('file'), '976x535' %}');"{% endif %}>
                 <div class="vCenterKid" style="padding-top: 120px;">
@@ -184,11 +188,15 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/selection.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/selection.js'
+        '@FDCEventMobileBundle/Resources/public/js/event_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

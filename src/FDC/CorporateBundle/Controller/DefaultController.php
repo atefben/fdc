@@ -128,15 +128,17 @@ class DefaultController extends Controller
             ->findOneBy(['displayedHomeCorpo' => 1], ['id' => 'DESC'])
         ;
         $galleryMedias = [];
-        foreach ($gallery->getMedias() as $m) {
-            $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
-            if ($available) {
-                $trans = $m->getMedia()->findTranslationByLocale('fr');
-            }
-            $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
-            $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
-            if ($available) {
-                $galleryMedias[] = $m;
+        if ($gallery) {
+            foreach ($gallery->getMedias() as $m) {
+                $available = $m->getMedia() && $m->getMedia()->findTranslationByLocale('fr');
+                if ($available) {
+                    $trans = $m->getMedia()->findTranslationByLocale('fr');
+                }
+                $available = $available && $trans->getStatus() == TranslateChildInterface::STATUS_PUBLISHED;
+                $available = $available && $m->getMedia()->getPublishedAt() <= new \DateTime();
+                if ($available) {
+                    $galleryMedias[] = $m;
+                }
             }
         }
 
@@ -159,7 +161,7 @@ class DefaultController extends Controller
             'filters'           => $filters,
             'lastPublishedAt'   => $lastPublishedAt,
             'last'              => $last,
-            'festivalYear'              => $this->getFestival()->getYear(),
+            'festivalYear'      => $this->getFestival()->getYear(),
         ]);
     }
 
@@ -186,12 +188,26 @@ class DefaultController extends Controller
      */
     public function getArticlesFromAction(Request $request)
     {
-        if (!$request->query->has('timestamp')) {
-            throw new NotFoundException();
+        $dateTime = new DateTime();
+        if ($request->query->has('timestamp') && $request->query->get('timestamp')) {
+            $dateTime->setTimestamp($request->query->get('timestamp') - 1);
+        }
+        $filterTheme = null;
+        $filterFormat = null;
+        if ($request->query->has('theme') && $request->query->get('theme')) {
+            $themeTranslation = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:ThemeTranslation')
+            ->findOneBy(['slug' => $request->query->get('theme')]);
+            if ($themeTranslation) {
+                $filterTheme = $themeTranslation->getTranslatable();
+            }
+        }
+        if ($request->query->has('format') && $request->query->get('format')) {
+            $filterFormat = $request->query->get('format');
         }
 
-        $dateTime = new DateTime();
-        $dateTime->setTimestamp($request->query->get('timestamp') - 1);
+
 
         $locale = $request->getLocale();
         $settings = $this->getSettings();
@@ -200,12 +216,12 @@ class DefaultController extends Controller
         $homeInfos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
         ;
         $homeStatement = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
         ;
         $homeContents = array_merge($homeInfos, $homeStatement);
 

@@ -277,7 +277,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     private function isDirector($idPerson, FilmFilm $movie)
     {
         foreach ($movie->getDirectors(true) as $director) {
-            if ($director instanceof FilmFilmPerson) {
+            if ($director instanceof FilmFilmPerson && $director->getPerson()) {
                 if ($idPerson == $director->getPerson()->getId()) {
                     return true;
                 }

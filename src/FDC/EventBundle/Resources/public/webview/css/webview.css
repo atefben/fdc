@@ -101,7 +101,6 @@ html {
     background: #c9a45e;
     padding: 0px 15px; }
   .Article-header-meta-date {
-    text-transform: uppercase;
     color: #bfbfbf;
     padding-left: 10px; }
   .Article-header-meta-misc {
@@ -197,7 +196,7 @@ html {
 
 .Article-slider-caption {
   height: auto;
-  font-size: 0.8rem; margin: 0 76px 8px 0; }
+  font-size: 0.8rem; margin: 0 76px 8px 0; padding: 0 0 0 6px; }
   .Article-slider-caption strong {
     display: block;
     word-wrap: break-word; }

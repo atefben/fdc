@@ -103,6 +103,10 @@ var ow = ow || {};
 
 	ow.audioPlayer = function(){
 		if($('.Article-audioPlayer').length){
+			var isAndroid = /(android)/i.test(navigator.userAgent);
+			if(isAndroid) {
+				$('body').addClass('android');
+			}
 			$('.Article-audioPlayer').each(function(){
 				var height = 90;
 				/*if($(this).closest('.Article-header').length){
@@ -145,21 +149,24 @@ var ow = ow || {};
 							'height': headerHeight,
 							'overflow': 'hidden'
 						});
+						var metaheight = $('.Article-header-meta').outerHeight();
+						$('.Article-header #fakebar').css({
+							'top': (headerHeight-metaheight)-28
+						});
 						$('.Article-header').prepend('<div style="position:absolute;height:'+img.outerHeight()+'px;width:100%;background:rgba(0,0,0,.5);top:0px;left:0px;"></div>');
 						$('.Article-header-meta').css({
 							'position': 'relative',
 							'top': -90
 						});
 						if(newPlayer.parent().attr('class') == 'Article-header') {
-							jwplayer(player.attr('id')).play();
-							setTimeout(function(){
-							  jwplayer(player.attr('id')).pause();
-							}, 100);
+
 						}
 						
 					}
 					
-				});
+				}).on('play', function() {
+					$('#fakebar').hide();
+				});;
 				
 			});
 			

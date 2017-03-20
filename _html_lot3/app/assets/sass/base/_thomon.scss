@@ -20,6 +20,18 @@
     border-top: 3px solid #e5e5e5;
 }
 
+#home .articles-wrapper .card.to-init {
+    opacity: 0;
+}
+
+#home .articles-wrapper .card {
+    opacity: 1;
+    transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#home-news-statements-more-end {
+    margin-top: 71px;
+}
+
 .articles-list-medias.dark.retrospective .isotope-01.add-ajax-request {
     background: #000;
 }
@@ -27,6 +39,11 @@
 .block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
     color: #000;
     border-color: #000;
+}
+
+.article-single #main,
+.media-library #main {
+    overflow-y: hidden;
 }
 
 .participate .contain-descript {
@@ -40,14 +57,303 @@
     }
 }
 
+.article-single .focus .title,
+.article-single .same-day .title {
+    color: #000;
+    margin: 50px 0;
+}
+
+.focus .articles article:first-child {
+    margin-right: 6%;
+}
+
+.focus .articles{
+    padding-bottom: 65px;
+    article {
+        height: 430px;
+        padding: 0;
+        width: 47%;
+
+        .image {
+            height: 290px;
+            margin-bottom: 20px;
+
+            .image-wrapper {
+                overflow: hidden;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+
+                img {
+                    top: 0px;
+                    left: 0px;
+                    position: absolute;
+                    min-width: 100%;
+                    min-height: 100%;
+                    max-width: 100%;
+                    width: auto;
+                    height: auto;
+                    -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                }
+            }
+        }
+
+        .info {
+            h2,
+            strong {
+                margin: 15px auto 0;
+                a {
+                    color: #000;
+                    font-size: 1.125rem;
+                }
+            }
+        }
+    }   
+}
+
+.same-day .articles.center {
+    padding-bottom: 65px;
+    article {
+        padding: 0;
+        width: 29%;
+
+        .info {
+            strong,
+            h2 {
+                margin: 15px auto 0;
+                a{
+                    color: #000;
+                    font-size: 1.125rem;
+                    font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
+                }
+            }
+        } 
+
+        .image.image-sameday-wrapper {
+            width: 293px;
+            height: 185px;
+            margin-bottom: 20px;
+            position: relative;
+
+
+            .image-wrapper {
+                overflow: hidden;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+
+                img {
+                    position: absolute;
+                    min-width: 100%;
+                    min-height: 100%;
+                    max-width: 100%;
+                    width: auto;
+                    height: auto;
+                    top: 0px;
+                    left: 0px;
+                    -moz-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -o-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    -webkit-transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                    transition: all 3s cubic-bezier(.25,.46,.45,.94);
+                }
+            }
+        }
+    }
+}
+
+#social-wall #wall .post .side.side-1 {
+    background-color: #f6f6f6;    
+}
+
+.articles-list .card.item {
+    &.w2.double {
+        min-height: 620px;
+    }
+
+    .info .category {
+        position: relative;
+        top: 2px;
+    }
+}
+
+header .user-nav li a.account {
+    display: none;
+}
+
+body#home .contain-card{
+    .grid-01 .card{
+        &:first-of-type {
+            width: 650px;
+            height: auto;
+            padding-left: 0px;
+
+            .image {
+                height: 426px;
+            }
+
+            .info {
+                height: auto;
+                padding-bottom: 30px;
+            }
+
+            strong{
+                font-size: 1.8rem;
+                letter-spacing: 0px;
+            }
+        }
+
+    }   
+}
+
+body#home .articles-wrapper{
+    height: auto!important;
+    .articles {
+        .grid-01 .card{
+            &:first-of-type {
+                width: 650px;
+                height: auto;
+                padding-left: 0px;
+
+                .image {
+                    height: 426px;
+                }
+
+                .info {
+                    height: auto;
+                    padding-bottom: 30px;
+                }
+
+                strong{
+                    font-size: 1.8rem;
+                    letter-spacing: 0px;
+                }
+            }
+        }
+
+        &.article-inverse {
+            .grid-01 .card{
+                padding: 0px;
+                padding-right: 60px;
+
+                &:first-of-type {
+                
+                    width: 325px;
+                    height: 300px;
+                    min-height: 321px;
+
+                    .image {
+                        height: 167px;
+                    }
+
+                    strong{
+                        font-size: 1.125rem;
+                    }
+                }
+
+                &:nth-child(odd) {
+                    width: 650px;
+                    height: auto;
+                    padding-right: 0px;
+                    float: right;
+
+                    .info {
+                        height: auto;
+                        padding-bottom: 30px;
+                    }
+
+                    .image {
+                        height: 426px;
+                    }
+
+                    strong{
+                        font-size: 1.8rem;
+                        letter-spacing: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .grid-01 .card{
+        &:first-of-type {
+            width: 650px;
+            height: auto;
+
+            .image {
+                height: 426px;
+            }
+
+            .info {
+                height: auto;
+                padding-bottom: 30px;
+            }
+
+            strong{
+                font-size: 1.8rem;
+                letter-spacing: 0px;
+            }
+        }
+    }
+}
+
 .block-accordion .active .contain-infos a {
     display: inline-block;
     color: $gold;    
 }
 
+article.communique .picto {
+    background-color: #c8a461;
+    color: #000;
+    text-align: center;
+    
+    .icon {
+        font-size: 1.2rem;
+    }
+}
+
+.home .item.communique .picto {
+    background-color: #c8a461;
+    color: #000;
+    text-align: center;
+    font-size: 1.2rem;
+
+    .icon {
+        font-size: 1.2rem;
+    }
+}
+
+.info .picto {
+    color: $gold;
+}
+
+.picto,
+.cards .picto {
+    text-align: center;
+}
+
+.p-register .info strong {
+    font-size:1.1rem;
+}
+
 .block-push-top h1 i.icon {
     font-size: 2.75rem;
     margin-top: -6px;
+}
+
+.dark .title-list-cat .title-item {
+    font-weight: 300;
+}
+
+.articles-list .card .info strong{
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif!important;
+}
+
+.articles-list .card.w2 .info strong{
+    font-size: 2.25rem;
 }
 
 .slider-01 .center figcaption strong {
@@ -136,6 +442,10 @@
 .article-single .text .table-article strong, .single-movie .text .table-article strong {
 	font-size: 12px;
 	color: #ccc;
+}
+
+.evenements .card .info strong {
+    margin-bottom: 35px;
 }
 
 /* cms wysiwyg styles */
@@ -342,37 +652,44 @@ header #navigation ul.user li a {
 
 .retrospective {
     .slider-restropective {
-        .calc3 img.i1 {
-            position: relative;
-            top: 2%;
-            left: -21%;
+        .calc3{
+            width: 50%;
+            left: 0px;
+
+            img.i1 {
+                position: absolute;
+                top: 10%;
+                left: 10%;
+            }
+
+            img.i2 {
+                position: absolute;
+                bottom: 20%;
+                left: 15%;
+            }
+
+            img.i3 {
+                position: absolute;
+                top: 5%;
+                left: 15%;
+            }
         }
 
-        .calc3 img.i2 {
-            top: 10%;
-            position: relative;
-            right: 24%;
-        }
+        .calc4{
+            width: 50%;
+            right: 0px;
+            img.i1 {
+                position: relative;
+                top: 1%;
+                left: 33%;
+            }
 
-        .calc3 img.i3 {
-            position: relative;
-            top: 8%;
-            left: -35%;
+            img.i2 {
+                top: 21%;
+                position: relative;
+                right: -24%;
+            }
         }
-
-        .calc4 img.i1 {
-            position: relative;
-            top: 1%;
-            left: 33%;
-        }
-
-        .calc4 img.i2 {
-            top: 21%;
-            position: relative;
-            right: -24%;
-        }
-
-        
     }
 
     .slider-restropective[data-slide="10"] {

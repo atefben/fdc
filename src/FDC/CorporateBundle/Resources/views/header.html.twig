@@ -50,7 +50,15 @@
             <div id="logo">
                 <a href="{{ path('fdc_corporate_default_home') }}"><img src="{{ asset('bundles/fdccorporate/img/header/palme.svg') }}" alt="Festival de Cannes" class="palm" /></a>
                 <h1><a href="{{ path('fdc_corporate_default_home') }}"><img width="200" src="{{ asset('bundles/fdccorporate/img/header/logo.svg') }}" alt="Festival de Cannes" /></a></h1>
-                <h2><a href="{{ path('fdc_corporate_default_home') }}">11-22 Mai 2016</a></h2>
+                <h2><a href="{{ path('fdc_corporate_default_home') }}">
+                    {% if settings.festivalStartsAt and settings.festivalEndsAt %}
+                        {% if app.request.locale == 'zh' %}
+                            2017年5月17至28日
+                        {% else  %}
+                            17-28 {{ settings.festivalEndsAt|localizeddate('medium', 'none', app.request.locale, null, 'LLLL') }} 2017
+                        {% endif  %}
+                    {% endif %}
+                    </a></h2>
                 <p class="stick"><a href="{{ path('fdc_corporate_default_home') }}"><img width="178" src="{{ asset('bundles/fdccorporate/img/header/logo178.svg') }}" alt="Festival de Cannes" /></a></p>
             </div>
             <div id="partners">

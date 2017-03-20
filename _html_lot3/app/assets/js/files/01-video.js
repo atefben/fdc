@@ -185,10 +185,10 @@ var initVideo = function(hash) {
          linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
          */
 
-        $topBar.find('.buttons .facebook').on('click',function() {
+        /*$topBar.find('.buttons .facebook').on('click',function() {
             window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
             return false;
-        });
+        });*/
         $topBar.find('.buttons .twitter').on('click', function() {
             window.open(this.href,'','width=700,height=500');
             return false;
@@ -273,7 +273,6 @@ var initVideo = function(hash) {
         }
 
         function updateShareLink(index, secondaryContainer) {
-            console.log('updateShareLink');
             sc    = secondaryContainer || 0;
 
             // CUSTOM LINK FACEBOOK
@@ -295,7 +294,7 @@ var initVideo = function(hash) {
                 fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
                 fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
             }
-            console.log('fb url',fbHref);
+
 
             $topBar.find('.buttons .facebook').attr('href', fbHref);
 
@@ -468,8 +467,6 @@ var initVideo = function(hash) {
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
-
-                console.log(index);
                 index = parseInt(index)
 
                 playerInstance.playlistItem(index);
@@ -517,13 +514,11 @@ var initVideo = function(hash) {
             var videoImage =  $container.data('img');
         }
 
-        console.log(videoFile);
-        console.log(havePlaylist);
         var playerHeight = $(vid).parent('div').height();
         if($('.home').length){
             playerHeight = 550;
         }
-        /*playerInstance.setup({
+        playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
@@ -531,7 +526,7 @@ var initVideo = function(hash) {
             width: $(vid).parent('div').width(),
             height: playerHeight,
             controls: ($('body').hasClass('mobile')) ? true : false
-        });*/
+        });
 
         if(havePlaylist) {
             var tempSlider = $(slider),
@@ -553,7 +548,9 @@ var initVideo = function(hash) {
                     playlist.push(tempList);
                 });
 
-                playerInstance.load(playlist);
+                if(!$('.media-library').length){
+                    playerInstance.load(playlist);
+                }
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
@@ -577,7 +574,6 @@ var initVideo = function(hash) {
             });
 
             $playlist = playlist;
-
             tempSlider.insertAfter($topBar);
 
             var chan =  $('.channels');
@@ -763,7 +759,6 @@ var initVideo = function(hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-            console.log(name);
             videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
 
             var hashPush = '#vid='+vid;
@@ -890,7 +885,6 @@ var initVideo = function(hash) {
 
             var fbHref = facebookLink;
 
-            console.log($(this));
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));

@@ -502,7 +502,8 @@ class NewsController extends Controller
         $sameDayArticles = $em->getRepository('BaseCoreBundle:News')->getSameDayNews($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
         $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
 
-        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId(), $newsDate);
+        $exclude = $news->getId();
+        $prevArticlesURL = $em->getRepository('BaseCoreBundle:News')->getOlderNews($locale, $this->getFestival()->getId(), $newsDate, 'site-evenementiel', $exclude);
         $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
 
         $nextArticlesURL = $em->getRepository('BaseCoreBundle:News')->getNextNews($locale, $this->getFestival()->getId(), $newsDate);
@@ -586,7 +587,7 @@ class NewsController extends Controller
                     $filters['dates'][$date->format('y-m-d')] = $date;
                 }
 
-                if (!in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
+                if ($newsArticle->getTheme() && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
                     $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
                     $filters['themes']['content'][] = $newsArticle->getTheme();
                 }

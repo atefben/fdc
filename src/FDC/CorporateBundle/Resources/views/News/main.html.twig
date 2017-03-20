@@ -120,7 +120,7 @@
                 </div>
 
 
-                <div class="border-top">
+                <div class="border-top border-bottom">
                     <strong class="title-9">{{ 'article.text.partagerarticle'|trans }}</strong>
                     <div class="relative">
                         <div class="block-social-network block-social-network-all">
@@ -141,26 +141,30 @@
                 </div>
 
                 {% if focusArticles is not empty %}
-                    <div class="focus">
+                    <div class="focus border-bottom">
+                        <div class="block-01">
                         <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
-                        <div class="articles">
-                            {% for article in focusArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
-                                {% endif %}
-                            {% endfor %}
+                            <div class="articles center">
+                                {% for article in focusArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 {% endif %}
                 {% if sameDayArticles is not empty and news.hideSameDay == false %}
                     <div class="same-day">
-                        <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
-                        <div class="articles center">
-                            {% for article in sameDayArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
-                                {% endif %}
-                            {% endfor %}
+                        <div class="block-01">
+                            <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
+                            <div class="articles center">
+                                {% for article in sameDayArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 {% endif %}

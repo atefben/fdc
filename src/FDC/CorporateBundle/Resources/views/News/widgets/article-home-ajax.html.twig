@@ -1,22 +1,31 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
+{% if filters.themes.content is defined and filters.themes.content|length %}
+    <div class="compute-filters">
+        {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
+            <span class="" data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
 {% if homeArticles|length %}
-    <div class="articles" style="opacity:0">
-        <div class="cards grid-01 isotope-01 to-init">
+    <div class="articles ajax-filter-cards-container" style="opacity:0">
+        <div class="cards grid-01 isotope-01">
             <div class="grid-sizer"></div>
             {% for article in homeArticles|slice(0, 3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
             {% endfor %}
         </div>
     </div>
 {% endif %}
 
 {% if homeArticles|length > 3 %}
-    <div class="articles article-inverse" style="opacity:0">
-        <div class="cards grid-01 isotope-01 to-init">
+    <div class="articles article-inverse ajax-filter-cards-container" style="opacity:0">
+        <div class="cards grid-01 isotope-01">
             <div class="grid-sizer"></div>
             {% for article in homeArticles|slice(3) %}
-                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.last ? 'double w2' : ''}) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
             {% endfor %}
         </div>
     </div>
