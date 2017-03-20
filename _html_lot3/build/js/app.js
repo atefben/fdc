@@ -1279,9 +1279,9 @@ var initAudio = function (hash) {
             return tmp;
         } else {
             tmp = [];
-            console.log(cls);
             $("." + cls).each(function (i, v) {
                 var audioPlayer = jwplayer(this.id);
+                console.log('init audio player on id',this.id);
                 if (!$(audioPlayer).data('loaded')) {
                     audioLoad(this, audioPlayer, havePlaylist, function (aid) {
                         $(aid).data('loaded', true);
