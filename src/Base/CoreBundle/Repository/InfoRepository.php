@@ -814,7 +814,7 @@ class InfoRepository extends EntityRepository
 
     }
 
-    public function getOlderInfo($locale, $festival, $date, $site = 'site-press', $exclude)
+    public function getOlderInfo($locale, $festival, $date, $site = 'site-press', $exclude = null)
     {
 
         $qb = $this
