@@ -1341,6 +1341,32 @@ var initAudio = function (hash) {
             var audioImage = $('.activeAudio').data('img');
         }
 
+        var fileArray = $('.activeAudio').length > 0 ? audioFile : $container.data('file');
+        var config = {
+            //file: $container.data('file'),
+            sources: fileArray,
+            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+            primary: 'html5',
+            aspectratio: '16:9',
+            debug : true,
+            width: $(aid).parent('div').width(),
+            height: $(aid).parent('div').height(),
+            controls: false
+        };
+
+        if(fileArray.length < 2){
+            config = {
+                file: fileArray[0],
+                image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                primary: 'html5',
+                aspectratio: '16:9',
+                debug : true,
+                width: $(aid).parent('div').width(),
+                height: $(aid).parent('div').height(),
+                controls: false
+            };
+        }
+
         console.log('load audio file',$('.activeAudio').length > 0 ? audioFile : $container.data('file'));
         console.log('audioplayer config',{
             //file: $container.data('file'),
@@ -1353,17 +1379,7 @@ var initAudio = function (hash) {
             height: $(aid).parent('div').height(),
             controls: false
         });
-        playerInstance.setup({
-            //file: $container.data('file'),
-            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
-            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
-            primary: 'html5',
-            aspectratio: '16:9',
-            debug : true,
-            width: $(aid).parent('div').width(),
-            height: $(aid).parent('div').height(),
-            controls: false
-        });
+        playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
             updateShareLink();
