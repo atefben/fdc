@@ -15,8 +15,10 @@
                     {% for pressGraphicalCharterWidget in pressGraphicalCharterWidgets %}
                         {% if pressGraphicalCharterWidget.translatable.epsFile %}
                             {% set epsInfo = pressGraphicalCharterWidget.translatable.epsFile.findTranslationByLocale(app.request.locale) %}
+                            {% set  file = pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file') %}
+                            {% set url%}{%path pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file'), 'reference'%}{% endset%}
                             <div class="articles">
-                                <a href="{% path pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                                <a class="link" href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
                                     <div class="articles-content">
                                         <div class="photoWrapper">
                                             {% if pressGraphicalCharterWidget.translatable.image %}
