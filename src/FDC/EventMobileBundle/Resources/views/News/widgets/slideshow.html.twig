@@ -15,6 +15,7 @@
 {% endfor %}
 
 {% if hasPublishedMedias == true %}
+<div class="section photos">
     <div class="{% if class(widget) starts with 'StatementW' or class(widget) starts with 'InfoW' %}slideshow{% else %}slideshow{% endif %}">
         {% set file = "" %}
         <div class="slideshow-img">
@@ -76,4 +77,5 @@
         </p>
 
     </div>
+</div>
 {% endif %}
