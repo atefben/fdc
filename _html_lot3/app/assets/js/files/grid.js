@@ -244,7 +244,26 @@ var owInitGrid = function (id) {
                             //}
                         }
 
-                        $gridMore.isotope('appended',rawHtml);
+                        /*$gridMore.imagesLoaded(function () {
+                            $gridMore.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'masonry',
+                                packery: {
+                                    columnWidth: '.grid-sizer'
+                                }
+                            });
+
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
+
+                                $clamp(title.get(0), {clamp: 1});
+                                $clamp(cat.get(0), {clamp: 1});
+                            });
+                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
