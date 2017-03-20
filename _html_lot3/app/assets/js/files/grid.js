@@ -32,7 +32,7 @@ var owInitGrid = function (id) {
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
-                layoutMode: 'masonry',
+                layoutMode: 'packery',
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
