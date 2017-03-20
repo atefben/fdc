@@ -7085,7 +7085,7 @@ body.chocolat-open > .chocolat-content {
 .articles-list .card.item.w2.double {
   min-height: 620px;
 }
-.articles-list .card.item .card .info .category {
+.articles-list .card.item .info .category {
   position: relative;
   top: -2px;
 }
