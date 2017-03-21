@@ -16888,6 +16888,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   text-align: center;
   text-transform: uppercase;
   position: relative;
+  overflow: hidden;
 }
 .c-contact .contact #form .select.invalid {
   border-color: #e93939;
