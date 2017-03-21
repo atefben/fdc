@@ -10355,7 +10355,7 @@ body#home .isotope-01 .item .info {
   display: none;
   background-position: left top;
   background-size: 67.7%;
-  background-position-y: 230px;
+  background-position-y: 210px;
 }
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
