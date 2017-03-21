@@ -751,11 +751,13 @@ header #navigation ul.user li a {
 
 /* hotfix FF */
 @-moz-document url-prefix() {
-    .slider-home .container-images {
-    }
-
     .slider-home .container-images .item {
         background-size: 100%;
+        background-position-y: 0px;
+    }
+
+    .slider-home .container-images {
+        border: 1px solid blue;
     }
 }
 
