@@ -4792,9 +4792,17 @@ var owInitSlider = function (sliderName) {
                 var $next = $(".container-images .item[data-item=" + number + "]");
                 //$('.container-images .item').removeClass('fade-out');
                 $active.removeClass("fade-in-right");
-
+                $active.animate({
+                    'opacity': 0
+                },300);
+                $next.animate({
+                    'opacity': 0
+                },300);
                 setTimeout(function () {
                     $next.addClass('active fade-in-right');
+                    $next.animate({
+                        'opacity': 1
+                    },300);
                     $active.removeClass('active');
                 }, 800);
             }, 200);
