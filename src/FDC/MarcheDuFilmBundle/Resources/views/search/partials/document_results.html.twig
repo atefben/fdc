@@ -8,9 +8,9 @@
     <div class="projection ">
         {% for document in items.documentResults %}
             {% set translation = document.findTranslationByLocale(app.request.locale) %}
-            {% set  file = document|trans_fallback('file') %}
-            {% set url%}{%path document|trans_fallback('file'), 'reference'%}{% endset%}
-            <a class="link" href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
+            {% set file = document|trans_fallback('file') %}
+            {% set url %}{% path document|trans_fallback('file'), 'reference' %}{% endset %}
+            <a class="link" href="{{path('fdc_marche_du_film_download_pdf', {'url': url|url_encode, 'name': file.providermetadata['filename']})}}">
                 <div class="programme result" {% if loop.index > 3  %} hidden {% endif %}>
                     <div class="customClass1">
                         <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">

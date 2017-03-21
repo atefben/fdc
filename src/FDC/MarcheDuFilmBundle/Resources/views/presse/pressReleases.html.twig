@@ -10,9 +10,9 @@
 
                 {% for item in pressReleasePage.translatable.files %}
                     {% set translations = item.file.findTranslationByLocale(app.request.locale) %}
-                    {% set  file = item.file|trans_fallback('file') %}
-                    {% set url%}{%path item.file|trans_fallback('file'), 'reference'%}{% endset%}
-                    <a class="link" href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
+                    {% set file = item.file|trans_fallback('file') %}
+                    {% set url %}{% path item.file|trans_fallback('file'), 'reference'%}{% endset %}
+                    <a class="link" href="{{path('fdc_marche_du_film_download_pdf', {'url': url|url_encode, 'name': file.providermetadata['filename']})}}">
                     <div class="programme communique">
                             <div>
                                 <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">
