@@ -4790,10 +4790,10 @@ var owInitSlider = function (sliderName) {
                 var number = $item.data('item');
                 var $active = $(".container-images .item.active");
 
-                $active.fadeOut(500);
+                $active.fadeOut(500));
 
                 setTimeout(function () {
-                    $(".container-images .item[data-item=" + number + "]").fadeIn(500);
+                    $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
                     $active.removeClass('active');
                 }, 500);
             }, 200);
