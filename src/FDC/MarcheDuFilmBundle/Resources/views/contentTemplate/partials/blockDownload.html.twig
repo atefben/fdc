@@ -1,8 +1,8 @@
 <div class="text-presentation projection producersProgramme contentTemplateDownload">
     {% set translations = widget.file.findTranslationByLocale(app.request.locale) %}
-    {% set  file = widget.file|trans_fallback('file') %}
-    {% set url%}{%path widget.file|trans_fallback('file'), 'reference'%}{% endset%}
-    <a class="link" href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
+    {% set file = widget.file|trans_fallback('file') %}
+    {% set url %}{% path widget.file|trans_fallback('file'), 'reference'%}{% endset %}
+    <a class="link" href="{{path('fdc_marche_du_film_download_pdf', {'url': url|url_encode, 'name': file.providermetadata['filename']})}}">
         <div class="programme">
             <div>
                 <img src="{{ asset('bundles/fdcmarchedufilm/img/trombonne.png') }}">

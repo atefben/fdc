@@ -15,10 +15,10 @@
                     {% for pressGraphicalCharterWidget in pressGraphicalCharterWidgets %}
                         {% if pressGraphicalCharterWidget.translatable.epsFile %}
                             {% set epsInfo = pressGraphicalCharterWidget.translatable.epsFile.findTranslationByLocale(app.request.locale) %}
-                            {% set  file = pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file') %}
-                            {% set url%}{%path pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file'), 'reference'%}{% endset%}
+                            {% set file = pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file') %}
+                            {% set url %}{% path pressGraphicalCharterWidget.translatable.epsFile|trans_fallback('file'), 'reference'%}{% endset %}
                             <div class="articles">
-                                <a class="link" href="{{path('fdc_marche_du_film_amazon', {'url':url|url_encode, 'name':file.providermetadata['filename']})}}">
+                                <a class="link" href="{{path('fdc_marche_du_film_download_pdf', {'url': url|url_encode, 'name': file.providermetadata['filename']})}}">
                                     <div class="articles-content">
                                         <div class="photoWrapper">
                                             {% if pressGraphicalCharterWidget.translatable.image %}
@@ -38,7 +38,9 @@
                         {% else %}
                             {% set imageInfo = pressGraphicalCharterWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
                             <div class="articles">
-                                <a href="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                                {% set file = pressGraphicalCharterWidget.translatable.image|trans_fallback('file') %}
+                                {% set url %}{% path file, 'reference'%}{% endset %}
+                                <a class="link" href="{{ path('fdc_marche_du_film_download_image', {'url': url|url_encode, 'name': file.providerreference}) }}">
                                     <div class="articles-content">
                                         <div class="photoWrapper">
                                             <img src="{% path pressGraphicalCharterWidget.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 341px; height: 217px;">

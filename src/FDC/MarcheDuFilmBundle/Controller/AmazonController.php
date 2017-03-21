@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 class AmazonController extends Controller
 {
     /**
-     * @Route("/amazon/{url}/{name}", name="fdc_marche_du_film_amazon")
+     * @Route("/download-pdf/{url}/{name}", name="fdc_marche_du_film_download_pdf")
      */
-    public function downloadAction(Request $request, $url, $name)
+    public function downloadPdfAction(Request $request, $url, $name)
     {
         $url = urldecode($url);
         $file = file_get_contents(trim($url));
@@ -23,6 +23,34 @@ class AmazonController extends Controller
         } else {
             $response->headers->set('Content-Type', 'application/eps');
         }
+        $response->headers->set( 'Content-Disposition', 'attachment; filename=' . $name);
+
+        return $response;
+    }
+    /**
+     * @Route("/download-image/{url}/{name}", name="fdc_marche_du_film_download_image")
+     */
+    public function downloadImageAction(Request $request, $url, $name)
+    {
+        $url = urldecode($url);
+        $file = file_get_contents(trim($url));
+        $ext = pathinfo($url, PATHINFO_EXTENSION);
+
+        $response = new Response($file);
+        switch ($ext) {
+            case 'jpg':
+            case 'jpeg':
+                $response->headers->set('Content-Type', 'image/jpeg');
+                break;
+            case 'png':
+                $response->headers->set('Content-Type', 'image/png');
+            case 'gif':
+                $response->headers->set('Content-Type', 'image/gif');
+            case 'tif':
+            case 'tiff':
+                $response->headers->set('Content-Type', 'image/tiff');
+        }
+
         $response->headers->set( 'Content-Disposition', 'attachment; filename=' . $name);
 
         return $response;

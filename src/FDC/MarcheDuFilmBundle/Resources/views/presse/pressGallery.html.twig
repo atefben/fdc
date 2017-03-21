@@ -15,7 +15,9 @@
                     {% for pressGalleryWidget in pressGalleryWidgets %}
                         {% set imageInfo = pressGalleryWidget.translatable.image.findTranslationByLocale(app.request.locale) %}
                         <div class="articles">
-                            <a href="{% path pressGalleryWidget.translatable.image|trans_fallback('file'), 'reference' %}" target="_blank" download>
+                            {% set file = pressGalleryWidget.translatable.image|trans_fallback('file') %}
+                            {% set url %}{% path file, 'reference'%}{% endset %}
+                            <a class="link" href="{{ path('fdc_marche_du_film_download_image', {'url': url|url_encode, 'name': file.providerreference}) }}">
                                 <div class="articles-content">
                                     <div class="photoWrapper">
                                         <img src="{% path pressGalleryWidget.translatable.image|trans_fallback('file'), 'reference' %}" style="width: 339px; height: 215px;">
