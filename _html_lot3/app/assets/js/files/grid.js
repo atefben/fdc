@@ -228,7 +228,6 @@ var owInitGrid = function (id) {
                         var articles = $data.find('article');
 
                         var rawHtml = '';
-                        $gridMore.append(articles);
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
@@ -244,7 +243,7 @@ var owInitGrid = function (id) {
 
                         $gridMore.imagesLoaded(function () {
 
-                            $gridMore.isotope();
+                            //$gridMore.isotope();
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
@@ -490,7 +489,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('owsetGridBigImg');
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
