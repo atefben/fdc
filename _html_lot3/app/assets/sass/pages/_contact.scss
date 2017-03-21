@@ -241,12 +241,12 @@
           text-align: left;
           left: 207px;
           padding-right: 25px;
-          position: relative;
           max-width: 310px;
 
           .val {
             width: auto;
             display: inline-block;
+            position: relative;
           }
         }
       }

@@ -16945,12 +16945,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   text-align: left;
   left: 207px;
   padding-right: 25px;
-  position: relative;
   max-width: 310px;
 }
 .c-contact .contact #form .select .select-value .val {
   width: auto;
   display: inline-block;
+  position: relative;
 }
 .c-contact .contact #form .errors {
   border: 1px solid #e93939;
