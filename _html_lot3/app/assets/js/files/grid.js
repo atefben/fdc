@@ -233,8 +233,7 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
                         $gridMore.append(rawHtml);
-                        $gridMore.isotope('destroy');
-                        console.log('restore destroy');
+                        
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -244,14 +243,8 @@ var owInitGrid = function (id) {
                         }
 
                         $gridMore.imagesLoaded(function () {
-                            var newgrid = $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                }
-                            });
-                            console.log(newgrid);
+                            $gridMore.isotope('appended',rawHtml);
+                            $gridMore.isotope();
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
