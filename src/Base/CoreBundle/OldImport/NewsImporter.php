@@ -678,6 +678,10 @@ class NewsImporter extends Importer
         }
         if (count($films) === 1) {
             $news->setAssociatedFilm(reset($films));
+            foreach ($news->getAssociatedFilms() as $associatedFilm) {
+                $news->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
         } else {
             $news->setAssociatedFilm(null);
             foreach ($films as $film) {
@@ -689,8 +693,7 @@ class NewsImporter extends Importer
                 }
                 if (!$found) {
                     $associatedFilm = new NewsFilmFilmAssociated();
-                    $associatedFilm
-                        ->setAssociation($film);
+                    $associatedFilm->setAssociation($film);
                     $news->addAssociatedFilm($associatedFilm);
                     $this->getManager()->persist($associatedFilm);
                 }

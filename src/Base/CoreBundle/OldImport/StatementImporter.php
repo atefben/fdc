@@ -608,6 +608,10 @@ class StatementImporter extends Importer
         }
         if (count($films) === 1) {
             $statement->setAssociatedFilm(reset($films));
+            foreach ($statement->getAssociatedFilms() as $associatedFilm) {
+                $statement->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
         } else {
             $statement->setAssociatedFilm(null);
             foreach ($films as $film) {

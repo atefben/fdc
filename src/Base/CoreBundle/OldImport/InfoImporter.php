@@ -629,6 +629,10 @@ class InfoImporter extends Importer
         }
         if (count($films) == 1) {
             $info->setAssociatedFilm(reset($films));
+            foreach ($info->getAssociatedFilms() as $associatedFilm) {
+                $info->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
         } else {
             $info->setAssociatedFilm(null);
             foreach ($films as $film) {
