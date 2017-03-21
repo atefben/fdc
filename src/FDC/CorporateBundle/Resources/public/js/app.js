@@ -1127,7 +1127,6 @@ var owInitAjax = function() {
 
       if($('.grid-01').length) {
         var grid = owInitGrid('isotope-01');
-        console.log('set big img 2');
         owsetGridBigImg(grid, $('.grid-01'), true);
 
         $( window ).resize(function() {
@@ -7774,11 +7773,10 @@ $(document).ready(function () {
     if ($('.articles-list').length) {
 
         var grid = owInitGrid('isotope-01');
-        owsetGridBigImg(grid, $('.grid-01'), true);
+        //owsetGridBigImg(grid, $('.grid-01'), true);
 
         $(window).resize(function () {
-            console.log('set big img 1');
-            owsetGridBigImg(grid, $('.grid-01'), false);
+            //owsetGridBigImg(grid, $('.grid-01'), false);
         });
     }
 
