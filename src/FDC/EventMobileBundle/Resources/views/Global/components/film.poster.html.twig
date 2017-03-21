@@ -24,7 +24,9 @@
             {{- asset(film_image_default) -}}
         {%- endif -%}
     {%- else -%}
-        {%- if media is not empty -%}
+        {%- if media is not empty and background_display is defined -%}
+            <div class="img-container" style="background-image:url({% path media, film_format %})"></div>
+        {%- elseif media is not empty -%}
             {%- media media, film_format with film_attrs -%}
         {%- else -%}
             <div class="img-container" style="background-image:url({{ asset(film_image_default) }})"></div>

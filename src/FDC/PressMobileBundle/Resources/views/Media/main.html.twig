@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="main" class="press press-media {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked' }}" data-menu="medias">
+    <div id="main" class="press press_medias {{ (app.user is not empty and is_granted("ROLE_FDC_PRESS_REPORTER")) ? '' : 'press-locked' }}" data-menu="medias">
         {% include 'FDCPressMobileBundle:Global:menu.html.twig' %}
         <div class="header-press">
             <div class="head">
