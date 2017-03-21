@@ -56,8 +56,7 @@ var initContact = function () {
         $('select option').eq(i).prop('selected', 'selected');
         $('.select .select-value .val span').html($(this).text());
         $('.select').removeClass('invalid');
-        alert('clamping');
-        $clamp($('.select .select-value .val span').get(0), {clamp: 1});
+        $clamp($('.select .select-value .val span').get(0), {clamp: '50px'});
     });
 
     // check valid email address
