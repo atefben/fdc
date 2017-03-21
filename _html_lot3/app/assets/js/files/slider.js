@@ -51,10 +51,10 @@ var owInitSlider = function (sliderName) {
                 var number = $item.data('item');
                 var $active = $(".container-images .item.active");
 
-                $active.removeClass("fadeInRight").addClass('fadeOut');
+                $active.fadeOut(500);
 
                 setTimeout(function () {
-                    $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
+                    $(".container-images .item[data-item=" + number + "]").fadeIn(500);
                     $active.removeClass('active');
                 }, 500);
             }, 200);
