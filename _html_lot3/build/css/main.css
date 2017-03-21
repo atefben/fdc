@@ -16943,6 +16943,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   left: 207px;
   padding-right: 25px;
 }
+.c-contact .contact #form .select .select-value .val {
+  width: 90%;
+  display: inline-block;
+}
 .c-contact .contact #form .errors {
   border: 1px solid #e93939;
   color: #e93939;
