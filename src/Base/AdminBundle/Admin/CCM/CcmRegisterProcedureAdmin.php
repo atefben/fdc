@@ -78,7 +78,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'characteristicsTitle'   => array(
@@ -94,7 +94,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'characteristicsButtonLabel'   => array(
@@ -123,7 +123,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isRegulationActive' => array(
@@ -147,7 +147,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isRegisterFormActive' => array(
@@ -169,7 +169,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'contactUsRightText'          => array(
@@ -180,7 +180,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'techniqueCharacteristicsTitle'   => array(
@@ -200,7 +200,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'techniqueCharacteristicsAudio'          => array(
@@ -213,7 +213,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'techniqueCharacteristicsText'          => array(
@@ -226,7 +226,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'regulationDetailsText'          => array(
@@ -239,7 +239,7 @@ class CcmRegisterProcedureAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'regulationDetailsButtonLabel'   => array(

@@ -137,7 +137,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'technicalConstraints'          => array(
@@ -148,7 +148,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isTechnicalConstraintsPopupActive' => array(
@@ -170,7 +170,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'technicalConstraints2'          => array(
@@ -181,7 +181,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isTechnicalConstraintsPopupActive2' => array(
@@ -203,7 +203,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'technicalConstraints3'          => array(
@@ -214,7 +214,7 @@ class CcmLabelSectionContentThreeColumnsType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isTechnicalConstraintsPopupActive3' => array(

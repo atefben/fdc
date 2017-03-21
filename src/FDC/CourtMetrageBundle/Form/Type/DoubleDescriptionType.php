@@ -43,7 +43,7 @@ class DoubleDescriptionType extends DescriptionType
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'titleSecond'          => array(
@@ -58,7 +58,7 @@ class DoubleDescriptionType extends DescriptionType
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                 ),
