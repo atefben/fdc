@@ -23,13 +23,13 @@ class NodeRepository extends EntityRepository
 
     /**
      * @param $locale
-     * @param $dateTime
      * @param null $maxResults
      * @param string $site
+     * @param null $firstResult
      * @param array $filters
      * @return Node[]
      */
-    public function getHomeStatementsAndInfos($locale, DateTime $dateTime, $maxResults = null, $site = 'site-press', $filters = [])
+    public function getHomeStatementsAndInfos($locale, $maxResults = null, $site = 'site-press', $firstResult = null, $filters = [])
     {
         $entities = [
             InfoArticle::class,
@@ -41,7 +41,7 @@ class NodeRepository extends EntityRepository
             StatementImage::class,
             StatementVideo::class,
         ];
-        
+
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
@@ -53,7 +53,7 @@ class NodeRepository extends EntityRepository
             ->setParameter('site_slug', $site)
             ->andWhere('(n.publishedAt <= :dateTime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
-            ->setParameter('dateTime', $dateTime)
+            ->setParameter('dateTime', new DateTime())
         ;
 
         foreach ($filters as $field => $value) {
@@ -67,6 +67,10 @@ class NodeRepository extends EntityRepository
 
         if ($maxResults) {
             $qb->setMaxResults($maxResults);
+        }
+
+        if ($firstResult !== null) {
+            $qb->setFirstResult($firstResult);
         }
 
         return $qb
