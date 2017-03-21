@@ -79,6 +79,10 @@ class NodeListener
             $node->setMainVideo($object->getVideo());
         }
 
+        foreach ($object->getSites() as $site) {
+            $node->addSite($site);
+        }
+
         foreach ($object->getTranslations() as $translation) {
             if ($translation instanceof NodeTranslationInterface) {
                 $nodeTranslation = $this->getNodeTranslation($manager, get_class($translation), $translation->getId(), $node);
