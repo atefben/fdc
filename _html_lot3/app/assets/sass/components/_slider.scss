@@ -31,6 +31,7 @@
     height: 100%;
   }
 
+
   .owl-item {
     min-width: 527px;
 
@@ -77,17 +78,18 @@
 
   .container-images {
     position: absolute;
-    width: 100%;
+    width: 75%;
     height: 100%;
     display: block;
 
     .item {
-      width: 80%;
+      width: 100%;
       height: 100%;
       background: center 0 no-repeat fixed;
-      background-size: cover;
       display: none;
-      background-position-x: -310px;
+      background-position: left bottom;
+      background-size: cover;
+      background-position-y: 91px;
 
       @media only screen and (max-width: 1024px) {
         background-position: inherit;
@@ -160,11 +162,7 @@
 
   @media screen and (min-width: 1280px) and (max-width: 1599px) {
       &{
-        /*
-        height: 577px;
-        */
-
-        .container-images .item {
+        .container-images {
           width: 76%;
         }
 
@@ -178,11 +176,7 @@
 
   @media screen and (min-width: 1600px) and (max-width: 1920px) {
       &{
-        /*
-        height: 683px;
-        */
-
-        .container-images .item {
+        .container-images {
           width: 71.3%;
         }
 
@@ -196,11 +190,8 @@
 
   @media screen and (min-width: 1920px){
     &{
-      /*
-      height: 774px;
-      */
 
-      .container-images .item {
+      .container-images  {
         width: 67.7%;
       }
 
