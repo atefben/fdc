@@ -7629,12 +7629,7 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 @-moz-document url-prefix() {
   .slider-home .container-images .item {
     background-size: 100%;
-    background-position-y: 0px;
-    border: 1px solid red;
-  }
-
-  .slider-home .container-images {
-    border: 1px solid blue;
+    background-position: 0px;
   }
 }
 @media only screen and (max-width: 1440px) {
