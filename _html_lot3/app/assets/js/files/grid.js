@@ -231,11 +231,8 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
-                        $gridMore
-                            .append(rawHtml)
-                            .isotope('appended',rawHtml)
-                            .isotope('layout');
-
+                        $gridMore.append(rawHtml);
+                        $gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -245,6 +242,22 @@ var owInitGrid = function (id) {
                         }
 
                         $gridMore.imagesLoaded(function () {
+
+                            //memorize scrolltop
+                            var scroll = $(document).scrollTop();
+                            console.log(scroll);
+                            $gridMore.isotope({
+                                itemSelector: '.item',
+                                layoutMode: 'masonry',
+                                packery: {
+                                    columnWidth: '.grid-sizer'
+                                },
+                                getSortData: {
+                                    number: '[data-sort]'
+                                },
+                                // sort by color then number
+                                sortBy: ['number']
+                            });
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
