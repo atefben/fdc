@@ -232,8 +232,8 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
-                        //$gridMore.append(rawHtml);
-                        $gridMore.isotope('appended',rawHtml);
+                        $gridMore.append(rawHtml);
+                        $gridMore.isotope('append',rawHtml);
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
