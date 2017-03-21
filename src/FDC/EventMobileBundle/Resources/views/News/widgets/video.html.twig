@@ -23,16 +23,12 @@
 <div class="m-video">
     <div id="players-{{ widget.id }}" class="players" {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %} data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"></div>
     <div class="infos-bar">
-        <div class="picto"><i class="icon icon_video"></i></div>
         <div class="info">
-            <div class="vCenter">
-                <div class="vCenterKid">
-                    <span class="category">{{ file.theme|trans_fallback('name') }}</span>
-                    <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span
-                            class="hour">{{ agenda_leftbar_translate_hour(file.publishedAt|date('H:i'), true, true) }}</span>
-                    <p>{{ trans.title }}</p>
-                </div>
-            </div>
+            <p class="category">{{ file.theme|trans_fallback('name') }}
+            <span class="date">{{ file.publishedAt|date('d.m.Y') }}</span> . <span
+                    class="hour">{{ agenda_leftbar_translate_hour(file.publishedAt|date('H:i'), true, true) }}</span>
+            </p>
+            <p>{{ trans.title }}</p>
         </div>
     </div>
 </div>

@@ -8,7 +8,40 @@
 }
 
 .m-video .jw-display-icon-container {
-    display: none;
+    background-color: #151515;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: inline-block;
+    top: initial;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+}
+
+#main .m-video .jw-skin-five .jw-display-icon-container .jw-button-color.jw-icon-display {
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    color: #c8a461;
+    font-size: 1.5rem;
+}
+
+#main .m-video .jw-skin-five.jw-state-idle .jw-display-icon-container .jw-button-color.jw-icon-display {
+    font-family: "icons";
+}
+
+.m-video .jwplayer.jw-state-idle .jw-icon-display:before {
+    content: '\f14d';
 }
 
 .m-video .jw-state-playing + .infos-bar, .m-video .jw-state-paused + .infos-bar {
@@ -48,30 +81,41 @@
 }
 .m-video .infos-bar .info {
     color: #666;
-    height: 44px;
-    bottom: 20px;
-    left: 80px;
+    bottom: 30px;
+    left: 100px;
     position: absolute;
     z-index: 2;
-    text-align: left
+    text-align: left;
+    width: 80%;
 }
+
+.m-video #player + .infos-bar .info {
+    bottom: 70px;
+}
+
 .m-video .infos-bar .info .category {
     color: #c8a461;
     display: inline-block;
-    font-size: .625rem;
-    letter-spacing: .1em;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
     margin-right: 12px;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    padding-bottom: 3px;
+    font-weight: 700;
 }
 .m-video .infos-bar .info span {
     color: #666;
     display: inline-block;
-    font-size: .625rem
+    font-size: .9rem
 }
 .m-video .infos-bar .info p {
+    line-height: 1.5rem;
     color: #fff;
-    font-size: .85rem;
-    text-align: left;
-    width: auto;
-    margin: 5px 0 0
+    font-size: 1.5rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
