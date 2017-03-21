@@ -179,6 +179,9 @@ class NewsController extends Controller
 
         $theme = $request->query->get('theme', null);
         $format = $request->query->get('format', null);
+        if ($format == 'all') {
+            $format = null;
+        }
         $day = $request->query->get('date', null);
         if ($day) {
             $split = $day;
