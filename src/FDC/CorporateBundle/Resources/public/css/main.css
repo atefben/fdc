@@ -7621,6 +7621,10 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.test {
+  display: initial;
+}
+
 /* hotfix FF */
 @-moz-document url-prefix() {
   .slider-home .container-images .item {
