@@ -486,11 +486,11 @@ var owInitGrid = function (id) {
             var $grid = $('.isotope-02').isotope({filter: filterStaff});
         }
     }
-
 };
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+    console.log('owsetGridBigImg');
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -554,7 +554,7 @@ var owsetGridBigImg = function (grid, dom, init) {
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
         while (i < $img.length) {
             if (j < 15) {
-                if (j == 3 || j == 5 || j == 14) {
+                if (j == 1 || j == 5 || j == 14) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
