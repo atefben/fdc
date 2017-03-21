@@ -5,12 +5,8 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
@@ -178,9 +174,9 @@ class StatementImporter extends Importer
      */
     protected function buildStatementArticleTranslation(StatementArticle $statement, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
+        $mapperFields = [
             'resume' => 'introduction',
-        );
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
@@ -599,6 +595,7 @@ class StatementImporter extends Importer
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
 
+        $films = [];
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
             $film = $this
                 ->getManager()
@@ -606,8 +603,14 @@ class StatementImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                $statement->setAssociatedFilm(null);
-
+                $films[] = $film;
+            }
+        }
+        if (count($films) === 1) {
+            $statement->setAssociatedFilm(reset($films));
+        } else {
+            $statement->setAssociatedFilm(null);
+            foreach ($films as $film) {
                 $found = false;
                 foreach ($statement->getAssociatedFilms() as $associatedFilm) {
                     if ($associatedFilm->getAssociation()->getId() == $film->getId()) {
@@ -620,11 +623,13 @@ class StatementImporter extends Importer
                         ->setStatement($statement)
                         ->setAssociation($film)
                     ;
-                    $this->getManager()->persist($film);
+                    $this->getManager()->persist($associatedFilm);
                 }
+
             }
-            $this->getManager()->flush();
         }
+        $this->getManager()->flush();
+
     }
 
     protected function buildAssociatedStatements(StatementArticle $statement, OldArticle $oldArticle)
