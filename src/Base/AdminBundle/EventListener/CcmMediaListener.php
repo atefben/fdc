@@ -243,10 +243,10 @@ class CcmMediaListener
     protected function generateThumbnails(MediaInterface $media)
     {
         $provider = $this->container->get($media->getProviderName());
-        if ($media->getParentVideoTranslation()) {
-            $parentVideo = $media->getParentVideoTranslation();
-        } elseif ($media->getParentAudioTranslation()) {
-            $parentAudio = $media->getParentAudioTranslation();
+        if ($media->getCcmParentVideoTranslation()) {
+            $parentVideo = $media->getCcmParentVideoTranslation();
+        } elseif ($media->getCcmParentAudioTranslation()) {
+            $parentAudio = $media->getCcmParentAudioTranslation();
         } else {
             throw new NotFoundHttpException('Media parent not found.');
         }

@@ -47,6 +47,20 @@
             </cascade>
         </one-to-one>
 
+        <one-to-one field="ccmParentVideoTranslation" target-entity="FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation"
+                    mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-one>
+
+        <one-to-one field="ccmParentAudioTranslation" target-entity="FDC\CourtMetrageBundle\Entity\CcmMediaAudioTranslation"
+                    mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-one>
+
         <one-to-one field="projectionMedias" target-entity="Base\CoreBundle\Entity\FilmProjectionMedia"
                     mapped-by="file">
         </one-to-one>

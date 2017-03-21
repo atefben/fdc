@@ -105,7 +105,7 @@ class CcmMediaAudioTranslation implements TranslateChildInterface
      */
     public function setFile(Media $file = null)
     {
-        $file->setParentAudioTranslation($this);
+        $file->setCcmParentAudioTranslation($this);
         $this->file = $file;
 
         return $this;
