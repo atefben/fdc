@@ -12243,6 +12243,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   pointer-events: none;
   left: 50%;
   transform: translate(-50%, 0%);
+  transform-origin: center center;
   transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .slideshow .slideshow-img .images .img.active {
