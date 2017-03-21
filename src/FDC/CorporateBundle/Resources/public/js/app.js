@@ -2190,8 +2190,16 @@ var initContact = function () {
         }, 400);
     });
 
+
+    if($('.select option:selected').length){
+        var textSelectValue = $('.select option:selected').text();
+    }else{
+        var textSelectValue = $('.select option.default').text();
+    }
+
+    
     //init value
-    $('.select .select-value .val').html($('.select option:selected').text());
+    $('.select .select-value .val').html(textSelectValue);
     $('body').on('click', '.selectOptions span', function() {
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
@@ -7509,6 +7517,10 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
 }
 /* thomon - end homepage ajax module rework */
 
+var fnUpdateSelectValue = function(){
+    
+}
+
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
@@ -7521,6 +7533,10 @@ $(document).ready(function () {
 
     if($('.ajax-filter-cards-container').length){
         homepageCards.init();
+    }
+
+    if($('.c-contact').length){
+        fnUpdateSelectValue();
     }
     
 

@@ -347,6 +347,10 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
 }
 /* thomon - end homepage ajax module rework */
 
+var fnUpdateSelectValue = function(){
+    
+}
+
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
@@ -359,6 +363,10 @@ $(document).ready(function () {
 
     if($('.ajax-filter-cards-container').length){
         homepageCards.init();
+    }
+
+    if($('.c-contact').length){
+        fnUpdateSelectValue();
     }
     
 

@@ -41,8 +41,16 @@ var initContact = function () {
         }, 400);
     });
 
+
+    if($('.select option:selected').length){
+        var textSelectValue = $('.select option:selected').text();
+    }else{
+        var textSelectValue = $('.select option.default').text();
+    }
+
+    
     //init value
-    $('.select .select-value .val').html($('.select option:selected').text());
+    $('.select .select-value .val').html(textSelectValue);
     $('body').on('click', '.selectOptions span', function() {
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
