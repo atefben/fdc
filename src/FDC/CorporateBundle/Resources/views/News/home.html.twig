@@ -32,7 +32,7 @@
                                 {% endif %}
                             {% endif %}
 
-                            <div class="item animated active" data-item="{{ dataItem }}" style="background: url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}') no-repeat left top">
+                            <div class="item animated active" data-item="{{ dataItem }}" style="background-image: url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')">
                             </div>
                             {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
                             {% if trans == null %}
