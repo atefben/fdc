@@ -594,14 +594,14 @@ admin:
         mdf_presse: Presse
         mdf_qui_sommes_nous: Qui sommes-nous ?
         ccm:
-            pros: Les pros du court
-            short: Short Film Corner
-            general: CCM General
-            participate: Participer
-            news: Actualités
-            seo_tetieres: SEO + TETIERES
-            participer: Participer
-            footer: Footer
+            pros: CCM Les pros du court
+            short: CCM Short Film Corner
+            general: CCM Général
+            participate: CCM Participer
+            news: CCM Actualités
+            seo_tetieres: CCM SEO + TETIERES
+            participer: CCM Participer
+            footer: CCM Footer
 dashboard:
     translator:
         object:
@@ -620,7 +620,7 @@ dashboard:
         soif: SOIF
         general: Général
         media: Médias
-        ccm_media: Médias
+        ccm_media: CCM Médias
         news: Actualités
         statement: Communiqués
         info: Infos
