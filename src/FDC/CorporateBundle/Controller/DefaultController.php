@@ -83,7 +83,7 @@ class DefaultController extends Controller
         $nodes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Node')
-            ->getHomeStatementsAndInfos($locale, 6, 'site-institutionnel', 0, $filters)
+            ->getHomeStatementsAndInfos($locale, 100, 'site-institutionnel', 0, $filters)
         ;
         $homeContents = [];
         foreach ($nodes as $node) {
@@ -208,7 +208,7 @@ class DefaultController extends Controller
         $nodes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Node')
-            ->getHomeStatementsAndInfos($locale, 7, 'site-institutionnel', ($page - 1) * 6, $filters)
+            ->getHomeStatementsAndInfos($locale, 100, 'site-institutionnel', ($page - 1) * 6, $filters)
         ;
         $homeContents = [];
         foreach ($nodes as $node) {
