@@ -167,9 +167,8 @@ class FilmFilmRepository extends EntityRepository
         return $this
             ->createQueryBuilder('f')
             ->select('f')
-            ->andWhere('f.publishedAt BETWEEN :monthStart AND :monthEnd')
-            ->setParameter('monthStart', $dateTime->format('Y-m-') . '01')
-            ->setParameter('monthEnd', $dateTime->format('Y-m-') . '31')
+            ->andWhere('MONTH(f.publishedAt) = :month')
+            ->setParameter('month', (int)$dateTime->format('m'))
             ->getQuery()
             ->getResult()
             ;
