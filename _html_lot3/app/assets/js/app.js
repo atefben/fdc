@@ -347,10 +347,6 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
 }
 /* thomon - end homepage ajax module rework */
 
-var fnUpdateSelectValue = function(){
-    
-}
-
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
@@ -365,8 +361,26 @@ $(document).ready(function () {
         homepageCards.init();
     }
 
-    if($('.c-contact').length){
-        fnUpdateSelectValue();
+    //hotfix focus & sameday thumbs click
+    if($('.focus').length){
+        $('.focus .articles article')
+        .css('cursor','pointer')
+        .on('click',function(){
+            if($(this).find('a').length){
+                var href = $(this).find('a').attr('href');
+                window.location.href = href;
+            }
+        });
+    }
+    if($('.same-day').length){
+        $('.same-day .articles article')
+        .css('cursor','pointer')
+        .on('click',function(){
+            if($(this).find('a').length){
+                var href = $(this).find('a').attr('href');
+                window.location.href = href;
+            }
+        });
     }
     
 
