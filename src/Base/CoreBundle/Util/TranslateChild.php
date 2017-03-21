@@ -37,7 +37,7 @@ trait TranslateChild
      *
      * @ORM\Column(type="boolean")
      */
-    private $isPublishedOnFDCEvent;
+    private $isPublishedOnFDCEvent = false;
 
     /**
      * @return array

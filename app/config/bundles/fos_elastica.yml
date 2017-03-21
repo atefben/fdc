@@ -263,11 +263,16 @@ fos_elastica:
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                        theme.translations:
+                        theme:
                             type: nested
                             properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+                                translations:
+                                    type: nested
+                                    property_path:
+                                        translations
+                                    properties:
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
                         tags:
                             type: nested
                             properties :
@@ -299,11 +304,16 @@ fos_elastica:
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                        theme.translations:
+                        theme:
                             type: nested
                             properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+                                translations:
+                                    type: nested
+                                    property_path:
+                                        translations
+                                    properties:
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
                         tags:
                             type: nested
                             properties :
@@ -400,13 +410,16 @@ fos_elastica:
                                 introduction: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                                 locale: ~
                                 status: ~
-                        theme.translations:
+                        theme:
                             type: nested
-                            property_path:
-                                theme.translations
                             properties :
-                                name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                                locale: ~
+                                translations:
+                                    type: nested
+                                    property_path:
+                                        translations
+                                    properties:
+                                        name: { boost: 10, search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                                        locale: ~
                         tags:
                             type: nested
                             properties :

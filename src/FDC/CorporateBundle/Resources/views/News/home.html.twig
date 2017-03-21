@@ -32,8 +32,8 @@
                                 {% endif %}
                             {% endif %}
 
-                            <div class="item animated active" data-item="{{ dataItem }}"
-                                 style="background-image:url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')"></div>
+                            <div class="item active{% if loop.first %} fade-in-right{% endif %}" data-item="{{ dataItem }}" style="background-image: url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')">
+                            </div>
                             {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
@@ -165,7 +165,7 @@
 
                     {% if not last %}
                         <a id="home-news-statements-more"
-                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?page={{ page }}"
                            data-reverse=""
                            class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                     {% else %}

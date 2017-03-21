@@ -2,7 +2,6 @@
 
 namespace FDC\CorporateBundle\Controller;
 
-use Aws\Sns\Exception\NotFoundException;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
@@ -77,19 +76,19 @@ class DefaultController extends Controller
             }
         }
 
-        // Infos and statements
-        $homeInfos = $this
+        $filters = [
+            'festival'             => $festivalId,
+            'displayedOnCorpoHome' => true,
+        ];
+        $nodes = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getRepository('BaseCoreBundle:Node')
+            ->getHomeStatementsAndInfos($locale, 100, 'site-institutionnel', 0, $filters)
         ;
-        $homeStatement = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
-        ;
-        $homeContents = array_merge($homeInfos, $homeStatement);
-        $this->sortByDate($homeContents);
+        $homeContents = [];
+        foreach ($nodes as $node) {
+            $homeContents[] = $this->getDoctrineManager()->getRepository($node->getEntityClass())->find($node->getEntityId());
+        }
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
         if (count($homeContents) > 6) {
             $last = false;
@@ -103,7 +102,6 @@ class DefaultController extends Controller
         $filters['format'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
-        $lastPublishedAt = null;
         foreach ($homeContents as $key => $homeContent) {
             if (!in_array($homeContent->getTheme()->getId(), $filters['themes']['id'])) {
                 $filters['themes']['id'][] = $homeContent->getTheme()->getId();
@@ -113,11 +111,6 @@ class DefaultController extends Controller
             if (!in_array($homeContent->getTypeClone(), $filters['format'])) {
                 $filters['format'][] = $homeContent->getTypeClone();
             }
-        }
-        $lastContent = end($homeContents);
-        if ($lastContent) {
-            $lastPublishedAt = $homeContent->getPublishedAt()->getTimestamp();
-            unset($lastContent);
         }
 
         $featuredVideo = $homepage->getVideoUne();
@@ -159,8 +152,8 @@ class DefaultController extends Controller
             'gallery'           => $gallery,
             'galleryMedias'     => $galleryMedias,
             'filters'           => $filters,
-            'lastPublishedAt'   => $lastPublishedAt,
             'last'              => $last,
+            'page'              => 2,
             'festivalYear'      => $this->getFestival()->getYear(),
         ]);
     }
@@ -188,42 +181,39 @@ class DefaultController extends Controller
      */
     public function getArticlesFromAction(Request $request)
     {
-        $dateTime = new DateTime();
-        if ($request->query->has('timestamp') && $request->query->get('timestamp')) {
-            $dateTime->setTimestamp($request->query->get('timestamp') - 1);
-        }
-        $filterTheme = null;
-        $filterFormat = null;
-        if ($request->query->has('theme') && $request->query->get('theme')) {
-            $themeTranslation = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:ThemeTranslation')
-            ->findOneBy(['slug' => $request->query->get('theme')]);
-            if ($themeTranslation) {
-                $filterTheme = $themeTranslation->getTranslatable();
-            }
-        }
-        if ($request->query->has('format') && $request->query->get('format')) {
-            $filterFormat = $request->query->get('format');
-        }
-
-
 
         $locale = $request->getLocale();
         $settings = $this->getSettings();
         $festivalId = $settings->getFestival()->getId();
+        $page = $request->query->get('page', 1);
+        $filters = [
+            'festival'             => $festivalId,
+            'displayedOnCorpoHome' => true,
+        ];
+        if ($request->query->has('theme') && $request->query->get('theme')) {
+            $themeTranslation = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:ThemeTranslation')
+                ->findOneBy(['slug' => $request->query->get('theme')])
+            ;
+            if ($themeTranslation) {
+                $filters['theme'] = $themeTranslation->getTranslatable()->getId();
+            }
+        }
+        if ($request->query->get('format') && $request->query->get('format') != 'all') {
+            $filters['format'] = $request->query->get('format');
 
-        $homeInfos = $this
+        }
+
+        $nodes = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
+            ->getRepository('BaseCoreBundle:Node')
+            ->getHomeStatementsAndInfos($locale, 100, 'site-institutionnel', ($page - 1) * 6, $filters)
         ;
-        $homeStatement = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true, $filterTheme, $filterFormat)
-        ;
-        $homeContents = array_merge($homeInfos, $homeStatement);
+        $homeContents = [];
+        foreach ($nodes as $node) {
+            $homeContents[] = $this->getDoctrineManager()->getRepository($node->getEntityClass())->find($node->getEntityId());
+        }
 
         $this->sortByDate($homeContents);
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
@@ -257,11 +247,11 @@ class DefaultController extends Controller
         }
 
         return $this->render("FDCCorporateBundle:News:widgets/article-home-ajax.html.twig", [
-            'homeArticles'    => $homeContents,
-            'filters'         => $filters,
-            'lastPublishedAt' => $lastPublishedAt,
-            'festivalYear'    => $settings->getFestival()->getYear(),
-            'last'            => $last,
+            'homeArticles' => $homeContents,
+            'filters'      => $filters,
+            'page'         => $page + 1,
+            'festivalYear' => $settings->getFestival()->getYear(),
+            'last'         => $last,
         ]);
     }
 }

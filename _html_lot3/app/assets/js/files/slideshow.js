@@ -21,7 +21,6 @@ var owinitSlideShow = function (slider, hash) {
         } else if($('.article-single').length){
 
             $('.slideshow-img .images').on('click', function (e) {
-                console.log('if click thumbs',!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length);
                 if(!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length){
                     e.preventDefault();
 
@@ -265,7 +264,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-
+        console.log('goToSLide')
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
