@@ -4774,7 +4774,6 @@ var owInitSlider = function (sliderName) {
             smartSpeed: 700,
             onInitialized: function(){
                 var slides = $('.slider-home .owl-item');
-                $('.slider-home .owl-item:first-child').addClass('fade-in-right');
                 slides.each(function(){
                     var container = $(this).find('.text-trunc');
                     var desc = container.text();
@@ -4790,13 +4789,14 @@ var owInitSlider = function (sliderName) {
                 var $item = $('.owl-item.active').find('.item');
                 var number = $item.data('item');
                 var $active = $(".container-images .item.active");
-
-                $active.removeClass("fade-in-right").addClass('fade-out');
+                var $next = $(".container-images .item[data-item=" + number + "]");
+                //$('.container-images .item').removeClass('fade-out');
+                $active.removeClass("fade-in-right");
 
                 setTimeout(function () {
-                    $(".container-images .item[data-item=" + number + "]").removeClass('fade-out').addClass('active fade-in-right');
+                    $next.addClass('active fade-in-right');
                     $active.removeClass('active');
-                }, 500);
+                }, 800);
             }, 200);
         });
 
