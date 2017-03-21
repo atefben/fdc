@@ -7621,6 +7621,13 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* hotfix FF */
+@-moz-document url-prefix() {
+  .slider-home .container-images .item {
+    background-size: 100%;
+    background-position-y: 0px;
+  }
+}
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
