@@ -65,6 +65,7 @@ class NodeListener
             ->setDisplayedOnCorpoHome($object->isDisplayedOnCorpoHome())
             ->setSignature($object->getSignature())
             ->setMainImage($object->getHeader())
+            ->setTypeClone($object->getTypeClone())
         ;
 
         if ($object instanceof NodeAudioInterface) {

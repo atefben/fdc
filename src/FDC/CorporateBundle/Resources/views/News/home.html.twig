@@ -165,7 +165,7 @@
 
                     {% if not last %}
                         <a id="home-news-statements-more"
-                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?page={{ page }}"
                            data-reverse=""
                            class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                     {% else %}

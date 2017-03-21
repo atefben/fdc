@@ -105,6 +105,15 @@ class Node implements TranslateMainInterface
      */
     protected $displayedHome = false;
 
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="type_clone", type="string", length=255, nullable=true)
+     *
+     */
+    protected $typeClone;
+
     /**
      * @var boolean
      *
