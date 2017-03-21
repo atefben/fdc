@@ -575,3 +575,12 @@ a.notloaded {
 .header #logo-wrapper #partners img.kering {
     margin-top:8px !important;
 }
+#main.app {
+	height: 915px !important;
+}
+.app .contain-app {
+	width: 50% !important;
+}
+.app .contain-app h1 {
+	padding-top: 82px !important;
+}
