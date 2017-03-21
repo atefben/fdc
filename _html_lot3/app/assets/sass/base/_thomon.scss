@@ -745,6 +745,38 @@ header #navigation ul.user li a {
     }
 }
 
+
+@-webkit-keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fade-in-right {
+  animation-name: fade-in-right;
+}
+
+
 @media only screen and (max-width : 1440px) {
     .retrospective .slider-restropective {
         .calc3 {
