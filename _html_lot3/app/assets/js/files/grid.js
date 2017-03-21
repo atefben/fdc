@@ -241,6 +241,7 @@ var owInitGrid = function (id) {
                             $this.remove();
                         }
 
+
                         $gridMore.imagesLoaded(function () {
 
                             //memorize scrolltop
