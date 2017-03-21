@@ -10326,7 +10326,7 @@ body#home .isotope-01 .item .info {
   background-color: rgba(255, 255, 255, 0);
 }
 .slider-home.stickystate .container-images .item {
-  background-position-x: top;
+  background-position-y: 0px;
 }
 .slider-home .owl-carousel .owl-controls .owl-dot span {
   height: 6px;
@@ -10355,7 +10355,7 @@ body#home .isotope-01 .item .info {
   display: none;
   background-position: left top;
   background-size: 67.7%;
-  background-position-x: 91px;
+  background-position-y: 91px;
 }
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
