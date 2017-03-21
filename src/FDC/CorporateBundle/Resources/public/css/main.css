@@ -16931,7 +16931,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .c-contact .contact #form .select .select-value {
   color: #c8a461;
   height: 50px;
-  line-height: 50px;
+  line-height: 53px;
   vertical-align: middle;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
@@ -16940,7 +16940,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: inline-block;
   position: absolute;
   text-align: left;
-  left: 84px;
+  left: 207px;
   padding-right: 25px;
 }
 .c-contact .contact #form .errors {
