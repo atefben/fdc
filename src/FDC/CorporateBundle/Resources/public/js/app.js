@@ -4790,7 +4790,7 @@ var owInitSlider = function (sliderName) {
                 var number = $item.data('item');
                 var $active = $(".container-images .item.active");
 
-                $active.fadeOut(500));
+                $active.removeClass("fadeInRight").addClass('fadeOut');
 
                 setTimeout(function () {
                     $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
