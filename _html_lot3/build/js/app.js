@@ -2205,6 +2205,7 @@ var initContact = function () {
         $('select option').eq(i).prop('selected', 'selected');
         $('.select .select-value .val').html($(this).text());
         $('.select').removeClass('invalid');
+        $clamp($('.select .select-value .val').get(0), {clamp: 1});
     });
 
     // check valid email address
