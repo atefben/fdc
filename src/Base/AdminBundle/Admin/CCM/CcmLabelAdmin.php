@@ -70,6 +70,7 @@ class CcmLabelAdmin extends Admin
                     'title'          => array(
                         'label'              => 'form.ccm.graphical_charter.title',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'header'          => array(
                         'label'              => 'form.ccm.graphical_charter.header',
