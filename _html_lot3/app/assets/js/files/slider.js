@@ -54,7 +54,7 @@ var owInitSlider = function (sliderName) {
                 $active.removeClass("fadeInRight").addClass('fadeOut');
 
                 setTimeout(function () {
-                    $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
+                    $(".container-images .item[data-item=" + number + "]").removeClass('fade-out').addClass('active fade-in-right');
                     $active.removeClass('active');
                 }, 500);
             }, 200);
