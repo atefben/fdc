@@ -2990,10 +2990,10 @@ var owInitGrid = function (id) {
                 if($('#format.filter .select .active').length){
                     postData.format = $('#format.filter .select .active').data('filter');
                 }
-                console.log('data sent to post on ajax button click',postData);
+                console.log('data sent to GET on ajax button click',postData);
 
                 $.post({
-                    type: 'POST',
+                    type: 'GET',
                     url: url,
                     data: postData,
                     success: function(data) {
@@ -3015,12 +3015,10 @@ var owInitGrid = function (id) {
                             $this.attr('href',moreBtn);
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
-                            //if($this.is(':visible')){
-                                $this.remove();
-                            //}
+                            $this.remove();
                         }
 
-                        /*$gridMore.imagesLoaded(function () {
+                        $gridMore.imagesLoaded(function () {
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
@@ -3039,7 +3037,7 @@ var owInitGrid = function (id) {
                                 $clamp(title.get(0), {clamp: 1});
                                 $clamp(cat.get(0), {clamp: 1});
                             });
-                        });*/
+                        });
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
