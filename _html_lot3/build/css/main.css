@@ -16945,6 +16945,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .c-contact .contact #form .select .select-value .val {
   width: auto;
+  max-width: 80%;
   display: inline-block;
 }
 .c-contact .contact #form .errors {

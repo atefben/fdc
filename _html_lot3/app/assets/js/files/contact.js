@@ -50,13 +50,13 @@ var initContact = function () {
     console.log(textSelectValue);
     
     //init value
-    $('.select .select-value .val').html(textSelectValue);
+    $('.select .select-value .val span').html(textSelectValue);
     $('body').on('click', '.selectOptions span', function() {
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
         $('.select .select-value .val').html($(this).text());
         $('.select').removeClass('invalid');
-        $clamp($('.select .select-value .val').get(0), {clamp: 1});
+        $clamp($('.select .select-value .val span').get(0), {clamp: 1});
     });
 
     // check valid email address
