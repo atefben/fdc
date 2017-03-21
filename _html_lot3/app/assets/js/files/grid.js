@@ -232,7 +232,7 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
                         $gridMore.append(rawHtml);
-                        $gridMore.isotope('append',rawHtml);
+                        $gridMore.isotope('appended',rawHtml);
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
