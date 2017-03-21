@@ -3019,13 +3019,14 @@ var owInitGrid = function (id) {
                         }
 
                         $gridMore.imagesLoaded(function () {
-                            $gridMore.isotope({
+                            var newgrid = $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
                                 packery: {
                                     columnWidth: '.grid-sizer'
                                 }
                             });
+                            console.log(newgrid);
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
