@@ -227,7 +227,7 @@ class NewsController extends Controller
         $statements = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, null, null, $maxResults, $before)
+            ->getStatementRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
         ;
 
         $articles = array_merge($infos, $statements);
