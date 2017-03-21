@@ -7620,18 +7620,6 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 .articles-wrapper .articles {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-@keyframes fade-in-right {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-.fade-in-right {
-  animation-name: fade-in-right;
-}
 
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
@@ -10365,9 +10353,17 @@ body#home .isotope-01 .item .info {
   height: 100%;
   background: center 0 no-repeat fixed;
   display: none;
+  transform: all .8s ease-in;
   background-position: left top;
   background-size: 67.7%;
   background-position-y: 210px;
+  position: absolute;
+}
+.slider-home .container-images .item.fade-in-right {
+  left: 100vw;
+}
+.slider-home .container-images .item.fade-out {
+  opacity: 0;
 }
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {

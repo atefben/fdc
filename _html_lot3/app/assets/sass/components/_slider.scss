@@ -67,6 +67,8 @@
     }
   }
 
+  
+
   .owl-carousel .owl-controls .owl-dot span{
     height: 6px;
     width: 6px;
@@ -95,10 +97,20 @@
       height: 100%;
       background: center 0 no-repeat fixed;
       display: none;
+      transform: all .8s ease-in;
       background-position: left top;
       background-size: 67.7%;
       background-position-y: 210px;
+      position: absolute;
 
+      &.fade-in-right {
+        
+        left: 100vw;
+      }
+
+      &.fade-out {
+        opacity: 0;
+      }
 
       @media only screen and (max-width: 1024px) {
         background-position: inherit;
