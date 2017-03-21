@@ -10325,6 +10325,9 @@ body#home .isotope-01 .item .info {
   border: 3px solid #c8a461;
   background-color: rgba(255, 255, 255, 0);
 }
+.slider-home .stickystate .container-images .item {
+  background-position-x: 91px;
+}
 .slider-home .owl-carousel .owl-controls .owl-dot span {
   height: 6px;
   width: 6px;

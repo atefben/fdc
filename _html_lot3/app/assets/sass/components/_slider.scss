@@ -59,6 +59,14 @@
     }
   }
 
+  .stickystate {
+    .container-images {
+      .item {
+        background-position-x: 91px;
+      }
+    }
+  }
+
   .owl-carousel .owl-controls .owl-dot span{
     height: 6px;
     width: 6px;
@@ -89,6 +97,7 @@
       display: none;
       background-position: left top;
       background-size: 67.7%;
+
 
       @media only screen and (max-width: 1024px) {
         background-position: inherit;

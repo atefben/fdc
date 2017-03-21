@@ -3986,11 +3986,17 @@ var initHeaderSticky = function () {
         if (s > lastScrollTop) {
             if (($('#prehome-container').length == 0 && s > 30)) {
                 $header.addClass('sticky');
+                if($('.slider-home').length){
+                    $('.slider-home').addClass('stickystate');
+                }
                 $('body').css('margin-top', '91px');
             }
         } else {
             if (($('#prehome-container').length == 0 && s < 30)) {
                 $header.removeClass('sticky');
+                if($('.slider-home').length){
+                    $('.slider-home').removeClass('stickystate');
+                }
                 $('body').css('margin-top', '0');
             }
         }
