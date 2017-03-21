@@ -632,6 +632,7 @@ $(document).ready(function () {
         owsetGridBigImg(grid, $('.grid-01'), true);
 
         $(window).resize(function () {
+            console.log('set big img 1');
             owsetGridBigImg(grid, $('.grid-01'), false);
         });
     }
