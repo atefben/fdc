@@ -87,9 +87,8 @@
       height: 100%;
       background: center 0 no-repeat fixed;
       display: none;
-      background-position: left bottom;
+      background-position: left top;
       background-size: cover;
-      background-position-y: 91px;
 
       @media only screen and (max-width: 1024px) {
         background-position: inherit;
