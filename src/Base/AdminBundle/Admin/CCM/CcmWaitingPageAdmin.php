@@ -85,7 +85,7 @@ class CcmWaitingPageAdmin extends Admin
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'status'         => array(

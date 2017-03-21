@@ -164,6 +164,7 @@ class CcmMediaVideoTranslation implements TranslateChildInterface
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
+        $file->setCcmParentVideoTranslation($this);
         $this->file = $file;
 
         return $this;

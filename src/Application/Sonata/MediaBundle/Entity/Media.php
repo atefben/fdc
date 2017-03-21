@@ -15,6 +15,8 @@ use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\FilmProjectionMedia;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaAudioTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Sonata\MediaBundle\Entity\BaseMedia as SonataBaseMedia;
@@ -43,6 +45,10 @@ class Media extends SonataBaseMedia
     protected $parentVideoTranslation;
 
     protected $parentAudioTranslation;
+
+    protected $ccmParentVideoTranslation;
+
+    protected $ccmParentAudioTranslation;
 
     private $thumbsGenerated = false;
     private $uploadedFromBO = false;
@@ -149,6 +155,48 @@ class Media extends SonataBaseMedia
     public function getParentAudioTranslation()
     {
         return $this->parentAudioTranslation;
+    }
+
+    /**
+     * Set ccmParentVideoTranslation
+     * @param CcmMediaVideoTranslation $ccmParentVideoTranslation
+     * $return $this
+     */
+    public function setCcmParentVideoTranslation(CcmMediaVideoTranslation $ccmParentVideoTranslation = null)
+    {
+        $this->ccmParentVideoTranslation = $ccmParentVideoTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get ccmParentVideoTranslation
+     * @return CcmMediaVideoTranslation
+     */
+    public function getCcmParentVideoTranslation()
+    {
+        return $this->ccmParentVideoTranslation;
+    }
+
+    /**
+     * Set ccmParentAudioTranslation
+     * @param CcmMediaAudioTranslation $ccmParentAudioTranslation
+     * $return $this
+     */
+    public function setCcmParentAudioTranslation(CcmMediaAudioTranslation $ccmParentAudioTranslation = null)
+    {
+        $this->ccmParentAudioTranslation = $ccmParentAudioTranslation;
+
+        return $this;
+    }
+
+    /**
+     * Get ccmParentAudioTranslation
+     * @return CcmMediaAudioTranslation
+     */
+    public function getCcmParentAudioTranslation()
+    {
+        return $this->ccmParentAudioTranslation;
     }
 
     /**

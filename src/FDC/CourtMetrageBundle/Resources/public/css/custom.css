@@ -70,10 +70,6 @@
     cursor: default;
 }
 
-strong {
-  font-weight: bold;
-}
-
 em {
   font-style: italic;
 }
@@ -301,3 +297,56 @@ body.chocolat-open.fixed {
     line-height: 24px;
     text-align: left;
 }
+
+.single-article .big-quote span.inherit-p {
+    color: #b1b1b1;
+    text-align: center;
+    font-size: .875rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.single-article .txt-grey-bkg-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 70px 71px 70px 71px;
+    box-sizing: border-box;
+    width: 776px;
+}
+
+.single-article .txt-grey-bkg-container strong {
+    font-size: 1rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    color: #333333;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.single-article .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 1rem;
+    font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+    color: #666666;
+    line-height: 26px;
+}
+
+.table-article {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 644px;
+    padding-bottom: 50px;
+}
+
+.table-article strong {
+    text-transform: uppercase;
+    color: #000;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    vertical-align: middle;
+    padding: 15px 0px;
+    width: 320px;
+    text-align: center;
+    font-size: .74rem;
+}
+

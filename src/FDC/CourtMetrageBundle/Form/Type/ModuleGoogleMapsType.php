@@ -34,7 +34,7 @@ class ModuleGoogleMapsType extends ModuleType
                         'label'              => 'form.ccm.label.module.google_maps.description',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'urlGoogleMaps'          => array(

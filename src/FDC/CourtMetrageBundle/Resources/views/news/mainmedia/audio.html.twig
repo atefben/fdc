@@ -3,25 +3,36 @@
     {% set translation = mediaAudio.findTranslationByLocale('fr') %}
 {% endif %}
 {% if translation.jobMp3State == 3 and translation.mp3url %}
-    <div class="video-container state-init video"
-         data-name="{{ translation.title }}"
-         data-file='[{"file":"{{ s3_server_audio ~ translation.mp3url }}"}]'
-         {% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}
-             data-img="{% path mediaImage|trans_fallback('file'), 'reference' %}">
-         {% else %}
-             data-img="{% path mediaAudio.image|trans_fallback('file'), 'reference' %}">
-         {% endif %}
-        <div id="{{ mediaAudio.id }}" class="video-player"></div>
-        <div class="video-overlay"></div>
-        <div class="infos-bar">
-            <div class="picto"><i class="icon icon_video"></i></div>
-            <div class="info">
+    {% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}
+        {% set img  %}
+            {% path mediaImage|trans_fallback('file'), 'reference' %}
+        {% endset %}
+    {% else %}
+        {% set img  %}
+            {% path mediaAudio.image|trans_fallback('file'), 'reference' %}
+        {% endset %}
+    {% endif %}
+
+    <div class="audio-container actu-article-audio"
+        data-file='[{"file":"{{ s3_server_audio ~ translation.mp3url }}"}]'
+        data-img = '{%- spaceless -%}{{ img }}{%- endspaceless %}'
+         data-aid="{{ mediaAudio.id }}">
+        <div class="audio-player">
+            <div id="audio-player{{ mediaAudio.id }}" class="audio-player-container"></div>
+            <div class="image" style="background-image: url('{%- spaceless -%}{{ img }}{%- endspaceless %}');"></div>
+            <button class="play-btn play"><i class="icon icon_play"></i></button>
+            <div class="off">
                 <div class="vCenter">
                     <div class="vCenterKid">
-                        <p>{{ translation.title }}</p>
+                        <div class="picto"><i class="icon icon_audio"></i></div>
+                        <div class="info">
+                            <a href="#" class="category">{{ mediaAudio.theme|trans_fallback('name') }}</a><span class="date">{{ mediaAudio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(mediaAudio.publishedAt|date('H:i'), true, true) }}</span>
+                            <p>{{ translation.title }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="on"></div>
         </div>
     </div>
 {% endif %}
