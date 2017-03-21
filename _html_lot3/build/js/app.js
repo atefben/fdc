@@ -3006,8 +3006,11 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
-                        $gridMore.append(rawHtml);
-                        $gridMore.isotope('appended',rawHtml);
+                        $gridMore
+                            .append(rawHtml)
+                            .isotope('appended',rawHtml)
+                            .isotope('layout');
+
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -3264,6 +3267,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+    console.log('owsetGridBigImg')
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
