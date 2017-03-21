@@ -176,7 +176,8 @@
         text-align: center;
         text-transform: uppercase;
         position: relative;
-
+        overflow: hidden;
+        
         &.invalid {
           border-color: #e93939;
           color: #e93939;
