@@ -31,7 +31,7 @@ class NodeUpdateCommand extends ContainerAwareCommand
         $maxResults = $input->getOption('max-results')?:null;
         $criteria = [];
         if ($input->getOption('id')) {
-            $criteria['id'] => $input->getOption('id');
+            $criteria['id'] = $input->getOption('id');
         }
         if ('info' === $entity) {
             $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->findBy($criteria, [], $maxResults, $firstResult);
