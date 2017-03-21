@@ -6,18 +6,25 @@
             {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
         </div>
         <div class="wideWrapper onlineWrapper">
-            <h1>{{ registerProcedure.techniqueCharacteristicsTitle }}</h1>
+            {% if registerProcedure.techniqueCharacteristicsTitle %}<h1>{{ registerProcedure.techniqueCharacteristicsTitle }}</h1>{% endif %}
+            {% if registerProcedure.techniqueCharacteristicsVideo or registerProcedure.techniqueCharacteristicsAudio %}
             <div class="onlinegoldBorders">
+                {% if registerProcedure.techniqueCharacteristicsVideo %}
                 <div class="specs">
                     <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/camera.svg') }}">{{ 'ccm.register_movie.video_specs'|trans }}</h2>
                     {{ registerProcedure.techniqueCharacteristicsVideo|raw }}
                 </div>
+                {% endif %}
+                {% if registerProcedure.techniqueCharacteristicsAudio %}
                 <div class="specs">
                     <h2><img class="specsImg" src="{{ asset('bundles/fdccourtmetrage/img/sound.svg') }}">{{ 'ccm.register_movie.audio_specs'|trans }}</h2>
                     {{ registerProcedure.techniqueCharacteristicsAudio|raw }}
                 </div>
+                {% endif %}
             </div>
+            {% endif %}
         </div>
+        {% if registerProcedure.techniqueCharacteristicsText %}
         <div class="block-register-pop">
             <div class="block-s-info">
                 <div class="block-01-ms vFlexAlign">
@@ -25,6 +32,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         <!--<button class="modal-toggle">Update</button>-->
     </div>
 

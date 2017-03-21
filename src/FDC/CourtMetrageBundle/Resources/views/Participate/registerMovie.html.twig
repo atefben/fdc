@@ -40,20 +40,22 @@
                     <div class="block-contain-txt-register-movie" data-article="{{ item.slug }}">
                         <div class="block-01-ms">
 
-                            <h4>{{ item.name }}</h4>
+                            {% if item.name %}<h4>{{ item.name }}</h4>{% endif %}
                             {{ item.procedureText|raw }}
                         </div>
 
                         {% if item.isCharacteristicsActive %}
                             <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
                                 <div class="block-01-ms">
-                                    <strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>
+                                    {% if item.characteristicsTitle %}<strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>{% endif %}
 
                                     {{ item.characteristicsText|raw }}
 
+                                    {% if item.characteristicsButtonLabel %}
                                     <div class="buttons-02 centered">
                                         <a href="{{ path('fdc_court_metrage_technical_characteristics', {slug: item.slug}) }}" target="_blank"><div class="button centered autoBtn">{{ item.characteristicsButtonLabel ? item.characteristicsButtonLabel : 'ccm.register_movie.see_form'|trans }}</div></a>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endif %}
@@ -61,8 +63,8 @@
                         {% if item.isRegulationActive %}
                             <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
                                 <div class="block-01-ms">
-                                    <strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>
-                                    <p class="centered">{{ item.regulationText|raw }}</p><br>
+                                    {% if item.regulationTitle %}<strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>{% endif %}
+                                    {{ item.regulationText|raw }}<br>
                                     <div class="buttons-02 centered">
                                         <a href="{{ path('fdc_court_metrage_regulation_detail', {slug: item.slug}) }}" class="button autoBtn centered" target="_blank">{{ 'ccm.register_movie.see_rules'|trans }}</a>
                                     </div>
@@ -72,7 +74,7 @@
 
                         {% if item.isRegisterFormActive %}
                             <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url({% path item.translatable.registerFormBackground|trans_fallback('file'), 'reference' %})">
-                                <strong class="title-25">{{ item.registerFormTitle }}</strong></br><br>
+                                {% if item.registerFormTitle %}<strong class="title-25">{{ item.registerFormTitle }}</strong></br><br>{% endif %}
                                 {{ item.registerFormText|raw }}
                                 <div class="buttons-02">
                                     <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">Voir le formulaire</a>
@@ -82,17 +84,21 @@
 
                         {% if item.contactUsTitle %}
                             <div class="block-contact block-01-ms">
-                                <strong class="title-25">{{ item.contactUsTitle }}</strong>
+                                {% if item.contactUsTitle %}<strong class="title-25">{{ item.contactUsTitle }}</strong>{% endif %}
+                                {% if item.contactUsLeftText %}
                                 <div class="item i-1">
                                     {{ item.contactUsLeftText|raw }}
                                 </div>
+                                {% endif %}
 
+                                {% if item.contactUsRightText %}
                                 <div class="item i-2">
                                     {{ item.contactUsRightText|raw }}
                                     <div class="buttons-02">
                                         <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                         {% endif %}
                     </div>
