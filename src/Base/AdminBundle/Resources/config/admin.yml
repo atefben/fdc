@@ -2716,7 +2716,7 @@ services:
         class: Base\AdminBundle\Admin\CCM\CcmWaitingPageAdmin
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmWaitingPage, ApplicationSonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Pages d'attensste}
+            - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.general, label: Pages d'attente}
         calls:
              - [ setTranslationDomain, ['BaseAdminBundle']]
 
