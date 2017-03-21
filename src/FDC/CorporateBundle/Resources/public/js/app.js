@@ -7543,7 +7543,7 @@ $(document).ready(function () {
         .css('cursor','pointer')
         .on('click',function(){
             if($(this).find('a').length){
-                var href = $(this).find('a').attr('href');
+                var href = $(this).find('.info a').attr('href');
                 window.location.href = href;
             }
         });
@@ -7553,7 +7553,7 @@ $(document).ready(function () {
         .css('cursor','pointer')
         .on('click',function(){
             if($(this).find('a').length){
-                var href = $(this).find('a').attr('href');
+                var href = $(this).find('.info a').attr('href');
                 window.location.href = href;
             }
         });
