@@ -81,7 +81,9 @@ class NodeListener
         }
 
         foreach ($object->getSites() as $site) {
-            $node->addSite($site);
+            if (!$node->getSites()->contains($site)) {
+                $node->addSite($site);
+            }
         }
 
         foreach ($object->getTranslations() as $translation) {
