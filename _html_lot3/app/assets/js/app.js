@@ -123,7 +123,6 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             }else if($data.filter('#home-news-statements-more-end')){
                 moreBtn = $data.filter('#home-news-statements-more-end');
                 if(oldButton.length){
-                    console.log('new urlstamp',oldButton.attr('href'));
                     homepageCards.config.urlStamp = oldButton.attr('href');
                 }
             }
@@ -191,7 +190,6 @@ homepageCards.showFiltersOverlay = function(element){
         if(typeof url === 'undefined' || $this.is('#home-news-statements-more-end')){
             url = homepageCards.config.urlStamp;
         }
-        console.log(url);
         var container = $this.closest('.block-01');
         var dateTime = $('.articles-wrapper .articles:last-child article:last-child').data('time');
         if(typeof dateTime === 'undefined'){
@@ -264,7 +262,6 @@ homepageCards.getCards = function(){
 homepageCards.insertCards = function(cards){
     //merge cards array with new cards
     var output = homepageCards.config.cards.concat(cards.filter(function (item) {
-        //console.log(item.find('.info strong a').attr('href'));
         var $return = true;
         for(var i = 0;i<homepageCards.config.cards.length;i++){
             if(homepageCards.config.cards[i].find('.info strong a').attr('href') == item.find('.info strong a').attr('href')){

@@ -16899,7 +16899,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 50px;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 65%;
   z-index: 2;
   cursor: pointer;
 }
@@ -16917,20 +16917,31 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .c-contact .contact #form .select select {
   background: none;
-  height: 50px;
-  line-height: 50px;
   border: none;
-  color: #c8a461;
   display: inline-block;
-  vertical-align: middle;
-  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 0.688rem;
   outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none !important;
+  width: 290px;
+  opacity: 0;
+}
+.c-contact .contact #form .select .icon-arrow-down {
+  font-size: .5rem;
+  margin-left: 20px;
+}
+.c-contact .contact #form .select .select-value {
+  color: #c8a461;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   padding-right: 10px;
-  width: 280px;
+  width: auto;
+  display: inline-block;
+  position: absolute;
+  text-align: left;
+  left: 84px;
+  padding-right: 25px;
 }
 .c-contact .contact #form .errors {
   border: 1px solid #e93939;

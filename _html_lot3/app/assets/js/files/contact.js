@@ -41,10 +41,12 @@ var initContact = function () {
         }, 400);
     });
 
+    //init value
+    $('.select .select-value .val').html($('.select option:selected').text());
     $('body').on('click', '.selectOptions span', function() {
-        
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
+        $('.select .select-value .val').html($(this).text());
         $('.select').removeClass('invalid');
     });
 
