@@ -35,6 +35,7 @@ var owInitSlider = function (sliderName) {
             smartSpeed: 700,
             onInitialized: function(){
                 var slides = $('.slider-home .owl-item');
+                $('.slider-home .owl-item:first-child').addClass('fade-in-right');
                 slides.each(function(){
                     var container = $(this).find('.text-trunc');
                     var desc = container.text();

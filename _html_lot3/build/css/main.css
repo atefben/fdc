@@ -10353,14 +10353,16 @@ body#home .isotope-01 .item .info {
   height: 100%;
   background: center 0 no-repeat fixed;
   display: none;
-  transform: all .8s ease-in;
+  transition: all .8s ease-in;
   background-position: left top;
   background-size: 67.7%;
   background-position-y: 210px;
   position: absolute;
+  transform: translateX(100%);
+  opacity: 1;
 }
 .slider-home .container-images .item.fade-in-right {
-  left: 100vw;
+  transform: translateX(0px);
 }
 .slider-home .container-images .item.fade-out {
   opacity: 0;
