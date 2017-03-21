@@ -51,9 +51,9 @@ class NodeRepository extends EntityRepository
             ->innerJoin('n.sites', 'site')
             ->andWhere('site.slug = :site_slug')
             ->setParameter('site_slug', $site)
-//            ->andWhere('(n.publishedAt <= :dateTime)')
-//            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
-//            ->setParameter('dateTime', new DateTime())
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
         ;
 
         foreach ($filters as $field => $value) {
