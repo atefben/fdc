@@ -242,6 +242,10 @@
           .val {
             width: auto;
             display: inline-block;
+
+            span {
+              max-width: 90%;
+            }
           }
         }
       }
