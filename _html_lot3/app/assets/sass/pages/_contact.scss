@@ -222,6 +222,9 @@
         .icon-arrow-down {
           font-size: .5rem;
           margin-left: 20px;
+          position: absolute;
+          right: 0px;
+          top: 1px;
         }
 
         .select-value {
@@ -238,14 +241,12 @@
           text-align: left;
           left: 207px;
           padding-right: 25px;
+          position: relative;
+          max-width: 310px;
 
           .val {
             width: auto;
             display: inline-block;
-
-            span {
-              max-width: 90%;
-            }
           }
         }
       }
