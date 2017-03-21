@@ -77,18 +77,19 @@ class DefaultController extends Controller
             }
         }
 
-        // Infos and statements
-        $homeInfos = $this
+        $filters = [
+            'festival' => $festivalId,
+            'displayedOnCorpoHome' => true,
+        ];
+        $nodes = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfosByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
+            ->getRepository('BaseCoreBundle:Node')
+            ->getHomeStatementsAndInfos($locale, $dateTime, 6, 'site-institutionnel', $filters)
         ;
-        $homeStatement = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementByDate($locale, $festivalId, $dateTime, 6, 'site-institutionnel', true)
-        ;
-        $homeContents = array_merge($homeInfos, $homeStatement);
+        $homeContents = [];
+        foreach ($nodes as $node) {
+            $homeContents[] = $this->getDoctrineManager()->getRepository($node->getEntityClass())->find($node->getEntityId());
+        }
         $this->sortByDate($homeContents);
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
         if (count($homeContents) > 6) {

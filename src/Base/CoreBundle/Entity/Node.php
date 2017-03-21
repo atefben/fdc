@@ -163,9 +163,18 @@ class Node implements TranslateMainInterface
      */
     protected $mainGallery;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Site")
+     *
+     */
+    protected $sites;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
+        $this->sites = new ArrayCollection();
     }
 
     /**
@@ -544,5 +553,38 @@ class Node implements TranslateMainInterface
     public function getMainGallery()
     {
         return $this->mainGallery;
+    }
+
+    /**
+     * Add sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     * @return Node
+     */
+    public function addSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites[] = $sites;
+
+        return $this;
+    }
+
+    /**
+     * Remove sites
+     *
+     * @param \Base\CoreBundle\Entity\Site $sites
+     */
+    public function removeSite(\Base\CoreBundle\Entity\Site $sites)
+    {
+        $this->sites->removeElement($sites);
+    }
+
+    /**
+     * Get sites
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSites()
+    {
+        return $this->sites;
     }
 }
