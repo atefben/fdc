@@ -20,6 +20,7 @@ class NodeUpdateCommand extends ContainerAwareCommand
             ->addArgument('entity', null, InputArgument::REQUIRED)
             ->addOption('first-result', null, InputOption::VALUE_OPTIONAL)
             ->addOption('max-results', null, InputOption::VALUE_OPTIONAL)
+            ->addOption('id', null, InputOption::VALUE_OPTIONAL)
         ;
     }
 
@@ -28,14 +29,18 @@ class NodeUpdateCommand extends ContainerAwareCommand
         $entity = $input->getArgument('entity');
         $firstResult = $input->getOption('first-result')?:null;
         $maxResults = $input->getOption('max-results')?:null;
+        $criteria = [];
+        if ($input->getOption('id')) {
+            $criteria['id'] => $input->getOption('id');
+        }
         if ('info' === $entity) {
-            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->findBy([], [], $maxResults, $firstResult);
+            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->findBy($criteria, [], $maxResults, $firstResult);
         }
         elseif ('news' === $entity) {
-            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:News')->findBy([], [], $maxResults, $firstResult);
+            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:News')->findBy($criteria, [], $maxResults, $firstResult);
         }
         elseif ('statement' === $entity) {
-            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->findBy([], [], $maxResults, $firstResult);
+            $items = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->findBy($criteria, [], $maxResults, $firstResult);
         }
 
 
