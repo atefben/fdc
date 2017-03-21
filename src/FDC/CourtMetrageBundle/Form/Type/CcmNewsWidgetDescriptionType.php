@@ -55,7 +55,7 @@ class CcmNewsWidgetDescriptionType extends CcmNewsWidgetType
                     ),
 					'required' => true,
                     'field_type' => 'ckeditor',
-                    'config_name' => 'widget'
+                    'config_name' => 'ccm_widget'
                 ),
                 'createdAt' => array(
                     'display' => false

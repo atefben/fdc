@@ -44,6 +44,24 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
+        ccm_widget:
+           # extra_plugins: divarea
+            customConfig: /bundles/baseadmin/ckeditor/config_ccm_widget.js
+            contentsCss: /bundles/baseadmin/ckeditor/ccm_widget.css
+            #styles
+            #browser sonata media
+            filebrowserBrowseRoute: admin_sonata_media_media_browser
+            filebrowserImageBrowseRoute: admin_sonata_media_media_browser
+            # Display images by default when clicking the image dialog browse button
+            filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+            filebrowserUploadRoute: admin_sonata_media_media_upload
+            filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+            # Upload file as image when sending a file from the image dialog
+            filebrowserImageUploadRoute: admin_sonata_media_media_upload
+            filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
         press:
             # extra_plugins: divarea
             customConfig: /bundles/baseadmin/ckeditor/config_press.js

@@ -43,7 +43,7 @@ class SingleDescriptionType extends DescriptionType
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                 ),

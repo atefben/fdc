@@ -38,7 +38,7 @@ class CcmLabelSectionContentTextType extends CcmLabelSectionContentType
                         ),
                         'required' => true,
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget'
+                        'config_name' => 'ccm_widget'
                     )
                 )
             ));
