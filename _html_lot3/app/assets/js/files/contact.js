@@ -45,9 +45,9 @@ var initContact = function () {
     if($('.select option:selected').length){
         var textSelectValue = $('.select option:selected').text();
     }else{
-        var textSelectValue = $('.select option.default').text();
+        var textSelectValue = $('.select select option.default').text();
     }
-
+    console.log(textSelectValue);
     
     //init value
     $('.select .select-value .val').html(textSelectValue);
