@@ -54,7 +54,7 @@ var initContact = function () {
     $('body').on('click', '.selectOptions span', function() {
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
-        $('.select .select-value .val').html($(this).text());
+        $('.select .select-value .val span').html($(this).text());
         $('.select').removeClass('invalid');
         $clamp($('.select .select-value .val span').get(0), {clamp: 1});
     });
