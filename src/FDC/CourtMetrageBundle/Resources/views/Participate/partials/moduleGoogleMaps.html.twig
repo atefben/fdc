@@ -1,0 +1,8 @@
+{% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+    {% set translation = module.translations[app.request.getLocale()] %}
+    <div class="descrip-section module-custom-text-style">
+        {{ translation.description|raw }}
+    <div id="google-map"></div>
+    </div>
+{% endif %}
+

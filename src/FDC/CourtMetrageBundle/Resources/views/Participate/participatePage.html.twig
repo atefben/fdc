@@ -1,0 +1,90 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="list-article participate prepare partners manual loading">
+        <div class="bandeau-list vCenter">
+            <div class="bandeau-list-img vCenterKid" style="background-image:url('{% path page.translatable.image|trans_fallback("file"), "reference" %}')">
+                <h2 class="title title-list-header">{{ page.title }}</h2>
+            </div>
+        </div>
+        {% if hasPF == false %}
+            <div class="contain-participate ">
+        {% endif %}
+            {#<div class="contain-descript">#}
+                {#<p class="descrip">#}
+                    {#Toute l’équipe du Festival de Cannes est heureuse de vous accueillir pour cette 68e édition. Pour que votre séjour se passe dans les meilleures conditions, voici quelques informations utiles.#}
+                {#</p>#}
+            {#</div>#}
+            {% if layers is defined and layers is not null %}
+                {% if hasPF %}
+                    <div class="contain-participate">
+                {% endif %}
+                {% for key, layer in layers %}
+                    <section class="content-manual content-partners item-manual">
+                        <div class="contain-section contain-cinema contain-infos {% if loop.first %}participate-active{% endif %}">
+                            <h3 class="title-participate">
+                                <i class="icon {{ layer.translatable.icon }}"></i>{{ layer.name }}
+                            </h3>
+                            <i class="icon {% if loop.first %}icon_moins{% else %}icon_case-plus{% endif %} accordion"></i>
+                            {% if modules[key] is defined and modules[key] is not null %}
+                                <div class="item-manual">
+                                    <div class="contain-infos">
+                                        {% for module in modules[key] %}
+                                            {% set type = module.getType() %}
+                                            {% if type == 'imagetext' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleImageText.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'pf' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/modulePF.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'pictos' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/modulePictos.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'threecolumns' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleThreeColumns.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'fourcolumns' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleFourColumns.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'subtitle' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleSubtitle.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'transport' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleTransport.html.twig' with ({'module': module}) %}
+                                            {% elseif type == 'googlemaps' %}
+                                                {% include 'FDCCourtMetrageBundle:Participate:partials/moduleGoogleMaps.html.twig' with ({'module': module}) %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </section>
+                {% endfor %}
+                {% if hasPF %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% if hasPF == false %}
+            </div>
+        {% endif %}
+    </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+        "name" : 'breadcrumb.inscrire'|trans,
+        "url"  : path('fdc_court_metrage_register_movie')
+    },
+    {
+    "name" : page.title,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+{% endblock %}

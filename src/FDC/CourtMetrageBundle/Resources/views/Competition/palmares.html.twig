@@ -1,0 +1,48 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="list-article palmares-list loading ">
+        {% include 'FDCCourtMetrageBundle:Competition/partials:competitionSubHeader.html.twig' with {
+                'selectionTab': selectionTab,
+                'isSelection': false,
+                'juryTab': juryTab,
+                'isJury': false,
+                'palmaresTab': palmaresTab,
+                'isPalmares': true
+            }
+        %}
+
+        <div class="container container-list">
+            <section class="categorie-items">
+                {% for award_association in award_associations %}
+                    {% include 'FDCCourtMetrageBundle:Competition:partials/movie.html.twig' %}
+                {% endfor %}
+            </section>
+        </div>
+
+        {% include 'FDCCourtMetrageBundle:Competition/partials:retrospective.html.twig' with {
+            'isSelection': false,
+            'isJury': false,
+            'isPalmares': true
+        }%}
+    </div>
+
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_court_metrage_homepage')
+        },
+        {
+            "name" : 'breadcrumb.competition'|trans,
+            "url"  : path('fdc_court_metrage_competition_selection')
+        },
+        {
+            "name" : palmaresTab.name,
+            "url"  : path('fdc_court_metrage_competition_palmares')
+        }
+        ]
+    }
+%}
+{% endblock %}

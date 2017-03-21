@@ -1,0 +1,140 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div class="block-push block-push-top" style="background-image: url('{% path image|trans_fallback('file'), 'reference' %}')">
+        <div class="vFlexAlign">
+            <div class="txts">
+                <h1 class="title-3">
+                    {% if type == 'who_are_we' %}
+                        {{ 'ccm.short_film_corner.who_are_we'|trans }}
+                        {% set sfc_route_name = 'fdc_court_metrage_sfc_who_are_we' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_who_are_we'|trans %}
+                    {% elseif type == 'our_events' %}
+                        {{ 'ccm.short_film_corner.our_events'|trans }}
+                        {% set sfc_route_name = 'fdc_court_metrage_sfc_our_events' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_our_events'|trans %}
+                    {% elseif type == 'relive_edition' %}
+                        {{ 'ccm.short_film_corner.relive_edition'|trans }}
+                        {% set sfc_route_name = 'fdc_court_metrage_sfc_relive_edition' %}
+                        {% set breadcrumb_trans = 'breadcrumb.sfc_relive_edition'|trans %}
+                    {% endif %}
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="ajax-section short-film-corner">
+        <div class="contain-ajax bright" id="main">
+            {% if sfcPages is defined and sfcPages|length > 1 and sfc_route_name is defined %}
+                <nav class="navigation-sticky">
+                    <ul>
+                        {% for page in sfcPages %}
+                            <li {{ slug == page.slug ? 'class="active"' : '' }}>
+                                <a href="{{ path(sfc_route_name,{'slug': page.slug}) }}">{{ page.titleNavigation ?: page.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endif %}
+            <section id="main" class="single-article">
+                <div class="all-contain">
+                    <div class="contain-title vFlexAlign block-01-mms">
+                        {% if hideTitle == false %}
+                            <h2 class="title-article">{{ title }}</h2>
+                        {% endif %}
+                        <h2 class="title-02">{{ description|raw }}</h2>
+                    </div>
+                    <div class="buttons buttons-01">
+                        <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.news.share_article'|trans }}</a>
+                        <a href="#" class="button" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.short_film_corner.print'|trans }}</a>
+                    </div>
+                    <div class="block-01-mms">
+                        {% for widget in widgets %}
+                            {% include '@FDCCourtMetrage/shortfilmcorner/blocks/' ~ widget.getType() ~ '.html.twig' with {'widget': widget} %}
+                        {% endfor %}
+                    </div>
+                    <div class="share">
+                        <p>{{ 'ccm.news.share_article'|trans }}</p>
+                        <div class="buttons square">
+                            {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                            {% spaceless %}
+                                <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl|url_encode(true) }}&picture={% if image is not null %}{% path image|trans_fallback('file'), 'reference' -%}{% endif %}&title={{ title|url_encode(true) }}&description={{ description|striptags|raw|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                   rel="nofollow" class="button facebook"><i class="icon icon_facebook"></i>
+                                </a>
+                            {% endspaceless %}
+                            <a  href="//twitter.com/intent/tweet?text={{ title ~ ' ' ~ currentUrl }}" class="button twitter"><i class="icon icon_twitter"></i>
+                            </a>
+                            <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                            <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                            <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% for key, position in positions %}
+            {% if key == 'catalog' %}
+                {% if catalogIsActive == 1%}
+                    {{ render(controller('FDCCourtMetrageBundle:Transverse:catalog')) }}
+                {% endif %}
+            {% elseif key == 'actualite' %}
+                {% if actualiteIsActive == 1 %}
+                    {{ render(controller('FDCCourtMetrageBundle:Transverse:actualite')) }}
+                {% endif %}
+            {% elseif key == 'sejour'%}
+                {% if sejourIsActive == 1 %}
+                    <div class="list-article">
+                        <div class="bandeau-list">
+                            {% if sejour is defined and sejour is not null %}
+                                {% include 'FDCCourtMetrageBundle::homepage/_sejour.html.twig' %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% elseif key == 'social'%}
+                {% if socialIsActive == 1 %}
+                    {{ render(controller('FDCCourtMetrageBundle:SocialWall:social')) }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+    </div>
+
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+        {"breadcrumb":
+            [
+                {
+                    "name" : 'breadcrumb.home'|trans,
+                    "url"  : path('fdc_court_metrage_homepage')
+                },
+                {
+                    "name" : 'breadcrumb.sfc'|trans,
+                    "url"  : path('fdc_court_metrage_sfc_who_are_we')
+                },
+                {
+                    "name" : breadcrumb_trans,
+                    "url"  : path(sfc_route_name)
+                },
+                {
+                    "name" : title|truncate(32),
+                    "url"  : ''
+                }
+            ]
+        }
+    %}
+
+    <!-- POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': '',
+        'detail': '',
+        'title': title,
+        'description': description|raw,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+    <!-- END POPIN MAIL SHARE -->
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmailMedia',
+    {'section': '',
+        'detail': '',
+        'title': title,
+        'description': description|raw,
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+{% endblock %}

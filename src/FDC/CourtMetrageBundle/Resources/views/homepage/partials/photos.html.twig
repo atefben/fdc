@@ -1,0 +1,47 @@
+<div class="aboutPhotos">
+    <div class="slideshow goldSlideshow">
+        <div class="slideshow-img">
+            <div class="images">
+                {% if widget.translatable.medias is defined and widget.translatable.medias is not null %}
+                    {% for key, mediaGallery in widget.translatable.medias %}
+                        {% set photoTranslation = '' %}
+                        {% set photoTheme = '' %}
+
+                        {% if mediaGallery.media.translations[app.request.getLocale()] is defined and mediaGallery.media.translations[app.request.getLocale()] is not null %}
+                            {% set photoTranslation = mediaGallery.media.translations[app.request.getLocale()] %}
+                        {% endif %}
+
+                        {% if mediaGallery.media.theme.translations[app.request.getLocale()] is defined and mediaGallery.media.theme.translations[app.request.getLocale()] is not null %}
+                            {% set photoTheme = mediaGallery.media.theme.translations[app.request.getLocale()] %}
+                        {% endif %}
+
+                        <div class="img {% if loop.first %}active{% endif %}">
+                            <a id="photo{{ key }}" data-pid="{{ key }}" class="chocolat-image ajax" href="{% path mediaGallery.media|trans_fallback('file'), '2560x1620' %}" title='<span class="category">{{ photoTheme.name }}</span><span class="date">{{ photoTranslation.updatedAt|date("d-m-Y") }}</span><h2>{{ photoTranslation.legend }}</h2>' data-credit="{{ 'ccm_credit_image'|trans }}: {{ photoTranslation.copyright }}">
+                                <img src="{% path mediaGallery.media|trans_fallback('file'), '1266x798' %}" srcset="{% path mediaGallery.media|trans_fallback('file'), '1266x798' %} 1x, {% path mediaGallery.media|trans_fallback('file'), '1266x798' %} 2x" alt="{{ mediaGallery.media|trans_fallback('alt')  }}" title="{{ mediaGallery.media|trans_fallback('legend') }}" data-object-fit="contain">
+                            </a>
+                        </div>
+                    {% endfor %}
+                 {% endif %}
+            </div>
+            <div class="owl-carousel thumbnails">
+                {% set firstThumbnail = null %}
+                {% if widget.translatable.medias is defined and widget.translatable.medias is not null %}
+                    {% for key, mediaGallery in widget.translatable.medias %}
+                        {% set photoTranslation = '' %}
+
+                        {% if mediaGallery.media.translations[app.request.getLocale()] is defined and mediaGallery.media.translations[app.request.getLocale()] is not null %}
+                            {% set photoTranslation = mediaGallery.media.translations[app.request.getLocale()] %}
+                            {% if loop.first %}
+                                {% set firstThumbnail = photoTranslation %}
+                            {% endif %}
+                        {% endif %}
+                        <div data-id="photo{{ key }}" class="thumb {% if loop.first %}active{% endif %}" data-caption="<strong>{{ photoTranslation.legend }}</strong> © {{ photoTranslation.copyright }}">
+                            <img src="{% path mediaGallery.media|trans_fallback('file'), '97x61' %}" srcset="{% path mediaGallery.media|trans_fallback('file'), '97x61' %} 1x, {% path mediaGallery.media|trans_fallback('file'), '194x122' %} 2x" />
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <p class="caption"><strong>{% if firstThumbnail %}{{ firstThumbnail.legend }}{% endif %}</strong> © {% if firstThumbnail %}{{ firstThumbnail.copyright }}{% endif %}</p>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="video-container state-init video youtube-news-widget"
+     data-name="{{ widget|trans_fallback('title') }}"
+     data-file='[{"file":"{{ widget|trans_fallback('url') }}"}]'
+     data-img="{% path widget.image|trans_fallback('file'), 'reference' %}">
+    <div id="{{ widget.id }}" class="video-player"></div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <p>{{ widget|trans_fallback('title') }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

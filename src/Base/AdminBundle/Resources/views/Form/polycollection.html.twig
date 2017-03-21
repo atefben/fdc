@@ -258,6 +258,74 @@
     </div>
 {% endblock %}
 
+{% block ccm_news_widget_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4><strong>{{ 'form.widget.text'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_subtitle_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_description_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4><strong>{{ 'form.ccm.widget.description'|trans }}</strong></h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block event_widget_text_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
@@ -514,6 +582,57 @@
     </div>
 {% endblock %}
 
+{% block ccm_news_widget_quote_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.quote'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_quote_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.widget.quote'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_signature_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.signature'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {# render only the content block and the other values #}
 {% block event_widget_quote_type_widget %}
     {% set locale = locale_default_translation %}
@@ -565,6 +684,34 @@
     </div>
 {% endblock %}
 
+{% block ccm_news_widget_audio_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.audio'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_audio_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.widget.audio'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block event_widget_audio_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'form.widget.audio'|trans }}</h4>
@@ -582,6 +729,34 @@
 {% block news_widget_image_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'form.widget.image'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_image_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.widget.image'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_image_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.ccm.widget.image'|trans }}</h4>
         {{ form_widget(form) }}
         <div class="clearfix">
             <div class="fdc-widget-remove-btn">
@@ -621,6 +796,64 @@
     </div>
 {% endblock %}
 
+{% block ccm_news_widget_image_dual_align_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.image_dual_align'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_image_dual_align_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.widget.image_dual_align'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_gallery_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
+        <h4>{{ 'form.widget.gallery'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_gallery_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.gallery'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.gallery) }}
+        {{ form_widget(form.children.position) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block event_widget_image_dual_align_type_widget %}
     <div class="item base-widget">
         <h4>{{ 'form.widget.image_dual_align'|trans }}</h4>
@@ -637,6 +870,34 @@
 
 {% block news_widget_video_type_widget %}
     <div class="item base-widget">
+        <h4>{{ 'form.widget.video'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_video_type_widget %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.video'|trans }}</h4>
+        {{ form_widget(form) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_video_type_widget %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
         <h4>{{ 'form.widget.video'|trans }}</h4>
         {{ form_widget(form) }}
         <div class="clearfix">
@@ -666,6 +927,42 @@
 {% block news_widget_video_youtube_type_widget %}
     {% set locale = locale_default_translation %}
     <div class="item base-widget">
+        <h4>{{ 'form.widget.video_youtube'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.image) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_news_widget_video_youtube_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.widget.video_youtube'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        {{ form_row(form.children.image) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_sfc_widget_video_youtube_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="sfc-widgets">
         <h4>{{ 'form.widget.video_youtube'|trans }}</h4>
         {{ form_widget(form.children._type) }}
         {{ form_widget(form.children.position) }}
@@ -1540,3 +1837,400 @@
         </div>
     </div>
 {% endblock %}
+
+{% block film_register_procedure_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.film_register.procedure_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.procedure) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_homepage_slider_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="slider">
+        <h4>{{ 'form.ccm.label.homepage_slider'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_homepage_push_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="push">
+        <h4>{{ 'form.ccm.label.homepage_push'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_catalog_push_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="catalog">
+        <h4>{{ 'form.ccm.label.catalog.homepage'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block single_description_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.pros.description_1_column_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block double_description_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.pros.description_2_column_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_label_section_content_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.graphical_charter.content.text'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_label_section_position_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.graphical_charter.label_section'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.labelSection) }}
+        {{ form_row(form.children.position) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.footer.content_text_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_label_section_content_one_column_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.graphical_charter.content.one_column'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.labelContentFiles) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_label_section_content_two_columns_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.labelContentFiles) }}
+        {{ form_row(form.children.labelContentFiles2) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_label_section_content_three_columns_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.image3) }}
+        {{ form_row(form.children.labelContentFiles) }}
+        {{ form_row(form.children.labelContentFiles2) }}
+        {{ form_row(form.children.labelContentFiles3) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_homepage_actualite_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="actualite">
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
+        {{ form_row(form.children.theme) }}
+        {{ form_row(form.children.date) }}
+        {{ form_row(form.children.isActive) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ccm_homepage_sejour_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget" data-itemtype="sejour">
+        {{ form_widget(form.children._type) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block module_image_text_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_image_text_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_partenaires_fournisseur_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_partenaires_fournisseur_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.logo) }}
+        {{ form_row(form.children.photo) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_pictos_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_pictos_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_three_columns_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_three_columns_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_row(form.children.image1) }}
+        {{ form_row(form.children.pdf1) }}
+        {{ form_row(form.children.image2) }}
+        {{ form_row(form.children.pdf2) }}
+        {{ form_row(form.children.image3) }}
+        {{ form_row(form.children.pdf3) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_four_columns_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_four_columns_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_subtitle_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_subtitle_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_transport_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_transport_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block module_google_maps_type_widget %}
+    {% set locale = locale_default_translation %}
+    <div class="item base-widget">
+        <h4>{{ 'form.ccm.label.layer.module_google_maps_type_widget'|trans }}</h4>
+        {{ form_widget(form.children._type) }}
+        {{ form_widget(form.children.position) }}
+        {{ form_widget(attribute(form.children.translations, locale)) }}
+        <div class="clearfix">
+            <div class="fdc-widget-remove-btn">
+                <a class="btn btn-danger btn-sm btn-outline remove_item">
+                    <i class="fa fa-minus-circle"></i> {{ 'action_delete'|trans({}, 'SonataAdminBundle') }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+<div class="contain-infos">
+    <div class="single-image vFlexAlign">
+        <img src="{% path widget.translatable.image|trans_fallback('file'), 'reference' %}" alt="image">
+    </div>
+
+    <div class="download no-flex customWidth wysiwyg">
+        <span class="title-img-top">{{ widget.title }}</span>
+        <p class="caption">{{ widget.legend|raw }}</p>
+    </div>
+</div>
+
+<div class="a-left s-margin-top">
+    {% if oneColumnTabs[widget.translatable.id][1] is defined %}
+        {% include 'FDCCourtMetrageBundle:Participate:partials/downloadZip.html.twig' with {
+        'widget': widget,
+        'tabs': oneColumnTabs,
+        'files': oneColumnFiles,
+        'column': 1
+        } %}
+    {% endif %}
+    <a href="#" class="link a-left">{{ 'ccm.widget.technical_constraints'|trans }}</a>
+</div>

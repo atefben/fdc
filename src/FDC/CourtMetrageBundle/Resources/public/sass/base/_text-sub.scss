@@ -1,0 +1,1207 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Style font
+// 2. Boutons
+// =========================
+
+
+// 1. Style font
+// =========================
+
+
+
+sub {
+  vertical-align: super;
+  font-size:.5rem;
+}
+
+.italic {
+  font-family: $CamphorItalic;
+}
+
+.dark {
+
+  figcaption{
+    color:#666666;
+  }
+
+  .italic {
+    font-family: $CamphorItalic;
+    color:#666666;
+  }
+
+}
+
+.bright {
+
+  .quote .italic {
+    font-family: $CamphorItalic;
+    color: #141414 !important;
+  }
+}
+
+.title {
+  font-family: $CamphorRegular;
+  font-size: 20px;
+  line-height: 1.8;
+  /*letter-spacing: 10px;
+  margin-bottom: 23px;*/
+  text-align: center;
+  text-transform: uppercase;
+  color:#141414;
+
+  .dark & {
+    color:#fff;
+  }
+}
+
+.categorie-items{
+  .title-list-cat{
+    .title-item {
+      font-family: $CamphorRegular;
+      font-size: 20px;
+      line-height: 1.8;
+      /*letter-spacing: 10px;
+      margin-bottom: 23px;*/
+      text-align: center;
+      color:#141414;
+      .dark & {
+        color:#fff;
+      }
+    }
+  }
+}
+
+.title-2 {
+  font-family: $CamphorHeavy;
+  font-weight: 700;
+  font-size: 1.875rem;//30 px
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.title-2a {
+  font-family: $CamphorHeavy;
+  font-size: .75rem;//30 px
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.title-3 {
+  font-family: $CamphorBold;
+  font-size: .875rem;//14px
+  color:$gold;
+  text-transform: uppercase;
+}
+
+.title-4 {
+  font-family: $CamphorBold;
+  font-size: 1.125rem; //18px
+  color:#141414;
+  text-transform: uppercase;
+  line-height: 24px;
+}
+
+.title-4a {
+  font-family: $CamphorBold;
+  font-size: 1.75rem; //28px
+  color:#000;
+  text-transform: uppercase;
+  line-height: 36px;
+}
+
+.title-5 {
+  font-family: $CamphorMedium;
+  font-style: italic;
+  color:$gold;
+  font-size: .75rem; //12px
+  line-height: 24px;
+}
+
+.title-6 {
+  font-size: .6875rem;//11px
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: $CamphorBold;
+  color:#333333;
+}
+
+.title-7 {
+  font-size: .875rem;//14px
+  text-transform: uppercase;
+  line-height: 24px;
+  font-family: $CamphorBold;
+  color:#141414;
+
+  .block-infos & {
+    width: 150px;
+    text-align: center;
+  }
+}
+
+.title-8 {
+  font-family: $CamphorBold;
+  font-size: .875rem; //14px
+  letter-spacing: .5rem; //500
+  text-transform: uppercase;
+  line-height: 18px;
+}
+
+.title-9 {
+  font-family: $CamphorBold;
+  font-size: .75rem; //12px
+  letter-spacing: .2rem; //200
+  text-transform: uppercase;
+  line-height: 18px;
+  color:#fff;
+  display:block;
+  text-align: center;
+  margin-bottom: 19px;
+  padding-top: 60px;
+
+  .bright & {
+    color: #4f4f4f;
+  }
+}
+
+.title-10 {
+  font-family: $CamphorBold;
+  font-size: 1rem; //16px
+  line-height: 24px;
+  color:#fff;
+}
+
+.title-11 {
+  font-family: $CamphorBold;
+  color:#fff;
+  font-size: .875rem; //14px
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.title-12 {
+  font-family: $CamphorItalic;
+  color:$gold;
+  font-size: .8125rem; //13px
+  line-height: 18px;
+}
+
+.title-13 {
+  font-family: $CamphorBold;
+  color:#fff;
+  font-size: .625rem; //10px
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.title-14 {
+  font-family: $CamphorBold;
+  color:$gold;
+  font-size: .625rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 39px;
+
+  .date {
+    color:#666666;
+    margin-left: 3px;
+  }
+}
+
+.title-15 {
+  color:#0c0c0c;
+  font-family: $CamphorThin;
+  font-size: 3rem;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-bottom: 44px;
+  padding: 0px 155px;
+
+  .dark & {
+    color: #fff;
+  }
+
+  .brigth & {
+    color: #0C0C0C;
+  }
+}
+
+
+.title-16 {
+  color:#0c0c0c;
+  font-family: $CamphorRegular;
+  font-size: 1.375rem;
+  line-height: 36px;
+  display: block;
+  text-align: center;
+  margin-bottom: 54px;
+  margin-top: 70px;
+}
+
+.title-17 {
+  color:#999999;
+  font-family: $CamphorRegular;
+  font-size: .6875rem;
+  line-height: 18px;
+}
+
+.title-18 {
+  color:#141414;
+  font-family: $CamphorHeavy;
+  font-size: .625rem;
+  line-height: 17.75px;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 2px;
+}
+
+.title-19 {
+  color:#141414;
+  font-family: $CamphorHeavy;
+  font-size: 2.25rem;
+  line-height: 36px;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 3px;
+}
+
+.title-20 {
+  color:$gold;
+  font-family: $CamphorItalic;
+  font-size: .75rem;
+  line-height: 14px;
+  display: block;
+  letter-spacing: .1rem;
+}
+
+.title-21 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#141414;
+  line-height: 24px;
+}
+
+.title-22 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#141414;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.title-23 {
+  font-family: $CamphorBold;
+  font-size: .875rem;
+  color: $gold;
+  letter-spacing: 2px;
+  line-height: 26px;
+  text-transform: uppercase;
+  width: 500px;
+  display: block;
+}
+
+.title-24 {
+  font-family: $CamphorBold;
+  font-size: .75rem;
+  color : #141414;
+  letter-spacing: 2px;
+  line-height: 24px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.title-25 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#0c0c0c;
+  line-height: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title-26 {
+  font-family: $CamphorBold;
+  font-size: 1rem;
+  color:#0c0c0c;
+  line-height: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.title-palmares-co {
+  font-family: $CamphorRegular;
+  color: #999;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 30px;
+
+  strong {
+    color: #fff;
+  }
+}
+
+.contain-title-grey {
+  background-color: #202020;
+  font-family: $CamphorBold;
+  font-size: 0.75rem;
+  letter-spacing: .2em;
+  height: 72px !important;
+
+  .title {
+    font-family: $CamphorBold;
+    font-size: 0.75rem;
+    letter-spacing: .2em;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+  }
+}
+
+.text-list {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+
+  li {
+    list-style:disc;
+    list-style-position: inside;
+  }
+}
+
+.text-list-01 {
+  font-size: 1rem;
+  font-family: $CamphorBold;
+  color: #141414;
+  line-height: 30px;
+  padding-left: 28px;
+  margin-bottom: 23px;
+
+  li {
+    // list-style:disc;
+    list-style-position: inside;
+  }
+}
+
+.text-list-02 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: $CamphorRegular;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin-top: 50px;
+  margin-bottom: 46px;
+
+  li {
+    list-style-position: inside;
+    list-style: decimal;
+  }
+
+  .gold {
+    font-family: $CamphorHeavy;
+  }
+}
+
+.gold {
+  color: $gold;
+}
+
+.bold {
+  font-family: $CamphorBold;
+}
+
+.bold-1 {
+  font-family: $CamphorBold;
+  color: #0c0c0c;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.quote {
+  width: 776px!important;
+}
+
+blockquote, .quote {
+
+  //padding: 30px 90px;
+  color:#141414;
+  text-align: center;
+  font-size: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 69px;
+  margin-bottom: 69px;
+  line-height: 32px;
+}
+
+.quote-important, .p-register .info {
+  padding: 25px 40px;
+  border:1px solid $gold;
+  margin:50px 0px;
+  margin-left: -40px;
+
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+
+  a {
+    color: $gold;
+    transition: .5s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+
+  strong {
+    font-size: .75rem;
+    color: #0c0c0c;
+    font-family: $CamphorBold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    display: block;
+  }
+}
+
+.quote-02 {
+  color:#666666;
+  font-size:1rem;
+  line-height: 26px;
+}
+
+.by-author {
+  font-size: .75rem;
+  color:#666666;
+  font-family: $CamphorMedium;
+  line-height: 24px;
+  margin-top: 59px;
+  padding-top: 11px;
+  border-top: 1px solid #e5e5e5;
+  display: block;
+
+  strong {
+    color:#141414;
+  }
+}
+
+.texte-01 {
+  color: #666666;
+  font-size: 1rem;
+  line-height: 26px;
+  font-size: $CamphorRegular;
+  margin-top: 32px;
+  margin-bottom: 66px;
+
+  a, strong, span{
+    color:$gold;
+  }
+}
+
+.subtitle {
+  font-family: $Playfair;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.return-back {
+  color:#fff;
+  font-family: $CamphorHeavy;
+  font-size:.625rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding-top: 20px;
+  display:block;
+  transition: .5s;
+
+  .mobile.portrait & {
+    left: 130px;
+  }
+
+  .icon {
+    font-size: .4rem;
+    margin-right: 10px;
+  }
+
+  &:hover {
+    opacity: .75;
+  }
+}
+
+.contain-title {
+  min-height: 152px;
+  flex-direction: column;
+
+  p, ul, ol {
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    color: #fff;
+    display:block;
+    // letter-spacing: .1rem;
+    text-align: center;
+    line-height: 36px;
+
+    .ie & {
+      margin-top: 67px;
+      width: 100%;
+    }
+
+    .bright & {
+      color: #141414;
+    }
+
+    a {
+      color: $gold;
+    }
+
+    em {
+      font-family: $CamphorItalic;
+    }
+
+    strong {
+      font-family: $CamphorBold;
+    }
+
+    sub {
+      vertical-align: text-bottom;
+      font-size: .5rem;
+    }
+
+    sup {
+      vertical-align: super;
+      font-size: .5rem;
+    }
+
+
+    font-size: 1rem;
+    line-height: 30px;
+    list-style: inside;
+    color: #666666;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+
+  }
+
+  ul {
+    list-style: inherit;
+    color: #666666;
+  }
+
+  ol li {
+    font-size: 1rem;
+    line-height: 30px;
+    list-style: inside;
+    list-style-type: decimal;
+    color: #666666;
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  ol {
+    list-style: inherit;
+    list-style-type: decimal;
+    color: #666666;
+    margin-left: 30px;
+  }
+
+
+  &.contain-title-small {
+    min-height: 100px;
+  }
+
+  &.contain-title-top {
+    padding: 10px 0px;
+  }
+
+  .title-01 {
+    font-size: 1.125rem;
+    color:#fff;
+    font-family: $CamphorRegular;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    text-align: center;
+    line-height: 30px;
+
+    .ie & {
+      margin-top: 67px;
+    }
+
+    .ie &.two {
+      margin-top: 28px;
+    }
+  }
+
+  .title-02 {
+    font-size: 1.125rem;
+    font-family: $CamphorBold;
+    color: #fff;
+    display:block;
+    // letter-spacing: .1rem;
+    text-align: center;
+    line-height: 36px;
+
+    .ie & {
+      margin-top: 67px;
+      width: 100%;
+    }
+
+    strong {
+      color:$gold;
+    }
+
+    .bright & {
+      color: #141414;
+    }
+  }
+
+  .title-03 {
+    text-align: center;
+    padding: 20px 20px 0;
+    font-size: .875rem;
+    width: 977px;
+    margin: 10px auto 2px;
+    line-height: 26px;
+    color: #fff;
+  }
+
+  .title-04 {
+    color: #999;
+    width: 958px;
+    margin: 0 auto;
+    text-align: center;
+
+    .ie & {
+      margin-top: 30px;
+    }
+
+  }
+}
+
+.small-pres, .pres-honneur {
+  ul, ol {
+    list-style: inside;
+    color: #666666;
+  }
+}
+
+figcaption, .caption {
+  color:#868686;
+  font-size:.625rem;
+  font-family:$CamphorMedium;
+  margin-top:10px;
+  text-align: left;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  @include transition(all 0.5s $smoothTransition);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.83);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+// 2. Boutons
+// =========================
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: $gold;
+  display: inline-block;
+  font-family: $CamphorBold;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  @include transition(all 0.9s $smoothTransition);
+
+  &:last-child {
+    border-right: 1px solid #dfdfdf;
+  }
+
+  &:hover {
+    background-color: $gold;
+    border-color: $gold;
+    color: #fff;
+  }
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+
+  .icon {
+    margin-right: 12px;
+    font-size: .85rem;
+    vertical-align: sub;
+  }
+
+  &.square .button {
+    height: 73px;
+    // line-height: 73px;
+    position: relative;
+    padding: 0;
+    text-align: center;
+    width: 73px;
+    .icon {
+      margin-right: 0px!important;
+    }
+
+    .button:last-child {
+      border-right: 1px solid #dfdfdf;
+    }
+
+    &:hover {
+      border-color: #dfdfdf;
+    }
+  }
+}
+
+.buttons-01 {
+  margin-bottom: 94px;
+
+  .button {
+    border-color:#292929;
+    color:$gold;
+
+    .bright & {
+      border-color: #e8e8e8;
+    }
+
+    &:hover {
+      border-color:$gold;
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    &:hover + a {
+      border-left-color: $gold;
+    }
+  }
+}
+
+.buttons-02 {
+
+  padding-top: 20px;
+
+  .button {
+    border-color: $gold;
+  }
+}
+
+.button-submit {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+
+  .dark & {
+    border: 1px solid #181818;
+  }
+
+  .icon {
+    margin-right: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: $gold;
+    color: $gold;
+    cursor: pointer;
+  }
+}
+
+.button-submit-02 {
+  width: 712px;
+  background-color: rgba(0, 0, 0, 0);
+  height: 55px;
+  margin-top: 46px;
+  outline: none;
+
+  .dark & {
+    border: 1px solid #181818;
+  }
+
+  .icon {
+    margin-right: 24px;
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: $gold;
+    color: $gold;
+    cursor: pointer;
+  }
+}
+
+.buttons-two {
+  .b-grey {
+    background-color: #fff;
+    border: 1px solid #f2f2f2;
+    color: rgba(20,20,20,.5);
+    height: 55px;
+    width: 265px;
+    outline: none;
+
+    &:hover {
+      color:$gold;
+      cursor: pointer;
+      border-color: $gold;
+      border-right: 0px solid #fff;
+    }
+
+    .icon {
+      font-size: .5rem;
+      margin-right: 5px;
+    }
+  }
+}
+
+
+.button-long {
+  display: block!important;
+  text-align: center;
+  border: 1px solid #dfdfdf!important;
+
+  .icon {
+    margin-right: 5px!important;
+  }
+}
+
+.align-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-half {
+  width: 42%!important;
+  text-align: center;
+  border: 1px solid #dfdfdf!important;
+  margin-top: 0px!important;
+}
+
+.block-button-bottom {
+  padding: 58px 0px;
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.arrows {
+  opacity: 0;
+  transition: .3s;
+  z-index: 1;
+  position: relative;
+
+  .ie & {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .next, .prev {
+    font-size: .55rem;
+    color:#030303;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    border:1px solid #e5e5e5;
+    position: fixed;
+    transition: .5s;
+
+    &:hover {
+      border-color:#030303;
+    }
+  }
+
+  .next {
+    top:42%;
+    right: 1%;
+  }
+
+  .prev {
+    left:1%;
+    top:42%;
+  }
+}
+
+.single-button {
+  border-right: 1px solid $gold !important;
+  border-color: $gold;
+}
+
+.button-02 {
+  border: 1px solid #ebebeb;
+  height: 39px;
+  color: $gold;
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 41px;
+  text-align: center;
+  font-size: .625rem;
+  text-transform: uppercase;
+  font-family: $CamphorHeavy;
+  margin: 0 auto;
+  transition: .5s;
+  letter-spacing: .1px;
+
+  .icon {
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: .8rem;
+  }
+
+  &:hover {
+    border-color: $gold;
+  }
+}
+
+.read-more {
+  border: 1px solid #e5e5e5;
+  clear: both;
+  color: #666666;
+  display: block;
+  height: 55px;
+  font-family: $CamphorHeavy;
+  font-size: 0.625rem;
+  line-height: 55px;
+  margin-top: 71px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  @include transition(all 0.9s $smoothTransition);
+
+  strong {
+    color: #141414;
+    font-weight: normal;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  .bright & {
+    border: 1px solid #e5e5e5 !important;
+
+    strong{
+      color: #141414 !important;
+    }
+  }
+
+  .dark & {
+    border: 1px solid #252525;
+
+    strong {
+      color: #fff;
+      font-weight: normal;
+    }
+  }
+}
+
+.read-later {
+  content: '';
+  display: block;
+  height: 40px;
+  opacity: 0;
+  visibility: hidden;
+  width: 40px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  @include transition(all 0.5s $smoothTransition);
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  .icon {
+    line-height: 46px;
+  }
+
+  span {
+    background-color: $black;
+    position: fixed;
+    display: block;
+    font-family: $CamphorBold;
+    font-size: 0.625rem;
+    opacity: 0;
+    visibility: hidden;
+    height: 48px;
+    line-height: 48px;
+    width: 200px;
+    color: #fff;
+    letter-spacing: 0.1em;
+    top: -59px;
+    left: -80px;
+    z-index: 5;
+    text-align: center;
+    text-transform: uppercase;
+    @include transform(translateY(6px) translateZ(0));
+    @include transition(opacity 0.5s $smoothTransition, visibility .5s $smoothTransition, transform 0.5s $smoothTransition);
+
+    &:after {
+      content: ' ';
+      height: 0;
+      position: absolute;
+      width: 0;
+      border: 7px solid transparent;
+      border-top-color: $black;
+      top: 100%;
+      left: 92px;
+    }
+  }
+}
+
+
+.article-single .small-pres, .article-single .pres-honneur {
+  p {
+    margin-bottom: 51px;
+    color: #666666;
+    font-size: 1rem;
+    line-height: 26px;
+    font-family: $CamphorRegular;
+    text-align: left;
+    margin-top: 32px;
+
+    strong {
+      font-family: $CamphorBold;
+      font-size: 1rem;
+      color: #141414;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    a {
+      color: $gold;
+      transition: all .5s cubic-bezier(.25,.46,.45,.94);
+
+      &:hover {
+        color: #8e6d30;
+      }
+    }
+  }
+
+  .big-quote {
+    p {
+      color: #b1b1b1;
+      text-align: center;
+      font-size: .875rem;
+      font-family: $CamphorItalic;
+      font-weight: bold;
+      line-height: 26px;
+
+      strong {
+        color: #b1b1b1;
+        font-size: .875rem;
+      }
+    }
+
+    strong {
+      color: $gold !important;
+      font-family: $CamphorBold;
+      text-transform: uppercase;
+      font-size: 1rem;
+      line-height: 26px;
+      text-align: center;
+      display: block;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 70px;
+}
+
+.big-quote strong {
+  color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 26px;
+  text-align: center;
+  display: block;
+  margin-bottom: 25px;
+}
+
+
+
+.autoBtn {
+  height: 50px;
+  line-height: 50px;
+  width: auto!important;
+  text-align: center;
+  padding: 0px 30px!important;
+}
+
+
+.single-article .big-quote {
+  width: 776px;
+  margin: 0 auto;
+  padding: 70px 70px;
+  box-sizing: border-box;
+  border: 1px solid #c8a461;
+  margin-bottom: 50px!important;
+  margin-top: 50px!important;
+}

@@ -1,0 +1,12 @@
+{% if sejourIsActive == 1%}
+    <div class="bandeau-list-img bandeau-head vCenter" style="background-image:url({% path sejour.translatable.image|trans_fallback('file'), 'reference' %})">
+        <a href="{{ sejour.url }}" {% if fdc_court_metrage_domain not in sejour.url %}target="_blank"{% endif %}><div class="contact-box" id="contact-box">
+                <div class="contact-details">
+                    <span>{{ sejour.title1 }}</span>
+                    <h3>{{ sejour.title2 }}</h3>
+                    <a href="{{ sejour.url }}"{% if fdc_court_metrage_domain not in sejour.url %}target="_blank"{% endif %}><div class="participateBtn">{{ sejour.button }}</div></a>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endif %}

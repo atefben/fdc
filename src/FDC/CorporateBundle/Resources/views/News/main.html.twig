@@ -7,13 +7,13 @@
     <section class="s-slider-retrospective">
 
         {#{% if not hideSliderAndMenu|default(false) %}#}
-            {#{% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}#}
+        {#{% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}#}
         {#{% endif %}#}
 
         <div class="ajax-section">
             <div class="contain-ajax bright" id="main">
                 {#{% if not hideSliderAndMenu|default(false) %}#}
-                    {#{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}#}
+                {#{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}#}
                 {#{% endif %}#}
                 <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
@@ -141,15 +141,15 @@
                 </div>
 
                 {% if focusArticles is not empty %}
-                    <div class="focus">
+                    <div class="focus border-bottom">
                         <div class="block-01">
-                        <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+                            <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
                             <div class="articles center">
                                 {% for article in focusArticles %}
                                     {% if article is not null %}
                                         {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
                                     {% endif %}
-                                {% endfor %}focus
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -189,24 +189,20 @@
         })) }}
         </div> <!-- end all contain -->
     </section>
+
+    {% if class(news) starts with 'N' %}
+        {% set parentTitle = 'corpo.infos.and.statements.page'|trans %}
+        {% set parentUrl = path('fdc_corporate_news_getarticles', {'year': news.festival.year}) %}
+    {% else %}
+        {% set parentTitle = 'header.mainnav.nav.lactualite'|trans %}
+        {% set parentUrl = path('fdc_corporate_news_infosandstatements') %}
+    {% endif %}
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
     {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': news.festival.year})
-    },
-    {
-    "name" : 'header.mainnav.nav.lactualite'|trans,
-    "url"  : path('fdc_corporate_news_getarticles', {'year': news.festival.year})
+    "name" : parentTitle,
+    "url"  : parentUrl
     },
     {
     "name" : news|trans_fallback('title'),
@@ -218,7 +214,7 @@
     {'section': '',
         'detail' : '',
         'title'  : '',
-        'description': '',
+        'description' : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
 {% endblock %}

@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\Theme;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
@@ -176,12 +177,39 @@ class NewsController extends Controller
     {
         $locale = $request->getLocale();
 
-        $parameters = $this->infosAndStatementsFilters($locale, $timestamp);
+        $theme = $request->query->get('theme', null);
+        $format = $request->query->get('format', null);
+        $day = $request->query->get('date', null);
+        if ($day) {
+            $split = $day;
+            if (count($split) == 4) {
+                $day = new DateTime();
+                $day->setDate($split[1], $split[2], (substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3]);
+                $day->setTime(0, 0, 0);
+            } else {
+                $day = null;
+            }
+        }
+
+        if ($theme) {
+            $themeTrans = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:ThemeTranslation')
+                ->findOneBy(['slug' => $theme])
+            ;
+            if ($themeTrans) {
+                $theme = $themeTrans->getTranslatable();
+            } else {
+                $theme = null;
+            }
+        }
+
+        $parameters = $this->infosAndStatementsFilters($locale, $timestamp, $day, $theme, $format);
         return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
 
 
-    private function infosAndStatementsFilters($locale, $time = null)
+    private function infosAndStatementsFilters($locale, $time = null, DateTime $day = null, Theme $theme = null, $format = null)
     {
         $before = null;
         if ($time) {
@@ -193,13 +221,13 @@ class NewsController extends Controller
         $infos = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getInfoRetrospective($locale, null, null, $maxResults, $before)
+            ->getInfoRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
         ;
 
         $statements = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, null, null, $maxResults, $before)
+            ->getStatementRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
         ;
 
         $articles = array_merge($infos, $statements);
@@ -224,24 +252,21 @@ class NewsController extends Controller
         $filters['format'][0] = 'all';
 
 
-        foreach ($articles as $key => $newsArticle) {
-            if (($key % 3) == 0) {
-                $newsArticle->double = true;
-            }
-
-            //check if filters don't already exist
-            $date = $newsArticle->getPublishedAt();
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
+        foreach ($articles as $key => $article) {
+            $date = $article->getPublishedAt();
+            if ($date instanceof DateTime && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
                 $filters['dates'][$date->format('y-m-d')] = $date;
             }
 
-            if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
-                $filters['themes']['content'][] = $newsArticle->getTheme();
+            $theme = $article->getTheme();
+            if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $theme->getId();
+                $filters['themes']['content'][] = $theme;
             }
 
-            if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
-                $filters['format'][] = $newsArticle->getNewsType();
+            $format = $article->getTypeClone();
+            if (!in_array($format, $filters['format'])) {
+                $filters['format'][] = $format;
             }
         }
 
@@ -253,10 +278,10 @@ class NewsController extends Controller
         }
 
         return [
-            'articles' => $articles,
-            'filters'  => $filters,
-            'time'     => $time,
-            'last'     => $last,
+            'articles'     => $articles,
+            'filters'      => $filters,
+            'time'         => $time,
+            'last'         => $last,
             'festivalYear' => $this->getFestival()->getYear()
         ];
     }
@@ -767,7 +792,6 @@ class NewsController extends Controller
         $nextStatement = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, null, $newsDate, 'site-institutionnel', $exclude);
         $nextStatement = $this->removeUnpublishedNewsAudioVideo($nextStatement, $locale);
         $nextStatement = reset($nextStatement);
-
 
 
         $prevInfo = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, null, $newsDate, 'site-institutionnel', $exclude);

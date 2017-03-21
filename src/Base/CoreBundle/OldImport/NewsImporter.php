@@ -235,9 +235,9 @@ class NewsImporter extends Importer
 
     protected function buildNewsArticleTranslation(NewsArticle $news, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
+        $mapperFields = [
             'resume' => 'introduction',
-        );
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
@@ -665,6 +665,7 @@ class NewsImporter extends Importer
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
 
+        $films = [];
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
             $film = $this
                 ->getManager()
@@ -672,8 +673,14 @@ class NewsImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                $news->setAssociatedFilm(null);
-
+                $films[] = $film;
+            }
+        }
+        if (count($films) === 1) {
+            $news->setAssociatedFilm(reset($films));
+        } else {
+            $news->setAssociatedFilm(null);
+            foreach ($films as $film) {
                 $found = false;
                 foreach ($news->getAssociatedFilms() as $associatedFilm) {
                     if ($associatedFilm->getAssociation()->getId() == $film->getId()) {
@@ -685,12 +692,13 @@ class NewsImporter extends Importer
                     $associatedFilm
                         ->setAssociation($film);
                     $news->addAssociatedFilm($associatedFilm);
-                    $this->getManager()->persist($film);
-                    $this->getManager()->flush();
+                    $this->getManager()->persist($associatedFilm);
                 }
-            }
 
+            }
         }
+        $this->getManager()->flush();
+
     }
 
     protected function buildAssociatedNews(NewsArticle $news, OldArticle $oldArticle)

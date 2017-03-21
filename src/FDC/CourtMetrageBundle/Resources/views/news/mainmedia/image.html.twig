@@ -1,0 +1,22 @@
+{% if mediaImage is not null %}
+    {% include '@FDCCourtMetrage/news/mainmedia/article.html.twig' with {'mediaImage': mediaImage} %}
+{% endif %}
+{% if gallery.medias|length > 0 %}
+    <div class="slideshow">
+        <div class="slideshow-img">
+            <div class="images">
+                {% for image in gallery.medias %}
+                    {% include '@FDCCourtMetrage/news/partials/gallery_image.html.twig' with {'mediaImage': image.media, 'galleryId': gallery.id, 'index': loop.index } only %}
+                {% endfor %}
+            </div>
+            <div class="owl-carousel thumbnails">
+                {% for image in gallery.medias %}
+                    {% include '@FDCCourtMetrage/news/partials/gallery_thumbnail.html.twig' with {'mediaImage': image.media, 'index': loop.index } only %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if gallery.medias[0] is defined and gallery.medias[0].media is not null %}
+            <p class="caption">{{ gallery.medias[0].media|trans_fallback('legend') ~ ' © ' ~  gallery.medias[0].media|trans_fallback('copyright') }}</p>
+        {% endif %}
+    </div>
+{% endif %}

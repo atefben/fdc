@@ -176,9 +176,9 @@ class InfoImporter extends Importer
      */
     protected function buildInfoArticleTranslation(InfoArticle $info, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
+        $mapperFields = [
             'resume' => 'introduction',
-        );
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
@@ -615,6 +615,8 @@ class InfoImporter extends Importer
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
 
+        $films = [];
+
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
             $film = $this
                 ->getManager()
@@ -622,8 +624,14 @@ class InfoImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                $info->setAssociatedFilm(null);
-
+                $films[] = $film;
+            }
+        }
+        if (count($films) == 1) {
+            $info->setAssociatedFilm(reset($films));
+        } else {
+            $info->setAssociatedFilm(null);
+            foreach ($films as $film) {
                 $found = false;
                 foreach ($info->getAssociatedFilms() as $associatedFilm) {
                     if ($associatedFilm->getAssociation()->getId() == $film->getId()) {
@@ -636,11 +644,12 @@ class InfoImporter extends Importer
                         ->setInfo($info)
                         ->setAssociation($film)
                     ;
-                    $this->getManager()->persist($film);
+                    $this->getManager()->persist($associatedFilm);
                 }
             }
-            $this->getManager()->flush();
         }
+        $this->getManager()->flush();
+
     }
 
     protected function buildAssociatedInfos(InfoArticle $info, OldArticle $oldArticle)

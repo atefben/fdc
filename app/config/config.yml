@@ -25,6 +25,7 @@ imports:
     # old roles
     - { resource: roles/security_all.yml }
     # news roles
+    - { resource: roles/groups/security_admin_ccm.yml }
     - { resource: roles/groups/security_admin_fdc.yml }
     - { resource: roles/groups/security_admin_mdf.yml }
     - { resource: roles/groups/security_community_manager.yml }
@@ -79,7 +80,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle, FDCMarcheDuFilmBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle, FDCMarcheDuFilmBundle, FDCCourtMetrageBundle ]
     use_controller: true
     filters:
         cssrewrite:

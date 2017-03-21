@@ -1,0 +1,73 @@
+.who {
+
+  .block-01-xs {
+    img {
+      margin-bottom: 55px;
+    }
+
+    figure {
+      margin-bottom: 55px;
+
+      img {
+        margin-bottom: 0px;
+      }
+
+      figcaption {
+        font-size: .75rem;
+      }
+    }
+  }
+
+  .buttons-01 {
+    margin-bottom: 65px;
+  }
+
+  .texte-01{
+    margin-bottom: 51px;
+  }
+}
+
+.who-staff {
+
+  .title-11 {
+    padding: 0 24px;
+  }
+
+
+  .title-12 {
+    padding: 0 0px;
+  }
+
+  .block-poster .contain-txts{
+    padding-top: 25px;
+    height: 121px;
+    // justify-content: center;
+  }
+
+  .item{
+    img, .contain-img{
+      width: 163px;
+      object-fit: cover;
+    }
+  }
+
+  .block-01 {
+    margin-bottom: 68px;
+  }
+}
+
+
+.who-staff {
+  .block-poster {
+    width: 163px;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 29px;
+
+  }
+
+  .title-22 {
+    margin-bottom: 20px;
+    display: block;
+  }
+}

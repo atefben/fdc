@@ -1,0 +1,63 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="loading">
+        <div class="faq">
+            <h2 class="title">{{ 'menu.faq'|trans }}</h2>
+            <inside class="faq-menu">
+                <ul>
+                    {% if faqRubriques is defined and faqRubriques is not null %}
+                        {% for rubrique in faqRubriques %}
+                            <li
+                                class="{% if (faqRubriques|first).id == rubrique.id %}active{% endif %}"
+                                data-name="rubrique-{{ rubrique.id }}">
+                                {{ rubrique.name}}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </inside>
+
+            {% if faqRubriques is defined and faqRubriques is not null%}
+                {% for rubrique in faqRubriques %}
+                    {% set isFirstLoop = loop.first %}
+                    {% if faqQuestionsAnswers[rubrique.translatable.id] is defined and faqQuestionsAnswers[rubrique.translatable.id] is not null %}
+                        <section style="top: 0px; opacity: 1;"
+                            class="faq-container {% if (faqRubriques|first).id == rubrique.id %}faq-active{% endif %}"
+                            data-name="rubrique-{{ rubrique.id }}">
+                            {% for questionAnswer in faqQuestionsAnswers[rubrique.translatable.id] %}
+                                <article class="wysiwyg {% if loop.first and isFirstLoop %}faq-article-active{% endif %}" {% if loop.first and isFirstLoop %}style="max-height: 5000px;"{% endif %}>
+                                    <div class="faq-question">
+                                        <h3 class="faq-title">{{ questionAnswer.questionText }}</h3>
+                                        {% if loop.first and isFirstLoop %}
+                                            <i class="icon icon_moins"></i>
+                                        {% else %}
+                                            <i class="icon icon_case-plus"></i>
+                                        {% endif %}
+                                    </div>
+                                    <p class="faq-description">{{ questionAnswer.answerText|raw }}</p>
+                                </article>
+                            {% endfor %}
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_court_metrage_homepage')
+        },
+        {
+            "name" : 'menu.faq'|trans,
+            "url"  : ''
+        }
+        ]
+    }
+%}
+{% endblock main %}
