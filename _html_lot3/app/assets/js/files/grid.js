@@ -233,8 +233,7 @@ var owInitGrid = function (id) {
                         });
                         $gridMore
                             .append(rawHtml)
-                            .isotope('appended',rawHtml)
-                            .isotope('layout');
+                            
 
                         if(typeof moreBtn !== 'undefined'){
                             
@@ -246,7 +245,8 @@ var owInitGrid = function (id) {
 
                         $gridMore.imagesLoaded(function () {
 
-                            //$gridMore.isotope();
+                            $gridMore.isotope('appended',rawHtml)
+                            .isotope('layout');
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
