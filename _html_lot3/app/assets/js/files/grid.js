@@ -231,8 +231,10 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
-                        $gridMore.append(rawHtml);
-                        $gridMore.isotope('appended',rawHtml);
+                        $gridMore
+                            .append(rawHtml)
+                            
+
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -243,7 +245,8 @@ var owInitGrid = function (id) {
 
                         $gridMore.imagesLoaded(function () {
 
-                            //$gridMore.isotope();
+                            $gridMore.isotope('appended',rawHtml)
+                            .isotope('layout');
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
@@ -489,6 +492,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+    console.log('owsetGridBigImg')
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
