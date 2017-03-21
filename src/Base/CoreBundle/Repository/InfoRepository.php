@@ -542,12 +542,15 @@ class InfoRepository extends EntityRepository
     /**
      * @param $locale
      * @param $festival
-     * @param $since
-     * @param int $maxResults
-     * @param $before
+     * @param null $since
+     * @param null $maxResults
+     * @param null $before
+     * @param \DateTime|null $day
+     * @param Theme|null $theme
+     * @param null $format
      * @return Info[]
      */
-    public function getInfoRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
+    public function getInfoRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null, \DateTime $day = null, Theme $theme = null, $format = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -577,6 +580,34 @@ class InfoRepository extends EntityRepository
                     OR (nvt.locale = :locale AND nvt.status = :status_translated)')
                 ->setParameter(':locale', $locale)
                 ->setParameter('status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+            ;
+        }
+
+        if ($day) {
+            $beginning = new \DateTime();
+            $beginning->setTimestamp($day->getTimestamp());
+            $beginning->setTime(0, 0, 0);
+            $end = new \DateTime();
+            $end->setTimestamp($day->getTimestamp());
+            $end->setTime(23,59,59);
+            $qb
+                ->andWhere('n.publishedAt BETWEEN :beginning AND :end')
+                ->setParameter(':beginning', $beginning)
+                ->setParameter(':end', $end)
+            ;
+        }
+
+        if ($theme) {
+            $qb
+                ->andWhere('n.theme = :theme')
+                ->setParameter(':theme', $theme->getId())
+            ;
+        }
+
+        if ($format) {
+            $qb
+                ->andWhere('n.typeClone = :format')
+                ->setParameter(':format', $format)
             ;
         }
 
