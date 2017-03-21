@@ -246,7 +246,7 @@ var owInitGrid = function (id) {
 
                             //memorize scrolltop
                             var scroll = $(document).scrollTop();
-                            console.log(scroll);
+                            
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
@@ -259,6 +259,8 @@ var owInitGrid = function (id) {
                                 // sort by color then number
                                 sortBy: ['number']
                             });
+
+                            $('html,body').scrollTop(scroll);
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
