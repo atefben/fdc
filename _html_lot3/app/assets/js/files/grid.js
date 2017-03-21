@@ -226,7 +226,7 @@ var owInitGrid = function (id) {
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
-
+                        var scroll = $(document).scrollTop();
                         var rawHtml = '';
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
@@ -241,11 +241,11 @@ var owInitGrid = function (id) {
                             $this.remove();
                         }
 
-
+                        $('html,body').scrollTop(scroll);
                         $gridMore.imagesLoaded(function () {
 
                             //memorize scrolltop
-                            var scroll = $(document).scrollTop();
+                            $('html,body').scrollTop(scroll);
                             
                             $gridMore.isotope({
                                 itemSelector: '.item',
