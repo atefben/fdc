@@ -1054,7 +1054,7 @@ var initVideo = function(hash) {
             $('.popin-mail').find('.chap-article').html('');
             if(typeof data['who'] !== 'undefined'){
                 var dataAuthors = data['who'];
-                
+
 
                 if(Array.isArray(dataAuthors)){
                     var output = '';
@@ -1069,7 +1069,7 @@ var initVideo = function(hash) {
                     var item = dataAuthors;
                     var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
                 }
-                $('.popin-mail').find('.contain-popin .article-authors').html(output);
+                $('.popin-mail').find('.contain-popin .article-authors').text(output);
             }
             $('.popin-mail').find('form #contact_section').val(data['category']);
             $('.popin-mail').find('form #contact_detail').val(data['date']);
