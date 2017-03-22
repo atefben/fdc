@@ -2543,10 +2543,11 @@ var owInitFilter = function (isTabSelection) {
                             var getVal = $this.data('filter');
 
                             if($('.articles-list').length){
-                                var numItems = $('.item.' + getVal + ':not([style*="display: none"]').length;
+                                var numItems = $('.item.' + getVal + ':not([style*="display: none"])').length;
                             }else{
-                                var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
+                                var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
+                            
                             if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
