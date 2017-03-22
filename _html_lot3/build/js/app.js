@@ -407,6 +407,8 @@ var initVideo = function(hash) {
                         'type': "video",
                         'category': data.labelN,
                         'date': data.dateN,
+                        'who': data.whoN,
+                        'email-content': data.emailContent,
                         'title': data.titleN,
                         'url': data.url
                     });
@@ -437,6 +439,7 @@ var initVideo = function(hash) {
                         url: $('.slider-02 .owl-item.center').find('.item').data('url'),
                         labelN: $('.slider-02 .owl-item.center').find('.item').data('label'),
                         palmN: $('.slider-02 .owl-item.center').find('.item').data('palm'),
+                        emailContent: $('.slider-02 .owl-item.center').find('.item').data('email-content'),
                         palmDateN: $('.slider-02 .owl-item.center').find('.item').data('palmdate'),
                         fbN: $('.slider-02 .owl-item.center').find('.item').data('facebook'),
                         twitterN: $('.slider-02 .owl-item.center').find('.item').data('twitter'),
@@ -464,6 +467,7 @@ var initVideo = function(hash) {
                     url: $this.find('.item').data('url'),
                     labelN: $this.find('.item').data('label'),
                     palmN: $this.find('.item').data('palm'),
+                    emailContent: $this.find('.item').data('email-content'),
                     palmDateN: $this.find('.item').data('palmdate'),
                     fbN: $this.find('.item').data('facebook'),
                     twitterN: $this.find('.item').data('twitter'),
@@ -1042,6 +1046,9 @@ var initVideo = function(hash) {
             $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
             $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
             $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
+            if(typeof data['email-content'] !== 'undefined'){
+                $('.popin-mail').find('.contain-popin #contact_message').val(data['email-content']);
+            }
             $('.popin-mail').find('form #contact_section').val(data['category']);
             $('.popin-mail').find('form #contact_detail').val(data['date']);
             $('.popin-mail').find('form #contact_title').val(data['title']);
