@@ -1046,9 +1046,9 @@ var initVideo = function(hash) {
             $('.popin-mail').find('.contain-popin .theme-article').text(data['category']);
             $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
             $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
-            console.log('email content',data['email-content']);
+            
             if(typeof data['email-content'] !== 'undefined'){
-
+                console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').html(data['email-content']);
             }
             if(typeof data['who'] !== 'undefined'){
