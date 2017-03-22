@@ -110,12 +110,15 @@
             {% endif %}
         </div>
         {% if class(article) starts with 'News' %}
-            <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            {% set linkArticle = path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) %}
         {% elseif class(article) starts with 'Info' %}
-            <a href="{{ path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            {% set linkArticle = path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug')}) %}
         {% elseif class(article) starts with 'Statement' %}
-            <a href="{{ path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'communique', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            {% set linkArticle = path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'communique', 'slug': article|trans_fallback('slug')}) %}
+        {% else %}
+            {% set linkArticle = '' %}
         {% endif %}
+        <a href="{{ linkArticle }}" class="linkImage"></a>
         <a href="#" class="read-later">
             <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
         </a>
@@ -132,7 +135,7 @@
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                 class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         <h2>
-            <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
+            <a href="{{ linkArticle }}">
                 {{ article|trans_fallback('title')|truncate(40) }}
             </a>
         </h2>
