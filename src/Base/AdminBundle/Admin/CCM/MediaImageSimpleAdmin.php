@@ -2,9 +2,8 @@
 
 namespace Base\AdminBundle\Admin\CCM;
 
-use Base\CoreBundle\Entity\MediaImageSimple;
-use Base\CoreBundle\Entity\MediaImageSimpleTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
+use FDC\CourtMetrageBundle\Entity\CcmMediaImageSimple;
 use FDC\CourtMetrageBundle\Entity\CcmMediaImageSimpleTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -165,9 +164,9 @@ class MediaImageSimpleAdmin extends Admin
 
     public function prePersist($object)
     {
-        if ($object instanceof MediaImageSimple) {
+        if ($object instanceof CcmMediaImageSimple) {
             foreach ($object->getTranslations() as $translation) {
-                if ($translation instanceof MediaImageSimpleTranslation) {
+                if ($translation instanceof CcmMediaImageSimpleTranslation) {
                     if ($translation->getFile()) {
                         $translation->getFile()->setUploadedFromBO(true);
                     }
@@ -181,9 +180,9 @@ class MediaImageSimpleAdmin extends Admin
 
     public function preUpdate($object)
     {
-        if ($object instanceof MediaImageSimple) {
+        if ($object instanceof CcmMediaImageSimple) {
             foreach ($object->getTranslations() as $translation) {
-                if ($translation instanceof MediaImageSimpleTranslation) {
+                if ($translation instanceof CcmMediaImageSimpleTranslation) {
                     if ($translation->getFile()) {
                         $translation->getFile()->setUploadedFromBO(true);
                     }
