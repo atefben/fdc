@@ -1067,6 +1067,10 @@ var initVideo = function(hash) {
                     var item = dataAuthors;
                     var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
                 }
+                $('.popin-mail').find('.contain-popin .article-authors').css({
+                    'position':'relative',
+                    'top': '-17px'
+                })
                 $('.popin-mail').find('.contain-popin .article-authors').html(output);
             }
             $('.popin-mail').find('form #contact_section').val(data['category']);
