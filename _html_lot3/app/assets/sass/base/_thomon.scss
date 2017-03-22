@@ -580,12 +580,15 @@ h2.sub-title {
 
     figure, img {
         height: 100%;
-        max-height: 180px;
         width: auto;
         max-width: none;
         margin: 0px;
         padding: 0px;
     }
+}
+
+#sortiecanne .block-list-img .item img{
+    max-height: 180px;
 }
 
 .block-legend .texts .text-01 strong {
