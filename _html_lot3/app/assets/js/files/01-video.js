@@ -1049,7 +1049,7 @@ var initVideo = function(hash) {
             console.log('email content',data['email-content']);
             if(typeof data['email-content'] !== 'undefined'){
 
-                $('.popin-mail').find('.contain-popin #contact_message').val(data['email-content']);
+                $('.popin-mail').find('.contain-popin #contact_message').html(data['email-content']);
             }
             console.log(data['who']);
             if(typeof data['who'] !== 'undefined'){
