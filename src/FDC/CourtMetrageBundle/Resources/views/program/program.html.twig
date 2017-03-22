@@ -21,94 +21,100 @@
             </div>
         {% endif %}
 
+        {% if filters|length > 0 or daysCollection|length > 0 %}
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
 
-                <div class="dropdown">
-                    <span>{{ 'ccm.program.show'|trans }}</span>
-                    <div id="eventSelector">
+                {% if filters|length > 0 %}
+                    <div class="dropdown">
+                        <span>{{ 'ccm.program.show'|trans }}</span>
+                        <div id="eventSelector">
+                            {% for filter in filters %}
+                                <div class="selectText" id="filter-{{ filter.id }}">
+                                    {{ filter.title|title }}{% if loop.index < filters|length %},{% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="selector">
                         {% for filter in filters %}
-                            <div class="selectText" id="filter-{{ filter.id }}">
-                                {{ filter.title|title }}{% if loop.index < filters|length %},{% endif %}
+                            <div class="selectbtn" id="selector-{{ filter.id }}" rel="filter-{{ filter.id }}">
+                                {{ filter.title }}
                             </div>
                         {% endfor %}
                     </div>
-                </div>
-                <br>
-                <div class="selector">
-                    {% for filter in filters %}
-                        <div class="selectbtn" id="selector-{{ filter.id }}" rel="filter-{{ filter.id }}">
-                            {{ filter.title }}
-                        </div>
-                    {% endfor %}
-                </div>
+                {% endif %}
 
-                <div class="conferencesMenu">
-                    {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
-                    <ul>
-                        {% for dayCollection in daysCollection %}
-                            {% set openedDay = (("now"|date("Y-m-d") == dayCollection.day.dateEvent|date("Y-m-d")) or (beforeEvent and loop.index == 1)) %}
-                            <li class="{% if openedDay %}open-selected-conf{% endif %}">
-                                <div class="open">
-                                    {{ dayCollection.day.dateEvent|date('d') }} {{ dayCollection.day.dateEvent|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ dayCollection.day.dateEvent|date('Y') }}
-                                    <span class="openPlus {% if openedDay %}noDisplay{% endif %}">
-                                        <i class="icon icon_creer"></i>
-                                    </span>
-                                    <span class="openMinus {% if openedDay %}doDisplay{% endif %}">
-                                        <i class="icon icon_moins"></i>
-                                    </span>
-                                </div>
-                                <div class="content firstContent">
-                                    <div class="parent">
-                                        <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
-                                        {% for scheduleCollection in dayCollection.day.schedulesCollection %}
-                                            <div class="box events selector-{{ scheduleCollection.schedule.scheduleType|trans_fallback('id') }}">
-                                                <div class="conf10"><p>{{ scheduleCollection.schedule.scheduleType|trans_fallback('title') }}</p></div>
-                                                <div class="conf60">
-                                                    <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
-                                                    <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
-                                                    {% if scheduleCollection.schedule|trans_fallback('description') %}
-                                                        {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
-                                                    {% endif %}
-                                                    {% if scheduleCollection.schedule|trans_fallback('url') %}
-                                                        <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" {% if fdc_court_metrage_domain not in scheduleCollection.schedule|trans_fallback('url') %}target="_blank"{% endif %}>
-                                                            <div class="confButton">
-                                                                <i class="icon icon_flecheGauche ensavoirplus"></i>
-                                                                {{ 'ccm.program.see_more'|trans }}
-                                                            </div>
-                                                        </a>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="conf30">
-                                                    {% if scheduleCollection.schedule|trans_fallback('accessType') %}
-                                                        <div>
-                                                            <span>{{ 'ccm.program.access_type'|trans }}</span>
-                                                            <p>{{ scheduleCollection.schedule|trans_fallback('accessType') }}</p>
-                                                        </div>
-                                                    {% endif %}
-                                                    {% if scheduleCollection.schedule|trans_fallback('timeDetails') %}
-                                                        <div>
-                                                            <span>{{ 'ccm.program.time'|trans }}</span>
-                                                            <p>{{ scheduleCollection.schedule|trans_fallback('timeDetails') }}</p>
-                                                        </div>
-                                                    {% endif %}
-                                                    {% if scheduleCollection.schedule|trans_fallback('location') %}
-                                                        <div>
-                                                            <span>{{ 'ccm.program.location'|trans }}</span>
-                                                            <p>{{ scheduleCollection.schedule|trans_fallback('location') }}</p>
-                                                        </div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        {% endfor %}
+                {% if daysCollection|length > 0 %}
+                    <div class="conferencesMenu">
+                        {% set beforeEvent = daysCollection|length ? ("now"|date("Y-m-d") < (daysCollection|first).day.dateEvent|date("Y-m-d")) : false %}
+                        <ul>
+                            {% for dayCollection in daysCollection %}
+                                {% set openedDay = (("now"|date("Y-m-d") == dayCollection.day.dateEvent|date("Y-m-d")) or (beforeEvent and loop.index == 1)) %}
+                                <li class="{% if openedDay %}open-selected-conf{% endif %}">
+                                    <div class="open">
+                                        {{ dayCollection.day.dateEvent|date('d') }} {{ dayCollection.day.dateEvent|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ dayCollection.day.dateEvent|date('Y') }}
+                                        <span class="openPlus {% if openedDay %}noDisplay{% endif %}">
+                                            <i class="icon icon_creer"></i>
+                                        </span>
+                                        <span class="openMinus {% if openedDay %}doDisplay{% endif %}">
+                                            <i class="icon icon_moins"></i>
+                                        </span>
                                     </div>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                                    <div class="content firstContent">
+                                        <div class="parent">
+                                            <!-- The base class is the box. Categories are then given as accessory classes. Any div can be in more than one category -->
+                                            {% for scheduleCollection in dayCollection.day.schedulesCollection %}
+                                                <div class="box events selector-{{ scheduleCollection.schedule.scheduleType|trans_fallback('id') }}">
+                                                    <div class="conf10"><p>{{ scheduleCollection.schedule.scheduleType|trans_fallback('title') }}</p></div>
+                                                    <div class="conf60">
+                                                        <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
+                                                        <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
+                                                        {% if scheduleCollection.schedule|trans_fallback('description') %}
+                                                            {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
+                                                        {% endif %}
+                                                        {% if scheduleCollection.schedule|trans_fallback('url') %}
+                                                            <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" {% if fdc_court_metrage_domain not in scheduleCollection.schedule|trans_fallback('url') %}target="_blank"{% endif %}>
+                                                                <div class="confButton">
+                                                                    <i class="icon icon_flecheGauche ensavoirplus"></i>
+                                                                    {{ 'ccm.program.see_more'|trans }}
+                                                                </div>
+                                                            </a>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="conf30">
+                                                        {% if scheduleCollection.schedule|trans_fallback('accessType') %}
+                                                            <div>
+                                                                <span>{{ 'ccm.program.access_type'|trans }}</span>
+                                                                <p>{{ scheduleCollection.schedule|trans_fallback('accessType') }}</p>
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if scheduleCollection.schedule|trans_fallback('timeDetails') %}
+                                                            <div>
+                                                                <span>{{ 'ccm.program.time'|trans }}</span>
+                                                                <p>{{ scheduleCollection.schedule|trans_fallback('timeDetails') }}</p>
+                                                            </div>
+                                                        {% endif %}
+                                                        {% if scheduleCollection.schedule|trans_fallback('location') %}
+                                                            <div>
+                                                                <span>{{ 'ccm.program.location'|trans }}</span>
+                                                                <p>{{ scheduleCollection.schedule|trans_fallback('location') }}</p>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
+        {% endif %}
 
         <div class="share" id="share" >
             <p>{{ 'ccm.news.share_article'|trans }}</p>
