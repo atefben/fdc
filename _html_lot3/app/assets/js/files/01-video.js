@@ -731,7 +731,11 @@ var initVideo = function(hash) {
             _duration = playerInstance.getDuration();
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
-            console.log(duration_secs);
+            
+            if (duration_secs < 10) {
+                duration_secs = "0" + duration_secs;
+            }
+
             $durationTime.html(duration_mins + ":" + duration_secs);
         }).on('bufferChange', function(e) {
             var currentBuffer = e.bufferPercent;
@@ -740,6 +744,10 @@ var initVideo = function(hash) {
             if (typeof _duration === "undefined" || _duration == 0) {
                 duration_mins = Math.floor(e.duration / 60);
                 duration_secs = Math.floor(e.duration - duration_mins * 60);
+
+                if (duration_secs < 10) {
+                duration_secs = "0" + duration_secs;
+            }
                 $durationTime.html(duration_mins + ":" + duration_secs);
                 _duration = e.duration;
             }
