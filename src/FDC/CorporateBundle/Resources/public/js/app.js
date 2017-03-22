@@ -412,8 +412,7 @@ var initVideo = function(hash) {
                     });
 
                     initRs();
-                    console.log(data.fbN);
-                    console.log(data.twitterN);
+                    console.log($facebook);
                     $facebook.attr('href', data.fbN);
                     $twitter.attr('href', data.twitterN);
                     $link.attr('data-clipboard-text', data.url);
