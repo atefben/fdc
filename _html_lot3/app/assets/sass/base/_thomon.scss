@@ -397,6 +397,12 @@ article.communique .picto {
             height: 380px;
         }
     } 
+
+    .slider-02 {
+        .owl-stage-outer {
+            transform: translate3d(-418px, 0px, 0px);
+        }
+    }
 }
 
 .slider-home .texts .item p {

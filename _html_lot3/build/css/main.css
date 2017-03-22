@@ -7293,6 +7293,9 @@ article.communique .picto .icon {
 #home #sortiecanne .video-container {
   height: 380px;
 }
+#home .slider-02 .owl-stage-outer {
+  transform: translate3d(-418px, 0px, 0px);
+}
 
 .slider-home .texts .item p {
   padding-bottom: 0px;
