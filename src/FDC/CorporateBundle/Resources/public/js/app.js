@@ -402,9 +402,6 @@ var initVideo = function(hash) {
 
 
                     $palmDate.html(data.palmDateN);
-                    $facebook.attr('href', data.fbN);
-                    $twitter.attr('href', data.twitterN);
-                    
 
                     updatePopinMedia({
                         'type': "video",
@@ -415,7 +412,10 @@ var initVideo = function(hash) {
                     });
 
                     initRs();
-                    console.log(data.url);
+                    console.log(data.fbN);
+                    console.log(data.twitterN);
+                    $facebook.attr('href', data.fbN);
+                    $twitter.attr('href', data.twitterN);
                     $link.attr('data-clipboard-text', data.url);
 
                 });
