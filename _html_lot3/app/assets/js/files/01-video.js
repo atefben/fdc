@@ -375,10 +375,20 @@ var initVideo = function(hash) {
 
                     var dataAuthors = data.whoN;
 
-                    for(var i = 0;i<dataAuthors.length;i++){
-                        var item = dataAuthors[i];
+                    if(Array.isArray(dataAuthors)){
+                        var output = '';
+                        for(var i = 0;i<dataAuthors.length;i++){
+                            var item = dataAuthors[i];
+                            output += '<a href="'+item.url+'" class="title-5">'+item.name+'</a>, ';
+                        }
+                        //formatting
+                        output = $.trim(output);
+                        output = output.substring(0, output.length - 1);
+                        $who.empty().append(output);
+                    }else{
+                        var item = dataAuthors;
                         var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
-                        $who.append(output);
+                        $who.empty().append(output);
                     }
 
                     //$who.html(data.whoN).attr('href',data.whoU);
