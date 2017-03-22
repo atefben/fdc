@@ -2527,28 +2527,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        if($('.articles-wrapper').length){
-            var lock = false;
-            //populate isotope data array on change
-            $('.articles-wrapper').bind("DOMSubtreeModified",function(){
-                if(!lock){
-                    lock = true;
-                    $(this).find('.articles').each(function(){
-                        var $this = $(this);
-                        var grid = $this.find('.isotope-01');
-                        $this.find('article').each(function(index,value){
-                            if(!$.inArray(value,isotopeHomepageItems)){
-                                isotopeHomepageItems.push(value);
-                            }
-                        });
-                    });
-                }
 
-            });
-            var lockInterval = window.setInterval(function(){
-                lock = false;
-            },1000);
-        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
 
@@ -2561,6 +2540,7 @@ var owInitFilter = function (isTabSelection) {
                             $this = $(this);
 
                             var getVal = $this.data('filter');
+                            console.log('.item[data-' + $id + '="' + getVal + '"]','.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]')
                             var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
                             if (numItems === 0) {
@@ -3116,7 +3096,7 @@ var owInitGrid = function (id) {
                         if($data.filter('.compute-filters').length){
                             $data.filter('.compute-filters').each(function(){
                                 var slug = $(this).attr('class').replace('compute-filters ','');
-                                //fix before JL devs
+
                                 console.log(slug);
                                 $(this).find('span').each(function(){
                                     //test if filter exists
@@ -3158,6 +3138,9 @@ var owInitGrid = function (id) {
                                 $clamp(title.get(0), {clamp: 1});
                                 $clamp(cat.get(0), {clamp: 1});
                             });
+
+                            //reable available filters
+
                         });
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
@@ -3166,7 +3149,6 @@ var owInitGrid = function (id) {
                         owinitSlideShow($gridMore);
                         initVideo();
                         initAudio();
-
                     }
                 });
 

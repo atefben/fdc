@@ -76,28 +76,7 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        if($('.articles-wrapper').length){
-            var lock = false;
-            //populate isotope data array on change
-            $('.articles-wrapper').bind("DOMSubtreeModified",function(){
-                if(!lock){
-                    lock = true;
-                    $(this).find('.articles').each(function(){
-                        var $this = $(this);
-                        var grid = $this.find('.isotope-01');
-                        $this.find('article').each(function(index,value){
-                            if(!$.inArray(value,isotopeHomepageItems)){
-                                isotopeHomepageItems.push(value);
-                            }
-                        });
-                    });
-                }
 
-            });
-            var lockInterval = window.setInterval(function(){
-                lock = false;
-            },1000);
-        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
 
@@ -110,6 +89,7 @@ var owInitFilter = function (isTabSelection) {
                             $this = $(this);
 
                             var getVal = $this.data('filter');
+                            console.log('.item[data-' + $id + '="' + getVal + '"]','.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]')
                             var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
                             if (numItems === 0) {
