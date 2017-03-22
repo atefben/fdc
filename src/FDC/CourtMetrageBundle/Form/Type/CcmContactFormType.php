@@ -10,11 +10,13 @@ class CcmContactFormType extends AbstractType
 {
 
     private $contactSubjects;
+    private $translator;
 
-    public function __construct($contactSubjects)
+    public function __construct($contactSubjects, $translator)
     {
+        $this->translator = $translator;
         $this->contactSubjects = array_merge(
-            ['default' => 'ccm.contact.select_theme'],
+            ['default' => $this->translator->trans('ccm.contact.select_theme')],
             $contactSubjects
         );
     }
