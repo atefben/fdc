@@ -262,39 +262,39 @@
                 {% endif %}
             {% endif %}
 
-            {% if homepage.displayedCannesReleases == false %}
+            {% if homepage.displayedCannesReleases == false and filmReleases|length %}
                 <div class="block-02" id="sortiecanne">
                     <div class="block-01">
                         <h2 class="title title-01">{{ 'home.coporate.sorties.de.cannes'|trans|raw }}</h2>
-
                         <div class="block-films">
                             <div class="left">
-                                <article class="video video-container" data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
+                                <article class="video video-container"
+                                         data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-email="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.webm&quot;},{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4&quot;}]"
                                          data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg"
                                          data-name="Le Best-of du 69e Festival de Cannes"
                                          data-playlist='[
-                  {% for movie in filmReleases %}
-                    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
-                    {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-                  {
-                    "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
-                    "vid": {{ trans.id }},
-                    "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                              {% for movie in filmReleases %}
+                                                {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+                                                {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
+                                              {
+                                                "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
+                                                "vid": {{ trans.id }},
+                                                "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                                          film: movie,
                                          film_format: '135x185',
                                          display_film_path: true,
                                          film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                                          }) %}{% endspaceless %}",
-                    "name":"{{ movie.titleVO }}",
-                    "category":"Photocall",
-                    "date":"{{ movie.publishedAt|date('d.m.y') }}",
-                    "hour":"{{ movie.publishedAt|date('H:i') }}"
-                  }{% if loop.last == false %},{% endif %}
-                  {% endif %}
-                  {% endfor %}
-                  ]'>
+                                                "name":"{{ movie.titleVO }}",
+                                                "category":"Photocall",
+                                                "date":"{{ movie.publishedAt|date('d.m.y') }}",
+                                                "hour":"{{ movie.publishedAt|date('H:i') }}"
+                                              }{% if loop.last == false %},{% endif %}
+                                              {% endif %}
+                                              {% endfor %}
+                                              ]'>
                                     <div id="homepage-playlist-player" class="state-init video video-playlist">
                                         <div id="video-playlist" class="jwplayer jw-reset"></div>
                                         <div class="video-overlay"></div>
@@ -314,7 +314,7 @@
                                     </div>
                                 </article>
                             </div><!--
-            -->{% if filmReleases|length %}<div class="right info-02">
+                            --><div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
@@ -368,7 +368,6 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 </div>
 
                             </div> <!-- end info 02 -->
-                            {% endif %}
                         </div> <!-- end block film -->
 
                         <div class="block-list-img slider-02 s-video-playlist">
@@ -483,7 +482,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    --><div class="half-div block-push">
+                    -->
+                    <div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -529,7 +529,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                --><div class="small-push half-div">
+                                -->
+                                <div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -547,7 +548,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">

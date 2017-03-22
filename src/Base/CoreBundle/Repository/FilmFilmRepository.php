@@ -160,16 +160,30 @@ class FilmFilmRepository extends EntityRepository
 
     /**
      * @param $dateTime
-     * @return array
+     * @return FilmFilm[]
      */
-    public function getFilmsReleases(\DateTime $dateTime)
+    public function getFilmsReleases($locale, $site = 'site-evenementiel', $now = null)
     {
-        return $this
+        if (!$now) {
+            $now = new \DateTime();
+        }
+        $qb = $this
             ->createQueryBuilder('f')
             ->select('f')
             ->andWhere('MONTH(f.publishedAt) = :month')
-            ->setParameter(':month', (int)$dateTime->format('m'))
-            ->getQuery()
+            ->setParameter(':month', (int)$now->format('m'))
+            ->innerJoin('f.videoMain', 'mv')
+            ->andWhere('mv.publishedAt <= :now')
+            ->andWhere('mv.publishedAt is null or mv.publishEndedAt >= :now')
+            ->setParameter(':now', $now)
+            ->innerJoin('mv.sites', 's')
+            ->innerJoin('mv.translations', 'videotranslations')
+            ->andWhere('s.slug = :slugSite')
+            ->setParameter(':slugSite', $site)
+            ;
+        $this->addTranslationQueries($qb, 'videotranslations');
+        return
+            $qb->getQuery()
             ->getResult()
             ;
     }
@@ -279,7 +293,8 @@ class FilmFilmRepository extends EntityRepository
 
         return $qb
             ->getQuery()
-            ->getResult();
+            ->getResult()
+            ;
     }
 
     /**
