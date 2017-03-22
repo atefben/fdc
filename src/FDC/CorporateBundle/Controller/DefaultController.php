@@ -138,7 +138,7 @@ class DefaultController extends Controller
         $movies = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getFilmsReleases($dateTime, 'site-institutionnel')
+            ->getFilmsReleases($locale, 'site-institutionnel')
         ;
 
         return $this->render('FDCCorporateBundle:News:home.html.twig', [

@@ -181,7 +181,7 @@ class FilmFilmRepository extends EntityRepository
             ->andWhere('s.slug = :slugSite')
             ->setParameter(':slugSite', $site)
             ;
-        $this->addTranslationQueries($qb, 'videotranslations');
+        $this->addTranslationQueries($qb, 'videotranslations', $locale);
         return
             $qb->getQuery()
             ->getResult()
