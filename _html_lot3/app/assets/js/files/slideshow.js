@@ -32,7 +32,7 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mousedown', function () {
+            $('.block-diaporama .item').on('mouseup', function () {
 
                 if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
                     openSlideShow(slider);

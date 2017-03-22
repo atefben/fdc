@@ -241,8 +241,23 @@ var owInitGrid = function (id) {
                             $this.remove();
                         }
 
+                        //manage filters
+                        if($data.filter('.compute-filters').length){
+                            $data.filter('.compute-filters').each(function(){
+                                var slug = $(this).attr('class').replace('compute filters ','');
+                                //fix before JL devs
+                                console.log(slug);
+                                $(this).find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                            });
+                        }
+
                         $('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function () {
+                        $gridMore.imagesLoaded(function(){
 
                             //memorize scrolltop
                             $('html,body').scrollTop(scroll);

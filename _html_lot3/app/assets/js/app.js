@@ -77,8 +77,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             if($(data).filter('.compute-filters').length){
                 $(data).filter('.compute-filters').each(function(){
                     var slug = $(this).attr('class').replace('compute filters ','');
-                    //fix before JL devs
-                    slug = 'theme';
+
                     $(this).find('span').each(function(){
                         //test if filter exists
                         if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){

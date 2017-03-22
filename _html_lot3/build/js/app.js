@@ -3112,8 +3112,23 @@ var owInitGrid = function (id) {
                             $this.remove();
                         }
 
+                        //manage filters
+                        if($data.filter('.compute-filters').length){
+                            $data.filter('.compute-filters').each(function(){
+                                var slug = $(this).attr('class').replace('compute filters ','');
+                                //fix before JL devs
+                                console.log(slug);
+                                $(this).find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                            });
+                        }
+
                         $('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function () {
+                        $gridMore.imagesLoaded(function(){
 
                             //memorize scrolltop
                             $('html,body').scrollTop(scroll);
@@ -4920,15 +4935,14 @@ var owInitSlider = function (sliderName) {
                 items: 1,
                 autoWidth: true,
                 smartSpeed: 700,
-                center: true
+                center: $('.home').length ? false : true
             });
 
             if($('.home').length){
                 //get offset to compensate;
                 var itv = window.setInterval(function(){
                     if($('.block-diaporama .owl-stage').length && $('.block-diaporama .owl-stage').attr('style').length){
-                        $('.block-diaporama .owl-stage').attr('style','transform: translate3d(0px, 0px, 0px);');
-                        window.clearInterval(itv);
+                        $('.block-diaporama .owl-item:first-child').addClass('center');
                     }
                 },200);
             }
@@ -4938,10 +4952,14 @@ var owInitSlider = function (sliderName) {
                 console.log('init');
             })
 
+            $(document).on('mousedown', '.slider-01 .owl-item', function () {
+                $(this).siblings('.owl-item').removeClass('center');
+                $(this).addClass('center');
+            });
+            
             // Custom Navigation Events
             $(document).on('click', '.slider-01 .owl-item', function () {
                 var number = $(this).index();
-
                 slide01.trigger('to.owl.carousel', number);
             });
         });
@@ -5424,7 +5442,7 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mousedown', function () {
+            $('.block-diaporama .item').on('mouseup', function () {
 
                 if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
                     openSlideShow(slider);
@@ -7360,8 +7378,7 @@ homepageCards.renderAjaxResponse = function(url,dateTime,theme,format){
             if($(data).filter('.compute-filters').length){
                 $(data).filter('.compute-filters').each(function(){
                     var slug = $(this).attr('class').replace('compute filters ','');
-                    //fix before JL devs
-                    slug = 'theme';
+
                     $(this).find('span').each(function(){
                         //test if filter exists
                         if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
