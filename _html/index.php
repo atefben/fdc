@@ -58,7 +58,7 @@
                       <div class="vCenterKid">
                         <h2>Short film<br> corner<br> <span class="goldColor small-title">2017</span></h2>
                         <div class="alignButton">
-                          <div class="programmButton">Le Programme</div>
+                          <div class="programmButton">Se renseigner pour l'année prochaine</div>
                         </div>
                       </div>
                     </div>
@@ -82,7 +82,7 @@
                       <div class="vCenterKid">
                         <a href="/"><h2>Short film<br> corner<br> <span class="goldColor medium-title">2017</span></h2></a>
                         <div class="alignButton">
-                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                          <a href="/"><div class="programmButton">Se renseigner pour l'année prochaine et celle d'après</div></a>
                         </div>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                       <div class="vCenterKid">
                         <a href="/"><h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2></a>
                         <div class="alignButton">
-                          <a href="/"><div class="programmButton">Le Programme</div></a>
+                          <a href="/"><div class="programmButton">Se renseigner pour l'année prochaine et celle d'après Se renseigner pour l'année prochaine et celle d'après</div></a>
                         </div>
                       </div>
                     </div>

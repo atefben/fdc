@@ -365,12 +365,13 @@
         text-align: left;
         position: relative;
         /* left: -100px; */
-        max-width: 245px;
+        padding: 0px 80px 0px 0px;
         
       }
 
       .programmButton {
-        width: 235px;
+        padding: 0px 15px;
+        min-width: 235px;
         height: 50px;
         text-transform: uppercase;
         border: 1px solid #c3a05f;
