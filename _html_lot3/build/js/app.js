@@ -1051,6 +1051,7 @@ var initVideo = function(hash) {
                 console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
             }
+            $('.popin-mail').find('.chap-article').html('');
             if(typeof data['who'] !== 'undefined'){
                 var dataAuthors = data['who'];
 
@@ -1073,7 +1074,7 @@ var initVideo = function(hash) {
             $('.popin-mail').find('form #contact_detail').val(data['date']);
             $('.popin-mail').find('form #contact_title').val(data['title']);
             $('.popin-mail').find('form #contact_url').val(data['url']);
-            $('.popin-mail').find('.chap-article').html('');
+            
         }
     }
 
