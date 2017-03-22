@@ -365,7 +365,8 @@
               <img src="http://dummyimage.com/210x84/000/fff" alt="" />
               <a class="linkVid" href="#"></a>
               <div class="info-movie">
-                <p>Carol</p>
+                <p>Carol <br> <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span></p>
+
                 <a class="director" href="#">Todd HAYNES</a>
               </div>
             </div>
@@ -430,6 +431,7 @@
               <a class="linkVid" href="#"></a>
               <div class="info-movie">
                 <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
                 <a class="director" href="#">Todd HAYNES</a>
               </div>
             </div>

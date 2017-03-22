@@ -3421,6 +3421,18 @@ sup {
   font-size: 11px;
   line-height: 15px;
 }
+#slider-competition .info-movie {
+  padding-top: 30px;
+  text-align: center;
+  width: 210px;
+}
+#slider-competition .info-movie span {
+  font-size: 10px;
+  color: #2c2c2c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
 
 /* CAROUSEL ABOUT */
 .aboutPhotos .slideshow {
