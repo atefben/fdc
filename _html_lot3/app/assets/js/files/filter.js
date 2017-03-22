@@ -90,9 +90,13 @@ var owInitFilter = function (isTabSelection) {
                             $this = $(this);
 
                             var getVal = $this.data('filter');
-                            console.log('.item[data-' + $id + '="' + getVal + '"]','.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]')
-                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
-
+                            console.log('.item.' + getVal,'.item.' + getVal + ':not([style*="display: none"]');
+                            
+                            if($('.articles-list').length){
+                                var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
+                            }else{
+                                var numItems = $('.item.' + getVal + ':not([style*="display: none"]').length;
+                            }
                             if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
