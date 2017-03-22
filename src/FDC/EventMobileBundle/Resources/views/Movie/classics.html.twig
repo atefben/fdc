@@ -5,6 +5,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/fdceventmobile/css/selection.css"
+        "bundles/fdceventmobile/css/article_custom.css"
         "bundles/fdceventmobile/css/event_custom.css"
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
@@ -195,6 +196,8 @@
 {% block javascripts %}
     {% javascripts
         '@FDCEventMobileBundle/Resources/public/js/selection.js'
+        '@FDCEventMobileBundle/Resources/public/js/article_custom.js'
+        '@FDCEventMobileBundle/Resources/public/js/selection_custom.js'
         '@FDCEventMobileBundle/Resources/public/js/event_custom.js'
     %}
         <script src="{{ asset_url }}"></script>

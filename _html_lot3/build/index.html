@@ -573,7 +573,7 @@
             <div class="block-01">
                 <h2 class="title title-01">Vidéo à la une</h2>
 
-                <!--div class="center block-videos">
+                <div class="center block-videos">
                     <article class="video">
                         <div id="azfg" class="video-container state-init video video-player"
                              data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
@@ -598,7 +598,7 @@
                             </div>
                         </div>
                     </article>
-                </div-->
+                </div>
 
                 <div class="block-legend">
                     <div class="info">
@@ -642,9 +642,7 @@
 
                 <div class="block-films">
                     <div class="left">
-                        <article class="video">
-                            <div class="video-container state-init video video-playlist"
-                                 data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
+                        <article class="video video-container" data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                  data-email="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                  data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.webm&quot;},{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4&quot;}]"
                                  data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg"
@@ -655,6 +653,7 @@
                     "vid": 31,
                     "image":"http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg",
                     "name":"Sils Maria",
+                    "url":"preprod.festival-cannes.com/app_dev.php/fr/corporate/films/american-honey",
                     "category":"Photocall",
                     "date":"11.03.2016",
                     "hour":"12:00"
@@ -695,6 +694,7 @@
                     "date":"11.03.2016",
                     "hour":"12:00"
                   }]'>
+                            <div id="homepage-playlist-player" class="state-init video video-playlist">
                                 <div id="video-playlist" class="jwplayer jw-reset"></div>
                                 <div class="video-overlay"></div>
                                 <div class="infos-bar hide-info">
@@ -716,9 +716,9 @@
                     <div class="right info-02">
                         <div class="block-infos">
                             <div class="text-infos vFlexAlign ">
-                                <strong class="title-3">Sortie le 18.05.5</strong>
-                                <strong class='title-4'>Je suis un soldat</strong>
-                                <span>De <span class="title-5">Oliver ASSAYAS</span></span>
+                                <strong class="title-3">Sortie le <span class="to-update">18.05.5</span></strong>
+                                <a href="#" class="title-4">Je suis un soldat</strong>
+                                <a class="title-5">Oliver ASSAYAS</a>
                                 <span class="title-6">En compétition</span>
                                 <span class="">
                                     <i class="icon ispalme icon-palme"></i>
@@ -767,6 +767,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                          data-date="18.05.2016"
                          data-title="video numero 1"
                          data-who="personne 1"
+                         data-url="preprod.festival-cannes.com/app_dev.php/fr/corporate/films/american-honey" 
+                         data-who-url="http://preprod.festival-cannes.com/app_dev.php/fr/artiste/andrea-arnold" 
                          data-label="le label"
                          data-palm="le prix" data-palmdate="2016">
                         <div class="wrapper">
@@ -783,6 +785,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                          data-date="19.05.2016"
                          data-title="video numero 2"
                          data-who="personne 2"
+                         data-url="preprod.festival-cannes.com/app_dev.php/fr/corporate/films/american-honey" 
+                         data-who-url="http://preprod.festival-cannes.com/app_dev.php/fr/artiste/andrea-arnold" 
                          data-label="le label 2"
                          data-palm="la palme du film le meilleur du monde " data-palmdate="2016e">
                         <div class="wrapper">
@@ -799,6 +803,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                          data-date="20.05.2016"
                          data-title="video numero 3"
                          data-who="personne 3"
+                         data-url="preprod.festival-cannes.com/app_dev.php/fr/corporate/films/american-honey" 
+                         data-who-url="http://preprod.festival-cannes.com/app_dev.php/fr/artiste/andrea-arnold" 
                          data-label="le label 3"
                          data-palm="le prix 2" data-palmdate="2016z">
                         <div class="wrapper">

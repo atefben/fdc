@@ -390,7 +390,19 @@ article.communique .picto {
                 line-height: 1.3em;
             }
         }
-    }   
+    }
+
+    #sortiecanne {
+        .video-container {
+            height: 380px;
+        }
+    } 
+
+    .slider-02 {
+        .owl-stage-outer {
+            transform: translate3d(-418px, 0px, 0px);
+        }
+    }
 }
 
 .slider-home .texts .item p {
@@ -745,8 +757,17 @@ header #navigation ul.user li a {
     }
 }
 
+.test {
+    display: initial;
+}
 
-
+/* hotfix FF */
+@-moz-document url-prefix() {
+    .slider-home .container-images .item {
+        background-size: 100%;
+        background-position: 0px;
+    }
+}
 
 @media only screen and (max-width : 1440px) {
     .retrospective .slider-restropective {
