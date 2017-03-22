@@ -1047,6 +1047,9 @@ var initVideo = function(hash) {
             $('.popin-mail').find('.contain-popin .date-article').text(data['date']);
             $('.popin-mail').find('.contain-popin .title-article').text(data['title']);
             $('.popin-mail').find('.chap-article').html('');
+            if($('.home').length){
+                $('.popin-mail').find('.contain-popin .ensalle').show();
+            }
             if(typeof data['email-content'] !== 'undefined'){
                 console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
