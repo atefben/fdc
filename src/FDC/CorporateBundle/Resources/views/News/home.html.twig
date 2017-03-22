@@ -408,6 +408,13 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
+
+                                    {% set emailContent = movie.videoMain|trans_fallback('theme') ~ ("\n")|nl2br %}
+                                    {% set emailContent = emailContent ~ movie.titleVO %}
+                                    {% set emailContent = emailContent ~ (inTheaters ? ~ ' - ' ~ inTheaters : '') %}
+                                    {% set emailContent = emailContent ~ ' - ' ~ movie.videoMain|trans_fallback('title') %}
+                                    {% set emailContent = emailContent ~ ' - ' ~ movie|trans_fallback('synopsis')|truncate(200, true) %}
+
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
@@ -417,6 +424,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
+                                         data-email-content="{{ emailContent|escape('html_attr') }}"
                                          data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                          data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
@@ -502,7 +510,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    --><div class="half-div block-push">
+                    -->
+                    <div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -548,7 +557,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                --><div class="small-push half-div">
+                                -->
+                                <div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -566,7 +576,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
