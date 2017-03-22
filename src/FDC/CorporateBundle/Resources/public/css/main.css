@@ -7514,7 +7514,7 @@ header #navigation ul.user li a .icon {
 }
 
 .block-diaporama .owl-carousel .owl-item {
-  cursor: move;
+  cursor: pointer;
   /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -webkit-grab;

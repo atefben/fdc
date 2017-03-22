@@ -490,11 +490,13 @@ $(document).ready(function () {
                 },200);
             }else{
                 $(this).css('width',img.width());
+                console.log('is figure',$(this).find('figure').length);
+                if($(this).find('figure').length){
+                    $(this).find('figure').css('width',img.width());
+                }
             }
         });
         if (hash.length > 0 && verif == "pid") {
-            
-
             owinitSlideShow(slider, hash);
 
         }
