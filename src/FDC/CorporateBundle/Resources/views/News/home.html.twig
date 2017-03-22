@@ -319,7 +319,7 @@
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
-                                            le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
+                                            le <span class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
                                         <strong class='title-4'>{{ movie.titleVO }}</strong>
                                         {% set directors = movie.getDirectors() %}
 
@@ -397,6 +397,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
                                          data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
                                          data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}"
+                                         data-who-url="" 
+                                         data-url="" 
                                          data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
                                          data-palmdate="{{ movie.productionYear }}">

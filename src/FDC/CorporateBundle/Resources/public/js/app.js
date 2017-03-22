@@ -357,33 +357,11 @@ var initVideo = function(hash) {
 
             });
 
-            sliderChannelsVideo.on('translated.owl.carousel', function () {
-                index = $('.slider-02 .center').index();
-                changeVideo(index,playerInstance,$('.slider-02 .center'));
-                
-                $this = $('.slider-02 .center');
-
-                dateN = $this.find('.item').data('date');
-                titleN = $this.find('.item').data('title');
-                whoN = $this.find('.item').data('who');
-                whoU = $this.find('.item').data('who-url');
-                url = $this.find('.item').data('url');
-                labelN = $this.find('.item').data('label');
-                palmN = $this.find('.item').data('palm');
-                palmDateN = $this.find('.item').data('palmdate');
-                fbN = $this.find('.item').data('facebook');
-                twitterN = $this.find('.item').data('twitter');
-                linkN = $this.find('.item').data('link');
-                vidN = $this.find('.item').data('vid');
-                isPalm = $this.find('.item').data('ispalm');
-
-                var hashPush = '#vid='+vidN;
-                history.pushState(null, null, hashPush);
-
+            var updateHomeTextRight = function(data){
                 $.each($('.text-infos'), function(i,e){
-                    var $date = $(e).find('.title-3');
+                    var $date = $(e).find('.title-3 .to-update');
                     var $title = $(e).find('.title-4');
-                    var $who = $(e).find('.title-5');
+                    var $who = $(e).find('.authors-container');
                     var $label = $(e).find('.title-6');
                     var $palm = $(e).find('.title-7');
                     var $isPalm = $(e).find('.ispalme');
@@ -392,36 +370,95 @@ var initVideo = function(hash) {
                     var $twitter = $(e).parent().find('.block-social-network .twitter');
                     var $link = $(e).parent().find('.block-social-network .link');
 
-                    $date.html('sortie le '+dateN);
-                    $title.html(titleN).attr('href',url);
-                    $who.html(whoN).attr('href',whoU);
-                    $label.html(labelN);
-                    $palm.html(palmN);
+                    $date.html(data.dateN);
+                    $title.html(data.titleN).attr('href',data.url);
 
-                    if(isPalm) {
+                    var dataAuthors = data.whoN;
+
+                    for(var i = 0;i<dataAuthors.length;i++){
+                        var item = dataAuthors[i];
+                        var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
+                        $who.append(output);
+                    }
+
+                    //$who.html(data.whoN).attr('href',data.whoU);
+                    $label.html(data.labelN);
+                    $palm.html(data.palmN);
+
+                    if(data.isPalm) {
                         $isPalm.addClass('icon-palme');
                     }else{
                         $isPalm.removeClass('icon-palme');
                     }
 
-                    $palmDate.html(palmDateN);
-                    $facebook.attr('href', fbN);
-                    $twitter.attr('href', twitterN);
-                    $link.attr('data-clipboard-text', linkN);
+                    $palmDate.html(data.palmDateN);
+                    $facebook.attr('href', data.fbN);
+                    $twitter.attr('href', data.twitterN);
+                    $link.attr('data-clipboard-text', data.linkN);
 
                     updatePopinMedia({
                         'type': "video",
-                        'category': labelN,
-                        'date': dateN,
-                        'title': titleN,
-                        'url': linkN
+                        'category': data.labelN,
+                        'date': data.dateN,
+                        'title': data.titleN,
+                        'url': data.linkN
                     });
 
                     initRs();
 
                 });
+            }
 
-            })
+            var loadInterval = window.setInterval(function(){
+                if($('.slider-02 .owl-item.center').length){
+                    var origData = {
+                        dateN: $('.slider-02 .owl-item.center').find('.item').data('date'),
+                        titleN: $('.slider-02 .owl-item.center').find('.item').data('title'),
+                        whoN: $('.slider-02 .owl-item.center').find('.item').data('who'),
+                        url: $('.slider-02 .owl-item.center').find('.item').data('url'),
+                        labelN: $('.slider-02 .owl-item.center').find('.item').data('label'),
+                        palmN: $('.slider-02 .owl-item.center').find('.item').data('palm'),
+                        palmDateN: $('.slider-02 .owl-item.center').find('.item').data('palmdate'),
+                        fbN: $('.slider-02 .owl-item.center').find('.item').data('facebook'),
+                        twitterN: $('.slider-02 .owl-item.center').find('.item').data('twitter'),
+                        linkN: $('.slider-02 .owl-item.center').find('.item').data('link'),
+                        vidN: $('.slider-02 .owl-item.center').find('.item').data('vid'),
+                        isPalm: $('.slider-02 .owl-item.center').find('.item').data('ispalm')
+                    };
+
+                    updateHomeTextRight(origData);
+                    window.clearInterval(loadInterval);
+                }
+            },300);
+
+            
+            sliderChannelsVideo.on('translated.owl.carousel', function () {
+                index = $('.slider-02 .center').index();
+                changeVideo(index,playerInstance,$('.slider-02 .center'));
+                
+                $this = $('.slider-02 .center');
+
+                var data = {
+                    dateN: $this.find('.item').data('date'),
+                    titleN: $this.find('.item').data('title'),
+                    whoN: $this.find('.item').data('who'),
+                    url: $this.find('.item').data('url'),
+                    labelN: $this.find('.item').data('label'),
+                    palmN: $this.find('.item').data('palm'),
+                    palmDateN: $this.find('.item').data('palmdate'),
+                    fbN: $this.find('.item').data('facebook'),
+                    twitterN: $this.find('.item').data('twitter'),
+                    linkN: $this.find('.item').data('link'),
+                    vidN: $this.find('.item').data('vid'),
+                    isPalm: $this.find('.item').data('ispalm')
+                }
+
+                var hashPush = '#vid='+data.vidN;
+                history.pushState(null, null, hashPush);
+
+                updateHomeTextRight(data);
+
+            });
 
             var changeVideo = function (index, playerInstance, exThis) {
 
