@@ -392,7 +392,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
-                                    <div class="item" data-vid="{{ trans.id }}"
+                                    <div class="item"
+                                         data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
                                          data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
                                          data-title="{{ movie.titleVO }}"
@@ -400,7 +401,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}"
-                                         data-who="{{ dataWho|json_encode }}">
+                                         data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
                                                         src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
