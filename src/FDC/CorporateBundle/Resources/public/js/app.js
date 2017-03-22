@@ -391,7 +391,6 @@ var initVideo = function(hash) {
                         $who.empty().append(output);
                     }
 
-                    //$who.html(data.whoN).attr('href',data.whoU);
                     $label.html(data.labelN);
                     $palm.html(data.palmN);
 
