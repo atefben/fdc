@@ -368,3 +368,7 @@ body.chocolat-open.fixed {
 .slideshow .slideshow-img .thumbnails .thumb:after {
     border: 0 solid #c8a461;
 }
+
+.legal-notice section .legal-notice-responsable {
+    line-height: 26px;
+}
