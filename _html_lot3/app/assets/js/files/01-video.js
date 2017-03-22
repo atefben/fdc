@@ -404,7 +404,7 @@ var initVideo = function(hash) {
                     $palmDate.html(data.palmDateN);
                     $facebook.attr('href', data.fbN);
                     $twitter.attr('href', data.twitterN);
-                    $link.attr('data-clipboard-text', data.linkN);
+                    $link.attr('data-clipboard-text', data.url);
 
                     updatePopinMedia({
                         'type': "video",
