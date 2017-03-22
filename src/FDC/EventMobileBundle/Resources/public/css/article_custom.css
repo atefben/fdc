@@ -1,0 +1,121 @@
+.m-video .picto .icon {
+    font-size: .8rem;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+.m-video .picto {
+    color: #c8a461;
+}
+
+.m-video .jw-display-icon-container {
+    background-color: #151515;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: inline-block;
+    top: initial;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+}
+
+#main .m-video .jw-skin-five .jw-display-icon-container .jw-button-color.jw-icon-display {
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    color: #c8a461;
+    font-size: 1.5rem;
+}
+
+#main .m-video .jw-skin-five.jw-state-idle .jw-display-icon-container .jw-button-color.jw-icon-display {
+    font-family: "icons";
+}
+
+.m-video .jwplayer.jw-state-idle .jw-icon-display:before {
+    content: '\f14d';
+}
+
+.m-video .jw-state-playing + .infos-bar, .m-video .jw-state-paused + .infos-bar {
+    display: none;
+}
+
+.m-video .infos-bar .info.hide,
+.m-video .infos-bar .picto.hide {
+    opacity: 0;
+    visibility: hidden
+}
+.m-video .channels-video .owl-item .image-wrapper img {
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.m-video .channels-video .info {
+    bottom: 15px;
+    height: auto
+}
+.m-video .channels-video .info p {
+    font-size: .85rem
+}
+.m-video .infos-bar {
+    position: relative;
+    z-index: 5
+}
+.tablet .m-video .infos-bar {
+    display: none
+}
+.m-video .infos-bar .picto {
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    pointer-events: auto
+}
+.m-video .infos-bar .info {
+    color: #666;
+    bottom: 30px;
+    left: 100px;
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    width: 80%;
+}
+
+.m-video #player + .infos-bar .info {
+    bottom: 70px;
+}
+
+.m-video .infos-bar .info .category {
+    color: #c8a461;
+    display: inline-block;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-right: 12px;
+    text-transform: uppercase;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    padding-bottom: 3px;
+    font-weight: 700;
+}
+.m-video .infos-bar .info span {
+    color: #666;
+    display: inline-block;
+    font-size: .9rem
+}
+.m-video .infos-bar .info p {
+    line-height: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
