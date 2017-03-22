@@ -10359,6 +10359,10 @@ body#home .isotope-01 .item .info {
   height: 100%;
   display: block;
 }
+.slider-home .container-images.ff .item {
+  background-size: 100%;
+  background-position-y: 0px;
+}
 .slider-home .container-images .item {
   width: 100%;
   height: 100%;
