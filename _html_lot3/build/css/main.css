@@ -7003,6 +7003,10 @@ body.chocolat-open > .chocolat-content {
   border-color: #000;
 }
 
+.popin .article-authors {
+  color: #c8a461;
+}
+
 .article-single #main,
 .media-library #main {
   overflow-y: hidden;

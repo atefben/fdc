@@ -1049,6 +1049,26 @@ var initVideo = function(hash) {
             if(typeof data['email-content'] !== 'undefined'){
                 $('.popin-mail').find('.contain-popin #contact_message').val(data['email-content']);
             }
+            console.log(data['who']);
+            if(typeof data['who'] !== 'undefined'){
+                var dataAuthors = data['who'];
+
+                if(Array.isArray(dataAuthors)){
+                    var output = '';
+                    for(var i = 0;i<dataAuthors.length;i++){
+                        var item = dataAuthors[i];
+                        output += '<a href="'+item.url+'" class="title-5">'+item.name+'</a>, ';
+                    }
+                    //formatting
+                    output = $.trim(output);
+                    output = output.substring(0, output.length - 1);
+                }else{
+                    var item = dataAuthors;
+                    var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
+                }
+                console.log(output);
+                $('.popin-mail').find('.contain-popin .article-authors').html(output);
+            }
             $('.popin-mail').find('form #contact_section').val(data['category']);
             $('.popin-mail').find('form #contact_detail').val(data['date']);
             $('.popin-mail').find('form #contact_title').val(data['title']);
