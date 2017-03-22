@@ -7473,6 +7473,7 @@ h2.sub-title {
 }
 .block-diaporama .slider-01 .owl-item .item figure, .block-diaporama .slider-01 .owl-item .item img {
   height: 100%;
+  max-height: 180px;
   width: auto;
   max-width: none;
   margin: 0px;

@@ -79,7 +79,6 @@ var owInitFilter = function (isTabSelection) {
 
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
-
                 $('.filters .select span').off('click').on('click', function () {
                     $('.filter .select').each(function () {
                         $that = $(this);
@@ -96,7 +95,7 @@ var owInitFilter = function (isTabSelection) {
                             }else{
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
-                            
+
                             if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
