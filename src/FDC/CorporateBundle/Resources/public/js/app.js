@@ -595,11 +595,10 @@ var initVideo = function(hash) {
         }
 
         if($(vid).is('#homepage-playlist-player')){
-            playerHeight = 380;
+            playerHeight = 382;
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
-        
-        console.log(playerWidth);
+
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
