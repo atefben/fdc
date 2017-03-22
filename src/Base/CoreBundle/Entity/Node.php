@@ -105,6 +105,15 @@ class Node implements TranslateMainInterface
      */
     protected $displayedHome = false;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_clone", type="string", length=255, nullable=true)
+     *
+     */
+    protected $typeClone;
+
     /**
      * @var boolean
      *
@@ -586,5 +595,28 @@ class Node implements TranslateMainInterface
     public function getSites()
     {
         return $this->sites;
+    }
+
+    /**
+     * Set typeClone
+     *
+     * @param string $typeClone
+     * @return Node
+     */
+    public function setTypeClone($typeClone)
+    {
+        $this->typeClone = $typeClone;
+
+        return $this;
+    }
+
+    /**
+     * Get typeClone
+     *
+     * @return string 
+     */
+    public function getTypeClone()
+    {
+        return $this->typeClone;
     }
 }

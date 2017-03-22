@@ -82,7 +82,7 @@ class ModuleThreeColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.three_columns.description1',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'title2'          => array(
@@ -94,7 +94,7 @@ class ModuleThreeColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.three_columns.description2',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'title3'          => array(
@@ -106,7 +106,7 @@ class ModuleThreeColumnsType extends ModuleType
                         'label'              => 'form.ccm.label.module.three_columns.description3',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                 ),

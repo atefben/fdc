@@ -23,13 +23,13 @@ class NodeRepository extends EntityRepository
 
     /**
      * @param $locale
-     * @param $dateTime
      * @param null $maxResults
      * @param string $site
+     * @param null $firstResult
      * @param array $filters
      * @return Node[]
      */
-    public function getHomeStatementsAndInfos($locale, DateTime $dateTime, $maxResults = null, $site = 'site-press', $filters = [])
+    public function getHomeStatementsAndInfos($locale, $maxResults = null, $site = 'site-press', $firstResult = null, $filters = [])
     {
         $entities = [
             InfoArticle::class,
@@ -41,7 +41,7 @@ class NodeRepository extends EntityRepository
             StatementImage::class,
             StatementVideo::class,
         ];
-        
+
         $qb = $this
             ->createQueryBuilder('n')
             ->select('n')
@@ -53,7 +53,21 @@ class NodeRepository extends EntityRepository
             ->setParameter('site_slug', $site)
             ->andWhere('(n.publishedAt <= :dateTime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
-            ->setParameter('dateTime', $dateTime)
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
         ;
 
         foreach ($filters as $field => $value) {
@@ -67,6 +81,10 @@ class NodeRepository extends EntityRepository
 
         if ($maxResults) {
             $qb->setMaxResults($maxResults);
+        }
+
+        if ($firstResult !== null) {
+            $qb->setFirstResult($firstResult);
         }
 
         return $qb

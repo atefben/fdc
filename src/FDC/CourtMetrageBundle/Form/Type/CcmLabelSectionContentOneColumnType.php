@@ -103,7 +103,7 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'technicalConstraints'          => array(
@@ -114,7 +114,7 @@ class CcmLabelSectionContentOneColumnType extends CcmLabelSectionContentType
                             'class' => 'ckeditor'
                         ),
                         'field_type'         => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'isTechnicalConstraintsPopupActive' => array(

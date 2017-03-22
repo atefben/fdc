@@ -32,8 +32,10 @@
                                 {% endif %}
                             {% endif %}
 
-                            <div class="item animated active" data-item="{{ dataItem }}"
-                                 style="background-image:url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')"></div>
+                            <div class="item{% if loop.first %} active fade-in-right{% endif %}"
+                                 data-item="{{ dataItem }}"
+                                 style="background-image: url('{% if file is defined and file %}{% path file , '1280x808' %}{% endif %}')">
+                            </div>
                             {% set trans = homeSlide.findTranslationByLocale(app.request.locale) %}
                             {% if trans == null %}
                                 {% set trans = homeSlide.findTranslationByLocale('fr') %}
@@ -58,8 +60,8 @@
                                             <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                         </a>
                                         <p class="text-trunc">
-                                    {{ sliderItem.introduction }}
-                                    </p>
+                                            {{ sliderItem.introduction }}
+                                        </p>
                                     </div>
                                 {% endfor %}
                             </div> <!-- end slider carousel -->
@@ -165,13 +167,13 @@
 
                     {% if not last %}
                         <a id="home-news-statements-more"
-                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}"
+                           href="{{ path('fdc_corporate_default_getarticlesfrom') }}?page={{ page }}"
                            data-reverse=""
                            class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                     {% else %}
                         <a id="home-news-statements-more"
-                        href="{{ path('fdc_corporate_news_infosandstatements') }}"
-                        class="read-more">{{ "home.coporate.statements.and.infos.all.button"|trans|raw }}</a>
+                           href="{{ path('fdc_corporate_news_infosandstatements') }}"
+                           class="read-more">{{ "home.coporate.statements.and.infos.all.button"|trans|raw }}</a>
                     {% endif %}
                 {% endif %}
             </div>
@@ -375,42 +377,44 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         <div class="block-list-img slider-02 s-video-playlist">
                             {% for movie in filmReleases %}
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-                                {% set directors = movie.getDirectors() %}
-                                {% set dataWho = '' %}
-                                {% for director in directors %}
-                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
-                                    {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
-                                {% endfor %}
-                                {% set awardsUnique = [] %}
-                                {% set dataAward = '' %}
-                                {% for movieAward in movie.awards %}
-                                    {% if movieAward.award and movieAward.award.prize %}
-                                        {% if movieAward.award.id not in awardsUnique %}
-                                            {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
-                                            {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
-                                            {% if movieAward.award.exAequo == 1 %}
-                                                {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                {% if trans %}
+                                    {% set directors = movie.getDirectors() %}
+                                    {% set dataWho = '' %}
+                                    {% for director in directors %}
+                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
+                                        {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                                    {% endfor %}
+                                    {% set awardsUnique = [] %}
+                                    {% set dataAward = '' %}
+                                    {% for movieAward in movie.awards %}
+                                        {% if movieAward.award and movieAward.award.prize %}
+                                            {% if movieAward.award.id not in awardsUnique %}
+                                                {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                                                {% set dataAward = movieAward.award.prize|trans_fallback('title')|trim %}
+                                                {% if movieAward.award.exAequo == 1 %}
+                                                    {% set dataAward = dataAward ~ ' (' ~ 'award.ex_aequo'|trans ~ ')' %}
+                                                {% endif %}
                                             {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                                <div class="item" data-vid="{{ trans.id }}"
-                                     data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
-                                     data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
-                                     data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}"
-                                     data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
-                                     data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
-                                     data-palmdate="{{ movie.productionYear }}">
-                                    <div class="wrapper">
-                                        <a href="#"><img
-                                                    src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-                                                    film: movie,
-                                                    film_format: '135x185',
-                                                    display_film_path: true,
-                                                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                                    }) %}{% endspaceless %}" alt=""></a>
+                                    {% endfor %}
+                                    <div class="item" data-vid="{{ trans.id }}"
+                                         data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
+                                         data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
+                                         data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}"
+                                         data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
+                                         data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
+                                         data-palmdate="{{ movie.productionYear }}">
+                                        <div class="wrapper">
+                                            <a href="#"><img
+                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                                        film: movie,
+                                                        film_format: '135x185',
+                                                        display_film_path: true,
+                                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                        }) %}{% endspaceless %}" alt=""></a>
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div> <!-- end block 01 -->
@@ -546,8 +550,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            -->
-                            <div class="left">
+                            --><div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">

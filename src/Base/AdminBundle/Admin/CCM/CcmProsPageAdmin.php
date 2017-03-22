@@ -82,7 +82,7 @@ class CcmProsPageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
                     'createdAt'         => array(

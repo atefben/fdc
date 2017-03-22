@@ -23,7 +23,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
     if (sliderName == 'home') {
-
+        var isFirefox = window.mozInnerScreenX ? true : false;
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
             items: 1,
@@ -42,6 +42,10 @@ var owInitSlider = function (sliderName) {
                     container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
+
+                if(isFirefox){
+                    $('.container-images').addClass('ff');
+                }
             }
         });
 
@@ -50,13 +54,22 @@ var owInitSlider = function (sliderName) {
                 var $item = $('.owl-item.active').find('.item');
                 var number = $item.data('item');
                 var $active = $(".container-images .item.active");
-
-                $active.removeClass("fadeInRight").addClass('fadeOut');
-
+                var $next = $(".container-images .item[data-item=" + number + "]");
+                //$('.container-images .item').removeClass('fade-out');
+                $active.removeClass("fade-in-right");
+                $active.animate({
+                    'opacity': 0
+                },300);
+                $next.animate({
+                    'opacity': 0
+                },300);
                 setTimeout(function () {
-                    $(".container-images .item[data-item=" + number + "]").removeClass('fadeOut').addClass('active fadeInRight');
+                    $next.addClass('active fade-in-right');
+                    $next.animate({
+                        'opacity': 1
+                    },300);
                     $active.removeClass('active');
-                }, 500);
+                }, 800);
             }, 200);
         });
 

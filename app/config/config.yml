@@ -116,6 +116,8 @@ doctrine:
                         Rand: Base\CoreBundle\Doctrine\Rand
                     datetime_functions:
                         Date_Format: Base\CoreBundle\Doctrine\DateFormat
+                        MONTH: Base\CoreBundle\Doctrine\DQL\Month
+                        YEAR: Base\CoreBundle\Doctrine\DQL\Year
 
 
 # Swiftmailer Configuration

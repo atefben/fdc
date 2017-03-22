@@ -47,7 +47,7 @@ class ModulePictosType extends ModuleType
                         'label'              => 'form.ccm.label.module.pictos.description1',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'picto2'          => array(
@@ -66,7 +66,7 @@ class ModulePictosType extends ModuleType
                         'label'              => 'form.ccm.label.module.pictos.description2',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'picto3'          => array(
@@ -85,7 +85,7 @@ class ModulePictosType extends ModuleType
                         'label'              => 'form.ccm.label.module.pictos.description3',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                     'picto4'          => array(
@@ -104,7 +104,7 @@ class ModulePictosType extends ModuleType
                         'label'              => 'form.ccm.label.module.pictos.description4',
                         'translation_domain' => 'BaseAdminBundle',
                         'field_type' => 'ckeditor',
-                        'config_name' => 'widget',
+                        'config_name' => 'ccm_widget',
                         'required' => false,
                     ),
                 ),

@@ -7621,6 +7621,17 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.test {
+  display: initial;
+}
+
+/* hotfix FF */
+@-moz-document url-prefix() {
+  .slider-home .container-images .item {
+    background-size: 100%;
+    background-position: 0px;
+  }
+}
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
@@ -10325,6 +10336,9 @@ body#home .isotope-01 .item .info {
   border: 3px solid #c8a461;
   background-color: rgba(255, 255, 255, 0);
 }
+.slider-home.stickystate .container-images .item {
+  background-position-y: 0px;
+}
 .slider-home .owl-carousel .owl-controls .owl-dot span {
   height: 6px;
   width: 6px;
@@ -10341,17 +10355,33 @@ body#home .isotope-01 .item .info {
 }
 .slider-home .container-images {
   position: absolute;
-  width: 100%;
+  width: 75%;
   height: 100%;
   display: block;
 }
+.slider-home .container-images.ff .item {
+  background-size: 100%;
+  background-position-y: 0px;
+}
 .slider-home .container-images .item {
-  width: 80%;
+  width: 100%;
   height: 100%;
   background: center 0 no-repeat fixed;
-  background-size: cover;
   display: none;
-  background-position-x: -310px;
+  transition: transform .8s ease-in, opacity .8s ease-in, background-position 0s;
+  background-position: left top;
+  background-size: 67.7%;
+  background-position-y: 210px;
+  position: absolute;
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slider-home .container-images .item.fade-in-right {
+  opacity: 1;
+  transform: translateX(0px);
+}
+.slider-home .container-images .item.fade-out {
+  opacity: 0;
 }
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
@@ -10414,12 +10444,7 @@ body#home .isotope-01 .item .info {
   color: #838383;
 }
 @media screen and (min-width: 1280px) and (max-width: 1599px) {
-  .slider-home {
-    /*
-    height: 577px;
-    */
-  }
-  .slider-home .container-images .item {
+  .slider-home .container-images {
     width: 76%;
   }
   .slider-home .texts {
@@ -10429,12 +10454,7 @@ body#home .isotope-01 .item .info {
   }
 }
 @media screen and (min-width: 1600px) and (max-width: 1920px) {
-  .slider-home {
-    /*
-    height: 683px;
-    */
-  }
-  .slider-home .container-images .item {
+  .slider-home .container-images {
     width: 71.3%;
   }
   .slider-home .texts {
@@ -10444,12 +10464,7 @@ body#home .isotope-01 .item .info {
   }
 }
 @media screen and (min-width: 1920px) {
-  .slider-home {
-    /*
-    height: 774px;
-    */
-  }
-  .slider-home .container-images .item {
+  .slider-home .container-images {
     width: 67.7%;
   }
   .slider-home .texts {

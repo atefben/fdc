@@ -152,8 +152,7 @@ class CcmParticiperPageAdmin extends Admin
                             'sonata_help'        => 'L\'url sera: ' . $url,
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
-                                new NotBlank(),
-                                new Url()
+                                new NotBlank()
                             ),
                             'required' => true
                         ),

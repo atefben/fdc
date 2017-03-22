@@ -65,6 +65,7 @@ class NodeListener
             ->setDisplayedOnCorpoHome($object->isDisplayedOnCorpoHome())
             ->setSignature($object->getSignature())
             ->setMainImage($object->getHeader())
+            ->setTypeClone($object->getTypeClone())
         ;
 
         if ($object instanceof NodeAudioInterface) {
@@ -80,7 +81,9 @@ class NodeListener
         }
 
         foreach ($object->getSites() as $site) {
-            $node->addSite($site);
+            if (!$node->getSites()->contains($site)) {
+                $node->addSite($site);
+            }
         }
 
         foreach ($object->getTranslations() as $translation) {
