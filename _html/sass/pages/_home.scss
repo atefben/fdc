@@ -491,8 +491,7 @@
   color: $gold;
   .icon{
     font-size: 0.8rem;
-    margin-top: 16px;
-    margin-left: 16px;
+    margin-top: 16.1px;
   }
 }
 
@@ -1799,6 +1798,11 @@
       margin: 40px 0px 70px 0px;
       letter-spacing: 7px;
       font-family: "Playfair Display",Times New Roman,Times,serif;
+
+      &.truncated-title {
+        line-height: 55px;
+      }
+
     }
 
     h5 {

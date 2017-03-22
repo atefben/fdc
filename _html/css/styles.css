@@ -6102,8 +6102,10 @@ footer .footer-menu ul li a:hover {
 .slideshow .caption {
   color: #666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 0.750rem;
-  margin: 20px 0;
+  font-size: 15px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  line-height: 20px;
 }
 .slideshow .caption strong {
   color: #333;
@@ -7334,7 +7336,6 @@ video {
   height: calc(630px / 1.58);
   text-align: center !important;
   margin: 0 auto !important;
-  padding-bottom: 20px !important;
 }
 .video-container button {
   background: none;
@@ -7603,7 +7604,7 @@ video {
 .video-container .control-bar {
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  bottom: 0px;
   height: 18%;
   width: 100%;
   opacity: 1;
@@ -9839,8 +9840,7 @@ header #searchContainer {
 }
 .video .picto .icon {
   font-size: 0.8rem;
-  margin-top: 16px;
-  margin-left: 16px;
+  margin-top: 16.1px;
 }
 
 .audio .picto {
@@ -11061,6 +11061,9 @@ header #searchContainer {
   margin: 40px 0px 70px 0px;
   letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+.text-presentation h3.truncated-title {
+  line-height: 55px;
 }
 .text-presentation h5 {
   color: #2b2b2b;
@@ -24528,6 +24531,9 @@ ul.tabs .quarterTab h4 {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
+.projection .programme:first-child {
+  margin-top: 5px;
+}
 .projection .programme {
   border: 2px solid #ECECEC;
   padding: 40px 20px 50px 20px;
@@ -25604,7 +25610,7 @@ option:checked,
 }
 .marche h4 {
   font-size: 16px;
-  line-height: 40px;
+  line-height: 30px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
   text-align: center;
@@ -25624,7 +25630,7 @@ option:checked,
   opacity: 1;
   letter-spacing: 2px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: left;
 }
 .marche h5 {
@@ -25636,10 +25642,16 @@ option:checked,
   color: #505050;
   font-size: 16px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 40px;
+  line-height: 25px;
   padding-right: 50px;
   text-align: left;
   list-style-type: disc;
+}
+.marche p.caption {
+  font-size: 15px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  line-height: 20px;
 }
 
 .marcheBody {
@@ -25649,7 +25661,7 @@ option:checked,
 .slideshow .caption {
   text-align: left;
   color: #666666;
-  font-size: 12px;
+  font-size: 15px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 

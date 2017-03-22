@@ -77,8 +77,11 @@
     font-size: 12px;
   }
 
+  .programme:first-child {
+    margin-top: 5px;
+  }
+
   .programme {
-    
     border: 2px solid #ECECEC;
     padding: 40px 20px 50px 20px;
     text-align: left;
@@ -1315,7 +1318,7 @@ option:checked,
 
   h4 {
     font-size: 16px;
-    line-height: 40px;
+    line-height: 30px;
     font-family: $CamphorBold;
     padding: 0px 100px;
     text-align: center;
@@ -1337,7 +1340,7 @@ option:checked,
     opacity: 1;
     letter-spacing: 2px;
     font-family: $CamphorBold;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: left;
   }
 
@@ -1351,11 +1354,19 @@ option:checked,
     color: #505050;
     font-size: 16px;
     font-family: $CamphorRegular;
-    line-height: 40px;
+    line-height: 25px;
     padding-right:50px;
     text-align: left;
     list-style-type: disc;
   }
+
+  p.caption {
+    font-size: 15px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    line-height: 20px;
+  }
+
 }
 
 .marcheBody {
@@ -1366,7 +1377,7 @@ option:checked,
   .caption {
     text-align: left;
     color: #666666;
-    font-size: 12px;
+    font-size: 15px;
     font-family: $CamphorRegular;
   }
 }
