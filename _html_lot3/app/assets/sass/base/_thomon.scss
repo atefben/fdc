@@ -390,7 +390,13 @@ article.communique .picto {
                 line-height: 1.3em;
             }
         }
-    }   
+    }
+
+    #sortiecanne {
+        .video-container {
+            height: 380px;
+        }
+    } 
 }
 
 .slider-home .texts .item p {

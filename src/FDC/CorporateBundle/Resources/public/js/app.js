@@ -83,6 +83,7 @@ var initVideo = function(hash) {
         twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
     function playerInit(id, cls, havePlaylist, live) {
+
         cls          = cls || 'video-player';
         havePlaylist = havePlaylist || false;
         live         = live || false;
@@ -165,17 +166,28 @@ var initVideo = function(hash) {
         }
 
         // CUSTOM LINK FACEBOOK
-        var fbHref = $topBar.find('.buttons .facebook').attr('href');
+
+
+            var fbHref = $topBar.find('.buttons .facebook').attr('href');
+        
+
+        
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
-        var twHref = $topBar.find('.buttons .twitter').attr('href');
+        
+
+
+            var twHref = $topBar.find('.buttons .twitter').attr('href');
+        
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
         } else {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($topBar.find('.info p').text()+" "+shareUrl));
         }
+
+
         $topBar.find('.buttons .twitter').attr('href', twHref);
 
         // CUSTOM LINK COPY
@@ -505,27 +517,35 @@ var initVideo = function(hash) {
 
 
         }
-        
+
+        var videoFile =  $container.data('file');
+        var videoImage =  $container.data('img');
+        var controls = ($('body').hasClass('mobile')) ? true : false;
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
         }else{
-            var videoFile =  $container.data('file');
-            var videoImage =  $container.data('img');
+
         }
 
-        var playerHeight = $(vid).parent('div').height();
+        var playerHeight = $(vid).closest('div').height();
         if($('.home').length){
             playerHeight = 550;
         }
+
+        if($(vid).is('#homepage-playlist-player')){
+            playerHeight = 380;
+        }
+
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
+            skin: 'seven',
             aspectratio: '16:9',
-            width: $(vid).parent('div').width(),
+            width: $(vid).closest('div').width(),
             height: playerHeight,
-            controls: ($('body').hasClass('mobile')) ? true : false
+            controls: controls
         });
 
         if(havePlaylist) {
@@ -999,8 +1019,11 @@ var initVideo = function(hash) {
         initPopinVideo(hash);
 
     } else if($('.video-playlist').length > 0) {
-
-        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
+        if ($('.home #homepage-playlist-player').length > 0) {
+            videoPlayer = playerInit('homepage-playlist-player',false , true);
+        }else{
+            videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
+        }
 
     } else if ($('#video-player-ba').length > 0) {
 
@@ -6873,15 +6896,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    var playerHeight = ('.home').length ? 550 : $(vid).parent('div').height();
+    var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
 
     playerInstance.setup({
-        // file: $container.data('file'),
         sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
         aspectratio: '16:9',
-        width: $(vid).parent('div').width(),
+        width: $(vid).closest('div').width(),
+        skin: 'seven',
         height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
     });

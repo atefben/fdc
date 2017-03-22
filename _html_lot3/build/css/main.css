@@ -7290,6 +7290,9 @@ article.communique .picto .icon {
   font-size: 2.25rem;
   line-height: 1.3em;
 }
+#home #sortiecanne .video-container {
+  height: 380px;
+}
 
 .slider-home .texts .item p {
   padding-bottom: 0px;
