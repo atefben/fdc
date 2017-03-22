@@ -7514,7 +7514,10 @@ header #navigation ul.user li a .icon {
 }
 
 .block-diaporama .owl-carousel .owl-item {
-  cursor: pointer;
+  cursor: move;
+  /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -webkit-grab;
 }
 
 .block-diaporama .slider-01 figcaption {
