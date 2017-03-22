@@ -109,11 +109,11 @@
                 {% endif %}
             {% endif %}
         </div>
-        {% if article is news_object %}
+        {% if class(article) starts with 'News' %}
             <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
-        {% elseif article is info_object %}
+        {% elseif class(article) starts with 'Info' %}
             <a href="{{ path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
-        {% elseif article is statement_object %}
+        {% elseif class(article) starts with 'Statement' %}
             <a href="{{ path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'communique', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         {% endif %}
         <a href="#" class="read-later">
