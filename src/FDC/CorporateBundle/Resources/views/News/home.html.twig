@@ -269,9 +269,7 @@
 
                         <div class="block-films">
                             <div class="left">
-                                <article class="video">
-                                    <div class="video-container state-init video video-playlist"
-                                         data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
+                                <article class="video video-container" data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-email="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.webm&quot;},{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4&quot;}]"
                                          data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg"
@@ -297,6 +295,7 @@
                   {% endif %}
                   {% endfor %}
                   ]'>
+                                    <div id="homepage-playlist-player" class="state-init video video-playlist">
                                         <div id="video-playlist" class="jwplayer jw-reset"></div>
                                         <div class="video-overlay"></div>
                                         <div class="infos-bar hide-info">
@@ -417,8 +416,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         </div>
                     </div> <!-- end block 01 -->
                 </div> <!-- end block 02 -->
-            {% endif %}
-            {% if homepage.displayedSocialWall == false %}
+            {%- endif -%}
+            {%- if homepage.displayedSocialWall == false -%}
 
                 <div class="block-01 socialwall">
                     <div class="padding-top">
