@@ -409,7 +409,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set emailContent = movie.videoMain|trans_fallback('theme') ~ ("\n")|nl2br %}
+                                    {% set emailContent = movie.videoMain.theme|trans_fallback('name') ~ ("\n")|nl2br %}
                                     {% set emailContent = emailContent ~ movie.titleVO %}
                                     {% set emailContent = emailContent ~ (inTheaters ? ' - ' ~ inTheaters : '') %}
                                     {% set emailContent = emailContent ~ ' - ' ~ movie.videoMain|trans_fallback('title') %}
