@@ -144,6 +144,12 @@
     border-color: #c8a461;
 }
 
+.cke_editable .bigButton {
+    width: 100%;
+    text-align: center;
+    padding: 0px !important;
+}
+
 /* Titles */
 .cke_editable h2.sub-title {
     font-family: "Playfair Display", Times New Roman, Times, serif;
