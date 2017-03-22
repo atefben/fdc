@@ -418,7 +418,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
                                          data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
-                                         data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
+                                         data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' ' ~ directorsNames ~ ' ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
