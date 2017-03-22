@@ -373,7 +373,7 @@ var initVideo = function(hash) {
                     $date.html(data.dateN);
                     $title.html(data.titleN).attr('href',data.url);
 
-                    var dataAuthors = data.whoN;emailContent
+                    var dataAuthors = data.whoN;
 
                     if(Array.isArray(dataAuthors)){
                         var output = '';
