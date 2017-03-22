@@ -366,6 +366,8 @@ var initVideo = function(hash) {
                 dateN = $this.find('.item').data('date');
                 titleN = $this.find('.item').data('title');
                 whoN = $this.find('.item').data('who');
+                whoU = $this.find('.item').data('who-url');
+                url = $this.find('.item').data('url');
                 labelN = $this.find('.item').data('label');
                 palmN = $this.find('.item').data('palm');
                 palmDateN = $this.find('.item').data('palmdate');
@@ -391,8 +393,8 @@ var initVideo = function(hash) {
                     var $link = $(e).parent().find('.block-social-network .link');
 
                     $date.html('sortie le '+dateN);
-                    $title.html(titleN);
-                    $who.html(whoN);
+                    $title.html(titleN).attr('href',url);
+                    $who.html(whoN).attr('href',whoU);
                     $label.html(labelN);
                     $palm.html(palmN);
 
@@ -7004,7 +7006,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
             }
 
-            console.log(index);
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
