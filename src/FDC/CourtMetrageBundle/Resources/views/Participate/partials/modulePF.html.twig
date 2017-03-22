@@ -1,7 +1,7 @@
 <div class="item-partners">
     <div class="contain-img">
         {% if module.logo is not null %}
-            <img src="{% path module.logo|trans_fallback("file"), "reference" %}" alt="{{ module.logo|trans_fallback('alt') }}" />
+            <img src="{% path module.logo|trans_fallback("file"), "270x165" %}" alt="{{ module.logo|trans_fallback('alt') }}" />
         {% endif %}
     </div>
     <div class="text-partners">
@@ -15,7 +15,7 @@
             {% if module.photo is not null or translation.nameSurname is not null or translation.function is not null %}
                 <div class="portrait">
                     {% if module.photo is not null %}
-                        <img src="{% path module.photo|trans_fallback("file"), "reference" %}" alt="{{ module.photo|trans_fallback('alt') }}" />
+                        <img src="{% path module.photo|trans_fallback("file"), "60x81" %}" alt="{{ module.photo|trans_fallback('alt') }}" />
                     {% endif %}
                     <strong class="name">{{ translation.nameSurname }}</strong>
                     <span class="rank">{{ translation.function }}</span>

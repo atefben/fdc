@@ -16,7 +16,7 @@
 
 
     <div class="slide">
-        <img src="{% path media, 'reference' %}" alt="" />
+        <img src="{% path media, '210x284' %}" alt="" />
         <a class="linkVid" href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"></a>
         <div class="info-movie">
             {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}

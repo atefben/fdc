@@ -1,7 +1,7 @@
 <div class="item-manual">
     {% if module.image is not null %}
         <div class="contain-img">
-            <img src="{% path module.image|trans_fallback("file"), "reference" %}" style="width: 363px; height: 260px;"/>
+            <img src="{% path module.image|trans_fallback("file"), "363x260" %}"/>
         </div>
     {% endif %}
     <div class="text-manual">

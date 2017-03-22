@@ -1,2 +1,9 @@
-<img src="{% path widget.file|trans_fallback('file'), 'reference' %}" alt="{{ widget.file|trans_fallback('alt') }}" />
+{% set file = widget.file|trans_fallback('file') %}
+{% set copyright = widget.file|trans_fallback('copyright') %}
+{% set alt = (widget.file|trans_fallback('alt') == '') ? widget.file|trans_fallback('legend') : widget.file|trans_fallback('alt') %}
+{% if file.height > file.width %}
+    {% thumbnail file, 'x584' with {'alt': alt, 'title': alt } %}
+{% else %}
+    {% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}
+{% endif %}
 <p class="caption">{{ widget.file|trans_fallback('legend') ~ ' © ' ~ widget.file|trans_fallback('copyright') }}</p>

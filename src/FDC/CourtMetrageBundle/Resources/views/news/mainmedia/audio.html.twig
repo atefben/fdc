@@ -5,11 +5,11 @@
 {% if translation.jobMp3State == 3 and translation.mp3url %}
     {% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}
         {% set img  %}
-            {% path mediaImage|trans_fallback('file'), 'reference' %}
+            {% path mediaImage|trans_fallback('file'), '1950x1232' %}
         {% endset %}
     {% else %}
         {% set img  %}
-            {% path mediaAudio.image|trans_fallback('file'), 'reference' %}
+            {% path mediaAudio.image|trans_fallback('file'), '1950x1232' %}
         {% endset %}
     {% endif %}
 

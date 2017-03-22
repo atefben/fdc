@@ -5,7 +5,7 @@
         <div class="contain-map">
             <strong class="name">{{ translation.title1 }}</strong>
             {% if module.image1 is not null %}
-                <a href="#" target="_blank"><img src="{% path module.image1|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+                <img src="{% path module.image1|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf1 is not null %}
                 <a href="{% path module.pdf1|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
@@ -17,7 +17,7 @@
         <div class="contain-map">
             <strong class="name">{{ translation.title2 }}</strong>
             {% if module.image2 is not null %}
-                <a href="#" target="_blank"><img src="{% path module.image2|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+                <img src="{% path module.image2|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf2 is not null %}
                 <a href="{% path module.pdf2|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
@@ -29,7 +29,7 @@
         <div class="contain-map">
             <strong class="name">{{ translation.title3 }}</strong>
             {% if module.image3 is not null %}
-                <a href="#" target="_blank"><img src="{% path module.image3|trans_fallback("file"), "reference" %}" alt="" class="map"></a>
+                <img src="{% path module.image3|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf3 is not null %}
                 <a href="{% path module.pdf3|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
