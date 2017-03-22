@@ -579,6 +579,9 @@ var initVideo = function(hash) {
         var videoFile =  $container.data('file');
         var videoImage =  $container.data('img');
         var controls = ($('body').hasClass('mobile')) ? true : false;
+        var playerWidth = $(vid).closest('div').width();
+        var playerHeight = $(vid).closest('div').height();
+
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
             var videoImage =  $('.activeVideo').data('img');
@@ -586,22 +589,24 @@ var initVideo = function(hash) {
 
         }
 
-        var playerHeight = $(vid).closest('div').height();
+        
         if($('.home').length){
             playerHeight = 550;
         }
 
         if($(vid).is('#homepage-playlist-player')){
             playerHeight = 380;
+            playerWidth = $('#homepage-playlist-player').outerWidth();
         }
-
+        
+        console.log(playerWidth);
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
             primary: 'html5',
             skin: 'seven',
             aspectratio: '16:9',
-            width: $(vid).closest('div').width(),
+            width: playerWidth,
             height: playerHeight,
             controls: controls
         });
