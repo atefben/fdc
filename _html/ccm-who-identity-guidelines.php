@@ -112,7 +112,7 @@
                       <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                       <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                     </div>
-                    <a href="#" class="link">Contraintes techniques</a>
+                    <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                   </div>
                 </div>
               </div> <!-- fin de item -->
@@ -140,7 +140,7 @@
                     <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                   </div>
 
-                  <a href="#" class="link a-left">Contraintes techniques</a>
+                  <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                 </div>
 
                 <div class="contain-infos">
@@ -196,7 +196,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
 
                       </div> <!-- fin download -->
@@ -302,7 +302,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
                       </div>
 
@@ -323,7 +323,7 @@
                               <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                               <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                             </div>
-                            <a href="#" class="link">Contraintes techniques</a>
+                            <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                           </div>
 
                           <div class="item">
@@ -332,7 +332,7 @@
                               <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                               <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                             </div>
-                            <a href="#" class="link">Contraintes techniques</a>
+                            <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                           </div>
 
                           <div class="item">
@@ -341,7 +341,7 @@
                               <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                               <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                             </div>
-                            <a href="#" class="link">Contraintes techniques</a>
+                            <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                           </div>
 
                           <div class="item">
@@ -350,7 +350,7 @@
                               <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                               <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                             </div>
-                            <a href="#" class="link">Contraintes techniques</a>
+                            <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                           </div>
 
                           <div class="item">
@@ -359,7 +359,7 @@
                               <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                               <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                             </div>
-                            <a href="#" class="link">Contraintes techniques</a>
+                            <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                           </div>
 
                         </div> <!-- fin download -->
@@ -384,7 +384,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
                       </div>
 
@@ -418,7 +418,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
                       </div>
 
@@ -452,7 +452,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                       <div class="item ">
                         <strong class="title-dowload ">ton direct</strong>
@@ -460,7 +460,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                       <div class="item ">
                         <strong class="title-dowload">noir</strong>
@@ -468,7 +468,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                     </div>
                   </div>
@@ -507,7 +507,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
                       </div>
                     </div>
@@ -532,7 +532,7 @@
                             <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                             <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                           </div>
-                          <a href="#" class="link">Contraintes techniques</a>
+                          <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                         </div>
                       </div>
                     </div>
@@ -562,7 +562,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
 
                       <div class="item ">
@@ -571,7 +571,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                     </div>
                   </div>
@@ -589,7 +589,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                     </div>
                   </div>
@@ -607,7 +607,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
 
                       <div class="item ">
@@ -616,7 +616,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
 
                       <div class="item ">
@@ -625,7 +625,7 @@
                           <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                           <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                         </div>
-                        <a href="#" class="link">Contraintes techniques</a>
+                        <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                       </div>
                     </div>
                   </div>
@@ -656,7 +656,7 @@
                       <a href="#" class="button"><i class="icon icon-download"></i> .jpg</a>
                       <a href="#" class="button"><i class="icon icon-download"></i> .eps</a>
                     </div>
-                    <a href="#" class="link">Contraintes techniques</a>
+                    <a href="#" class="link a-left modal-toggle">Contraintes techniques</a>
                   </div>
                   <div class="item ">
                     <strong class="title-dowload ">fournisseur officiel</strong>
@@ -688,6 +688,79 @@
       </div>
     </div>
   </section>
+
+
+<div class="modal">
+      <div class="modal-overlay modal-toggle"></div>
+        <div class="modal-wrapper modal-transition">   
+          <div class="modal-body">
+              <div class="modal-content">
+                <div class="wideWrapper onlineWrapper">
+                  <h1>CONTRAINTES TECHNIQUES</h1>
+                  <div class="onlinegoldBorders">
+                    <div class="specs">
+                     <h2><img class="specsImg" src="img/camera.svg"> Spécifications vidéo</h2>
+                      <h3>Formats acceptés</h3>
+                        <span>.mp[e]g  -   .avi  -   .vob  -   .mov  - 
+                        .mp4  -   .m4v</span>
+                       <h3>Codecs recommandés</h3>
+                        <span>Apple ProRes H264 (bitrate si possible)
+                        > 2MBit/s et non compressé
+                        (très gros fichiers)</span>
+                        <h3>Résolution</h3>
+                        <span>PAL  -   NTSC (ou SECAM) de 720x400 pixels au format HD (1920x1080 pixels)</span>
+                    </div>
+                    <div class="specs">
+                      <h2><img class="specsImg" src="img/sound.svg"> Spécifications audio</h2>
+                        <h3>Formats acceptés</h3>
+                        <span>48kHz PCM (seulement non compressé) MP3 AAC (si possible > 160 kBit/s)</span>
+                    </div>
+                  </div>
+                </div>       
+                <div class="block-register-pop">
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <p>Les logotypes proposés au téléchargement s’utilisent sans modification aucune. Tous les éléments sont indissociables. L’agrandissement ou la réduction se fait de manière homothétique</p>
+                    </div>
+                  </div>     
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <h6>Disposition :</h6>
+                    <p>Les logos doivent impérativement être utilisés à l'horizontale.</p>
+                    </div>
+                  </div>   
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <h6>Marges :</h6>
+                    <p>Aucun texte ni aucune image ne peuvent se superposer à la zone définie par les dimensions du fichier téléchargé.</p>
+                    <img class="blockimg-margin" src="img/identite_3_1.png">
+                    </div>
+                  </div>     
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <h6>Couleurs :</h6>
+                    <p>Les logos s’utilisent dans 2 couleurs : noir ou blanc (exceptions faites pour la Palme d’or et la Palme du court métrage) Ils peuvent s’utiliser sur un fond de couleur ou sur un fond d’image sous réserve d’une bonne lisibilité.</p>
+                    </div>
+                  </div>
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <h6>Dimensions :</h6>
+                    <p>Pour l’ensemble des logotypes, la largeur minimum d’utilisation est de 35 millimètres.</p>
+                    </div>
+                  </div>                 
+                  <div class="block-s-info">
+                    <div class="block-01-ms vFlexAlign">
+                    <h6>Mentions supplémentaires :</h6>
+                    <p>Toute mention ajoutée, avec l’accord de l’organisateur, se fera en caractère FoundryMonoline bold, bas-de-casse, centrée, corps et interlignages homothétiques par rapport au modèle du logo d’origine.</p>
+                    <img class="blockimg-margin" src="img/identite_3_2.png">
+                    </div>
+                  </div>
+                </div>     
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <?php include( 'footer.html'); ?>
 
