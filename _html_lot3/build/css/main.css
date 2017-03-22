@@ -7481,6 +7481,7 @@ h2.sub-title {
 
 #sortiecanne .block-list-img .item img {
   max-height: 180px;
+  width: auto;
 }
 
 .block-legend .texts .text-01 strong {
