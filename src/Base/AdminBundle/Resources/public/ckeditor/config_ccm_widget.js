@@ -21,6 +21,7 @@ CKEDITOR.editorConfig = function( config ) {
         },
         // Button link
         {name: 'Bouton lien', element: 'div', attributes: {'class': 'button single-button'}},
+        {name: 'Gros bouton lien', element: 'div', attributes: {'class': 'bigButton button single-button'}},
         // Titles
         {name: 'Titre', element: 'h2', attributes: {'class': 'title-article'}},
         {name: 'Sous-titre 1', element: 'h2', attributes: {'class': 'sub-title'}},
