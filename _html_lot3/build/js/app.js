@@ -399,12 +399,12 @@ var initVideo = function(hash) {
                     }else{
                         $isPalm.removeClass('icon-palme');
                     }
-                    
+
 
                     $palmDate.html(data.palmDateN);
                     $facebook.attr('href', data.fbN);
                     $twitter.attr('href', data.twitterN);
-                    console.log(data);
+                    //console.log(data);
                     console.log(data.url);
                     $link.attr('data-clipboard-text', data.url);
 
@@ -413,7 +413,7 @@ var initVideo = function(hash) {
                         'category': data.labelN,
                         'date': data.dateN,
                         'title': data.titleN,
-                        'url': data.linkN
+                        'url': data.url
                     });
 
                     initRs();
