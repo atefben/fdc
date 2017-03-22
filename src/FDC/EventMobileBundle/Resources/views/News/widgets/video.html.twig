@@ -21,7 +21,7 @@
 {% endif %}
 
 <div class="m-video">
-    <div id="players-{{ widget.id }}" class="players" {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %} data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"></div>
+    <div id="players-{{ widget.id }}" class="players2" {% if(trans.jobWebmState == 3) %}data-webmurl="{{ s3_server_video ~ trans.webmUrl }}" {% endif %} {% if trans.jobMp4State == 3 %} data-mp4url="{{ s3_server_video ~ trans.mp4Url }}"{% endif %} data-poster="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif trans.imageAmazonUrl is defined and trans.imageAmazonUrl is not null %}{{ s3_server_video ~ trans.imageAmazonUrl }}{% endif %}"></div>
     <div class="infos-bar">
         <div class="info">
             <p class="category">{{ file.theme|trans_fallback('name') }}
