@@ -135,10 +135,10 @@
                                             <div class="image-wrapper">
                                                 {% if associatedArticle.header is not null %}
                                                     {% set translations = associatedArticle.header.findTranslationByLocale(app.request.locale) %}
-                                                    <img src="{% path associatedArticle.header|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                    <img src="{% path associatedArticle.header|trans_fallback('file'), '918x580' %}" alt="{{ translations.alt }}"/>
                                                 {% elseif associatedArticle.image is not null %}
                                                     {% set translations = associatedArticle.image.findTranslationByLocale(app.request.locale) %}
-                                                    <img src="{% path associatedArticle.image|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }}"/>
+                                                    <img src="{% path associatedArticle.image|trans_fallback('file'), '918x580' %}" alt="{{ translations.alt }}"/>
                                                 {% endif %}
                                             </div>
                                             <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}" class="linkImage"></a>

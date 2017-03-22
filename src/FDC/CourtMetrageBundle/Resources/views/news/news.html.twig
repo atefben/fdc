@@ -34,12 +34,12 @@
                             <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
                             <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
                                 {% if article.header is not null %}
-                                    <img src="{% path article.header|trans_fallback('file'), 'reference' %}" alt="{{ article.header|trans_fallback('alt') }}"/>
+                                    <img src="{% path article.header|trans_fallback('file'), '1144x724' %}" alt="{{ article.header|trans_fallback('alt') }}"/>
                                 {% elseif article.image is not null %}
-                                    <img src="{% path article.image|trans_fallback('file'), 'reference' %}" alt="{{ article.image|trans_fallback('alt') }}"/>
+                                    <img src="{% path article.image|trans_fallback('file'), '1144x724' %}" alt="{{ article.image|trans_fallback('alt') }}"/>
                                 {% elseif  article.getType() == 'image' and article.gallery is not null %}
                                     {% if article.gallery.medias.first() is not null and article.gallery.medias.first().media is not null %}
-                                        <img src="{% path article.gallery.medias.first().media|trans_fallback('file'), 'reference' %}" alt="{{ article.gallery.medias.first().media|trans_fallback('alt') }}"/>
+                                        <img src="{% path article.gallery.medias.first().media|trans_fallback('file'), '1144x724' %}" alt="{{ article.gallery.medias.first().media|trans_fallback('alt') }}"/>
                                     {% endif %}
                                 {% endif %}
                             </a>
