@@ -4692,7 +4692,6 @@ var initRs = function () {
 
         $('.popin-mail-open').on('click touchstart', function (e) {
             e.preventDefault();
-            console.log($(e.target));
             $('.overlay-popin').addClass('visible-popin');
 
             $('.overlay-popin').on('click', function (e) {
@@ -7005,6 +7004,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
             }
 
+            console.log(index);
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));

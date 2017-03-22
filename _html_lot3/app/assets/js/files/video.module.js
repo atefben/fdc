@@ -485,6 +485,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 var shareUrl = GLOBALS.urls.videosUrl + '#vid=' + $playlist[index].vid;
             }
 
+            console.log(index);
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));

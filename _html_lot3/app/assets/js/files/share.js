@@ -188,7 +188,6 @@ var initRs = function () {
 
         $('.popin-mail-open').on('click touchstart', function (e) {
             e.preventDefault();
-            console.log($(e.target));
             $('.overlay-popin').addClass('visible-popin');
 
             $('.overlay-popin').on('click', function (e) {
