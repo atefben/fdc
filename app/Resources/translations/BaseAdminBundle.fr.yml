@@ -1051,6 +1051,7 @@ form:
         mosaic_movie: Module mosaïque de films
         movie: Module liste de films
         subtitle: Module sous-titre
+        title: Module titre
         intro: Module chapeau
         text: Module de texte
         video: Module vidéo Amazon

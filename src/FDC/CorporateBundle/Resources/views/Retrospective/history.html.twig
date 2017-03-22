@@ -172,6 +172,13 @@
                                         <p class="title-item">{{ transWidget.paragraph }}</p>
                                     {% endif %}
                                 </div>
+                            {% elseif widget is fdc_page_la_selection_cannes_classics_widget_title %}
+                                {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
+                                <div class="title-list-cat module-title">
+                                    {% if transWidget.title|trim %}
+                                        <h2 class="title-big">{{ transWidget.title }}</h2>
+                                    {% endif %}
+                                </div>
                             {% endif %}
                         {% endfor %}
                     </div>
