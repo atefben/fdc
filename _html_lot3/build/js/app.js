@@ -5774,17 +5774,16 @@ var openSlideShow = function (slider, hash, affiche) {
                 if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
                     images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
                 }
-                console.log(images[centerElement].caption);
             }
 
             if(typeof images[centerElement].title !== 'undefined'){
                  var tempTitle = images[centerElement].title;
-
                  if(isHTML(tempTitle)){
                     if($(tempTitle).filter('*').size() > 0){
                         onelineclass = ''
                     }
                 }
+                console.log('check hmtl ok');
             }
         }
     }
@@ -5891,12 +5890,23 @@ var openSlideShow = function (slider, hash, affiche) {
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date.replace('undefined',''));
         }
         
+        function isHTML(str) {
+            var a = document.createElement('div');
+            a.innerHTML = str;
+            for (var c = a.childNodes, i = c.length; i--; ) {
+                if (c[i].nodeType == 1) return true; 
+            }
+            return false;
+        }
+
         if(typeof images[centerElement].title !== 'undefined'){
-            if($(images[centerElement].title).filter('*').size()){
-                if($(images[centerElement].title).filter('strong').length){
-                    images[centerElement].title = $(images[centerElement].title).filter('strong').text();
-                }else{
-                    images[centerElement].title = $(images[centerElement].title).text();
+            if(isHTML(images[centerElement].title)){
+                if($(images[centerElement].title).filter('*').size()){
+                    if($(images[centerElement].title).filter('strong').length){
+                        images[centerElement].title = $(images[centerElement].title).filter('strong').text();
+                    }else{
+                        images[centerElement].title = $(images[centerElement].title).text();
+                    }
                 }
             }
         }
@@ -6020,7 +6030,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
-    })
+    });
 
     $(window).resize(function () {
         w = $(window).width();

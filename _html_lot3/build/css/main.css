@@ -7499,8 +7499,17 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
+/* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
-  min-width: 9999px;
+  min-width: 999999px;
+}
+
+.block-diaporama .owl-carousel .owl-item {
+  cursor: pointer;
+}
+
+.block-diaporama .slider-01 figcaption {
+  font-size: .65rem;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description {
