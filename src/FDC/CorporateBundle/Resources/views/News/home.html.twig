@@ -414,6 +414,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     {% set emailContent = emailContent ~ (inTheaters ? ' - ' ~ inTheaters : '') %}
                                     {% set emailContent = emailContent ~ ' - ' ~ movie.videoMain|trans_fallback('title') %}
                                     {% set emailContent = emailContent ~ ' - ' ~ movie|trans_fallback('synopsis')|truncate(200, true) %}
+                                    {% set emailContent = emailContent ~ ' - ' ~ movieUrl %}
 
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
