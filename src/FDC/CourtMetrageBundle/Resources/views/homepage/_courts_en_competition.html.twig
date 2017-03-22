@@ -20,8 +20,7 @@
         <a class="linkVid" href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"></a>
         <div class="info-movie">
             {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
-                <p>{{ movie.titleVo|shorten(54, '...') }}</p>
-                <p>({{ movie|trans_fallback_movie('title')|shorten(66, '...') }})</p>
+                <p>{{ movie.titleVo|shorten(54, '...') }}<br> <span class="translated-title">({{ movie|trans_fallback_movie('title')|shorten(66, '...') }})</span></p>
             {% else %}
                 <p>{{ movie|trans_fallback('title')?:movie.titleVo|shorten(54, '...') }}</p>
             {% endif %}
