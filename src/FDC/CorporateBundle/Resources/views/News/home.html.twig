@@ -378,7 +378,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 {% set mainTitle = movie.titleVO %}
                                 {% set directorsNames = '' %}
                                 {% for director in movie.getDirectors() if director and director.person %}
-                                    {% if directoNames %}
+                                    {% if directorsNames %}
                                         {% set directorsNames = directorsNames ~ ', ' %}
                                     {% endif %}
                                     {% set directorsNames = directorsNames ~ director.person.fullName %}
