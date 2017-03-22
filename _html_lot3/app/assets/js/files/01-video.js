@@ -727,6 +727,7 @@ var initVideo = function(hash) {
             _duration = playerInstance.getDuration();
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
+            console.log(duration_secs);
             $durationTime.html(duration_mins + ":" + duration_secs);
         }).on('bufferChange', function(e) {
             var currentBuffer = e.bufferPercent;
