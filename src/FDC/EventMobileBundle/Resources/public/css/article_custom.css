@@ -1,3 +1,9 @@
+.slideshow .caption strong {
+    color: #666;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
 .m-video .picto .icon {
     font-size: .8rem;
     margin-top: 16px;
