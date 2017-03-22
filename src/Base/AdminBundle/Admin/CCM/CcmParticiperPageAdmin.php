@@ -115,10 +115,16 @@ class CcmParticiperPageAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        /** @var CcmParticiperPageTranslation $trans */
-        $trans = $this->getSubject()->findTranslationByLocale('fr');
-        $slug = $trans ? $trans->getSlug() : null;
-        $url = 'http://' . $this->ccmDomain . $this->router->generate('fdc_court_metrage_participer_page', ['slug' => $slug ? $slug : 'page-slug']);
+        /** @var CcmParticiperPageTranslation $translation */
+        $urlHelpText = 'L\'urls seront: <br>';
+        foreach ($this->getSubject()->getTranslations() as $translation) {
+            $slug = $translation ? $translation->getSlug() : null;
+            $urlHelpText .= 'http://'.$this->ccmDomain.$this->router->generate(
+                    'fdc_court_metrage_participer_page',
+                    ['slug' => $slug ? $slug : 'page-slug', '_locale' => $translation->getLocale()]
+                );
+            $urlHelpText .= '<br>';
+        }
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -149,7 +155,7 @@ class CcmParticiperPageAdmin extends Admin
                         ),
                         'slug'          => array(
                             'label'              => 'form.ccm.label.participer.page_slug',
-                            'sonata_help'        => 'L\'url sera: ' . $url,
+                            'sonata_help'        => $urlHelpText,
                             'translation_domain' => 'BaseAdminBundle',
                             'constraints'        => array(
                                 new NotBlank()

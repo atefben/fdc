@@ -277,4 +277,17 @@ class NewsManager
         
         return $newsArticle;
     }
+
+    public function getLocaleSlugsForNews($slug)
+    {
+        $newsTranslation = $this->getNewsArticleBySlugAndLocale($slug);
+        $translations = $newsTranslation->getTranslatable()->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
 }

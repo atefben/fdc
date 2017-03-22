@@ -123,7 +123,7 @@ class ParticipateController extends Controller
         $participatePage = $participateManager->getParticipatePage($slug);
         $pageLayers = $participateManager->getPageLayers($participatePage);
 
-        if (!$participatePage || !$pageLayers) {
+        if (!$participatePage) {
             throw new NotFoundHttpException();
         }
         $layerModules = $participateManager->getLayerModules($pageLayers);
