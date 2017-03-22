@@ -25,7 +25,7 @@
 {% endif %}
 
 {% if filters.format is defined %}
-    <div class="compute-filters theme">
+    <div class="compute-filters format">
         {% for key, format in filters.format if key %}
             <span class="" data-filter="{{ format|get_news_type }}">{{ format|get_news_type }}</span>
         {% endfor %}
