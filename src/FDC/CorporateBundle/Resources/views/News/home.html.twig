@@ -375,10 +375,9 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                                 {% if trans %}
                                     {% set directors = movie.getDirectors() %}
-                                    {% set dataWho = '' %}
-                                    {% for director in directors %}
-                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
-                                        {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                                    {% set dataWho = [] %}
+                                    {% for director in directors if director and director.person and director.person.slug %}
+                                        {% set dataWho = dataWho|merge({'name': director.person.fullname, 'url': path('fdc_corporate_artist_get', {'slug': director.person.slug})}) %}
                                     {% endfor %}
                                     {% set awardsUnique = [] %}
                                     {% set dataAward = '' %}
@@ -396,10 +395,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     <div class="item" data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
                                          data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
-                                         data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}"
+                                         data-title="{{ movie.titleVO }}"
                                          data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
-                                         data-palmdate="{{ movie.productionYear }}">
+                                         data-palmdate="{{ movie.productionYear }}"
+                                         data-url="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}"
+                                         data-who="{{ dataWho|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
                                                         src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
