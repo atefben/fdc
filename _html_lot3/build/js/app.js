@@ -2542,8 +2542,6 @@ var owInitFilter = function (isTabSelection) {
 
                             var getVal = $this.data('filter');
 
-                            //console.log('.item.' + getVal,'.item.' + getVal + ':not([style*="display: none"]');
-                            
                             if($('.articles-list').length){
                                 var numItems = $('.item.' + getVal + ':not([style*="display: none"]').length;
                             }else{
