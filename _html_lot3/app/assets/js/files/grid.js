@@ -244,7 +244,7 @@ var owInitGrid = function (id) {
                         //manage filters
                         if($data.filter('.compute-filters').length){
                             $data.filter('.compute-filters').each(function(){
-                                var slug = $(this).attr('class').replace('compute filters ','');
+                                var slug = $(this).attr('class').replace('compute-filters ','');
                                 //fix before JL devs
                                 console.log(slug);
                                 $(this).find('span').each(function(){
