@@ -174,7 +174,7 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter(':month', (int)$now->format('m'))
             ->innerJoin('f.videoMain', 'mv')
             ->andWhere('mv.publishedAt <= :now')
-            ->andWhere('mv.publishedAt is null or mv.publishEndedAt >= :now')
+            ->andWhere('mv.publishEndedAt is null or mv.publishEndedAt >= :now')
             ->setParameter(':now', $now)
             ->innerJoin('mv.sites', 's')
             ->innerJoin('mv.translations', 'videotranslations')
@@ -182,6 +182,7 @@ class FilmFilmRepository extends EntityRepository
             ->setParameter(':slugSite', $site)
             ;
         $this->addTranslationQueries($qb, 'videotranslations', $locale);
+
         return
             $qb->getQuery()
             ->getResult()
