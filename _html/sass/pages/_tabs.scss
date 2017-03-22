@@ -888,7 +888,6 @@ ul.tabs {
       padding: 30px 15px 5px;
       border-bottom: 3px solid white;
       text-align: left;
-      text-transform: uppercase;
       font-family: $CamphorHeavy;
       font-size: 16px;
       color: #505050;
@@ -923,6 +922,7 @@ ul.tabs {
     h5 {
       width: 80%;
       float: left;
+      text-transform: uppercase;
     }
 
     span {

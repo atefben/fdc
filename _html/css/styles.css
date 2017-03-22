@@ -23028,7 +23028,6 @@ ul.tabs .quarterTab h4 {
   padding: 30px 15px 5px;
   border-bottom: 3px solid white;
   text-align: left;
-  text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #505050;
@@ -23063,6 +23062,7 @@ ul.tabs .quarterTab h4 {
 .accordion-infos .open h5 {
   width: 80%;
   float: left;
+  text-transform: uppercase;
 }
 .accordion-infos .open span {
   width: 0%;
