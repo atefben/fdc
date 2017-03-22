@@ -147,7 +147,7 @@
                             <div class="articles center">
                                 {% for article in focusArticles %}
                                     {% if article is not null %}
-                                        {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
+                                        {% include 'FDCCorporateBundle:News/widgets:article.same.day.html.twig' with {type : 'focus'} %}
                                     {% endif %}
                                 {% endfor %}
                             </div>
