@@ -364,3 +364,7 @@ body.chocolat-open.fixed {
     line-height: 40px;
     text-align: center;
 }
+
+.slideshow .slideshow-img .thumbnails .thumb:after {
+    border: 0 solid #c8a461;
+}
