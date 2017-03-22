@@ -412,7 +412,15 @@ var initVideo = function(hash) {
                     });
 
                     initRs();
-                    console.log($facebook);
+                    if(!$facebook.length){
+                        $facebook = $(e).closest('#sortiecanne').find('.block-social-network .facebook');
+                    }
+                    if(!$twitter.length){
+                        $twitter = $(e).closest('#sortiecanne').find('.block-social-network .twitter');
+                    }
+                    if(!$link.length){
+                        $link = $(e).closest('#sortiecanne').find('.block-social-network .link');
+                    }
                     $facebook.attr('href', data.fbN);
                     $twitter.attr('href', data.twitterN);
                     $link.attr('data-clipboard-text', data.url);
