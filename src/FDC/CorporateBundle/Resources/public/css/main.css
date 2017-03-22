@@ -7687,6 +7687,7 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 .c-fullscreen-slider .chocolat-bottom .chocolat-description h2 {
   max-height: 48px;
   overflow: hidden;
+  color: #fff;
 }
 
 /* custom breakpoints for slideshow title */
