@@ -277,21 +277,22 @@ class NewsController extends Controller
         //get day articles
         $count           = 3;
         $newsDate        = $news->getPublishedAt();
+        $exclude = $news->getId();
 
         if ($type == "communique") {
             $sameDayArticles = $em->getRepository('BaseCoreBundle:Statement')->getSameDayStatement($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Statement')->getOlderStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-press', $exclude);
             $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $em->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+            $nextArticlesURL = $em->getRepository('BaseCoreBundle:Statement')->getNextStatement($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-press', $exclude);
             $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         }
         else {
             $sameDayArticles = $em->getRepository('BaseCoreBundle:Info')->getSameDayInfo($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-press', $exclude);
             $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
-            $nextArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+            $nextArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, $this->getFestival()->getId(), $news->getPublishedAt(), 'site-press', $exclude);
             $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         }
 
