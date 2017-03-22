@@ -1054,6 +1054,7 @@ var initVideo = function(hash) {
             $('.popin-mail').find('.chap-article').html('');
             if(typeof data['who'] !== 'undefined'){
                 var dataAuthors = data['who'];
+                
 
                 if(Array.isArray(dataAuthors)){
                     var output = '';
