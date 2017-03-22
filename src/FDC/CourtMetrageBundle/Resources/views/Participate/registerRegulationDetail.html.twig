@@ -7,12 +7,14 @@
         </div>
 
         <div class="all-contain block-01-ms padding-top block-rules">
-            <strong class="title-23">{{ registerProcedure.name }}</strong>
+            {% if registerProcedure.name %}<strong class="title-23">{{ registerProcedure.name }}</strong>{% endif %}
             <strong class="title-24 title-rules">{{ 'ccm.register_movie.rules'|trans }} {{ "now"|date("Y") }}</strong>
 
+            {% if registerProcedure.regulationDetailsText %}
             <div class="block-01-ms texte-01">
                 {{ registerProcedure.regulationDetailsText|raw }}
             </div>
+            {% endif %}
         </div> <!-- fin de all-contain block-01-xs padding-top -->
 
         <div class="border-top border-bottom block-button-bottom">

@@ -40,7 +40,7 @@ class ArtistController extends CcmController
         }
 
         $competitionManager = $this->get('ccm.manager.competition');
-        $selectionTab = $competitionManager->getSelectionTab();
+        $selectionTab = $competitionManager->getSelectionTab($festival->getYear());
 
         // find directors randomly, order them after by firstname
         $directors = $this

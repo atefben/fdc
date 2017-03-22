@@ -292,7 +292,7 @@
                             <div class="box-body">
                                 <div class="fdc-widgets" data-form-widget="collection">
                                     {% for widget in form.parent.children.widgets.children %}
-                                        <div class="item base-widget">
+                                        <div class="item base-widget" data-itemtype="sfc-widgets">
                                             {% if widget.children._type.vars.value == 'ccm_sfc_widget_subtitle_type' %}
                                                 <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
                                             {% elseif widget.children._type.vars.value == 'ccm_sfc_widget_text_type' %}
