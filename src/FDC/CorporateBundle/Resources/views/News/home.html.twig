@@ -583,4 +583,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
     "url"  : path('fdc_event_news_index')
     }
     ]} %}
+
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}
