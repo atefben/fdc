@@ -27,6 +27,41 @@ var owInitGrid = function (id) {
         });
 
         var $items = $('.item');
+
+        //ratio calculation on media library
+        if($('.media-library').length){
+            //ratios token from eventbundle
+            var landscapeRatio = 0.7921; //height / width
+            var portraitRatio = 1.5842; //height / width
+            $items.each(function(){
+                var $this = $(this);
+                var itemRatio = $this.outerHeight() / $this.outerWidth();
+
+                if($this.outerWidth() > $this.outerHeight()){
+                    //landscape
+                    $this.addClass('landscape');
+                    //compute height based on width & ratio
+                    var newHeight = $this.outerWidth() * landscapeRatio;
+                    if(itemRatio < landscapeRatio){
+                        //less large than desired output, scale width
+                        //$this.find('.image, .image-wrapper, img').css('width','100%');
+                    }else{
+                        //more large than desired output, scale height
+                        //$this.find('img').css('height','100%');
+                    }
+                }else{
+                    //portrait
+                    $this.addClass('portrait');
+                    //compute height based on width & ratio
+                    var newHeight = $this.outerWidth() * portraitRatio;
+                    if(itemRatio < portraitRatio){
+                        //less large than desired output, scale width
+                    }else{
+                        //more large than desired output, scale width too (?)
+                    }
+                }
+            });
+        }
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
@@ -49,7 +84,6 @@ var owInitGrid = function (id) {
                     //hidden button, infinite load
                     var footerHeight = $('footer').outerHeight();
                     $(window).scroll(function(){
-                        console.log('scrollin');
                         if(($(window).height() + $(document).scrollTop()) > ($(document).height() - footerHeight)){
                             if(clickAllow){
                                 clickAllow = false;
@@ -64,9 +98,6 @@ var owInitGrid = function (id) {
                 }
             }
         });
-
-        
-
 
         var number = 0;
 
@@ -148,52 +179,88 @@ var owInitGrid = function (id) {
         }else{
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                e.preventDefault();
+                //e.preventDefault();
                 var $this = $(this);
                 var url = $(this).attr('href');
 
+                var postData = {};
+                if(typeof $('input[name="search"]').val() !== 'undefined'){
+                    postData.search = $('input[name="search"]').val();
+                }
+                if(typeof $('input[name="photo"]').val() !== 'undefined'){
+                    postData.photo = $('input[name="photo"]').val();
+                }
+                if(typeof $('input[name="video"]').val() !== 'undefined'){
+                    postData.video = $('input[name="video"]').val();
+                }
+                if(typeof $('input[name="audio"]').val() !== 'undefined'){
+                    postData.audio = $('input[name="audio"]').val();
+                }
+                if(typeof $('input[name="year-start"]').val() !== 'undefined'){
+                    postData['year-start'] = $('input[name="year-start"]').val();
+                }
+                if(typeof $('input[name="year-end"]').val() !== 'undefined'){
+                    postData['year-end'] = $('input[name="year-end"]').val();
+                }
+                if(typeof $('input[name="pg"]').val() !== 'undefined'){
+                    postData.pg = parseInt($('input[name="pg"]').val())+1;
+                }
+
+                if($('#date.filter .select .active').length){
+                    postData.date = $('#date.filter .select .active').data('filter');
+                }
+                if($('#theme.filter .select .active').length){
+                    postData.theme = $('#theme.filter .select .active').data('filter');
+                }
+                if($('#format.filter .select .active').length){
+                    postData.format = $('#format.filter .select .active').data('filter');
+                }
+                console.log('data sent to GET on ajax button click',postData);
+
                 $.post({
-                    type: 'POST',
+                    type: 'GET',
                     url: url,
-                    data: {
-                        search: $('input[name="search"]').val(),
-                        photo: $('input[name="photo"]').val(),
-                        video: $('input[name="video"]').val(),
-                        audio: $('input[name="audio"]').val(),
-                        'year-start': $('input[name="year-start"]').val(),
-                        'year-end': $('input[name="year-end"]').val(),
-                        pg: parseInt($('input[name="pg"]').val())+1
-                    },
+                    data: postData,
                     success: function(data) {
                         $data = $(data);
                         
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
-                        $gridMore.append(articles);
+                        var scroll = $(document).scrollTop();
+                        var rawHtml = '';
+                        articles.each(function(){
+                            rawHtml += $(this).get(0).outerHTML;
+                        });
+                        $gridMore.append(rawHtml);
                         $gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
                         }else{
                             //visible buton = no infinite load & undefined button, let's remove it
-                            //if($this.is(':visible')){
-                                $this.remove();
-                            //}
+                            $this.remove();
                         }
+
+                        $('html,body').scrollTop(scroll);
                         $gridMore.imagesLoaded(function () {
+
+                            //memorize scrolltop
+                            $('html,body').scrollTop(scroll);
+                            
                             $gridMore.isotope({
                                 itemSelector: '.item',
-                                layoutMode: 'packery',
+                                layoutMode: 'masonry',
                                 packery: {
-                                    columnWidth: '.grid-sizer',
-                                    gutter: 0
-                                }
+                                    columnWidth: '.grid-sizer'
+                                },
+                                getSortData: {
+                                    number: '[data-sort]'
+                                },
+                                // sort by color then number
+                                sortBy: ['number']
                             });
 
-                            //scroll bottom
-                            $('html,body').animate({
-                                scrollTop: $('.isotope-01').outerHeight()-500
-                            },300);
+                            $('html,body').scrollTop(scroll);
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
@@ -215,7 +282,9 @@ var owInitGrid = function (id) {
                         initAudio();
 
                     }
-                })
+                });
+
+                return false;
             });
         }
 
@@ -433,11 +502,11 @@ var owInitGrid = function (id) {
             var $grid = $('.isotope-02').isotope({filter: filterStaff});
         }
     }
-
 };
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+    console.log('owsetGridBigImg')
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -512,7 +581,6 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    //grid.isotope('layout');
 
 };
 

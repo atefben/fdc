@@ -1,0 +1,46 @@
+{% for movie in movies %}
+    {% set media = movie.imageMain|trans_fallback('file') %}
+
+    {% if media is empty %}
+        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = movie.getSelfkitImages()|first %}
+    {% endif %}
+
+
+    <div class="slide">
+        <img src="{% path media, 'reference' %}" alt="" />
+        <a class="linkVid" href="{{ path('fdc_court_metrage_movie_show', {'slug': movie.slug}) }}"></a>
+        <div class="info-movie">
+            {% if movie|trans_fallback_movie('title') != null and movie.titleVo != null and movie|trans_fallback_movie('title')|lower != movie.titleVo|lower %}
+                <p>{{ movie.titleVo|shorten(54, '...') }}</p>
+                <p>({{ movie|trans_fallback_movie('title')|shorten(66, '...') }})</p>
+            {% else %}
+                <p>{{ movie|trans_fallback('title')?:movie.titleVo|shorten(54, '...') }}</p>
+            {% endif %}
+            {% if movie.getDirectors()|length > 2 %}
+                {% set index = 1 %}
+                {% for director in movie.getDirectors() if index < 2 %}
+                    {% set index = loop.index %}
+                    <a href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                        {{ director.person.fullName|trim }}{{ index == 2 ? '...':', '}}
+                    </a>
+                {% endfor %}
+            {% else %}
+                {% for director in movie.getDirectors() %}
+                    <a class="director" href="{{ path('fdc_court_metrage_artist', {'slug': director.person.slug}) }}">
+                        {{ director.person.fullName|trim }}{{ loop.last == true ? '':', '}}
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endfor %}

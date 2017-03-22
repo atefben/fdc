@@ -167,9 +167,8 @@ class FilmFilmRepository extends EntityRepository
         return $this
             ->createQueryBuilder('f')
             ->select('f')
-            ->andWhere('f.publishedAt BETWEEN :monthStart AND :monthEnd')
-            ->setParameter('monthStart', $dateTime->format('Y-m-') . '01')
-            ->setParameter('monthEnd', $dateTime->format('Y-m-') . '31')
+            ->andWhere('MONTH(f.publishedAt) = :month')
+            ->setParameter(':month', (int)$dateTime->format('m'))
             ->getQuery()
             ->getResult()
             ;
@@ -258,6 +257,29 @@ class FilmFilmRepository extends EntityRepository
         }
         $this->addMasterQueries($qb, 'f', $festival, false);
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Get Films by courtYear and order randomly.
+     *
+     * @param $year
+     * @return array
+     */
+    public function getFilmsByCourtYearRandom($year, $selection)
+    {
+        $qb = $this
+            ->createQueryBuilder('f')
+            ->select('f, RAND() as HIDDEN r')
+            ->where('f.productionYear = :year')
+            ->andWhere('f.selectionSection = :selectionSection')
+            ->setParameter(':year', $year)
+            ->setParameter(':selectionSection', $selection)
+            ->orderBy('r')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 
     /**

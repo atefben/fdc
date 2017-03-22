@@ -1,0 +1,19 @@
+{% set translation = widget.file.findTranslationByLocale(app.request.locale) %}
+<div class="video-container state-init video"
+     data-name="{{ translation.title }}"
+     data-file='[{% if(translation.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ translation.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ translation.mp4Url }}"}]'
+     data-img="{% path widget.file.image|trans_fallback('file'), 'reference' %}">
+    <div id="{{ widget.file.id }}" class="video-player"></div>
+    <div class="video-overlay"></div>
+    <div class="infos-bar">
+        <div class="picto"><i class="icon icon_video"></i></div>
+        <div class="info">
+            <div class="vCenter">
+                <div class="vCenterKid">
+                    <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span><span class="date">{{ widget.file.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ widget.file.updatedAt|date("H:i") }}</span>
+                    <p>{{ translation.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

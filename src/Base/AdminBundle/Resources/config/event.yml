@@ -42,6 +42,15 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: postFlush }
 
+    base.admin.event.ccm_media_listener:
+        class: Base\AdminBundle\EventListener\CcmMediaListener
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postFlush }
+
     base.admin.event.mobile_notification_listener:
         class: Base\AdminBundle\EventListener\MobileNotificationListener
         arguments:

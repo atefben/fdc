@@ -23,25 +23,24 @@
     {% endif %}
 {% endif %}
 {% if (image is defined or image_s3 is defined) and trans.jobMp3State == 3 and trans.mp3Url %}
-    <div class="audio-player" data-sound="{{ s3_server_audio ~ trans.mp3Url }}" {% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}>
-        <div class="picto playpause">
-            <i class="icon icon_audio"></i>
-        </div>
-        <div class="player-off">
-            <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span>
-            <span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span
-                    class="hour">{{ agenda_leftbar_translate_hour(widget.file.publishedAt|date('H:i'), true, true) }}</span>
-            <p>{{ trans.title }}</p>
-        </div>
-        <div class="player-on">
-            <div class="duration">
-                <span class="curr">0:00</span>/<span class="total">0:00</span>
+    <div class="audio-container"
+         data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+         data-aid="{{ widget.id }}">
+        <div class="audio-player2">
+            <div id="audio-player-{{ widget.id }}" class="audio-player-container"></div>
+            <div class="image" {% if image is defined %} style="background-image: url({% path image, '1950x1232' %});"{% elseif image_s3 is defined %} style="background-image: url({{ image_s3 }});"{% endif %}></div>
+            <button class="play-btn play"><i class="icon icon_audio"></i></button>
+            <div class="off">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="info">
+                            <span class="category">{{ widget.file.theme|trans_fallback('name') }}</span><span class="date">{{ widget.file.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(widget.file.publishedAt|date('H:i'), true, true) }}</span>
+                            <p>{{ trans.title }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="wave-container"></div>
-            <div class="volume">
-                <span></span>
-                <i class="icon icon_son"></i>
-            </div>
+            <div class="on"></div>
         </div>
     </div>
 {% endif %}

@@ -90,6 +90,7 @@ var initAudio = function (hash) {
     }
 
     function audioLoad(aid, playerInstance, havePlaylist, callback) {
+
         var $container = $("#" + aid.id).closest('.audio-container');
 
         if ($container.find('.control-bar').length <= 0) {
@@ -110,22 +111,46 @@ var initAudio = function (hash) {
             var audioImage = $('.activeAudio').data('img');
         }
 
-
-        playerInstance.setup({
-            // file: $container.data('file'),
-            sources: $('.activeAudio').length > 0 ? audioFile : $container.data('file'),
+        var fileArray = $('.activeAudio').length > 0 ? audioFile : $container.data('file');
+        var config = {
+            //file: $container.data('file'),
+            sources: fileArray,
             image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
             primary: 'html5',
             aspectratio: '16:9',
+            debug : true,
             width: $(aid).parent('div').width(),
             height: $(aid).parent('div').height(),
             controls: false
-        });
+        };
+        if(fileArray.length < 2){
+            var tempArray = fileArray[0];
+
+            if(typeof tempArray !== 'undefined'){
+                console.log('tempArray',tempArray,tempArray.file);
+                var finalFile = tempArray.file;
+                config = {
+                    file: finalFile,
+                    image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                    primary: 'html5',
+                    aspectratio: '16:9',
+                    debug : true,
+                    width: $(aid).parent('div').width(),
+                    height: $(aid).parent('div').height(),
+                    controls: false
+                };
+                
+            }
+        }
+
+        console.log('audioplayer config',config);
+        playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
             updateShareLink();
             this.setVolume(100);
         }).on('play', function () {
+            console.log('play');
             $container.removeClass('state-init').removeClass('state-complete');
             $stateBtn.find('i').removeClass('icon-play').addClass('icon-pause');
             $infoBar.find('.picto').addClass('hide');
@@ -142,6 +167,8 @@ var initAudio = function (hash) {
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0' + duration_secs : duration_secs));
+        }).on('error',function(e){
+            console.log(e);
         }).on('bufferChange', function (e) {
             var currentBuffer = e.bufferPercent;
             $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');

@@ -1,0 +1,36 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+
+    <div id="main" class="legal-notice single-article">
+        <h2 class="title">{{ pageContent.title }}</h2>
+        <section class="legal-notice-container">
+            <h3 class="legal-notice-description">{{ pageContent.subtitle }}</h3>
+            <div class="legal-notice-responsable">
+                {{ pageContent.description|raw }}
+            </div>
+            {% if pageDescription is defined and pageDescription is not null %}
+                {% for description in pageDescription %}
+                    <article class="legal-notice-art">
+                        <h4 class="legal-notice-art-title">{{ description.title }}</h4>
+                        {{ description.body|raw }}
+                    </article>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : pageContent.title,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
+{% endblock %}

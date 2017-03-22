@@ -352,9 +352,12 @@ class StatementRepository extends EntityRepository
      * @param null $count
      * @param string $site
      * @param bool $displayedOnCorpoHome
+     * @param Theme|null $theme
+     * @param null $format
+     * @param bool $displayedHome
      * @return Statement[]
      */
-    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null)
+    public function getStatementByDate($locale, $festival, $dateTime, $count = null, $site = 'site-press', $displayedOnCorpoHome = false, Theme $theme = null, $format = null, $displayedHome = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -376,6 +379,13 @@ class StatementRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
             ->setParameter('datetime', $dateTime)
         ;
+
+        if ($displayedHome) {
+            $qb
+                ->andWhere('n.displayedHome = :displayedHome')
+                ->setParameter(':displayedHome', $displayedHome)
+            ;
+        }
 
         if ($theme) {
             $qb
@@ -545,12 +555,15 @@ class StatementRepository extends EntityRepository
     /**
      * @param $locale
      * @param $festival
-     * @param $since
-     * @param int $maxResults
-     * @param $before
+     * @param null $since
+     * @param null $maxResults
+     * @param null $before
+     * @param \DateTime|null $day
+     * @param Theme|null $theme
+     * @param null $format
      * @return Statement[]
      */
-    public function getStatementRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null)
+    public function getStatementRetrospective($locale, $festival, $since = null, $maxResults = null, $before = null, \DateTime $day = null, Theme $theme = null, $format = null)
     {
         $qb = $this->createQueryBuilder('n')
             ->join('n.sites', 's')
@@ -585,6 +598,34 @@ class StatementRepository extends EntityRepository
                 )
                 ->setParameter(':locale', $locale)
                 ->setParameter(':status_translated', TranslateChildInterface::STATUS_TRANSLATED)
+            ;
+        }
+
+        if ($day) {
+            $beginning = new \DateTime();
+            $beginning->setTimestamp($day->getTimestamp());
+            $beginning->setTime(0, 0, 0);
+            $end = new \DateTime();
+            $end->setTimestamp($day->getTimestamp());
+            $end->setTime(23,59,59);
+            $qb
+                ->andWhere('n.publishedAt BETWEEN :beginning AND :end')
+                ->setParameter(':beginning', $beginning)
+                ->setParameter(':end', $end)
+            ;
+        }
+
+        if ($theme) {
+            $qb
+                ->andWhere('n.theme = :theme')
+                ->setParameter(':theme', $theme->getId())
+            ;
+        }
+
+        if ($format) {
+            $qb
+                ->andWhere('n.typeClone = :format')
+                ->setParameter(':format', $format)
             ;
         }
 

@@ -289,7 +289,8 @@ class NewsController extends Controller
         else {
             $sameDayArticles = $em->getRepository('BaseCoreBundle:Info')->getSameDayInfo($settings->getFestival()->getId(), $locale, $newsDate, $count, $news->getId());
             $sameDayArticles = $this->removeUnpublishedNewsAudioVideo($sameDayArticles, $locale, $count);
-            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId() , $news->getPublishedAt());
+
+            $prevArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getOlderInfo($locale, $this->getFestival()->getId() , $news->getPublishedAt(), 'site-press', $news->getId());
             $prevArticlesURL = $this->removeUnpublishedNewsAudioVideo($prevArticlesURL, $locale);
             $nextArticlesURL = $em->getRepository('BaseCoreBundle:Info')->getNextInfo($locale, $this->getFestival()->getId() , $news->getPublishedAt());
             $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);

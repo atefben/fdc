@@ -89,14 +89,13 @@ class Gallery implements TranslateMainInterface
         $this->translations = new ArrayCollection();
         $this->medias = new ArrayCollection();
     }
-    
+
     public function __toString()
     {
         $string = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
-            $string .= ' "' . $this->getName() . '"';
-            $string = $this->truncate($string, 40, '..."', true);
+            $string = $this->getName();
         }
 
         return $string;

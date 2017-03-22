@@ -81,7 +81,7 @@ class InfoFilmFilmAssociated
      * Set info
      *
      * @param \Base\CoreBundle\Entity\Info $info
-     * @return InfoAssociatedInfo
+     * @return $this
      */
     public function setInfo(\Base\CoreBundle\Entity\Info $info = null)
     {
@@ -104,7 +104,7 @@ class InfoFilmFilmAssociated
      * Set association
      *
      * @param \Base\CoreBundle\Entity\FilmFilm $association
-     * @return InfoFilmFilmAssociated
+     * @return $this
      */
     public function setAssociation(\Base\CoreBundle\Entity\FilmFilm $association = null)
     {

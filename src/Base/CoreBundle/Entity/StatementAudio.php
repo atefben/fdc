@@ -2,17 +2,11 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Base\CoreBundle\Util\Time;
-
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-
+use Base\CoreBundle\Component\Interfaces\NodeAudioInterface;
+use Base\CoreBundle\Component\Traits\NodeAudio;
 use Base\CoreBundle\Util\TruncatePro;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -22,77 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class StatementAudio extends Statement
+class StatementAudio extends Statement implements NodeAudioInterface
 {
     use Translatable;
     use TruncatePro;
-
-    /**
-     * @var MediaImage
-     *
-     * @ORM\ManyToOne(targetEntity="MediaImage", cascade={"persist"})
-     *
-     * @Groups({"news_list", "search", "news_show", "home"})
-     */
-    protected $header;
-
-    /**
-     * @var MediaAudio
-     *
-     * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"persist"})
-     * @Groups({"news_list", "search", "news_show", "home"})
-     * @Assert\NotNull()
-     */
-    protected $audio;
-
-    public function getNewsFormat()
-    {
-        return 'audios';
-    }
-
-    /**
-     * Set header
-     *
-     * @param MediaImage $header
-     * @return StatementArticle
-     */
-    public function setHeader(MediaImage $header = null)
-    {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Get header
-     *
-     * @return MediaImage
-     */
-    public function getHeader()
-    {
-        return $this->header;
-    }
-
-    /**
-     * Set audio
-     *
-     * @param \Base\CoreBundle\Entity\MediaAudio $audio
-     * @return StatementAudio
-     */
-    public function setAudio(\Base\CoreBundle\Entity\MediaAudio $audio = null)
-    {
-        $this->audio = $audio;
-
-        return $this;
-    }
-
-    /**
-     * Get audio
-     *
-     * @return \Base\CoreBundle\Entity\MediaAudio
-     */
-    public function getAudio()
-    {
-        return $this->audio;
-    }
+    use NodeAudio;
 }

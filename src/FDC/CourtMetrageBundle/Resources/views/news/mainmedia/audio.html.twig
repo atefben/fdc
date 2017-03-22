@@ -1,0 +1,38 @@
+{% set translation = mediaAudio.findTranslationByLocale(app.request.locale) %}
+{% if ( translation is null or translation.mp3url is null or translation.jobMp3State != 3 ) and app.request.locale != 'fr' %}
+    {% set translation = mediaAudio.findTranslationByLocale('fr') %}
+{% endif %}
+{% if translation.jobMp3State == 3 and translation.mp3url %}
+    {% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}
+        {% set img  %}
+            {% path mediaImage|trans_fallback('file'), 'reference' %}
+        {% endset %}
+    {% else %}
+        {% set img  %}
+            {% path mediaAudio.image|trans_fallback('file'), 'reference' %}
+        {% endset %}
+    {% endif %}
+
+    <div class="audio-container actu-article-audio"
+        data-file='[{"file":"{{ s3_server_audio ~ translation.mp3url }}"}]'
+        data-img = '{%- spaceless -%}{{ img }}{%- endspaceless %}'
+         data-aid="{{ mediaAudio.id }}">
+        <div class="audio-player">
+            <div id="audio-player{{ mediaAudio.id }}" class="audio-player-container"></div>
+            <div class="image" style="background-image: url('{%- spaceless -%}{{ img }}{%- endspaceless %}');"></div>
+            <button class="play-btn play"><i class="icon icon_play"></i></button>
+            <div class="off">
+                <div class="vCenter">
+                    <div class="vCenterKid">
+                        <div class="picto"><i class="icon icon_audio"></i></div>
+                        <div class="info">
+                            <a href="#" class="category">{{ mediaAudio.theme|trans_fallback('name') }}</a><span class="date">{{ mediaAudio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(mediaAudio.publishedAt|date('H:i'), true, true) }}</span>
+                            <p>{{ translation.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="on"></div>
+        </div>
+    </div>
+{% endif %}

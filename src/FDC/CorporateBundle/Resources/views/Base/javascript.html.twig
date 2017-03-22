@@ -2,8 +2,9 @@
     {% javascripts '@FDCCorporateBundle/Resources/public/js/vendors.js' %}
     <script src="{{ asset(asset_url) }}"></script>
     {% endjavascripts %}
+    <script>jwplayer.key="{{ jwplayer_key }}";</script>
     {% javascripts '@FDCCorporateBundle/Resources/public/js/app.js' %}
     <script src="{{ asset(asset_url) }}"></script>
     {% endjavascripts %}
-    <script>jwplayer.key="{{ jwplayer_key }}";</script>
+    
 {% endblock %}

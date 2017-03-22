@@ -41,11 +41,22 @@ var initContact = function () {
         }, 400);
     });
 
+
+    if($('.select option:selected').length){
+        var textSelectValue = $('.select option:selected').text();
+    }else{
+        var textSelectValue = $('.select select option.default').text();
+    }
+    console.log(textSelectValue);
+    
+    //init value
+    $('.select .select-value .val span').html(textSelectValue);
     $('body').on('click', '.selectOptions span', function() {
-        
         var i = parseInt($(this).index()) + 1;
         $('select option').eq(i).prop('selected', 'selected');
+        $('.select .select-value .val span').html($(this).text());
         $('.select').removeClass('invalid');
+        $clamp($('.select .select-value .val span').get(0), {clamp: '50px'});
     });
 
     // check valid email address

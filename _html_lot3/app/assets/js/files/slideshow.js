@@ -20,13 +20,14 @@ var owinitSlideShow = function (slider, hash) {
 
         } else if($('.article-single').length){
 
-            $('.slideshow-img').on('click', function (e) {
-                e.preventDefault();
+            $('.slideshow-img .images').on('click', function (e) {
+                if(!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length){
+                    e.preventDefault();
 
-                slider = $(this);
+                    slider = $(this);
 
-                openSlideShow(slider);
-
+                    openSlideShow(slider);
+                }
                 return false;
             });
 
@@ -42,7 +43,8 @@ var owinitSlideShow = function (slider, hash) {
 
             if($('.slideshow-img').length > 0 ) {
                 $('.images').on('click', function (e) {
-                    if(!$(e.target).is('.thumbnails') ||!$(e.target).closest('.thumbnails').length){
+                    
+                    if(!$(e.target).is('.thumbnails') || !$(e.target).closest('.thumbnails').length){
                         e.preventDefault();
                         openSlideShow(slider);
                     }
@@ -262,7 +264,7 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-
+        console.log('goToSLide')
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');

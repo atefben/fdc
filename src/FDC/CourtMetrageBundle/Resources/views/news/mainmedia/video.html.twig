@@ -1,0 +1,31 @@
+{% set translation = mediaVideo.findTranslationByLocale(app.request.locale) %}
+{% if ( translation is null or translation.mp4url is null or translation.jobMp4State != 3 ) and app.request.locale != 'fr' %}
+    {% set translation = mediaVideo.findTranslationByLocale('fr') %}
+{% endif %}
+{% if translation is not null and translation.mp4url is not null and translation.jobMp4State == 3 %}
+    <div class="single-video">
+        <div class="video-container video-single state-init video"
+            data-link="{{ s3_server_video ~ translation.mp4Url }}"
+            data-email="{{ s3_server_video ~ translation.mp4Url }}"
+            data-file='[{% if(translation.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ translation.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ translation.mp4Url }}"}]'
+            data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif translation.imageAmazonUrl is defined and translation.imageAmazonUrl is not null %}{{ s3_server_video ~ translation.imageAmazonUrl }}{% endif %}"
+            data-name="{{ translation.title }}">
+            <div id="video-player-{{ mediaVideo.id }}" class="video-player">
+            </div>
+            <div class="video-overlay"></div>
+            <div class="infos-bar">
+                <div class="picto"><i class="icon icon_video"></i></div>
+                <div class="info">
+                    <div class="vCenter">
+                        <div class="vCenterKid">
+                            <span class="category">{{ mediaVideo.theme|trans_fallback('name') }}</span>
+                            <span class="date">{{ mediaVideo.publishedAt|date('d.m.Y') }}</span> . <span
+                                    class="hour">{{ agenda_leftbar_translate_hour(mediaVideo.publishedAt|date('H:i'), true, true) }}</span>
+                            <p>{{ translation.title }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

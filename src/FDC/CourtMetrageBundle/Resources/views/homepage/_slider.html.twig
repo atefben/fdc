@@ -1,0 +1,25 @@
+<div id="slider-movies" class="owl-carousel">
+    {% for slide in sliders %}
+        <div>
+            <a href="{{ slide.url }}" {% if fdc_court_metrage_domain not in slide.url %}target="_blank"{% endif %}>
+                <div class="video">
+                    <div class="img" style="background-image:url({% path slide.translatable.image|trans_fallback('file'), 'reference' %})"></div>
+                </div>
+                <div class="textVideo">
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="container">
+                                <div class="vCenterKid">
+                                    <h2><span class="{% if slide.whiteTitleSize == 'small' %}small-title{% elseif slide.whiteTitleSize == 'medium' %}medium-title{% else %}{% endif %}">{{ slide.whiteTitle }}</span></br><span class="goldColor{% if slide.goldenTitleSize == 'small' %} small-title{% elseif slide.goldenTitleSize == 'medium' %} medium-title{% else %}{% endif %}">{{ slide.goldenTitle }}</span></h2>
+                                    <div class="alignButton">
+                                        <div class="programmButton">{{ slide.buttonLabel }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

@@ -29,6 +29,7 @@ class BaseCoreExtension extends Extension
             'validator.yml',
             'transformer.yml',
             'old_import.yml',
+            'doctrine.yml',
         );
         
         foreach ($configFiles as $configFile) {

@@ -66,7 +66,6 @@ class MediaImage extends Media
         $this->galleries = new ArrayCollection();
     }
 
-
     public function getApiTranslations()
     {
         $en = $this->findTranslationByLocale('en');
@@ -189,7 +188,7 @@ class MediaImage extends Media
     /**
      * Get galleries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGalleries()
     {

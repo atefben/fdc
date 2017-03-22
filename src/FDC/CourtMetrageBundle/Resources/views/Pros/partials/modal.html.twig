@@ -1,0 +1,80 @@
+
+            <div class="half">
+                <div class="photo">
+                    <div class="photoContainer backgroundPhotoContainer {{ pro.translatable.image is defined and pro.translatable.image is not null ? 'has-pro-image' : '' }}" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "reference" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})"></div>
+                    {% if pro.translatable.isShortFilmCorner %}
+                        <div class="sfcLogo">
+                            <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
+                        </div>
+                    {% endif %}
+                </div>
+                {% if pro.quote is not null %}
+                    <div class="titleBig">
+                        <h2>{{ pro.quote }}</h2>
+                        <div class="bckgQuote">&#8220;</div>
+                    </div>
+                {% endif %}
+                <div class="contactInfo">
+                    {% if pro.country is not null %}
+                        <div class="world"><img src="{{ asset('bundles/fdccourtmetrage/img/world.png') }}" alt=""><h3>{{ pro.country|shorten(56, '...') }}</h3></div>
+                    {% endif %}
+                    {% if pro.url is not null %}
+                        <div class="contactInfoEmail"><img src="{{ asset('bundles/fdccourtmetrage/img/computer.png') }}" alt=""><h3><a href="{{ pro.url|shorten(56, '...') }}" target="_blank">{{ pro.urlName }}</a></h3></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="half">
+                {% if pro.updatedAt is not null %}
+                    <div class="maj">{{ 'date_pro_modal'|trans }} {{ pro.updatedAt|date('d') }} {{ pro.updatedAt|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ pro.updatedAt|date('Y') }}</div>
+                {% endif %}
+                <div class="titleHalf"><h3>{{ pro.name|shorten(46,'...') }}</h3></div>
+                <div class="cats">
+                    {% if pro.translatable.getDomainsCollection is not null %}
+                        {% for domainCollection in pro.translatable.getDomainsCollection %}
+                            {% if domainCollection.domain is defined and domainCollection.domain is not null %}
+                                {% if domainCollection.domain.translations[app.request.locale] is defined and domainCollection.domain.translations[app.request.locale] is not null %}
+                                    {% set proDomain = domainCollection.domain.translations[app.request.locale] %}
+                                    <span>{{ proDomain.name }}</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if pro.translatable.getContactsCollection is not null %}
+                    <div class="authors">
+                        {% for contactCollection in pro.translatable.getContactsCollection %}
+                            {% if contactCollection.contact is defined and contactCollection.contact is not null %}
+                                {% if contactCollection.contact.translations[app.request.locale] is defined and contactCollection.contact.translations[app.request.locale] is not null %}
+                                    {% set proContact = contactCollection.contact.translations[app.request.locale] %}
+                                    <div class="full">
+                                        <a href="mailto:{{ proContact.email }}"><h4 class="mailName">{{ proContact.name }}</h4></a>
+                                        <div class="job"><h4>{{ proContact.function }}</h4></div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if proDescription is defined and proDescription is not null %}
+                    {% for description in proDescription %}
+                        {% if description.translations[app.request.locale] is defined and description.translations[app.request.locale] is not null %}
+                            {% set translation = description.translations[app.request.locale] %}
+                        {% endif %}
+                        {% if description.getType == 'singlecolumn' %}
+                            <div class="content wysiwyg">
+                                <h5>{{ translation.title }}</h5>
+                                {{ translation.description|raw }}
+                            </div>
+                        {% else %}
+                            <div class="content halfContent wysiwyg">
+                                <h5>{{ translation.titleFirst }}</h5>
+                                {{ translation.descriptionFirst|raw }}
+                            </div>
+                            <div class="content halfContent wysiwyg">
+                                <h5>{{ translation.titleSecond }}</h5>
+                                {{ translation.descriptionSecond|raw }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>

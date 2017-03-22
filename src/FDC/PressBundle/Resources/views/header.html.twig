@@ -21,7 +21,7 @@
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="{{ header_account }}" class="account" target="_blank" >
+                <a href="{{ header_account|default('') }}" class="account" target="_blank" >
                     <i class="icon icon_mon-compte"></i>{{ 'header.usernav.nav.moncompte'|trans }}
                 </a>
             </li>

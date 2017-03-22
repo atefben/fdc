@@ -1,0 +1,29 @@
+<div class="contain-good-practice">
+    {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+        {% set translation = module.translations[app.request.getLocale()] %}
+        {% if translation.picto1 or translation.description1 %}
+            <div class="item-good-practice">
+                <i class="icon {{ translation.picto1 }}"></i>
+                <strong>{{ translation.description1|raw }}</strong>
+            </div>
+        {% endif %}
+        {% if translation.picto2 or translation.description2 %}
+            <div class="item-good-practice">
+                <i class="icon {{ translation.picto2 }}"></i>
+                <strong>{{ translation.description2|raw }}</strong>
+            </div>
+        {% endif %}
+        {% if translation.picto3 or translation.description3 %}
+            <div class="item-good-practice">
+                <i class="icon {{ translation.picto3 }}"></i>
+                <strong>{{ translation.description3|raw }}</strong>
+            </div>
+        {% endif %}
+        {% if translation.picto4 or translation.description4 %}
+            <div class="item-good-practice">
+                <i class="icon {{ translation.picto4 }}"></i>
+                <strong>{{ translation.description4|raw }}</strong>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>

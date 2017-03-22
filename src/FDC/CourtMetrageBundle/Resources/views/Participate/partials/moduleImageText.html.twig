@@ -1,0 +1,14 @@
+<div class="item-manual">
+    {% if module.image is not null %}
+        <div class="contain-img">
+            <img src="{% path module.image|trans_fallback("file"), "reference" %}" style="width: 363px; height: 260px;"/>
+        </div>
+    {% endif %}
+    <div class="text-manual">
+        {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+            {% set translation = module.translations[app.request.getLocale()] %}
+            <h4 class="title-manual">{{ translation.title }}</h4>
+            {{ translation.description|raw }}
+        {% endif %}
+    </div>
+</div>

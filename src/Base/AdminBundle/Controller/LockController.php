@@ -113,6 +113,10 @@ class LockController extends Controller
         'corpoteammembers'                 => 'CorpoTeamMembers',
         'corpopalmeor'                     => 'CorpoPalmeOr',
         'corpofestivalhistory'             => 'CorpoFestivalHistory',
+        'gallerydualalign' => 'GalleryDualAlign',
+        'filmselectionsection' => 'FilmSelectionSection',
+        'filmfilm' => 'FilmFilm',
+
     );
 
     /**
@@ -140,6 +144,58 @@ class LockController extends Controller
         'mdfrubrique' => 'MdfRubrique',
         'mdfrubriquequestion' => 'MdfRubriqueQuestion',
         'mediamdfpdf' => 'MediaMdfPdf'
+    );
+
+    private static $ccmEntityMapper = array(
+        'ccmmainnav' => 'CcmMainNav',
+        'ccmsubnav' => 'CcmSubNav',
+        'ccmnews' => 'CcmNews',
+        'ccmnewsarticle' => 'CcmNewsArticle',
+        'ccmnewsvideo' => 'CcmNewsVideo',
+        'ccmnewsaudio' => 'CcmNewsAudio',
+        'ccmnewsimage' => 'CcmNewsImage',
+        'ccmprosactivity' => 'CcmProsActivity',
+        'ccmproscontact' => 'CcmProsContact',
+        'ccmprosdetail' => 'CcmProsDetail',
+        'ccmdomain' => 'CcmDomain',
+        'ccmcontactsubject' => 'CcmContactSubject',
+        'ccmplandessallessector' => 'CcmPlanDesSallesSector',
+        'ccmfaq' => 'CcmFAQPage',
+        'ccmlabelcontentfileswidget' => 'CcmLabelContentFilesWidget',
+        'ccmlabelfile' => 'CcmLabelFile',
+        'ccmlabelcontentfiles' => 'CcmLabelContentFiles',
+        'ccmrubrique' => 'CcmRubrique',
+        'ccmrubriquequestion' => 'CcmRubriqueQuestion',
+        'ccmyoutube' => 'CcmYoutube',
+        'ccmsfcwhoarewe' => 'CcmShortFilmCorner',
+        'ccmsfcourevents' => 'CcmShortFilmCorner',
+        'ccmsfcreliveedition' => 'CcmShortFilmCorner',
+        'ccmregisterprocedure' => 'CcmRegisterProcedure',
+        'ccmprospage' => 'CcmProsPage',
+        'ccmlabelsection' => 'CcmLabelSection',
+        'ccmmenu' => 'CcmMenu',
+        'ccmfaqpage' => 'CcmFaqPage',
+        'ccmcontactpage' => 'CcmContactPage',
+        'ccmfilmregister' => 'CcmFilmRegister',
+        'ccmlabel' => 'CcmLabel',
+        'ccmprogramscheduletype' => 'CcmProgramScheduleType',
+        'ccmprogramday' => 'CcmProgramDay',
+        'ccmprogram' => 'CcmProgram',
+        'ccmprogramschedule' => 'CcmProgramSchedule',
+        'ccmtheme' => 'CcmTheme',
+        'ccmmedia' => 'CcmMedia',
+        'ccmmediaaudio' => 'CcmMediaAudio',
+        'ccmmediaimage' => 'CcmMediaImage',
+        'ccmmediaimagesimple' => 'CcmMediaImageSimple',
+        'ccmmediapdf' => 'CcmMediaPdf',
+        'ccmmediavideo' => 'CcmMediaVideo',
+        'ccmgallery' => 'CcmGallery',
+        'ccmgallerydualalign' => 'CcmGalleryDualAlign',
+        'ccmgallerydualalignmedia' => 'CcmGalleryDualAlignMedia',
+        'ccmgallerymedia' => 'CcmGalleryMedia',
+        'ccmparticiperpage' => 'CcmParticiperPage',
+        'ccmparticiperpagelayer' => 'CcmParticiperPageLayer',
+        'ccmwaitingpage' => 'CcmWaitingPage'
     );
 
     /**
@@ -171,7 +227,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt create the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -184,6 +240,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }
@@ -253,7 +311,7 @@ class LockController extends Controller
                 'message' => 'Impossible de vérifier l\'existence du verrou.',
             ));
         }
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -266,6 +324,8 @@ class LockController extends Controller
             $master = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $master = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $master = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $master = null;
         }
@@ -342,7 +402,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt verify the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -355,6 +415,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->findOneById($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->findOneById($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }
@@ -429,7 +491,7 @@ class LockController extends Controller
             ));
         }
 
-        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]))) {
+        if (!(isset(self::$entityMapper[$entity]) || isset(self::$mdfEntityMapper[$entity]) || isset(self::$ccmEntityMapper[$entity]))) {
             $logger->error(__CLASS__ . " - Couldnt find the lock for the entity '{$entity}', entity not found in the entityMapper");
             $response->setStatusCode(400);
             return $response->setData(array(
@@ -442,6 +504,8 @@ class LockController extends Controller
             $entity = $em->getRepository('BaseCoreBundle:' . self::$entityMapper[$entity])->find($id);
         } elseif (isset(self::$mdfEntityMapper[$entity])) {
             $entity = $em->getRepository('FDCMarcheDuFilmBundle:' . self::$mdfEntityMapper[$entity])->find($id);
+        } elseif (isset(self::$ccmEntityMapper[$entity])) {
+            $entity = $em->getRepository('FDCCourtMetrageBundle:' . self::$ccmEntityMapper[$entity])->findOneById($id);
         } else {
             $entity = null;
         }

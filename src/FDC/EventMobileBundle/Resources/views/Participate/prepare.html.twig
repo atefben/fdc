@@ -81,8 +81,8 @@
                 <div class="section-contain">
                     <div class="description">
                     {{ content|trans_fallback('meetingDescription')|raw }}
-                    {% if content.meetingFile is not null %}
-                        <a href="{% path content.meetingFile, 'reference' %}">
+                    {% if content.meetingPdf is not null %}
+                        <a href="{% path content.meetingPdf|trans_fallback('file'), 'reference'%}">
                             {{ content|trans_fallback('meetingLabel') }}
                         </a>
                     {% endif %}

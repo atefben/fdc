@@ -1,0 +1,36 @@
+<?php
+
+namespace Base\CoreBundle\Doctrine\DQL;
+
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
+
+/**
+ * Class Month
+ * @package Base\CoreBundle\Doctrine\DQL
+ */
+class Month extends FunctionNode
+{
+    public $date;
+
+    /**
+     * @override
+     */
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
+        return "MONTH(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+    }
+
+    /**
+     * @override
+     */
+    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    {
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
+        $this->date = $parser->ArithmeticPrimary();
+
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
+}

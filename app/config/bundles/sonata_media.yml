@@ -251,6 +251,7 @@ sonata_media:
                 463x292: { width: 463 , height: 292 , quality: 100, constraint: false}
                 # Last videos channels
                 926x584: { width: 926 , height: 584 , quality: 100, constraint: false}
+                x584: { height: 584 , quality: 100}
                 # Articles focus
                 918x580: { width: 918 , height: 580 , quality: 100, constraint: false}
                 # Articles le même jour

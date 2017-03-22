@@ -174,6 +174,15 @@ class GroupsUpdateCommand extends ContainerAwareCommand
             $em->persist($group);
         }
 
+        $group = $em->getRepository('ApplicationSonataUserBundle:Group')->findOneBy(array('name' => 'Admin CCM'));
+        if ($group == null) {
+            $group = new Group('Admin CCM');
+        }
+        $group->setRoles(array('ROLE_ADMIN_CCM'));
+        if ($group->getId() == null) {
+            $em->persist($group);
+        }
+
         $em->flush();
         $output->writeln('The groups roles has been updated');
     }

@@ -149,6 +149,10 @@ var ow = ow || {};
 							'height': headerHeight,
 							'overflow': 'hidden'
 						});
+						var metaheight = $('.Article-header-meta').outerHeight();
+						$('.Article-header #fakebar').css({
+							'top': (headerHeight-metaheight)-28
+						});
 						$('.Article-header').prepend('<div style="position:absolute;height:'+img.outerHeight()+'px;width:100%;background:rgba(0,0,0,.5);top:0px;left:0px;"></div>');
 						$('.Article-header-meta').css({
 							'position': 'relative',
