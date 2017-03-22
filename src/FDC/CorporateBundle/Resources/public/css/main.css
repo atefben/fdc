@@ -10386,6 +10386,18 @@ body#home .isotope-01 .item .info {
 .slider-home .container-images .item.fade-out {
   opacity: 0;
 }
+
+.module-title .title-big {
+  color: #fff;
+  font-family: "Playfair Display";
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+  padding-bottom: 20px;
+}
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
     background-position: inherit;

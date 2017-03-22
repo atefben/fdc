@@ -9,6 +9,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntro;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetMovie;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuote;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetSubtitle;
+use \Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTitle;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetText;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeone;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTypeoneMediaImage;
@@ -57,6 +58,9 @@ class FDCPageLaSelectionCannesClassicsWidgetInstanceOfExtension extends Twig_Ext
             }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_subtitle', function ($widget) {
                 return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetSubtitle;
+            }),
+            new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_title', function ($widget) {
+                return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTitle;
             }),
             new \Twig_SimpleTest('fdc_page_la_selection_cannes_classics_widget_typeone', function ($widget) {
                 return $widget instanceof FDCPageLaSelectionCannesClassicsWidgetTypeone;
