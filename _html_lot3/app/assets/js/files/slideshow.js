@@ -32,12 +32,11 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mouseup', function () {
+            $('.block-diaporama .item').on('click', function () {
 
-                if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
+                if ($(this).parent().hasClass('center') && !$('.owl-stage').hasClass('owl-grab')) {
                     openSlideShow(slider);
                 }
-
             });
 
 

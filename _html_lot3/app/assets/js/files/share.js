@@ -32,7 +32,7 @@ var initRs = function () {
     });
 
 
-    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
+    $('.block-social-network .twitter, .rs-slideshow .twitter').off('click').on('click', function (e) {
         window.open(this.href, '', 'width=600,height=400');
         return false;
     });

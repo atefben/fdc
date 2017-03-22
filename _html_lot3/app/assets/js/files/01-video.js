@@ -201,7 +201,7 @@ var initVideo = function(hash) {
             window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
             return false;
         });*/
-        $topBar.find('.buttons .twitter').on('click', function() {
+        $topBar.find('.buttons .twitter').off('click').on('click', function() {
             window.open(this.href,'','width=700,height=500');
             return false;
         });

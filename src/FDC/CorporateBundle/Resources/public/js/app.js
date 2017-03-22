@@ -201,7 +201,7 @@ var initVideo = function(hash) {
             window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
             return false;
         });*/
-        $topBar.find('.buttons .twitter').on('click', function() {
+        $topBar.find('.buttons .twitter').off('click').on('click', function() {
             window.open(this.href,'','width=700,height=500');
             return false;
         });
@@ -4599,7 +4599,7 @@ var initRs = function () {
     });
 
 
-    $('.block-social-network .twitter, .rs-slideshow .twitter').on('click', function (e) {
+    $('.block-social-network .twitter, .rs-slideshow .twitter').off('click').on('click', function (e) {
         window.open(this.href, '', 'width=600,height=400');
         return false;
     });
@@ -5428,12 +5428,11 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mouseup', function () {
+            $('.block-diaporama .item').on('click', function () {
 
-                if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
+                if ($(this).parent().hasClass('center') && !$('.owl-stage').hasClass('owl-grab')) {
                     openSlideShow(slider);
                 }
-
             });
 
 
