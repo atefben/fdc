@@ -5,7 +5,7 @@ namespace FDC\CourtMetrageBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Base\AdminBundle\Admin\MediaImageAdmin;
+use Base\AdminBundle\Admin\CCM\MediaImageAdmin;
 
 class ModuleImageTextType extends ModuleType
 {

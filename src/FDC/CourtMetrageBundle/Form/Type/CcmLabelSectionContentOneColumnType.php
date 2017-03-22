@@ -2,7 +2,7 @@
 
 namespace FDC\CourtMetrageBundle\Form\Type;
 
-use Base\AdminBundle\Admin\MediaImageSimpleAdmin;
+use Base\AdminBundle\Admin\CCM\MediaImageSimpleAdmin;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

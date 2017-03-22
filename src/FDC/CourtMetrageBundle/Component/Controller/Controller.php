@@ -2,8 +2,8 @@
 
 namespace FDC\CourtMetrageBundle\Component\Controller;
 
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaAudioTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation;
 use Base\CoreBundle\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,20 +83,20 @@ class Controller extends BaseController
 
     private function checkMediaAudioVideoPublished($trans, $transFr)
     {
-        if ($trans === null || $transFr->getStatus() !== MediaAudioTranslation::STATUS_PUBLISHED) {
+        if ($trans === null || $transFr->getStatus() !== CcmMediaAudioTranslation::STATUS_PUBLISHED) {
             return false;
         }
 
-        if (strpos(get_class($trans), 'MediaAudioTranslation')) {
-            if ($trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
+        if (strpos(get_class($trans), 'CcmMediaAudioTranslation')) {
+            if ($trans->getJobMp3State() != CcmMediaAudioTranslation::ENCODING_STATE_READY ||
                 $trans->getMp3Url() === null
             ) {
                 return false;
             }
         }
 
-        if (strpos(get_class($trans), 'MediaVideoTranslation')) {
-            if ($trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
+        if (strpos(get_class($trans), 'CcmMediaVideoTranslation')) {
+            if ($trans->getJobMp4State() != CcmMediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getMp4Url() === null || $trans->getWebmUrl() === null
             ) {
                 return false;

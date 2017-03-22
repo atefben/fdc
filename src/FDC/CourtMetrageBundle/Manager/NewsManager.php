@@ -3,11 +3,11 @@
 namespace FDC\CourtMetrageBundle\Manager;
 
 
-use Base\CoreBundle\Entity\MediaAudioTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\Theme;
-use Base\CoreBundle\Entity\ThemeTranslation;
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmMediaAudioTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmTheme;
+use FDC\CourtMetrageBundle\Entity\CcmThemeTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmNewsArticleTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNewsNewsAssociated;
@@ -95,7 +95,7 @@ class NewsManager
         /**
          * todo: move in ccm theme repository if Theme entity will be duplicated
          */
-        $qb = $this->em->getRepository(Theme::class)
+        $qb = $this->em->getRepository(CcmTheme::class)
             ->createQueryBuilder('t')
             ->select('t.id')
             ->leftJoin('t.translations', 'tt', 'with', 'tt.locale = :locale and tt.status = :status')
@@ -106,13 +106,13 @@ class NewsManager
         if ($locale == 'fr') {
             $qb
                 ->addSelect('tt.name')
-                ->setParameter('status', ThemeTranslation::STATUS_PUBLISHED)
+                ->setParameter('status', CcmThemeTranslation::STATUS_PUBLISHED)
             ;
         } else {
             $qb
-                ->setParameter('status', ThemeTranslation::STATUS_TRANSLATED)
+                ->setParameter('status', CcmThemeTranslation::STATUS_TRANSLATED)
                 ->leftJoin('t.translations', 'frtt', 'with', 'frtt.locale = :fr_locale and frtt.status = :fr_status')
-                ->setParameter('fr_status', ThemeTranslation::STATUS_PUBLISHED)
+                ->setParameter('fr_status', CcmThemeTranslation::STATUS_PUBLISHED)
                 ->setParameter('fr_locale', 'fr')
                 ->addSelect(
                     'case when tt.id is not null then tt.name else frtt.name end as name'
@@ -235,26 +235,26 @@ class NewsManager
     }
 
     /**
-     * @param MediaVideoTranslation|MediaAudioTranslation|null $trans
-     * @param MediaVideoTranslation|MediaAudioTranslation $transFr
+     * @param CCmMediaVideoTranslation|CcmMediaAudioTranslation|null $trans
+     * @param CcmMediaVideoTranslation|CcmMediaAudioTranslation $transFr
      * @return bool
      */
     private function checkMediaAudioVideoPublished($trans, $transFr)
     {
-        if ($trans === null || $transFr->getStatus() !== MediaAudioTranslation::STATUS_PUBLISHED) {
+        if ($trans === null || $transFr->getStatus() !== CcmMediaAudioTranslation::STATUS_PUBLISHED) {
             return false;
         }
 
-        if (strpos(get_class($trans), 'MediaAudioTranslation')) {
-            if ($trans->getJobMp3State() != MediaAudioTranslation::ENCODING_STATE_READY ||
+        if (strpos(get_class($trans), 'CcmMediaAudioTranslation')) {
+            if ($trans->getJobMp3State() != CcmMediaAudioTranslation::ENCODING_STATE_READY ||
                 $trans->getMp3Url() === null
             ) {
                 return false;
             }
         }
 
-        if (strpos(get_class($trans), 'MediaVideoTranslation')) {
-            if ($trans->getJobMp4State() != MediaVideoTranslation::ENCODING_STATE_READY ||
+        if (strpos(get_class($trans), 'CcmMediaVideoTranslation')) {
+            if ($trans->getJobMp4State() != CcmMediaVideoTranslation::ENCODING_STATE_READY ||
                 $trans->getMp4Url() === null || $trans->getWebmUrl() === null
             ) {
                 return false;

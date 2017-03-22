@@ -25,7 +25,7 @@ class CcmNewsRepository extends EntityRepository
             ->createQueryBuilder('n')
             ->select('t.id', 'n.publishedAt')
             ->join('n.theme', 't')
-            ->join('Base\CoreBundle\Entity\ThemeTranslation', 'tt', 'WITH', 'tt.translatable = t.id AND tt.locale = :locale')
+            ->join('FDC\CourtMetrageBundle\Entity\CcmThemeTranslation', 'tt', 'WITH', 'tt.translatable = t.id AND tt.locale = :locale')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsImage', 'na3', 'WITH', 'na3.id = n.id')

@@ -2,10 +2,10 @@
 
 namespace FDC\CourtMetrageBundle\Manager;
 
-use Base\CoreBundle\Entity\GalleryTranslation;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
-use Base\CoreBundle\Entity\News;
 use Doctrine\ORM\EntityManager;
+use FDC\CourtMetrageBundle\Entity\CcmGalleryTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation;
+use Base\CoreBundle\Entity\News;
 use FDC\CourtMetrageBundle\Entity\CatalogPushTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmNews;
 use FDC\CourtMetrageBundle\Entity\CcmVideosCollection;
@@ -195,14 +195,14 @@ class HomepageManager
             $videos = [];
 
             foreach ($videosCollection as $item) {
-                $video = $this->em->getRepository(MediaVideoTranslation::class)
+                $video = $this->em->getRepository(CcmMediaVideoTranslation::class)
                     ->findOneBy(
                         array(
                             'locale' => $this->requestStack->getMasterRequest()->getLocale(),
                             'translatable' => $item->getVideo(),
                             'status' => array(
-                                MediaVideoTranslation::STATUS_PUBLISHED,
-                                MediaVideoTranslation::STATUS_TRANSLATED
+                                CcmMediaVideoTranslation::STATUS_PUBLISHED,
+                                CcmMediaVideoTranslation::STATUS_TRANSLATED
                             )
                         )
                     );
@@ -221,14 +221,14 @@ class HomepageManager
     public function getImages($homepage)
     {
         if ($homepage->getGallery()) {
-            $gallery = $this->em->getRepository(GalleryTranslation::class)
+            $gallery = $this->em->getRepository(CcmGalleryTranslation::class)
                 ->findOneBy(
                     array(
                         'locale' => $this->requestStack->getMasterRequest()->getLocale(),
                         'translatable' => $homepage->getGallery(),
                         'status' => array(
-                            GalleryTranslation::STATUS_PUBLISHED,
-                            GalleryTranslation::STATUS_TRANSLATED
+                            CcmGalleryTranslation::STATUS_PUBLISHED,
+                            CcmGalleryTranslation::STATUS_TRANSLATED
                         )
                     )
                 );
