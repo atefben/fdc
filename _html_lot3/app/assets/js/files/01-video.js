@@ -373,7 +373,7 @@ var initVideo = function(hash) {
                     $date.html(data.dateN);
                     $title.html(data.titleN).attr('href',data.url);
 
-                    var dataAuthors = data.whoN;
+                    var dataAuthors = data.whoN;emailContent
 
                     if(Array.isArray(dataAuthors)){
                         var output = '';
@@ -746,8 +746,9 @@ var initVideo = function(hash) {
                 duration_secs = Math.floor(e.duration - duration_mins * 60);
 
                 if (duration_secs < 10) {
-                duration_secs = "0" + duration_secs;
-            }
+                    duration_secs = "0" + duration_secs;
+                }
+
                 $durationTime.html(duration_mins + ":" + duration_secs);
                 _duration = e.duration;
             }
@@ -1061,6 +1062,7 @@ var initVideo = function(hash) {
             if(typeof data['email-content'] !== 'undefined'){
                 console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
+                $('.popin-mail').find('.contain-popin #contact_description').text(data['email-content']);
             }
             if(typeof data['who'] !== 'undefined'){
                 var dataAuthors = data['who'];

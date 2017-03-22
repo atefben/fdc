@@ -373,7 +373,7 @@ var initVideo = function(hash) {
                     $date.html(data.dateN);
                     $title.html(data.titleN).attr('href',data.url);
 
-                    var dataAuthors = data.whoN;
+                    var dataAuthors = data.whoN;emailContent
 
                     if(Array.isArray(dataAuthors)){
                         var output = '';
@@ -746,8 +746,9 @@ var initVideo = function(hash) {
                 duration_secs = Math.floor(e.duration - duration_mins * 60);
 
                 if (duration_secs < 10) {
-                duration_secs = "0" + duration_secs;
-            }
+                    duration_secs = "0" + duration_secs;
+                }
+
                 $durationTime.html(duration_mins + ":" + duration_secs);
                 _duration = e.duration;
             }
@@ -1061,6 +1062,7 @@ var initVideo = function(hash) {
             if(typeof data['email-content'] !== 'undefined'){
                 console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
+                $('.popin-mail').find('.contain-popin #contact_description').text(data['email-content']);
             }
             if(typeof data['who'] !== 'undefined'){
                 var dataAuthors = data['who'];
@@ -5691,7 +5693,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t3');
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -5702,7 +5704,6 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-        console.log('goToSLide')
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
@@ -5739,7 +5740,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t5');
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -5829,7 +5830,6 @@ var openSlideShow = function (slider, hash, affiche) {
                         onelineclass = ''
                     }
                 }
-                console.log('check hmtl ok');
             }
         }
     }

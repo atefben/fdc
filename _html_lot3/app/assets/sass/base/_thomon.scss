@@ -775,9 +775,7 @@ header #navigation ul.user li a {
     }
 }
 
-.test {
-    display: initial;
-}
+
 
 /* hotfix FF */
 @-moz-document url-prefix() {
@@ -824,5 +822,30 @@ header #navigation ul.user li a {
         }
     }
 }
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2{
+    max-height: 48px;
+    overflow: hidden;
+}
 
+/* custom breakpoints for slideshow title */
+@media only screen and (max-width : 1750px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 1050px;
+    }
+}
+@media only screen and (max-width : 1570px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 850px;
+    }
+}
+@media only screen and (max-width : 1370px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 650px;
+    }
+}
+@media only screen and (max-width : 1200px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 450px;
+    }
+}
 /* thomon - end fixes */
