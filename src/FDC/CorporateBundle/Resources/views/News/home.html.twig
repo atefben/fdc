@@ -314,12 +314,14 @@
                                     </div>
                                 </article>
                             </div><!--
-                            --><div class="right info-02">
+                            -->
+                            <div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
-                                            le <span class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
+                                            le <span
+                                                    class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
                                         <strong class='title-4'>{{ movie.titleVO }}</strong>
                                         {% set directors = movie.getDirectors() %}
 
@@ -374,13 +376,16 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             {% for movie in filmReleases %}
                                 {% set movieUrl = url('fdc_corporate_movie_get', {'slug': movie.slug}) %}
                                 {% set mainTitle = movie.titleVO %}
-                                {% set directorsNames = [] %}
+                                {% set directorsNames = '' %}
                                 {% for director in movie.getDirectors() if director and director.person %}
-                                    {% set directorsNames = directorsNames|merge([director.person.fullName]) %}
+                                    {% if directorsNames %}
+                                        {% set directorsNames = directorsNames ~ ', ' %}
+                                    {% endif %}
+                                    {% set directorsNames = directorsNames ~ director.person.fullName %}
                                 {% endfor %}
                                 {% set inTheaters = '' %}
                                 {% if movie.publishedAt %}
-                                    {%  set inTheaters = ' ' ~ 'movie.in.theaters'|trans ~ ' ' ~ movie.publishedAt|date('d/m/Y') %}
+                                    {% set inTheaters = ' ' ~ 'movie.in.theaters'|trans ~ ' ' ~ movie.publishedAt|date('d/m/Y') %}
                                 {% endif %}
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                                 {% if trans %}
@@ -407,12 +412,11 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
                                          data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
                                          data-title="{{ movie.titleVO }}"
-                                         data-url="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}"
                                          data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
-                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|join(', ')|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}{{ inTheaters }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}{{ inTheaters }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                          data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
@@ -497,7 +501,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    --><div class="half-div block-push">
+                    -->
+                    <div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -543,7 +548,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                --><div class="small-push half-div">
+                                -->
+                                <div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -561,7 +567,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
