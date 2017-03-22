@@ -399,6 +399,7 @@ var initVideo = function(hash) {
                     }else{
                         $isPalm.removeClass('icon-palme');
                     }
+                    
 
                     $palmDate.html(data.palmDateN);
                     $facebook.attr('href', data.fbN);
