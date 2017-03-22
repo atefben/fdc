@@ -2536,6 +2536,7 @@ var owInitFilter = function (isTabSelection) {
                         $that = $(this);
                         $id = $(this).closest('.filter').attr('id');
 
+                        console.log($that.find("span:not(.active):not([data-filter='all'])"));
                         $that.find("span:not(.active):not([data-filter='all'])").each(function () {
                             $this = $(this);
 
