@@ -11,7 +11,7 @@ var owInitGrid = function (id) {
                 }
             });
 
-            $grid.one('arrangeComplete', function( event, filteredItems ) {
+            $grid.on('arrangeComplete', function( event, filteredItems ) {
                 $('.item-inner').css({
                     'width':'100.5%',
                     'height':'100.5%'
@@ -81,10 +81,10 @@ var owInitGrid = function (id) {
 
 
             //reset big imgs
-            /*$gridDom.on('layoutComplete',function(){
+            $gridDom.one('layoutComplete',function(){
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
-            });*/
+            });
 
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
@@ -146,6 +146,7 @@ var owInitGrid = function (id) {
                 if($('#format.filter .select .active').length){
                     postData.format = $('#format.filter .select .active').data('filter');
                 }
+
                 console.log('data sent to GET on ajax button click',postData);
 
                 $.ajax({
