@@ -300,7 +300,7 @@ var openSlideShow = function (slider, hash, affiche) {
             return false;
         }
 
-        var finalTitle = '<a>'+images[centerElement].title+'</a>';
+        var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
 
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
@@ -395,7 +395,7 @@ var openSlideShow = function (slider, hash, affiche) {
         return false;
     }
 
-    var finalTitle = '<a>'+images[centerElement].title+'</a>';
+    var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
 
