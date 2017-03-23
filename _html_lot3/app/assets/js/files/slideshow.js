@@ -57,7 +57,6 @@ var owinitSlideShow = function (slider, hash) {
                     $(this).addClass('photoActive');
                     openSlideShow(slider);
 
-
                     return false;
                 });
             }

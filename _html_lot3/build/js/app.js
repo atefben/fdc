@@ -4962,6 +4962,17 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-01') {
+        /*var sliderBlock = $(".block-diaporama");
+        var sliderDiaporama = new Sly( sliderBlock, {
+            speed: 200,
+            smart: 1,
+            slidee: sliderBlock.find('.item'),
+            horizontal: 1,
+            mouseDragging: 1,
+            releaseSwing: 1
+        });
+      
+        sliderDiaporama.init();*/
         var sliderBlock = $('.slider-01');
         sliderBlock.find('img').imagesLoaded(function(){
             var slide01 = sliderBlock.owlCarousel({
@@ -4988,6 +4999,12 @@ var owInitSlider = function (sliderName) {
                     dragLock = true;
                     window.clearTimeout(clickTimeout);
                 },100);
+
+                //fallback if dragged event is not firing
+                var draggedTimeout = window.setTimeout(function(){
+                    console.log('auto remove draglock');
+                    dragLock = false;
+                },900);
             });
 
             sliderBlock.on('dragged.owl.carousel',function(event){
@@ -5010,7 +5027,6 @@ var owInitSlider = function (sliderName) {
                 slide01.trigger('to.owl.carousel', number);
             });
         });
-        
     }
 
     /* SLIDER 02
@@ -5513,7 +5529,6 @@ var owinitSlideShow = function (slider, hash) {
                     slider = $('.isotope-01');
                     $(this).addClass('photoActive');
                     openSlideShow(slider);
-
 
                     return false;
                 });
@@ -7870,7 +7885,6 @@ $(document).ready(function () {
                 },200);
             }else{
                 $(this).css('width',img.width());
-                console.log('is figure',$(this),$(this).find('figure').length);
                 if($(this).find('figure').length){
                     $(this).find('figure').css('width',img.width());
                 }

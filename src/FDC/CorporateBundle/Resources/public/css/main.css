@@ -7697,7 +7697,7 @@ html.noscroll {
 .c-fullscreen-slider .chocolat-bottom .chocolat-description h2 {
   max-height: 48px;
   overflow: hidden;
-  color: #fff;
+  color: #666;
 }
 
 /* custom breakpoints for slideshow title */
@@ -7721,6 +7721,41 @@ html.noscroll {
     width: 450px;
   }
 }
+/* rework sly slider hp */
+.home .block-diaporama {
+  overflow: visible !important;
+}
+.home .block-diaporama .slider-01 {
+  min-width: 999999999px;
+}
+.home .block-diaporama .slider-01 .item {
+  float: left;
+  height: 428px;
+}
+
+/* Scrollbar */
+.scrollbar {
+  margin: 0 0 1em 0;
+  height: 2px;
+  background: #ccc;
+  line-height: 0;
+}
+
+.scrollbar .handle {
+  width: 100px;
+  height: 100%;
+  background: #292a33;
+  cursor: pointer;
+}
+
+.scrollbar .handle .mousearea {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
