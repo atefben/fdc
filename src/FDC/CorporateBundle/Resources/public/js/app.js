@@ -595,16 +595,7 @@ var initVideo = function(hash) {
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
 
-        console.log('vid setup',{
-            sources: videoFile,
-            image: videoImage,
-            primary: 'html5',
-            skin: 'seven',
-            aspectratio: '16:9',
-            width: playerWidth,
-            height: playerHeight,
-            controls: controls
-        });
+        console.log('have playlist',havePlaylist);
 
         playerInstance.setup({
             sources: videoFile,
