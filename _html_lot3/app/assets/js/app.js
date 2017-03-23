@@ -515,9 +515,10 @@ $(document).ready(function () {
                     }
                 },200);
             }else{
-                $(this).css('width',img.width());
+                var finalWidth = img.width() - 2;
+                $(this).css('width',finalWidth);
                 if($(this).find('figure').length){
-                    $(this).find('figure').css('width',img.width());
+                    $(this).find('figure').css('width',finalWidth);
                 }
             }
         });

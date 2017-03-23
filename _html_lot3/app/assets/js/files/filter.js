@@ -47,7 +47,7 @@ var owInitFilter = function (isTabSelection) {
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
             console.log('rmscroll');
-            $('html,body').addClass('noscroll');
+            $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
             $('#filters .vCenterKid').find(':not(span)').remove();
@@ -72,7 +72,8 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            $('html,body').removeClass('noscroll');
+            console.log('rmscroll');
+            $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -150,7 +151,8 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
-                        $('html,body').removeClass('noscroll');
+                        console.log('rmscroll');
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
@@ -210,7 +212,8 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
-                        $('html,body').removeClass('noscroll');
+                        console.log('rmscroll');
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
