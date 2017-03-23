@@ -284,6 +284,7 @@ sonata_media:
                 702x444: { width: 702 , height: 444 , quality: 100, constraint: false }
                 1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
                 x404: { height: 404 , quality: 100}
+                293x397: { width: 293, height: 397, quality: 100, constraint: false }
 
         media_image_simple:
             providers:
@@ -353,7 +354,6 @@ sonata_media:
                 480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 #previmg/nextimg films
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
-                293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 575x364: { width: 575 , height: 364 , quality: 100, constraint: false}
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false}
                 # film cover mobile
