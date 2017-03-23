@@ -94,32 +94,40 @@
                 <ul class="main">
                     {% if mainNavs is defined and mainNavs is not null %}
                         {% for key, mainTab in mainNavs %}
-                            {% if mainTab.translatable.isActive and isValidMenuElement(mainTab.route) %}
-                                <li>
-                                    {% set menuIsExtern = (fdc_court_metrage_domain in mainTab.route ? false : true) %}
-                                    {% set menuIsActive = ((mainTab.route|routeFromURL == routeName and routeName is not null)
-                                    or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
-                                    or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false) %}
-                                    {% if subNavs[key] is defined and subNavs[key] is not null %}
-                                        {% for subTab in subNavs[key] %}
-                                            {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName  and routeName is not null and subTab.route|equalRouteParams(route_params) %}
-                                                {% set menuIsActive = true %}
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-                                    <a href="{{ mainTab.route }}" {% if menuIsActive %}class="active"{% endif %} {% if menuIsExtern %}target="_blank"{% endif %}>{{ mainTab.name }}</a>
-                                    {% if subNavs[key] is defined and subNavs[key] is not null %}
-                                        <ul class="tcenter">
+                            {% if mainTab.translatable.isActive %}
+                                {% set menuIsExtern = (fdc_court_metrage_scheme in mainTab.route ? true : false) %}
+                                {% if menuIsExtern == false or isValidMenuElement(mainTab.route) %}
+                                    <li>
+                                        {% set menuIsActive = ((mainTab.route|routeFromURL == routeName and routeName is not null)
+                                        or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
+                                        or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false)
+                                        or (isSFC(mainTab.route|routeFromURL) and mainTab.route|routeFromURL == routeName) %}
+                                        {% if subNavs[key] is defined and subNavs[key] is not null %}
                                             {% for subTab in subNavs[key] %}
-                                                {% if subTab.translatable.isActive and isValidMenuElement(subTab.route)%}
-                                                    {% set submenuIsExtern = (fdc_court_metrage_domain in subTab.route ? false : true) %}
-                                                    <li>
-                                                        <a {% if subTab.route|routeFromURL == routeName and routeName is not null and subTab.route|equalRouteParams(route_params) %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a></li>
+                                                {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName  and routeName is not null and subTab.route|equalRouteParams(route_params) %}
+                                                    {% set menuIsActive = true %}
                                                 {% endif %}
                                             {% endfor %}
-                                            </ul>
-                                    {% endif %}
-                                </li>
+                                        {% endif %}
+                                        <a href="{{ mainTab.route }}" {% if menuIsActive %}class="active"{% endif %} {% if menuIsExtern %}target="_blank"{% endif %}>{{ mainTab.name }}</a>
+                                        {% if subNavs[key] is defined and subNavs[key] is not null %}
+                                            <ul class="tcenter">
+                                                {% for subTab in subNavs[key] %}
+                                                    {% if subTab.translatable.isActive %}
+                                                        {% set submenuIsExtern = (fdc_court_metrage_scheme in subTab.route ? true : false) %}
+                                                        {% if submenuIsExtern == false or isValidMenuElement(subTab.route) %}
+                                                        {% set subIsActive = (subTab.route|routeFromURL == routeName and routeName is not null and subTab.route|equalRouteParams(route_params))
+                                                        or (isSFC(subTab.route|routeFromURL) and subTab.route|routeFromURL == routeName) %}
+                                                            <li>
+                                                                <a {% if subIsActive %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     {% endif %}
