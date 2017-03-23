@@ -1125,15 +1125,13 @@ var initVideo = function(hash) {
     } else if($('.video-playlist').length > 0) {
         if ($('.home #homepage-playlist-player').length > 0) {
             videoPlayer = playerInit('homepage-playlist-player',false , true);
-        }else{
-            videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
         }
+        videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
 
     } else if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
 
-    } 
-    if($('.video-player').length > 0) {
+    } else if($('.video-player').length > 0) {
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
