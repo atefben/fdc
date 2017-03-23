@@ -76,9 +76,11 @@
                             <div class="block-s-info-02 border-bottom vFlexAlign alignCenter" style="background-image:url({% path item.translatable.registerFormBackground|trans_fallback('file'), '976x535' %})">
                                 {% if item.registerFormTitle %}<strong class="title-25">{{ item.registerFormTitle }}</strong></br><br>{% endif %}
                                 {{ item.registerFormText|raw }}
-                                <div class="buttons-02">
-                                    <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">Voir le formulaire</a>
-                                </div>
+                                {% if item.isRegisterFormButtonActive %}
+                                    <div class="buttons-02">
+                                        <a href="http://sub.festival-cannes.fr/" class="button autoBtn centered" target="_blank">Voir le formulaire</a>
+                                    </div>
+                                {% endif %}
                             </div>
                         {% endif %}
 
