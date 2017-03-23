@@ -355,7 +355,7 @@ file that was distributed with this source code.
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
-                                        {% if group.label == 'dashboard.group.soif' and is_granted('ROLE_ADMIN_CCM') not is_granted('ROLE_SUPER_ADMIN') %}
+                                        {% if group.label == 'dashboard.group.soif' and is_granted('ROLE_ADMIN_CCM') and not is_granted('ROLE_SUPER_ADMIN') %}
                                             {% set display = false %}
                                         {% endif %}
                                         {% if display and (item_count > 0) and group.label != "dashboard.group.participate" and group.label != "sonata_user" %}
