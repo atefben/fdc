@@ -81,17 +81,11 @@ var owInitGrid = function (id) {
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(){
-                console.log('append complete');
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
             });
 
-            $gridMore.on('arrangeComplete',function(){
-                console.log('sort complete');
-                $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
-            });
-            
+
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
@@ -502,8 +496,6 @@ var owsetGridBigImg = function (grid, dom, init) {
 
     dom.find('article.card').removeClass('double w2');
 
-    //console.log($(dom).find('.card:visible img'));
-    //console.log($(dom).find('.card img'));
     if (window.matchMedia("(max-width: 1279px)").matches) {
 
         while (i < $img.length) {
@@ -565,6 +557,7 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
+    dom.isotope();
 
 };
 
