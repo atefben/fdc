@@ -330,7 +330,10 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/home.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/home.js'
+        '@FDCEventMobileBundle/Resources/public/js/home_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
