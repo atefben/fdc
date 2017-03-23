@@ -381,3 +381,11 @@ body.chocolat-open.fixed {
     width: 730px;
 }
 
+.modal-content .half .row:after, .modal-content .half .row:before {
+    display:table;
+    content:" ";
+}
+
+.modal-content .half .row:after {
+    clear:both;
+}
