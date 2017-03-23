@@ -3101,9 +3101,11 @@ var owInitGrid = function (id) {
                                         var filterSelector = '.'+$(this).find('.select span.active').data('filter');
                                         filters += filterSelector;
                                     }
-                                })
+                                });
+
                             }
                             console.log('applying filters to rebuilt grid',filters);
+                            owsetGridBigImg($gridMore, $('.grid-01'), false);
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
@@ -3366,7 +3368,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('owsetGridBigImg')
     var $img = $(dom).find('.card img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
