@@ -277,8 +277,8 @@
                                          data-name="Le Best-of du 69e Festival de Cannes"
                                          data-playlist='[
                                               {% for movie in filmReleases %}
-                                                {%- if movie.videoMain -%}
-                                                    {% set videoImage = media_public_url(movie.videoMain|trans_fallback('file'), '293x397') %}
+                                                {%- if movie.videoMain and movie.videoMain.image -%}
+                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
                                                 {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                                     {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                                 {%- endif -%}
@@ -411,8 +411,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     {% endfor %}
 
 
-                                    {%- if movie.videoMain -%}
-                                        {% set videoImage = media_public_url(movie.videoMain|trans_fallback('file'), '293x397') %}
+                                    {%- if movie.videoMain and movie.videoMain.image -%}
+                                        {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
                                     {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                         {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                     {%- endif -%}
