@@ -217,7 +217,7 @@ var owInitGrid = function (id) {
                 }
                 console.log('data sent to GET on ajax button click',postData);
 
-                $.post({
+                $.ajax({
                     type: 'GET',
                     url: url,
                     data: postData,
