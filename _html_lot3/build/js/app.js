@@ -2977,7 +2977,7 @@ var owInitGrid = function (id) {
                         }
 
                         //reset big imgs
-                        $gridMore.on('arrangeComplete',function(){
+                        $gridMore.on('layoutComplete',function(){
                             console.log('cards inserted');
                             owsetGridBigImg($gridMore, $('.grid-01'), false);
                         });
