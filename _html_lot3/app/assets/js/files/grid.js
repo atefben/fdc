@@ -155,9 +155,9 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
-                        
-                        $gridMore.append(rawHtml);
-                        $gridMore.isotope('appended');
+
+                        //$gridMore.append(rawHtml);
+                        $gridMore.isotope('insert',articles);
                         //$gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
