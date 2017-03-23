@@ -81,7 +81,7 @@ var owInitGrid = function (id) {
 
 
             //reset big imgs
-            $gridDom.one('layoutComplete',function(){
+            $gridMore.one('layoutComplete',function(){
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
             });
