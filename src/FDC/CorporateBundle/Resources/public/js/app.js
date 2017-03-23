@@ -5760,10 +5760,6 @@ var openSlideShow = function (slider, hash, affiche) {
         var twitter = $('.c-fullscreen-slider').find('.rs-slideshow .twitter');
         var link = $('.c-fullscreen-slider').find('.rs-slideshow .link');
 
-        if(caption.toLowerCase().indexOf('dit image :') == -1){
-            caption = 'Crédit Image : ' + caption;
-        }
-
         function isHTML(str) {
             var a = document.createElement('div');
             a.innerHTML = str;
@@ -7788,12 +7784,6 @@ $(document).ready(function () {
             }
         });
     }
-    
-    //block image open on title click
-    $('body').on('click','.chocolat-description a',function(){
-        console.log('block slideshow click');
-        return false;
-    })
 
     initHeaderSticky();
     // owInitLinkChangeEffect();

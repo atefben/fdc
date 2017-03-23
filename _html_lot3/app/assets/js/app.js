@@ -409,12 +409,6 @@ $(document).ready(function () {
             }
         });
     }
-    
-    //block image open on title click
-    $('body').on('click','.chocolat-description a',function(){
-        console.log('block slideshow click');
-        return false;
-    })
 
     initHeaderSticky();
     // owInitLinkChangeEffect();
