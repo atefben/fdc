@@ -470,7 +470,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 400px;
     height: 380px;
     overflow: hidden;
-  }
+  } 
 
   .owl-item {
     margin-right: -10px!important;
@@ -578,14 +578,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-@media screen and (max-width: 1152px) {
+@media screen and (max-width: 1152px) { 
 
 
  #owl-second{
-    margin-top: -100px;
+    margin-top: -100px;      
     width: 1000px!important;
     max-width:1000px!important;
-
+    
     .owl-stage-outer {
       width: 950px!important;
       max-width:950px!important;
@@ -630,7 +630,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
         width: 100%;
         height: 310px!important;
     }
-  }
+  }   
 }*/
 .midContainer {
   max-width: 1152px;
@@ -3578,7 +3578,7 @@ a {
 p {
   color: #505050;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 40px;
+  line-height: 30px;
   margin-bottom: 20px;
 }
 
@@ -3607,6 +3607,7 @@ sup {
 
 table {
   border-collapse: collapse;
+  margin: 20px;
 }
 
 ol > li {
@@ -4578,6 +4579,9 @@ header.sticky {
 header.sticky #top-bar, header.sticky h1 {
   display: none;
 }
+header.sticky #edition {
+  margin-left: 10px !important;
+}
 header.sticky #sticky-user {
   opacity: 1;
   visibility: visible;
@@ -4625,8 +4629,6 @@ header.sticky #logo-wrapper #logo img.palm {
   float: left;
   margin-top: -5px;
   width: 72px;
-  margin-left: 35px;
-  margin-left: 50px;
 }
 header.sticky #logo-wrapper #logo h2 {
   display: none;
@@ -4732,11 +4734,11 @@ header .user-nav li.lang:hover .sub-languages {
   visibility: visible;
 }
 header #top-bar {
-  border-bottom: 0px solid #080808;
+  border-bottom: 1px solid #080808;
   background-color: #141414;
   font-size: 0.750rem;
-  height: 35px;
-  line-height: 30px;
+  height: 28px;
+  line-height: 28px;
   -moz-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4787,7 +4789,7 @@ header #top-bar .icon_langue {
 }
 header #logo-wrapper {
   background-color: #141414;
-  height: 154px !important;
+  height: 159px !important;
   -moz-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4800,20 +4802,16 @@ header #logo-wrapper {
 header #logo-wrapper .container {
   height: 100%;
   position: relative;
-  width: 1152px;
-}
-@media screen and (max-width: 1024px) {
-  header #logo-wrapper .container {
-    width: 1152px;
-  }
+  width: 977px;
 }
 header #logo-wrapper #logo {
   display: inline-block;
-  padding: 0px 100px 0px 0;
+  padding: 5px 100px 0 0;
   text-align: center;
   vertical-align: middle;
-  width: 200px;
-  positon: relative;
+  /*width: 200px;*/
+  width: 165px;
+  margin-left: 10px;
 }
 header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
@@ -4826,10 +4824,8 @@ header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
 }
 header #logo-wrapper #logo h1 {
   position: absolute;
-  /*top: 108px;
-  left: 0px;*/
-  top: 95px !important;
-  left: 40px !important;
+  top: 100px !important;
+  left: 10px !important;
 }
 header #logo-wrapper #logo h2 {
   position: absolute;
@@ -4880,7 +4876,6 @@ header #logo-wrapper #logo img.palm {
   display: block;
   margin: 0 auto;
   width: 145px;
-  margin-left: 55px;
   -moz-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: width 0.3s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -4931,7 +4926,7 @@ header #logo-wrapper #leaderBoard {
   -webkit-transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   top: 30px;
-  left: 405px;
+  left: 230px;
   background: #333333;
   text-align: center;
   color: white;
@@ -5005,16 +5000,18 @@ header #navigation ul li:hover > a {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 header #navigation ul li:first-child {
-  margin-left: 45px;
-  /*@media screen and(max-width: $mobileWidth) {
-    margin-left: 5px;
-  }*/
+  margin-left: 10px;
+}
+@media screen and (max-width: 1279px) {
+  header #navigation ul li:first-child {
+    margin-left: 10px;
+  }
 }
 header #navigation ul li a {
   color: #fff;
   font-size: 14px;
   display: block;
-  padding-right: 45px;
+  padding-right: 20px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5247,9 +5244,14 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
 }
 
 #searchBar {
-  margin-left: 105px !important;
+  margin-left: 85px !important;
   border-left: 1px solid #404040;
   padding-left: 20px;
+}
+@media screen and (max-width: 1279px) {
+  #searchBar {
+    margin-left: 55px !important;
+  }
 }
 
 #searchBarA {
@@ -5559,6 +5561,13 @@ header #navigation {
   position: absolute !important;
   right: 0% !important;
   z-index: 1000 !important;
+}
+
+header .bigContainer {
+  max-width: 977px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden !important;
 }
 
 footer * {
@@ -6094,8 +6103,10 @@ footer .footer-menu ul li a:hover {
 .slideshow .caption {
   color: #666;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  font-size: 0.750rem;
-  margin: 20px 0;
+  font-size: 15px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  line-height: 20px;
 }
 .slideshow .caption strong {
   color: #333;
@@ -7326,7 +7337,6 @@ video {
   height: calc(630px / 1.58);
   text-align: center !important;
   margin: 0 auto !important;
-  padding-bottom: 20px !important;
 }
 .video-container button {
   background: none;
@@ -7595,7 +7605,7 @@ video {
 .video-container .control-bar {
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  bottom: 0px;
   height: 18%;
   width: 100%;
   opacity: 1;
@@ -9831,8 +9841,7 @@ header #searchContainer {
 }
 .video .picto .icon {
   font-size: 0.8rem;
-  margin-top: 16px;
-  margin-left: 16px;
+  margin-top: 16.1px;
 }
 
 .audio .picto {
@@ -11051,9 +11060,16 @@ header #searchContainer {
   font-size: 48px;
   line-height: 70px;
   margin: 40px 0px 70px 0px;
-  text-transform: uppercase;
   letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+.text-presentation h3.truncated-title {
+  line-height: 55px;
+}
+.text-presentation h3.title-clone {
+  display: inline;
+  visibility: hidden;
+  white-space: nowrap;
 }
 .text-presentation h5 {
   color: #2b2b2b;
@@ -21820,14 +21836,14 @@ body:not(.tablette) .webtv #live .img {
   color: white;
   background: #0e5554;
   line-height: 100px;
-  font-size: 16px;
+  font-size: 12px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   text-align: center;
 }
 @media screen and (max-width: 1279px) {
   .accredidationsMessage .accredRegister {
-    font-size: 80%;
+    font-size: 58%;
   }
 }
 .accredidationsMessage .accredRegister a {
@@ -22904,7 +22920,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-
+      
         &:after {
         content: '';
     }
@@ -23021,7 +23037,6 @@ ul.tabs .quarterTab h4 {
   padding: 30px 15px 5px;
   border-bottom: 3px solid white;
   text-align: left;
-  text-transform: uppercase;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #505050;
@@ -23056,6 +23071,7 @@ ul.tabs .quarterTab h4 {
 .accordion-infos .open h5 {
   width: 80%;
   float: left;
+  text-transform: uppercase;
 }
 .accordion-infos .open span {
   width: 0%;
@@ -23252,7 +23268,6 @@ ul.tabs .quarterTab h4 {
 .our-news h3 {
   font-size: 48px;
   color: white;
-  text-transform: uppercase;
   margin: 25px 0px 100px 0px;
   letter-spacing: 7px;
   font-family: "Playfair Display",Times New Roman,Times,serif;
@@ -23320,6 +23335,7 @@ ul.tabs .quarterTab h4 {
   opacity: 0.8;
   color: #000000;
   font-family: "Playfair Display","Times New Roman",Times,serif;
+  text-transform: none !important;
 }
 .our-news .articles p {
   font-size: 13px;
@@ -23588,7 +23604,7 @@ ul.tabs .quarterTab h4 {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;
+  z-index: 1004;  
   right: 1%;
   top: 100%;*/
   display: none;
@@ -23993,6 +24009,7 @@ ul.tabs .quarterTab h4 {
   font-size: 14px;
   color: #505050;
   text-align: left;
+  text-transform: none !important;
 }
 @media screen and (max-width: 1280px) {
   .conferences .conf60, .conferences .conf70 {
@@ -24343,6 +24360,7 @@ ul.tabs .quarterTab h4 {
   margin: 10px 0px;
   margin: 10px 0px 20px 0px !important;
   line-height: 40px;
+  text-transform: none !important;
 }
 .servicesPage .articles .articles-content {
   display: block;
@@ -24518,6 +24536,9 @@ ul.tabs .quarterTab h4 {
   padding: 30px 20px 0px;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   font-size: 12px;
+}
+.projection .programme:first-child {
+  margin-top: 5px;
 }
 .projection .programme {
   border: 2px solid #ECECEC;
@@ -25058,7 +25079,7 @@ ul.tabs .quarterTab h4 {
       font-family: $CamphorRegular;
       font-size: 16px;
       list-style-type: circle;
-    }
+    } 
 
   }*/
 }
@@ -25132,6 +25153,7 @@ ul.tabs .quarterTab h4 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: none !important;
 }
 .galeriePhotos .textWrapper h6:after {
   content: url("../img/goldDL.png");
@@ -25594,7 +25616,7 @@ option:checked,
 }
 .marche h4 {
   font-size: 16px;
-  line-height: 40px;
+  line-height: 30px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   padding: 0px 100px;
   text-align: center;
@@ -25614,7 +25636,7 @@ option:checked,
   opacity: 1;
   letter-spacing: 2px;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: left;
 }
 .marche h5 {
@@ -25626,10 +25648,16 @@ option:checked,
   color: #505050;
   font-size: 16px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 40px;
+  line-height: 25px;
   padding-right: 50px;
   text-align: left;
   list-style-type: disc;
+}
+.marche p.caption {
+  font-size: 15px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  line-height: 20px;
 }
 
 .marcheBody {
@@ -25639,7 +25667,7 @@ option:checked,
 .slideshow .caption {
   text-align: left;
   color: #666666;
-  font-size: 12px;
+  font-size: 15px;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
@@ -25668,6 +25696,7 @@ option:checked,
 }
 .newsPage .articles h6 {
   margin: 20px 0px;
+  text-transform: none !important;
 }
 .newsPage .articles:hover {
   background: white;
