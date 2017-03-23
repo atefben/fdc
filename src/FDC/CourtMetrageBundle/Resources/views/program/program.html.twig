@@ -121,7 +121,7 @@
             <div class="buttons square">
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 {% spaceless %}
-                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if program.translatable.image is not null %}{% path program.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ program.title|url_encode(true) }}&description={% if program.body is not null %}{{ program.body|striptags|raw }}{% else %}Cannes%20Courts%20Metrage{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if program.translatable.image is not null %}{% path program.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ program.title|url_encode(true) }}&description={% if program.body is not null %}{{ program.body|striptags|raw }}{% else %}Cannes%20Courts%20Métrage{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                        rel="nofollow" class="button facebook news-fb-share">
                         <i class="icon icon_facebook"></i>
                     </a>
