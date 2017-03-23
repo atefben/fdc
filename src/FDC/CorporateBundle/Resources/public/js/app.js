@@ -5770,7 +5770,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
 
         var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
-        console.log(images[centerElement].title);
+        console.log('goto',images[centerElement].title);
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
                 finalTitle = images[centerElement].title;
@@ -6125,7 +6125,7 @@ var openSlideShow = function (slider, hash, affiche) {
         console.log('block slideshow click');
         return false;
     })
-    
+
     //compute title width
     computeSlideshowTitleWidth();
 
