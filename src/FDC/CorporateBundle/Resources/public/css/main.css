@@ -7007,6 +7007,18 @@ body.chocolat-open > .chocolat-content {
   color: #c8a461;
 }
 
+.module-title .title-big {
+  color: #fff;
+  font-family: "Playfair Display";
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .article-single #main,
 .articles-list#main,
 .media-library #main {
