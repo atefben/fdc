@@ -2,9 +2,11 @@ $(document).ready(function() {
 
 window.onunload = function(){};
 
-if(navigator.userAgent.match(/Trident\/7\./)) {
-  //location.reload(true);
-}
+// if(navigator.userAgent.match(/Trident\/7\./)) {
+//
+//   location.reload(true);
+//
+// }
 
 $(window).load(function () {
   $('#main').removeClass('loading');
@@ -59,7 +61,7 @@ $(window).load(function () {
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:true,
-      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft customClass1'><i class='icon icon_flecheGauche customClass1'></div>","<div class='redarrowRight customClass1'><i class='icon icon_flecheGauche reverse customClass1'></div>"]
 
   });
 
@@ -112,7 +114,7 @@ $(window).load(function () {
       paginationSpeed : 400,
       items : 3,
       margin:10,
-      navText: ["<div class='redarrowLeft'><i class='icon icon_flecheGauche'></div>","<div class='redarrowRight'><i class='icon icon_flecheGauche reverse'></div>"]
+      navText: ["<div class='redarrowLeft customClass1'><i class='icon icon_flecheGauche customClass1'></div>","<div class='redarrowRight customClass1'><i class='icon icon_flecheGauche reverse customClass1'></div>"]
 
   });
 
@@ -124,13 +126,13 @@ $(window).load(function () {
     var selectedBox = $('.services-pictures div');
 
     $(servicesBoxes).hover(function() {
-          $(selectedBox).toggleClass('hide')
+          $(selectedBox).toggleClass('hide');
+          $('#' + $(this).data('rel')).removeClass('hide');
           $('#' + $(this).data('rel')).toggleClass('show');
     });
 
     var searchResult = $('.resultClick');
     var searchBox = $('.results-content .contents');
-    var seeAll = $('.results-content .seeAll');
 
     $(searchResult).each(function() {
       $(this).click(function(event) {
@@ -143,11 +145,6 @@ $(window).load(function () {
           $(searchBox).removeClass('activeContent');
           $('.' + $(this).attr("rel")).removeClass('activeContent');
           $('.' + $(this).attr("rel")).addClass('activeContent');
-
-          $('#rubrique-' + $(this).attr("rel") + '-1').addClass('open-selected');
-          $('#rubrique-content-' + $(this).attr("rel") + '-1').show();
-          $('#rubrique-plus-' + $(this).attr("rel") + '-1').addClass('noDisplay');
-          $('#rubrique-minus-' + $(this).attr("rel") + '-1').addClass('doDisplay');
       });
     });
 
@@ -162,21 +159,6 @@ $(window).load(function () {
       $(this).siblings().find("h6").removeClass("active");
       $(this).siblings().find("span").removeClass("active");
     });
-
-    $(seeAll).each(function() {
-      $(this).click(function(event) {
-        event.stopPropagation();
-        showAllSearchResults($(this).attr("rel"));
-      });
-    });
-
- function showAllSearchResults(category)
- {
-     var results = $('.results-content .' + category + ' .result');
-        $(results).each(function() {
-          $(this).show();
-        });
- }
 
 /* MENU */
 
@@ -205,13 +187,16 @@ function menuMDF() {
 
 menuMDF();
 
+
 $(window).scroll(function(){
-    /*if ($(window).scroll(200)){
+    if ($(window).scroll(200)){
         $('#leaderBoard').hide();
     } else {
       $('#leaderBoard').show();
-    }*/
+    }
 });
+
+
 
 function hoverSearch() {
 
@@ -230,10 +215,12 @@ function hoverSearch() {
         });
 
     $(".liSearchBox").mouseover(function() {
+
             $('#navigation li').addClass('marginli');
             $('#searchBar').addClass('marginLastli');
             $('.searchBox').addClass("showsearchBox");
             $('.icon_recherche').addClass("blackIcon");
+
       });
 
     $("#main, #logo-wrapper, .text-presentation ").click(function(e){
@@ -258,10 +245,8 @@ $(window).scroll(function(){
 
 $(window).scroll(function(){
 
-    if ($(".contact-box").offset()) {
-      if ($("body").scrollTop() > $(".contact-box").offset().top) {
-        $(".floatingButtonLeft, .floatingButtonRight").hide();
-      }
+    if ($("body").scrollTop() > $(".contact-box").offset().top) {
+            $(".floatingButtonLeft, .floatingButtonRight").hide();
     }
 
     if ($("header").hasClass("sticky")) {
@@ -316,10 +301,6 @@ $('.floatingButtonRight').hover(function() {
 
 /* SELECTOR DROPDOWN FROM DROPWDOWNS */
 
-    // $(".dropdown").click(function() {
-    //
-    //     $('.dropArrow').toggleClass('dropArrowOpen');
-    // });
 
     $(".select input").click(function() {
 
@@ -400,11 +381,6 @@ $('.accordion-infos .open').each(function() {
 
 $('.accordion-infos .content').hide();
 
-$('#rubrique-1-1').addClass('open-selected');
-$('#rubrique-content-1-1').show();
-$('#rubrique-plus-1-1').addClass('noDisplay');
-$('#rubrique-minus-1-1').addClass('doDisplay');
-
 /* EVENT SELECTOR */
 
 function click() {
@@ -412,12 +388,21 @@ function click() {
     var clicked;
     var selectbtn = $('.selectbtn');
 
-    // $('.dropdown span').click(function() {
-    //     $('#eventSelector').toggleClass("showeventSelector");
-    //     $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
-    // });
+    $('.selector').hide();
+
+    $('.dropdown span').click(function() {
+
+        $('.marketnewsSelector').toggleClass("showmarketnewsSelector");
+        $('.selector').toggle();
+        $('.dropArrow').toggleClass('dropArrowOpen');
+    });
 
 
+    $(".dropArrow").click(function() {
+
+        $('.dropArrow').toggleClass('dropArrowOpen');
+        $('.selector').toggle();
+    });
 
 /* CONFERENCES */
 
@@ -431,6 +416,7 @@ function click() {
 
             $(this).removeClass('purpleBtn');
 
+            console.log("class removed");
               var index = el.indexOf(identification);
               if (index > -1) {
                   el.splice(index, 1);
@@ -440,15 +426,14 @@ function click() {
                   el.splice(indexRel, 1);
               }
 
-              $('.' + identification).fadeOut(200, function () {
-                  insertNoEventMessage(el);
-              });
+              $('.' + identification).fadeOut(200);
               $('#' + attr).hide();
+              console.log("removed " + identification);
+              console.log(el);
 
               if (this.id == 'all' || el.length < 1 ) {
                   $('.parent > div').fadeOut(200);
-                  $('.parent').append('<div class="events message event-message">' + noFilterForGlobalMessage + '</div>');
-                  removeNoEventMessages();
+                  $('.parent').append('<div class="events message">aucun évenement sélectionné</div>');
                   $('.selectText').hide();
               } else if (this.id == 'all') {
                   $('.selectText').hide();
@@ -466,17 +451,18 @@ function click() {
         el.push(identification);
         el.push(attr);
 
+        console.log(el);
 
           if (this.id == 'all') {
             $('.parent > div').fadeIn(200);
             $('.selectText').show();
             $('.selectText').removeClass('hideContent');
-            $('.event-message').empty();
+            $('.message').empty();
             $(this).addClass('purpleBtn');
             $(this).siblings().removeClass('purpleBtn');
             $('.events').removeClass('hideContent');
             el = [];
-            removeNoEventMessages();
+            console.log(el);
           } else if (el){
               $('.selectText').hide();
               $.each(el, function(i, val) {
@@ -484,50 +470,21 @@ function click() {
                  $('.' + val).removeClass('hideContent');
                  $('#all').removeClass('purpleBtn');
                  $('#' + val).show();
+                  console.log("here is " + val);
+                  console.log("here is " + attr);
                   if ($(identification) != val) {
                     $("." + identification).addClass('hideContent');
                   }
               });
               $('#' + attr).show();
-
-              insertNoEventMessage();
           }
 
         }
     });
 
-    function insertNoEventMessage() {
-        /* Check if there is at least one event available per day */
-        $.each($('.parent'), function () {
-            var visible = 0;
-            var that = this;
-            $.each($(that).find('.box'), function () {
-                if ($(this).css('display') == 'block') {
-                    visible++;
-                    return;
-                }
-            });
-            if (visible == 0 && el.length > 0) {
-                if ($(".event-" + $(that).data('id'))) {
-                    $(".event-" + $(that).data('id')).remove();
-                }
-                $(that).append('<div class="event-' + $(that).data('id') + ' message">' + noAvailableGlobalMessage + '</div>');
-            } else {
-                $(".event-" + $(that).data('id')).remove();
-            }
-        });
-    }
-
-    function removeNoEventMessages() {
-        $.each($('.parent'), function () {
-            if ($(".event-" + $(this).data('id'))) {
-                $(".event-" + $(this).data('id')).remove();
-            }
-        });
-    }
 /* MARKET NEWS*/
 
-    /*$('.marketnewsBtn').click(function() {
+    $('.marketnewsBtn').click(function() {
 
       var identification = $(this).attr('id');
       var attr = $(this).attr("rel");
@@ -603,11 +560,11 @@ function click() {
           }
 
         }
-    });*/
+    });
 
     $('#accordion-conf .open').each(function() {
 
-        $(this).click(function() {
+        $(this).click(function(){
 
           $('#accordion-conf .open').siblings().removeClass('open-selected-conf');
           $('#accordion-conf .open').removeClass('open-selected-conf');
@@ -627,7 +584,9 @@ function click() {
            }
        });
 
-    });
+      });
+
+    $('#accordion-conf .content').hide();
 }
 
 click();
@@ -761,10 +720,63 @@ String.prototype.trunc = function (n, useWordBoundary) {
     return isTooLong ? s_ + '...' : s_;
 };
 
-var fixed = false;
- var topTrigger = $('.subNavigation').length ? $('.subNavigation').offset().top - 250 : 0;
 
- $(document).scroll(function() {
+
+var len1 = $(".partnersTabs");
+  if($(len1).length === 2) {
+    $(".partnersTabs").addClass("halfTab");
+  }
+  else if ($(len1).length === 3){
+    $(".partnersTabs").addClass("thirdTab");
+  }
+  else if ($(len1).length === 4){
+    $(".partnersTabs").addClass("quarterTab");
+  }
+
+var len2 = $(".speakersTabs");
+  if($(len2).length === 2) {
+    $(".speakersTabs").addClass("halfTab");
+  }
+  else if ($(len2).length === 3){
+    $(".speakersTabs").addClass("thirdTab");
+  }
+  else if ($(len2).length === 4){
+    $(".speakersTabs").addClass("quarterTab");
+  }
+
+var len3 = $(".contactInfo");
+  if($(len3).length === 2) {
+    $(".contactInfo").addClass("halfContact");
+  }
+  else if ($(len3).length === 1){
+    $(".contactInfo").addClass("fullContact");
+  }
+
+var fixed = false;
+
+$('div.text-presentation > h3').each(function() {
+    var element = $(this)
+        .clone()
+        .addClass('title-clone')
+        .appendTo('body');
+
+    if( element.width() > $(this).width() ) {
+        $(this).css('line-height', '55px');
+    }
+
+    element.remove();
+});
+
+$('p').each(function() {
+    if ($(this)[0].firstChild.length == 1) {
+        $(this).css('line-height', '10px');
+        $(this).css('margin-bottom', '15px');
+    }
+});
+
+var topTrigger = $('.subNavigation').offset().tpo;
+if($('.subNavigation').length){
+  $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {
        fixed = true;
@@ -777,29 +789,7 @@ var fixed = false;
      }
    }
  });
-
-var len = $(".partnersTabs");
-if($(len).length === 2) {
-  $(".partnersTabs").addClass("halfTab");
 }
-else if ($(len).length === 3){
-  $(".partnersTabs").addClass("thirdTab");
-}
-else if ($(len).length === 4){
-  $(".partnersTabs").addClass("quarterTab");
-}
-
-var len = $(".speakersTabs");
-if($(len).length === 2) {
-  $(".speakersTabs").addClass("halfTab");
-}
-else if ($(len).length === 3){
-  $(".speakersTabs").addClass("thirdTab");
-}
-else if ($(len).length === 4){
-  $(".speakersTabs").addClass("quarterTab");
-}
-
 
 /*if ($('.selectText').length > 1) {
     $('.selectText').addClass('virgule');
