@@ -287,6 +287,10 @@ var openSlideShow = function (slider, hash, affiche) {
         var twitter = $('.c-fullscreen-slider').find('.rs-slideshow .twitter');
         var link = $('.c-fullscreen-slider').find('.rs-slideshow .link');
 
+        if(caption.toLowerCase().indexOf('dit image :') == -1){
+            caption = 'Crédit Image : ' + caption;
+        }
+
         title.html(images[centerElement].title);
         pagination.html(numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i>');
         label.html(images[centerElement].label);
