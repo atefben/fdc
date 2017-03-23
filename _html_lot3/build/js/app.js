@@ -2881,12 +2881,6 @@ var owInitGrid = function (id) {
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
             });
 
-            $gridMore.on('arrangeComplete',function(){
-                console.log('sort complete');
-                $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
-            });
-            
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
