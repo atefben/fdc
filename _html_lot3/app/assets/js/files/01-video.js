@@ -595,7 +595,9 @@ var initVideo = function(hash) {
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
 
-        console.log('have playlist',havePlaylist);
+        if($(vid).is('#homepage-featured-video')){
+            havePlaylist = false;
+        }
 
         playerInstance.setup({
             sources: videoFile,
