@@ -253,13 +253,11 @@ class CcmRegisterProcedureAdmin extends Admin
             ->add('registerFormBackground', 'sonata_type_model_list', array(
                 'label' => 'form.ccm.film_register.register_form_background',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
                 'required' => false
             ))
             ->add('regulationDetailsFile', 'sonata_type_model_list', array(
                 'label' => 'form.ccm.film_register.regulation_details_file',
                 'translation_domain' => 'BaseAdminBundle',
-                'btn_delete' => false,
                 'required' => false
             ))
         ;

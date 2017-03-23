@@ -17,14 +17,20 @@
             {% endif %}
         </div> <!-- fin de all-contain block-01-xs padding-top -->
 
-        <div class="border-top border-bottom block-button-bottom">
-            <div class="block-01-ms">
-                <div class="align-flex">
-                    <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i> {{ 'ccm.register_movie.preselection_rules'|trans }}</a>
-                    <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain not in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+        {% if registerProcedure.translatable.regulationDetailsFile or (registerProcedure.regulationDetailsButtonUrl and registerProcedure.regulationDetailsButtonLabel) %}
+            <div class="border-top border-bottom block-button-bottom">
+                <div class="block-01-ms">
+                    <div class="align-flex">
+                        {% if registerProcedure.translatable.regulationDetailsFile %}
+                            <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i> {{ 'ccm.register_movie.preselection_rules'|trans }}</a>
+                        {% endif %}
+                        {% if registerProcedure.regulationDetailsButtonUrl and registerProcedure.regulationDetailsButtonLabel %}
+                            <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain not in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
 
         {% if registerProcedure.contactUsTitle %}
             <div class="block-contact block-01-ms">
