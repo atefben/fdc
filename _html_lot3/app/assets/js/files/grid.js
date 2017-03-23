@@ -11,7 +11,7 @@ var owInitGrid = function (id) {
                 }
             });
 
-            $grid.on('arrangeComplete', function( event, filteredItems ) {
+            $grid.one('arrangeComplete', function( event, filteredItems ) {
                 $('.item-inner').css({
                     'width':'100.5%',
                     'height':'100.5%'
@@ -154,7 +154,6 @@ var owInitGrid = function (id) {
                     data: postData,
                     success: function(data) {
                         $data = $(data);
-                        
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         var scroll = $(document).scrollTop();
@@ -187,6 +186,12 @@ var owInitGrid = function (id) {
                                 });
                             });
                         }
+
+                        //reset big imgs
+                        $gridMore.on('layoutComplete',function(){
+                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
+                            owsetGridBigImg($gridMore, $('.grid-01'), false);
+                        });
                         
 
                         $('.card.item').each(function(){
