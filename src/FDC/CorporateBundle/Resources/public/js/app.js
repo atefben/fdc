@@ -3092,7 +3092,7 @@ var owInitGrid = function (id) {
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
-                                filter: 'all',
+                                filter: '.all',
                                 packery: {
                                     columnWidth: '.grid-sizer'
                                 },
