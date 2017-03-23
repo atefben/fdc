@@ -780,8 +780,7 @@ header #navigation ul.user li a {
     }
 
     &::selection {
-        color: #e2e2e2;
-        background-color: #999;
+        background-color: transparent;
     }
 }
 

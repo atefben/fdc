@@ -5855,11 +5855,11 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description'+onelineclass+'"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
         '</div>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
             '<div class="buttons square img-slideshow-share rs-slideshow">' +
@@ -6095,6 +6095,10 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     });
+
+    console.log('youyou');
+    //compute title width
+    computeSlideshowTitleWidth();
 
     $(window).resize(function () {
         w = $(window).width();
@@ -7377,12 +7381,9 @@ homepageCards.config = {
 homepageCards.config.urlStamp;
 
 homepageCards.init = function(){
-    
     homepageCards.getCards();
     homepageCards.buildFilters();
     homepageCards.events();
-    
-            
 }
 
 homepageCards.events = function(){
@@ -7693,6 +7694,34 @@ homepageCards.getFilteredCollection = function(themeFilter,formatFilter){
 }
 /* thomon - end homepage ajax module rework */
 
+/* fix slideshow title width */
+var computeSlideshowTitleWidth = function(){
+    //check if slideshow exists
+    if($('.c-fullscreen-slider').length){
+        var globalWidth = $(window).width();
+        var paginationWidth = $('.chocolat-pagination').outerWidth();
+        var creditWidth = $('.c-fullscreen-slider .credit').outerWidth();
+        var shareWidth = $('.c-fullscreen-slider .share').outerWidth();
+        var leftArWidth = $('.c-fullscreen-slider .chocolat-left').outerWidth();
+        var rightArWidth = $('.c-fullscreen-slider .chocolat-right').outerWidth();
+        var totalItemWidth = paginationWidth + creditWidth + shareWidth + leftArWidth + rightArWidth;
+        var remainingWidth = globalWidth - totalItemWidth;
+        var titlePadding = 135;
+
+        //padding left breakpoint
+        if(globalWidth < 1600){
+            titlePadding = 115;
+        }
+        var finalWith = remainingWidth - titlePadding;
+
+        $('.c-fullscreen-slider').find('.chocolat-description').css('width',remainingWidth);
+    }
+}
+
+$(window).resize(function(){
+    computeSlideshowTitleWidth();
+});
+
 $(document).ready(function () {
 
     if (/MSIE 10/i.test(navigator.userAgent)) {
@@ -7707,6 +7736,8 @@ $(document).ready(function () {
         homepageCards.init();
     }
 
+    computeSlideshowTitleWidth();
+
     //hotfix focus & sameday thumbs click
     if($('.focus').length){
         $('.focus .articles article')
@@ -7718,6 +7749,7 @@ $(document).ready(function () {
             }
         });
     }
+
     if($('.same-day').length){
         $('.same-day .articles article')
         .css('cursor','pointer')
@@ -7728,6 +7760,8 @@ $(document).ready(function () {
             }
         });
     }
+
+
     
 
     initHeaderSticky();
@@ -7739,7 +7773,6 @@ $(document).ready(function () {
     owCookieBanner();
 
     //fix scale zoom tablette
-
     var scale = function () {
         if (window.matchMedia("(orientation: portrait)").matches || window.matchMedia("(max-width: 769px)").matches) {
             var w = $('body').width();

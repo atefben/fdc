@@ -398,11 +398,11 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description'+onelineclass+'"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
         '</div>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
             '<div class="buttons square img-slideshow-share rs-slideshow">' +
@@ -638,6 +638,10 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     });
+
+    console.log('youyou');
+    //compute title width
+    computeSlideshowTitleWidth();
 
     $(window).resize(function () {
         w = $(window).width();
