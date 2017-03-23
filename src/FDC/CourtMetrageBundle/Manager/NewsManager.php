@@ -278,9 +278,9 @@ class NewsManager
         return $newsArticle;
     }
 
-    public function getLocaleSlugsForNews($slug)
+    public function getLocaleSlugsForNews($slug, $locale)
     {
-        $newsTranslation = $this->getNewsArticleBySlugAndLocale($slug);
+        $newsTranslation = $this->getNewsArticleBySlugAndLocale($slug, $locale);
         $translations = $newsTranslation->getTranslatable()->getTranslations();
         $slugs = array();
 
