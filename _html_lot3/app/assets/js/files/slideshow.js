@@ -32,13 +32,6 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mouseup', function (e) {
-                if (!dragLock) {
-                    openSlideShow(slider);
-                }
-            });
-
-
             if($('.slideshow-img').length > 0 ) {
                 $('.images').on('click', function (e) {
                     
