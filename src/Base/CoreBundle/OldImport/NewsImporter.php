@@ -885,8 +885,9 @@ class NewsImporter extends Importer
             $newsArticle->getTranslations()->removeElement($translation);
             $this->getManager()->remove($translation);
         }
-        foreach ($newsArticle->getAssociatedNews() as $news) {
-            $newsArticle->removeAssociatedNew($news);
+        foreach ($newsArticle->getAssociatedNews() as $newsAssociated) {
+            $this->getManager()->remove($newsAssociated);
+            $newsArticle->removeAssociatedNew($newsAssociated);
         }
         foreach ($fields as $field) {
             $association = $this
