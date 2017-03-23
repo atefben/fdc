@@ -2640,7 +2640,7 @@ sup {
   font-size: 0.750rem;
   margin: 10px 0 0;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .block-register-pop ul {
@@ -2652,6 +2652,16 @@ sup {
   margin-left: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
+  text-align: left;
+}
+
+.block-rules .little-txt ul {
+  line-height: 30px;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 0px;
   text-align: left;
 }
 
