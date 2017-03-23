@@ -184,13 +184,19 @@
                                         <div class="wrapper-item-big">
                                             <div class="poster">
                                                 {% if image is defined and image %}
+                                                {% set sizeClass = 'portrait' %}
+                                                {% set format = '259x352' %}
+                                                {% if image.width > image.height %}
+                                                        {% set sizeClass = 'landscape' %}
+                                                        {% set format = '363x260' %}
+                                                {% endif %}
                                                 <figure>
-                                                    <img src="{% path image, '363x260' %}"
-                                                         alt="{{ widget.image|trans_fallback('alt') }}">
-                                                    {% set copyright = widget.image|trans_fallback('copyright') %}
-                                                    {% if copyright is not empty -%}
-                                                        <span class="copy"> © {{ copyright }}</span>
-                                                    {%- endif %}
+                                                        <img src="{% path image, format %}"
+                                                                 alt="{{ widget.image|trans_fallback('alt') }}">
+                                                        {% set copyright = widget.image|trans_fallback('copyright') %}
+                                                        {% if copyright is not empty -%}
+                                                                <span class="copy"> © {{ copyright }}</span>
+                                                        {%- endif %}
                                                 </figure>
                                                 {% endif %}
                                             </div>
