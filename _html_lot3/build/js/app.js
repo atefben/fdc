@@ -5764,7 +5764,24 @@ var openSlideShow = function (slider, hash, affiche) {
             caption = 'Crédit Image : ' + caption;
         }
 
-        title.html(images[centerElement].title);
+        function isHTML(str) {
+            var a = document.createElement('div');
+            a.innerHTML = str;
+            for (var c = a.childNodes, i = c.length; i--; ) {
+                if (c[i].nodeType == 1) return true; 
+            }
+            return false;
+        }
+
+        var finalTitle = '<a>'+images[centerElement].title+'</a>';
+
+        if(typeof images[centerElement].title !== 'undefined'){
+            if(isHTML(images[centerElement].title)){
+                finalTitle = images[centerElement].title;
+            }
+        }
+
+        title.html(finalTitle);
         pagination.html(numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i>');
         label.html(images[centerElement].label);
         date.html(images[centerElement].date);
@@ -5851,21 +5868,13 @@ var openSlideShow = function (slider, hash, affiche) {
         return false;
     }
 
-    var onelineclass = ' oneline';
+    var finalTitle = '<a>'+images[centerElement].title+'</a>';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
-            if(typeof images[centerElement].caption !== 'undefined'){
-                if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
-                    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
-                }
-            }
 
             if(typeof images[centerElement].title !== 'undefined'){
-                 var tempTitle = images[centerElement].title;
                  if(isHTML(tempTitle)){
-                    if($(tempTitle).filter('*').size() > 0){
-                        onelineclass = ''
-                    }
+                    finalTitle = images[centerElement].title;
                 }
             }
         }
@@ -5878,7 +5887,7 @@ var openSlideShow = function (slider, hash, affiche) {
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
         '</div>' +
-        '<span class="chocolat-description"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + finalTitle + '</h2></span>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
             '<div class="buttons square img-slideshow-share rs-slideshow">' +
