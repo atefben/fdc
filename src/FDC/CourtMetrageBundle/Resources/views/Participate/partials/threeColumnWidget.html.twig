@@ -13,6 +13,9 @@
                 'column': 1
             } %}
         {% endif %}
+        {% if constraints and constraints[0] %}
+            <a href="#" class="link a-left modal-toggle-label" data-content="{{ constraints[0]|json_encode }}">{{ 'ccm.widget.technical_constraints'|trans }}</a>
+        {% endif %}
     </div>
 
     <div class="item-img wysiwyg">
@@ -28,6 +31,9 @@
                 'files': threeColumnsFiles,
                 'column': 2
             } %}
+        {% endif %}
+        {% if constraints and constraints[1] %}
+            <a href="#" class="link a-left modal-toggle-label" data-content="{{ constraints[1]|json_encode }}">{{ 'ccm.widget.technical_constraints'|trans }}</a>
         {% endif %}
     </div>
 
@@ -45,6 +51,9 @@
                 'files': threeColumnsFiles,
                 'column': 3
             } %}
+        {% endif %}
+        {% if constraints and constraints[2] %}
+            <a href="#" class="link a-left modal-toggle-label" data-content="{{ constraints[2]|json_encode }}">{{ 'ccm.widget.technical_constraints'|trans }}</a>
         {% endif %}
     </div>
 </div>

@@ -8,6 +8,7 @@ $(document).ready(function () {
     removeShareFromYoutubeWidget();
     handleDualShareEmailForms();
     SFCProgramPageLink();
+    initLabelpage();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -39,6 +40,19 @@ function initProPage() {
             $('.modal').toggleClass('is-visible');
         } else {
             getProInfo(this);
+        }
+    });
+}
+
+function initLabelpage() {
+    $('.modal-toggle-label').unbind().on('click', function(e) {
+        e.preventDefault();
+
+        if ($('.modal').hasClass('is-visible')) {
+            $('.modal').toggleClass('is-visible');
+        } else {
+            $('.modal-content .block-register-pop').html(JSON.parse($(this).data('content')));
+            $('.modal').toggleClass('is-visible');
         }
     });
 }
