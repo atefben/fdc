@@ -167,6 +167,12 @@ var owInitGrid = function (id) {
 
                         $gridMore.isotope('insert',articles);
 
+                        $gridMore.on('layoutComplete',function(){
+                            console.log('second sort');
+                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
+                            owsetGridBigImg($gridMore, $('.grid-01'), false);
+                            $('.grid-01').isotope();
+                        });
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
