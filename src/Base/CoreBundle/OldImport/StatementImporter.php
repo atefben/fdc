@@ -735,8 +735,13 @@ class StatementImporter extends Importer
         }
 
         foreach ($newsArticle->getAssociatedStatement() as $statementAssociated) {
-            $this->getManager()->remove($statementAssociated);
-            $newsArticle->removeAssociatedStatement($statementAssociated);
+            if ($statementAssociated instanceof StatementStatementAssociated) {
+                $statementAssociated->setAssociation(null);
+                $statementAssociated->setStatement(null);
+                $this->getManager()->remove($statementAssociated);
+                $this->getManager()->flush();
+                $newsArticle->removeAssociatedStatement($statementAssociated);
+            }
         }
         foreach ($fields as $field) {
             $association = $this
