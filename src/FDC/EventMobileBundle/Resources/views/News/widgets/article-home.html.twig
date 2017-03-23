@@ -114,7 +114,6 @@ article is news_image %}
             {% endif %}
         </div>
         {% set trans = article.findTranslationByLocale(app.request.locale) %}
-        {{ dump(article.translations) }}
         {% if type == 'news' %}
             <a class="linkImage" href="{{ url('fdc_eventmobile_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% else %}
