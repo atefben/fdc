@@ -113,8 +113,7 @@ article is news_image %}
                 {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
             {% endif %}
         </div>
-        {% set trans = article.findTranslationByLocale('fr') %}
-
+        {% set trans = article.findTranslationByLocale(app.request.locale) %}
         {% if type == 'news' %}
             <a class="linkImage" href="{{ url('fdc_eventmobile_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% else %}
