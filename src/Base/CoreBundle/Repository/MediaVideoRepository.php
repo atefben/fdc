@@ -99,7 +99,6 @@ class MediaVideoRepository extends TranslationRepository
             ->orderBy('f.titleVO', 'desc')
             ->addOrderBy('mv.publishedAt', 'desc')
             ->groupBy('film_id')
-            ->addGroupBy('mv.id')
         ;
 
         if ($selectionSection) {
