@@ -19,7 +19,7 @@ class TransverseController extends Controller
 
         $localeSlugs = [];
         if ($routeName == 'fdc_court_metrage_news_detail') {
-            $localeSlugs = $this->get('ccm.manager.news')->getLocaleSlugsForNews($routeParams['slug']);
+            $localeSlugs = $this->get('ccm.manager.news')->getLocaleSlugsForNews($routeParams['slug'], $locale);
         }
 
         if ($routeName == 'fdc_court_metrage_technical_characteristics' || $routeName == 'fdc_court_metrage_regulation_detail') {
