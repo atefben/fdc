@@ -779,15 +779,10 @@ header #navigation ul.user li a {
         transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 }
+.slider-home .container-images .item
 
-
-
-/* hotfix FF */
-@-moz-document url-prefix() {
-    .slider-home .container-images .item {
-        background-size: 100%;
-        background-position: 0px;
-    }
+body.noscroll {
+    overflow: hidden;
 }
 
 @media only screen and (max-width : 1440px) {

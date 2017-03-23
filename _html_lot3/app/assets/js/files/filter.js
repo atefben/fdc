@@ -45,6 +45,7 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
+            $('body').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
             $('#filters .vCenterKid').find(':not(span)').remove();
@@ -69,6 +70,7 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
+            $('body').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -84,7 +86,6 @@ var owInitFilter = function (isTabSelection) {
                         $that = $(this);
                         $id = $(this).closest('.filter').attr('id');
 
-                        console.log($that.find("span:not(.active):not([data-filter='all'])"));
                         $that.find("span:not(.active):not([data-filter='all'])").each(function () {
                             $this = $(this);
 
@@ -107,6 +108,7 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
+                    $('body').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
@@ -315,6 +317,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
+                        $('body').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
