@@ -3,13 +3,17 @@
 namespace Base\CoreBundle\OldImport;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Component\Interfaces\NodeTranslationInterface;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
+use Base\CoreBundle\Entity\NewsImage;
+use Base\CoreBundle\Entity\NewsImageTranslation;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 use Base\CoreBundle\Entity\NewsWidgetAudio;
 use Base\CoreBundle\Entity\NewsWidgetImage;
@@ -28,6 +32,7 @@ class NewsImporter extends Importer
     protected $widgetPosition = 0;
 
     protected $status;
+    protected $isNewsImage = false;
 
     protected function getTypes()
     {
@@ -147,7 +152,7 @@ class NewsImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return NewsArticle
+     * @return News
      */
     protected function importItem(OldArticle $oldArticle)
     {
@@ -197,18 +202,25 @@ class NewsImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return NewsArticle
+     * @return News
      */
     protected function buildNewsArticle(OldArticle $oldArticle)
     {
+        if ($this->isNewsImage) {
+            $classNews = NewsImage::class;
+            $this->removeNews($oldArticle->getId());
+        } else {
+            $classNews = NewsArticle::class;
+        }
+
         $news = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:NewsArticle')
+            ->getRepository($classNews)
             ->findOneBy(['oldNewsId' => $oldArticle->getId()])
         ;
 
         if (!$news) {
-            $news = new NewsArticle();
+            $news = new $classNews();
             $news
                 ->setOldNewsId($oldArticle->getId())
                 ->setOldNewsTable('OldNews')
@@ -233,8 +245,13 @@ class NewsImporter extends Importer
     }
 
 
-    protected function buildNewsArticleTranslation(NewsArticle $news, OldArticleI18n $oldTranslation)
+    protected function buildNewsArticleTranslation(News $news, OldArticleI18n $oldTranslation)
     {
+        if ($this->isNewsImage) {
+            $classNewsTranslation = NewsImageTranslation::class;
+        } else {
+            $classNewsTranslation = NewsArticleTranslation::class;
+        }
         $mapperFields = [
             'resume' => 'introduction',
         ];
@@ -243,12 +260,12 @@ class NewsImporter extends Importer
         if (in_array($locale, $this->langs)) {
             $translation = $this
                 ->getManager()
-                ->getRepository('BaseCoreBundle:NewsArticleTranslation')
+                ->getRepository($classNewsTranslation)
                 ->findOneBy(['locale' => $locale, 'translatable' => $news])
             ;
 
             if (!$translation) {
-                $translation = new NewsArticleTranslation();
+                $translation = new $classNewsTranslation();
                 $translation
                     ->setCreatedAt($news->getCreatedAt())
                     ->setUpdatedAt($news->getCreatedAt())
@@ -262,10 +279,10 @@ class NewsImporter extends Importer
                     if ($this->status) {
                         $translation->setStatus($this->status);
                     } else {
-                        $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                        $translation->setStatus(TranslateChildInterface::STATUS_PUBLISHED);
                     }
                 } else {
-                    $translation->setStatus(NewsArticleTranslation::STATUS_TRANSLATED);
+                    $translation->setStatus(TranslateChildInterface::STATUS_TRANSLATED);
                 }
             }
 
@@ -329,7 +346,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildNewsWidgetText(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildNewsWidgetText(News $news, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getBody()) {
             return null;
@@ -367,7 +384,7 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetYoutube(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildNewsWidgetYoutube(News $news, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getYoutubeLink() || !$oldTranslation->getYoutubeLinkDescription()) {
             return null;
@@ -408,7 +425,7 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetImage(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildNewsWidgetImage(News $news, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -517,7 +534,7 @@ class NewsImporter extends Importer
         return $widget;
     }
 
-    protected function buildNewsWidgetsAudio(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildNewsWidgetsAudio(News $news, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -554,7 +571,7 @@ class NewsImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaAudio);
+//                    $this->getManager()->remove($mediaAudio);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -583,7 +600,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildNewsWidgetsVideo(NewsArticle $news, NewsArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildNewsWidgetsVideo(News $news, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -619,7 +636,7 @@ class NewsImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaVideo);
+//                    $this->getManager()->remove($mediaVideo);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -648,7 +665,7 @@ class NewsImporter extends Importer
         }
     }
 
-    protected function buildAssociatedFilms(NewsArticle $news, OldArticle $oldArticle)
+    protected function buildAssociatedFilms(News $news, OldArticle $oldArticle)
     {
         if (!$this->associateMovie) {
             foreach ($news->getAssociatedFilms() as $associatedFilm) {
@@ -704,7 +721,7 @@ class NewsImporter extends Importer
 
     }
 
-    protected function buildAssociatedNews(NewsArticle $news, OldArticle $oldArticle)
+    protected function buildAssociatedNews(News $news, OldArticle $oldArticle)
     {
         // association film
         $oldArticleAssociations = $this
@@ -754,6 +771,12 @@ class NewsImporter extends Importer
     {
         $this->doNotPublish = false;
         $this->associateMovie = true;
+
+        if ($oldArticle->getDisplayAsPortfolio()) {
+            $this->isNewsImage = true;
+        } else {
+            $this->isNewsImage = false;
+        }
 
         if ($oldArticle->getArticleTypeId() == static::TYPE_EDITO) {
             if ($oldArticle->getIsOnline()) {
@@ -839,4 +862,45 @@ class NewsImporter extends Importer
         }
         return false;
     }
+
+    /**
+     * @param $oldArticleId
+     * @return null
+     */
+    public function removeNews($oldArticleId)
+    {
+        $newsArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:NewsArticle')
+            ->findOneBy(['oldNewsId' => $oldArticleId])
+        ;
+        if (!$newsArticle) {
+            return null;
+        }
+        $fields = $this->getManager()->getClassMetadata('BaseCoreBundle:NewsArticle')->getAssociationNames();
+        foreach ($newsArticle->getTranslations() as $translation) {
+            $newsArticle->getTranslations()->removeElement($translation);
+            $this->getManager()->remove($translation);
+        }
+        foreach ($fields as $field) {
+            $association = $this
+                ->getManager()
+                ->getClassMetadata('BaseCoreBundle:NewsArticle')
+                ->isCollectionValuedAssociation($field)
+            ;
+            $getter = 'get' . ucfirst($field);
+            $setter = 'set' . ucfirst($field);
+            if ($association) {
+                foreach ($newsArticle->$getter() as $item) {
+                    $newsArticle->$getter()->removeElement($item);
+                }
+            } else {
+                $newsArticle->$setter(null);
+            }
+        }
+
+        $this->getManager()->remove($newsArticle);
+        $this->getManager()->flush();
+    }
+
 }
