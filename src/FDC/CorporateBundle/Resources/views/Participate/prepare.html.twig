@@ -89,46 +89,54 @@
                                 {% if content.informationDisplayInstit %}
                                     <div class="item border-top">
                                             <div class="title-contain">
-                                                <strong class="title-22">
-                                                    <i class="noFloat icon {{ content.informationIcon|icon_corpo }}"></i>{{ content|trans_fallback('informationTitle') }}
-                                                </strong>
-                                                <i class="icon icon-nav-accordion icon-more-square"></i>
+                                                <div class="block-01">
+                                                    <strong class="title-22">
+                                                        <i class="noFloat icon {{ content.informationIcon|icon_corpo }}"></i>{{ content|trans_fallback('informationTitle') }}
+                                                    </strong>
+                                                    <i class="icon icon-nav-accordion icon-more-square"></i>
+                                                </div>
                                             </div>
                                             <div class="item-manual">
                                                 <div class="contain-infos">
-                                                    <div class="descrip-section">
-                                                        <h4 class="descrip-participate">
-                                                            {{ content|trans_fallback('informationDescription')|raw }}
-                                                        </h4>
+                                                    <div class="block-01">
+                                                        <div class="descrip-section">
+                                                            <h4 class="descrip-participate">
+                                                                {{ content|trans_fallback('informationDescription')|raw }}
+                                                            </h4>
+                                                        </div>
+                                                        {% for widget in content.informationWidgets %}
+                                                            {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
+                                                                {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
+                                                            {% endif %}
+                                                        {% endfor %}
                                                     </div>
-                                                    {% for widget in content.informationWidgets %}
-                                                        {% if class(widget) == "FDCPagePrepareWidgetColumn" %}
-                                                            {% include 'FDCEventBundle:Participate:widgets/column.html.twig' %}
-                                                        {% endif %}
-                                                    {% endfor %}
                                                 </div>
                                             </div>
                                     </div>
                                 {% endif %}
                                 <div class="item border-top">
                                         <div class="title-contain">
-                                            <strong class="title-22">
-                                                <i class="noFloat icon {{ content.meetingIcon|icon_corpo }}"></i>{{ content|trans_fallback('meetingTitle') }}
-                                            </strong>
-                                            <i class="icon icon-nav-accordion icon-more-square"></i>
+                                            <div class="block-01">
+                                                <strong class="title-22">
+                                                    <i class="noFloat icon {{ content.meetingIcon|icon_corpo }}"></i>{{ content|trans_fallback('meetingTitle') }}
+                                                </strong>
+                                                <i class="icon icon-nav-accordion icon-more-square"></i>
+                                            </div>
                                         </div>
                                         <div class="item-manual">
                                             <div class="contain-infos">
-                                                <div class="descrip-section">
-                                                    {{ content|trans_fallback('meetingDescription')|raw }}
+                                                <div class="block-01">
+                                                    <div class="descrip-section">
+                                                        {{ content|trans_fallback('meetingDescription')|raw }}
+                                                    </div>
+                                                    {% if content.meetingPdf is not null %}
+                                                        {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
+                                                        <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
+                                                            {{ content|trans_fallback('meetingLabel') }}
+                                                        </a>
+                                                    {% endif %}
+                                                    <div id="google-map"></div>
                                                 </div>
-                                                {% if content.meetingPdf is not null %}
-                                                    {% set pdfFile = content.meetingPdf|trans_fallback('file') %}
-                                                    <a href="{% path pdfFile, 'reference' %}" target="_blank" download>
-                                                        {{ content|trans_fallback('meetingLabel') }}
-                                                    </a>
-                                                {% endif %}
-                                                <div id="google-map"></div>
                                             </div>
                                         </div>
                                 </div>
@@ -136,15 +144,19 @@
                                     {% if content.serviceDisplayInstit %}
                                         <div class="item border-top">
                                                 <div class="title-contain">
-                                                    <strong class="title-22">
-                                                        <i class="noFloat icon {{ content.serviceIcon|icon_corpo }}"></i>{{ content|trans_fallback('serviceTitle') }}
-                                                    </strong>
-                                                    <i class="icon icon-nav-accordion icon-more-square"></i>
+                                                    <div class="block-01">
+                                                        <strong class="title-22">
+                                                            <i class="noFloat icon {{ content.serviceIcon|icon_corpo }}"></i>{{ content|trans_fallback('serviceTitle') }}
+                                                        </strong>
+                                                        <i class="icon icon-nav-accordion icon-more-square"></i>
+                                                    </div>
                                                 </div>
                                                 <div class="item-manual">
                                                     <div class="contain-infos">
-                                                        <div class="descrip-section">
-                                                            {{ content|trans_fallback('serviceDescription')|raw }}
+                                                        <div class="block-01">
+                                                            <div class="descrip-section">
+                                                                {{ content|trans_fallback('serviceDescription')|raw }}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
