@@ -449,7 +449,19 @@
         color: #666666;
         font-size: 14px;
         line-height: 25px;
+        margin-bottom: 10px;
       }
+
+      a {
+        color: #c3a05f;
+      }
+    }
+
+    strong {
+      color: #141414!important;
+      /* font-weight: bold; */
+      color: #141414;
+      font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
     }
 
     .halfContent {
