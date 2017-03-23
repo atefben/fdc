@@ -5770,7 +5770,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
 
         var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
-
+        console.log(images[centerElement].title);
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
                 finalTitle = images[centerElement].title;
@@ -6119,8 +6119,13 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
     });
-
-    console.log('youyou');
+    
+    //block image open on title click
+    $('body').on('click','.chocolat-description a',function(){
+        console.log('block slideshow click');
+        return false;
+    })
+    
     //compute title width
     computeSlideshowTitleWidth();
 
