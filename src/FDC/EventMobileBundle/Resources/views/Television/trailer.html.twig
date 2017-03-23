@@ -85,7 +85,9 @@
                         film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
                     }) %}
                 </a>
-                <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
+                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
+                    <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
+                </a>
                 <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}" class="name-video"><strong>{{ film.titleVo }}</strong></a>
                 {% if film|trans_fallback('title') and film|trans_fallback('title')|trim != film.titleVo|trim %}<br /><strong class="translated-title">({{ film|trans_fallback('title') }})</strong>{% endif %}
                 <span class="name-person">
