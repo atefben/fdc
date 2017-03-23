@@ -1123,6 +1123,7 @@ var initVideo = function(hash) {
         initPopinVideo(hash);
 
     } else if($('.video-playlist').length > 0) {
+        console.log('videoPlaylist');
         if ($('.home #homepage-playlist-player').length > 0) {
             videoPlayer = playerInit('homepage-playlist-player',false , true);
         }else{
@@ -1130,11 +1131,11 @@ var initVideo = function(hash) {
         }
 
     } else if ($('#video-player-ba').length > 0) {
-
+        console.log('movieBa');
         videoMovieBa = playerInit('video-player-ba', false, true)
 
     } else if($('.video-player').length > 0) {
-
+        console.log('video-player');
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
