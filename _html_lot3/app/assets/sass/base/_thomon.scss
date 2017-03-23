@@ -41,6 +41,10 @@
     border-color: #000;
 }
 
+.popin .article-authors {
+    color: $gold;    
+}
+
 .article-single #main,
 .media-library #main {
     overflow-y: hidden;
@@ -587,6 +591,11 @@ h2.sub-title {
     }
 }
 
+#sortiecanne .block-list-img .item img{
+    max-height: 180px;
+    width: auto;
+}
+
 .block-legend .texts .text-01 strong {
     font-weight: bold;
 }
@@ -607,8 +616,20 @@ header #navigation ul.user li a .icon {
     color: $gold;
 }
 
+/* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
-    min-width: 9999px;    
+    min-width: 999999px;    
+}
+
+.block-diaporama .owl-carousel .owl-item {
+    cursor: pointer; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.block-diaporama .slider-01 figcaption{
+    font-size: .65rem;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description{
@@ -627,6 +648,8 @@ header #navigation ul.user li a .icon {
         text-transform: uppercase;
     }
 }
+
+
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description span.hour {
     font-size: 0.625rem;
@@ -755,18 +778,21 @@ header #navigation ul.user li a {
     .articles {
         transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-}
 
-.test {
-    display: initial;
-}
-
-/* hotfix FF */
-@-moz-document url-prefix() {
-    .slider-home .container-images .item {
-        background-size: 100%;
-        background-position: 0px;
+    &::selection {
+        background-color: transparent;
     }
+}
+
+html.noscroll {
+    overflow: hidden;
+}
+
+.fullscreen-slider img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
 }
 
 @media only screen and (max-width : 1440px) {
@@ -805,6 +831,70 @@ header #navigation ul.user li a {
             top: -1%;
         }
     }
+}
+.c-fullscreen-slider .chocolat-bottom .chocolat-description h2{
+    color: #666;
+
+    a {
+        margin-top: 5px;
+    }
+}
+
+/* custom breakpoints for slideshow title */
+@media only screen and (max-width : 1750px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 1050px;
+    }
+}
+@media only screen and (max-width : 1570px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 850px;
+    }
+}
+@media only screen and (max-width : 1370px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 650px;
+    }
+}
+@media only screen and (max-width : 1200px) {
+    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
+        width: 450px;
+    }
+}
+
+/* rework sly slider hp */
+
+.home .block-diaporama {
+    overflow: visible!important;
+
+    .slider-01 {
+        min-width: 999999999px;
+        .item {
+            float: left;
+            height: 428px;
+        }
+    }
+}
+
+/* Scrollbar */
+.scrollbar {
+    margin: 0 0 1em 0;
+    height: 2px;
+    background: #ccc;
+    line-height: 0;
+}
+.scrollbar .handle {
+    width: 100px;
+    height: 100%;
+    background: #292a33;
+    cursor: pointer;
+}
+.scrollbar .handle .mousearea {
+    position: absolute;
+    top: -9px;
+    left: 0;
+    width: 100%;
+    height: 20px;
 }
 
 /* thomon - end fixes */

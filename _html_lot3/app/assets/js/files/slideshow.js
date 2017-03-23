@@ -32,12 +32,10 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mousedown', function () {
-
-                if ($(this).parent().hasClass('active center') && !$('.owl-stage').hasClass('owl-grab')) {
+            $('.block-diaporama .item').on('mouseup', function (e) {
+                if (!dragLock) {
                     openSlideShow(slider);
                 }
-
             });
 
 
@@ -58,7 +56,6 @@ var owinitSlideShow = function (slider, hash) {
                     slider = $('.isotope-01');
                     $(this).addClass('photoActive');
                     openSlideShow(slider);
-
 
                     return false;
                 });
@@ -84,8 +81,11 @@ var openSlideShow = function (slider, hash, affiche) {
     slider.find('.item, .img, .poster').each(function (index, value) {
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
 
-
-            if ($(value).parent().hasClass('active center')) {
+            var activeClass = '';
+            if(slider.closest('.block-diaporama').length){
+                activeClass = 'center';
+            }
+            if ($(value).parent().hasClass(activeClass)) {
                 centerElement = index;
 
                 if($('.affiche-fdc').length ) {
@@ -253,7 +253,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t3');
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -264,7 +264,6 @@ var openSlideShow = function (slider, hash, affiche) {
 
     var goToSLide = function(id) {
         w = $(window).width();
-        console.log('goToSLide')
         centerElement = parseInt(id);
         translate = -(w + 0) * centerElement;
         fullscreen.addClass('animated fadeOut');
@@ -288,7 +287,24 @@ var openSlideShow = function (slider, hash, affiche) {
         var twitter = $('.c-fullscreen-slider').find('.rs-slideshow .twitter');
         var link = $('.c-fullscreen-slider').find('.rs-slideshow .link');
 
-        title.html(images[centerElement].title);
+        function isHTML(str) {
+            var a = document.createElement('div');
+            a.innerHTML = str;
+            for (var c = a.childNodes, i = c.length; i--; ) {
+                if (c[i].nodeType == 1) return true; 
+            }
+            return false;
+        }
+
+        var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
+        console.log(images[centerElement].title);
+        if(typeof images[centerElement].title !== 'undefined'){
+            if(isHTML(images[centerElement].title)){
+                finalTitle = images[centerElement].title;
+            }
+        }
+
+        title.html(finalTitle);
         pagination.html(numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i>');
         label.html(images[centerElement].label);
         date.html(images[centerElement].date);
@@ -301,7 +317,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if($('.popin-mail').length) {
             $('.popin-mail').find('.contain-popin .theme-article').text(images[centerElement].label);
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date);
-            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);console.log('t5');
+            $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
@@ -375,23 +391,13 @@ var openSlideShow = function (slider, hash, affiche) {
         return false;
     }
 
-    var onelineclass = ' oneline';
+    var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
-            if(typeof images[centerElement].caption !== 'undefined'){
-                if(images[centerElement].caption.toLowerCase().indexOf('dit image :') == -1){
-                    images[centerElement].caption = 'Crédit Image : '+images[centerElement].caption;
-                }
-                console.log(images[centerElement].caption);
-            }
 
             if(typeof images[centerElement].title !== 'undefined'){
-                 var tempTitle = images[centerElement].title;
-
-                 if(isHTML(tempTitle)){
-                    if($(tempTitle).filter('*').size() > 0){
-                        onelineclass = ''
-                    }
+                 if(isHTML(images[centerElement].title)){
+                    finalTitle = images[centerElement].title;
                 }
             }
         }
@@ -400,11 +406,11 @@ var openSlideShow = function (slider, hash, affiche) {
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
         '<span class="chocolat-fullscreen"></span>' +
-        '<span class="chocolat-description'+onelineclass+'"><h2 class="title-slide">' + images[centerElement].title + '</h2></span>' +
         '<span class="chocolat-pagination"> ' + numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i></span>' +
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
         '</div>' +
+        '<span class="chocolat-description"><h2 class="title-slide">' + finalTitle + '</h2></span>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
             '<div class="buttons square img-slideshow-share rs-slideshow">' +
@@ -499,12 +505,23 @@ var openSlideShow = function (slider, hash, affiche) {
             $('.popin-mail').find('.contain-popin .date-article').text(images[centerElement].date.replace('undefined',''));
         }
         
+        function isHTML(str) {
+            var a = document.createElement('div');
+            a.innerHTML = str;
+            for (var c = a.childNodes, i = c.length; i--; ) {
+                if (c[i].nodeType == 1) return true; 
+            }
+            return false;
+        }
+
         if(typeof images[centerElement].title !== 'undefined'){
-            if($(images[centerElement].title).filter('*').size()){
-                if($(images[centerElement].title).filter('strong').length){
-                    images[centerElement].title = $(images[centerElement].title).filter('strong').text();
-                }else{
-                    images[centerElement].title = $(images[centerElement].title).text();
+            if(isHTML(images[centerElement].title)){
+                if($(images[centerElement].title).filter('*').size()){
+                    if($(images[centerElement].title).filter('strong').length){
+                        images[centerElement].title = $(images[centerElement].title).filter('strong').text();
+                    }else{
+                        images[centerElement].title = $(images[centerElement].title).text();
+                    }
                 }
             }
         }
@@ -628,7 +645,16 @@ var openSlideShow = function (slider, hash, affiche) {
 
     $('.fullscreen-slider img').on('mouseout', function (e){
         $('.zoomCursor').css('display','none');
+    });
+    
+    //block image open on title click
+    $('body').on('click','.chocolat-description a',function(){
+        console.log('block slideshow click');
+        return false;
     })
+    
+    //compute title width
+    computeSlideshowTitleWidth();
 
     $(window).resize(function () {
         w = $(window).width();

@@ -1,48 +1,50 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% import 'FDCCorporateBundle:Macro:article.html.twig' as macroArticle %}
+{% if articles|length %}
+    {% if filters.themes.content is defined and filters.themes.content|length %}
+        <div class="compute-filters theme">
+            {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
+                <span class=""
+                      data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-{% if filters.themes.content is defined and filters.themes.content|length %}
-    <div class="compute-filters theme">
-        {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
-            <span class="" data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
-        {% endfor %}
-    </div>
-{% endif %}
-
-{% if filters.dates is defined %}
-    <div class="compute-filters date">
-        {% for key, date in filters.dates if key %}
-            <span class="" data-filter="date-{{ date|date('d-m-y') }}">
+    {% if filters.dates is defined %}
+        <div class="compute-filters date">
+            {% for key, date in filters.dates if key %}
+                <span class="" data-filter="date-{{ date|date('d-m-y') }}">
                 {% if app.request.locale != 'cn' %}
-                    {{ date|localizeddate('full', 'none')  }}
+                    {{ date|localizeddate('full', 'none') }}
                 {% else %}
                     {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
                 {% endif %}
             </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if filters.format is defined %}
+        <div class="compute-filters format">
+            {% for key, format in filters.format if key %}
+                <span class="" data-filter="{{ format|get_news_type }}">{{ format|get_news_type }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="grid-01 isotope-01 add-ajax-request">
+        <div class="grid-sizer"></div>
+        {% for article in articles %}
+            {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
         {% endfor %}
     </div>
-{% endif %}
 
-{% if filters.format is defined %}
-    <div class="compute-filters theme">
-        {% for key, format in filters.format if key %}
-            <span class="" data-filter="{{ format|get_news_type }}">{{ format|get_news_type }}</span>
-        {% endfor %}
-    </div>
-{% endif %}
-
-<div class="grid-01 isotope-01 add-ajax-request">
-    <div class="grid-sizer"></div>
-    {% for article in articles %}
-        {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
-    {% endfor %}
-</div>
-
-{% if not last %}
-    <div class="bright" style="display:none">
-        <a id="infos-and-statements-more"
-           href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time}) }}"
-           class="read-more ajax-request block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
-    </div>
+    {% if not last %}
+        <div class="bright" style="display:none">
+            <a id="infos-and-statements-more"
+               href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time}) }}"
+               class="read-more ajax-request block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
+        </div>
+    {% endif %}
 {% endif %}

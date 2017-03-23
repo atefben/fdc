@@ -325,14 +325,15 @@
                                         <strong class='title-4'>{{ movie.titleVO }}</strong>
                                         {% set directors = movie.getDirectors() %}
 
-                                        <span>De <span class="title-5">
+                                        <div class="authors-container">
+                                            <span class="title-5">
                                         {% set dataWho = '' %}
                                                 {% for director in directors %}
                                                     {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                                     {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                                 {% endfor %}
                                                 {{ dataWho|raw }}</span>
-                                    </span>
+                                        </div>
                                         <span class="title-6">{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
                                         {% set awardsUnique = [] %}
                                         {% set dataAward = '' %}
@@ -385,7 +386,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 {% endfor %}
                                 {% set inTheaters = '' %}
                                 {% if movie.publishedAt %}
-                                    {% set inTheaters = ' ' ~ 'movie.in.theaters'|trans ~ ' ' ~ movie.publishedAt|date('d/m/Y') %}
+                                    {% set inTheaters = ' ' ~ 'movie.in.theaters'|trans|trim ~ ' ' ~ movie.publishedAt|date('d/m/Y') %}
                                 {% endif %}
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                                 {% if trans %}
@@ -407,6 +408,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
+
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
@@ -416,14 +418,15 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
-                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}{{ inTheaters }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
-                                         data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
+                                         data-email-content="{{ movie|trans_fallback('synopsis')|truncate(200, true)|escape('html_attr') }}"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
-                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                         film: movie,
-                                                        film_format: '135x185',
+                                                        film_format: '293x397',
                                                         display_film_path: true,
                                                         film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                                                         }) %}{% endspaceless %}" alt=""></a>
@@ -501,8 +504,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    -->
-                    <div class="half-div block-push">
+                    --><div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -548,8 +550,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                -->
-                                <div class="small-push half-div">
+                                --><div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -591,8 +592,6 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     </div> <!-- end block 01 -->
                 </div> <!-- end block 05 -->
             {% endif %}
-
-
         </div> <!-- end content -->
 
     </section>
