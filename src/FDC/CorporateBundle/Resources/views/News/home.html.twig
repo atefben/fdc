@@ -278,7 +278,7 @@
                                          data-playlist='[
                                               {% for movie in filmReleases %}
                                                 {%- if movie.videoMain and movie.videoMain.image -%}
-                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
+                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '135x185') %}
                                                 {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                                     {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                                 {%- endif -%}
@@ -409,8 +409,6 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
-
-
                                     {%- if movie.videoMain and movie.videoMain.image -%}
                                         {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
                                     {%- elseif video|trans_fallback('imageAmazonUrl') -%}
