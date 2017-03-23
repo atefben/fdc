@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Base\CoreBundle\Util\Time;
 
 /**
- * GalleryDualAlign
+ * CcmGalleryDualAlign
  *
  * @ORM\Table(name="ccm_gallery_dual_align")
  * @ORM\Entity

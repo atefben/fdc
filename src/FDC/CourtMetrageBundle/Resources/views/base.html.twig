@@ -53,7 +53,7 @@
     {% set params = route_params|merge(app.request.query.all) %}
 {% endif %}
 
-{{ render(controller('FDCCourtMetrageBundle:Transverse:header', { 'routeName': app.request.get('_route'), 'routeParams': params, 'route_params': route_params })) }}
+{{ render(controller('FDCCourtMetrageBundle:Transverse:header', { 'routeName': app.request.get('_route'), 'routeParams': params, 'locale': app.request.locale })) }}
 
 {% block main %}{% endblock main %}
 

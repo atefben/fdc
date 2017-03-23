@@ -87,7 +87,7 @@ class CcmMediaImage extends CcmMedia
     {
         $en = $this->findTranslationByLocale('en');
         $fr = $this->findTranslationByLocale('fr');
-        if ((!$en || !$en->getFile() || $en->getStatus() !== MediaImageTranslation::STATUS_TRANSLATED) && $fr) {
+        if ((!$en || !$en->getFile() || $en->getStatus() !== CcmMediaImageTranslation::STATUS_TRANSLATED) && $fr) {
             $this->translations->set('en', $fr);
         }
         return $this->translations;

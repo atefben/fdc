@@ -24,8 +24,8 @@ class CcmNewsRepository extends EntityRepository
         $qb = $this
             ->createQueryBuilder('n')
             ->select('t.id', 'n.publishedAt')
-            ->join('n.theme', 't')
-            ->join('Base\CoreBundle\Entity\ThemeTranslation', 'tt', 'WITH', 'tt.translatable = t.id AND tt.locale = :locale')
+            ->leftJoin('n.theme', 't')
+            ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmThemeTranslation', 'tt', 'WITH', 'tt.translatable = t.id AND tt.locale = :locale')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsArticle', 'na1', 'WITH', 'na1.id = n.id')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsAudio', 'na2', 'WITH', 'na2.id = n.id')
             ->leftJoin('FDC\CourtMetrageBundle\Entity\CcmNewsImage', 'na3', 'WITH', 'na3.id = n.id')
@@ -37,6 +37,7 @@ class CcmNewsRepository extends EntityRepository
             ->andWhere('n.publishedAt <= :now and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('now', $now)
             ->setParameter('locale', $locale)
+            ->orderBy('n.publishedAt', 'DESC')
         ;
         if ($locale != 'fr') {
             $qb

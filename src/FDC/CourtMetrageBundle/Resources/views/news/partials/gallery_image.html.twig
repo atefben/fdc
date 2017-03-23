@@ -1,12 +1,12 @@
 {% if mediaImage is defined and mediaImage is not null %}
 <div class="img {{ index is defined and index == 1 ? 'active' : '' }}">
-    <a id="{{ 'photo' ~ mediaImage.id }}" class="chocolat-image ajax" href="{% path mediaImage|trans_fallback('file'), 'reference' %}"
+    <a id="{{ 'photo' ~ mediaImage.id }}" class="chocolat-image ajax" href="{% path mediaImage|trans_fallback('file'), '2560x1620' %}"
        title='<span class="category">{{ mediaImage.theme|trans_fallback('name') }}</span><span class="date">{{ mediaImage.publishedAt|date('d.m.y') }}</span><h2>{{ mediaImage|trans_fallback('legend') }}</h2>'
        data-credit="{{ "slider.credit_image"|trans ~ ' : ' ~  mediaImage|trans_fallback('copyright')|slice(0, 20) }}"
        data-pid="{{ galleryId ~ mediaImage.id }}"
        data-seo-title="{{ mediaImage|trans_fallback('seoTitle') }}"
        data-seo-description="{{ mediaImage|trans_fallback('seoDescription') }}">
-        <img src="{% path mediaImage|trans_fallback('file'), 'reference' %}" alt="" />
+        <img src="{% path mediaImage|trans_fallback('file'), '1266x798' %}" alt="" />
     </a>
 </div>
 {% endif %}

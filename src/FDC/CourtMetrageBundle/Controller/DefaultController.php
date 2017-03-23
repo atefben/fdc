@@ -36,7 +36,7 @@ class DefaultController extends CcmController
         $homepageSliders = $homepageManger->getSliders();
         $festival = $this->getFestival();
         $selectionTab = $competitionManager->getSelectionTab($festival->getYear());
-        $movies = $homepageManger->getFilmsByCourtYear($selectionTab);
+        $movies = $homepageManger->getFilmsBySelectionAndFestival($festival, $selectionTab);
         $sejour = $homepageManger->getSejour();
 
         $pushIsActive = $homepageManger->getHomepageTranslation()->getTranslatable()->getPushIsActive();

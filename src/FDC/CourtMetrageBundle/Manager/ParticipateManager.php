@@ -374,4 +374,30 @@ class ParticipateManager
             'oneColumnFiles' => $oneColumnFiles,
         );
     }
+
+    public function getLocaleSlugsForParticipateRegisterProcedure($slug)
+    {
+        $procedure = $this->getRegisterProcedure($slug);
+        $translations = $procedure->getTranslatable()->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
+
+    public function getLocaleSlugsForParticipatePage($slug)
+    {
+        $participate = $this->getParticipatePage($slug);
+        $translations = $participate->getTranslatable()->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
 }

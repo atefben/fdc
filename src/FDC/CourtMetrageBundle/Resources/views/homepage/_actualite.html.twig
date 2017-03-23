@@ -10,14 +10,14 @@
                             {% endif %}
                             <div class="articles-content">
                                 <span>
-                                    {{ actualite.translatable.theme.name }}
-                                    <br><span class="article-date">{{ actualite.translatable.date|date("d M Y") }}</span>
+                                    {{ actualite.translatable.theme|trans_fallback('name') }}
+                                    <br><span class="article-date">{{ actualite.translatable.date|date('d') }} {{ actualite.translatable.date|localizeddate('none', 'full', null, null, "MMMM")|slice(0, 3) }} {{ actualite.translatable.date|date('Y') }}</span>
                                 </span>
                                 <h6>{{ actualite.title }}</h6>
                                 {% if  actualite.translatable.image is not null%}
-                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('182', '...')}}</p>
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('100', '...')}}</p>
                                 {% else %}
-                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('562', '...')}}</p>
+                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('500', '...')}}</p>
                                 {% endif %}
                             </div>
                         </div>

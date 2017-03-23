@@ -17,9 +17,9 @@
                         <strong>{{ 'ccm.plan_des_salles.festival_area'|trans }}</strong>
                         {% for sector in sectors %}
                             {% if loop.index == 1 %}
-                                <img src="{% path sector.festivalZone|trans_fallback('file'), 'reference' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="theatre" class="visible first">
+                                <img src="{% path sector.festivalZone|trans_fallback('file'), '197x142' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="theatre" class="visible first">
                             {% endif %}
-                            <img src="{% path sector.festivalZone|trans_fallback('file'), 'reference' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="{{ sector|trans_fallback('slug') }}" class="">
+                            <img src="{% path sector.festivalZone|trans_fallback('file'), '197x142' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="{{ sector|trans_fallback('slug') }}" class="">
                         {% endfor %}
                     </li>
                 </ul>
@@ -27,9 +27,9 @@
             <div class="maps">
                 {% for sector in sectors %}
                     {% if loop.index == 1 %}
-                        <span id='default' class="first active"><img src="{% path sector.detailedPlan|trans_fallback('file'), 'reference' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
+                        <span id='default' class="first active"><img src="{% path sector.detailedPlan|trans_fallback('file'), '646x567' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
                     {% endif %}
-                    <span id='{{ sector|trans_fallback('slug') }}'><img src="{% path sector.detailedPlan|trans_fallback('file'), 'reference' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
+                    <span id='{{ sector|trans_fallback('slug') }}'><img src="{% path sector.detailedPlan|trans_fallback('file'), '646x567' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
                 {% endfor %}
             </div>
         </div>

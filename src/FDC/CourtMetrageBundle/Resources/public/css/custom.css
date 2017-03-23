@@ -372,3 +372,12 @@ body.chocolat-open.fixed {
 .legal-notice section .legal-notice-responsable {
     line-height: 26px;
 }
+
+.bigButton:hover a{
+    color: #fff;
+}
+
+.bigButton {
+    width: 730px;
+}
+

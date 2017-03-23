@@ -46,7 +46,7 @@ class CcmThemeTranslation implements TranslateChildInterface
      * Set name
      *
      * @param string $name
-     * @return ThemeTranslation
+     * @return CcmThemeTranslation
      */
     public function setName($name)
     {
@@ -69,7 +69,7 @@ class CcmThemeTranslation implements TranslateChildInterface
      * Set slug
      *
      * @param string $slug
-     * @return ThemeTranslation
+     * @return CcmThemeTranslation
      */
     public function setSlug($slug)
     {

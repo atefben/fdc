@@ -1,7 +1,7 @@
 
             <div class="half">
                 <div class="photo">
-                    <div class="photoContainer backgroundPhotoContainer {{ pro.translatable.image is defined and pro.translatable.image is not null ? 'has-pro-image' : '' }}" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "reference" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})"></div>
+                    <div class="photoContainer backgroundPhotoContainer {{ pro.translatable.image is defined and pro.translatable.image is not null ? 'has-pro-image' : '' }}" style="background-image:url({% if pro.translatable.image is defined and pro.translatable.image is not null %}{% path pro.translatable.image|trans_fallback("file"), "230x230" %}{% else %}{{ asset('bundles/fdccourtmetrage/img/member.jpg') }}{% endif %})"></div>
                     {% if pro.translatable.isShortFilmCorner %}
                         <div class="sfcLogo">
                             <img src="{{ asset('bundles/fdccourtmetrage/img/sfcLogo.png') }}" alt="">
@@ -56,6 +56,7 @@
                     </div>
                 {% endif %}
                 {% if proDescription is defined and proDescription is not null %}
+                    <div class="content">
                     {% for description in proDescription %}
                         {% if description.translations[app.request.locale] is defined and description.translations[app.request.locale] is not null %}
                             {% set translation = description.translations[app.request.locale] %}
@@ -76,5 +77,6 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+                    </div>
                 {% endif %}
             </div>

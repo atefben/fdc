@@ -113,7 +113,7 @@
                                         <figure>
                                             <img src="{% path file, 'x404' %}" alt="image"
                                                  data-id="pid={{ photo.id }}"
-                                                 data-credit="{{ copyright }}"
+                                                 data-credit="{{ 'slider.credit_image'|trans }} : {{ copyright }}"
                                                  data-title="{{ photo|trans_fallback('legend') }}"
                                                  data-label="{{ photo.theme|trans_fallback('slug') }}"
                                                  data-date="{{ photo.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}"

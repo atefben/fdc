@@ -132,4 +132,17 @@ class ShortFilmCornerManager
 
         return $pages;
     }
+
+    public function getLocaleSlugsForSFC($slug, $type, $locale)
+    {
+        $shortFilmCornerPage = $this->em->getRepository(CcmShortFilmCorner::class)->findPageByTypeLocaleAndSlug($type, $locale, $slug);
+        $translations = $shortFilmCornerPage->getTranslations();
+        $slugs = array();
+
+        foreach ($translations as $trans) {
+            $slugs[$trans->getLocale()] = ($trans->getSlug() != null) ? $trans->getSlug() : '404';
+        }
+
+        return $slugs;
+    }
 }

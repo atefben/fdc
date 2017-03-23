@@ -326,19 +326,6 @@ class NewsController extends Controller
             }
         }
 
-        if (sizeof($homeArticles) < $count || $homeArticles == null) {
-            $endOfArticles = true;
-            if ($homepage->getTopNewsType() == false) {
-                $dateTimeNext = $dateTime->modify('-1 day');
-                $homeArticlesNext = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTimeNext, $countNext);
-            } else {
-                $homeArticlesNext = array();
-            }
-            if ($homeArticles != null) {
-                $homeArticlesNext = $this->removeUnpublishedNewsAudioVideo($homeArticlesNext, $locale, $countNext);
-            }
-        }
-
         //get images for slider articles
         /* no slider for "show more articles"
         if ($homepage->getTopNewsType() == false) {
