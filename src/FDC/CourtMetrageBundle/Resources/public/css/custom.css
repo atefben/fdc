@@ -365,6 +365,10 @@ body.chocolat-open.fixed {
     text-align: center;
 }
 
+.wysiwyg strong {
+    font-weight: bold;
+}
+
 .slideshow .slideshow-img .thumbnails .thumb:after {
     border: 0 solid #c8a461;
 }
