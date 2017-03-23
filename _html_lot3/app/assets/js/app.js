@@ -504,28 +504,30 @@ $(document).ready(function () {
         verif = hash.slice(0, 3);
         var slider = $('.block-diaporama .slider-01');
 
-        slider.find('.item').each(function(){
-            var img = $(this).find('img').css('height',428);
-            var w = img.width();
-            if(parseInt(w) == 0){
-                var itv = window.setInterval(function(){
-                    w = img.width();
-                    if(w > 0){
-                        window.clearInterval(itv);
+        slider.imagesLoaded(function(){
+            slider.find('.item').each(function(){
+                var img = $(this).find('img').css('height',428);
+                var w = img.width();
+                if(parseInt(w) == 0){
+                    var itv = window.setInterval(function(){
+                        w = img.width();
+                        if(w > 0){
+                            window.clearInterval(itv);
+                        }
+                    },200);
+                }else{
+                    var finalWidth = img.width() - 2;
+                    $(this).css('width',finalWidth);
+                    if($(this).find('figure').length){
+                        $(this).find('figure').css('width',finalWidth);
                     }
-                },200);
-            }else{
-                var finalWidth = img.width() - 2;
-                $(this).css('width',finalWidth);
-                if($(this).find('figure').length){
-                    $(this).find('figure').css('width',finalWidth);
                 }
+            });
+            if (hash.length > 0 && verif == "pid") {
+                owinitSlideShow(slider, hash);
+
             }
         });
-        if (hash.length > 0 && verif == "pid") {
-            owinitSlideShow(slider, hash);
-
-        }
     }
 
 
