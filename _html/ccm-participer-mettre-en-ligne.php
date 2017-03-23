@@ -79,6 +79,12 @@
             <div class="block-01-ms vFlexAlign">
             <h6>Préparation du film :</h6>
             <p>Assurez-vous que votre film ne comporte pas de barres de couleurs ou de séquence noire avant le début ou après la fin du film. Assurez-vous également que votre film ne soit pas entrelacé (c’est-à-dire avec des lignes horizontales striant l’image, particulièrement visibles lors des séquences avec du mouvement rapide).</p>
+            
+              <ul>
+                <li>SANS sous-titres si la langue originale du film est le français ou l'anglais.</li>
+                <li>AVEC des sous-titres en français ou en anglais pour les autres langues.</li>
+              </ul>
+
             </div>
           </div>     
           <div class="block-s-info">

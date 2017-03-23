@@ -2275,6 +2275,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-contain-txt-register-movie strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
+.block-contain-txt-register-movie .block-contact {
+  margin-bottom: 30px;
+}
 .block-contain-txt-register-movie .block-contact ul, .block-contain-txt-register-movie .block-contact p {
   color: #666666;
   margin-bottom: 42px;
@@ -2625,6 +2628,41 @@ sup {
   vertical-align: super;
   font-size: x-small;
   margin-left: 3px !important;
+}
+
+.contain-title {
+  min-height: 70px;
+  flex-direction: column;
+}
+
+.little-txt {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.block-register-pop ul {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.block-register-pop h6 {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  display: block;
 }
 
 .owl-carousel {
@@ -7637,12 +7675,12 @@ a {
 
 .title {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
   margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
+  font-weight: normal !important;
 }
 
 .subtitle {
@@ -20903,6 +20941,9 @@ body:not(.tablette) .webtv #live .img {
 }
 .legal-notice section .legal-notice-description {
   padding-bottom: 40px;
+}
+.legal-notice section .legal-notice-responsable p {
+  margin-bottom: 20px;
 }
 .legal-notice section .legal-notice-responsable p strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;

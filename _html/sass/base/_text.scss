@@ -84,12 +84,13 @@ a {
 .title {
   //font-family: $Playfair;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  //font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
   margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
+  font-weight: normal!important;
 }
 
 .subtitle {
