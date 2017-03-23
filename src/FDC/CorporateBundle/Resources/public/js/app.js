@@ -3102,8 +3102,8 @@ var owInitGrid = function (id) {
                                         filters += filterSelector;
                                     }
                                 });
-
                             }
+                            
                             console.log('applying filters to rebuilt grid',filters);
                             owsetGridBigImg($gridMore, $('.grid-01'), false);
                             $gridMore.isotope({
