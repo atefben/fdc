@@ -835,6 +835,7 @@ form:
             register_form_text: Formulaire d’inscription - Text
             register_form_background: Formulaire d’inscription - image de fond
             is_register_form_active: Active
+            is_register_form_button_active: Bouton actif
             contact_us_title: Contactez-nous - Titre
             contact_us_left_text: Contactez-nous - Colonne de gauche
             contact_us_right_text: Contactez-nous - Colonne de droite

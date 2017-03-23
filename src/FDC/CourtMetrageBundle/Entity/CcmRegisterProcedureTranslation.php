@@ -113,6 +113,13 @@ class CcmRegisterProcedureTranslation implements TranslateChildInterface
     protected $isRegisterFormActive;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isRegisterFormButtonActive;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
@@ -660,5 +667,21 @@ class CcmRegisterProcedureTranslation implements TranslateChildInterface
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isIsRegisterFormButtonActive()
+    {
+        return $this->isRegisterFormButtonActive;
+    }
+
+    /**
+     * @param boolean $isRegisterFormButtonActive
+     */
+    public function setIsRegisterFormButtonActive($isRegisterFormButtonActive)
+    {
+        $this->isRegisterFormButtonActive = $isRegisterFormButtonActive;
     }
 }
