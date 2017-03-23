@@ -400,7 +400,7 @@ var openSlideShow = function (slider, hash, affiche) {
         if(typeof images[centerElement] !== 'undefined'){
 
             if(typeof images[centerElement].title !== 'undefined'){
-                 if(isHTML(tempTitle)){
+                 if(isHTML(images[centerElement].title)){
                     finalTitle = images[centerElement].title;
                 }
             }
