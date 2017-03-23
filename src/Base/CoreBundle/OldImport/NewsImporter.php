@@ -3,6 +3,8 @@
 namespace Base\CoreBundle\OldImport;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Component\Interfaces\NodeArticleInterface;
+use Base\CoreBundle\Component\Interfaces\NodeImageInterface;
 use Base\CoreBundle\Component\Interfaces\NodeTranslationInterface;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
@@ -99,14 +101,23 @@ class NewsImporter extends Importer
                 ->getQuery()
                 ->getResult()
             ;
+            $articleAdmin = $this->container->get('base.admin.news_article');
+            $imageAdmin = $this->container->get('base.admin.news_image');
 
             foreach ($oldArticles as $oldArticle) {
                 $progress->advance();
                 $news = $this->importItem($oldArticle);
+
                 if ($news) {
                     foreach ($this->langs as $lang) {
                         $translation = $news->findTranslationByLocale($lang);
                     }
+                }
+
+                if ($news instanceof NodeArticleInterface) {
+                    $articleAdmin->createObjectSecurity($news);
+                } elseif ($news instanceof NodeImageInterface) {
+                    $imageAdmin->createObjectSecurity($news);
                 }
             }
 

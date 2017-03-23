@@ -5,9 +5,11 @@ namespace Base\CoreBundle\OldImport;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
+use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
+use Base\CoreBundle\Entity\InfoImage;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
@@ -28,6 +30,7 @@ class InfoImporter extends Importer
     protected $widgetPosition = 0;
 
     protected $status;
+    protected $isInfoImage = false;
 
     public function importInfos()
     {
@@ -55,6 +58,7 @@ class InfoImporter extends Importer
                     foreach ($this->langs as $lang) {
                         $translation = $info->findTranslationByLocale($lang);
                     }
+
                 }
             }
 
@@ -87,7 +91,7 @@ class InfoImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return InfoArticle
+     * @return Info
      */
     protected function importItem(OldArticle $oldArticle)
     {
@@ -134,18 +138,25 @@ class InfoImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return InfoArticle
+     * @return Info
      */
     protected function buildInfoArticle(OldArticle $oldArticle)
     {
+        if ($this->isInfoImage) {
+            $classInfo = InfoImage::class;
+            $this->removeInfo($oldArticle->getId());
+        } else {
+            $classInfo = InfoArticle::class;
+        }
+        
         $info = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:InfoArticle')
+            ->getRepository($classInfo)
             ->findOneBy(['oldNewsId' => $oldArticle->getId()])
         ;
 
         if (!$info) {
-            $info = new InfoArticle();
+            $info = new $classInfo();
             $info
                 ->setOldNewsId($oldArticle->getId())
                 ->setOldNewsTable('OldNews')
@@ -172,7 +183,7 @@ class InfoImporter extends Importer
     /**
      * @param InfoArticle $info
      * @param OldArticleI18n $oldTranslation
-     * @return InfoArticleTranslation
+     * @return InfoTranslation
      */
     protected function buildInfoArticleTranslation(InfoArticle $info, OldArticleI18n $oldTranslation)
     {
@@ -699,6 +710,11 @@ class InfoImporter extends Importer
 
     protected function isInfoMatching(OldArticle $oldArticle, $oldArticleTranslations)
     {
+        if ($oldArticle->getDisplayAsPortfolio()) {
+            $this->isInfoImage = true;
+        } else {
+            $this->isInfoImage = false;
+        }
 
         // Actualités-Festival de 2010 > 2015
         $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
