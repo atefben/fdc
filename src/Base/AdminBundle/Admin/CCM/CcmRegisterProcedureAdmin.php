@@ -68,19 +68,18 @@ class CcmRegisterProcedureAdmin extends Admin
                     'name'          => array(
                         'label'              => 'form.ccm.register_procedure.name',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false
                     ),
                     'procedureText'          => array(
                         'label'              => 'form.ccm.film_register.procedure_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
                         'field_type' => 'ckeditor',
                         'config_name' => 'ccm_widget',
-                        'input_sync' => true
+                        'input_sync' => true,
+                        'required' => false
                     ),
                     'characteristicsTitle'   => array(
                         'label'              => 'form.ccm.film_register.characteristics_title',
@@ -117,9 +116,7 @@ class CcmRegisterProcedureAdmin extends Admin
                     'regulationText'          => array(
                         'label'              => 'form.ccm.film_register.regulation_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -141,9 +138,7 @@ class CcmRegisterProcedureAdmin extends Admin
                     'registerFormText'          => array(
                         'label'              => 'form.ccm.film_register.register_form_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -187,16 +182,12 @@ class CcmRegisterProcedureAdmin extends Admin
                     'techniqueCharacteristicsTitle'   => array(
                         'label'              => 'form.ccm.film_register.technique_characteristics_title',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        )
+                        'required' => false
                     ),
                     'techniqueCharacteristicsVideo'          => array(
                         'label'              => 'form.ccm.film_register.technique_characteristics_video',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -207,9 +198,7 @@ class CcmRegisterProcedureAdmin extends Admin
                     'techniqueCharacteristicsAudio'          => array(
                         'label'              => 'form.ccm.film_register.technique_characteristics_audio',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -220,9 +209,7 @@ class CcmRegisterProcedureAdmin extends Admin
                     'techniqueCharacteristicsText'          => array(
                         'label'              => 'form.ccm.film_register.technique_characteristics_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -233,9 +220,7 @@ class CcmRegisterProcedureAdmin extends Admin
                     'regulationDetailsText'          => array(
                         'label'              => 'form.ccm.film_register.regulation_details_text',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
+                        'required' => false,
                         'attr' => array(
                             'class' => 'ckeditor'
                         ),
@@ -246,15 +231,13 @@ class CcmRegisterProcedureAdmin extends Admin
                     'regulationDetailsButtonLabel'   => array(
                         'label'              => 'form.ccm.film_register.regulation_details_button_label',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        )
+                        'required' => false
                     ),
                     'regulationDetailsButtonUrl'   => array(
                         'label'              => 'form.ccm.film_register.regulation_details_button_url',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required' => false,
                         'constraints'        => array(
-                            new NotBlank(),
                             new Url(),
                         )
                     ),
@@ -271,13 +254,13 @@ class CcmRegisterProcedureAdmin extends Admin
                 'label' => 'form.ccm.film_register.register_form_background',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('regulationDetailsFile', 'sonata_type_model_list', array(
                 'label' => 'form.ccm.film_register.regulation_details_file',
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => false,
-                'required' => true
+                'required' => false
             ))
         ;
     }

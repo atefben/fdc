@@ -350,3 +350,25 @@ body.chocolat-open.fixed {
     font-size: .74rem;
 }
 
+.little-txt {
+    color: #969696;
+    font-size: 0.750rem;
+    margin: 10px 0 0;
+    text-align: left;
+}
+
+.big-txt {
+    color: #333333;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 40px;
+    text-align: center;
+}
+
+.slideshow .slideshow-img .thumbnails .thumb:after {
+    border: 0 solid #c8a461;
+}
+
+.legal-notice section .legal-notice-responsable {
+    line-height: 26px;
+}

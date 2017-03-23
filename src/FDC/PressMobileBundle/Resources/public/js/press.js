@@ -673,7 +673,7 @@ $(document).ready(function () {
                             }
                         }
 
-                        $('.calendar').on('click', '.fc-event', function (e) {
+                        $('.calendar').off('click', '.fc-event').on('click', '.fc-event', function (e) {
                             var url = $(this).data('url');
                             openPopinEvent(url);
                         });

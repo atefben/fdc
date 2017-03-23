@@ -45,6 +45,7 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
+            $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
             $('#filters .vCenterKid').find(':not(span)').remove();
@@ -69,6 +70,7 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
+            $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -76,31 +78,9 @@ var owInitFilter = function (isTabSelection) {
         });
 
     } else {
-        if($('.articles-wrapper').length){
-            var lock = false;
-            //populate isotope data array on change
-            $('.articles-wrapper').bind("DOMSubtreeModified",function(){
-                if(!lock){
-                    lock = true;
-                    $(this).find('.articles').each(function(){
-                        var $this = $(this);
-                        var grid = $this.find('.isotope-01');
-                        $this.find('article').each(function(index,value){
-                            if(!$.inArray(value,isotopeHomepageItems)){
-                                isotopeHomepageItems.push(value);
-                            }
-                        });
-                    });
-                }
 
-            });
-            var lockInterval = window.setInterval(function(){
-                lock = false;
-            },1000);
-        }
         if(!$('.home').length) {
             if (!$('.who-filter').length) {
-
                 $('.filters .select span').off('click').on('click', function () {
                     $('.filter .select').each(function () {
                         $that = $(this);
@@ -110,7 +90,12 @@ var owInitFilter = function (isTabSelection) {
                             $this = $(this);
 
                             var getVal = $this.data('filter');
-                            var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
+
+                            if($('.articles-list').length){
+                                var numItems = $('.item.' + getVal + ':not([style*="display: none"])').length;
+                            }else{
+                                var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
+                            }
 
                             if (numItems === 0) {
                                 $this.addClass('disabled');
@@ -123,6 +108,7 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
+                    $('html').removeClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
@@ -271,6 +257,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
@@ -282,7 +269,6 @@ var owInitFilter = function (isTabSelection) {
 
 
                 $('.filters .select span').off('click').on('click', function () {
-
                     $('.filter .select').each(function () {
                         $that = $(this);
                         $id = $(this).closest('.filter').attr('id');
@@ -331,6 +317,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();

@@ -125,3 +125,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.m-video #player2 {
+    margin-bottom: 40px;
+}

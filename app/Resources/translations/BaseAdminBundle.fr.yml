@@ -1030,56 +1030,56 @@ form:
                     description: Description du module
                 pf:
                     logo: Logo du module
-                    photo: Photo de module
-                    name_pf: Partenaire ou nom du fournisseur
+                    photo: Image du partenaire/fournisseur
+                    name_pf: Titre
                     description: Description partenaires et fournisseur
                     name_surname: Nom et prénom du partenaire ou du fournisseur
-                    function: Partenaires ou fonction fournisseur
+                    function: Fonction
                 pictos:
                     picto1: Picto 1
                     title1: Titre 1
-                    description1: la description 1
+                    description1: Description 1
                     picto2: Picto 2
                     title2: Titre 2
-                    description2: la description 2
+                    description2: Description 2
                     picto3: Picto 3
                     title3: Titre 3
-                    description3: la description 3
+                    description3: Description 3
                     picto4: Picto 4
                     title4: Titre 4
-                    description4: la description 4
+                    description4: Description 4
                 three_columns:
                     image1: Image 1
                     pdf1: Pdf 1
                     title1: Titre 1
-                    description1: la description 1
+                    description1: Description 1
                     image2: Image 2
                     pdf2: Pdf 2
                     title2: Titre 2
-                    description2: la description 2
+                    description2: Description 2
                     image3: Image 3
                     pdf3: Pdf 3
                     title3: Titre 3
-                    description3: la description 3
+                    description3: Description 3
                 four_columns:
                     picto1: Picto 1
-                    description1: la description 3
+                    description1: Description 1
                     picto2: Picto 2
-                    description2: la description 2
+                    description2: Description 2
                     picto3: Picto 3
-                    description3: la description 3
+                    description3: Description 3
                     picto4: Picto 4
-                    description4: la description 4
+                    description4: Description 4
                 subtitle:
                     title: Titre
-                    description: la description
+                    description: Description
                 transport:
                     picto: Picto
                     title: Titre
-                    description: la description
+                    description: Description
                     url: Url
                 google_maps:
-                    description: la description
+                    description: Description
                     url: Url
             participer:
                 page_image: Image

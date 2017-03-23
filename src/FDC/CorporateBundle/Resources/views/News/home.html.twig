@@ -262,41 +262,40 @@
                 {% endif %}
             {% endif %}
 
-            {% if homepage.displayedCannesReleases == false %}
+            {% if homepage.displayedCannesReleases == false and filmReleases|length %}
                 <div class="block-02" id="sortiecanne">
                     <div class="block-01">
                         <h2 class="title title-01">{{ 'home.coporate.sorties.de.cannes'|trans|raw }}</h2>
-
                         <div class="block-films">
                             <div class="left">
-                                <article class="video">
-                                    <div class="video-container state-init video video-playlist"
+                                <article class="video video-container"
                                          data-link="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-email="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4"
                                          data-file="[{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.webm&quot;},{&quot;file&quot;:&quot;http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_video_encoded/direct_encoded/2016/Videos-Web/BEST-OF_2016_2.mp4&quot;}]"
                                          data-img="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_image/0001/07/089468a853b1a385576c6bc6c353217e6c1a0e46.jpg"
                                          data-name="Le Best-of du 69e Festival de Cannes"
                                          data-playlist='[
-                  {% for movie in filmReleases %}
-                    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
-                    {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
-                  {
-                    "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
-                    "vid": {{ trans.id }},
-                    "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                              {% for movie in filmReleases %}
+                                                {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+                                                {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
+                                              {
+                                                "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
+                                                "vid": {{ trans.id }},
+                                                "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
                                          film: movie,
                                          film_format: '135x185',
                                          display_film_path: true,
                                          film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                                          }) %}{% endspaceless %}",
-                    "name":"{{ movie.titleVO }}",
-                    "category":"Photocall",
-                    "date":"{{ movie.publishedAt|date('d.m.y') }}",
-                    "hour":"{{ movie.publishedAt|date('H:i') }}"
-                  }{% if loop.last == false %},{% endif %}
-                  {% endif %}
-                  {% endfor %}
-                  ]'>
+                                                "name":"{{ movie.titleVO }}",
+                                                "category":"Photocall",
+                                                "date":"{{ movie.publishedAt|date('d.m.y') }}",
+                                                "hour":"{{ movie.publishedAt|date('H:i') }}"
+                                              }{% if loop.last == false %},{% endif %}
+                                              {% endif %}
+                                              {% endfor %}
+                                              ]'>
+                                    <div id="homepage-playlist-player" class="state-init video video-playlist">
                                         <div id="video-playlist" class="jwplayer jw-reset"></div>
                                         <div class="video-overlay"></div>
                                         <div class="infos-bar hide-info">
@@ -315,24 +314,26 @@
                                     </div>
                                 </article>
                             </div><!--
-            -->{% if filmReleases|length %}
+                            -->
                             <div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
-                                            le {{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</strong>
+                                            le <span
+                                                    class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
                                         <strong class='title-4'>{{ movie.titleVO }}</strong>
                                         {% set directors = movie.getDirectors() %}
 
-                                        <span>De <span class="title-5">
+                                        <div class="authors-container">
+                                            <span class="title-5">
                                         {% set dataWho = '' %}
                                                 {% for director in directors %}
                                                     {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                                     {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                                 {% endfor %}
                                                 {{ dataWho|raw }}</span>
-                                    </span>
+                                        </div>
                                         <span class="title-6">{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}</span>
                                         {% set awardsUnique = [] %}
                                         {% set dataAward = '' %}
@@ -370,18 +371,29 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                 </div>
 
                             </div> <!-- end info 02 -->
-                            {% endif %}
                         </div> <!-- end block film -->
 
                         <div class="block-list-img slider-02 s-video-playlist">
                             {% for movie in filmReleases %}
+                                {% set movieUrl = url('fdc_corporate_movie_get', {'slug': movie.slug}) %}
+                                {% set mainTitle = movie.titleVO %}
+                                {% set directorsNames = '' %}
+                                {% for director in movie.getDirectors() if director and director.person %}
+                                    {% if directorsNames %}
+                                        {% set directorsNames = directorsNames ~ ', ' %}
+                                    {% endif %}
+                                    {% set directorsNames = directorsNames ~ director.person.fullName %}
+                                {% endfor %}
+                                {% set inTheaters = '' %}
+                                {% if movie.publishedAt %}
+                                    {% set inTheaters = ' ' ~ 'movie.in.theaters'|trans|trim ~ ' ' ~ movie.publishedAt|date('d/m/Y') %}
+                                {% endif %}
                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                                 {% if trans %}
                                     {% set directors = movie.getDirectors() %}
-                                    {% set dataWho = '' %}
-                                    {% for director in directors %}
-                                        {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
-                                        {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
+                                    {% set dataWho = [] %}
+                                    {% for director in directors if director and director.person and director.person.slug %}
+                                        {% set dataWho = dataWho|merge({'name': director.person.fullname, 'url': path('fdc_corporate_artist_get', {'slug': director.person.slug})}) %}
                                     {% endfor %}
                                     {% set awardsUnique = [] %}
                                     {% set dataAward = '' %}
@@ -396,18 +408,25 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
-                                    <div class="item" data-vid="{{ trans.id }}"
+
+                                    <div class="item"
+                                         data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
                                          data-date="{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}"
-                                         data-title="{{ movie.titleVO }}" data-who="{{ dataWho }}"
+                                         data-title="{{ movie.titleVO }}"
                                          data-label="{{ movie.selectionSection|trans_fallback('name') }}{% if movie.selectionSubsection %}{{ ' ' ~ '-' ~ ' ' }}{{ movie.selectionSubsection|trans_fallback('name') }}{% endif %}"
                                          data-palm="{% if dataAward != '' %}{{ dataAward }}{% endif %}"
-                                         data-palmdate="{{ movie.productionYear }}">
+                                         data-palmdate="{{ movie.productionYear }}"
+                                         data-url="{{ movieUrl }}"
+                                         data-email-content="{{ movie|trans_fallback('synopsis')|truncate(200, true)|escape('html_attr') }}"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
+                                         data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
-                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                         film: movie,
-                                                        film_format: '135x185',
+                                                        film_format: '293x397',
                                                         display_film_path: true,
                                                         film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
                                                         }) %}{% endspaceless %}" alt=""></a>
@@ -418,8 +437,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                         </div>
                     </div> <!-- end block 01 -->
                 </div> <!-- end block 02 -->
-            {% endif %}
-            {% if homepage.displayedSocialWall == false %}
+            {%- endif -%}
+            {%- if homepage.displayedSocialWall == false -%}
 
                 <div class="block-01 socialwall">
                     <div class="padding-top">
@@ -549,7 +568,8 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            --><div class="left">
+                            -->
+                            <div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">
@@ -572,8 +592,6 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                     </div> <!-- end block 01 -->
                 </div> <!-- end block 05 -->
             {% endif %}
-
-
         </div> <!-- end content -->
 
     </section>
@@ -583,4 +601,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
     "url"  : path('fdc_event_news_index')
     }
     ]} %}
+
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}

@@ -6,12 +6,12 @@
         <h2 class="title">{{ pageContent.title }}</h2>
         <section class="legal-notice-container">
             <h3 class="legal-notice-description">{{ pageContent.subtitle }}</h3>
-            <div class="legal-notice-responsable">
+            <div class="legal-notice-responsable wysiwyg">
                 {{ pageContent.description|raw }}
             </div>
             {% if pageDescription is defined and pageDescription is not null %}
                 {% for description in pageDescription %}
-                    <article class="legal-notice-art">
+                    <article class="legal-notice-art wysiwyg">
                         <h4 class="legal-notice-art-title">{{ description.title }}</h4>
                         {{ description.body|raw }}
                     </article>

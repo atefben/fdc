@@ -376,15 +376,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    var playerHeight = ('.home').length ? 550 : $(vid).parent('div').height();
+    var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
 
     playerInstance.setup({
-        // file: $container.data('file'),
         sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
         aspectratio: '16:9',
-        width: $(vid).parent('div').width(),
+        width: $(vid).closest('div').width(),
+        skin: 'seven',
         height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
     });
