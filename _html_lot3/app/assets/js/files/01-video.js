@@ -119,7 +119,6 @@ var initVideo = function(hash) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-        console.log('playerLoad',vid, playerInstance, havePlaylist, live, callback);
         var $container    = $("#"+vid.id).closest('.video-container');
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -596,6 +595,17 @@ var initVideo = function(hash) {
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
 
+        console.log('vid setup',{
+            sources: videoFile,
+            image: videoImage,
+            primary: 'html5',
+            skin: 'seven',
+            aspectratio: '16:9',
+            width: playerWidth,
+            height: playerHeight,
+            controls: controls
+        });
+
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
@@ -1053,7 +1063,6 @@ var initVideo = function(hash) {
                 $('.popin-mail').find('.contain-popin .ensalle').show();
             }
             if(typeof data['email-content'] !== 'undefined'){
-                console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
                 $('.popin-mail').find('#contact_description').val(data['email-content']);
             }

@@ -188,7 +188,7 @@
                                 <article class="video">
                                     <div class="video-container state-init video video-player"
                                          data-link="{{ featuredVideo.id }}"
-                                         id="homepage-playlist-player" 
+                                         id="video-{{ featuredVideo.id }}"
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                          data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                             {% if featuredVideo.image|trans_fallback('file') %}
