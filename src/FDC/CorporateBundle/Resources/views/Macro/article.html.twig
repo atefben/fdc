@@ -15,7 +15,7 @@
     {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
     {% if tagImageArticle|trim %}
         <article
-                class="card item date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }}"
+                class="card item date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }} {{ article.typeClone }}"
                 data-format="{{ article.typeClone }}"
                 data-theme="{{ article.theme|trans_fallback('slug') }}"
                 data-time="{{ article.publishedAt|date('U') }}"
