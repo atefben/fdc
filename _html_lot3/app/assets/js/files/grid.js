@@ -183,8 +183,7 @@ var owInitGrid = function (id) {
 
                         //reset big imgs
                         $gridMore.on('layoutComplete',function(){
-                            console.log('cards inserted');
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
+                            //owsetGridBigImg($gridMore, $('.grid-01'), false);
                         });
 
                         $('.card.item').each(function(){
