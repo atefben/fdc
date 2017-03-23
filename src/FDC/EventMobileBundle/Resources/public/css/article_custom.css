@@ -129,3 +129,23 @@
 .m-video #player2 {
     margin-bottom: 40px;
 }
+
+.single-article #filmPoster {
+    max-width: 140px;
+}
+
+.single-article .film .info-film .wrapper .category {
+    font-size: 0.750rem;
+}
+
+.single-article .film .info-film .wrapper h3 {
+    font-size: 1.125rem;
+}
+
+.single-article .film .info-film .wrapper p.director {
+    font-size: 1rem;
+}
+
+.single-article .film .info-film .wrapper p {
+    font-size: 0.813rem;
+}
