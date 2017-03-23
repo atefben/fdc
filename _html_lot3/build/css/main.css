@@ -7008,6 +7008,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .article-single #main,
+.articles-list#main,
 .media-library #main {
   overflow-y: hidden;
 }

@@ -3086,6 +3086,9 @@ var owInitGrid = function (id) {
                             });
                         }
 
+                        //reset big imgs
+                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+                        
                         $('.card.item').each(function(){
                             var $this = $(this);
                             var title = $this.find('.info strong a');
