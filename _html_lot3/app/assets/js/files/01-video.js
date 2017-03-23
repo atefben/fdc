@@ -599,6 +599,8 @@ var initVideo = function(hash) {
             havePlaylist = false;
         }
 
+        console.log($(vid),$(vid).is('#homepage-featured-video'));
+
         playerInstance.setup({
             sources: videoFile,
             image: videoImage,
