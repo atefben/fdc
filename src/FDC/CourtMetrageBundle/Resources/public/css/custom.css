@@ -369,6 +369,10 @@ body.chocolat-open.fixed {
     font-weight: bold;
 }
 
+.modal-content .half .wysiwyg p {
+    margin-bottom: 10px;
+}
+
 .slideshow .slideshow-img .thumbnails .thumb:after {
     border: 0 solid #c8a461;
 }
