@@ -5003,7 +5003,7 @@ var owInitSlider = function (sliderName) {
                             openSlideshowClick();
                         }
                     });
-                },900);
+                },750);
             });
 
             openSlideshowClick();
