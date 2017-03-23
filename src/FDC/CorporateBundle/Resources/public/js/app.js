@@ -2527,6 +2527,7 @@ var contains = function(needle) {
     return indexOf.call(this, needle) > -1;
 };
 
+
 var owInitFilter = function (isTabSelection) {
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
