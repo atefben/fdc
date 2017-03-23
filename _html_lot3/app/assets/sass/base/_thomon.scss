@@ -836,6 +836,10 @@ html.noscroll {
     max-height: 48px;
     overflow: hidden;
     color: #666;
+
+    a {
+        margin-top: 5px;
+    }
 }
 
 /* custom breakpoints for slideshow title */
