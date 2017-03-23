@@ -2975,7 +2975,7 @@ var owInitGrid = function (id) {
                                 });
                             });
                         }
-
+                        console.log('isotope callbacks declarations');
                         //reset big imgs
                         $gridMore.on('layoutComplete',function(){
                             console.log('append complete');
