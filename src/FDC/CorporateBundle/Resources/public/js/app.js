@@ -2983,13 +2983,6 @@ var owInitGrid = function (id) {
                             });
                         }
 
-                        //reset big imgs
-                        $gridMore.on('layoutComplete',function(){
-                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                        });
-                        
-
                         $('.card.item').each(function(){
                             var $this = $(this);
                             var title = $this.find('.info strong a');
