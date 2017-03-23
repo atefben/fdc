@@ -242,9 +242,9 @@ class NewsController extends Controller
         } else {
             $last = true;
         }
-        if (!$articles) {
-            throw new NotFoundHttpException();
-        }
+//        if (!$articles) {
+//            throw new NotFoundHttpException();
+//        }
 
         //set default filters
         $filters = [];
