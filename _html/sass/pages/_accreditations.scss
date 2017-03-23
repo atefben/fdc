@@ -79,12 +79,12 @@
     color: white;
     background: #0e5554;
     line-height: 100px;
-    font-size: 16px;
+    font-size: 12px;
     font-family: $CamphorHeavy;
     letter-spacing: 1px;
     text-align: center;
         @media screen and(max-width: $mobileWidth) {
-          font-size: 80%;
+          font-size: 58%;
         }
 
     a {
