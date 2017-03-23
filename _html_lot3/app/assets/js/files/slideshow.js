@@ -297,7 +297,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
 
         var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
-        console.log('goto',images[centerElement].title);
+        console.log('goto',images[centerElement].title,isHTML(images[centerElement].title));
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
                 finalTitle = images[centerElement].title;
