@@ -59,11 +59,8 @@ class CcmMenuAdmin extends Admin
                     'urlProgram'          => array(
                         'label'              => 'form.ccm.label.menu.urlProgram',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.ccm.label.external_url',
+                        'sonata_help'        => 'form.ccm.label.main_nav_help',
                         'required' => false,
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                     'urlCatalog'          => array(
                         'label'              => 'form.ccm.label.menu.urlCatalog',
