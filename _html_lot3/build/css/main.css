@@ -7654,7 +7654,7 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   background-color: transparent;
 }
 
-html.noscroll {
+.noscroll {
   overflow: hidden;
 }
 
