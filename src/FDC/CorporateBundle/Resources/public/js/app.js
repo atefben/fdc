@@ -3091,10 +3091,23 @@ var owInitGrid = function (id) {
                             //memorize scrolltop
                             $('html,body').scrollTop(scroll);
                             
+                            //rebuild grid depending on active filters
+                            var filters = '.all';
+                            if($('.filters .filter').length){
+                                filters = '';
+                                $('.filters .filter').each(function(){
+                                    var thisFilter = $(this).find('.select span.active').data('filter');
+                                    if(thisFilter !== 'all'){
+                                        var filterSelector = '.'+$(this).find('.select span.active').data('filter');
+                                        filters += filterSelector;
+                                    }
+                                })
+                            }
+                            console.log('applying filters to rebuilt grid',filters);
                             $gridMore.isotope({
                                 itemSelector: '.item',
                                 layoutMode: 'masonry',
-                                filter: '.all',
+                                filter: filters,
                                 packery: {
                                     columnWidth: '.grid-sizer'
                                 },
