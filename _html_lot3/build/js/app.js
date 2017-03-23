@@ -119,7 +119,7 @@ var initVideo = function(hash) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-
+        console.log('playerLoad',vid, playerInstance, havePlaylist, live, callback);
         var $container    = $("#"+vid.id).closest('.video-container');
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -166,20 +166,13 @@ var initVideo = function(hash) {
         }
 
         // CUSTOM LINK FACEBOOK
+        var fbHref = $topBar.find('.buttons .facebook').attr('href');
 
-
-            var fbHref = $topBar.find('.buttons .facebook').attr('href');
-        
-
-        
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
-        
-
-
-            var twHref = $topBar.find('.buttons .twitter').attr('href');
+        var twHref = $topBar.find('.buttons .twitter').attr('href');
         
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
