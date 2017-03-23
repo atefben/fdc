@@ -152,6 +152,12 @@ class CcmRegisterProcedureAdmin extends Admin
                         'field_type' => 'checkbox',
                         'required' => false
                     ),
+                    'isRegisterFormButtonActive' => array(
+                        'label' => 'form.ccm.film_register.is_register_form_button_active',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'field_type' => 'checkbox',
+                        'required' => false
+                    ),
                     'contactUsTitle'   => array(
                         'label'              => 'form.ccm.film_register.contact_us_title',
                         'translation_domain' => 'BaseAdminBundle',
