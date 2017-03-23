@@ -7003,10 +7003,6 @@ body.chocolat-open > .chocolat-content {
   border-color: #000;
 }
 
-.popin .article-authors {
-  color: #c8a461;
-}
-
 .article-single #main,
 .media-library #main {
   overflow-y: hidden;
@@ -7294,12 +7290,6 @@ article.communique .picto .icon {
   font-size: 2.25rem;
   line-height: 1.3em;
 }
-#home #sortiecanne .video-container {
-  height: 380px;
-}
-#home .slider-02 .owl-stage-outer {
-  transform: translate3d(-418px, 0px, 0px);
-}
 
 .slider-home .texts .item p {
   padding-bottom: 0px;
@@ -7483,11 +7473,6 @@ h2.sub-title {
   padding: 0px;
 }
 
-#sortiecanne .block-list-img .item img {
-  max-height: 180px;
-  width: auto;
-}
-
 .block-legend .texts .text-01 strong {
   font-weight: bold;
 }
@@ -7508,20 +7493,8 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
-/* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
-  min-width: 999999px;
-}
-
-.block-diaporama .owl-carousel .owl-item {
-  cursor: pointer;
-  /* fallback if grab cursor is unsupported */
-  cursor: grab;
-  cursor: -webkit-grab;
-}
-
-.block-diaporama .slider-01 figcaption {
-  font-size: .65rem;
+  min-width: 9999px;
 }
 
 .c-fullscreen-slider .chocolat-bottom .chocolat-description {
@@ -7647,24 +7620,18 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 .articles-wrapper .articles {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.articles-wrapper::-moz-selection {
-  background-color: transparent;
-}
-.articles-wrapper::selection {
-  background-color: transparent;
+
+.test {
+  display: initial;
 }
 
-html.noscroll {
-  overflow: hidden;
+/* hotfix FF */
+@-moz-document url-prefix() {
+  .slider-home .container-images .item {
+    background-size: 100%;
+    background-position: 0px;
+  }
 }
-
-.fullscreen-slider img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
@@ -7694,71 +7661,6 @@ html.noscroll {
     top: -1%;
   }
 }
-.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 {
-  max-height: 48px;
-  overflow: hidden;
-  color: #666;
-}
-.c-fullscreen-slider .chocolat-bottom .chocolat-description h2 a {
-  margin-top: 5px;
-}
-
-/* custom breakpoints for slideshow title */
-@media only screen and (max-width: 1750px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 1050px;
-  }
-}
-@media only screen and (max-width: 1570px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 850px;
-  }
-}
-@media only screen and (max-width: 1370px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 650px;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 450px;
-  }
-}
-/* rework sly slider hp */
-.home .block-diaporama {
-  overflow: visible !important;
-}
-.home .block-diaporama .slider-01 {
-  min-width: 999999999px;
-}
-.home .block-diaporama .slider-01 .item {
-  float: left;
-  height: 428px;
-}
-
-/* Scrollbar */
-.scrollbar {
-  margin: 0 0 1em 0;
-  height: 2px;
-  background: #ccc;
-  line-height: 0;
-}
-
-.scrollbar .handle {
-  width: 100px;
-  height: 100%;
-  background: #292a33;
-  cursor: pointer;
-}
-
-.scrollbar .handle .mousearea {
-  position: absolute;
-  top: -9px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-}
-
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -10468,7 +10370,7 @@ body#home .isotope-01 .item .info {
   display: none;
   transition: transform .8s ease-in, opacity .8s ease-in, background-position 0s;
   background-position: left top;
-  background-size: 75%;
+  background-size: 67.7%;
   background-position-y: 210px;
   position: absolute;
   transform: translateX(100%);
@@ -10481,6 +10383,7 @@ body#home .isotope-01 .item .info {
 .slider-home .container-images .item.fade-out {
   opacity: 0;
 }
+
 @media only screen and (max-width: 1024px) {
   .slider-home .container-images .item {
     background-position: inherit;
@@ -11930,8 +11833,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination, .c-fullscreen-slider
   line-height: 140px;
   padding: 0;
   margin: 0;
-  position: relative;
-  float: left;
+  position: absolute;
   left: 0;
   text-align: center;
   width: 100px;
@@ -11943,15 +11845,12 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
   box-sizing: border-box;
-  padding-top: 0px;
+  padding-top: 21px;
   padding-left: 135px;
   text-align: left;
   line-height: 12px;
-  position: absolute;
+  position: relative;
   z-index: 2;
-  top: 50%;
-  left: 0px;
-  transform: translateY(-50%);
   transition: opacity 0.6s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description.oneline, .c-fullscreen-slider .chocolat-bottom .chocolat-description.oneline {
@@ -11968,6 +11867,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description.hide, .c-fullscreen-
 @media screen and (max-width: 1600px) {
   body div.chocolat-wrapper .chocolat-bottom .chocolat-description, body .c-fullscreen-slider .chocolat-bottom .chocolat-description {
     width: 830px;
+    padding-top: 12px;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -11997,6 +11897,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-description h2, .c-fullscreen-sl
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   line-height: 1rem;
+  margin-top: 5px;
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-description p, .c-fullscreen-slider .chocolat-bottom .chocolat-description p {
   color: #999;
@@ -12194,6 +12095,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
     height: 80px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-description, .c-fullscreen-slider .chocolat-bottom .chocolat-description {
+    padding-top: 23px;
     padding-left: 115px;
   }
   div.chocolat-wrapper .chocolat-bottom .chocolat-description.oneline, .c-fullscreen-slider .chocolat-bottom .chocolat-description.oneline {
