@@ -8,6 +8,7 @@ use FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetCollection;
 use FDC\CourtMetrageBundle\Entity\CcmLabelContentFilesWidgetTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelFileCollection;
 use FDC\CourtMetrageBundle\Entity\CcmLabelFileTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContent;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentOneColumnTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentTextTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelSectionContentThreeColumnsTranslation;
@@ -400,4 +401,102 @@ class ParticipateManager
 
         return $slugs;
     }
+
+    public function getTechnicalConstraints($widgetsArray)
+    {
+        if ($widgetsArray) {
+            $constraints = [];
+
+            foreach ($widgetsArray as $section => $widgets) {
+                $constraints[$section] = [];
+                foreach ($widgets as $widget) {
+                    switch ($widget) {
+                        case $widget->getTranslatable()->isWidgetOneColumn():
+                            $constraints[$section] = $this->getForOneColumn($widget);
+                            break;
+                        case  $widget->getTranslatable()->isWidgetTwoColumns():
+                            $constraints[$section] = $this->getForTwoColumns($widget);
+                            break;
+                        case $widget->getTranslatable()->isWidgetThreeColumns();
+                            $constraints[$section] = $this->getForThreeColumns($widget);
+                            break;
+                        default:
+                            $constraints[$section] = null;
+                    }
+                }
+            }
+
+            return $constraints;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param CcmLabelSectionContentOneColumnTranslation $widget
+     * @return mixed
+     */
+    private function getForOneColumn($widget)
+    {
+        $constraints = [];
+
+        if ($widget->isIsTechnicalConstraintsPopupActive()) {
+            $constraints[] = $widget->getTechnicalConstraints();
+        }
+        
+        return $constraints;
+    }
+
+    /**
+     * @param CcmLabelSectionContentTwoColumnsTranslation $widget
+     * @return array
+     */
+    private function getForTwoColumns($widget)
+    {
+        $constraints = [];
+
+        if ($widget->isIsTechnicalConstraintsPopupActive()) {
+            $constraints[] = $widget->getTechnicalConstraints();
+        } else {
+            $constraints[] = null;
+        }
+
+        if ($widget->isIsTechnicalConstraintsPopupActive2()) {
+            $constraints[] = $widget->getTechnicalConstraints2();
+        } else {
+            $constraints[] = null;
+        }
+
+        return $constraints;
+    }
+
+    /**
+     * @param CcmLabelSectionContentThreeColumnsTranslation $widget
+     * @return array
+     */
+    private function getForThreeColumns($widget)
+    {
+        $constraints = [];
+
+        if ($widget->isIsTechnicalConstraintsPopupActive()) {
+            $constraints[] = $widget->getTechnicalConstraints();
+        } else {
+            $constraints[] = null;
+        }
+
+        if ($widget->isIsTechnicalConstraintsPopupActive2()) {
+            $constraints[] = $widget->getTechnicalConstraints2();
+        } else {
+            $constraints[] = null;
+        }
+
+        if ($widget->isIsTechnicalConstraintsPopupActive3()) {
+            $constraints[] = $widget->getTechnicalConstraints3();
+        } else {
+            $constraints[] = null;
+        }
+
+        return $constraints;
+    }
 }
+

@@ -4,6 +4,7 @@ namespace FDC\CourtMetrageBundle\Controller;
 
 use FDC\CourtMetrageBundle\Entity\CcmFilmRegisterTranslation;
 use FDC\CourtMetrageBundle\Entity\CcmLabelTranslation;
+use FDC\CourtMetrageBundle\Manager\ParticipateManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Base\CoreBundle\Entity\FilmPerson;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -81,6 +82,7 @@ class ParticipateController extends Controller
      */
     public function labelAction()
     {
+        /** @var ParticipateManager $participateManager */
         $participateManager = $this->get('ccm.manager.participate');
 
         $labelPage = $participateManager->getLabelPage();
@@ -92,8 +94,8 @@ class ParticipateController extends Controller
 
         $labelSections = $participateManager->getLabelSections($labelPage);
         $labelSectionsWidgets = $participateManager->getLabelSectionsWidgets($labelPage);
-
         $filesWidgets = $participateManager->getFilesWidgetsList($labelSectionsWidgets);
+        $technicalConstraints = $participateManager->getTechnicalConstraints($labelSectionsWidgets);
 
         return $this->render('FDCCourtMetrageBundle:Participate:label.html.twig', array(
             'labelPage' => $labelPage,
@@ -104,7 +106,8 @@ class ParticipateController extends Controller
             'twoColumnsTabs' => $filesWidgets['twoColumnsTabs'],
             'twoColumnsFiles' => $filesWidgets['twoColumnsFiles'],
             'oneColumnTabs' => $filesWidgets['oneColumnTabs'],
-            'oneColumnFiles' => $filesWidgets['oneColumnFiles']
+            'oneColumnFiles' => $filesWidgets['oneColumnFiles'],
+            'technicalConstraints' => $technicalConstraints,
         ));
     }
 
