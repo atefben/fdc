@@ -753,6 +753,27 @@ var len3 = $(".contactInfo");
   } 
 
 var fixed = false;
+
+$('div.text-presentation > h3').each(function() {
+    var element = $(this)
+        .clone()
+        .addClass('title-clone')
+        .appendTo('body');
+
+    if( element.width() > $(this).width() ) {
+        $(this).css('line-height', '55px');
+    }
+
+    element.remove();
+});
+
+$('p').each(function() {
+    if ($(this)[0].firstChild.length == 1) {
+        $(this).css('line-height', '10px');
+        $(this).css('margin-bottom', '15px');
+    }
+});
+
 var topTrigger = $('.subNavigation').offset().tpo;
 if($('.subNavigation').length){
   $(document).scroll(function() {

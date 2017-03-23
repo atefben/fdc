@@ -11065,6 +11065,11 @@ header #searchContainer {
 .text-presentation h3.truncated-title {
   line-height: 55px;
 }
+.text-presentation h3.title-clone {
+  display: inline;
+  visibility: hidden;
+  white-space: nowrap;
+}
 .text-presentation h5 {
   color: #2b2b2b;
   font-size: 17px;

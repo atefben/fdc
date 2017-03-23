@@ -1803,6 +1803,12 @@
         line-height: 55px;
       }
 
+      &.title-clone {
+        display: inline;
+        visibility: hidden;
+        white-space: nowrap;
+      }
+
     }
 
     h5 {
