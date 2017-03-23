@@ -559,6 +559,7 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
+    dom.isotope();
 
 };
 
