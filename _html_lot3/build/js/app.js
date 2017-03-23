@@ -3060,8 +3060,10 @@ var owInitGrid = function (id) {
                         articles.each(function(){
                             rawHtml += $(this).get(0).outerHTML;
                         });
+                        
                         $gridMore.append(rawHtml);
-                        $gridMore.isotope('destroy');
+                        $gridMore.isotope('appended');
+                        //$gridMore.isotope('destroy');
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -3075,7 +3077,6 @@ var owInitGrid = function (id) {
                             $data.filter('.compute-filters').each(function(){
                                 var slug = $(this).attr('class').replace('compute-filters ','');
 
-                                console.log(slug);
                                 $(this).find('span').each(function(){
                                     //test if filter exists
                                     if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
@@ -3085,7 +3086,18 @@ var owInitGrid = function (id) {
                             });
                         }
 
-                        $('html,body').scrollTop(scroll);
+                        $('.card.item').each(function(){
+                            var $this = $(this);
+                            var title = $this.find('.info strong a');
+                            var cat = $this.find('.info .category');
+                            var titleText;
+                            var catText;
+
+                            $clamp(title.get(0), {clamp: 1});
+                            $clamp(cat.get(0), {clamp: 1});
+                        });
+
+                        /*$('html,body').scrollTop(scroll);
                         $gridMore.imagesLoaded(function(){
 
                             //memorize scrolltop
@@ -3103,7 +3115,7 @@ var owInitGrid = function (id) {
                                     }
                                 });
                             }
-                            
+
                             console.log('applying filters to rebuilt grid',filters);
                             owsetGridBigImg($gridMore, $('.grid-01'), false);
                             $gridMore.isotope({
@@ -3135,7 +3147,7 @@ var owInitGrid = function (id) {
 
                             //reable available filters
 
-                        });
+                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
