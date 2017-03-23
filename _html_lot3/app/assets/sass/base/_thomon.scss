@@ -46,6 +46,7 @@
 }
 
 .article-single #main,
+.articles-list#main,
 .media-library #main {
     overflow-y: hidden;
 }
@@ -784,7 +785,7 @@ header #navigation ul.user li a {
     }
 }
 
-html.noscroll {
+.noscroll {
     overflow: hidden;
 }
 

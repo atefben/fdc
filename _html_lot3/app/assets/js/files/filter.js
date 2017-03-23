@@ -31,6 +31,7 @@ var contains = function(needle) {
     return indexOf.call(this, needle) > -1;
 };
 
+
 var owInitFilter = function (isTabSelection) {
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
@@ -45,7 +46,8 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            $('html').addClass('noscroll');
+            console.log('rmscroll');
+            $('html,body').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
             $('#filters .vCenterKid').find(':not(span)').remove();
@@ -70,7 +72,7 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            $('html').removeClass('noscroll');
+            $('html,body').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -108,7 +110,7 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    $('html').removeClass('noscroll');
+                    $('html,body').removeClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
@@ -124,92 +126,7 @@ var owInitFilter = function (isTabSelection) {
                     }, 400);
 
                     var fnArraySortFilters = function(){
-                        $('#filters span').off('click').on('click', function () {
-                            if($('.home').length){
-                                var selectedClass = $(this).data('filter');
-                                /* TODO 
-                                    destroy all isotope
-                                    stock html in js array
-                                    repopulate first grid
-                                    compute new height for last section
-                                */
-
-                                //fill array with homepage items if not set
-                                if(!homepageItemsFilled){
-                                    homepageItemsFilled = true;
-                                    $('.contain-card article').each(function(index,value){
-                                        isotopeHomepageItems.push(value);
-                                    });
-
-                                    $('.articles-wrapper article').each(function(index,value){
-                                        isotopeHomepageItems.push(value);
-                                    });
-                                }
-
-                                $('.contain-card .isotope-01').each(function(){
-                                    $(this).isotope('destroy');
-                                    $(this).find('article').each(function(){
-                                        $(this).remove();
-                                    });
-                                });
-                                $('.articles-wrapper .isotope-01').each(function(){
-                                    $(this).isotope('destroy');
-                                    $(this).find('article').each(function(){
-                                        $(this).remove();
-                                    });
-                                });
-
-                                //get accurate data
-                                var innerIndex = 0;
-                                var activeAppendedGridContainer = $('.contain-card');
-                                $.each(isotopeHomepageItems,function(index,value){
-                                    if($(value).hasClass(selectedClass)){
-
-
-                                        //switch container
-                                        if(innerIndex > 2 && innerIndex < 6){
-                                            activeAppendedGridContainer = $('.articles-wrapper .articles:first-child');
-                                        }else{
-                                            if(activeAppendedGridContainer.find('article').size() > 2){
-                                                activeAppendedGridContainer = activeAppendedGridContainer.next('.articles');
-                                            }
-
-                                        }
-                                        
-                                        //console.log('add card to',activeAppendedGridContainer);
-                                        activeAppendedGridContainer.find('.grid-01').append(value);
-                                        innerIndex++;
-                                    }
-                                });
-                                
-                                $('.contain-card .isotope-01').each(function(){
-                                    $(this).isotope({
-                                        itemSelector: '.item',
-                                        layoutMode: 'packery',
-                                        packery: {
-                                            columnWidth: '.grid-sizer',
-                                            gutter: 0
-                                        }
-                                    });
-                                });
-
-                                $('.articles-wrapper .isotope-01').each(function(){
-                                    $(this).isotope({
-                                        itemSelector: '.item',
-                                        layoutMode: 'packery',
-                                        packery: {
-                                            columnWidth: '.grid-sizer',
-                                            gutter: 0
-                                        }
-                                    });
-                                });
-                                var newSectionHeight = 0;
-                                //recompute height
-                                $('.articles-wrapper .articles').each(function(){
-                                    newSectionHeight += $(this).outerHeight();
-                                });
-                                $('.articles-wrapper').css('height',newSectionHeight);
-                            }
+                        $('#filters span').off('click').on('click', function(){
                             var id = $('#filters').data('id'),
                                 f = $(this).data('filter');
 
@@ -217,39 +134,14 @@ var owInitFilter = function (isTabSelection) {
                             $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
                             owInitGrid('filter');
-                            var t = window.setTimeout(function(){
-                                //hotfix bug first card container empty
-                                console.log($('.contain-card').find('article').size(),$('.contain-card').find('article').size() == 0);
-                                if($('.contain-card').find('article').size() == 0){
-                                    var firstFilledWrapper;
-                                    $('.articles-wrapper .articles').each(function(){
-                                        if($(this).find('article').size() == 3){
-                                            firstFilledWrapper = $(this);
-                                            return false;
-                                        }
-                                    })
-                                    firstFilledWrapper.find('article').each(function(){
-                                        $(this).removeAttr('style').detach().appendTo($('.contain-card .isotope-01'));
+                            var grid;
 
-                                        //recompute heights
-                                        $('.contain-card').css('height',650);
-                                        var wrapperHeight = 0;
-                                        $('.articles-wrapper .articles').each(function(){
-                                            if($(this).find('article').size() == 0){
-                                                $(this).css('height',0);
-                                            }
-                                            wrapperHeight += $(this).outerHeight();
-                                            
-                                        });
-                                        $('.articles-wrapper').css('height',wrapperHeight);
-                                        $('.isotope-01').each(function(){
-                                            //$(this).isotope();
-                                        });
+                            /*var i = window.setTimeout(function(){
+                                console.log('bigging');
+                                owsetGridBigImg( grid, $('.grid-01'), false);
+                            },1000);*/
+                            
 
-                                    });
-                                }
-                                window.clearTimeout(t);
-                            },200);
                             fnArraySortFilters();
                         });
                     }
@@ -257,7 +149,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
-                        $('html').removeClass('noscroll');
+                        $('html,body').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
@@ -317,7 +209,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').on('click', '#filters', function () {
-                        $('html').removeClass('noscroll');
+                        $('html,body').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();

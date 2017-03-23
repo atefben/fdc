@@ -32,13 +32,6 @@ var owinitSlideShow = function (slider, hash) {
             });
 
         }else{
-            $('.block-diaporama .item').on('mouseup', function (e) {
-                if (!dragLock) {
-                    openSlideShow(slider);
-                }
-            });
-
-
             if($('.slideshow-img').length > 0 ) {
                 $('.images').on('click', function (e) {
                     
@@ -236,7 +229,14 @@ var openSlideShow = function (slider, hash, affiche) {
         var twitter = $('.c-fullscreen-slider').find('.rs-slideshow .twitter');
         var link = $('.c-fullscreen-slider').find('.rs-slideshow .link');
 
-        title.html(images[centerElement].title);
+        var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
+        if(typeof images[centerElement].title !== 'undefined'){
+            if(isHTML(images[centerElement].title)){
+                finalTitle = images[centerElement].title;
+            }
+        }
+
+        title.html(finalTitle);
         pagination.html(numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i>');
         label.html(images[centerElement].label);
         date.html(images[centerElement].date);
@@ -297,7 +297,6 @@ var openSlideShow = function (slider, hash, affiche) {
         }
 
         var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
-        console.log('goto',images[centerElement].title);
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
                 finalTitle = images[centerElement].title;
@@ -649,7 +648,6 @@ var openSlideShow = function (slider, hash, affiche) {
     
     //block image open on title click
     $('body').on('click','.chocolat-description a',function(){
-        console.log('block slideshow click');
         return false;
     })
 

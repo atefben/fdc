@@ -410,8 +410,8 @@ $(document).ready(function () {
         });
     }
 
+
     initHeaderSticky();
-    // owInitLinkChangeEffect();
 
 
     owInitPopin('popin-landing-e');
@@ -527,7 +527,6 @@ $(document).ready(function () {
         }
     }
 
-    // owInitSearch();
 
     if ($('.home').length) {
         owInitSlider('home');

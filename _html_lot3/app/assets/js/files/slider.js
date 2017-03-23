@@ -18,7 +18,6 @@ function isWindows() {
 
 var isMac = isMacintosh();
 var isPC = !isMacintosh();
-var dragLock = false;
 var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
@@ -90,17 +89,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-01') {
-        /*var sliderBlock = $(".block-diaporama");
-        var sliderDiaporama = new Sly( sliderBlock, {
-            speed: 200,
-            smart: 1,
-            slidee: sliderBlock.find('.item'),
-            horizontal: 1,
-            mouseDragging: 1,
-            releaseSwing: 1
-        });
-      
-        sliderDiaporama.init();*/
+
         var sliderBlock = $('.slider-01');
         sliderBlock.find('img').imagesLoaded(function(){
             var slide01 = sliderBlock.owlCarousel({
@@ -121,33 +110,31 @@ var owInitSlider = function (sliderName) {
                 },200);
             }
 
-            sliderBlock.on('drag.owl.carousel',function(event){
-                //small delay to allow click as not a drag
-                var clickTimeout = window.setTimeout(function(){
-                    dragLock = true;
-                    window.clearTimeout(clickTimeout);
-                },100);
-
-                //fallback if dragged event is not firing
-                var draggedTimeout = window.setTimeout(function(){
-                    console.log('auto remove draglock');
-                    dragLock = false;
-                },900);
-            });
+            var openSlideshowClick = function(){console.log('openSlideshowClick');
+                $('body').off('click').on('click', '.block-diaporama .owl-item.center', function() {
+                    console.log('click');
+                    openSlideShow(slide01);
+                });
+            }
 
             sliderBlock.on('dragged.owl.carousel',function(event){
                 dragLock = false;
+
+                //wait for drag repositioning
+                var draggedTimeout = window.setTimeout(function(){
+                    var globalOffset = sliderBlock.offset().left;
+                    sliderBlock.find('.owl-item').each(function(){
+                        var slideOffset = $(this).offset().left;
+                        if(globalOffset == slideOffset){
+                            $(this).addClass('center');
+                            $(this).siblings('.owl-item').removeClass('center');
+                            openSlideshowClick();
+                        }
+                    });
+                },750);
             });
 
-            $(document).on('mouseup', '.slider-01 .owl-item', function (event) {
-
-                var target = $(event.target);
-                if(!$(event.target).is('.owl-item')){
-                    target = target.closest('.owl-item');
-                }
-                target.siblings('.owl-item').removeClass('center');
-                target.addClass('center');
-            });
+            openSlideshowClick();
             
             // Custom Navigation Events
             $(document).on('click', '.slider-01 .owl-item', function () {

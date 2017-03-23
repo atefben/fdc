@@ -7008,6 +7008,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .article-single #main,
+.articles-list#main,
 .media-library #main {
   overflow-y: hidden;
 }
@@ -7654,7 +7655,7 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   background-color: transparent;
 }
 
-html.noscroll {
+.noscroll {
   overflow: hidden;
 }
 
