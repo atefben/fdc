@@ -75,10 +75,7 @@ class CcmFooterContentAdmin extends Admin
                     'subtitle'          => array(
                         'label'              => 'form.ccm.label.footer.subtitle',
                         'translation_domain' => 'BaseAdminBundle',
-                        'constraints'        => array(
-                            new NotBlank(),
-                        ),
-                        'required' => true
+                        'required' => false
                     ),
                     'description'          => array(
                         'label'              => 'form.ccm.label.footer.description',
