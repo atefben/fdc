@@ -6,7 +6,7 @@
         {% set videoImage = null %}
         {% set amazonImage = null %}
         {% if video.translatable.image and video.translatable.image|trans_fallback('file') %}
-            {% set videoImage = media_public_url(video.image|trans_fallback('file'), 'referrence') %}
+            {% set videoImage = media_public_url(video.translatable.image|trans_fallback('file'), 'referrence') %}
         {% elseif video.imageAmazonUrl %}
             {% set amazonImage = s3_server_video ~ video.imageAmazonUrl %}
         {% endif %}
