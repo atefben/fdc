@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\OldImport;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Component\Interfaces\NodeTranslationInterface;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
 use Base\CoreBundle\Entity\Info;
@@ -10,6 +11,7 @@ use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoArticleTranslation;
 use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
 use Base\CoreBundle\Entity\InfoImage;
+use Base\CoreBundle\Entity\InfoImageTranslation;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
@@ -58,7 +60,7 @@ class InfoImporter extends Importer
                     foreach ($this->langs as $lang) {
                         $translation = $info->findTranslationByLocale($lang);
                     }
-
+                    
                 }
             }
 
@@ -181,12 +183,18 @@ class InfoImporter extends Importer
 
 
     /**
-     * @param InfoArticle $info
+     * @param Info $info
      * @param OldArticleI18n $oldTranslation
-     * @return InfoTranslation
+     * @return NodeTranslationInterface
      */
-    protected function buildInfoArticleTranslation(InfoArticle $info, OldArticleI18n $oldTranslation)
+    protected function buildInfoArticleTranslation(Info $info, OldArticleI18n $oldTranslation)
     {
+        if ($this->isInfoImage) {
+            $classInfoTranslation = InfoImageTranslation::class;
+        } else {
+            $classInfoTranslation = InfoArticleTranslation::class;
+        }
+
         $mapperFields = [
             'resume' => 'introduction',
         ];
@@ -195,12 +203,12 @@ class InfoImporter extends Importer
         if (in_array($locale, $this->langs)) {
             $translation = $this
                 ->getManager()
-                ->getRepository('BaseCoreBundle:InfoArticleTranslation')
+                ->getRepository($classInfoTranslation)
                 ->findOneBy(['locale' => $locale, 'translatable' => $info])
             ;
 
             if (!$translation) {
-                $translation = new InfoArticleTranslation();
+                $translation = new $classInfoTranslation();
                 $translation
                     ->setCreatedAt($info->getCreatedAt())
                     ->setUpdatedAt($info->getCreatedAt())
@@ -214,10 +222,10 @@ class InfoImporter extends Importer
                     if ($this->status) {
                         $translation->setStatus($this->status);
                     } else {
-                        $translation->setStatus(NewsArticleTranslation::STATUS_PUBLISHED);
+                        $translation->setStatus(TranslateChildInterface::STATUS_PUBLISHED);
                     }
                 } else {
-                    $translation->setStatus(InfoArticleTranslation::STATUS_TRANSLATED);
+                    $translation->setStatus(TranslateChildInterface::STATUS_TRANSLATED);
                 }
             }
 
@@ -283,7 +291,7 @@ class InfoImporter extends Importer
         }
     }
 
-    protected function buildInfoWidgetText(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetText(Info $info, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getBody()) {
             return null;
@@ -322,12 +330,12 @@ class InfoImporter extends Importer
     }
 
     /**
-     * @param InfoArticle $info
-     * @param InfoArticleTranslation $translation
+     * @param Info $info
+     * @param NodeTranslationInterface $translation
      * @param OldArticleI18n $oldTranslation
      * @return InfoWidgetVideoYoutube|mixed|null
      */
-    protected function buildInfoWidgetYoutube(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetYoutube(Info $info, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getYoutubeLink() || !$oldTranslation->getYoutubeLinkDescription()) {
             return null;
@@ -368,7 +376,7 @@ class InfoImporter extends Importer
         return $widget;
     }
 
-    protected function buildInfoWidgetImage(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetImage(Info $info, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -437,7 +445,7 @@ class InfoImporter extends Importer
                                 ;
                                 if ($widget) {
                                     $widget->setGallery(null);
-                                    $this->getManager()->remove($mediaImage);
+//                                    $this->getManager()->remove($mediaImage);
                                 }
                                 $this->getManager()->remove($gallery);
                             }
@@ -476,7 +484,7 @@ class InfoImporter extends Importer
         return $widget;
     }
 
-    protected function buildInfoWidgetsAudio(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetsAudio(Info $info, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -513,7 +521,7 @@ class InfoImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaAudio);
+//                    $this->getManager()->remove($mediaAudio);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -542,7 +550,7 @@ class InfoImporter extends Importer
         }
     }
 
-    protected function buildInfoWidgetsVideo(InfoArticle $info, InfoArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildInfoWidgetsVideo(Info $info, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -579,7 +587,7 @@ class InfoImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaVideo);
+//                    $this->getManager()->remove($mediaVideo);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -608,7 +616,7 @@ class InfoImporter extends Importer
         }
     }
 
-    protected function buildAssociatedFilms(InfoArticle $info, OldArticle $oldArticle)
+    protected function buildAssociatedFilms(Info $info, OldArticle $oldArticle)
     {
         if (!$this->associateMovie) {
             foreach ($info->getAssociatedFilms() as $associatedFilm) {
@@ -667,7 +675,7 @@ class InfoImporter extends Importer
 
     }
 
-    protected function buildAssociatedInfos(InfoArticle $info, OldArticle $oldArticle)
+    protected function buildAssociatedInfos(Info $info, OldArticle $oldArticle)
     {
         // association film
         $oldArticleAssociations = $this
@@ -759,5 +767,45 @@ class InfoImporter extends Importer
                 }
             }
         }
+    }
+
+    /**
+     * @param $oldArticleId
+     * @return null
+     */
+    public function removeInfo($oldArticleId)
+    {
+        $newsArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:InfoArticle')
+            ->findOneBy(['oldNewsId' => $oldArticleId])
+        ;
+        if (!$newsArticle) {
+            return null;
+        }
+        $fields = $this->getManager()->getClassMetadata('BaseCoreBundle:InfoArticle')->getAssociationNames();
+        foreach ($newsArticle->getTranslations() as $translation) {
+            $newsArticle->getTranslations()->removeElement($translation);
+            $this->getManager()->remove($translation);
+        }
+        foreach ($fields as $field) {
+            $association = $this
+                ->getManager()
+                ->getClassMetadata('BaseCoreBundle:InfoArticle')
+                ->isCollectionValuedAssociation($field)
+            ;
+            $getter = 'get' . ucfirst($field);
+            $setter = 'set' . ucfirst($field);
+            if ($association) {
+                foreach ($newsArticle->$getter() as $item) {
+                    $newsArticle->$getter()->removeElement($item);
+                }
+            } else {
+                $newsArticle->$setter(null);
+            }
+        }
+
+        $this->getManager()->remove($newsArticle);
+        $this->getManager()->flush();
     }
 }

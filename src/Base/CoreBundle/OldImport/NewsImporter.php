@@ -101,8 +101,6 @@ class NewsImporter extends Importer
                 ->getQuery()
                 ->getResult()
             ;
-            $articleAdmin = $this->container->get('base.admin.news_article');
-            $imageAdmin = $this->container->get('base.admin.news_image');
 
             foreach ($oldArticles as $oldArticle) {
                 $progress->advance();
@@ -112,12 +110,6 @@ class NewsImporter extends Importer
                     foreach ($this->langs as $lang) {
                         $translation = $news->findTranslationByLocale($lang);
                     }
-                }
-
-                if ($news instanceof NodeArticleInterface) {
-                    $articleAdmin->createObjectSecurity($news);
-                } elseif ($news instanceof NodeImageInterface) {
-                    $imageAdmin->createObjectSecurity($news);
                 }
             }
 
@@ -506,7 +498,7 @@ class NewsImporter extends Importer
                                 ;
                                 if ($widget) {
                                     $widget->setGallery(null);
-                                    $this->getManager()->remove($mediaImage);
+//                                    $this->getManager()->remove($mediaImage);
                                 }
                                 $this->getManager()->remove($gallery);
                             }
