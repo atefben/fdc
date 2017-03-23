@@ -11,7 +11,7 @@ var owInitGrid = function (id) {
                 }
             });
 
-            $grid.on( 'arrangeComplete', function( event, filteredItems ) {
+            $grid.on('arrangeComplete', function( event, filteredItems ) {
                 $('.item-inner').css({
                     'width':'100.5%',
                     'height':'100.5%'
@@ -80,10 +80,10 @@ var owInitGrid = function (id) {
             $gridMore.isotope();
 
             //reset big imgs
-            $gridMore.on('layoutComplete',function(){
+            /*$gridMore.on('layoutComplete',function(){
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
-            });
+            });*/
 
 
             if($gridDom.parent().find('.ajax-request').length){
