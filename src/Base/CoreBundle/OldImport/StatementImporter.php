@@ -720,29 +720,44 @@ class StatementImporter extends Importer
      */
     public function removeStatement($oldArticleId)
     {
-        $newsArticle = $this
+        $statementArticle = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:StatementArticle')
             ->findOneBy(['oldNewsId' => $oldArticleId])
         ;
-        if (!$newsArticle) {
+        if (!$statementArticle) {
             return null;
         }
         $fields = $this->getManager()->getClassMetadata('BaseCoreBundle:StatementArticle')->getAssociationNames();
-        foreach ($newsArticle->getTranslations() as $translation) {
-            $newsArticle->getTranslations()->removeElement($translation);
+        foreach ($statementArticle->getTranslations() as $translation) {
+            $statementArticle->getTranslations()->removeElement($translation);
             $this->getManager()->remove($translation);
         }
 
-        foreach ($newsArticle->getAssociatedStatement() as $statementAssociated) {
+        foreach ($statementArticle->getAssociatedStatement() as $statementAssociated) {
             if ($statementAssociated instanceof StatementStatementAssociated) {
                 $statementAssociated->setAssociation(null);
                 $statementAssociated->setStatement(null);
                 $this->getManager()->remove($statementAssociated);
                 $this->getManager()->flush();
-                $newsArticle->removeAssociatedStatement($statementAssociated);
+                $statementArticle->removeAssociatedStatement($statementAssociated);
             }
         }
+
+
+        $statementStatementAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:StatementStatementAssociated')
+            ->findBy(['association' => $statementArticle->getId()])
+        ;
+        foreach ($statementStatementAssociations as $statementAssociated) {
+            $statementAssociated->setAssociation(null);
+            $statementAssociated->setStatement(null);
+            $this->getManager()->remove($statementAssociated);
+            $this->getManager()->flush();
+            $statementArticle->removeAssociatedNew($statementAssociated);
+        }
+
         foreach ($fields as $field) {
             $association = $this
                 ->getManager()
@@ -752,15 +767,15 @@ class StatementImporter extends Importer
             $getter = 'get' . ucfirst($field);
             $setter = 'set' . ucfirst($field);
             if ($association) {
-                foreach ($newsArticle->$getter() as $item) {
-                    $newsArticle->$getter()->removeElement($item);
+                foreach ($statementArticle->$getter() as $item) {
+                    $statementArticle->$getter()->removeElement($item);
                 }
             } else {
-                $newsArticle->$setter(null);
+                $statementArticle->$setter(null);
             }
         }
 
-        $this->getManager()->remove($newsArticle);
+        $this->getManager()->remove($statementArticle);
         $this->getManager()->flush();
     }
 }

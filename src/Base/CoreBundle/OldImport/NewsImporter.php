@@ -894,6 +894,18 @@ class NewsImporter extends Importer
                 $newsArticle->removeAssociatedNew($newsAssociated);
             }
         }
+        $newsNewsAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:NewsNewsAssociated')
+            ->findBy(['association' => $newsArticle->getId()])
+        ;
+        foreach ($newsNewsAssociations as $newsAssociated) {
+            $newsAssociated->setAssociation(null);
+            $newsAssociated->setNews(null);
+            $this->getManager()->remove($newsAssociated);
+            $this->getManager()->flush();
+            $newsArticle->removeAssociatedNew($newsAssociated);
+        }
         foreach ($fields as $field) {
             $association = $this
                 ->getManager()

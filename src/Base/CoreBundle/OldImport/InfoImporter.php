@@ -775,28 +775,42 @@ class InfoImporter extends Importer
      */
     public function removeInfo($oldArticleId)
     {
-        $newsArticle = $this
+        $infoArticle = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:InfoArticle')
             ->findOneBy(['oldNewsId' => $oldArticleId])
         ;
-        if (!$newsArticle) {
+        if (!$infoArticle) {
             return null;
         }
         $fields = $this->getManager()->getClassMetadata('BaseCoreBundle:InfoArticle')->getAssociationNames();
-        foreach ($newsArticle->getTranslations() as $translation) {
-            $newsArticle->getTranslations()->removeElement($translation);
+        foreach ($infoArticle->getTranslations() as $translation) {
+            $infoArticle->getTranslations()->removeElement($translation);
             $this->getManager()->remove($translation);
         }
-        foreach ($newsArticle->getAssociatedInfo() as $infoAssociated) {
+        foreach ($infoArticle->getAssociatedInfo() as $infoAssociated) {
             if ($infoAssociated instanceof InfoInfoAssociated) {
                 $infoAssociated->setAssociation(null);
                 $infoAssociated->setInfo(null);
                 $this->getManager()->remove($infoAssociated);
                 $this->getManager()->flush();
-                $newsArticle->removeAssociatedInfo($infoAssociated);
+                $infoArticle->removeAssociatedInfo($infoAssociated);
             }
         }
+
+        $infoInfoAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:InfoInfoAssociated')
+            ->findBy(['association' => $infoArticle->getId()])
+        ;
+        foreach ($infoInfoAssociations as $infoAssociated) {
+            $infoAssociated->setAssociation(null);
+            $infoAssociated->setInfo(null);
+            $this->getManager()->remove($infoAssociated);
+            $this->getManager()->flush();
+            $infoArticle->removeAssociatedNew($infoAssociated);
+        }
+
         foreach ($fields as $field) {
             $association = $this
                 ->getManager()
@@ -806,15 +820,15 @@ class InfoImporter extends Importer
             $getter = 'get' . ucfirst($field);
             $setter = 'set' . ucfirst($field);
             if ($association) {
-                foreach ($newsArticle->$getter() as $item) {
-                    $newsArticle->$getter()->removeElement($item);
+                foreach ($infoArticle->$getter() as $item) {
+                    $infoArticle->$getter()->removeElement($item);
                 }
             } else {
-                $newsArticle->$setter(null);
+                $infoArticle->$setter(null);
             }
         }
 
-        $this->getManager()->remove($newsArticle);
+        $this->getManager()->remove($infoArticle);
         $this->getManager()->flush();
     }
 }
