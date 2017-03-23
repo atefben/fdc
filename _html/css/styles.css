@@ -25650,6 +25650,7 @@ option:checked,
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   line-height: 25px;
   padding-right: 50px;
+  margin-bottom: 5px;
   text-align: left;
   list-style-type: disc;
 }
