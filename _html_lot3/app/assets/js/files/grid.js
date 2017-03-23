@@ -182,8 +182,11 @@ var owInitGrid = function (id) {
                         }
 
                         //reset big imgs
-                        owsetGridBigImg($gridMore, $('.grid-01'), false);
-                        
+                        $gridMore.on('arrangeComplete',function(){
+                            console.log('cards inserted');
+                            owsetGridBigImg($gridMore, $('.grid-01'), false);
+                        });
+
                         $('.card.item').each(function(){
                             var $this = $(this);
                             var title = $this.find('.info strong a');
@@ -478,7 +481,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    var $img = $(dom).find('.card img'),
+    var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
         i = 0,
@@ -489,8 +492,10 @@ var owsetGridBigImg = function (grid, dom, init) {
         min = 0,
         nbImage = $img.length;
 
-    $($img).closest('article.card').removeClass('double w2');
+    dom.find('article.card').removeClass('double w2');
 
+    //console.log($(dom).find('.card:visible img'));
+    //console.log($(dom).find('.card img'));
     if (window.matchMedia("(max-width: 1279px)").matches) {
 
         while (i < $img.length) {
