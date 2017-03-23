@@ -778,10 +778,22 @@ header #navigation ul.user li a {
     .articles {
         transition: all .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+
+    &::selection {
+        color: #e2e2e2;
+        background-color: #999;
+    }
 }
 
 html.noscroll {
     overflow: hidden;
+}
+
+.fullscreen-slider img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
 }
 
 @media only screen and (max-width : 1440px) {
