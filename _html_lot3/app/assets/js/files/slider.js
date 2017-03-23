@@ -90,17 +90,7 @@ var owInitSlider = function (sliderName) {
     /* SLIDER 01
      ----------------------------------------------------------------------------- */
     if (sliderName == 'slider-01') {
-        /*var sliderBlock = $(".block-diaporama");
-        var sliderDiaporama = new Sly( sliderBlock, {
-            speed: 200,
-            smart: 1,
-            slidee: sliderBlock.find('.item'),
-            horizontal: 1,
-            mouseDragging: 1,
-            releaseSwing: 1
-        });
-      
-        sliderDiaporama.init();*/
+
         var sliderBlock = $('.slider-01');
         sliderBlock.find('img').imagesLoaded(function(){
             var slide01 = sliderBlock.owlCarousel({
@@ -140,7 +130,6 @@ var owInitSlider = function (sliderName) {
             });
 
             $(document).on('mouseup', '.slider-01 .owl-item', function (event) {
-
                 var target = $(event.target);
                 if(!$(event.target).is('.owl-item')){
                     target = target.closest('.owl-item');
