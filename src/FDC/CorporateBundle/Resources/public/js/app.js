@@ -2881,6 +2881,7 @@ var owInitGrid = function (id) {
             });*/
 
 
+
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
