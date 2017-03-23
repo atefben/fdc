@@ -2879,6 +2879,7 @@ var owInitGrid = function (id) {
                 console.log('append complete');
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
+                $('.grid-01').isotope();
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -2958,9 +2959,8 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
 
-                        //$gridMore.append(rawHtml);
                         $gridMore.isotope('insert',articles);
-                        //$gridMore.isotope('destroy');
+
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -3278,6 +3278,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -3291,8 +3292,6 @@ var owsetGridBigImg = function (grid, dom, init) {
 
     dom.find('article.card').removeClass('double w2');
 
-    //console.log($(dom).find('.card:visible img'));
-    //console.log($(dom).find('.card img'));
     if (window.matchMedia("(max-width: 1279px)").matches) {
 
         while (i < $img.length) {
@@ -3354,8 +3353,6 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    dom.isotope();
-
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
