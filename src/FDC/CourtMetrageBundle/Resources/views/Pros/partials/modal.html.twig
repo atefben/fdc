@@ -67,13 +67,15 @@
                                 {{ translation.description|raw }}
                             </div>
                         {% else %}
-                            <div class="content halfContent wysiwyg">
-                                <h5>{{ translation.titleFirst }}</h5>
-                                {{ translation.descriptionFirst|raw }}
-                            </div>
-                            <div class="content halfContent wysiwyg">
-                                <h5>{{ translation.titleSecond }}</h5>
-                                {{ translation.descriptionSecond|raw }}
+                            <div class="row">
+                                <div class="content halfContent wysiwyg">
+                                    <h5>{{ translation.titleFirst }}</h5>
+                                    {{ translation.descriptionFirst|raw }}
+                                </div>
+                                <div class="content halfContent wysiwyg">
+                                    <h5>{{ translation.titleSecond }}</h5>
+                                    {{ translation.descriptionSecond|raw }}
+                                </div>
                             </div>
                         {% endif %}
                     {% endfor %}
