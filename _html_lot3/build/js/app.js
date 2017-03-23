@@ -7733,25 +7733,21 @@ $(document).ready(function () {
 
         slider.find('.item').each(function(){
             var img = $(this).find('img').css('height',428);
-            var t = window.setTimeout(function(){
-                var w = img.width();
-                if(parseInt(w) == 0){
-                    var itv = window.setInterval(function(){
-                        w = img.width();
-                        if(w > 0){
-                            window.clearInterval(itv);
-                        }
-                    },200);
-                }else{
-                    var finalWidth = img.width() - 2;
-                    $(this).css('width',finalWidth);
-                    if($(this).find('figure').length){
-                        $(this).find('figure').css('width',finalWidth);
+            var w = img.width();
+            if(parseInt(w) == 0){
+                var itv = window.setInterval(function(){
+                    w = img.width();
+                    if(w > 0){
+                        window.clearInterval(itv);
                     }
+                },200);
+            }else{
+                var finalWidth = img.width() - 2;
+                $(this).css('width',finalWidth);
+                if($(this).find('figure').length){
+                    $(this).find('figure').css('width',finalWidth);
                 }
-                window.clearTimeout(t);
-            },200);
-            
+            }
         });
         if (hash.length > 0 && verif == "pid") {
             owinitSlideShow(slider, hash);
