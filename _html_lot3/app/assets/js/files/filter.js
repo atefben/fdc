@@ -46,6 +46,7 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
+            console.log('rmscroll');
             $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -72,6 +73,7 @@ var owInitFilter = function (isTabSelection) {
         // close filters
         $('body').off('click').on('click', '#filters', function () {
             $('html').removeClass('noscroll');
+            console.log('rstrcroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
