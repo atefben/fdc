@@ -788,6 +788,9 @@ class InfoImporter extends Importer
             $newsArticle->getTranslations()->removeElement($translation);
             $this->getManager()->remove($translation);
         }
+        foreach ($newsArticle->getAssociatedInfo() as $info) {
+            $newsArticle->removeAssociatedInfo($info);
+        }
         foreach ($fields as $field) {
             $association = $this
                 ->getManager()
