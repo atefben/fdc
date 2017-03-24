@@ -442,7 +442,7 @@ class StatementImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaImage);
+//                    $this->getManager()->remove($mediaImage);
                     $this->getManager()->flush();
                 }
                 continue;

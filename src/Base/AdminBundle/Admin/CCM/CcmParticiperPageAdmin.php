@@ -12,7 +12,6 @@ use Symfony\Component\Debug\Exception\FatalErrorException;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use FDC\CourtMetrageBundle\Entity\CcmParticiperPageTranslation;
-use Symfony\Component\Validator\Constraints\Url;
 
 class CcmParticiperPageAdmin extends Admin
 {

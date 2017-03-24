@@ -75,7 +75,7 @@
                                                             {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
                                                         {% endif %}
                                                         {% if scheduleCollection.schedule|trans_fallback('url') %}
-                                                            <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" {% if fdc_court_metrage_domain not in scheduleCollection.schedule|trans_fallback('url') %}target="_blank"{% endif %}>
+                                                            <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" {% if fdc_court_metrage_scheme in scheduleCollection.schedule|trans_fallback('url') %}target="_blank"{% endif %}>
                                                                 <div class="confButton">
                                                                     <i class="icon icon_flecheGauche ensavoirplus"></i>
                                                                     {{ 'ccm.program.see_more'|trans }}

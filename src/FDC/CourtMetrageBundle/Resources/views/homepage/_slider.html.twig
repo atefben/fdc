@@ -1,7 +1,7 @@
 <div id="slider-movies" class="owl-carousel">
     {% for slide in sliders %}
         <div>
-            <a href="{{ slide.url }}" {% if fdc_court_metrage_domain not in slide.url %}target="_blank"{% endif %}>
+            <a href="{{ slide.url }}" {% if fdc_court_metrage_scheme in slide.url %}target="_blank"{% endif %}>
                 <div class="video">
                     <div class="img" style="background-image:url({% path slide.translatable.image|trans_fallback('file'), 'reference' %})"></div>
                 </div>

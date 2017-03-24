@@ -2537,7 +2537,7 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            console.log('rmscroll');
+            console.log('scroll 1');
             $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -2563,7 +2563,7 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            console.log('rmscroll');
+            console.log('scroll 2');
             $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
@@ -2602,8 +2602,8 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    console.log('rmscroll');
-                    $('html').removeClass('noscroll');
+                    console.log('scroll 3');
+                    $('html').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
@@ -2641,8 +2641,8 @@ var owInitFilter = function (isTabSelection) {
                     fnArraySortFilters();
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
-                        console.log('rmscroll');
+                    $('body').off('click').on('click', '#filters', function () {
+                        console.log('scroll 4');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -2702,8 +2702,8 @@ var owInitFilter = function (isTabSelection) {
                     });
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
-                        console.log('rmscroll');
+                    $('body').off('click').on('click', '#filters', function () {
+                        console.log('scroll 5');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -2871,14 +2871,18 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
-            $gridMore.isotope();
+
+            //$gridMore.isotope();
 
             //reset big imgs
-            $gridMore.on('layoutComplete',function(){
-                console.log('append complete');
+            $gridMore.on('layoutComplete',function(event,laidOutItems){
+                console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
-                $('.grid-01').isotope();
+                owsetGridBigImg(false, $('.grid-01'), false);
+            });
+
+            $('#filters span').on('click',function(){
+                console.log('filters click on grid file')
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -2906,7 +2910,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                $gridMore.off('layoutComplete');
+                var ajaxLock = true;
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -2961,12 +2965,6 @@ var owInitGrid = function (id) {
 
                         $gridMore.isotope('insert',articles);
 
-                        $gridMore.on('layoutComplete',function(){
-                            console.log('second sort');
-                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $('.grid-01').isotope();
-                        });
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -3000,58 +2998,6 @@ var owInitGrid = function (id) {
                             $clamp(title.get(0), {clamp: 1});
                             $clamp(cat.get(0), {clamp: 1});
                         });
-
-                        /*$('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function(){
-
-                            //memorize scrolltop
-                            $('html,body').scrollTop(scroll);
-                            
-                            //rebuild grid depending on active filters
-                            var filters = '.all';
-                            if($('.filters .filter').length){
-                                filters = '';
-                                $('.filters .filter').each(function(){
-                                    var thisFilter = $(this).find('.select span.active').data('filter');
-                                    if(thisFilter !== 'all'){
-                                        var filterSelector = '.'+$(this).find('.select span.active').data('filter');
-                                        filters += filterSelector;
-                                    }
-                                });
-                            }
-
-                            console.log('applying filters to rebuilt grid',filters);
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                filter: filters,
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                },
-                                getSortData: {
-                                    number: '[data-sort]'
-                                },
-                                // sort by color then number
-                                sortBy: ['number']
-                            });
-
-                            $('html,body').scrollTop(scroll);
-
-                            $('.card.item').each(function(){
-                                var $this = $(this);
-                                var title = $this.find('.info strong a');
-                                var cat = $this.find('.info .category');
-                                var titleText;
-                                var catText;
-
-                                $clamp(title.get(0), {clamp: 1});
-                                $clamp(cat.get(0), {clamp: 1});
-                            });
-
-                            //reable available filters
-
-                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
@@ -4893,7 +4839,6 @@ var owInitSlider = function (sliderName) {
             $('.slider-02 .center').removeClass('center');
             $(this).addClass('center');
             slide01.trigger('to.owl.carousel', number);
-
         });
     }
 

@@ -7029,6 +7029,10 @@ body.chocolat-open > .chocolat-content {
   overflow-y: hidden;
 }
 
+.articles-list#main {
+  min-height: 660px;
+}
+
 .participate .contain-descript .descrip {
   width: 785px;
   margin: 0 auto;
@@ -7535,6 +7539,7 @@ header #navigation ul.user li a .icon {
   /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -webkit-grab;
+  overflow: hidden;
 }
 
 .block-diaporama .slider-01 figcaption {
@@ -7718,25 +7723,25 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   margin-top: 5px;
 }
 
-/* custom breakpoints for slideshow title */
-@media only screen and (max-width: 1750px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 1050px;
+/* custom breakpoints for homepage slider */
+@media screen and (max-width: 1540px) {
+  body .slider-home .container-images .item {
+    background-size: 80%;
   }
 }
-@media only screen and (max-width: 1570px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 850px;
+@media screen and (max-width: 1450px) {
+  body .slider-home .container-images .item {
+    background-size: 90%;
   }
 }
-@media only screen and (max-width: 1370px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 650px;
+@media screen and (max-width: 1280px) {
+  body .slider-home .container-images .item {
+    background-size: 100%;
   }
 }
-@media only screen and (max-width: 1200px) {
-  .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-    width: 450px;
+@media screen and (max-width: 1120px) {
+  body .slider-home .container-images .item {
+    background-size: cover;
   }
 }
 /* rework sly slider hp */
@@ -10481,10 +10486,10 @@ body#home .isotope-01 .item .info {
   height: 100%;
   background: center 0 no-repeat fixed;
   display: none;
-  transition: transform .8s ease-in, opacity .8s ease-in, background-position 0s;
+  transition: transform 0.8s ease-in, opacity 0.8s ease-in, background-position 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   background-position: left top;
   background-size: 75%;
-  background-position-y: 210px;
+  background-position-y: 198px;
   position: absolute;
   transform: translateX(100%);
   opacity: 0;
@@ -11950,7 +11955,7 @@ div.chocolat-wrapper .chocolat-bottom .chocolat-pagination, .c-fullscreen-slider
   left: 0;
   text-align: center;
   width: 100px;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 div.chocolat-wrapper .chocolat-bottom .chocolat-pagination.active, div.chocolat-wrapper .chocolat-bottom .chocolat-pagination:hover, .c-fullscreen-slider .chocolat-bottom .chocolat-pagination.active, .c-fullscreen-slider .chocolat-bottom .chocolat-pagination:hover {
@@ -14896,7 +14901,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 26px;
   position: relative;
   top: 27%;
-  left: 31%;
 }
 .single-movie .poster .picto:hover + img {
   transition: all 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);

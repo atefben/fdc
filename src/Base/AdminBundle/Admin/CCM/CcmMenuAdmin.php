@@ -6,7 +6,6 @@ use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Symfony\Component\Validator\Constraints\Url;
 
 class CcmMenuAdmin extends Admin
 {
@@ -67,18 +66,12 @@ class CcmMenuAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.ccm.label.external_url',
                         'required' => false,
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                     'urlRegister'          => array(
                         'label'              => 'form.ccm.label.menu.urlRegister',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help'        => 'form.ccm.label.external_url',
                         'required' => false,
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                     'programPicIsActive'    => array(
                         'label'              => 'form.ccm.label.menu.program_pic_is_active',

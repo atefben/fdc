@@ -185,19 +185,20 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video">
-                                    <div class="video-container state-init video video-player" 
-                                         data-link="{{ featuredVideo.id }}" 
-                                         id="homepage-featured-video" 
+                                <article class="video video-container"
+                                data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                {% if featuredVideo.image|trans_fallback('file') %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
+                                {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
+                                    data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
+                                {% else %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
+                                {% endif %}>
+                                    <div class=" state-init video video-player"
+                                         data-link="{{ featuredVideo.id }}"
+                                         id="homepage-featured-video"
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                         data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                            {% if featuredVideo.image|trans_fallback('file') %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
-                                            {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
-                                                data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
-                                            {% else %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
-                                            {% endif %}
+
                                          data-name="{{ featuredVideo|trans_fallback('title') }}">
                                         <div id="video-player" class="jwplayer jw-reset">
                                         </div>
@@ -315,15 +316,15 @@
                                     </div>
                                 </article>
                             </div><!--
-                            -->
-                            <div class="right info-02">
+                            --><div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
                                             le <span
                                                     class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
-                                        <strong class='title-4'>{{ movie.titleVO }}</strong>
+                                        {% set movieUrlFirst = url('fdc_corporate_movie_get', {'slug': movie.slug}) %}
+                                        <a href="{{ movieUrlFirst }}" class='title-4'>{{ movie.titleVO }}</a>
                                         {% set directors = movie.getDirectors() %}
 
                                         <div class="authors-container">
@@ -429,7 +430,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
-                                                        src="{{ videoImage }}" alt=""></a>
+                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                        film: movie,
+                                                        film_format: '293x397',
+                                                        display_film_path: true,
+                                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                        }) %}{% endspaceless %}" alt=""></a>
                                         </div>
                                     </div>
                                 {% endif %}
@@ -504,8 +510,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                             <img src="{% path trans.file , '650x410' %}" alt=""/>
                         {% endif %}
                     </div><!--
-                    -->
-                    <div class="half-div block-push">
+                    --><div class="half-div block-push">
                         <a href="{{ homepage|trans_fallback('pushMainUrl2') }}" {{ homepage|trans_fallback('pushMainUrl2')|external_link }}
                            class="coverLink"></a>
                         <div class="vFlexAlign">
@@ -551,8 +556,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                         </div>
                                     </a>
                                 </div><!--
-                                -->
-                                <div class="small-push half-div">
+                                --><div class="small-push half-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl2')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl2') }}">
                                         <div class="image-wrapper">
@@ -570,8 +574,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            -->
-                            <div class="left">
+                            --><div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">

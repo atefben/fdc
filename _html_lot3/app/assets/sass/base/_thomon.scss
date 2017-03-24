@@ -67,6 +67,10 @@
     overflow-y: hidden;
 }
 
+.articles-list#main {
+    min-height: 660px;
+}
+
 .participate .contain-descript {
     .descrip {
         width: 785px;
@@ -643,6 +647,7 @@ header #navigation ul.user li a .icon {
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+    overflow: hidden;
 }
 
 .block-diaporama .slider-01 figcaption{
@@ -857,25 +862,28 @@ header #navigation ul.user li a {
     }
 }
 
-/* custom breakpoints for slideshow title */
-@media only screen and (max-width : 1750px) {
-    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-        width: 1050px;
+/* custom breakpoints for homepage slider */
+@media screen and (max-width : 1540px) {
+    body .slider-home .container-images .item {
+        background-size: 80%;
     }
 }
-@media only screen and (max-width : 1570px) {
-    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-        width: 850px;
+
+@media screen and (max-width : 1450px) {
+    body .slider-home .container-images .item {
+        background-size: 90%;
     }
 }
-@media only screen and (max-width : 1370px) {
-    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-        width: 650px;
+
+@media screen and (max-width : 1280px) {
+    body .slider-home .container-images .item {
+        background-size: 100%;
     }
 }
-@media only screen and (max-width : 1200px) {
-    .c-fullscreen-slider .c-chocolat-bottom .chocolat-bottom .chocolat-description {
-        width: 450px;
+
+@media screen and (max-width : 1120px) {
+    body .slider-home .container-images .item {
+        background-size: cover;
     }
 }
 
