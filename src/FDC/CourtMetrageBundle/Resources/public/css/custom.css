@@ -366,7 +366,7 @@ body.chocolat-open.fixed {
 }
 
 .wysiwyg strong {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .modal-content .half .wysiwyg p {
@@ -394,6 +394,10 @@ body.chocolat-open.fixed {
     content:" ";
 }
 
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title {
+    font-weight: 700!important;
+}
+
 .modal-content .half .row:after {
     clear:both;
 }
@@ -402,4 +406,8 @@ body.chocolat-open.fixed {
     padding: 58px 0px;
     border-top: 1px solid #ECECEC;
     border-bottom: 1px solid #ECECEC;
+}
+
+.contain-title .title-02 strong {
+    color: inherit !important;
 }

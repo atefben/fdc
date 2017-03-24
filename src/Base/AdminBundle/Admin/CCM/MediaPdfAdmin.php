@@ -2,12 +2,14 @@
 namespace Base\AdminBundle\Admin\CCM;
 
 use Base\AdminBundle\Component\Admin\Admin;
-use Base\CoreBundle\Entity\MediaPdf;
 use Base\CoreBundle\Entity\MediaPdfTranslation;
+use FDC\CourtMetrageBundle\Entity\CcmMediaPdf;
+use FDC\CourtMetrageBundle\Entity\CcmMediaPdfTranslation;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\MediaBundle\Provider\FileProvider;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
@@ -88,6 +90,24 @@ class MediaPdfAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        /** @var CcmMediaPdf $file */
+        $file = $this->getSubject();
+        $fileHelp = '';
+        /** @var CcmMediaPdfTranslation $translation */
+        foreach ($file->getTranslations() as $translation) {
+            if ($translation->getFile()) {
+                /** @var FileProvider $provider */
+                $provider = $this->getConfigurationPool()->getContainer()->get($translation->getFile()->getProviderName());
+                $url      = $provider->generatePublicUrl($translation->getFile(), 'reference');
+                $fileHelp .= '<strong>' . strtoupper($translation->getLocale()) . "</strong>: <a href=\"{$url}\" target=\"_blank\">{$url}</a><br>";
+            }
+        }
+
+        if (strlen($fileHelp) > 0) {
+            $fileHelp = '<br><br>URL des fichiers:<br>' . $fileHelp;
+        }
+        $fileHelp = $this->getConfigurationPool()->getContainer()->get('translator')->trans('form.media_pdf.helper_file', [], 'BaseAdminBundle', 'fr') . $fileHelp;
+        
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
         $formMapper
             ->add('translations', 'a2lix_translations', array(
@@ -109,7 +129,7 @@ class MediaPdfAdmin extends Admin
                         'required'           => $requiredFile,
                         'field_type'         => 'sonata_media_type',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.media_pdf.helper_file',
+                        'sonata_help'        => $fileHelp,
                         'provider'           => 'sonata.media.provider.pdf',
                         'context'            => 'media_pdf',
                         'constraints'        => array(
