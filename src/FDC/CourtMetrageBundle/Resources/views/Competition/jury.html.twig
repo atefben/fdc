@@ -21,7 +21,7 @@
                             {%- else -%}
                                 {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
                             {%- endif -%}
-                            <div class="photo-jury" style="background-image:url('{% path media, '976x535' %}')"></div>
+                            <div class="photo-jury" style="background-image:url('{% path media, 'reference' %}')"></div>
                         </a>
                         <div class="contain-descript">
                             <h3 class="descript-title">{{ 'jury.president'|trans }}</h3>
@@ -43,7 +43,7 @@
                                     <div class="image">
                                         {% set artistImage = jury_page_media(member['jury'], app.request.locale, festival) %}
                                         {% if artistImage is not empty %}
-                                            <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}" style="width: 384px; height: 485px;"/>
+                                            <img src="{% path artistImage, '384x485' %}" alt="{{ member['jury'].person.fullName }}"/>
                                         {% else %}
                                             <img src="{{ asset('bundles/fdccourtmetrage/img/jurys/member.jpg') }}" style="width: 384px; height: 485px;">
                                         {% endif %}
