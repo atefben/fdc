@@ -63,7 +63,6 @@ var owInitGrid = function (id) {
             });
         }
         var clickAllow = true;
-        var ajaxLock = false;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
@@ -86,9 +85,10 @@ var owInitGrid = function (id) {
                 console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg(false, $('.grid-01'), false);
-                if(!ajaxLock){
-                    $('.grid-01').isotope('layout');
-                }
+            });
+
+            $('#filters span').on('click',function(){
+                console.log('filters click on grid file')
             });
 
             if($gridDom.parent().find('.ajax-request').length){
