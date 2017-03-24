@@ -42,6 +42,15 @@
        </div>
 
 
+    <div class="border-top border-bottom block-button-bottom">
+                <div class="block-01-ms">
+                    <div class="align-flex">
+                                                    <a href="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/media_pdf/0001/16/dfa95175ac2ca00012143a8929febbd278035c7b.pdf" class="button button-half"><i class="icon icon_telecharger"></i> Conditions de préselection</a>
+                                                                    </div>
+                </div>
+            </div>
+
+
     <div class="all-contain">
 
       <div class="block-p-register block-01-ms">
