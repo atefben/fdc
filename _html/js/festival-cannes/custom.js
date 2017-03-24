@@ -13,9 +13,10 @@ $(window).load(function () {
 });
 
 $('.button').click(function () {
-  
-  $('body, #main').removeClass('loading');
 
+  if ( $("#main").hasClass( "loading" ) ) {
+      $('body, #main').removeClass('loading');
+  }
 });
 
 

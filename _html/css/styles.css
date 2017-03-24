@@ -11859,6 +11859,12 @@ video {
   margin-left: 1px !important;
 }
 
+.single-movie .poster .picto .icon {
+  font-size: 2rem;
+  margin-top: 24px;
+  margin-left: 26px !important;
+}
+
 #selection {
   background-color: #fff;
   left: 0;
@@ -16649,7 +16655,7 @@ article .read-later.rAlign span:after {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   padding: 70px 0;
-  margin-bottom: 50px;
+  margin-bottom: 0px !important;
   margin-top: 30px;
 }
 .single-article .share p {
