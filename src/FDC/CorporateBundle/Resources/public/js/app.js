@@ -2999,58 +2999,6 @@ var owInitGrid = function (id) {
                             $clamp(cat.get(0), {clamp: 1});
                         });
 
-                        /*$('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function(){
-
-                            //memorize scrolltop
-                            $('html,body').scrollTop(scroll);
-                            
-                            //rebuild grid depending on active filters
-                            var filters = '.all';
-                            if($('.filters .filter').length){
-                                filters = '';
-                                $('.filters .filter').each(function(){
-                                    var thisFilter = $(this).find('.select span.active').data('filter');
-                                    if(thisFilter !== 'all'){
-                                        var filterSelector = '.'+$(this).find('.select span.active').data('filter');
-                                        filters += filterSelector;
-                                    }
-                                });
-                            }
-
-                            console.log('applying filters to rebuilt grid',filters);
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                filter: filters,
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                },
-                                getSortData: {
-                                    number: '[data-sort]'
-                                },
-                                // sort by color then number
-                                sortBy: ['number']
-                            });
-
-                            $('html,body').scrollTop(scroll);
-
-                            $('.card.item').each(function(){
-                                var $this = $(this);
-                                var title = $this.find('.info strong a');
-                                var cat = $this.find('.info .category');
-                                var titleText;
-                                var catText;
-
-                                $clamp(title.get(0), {clamp: 1});
-                                $clamp(cat.get(0), {clamp: 1});
-                            });
-
-                            //reable available filters
-
-                        });*/
-
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
                         //if no button ajax-request, then remove current button
