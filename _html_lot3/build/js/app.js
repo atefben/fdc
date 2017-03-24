@@ -2906,8 +2906,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                console.log('unbind');
-                $gridDom.off('layoutComplete');
+
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -2962,12 +2961,6 @@ var owInitGrid = function (id) {
 
                         $gridMore.isotope('insert',articles);
 
-                        $gridDom.on('layoutComplete',function(){
-                            console.log('second sort');
-                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $('.grid-01').isotope();
-                        });
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
