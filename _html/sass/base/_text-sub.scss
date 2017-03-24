@@ -1205,3 +1205,8 @@ a {
     margin-bottom: 50px!important;
     margin-top: 50px!important;
 }
+
+.contain-title {
+    min-height: 70px!important;
+    flex-direction: column;
+}

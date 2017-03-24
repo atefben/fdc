@@ -7613,6 +7613,11 @@ a {
   margin-top: 50px !important;
 }
 
+.contain-title {
+  min-height: 70px !important;
+  flex-direction: column;
+}
+
 a {
   outline: none;
   text-decoration: none;
