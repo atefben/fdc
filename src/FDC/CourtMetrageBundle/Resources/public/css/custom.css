@@ -366,7 +366,7 @@ body.chocolat-open.fixed {
 }
 
 .wysiwyg strong {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .modal-content .half .wysiwyg p {
@@ -402,4 +402,8 @@ body.chocolat-open.fixed {
     padding: 58px 0px;
     border-top: 1px solid #ECECEC;
     border-bottom: 1px solid #ECECEC;
+}
+
+.contain-title .title-02 strong {
+    color: inherit !important;
 }
