@@ -2537,7 +2537,7 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            console.log('rmscroll');
+            console.log('scroll 1');
             $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -2563,7 +2563,7 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            console.log('rmscroll');
+            console.log('scroll 2');
             $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
@@ -2602,7 +2602,7 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    console.log('rmscroll');
+                    console.log('scroll 3');
                     $('html').removeClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
@@ -2642,7 +2642,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('rmscroll');
+                        console.log('scroll 4');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -2703,7 +2703,7 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('rmscroll');
+                        console.log('scroll 5');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
