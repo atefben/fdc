@@ -33,7 +33,7 @@
                       <div class="vCenterKid">
                         <h2>Short film<br> corner<br> <span class="goldColor">2017</span></h2>
                         <div class="alignButton">
-                          <div class="programmButton">En savois plus</div>
+                          <div class="programmButton programmButtonSmall">En savois plus</div>
                         </div>
                       </div>
                     </div>
@@ -58,7 +58,7 @@
                       <div class="vCenterKid">
                         <h2>Short film<br> corner<br> <span class="goldColor small-title">2017</span></h2>
                         <div class="alignButton">
-                          <div class="programmButton">Se renseigner pour l'année prochaine</div>
+                          <div class="programmButton programmButtonMedium">Se renseigner pour l'année prochaine</div>
                         </div>
                       </div>
                     </div>
