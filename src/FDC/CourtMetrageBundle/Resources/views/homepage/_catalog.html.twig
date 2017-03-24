@@ -7,7 +7,7 @@
         {% for catalog in catalogs %}
             <div class="blocks">
                 <h6>{{ catalog.name }}</h6>
-                <a href="{{ catalog.url }}" target="_blank">
+                <a href="{{ catalog.url }}" {% if fdc_court_metrage_scheme in catalog.url %}target="_blank"{% endif %}>
                     <div class="plusSignContainer">
                         <div class="plusSign">
                             <img src="{{ asset('bundles/fdccourtmetrage/img/plusSign.png') }}"/>

@@ -2,12 +2,9 @@
 
 namespace FDC\CourtMetrageBundle\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Url;
 
 class CatalogPushType extends AbstractType
 {
@@ -67,9 +64,6 @@ class CatalogPushType extends AbstractType
                         'label'              => 'form.ccm.label.catalog.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.ccm.label.external_url',
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                 ),
             ))

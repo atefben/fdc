@@ -7,8 +7,6 @@ use FDC\CourtMetrageBundle\Entity\CcmRegisterProcedureTranslation;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Url;
 
 class CcmRegisterProcedureAdmin extends Admin
 {
@@ -243,9 +241,6 @@ class CcmRegisterProcedureAdmin extends Admin
                         'label'              => 'form.ccm.film_register.regulation_details_button_url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
-                        'constraints'        => array(
-                            new Url(),
-                        )
                     ),
                     'status'         => array(
                         'label'                     => 'form.label_status',
