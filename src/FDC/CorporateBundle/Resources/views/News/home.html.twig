@@ -185,7 +185,7 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video video-container" 
+                                <article class="video video-container"
                                 data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                 {% if featuredVideo.image|trans_fallback('file') %}
                                     data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
@@ -194,11 +194,11 @@
                                 {% else %}
                                     data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
                                 {% endif %}>
-                                    <div class=" state-init video video-player" 
-                                         data-link="{{ featuredVideo.id }}" 
-                                         id="homepage-featured-video" 
+                                    <div class=" state-init video video-player"
+                                         data-link="{{ featuredVideo.id }}"
+                                         id="homepage-featured-video"
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                         
+
                                          data-name="{{ featuredVideo|trans_fallback('title') }}">
                                         <div id="video-player" class="jwplayer jw-reset">
                                         </div>
@@ -316,8 +316,7 @@
                                     </div>
                                 </article>
                             </div><!--
-                            -->
-                            <div class="right info-02">
+                            --><div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
@@ -430,7 +429,12 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
                                             <a href="#"><img
-                                                        src="{{ videoImage }}" alt=""></a>
+                                                        src="{% spaceless %}{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
+                                                        film: movie,
+                                                        film_format: '293x397',
+                                                        display_film_path: true,
+                                                        film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                                                        }) %}{% endspaceless %}" alt=""></a>
                                         </div>
                                     </div>
                                 {% endif %}
