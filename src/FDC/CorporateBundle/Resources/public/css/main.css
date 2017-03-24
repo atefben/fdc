@@ -16732,13 +16732,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .article-single table[border="0"] td, .article-single table[border="0"] td, .article-single table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td {
   border: none !important;
 }
+.article-single .text, .single-movie .text {
+  margin: 0 auto 70px;
+  width: 80%;
+}
 .article-single .text p, .single-movie .text p {
   color: #666;
   line-height: 1.7em;
   margin-bottom: 5px;
-}
-.article-single .text, .single-movie .text {
-  margin: 0 auto 70px;
 }
 .article-single .big-quote, .single-movie .big-quote {
   width: 630px;
