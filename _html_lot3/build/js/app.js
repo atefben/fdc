@@ -2603,7 +2603,7 @@ var owInitFilter = function (isTabSelection) {
 
                     $('#filters').remove();
                     console.log('scroll 3');
-                    $('html').removeClass('noscroll');
+                    $('html').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
