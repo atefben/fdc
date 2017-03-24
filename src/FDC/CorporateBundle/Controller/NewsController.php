@@ -184,10 +184,10 @@ class NewsController extends Controller
         }
         $day = $request->query->get('date', null);
         if ($day) {
-            $split = $day;
+            $split = explode('-', $day);
             if (count($split) == 4) {
                 $day = new DateTime();
-                $day->setDate($split[1], $split[2], (substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3]);
+                $day->setDate((substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3], $split[2], $split[1]);
                 $day->setTime(0, 0, 0);
             } else {
                 $day = null;
