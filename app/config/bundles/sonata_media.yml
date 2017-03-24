@@ -285,6 +285,8 @@ sonata_media:
                 1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
                 x404: { height: 404 , quality: 100}
                 293x397: { width: 293, height: 397, quality: 100, constraint: false }
+                # ccm homepage push image
+                455x348: { width: 455, height: 348, quality: 100, constraint: false }
 
         media_image_simple:
             providers:
