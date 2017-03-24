@@ -104,7 +104,7 @@
       height: 100%;
       background: center 0 no-repeat fixed;
       display: none;
-      transition: transform .8s ease-in, opacity .8s ease-in, background-position 0s;
+      transition: transform .8s ease-in, opacity .8s ease-in, background-position 0.1s cubic-bezier(0.15, 0.9, 0.34, 0.95);
       background-position: left top;
       background-size: 75%;
       background-position-y: 210px;
