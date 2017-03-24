@@ -16785,6 +16785,29 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: .875rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
+.article-single .single-photo, .single-movie .single-photo {
+  margin: 50px 0;
+  max-width: 100%;
+  text-align: center;
+  display: -ms-flexbox;
+  display: flex;
+}
+.article-single .single-photo .photo-container, .single-movie .single-photo .photo-container {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+}
+.article-single .single-photo img, .single-movie .single-photo img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+.article-single .single-photo .caption, .single-movie .single-photo .caption {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+}
 
 #slider-real {
   margin-top: 65px;
