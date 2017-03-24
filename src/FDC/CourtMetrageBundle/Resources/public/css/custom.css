@@ -394,6 +394,10 @@ body.chocolat-open.fixed {
     content:" ";
 }
 
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title {
+    font-weight: 700!important;
+}
+
 .modal-content .half .row:after {
     clear:both;
 }
