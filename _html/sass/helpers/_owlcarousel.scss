@@ -388,6 +388,12 @@
           @include transition(all .8s $smoothTransition);
         }
 
+      .programmButtonSmall {
+        font-size: 17px;
+      }
+
+      .programmButtonMedium {
+        font-size: 15px;
       }
 
       .goldColor {

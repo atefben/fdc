@@ -648,6 +648,21 @@ if ( $("#main").hasClass( "single-article" ) ) {
    });
 }
 
+/*var programmButton = $('.programmButton');
+
+  $(programmButton).each(function(){
+
+    var textLenght = $(this).text().length;
+
+      if ($(textLenght) < 20) {
+
+        $(this).css('font-size', "40px");
+
+      }
+
+  });*/
+
+
 });
 
  
