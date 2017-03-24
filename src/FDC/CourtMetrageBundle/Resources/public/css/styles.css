@@ -2640,7 +2640,7 @@ sup {
   font-size: 0.750rem;
   margin: 10px 0 0;
   text-align: left;
-  margin-bottom: 35px;
+  line-height: 25px;
 }
 
 .block-register-pop ul {
@@ -3069,6 +3069,12 @@ sup {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#slider-movies .vCenterKid .programmButtonSmall, #featured-movies .vCenterKid .programmButtonSmall {
+  font-size: 17px;
+}
+#slider-movies .vCenterKid .programmButtonMedium, #featured-movies .vCenterKid .programmButtonMedium {
+  font-size: 15px;
 }
 #slider-movies .vCenterKid .goldColor, #featured-movies .vCenterKid .goldColor {
   color: #c3a05f;
@@ -15817,6 +15823,9 @@ a {
 
 .competition {
   background-color: white;
+}
+.competition .title {
+  font-weight: bold !important;
 }
 .competition #slider-competition {
   margin-top: 65px;
@@ -30095,7 +30104,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 25px;
   color: #141414;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px !important;
   margin-top: 20px !important;
 }
@@ -30222,6 +30231,29 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 
 .backgroundPhotoContainer {
   background-size: cover !important;
+}
+
+.modal-content .block-register-pop {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 663px;
+}
+.modal-content .block-register-pop p {
+  color: #666666;
+  line-height: 20px;
+  margin-bottom: 35px;
+  text-align: left;
+  font-size: .75rem;
+  font-size: 16px;
+}
+.modal-content .block-register-pop strong {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  display: block;
 }
 
 /*
