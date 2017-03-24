@@ -388,7 +388,9 @@
           @include transition(all .8s $smoothTransition);
         }
 
-      .programmButtonSmall {
+      }
+      
+     .programmButtonSmall {
         font-size: 17px;
       }
 
