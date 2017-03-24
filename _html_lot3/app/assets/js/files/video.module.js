@@ -378,6 +378,16 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
 
+    console.log('setup',{
+        sources: $container.data('file'),
+        image: $container.data('img'),
+        primary: 'html5',
+        aspectratio: '16:9',
+        width: $(vid).closest('div').width(),
+        skin: 'seven',
+        height: playerHeight,
+        controls: ($('body').hasClass('tablet')) ? true : false
+    })
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -670,14 +680,18 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
 $(document).ready(function () {
     if ($('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true)
+        videoMovieBa = playerInit('video-player-ba', false, true);
     }
 
     if ($('.video-player').length > 0) {
         var dataFile = $('.video-player').data('file');
         var isPlaylist = false;
         if(typeof dataFile !== 'undefined'){
-            if(dataFile.length > 1){
+            if(typeof dataFile === 'string'){
+                dataFile = JSON.parse(dataFile);
+            }
+            console.log(dataFile.length);
+            if(dataFile.length > 2){
                 isPlaylist = true;
             }
         }

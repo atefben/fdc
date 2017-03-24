@@ -119,7 +119,6 @@ var initVideo = function(hash) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-
         var $container    = $("#"+vid.id).closest('.video-container');
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -166,20 +165,13 @@ var initVideo = function(hash) {
         }
 
         // CUSTOM LINK FACEBOOK
+        var fbHref = $topBar.find('.buttons .facebook').attr('href');
 
-
-            var fbHref = $topBar.find('.buttons .facebook').attr('href');
-        
-
-        
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
-        
-
-
-            var twHref = $topBar.find('.buttons .twitter').attr('href');
+        var twHref = $topBar.find('.buttons .twitter').attr('href');
         
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
@@ -602,6 +594,12 @@ var initVideo = function(hash) {
             playerHeight = 382;
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
+
+        if($(vid).is('#homepage-featured-video')){
+            havePlaylist = false;
+        }
+
+        console.log($(vid),$(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,
@@ -1060,7 +1058,6 @@ var initVideo = function(hash) {
                 $('.popin-mail').find('.contain-popin .ensalle').show();
             }
             if(typeof data['email-content'] !== 'undefined'){
-                console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
                 $('.popin-mail').find('#contact_description').val(data['email-content']);
             }
@@ -1133,15 +1130,13 @@ var initVideo = function(hash) {
         }
 
     } else if ($('#video-player-ba').length > 0) {
-
         videoMovieBa = playerInit('video-player-ba', false, true)
 
     } else if($('.video-player').length > 0) {
-
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
-        })
+        });
     }
     
 
@@ -2542,8 +2537,8 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            console.log('rmscroll');
-            $('html,body').addClass('noscroll');
+            console.log('scroll 1');
+            $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
             $('#filters .vCenterKid').find(':not(span)').remove();
@@ -2568,7 +2563,8 @@ var owInitFilter = function (isTabSelection) {
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            $('html,body').removeClass('noscroll');
+            console.log('scroll 2');
+            $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
                 $('#filters').remove();
@@ -2606,7 +2602,8 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    $('html,body').removeClass('noscroll');
+                    console.log('scroll 3');
+                    $('html').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
                     $('#filters .vCenterKid').find(':not(span)').remove();
@@ -2644,8 +2641,9 @@ var owInitFilter = function (isTabSelection) {
                     fnArraySortFilters();
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
-                        $('html,body').removeClass('noscroll');
+                    $('body').off('click').on('click', '#filters', function () {
+                        console.log('scroll 4');
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
@@ -2704,8 +2702,9 @@ var owInitFilter = function (isTabSelection) {
                     });
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
-                        $('html,body').removeClass('noscroll');
+                    $('body').off('click').on('click', '#filters', function () {
+                        console.log('scroll 5');
+                        $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
                             $('#filters').remove();
@@ -2872,14 +2871,19 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
-            $gridMore.isotope();
+
+            //$gridMore.isotope();
 
             //reset big imgs
-            $gridMore.on('layoutComplete',function(){
+            $gridMore.on('layoutComplete',function(event,laidOutItems){
+                console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
+                owsetGridBigImg(false, $('.grid-01'), false);
             });
 
+            $('#filters span').on('click',function(){
+                console.log('filters click on grid file')
+            });
 
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
@@ -2906,6 +2910,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
+                var ajaxLock = true;
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -2958,9 +2963,8 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
 
-                        //$gridMore.append(rawHtml);
                         $gridMore.isotope('insert',articles);
-                        //$gridMore.isotope('destroy');
+
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -2994,58 +2998,6 @@ var owInitGrid = function (id) {
                             $clamp(title.get(0), {clamp: 1});
                             $clamp(cat.get(0), {clamp: 1});
                         });
-
-                        /*$('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function(){
-
-                            //memorize scrolltop
-                            $('html,body').scrollTop(scroll);
-                            
-                            //rebuild grid depending on active filters
-                            var filters = '.all';
-                            if($('.filters .filter').length){
-                                filters = '';
-                                $('.filters .filter').each(function(){
-                                    var thisFilter = $(this).find('.select span.active').data('filter');
-                                    if(thisFilter !== 'all'){
-                                        var filterSelector = '.'+$(this).find('.select span.active').data('filter');
-                                        filters += filterSelector;
-                                    }
-                                });
-                            }
-
-                            console.log('applying filters to rebuilt grid',filters);
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                filter: filters,
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                },
-                                getSortData: {
-                                    number: '[data-sort]'
-                                },
-                                // sort by color then number
-                                sortBy: ['number']
-                            });
-
-                            $('html,body').scrollTop(scroll);
-
-                            $('.card.item').each(function(){
-                                var $this = $(this);
-                                var title = $this.find('.info strong a');
-                                var cat = $this.find('.info .category');
-                                var titleText;
-                                var catText;
-
-                                $clamp(title.get(0), {clamp: 1});
-                                $clamp(cat.get(0), {clamp: 1});
-                            });
-
-                            //reable available filters
-
-                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
@@ -3278,6 +3230,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -3352,8 +3305,6 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    dom.isotope();
-
 };
 
 var owInitAleaGrid = function (grid, dom, init) {
@@ -4888,7 +4839,6 @@ var owInitSlider = function (sliderName) {
             $('.slider-02 .center').removeClass('center');
             $(this).addClass('center');
             slide01.trigger('to.owl.carousel', number);
-
         });
     }
 
@@ -6903,6 +6853,16 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
 
+    console.log('setup',{
+        sources: $container.data('file'),
+        image: $container.data('img'),
+        primary: 'html5',
+        aspectratio: '16:9',
+        width: $(vid).closest('div').width(),
+        skin: 'seven',
+        height: playerHeight,
+        controls: ($('body').hasClass('tablet')) ? true : false
+    })
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -7195,14 +7155,18 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
 $(document).ready(function () {
     if ($('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true)
+        videoMovieBa = playerInit('video-player-ba', false, true);
     }
 
     if ($('.video-player').length > 0) {
         var dataFile = $('.video-player').data('file');
         var isPlaylist = false;
         if(typeof dataFile !== 'undefined'){
-            if(dataFile.length > 1){
+            if(typeof dataFile === 'string'){
+                dataFile = JSON.parse(dataFile);
+            }
+            console.log(dataFile.length);
+            if(dataFile.length > 2){
                 isPlaylist = true;
             }
         }
@@ -7721,27 +7685,30 @@ $(document).ready(function () {
         verif = hash.slice(0, 3);
         var slider = $('.block-diaporama .slider-01');
 
-        slider.find('.item').each(function(){
-            var img = $(this).find('img').css('height',428);
-            var w = img.width();
-            if(parseInt(w) == 0){
-                var itv = window.setInterval(function(){
-                    w = img.width();
-                    if(w > 0){
-                        window.clearInterval(itv);
+        slider.imagesLoaded(function(){
+            slider.find('.item').each(function(){
+                var img = $(this).find('img').css('height',428);
+                var w = img.width();
+                if(parseInt(w) == 0){
+                    var itv = window.setInterval(function(){
+                        w = img.width();
+                        if(w > 0){
+                            window.clearInterval(itv);
+                        }
+                    },200);
+                }else{
+                    var finalWidth = img.width() - 2;
+                    $(this).css('width',finalWidth);
+                    if($(this).find('figure').length){
+                        $(this).find('figure').css('width',finalWidth);
                     }
-                },200);
-            }else{
-                $(this).css('width',img.width());
-                if($(this).find('figure').length){
-                    $(this).find('figure').css('width',img.width());
                 }
+            });
+            if (hash.length > 0 && verif == "pid") {
+                owinitSlideShow(slider, hash);
+
             }
         });
-        if (hash.length > 0 && verif == "pid") {
-            owinitSlideShow(slider, hash);
-
-        }
     }
 
 

@@ -119,7 +119,6 @@ var initVideo = function(hash) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-
         var $container    = $("#"+vid.id).closest('.video-container');
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -166,20 +165,13 @@ var initVideo = function(hash) {
         }
 
         // CUSTOM LINK FACEBOOK
+        var fbHref = $topBar.find('.buttons .facebook').attr('href');
 
-
-            var fbHref = $topBar.find('.buttons .facebook').attr('href');
-        
-
-        
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
-        
-
-
-            var twHref = $topBar.find('.buttons .twitter').attr('href');
+        var twHref = $topBar.find('.buttons .twitter').attr('href');
         
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
@@ -602,6 +594,12 @@ var initVideo = function(hash) {
             playerHeight = 382;
             playerWidth = $('#homepage-playlist-player').outerWidth();
         }
+
+        if($(vid).is('#homepage-featured-video')){
+            havePlaylist = false;
+        }
+
+        console.log($(vid),$(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,
@@ -1060,7 +1058,6 @@ var initVideo = function(hash) {
                 $('.popin-mail').find('.contain-popin .ensalle').show();
             }
             if(typeof data['email-content'] !== 'undefined'){
-                console.log('email content',$('.popin-mail').find('.contain-popin .chap-article'),data['email-content']);
                 $('.popin-mail').find('.contain-popin .chap-article').text(data['email-content']);
                 $('.popin-mail').find('#contact_description').val(data['email-content']);
             }
@@ -1133,15 +1130,13 @@ var initVideo = function(hash) {
         }
 
     } else if ($('#video-player-ba').length > 0) {
-
         videoMovieBa = playerInit('video-player-ba', false, true)
 
     } else if($('.video-player').length > 0) {
-
         $.each($('.video-player'), function(i,e){
             var id = $(e).find('.jwplayer').attr('id');
             videoPlayer = playerInit(id, 'video-player', false, false);
-        })
+        });
     }
     
 

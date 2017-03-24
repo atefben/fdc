@@ -185,18 +185,20 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video">
-                                    <div class="video-container state-init video video-player"
+                                <article class="video video-container"
+                                data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                {% if featuredVideo.image|trans_fallback('file') %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
+                                {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
+                                    data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
+                                {% else %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
+                                {% endif %}>
+                                    <div class=" state-init video video-player"
                                          data-link="{{ featuredVideo.id }}"
+                                         id="homepage-featured-video"
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                         data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                            {% if featuredVideo.image|trans_fallback('file') %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
-                                            {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
-                                                data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
-                                            {% else %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
-                                            {% endif %}
+
                                          data-name="{{ featuredVideo|trans_fallback('title') }}">
                                         <div id="video-player" class="jwplayer jw-reset">
                                         </div>
@@ -276,19 +278,19 @@
                                          data-name="Le Best-of du 69e Festival de Cannes"
                                          data-playlist='[
                                               {% for movie in filmReleases %}
+                                                {%- if movie.videoMain and movie.videoMain.image -%}
+                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '135x185') %}
+                                                {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+                                                    {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                                                {%- endif -%}
                                                 {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
                                                 {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
                                               {
                                                 "sources":[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}],
                                                 "vid": {{ trans.id }},
-                                                "image":"{% spaceless %}{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-                                         film: movie,
-                                         film_format: '135x185',
-                                         display_film_path: true,
-                                         film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-                                         }) %}{% endspaceless %}",
+                                                "image":"{{ videoImage|escape('html_attr') }}",
                                                 "name":"{{ movie.titleVO }}",
-                                                "category":"Photocall",
+                                                "category":"{{ movie.videoMain.theme|trans_fallback('name') }}",
                                                 "date":"{{ movie.publishedAt|date('d.m.y') }}",
                                                 "hour":"{{ movie.publishedAt|date('H:i') }}"
                                               }{% if loop.last == false %},{% endif %}
@@ -314,15 +316,15 @@
                                     </div>
                                 </article>
                             </div><!--
-                            -->
-                            <div class="right info-02">
+                            --><div class="right info-02">
                                 <div class="block-infos">
                                     <div class="text-infos vFlexAlign ">
                                         {% set movie = filmReleases|first %}
                                         <strong class="title-3">Sortie
                                             le <span
                                                     class="to-update">{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span></strong>
-                                        <strong class='title-4'>{{ movie.titleVO }}</strong>
+                                        {% set movieUrlFirst = url('fdc_corporate_movie_get', {'slug': movie.slug}) %}
+                                        <a href="{{ movieUrlFirst }}" class='title-4'>{{ movie.titleVO }}</a>
                                         {% set directors = movie.getDirectors() %}
 
                                         <div class="authors-container">
@@ -408,7 +410,11 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                             {% endif %}
                                         {% endif %}
                                     {% endfor %}
-
+                                    {%- if movie.videoMain and movie.videoMain.image -%}
+                                        {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
+                                    {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+                                        {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                                    {%- endif -%}
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
                                          data-ispalm="{% if dataAward != '' %}1{% else %}0{% endif %}"
@@ -419,7 +425,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
                                          data-email-content="{{ movie|trans_fallback('synopsis')|truncate(200, true)|escape('html_attr') }}"
-                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={{ videoImage }}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                          data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
@@ -568,8 +574,7 @@ http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poste
                                     </a>
                                 </div>
                             </div><!--
-                            -->
-                            <div class="left">
+                            --><div class="left">
                                 <div class="long-push three-quarts-div">
                                     <a {{ homepage|trans_fallback('pushSecondaryUrl3')|external_link }}
                                             href="{{ homepage|trans_fallback('pushSecondaryUrl3') }}">

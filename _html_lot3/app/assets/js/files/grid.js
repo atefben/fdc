@@ -77,14 +77,19 @@ var owInitGrid = function (id) {
                 // sort by color then number
                 sortBy: ['number']
             });
-            $gridMore.isotope();
+
+            //$gridMore.isotope();
 
             //reset big imgs
-            $gridMore.on('layoutComplete',function(){
+            $gridMore.on('layoutComplete',function(event,laidOutItems){
+                console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
+                owsetGridBigImg(false, $('.grid-01'), false);
             });
 
+            $('#filters span').on('click',function(){
+                console.log('filters click on grid file')
+            });
 
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
@@ -111,6 +116,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
+                var ajaxLock = true;
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -163,9 +169,8 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
 
-                        //$gridMore.append(rawHtml);
                         $gridMore.isotope('insert',articles);
-                        //$gridMore.isotope('destroy');
+
                         if(typeof moreBtn !== 'undefined'){
                             
                             $this.attr('href',moreBtn);
@@ -199,58 +204,6 @@ var owInitGrid = function (id) {
                             $clamp(title.get(0), {clamp: 1});
                             $clamp(cat.get(0), {clamp: 1});
                         });
-
-                        /*$('html,body').scrollTop(scroll);
-                        $gridMore.imagesLoaded(function(){
-
-                            //memorize scrolltop
-                            $('html,body').scrollTop(scroll);
-                            
-                            //rebuild grid depending on active filters
-                            var filters = '.all';
-                            if($('.filters .filter').length){
-                                filters = '';
-                                $('.filters .filter').each(function(){
-                                    var thisFilter = $(this).find('.select span.active').data('filter');
-                                    if(thisFilter !== 'all'){
-                                        var filterSelector = '.'+$(this).find('.select span.active').data('filter');
-                                        filters += filterSelector;
-                                    }
-                                });
-                            }
-
-                            console.log('applying filters to rebuilt grid',filters);
-                            owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            $gridMore.isotope({
-                                itemSelector: '.item',
-                                layoutMode: 'masonry',
-                                filter: filters,
-                                packery: {
-                                    columnWidth: '.grid-sizer'
-                                },
-                                getSortData: {
-                                    number: '[data-sort]'
-                                },
-                                // sort by color then number
-                                sortBy: ['number']
-                            });
-
-                            $('html,body').scrollTop(scroll);
-
-                            $('.card.item').each(function(){
-                                var $this = $(this);
-                                var title = $this.find('.info strong a');
-                                var cat = $this.find('.info .category');
-                                var titleText;
-                                var catText;
-
-                                $clamp(title.get(0), {clamp: 1});
-                                $clamp(cat.get(0), {clamp: 1});
-                            });
-
-                            //reable available filters
-
-                        });*/
 
                         $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                         
@@ -483,6 +436,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -557,8 +511,6 @@ var owsetGridBigImg = function (grid, dom, init) {
             i++;
         }
     }
-    dom.isotope();
-
 };
 
 var owInitAleaGrid = function (grid, dom, init) {

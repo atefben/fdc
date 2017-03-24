@@ -166,7 +166,7 @@ class NodeListener
                 ->setEntityClass($class)
                 ->setEntityId($id)
             ;
-
+            $manager->persist($node);
             $node->addTranslation($nodeTranslation);
         }
         $this->nodeTranslations[$class][$id] = $nodeTranslation;

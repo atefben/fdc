@@ -184,10 +184,10 @@ class NewsController extends Controller
         }
         $day = $request->query->get('date', null);
         if ($day) {
-            $split = $day;
+            $split = explode('-', $day);
             if (count($split) == 4) {
                 $day = new DateTime();
-                $day->setDate($split[1], $split[2], (substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3]);
+                $day->setDate((substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3], $split[2], $split[1]);
                 $day->setTime(0, 0, 0);
             } else {
                 $day = null;
@@ -253,6 +253,7 @@ class NewsController extends Controller
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
+        $filters['types']['all'] = 'all';
 
 
         foreach ($articles as $key => $article) {
@@ -270,6 +271,12 @@ class NewsController extends Controller
             $format = $article->getTypeClone();
             if (!in_array($format, $filters['format'])) {
                 $filters['format'][] = $format;
+            }
+            if ($article instanceof Info) {
+                $filters['types']['info'] = 'filters.type.info';
+            }
+            elseif ($article instanceof Statement) {
+                $filters['types']['statement'] = 'filters.type.statement';
             }
         }
 

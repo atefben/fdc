@@ -174,10 +174,10 @@ class CcmNewsRepository extends EntityRepository
                     ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
                     ->setParameter('now', $now)
                     ->andWhere(
-                        '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status) OR
-                    (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status) OR
-                    (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status) OR
-                    (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status)'
+                        '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status_translated) OR
+                    (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status_translated) OR
+                    (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status_translated) OR
+                    (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status_translated)'
                     )
                     ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
                     ->setParameter('locale', $locale)

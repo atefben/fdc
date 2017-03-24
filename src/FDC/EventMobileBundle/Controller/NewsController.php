@@ -177,7 +177,7 @@ class NewsController extends Controller
             if ($key < 3) {
                 $homeArticlesTop[$key] = $homeArticle;
             }
-            if ($key >= 3) {
+            if ($key == 3) { // only one news before "see more" button, see #3217
                 $homeArticlesBottom[$key] = $homeArticle;
                 $homeArticlesBottom[$key]->double = false;;
             }
