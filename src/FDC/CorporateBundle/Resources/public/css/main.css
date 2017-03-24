@@ -7539,6 +7539,7 @@ header #navigation ul.user li a .icon {
   /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -webkit-grab;
+  overflow: hidden;
 }
 
 .block-diaporama .slider-01 figcaption {

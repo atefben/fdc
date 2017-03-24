@@ -164,7 +164,6 @@ var owInitSlider = function (sliderName) {
             $('.slider-02 .center').removeClass('center');
             $(this).addClass('center');
             slide01.trigger('to.owl.carousel', number);
-
         });
     }
 
