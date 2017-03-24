@@ -1,5 +1,8 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
+{% set temp = 'filters.type.info'|trans %}
+{% set temp = 'filters.type.statement'|trans %}
+
 {% import 'FDCCorporateBundle:Macro:article.html.twig' as macroArticle %}
 {% if articles|length %}
     {% if filters.themes.content is defined and filters.themes.content|length %}
@@ -35,8 +38,8 @@
 
     {% if filters.types is defined %}
         <div class="compute-filters type">
-            {% for key, type in filters.types if key != 'all' %}
-                <span class="" data-filter="{{ key }}">{{ type }}</span>
+            {% for keyType, labelType in filters.types if keyType != 'all' %}
+                <span class="" data-filter="{{ keyType }}">{{ labelType|trans }}</span>
             {% endfor %}
         </div>
     {% endif %}
