@@ -44,7 +44,7 @@ if ($('#slider-discover .item').length < 4) {
             .addClass('active').siblings().removeClass('active');
   });
 
-    /* slider competitions
+    // slider competitions
     var sliderCompetition = $("#slider-competition").owlCarousel({
       nav: false,
       dots: false,
@@ -71,7 +71,7 @@ if ($('#slider-discover .item').length < 4) {
       }
     });
 
-    sliderCompetition.owlCarousel();*/
+    sliderCompetition.owlCarousel();
 
 
   $('#slider-movies').owlCarousel({
