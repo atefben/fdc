@@ -6,7 +6,7 @@
             <div class="bandeau-list">
                 <div
                         class="bandeau-list-img bandeau-head vCenter subHeader eventsHeader"
-                        style="background-image:url({% if program.getTranslatable().image %}{% path program.getTranslatable().image|trans_fallback('file'), '976x535' %}{% endif %})">
+                        style="background-image:url({% if program.getTranslatable().image %}{% path program.getTranslatable().image|trans_fallback('file'), 'reference' %}{% endif %})">
                     <h3>{{ program.title }}</h3>
                 </div>
             </div>
