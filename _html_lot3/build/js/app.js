@@ -2906,6 +2906,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
+                console.log('unbind');
                 $gridMore.off('layoutComplete');
                 var $this = $(this);
                 var url = $(this).attr('href');
