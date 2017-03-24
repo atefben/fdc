@@ -2640,7 +2640,7 @@ sup {
   font-size: 0.750rem;
   margin: 10px 0 0;
   text-align: left;
-  margin-bottom: 35px;
+  line-height: 25px;
 }
 
 .block-register-pop ul {
@@ -15823,6 +15823,9 @@ a {
 
 .competition {
   background-color: white;
+}
+.competition .title {
+  font-weight: bold !important;
 }
 .competition #slider-competition {
   margin-top: 65px;
@@ -30101,7 +30104,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 25px;
   color: #141414;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px !important;
   margin-top: 20px !important;
 }
