@@ -179,6 +179,7 @@ class NewsController extends Controller
 
         $theme = $request->query->get('theme', null);
         $format = $request->query->get('format', null);
+        $type = $request->query->get('type', null);
         if ($format == 'all') {
             $format = null;
         }
@@ -207,12 +208,12 @@ class NewsController extends Controller
             }
         }
 
-        $parameters = $this->infosAndStatementsFilters($locale, $timestamp, $day, $theme, $format);
+        $parameters = $this->infosAndStatementsFilters($locale, $timestamp, $day, $theme, $format, $type);
         return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
 
 
-    private function infosAndStatementsFilters($locale, $time = null, DateTime $day = null, Theme $theme = null, $format = null)
+    private function infosAndStatementsFilters($locale, $time = null, DateTime $day = null, Theme $theme = null, $format = null, $type = null)
     {
         $before = null;
         if ($time) {
@@ -221,17 +222,23 @@ class NewsController extends Controller
         }
         $maxResults = 50;
 
-        $infos = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Info')
-            ->getInfoRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
-        ;
+        $infos = [];
+        if ($type != 'communique') {
+            $infos = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Info')
+                ->getInfoRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
+            ;
+        }
 
-        $statements = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:Statement')
-            ->getStatementRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
-        ;
+        $statements = [];
+        if ($type != 'info') {
+            $statements = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Statement')
+                ->getStatementRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
+            ;
+        }
 
         $articles = array_merge($infos, $statements);
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
@@ -276,7 +283,7 @@ class NewsController extends Controller
                 $filters['types']['info'] = 'filters.type.info';
             }
             elseif ($article instanceof Statement) {
-                $filters['types']['statement'] = 'filters.type.statement';
+                $filters['types']['communique'] = 'filters.type.statement';
             }
         }
 
