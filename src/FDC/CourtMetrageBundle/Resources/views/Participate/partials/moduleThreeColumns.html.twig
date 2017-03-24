@@ -8,7 +8,7 @@
                 <img src="{% path module.image1|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf1 is not null %}
-                <a href="{% path module.pdf1|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+                <a href="{% path module.pdf1|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
             {% endif %}
             <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description1|raw }}</div>
         </div>
@@ -20,7 +20,7 @@
                 <img src="{% path module.image2|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf2 is not null %}
-                <a href="{% path module.pdf2|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+                <a href="{% path module.pdf2|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
             {% endif %}
             <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description2|raw }}</div>
         </div>
@@ -32,7 +32,7 @@
                 <img src="{% path module.image3|trans_fallback("file"), "543x326" %}" alt="" class="map">
             {% endif %}
             {% if module.pdf3 is not null %}
-                <a href="{% path module.pdf3|trans_fallback("file"), "reference" %}" class="btn telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+                <a href="{% path module.pdf3|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
             {% endif %}
             <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description3|raw }}</div>
         </div>
