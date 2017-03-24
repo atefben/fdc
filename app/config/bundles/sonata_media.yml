@@ -373,8 +373,6 @@ sonata_media:
                 1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
                 # ccm pros image
                 230x230: { width: 230 , height: 230 , quality: 100, constraint: false }
-                # ccm partner image
-                270x165fix: { width: 270 , height: 165 , quality: 100, constraint: false }
 
         media_audio:
             providers:

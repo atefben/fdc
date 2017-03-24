@@ -1,7 +1,8 @@
 <div class="item-partners">
     <div class="contain-img">
         {% if module.logo is not null %}
-            <img src="{% path module.logo|trans_fallback("file"), "270x165fix" %}" alt="{{ module.logo|trans_fallback('alt') }}" />
+            {% set image = module.logo|trans_fallback("file") %}
+            <img src="{% path image, "270x165" %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="105" height="105"{% else %}height="105"{% endif %} alt="{{ module.logo|trans_fallback('alt') }}" />
         {% endif %}
     </div>
     <div class="text-partners">
