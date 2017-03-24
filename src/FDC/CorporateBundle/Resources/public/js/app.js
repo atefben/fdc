@@ -2641,7 +2641,7 @@ var owInitFilter = function (isTabSelection) {
                     fnArraySortFilters();
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
+                    $('body').off('click').on('click', '#filters', function () {
                         console.log('rmscroll');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
@@ -2702,7 +2702,7 @@ var owInitFilter = function (isTabSelection) {
                     });
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
+                    $('body').off('click').on('click', '#filters', function () {
                         console.log('rmscroll');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
@@ -2873,14 +2873,6 @@ var owInitGrid = function (id) {
             });
             $gridMore.isotope();
 
-            //reset big imgs
-            $gridDom.on('layoutComplete',function(){
-                console.log('append complete');
-                $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg($gridMore, $('.grid-01'), false);
-                $('.grid-01').isotope();
-            });
-
             if($gridDom.parent().find('.ajax-request').length){
                 if(!$gridDom.parent().find('.ajax-request').is(':visible')){
                     //hidden button, infinite load
@@ -2968,6 +2960,14 @@ var owInitGrid = function (id) {
                             //visible buton = no infinite load & undefined button, let's remove it
                             $this.remove();
                         }
+
+                        //reset big imgs
+                        $gridMore.on('layoutComplete',function(){
+                            console.log('append complete');
+                            $('.grid-01').find('double').removeClass('double').removeClass('w2');
+                            owsetGridBigImg($gridMore, $('.grid-01'), false);
+                            $('.grid-01').isotope();
+                        });
 
                         //manage filters
                         if($data.filter('.compute-filters').length){

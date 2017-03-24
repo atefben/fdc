@@ -150,7 +150,7 @@ var owInitFilter = function (isTabSelection) {
                     fnArraySortFilters();
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
+                    $('body').off('click').on('click', '#filters', function () {
                         console.log('rmscroll');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
@@ -211,7 +211,7 @@ var owInitFilter = function (isTabSelection) {
                     });
 
                     // close filters
-                    $('body').on('click', '#filters', function () {
+                    $('body').off('click').on('click', '#filters', function () {
                         console.log('rmscroll');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
