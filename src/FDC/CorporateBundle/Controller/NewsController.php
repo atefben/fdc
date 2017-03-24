@@ -101,6 +101,7 @@ class NewsController extends Controller
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
+        $filters['types']['all'] = 'all';
 
 
         foreach ($articles as $key => $newsArticle) {
@@ -121,6 +122,12 @@ class NewsController extends Controller
 
             if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
                 $filters['format'][] = $newsArticle->getNewsType();
+            }
+            if ($newsArticle instanceof Info) {
+                $filters['types']['info'] = 'filters.type.info';
+            }
+            elseif ($newsArticle instanceof Statement) {
+                $filters['types']['statement'] = 'filters.type.statement';
             }
         }
 
