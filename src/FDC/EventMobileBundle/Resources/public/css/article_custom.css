@@ -149,3 +149,7 @@
 .single-article .film .info-film .wrapper p {
     font-size: 0.813rem;
 }
+
+.articles .articles-carousel .thumb.item .info {
+    width: 440px;
+}
