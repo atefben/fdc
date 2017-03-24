@@ -82,13 +82,15 @@ a {
 }
 
 .title {
-  font-family: $Playfair;
-  font-weight: 700;
+  //font-family: $Playfair;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  //font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.5em;
   margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
+  font-weight: normal!important;
 }
 
 .subtitle {
@@ -113,4 +115,18 @@ a {
     opacity: 1;
     visibility: visible;
   }
+}
+
+.whiteText {
+  color: white!important;
+  height: 50px;
+  text-transform: uppercase;
+  border: 1px solid #c3a05f;
+  font-size: 12px;
+  font-family: $CamphorBold;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  line-height: 50px;
+  letter-spacing: 1px;
 }
