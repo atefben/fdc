@@ -1,10 +1,10 @@
 if ($('#slider-discover .item').length < 4) {  
      
 
-     var owl = $('#slider-discover').owlCarousel({
-          items:3,
-          dots: false,
-        });
+   var owl = $('#slider-discover').owlCarousel({
+        items:3,
+        dots: false,
+      });
   } else {
       var owl = $('#slider-discover').owlCarousel({
       dots: true,

@@ -116,3 +116,17 @@ a {
     visibility: visible;
   }
 }
+
+.whiteText {
+    color: white!important;
+    height: 50px;
+    text-transform: uppercase;
+    border: 1px solid #c3a05f;
+    font-size: 12px;
+    font-family: $CamphorBold;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    line-height: 50px;
+    letter-spacing: 1px;
+}

@@ -3038,10 +3038,11 @@ sup {
   font-size: 40px;
 }
 #slider-movies .vCenterKid .alignButton, #featured-movies .vCenterKid .alignButton {
-  text-align: left;
-  position: relative;
+  position: absolute;
   /* left: -100px; */
-  padding: 0px 80px 0px 0px;
+  /* padding: 0px 200px 0px 0px; */
+  /* margin-right: 163px; */
+  padding: 0px 20px;
 }
 #slider-movies .vCenterKid .programmButton, #featured-movies .vCenterKid .programmButton {
   padding: 0px 15px;
@@ -7717,6 +7718,20 @@ a {
 .canvasloader.show {
   opacity: 1;
   visibility: visible;
+}
+
+.whiteText {
+  color: white !important;
+  height: 50px;
+  text-transform: uppercase;
+  border: 1px solid #c3a05f;
+  font-size: 12px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  line-height: 50px;
+  letter-spacing: 1px;
 }
 
 .icon {
