@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Base\AdminBundle\Admin\ThemeAdmin;
 use FDC\CourtMetrageBundle\Entity\HomepageActualiteTranslation;
-use Symfony\Component\Validator\Constraints\Url;
 
 class HomepageActualiteType extends AbstractType
 {
@@ -91,9 +90,6 @@ class HomepageActualiteType extends AbstractType
                         'label'              => 'form.ccm.label.actualite.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.ccm.label.external_url',
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                 ),
             ))

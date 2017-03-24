@@ -397,3 +397,9 @@ body.chocolat-open.fixed {
 .modal-content .half .row:after {
     clear:both;
 }
+
+.block-custom-bottom {
+    padding: 58px 0px;
+    border-top: 1px solid #ECECEC;
+    border-bottom: 1px solid #ECECEC;
+}

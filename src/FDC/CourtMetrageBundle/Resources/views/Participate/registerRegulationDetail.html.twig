@@ -25,7 +25,7 @@
                             <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button button-half"><i class="icon icon_telecharger"></i> {{ 'ccm.register_movie.preselection_rules'|trans }}</a>
                         {% endif %}
                         {% if registerProcedure.regulationDetailsButtonUrl and registerProcedure.regulationDetailsButtonLabel %}
-                            <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_domain not in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+                            <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_scheme in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         {% endif %}
 
         {% if registerProcedure.contactUsTitle %}
-            <div class="block-contact block-01-ms">
+            <div class="block-contact block-01-ms block-custom-bottom">
                 <strong class="title-25">{{ registerProcedure.contactUsTitle }}</strong>
                 <div class="item i-1">
                     {{ registerProcedure.contactUsLeftText|raw }}

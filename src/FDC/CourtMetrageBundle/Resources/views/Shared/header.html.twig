@@ -50,17 +50,17 @@
                 <div class="topiconsContainer">
                     {% if menuTranslation.registerPicIsActive %}
                         <div class="topIcons third{% if not menuTranslation.programPicIsActive and not menuTranslation.catalogPicIsActive %} icon-border-left{% endif %}">
-                            <a href="{{ menuTranslation.urlRegister }}" {% if fdc_court_metrage_domain not in menuTranslation.urlRegister %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
+                            <a href="{{ menuTranslation.urlRegister }}" {% if fdc_court_metrage_scheme in menuTranslation.urlRegister %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
                         </div>
                     {% endif %}
                     {% if menuTranslation.catalogPicIsActive %}
                         <div class="topIcons second">
-                            <a href="{{ menuTranslation.urlCatalog }}" {% if fdc_court_metrage_domain not in menuTranslation.urlCatalog %}target="_blank"{% endif %}><img class="biggerIcon" src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
+                            <a href="{{ menuTranslation.urlCatalog }}" {% if fdc_court_metrage_scheme in menuTranslation.urlCatalog %}target="_blank"{% endif %}><img class="biggerIcon" src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
                         </div>
                     {% endif %}
                     {% if menuTranslation.programPicIsActive %}
                         <div class="topIcons first{% if not menuTranslation.catalogPicIsActive %} icon-border-right{% endif %}">
-                            <a href="{{ menuTranslation.urlProgram }}" {% if fdc_court_metrage_domain not in menuTranslation.urlProgram %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
+                            <a href="{{ menuTranslation.urlProgram }}" {% if fdc_court_metrage_scheme in menuTranslation.urlProgram %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
                         </div>
                     {% endif %}
                 </div>
