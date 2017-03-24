@@ -272,10 +272,10 @@ class NewsController extends Controller
             if (!in_array($format, $filters['format'])) {
                 $filters['format'][] = $format;
             }
-            if ($newsArticle instanceof Info) {
+            if ($article instanceof Info) {
                 $filters['types']['info'] = 'filters.type.info';
             }
-            elseif ($newsArticle instanceof Statement) {
+            elseif ($article instanceof Statement) {
                 $filters['types']['statement'] = 'filters.type.statement';
             }
         }
