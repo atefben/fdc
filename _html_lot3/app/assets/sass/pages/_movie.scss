@@ -1858,9 +1858,11 @@
       margin: 50px 0;
       max-width: 100%;
       text-align: center;
+      display: flex;
 
       .photo-container {
-        display: inline-block;
+        display: block;
+        margin: 0 auto;
         width: auto;
       }
 

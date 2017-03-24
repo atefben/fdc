@@ -54,7 +54,7 @@
   }
 
   &.dark caption, &.dark .caption{
-    color: #666666;
+    color: #969696;
     font-size: .75rem;
     font-family: $CamphorRegular;
     margin-bottom: 20px;
@@ -72,10 +72,6 @@
   }
 
   &.dark .slideshow {
-    border-color: #2c2c2c;
-  }
-
-  &.dark .quote {
     border-color: #2c2c2c;
   }
 
