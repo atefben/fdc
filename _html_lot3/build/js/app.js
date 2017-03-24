@@ -2878,7 +2878,7 @@ var owInitGrid = function (id) {
             $gridMore.on('layoutComplete',function(event,laidOutItems){
                 console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg(alse, $('.grid-01'), false);
+                owsetGridBigImg(false, $('.grid-01'), false);
                 //$('.grid-01').isotope('layout');
             });
 
