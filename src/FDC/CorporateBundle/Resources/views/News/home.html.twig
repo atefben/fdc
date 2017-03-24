@@ -185,19 +185,20 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video">
-                                    <div class="video-container state-init video video-player" 
+                                <article class="video video-container" 
+                                data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                {% if featuredVideo.image|trans_fallback('file') %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
+                                {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
+                                    data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
+                                {% else %}
+                                    data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
+                                {% endif %}>
+                                    <div class=" state-init video video-player" 
                                          data-link="{{ featuredVideo.id }}" 
                                          id="homepage-featured-video" 
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                         data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                            {% if featuredVideo.image|trans_fallback('file') %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
-                                            {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
-                                                data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
-                                            {% else %}
-                                                data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
-                                            {% endif %}
+                                         
                                          data-name="{{ featuredVideo|trans_fallback('title') }}">
                                         <div id="video-player" class="jwplayer jw-reset">
                                         </div>
