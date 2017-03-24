@@ -23,7 +23,9 @@ class KernelRequestListener
     {
         $request = $event->getRequest();
 
-        if ($locale = $request->attributes->get('_locale')) {
+        if ($locale = $request->get('locale')) {
+            $request->getSession()->set('_locale', $locale);
+        } else if ($locale = $request->attributes->get('_locale')) {
             $request->getSession()->set('_locale', $locale);
         } else {
             // if no explicit locale has been set on this request, use one from the session
