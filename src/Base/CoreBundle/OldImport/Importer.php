@@ -677,7 +677,11 @@ class Importer
             }
             $this->setMediaAudioFilmFilmAssociations($mediaAudio);
         }
-
+        if (!$mediaAudio->getTranslations()->count()) {
+            $this->getManager()->remove($mediaAudio);
+            $this->getManager()->flush();
+            return null;
+        }
         $this->getManager()->flush();
         return $mediaAudio;
     }
