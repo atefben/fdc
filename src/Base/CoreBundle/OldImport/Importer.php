@@ -593,8 +593,8 @@ class Importer
         ;
 
         foreach ($oldMediasI18n as $oldMediaI18n) {
-            $oldLocale = $oldMediaI18n->getCulture() == 'cn' ? 'zh' : $oldMediaI18n->getCulture();
-            if (!in_array($oldLocale, $this->langs)) {
+            $locale = $oldMediaI18n->getCulture() == 'cn' ? 'zh' : $oldMediaI18n->getCulture();
+            if (!in_array($locale, $this->langs)) {
                 continue;
             }
 
