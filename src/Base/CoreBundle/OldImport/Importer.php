@@ -53,12 +53,12 @@ class Importer
     /**
      * @var array
      */
-    protected $langs = ['fr', 'en', 'es', 'zh'];
+    protected $langs = array('fr', 'en', 'es', 'zh');
 
     /**
      * @var array
      */
-    protected $entitiesCount = [];
+    protected $entitiesCount = array();
 
     /**
      * @var bool
@@ -136,7 +136,7 @@ class Importer
         if (!preg_match('/[\x80-\xff]/', $string))
             return $string;
 
-        $chars = [
+        $chars = array(
             // Decompositions for Latin-1 Supplement
             chr(195) . chr(128) => 'A', chr(195) . chr(129) => 'A',
             chr(195) . chr(130) => 'A', chr(195) . chr(131) => 'A',
@@ -231,7 +231,7 @@ class Importer
             chr(197) . chr(186) => 'z', chr(197) . chr(187) => 'Z',
             chr(197) . chr(188) => 'z', chr(197) . chr(189) => 'Z',
             chr(197) . chr(190) => 'z', chr(197) . chr(191) => 's',
-        ];
+        );
 
         $string = strtr($string, $chars);
 
@@ -433,12 +433,12 @@ class Importer
      */
     protected function createMediaImageFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $imgTitle = [
+        $imgTitle = array(
             'fr' => 'photo',
             'en' => 'photo',
             'es' => 'foto',
             'zh' => '照片',
-        ];
+        );
 
         $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
@@ -545,12 +545,14 @@ class Importer
      */
     protected function createMediaAudioFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $audioTitle = [
+        $audioTitle = array(
             'fr' => 'audio',
             'en' => 'audio',
             'es' => 'audio',
             'zh' => '音频',
-        ];
+        );
+
+        $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
         $oldMedia = $this
             ->getManager()
@@ -558,17 +560,42 @@ class Importer
             ->findOneBy(['id' => $oldMediaId])
         ;
 
-        if (!$oldMedia) {
+        $oldMediaI18n = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaI18n')
+            ->findOneBy(['culture' => $oldLocale, 'id' => $oldMediaId])
+        ;
+
+        if (!$oldMedia || !$oldMediaI18n) {
             return null;
         }
 
-        $oldMediasI18n = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:OldMediaI18n')
-            ->findBy(['id' => $oldMediaId])
-        ;
+        $code = $oldMediaI18n->getCode();
 
-        if (!$oldMediasI18n) {
+        if (!$code) {
+            $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
+                'id'      => $oldMedia->getId(),
+                'culture' => 'bi',
+            ))
+            ;
+            if ($duplicate && $duplicate->getCode()) {
+                $code = $duplicate->getCode();
+                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
+            }
+            if ($duplicate && !$duplicate->getCode() && $oldMediaI18n->getHdFormatFilename()) {
+                $code = $oldMediaI18n->getCode();
+                $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
+            }
+            if (!$code) {
+                return null;
+            }
+        } else {
+            $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
+        }
+
+        $file = $this->createAudio($audioPath);
+
+        if (!$file) {
             return null;
         }
 
@@ -592,97 +619,61 @@ class Importer
             ->setUpdatedAt($oldMedia->getUpdatedAt())
         ;
 
-        foreach ($oldMediasI18n as $oldMediaI18n) {
-            $locale = $oldMediaI18n->getCulture() == 'cn' ? 'zh' : $oldMediaI18n->getCulture();
-            if (!in_array($locale, $this->langs)) {
-                continue;
+        if ($oldMediaI18n->getFilenameThumbnail()) {
+            $mediaAudio->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'audio', $locale));
+        }
+
+        if ($setCorporate) {
+            if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
+                $mediaAudio->addSite($this->getSiteCorporate());
             }
+        }
 
-            $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
+        $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
 
-//            if ($mediaAudioTranslation) {
-//                continue;
-//            }
-
-            $code = $oldMediaI18n->getCode();
-            if (!$code) {
-                $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy([
-                    'id'      => $oldMedia->getId(),
-                    'culture' => 'bi',
-                ])
-                ;
-                if ($duplicate && $duplicate->getCode()) {
-                    $code = $duplicate->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-                }
-                if ($duplicate && !$duplicate->getCode() && $oldMediaI18n->getHdFormatFilename()) {
-                    $code = $oldMediaI18n->getCode();
-                    $audioPath = 'http://www.festival-cannes.fr/' . trim($code);
-                }
-                if (!$code) {
-                    continue;
-                }
-            } else {
-                $audioPath = 'http://www.festival-cannes.fr/mp3/' . trim($code) . '.mp3';
-            }
-
-            $file = $this->createAudio($audioPath);
-
-            if (!$file) {
-                continue;
-            }
-
-            if ($oldMediaI18n->getFilenameThumbnail()) {
-                $mediaAudio->setImage($this->getMediaImageThumbnail($oldMedia, $oldMediaI18n, 'audio', $locale));
-            }
-
-            if ($setCorporate) {
-                if (!$mediaAudio->getSites()->contains($this->getSiteCorporate())) {
-                    $mediaAudio->addSite($this->getSiteCorporate());
-                }
-            }
-
-            if (!$mediaAudioTranslation) {
-                $mediaAudioTranslation = new MediaAudioTranslation();
-                $mediaAudioTranslation
-                    ->setLocale($locale)
-                    ->setTranslatable($mediaAudio)
-                ;
-                $this->getManager()->persist($oldMediaI18n);
-            }
-
+        if (!$mediaAudioTranslation) {
+            $mediaAudioTranslation = new MediaAudioTranslation();
             $mediaAudioTranslation
-                ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
-                ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
+                ->setLocale($locale)
+                ->setTranslatable($mediaAudio)
             ;
+            $this->getManager()->persist($oldMediaI18n);
+        }
 
-            if ($status) {
-                $mediaAudioTranslation->setStatus($status);
-            } else {
-                $mediaAudioTranslation->setStatus($this->getStatusMedia($oldMedia, $locale));
+        $mediaAudioTranslation
+            ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
+            ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
+        ;
+
+        if ($status) {
+            $mediaAudioTranslation->setStatus($status);
+        } else {
+            $mediaAudioTranslation->setStatus($this->getStatusMedia($oldMedia, $locale));
+        }
+
+        $media = $mediaAudioTranslation->getFile();
+        if (!$media) {
+            $media = new Media();
+            $media->setName($mediaAudioTranslation->getTitle());
+            $media->setBinaryContent($file);
+            $media->setEnabled(true);
+            $media->setProviderReference($mediaAudioTranslation->getTitle());
+            $media->setContext('media_audio');
+            $media->setProviderStatus(1);
+            $media->setProviderName('sonata.media.provider.audio');
+            if ($media->getId() == null) {
+                $this->getMediaManager()->save($media, 'media_audio', 'sonata.media.provider.audio');
             }
 
-            $media = $mediaAudioTranslation->getFile();
-            if (!$media) {
-                $media = new Media();
-                $media->setName($mediaAudioTranslation->getTitle());
-                $media->setBinaryContent($file);
-                $media->setEnabled(true);
-                $media->setProviderReference($mediaAudioTranslation->getTitle());
-                $media->setContext('media_audio');
-                $media->setProviderStatus(1);
-                $media->setProviderName('sonata.media.provider.audio');
-                $this->getMediaManager()->save($media);
-                $mediaAudioTranslation->setFile($media);
-            }
-            $this->setMediaAudioFilmFilmAssociations($mediaAudio);
+            $this->getManager()->persist($media);
+            $mediaAudioTranslation->setFile($media);
+
         }
-        if (!$mediaAudio->getTranslations()->count()) {
-            $this->getManager()->remove($mediaAudio);
-            $this->getManager()->flush();
-            return null;
-        }
+
+        $this->setMediaAudioFilmFilmAssociations($mediaAudio);
+
         $this->getManager()->flush();
+
         return $mediaAudio;
     }
 
@@ -695,12 +686,12 @@ class Importer
      */
     protected function createMediaVideoFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $videoTitle = [
+        $videoTitle = array(
             'fr' => 'video',
             'en' => 'video',
             'es' => 'video',
             'zh' => '视频',
-        ];
+        );
 
         $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
