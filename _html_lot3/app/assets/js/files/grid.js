@@ -87,8 +87,11 @@ var owInitGrid = function (id) {
                 owsetGridBigImg(false, $('.grid-01'), false);
             });
 
-            $('#filters').on('click','span',function(){
-                console.log('filters click on grid file')
+            $('html').on('click','#filters span',function(){
+                var t = window.setTimeout(function(){
+                    console.log('filters click on grid file');
+                    $gridMore.isotope('layout');
+                },300);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
