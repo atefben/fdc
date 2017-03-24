@@ -80,7 +80,7 @@ var owInitGrid = function (id) {
             $gridMore.isotope();
 
             //reset big imgs
-            $gridMore.on('layoutComplete',function(){
+            $gridDom.on('layoutComplete',function(){
                 console.log('append complete');
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg($gridMore, $('.grid-01'), false);
@@ -113,7 +113,7 @@ var owInitGrid = function (id) {
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
                 console.log('unbind');
-                $gridMore.off('layoutComplete');
+                $gridDom.off('layoutComplete');
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -168,7 +168,7 @@ var owInitGrid = function (id) {
 
                         $gridMore.isotope('insert',articles);
 
-                        $gridMore.on('layoutComplete',function(){
+                        $gridDom.on('layoutComplete',function(){
                             console.log('second sort');
                             $('.grid-01').find('double').removeClass('double').removeClass('w2');
                             owsetGridBigImg($gridMore, $('.grid-01'), false);
