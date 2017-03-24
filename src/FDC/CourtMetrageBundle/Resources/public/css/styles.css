@@ -3083,7 +3083,7 @@ sup {
 }
 .discover:before {
   content: "";
-  background: url(/img/palmeBckg-2.png);
+  background: url(../img/palmeBckg-2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #f6f6f6;
@@ -15549,7 +15549,7 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  /*background: url("/img/catalogueImg.png") no-repeat;
+  /*background: url("../img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align: center;
   width: 100%;
@@ -15699,7 +15699,7 @@ a {
   top: -8%;
   position: absolute;
   opacity: 0.4;
-  content: url(/img/trait.png);
+  content: url(../img/trait.png);
   z-index: -1;
   -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15716,7 +15716,7 @@ a {
   /* transform: rotate(90deg); */
   top: -2%;
   position: absolute;
-  content: url(/img/trait.png);
+  content: url(../img/trait.png);
   z-index: -1;
   -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -26606,7 +26606,7 @@ body:not(.tablette) .webtv #live .img {
   }
 }
 .navBckg {
-  background: url("/img/oldCam.png") no-repeat;
+  background: url("../img/oldCam.png") no-repeat;
   background-size: 100% 100%;
   text-align: center;
   height: 400px;
@@ -26617,7 +26617,7 @@ body:not(.tablette) .webtv #live .img {
 }
 
 .our-news {
-  background: url("/img/newsBckg.png") no-repeat;
+  background: url("../img/newsBckg.png") no-repeat;
   background-size: 100% 100%;
   text-align: center;
   height: 770px;
@@ -26761,7 +26761,7 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
   height: 310px;
   padding: 0px 0px;
-  background: url("/img/redBackg.png");
+  background: url("../img/redBackg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
@@ -26783,7 +26783,7 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
   height: 310px;
   padding: 0px 0px;
-  background: url("/img/ligthblueBckg.png");
+  background: url("../img/ligthblueBckg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
@@ -26847,10 +26847,10 @@ body:not(.tablette) .webtv #live .img {
   position: relative;
   width: 100%;
   height: 350px;
-  /*background: url("/img/plageCannes.png");
+  /*background: url("../img/plageCannes.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-image: url("/img/plageCannes.png");
+  background-image: url("../img/plageCannes.png");
   background-size: 100%;
   background: center 0 no-repeat fixed;
   background-size: cover;*/
@@ -27742,7 +27742,7 @@ ul.tabs .quarterTab h4 {
   letter-spacing: 2px;
 }
 #accordion-menu li:before {
-  content: url(/img/checkMark.png);
+  content: url(../img/checkMark.png);
   position: relative;
   top: 35px;
   left: 0;
@@ -27916,7 +27916,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   height: 230px;
   padding: 0px 0px;
-  background: url("/img/infosutilesBackg.png");
+  background: url("../img/infosutilesBackg.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
@@ -28128,7 +28128,7 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   height: 240px;
   padding: 0px 0px;
-  background: url(/img/redBackg2.png);
+  background: url(../img/redBackg2.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 0px solid #404040;
@@ -28531,7 +28531,7 @@ ul.tabs .quarterTab h4 {
   margin-bottom: 5px;
 }
 .conferences .conf30 div:first-child:before, .conferences .conf30Sharp div:first-child:before {
-  content: url(/img/access.png);
+  content: url(../img/access.png);
   position: relative;
   top: 20px;
   left: -10px;
@@ -28539,7 +28539,7 @@ ul.tabs .quarterTab h4 {
   width: 20px;
 }
 .conferences .conf30 div:nth-child(2):before, .conferences .conf30Sharp div:nth-child(2):before {
-  content: url(/img/clock.png);
+  content: url(../img/clock.png);
   position: relative;
   top: 20px;
   left: -10px;
@@ -28547,7 +28547,7 @@ ul.tabs .quarterTab h4 {
   width: 20px;
 }
 .conferences .conf30 div:nth-child(3):before, .conferences .conf30Sharp div:nth-child(3):before {
-  content: url(/img/pin.png);
+  content: url(../img/pin.png);
   position: relative;
   top: 20px;
   left: -10px;
@@ -29234,7 +29234,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 }
 
 .formRegister {
-  background: url("/img/registerBckg.png") no-repeat;
+  background: url("../img/registerBckg.png") no-repeat;
   background-size: 100% 100%;
   text-align: center;
   height: 400px;
@@ -30078,7 +30078,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
 .modal-content .half .authors .mailName:before {
   width: 30px;
   content: " ";
-  background-image: url(/img/flyingPaper.png);
+  background-image: url(../img/flyingPaper.png);
   position: absolute;
   height: 20px;
   left: 35%;
@@ -30171,7 +30171,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     &:before {
       width: 30px;
       content: " ";
-      background-image: url(/img/world.png);
+      background-image: url(../img/world.png);
       position: absolute;
       height: 20px;
       left: 5%;
@@ -30182,7 +30182,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     &:before {
       width: 30px;
       content: " ";
-      background-image: url(/img/computer.png);
+      background-image: url(../img/computer.png);
       position: absolute;
       height: 20px;
       left: 5%;
