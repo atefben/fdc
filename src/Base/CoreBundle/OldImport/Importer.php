@@ -600,9 +600,9 @@ class Importer
 
             $mediaAudioTranslation = $mediaAudio->findTranslationByLocale($locale);
 
-            if ($mediaAudioTranslation) {
-                continue;
-            }
+//            if ($mediaAudioTranslation) {
+//                continue;
+//            }
 
             $code = $oldMediaI18n->getCode();
             if (!$code) {
@@ -642,12 +642,15 @@ class Importer
                 }
             }
 
-            $mediaAudioTranslation = new MediaAudioTranslation();
-            $mediaAudioTranslation
-                ->setLocale($locale)
-                ->setTranslatable($mediaAudio)
-            ;
-            $this->getManager()->persist($oldMediaI18n);
+            if (!$mediaAudioTranslation) {
+                $mediaAudioTranslation = new MediaAudioTranslation();
+                $mediaAudioTranslation
+                    ->setLocale($locale)
+                    ->setTranslatable($mediaAudio)
+                ;
+                $this->getManager()->persist($oldMediaI18n);
+            }
+
             $mediaAudioTranslation
                 ->setTitle($oldMediaI18n->getLabel() ?: $audioTitle[$locale])
                 ->setJobMp3Id(MediaAudioTranslation::ENCODING_STATE_READY)
