@@ -123,7 +123,7 @@ class MediaVideoAdmin extends Admin
             ->add('_edit_translations', null, array(
                 'template' => 'BaseAdminBundle:TranslateMain:list_edit_translations.html.twig',
             ))
-            ->add('oldNewsId', null, array(
+            ->add('oldMediaId', null, array(
                 'label'    => 'dashboard.link.old_news_id',
             ))
         ;
