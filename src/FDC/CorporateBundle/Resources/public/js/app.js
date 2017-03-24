@@ -2881,7 +2881,7 @@ var owInitGrid = function (id) {
                 owsetGridBigImg(false, $('.grid-01'), false);
             });
 
-            $('#filters span').on('click',function(){
+            $('#filters').on('click','span',function(){
                 console.log('filters click on grid file')
             });
 
