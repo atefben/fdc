@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/home.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/home.css"
+        "bundles/fdceventmobile/css/article_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -17,7 +20,7 @@
         <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
             <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKid m-video">
                     <div id="player1"></div>
                     <p class="category">Conférence de presse</p><span class="date">22.05.16 . 20:42</span>
                     <p class="title-video">Rencontre avec l'équipe de Carol</p>
@@ -333,6 +336,7 @@
     {% javascripts
         '@FDCEventMobileBundle/Resources/public/js/home.js'
         '@FDCEventMobileBundle/Resources/public/js/home_custom.js'
+        '@FDCEventMobileBundle/Resources/public/js/article_custom.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

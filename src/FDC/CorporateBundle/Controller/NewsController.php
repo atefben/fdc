@@ -253,6 +253,7 @@ class NewsController extends Controller
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
+        $filters['types']['all'] = 'all';
 
 
         foreach ($articles as $key => $article) {
@@ -270,6 +271,12 @@ class NewsController extends Controller
             $format = $article->getTypeClone();
             if (!in_array($format, $filters['format'])) {
                 $filters['format'][] = $format;
+            }
+            if ($article instanceof Info) {
+                $filters['types']['info'] = 'filters.type.info';
+            }
+            elseif ($article instanceof Statement) {
+                $filters['types']['statement'] = 'filters.type.statement';
             }
         }
 
