@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Base\AdminBundle\Admin\CCM\MediaImageAdmin;
 use FDC\CourtMetrageBundle\Entity\HomepageSejourTranslation;
-use Symfony\Component\Validator\Constraints\Url;
 
 class HomepageSejourType extends AbstractType
 {
@@ -81,9 +80,6 @@ class HomepageSejourType extends AbstractType
                         'label'              => 'form.ccm.label.sejour.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'sonata_help' => 'form.ccm.label.external_url',
-                        'constraints' => array(
-                            new Url()
-                        ),
                     ),
                     'button'          => array(
                         'label'              => 'form.ccm.label.sejour.button',

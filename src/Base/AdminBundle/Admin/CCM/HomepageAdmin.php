@@ -81,9 +81,6 @@ class HomepageAdmin extends Admin
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'sonata_help' => 'form.ccm.label.external_url',
-                        'constraints'        => array(
-                            new Url()
-                        ),
                     ),
 
                 )
