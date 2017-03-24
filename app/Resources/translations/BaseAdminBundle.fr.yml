@@ -1730,6 +1730,7 @@ form:
     label_hide_same_day: Ne pas afficher la strate "le même jour"
     label_primary_push_title: Titre du push principal
     label_primary_push_url: URL du push principal
+    help_primary_push_url: Fournir une URL relative avec une barre oblique pour qu'elle fonctionne sur mobile, ex: /fr/juries/longs-metrages
     label_secondary_push_title: Titre du push secondaire
     label_secondary_push_url: URL du push secondaire
     label_name: Nom

@@ -127,15 +127,18 @@ class HomepageAdmin extends Admin
 
                     'primaryPushUrl1' => array(
                         'label' => 'form.label_primary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'primaryPushUrl2' => array(
                         'label' => 'form.label_primary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'primaryPushUrl3' => array(
                         'label' => 'form.label_primary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
 
                     'secondaryPushTitle1' => array(
@@ -165,35 +168,43 @@ class HomepageAdmin extends Admin
 
                     'secondaryPushUrl1' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl2' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl3' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl4' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl5' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl6' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl7' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
                     'secondaryPushUrl8' => array(
                         'label' => 'form.label_secondary_push_url',
-                        'field_type' => 'url'
+                        'sonata_help'  => 'form.help_primary_push_url',
+                        'field_type' => 'text'
                     ),
 
                     'prefooterTitle1' => array(
