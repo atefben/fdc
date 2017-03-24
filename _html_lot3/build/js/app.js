@@ -2857,6 +2857,7 @@ var owInitGrid = function (id) {
             });
         }
         var clickAllow = true;
+        var ajaxLock = false;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
@@ -2879,7 +2880,9 @@ var owInitGrid = function (id) {
                 console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg(false, $('.grid-01'), false);
-                //$('.grid-01').isotope('layout');
+                if(!ajaxLock){
+                    $('.grid-01').isotope('layout');
+                }
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -2907,7 +2910,7 @@ var owInitGrid = function (id) {
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-
+                var ajaxLock = true;
                 var $this = $(this);
                 var url = $(this).attr('href');
 
