@@ -2640,7 +2640,7 @@ sup {
   font-size: 0.750rem;
   margin: 10px 0 0;
   text-align: left;
-  margin-bottom: 35px;
+  line-height: 25px;
 }
 
 .block-register-pop ul {
@@ -3069,6 +3069,12 @@ sup {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+#slider-movies .vCenterKid .programmButtonSmall, #featured-movies .vCenterKid .programmButtonSmall {
+  font-size: 17px;
+}
+#slider-movies .vCenterKid .programmButtonMedium, #featured-movies .vCenterKid .programmButtonMedium {
+  font-size: 15px;
 }
 #slider-movies .vCenterKid .goldColor, #featured-movies .vCenterKid .goldColor {
   color: #c3a05f;
@@ -3631,7 +3637,7 @@ sup {
   @include transition(all 0.1s $smoothTransition);
 }
 
-.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
   border: 6px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
 }
@@ -15572,7 +15578,7 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  /*-ms-transform: scale(1.1);
+  /*-ms-transform: scale(1.1); 
   -webkit-transform: scale(1.1);
   transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15648,11 +15654,11 @@ a {
   /*&:hover .plusSign {
     @include transition(all 0.9s $smoothTransition);
     -webkit-transition: all 0.5s;
-    -ms-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2); 
     transform: scale(1.2);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg); 
     transform: rotate(360deg);
   }*/
 }
@@ -15817,6 +15823,9 @@ a {
 
 .competition {
   background-color: white;
+}
+.competition .title {
+  font-weight: bold !important;
 }
 .competition #slider-competition {
   margin-top: 65px;
@@ -26989,7 +26998,7 @@ body:not(.tablette) .webtv #live .img {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;
+  z-index: 1004;  
   right: 1%;
   top: 100%;*/
   display: none;
@@ -27881,7 +27890,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-
+      
         &:after {
         content: '';
     }
@@ -30095,7 +30104,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 25px;
   color: #141414;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px !important;
   margin-top: 20px !important;
 }
@@ -30224,6 +30233,29 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background-size: cover !important;
 }
 
+.modal-content .block-register-pop {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 663px;
+}
+.modal-content .block-register-pop p {
+  color: #666666;
+  line-height: 20px;
+  margin-bottom: 35px;
+  text-align: left;
+  font-size: .75rem;
+  font-size: 16px;
+}
+.modal-content .block-register-pop strong {
+  font-size: .75rem;
+  color: #0c0c0c;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  display: block;
+}
+
 /*
 
 .modal-wrapper {
@@ -30269,7 +30301,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 30px!important;
       color: #141414!important;
       letter-spacing: 0px!important;
-
+      
       h2 {
         font-family: $Playfair!important;
         letter-spacing: 0px!important;
@@ -30292,8 +30324,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 10px;
       text-align: left;
       padding: 20px 0px 20px 0px;
-      text-transform: uppercase;
-      font-family: $CamphorBold;
+      text-transform: uppercase;     
+      font-family: $CamphorBold;  
     }
 
     .titleHalf {
@@ -30304,8 +30336,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
         color:#141414;
         font-size: 50px;
         text-align: left;
-        line-height: 60px;
-        font-family: $Playfair;
+        line-height: 60px;   
+        font-family: $Playfair;   
       }
       a {
         text-decoration: none;
