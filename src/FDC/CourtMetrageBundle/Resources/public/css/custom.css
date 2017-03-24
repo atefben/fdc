@@ -26,7 +26,7 @@
     width: 625px !important;
     height: 384px !important;
 }
-.big-quote, .p-register .info {
+.p-register .info {
     padding: 25px 40px;
     border: 1px solid #c8a461;
     margin: 50px 0px;
@@ -35,14 +35,14 @@
     color: #666666;
     line-height: 30px;
 }
-.big-quote a, .p-register .info a {
+.p-register .info a {
     color: #c8a461;
     transition: .5s;
 }
 .big-quote a:hover, .p-register .info a:hover {
     opacity: .8;
 }
-.big-quote strong, .p-register .info strong {
+.p-register .info strong {
     font-size: .75rem;
     color: #0c0c0c;
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
