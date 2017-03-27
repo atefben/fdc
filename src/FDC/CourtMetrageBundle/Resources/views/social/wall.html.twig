@@ -8,7 +8,7 @@
                     {% set index = loop.index %}
                     {% set flip = random(1) %}
 
-                    <div class="post{% if loop.index == 1 or loop.index == 4 %} big {% elseif loop.index == 16 %} big right {% endif %}">
+                    <div class="post{% if loop.index == 1 or loop.index == 2 %} big {% elseif loop.index == 8 %} big right {% endif %}">
                         {% if posts[index + 12] is defined %}
                             <div class="side side-1 {% if posts[index + 12].network %} instagram {% else %} twitter {% endif %}
                                  {% if loop.index in [2, 3, 5, 7, 8, 9, 13 ] %} hastext {% elseif flip and posts[index + 12].content is not null %} flip {% endif %}{% if posts[index + 12].content is not null %} hasimg {% endif %}"
