@@ -1,7 +1,7 @@
 services:
-    base_core.node_listener:
-        class: Base\CoreBundle\Doctrine\Listener\NodeListener
-        tags:
-            - { name: doctrine.event_listener, event: postPersist }
-            - { name: doctrine.event_listener, event: postUpdate }
-            - { name: doctrine.event_listener, event: postFlush }
+#    base_core.node_listener:
+#        class: Base\CoreBundle\Doctrine\Listener\NodeListener
+#        tags:
+#            - { name: doctrine.event_listener, event: postPersist }
+#            - { name: doctrine.event_listener, event: postUpdate }
+#            - { name: doctrine.event_listener, event: postFlush }
