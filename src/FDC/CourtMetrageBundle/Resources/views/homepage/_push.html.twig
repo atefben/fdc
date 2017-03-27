@@ -1,8 +1,8 @@
 {% for push in pushes %}
     <div class="item">
         <div class="title">
-            <a href=""><h5>{{ push.whiteTitle }}</h5></a>
-            <a href=""><h4>{{ push.goldenTitle }}</h4></a>
+            <a href=""><h5>{{ push.goldenTitle }}</h5></a>
+            <a href=""><h4>{{ push.whiteTitle }}</h4></a>
         </div>
         <a href="{{ push.url }}" {% if fdc_court_metrage_scheme not in push.url %}target="_blank"{% endif %}><img src="{% path push.translatable.image|trans_fallback('file'), '455x348' %}"></a>
     </div>
