@@ -600,7 +600,6 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     },200);
     imgReadyFunctions = function(){
-        console.log('img ready',$('.fullscreen-slider img').length)
         $('.fullscreen-slider img').on('mousemove', function (e){
         
             $('.zoomCursor').css('display','block');

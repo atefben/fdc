@@ -1396,7 +1396,7 @@ var initAudio = function (hash) {
             if (!$(audioPlayer).data('loaded') || $('.activeAudio').length > 0) {
                 audioLoad($("#" + id)[0], audioPlayer, havePlaylist, function (aid) {
                     $(aid).data('loaded', true);
-                    tmp = aid;console.log(name);
+                    tmp = aid;
                 });
             } else {
                 tmp = audioPlayer
@@ -1488,7 +1488,6 @@ var initAudio = function (hash) {
                     image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
                     primary: 'html5',
                     aspectratio: '16:9',
-                    debug : true,
                     width: $(aid).parent('div').width(),
                     height: $(aid).parent('div').height(),
                     controls: false
@@ -5866,7 +5865,6 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     },200);
     imgReadyFunctions = function(){
-        console.log('img ready',$('.fullscreen-slider img').length)
         $('.fullscreen-slider img').on('mousemove', function (e){
         
             $('.zoomCursor').css('display','block');
