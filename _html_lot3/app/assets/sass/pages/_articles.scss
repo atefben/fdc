@@ -99,14 +99,16 @@
     border: none !important;
   }
 
-  .text p {
-    color: #666;
-    line-height: 1.7em;
-    margin-bottom: 5px;
-  }
 
   .text {
     margin: 0 auto 70px;
+    width: 80%;
+
+    p {
+      color: #666;
+      line-height: 1.7em;
+      margin-bottom: 5px;
+    }
   }
 
   .big-quote {

@@ -584,3 +584,6 @@ a.notloaded {
 .app .contain-app h1 {
 	padding-top: 82px !important;
 }
+.single-movie .competition #slider-competition .owl-item .linkVid {
+    height:0 !important;
+}
