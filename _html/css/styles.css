@@ -18685,13 +18685,13 @@ article .read-later.rAlign span:after {
     /* 5 columns for larger screens */
   }
   #gridJurys .grid-sizer {
-    width: calc(100%/5);
+    width: calc(100%/4);
   }
   #gridJurys .item {
-    width: calc(100%/5);
+    width: calc(100%/4);
   }
   #gridJurys .item.w2 {
-    width: calc(200%/5);
+    width: calc(200%/4);
   }
 }
 
@@ -28756,7 +28756,7 @@ ul.tabs .quarterTab h4 {
 
 body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-size: 100%;
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   height: 270px;
 }

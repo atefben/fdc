@@ -12,7 +12,8 @@
 
 body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     background: center 0 no-repeat fixed;
-    background-size: cover;
+    //background-size: cover;
+    background-size: 100%;
     transition: all 1s cubic-bezier(.25,.46,.45,.94);
     height: 270px;
 }

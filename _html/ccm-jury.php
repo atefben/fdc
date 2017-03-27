@@ -94,7 +94,7 @@
                     </div>
                   </a>
                 </div>
-                <div class="jury-box item">
+                <!--<div class="jury-box item">
                   <a href="artist_page.php">
                     <div class="image">
                       <img src="img/jurys/jury-1.jpg" alt="">
@@ -137,7 +137,7 @@
                       <span class="rank">Actrice</span>
                     </div>
                   </a>
-                </div>
+                </div>-->
             </div>
           </section>
         </div>
