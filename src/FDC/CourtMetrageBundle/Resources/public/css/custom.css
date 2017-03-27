@@ -437,3 +437,10 @@ body.chocolat-open.fixed {
 #slider-discover .title h5 {
     text-transform: none !important;
 }
+
+.custom-wysiwyg strong {
+    font-weight: bold;
+}
+
+
+
