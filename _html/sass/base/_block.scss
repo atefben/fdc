@@ -226,7 +226,8 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  //background-size: cover;
+  background-size: 100%;
   transition: $smoothTransition .7s;
   position: relative;
 

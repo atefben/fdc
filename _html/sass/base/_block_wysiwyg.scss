@@ -818,8 +818,9 @@ sup {
 
 
 .contain-title {
-    min-height: 70px;
+    min-height: 0px!important;
     flex-direction: column;
+    margin-bottom: 40px;
 }
 
 
@@ -828,7 +829,7 @@ sup {
     font-size: 0.750rem;
     margin: 10px 0 0;
     text-align: left;
-    line-height: 25px;
+    line-height: 20px;
 }
 
 .block-register-pop ul {
