@@ -91,7 +91,7 @@ var owInitGrid = function (id) {
                 var t = window.setTimeout(function(){
                     console.log('filters click on grid file');
                     $gridMore.isotope('layout');
-                },300);
+                },1500);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
