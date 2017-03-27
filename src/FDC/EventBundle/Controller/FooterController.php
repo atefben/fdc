@@ -28,8 +28,7 @@ class FooterController extends Controller
      */
     public function staticAction($page)
     {
-        error_log(print_r(\Doctrine\Common\Util\Debug::export($page, 6),1));
-        if ($page != 'application-mobile' || $page != 'audio') {
+        if ($page != 'application-mobile' && $page != 'audio') {
             throw new NotFoundHttpException();
         }
         $pageContent = '';
