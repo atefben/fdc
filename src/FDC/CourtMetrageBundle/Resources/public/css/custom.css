@@ -429,3 +429,7 @@ body.chocolat-open.fixed {
 .legal-notice {
     padding: 0px 0px !important;
 }
+
+.catalogue .twinBlocks {
+    width: 50%;
+}
