@@ -2554,6 +2554,7 @@ var owInitFilter = function (isTabSelection) {
             }, 400);
 
             $('#filters span').on('click', function () {
+                console.log('filter click, debug toggle items');
                 var data = $(this).data('select');
                 var selected = $('#' + block + ' .select option[value="' + data + '"]');
                 selected.attr('selected', 'selected');
@@ -2884,7 +2885,6 @@ var owInitGrid = function (id) {
             $('html').on('click','#filters span',function(){
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
-                    console.log('filters click on grid file');
                     $gridMore.isotope('layout');
                 },1600);
             });
