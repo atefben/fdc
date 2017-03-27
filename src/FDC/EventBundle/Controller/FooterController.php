@@ -28,7 +28,7 @@ class FooterController extends Controller
      */
     public function staticAction($page)
     {
-        if ($page != 'application-mobile' || $page != 'audio') {
+        if ($page != 'application-mobile') {
             throw new NotFoundHttpException();
         }
         $pageContent = '';
@@ -86,6 +86,22 @@ class FooterController extends Controller
 
         return array(
             'page' => $content,
+        );
+    }
+
+    /**
+     * @Route("/audiolive")
+     * @Template("FDCEventBundle:Footer:audio.html.twig")
+     * @return array
+     */
+    public function audioliveAction(Request $request)
+    {
+        $locale = $request->getLocale();
+        // SEO
+        $this->get('base.manager.seo')->setFDCPageFooterSeo('', $locale);
+
+        return array(
+            'page' => '',
         );
     }
 
