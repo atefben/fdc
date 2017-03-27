@@ -27,6 +27,8 @@ CKEDITOR.editorConfig = function( config ) {
         {name: 'Sous-titre 1', element: 'h2', attributes: {'class': 'sub-title'}},
         {name: 'Sous-titre 2', element: 'h2', attributes: {'class': 'sub-title2'}},
         {name: 'Sous-titre 3', element: 'h3', attributes: {'class': 'sub-title'}},
+        {name: 'Sous-titre h3', element: 'h3'},
+        {name: 'Sous-titre h6', element: 'h6'},
         {name: 'Titre centré', element: 'h4', attributes: {'class': 'descrip-participate'}},
         // Paragraph
         {name: 'Decription centrée', element: 'p', attributes: {'class': 'big-quote-paragraph'}},
