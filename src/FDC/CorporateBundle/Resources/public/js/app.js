@@ -2882,10 +2882,11 @@ var owInitGrid = function (id) {
             });
 
             $('html').on('click','#filters span',function(){
+                //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
                     console.log('filters click on grid file');
                     $gridMore.isotope('layout');
-                },1500);
+                },1600);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
