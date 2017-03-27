@@ -15,20 +15,25 @@ class CcmMainNavTranslationRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
         $qb
-            ->where('s.locale = :locale_fr')
+            ->where('s.locale = :locale')
             ->andWhere('s.translatable = :translatable')
-            ->andWhere('s.status = :published')
-            ->setParameter('published',CcmMainNavTranslation::STATUS_PUBLISHED)
-            ->setParameter(':locale_fr', 'fr')
+            ->setParameter(':locale', $locale)
             ->innerJoin('s.translatable', 't')
             ->setParameter(':translatable', $translatable)
         ;
         if ($locale != 'fr') {
             $qb
-                ->join('t.translations', 'tt')
-                ->andWhere('tt.locale = :locale and tt.status = :translated')
-                ->setParameter(':locale', $locale)
+                ->andWhere('s.status = :translated')
                 ->setParameter('translated',CcmMainNavTranslation::STATUS_TRANSLATED)
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :published')
+                ->setParameter(':locale_fr', 'fr')
+                ->setParameter('published',CcmMainNavTranslation::STATUS_PUBLISHED)
+            ;
+        } else {
+            $qb
+                ->andWhere('s.status = :published')
+                ->setParameter('published',CcmMainNavTranslation::STATUS_PUBLISHED)
             ;
         }
 
