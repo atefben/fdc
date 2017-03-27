@@ -206,8 +206,21 @@ class HomepageManager
                             )
                         )
                     );
-
                 if ($video) {
+                    if ($this->requestStack->getMasterRequest()->getLocale() != 'fr') {
+                        if (!$this->em->getRepository(CcmMediaVideoTranslation::class)
+                            ->findOneBy(
+                                array(
+                                    'locale' => 'fr',
+                                    'translatable' => $item->getVideo(),
+                                    'status' => CcmMediaVideoTranslation::STATUS_PUBLISHED,
+
+                                )
+                            )
+                        ) {
+                            continue;
+                        }
+                    }
                     $videos[] = $video;
                 }
             }
@@ -232,6 +245,20 @@ class HomepageManager
                         )
                     )
                 );
+            if ($gallery && $this->requestStack->getMasterRequest()->getLocale() != 'fr') {
+                if (!$this->em->getRepository(CcmGalleryTranslation::class)
+                    ->findOneBy(
+                        array(
+                            'locale' => 'fr',
+                            'translatable' => $homepage->getGallery(),
+                            'status' => CcmGalleryTranslation::STATUS_PUBLISHED
+                        )
+                    )
+                ) {
+
+                    return null;
+                }
+            }
 
             return $gallery;
         }
