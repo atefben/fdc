@@ -37,8 +37,10 @@ class CcmNewsRepository extends EntityRepository
             ->andWhere('n.publishedAt <= :now and (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
             ->setParameter('now', $now)
             ->setParameter('locale', $locale)
+            ->setParameter('status_published', CcmNewsArticleTranslation::STATUS_PUBLISHED)
             ->orderBy('n.publishedAt', 'DESC')
         ;
+
         if ($locale != 'fr') {
             $qb
                 ->andWhere(
@@ -48,16 +50,26 @@ class CcmNewsRepository extends EntityRepository
                     (na4t.locale = :locale AND na4t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
+                ->leftJoin('na1.translations', 'na5t')
+                ->leftJoin('na2.translations', 'na6t')
+                ->leftJoin('na3.translations', 'na7t')
+                ->leftJoin('na4.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale_fr AND na5t.status = :status_published) OR
+                    (na6t.locale = :locale_fr AND na6t.status = :status_published) OR
+                    (na7t.locale = :locale_fr AND na7t.status = :status_published) OR
+                    (na8t.locale = :locale_fr AND na8t.status = :status_published)'
+                )
+                ->setParameter('locale_fr', 'fr')
             ;
         } else {
             $qb
                 ->andWhere(
-                    '(na1t.locale = :locale AND na1t.status = :status) OR
-                    (na2t.locale = :locale AND na2t.status = :status) OR
-                    (na3t.locale = :locale AND na3t.status = :status) OR
-                    (na4t.locale = :locale AND na4t.status = :status)'
+                    '(na1t.locale = :locale AND na1t.status = :status_published) OR
+                    (na2t.locale = :locale AND na2t.status = :status_published) OR
+                    (na3t.locale = :locale AND na3t.status = :status_published) OR
+                    (na4t.locale = :locale AND na4t.status = :status_published)'
                 )
-                ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
             ;
         }
 
@@ -84,6 +96,8 @@ class CcmNewsRepository extends EntityRepository
             ->leftJoin('na2.translations', 'na2t')
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
+            ->setParameter('locale', $locale)
+            ->setParameter('status_published', CcmNewsArticleTranslation::STATUS_PUBLISHED)
         ;
         if ($locale != 'fr') {
             $qb
@@ -94,18 +108,26 @@ class CcmNewsRepository extends EntityRepository
                     (na4t.locale = :locale AND na4t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
+                ->leftJoin('na1.translations', 'na5t')
+                ->leftJoin('na2.translations', 'na6t')
+                ->leftJoin('na3.translations', 'na7t')
+                ->leftJoin('na4.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale_fr AND na5t.status = :status_published) OR
+                    (na6t.locale = :locale_fr AND na6t.status = :status_published) OR
+                    (na7t.locale = :locale_fr AND na7t.status = :status_published) OR
+                    (na8t.locale = :locale_fr AND na8t.status = :status_published)'
+                )
+                ->setParameter('locale_fr', 'fr')
             ;
         } else {
             $qb
                 ->andWhere(
-                    '(na1t.locale = :locale_fr AND na1t.status = :status) OR
-                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
-                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
-                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+                    '(na1t.locale = :locale AND na1t.status = :status_published) OR
+                    (na2t.locale = :locale AND na2t.status = :status_published) OR
+                    (na3t.locale = :locale AND na3t.status = :status_published) OR
+                    (na4t.locale = :locale AND na4t.status = :status_published)'
                 )
-                ->setParameter('locale_fr', 'fr')
-                ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
             ;
         }
         if ($year == null) {
@@ -166,32 +188,45 @@ class CcmNewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->setParameter('slug', $slug)
+            ->setParameter('locale', $locale)
             ->setMaxResults(1)
         ;
         if ($isAdmin !== true) {
+            $qb
+                ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
+                ->setParameter('now', $now)
+            ;
             if ($locale != 'fr') {
                 $qb
-                    ->andWhere('n.publishedAt <= :now AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :now)')
-                    ->setParameter('now', $now)
                     ->andWhere(
                         '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status_translated) OR
-                    (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status_translated) OR
-                    (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status_translated) OR
-                    (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status_translated)'
+                        (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status_translated) OR
+                        (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status_translated) OR
+                        (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status_translated)'
                     )
                     ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
-                    ->setParameter('locale', $locale)
+                    ->leftJoin('na1.translations', 'na5t')
+                    ->leftJoin('na2.translations', 'na6t')
+                    ->leftJoin('na3.translations', 'na7t')
+                    ->leftJoin('na4.translations', 'na8t')
+                    ->andWhere(
+                        '(na5t.locale = :locale_fr AND na5t.status = :status_published) OR
+                        (na6t.locale = :locale_fr AND na6t.status = :status_published) OR
+                        (na7t.locale = :locale_fr AND na7t.status = :status_published) OR
+                        (na8t.locale = :locale_fr AND na8t.status = :status_published)'
+                    )
+                    ->setParameter('status_published', CcmNewsArticleTranslation::STATUS_PUBLISHED)
+                    ->setParameter('locale_fr', 'fr')
                 ;
             } else {
                 $qb
                     ->andWhere(
-                        '(na1t.slug = :slug AND na1t.locale = :locale_fr AND na1t.status = :status) OR
-                    (na2t.slug = :slug AND na2t.locale = :locale_fr AND na2t.status = :status) OR
-                    (na3t.slug = :slug AND na3t.locale = :locale_fr AND na3t.status = :status) OR
-                    (na4t.slug = :slug AND na4t.locale = :locale_fr AND na4t.status = :status)'
+                        '(na1t.slug = :slug AND na1t.locale = :locale AND na1t.status = :status_published) OR
+                        (na2t.slug = :slug AND na2t.locale = :locale AND na2t.status = :status_published) OR
+                        (na3t.slug = :slug AND na3t.locale = :locale AND na3t.status = :status_published) OR
+                        (na4t.slug = :slug AND na4t.locale = :locale AND na4t.status = :status_published)'
                     )
-                    ->setParameter('locale_fr', 'fr')
-                    ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
+                    ->setParameter('status_published', CcmNewsArticleTranslation::STATUS_PUBLISHED)
                 ;
             }
         } else {
@@ -230,7 +265,10 @@ class CcmNewsRepository extends EntityRepository
             ->leftJoin('na3.translations', 'na3t')
             ->leftJoin('na4.translations', 'na4t')
             ->andWhere('n.publishedAt ' . ( $direction == 'next' ? '>' : '<' ) . ' :date')
+            ->setParameter('locale', $locale)
+            ->setParameter('status_published', CcmNewsArticleTranslation::STATUS_PUBLISHED)
         ;
+
         if ($locale != 'fr') {
             $qb
                 ->andWhere(
@@ -240,18 +278,26 @@ class CcmNewsRepository extends EntityRepository
                     (na4t.locale = :locale AND na4t.status = :status_translated)'
                 )
                 ->setParameter('status_translated', CcmNewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
+                ->leftJoin('na1.translations', 'na5t')
+                ->leftJoin('na2.translations', 'na6t')
+                ->leftJoin('na3.translations', 'na7t')
+                ->leftJoin('na4.translations', 'na8t')
+                ->andWhere(
+                    '(na5t.locale = :locale_fr AND na5t.status = :status_published) OR
+                    (na6t.locale = :locale_fr AND na6t.status = :status_published) OR
+                    (na7t.locale = :locale_fr AND na7t.status = :status_published) OR
+                    (na8t.locale = :locale_fr AND na8t.status = :status_published)'
+                )
+                ->setParameter('locale_fr', 'fr')
             ;
         } else {
             $qb
                 ->andWhere(
-                    '(na1t.locale = :locale_fr AND na1t.status = :status) OR
-                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
-                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
-                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+                    '(na1t.locale = :locale AND na1t.status = :status_published) OR
+                    (na2t.locale = :locale AND na2t.status = :status_published) OR
+                    (na3t.locale = :locale AND na3t.status = :status_published) OR
+                    (na4t.locale = :locale AND na4t.status = :status_published)'
                 )
-                ->setParameter('locale_fr', 'fr')
-                ->setParameter('status', CcmNewsArticleTranslation::STATUS_PUBLISHED)
             ;
         }
         $qb = $qb

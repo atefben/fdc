@@ -1,7 +1,6 @@
-{% set translation = widget.findTranslationByLocale(app.request.locale) %}
 <div class="video-container state-init video youtube-news-widget"
-     data-name="{{ translation.title }}"
-     data-file='[{"file":"{{ translation.url }}"}]'
+     data-name="{{ widget|trans_fallback('title') }}"
+     data-file='[{"file":"{{ widget|trans_fallback('url') }}"}]'
      data-img="{% path widget.image|trans_fallback('file'), 'reference' %}">
     <div id="{{ widget.id }}" class="video-player"></div>
     <div class="video-overlay"></div>
@@ -10,7 +9,7 @@
         <div class="info">
             <div class="vCenter">
                 <div class="vCenterKid">
-                    <p>{{ translation.title }}</p>
+                    <p>{{ widget|trans_fallback('title') }}</p>
                 </div>
             </div>
         </div>

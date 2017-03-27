@@ -55,7 +55,7 @@ class ParticipateManager
                 ->getRepository(CcmRegisterProcedureTranslation::class)
                 ->findProcedureByLocaleAndId($this->requestStack->getMasterRequest()->get('_locale'), $procedure->getProcedure()->getId());
 
-            if ($registerProcedure->getStatus() == CcmRegisterProcedureTranslation::STATUS_PUBLISHED || $registerProcedure->getStatus() == CcmRegisterProcedureTranslation::STATUS_TRANSLATED) {
+            if ($registerProcedure) {
                 $registerProcedures[] = $registerProcedure;
             }
         }

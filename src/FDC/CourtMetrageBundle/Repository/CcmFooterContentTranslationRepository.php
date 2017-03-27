@@ -17,12 +17,23 @@ class CcmFooterContentTranslationRepository extends EntityRepository
         $qb
             ->where('s.locale = :locale')
             ->join('s.translatable', 't', 'WITH', 't.type = :type')
-            ->andWhere('s.status = :statusPublished or s.status = :statusTranslated')
-            ->setParameter('statusPublished',CcmFooterContentTranslation::STATUS_PUBLISHED)
-            ->setParameter('statusTranslated',CcmFooterContentTranslation::STATUS_TRANSLATED)
             ->setParameter(':locale', $locale)
             ->setParameter(':type', $type)
+            ->setParameter('statusPublished',CcmFooterContentTranslation::STATUS_PUBLISHED)
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('s.status = :statusTranslated')
+                ->setParameter('statusTranslated', CcmFooterContentTranslation::STATUS_TRANSLATED)
+                ->join('t.translations', 'tr')
+                ->andWhere('tr.locale = :locale_fr and tr.status = :statusPublished')
+                ->setParameter('locale_fr', 'fr')
+            ;
+        } else {
+            $qb
+                ->andWhere('s.status = :statusPublished')
+            ;
+        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }
