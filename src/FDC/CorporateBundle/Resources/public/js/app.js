@@ -41,7 +41,7 @@ var initVideo = function(hash) {
                 <a href="#" class="channels"><i class="icon icon-playlist"></i></a>\
                 <div class="info"></div>\
                 <div class="buttons square img-slideshow-share rs-slideshow">\
-                    <a class="facebook button" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a>\
+                    <a class="facebook button" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a>\
                     <a class="twitter button" href="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-twitter"></i></a>\
                     <a href="#" rel="nofollow" class="link self button" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a>\
                     <a href="#" class="popin-mail-open button"><i class="icon icon-letter"></i></a>\
@@ -1396,7 +1396,7 @@ var initAudio = function (hash) {
             if (!$(audioPlayer).data('loaded') || $('.activeAudio').length > 0) {
                 audioLoad($("#" + id)[0], audioPlayer, havePlaylist, function (aid) {
                     $(aid).data('loaded', true);
-                    tmp = aid;console.log(name);
+                    tmp = aid;
                 });
             } else {
                 tmp = audioPlayer
@@ -1488,7 +1488,6 @@ var initAudio = function (hash) {
                     image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
                     primary: 'html5',
                     aspectratio: '16:9',
-                    debug : true,
                     width: $(aid).parent('div').width(),
                     height: $(aid).parent('div').height(),
                     controls: false
@@ -1498,6 +1497,7 @@ var initAudio = function (hash) {
         }
 
         console.log('audioplayer config',config);
+        console.log('player instance',playerInstance);
         playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
@@ -2554,6 +2554,7 @@ var owInitFilter = function (isTabSelection) {
             }, 400);
 
             $('#filters span').on('click', function () {
+                console.log('filter click, debug toggle items');
                 var data = $(this).data('select');
                 var selected = $('#' + block + ' .select option[value="' + data + '"]');
                 selected.attr('selected', 'selected');
@@ -2882,10 +2883,10 @@ var owInitGrid = function (id) {
             });
 
             $('html').on('click','#filters span',function(){
+                //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
-                    console.log('filters click on grid file');
                     $gridMore.isotope('layout');
-                },300);
+                },1600);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -4788,7 +4789,7 @@ var owInitSlider = function (sliderName) {
                 },200);
             }
 
-            var openSlideshowClick = function(){console.log('openSlideshowClick');
+            var openSlideshowClick = function(){
                 $('body').off('click').on('click', '.block-diaporama .owl-item.center', function() {
                     console.log('click');
                     openSlideShow(slide01);
@@ -5856,60 +5857,70 @@ var openSlideShow = function (slider, hash, affiche) {
         $('.chocolat-content').removeClass('thumbsOpen');
         $('.fullscreen-slider img').css('opacity', '1');
     });
+    console.log('declare mousemove',$('.fullscreen-slider img').length);
 
-    $('.fullscreen-slider img').on('mousemove', function (e){
+    var slideshowImgReadyInterval = window.setInterval(function(){
+        if($('.fullscreen-slider img').length){
+            imgReadyFunctions();
+            window.clearInterval(slideshowImgReadyInterval);
+        }
+    },200);
+    imgReadyFunctions = function(){
+        $('.fullscreen-slider img').on('mousemove', function (e){
+        
+            $('.zoomCursor').css('display','block');
+            $('.zoomCursor').css('z-index','100000');
+            $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
 
-        $('.zoomCursor').css('display','block');
-        $('.zoomCursor').css('z-index','100000');
-        $('.zoomCursor').css('left', e.clientX + 10).css('top', e.clientY);
+            var img = $(this);
 
-        var img = $(this);
+            if(img.hasClass('isZoom')) {
 
-        if(img.hasClass('isZoom')) {
+                var pos = $('.chocolat-wrapper').offset();
+                var height = $('.chocolat-wrapper').height();
+                var width = $('.chocolat-wrapper').width();
 
-            var pos = $('.chocolat-wrapper').offset();
-            var height = $('.chocolat-wrapper').height();
-            var width = $('.chocolat-wrapper').width();
+                var currentImage = img[0];
+                var imgWidth = currentImage.width * 2;
+                var imgHeight = currentImage.height * 2;
 
-            var currentImage = img[0];
-            var imgWidth = currentImage.width * 2;
-            var imgHeight = currentImage.height * 2;
+                var coord = [e.pageX - width/2 - pos.left, e.pageY - height/2 - pos.top];
 
-            var coord = [e.pageX - width/2 - pos.left, e.pageY - height/2 - pos.top];
+                var mvtX = 0;
+                if (imgWidth > width) {
+                    mvtX = coord[0] / (width / 2);
+                    mvtX = ((imgWidth - width + 0)/ 2) * mvtX;
+                }
 
-            var mvtX = 0;
-            if (imgWidth > width) {
-                mvtX = coord[0] / (width / 2);
-                mvtX = ((imgWidth - width + 0)/ 2) * mvtX;
+                var mvtY = 0;
+                if (imgHeight > height) {
+                    mvtY = coord[1] / (height / 2);
+                    mvtY = ((imgHeight - height + 0) / 2) * mvtY;
+                }
+
+                img.css('transform','translate3d(' + (-mvtX) + 'px' +',' + (-mvtY) + 'px' + ', 0) scale(2)');
+            }
+        })
+
+        $('.fullscreen-slider img').on('click', function (e) {
+
+            $(this).toggleClass('isZoom');
+
+            if($(this).hasClass('isZoom')) {
+                $(this).css('transform', 'scale(2)');
+                $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
+            }else{
+                $(this).css('transform', 'scale(1)');
+                $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
 
-            var mvtY = 0;
-            if (imgHeight > height) {
-                mvtY = coord[1] / (height / 2);
-                mvtY = ((imgHeight - height + 0) / 2) * mvtY;
-            }
+        });
 
-            img.css('transform','translate3d(' + (-mvtX) + 'px' +',' + (-mvtY) + 'px' + ', 0) scale(2)');
-        }
-    })
-
-    $('.fullscreen-slider img').on('click', function (e) {
-
-        $(this).toggleClass('isZoom');
-
-        if($(this).hasClass('isZoom')) {
-            $(this).css('transform', 'scale(2)');
-            $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
-        }else{
-            $(this).css('transform', 'scale(1)');
-            $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
-        }
-
-    })
-
-    $('.fullscreen-slider img').on('mouseout', function (e){
-        $('.zoomCursor').css('display','none');
-    });
+        $('.fullscreen-slider img').on('mouseout', function (e){
+            $('.zoomCursor').css('display','none');
+        });
+    };
+    
     
     //block image open on title click
     $('body').on('click','.chocolat-description a',function(){
