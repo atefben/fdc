@@ -143,6 +143,7 @@ var initAudio = function (hash) {
         }
 
         console.log('audioplayer config',config);
+        console.log('player instance',playerInstance);
         playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
