@@ -34,6 +34,7 @@ header {
 
       li a {
         color: #a7a7a7;
+        font-family: $CamphorHeavy;
 
         &:hover {
           color: $gold;
@@ -153,6 +154,7 @@ header {
 
     li {
       display: inline-block;
+      font-family: $CamphorBold;
 
       a {
         color: #fff;
@@ -160,6 +162,7 @@ header {
         margin-right: 10px;
         padding: 0px 0px 1px 4px;
         @include transition(opacity 0.9s $smoothTransition);
+        font-family: $CamphorBold;
 
         &:hover {
           opacity: 0.7;
@@ -250,7 +253,7 @@ header {
         border-right: 0px solid #404040;
 
         &:last-child {
-          
+
         }
 
         a {
@@ -262,7 +265,7 @@ header {
           @include transition(all 0.3s $smoothTransition);
 
           &:hover, &.active {
-            color: $gold; 
+            color: $gold;
             /*background-color: #141414!important;*/
           }
 
@@ -313,6 +316,7 @@ header {
 
         a {
           color: $gold;
+          font-family: $CamphorBold;
           text-transform: uppercase;
         }
       }
@@ -365,6 +369,7 @@ header {
 
         a {
           color: $gold;
+          font-family: $CamphorRegular;
           text-transform: uppercase;
         }
       }
@@ -478,7 +483,8 @@ header {
         a {
           color: #fff;
           display: block;
-          padding-right: 32px;
+          font-family: $CamphorHeavy;
+          padding-right: 25px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -561,6 +567,7 @@ header {
         }
 
         li:hover>a {
+          font-family: $CamphorBold;
           color: $gold;
 
           &:after {
@@ -616,6 +623,7 @@ header {
           li{
             a{
               font-size: 0.688rem;
+              font-family: $CamphorHeavy;
             }
           }
         }
@@ -661,13 +669,13 @@ header {
     ul li ul {
       width: 1024px;
     }
-     ul li a {
-       padding-right: 12px;
+    ul li a {
+      padding-right: 12px;
     }
     ul li ul li {
       margin-left:5px;
     }
-}
+  }
 
   @include breakpoint(1024px) {
     .mob header #navigation ul.main {
@@ -683,6 +691,7 @@ header {
 .topiconsContainer {
   float: right;
   width: 193px;
+  margin-top: 15px;
 
   .first {
     position: relative;
@@ -712,22 +721,22 @@ header {
   }
 
   .topIcons {
-      display: block;
-      float: left;
-      height: 63px;
-      position: relative;
-      margin-top: 35px;
-      width: 63px;
-      line-height: 63px;
-      text-align: center;
+    display: block;
+    float: left;
+    height: 63px;
+    position: relative;
+    margin-top: 35px;
+    width: 63px;
+    line-height: 63px;
+    text-align: center;
     a {
-        color: #fff;
-        position: relative;
-        background-size: 20px;
-        display: block;
-        height: 100%;
-        width: 100%;
-        line-height: 63px;
+      color: #fff;
+      position: relative;
+      background-size: 20px;
+      display: block;
+      height: 100%;
+      width: 100%;
+      line-height: 63px;
     }
 
     img {
@@ -741,38 +750,44 @@ header {
       }
     }
   }
+
+  .biggerIcon{
+
+    width: 18px!important;
+
+  }
 }
 
 .goldBdrs {
-    border-top: 1px solid white!important;
-    border-bottom: 1px solid white!important;
-    border-right: 1px solid white!important;
-    border-left: 1px solid white!important;
-    margin-right: -1px!important;
-    z-index: 1005!important;
-    overflow: hidden;
-  } 
-
-.middlegoldBdrs {
-    border-top: 1px solid white!important;
-    border-bottom: 1px solid white!important;
-    border-right: 1px solid white!important;
-    border-left: 1px solid white!important;
-    z-index: 1005!important;
-    overflow: hidden;
-} 
-
-.lastgoldBorders {
-    border-top: 1px solid white!important;
-    border-bottom: 1px solid white!important;
-    border-right: 1px solid white!important;
-    border-left: 1px solid white!important;
-    margin-left: -1px!important;
-    z-index: 1005!important;
-    overflow: hidden;
+  border-top: 1px solid white!important;
+  border-bottom: 1px solid white!important;
+  border-right: 1px solid white!important;
+  border-left: 1px solid white!important;
+  margin-right: -1px!important;
+  z-index: 1005!important;
+  overflow: hidden;
 }
 
-.noBdrs {
+.middlegoldBdrs {
+  border-top: 1px solid white!important;
+  border-bottom: 1px solid white!important;
+  border-right: 1px solid white!important;
+  border-left: 1px solid white!important;
+  z-index: 1005!important;
+  overflow: hidden;
+}
+
+.lastgoldBorders {
+  border-top: 1px solid white!important;
+  border-bottom: 1px solid white!important;
+  border-right: 1px solid white!important;
+  border-left: 1px solid white!important;
+  margin-left: -1px!important;
+  z-index: 1005!important;
+  overflow: hidden;
+}
+
+.noBdrs {
   position: relative!important;
   z-index: 1!important;
 }
