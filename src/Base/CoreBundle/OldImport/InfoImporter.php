@@ -409,6 +409,7 @@ class InfoImporter extends Importer
         if (!$gallery) {
             $gallery = new Gallery();
             $this->getManager()->persist($gallery);
+            $this->getManager()->flush();
             $widget->setGallery($gallery);
             $gallery
                 ->setDisplayedHomeCorpo(false);
@@ -447,7 +448,7 @@ class InfoImporter extends Importer
                                     $widget->setGallery(null);
 //                                    $this->getManager()->remove($mediaImage);
                                 }
-//                                $this->getManager()->remove($gallery);
+                                $this->getManager()->remove($gallery);
                             }
                         }
                     }
