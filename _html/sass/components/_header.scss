@@ -34,6 +34,7 @@ header {
 
       li a {
         color: #a7a7a7;
+        font-family: $CamphorHeavy;
 
         &:hover {
           color: $gold;
@@ -153,6 +154,7 @@ header {
 
     li {
       display: inline-block;
+      font-family: $CamphorBold;
 
       a {
         color: #fff;
@@ -160,6 +162,7 @@ header {
         margin-right: 10px;
         padding: 0px 0px 1px 4px;
         @include transition(opacity 0.9s $smoothTransition);
+        font-family: $CamphorBold;
 
         &:hover {
           opacity: 0.7;
@@ -313,6 +316,7 @@ header {
 
         a {
           color: $gold;
+          font-family: $CamphorBold;
           text-transform: uppercase;
         }
       }
@@ -365,6 +369,7 @@ header {
 
         a {
           color: $gold;
+          font-family: $CamphorRegular;
           text-transform: uppercase;
         }
       }
@@ -478,7 +483,8 @@ header {
         a {
           color: #fff;
           display: block;
-          padding-right: 32px;
+          font-family: $CamphorHeavy;
+          padding-right: 25px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
@@ -561,6 +567,7 @@ header {
         }
 
         li:hover>a {
+          font-family: $CamphorBold;
           color: $gold;
 
           &:after {
@@ -616,6 +623,7 @@ header {
           li{
             a{
               font-size: 0.688rem;
+              font-family: $CamphorHeavy;
             }
           }
         }

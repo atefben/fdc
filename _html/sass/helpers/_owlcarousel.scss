@@ -391,14 +391,17 @@
       
      .programmButtonSmall {
         font-size: 17px;
+        font-family: $CamphorBold;
       }
 
       .programmButtonMedium {
         font-size: 15px;
+        font-family: $CamphorBold;
       }
 
       .goldColor {
         color: #c3a05f;
+        font-family: $CamphorBold;
       }
   }
 
@@ -666,6 +669,24 @@
     color: #ffffff;
     font-size: 16px;
 
+    a {
+      h5 {
+        text-transform: lowercase;
+        color: #c3a05f;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        font-family: $Playfair;
+        font-weight: normal!important;
+      }
+
+      h4 {
+        text-transform: uppercase;
+        font-family: $CamphorBold;
+        letter-spacing: 2px;
+        color: white;
+      }
+    }
+
     h5 {
       text-transform: lowercase;
       color: #c3a05f;
@@ -681,6 +702,7 @@
       letter-spacing: 2px;
       color: white;
     }
+
   }
 
 }
