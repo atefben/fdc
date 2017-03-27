@@ -35,22 +35,22 @@
                                 {% endif %}
                             {% endfor %}
                             {% if firstVideo is not null %}
-                                <li><a href="#videos">{{ 'ccm.videos'|trans }}</a></li>
+                                <li><a href="#videos" class="ajax">{{ 'ccm.videos'|trans }}</a></li>
                             {% endif %}
                         {% endif %}
                         {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
-                            <li><a href="#casting">{{ 'ccm.credits_casting'|trans }}</a></li>
+                            <li><a href="#casting" class="ajax">{{ 'ccm.credits_casting'|trans }}</a></li>
                         {% endif %}
                         {% if movie.getMedias()|length > 0  or movie.selfkitImages|length %}
-                            <li><a href="#photos">{{ 'ccm.photos'|trans }}</a></li>
+                            <li><a href="#photos" class="ajax">{{ 'ccm.photos'|trans }}</a></li>
                         {% endif %}
                         {% if articles|length > 0 %}
-                            <li><a href="#news">{{ 'ccm.news'|trans }}</a></li>
+                            <li><a href="#news" class="ajax">{{ 'ccm.news'|trans }}</a></li>
                         {% endif %}
                         {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
-                            <li><a href="#audios">{{ 'ccm.audios'|trans }}</a></li>
+                            <li><a href="#audios" class="ajax">{{ 'ccm.audios'|trans }}</a></li>
                         {% endif %}
-                        <li><a href="#press">{{ 'ccm.info_press'|trans }}</a></li>
+                        <li><a href="#press" class="ajax">{{ 'ccm.info_press'|trans }}</a></li>
                     </ul>
                     {% set secondTitle = null %}
                     {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}

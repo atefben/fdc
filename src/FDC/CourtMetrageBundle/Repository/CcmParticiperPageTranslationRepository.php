@@ -16,11 +16,23 @@ class CcmParticiperPageTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.locale = :locale')
-            ->andWhere('s.status = :publish or s.status = :translate')
-            ->setParameter('publish',CcmParticiperPageTranslation::STATUS_PUBLISHED)
-            ->setParameter('translate',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+            ->setParameter('published',CcmParticiperPageTranslation::STATUS_PUBLISHED)
+            ->join('s.translatable', 't')
             ->setParameter(':locale', $locale)
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('s.status = :translated')
+                ->setParameter('translated',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :published')
+                ->setParameter(':locale_fr', 'fr')
+            ;
+        } else {
+            $qb
+                ->andWhere('s.status = :published')
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
@@ -31,12 +43,25 @@ class CcmParticiperPageTranslationRepository extends EntityRepository
         $qb
             ->where('s.locale = :locale')
             ->andWhere('s.slug = :slug')
-            ->andWhere('s.status = :publish or s.status = :translate')
-            ->setParameter('publish',CcmParticiperPageTranslation::STATUS_PUBLISHED)
-            ->setParameter('translate',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+            ->join('s.translatable', 't')
             ->setParameter(':locale', $locale)
+            ->setParameter('published',CcmParticiperPageTranslation::STATUS_PUBLISHED)
             ->setParameter(':slug', $slug)
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('s.status = :translated')
+                ->setParameter('translated',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :published')
+                ->setParameter(':locale_fr', 'fr')
+
+            ;
+        } else {
+            $qb
+                ->andWhere('s.status = :published')
+            ;
+        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }

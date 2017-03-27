@@ -422,9 +422,14 @@ body.chocolat-open.fixed {
 }
 
 .short-film-corner .block-01-mms strong {
-    color: inherit !important;
+    color: #141414 !important;
+    font-weight: bolder !important;
 }
 
 .legal-notice {
     padding: 0px 0px !important;
+}
+
+.catalogue .twinBlocks {
+    width: 50%;
 }

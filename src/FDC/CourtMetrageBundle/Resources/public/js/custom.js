@@ -9,6 +9,7 @@ $(document).ready(function () {
     handleDualShareEmailForms();
     SFCProgramPageLink();
     initLabelpage();
+    initHomepageCatalogue();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -356,5 +357,13 @@ function updatePhotoShare(pid, title) {
         'title'    : parsed.find('h2').text(),
         'url'      : shareUrl,
     });
+}
+
+function initHomepageCatalogue() 
+{
+    var catalogueBlocks = $('.catalogue .blocks');
+    if (catalogueBlocks.length == 2) {
+        catalogueBlocks.addClass('twinBlocks');
+    }
 }
     

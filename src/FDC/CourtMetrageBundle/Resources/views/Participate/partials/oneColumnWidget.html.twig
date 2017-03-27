@@ -15,10 +15,8 @@
         'widget': widget,
         'tabs': oneColumnTabs,
         'files': oneColumnFiles,
-        'column': 1
+        'column': 1,
+        'constraints': constraints and constraints[0] ? constraints[0] : null
         } %}
-    {% endif %}
-    {% if constraints and constraints[0] %}
-        <a href="#" class="link a-left modal-toggle-label" data-content="{{ constraints[0]|json_encode }}">{{ 'ccm.widget.technical_constraints'|trans }}</a>
     {% endif %}
 </div>
