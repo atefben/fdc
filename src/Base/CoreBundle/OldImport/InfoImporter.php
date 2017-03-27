@@ -447,7 +447,7 @@ class InfoImporter extends Importer
                                     $widget->setGallery(null);
 //                                    $this->getManager()->remove($mediaImage);
                                 }
-                                $this->getManager()->remove($gallery);
+//                                $this->getManager()->remove($gallery);
                             }
                         }
                     }
