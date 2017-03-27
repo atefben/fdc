@@ -16,12 +16,26 @@ class CcmProsDetailTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.locale = :locale')
-            ->andWhere('s.status = :statusPublished or s.status = :statusTranslated')
             ->orderBy('s.name', 'ASC')
             ->setParameter(':locale', $locale)
-            ->setParameter(':statusPublished', CcmProsDetailTranslation::STATUS_PUBLISHED)
-            ->setParameter(':statusTranslated', CcmProsDetailTranslation::STATUS_TRANSLATED)
         ;
+
+        if ($locale != 'fr') {
+            $qb
+                ->innerJoin('s.translatable', 't')
+                ->join('t.translations', 'tr')
+                ->andWhere('s.status = :statusTranslated')
+                ->andWhere('tr.status = :publish')
+                ->setParameter('publish', CcmProsDetailTranslation::STATUS_PUBLISHED)
+                ->setParameter('statusTranslated', CcmProsDetailTranslation::STATUS_TRANSLATED)
+            ;
+
+        } else {
+            $qb
+                ->andWhere('s.status = :publish')
+                ->setParameter('publish', CcmProsDetailTranslation::STATUS_PUBLISHED)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
