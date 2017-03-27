@@ -27,6 +27,7 @@ class ProgramController extends Controller
             return $this->redirectToRoute('fdc_court_metrage_program_en');
         }
         $filters = $programManager->getAvailableListFilters($locale);
+        dump($filters);die;
         $program = $programManager->getProgramPage($locale);
         $programTranslatable = $program->getTranslatable();
 

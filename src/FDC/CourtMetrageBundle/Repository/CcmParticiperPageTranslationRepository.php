@@ -15,12 +15,20 @@ class CcmParticiperPageTranslationRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
         $qb
-            ->where('s.locale = :locale')
-            ->andWhere('s.status = :publish or s.status = :translate')
+            ->where('s.locale = :locale_fr')
+            ->andWhere('s.status = :publish')
             ->setParameter('publish',CcmParticiperPageTranslation::STATUS_PUBLISHED)
-            ->setParameter('translate',CcmParticiperPageTranslation::STATUS_TRANSLATED)
-            ->setParameter(':locale', $locale)
+            ->join('s.translatable', 't')
+            ->setParameter(':locale_fr', 'fr')
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale and tt.status = :translated')
+                ->setParameter(':locale', $locale)
+                ->setParameter('translated',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
@@ -29,14 +37,25 @@ class CcmParticiperPageTranslationRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('s');
         $qb
-            ->where('s.locale = :locale')
-            ->andWhere('s.slug = :slug')
-            ->andWhere('s.status = :publish or s.status = :translate')
+            ->where('s.locale = :locale_fr')
+            ->andWhere('s.status = :publish')
+            ->join('s.translatable', 't')
             ->setParameter('publish',CcmParticiperPageTranslation::STATUS_PUBLISHED)
-            ->setParameter('translate',CcmParticiperPageTranslation::STATUS_TRANSLATED)
-            ->setParameter(':locale', $locale)
+            ->setParameter(':locale_fr', 'fr')
             ->setParameter(':slug', $slug)
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale and tt.status = :translated and tt.slug = :slug')
+                ->setParameter(':locale', $locale)
+                ->setParameter('translated',CcmParticiperPageTranslation::STATUS_TRANSLATED)
+            ;
+        } else {
+            $qb
+                ->andWhere('s.slug = :slug')
+            ;
+        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }
