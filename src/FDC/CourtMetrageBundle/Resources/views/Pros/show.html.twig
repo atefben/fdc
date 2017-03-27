@@ -87,7 +87,7 @@
             <div class="buttons square">
                 {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                 {% spaceless %}
-                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if prosPage.translatable.image is not null %}{% path prosPage.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ prosPage.title|url_encode(true) }}&description={% if prosPage.description is not null %}{{ prosPage.description|striptags|raw }}{% else %}Cannes%20Court%20Métrage{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% if prosPage.translatable.image is not null %}{% path prosPage.translatable.image|trans_fallback("file"), "reference" %}{% endif %}&title={{ prosPage.title|url_encode(true) }}&description={% if prosPage.description %}{{ prosPage.description|striptags|raw }}{% else %}Cannes%20Court%20Métrage{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                        rel="nofollow" class="button facebook news-fb-share">
                         <i class="icon icon_facebook"></i>
                     </a>

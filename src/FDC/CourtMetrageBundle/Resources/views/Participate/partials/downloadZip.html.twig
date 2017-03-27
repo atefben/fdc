@@ -1,12 +1,13 @@
-<div class="download{{ widget.translatable.isWidgetOneColumn() ? ' customFloat' : '' }}">
-    {% for tab in tabs[widget.translatable.id][column] %}
-        <div class="item{{ widget.translatable.isWidgetOneColumn() ? ' customMarginRight' : '' }}">
-            <strong class="title-dowload">{{ tab.buttonsSectionTitle }}</strong>
-            <div class="buttons buttons-02 a-left s-margin-top">
-                {% for fileWidget in files[tab.translatable.id] %}
-                    <a href="{% path fileWidget.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i> {{ fileWidget.fileTitle }}</a>
-                {% endfor %}
-            </div>
+{% for tab in tabs[widget.translatable.id][column] %}
+    <div class="item">
+        <strong class="title-dowload">{{ tab.buttonsSectionTitle }}</strong>
+        <div class="buttons buttons-02 a-left s-margin-top">
+            {% for fileWidget in files[tab.translatable.id] %}
+                <a href="{% path fileWidget.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i> {{ fileWidget.fileTitle }}</a>
+            {% endfor %}
         </div>
-    {% endfor %}
-</div> <!-- fin download -->
+        {% if constraints %}
+            <a href="#" class="link a-left modal-toggle-label" data-content="{{ constraints|json_encode }}">{{ 'ccm.widget.technical_constraints'|trans }}</a>
+        {% endif %}
+    </div>
+{% endfor %}

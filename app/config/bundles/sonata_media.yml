@@ -287,6 +287,8 @@ sonata_media:
                 293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 # ccm homepage push image
                 455x348: { width: 455, height: 348, quality: 100, constraint: false }
+                # ccm participer plans
+                543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:

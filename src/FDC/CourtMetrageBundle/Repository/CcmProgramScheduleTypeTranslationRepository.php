@@ -22,10 +22,22 @@ class CcmProgramScheduleTypeTranslationRepository extends EntityRepository
             ->where('pstt.locale = :locale')
             ->setParameter(':locale', $locale)
             ->andWhere('pdc.program IS NOT NULL')
-            ->andWhere('pstt.status = :statusPublished or pstt.status = :statusTranslated')
-            ->setParameter(':statusPublished', CcmProgramScheduleTypeTranslation::STATUS_PUBLISHED)
-            ->setParameter(':statusTranslated', CcmProgramScheduleTypeTranslation::STATUS_TRANSLATED)
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('pstt.status = :statusTranslated')
+                ->setParameter(':statusTranslated', CcmProgramScheduleTypeTranslation::STATUS_TRANSLATED)
+                ->join('pst.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :statusPublished')
+                ->setParameter(':statusPublished', CcmProgramScheduleTypeTranslation::STATUS_PUBLISHED)
+                ->setParameter(':locale_fr', 'fr')
+            ;
+        } else {
+            $qb
+                ->andWhere('pstt.status = :statusPublished')
+                ->setParameter(':statusPublished', CcmProgramScheduleTypeTranslation::STATUS_PUBLISHED)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
