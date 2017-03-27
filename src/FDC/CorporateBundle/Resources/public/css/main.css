@@ -4919,8 +4919,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: center;
 }
 .block-tab-switch table {
-  margin-top: 27px;
-  margin-bottom: 55px;
+  margin: 27px auto 55px auto;
   border-collapse: collapse;
 }
 .block-tab-switch table td {
