@@ -16966,11 +16966,10 @@ article .read-later.rAlign span:after {
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
 }
 
-/*.grid {
-  h2.title {
-    font-family: $CamphorHeavy!important;
-  }
-}*/
+.all-articles .title {
+  font-weight: bold !important;
+}
+
 .single-movie {
   padding-top: 410px;
   position: relative;
