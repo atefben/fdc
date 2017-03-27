@@ -3004,7 +3004,7 @@ sup {
   }
 }
 
-#slider-movies .owl-item .item img , #featured-movies .owl-item .item img  {
+#slider-movies .owl-item .item img , #featured-movies .owl-item .item img  {
   width: 100% !important;
 }
 #slider-movies .owl-item:after, #featured-movies .owl-item:after {
@@ -3072,12 +3072,15 @@ sup {
 }
 #slider-movies .vCenterKid .programmButtonSmall, #featured-movies .vCenterKid .programmButtonSmall {
   font-size: 17px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 #slider-movies .vCenterKid .programmButtonMedium, #featured-movies .vCenterKid .programmButtonMedium {
   font-size: 15px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 #slider-movies .vCenterKid .goldColor, #featured-movies .vCenterKid .goldColor {
   color: #c3a05f;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 
 .discover {
@@ -3347,6 +3350,20 @@ sup {
   z-index: 1002;
   color: #ffffff;
   font-size: 16px;
+}
+#slider-discover .title a h5 {
+  text-transform: lowercase;
+  color: #c3a05f;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: normal !important;
+}
+#slider-discover .title a h4 {
+  text-transform: uppercase;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  color: white;
 }
 #slider-discover .title h5 {
   text-transform: lowercase;
@@ -3653,7 +3670,7 @@ sup {
   @include transition(all 0.1s $smoothTransition);
 }
 
-.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
   border: 6px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
 }
@@ -8689,6 +8706,7 @@ header.press #navigation ul.user {
 }
 header.press #navigation ul.user li a {
   color: #a7a7a7;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 header.press #navigation ul.user li a:hover {
   color: #c8a461;
@@ -8804,6 +8822,7 @@ header .user-nav {
 }
 header .user-nav li {
   display: inline-block;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 header .user-nav li a {
   color: #fff;
@@ -8814,6 +8833,7 @@ header .user-nav li a {
   -o-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: opacity 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 header .user-nav li a:hover {
   opacity: 0.7;
@@ -8965,6 +8985,7 @@ header #logo-wrapper #logo h1, header #logo-wrapper #logo p.stick {
 }
 header #logo-wrapper #logo h1 a, header #logo-wrapper #logo p.stick a {
   color: #c8a461;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 header #logo-wrapper #logo h1 {
@@ -9018,6 +9039,7 @@ header #logo-wrapper #logo h2 {
 }
 header #logo-wrapper #logo h2 a {
   color: #c8a461;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
 }
 header #logo-wrapper #logo img.palm {
@@ -9121,7 +9143,8 @@ header #navigation ul li:first-child {
 header #navigation ul li a {
   color: #fff;
   display: block;
-  padding-right: 32px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  padding-right: 25px;
   text-transform: uppercase;
   -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -9200,6 +9223,7 @@ header #navigation ul.user li {
   vertical-align: top;
 }
 header #navigation ul.user li:hover > a {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   color: #c8a461;
 }
 header #navigation ul.user li:hover > a:after {
@@ -9252,6 +9276,7 @@ header #navigation ul.user .participate-wrapper ul {
 }
 header #navigation ul.user .participate-wrapper ul li a {
   font-size: 0.688rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
 }
 header #navigation ul.user .programmation-wrapper ul {
   left: auto;
@@ -9385,7 +9410,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   overflow: hidden;
 }
 
-.noBdrs  {
+.noBdrs  {
   position: relative !important;
   z-index: 1 !important;
 }
@@ -15150,17 +15175,17 @@ a {
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
-    /*&:after {
-      height: 100%;
-      content: '';
-      display: block;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #000;
-      opacity: 0.3;
-    }
+  /*&:after {
+    height: 100%;
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.3;
+  }
 */
 }
 #prefooter .imgSlide img {
@@ -15399,7 +15424,7 @@ a {
   font-size: 9px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
-.biggerBox .socialContent h5  {
+.biggerBox .socialContent h5  {
   line-height: 20px !important;
   color: #000000 !important;
   font-size: 17px !important;
@@ -15439,7 +15464,7 @@ a {
   font-size: 9px !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif !important;
 }
-.bigBox .socialContent h5  {
+.bigBox .socialContent h5  {
   line-height: 20px !important;
   color: #000000 !important;
   font-size: 17px !important;
@@ -15571,7 +15596,7 @@ a {
   margin: 0 auto;
   text-align: center;
   display: block;
-  /*background: url("../img/catalogueImg.png") no-repeat;
+  /*background: url("/img/catalogueImg.png") no-repeat;
   background-size: 100% 100%;*/
   text-align: center;
   width: 100%;
@@ -15594,7 +15619,7 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  /*-ms-transform: scale(1.1); 
+  /*-ms-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15670,11 +15695,11 @@ a {
   /*&:hover .plusSign {
     @include transition(all 0.9s $smoothTransition);
     -webkit-transition: all 0.5s;
-    -ms-transform: scale(1.2); 
-    -webkit-transform: scale(1.2); 
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
-    -ms-transform: rotate(360deg); 
-    -webkit-transform: rotate(360deg); 
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }*/
 }
@@ -18685,13 +18710,13 @@ article .read-later.rAlign span:after {
     /* 5 columns for larger screens */
   }
   #gridJurys .grid-sizer {
-    width: calc(100%/5);
+    width: calc(100%/4);
   }
   #gridJurys .item {
-    width: calc(100%/5);
+    width: calc(100%/4);
   }
   #gridJurys .item.w2 {
-    width: calc(200%/5);
+    width: calc(200%/4);
   }
 }
 
@@ -26874,10 +26899,10 @@ body:not(.tablette) .webtv #live .img {
   position: relative;
   width: 100%;
   height: 350px;
-  /*background: url("../img/plageCannes.png");
+  /*background: url("/img/plageCannes.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-image: url("../img/plageCannes.png");
+  background-image: url("/img/plageCannes.png");
   background-size: 100%;
   background: center 0 no-repeat fixed;
   background-size: cover;*/
@@ -26906,6 +26931,15 @@ body:not(.tablette) .webtv #live .img {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
   letter-spacing: 5px;
 }
+.contact-box .contact-details a h3 {
+  margin: 25px 0px 80px 0px;
+  letter-spacing: 5px;
+}
+.contact-box .contact-details a span {
+  font-size: 12px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: 5px;
+}
 .contact-box .contact-details .participateBtn {
   width: 235px;
   height: 50px;
@@ -26924,6 +26958,31 @@ body:not(.tablette) .webtv #live .img {
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 .contact-box .contact-details .participateBtn:hover {
+  background: #c8a461;
+  color: white;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.contact-box .contact-details a .participateBtn {
+  width: 235px;
+  height: 50px;
+  border: 1px solid #c8a461;
+  color: #c8a461;
+  font-size: 12px;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  line-height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+  transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+}
+.contact-box .contact-details a .participateBtn:hover {
   background: #c8a461;
   color: white;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -27016,7 +27075,7 @@ body:not(.tablette) .webtv #live .img {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;  
+  z-index: 1004;
   right: 1%;
   top: 100%;*/
   display: none;
@@ -27908,7 +27967,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-      
+
         &:after {
         content: '';
     }
@@ -28756,7 +28815,7 @@ ul.tabs .quarterTab h4 {
 
 body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-size: 100%;
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   height: 270px;
 }
@@ -29500,7 +29559,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   padding-bottom: 30px;
   letter-spacing: 0px;
 }
-.contactUs .contactContent h6  {
+.contactUs .contactContent h6  {
   color: #666666 !important;
   font-size: 14px;
   opacity: 0.9;
@@ -29739,7 +29798,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: white;
 }
 @media screen and (max-width: 1024px) {
-  .confcourtaccordion #eventSelector  {
+  .confcourtaccordion #eventSelector  {
     padding: 0px 160px !important;
   }
 }
@@ -29973,7 +30032,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
     margin-left: 4%;
   }
 }
-.modal-content .half .htitle  {
+.modal-content .half .htitle  {
   width: 100%;
   text-align: center;
   font-family: "Playfair Display", Times New Roman, Times, serif !important;
@@ -29981,7 +30040,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   color: #141414 !important;
   letter-spacing: 0px !important;
 }
-.modal-content .half .htitle  h2 {
+.modal-content .half .htitle  h2 {
   font-family: "Playfair Display", Times New Roman, Times, serif !important;
   letter-spacing: 0px !important;
   font-size: 30px;
@@ -30206,27 +30265,27 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   width: 100%;
   line-height: 40px;
   text-align: left;
-      /*.contactInfoEmail {
-        &:before {
-          width: 30px;
-          content: " ";
-          background-image: url(../img/world.png);
-          position: absolute;
-          height: 20px;
-          left: 5%;
-        }
-      }
+  /*.contactInfoEmail {
+    &:before {
+      width: 30px;
+      content: " ";
+      background-image: url(/img/world.png);
+      position: absolute;
+      height: 20px;
+      left: 5%;
+    }
+  }
 
-      .world {
-        &:before {
-          width: 30px;
-          content: " ";
-          background-image: url(../img/computer.png);
-          position: absolute;
-          height: 20px;
-          left: 5%;
-        }
-      }*/
+  .world {
+    &:before {
+      width: 30px;
+      content: " ";
+      background-image: url(/img/computer.png);
+      position: absolute;
+      height: 20px;
+      left: 5%;
+    }
+  }*/
 }
 .modal-content .half .contactInfo div {
   width: 100%;
@@ -30331,7 +30390,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 30px!important;
       color: #141414!important;
       letter-spacing: 0px!important;
-      
+
       h2 {
         font-family: $Playfair!important;
         letter-spacing: 0px!important;
@@ -30354,8 +30413,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
       font-size: 10px;
       text-align: left;
       padding: 20px 0px 20px 0px;
-      text-transform: uppercase;     
-      font-family: $CamphorBold;  
+      text-transform: uppercase;
+      font-family: $CamphorBold;
     }
 
     .titleHalf {
@@ -30366,8 +30425,8 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
         color:#141414;
         font-size: 50px;
         text-align: left;
-        line-height: 60px;   
-        font-family: $Playfair;   
+        line-height: 60px;
+        font-family: $Playfair;
       }
       a {
         text-decoration: none;
