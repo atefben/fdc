@@ -3213,7 +3213,7 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterType;
-            
+            console.log(filters);
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
