@@ -104,7 +104,6 @@
                         {% elseif class(widget) == "StatementWidgetVideoYoutube" or class(widget) == "InfoWidgetVideoYoutube" or class(widget) == "NewsWidgetVideoYoutube" %}
                             {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         {% elseif class(widget) == "StatementWidgetAudio" or class(widget) == "InfoWidgetAudio" or class(widget) == "NewsWidgetAudio" %}
-                            {{ dump(widget)}}
                             {% if widget.title is defined %}
                                 <h2 class="title">{{ widget.title }}</h2>
                             {% endif %}
