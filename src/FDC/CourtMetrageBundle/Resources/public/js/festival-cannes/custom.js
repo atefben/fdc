@@ -698,6 +698,10 @@ if ( $("#main").hasClass( "single-article" ) && $('.list-article').length > 0 ) 
 
   });*/
 
-
+    $('.play-btn, .picto').each (function() {
+        $(this).click(function() {
+            $(this).closest('.shadow-bottom-vid').addClass('no-zindex');
+        });
+    });
 });
 
