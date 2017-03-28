@@ -424,8 +424,11 @@ $(document).ready(function () {
           layoutMode: 'packery',
           itemSelector: '.item'
         });
+
+        $(window).trigger('resize');
+        $grid.isotope('layout');
+        
       });
-      resizeGrid();
     }
 
     if($('#gridFilmSelection').length) {
