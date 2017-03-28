@@ -442,5 +442,9 @@ body.chocolat-open.fixed {
     font-weight: bold;
 }
 
+.background-cover {
+    background-size: cover!important;
+}
+
 
 
