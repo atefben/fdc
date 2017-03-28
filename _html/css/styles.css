@@ -30345,6 +30345,12 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   display: block;
 }
 
+.custom-wysiwyg strong {
+  font-weight: bolder !important;
+  color: #0c0c0c !important;
+  letter-spacing: 2px;
+}
+
 /*
 
 .modal-wrapper {
