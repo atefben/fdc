@@ -10,7 +10,7 @@
         {% elseif video.imageAmazonUrl %}
             {% set amazonImage = s3_server_video ~ video.imageAmazonUrl %}
         {% endif %}
-        <div class="shadow-bottom-vid">
+        <div class="vid shadow-bottom-vid">
             <div class="item">
                 <div class="video-container state-init video"
                      data-name="{{ video.title }}"
