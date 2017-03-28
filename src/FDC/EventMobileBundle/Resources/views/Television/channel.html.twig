@@ -5,6 +5,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/fdceventmobile/css/channel.css"
+        "bundles/fdceventmobile/css/article_custom.css"
         "bundles/fdceventmobile/css/trailer_custom.css"
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
@@ -29,7 +30,7 @@
     </div>
     <div class="slideshow dark-container">
         <h2 class="title">{{ channel|trans_fallback('name') }}</h2>
-        <div class="images">
+        <div class="images m-video">
         {% set firstVideo = false %}
         {% set first = true %}
         {%- for video in webTvVideos %}
