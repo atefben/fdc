@@ -587,7 +587,7 @@ a.notloaded {
 .single-movie .competition #slider-competition .owl-item .linkVid {
     height:0 !important;
 }
-.downloading-press .landscape {
+.press-home .landscape, .downloading-press .landscape {
 	visibility: visible !important;
 }
 .audio-live {
