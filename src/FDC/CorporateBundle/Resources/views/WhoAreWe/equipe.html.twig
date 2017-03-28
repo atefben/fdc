@@ -46,7 +46,7 @@
                     {% for teamAssociation in datas.teams %}
                     <div class="pages {{ teamAssociation.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}" data-filter="{{ teamAssociation.teams|trans_fallback('teamName')|replace({' ':'-'})|replace({',':'-'})|lower }}">
                         {% for departementAssociation in teamAssociation.teams.departement %}
-                        <div class="block-01 border-bottom padding-bottom ">
+                        <div class="block-01 border-bottom{% if loop.first %}{% else %} padding-top{% endif %}">
                             <strong class="title-22">{{ departementAssociation.departement|trans_fallback('departementName') }}</strong>
                             <div class="container-items">
                                 <div class="grid-sizer"></div>
