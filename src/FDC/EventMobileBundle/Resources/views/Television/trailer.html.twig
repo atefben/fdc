@@ -5,6 +5,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/fdceventmobile/css/trailer.css"
+        "bundles/fdceventmobile/css/article_custom.css"
         "bundles/fdceventmobile/css/trailer_custom.css"
     %}
         <link rel="stylesheet" href="{{ asset_url }}">
@@ -30,7 +31,7 @@
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                 {%- endif -%}
                 {% if loop.first %}
-                <div class="images">
+                <div class="images m-video">
                     <div id="player"
                         {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}
                      data-poster="{{ videoImage }}"></div>

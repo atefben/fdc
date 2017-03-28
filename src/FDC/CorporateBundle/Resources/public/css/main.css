@@ -6992,6 +6992,13 @@ body.chocolat-open > .chocolat-content {
   margin-top: 71px;
 }
 
+.home .control-bar .time .time-info {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
 .articles-list-medias.dark.retrospective .isotope-01.add-ajax-request {
   background: #000;
 }

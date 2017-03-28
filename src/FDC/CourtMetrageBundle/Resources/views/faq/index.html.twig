@@ -4,7 +4,7 @@
 
     <div id="main" class="loading">
         <div class="faq">
-            <h2 class="title">{{ 'menu.faq'|trans }}</h2>
+            <h2 class="title">{{ 'ccm.faq.title'|trans }}</h2>
             <inside class="faq-menu">
                 <ul>
                     {% if faqRubriques is defined and faqRubriques is not null %}
@@ -19,7 +19,7 @@
                 </ul>
             </inside>
 
-            {% if faqRubriques is defined and faqRubriques is not null%}
+            {% if faqRubriques is defined and faqRubriques is not null %}
                 {% for rubrique in faqRubriques %}
                     {% set isFirstLoop = loop.first %}
                     {% if faqQuestionsAnswers[rubrique.translatable.id] is defined and faqQuestionsAnswers[rubrique.translatable.id] is not null %}

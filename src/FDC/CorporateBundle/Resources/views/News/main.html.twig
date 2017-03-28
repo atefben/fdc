@@ -64,17 +64,17 @@
                                     class="icon icon-print"></i>{{ 'article.btn.imprimer'|trans }}</a>
                     </div>
 
-                    {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" %}
+                    {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" or class(news) == "NewsArticle" %}
                         {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
-                    {% elseif class(news) == "StatementAudio" or class(news) == "InfoAudio" %}
+                    {% elseif class(news) == "StatementAudio" or class(news) == "InfoAudio" or class(news) == "NewsAudio" %}
                         {% include 'FDCEventBundle:News:widgets/single-audio.html.twig' %}
-                    {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" %}
+                    {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" or class(news) == "NewsVideo" %}
                         {% if is_available_video(news.video) %}
                             <div class="single-video">
                                 {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
                             </div>
                         {% endif %}
-                    {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" %}
+                    {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" or class(news) == "NewsImage" %}
                         <div class="single-gallery">
                             {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                         </div>
@@ -85,30 +85,33 @@
                     </div>
                     {% for widget in news.widgets %}
                         {% if class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
-                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
+                        or class(widget) == "NewsWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                             {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with ({
                             'photo' : widget.gallery.medias[0].media,
                             'photo_class' : ' large-photo'
                             }) %}
                         {% elseif class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1
-                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1
+                        or class(widget) == "NewsWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                             {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetText" or class(widget) == "InfoWidgetText" %}
+                        {% elseif class(widget) == "StatementWidgetText" or class(widget) == "InfoWidgetText" or class(widget) == "NewsWidgetText" %}
                             {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetVideo" or class(widget) == "InfoWidgetVideo" %}
+                        {% elseif class(widget) == "StatementWidgetVideo" or class(widget) == "InfoWidgetVideo" or class(widget) == "NewsWidgetVideo" %}
                             {% if is_available_video(widget.file) %}
                                 {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                             {% endif %}
-                        {% elseif class(widget) == "StatementWidgetVideoYoutube" or class(widget) == "InfoWidgetVideoYoutube" %}
+                        {% elseif class(widget) == "StatementWidgetVideoYoutube" or class(widget) == "InfoWidgetVideoYoutube" or class(widget) == "NewsWidgetVideoYoutube" %}
                             {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
-                        {% elseif class(widget) == "StatementWidgetAudio" or class(widget) == "InfoWidgetAudio" %}
+                        {% elseif class(widget) == "StatementWidgetAudio" or class(widget) == "InfoWidgetAudio" or class(widget) == "NewsWidgetAudio" %}
+                            {{ dump(widget)}}
                             {% if widget.title is defined %}
                                 <h2 class="title">{{ widget.title }}</h2>
                             {% endif %}
                             {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
-                        {% elseif class(widget) == "StatementWidgetQuote" or class(widget) == "InfoWidgetQuote" %}
+                        {% elseif class(widget) == "StatementWidgetQuote" or class(widget) == "InfoWidgetQuote" or class(widget) == "NewsWidgetQuote" %}
                             {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetImageDualAlign" or class(widget) == "InfoWidgetImageDualAlign" %}
+                        {% elseif class(widget) == "StatementWidgetImageDualAlign" or class(widget) == "InfoWidgetImageDualAlign" or class(widget) == "NewsWidgetImageDualAlign" %}
                             {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                         {% endif %}
                     {% endfor %}

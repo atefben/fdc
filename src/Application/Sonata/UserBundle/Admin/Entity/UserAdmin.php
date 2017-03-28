@@ -11,6 +11,7 @@
 
 namespace Application\Sonata\UserBundle\Admin\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -90,8 +91,20 @@ class UserAdmin extends SonataUserAdmin
 
     }
 
+    /**
+     * @param User $object
+     * @return mixed|void
+     */
     public function preUpdate($object)
     {
+        if ($object->getPlainPassword() != null) {
+            /**
+             * we trigger Doctrine's <modified> state because the $plainPassword field is not managed
+             * and when the user only changes the password Doctrine does not see any changes
+             */
+            $object->setPassword(null);
+        }
+
         $container = $this->getConfigurationPool()->getContainer();
         $templating = $container->get('templating');
 
