@@ -8376,17 +8376,21 @@ footer {
   z-index: 2;
   padding-top: 46px;
 }
-footer .title {
-  margin-bottom: 15px;
-}
 footer .block-01 img {
   object-fit: initial;
 }
+footer .title {
+  margin-bottom: 15px;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-weight: 100;
+}
 footer .subtitle {
   padding-right: 7px;
-}
-footer .title {
   font-family: "Playfair Display", Times New Roman, Times, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: lighter;
+  text-align: center;
 }
 footer:after {
   background-color: #141414;

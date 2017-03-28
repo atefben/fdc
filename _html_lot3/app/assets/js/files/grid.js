@@ -89,8 +89,14 @@ var owInitGrid = function (id) {
             $('html').on('click','#filters span',function(){
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
-                    $gridMore.isotope('layout');
-                },1000);
+                    var i = window.setInterval(function(){
+                        if($gridMore.find('.double.w2:visible').length){
+                            $gridMore.isotope('layout');
+                            window.clearInterval(i);
+                        }
+                    },200);
+                    window.clearTimeout(t);
+                },500);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -405,6 +411,7 @@ var owInitGrid = function (id) {
 
             var filterDate = '',
                 filterTheme = '',
+                filterType = '',
                 filterFormat = '';
 
             if ($('.filters #date').length > 0) {
@@ -427,8 +434,7 @@ var owInitGrid = function (id) {
                 filterType = "." + filterType;
             }
 
-            var filters = filterDate + filterTheme + filterType;
-            
+            var filters = filterDate + filterTheme + filterFormat + filterType;
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
