@@ -26,15 +26,23 @@ class CcmShortFilmCornerRepository extends EntityRepository
             ->andWhere('sfc.type = :type')
             ->join('sfc.translations', 't')
             ->andWhere('t.locale = :locale')
-            ->andWhere('t.status = :status')
             ->setParameter('locale', $locale)
             ->setParameter('type', $type)
             ->setMaxResults(1)
         ;
         if ($locale != 'fr') {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_TRANSLATED);
+            $qb
+                ->innerJoin('t.translatable', 'tr')
+                ->join('tr.translations', 'trr')
+                ->andWhere('t.locale = :locale and t.status = :statusTranslated')
+                ->andWhere('trr.status = :published')
+                ->setParameter('statusTranslated', CcmShortFilmCornerTranslation::STATUS_TRANSLATED)
+                ->setParameter('published', CcmShortFilmCornerTranslation::STATUS_PUBLISHED)
+            ;
         } else {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_PUBLISHED);
+            $qb
+                ->andWhere('t.status = :status')
+                ->setParameter('status', CcmShortFilmCornerTranslation::STATUS_PUBLISHED);
         }
         if ($slug !== null) {
             $qb
@@ -60,15 +68,23 @@ class CcmShortFilmCornerRepository extends EntityRepository
             ->andWhere('sfc.type = :type')
             ->join('sfc.translations', 't')
             ->andWhere('t.locale = :locale')
-            ->andWhere('t.status = :status')
             ->setParameter('locale', $locale)
             ->setParameter('type', $type)
             ->orderBy('sfc.menuOrder', 'ASC')
         ;
         if ($locale != 'fr') {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_TRANSLATED);
+            $qb
+                ->innerJoin('t.translatable', 'tr')
+                ->join('tr.translations', 'trr')
+                ->andWhere('t.locale = :locale and t.status = :statusTranslated')
+                ->andWhere('trr.status = :published')
+                ->setParameter('statusTranslated', CcmShortFilmCornerTranslation::STATUS_TRANSLATED)
+                ->setParameter('published', CcmShortFilmCornerTranslation::STATUS_PUBLISHED)
+            ;
         } else {
-            $qb->setParameter('status', CcmShortFilmCornerTranslation::STATUS_PUBLISHED);
+            $qb
+                ->andWhere('t.status = :status')
+                ->setParameter('status', CcmShortFilmCornerTranslation::STATUS_PUBLISHED);
         }
         if ($limit !== false) {
             $qb->setMaxResults($limit);

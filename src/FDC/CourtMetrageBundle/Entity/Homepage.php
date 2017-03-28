@@ -91,7 +91,7 @@ class Homepage implements CcmAProposInterface
     /**
      * @ORM\OneToMany(targetEntity="CatalogPush", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
      * @Assert\Count(
-     *      min = "3",
+     *      min = "2",
      *      minMessage = "ccm.validation.homepage.catalog_min",
      *      max = "5",
      *      maxMessage = "ccm.validation.homepage.catalog_max"

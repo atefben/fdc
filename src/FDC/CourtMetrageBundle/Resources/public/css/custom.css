@@ -394,8 +394,17 @@ body.chocolat-open.fixed {
     content:" ";
 }
 
-.contact .title, .faq .title, .legal-notice .title, .sitemap .title, .all-articles .title {
+.contact .title, .faq .title, .legal-notice .title, .sitemap .title, .all-articles .title, .label-page .title, .seatingchart .title {
     font-weight: 700!important;
+}
+
+.seatingchart .title {
+    font-family: "Playfair Display", Times New Roman, Times, serif !important;
+}
+
+.seatingchart h2 {
+    padding: 60px;
+    font-size: 28px;
 }
 
 .modal-content .half .row:after {
@@ -411,3 +420,27 @@ body.chocolat-open.fixed {
 .contain-title .title-02 strong {
     color: inherit !important;
 }
+
+.short-film-corner .block-01-mms strong {
+    color: #141414 !important;
+    font-weight: bolder !important;
+}
+
+.legal-notice {
+    padding: 0px 0px !important;
+}
+
+.catalogue .twinBlocks {
+    width: 50%;
+}
+
+#slider-discover .title h5 {
+    text-transform: none !important;
+}
+
+.custom-wysiwyg strong {
+    font-weight: bold;
+}
+
+
+

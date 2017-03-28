@@ -195,7 +195,7 @@
                                                                  alt="{{ widget.image|trans_fallback('alt') }}">
                                                         {% set copyright = widget.image|trans_fallback('copyright') %}
                                                         {% if copyright is not empty -%}
-                                                                <span class="copy"> © {{ copyright }}</span>
+                                                            <br><br><span class="copy"> © {{ copyright }}</span>
                                                         {%- endif %}
                                                 </figure>
                                                 {% endif %}

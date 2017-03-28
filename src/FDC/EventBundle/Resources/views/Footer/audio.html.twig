@@ -1,0 +1,7 @@
+{% trans_default_domain 'FDCEventBundle' %}
+{% extends 'FDCEventBundle::layout.html.twig' %}
+{% block body %}
+<div id="main" class="audio-live">
+    <iframe src="https://www.moustic.fr/players/cannes/?lang={{ app.request.locale }}" width="100%" height="2400px" scrolling="no"></iframe>
+</div>
+{% endblock %}

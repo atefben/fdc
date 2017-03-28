@@ -65,10 +65,9 @@
   }
 
   &.dark .copy {
-    color: #fff;
+    color: #666;
+    font-size: .75rem;
     font-family: $CamphorRegular;
-    font-weight: 200;
-    margin-top: 15px;
   }
 
   &.dark .slideshow {

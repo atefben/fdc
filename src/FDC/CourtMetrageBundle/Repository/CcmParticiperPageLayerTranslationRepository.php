@@ -16,15 +16,26 @@ class CcmParticiperPageLayerTranslationRepository extends EntityRepository
         $qb = $this->createQueryBuilder('s');
         $qb
             ->where('s.locale = :locale')
-            ->andWhere('s.translatable = :translatable')
-            ->andWhere('s.status = :publish or s.status = :translate')
-            ->setParameter('publish', CcmParticiperPageLayerTranslation::STATUS_PUBLISHED)
-            ->setParameter('translate', CcmParticiperPageLayerTranslation::STATUS_TRANSLATED)
             ->setParameter(':locale', $locale)
+            ->andWhere('s.translatable = :translatable')
+            ->setParameter('published', CcmParticiperPageLayerTranslation::STATUS_PUBLISHED)
             ->setParameter('translatable', $translatable)
             ->join('s.translatable', 't')
             ->orderBy('t.layerPosition', 'ASC')
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('s.status = :translated')
+                ->setParameter('translated', CcmParticiperPageLayerTranslation::STATUS_TRANSLATED)
+                ->join('t.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :published')
+                ->setParameter(':locale_fr', 'fr')
+            ;
+        } else {
+            $qb
+                ->andWhere('s.status = :published')
+            ;
+        }
 
         return $qb->getQuery()->getOneOrNullResult();
     }
