@@ -29485,7 +29485,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   line-height: 30px;
 }
 .onlinegoldBorders strong {
-  color: #0c0c0c;
+  color: #0c0c0c !important;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
