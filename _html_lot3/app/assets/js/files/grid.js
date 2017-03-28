@@ -88,10 +88,12 @@ var owInitGrid = function (id) {
 
             $('html').on('click','#filters span',function(){
                 //wait layer fadeOut + arrangeComplete isotope animation
-                var t = window.setInterval(function(){
-                    console.log($gridMore.find('.double.w2:visible').length)
-                    //$gridMore.isotope('layout');
-                },200);
+                var t = window.setTimeout(function(){
+                    var i = window.setInterval(function(){
+                        console.log($gridMore.find('.double.w2:visible').length)
+                        //$gridMore.isotope('layout');
+                    },200);
+                },500);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
