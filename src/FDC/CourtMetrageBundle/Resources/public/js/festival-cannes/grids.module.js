@@ -425,6 +425,7 @@ $(document).ready(function () {
           itemSelector: '.item'
         });
       });
+      resizeGrid();
     }
 
     if($('#gridFilmSelection').length) {

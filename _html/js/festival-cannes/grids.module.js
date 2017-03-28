@@ -463,6 +463,8 @@ $(document).ready(function () {
         $(window).trigger('resize');
         $grid.isotope('layout');
 
+        resizeGrid();
+
       });
     }
 
