@@ -877,6 +877,11 @@ header #navigation ul.user li a {
         }
     }
 }
+
+.block-01-s .quote {
+    padding: 48px 90px;
+}
+
 .c-fullscreen-slider .chocolat-bottom .chocolat-description h2{
     color: #666;
 
@@ -924,25 +929,8 @@ header #navigation ul.user li a {
     }
 }
 
-/* Scrollbar */
-.scrollbar {
-    margin: 0 0 1em 0;
-    height: 2px;
-    background: #ccc;
-    line-height: 0;
-}
-.scrollbar .handle {
-    width: 100px;
-    height: 100%;
-    background: #292a33;
-    cursor: pointer;
-}
-.scrollbar .handle .mousearea {
-    position: absolute;
-    top: -9px;
-    left: 0;
-    width: 100%;
-    height: 20px;
+.block-contact .title-25 {
+    letter-spacing: 3px;
 }
 
 /* thomon - end fixes */
