@@ -110,7 +110,7 @@
             {% endif %}
         </div>
         {% if class(article) starts with 'News' %}
-            {% set linkArticle = path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) %}
+            {% set linkArticle = path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': article.festival.year }) %}
         {% elseif class(article) starts with 'Info' %}
             {% set linkArticle = path('fdc_corporate_news_presssingle', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug')}) %}
         {% elseif class(article) starts with 'Statement' %}
