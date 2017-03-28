@@ -5,19 +5,21 @@
     <div id="main" class="sitemap loading">
         <h2 class="title">{{ 'site_plan.title'|trans }}</h2>
         <section class="sitemap-container">
-
             {% for key, mainNav in mainNavs %}
                 <article class="sitemap-item">
                     {% if mainNav.translatable.isActive %}
                         {% set menuURL = mainNav.route %}
-                        {% set menuIsExtern = (fdc_court_metrage_domain in menuURL ? false : true) %}
+                        {% set menuIsExtern = (fdc_court_metrage_domain not in menuURL and ('http' in menuURL or 'https' in menuURL) ? true : false) %}
                         <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
                             <h3 class="title sitemap-item-title">
                                     {{ mainNav.name }}
                             </h3>
                         </a>
-
-                        {% if mainNav.route == 'fdc_court_metrage_competition_selection' or mainNav.route == 'fdc_court_metrage_competition_jury' or mainNav.route == 'fdc_court_metrage_competition_palmares' %}
+                        {% if
+                            menuURL in [path('fdc_court_metrage_competition_selection'), url('fdc_court_metrage_competition_selection')] or
+                            menuURL in [path('fdc_court_metrage_competition_jury'), url('fdc_court_metrage_competition_jury')] or
+                            menuURL in [path('fdc_court_metrage_competition_palmares'), url('fdc_court_metrage_competition_palmares')]
+                        %}
                             <ul>
                                 <li>
                                     <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_selection') }}">
@@ -41,25 +43,12 @@
                             {% for subNav in subNavs[key] %}
                                 {% if subNav.translatable.isActive %}
                                     {% set submenuURL = subNav.route %}
-                                    {% set submenuIsExtern = (fdc_court_metrage_domain in submenuURL ? false : true) %}
+                                    {% set submenuIsExtern = (fdc_court_metrage_domain not in submenuURL and ('http' in menuURL or 'https' in menuURL) ? true : false) %}
                                     <li>
                                         <a class="sub-cat" href="{{ submenuURL }}" {% if submenuIsExtern %}target="_blank"{% endif %}>
                                             {{ subNav.name }}
                                         </a>
                                     </li>
-                                {% endif %}
-                                {% if mainNav.route == 'fdc_court_metrage_register_movie' %}
-                                    {% if loop.last %}
-                                        {% if participatePages is defined and participatePages is not null %}
-                                            {% for page in participatePages %}
-                                                <li>
-                                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_participer_page', {'slug' : page.slug}) }}">
-                                                        {{ page.name }}
-                                                    </a>
-                                                </li>
-                                            {% endfor %}
-                                        {% endif %}
-                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                             </ul>
