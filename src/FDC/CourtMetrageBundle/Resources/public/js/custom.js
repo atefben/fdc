@@ -10,6 +10,7 @@ $(document).ready(function () {
     SFCProgramPageLink();
     initLabelpage();
     initHomepageCatalogue();
+    resizeJuryImgs();
 });
 
 function shortFilmCornerStickyHeader() {
@@ -364,6 +365,19 @@ function initHomepageCatalogue()
     var catalogueBlocks = $('.catalogue .blocks');
     if (catalogueBlocks.length == 2) {
         catalogueBlocks.addClass('twinBlocks');
+    }
+}
+
+function resizeJuryImgs()
+{
+    if($('#gridJurys').length) {
+        var $grid = $('#gridJurys').imagesLoaded(function () {
+            $grid.isotope({
+                layoutMode: 'packery',
+                itemSelector: '.item'
+            });
+        });
+        resizeGrid();
     }
 }
     
