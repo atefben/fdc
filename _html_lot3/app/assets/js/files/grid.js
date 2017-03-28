@@ -421,7 +421,12 @@ var owInitGrid = function (id) {
                 filterFormat = "." + filterFormat;
             }
 
-            var filters = filterDate + filterTheme + filterFormat;
+            if ($('.filters #type').length > 0) {
+                filterType = $('.filters #type .select span.active').data('filter');
+                filterType = "." + filterType;
+            }
+
+            var filters = filterDate + filterTheme + filterType;
             
             var $grid = $('.isotope-01').isotope({filter: filters});
         }

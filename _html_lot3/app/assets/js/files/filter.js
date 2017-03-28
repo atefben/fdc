@@ -46,7 +46,6 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            console.log('scroll 1');
             $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -62,17 +61,16 @@ var owInitFilter = function (isTabSelection) {
                 $('#filters span').addClass('show');
             }, 400);
 
-            $('#filters span').on('click', function () {
+            /*$('#filters span').on('click', function () {
                 var data = $(this).data('select');
                 var selected = $('#' + block + ' .select option[value="' + data + '"]');
                 selected.attr('selected', 'selected');
-            });
+            });*/
 
         });
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            console.log('scroll 2');
             $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
@@ -111,7 +109,6 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    console.log('scroll 3');
                     $('html').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
@@ -121,7 +118,7 @@ var owInitFilter = function (isTabSelection) {
 
                     setTimeout(function () {
                         $('#filters').addClass('show');
-                    }, 100);
+                    }, 100);filters
 
                     setTimeout(function () {
                         $('#filters span').addClass('show');
@@ -138,11 +135,7 @@ var owInitFilter = function (isTabSelection) {
                             owInitGrid('filter');
                             var grid;
 
-                            /*var i = window.setTimeout(function(){
-                                console.log('bigging');
-                                owsetGridBigImg( grid, $('.grid-01'), false);
-                            },1000);*/
-                            
+                            var activeFiltersString = '';
 
                             fnArraySortFilters();
                         });
@@ -151,7 +144,6 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('scroll 4');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -212,7 +204,6 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('scroll 5');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {

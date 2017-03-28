@@ -41,7 +41,7 @@ var initVideo = function(hash) {
                 <a href="#" class="channels"><i class="icon icon-playlist"></i></a>\
                 <div class="info"></div>\
                 <div class="buttons square img-slideshow-share rs-slideshow">\
-                    <a class="facebook button" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a>\
+                    <a class="facebook button" href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link=http://www.festival-cannes.com/fr/films/bacalaureat&picture=http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/film_poster/0001/02/thumb_1458_film_poster_293x397.jpeg&name=BACALAUREAT%20-%20Festival%20de%20Cannes&caption=&description=Romeo%2C%20m%C3%A9decin%20dans%20une%20petite%20ville%20de%20Transylvanie%2C%20a%20tout%20mis%20en%20%C5%93uvre%20pour%20que%20sa%20fille%2C%20Eliza%2C%20soit%20accept%C3%A9e%20dans%20une%20universit%C3%A9%20anglaise.%20%0D%0AIl%20ne%20reste%20plus%20%C3%A0%20la%20jeune%20fille%2C%20tr%C3%A8s%20bonne%20%C3%A9l%C3%A8ve%2C%20qu%E2%80%99une%20formalit%C3%A9%20qui%20ne%20devrait%20pas%20poser%20de%20probl%C3%A8me%20%3A%20obtenir%20son%20baccalaur%C3%A9at.%20%0D%0AMais%20Eliza%20se%20fait%20agresser%20et%20le%20pr%C3%A9cieux%20s%C3%A9same%20semble%20brutalement%20hors%20de%20port%C3%A9e.%20Avec%20lui%2C%20c%E2%80%99est%20toute%20la%20vie%20de%20Romeo%20qui%20est%20remise%20en%20question%20quand%20il%20oublie%20alors%20tous%20les%20principes%20qu%E2%80%99il%20a%20inculqu%C3%A9s%20%C3%A0%20sa%20fille%2C%20entre%20%20compromis%20et%20compromissions%E2%80%A6&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"><i class="icon icon-facebook"></i></a>\
                     <a class="twitter button" href="https://twitter.com/intent/tweet?text=BACALAUREAT%20http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-twitter"></i></a>\
                     <a href="#" rel="nofollow" class="link self button" data-clipboard-text="http://www.festival-cannes.com/fr/films/bacalaureat"><i class="icon icon-link"></i></a>\
                     <a href="#" class="popin-mail-open button"><i class="icon icon-letter"></i></a>\
@@ -2537,7 +2537,6 @@ var owInitFilter = function (isTabSelection) {
             var block = $(this).parent().attr('id');
             var h = $(this).parent().find('.select-span').html();
             $('#filters').remove();
-            console.log('scroll 1');
             $('html').addClass('noscroll');
             $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
             $('#filters .vCenterKid').html(h);
@@ -2553,18 +2552,16 @@ var owInitFilter = function (isTabSelection) {
                 $('#filters span').addClass('show');
             }, 400);
 
-            $('#filters span').on('click', function () {
-                console.log('filter click, debug toggle items');
+            /*$('#filters span').on('click', function () {
                 var data = $(this).data('select');
                 var selected = $('#' + block + ' .select option[value="' + data + '"]');
                 selected.attr('selected', 'selected');
-            });
+            });*/
 
         });
 
         // close filters
         $('body').off('click').on('click', '#filters', function () {
-            console.log('scroll 2');
             $('html').removeClass('noscroll');
             $('#filters').removeClass('show');
             setTimeout(function () {
@@ -2603,7 +2600,6 @@ var owInitFilter = function (isTabSelection) {
                     var h = $(this).parent().html();
 
                     $('#filters').remove();
-                    console.log('scroll 3');
                     $('html').addClass('noscroll');
                     $('body').append('<div id="filters"><div class="vCenter"><div class="vCenterKid"></div></div><div class="close-button"><i class="icon icon-close"></i></div></div>');
                     $('#filters .vCenterKid').html(h);
@@ -2613,7 +2609,7 @@ var owInitFilter = function (isTabSelection) {
 
                     setTimeout(function () {
                         $('#filters').addClass('show');
-                    }, 100);
+                    }, 100);filters
 
                     setTimeout(function () {
                         $('#filters span').addClass('show');
@@ -2630,11 +2626,7 @@ var owInitFilter = function (isTabSelection) {
                             owInitGrid('filter');
                             var grid;
 
-                            /*var i = window.setTimeout(function(){
-                                console.log('bigging');
-                                owsetGridBigImg( grid, $('.grid-01'), false);
-                            },1000);*/
-                            
+                            var activeFiltersString = '';
 
                             fnArraySortFilters();
                         });
@@ -2643,7 +2635,6 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('scroll 4');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -2704,7 +2695,6 @@ var owInitFilter = function (isTabSelection) {
 
                     // close filters
                     $('body').off('click').on('click', '#filters', function () {
-                        console.log('scroll 5');
                         $('html').removeClass('noscroll');
                         $('#filters').removeClass('show');
                         setTimeout(function () {
@@ -3216,7 +3206,12 @@ var owInitGrid = function (id) {
                 filterFormat = "." + filterFormat;
             }
 
-            var filters = filterDate + filterTheme + filterFormat;
+            if ($('.filters #type').length > 0) {
+                filterType = $('.filters #type .select span.active').data('filter');
+                filterType = "." + filterType;
+            }
+
+            var filters = filterDate + filterTheme + filterType;
             
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
