@@ -2875,7 +2875,7 @@ var owInitGrid = function (id) {
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
                     $gridMore.isotope('layout');
-                },1000);
+                },400);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
