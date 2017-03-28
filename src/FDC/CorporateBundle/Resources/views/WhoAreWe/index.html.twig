@@ -35,7 +35,7 @@
                     {% for widget in currentPage.widgets %}
 
                     {% if widget is fdc_page_la_selection_cannes_classics_widget_text %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             <div class="small-pres text">
                                 {{ transWidget.content|raw }}
@@ -48,12 +48,12 @@
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_audio %}
                         {% if widget.file|is_published('site-institutionnel') %}
-                            <div class="block-01-xs">
+                            <div class="block-01-s">
                                 {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
                             </div>
                         {% endif %}
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video_youtube %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_video %}
@@ -63,7 +63,7 @@
                             </div>
                         {% endif %}
                     {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             <div class="contain-img-honneur">
                                 {% set photo = widget.gallery.medias[0].media %}
                                 {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
@@ -72,19 +72,19 @@
                             </div>
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             <div class="photos photo-module" data-section="photos">
                                 {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
                             </div>
                         </div>
                     {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image_dual_align %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             <div class="small-pres half-photos container">
                                 {% include 'FDCCorporateBundle:Global/widget:dual-photo.html.twig' with {'hideHalfDiv': true} %}
                             </div>
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_movie %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             {% if widget.widgetMovie is not null and widget.widgetMovie.films|length > 0 %}
                                 {% for film in widget.widgetMovie.films %}
                                     {% include 'FDCEventBundle:Movie:widgets/movie.html.twig' with {'film': film.film, 'restauration': true} %}
@@ -92,7 +92,7 @@
                             {% endif %}
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_intro %}
-                        <div class="block-01-xs">
+                        <div class="block-01-s">
                             {% set transWidget = widget.findTranslationByLocale(app.request.locale) %}
                             <div class="pres-honneur">
                                 {{ transWidget.introduction|raw }}
