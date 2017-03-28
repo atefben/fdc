@@ -38,7 +38,9 @@
                          data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
                         <div class="poster" data-url="pid={{ poster.file.id }}">
                             {% if poster.file is not empty %}
-                                <img src="{% path poster.file, '256x348' %}"/>
+                                <a class="link-update" href="#">
+                                    <img src="{% path poster.file, '256x348' %}"/>
+                                </a>
                             {% endif %}
                         </div>
                         <div class="infos">
