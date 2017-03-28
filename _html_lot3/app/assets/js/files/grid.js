@@ -405,6 +405,7 @@ var owInitGrid = function (id) {
 
             var filterDate = '',
                 filterTheme = '',
+                filterType = '',
                 filterFormat = '';
 
             if ($('.filters #date').length > 0) {
@@ -427,8 +428,7 @@ var owInitGrid = function (id) {
                 filterType = "." + filterType;
             }
 
-            var filters = filterDate + filterTheme + filterType;
-            console.log(filters);
+            var filters = filterDate + filterTheme + filterFormat + filterType;
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
