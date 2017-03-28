@@ -89,8 +89,9 @@ var owInitGrid = function (id) {
             $('html').on('click','#filters span',function(){
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
-                    $gridMore.isotope('layout');
-                },400);
+                    console.log($gridMore.find('.double.w2').length)
+                    //$gridMore.isotope('layout');
+                },200);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
