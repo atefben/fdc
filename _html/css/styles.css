@@ -3578,7 +3578,7 @@ a {
 p {
   color: #505050;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
-  line-height: 30px;
+  line-height: 22px;
   margin-bottom: 20px;
 }
 
@@ -24538,13 +24538,13 @@ ul.tabs .quarterTab h4 {
   font-size: 12px;
 }
 .projection .programme:first-child {
-  margin-top: 5px;
+  margin-top: 30px;
 }
 .projection .programme {
   border: 2px solid #ECECEC;
   padding: 40px 20px 50px 20px;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 }
 .projection .programme div {
   float: left;
