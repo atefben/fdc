@@ -865,3 +865,13 @@ sup {
     margin-top: 5px;
     display: block;
 }
+
+.wysiwyg {
+  p {
+    font-family: $CamphorHeavy!important;
+  }
+
+  strong {
+    font-family: $CamphorHeavy!important;
+  }
+}

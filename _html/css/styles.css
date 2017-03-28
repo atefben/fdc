@@ -2676,6 +2676,13 @@ sup {
   display: block;
 }
 
+.wysiwyg p {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+.wysiwyg strong {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
@@ -3080,7 +3087,6 @@ sup {
 }
 #slider-movies .vCenterKid .goldColor, #featured-movies .vCenterKid .goldColor {
   color: #c3a05f;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 
 .discover {
@@ -3538,6 +3544,9 @@ sup {
   vertical-align: middle;
   text-align: left;
 }
+#slider-aboutVideos .owl-item .shadow-bottom-vid {
+  z-index: 3;
+}
 #slider-aboutVideos .owl-item .shadow-bottom-vid:before {
   background: -moz-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(50%, transparent), color-stop(80%, rgba(0, 0, 0, 0.8)), color-stop(100%, rgba(20, 20, 20, 0.9)));
@@ -3545,7 +3554,7 @@ sup {
   background: -o-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
   background: -ms-linear-gradient(top, transparent 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-  z-index: 3 !important;
+  z-index: 3;
   content: '';
   display: block;
   height: 100%;
@@ -3553,6 +3562,12 @@ sup {
   position: absolute;
   top: 0;
   left: 0;
+}
+#slider-aboutVideos .owl-item .no-zindex {
+  z-index: 2 !important;
+}
+#slider-aboutVideos .owl-item .no-zindex:before {
+  z-index: 2 !important;
 }
 #slider-aboutVideos .video-container .infos-bar .picto {
   bottom: 20px;
@@ -30349,6 +30364,11 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   font-weight: bolder !important;
   color: #0c0c0c !important;
   letter-spacing: 2px;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
+}
+
+.wysiwyg strong {
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif !important;
 }
 
 /*

@@ -401,7 +401,6 @@
 
       .goldColor {
         color: #c3a05f;
-        font-family: $CamphorBold;
       }
   }
 
@@ -887,6 +886,7 @@
   .owl-item {
 
     .shadow-bottom-vid {
+        z-index: 3;
         &:before {
         background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
         background: -webkit-gradient(left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0)), color-stop(80%, rgba(0, 0, 0, 0.8)), color-stop(100%, rgba(20, 20, 20, 0.9)));
@@ -894,7 +894,7 @@
         background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
         background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 80%, rgba(20, 20, 20, 0.9) 100%);
-        z-index: 3!important;
+        z-index: 3;
         content: '';
         display: block;
         height: 100%;
@@ -902,6 +902,13 @@
         position: absolute;
         top: 0;
         left: 0;
+      }
+    }
+
+    .no-zindex {
+      z-index: 2!important;
+      &:before { 
+        z-index: 2!important;
       }
     }
   }

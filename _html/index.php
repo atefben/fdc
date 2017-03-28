@@ -228,7 +228,7 @@
         <div class="innerWrapper">
           <div class="aboutVideos">
             <div id="slider-aboutVideos" class="owl-carousel">
-              <div class="shadow-bottom-vid">
+              <div class="vid shadow-bottom-vid">
                 <div class="item">
                   <div class="video-container state-init video"
                     data-facebook="//www.facebook.com"
@@ -255,7 +255,7 @@
                   </div>
                 </div>
               </div>
-              <div class="shadow-bottom-vid">
+              <div class="vid shadow-bottom-vid">
                 <div class="item">
                   <div class="video-container state-init video"
                     data-facebook="//www.facebook.com"
@@ -282,7 +282,7 @@
                   </div>
                 </div>
               </div>
-              <div class="shadow-bottom-vid">
+              <div class="vid shadow-bottom-vid">
                 <div class="item">
                   <div class="video-container state-init video"
                     data-facebook="//www.facebook.com"

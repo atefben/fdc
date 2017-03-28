@@ -662,6 +662,11 @@ if ( $("#main").hasClass( "single-article" ) ) {
 
   });*/
 
+  $('.play-btn, .picto').each (function() {
+     $(this).click(function() {
+      $(this).closest('.shadow-bottom-vid').addClass('no-zindex');
+    });
+  });
 
 });
 
