@@ -154,6 +154,9 @@ var owInitGrid = function (id) {
                 if($('#format.filter .select .active').length){
                     postData.format = $('#format.filter .select .active').data('filter');
                 }
+                if($('#type.filter .select .active').length){
+                    postData.type = $('#type.filter .select .active').data('filter');
+                }
                 console.log('data sent to GET on ajax button click',postData);
 
                 $.ajax({
