@@ -7587,6 +7587,25 @@ $(document).ready(function () {
 
     computeSlideshowTitleWidth();
 
+    //hotfix poster in block-movie-preview for ie
+    if($('body').hasClass('ie') && $('.block-movie-preview').length){
+        $('.block-movie-preview').each(function(){
+            var img = $(this).find('.poster img');
+            var wrapper = img.parent();
+            var leftMargin = (img.width() - wrapper.width()) / 2;
+            wrapper.css('position','relative');
+            img.css({
+                'width':'auto',
+                'height':'100%',
+                'max-width':'none',
+                'min-height':0,
+                'position':'absolute',
+                'top': 0,
+                'left': -leftMargin
+            })
+        });
+    }
+
     //hotfix focus & sameday thumbs click
     if($('.focus').length){
         $('.focus .articles article')
