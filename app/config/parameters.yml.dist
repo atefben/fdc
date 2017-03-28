@@ -337,4 +337,5 @@ parameters:
     mdf_google_analytics_second_id: null
     mdf_locales: [fr, en, zh]
     ccm_locales: [fr, en]
+    fdc_email_from: no-reply@festival-cannes.com
 

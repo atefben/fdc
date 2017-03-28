@@ -62,7 +62,6 @@ class FooterContentController extends Controller
         }
         
         $contactSubjects = $contactManager->getContactPageSubjects($contactPage, $locale);
-        
         $form = $this->createForm(new CcmContactFormType($contactSubjects, $this->get('translator')));
         $form->handleRequest($request);
         
@@ -74,7 +73,7 @@ class FooterContentController extends Controller
                 $subjectTranslation = $contactManager->getSubjectTranslationBySlugAndLocale($formData['select'], $locale);
                 $contactManager->sendEmail([
                     'to'      => $subjectTranslation->getReceiverEmail(),
-                    'from'    => $formData['email'],
+                    'from'    => $this->getParameter('fdc_email_from'),
                     'name'    => $formData['name'],
                     'email'   => $formData['email'],
                     'theme'   => $subjectTranslation->getContactTheme(),
