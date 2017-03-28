@@ -178,8 +178,7 @@ var owInitGrid = function (id) {
                             
                             $this.attr('href',moreBtn);
                         }else{
-                            //visible buton = no infinite load & undefined button, let's remove it
-                            $this.remove();
+                            //$this.remove();
                         }
 
                         //manage filters
