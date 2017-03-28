@@ -2875,9 +2875,12 @@ var owInitGrid = function (id) {
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
                     var i = window.setInterval(function(){
-                        console.log($gridMore.find('.double.w2:visible').length)
-                        //$gridMore.isotope('layout');
+                        if($gridMore.find('.double.w2:visible').length){
+                            $gridMore.isotope('layout');
+                            window.clearInterval(i);
+                        }
                     },200);
+                    window.clearTimeout(t);
                 },500);
             });
 
