@@ -2867,7 +2867,6 @@ var owInitGrid = function (id) {
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
-                console.log('append complete',laidOutItems);
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
                 owsetGridBigImg(false, $('.grid-01'), false);
             });
@@ -2876,7 +2875,7 @@ var owInitGrid = function (id) {
                 //wait layer fadeOut + arrangeComplete isotope animation
                 var t = window.setTimeout(function(){
                     $gridMore.isotope('layout');
-                },1600);
+                },1000);
             });
 
             if($gridDom.parent().find('.ajax-request').length){
@@ -2940,6 +2939,9 @@ var owInitGrid = function (id) {
                 if($('#format.filter .select .active').length){
                     postData.format = $('#format.filter .select .active').data('filter');
                 }
+                if($('#type.filter .select .active').length){
+                    postData.type = $('#type.filter .select .active').data('filter');
+                }
                 console.log('data sent to GET on ajax button click',postData);
 
                 $.ajax({
@@ -2963,8 +2965,7 @@ var owInitGrid = function (id) {
                             
                             $this.attr('href',moreBtn);
                         }else{
-                            //visible buton = no infinite load & undefined button, let's remove it
-                            $this.remove();
+                            //$this.remove();
                         }
 
                         //manage filters
