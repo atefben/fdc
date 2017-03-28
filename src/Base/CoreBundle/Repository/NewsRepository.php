@@ -486,33 +486,39 @@ class NewsRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt <= :datetime)')
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
+            ->setParameter('locale', $locale)
+            ->setParameter('status_published', NewsArticleTranslation::STATUS_PUBLISHED)
         ;
 
         if ($locale != 'fr') {
             $qb
+                ->andWhere(
+                    '(na1t.locale = :locale AND na1t.status = :status_translated) OR
+                    (na2t.locale = :locale AND na2t.status = :status_translated) OR
+                    (na3t.locale = :locale AND na3t.status = :status_translated) OR
+                    (na4t.locale = :locale AND na4t.status = :status_translated)'
+                )
+                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
                 ->leftJoin('na4.translations', 'na8t')
                 ->andWhere(
-                    '(na5t.locale = :locale AND na5t.status = :status_translated) OR
-                    (na6t.locale = :locale AND na6t.status = :status_translated) OR
-                    (na7t.locale = :locale AND na7t.status = :status_translated) OR
-                    (na8t.locale = :locale AND na8t.status = :status_translated)'
+                    '(na5t.locale = :locale_fr AND na5t.status = :status_published) OR
+                    (na6t.locale = :locale_fr AND na6t.status = :status_published) OR
+                    (na7t.locale = :locale_fr AND na7t.status = :status_published) OR
+                    (na8t.locale = :locale_fr AND na8t.status = :status_published)'
                 )
-                ->setParameter('status_translated', NewsArticleTranslation::STATUS_TRANSLATED)
-                ->setParameter('locale', $locale)
+                ->setParameter('locale_fr', 'fr')
             ;
         } else {
             $qb
                 ->andWhere(
-                    '(na1t.locale = :locale_fr AND na1t.status = :status) OR
-                    (na2t.locale = :locale_fr AND na2t.status = :status) OR
-                    (na3t.locale = :locale_fr AND na3t.status = :status) OR
-                    (na4t.locale = :locale_fr AND na4t.status = :status)'
+                    '(na1t.locale = :locale AND na1t.status = :status_published) OR
+                    (na2t.locale = :locale AND na2t.status = :status_published) OR
+                    (na3t.locale = :locale AND na3t.status = :status_published) OR
+                    (na4t.locale = :locale AND na4t.status = :status_published)'
                 )
-                ->setParameter('locale_fr', 'fr')
-                ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
             ;
         }
 
