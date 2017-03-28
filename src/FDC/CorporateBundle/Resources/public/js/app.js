@@ -5656,6 +5656,8 @@ var openSlideShow = function (slider, hash, affiche) {
         return false;
     }
 
+    console.log('active img',images[centerElement]);
+
     var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
