@@ -867,11 +867,9 @@ sup {
 }
 
 .wysiwyg {
-  p {
-    font-family: $CamphorHeavy!important;
-  }
 
   strong {
-    font-family: $CamphorHeavy!important;
+    font-family: $CamphorBold!important;
+    color: #0c0c0c!important;
   }
 }
