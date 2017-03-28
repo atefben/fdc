@@ -18,20 +18,23 @@ footer {
   z-index: 2;
   padding-top: 46px;
 
-  .title {
-    margin-bottom: 15px;
-  }
-
   .block-01 img {
     object-fit: initial;
   }
 
-  .subtitle {
-    padding-right: 7px;
+  .title {
+    margin-bottom: 15px;
+    font-family: $Playfair;
+    font-weight: 100;
   }
 
-  .title {
+  .subtitle {
+    padding-right: 7px;
     font-family: $Playfair;
+    font-style: italic;
+    font-size: 0.875rem;
+    font-weight: lighter;
+    text-align: center;
   }
 
   &:after {
