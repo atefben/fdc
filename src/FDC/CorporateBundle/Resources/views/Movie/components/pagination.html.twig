@@ -6,12 +6,13 @@
 {% if next is not null %}
     {{ macroMovie.navigation(next, 'nextmovie') }}
 {% endif %}
-
+<div class="arrows">
     {% if prev is not null %}
-        <a href="{{ path('fdc_corporate_movie_get', {'slug':  prev.slug }) }}" class="nav prev"><div class="arrows"><i
-                    class="icon icon-arrow-left"></i></div></a>
+        <a href="{{ path('fdc_corporate_movie_get', {'slug':  prev.slug }) }}" class="nav prev"><i
+                    class="icon icon-arrow-left"></i></a>
     {% endif %}
     {% if next is not null %}
-        <a href="{{ path('fdc_corporate_movie_get', {'slug':  next.slug }) }}" class="nav next"><div class="arrows"><i
-                    class="icon icon-arrow-right"></i></div></a>
+        <a href="{{ path('fdc_corporate_movie_get', {'slug':  next.slug }) }}" class="nav next"><i
+                    class="icon icon-arrow-right"></i></a>
     {% endif %}
+</div>
