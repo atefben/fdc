@@ -3455,6 +3455,16 @@ $(document).ready(function() {
   }
   /* end tetiere height computing */
 
+  $('body').on('click', '.content-movie .prevmovie', function(e) {
+    console.log('click');
+    $('.content-movie .nav.prev').trigger('click');
+  });
+
+  $('body').on('click', '.content-movie .nextmovie', function(e) {
+    console.log('click');
+    $('.single-movie .nav.next').trigger('click');
+  });
+
   if($('.single-movie').length) {
 
         
@@ -3546,14 +3556,6 @@ $(document).ready(function() {
       } else {
         $('.nextmovie').addClass('show');
       }
-    });
-
-    $('body').on('click', '.single-movie .prevmovie', function(e) {
-      $('.single-movie .nav.prev').trigger('click');
-    });
-
-    $('body').on('click', '.single-movie .nextmovie', function(e) {
-      $('.single-movie .nav.next').trigger('click');
     });
 
     // previous and next over
