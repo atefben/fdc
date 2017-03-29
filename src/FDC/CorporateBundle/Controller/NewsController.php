@@ -264,7 +264,7 @@ class NewsController extends Controller
 
         foreach ($articles as $key => $article) {
             $date = $article->getFestival()->getYear();
-            if ($date instanceof DateTime && !array_key_exists($date, $filters['dates'])) {
+            if ($date && !array_key_exists($date, $filters['dates'])) {
                 $filters['dates'][$date] = $date;
             }
 
