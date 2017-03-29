@@ -388,7 +388,7 @@ $(document).ready(function () {
     computeSlideshowTitleWidth();
 
     //hotfix poster in block-movie-preview for ie
-    if($('body').hasClass('ie') && $('.block-movie-preview').length){
+    if($('body').hasClass('ie') && !$('body').hasClass('story-palme') && $('.block-movie-preview').length){
         $('.block-movie-preview').each(function(){
             var img = $(this).find('.poster img');
             var wrapper = img.closest('.poster');
