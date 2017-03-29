@@ -7,10 +7,12 @@ $(document).ready(function() {
 
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
+      e.preventDefault();
       $('.content-movie .prevmovie a.img').trigger('click');
     });
 
     $('.content-movie .nextmovie').on('click', function (e) {
+      e.preventDefault();
       $('.content-movie .nextmovie a.img').trigger('click');
     });
   }
