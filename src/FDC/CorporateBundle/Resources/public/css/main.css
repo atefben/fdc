@@ -7806,6 +7806,15 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   margin-top: 22px;
 }
 
+.article-single .half-photo {
+  width: 50%;
+}
+
+.article-single .small-pres p.caption strong,
+.article-single .pres-honneur p.caption strong {
+  font-size: .75rem;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;

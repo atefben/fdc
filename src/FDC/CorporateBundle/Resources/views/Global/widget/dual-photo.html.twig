@@ -13,7 +13,7 @@
             <div class="half-photo">
                 <div class="photo-container">
                     <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
-                    <p class="caption">{% if legend is not empty %}<strong>{{ gallery.media|trans_fallback('legend')  }}</strong>{% endif %} {% if copyright is not empty %}{{ copyright }}{% endif %}</p>
+                    <p class="caption">{% if legend is not empty %}<strong>{{ legend  }}</strong>{% endif %} {% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                 </div>
             </div>
         {% endif %}
@@ -31,7 +31,7 @@
                     <div class="half-photo">
                         <div class="photo-container">
                             <img src="{% path file, 'reference' %}" alt="{{ gallery.media|trans_fallback('alt')  }}" title="{{ gallery.media|trans_fallback('legend')  }}">
-                            <p class="caption">{% if legend is not empty %}<strong>{{ gallery.media|trans_fallback('legend')  }}</strong>{% endif %} {{ gallery.media|trans_fallback('copyright') }}</p>
+                            <p class="caption">{% if legend is not empty %}<strong>{{ legend  }}</strong>{% endif %} {% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
                         </div>
                     </div>
                 {% endif %}
