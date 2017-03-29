@@ -44,7 +44,7 @@
                 <img src="{{ selfkit_amazon_url }}{{ legacy.fichier }}"
                      alt="{{ legacy.titre?:'Affiche du film' }}" data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs|raw }}{% endif %}>
             {%- else -%}
-                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}/>
+                <img src="{{ asset(film_image_default) }}" alt="{{ 'ccm.movie.poster'|trans }}"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}/>
             {%- endif -%}
         {%- endif -%}
     {%- endif -%}
