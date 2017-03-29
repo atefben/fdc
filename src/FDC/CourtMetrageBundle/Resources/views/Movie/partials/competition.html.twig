@@ -30,7 +30,7 @@
                                  alt="{{ legacy.titre?:'Affiche du film' }}"
                                     {% if film_image_default_attrs is defined %} {{ film_image_default_attrs }} {% endif %}>
                         {% else %}
-                            <img src="{{ asset(app.request.schemeAndHttpHost ~ '/bundles/fdcevent/img/palmares/film_w210.jpg') }}" alt="{{ 'movie.poster'|trans() }}"
+                            <img src="{{ asset(app.request.schemeAndHttpHost ~ '/bundles/fdcevent/img/palmares/film_w210.jpg') }}" alt="{{ 'ccm.movie.poster'|trans() }}"
                                     {% if film_image_default_attrs is defined %} {{ film_image_default_attrs }} {% endif %}>
                         {% endif %}
                     {% endif %}

@@ -4,17 +4,16 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-  console.log('lalal');
+
   if($('.content-movie').length) {
-    console.log('la');
-    $('body').on('click', '.content-movie .prevmovie', function (e) {
-      console.log('click');
-      $('.content-movie .nav.prev').trigger('click');
+    $('.content-movie .prevmovie').on('click', function (e) {
+      var link = $('.content-movie .arrows .nav.prev').attr('href');
+      document.location.href = link;
     });
 
-    $('body').on('click', '.content-movie .nextmovie', function (e) {
-      console.log('click');
-      $('.content-movie .nav.next').trigger('click');
+    $('.content-movie .nextmovie').on('click', function (e) {
+      var link = $('.content-movie .arrows .nav.next').attr('href');
+      document.location.href = link;
     });
   }
 
