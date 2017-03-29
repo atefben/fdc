@@ -254,7 +254,7 @@ class NewsController extends Controller
 
         //set default filters
         $filters = [];
-        $filters['dates'][0] = 'all';
+        $filters['editions'][0] = 'all';
         $filters['dateFormated'][0] = 'all';
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
@@ -264,8 +264,8 @@ class NewsController extends Controller
 
         foreach ($articles as $key => $article) {
             $date = $article->getFestival()->getYear();
-            if ($date && !array_key_exists($date, $filters['dates'])) {
-                $filters['dates'][$date] = $date;
+            if ($date && !array_key_exists($date, $filters['editions'])) {
+                $filters['editions'][$date] = $date;
             }
 
             $theme = $article->getTheme();
