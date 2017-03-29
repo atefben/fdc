@@ -5449,6 +5449,7 @@ var openSlideShow = function (slider, hash, affiche) {
         }
     });
     console.log('slideshow pictures array',images);
+    console.log('active index',centerElement);
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
