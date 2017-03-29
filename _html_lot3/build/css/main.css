@@ -16681,7 +16681,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.7rem;
 }
 .single-movie .single-article .nav.prev:hover {
-  border-color: #141414;
+  border-color: none;
 }
 .single-movie .single-article .nav.next {
   left: auto;
