@@ -184,6 +184,7 @@ class NewsController extends Controller
             $format = null;
         }
         $day = $request->query->get('date', null);
+        $day = str_replace('date-', '', $day);
 
         if ($theme) {
             $themeTrans = $this
