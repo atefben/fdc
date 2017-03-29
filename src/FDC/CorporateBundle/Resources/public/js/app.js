@@ -2905,11 +2905,11 @@ var owInitGrid = function (id) {
         });
 
         var number = 0;
-
+        var ajaxLock = false;
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                var ajaxLock = true;
+                
                 var $this = $(this);
                 var url = $(this).attr('href');
 
@@ -2948,66 +2948,69 @@ var owInitGrid = function (id) {
                 if($('#type.filter .select .active').length){
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
-                console.log('data sent to GET on ajax button click',postData);
 
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    data: postData,
-                    success: function(data) {
-                        $data = $(data);
-                        
-                        var moreBtn = $data.find('.ajax-request').attr('href');
-                        var articles = $data.find('article');
-                        var scroll = $(document).scrollTop();
-                        var rawHtml = '';
-                        articles.each(function(){
-                            rawHtml += $(this).get(0).outerHTML;
-                        });
-
-                        $gridMore.isotope('insert',articles);
-                        $gridMore.isotope('layout');
-                        if(typeof moreBtn !== 'undefined'){
-                            
-                            $this.attr('href',moreBtn);
-                        }else{
-                            //$this.remove();
-                        }
-
-                        //manage filters
-                        if($data.filter('.compute-filters').length){
-                            $data.filter('.compute-filters').each(function(){
-                                var slug = $(this).attr('class').replace('compute-filters ','');
-
-                                $(this).find('span').each(function(){
-                                    //test if filter exists
-                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
-                                    }
-                                });
+                if(!ajaxLock){
+                    ajaxLock = true;
+                    console.log('data sent to GET on ajax button click',postData);
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: postData,
+                        success: function(data) {
+                            $data = $(data);
+                            ajaxLock = false;
+                            var moreBtn = $data.find('.ajax-request').attr('href');
+                            var articles = $data.find('article');
+                            var scroll = $(document).scrollTop();
+                            var rawHtml = '';
+                            articles.each(function(){
+                                rawHtml += $(this).get(0).outerHTML;
                             });
+
+                            $gridMore.isotope('insert',articles);
+                            $gridMore.isotope('layout');
+                            if(typeof moreBtn !== 'undefined'){
+                                
+                                $this.attr('href',moreBtn);
+                            }else{
+                                //$this.remove();
+                            }
+
+                            //manage filters
+                            if($data.filter('.compute-filters').length){
+                                $data.filter('.compute-filters').each(function(){
+                                    var slug = $(this).attr('class').replace('compute-filters ','');
+
+                                    $(this).find('span').each(function(){
+                                        //test if filter exists
+                                        if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                            $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                        }
+                                    });
+                                });
+                            }
+                            
+
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
+
+                                $clamp(title.get(0), {clamp: 1});
+                                $clamp(cat.get(0), {clamp: 1});
+                            });
+
+                            $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                            
+                            //if no button ajax-request, then remove current button
+                            owinitSlideShow($gridMore);
+                            initVideo();
+                            initAudio();
                         }
-                        
-
-                        $('.card.item').each(function(){
-                            var $this = $(this);
-                            var title = $this.find('.info strong a');
-                            var cat = $this.find('.info .category');
-                            var titleText;
-                            var catText;
-
-                            $clamp(title.get(0), {clamp: 1});
-                            $clamp(cat.get(0), {clamp: 1});
-                        });
-
-                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
-                        
-                        //if no button ajax-request, then remove current button
-                        owinitSlideShow($gridMore);
-                        initVideo();
-                        initAudio();
-                    }
-                });
+                    });
+                }
 
                 return false;
             });
