@@ -170,7 +170,7 @@ var openSlideShow = function (slider, hash, affiche) {
             images.push(image);
         }
     });
-    console.log(images);
+    console.log('slideshow pictures array',images);
     if($('.photoActive').length > 0) {
         var pid = $('.photoActive .image-wrapper img').data('id');
         for(var o = 0; o < images.length; o++){
