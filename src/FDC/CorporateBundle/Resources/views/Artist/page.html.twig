@@ -38,7 +38,7 @@
                     {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
                     {% if artistImage %}
                         {% if artistImage.width > artistImage.height %}
-                            <img src="{% path artistImage.file, 'mobile' %}" height="485" alt="{{ artist.fullName }}"/>
+                            <img src="{% path artistImage, 'mobile' %}" height="485" alt="{{ artist.fullName }}"/>
                         {% else %}
                             <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
                         {% endif %}
