@@ -7802,21 +7802,13 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   margin-top: 22px;
 }
 
-.article-single .half-photo {
-  width: 50%;
-}
-
 .article-single .small-pres p.caption strong,
 .article-single .pres-honneur p.caption strong {
   font-size: .75rem;
 }
 
 .who-fdc .block-01-s .half-photos {
-  width: 730px;
   margin: 0 auto;
-}
-.who-fdc .block-01-s .half-photos .half-photo {
-  width: 330px;
 }
 
 /* thomon - end fixes */
