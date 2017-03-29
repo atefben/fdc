@@ -43,6 +43,39 @@ class NodeListener
         }
     }
 
+    public function preRemove(LifecycleEventArgs $args)
+    {
+        if ($args->getObject() instanceof NodeInterface) {
+            $item = $args->getObject();
+            $node = $args
+                ->getObjectManager()
+                ->getRepository('BaseCoreBundle:Node')
+                ->findOneBy([
+                    'entityClass' => get_class($item),
+                    'entityId'    => $item->getId()
+                ])
+            ;
+            foreach ($node->getTranslations() as $translation) {
+                $node->removeTranslation($translation);
+                $args->getObjectManager()->remove($translation);
+            }
+            $args->getObjectManager()->remove($node);
+        }
+
+        if ($args->getObject() instanceof NodeTranslationInterface) {
+            $item = $args->getObject();
+            $nodeTranslation = $args
+                ->getObjectManager()
+                ->getRepository('BaseCoreBundle:NodeTranslation')
+                ->findOneBy([
+                    'entityClass' => get_class($item),
+                    'entityId'    => $item->getId()
+                ])
+            ;
+            $args->getObjectManager()->remove($nodeTranslation);
+        }
+    }
+
     private function syncNode(LifecycleEventArgs $args)
     {
         $manager = $args->getObjectManager();
