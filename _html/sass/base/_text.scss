@@ -15,7 +15,7 @@ a {
 .button {
   border: 1px solid #dfdfdf;
   border-right: none;
-  color: $gold;
+  color: $gold!important;
   display: inline-block;
   font-family: $CamphorBold;
   font-size: 0.688rem;
@@ -33,7 +33,7 @@ a {
   &:hover {
     background-color: $gold;
     border-color: $gold;
-    color: #fff;
+    color: #fff!important;
   }
 }
 
@@ -55,9 +55,13 @@ a {
   }
 }
 
-.single-button{
+.single-button {
   border-right: 1px solid $gold !important;
   border-color: $gold;
+
+  a {
+    color:  $gold;
+  }
 }
 
 .quote.italic{
@@ -97,3 +101,12 @@ a {
     visibility: visible;
   }
 }
+
+p {
+  color: #505050;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+strong { font-weight: bold; }

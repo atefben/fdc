@@ -489,8 +489,7 @@
   color: $gold;
   .icon{
     font-size: 0.8rem;
-    margin-top: 16px;
-    margin-left: 16px;
+    margin-top: 16.1px;
   }
 }
 
@@ -844,7 +843,7 @@
         @include transition(color 0.9s $smoothTransition);
 
         &:hover {
-          color: $gold;
+          color: #FFFFFF;
 
           &:after {
             opacity: 1;
@@ -1769,4 +1768,266 @@
 .mob #featured-movies .video {
   position: absolute!important;
   z-index: 1;
+}
+
+.text-presentation {
+  text-align:center;
+  height: auto;
+  vertical-align: middle;
+  padding-top: 10%;
+
+    span {
+      color: #ec3050;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      opacity: 0.9;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    h3 {
+      color: #141414;
+      font-size: 48px;
+      line-height: 70px;
+      margin: 40px 0px 70px 0px;
+      letter-spacing: 7px;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+
+      &.truncated-title {
+        line-height: 55px;
+      }
+
+      &.title-clone {
+        display: inline;
+        visibility: hidden;
+        white-space: nowrap;
+      }
+
+    }
+
+    h5 {
+      color: #2b2b2b;
+      font-size: 17px;
+      margin-bottom: 60px;
+      line-height: 40px;
+      opacity: 0.8;
+       @media screen and (max-width: $mobileWidth) {
+            font-size: 90%;
+        }
+    }
+
+    .savoirPlus {
+      color: #2b2b2b;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-family: $CamphorHeavy;
+      opacity: 0.9;
+      padding-bottom: 100px;
+      text-align: center;
+    }
+}
+
+.innerWrapper {
+    width: 100%;
+    max-width: 1152px;
+    text-align: center!important;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1280px) {
+      max-width: 90%;
+      width: 90%;
+    }
+}
+
+#our-services {
+    background: url("/img/background-grey.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 850px;
+    vertical-align: middle;
+    padding-top: 5%;
+    width: 100%;
+
+    .container {
+      position: relative;
+      width: 1152px;
+        @media screen and (max-width: 1024px) {
+            width: 1000px;
+
+        }
+    }
+    
+     @media screen and (max-width: 1280px) {
+      .innerWrapper {
+        width: 90%!important;
+        max-width: 90%!important;
+      }
+    }
+
+    span {
+      color: #29afcf;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: $CamphorHeavy;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-size: 48px;
+      text-transform: uppercase;
+      color: #141414;
+      margin: 25px 0px 80px 0px;
+      letter-spacing: 2px;
+      letter-spacing: 7px;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+    }
+
+    .services-container {
+        height: 600px;
+        width: 1152px;
+        overflow: scroll;
+        &::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 1000px;
+
+        }
+    }
+
+    .services-mid {
+      width: 50%;
+      height: 600px;
+      float: left;
+      &::-webkit-scrollbar { 
+          display: none; 
+      }
+    }
+
+    .hideOverflow {
+      overflow: hidden;
+      overflow: hidden;
+      position: absolute;
+      right: 0%;
+      @-moz-document url-prefix() {
+          top: 22%;
+
+      }
+        /*@media screen and (max-width: 1680px) {
+            right: 16%;
+        }
+        @media screen and (max-width: 1366px) {
+            right: 8%;
+            width: 488px;
+        }
+        @media screen and (max-width: 1280px) {
+            right: 5%;
+            width: 488px;
+        }
+        @media screen and (max-width: 1024px) {
+            right: 5%;
+             width: 488px;
+        }*/
+    }
+
+      .services-boxes {
+        @include transition(all .6s $smoothTransition);
+        text-align:left;
+        width: 100%;
+        height: 33.3%;
+        float: left;
+        display: block;
+        background:#FFFFFF;
+        z-index: 1002;
+
+          div {
+            margin-left:50px;
+            color: #333;
+            font-family: $CamphorHeavy;
+
+          }
+
+          div:nth-child(1) {
+            margin-top: 50px;
+            color: #29afcf;
+
+          }
+
+          div:nth-child(2) {
+            margin: 20px 0px 30px 50px;
+            width: 400px;
+            color: #505050;
+            opacity: 0.8;
+            font-family: $CamphorItalic;
+          }
+
+          div:nth-child(3) {
+            font-size: 13px;
+          }
+
+        .glyphicon  {
+          float: right;
+          margin-top: -75px;
+          margin-right: 20px;
+          color: #29afcf;
+          font-size: 15px!important;
+        }
+              
+        &:hover {
+
+            background: #29afcf;
+            width: 110%;
+            cursor: pointer;
+            position: relative;
+            z-index: 1002!important;
+            @include transition(all .6s $smoothTransition);
+
+              div:nth-child(1), div:nth-child(2){
+                color: #FFFFFF!important; 
+                @include transition(all .6s $smoothTransition);
+              }
+
+              .glyphicon {
+                font-size: 20px!important;
+                color: white;
+              }
+          }
+
+          div:nth-child(1), div:nth-child(3) {
+            text-transform: uppercase;
+
+          }
+
+          div:nth-child(3) { 
+            opacity: 0.8;
+          }
+      }
+
+}
+
+.show {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.hide {
+  display: none;
+}
+
+header {  
+
+  #logo-wrapper {
+    height: 180px;
+  }
+  
+  #logo-wrapper #logo h1 {
+    position: absolute;
+    top: 108px;
+    left: 30px;
+
+  }
 }

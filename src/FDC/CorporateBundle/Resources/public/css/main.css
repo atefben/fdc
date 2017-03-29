@@ -2345,7 +2345,7 @@ a {
   transition: .5s;
 }
 .arrows .next:hover, .arrows .prev:hover {
-  border-color: #030303;
+  border-color: none;
 }
 .arrows .next {
   top: 42%;
@@ -5718,12 +5718,16 @@ strong.title-center {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
+  font-weight: 300;
   max-width: 977px;
   margin: 10px auto 2px;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
+}
+.dark .title-list-cat.block-01-xs {
+  width: auto;
 }
 
 .txt-grey-bkg-container-paragraph {
@@ -7018,11 +7022,6 @@ body.chocolat-open > .chocolat-content {
   border-bottom: 0px;
 }
 
-.block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
-  color: #000;
-  border-color: #000;
-}
-
 .popin .article-authors {
   color: #c8a461;
 }
@@ -7296,10 +7295,6 @@ article.communique .picto .icon {
 .block-push-top h1 i.icon {
   font-size: 2.75rem;
   margin-top: -6px;
-}
-
-.dark .title-list-cat .title-item {
-  font-weight: 300;
 }
 
 .articles-list .card .info strong {
@@ -16685,7 +16680,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.7rem;
 }
 .single-movie .single-article .nav.prev:hover {
-  border-color: #141414;
+  border-color: none !important;
 }
 .single-movie .single-article .nav.next {
   left: auto;
@@ -16696,6 +16691,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 33px;
   color: #000;
   font-size: 0.7rem;
+}
+.single-movie .single-article .nav.next:hover {
+  border-color: none !important;
 }
 .single-movie .single-article .text table td p {
   color: #666;
@@ -16784,7 +16782,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .article-single .text, .single-movie .text {
   margin: 0 auto 70px;
-  width: 80%;
 }
 .article-single .text p, .single-movie .text p {
   color: #666;
@@ -16930,7 +16927,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   letter-spacing: 2px;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.participate .item.active .title-22 {
+.participate .item {
+  margin: 0 auto;
+  width: 997px;
+}
+.participate .item .active .title-22 {
   color: #c8a461;
 }
 .participate .block-accordion-02 .item-manual .contain-infos .descrip-participate p {
@@ -16947,6 +16948,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 400px;
   text-align: center;
   margin-bottom: 20px;
+}
+.participate .block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
+  color: #000;
+  border-color: #000;
 }
 
 .c-contact input[type=text],
