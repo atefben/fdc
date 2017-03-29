@@ -3406,8 +3406,15 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
+<<<<<<< HEAD
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
+=======
+  console.log('lalal');
+  if($('.content-movie').length) {
+    console.log('la');
+    $('body').on('click', '.content-movie .prevmovie', function (e) {
+>>>>>>> origin/master
       console.log('click');
       $('.content-movie .nav.prev').trigger('click');
     });
