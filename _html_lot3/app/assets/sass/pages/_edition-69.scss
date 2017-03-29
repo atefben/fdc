@@ -39,6 +39,18 @@
       color: #666666;
     }
   }
+
+  .who-fdc & {
+    .copy {
+      text-align: left;
+      color: #666666;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
 }
 
 .retrospective {
