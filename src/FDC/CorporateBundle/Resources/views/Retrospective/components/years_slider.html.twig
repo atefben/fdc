@@ -48,8 +48,8 @@
                         <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
                     </div>
 
-                    {% if slideId > 1 %}<div class="date-back"><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                    {% if slideId < lastSlideId %}<div class="date-next" data-url='{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}'><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                    {% if slideId > 1 %}<div class="date-back" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear-1}) }}'><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                    {% if slideId < lastSlideId %}<div class="date-next" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear+1}) }}'><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                     <div class="vFlexAlign">
 
@@ -78,8 +78,8 @@
                     <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
                 </div>
 
-                {% if yearEdition > 1 %}<div class="date-back"><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                {% if yearEdition < lastSlideId %}<div class="date-next" data-url='{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(-1)) }}'><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|change_year(1)) }}">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition > 1 %}<div class="date-back" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear-1} ) }}'><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if yearEdition < lastSlideId %}<div class="date-next" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear+1} ) }}'><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                 <div class="vFlexAlign">
                     {% if images|length %}

@@ -221,9 +221,39 @@ class MovieController extends Controller
     public function selectionAction(Request $request, $slug = null, $year)
     {
         $locale = $request->getLocale();
-        $festival = $this->getFestival($year);
+        $festival = $this->getFestival($year, TRUE);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
+        if($festival == "undefined")
+        {
+            $pages = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+                ->getPagesOrdoredBySelectionSectionOrder($locale)
+            ;
 
+            $defaultSlug = null;
+            foreach ($pages as $p) {
+                if ($defaultSlug === null) {
+                    $defaultSlug = $p->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
+                }
+            }
+            if ($slug === null) {
+                return $this->redirectToRoute('fdc_corporate_movie_selection', ['slug' => $defaultSlug, 'year' => $year]);
+            }
+            $page = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FDCPageLaSelection')
+                ->getPageBySlug($locale, $slug)
+            ;
+            $localeSlugs = $page->getLocaleSlugs();
+            $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
+            return $this->render('FDCCorporateBundle:Movie:selection.html.twig', [
+                'page'            => $page,
+                'localeSlugs'     => $localeSlugs,
+                'festivals'       => $festivals,
+                'festival'        => False
+            ]);
+        }
 
         $this->isPageEnabled($request->get('_route'));
 
@@ -282,7 +312,7 @@ class MovieController extends Controller
                 'page'            => $page,
                 'cinemaDeLaPlage' => $page,
                 'projections'     => $projections,
-                'movies'     => $movies,
+                'movies'          => $movies,
                 'cannesClassics'  => $cannesClassics,
                 'selectionTabs'   => $selectionTabs,
                 'next'            => $next,
@@ -418,6 +448,7 @@ class MovieController extends Controller
             'next_classics'   => !empty($nextClassics),
             'localeSlugs'     => $localeSlugs,
             'festivals'       => $festivals,
+            'festival'        => True,
         ]);
     }
 
