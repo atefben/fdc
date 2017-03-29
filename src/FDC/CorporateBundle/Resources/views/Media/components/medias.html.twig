@@ -16,6 +16,8 @@
         {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
         {% set legend = media.alt %}
         {% set copyright = '' %}
+        {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+        {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
         <article class="card card-01 item photo img shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}"
                  data-format="photo"
                  data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ dateMedia }}">
