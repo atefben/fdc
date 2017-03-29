@@ -7549,6 +7549,12 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
+.article-single .text a.button,
+.article-single .text .button a {
+  background: #c8a461;
+  color: #fff;
+}
+
 /* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
   min-width: 999999px;
@@ -13928,6 +13934,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
   margin: 20px 0;
+  display: block;
 }
 .who-fdc .contain-img-honneur img {
   width: 100%;
