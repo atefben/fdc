@@ -69,7 +69,7 @@
                                 {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                 {% set copyright = photo|trans_fallback('copyright') %}
                                 {% set legend = photo|trans_fallback('legend') %}
-                                <span class="copy">{% if legend is not empty %} © {{ legend }}{% endif %} {% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
+                                <span class="copy">{% if legend is not empty %}<strong>{{ legend }}</strong>{% endif %} {% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
                             </div>
                         </div>
                     {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
