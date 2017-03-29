@@ -7555,6 +7555,10 @@ header #navigation ul.user li a .icon {
   color: #fff;
 }
 
+.test {
+  position: static;
+}
+
 /* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
   min-width: 999999px;
