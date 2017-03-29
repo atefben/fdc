@@ -332,7 +332,7 @@ class GlobalController extends Controller {
 
     private function newsletterEmailExists($email)
     {
-        /*$client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
+        $client = new Client($this->container->getParameter('fdc_newsletter_api_url'));
         $request = $client->get('contact/' . $email);
         $request->setAuth(
             $this->container->getParameter('fdc_newsletter_api_universe'),
@@ -347,9 +347,9 @@ class GlobalController extends Controller {
         } catch (Exception $e) {
             $this->get('logger')->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
             return false;
-        }*/
+        }
 
-        return false;
+        return ($request->getResponse()->getStatusCode() === 200) ? true : false;
     }
 
     private function newsletterEmailSubscribe($email, $locale)
