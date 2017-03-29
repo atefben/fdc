@@ -16693,6 +16693,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #000;
   font-size: 0.7rem;
 }
+.single-movie .single-article .nav.next:hover {
+  border-color: none;
+}
 .single-movie .single-article .text table td p {
   color: #666;
   font-size: .74rem !important;
