@@ -110,6 +110,8 @@
                                     {% set copyright = photo|trans_fallback('copyright') %}
                                     {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
                                     {% set mediaPid  = photo.id %}
+                                    {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+                                    {% set resolutionRetina =  trans.file.width > trans.file.height ? '1280x808' : '640x808' %}
                                     <div class="item">
                                         <figure>
                                             <img src="{% path file, 'x404' %}" alt="image"
