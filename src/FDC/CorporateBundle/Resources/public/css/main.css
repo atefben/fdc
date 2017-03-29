@@ -5718,12 +5718,16 @@ strong.title-center {
   text-align: center;
   padding: 20px 20px 0;
   font-size: .875rem;
+  font-weight: 300;
   max-width: 977px;
   margin: 10px auto 2px;
   line-height: 26px;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
+}
+.dark .title-list-cat.block-01-xs {
+  width: auto;
 }
 
 .txt-grey-bkg-container-paragraph {
@@ -7291,10 +7295,6 @@ article.communique .picto .icon {
 .block-push-top h1 i.icon {
   font-size: 2.75rem;
   margin-top: -6px;
-}
-
-.dark .title-list-cat .title-item {
-  font-weight: 300;
 }
 
 .articles-list .card .info strong {
