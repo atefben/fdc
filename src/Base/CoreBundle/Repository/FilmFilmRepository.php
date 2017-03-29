@@ -201,8 +201,23 @@ class FilmFilmRepository extends EntityRepository
         $end->setTime(23, 59, 59);
         $end = $end->getTimestamp();
 
+        $previousWeek = strtotime("-1 week +1 day");
+
+        $previousWeekStart = strtotime("last sunday midnight",$previousWeek);
+        $previousWeekEnd = strtotime("next saturday",$previousWeekStart);
+
+        $previousStart = new \DateTime();
+        $previousStart->setTimestamp($previousWeekStart);
+        $previousStart->setTime(0, 0, 0);
+        $previousStart = $previousStart->getTimestamp();
+        $previousEnd = new \DateTime();
+        $previousEnd->setTimestamp($previousWeekEnd);
+        $previousEnd->setTime(23, 59, 59);
+        $previousEnd = $previousEnd->getTimestamp();
+
         $currentWeek = [];
         $previous = [];
+        $old = [];
         $others = [];
 
         foreach ($films as $film) {
@@ -210,15 +225,17 @@ class FilmFilmRepository extends EntityRepository
                 $time = $film->getPublishedAt()->getTimestamp();
                 if ($time >= $start && $time <= $end) {
                     $currentWeek[] = $film;
-                } elseif ($time < $start) {
+                } elseif ($time >= $previousStart && $time <= $previousEnd) {
                     $previous[] = $film;
+                }  elseif ($time < $start) {
+                    $old[] = $film;
                 } else {
                     $others[] = $film;
                 }
             }
         }
 
-        return array_merge($currentWeek, $others, $previous);
+        return array_merge($currentWeek, $others, $old, $previous);
     }
 
     /**
