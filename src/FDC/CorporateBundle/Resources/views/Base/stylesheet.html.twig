@@ -1,14 +1,12 @@
 {% block stylesheets %}
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css">
     <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic' rel="stylesheet" type="text/css">
-    {% stylesheets "bundles/fdccorporate/styles/*.css" filter='cssrewrite' %}
+    {% stylesheets "bundles/fdccorporate/css/*.css" filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset(asset_url) }}">
     {% endstylesheets %}
     {% stylesheets "bundles/fdccorporate/print/*.css" filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset(asset_url) }}" media="print">
     {% endstylesheets %}
-
-    <link href="{{ asset('bundles/fdccorporate/css/main.css') }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic" rel="stylesheet" type="text/css">
 {% endblock %}

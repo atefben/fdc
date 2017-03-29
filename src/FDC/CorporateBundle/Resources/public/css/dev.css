@@ -13,3 +13,7 @@
   text-align: center;
   padding-bottom: 20px; 
 }
+
+.s-slider-retrospective .isotope-01 .item.block-poster img {
+  display:none !important;
+}
