@@ -35,7 +35,7 @@
                                    href="{% path file, '2560x1620' %}"
                                    data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
                                    data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}&picture=
-{% path file, '293x397' %}&name={{ gallery.media|trans_fallback('legend')}}%20-%20Festival%20de%20Cannes&caption=&description={{currentPage|trans_fallback('chapo')||striptags}}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+{% path file, '293x397' %}&name={{ gallery.media|trans_fallback('legend')}}%20-%20Festival%20de%20Cannes&caption=&description={{currentPage|trans_fallback('chapo')|striptags}}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                    data-twitter="https://twitter.com/intent/tweet?text={{ gallery.media|trans_fallback('legend')}}%20{{app.request.uri}}"
                                    data-link="localhost:3000#102">
                                     <img src="{% path file, '1266x798' %}" alt="{{ gallery.media|trans_fallback('alt') }}" title="{{ gallery.media|trans_fallback('legend')  }}">
