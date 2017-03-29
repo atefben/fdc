@@ -184,16 +184,6 @@ class NewsController extends Controller
             $format = null;
         }
         $day = $request->query->get('date', null);
-        if ($day) {
-            $split = explode('-', $day);
-            if (count($split) == 4) {
-                $day = new DateTime();
-                $day->setDate((substr($split[3], 0, 1) == '9' ? '19' : '20') . $split[3], $split[2], $split[1]);
-                $day->setTime(0, 0, 0);
-            } else {
-                $day = null;
-            }
-        }
 
         if ($theme) {
             $themeTrans = $this
@@ -213,7 +203,7 @@ class NewsController extends Controller
     }
 
 
-    private function infosAndStatementsFilters($locale, $time = null, DateTime $day = null, Theme $theme = null, $format = null, $type = null)
+    private function infosAndStatementsFilters($locale, $time = null, $festivalYear = null, Theme $theme = null, $format = null, $type = null)
     {
         $before = null;
         if ($time) {
@@ -222,12 +212,21 @@ class NewsController extends Controller
         }
         $maxResults = 50;
 
+        $festival = null;
+        if ($festivalYear) {
+            $festival = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFestival')
+                ->findOneBy(['year' => $festivalYear])
+            ;
+        }
+
         $infos = [];
         if ($type != 'communique') {
             $infos = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Info')
-                ->getInfoRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
+                ->getInfoRetrospective($locale, $festival, null, $maxResults, $before, null, $theme, $format)
             ;
         }
 
@@ -236,7 +235,7 @@ class NewsController extends Controller
             $statements = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Statement')
-                ->getStatementRetrospective($locale, null, null, $maxResults, $before, $day, $theme, $format)
+                ->getStatementRetrospective($locale, $festival, null, $maxResults, $before, null, $theme, $format)
             ;
         }
 
@@ -264,9 +263,9 @@ class NewsController extends Controller
 
 
         foreach ($articles as $key => $article) {
-            $date = $article->getPublishedAt();
-            if ($date instanceof DateTime && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
-                $filters['dates'][$date->format('y-m-d')] = $date;
+            $date = $article->getFestival()->getYear();
+            if ($date instanceof DateTime && !array_key_exists($date, $filters['dates'])) {
+                $filters['dates'][$date] = $date;
             }
 
             $theme = $article->getTheme();
