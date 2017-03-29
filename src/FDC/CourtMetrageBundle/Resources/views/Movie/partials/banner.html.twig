@@ -123,7 +123,7 @@
                      alt="{{ legacy.titre?:'Affiche du film' }}"
                      data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
             {% else %}
-                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"
+                <img src="{{ asset(film_image_default) }}" alt="{{ 'ccm.movie.poster'|trans() }}"
                      data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
             {% endif %}
         {% endif %}
@@ -177,7 +177,7 @@
                     {% if movieAward.award.id not in awardsUnique %}
                         {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
                             <i class="icon icon_palme"></i>
-                            <p>{{ movieAward.award.prize|trans_fallback('title')|trim }}{% if movieAward.award.exAequo == 1 %}{{ ' ' }}({{ 'award.ex_aequo'|trans }}){% endif %}
+                            <p>{{ movieAward.award.prize|trans_fallback('title')|trim }}{% if movieAward.award.exAequo == 1 %}{{ ' ' }}({{ 'ccm.award.ex_aequo'|trans }}){% endif %}
                                 , {{ movieAward.award.festival.year }}</p></div>
                     {% endif %}
                 {% endif %}

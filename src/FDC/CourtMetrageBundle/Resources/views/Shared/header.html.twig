@@ -2,19 +2,19 @@
     <div id="top-bar">
         <ul class="main-nav">
             <li>
-                <a href="{{ header_fdc_com }}" target="_blank">{{ 'header.festival'|trans }}</a>
+                <a href="{{ header_fdc_com }}" target="_blank">{{ 'ccm.header.festival'|trans }}</a>
             </li>
             <li>
-                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank">{{ 'header.fdc'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank">{{ 'ccm.header.fdc'|trans }}</a>
             </li>
             <li>
-                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank">{{ 'header.cine'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank">{{ 'ccm.header.cine'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('fdc_court_metrage_homepage') }}" class="active">{{ 'header.ccm'|trans }}</a>
+                <a href="{{ path('fdc_court_metrage_homepage') }}" class="active">{{ 'ccm.header.ccm'|trans }}</a>
             </li>
             <li>
-                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank">{{ 'header.mdf'|trans }}</a>
+                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank">{{ 'ccm.header.mdf'|trans }}</a>
             </li>
         </ul>
         <ul class="user-nav">
