@@ -1,0 +1,106 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <section id="main" class="label-page loading">
+        <div class="ajax-section">
+            <div class="contain-ajax">
+                <div class="all-contain">
+                    <h2 class="title title-custom">{{ labelPage.pageTitle }}</h2>
+                    <div class="contain-title vFlexAlign block-01-s custom-block">
+                        <h2 class="title-02" style="color: #0a0a0a">{{ labelPage.header|raw }}</h2>
+                    </div>
+
+                    <div class="block-01">
+
+                        <div class="block-01-xs">
+                            <strong class="title-22">{{ labelPage.title }}</strong>
+                            <div class="texte-01 wysiwyg">
+                                {{ labelPage.text|raw }}
+                            </div>
+                        </div>
+
+                        <div class="block-accordion">
+
+                            {% for section in labelPage.translatable.labelSection %}
+                                <div class="item{{ loop.index == 1 ? ' active' : ' border-top' }}">
+                                    <div class="title-contain{{ loop.index == 1 ? ' border-top' : '' }} ">
+                                        <strong class="title-22">
+                                            {{ labelSections[section.labelSection.id].name }}
+                                        </strong>
+                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                    </div>
+
+                                    {% for widget in labelSectionsWidgets[section.labelSection.id] %}
+                                        {% if widget.translatable.isWidgetText() %}
+                                            {% include 'FDCCourtMetrageBundle:Participate:partials/textWidget.html.twig' with {'widget': widget} %}
+                                        {% endif %}
+
+                                        {% if widget.translatable.isWidgetOneColumn() %}
+                                            {% include 'FDCCourtMetrageBundle:Participate:partials/oneColumnWidget.html.twig' with {
+                                                'widget': widget,
+                                                'oneColumnTabs': oneColumnTabs,
+                                                'oneColumnFiles': oneColumnFiles,
+                                                'constraints' : technicalConstraints[section.labelSection.id] is defined ? technicalConstraints[section.labelSection.id] : null
+                                            } %}
+                                        {% endif %}
+
+                                        {% if widget.translatable.isWidgetTwoColumns() %}
+                                            {% include 'FDCCourtMetrageBundle:Participate:partials/twoColumnWidget.html.twig' with {
+                                                'widget': widget,
+                                                'twoColumnsTabs': twoColumnsTabs,
+                                                'twoColumnsFiles': twoColumnsFiles,
+                                                'constraints' : technicalConstraints[section.labelSection.id] is defined ? technicalConstraints[section.labelSection.id] : null
+                                            } %}
+                                        {% endif %}
+
+                                        {% if widget.translatable.isWidgetThreeColumns() %}
+                                            {% include 'FDCCourtMetrageBundle:Participate:partials/threeColumnWidget.html.twig' with {
+                                                'widget': widget,
+                                                'threeColumnsTabs': threeColumnsTabs,
+                                                'threeColumnsFiles': threeColumnsFiles,
+                                                'constraints' : technicalConstraints[section.labelSection.id] is defined ? technicalConstraints[section.labelSection.id] : null
+                                            } %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div> <!-- fin de item-->
+                            {% endfor %}
+                        </div> <!-- fin de accordion -->
+                    </div> <!-- fin block 01 -->
+                </div> <!-- end all contain -->
+            </div>
+        </div>
+    </section>
+    <div class="modal">
+        <div class="modal-overlay modal-toggle-label"></div>
+        <div class="modal-wrapper modal-transition">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="wideWrapper onlineWrapper">
+                        <h1>{{ 'ccm.modal.constraint.technique'|trans }}</h1>
+                    </div>
+                    <div class="block-register-pop">
+                        {# WIDGET CONTENT #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+{"breadcrumb":
+[
+{
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+},
+{
+    "name" : 'breadcrumb.inscrire'|trans,
+    "url"  : path('fdc_court_metrage_register_movie')
+},
+{
+    "name" : 'breadcrumb.participer.label'|trans,
+    "url"  : ''
+}
+]
+}
+%}
+{% endblock %}

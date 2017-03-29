@@ -1,0 +1,15 @@
+{% if mediaImage is not null %}
+    <div class="single-photo">
+        <div class="photo-container">
+            {% set file = mediaImage|trans_fallback('file') %}
+            {% set copyright = mediaImage|trans_fallback('copyright') %}
+            {% set alt = (mediaImage|trans_fallback('alt') == '') ? mediaImage|trans_fallback('legend') : mediaImage|trans_fallback('alt') %}
+            {% if file.height > file.width %}
+                {% thumbnail file, 'x584' with {'alt': alt, 'title': alt } %}
+            {% else %}
+                {% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}
+            {% endif %}
+            <p class="caption">{{ mediaImage|trans_fallback('legend') ~ ' © ' ~ mediaImage|trans_fallback('copyright') }}</p>
+        </div>
+    </div>
+{% endif %}

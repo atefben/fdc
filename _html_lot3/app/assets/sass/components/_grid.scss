@@ -1,9 +1,32 @@
-.articles-list h2.title {
+.articles-list {
+  h2.title {
     color: #333;
-    font-family: "Playfair Display", Times New Roman, Times, serif;
+    /*font-family: "Playfair Display", Times New Roman, Times, serif;*/
     font-weight: 700;
     font-size: 1.625rem;
     padding-top: 60px;
+
+    .hide-title & {
+      display: none;
+    }
+  }
+
+  .card {
+    .info strong {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    
+    &.w2 {
+      font-size: 2.25rem;
+    }
+
+    a {
+      color: #333;
+    }
+  }
+  }
 }
 
 .isotope-01 {
@@ -11,32 +34,22 @@
   .item {
     img {
       width: 100%;
-      object-fit: cover;
     }
 
     .contain-img {
       overflow: hidden;
       background-size: cover;
       width: 100.5%;
+      height: 340px;
+      overflow: hidden;
     }
   }
 
- .grid-selection & .item .title-13 {
+.grid-selection & .item .title-13 {
   display: block;
   position: relative;
   top: -4px;
- }
-
- body#home .article-inverse & .item:not(.w2):not(.double) {
-    padding-left: 0px !important;
-    padding-right: 60px !important;
-  }
-
-  /*
-  body#home .article-inverse & .item.w2.double {
-    margin-left: -20px;
-  }*/
-
+}
 
   body#home & {
 
@@ -46,19 +59,22 @@
     }
 
     .card.w2 {
-      height: 600px;
+      height: auto;
     }
 
     .item {
 
       img {
         width: 100%;
-        object-fit: cover;
       }
 
       .contain-img {
         overflow: hidden;
         background-size: cover;
+      }
+
+      .info {
+          height: auto;
       }
     }
 

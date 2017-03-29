@@ -25,6 +25,7 @@ imports:
     # old roles
     - { resource: roles/security_all.yml }
     # news roles
+    - { resource: roles/groups/security_admin_ccm.yml }
     - { resource: roles/groups/security_admin_fdc.yml }
     - { resource: roles/groups/security_admin_mdf.yml }
     - { resource: roles/groups/security_community_manager.yml }
@@ -53,7 +54,7 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer: true
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
@@ -79,7 +80,7 @@ twig:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle, FDCMarcheDuFilmBundle ]
+    bundles:        [ SonataAdminBundle, BaseAdminBundle, FDCEventBundle, FDCEventMobileBundle, FDCPressBundle, FDCPressMobileBundle, FDCCorporateBundle, FDCMarcheDuFilmBundle, FDCCourtMetrageBundle ]
     use_controller: true
     filters:
         cssrewrite:
@@ -115,6 +116,8 @@ doctrine:
                         Rand: Base\CoreBundle\Doctrine\Rand
                     datetime_functions:
                         Date_Format: Base\CoreBundle\Doctrine\DateFormat
+                        MONTH: Base\CoreBundle\Doctrine\DQL\Month
+                        YEAR: Base\CoreBundle\Doctrine\DQL\Year
 
 
 # Swiftmailer Configuration

@@ -3,7 +3,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/trailer.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/trailer.css"
+        "bundles/fdceventmobile/css/article_custom.css"
+        "bundles/fdceventmobile/css/trailer_custom.css"
+    %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -27,14 +31,20 @@
                     {%- set trans = video.file.findTranslationByLocale('fr') -%}
                 {%- endif -%}
                 {% if loop.first %}
-                <div class="images">
+                <div class="images m-video">
                     <div id="player"
                         {% if(trans.jobWebmState == 3) %}data-video="{{ s3_server_video ~ trans.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ trans.mp4Url }}"{% endif %}
                      data-poster="{{ videoImage }}"></div>
                 </div>
+                <div class="container">
+                    <h3 class="title-video"></h3>
+                    <span class="time"></span>
+                    <p class="caption"></p>
+                </div>
                 <div class="owl-carousel thumbnails">
                 {% endif %}
                 <div data-id="photo{{ video.id }}"class="thumb {% if loop.first %}active{% endif %}"
+                 data-time="{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}"
                  data-video="{{ s3_server_video ~ video|trans_fallback('mp4Url') }}"
                  data-poster='{{ videoImage }}'>
                     {% if video.image and video.image|trans_fallback('file') %}
@@ -54,8 +64,8 @@
                         <div class="info-container">
                             <div class="vCenter">
                                 <div class="vCenterKid">
-                                    <a href="#" class="category">{{ video.theme|trans_fallback('name')|truncate(12) }}</a>
-                                    <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(25) }}</a>
+                                    <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                    <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +95,9 @@
                         film_image_default: 'bundles/fdcevent/img/palmares/film_w293.jpg',
                     }) %}
                 </a>
-                <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
+                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}">
+                    <h4 class="rubric-film">{{ film.selectionSection|trans_fallback('name') }}</h4>
+                </a>
                 <a href="{{ path('fdc_eventmobile_movie_get', {'slug': film.slug}) }}" class="name-video"><strong>{{ film.titleVo }}</strong></a>
                 {% if film|trans_fallback('title') and film|trans_fallback('title')|trim != film.titleVo|trim %}<br /><strong class="translated-title">({{ film|trans_fallback('title') }})</strong>{% endif %}
                 <span class="name-person">
@@ -140,7 +152,10 @@
 {% endblock bandeauVideo %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/trailer.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/trailer.js'
+        '@FDCEventMobileBundle/Resources/public/js/trailer_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

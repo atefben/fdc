@@ -168,6 +168,8 @@ security:
              #corpo festival history:
             - ROLE_BASE_ADMIN_CORPO_FESTIVAL_HISTORY_ADMIN
             - ROLE_BASE_ADMIN_CORPO_PALME_OR_ADMIN
+            #Cannes Court Métrage
+            - ROLE_ADMIN_CCM
         ROLE_ALL_TRANSLATOR:
             - ROLE_ADMIN
             - ROLE_JMS_TRANSLATION

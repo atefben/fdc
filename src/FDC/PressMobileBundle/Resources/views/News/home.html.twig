@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/press.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/press.css"
+        "bundles/fdcpressmobile/css/press_custom.css"
+    %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -47,7 +50,7 @@
                 </div>
             </section>
         {% elseif section.class == "programmation" %} {#and pressHome.sectionSchedulingDisplay == false #}
-            <section>
+            <section class="prog-press-home">
                 <div class="title-section">
                     <h3>{{ 'press.home.title.programmedu'|trans }}
                         <span id="dateProgram">{{ date|localizeddate('long', 'none', app.request.locale) }}</span>

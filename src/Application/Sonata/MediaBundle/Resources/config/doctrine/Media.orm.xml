@@ -21,6 +21,9 @@
         <field name="oldMediaPhotoJury" type="string" column="old_media_photo_jury" nullable="true">
         </field>
 
+        <field name="oldMediaFestivalYear" type="string" column="old_media_festival_year" nullable="true">
+        </field>
+
         <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
         </field>
 
@@ -44,8 +47,28 @@
             </cascade>
         </one-to-one>
 
+        <one-to-one field="ccmParentVideoTranslation" target-entity="FDC\CourtMetrageBundle\Entity\CcmMediaVideoTranslation"
+                    mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-one>
+
+        <one-to-one field="ccmParentAudioTranslation" target-entity="FDC\CourtMetrageBundle\Entity\CcmMediaAudioTranslation"
+                    mapped-by="file">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-one>
+
         <one-to-one field="projectionMedias" target-entity="Base\CoreBundle\Entity\FilmProjectionMedia"
                     mapped-by="file">
         </one-to-one>
+
+        <many-to-many field="selfkitFilms" target-entity="Base\CoreBundle\Entity\FilmFilm" mapped-by="selfkitImages">
+        </many-to-many>
+
+        <many-to-many field="selfkitPersons" target-entity="Base\CoreBundle\Entity\FilmPerson" mapped-by="selfkitImages">
+        </many-to-many>
     </entity>
 </doctrine-mapping>

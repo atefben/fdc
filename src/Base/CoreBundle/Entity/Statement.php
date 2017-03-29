@@ -2,24 +2,20 @@
 
 namespace Base\CoreBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Util\TruncatePro;
-use \DateTime;
-
+use Base\CoreBundle\Component\Interfaces\NodeInterface;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
-
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
-
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Statement
  *
@@ -29,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "StatementArticle", "audio" = "StatementAudio", "image" = "StatementImage", "video" = "StatementVideo"})
  */
-abstract class Statement implements TranslateMainInterface
+abstract class Statement implements TranslateMainInterface, NodeInterface
 {
     use Time;
     use SeoMain;
@@ -77,6 +73,14 @@ abstract class Statement implements TranslateMainInterface
      *
      */
     protected $displayedHome;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
+     *
+     */
+    protected $displayedOnCorpoHome = false;
 
     /**
      * @var boolean
@@ -142,7 +146,7 @@ abstract class Statement implements TranslateMainInterface
     protected $associatedFilms;
 
     /**
-     * @var StatementWidget
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="StatementWidget", mappedBy="statement", cascade={"all"}, orphanRemoval=true)
      *
@@ -152,7 +156,7 @@ abstract class Statement implements TranslateMainInterface
     protected $widgets;
 
     /**
-     * @var Site
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
@@ -176,7 +180,7 @@ abstract class Statement implements TranslateMainInterface
     protected $publishEndedAt;
 
     /**
-     * ArrayCollection
+     * @var ArrayCollection
      * @Groups({"news_list", "search", "news_show", "home"})
      *
      */
@@ -249,13 +253,14 @@ abstract class Statement implements TranslateMainInterface
         $this->hideSameDay = false;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = null;
         $class = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
             if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
-                $string = $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
+                $string = "$class " . $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
             } else {
                 $string = "$class {$this->getId()}";
             }
@@ -270,12 +275,12 @@ abstract class Statement implements TranslateMainInterface
 
     public static function getTypes()
     {
-        return array(
+        return [
             'Base\CoreBundle\Entity\StatementArticle' => 'article',
-            'Base\CoreBundle\Entity\StatementAudio' => 'audio',
-            'Base\CoreBundle\Entity\StatementImage' => 'photo',
-            'Base\CoreBundle\Entity\StatementVideo' => 'video'
-        );
+            'Base\CoreBundle\Entity\StatementAudio'   => 'audio',
+            'Base\CoreBundle\Entity\StatementImage'   => 'photo',
+            'Base\CoreBundle\Entity\StatementVideo'   => 'video'
+        ];
     }
 
     /**
@@ -362,7 +367,7 @@ abstract class Statement implements TranslateMainInterface
      * Add widgets
      *
      * @param \Base\CoreBundle\Entity\StatementWidget $widgets
-     * @return StatementArticleTranslation
+     * @return $this
      */
     public function addWidget(\Base\CoreBundle\Entity\StatementWidget $widgets)
     {
@@ -391,12 +396,12 @@ abstract class Statement implements TranslateMainInterface
     {
         return $this->widgets;
     }
-    
+
     /**
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return Statement
+     * @return $this
      */
     public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
@@ -419,7 +424,7 @@ abstract class Statement implements TranslateMainInterface
      * Set festival
      *
      * @param \Base\CoreBundle\Entity\FilmFestival $festival
-     * @return Statement
+     * @return $this
      */
     public function setFestival(\Base\CoreBundle\Entity\FilmFestival $festival = null)
     {
@@ -442,7 +447,7 @@ abstract class Statement implements TranslateMainInterface
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return StatementArticleTranslation
+     * @return $thisArticleTranslation
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {
@@ -475,7 +480,7 @@ abstract class Statement implements TranslateMainInterface
      * Set homepage
      *
      * @param \Base\CoreBundle\Entity\Homepage $homepage
-     * @return Statement
+     * @return $this
      */
     public function setHomepage(\Base\CoreBundle\Entity\Homepage $homepage = null)
     {
@@ -498,7 +503,7 @@ abstract class Statement implements TranslateMainInterface
      * Add tags
      *
      * @param \Base\CoreBundle\Entity\StatementTag $tags
-     * @return Statement
+     * @return $this
      */
     public function addTag(\Base\CoreBundle\Entity\StatementTag $tags)
     {
@@ -532,7 +537,7 @@ abstract class Statement implements TranslateMainInterface
      * Set priorityStatus
      *
      * @param integer $priorityStatus
-     * @return Statement
+     * @return $this
      */
     public function setPriorityStatus($priorityStatus)
     {
@@ -555,7 +560,7 @@ abstract class Statement implements TranslateMainInterface
      * Set displayedHome
      *
      * @param boolean $displayedHome
-     * @return Statement
+     * @return $this
      */
     public function setDisplayedHome($displayedHome)
     {
@@ -578,7 +583,7 @@ abstract class Statement implements TranslateMainInterface
      * Set signature
      *
      * @param string $signature
-     * @return Statement
+     * @return $this
      */
     public function setSignature($signature)
     {
@@ -601,7 +606,7 @@ abstract class Statement implements TranslateMainInterface
      * Set displayedMobile
      *
      * @param boolean $displayedMobile
-     * @return Statement
+     * @return $this
      */
     public function setDisplayedMobile($displayedMobile)
     {
@@ -624,7 +629,7 @@ abstract class Statement implements TranslateMainInterface
      * Set publishedAt
      *
      * @param \DateTime $publishedAt
-     * @return Statement
+     * @return $this
      */
     public function setPublishedAt($publishedAt)
     {
@@ -647,7 +652,7 @@ abstract class Statement implements TranslateMainInterface
      * Set publishEndedAt
      *
      * @param \DateTime $publishEndedAt
-     * @return Statement
+     * @return $this
      */
     public function setPublishEndedAt($publishEndedAt)
     {
@@ -670,7 +675,7 @@ abstract class Statement implements TranslateMainInterface
      * Add associatedStatement
      *
      * @param \Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement
-     * @return Statement
+     * @return $this
      */
     public function addAssociatedStatement(\Base\CoreBundle\Entity\StatementStatementAssociated $associatedStatement)
     {
@@ -711,7 +716,7 @@ abstract class Statement implements TranslateMainInterface
      * Set associatedFilm
      *
      * @param \Base\CoreBundle\Entity\FilmFilm $associatedFilm
-     * @return Statement
+     * @return $this
      */
     public function setAssociatedFilm(\Base\CoreBundle\Entity\FilmFilm $associatedFilm = null)
     {
@@ -734,7 +739,7 @@ abstract class Statement implements TranslateMainInterface
      * Set associatedEvent
      *
      * @param \Base\CoreBundle\Entity\Event $associatedEvent
-     * @return Statement
+     * @return $this
      */
     public function setAssociatedEvent(\Base\CoreBundle\Entity\Event $associatedEvent = null)
     {
@@ -757,7 +762,7 @@ abstract class Statement implements TranslateMainInterface
      * Add associatedProjections
      *
      * @param \Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections
-     * @return Statement
+     * @return $this
      */
     public function addAssociatedProjection(\Base\CoreBundle\Entity\StatementFilmProjectionAssociated $associatedProjections)
     {
@@ -790,7 +795,7 @@ abstract class Statement implements TranslateMainInterface
      * Add associatedFilms
      *
      * @param \Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms
-     * @return Statement
+     * @return $this
      */
     public function addAssociatedFilm(\Base\CoreBundle\Entity\StatementFilmFilmAssociated $associatedFilms)
     {
@@ -824,7 +829,7 @@ abstract class Statement implements TranslateMainInterface
      * Set createdBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $createdBy
-     * @return Statement
+     * @return $this
      */
     public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
     {
@@ -847,7 +852,7 @@ abstract class Statement implements TranslateMainInterface
      * Set updatedBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
-     * @return Statement
+     * @return $this
      */
     public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
     {
@@ -878,7 +883,7 @@ abstract class Statement implements TranslateMainInterface
      * Set hideSameDay
      *
      * @param boolean $hideSameDay
-     * @return Statement
+     * @return $this
      */
     public function setHideSameDay($hideSameDay)
     {
@@ -890,7 +895,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get hideSameDay
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHideSameDay()
     {
@@ -924,7 +929,7 @@ abstract class Statement implements TranslateMainInterface
      * Set typeClone
      *
      * @param string $typeClone
-     * @return Statement
+     * @return $this
      */
     public function setTypeClone($typeClone)
     {
@@ -936,7 +941,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get typeClone
      *
-     * @return string 
+     * @return string
      */
     public function getTypeClone()
     {
@@ -947,7 +952,7 @@ abstract class Statement implements TranslateMainInterface
      * Set oldNewsId
      *
      * @param integer $oldNewsId
-     * @return Statement
+     * @return $this
      */
     public function setOldNewsId($oldNewsId)
     {
@@ -959,7 +964,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get oldNewsId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOldNewsId()
     {
@@ -970,7 +975,7 @@ abstract class Statement implements TranslateMainInterface
      * Set oldNewsTable
      *
      * @param string $oldNewsTable
-     * @return Statement
+     * @return $this
      */
     public function setOldNewsTable($oldNewsTable)
     {
@@ -982,7 +987,7 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get oldNewsTable
      *
-     * @return string 
+     * @return string
      */
     public function getOldNewsTable()
     {
@@ -993,7 +998,7 @@ abstract class Statement implements TranslateMainInterface
      * Set mobileDisplay
      *
      * @param string $mobileDisplay
-     * @return Statement
+     * @return $this
      */
     public function setMobileDisplay($mobileDisplay)
     {
@@ -1005,10 +1010,29 @@ abstract class Statement implements TranslateMainInterface
     /**
      * Get mobileDisplay
      *
-     * @return string 
+     * @return string
      */
     public function getMobileDisplay()
     {
         return $this->mobileDisplay;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isDisplayedOnCorpoHome()
+    {
+        return $this->displayedOnCorpoHome;
+    }
+
+    /**
+     * @param bool $displayedOnCorpoHome
+     * @return $this
+     */
+    public function setDisplayedOnCorpoHome($displayedOnCorpoHome)
+    {
+        $this->displayedOnCorpoHome = $displayedOnCorpoHome;
+        return $this;
     }
 }

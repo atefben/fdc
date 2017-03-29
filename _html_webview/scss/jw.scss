@@ -4,13 +4,18 @@
 	&.jw-skin-fdc.jw-state-complete {
 		.jw-title {
 			display: block;
-			top: 1rem;
-			margin-left: 10.3rem;
+			top: 2.2rem;
 
 			.Article-header & {
 				top: 2.2rem;
 			}
 		}
+
+		.jw-text-elapsed,
+		.jw-text-duration {
+			display: none;
+		}
+
 		.jw-icon-playback {
 			background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
 			background-position: 2rem center;
@@ -21,6 +26,17 @@
 			&:before {
 				content: "";
 			}
+		}
+	}
+	&.jw-skin-fdc.jw-state-idle,
+	&.jw-skin-fdc.jw-state-buffering {
+		.jw-icon-playback {
+			border: thomon;
+			background: url(../../img/article/audioPlayer/pause.png) no-repeat 2rem 3rem;
+			background-position: 2rem center;
+			background-size: 1.2rem;
+			left: 3.7rem;
+			top: -0.2rem;
 		}
 	}
 
@@ -49,6 +65,7 @@
 	&.jw-skin-fdc.jw-state-paused {
 		.jw-title {
 			display: block;
+			top: 2.2rem;
 		}
 
 		.jw-icon-playback {
@@ -70,7 +87,14 @@
 	&.jw {
 		&-skin-fdc {
 			height: 9rem;
+			background: transparent;
 
+			.jw-buffer {
+
+			}
+
+			.jw-text-elapsed,
+			.jw-text-duration,
 			.jw-icon-volume {display: none!important }
 			.jw {
 				&-icon-fullscreen {
@@ -87,6 +111,11 @@
 					height: 100%;
 					top: 0px;
 					margin-top: 0px;
+
+					.Article-header & {
+						background-color: transparent;
+						background-image: inherit;
+					}
 				}
 
 				&-rail, &-buffer, &-progress {
@@ -109,6 +138,11 @@
 					height: auto;
 					margin-left: 9rem;
 					top: 1.7rem;
+
+					.Article-header .jwplayer.jw-skin-fdc.jw-state-playing & {
+						top: 2.2rem;
+						margin-left: 9rem;
+					}
 
 					&-primary {
 						height: auto;
@@ -139,7 +173,7 @@
 					background-size: 1.8rem;
 
 					&:before {
-						content: "";
+						content: "" !important;
 					}
 				}
 
@@ -152,12 +186,24 @@
 					height: 0.5rem;
 					overflow: hidden;
 					width: 85%;
-					float: right;
+					float: left;
+    				margin-left: 8%;
+
+    				@media screen and (min-width: 768px) {
+						background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+						background-size: 1.8rem;
+						margin-left: 4%;
+					}
 				}
 
 				&-controlbar-left-group {
 					background: url(../../img/article/audioPlayer/mic.png) no-repeat 2.5rem 3rem;
 					background-size: 1.8rem;
+
+					@media screen and (min-width: 768px) {
+						background: url(../../img/article/audioPlayer/mic.png) no-repeat 1.7rem 3rem;
+						background-size: 1.8rem;
+					}
 				}
 
 				&-display-icon-container {
@@ -186,6 +232,10 @@
 			position: relative;
 			margin-bottom: 2rem;
 
+			.Article-header & {
+				margin-bottom: 0px;
+			}
+
 			&.jw-state-complete {
 				.jw-display-icon-container{
 					& > .jw-icon {
@@ -202,7 +252,9 @@
 					background-size: 2.2rem;
 					z-index: 1;
 
-
+					.Article-header & {
+						background-size: 3.5rem;
+					}
 				}
 			} 
 
@@ -220,7 +272,7 @@
 				content: "";
 			}
 
-			.jw-tooltip-time {
+			.jw-tooltip-time, .jw-icon-hd {
 				display: none!important;
 			}
 
@@ -250,6 +302,7 @@
 				}
 			}
 
+
 			.jw-title {
 				position: absolute;
 				left: 0px;
@@ -257,7 +310,8 @@
 				top: auto;
 				color: #fff;
 				width: 100%;
-				padding: 0 5%;
+				padding: 0 5% 5% 5%;
+				height: auto;
 
 				background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
 				background-image: -webkit-gradient(linear, 0% 100%, 0% 0%,color-stop(0, rgb(0, 0, 0)),color-stop(1, rgba(0, 0, 0, 0)));
@@ -270,24 +324,25 @@
 				}
 
 				&-primary {
-					position: absolute;
-					bottom: -0px;
-					left: 0;
+					min-height: 0px;
+					padding: 0px;
+					overflow: visible;
+					
+					width: 100%;
+					position: relative;
+				}
+
+				&-secondary {
+					padding: 0px;
+					padding-top: 1rem;
+					overflow: visible;
 					font-weight: normal;
 					font-family: "Open Sans";
 					font-weight: 300;
 					font-size: 1.2rem;
 					line-height: 1.5rem;
-					padding-left: 12px;
-					overflow: visible;
-				}
-
-				&-secondary {
-					position: absolute;
-					left: 0px;
-					bottom: 12px;
-					padding-left: 12px;
-					overflow: visible;
+					white-space: initial;
+					width: 100%;
 				}
 				
 				h4 {

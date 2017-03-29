@@ -1,0 +1,58 @@
+<div class="socialBox competition">
+    <h3>{{ 'social_wall.title'|trans }}</h3>
+    <div id="social-wall">
+        <div class="container">
+            <div id="wall">
+                {% set index = 1 %}
+                {% for post in posts if index < 13 %}
+                    {% set index = loop.index %}
+                    {% set flip = random(1) %}
+
+                    <div class="post{% if loop.index == 1 or loop.index == 2 %} big {% elseif loop.index == 8 %} big right {% endif %}">
+                        {% if posts[index + 12] is defined %}
+                            <div class="side side-1 {% if posts[index + 12].network %} instagram {% else %} twitter {% endif %}
+                                 {% if loop.index in [2, 3, 5, 7, 8, 9, 13 ] %} hastext {% elseif flip and posts[index + 12].content is not null %} flip {% endif %}{% if posts[index + 12].content is not null %} hasimg {% endif %}"
+                                 style="z-index: 5; background-image: url({{ posts[index + 12].content }});">
+                                <div class="txt">
+                                    <div class="vCenter">
+                                        <div class="vCenterKid">
+                                            <p><strong>{{ posts[index + 12].message }}</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="side side-2 {% if post.network %} instagram {% else %} twitter {% endif %}
+                                 {% if loop.index in [2, 3, 5, 7, 8, 9, 13 ] %} hastext {% elseif flip and post.content is not null %} flip {% endif %}{% if post.content is not null %} hasimg {% endif %}"
+                             style="z-index: 5; background-image: url({{ post.content }});">
+                            <div class="txt">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <p><strong>{{ post.message }}</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if loop.index == 4 or loop.index == 13 %}
+                        <div class="post empty">
+                            <div class="side side-1 flip"></div>
+                            <div class="side side-2 flip"></div>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shareSocial">
+    <a href="https://www.facebook.com/cannescourtmetrage/?fref=ts" target="_blank">
+        <div>{{ 'social_wall.facebook'|trans }}<i class="icon icon_facebook"></i></div>
+    </a>
+    <a href="https://twitter.com/cannes_court?lang=fr" target="_blank">
+        <div>{{ 'social_wall.twitter'|trans }}<i class="icon icon_twitter"></i></div>
+    </a>
+</div>

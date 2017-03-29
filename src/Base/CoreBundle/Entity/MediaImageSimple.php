@@ -119,11 +119,35 @@ class MediaImageSimple implements TranslateMainInterface
     protected $translations;
 
     /**
-     * @var Site
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Site")
      */
     protected $sites;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Base\CoreBundle\Entity\FilmFilm", mappedBy="imageMain")
+     */
+    protected $imageMainFilms;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Base\CoreBundle\Entity\FilmFilm", mappedBy="imageCover")
+     */
+    protected $imageCoverFilms;
+
+    /**
+     * MediaImageSimple constructor.
+     */
+    public function __construct()
+    {
+        $this->sites = new ArrayCollection();
+        $this->imageMainFilms = new ArrayCollection();
+        $this->imageCoverFilms = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -139,7 +163,7 @@ class MediaImageSimple implements TranslateMainInterface
      * Set createdBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $createdBy
-     * @return MediaImageSimple
+     * @return $this
      */
     public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
     {
@@ -162,7 +186,7 @@ class MediaImageSimple implements TranslateMainInterface
      * Set updatedBy
      *
      * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
-     * @return MediaImageSimple
+     * @return $this
      */
     public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
     {
@@ -180,19 +204,12 @@ class MediaImageSimple implements TranslateMainInterface
     {
         return $this->updatedBy;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sites = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add sites
      *
      * @param \Base\CoreBundle\Entity\Site $sites
-     * @return MediaImageSimple
+     * @return $this
      */
     public function addSite(\Base\CoreBundle\Entity\Site $sites)
     {
@@ -225,7 +242,7 @@ class MediaImageSimple implements TranslateMainInterface
      * Set name
      *
      * @param string $name
-     * @return MediaImageSimple
+     * @return $this
      */
     public function setName($name)
     {
@@ -307,4 +324,70 @@ class MediaImageSimple implements TranslateMainInterface
         return $this->translations;
     }
 
+
+    /**
+     * Add imageMainFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $imageMainFilms
+     * @return $this
+     */
+    public function addImageMainFilm(\Base\CoreBundle\Entity\FilmFilm $imageMainFilms)
+    {
+        $this->imageMainFilms[] = $imageMainFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove imageMainFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $imageMainFilms
+     */
+    public function removeImageMainFilm(\Base\CoreBundle\Entity\FilmFilm $imageMainFilms)
+    {
+        $this->imageMainFilms->removeElement($imageMainFilms);
+    }
+
+    /**
+     * Get imageMainFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImageMainFilms()
+    {
+        return $this->imageMainFilms;
+    }
+
+    /**
+     * Add imageCoverFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $imageCoverFilms
+     * @return $this
+     */
+    public function addImageCoverFilm(\Base\CoreBundle\Entity\FilmFilm $imageCoverFilms)
+    {
+        $this->imageCoverFilms[] = $imageCoverFilms;
+
+        return $this;
+    }
+
+    /**
+     * Remove imageCoverFilms
+     *
+     * @param \Base\CoreBundle\Entity\FilmFilm $imageCoverFilms
+     */
+    public function removeImageCoverFilm(\Base\CoreBundle\Entity\FilmFilm $imageCoverFilms)
+    {
+        $this->imageCoverFilms->removeElement($imageCoverFilms);
+    }
+
+    /**
+     * Get imageCoverFilms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImageCoverFilms()
+    {
+        return $this->imageCoverFilms;
+    }
 }

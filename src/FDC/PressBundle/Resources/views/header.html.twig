@@ -21,7 +21,7 @@
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="{{ header_account }}" class="account" target="_blank" >
+                <a href="{{ header_account|default('') }}" class="account" target="_blank" >
                     <i class="icon icon_mon-compte"></i>{{ 'header.usernav.nav.moncompte'|trans }}
                 </a>
             </li>
@@ -90,7 +90,7 @@
                     {% endimage %}
                 </a>
                 <a href="{{ attribute(_context, 'partner_kering_'~ app.request.locale) }}" target="_blank">
-                    {% image '@FDCEventBundle/Resources/public/img/header/Kering-logo.svg' %}
+                    {% image '@FDCEventBundle/Resources/public/img/header/kering.png' %}
                     <img width="82" src="{{ asset(asset_url) }}" class="kering" alt="{{ 'header.partners.img.kering'|trans }}" />
                     {% endimage %}
                 </a>

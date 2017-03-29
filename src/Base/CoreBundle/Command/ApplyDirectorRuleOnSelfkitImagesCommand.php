@@ -82,7 +82,7 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
                     if ($persons) {
                         foreach ($persons as $person) {
                             foreach ($movie->getDirectors(true) as $director) {
-                                if ($director instanceof FilmFilmPerson) {
+                                if ($director instanceof FilmFilmPerson && $director->getPerson()) {
                                     if ($person->getId() == $director->getPerson()->getId()) {
                                         $movie->removeSelfkitImage($selfkitImage);
                                         $message = 'removed for ' . ((string)$person) . ' in ' . $movie->getTitleVO() .
@@ -153,7 +153,7 @@ class ApplyDirectorRuleOnSelfkitImagesCommand extends ContainerAwareCommand
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
             ->findBy([], null, $maxResults, $firstResult)
-            ;;
+            ;
 
     }
 

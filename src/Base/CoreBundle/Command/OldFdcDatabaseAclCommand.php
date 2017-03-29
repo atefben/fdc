@@ -49,6 +49,7 @@ class OldFdcDatabaseAclCommand extends ContainerAwareCommand
         $news = $this->getNews();
         $output->writeln('<comment>'.count($news).' items</comment>');
         $this->updateAcl($news, 'base.admin.news_article');
+        $this->updateAcl($news, 'base.admin.news_image');
         $this->getManager()->clear();
         unset($news);
 

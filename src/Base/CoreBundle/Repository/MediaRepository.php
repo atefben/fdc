@@ -125,7 +125,7 @@ class MediaRepository extends EntityRepository
         return $qb;
     }
 
-    public function searchMedias($locale, $search, $photo = false, $video = false, $audio = false, $yearStart = null, $yearEnd = null, $limit = 30, $page = 1)
+    public function searchMedias($locale, $search, $type = null, $start = null, $end = null, $limit = 30, $since = null)
     {
 
         $qb = $this->createQueryBuilder('m')
@@ -138,7 +138,7 @@ class MediaRepository extends EntityRepository
 
         $searchOr = ['tt.name LIKE :search', 'tagt.name LIKE :search'];
 
-        if ($photo) {
+        if ($type == 'image') {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
                 ->leftJoin('mi.translations', 'mit')
                 ->andWhere('(m.associatedFilm IS NOT NULL) OR (m.displayedHome = 1)')
@@ -149,7 +149,7 @@ class MediaRepository extends EntityRepository
             $searchOr[] = 'mit.legend LIKE :search';
         }
 
-        if ($video) {
+        if ($type == 'video') {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
                 ->leftJoin('mv.translations', 'mvt')
                 ->leftJoin('mv.webTv', 'w')
@@ -164,7 +164,7 @@ class MediaRepository extends EntityRepository
             $searchOr[] = 'wt.name LIKE :search';
         }
 
-        if ($audio) {
+        if ($type == 'audio') {
             $qb->leftJoin('Base\CoreBundle\Entity\MediaAudio', 'ma', 'WITH', 'ma.id = m.id')
                 ->leftJoin('ma.translations', 'mat')
                 ->andWhere('m.displayedAll = 1')
@@ -176,39 +176,47 @@ class MediaRepository extends EntityRepository
 
         }
 
-        $qb->andWhere('(' . implode(' OR ', $searchOr) . ')');
+        if ($search) {
+            $qb->andWhere('(' . implode(' OR ', $searchOr) . ')');
+            $qb->setParameter('search', "%$search%");
+        }
 
-        $qb->setParameter('search', '%' . $search . '%');
 
-        if ($yearStart && $yearEnd) {
+
+        if ($start && $end) {
             $qb->innerJoin('m.festival', 'f')
                 ->andWhere('f.year BETWEEN :yearStart AND :yearEnd')
-                ->setParameter('yearStart', $yearStart)
-                ->setParameter('yearEnd', $yearEnd)
+                ->setParameter('yearStart', $start)
+                ->setParameter('yearEnd', $end)
             ;
         }
 
         //because of entity relations
         $max = $limit * 4;
 
-        $qb = $qb->andWhere("m.publishEndedAt IS NULL")
+        if ($since) {
+            $qb
+                ->andWhere('m.publishedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb->andWhere("m.publishEndedAt IS NULL")
             ->orderBy('m.publishedAt', 'DESC')
             ->setMaxResults($max)
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
     }
 
     /**
      * @param $locale
      * @param $festival
      * @param int $maxResults
-     * @param int $page
+     * @param int $firstResult
      * @return Media[]
      */
-    public function getRetrospective($locale, $festival, $maxResults = 30, $page = 1)
+    public function getRetrospective($locale, $festival, $maxResults = 30, $firstResult = 0)
     {
 
         $qb = $this
@@ -254,7 +262,7 @@ class MediaRepository extends EntityRepository
             ->andWhere("m.publishEndedAt IS NULL")
             ->addOrderBy('m.publishedAt', 'DESC')
             ->setMaxResults($maxResults)
-            ->setFirstResult(($page - 1) * $maxResults)
+            ->setFirstResult($firstResult)
             ->getQuery()
             ->getResult()
             ;

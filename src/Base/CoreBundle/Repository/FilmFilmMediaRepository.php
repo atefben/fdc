@@ -3,37 +3,53 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+use Base\CoreBundle\Entity\FilmFilmMedia;
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 
 /**
- * FilmFilmMediaRepository class.
- *
- * \@extends EntityRepository
- * @author   Stevens-Son ONEPHANDARA
- * \@company Ohwee
+ * Class FilmFilmMediaRepository
+ * @package Base\CoreBundle\Repository
  */
 class FilmFilmMediaRepository extends EntityRepository
 {
-    public function getMedias($search, $yearStart, $yearEnd)
+    /**
+     * @param $search
+     * @param $yearStart
+     * @param $yearEnd
+     * @param $since
+     * @return FilmFilmMedia[]
+     */
+    public function getMedias($search, $yearStart, $yearEnd, $since = null)
     {
         $qb = $this->createQueryBuilder('ffm')
-            ->leftJoin('ffm.media', 'fm')
-            ->leftJoin('ffm.film', 'f')
-            ->leftJoin('f.translations', 'ft')
-            ->andWhere('ffm.media IS NOT NULL')
-            ->andWhere('ffm.film IS NOT NULL')
-            ->andWhere('ffm.type != 18') //PDF
+            ->innerJoin('ffm.media', 'fm')
+            ->innerJoin('ffm.film', 'f')
+            ->innerJoin('f.festival', 'festival')
+            ->innerJoin('f.translations', 'ft')
+            ->andWhere('ffm.type != :pdf')
+            ->setParameter(':pdf', FilmFilmMediaInterface::TYPE_PRESS_PDF)
             ->andWhere('f.titleVO LIKE :search OR ft.title LIKE :search OR fm.titleVf LIKE :search OR fm.titleVa LIKE :search')
-            ->setParameter('search', '%'.$search.'%');
+            ->setParameter('search', '%' . $search . '%')
+        ;
 
-        if($yearStart && $yearEnd) {
-            $qb->andWhere('f.productionYear BETWEEN :yearStart AND :yearEnd')
+        if ($yearStart && $yearEnd) {
+            $qb->andWhere('festival.year BETWEEN :yearStart AND :yearEnd')
                 ->setParameter('yearStart', $yearStart)
                 ->setParameter('yearEnd', $yearEnd)
             ;
         }
 
-        return $qb->getQuery()->getResult();
+        if ($since) {
+            $qb
+                ->andWhere('ffm.updatedAt <= :since')
+                ->setParameter(':since', $since)
+            ;
+        }
+
+        return $qb
+            ->addOrderBy('ffm.updatedAt', 'desc')
+            ->getQuery()
+            ->getResult();
     }
 
 }

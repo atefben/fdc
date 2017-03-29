@@ -42,8 +42,6 @@ var owInitSliderSelect = function(id) {
       var input = $(this).find('input');
       var classTab = $tab[0].className;
 
-      console.log(classTab);
-
       //faire deux class différente
       //verifier la class et en fonction mettre en opacity 0 !
 
@@ -118,7 +116,6 @@ var autoComplete = function() {
           $('.suggest li').off('click').on('click', function(){
 
             var data = $(this).data('country');
-            console.log($(this).parent().prev().prev());
             $(this).parent().parent().parent().find('.country').val(data.toLowerCase());
 
             $('.sub-tab').css('opacity', '1');
@@ -190,7 +187,6 @@ var autoComplete = function() {
           $('.suggest li').off('click').on('click', function(){
 
             var data = $(this).data('country');
-            console.log($(this).parent().prev().prev());
             $(this).parent().parent().parent().find('.searchBar').val(data.toLowerCase());
 
             $('.sub-tab').css('opacity', '1');

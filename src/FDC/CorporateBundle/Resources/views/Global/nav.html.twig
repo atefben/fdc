@@ -2,7 +2,7 @@
 <nav>
     <ul class="main">
         {% for menu in menus %}
-            {% if menu.route != 'fdc_corporate_press_show' and menu.route != 'fdc_corporate_participate_inscription' %}
+            {% if menu.route != 'fdc_press_news_home' and menu.route != 'fdc_corporate_participate_inscription' %}
                 <li{% if menu.route == 'fdc_corporate_default_home' %} class="actu"{% endif %}>
                     {% if menu.route == '#' and menu.enabled == true %}
                         <a href="#">
@@ -51,9 +51,9 @@
                             {% for child in menu['__children'] %}
                                 {% if child.enabled %}
                                     <li>
-                                        {% if child.route =='fdc_corporate_news_getarticles' and child.enabled == true %}
-                                            <a href="{{ path('fdc_corporate_news_getarticles', {'year': currentYear}) }}"
-                                               {% if route =='fdc_corporate_news_getarticles' %}class="active"{% endif %}>
+                                        {% if child.route in ['fdc_corporate_news_getarticles', 'fdc_corporate_news_infosandstatements'] and child.enabled == true %}
+                                            <a href="{{ path(child.route) }}"
+                                                {% if route == child.route %}class="active"{% endif %}>
                                                 {{ child.transName|trans }}
                                             </a>
                                         {% else %}

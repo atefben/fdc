@@ -118,3 +118,14 @@ src/FDC/MarcheDuFilmBundle/Resources/translations/messages.zh.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.en.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.fr.xliff
 src/FDC/MarcheDuFilmBundle/Resources/translations/validators.zh.xliff
+
+#CCM
+src/FDC/CourtMetrageBundle/Resources/translations/validators.en.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/validators.fr.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.en.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/FDCCourtMetrageBundle.fr.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/messages.en.xliff
+src/FDC/CourtMetrageBundle/Resources/translations/messages.fr.xliff
+
+/web/clear-cache.php
+

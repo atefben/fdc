@@ -1,0 +1,70 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <section id="main" class="home noPadding whiteBckg">
+        <div class="list-article">
+            {% include 'FDCCourtMetrageBundle:Participate:partials/registerBanner.html.twig' %}
+        </div>
+
+        <div class="all-contain block-01-ms padding-top block-rules">
+            {% if registerProcedure.name %}<strong class="title-23">{{ registerProcedure.name }}</strong>{% endif %}
+            <strong class="title-24 title-rules">{{ 'ccm.register_movie.rules'|trans }} {{ "now"|date("Y") }}</strong>
+
+            {% if registerProcedure.regulationDetailsText %}
+            <div class="block-01-ms texte-01">
+                {{ registerProcedure.regulationDetailsText|raw }}
+            </div>
+            {% endif %}
+        </div> <!-- fin de all-contain block-01-xs padding-top -->
+
+        {% if registerProcedure.translatable.regulationDetailsFile or (registerProcedure.regulationDetailsButtonUrl and registerProcedure.regulationDetailsButtonLabel) %}
+            <div class="border-top border-bottom block-button-bottom">
+                <div class="block-01-ms">
+                    <div class="align-flex">
+                        {% if registerProcedure.translatable.regulationDetailsFile %}
+                            <a href="{% path registerProcedure.translatable.regulationDetailsFile|trans_fallback('file'), 'reference' %}" class="button ajax button-half"><i class="icon icon_telecharger"></i> {{ 'ccm.register_movie.preselection_rules'|trans }}</a>
+                        {% endif %}
+                        {% if registerProcedure.regulationDetailsButtonUrl and registerProcedure.regulationDetailsButtonLabel %}
+                            <a href="{{ registerProcedure.regulationDetailsButtonUrl }}" {% if fdc_court_metrage_scheme in registerProcedure.regulationDetailsButtonUrl %}target="_blank"{% endif %} class="button button-half">{{ registerProcedure.regulationDetailsButtonLabel }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if registerProcedure.contactUsTitle %}
+            <div class="block-contact block-01-ms block-custom-bottom">
+                <strong class="title-25">{{ registerProcedure.contactUsTitle }}</strong>
+                <div class="item i-1">
+                    {{ registerProcedure.contactUsLeftText|raw }}
+                </div>
+
+                <div class="item i-2">
+                    {{ registerProcedure.contactUsRightText|raw }}
+                    <div class="buttons-02">
+                        <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_court_metrage_homepage')
+        },
+        {
+            "name" : 'breadcrumb.participate'|trans,
+            "url"  : path('fdc_court_metrage_register_movie')
+        },
+        {
+            "name" : registerProcedure.name,
+            "url"  : ''
+        }
+        ]
+    }
+%}
+{% endblock %}

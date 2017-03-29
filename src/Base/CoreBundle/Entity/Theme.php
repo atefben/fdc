@@ -45,7 +45,7 @@ class Theme implements TranslateMainInterface
      * @Groups({"news_list", "search", "news_show", "event_list", "search", "event_show", "film_show", "home", "live", "search"})
      */
     protected $translations;
-
+    
     public function __construct()
     {
         $this->translations = new ArrayCollection();

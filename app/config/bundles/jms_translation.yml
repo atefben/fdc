@@ -39,7 +39,14 @@ jms_translation:
         mdf:
             dirs: [%kernel.root_dir%/../src/FDC/MarcheDuFilmBundle]
             output_dir: %kernel.root_dir%/../src/FDC/MarcheDuFilmBundle/Resources/translations
-            ignored_domains: [FDCCorporateBundle, FDCEventBundle, FDCPressBundle, FDCEventMobileBundle, FDCPressMobileBundle, BaseAdminBundle]
+            ignored_domains: [FDCCorporateBundle, FDCEventBundle, FDCPressBundle, FDCEventMobileBundle, FDCPressMobileBundle, BaseAdminBundle, CourtMetrageBundle]
+            excluded_names: ["*TestCase.php", "*Test.php"]
+            excluded_dirs: [wordpress-plugin]
+            extractors: []
+        ccm:
+            dirs: [%kernel.root_dir%/../src/FDC/CourtMetrageBundle]
+            output_dir: %kernel.root_dir%/../src/FDC/CourtMetrageBundle/Resources/translations
+            ignored_domains: [FDCCorporateBundle, FDCEventBundle, FDCPressBundle, FDCEventMobileBundle, FDCPressMobileBundle, BaseAdminBundle, MarcheDuFilmBundle]
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [wordpress-plugin]
             extractors: []

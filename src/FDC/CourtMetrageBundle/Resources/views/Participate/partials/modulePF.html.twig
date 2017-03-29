@@ -1,0 +1,27 @@
+<div class="item-partners">
+    <div class="contain-img">
+        {% if module.logo is not null %}
+            {% set image = module.logo|trans_fallback("file") %}
+            <img src="{% path image, "270x165" %}" {% if image.width > image.height %}width="200"{% elseif image.width == image.height %}width="105" height="105"{% else %}height="105"{% endif %} alt="{{ module.logo|trans_fallback('alt') }}" />
+        {% endif %}
+    </div>
+    <div class="text-partners">
+        {% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+        {% set translation = module.translations[app.request.getLocale()] %}
+            {% set portrait = module.photo is not null or translation.nameSurname is not null or translation.function is not null %}
+            <div class="{% if portrait %}content-text-with-portrait{% else %}text-partners{% endif %}">
+                <h4 class="title-partners">{{ translation.namePF }}</h4>
+                {{ translation.description|raw }}
+            </div>
+            {% if module.photo is not null or translation.nameSurname is not null or translation.function is not null %}
+                <div class="portrait">
+                    {% if module.photo is not null %}
+                        <img src="{% path module.photo|trans_fallback("file"), "60x81" %}" alt="{{ module.photo|trans_fallback('alt') }}" />
+                    {% endif %}
+                    <strong class="name">{{ translation.nameSurname }}</strong>
+                    <span class="rank">{{ translation.function }}</span>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

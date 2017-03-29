@@ -1,0 +1,21 @@
+{% if gallery.medias|length > 0 %}
+    <div class="single-gallery">
+        <div class="slideshow article_photo">
+            <div class="slideshow-img">
+                <div class="images">
+                    {% for image in gallery.medias %}
+                        {% include '@FDCCourtMetrage/news/partials/gallery_image.html.twig' with {'mediaImage': image.media, 'galleryId': gallery.id, 'index': loop.index } only %}
+                    {% endfor %}
+                </div>
+                <div class="owl-carousel thumbnails">
+                    {% for image in gallery.medias %}
+                        {% include '@FDCCourtMetrage/news/partials/gallery_thumbnail.html.twig' with {'mediaImage': image.media, 'index': loop.index } only %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% if gallery.medias[0] is defined and gallery.medias[0].media is not null %}
+                <p class="caption"><strong>{{ gallery.medias[0].media|trans_fallback('legend')}}</strong>{% if gallery.medias[0].media|trans_fallback('copyright') %} © {{ gallery.medias[0].media|trans_fallback('copyright') }}{% endif %}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

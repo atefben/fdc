@@ -9,3 +9,6 @@ services:
     app.exception_controller:
         class: FDC\MarcheDuFilmBundle\Controller\ExceptionController
         arguments: ['@twig', '%kernel.debug%', '@mdf.manager.404', '@mdf.manager.header_footer', '%fdc_marche_du_film_domain%']
+        calls:
+            - [ setCcmDomain, ['%fdc_court_metrage_domain%']]
+            - [ setCcmExceptionManager, ['@ccm.manager.exception']]

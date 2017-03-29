@@ -1,0 +1,3 @@
+#timeline-calendar .prev.disabled, #timeline-calendar .next.disabled {
+    background-color: #f2f2f2;
+}

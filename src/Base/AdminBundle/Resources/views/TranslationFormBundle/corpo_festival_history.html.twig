@@ -120,6 +120,8 @@
                                                     <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_title_type' %}
+                                                    <h4><strong>{{ 'form.widget.title'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
                                                     <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
@@ -134,7 +136,8 @@
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' or
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' or
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' or
-                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type'
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_title_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
@@ -168,6 +171,7 @@
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_image_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_image_dual_align_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.image_dual_align'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_quote_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.quote'|trans }}</a>
+                                    <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_title_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.title'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_subtitle_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.subtitle'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_intro_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.intro'|trans }}</a>
                                     <a class="btn btn-primary btn-add-base-widget" data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.fdc_page_la_selection_cannes_classics_widget_movie_type) | escape }}"><i class="icon-plus"></i>{{ 'form.widget.movie'|trans }}</a>
@@ -200,6 +204,8 @@
                                                     <h4><strong>{{ 'form.widget.image_dual_align'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' %}
                                                     <h4><strong>{{ 'form.widget.quote'|trans }}</strong></h4>
+                                                {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_title_type' %}
+                                                    <h4><strong>{{ 'form.widget.title'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' %}
                                                     <h4><strong>{{ 'form.widget.subtitle'|trans }}</strong></h4>
                                                 {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_movie_type' %}
@@ -214,7 +220,8 @@
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_video_youtube_type' or
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_quote_type' or
                                                 widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_intro_type' or
-                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type'
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_subtitle_type' or
+                                                widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_title_type'
                                                 %}
                                                     {{ form_widget(attribute(widget.children.translations, locale)) }}
                                                 {% endif %}
@@ -526,6 +533,20 @@
                                                                         <b>Paragraphe de texte</b>
                                                                         {% if widget.children.translations.fr.vars.value is not null %}
                                                                             {{ widget.children.translations.fr.vars.value.paragraph }}
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif widget.children._type.vars.value == 'fdc_page_la_selection_cannes_classics_widget_title_type' %}
+                                                        <h4><strong>{{ 'form.widget.title'|trans }}</strong></h4>
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <div class="form-group">
+                                                                    <div>
+                                                                        <b>Titre</b>
+                                                                        {% if widget.children.translations.fr.vars.value is not null %}
+                                                                            {{ widget.children.translations.fr.vars.value.title }}
                                                                         {% endif %}
                                                                     </div>
                                                                 </div>

@@ -26,15 +26,20 @@
                             <div class="picto"><i class="icon icon_{{ article.newsType|get_news_type  }}"></i></div>
                             {% if article is news_article %}
                                 {% set img = article.header %}
-                                {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                                {% if trans is null or trans.file is null %}
-                                    {% set trans = img.findTranslationByLocale('fr') %}
+                                {% if img is not null %}
+                                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is null or trans.file is null %}
+                                        {% set trans = img.findTranslationByLocale('fr') %}
+                                    {% endif %}
+                                    {% set file = trans.file %}
                                 {% endif %}
-                                {% set file = trans.file %}
-
-                                {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
+                                {% if img is not null %}
+                                    {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
+                                {% endif %}
                             {% elseif article is news_video %}
                                 {% set header = article.header %}
+                                {% set imageTrans = null %}
+                                {% set img = null %}
                                 {% if header is not null %}
                                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
                                     {% if trans is not null and trans.file is not null %}
@@ -65,6 +70,8 @@
                                 {% endif %}
                             {% elseif article is news_audio %}
                                 {% set header = article.header %}
+                                {% set imageTrans = null %}
+                                {% set img = null %}
                                 {% if header is not null %}
                                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
                                     {% if trans is not null and trans.file is not null %}
@@ -91,6 +98,8 @@
                                 {% thumbnail file, '640x404' with {'alt': img|trans_fallback('alt') } %}
                             {% elseif article is news_image %}
                                 {% set header = article.header %}
+                                {% set imageTrans = null %}
+                                {% set img = null %}
                                 {% if header is not null %}
                                     {% set trans = header.findTranslationByLocale(app.request.locale) %}
                                     {% if trans is not null and trans.file is not null %}

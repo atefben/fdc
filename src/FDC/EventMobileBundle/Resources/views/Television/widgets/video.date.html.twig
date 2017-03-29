@@ -11,9 +11,9 @@
 {% if transVideo is null %}
     {% set transVideo = video.findTranslationByLocale('fr') %}
 {% endif %}
-<div class="vid item-video" {% if(transVideo.jobWebmState == 3) %}data-video="{{ s3_server_video ~ transVideo.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ transVideo.mp4Url }}"{% endif %} data-poster='{% path transImage.file, '640x404' %}'>
+<div class="vid item-video" {% if(transVideo.jobWebmState == 3) %}data-webmurl="{{ s3_server_video ~ transVideo.webmUrl }}"{% endif %} {% if transVideo.jobMp4State == 3 %} data-mp4url="{{ s3_server_video ~ transVideo.mp4Url }}"{% endif %} data-poster='{% path video.image|trans_fallback('file'), '640x404' %}'>
     <div class="image-wrapper">
-        <div class="img" style="background-image:url({% path transImage.file, '640x404' %})"></div>
+        <div class="img" style="background-image:url({% path video.image|trans_fallback('file'), '640x404' %})"></div>
     </div>
     <a class="linkVid" href="#"></a>
     <div class="info">
@@ -24,7 +24,7 @@
             <div class="vCenter">
                 <div class="vCenterKid">
                     <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
-                    <a href="#" class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title')|truncate(35) }}</a>
+                    <a href="#" data-date="{{ video.updatedAt|date('d.m.y . h:m') }}" class="titleLink" data-title="{{ video|trans_fallback('title') }}">{{ video|trans_fallback('title')|truncate(35) }}</a>
                 </div>
             </div>
         </div>

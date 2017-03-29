@@ -1,0 +1,50 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+{% extends 'FDCCorporateBundle::layout.html.twig' %}
+
+{% import 'FDCCorporateBundle:Macro:article.html.twig' as macroArticle %}
+
+{% block bodyClass %}dark retrospective retrospective-home fs-off restrospective-init loading{% endblock %}
+
+
+{% block body %}
+    <section class=" border-bottom s-slider-retrospective">
+
+        <div class="ajax-section">
+            <div class="contain-ajax articles-list evenements padding-bottom" id="main">
+                <h2 class="title">{{ 'corpo.infos.and.statements.page'|trans }}</h2>
+                
+                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+
+                <div class="grid-01 isotope-01 add-ajax-request">
+                    <div class="grid-sizer"></div>
+
+                    {% for article in articles %}
+                        {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+                    {% endfor %}
+                </div>
+
+                {% if not last %}
+                    <div class="bright" style="display:none">
+                        <a id="infos-and-statements-more"
+                           href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time}) }}"
+                           class="read-more ajax-request block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </section>
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'header.mainnav.nav.lactualite'|trans,
+    "url"  : ''
+    },
+    ]} %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+{% endblock %}

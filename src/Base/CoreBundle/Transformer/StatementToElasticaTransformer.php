@@ -35,9 +35,6 @@ class StatementToElasticaTransformer extends ModelToElasticaAutoTransformer impl
      **/
     public function transform($statement, array $fields)
     {
-        if(is_null($statement->getTheme())) {
-            $statement->setTheme(new Theme());
-        }
         $document = parent::transform($statement, $fields);
         return $document;
     }

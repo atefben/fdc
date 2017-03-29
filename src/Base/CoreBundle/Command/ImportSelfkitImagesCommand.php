@@ -4,6 +4,9 @@ namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmPerson;
+use Base\CoreBundle\Entity\FilmPerson;
+use Base\CoreBundle\Entity\OldFilmPhoto;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -33,7 +36,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     /**
      * @var int
      */
-    protected $maxResults = 100;
+    protected $maxResults = 10;
 
     protected function configure()
     {
@@ -98,7 +101,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             if (null !== $this->firstResult) {
                 $maxResults = $this->maxResults;
                 $pages = ceil($this->importPersonImagesCount() / $maxResults);
-                $this->output->writeln($this->input->getOption('page') . "/$pages");
             }
             $oldImages = $this
                 ->getManager()
@@ -112,81 +114,29 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             return;
         }
         $this->output->writeln('<info>Import persons</info>');
-        $bar = new ProgressBar($this->output, count($oldImages));
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
-
-        $bar->start();
-
+        $count = count($oldImages);
+        $i = 1;
         foreach ($oldImages as $oldImage) {
+            $this->output->writeln(PHP_EOL . str_repeat('=', 80));
+            if ($this->input->getOption('page') && !empty($pages)) {
+                $this->output->writeln('Page '.$this->input->getOption('page') . "/$pages");
+            }
+            $message = "$i / $count";
+            $this->output->writeln("<info>$message</info>");
             try {
-                $person = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmPerson')
-                    ->find($oldImage->getIdpersonne())
-                ;
-                $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
-                $ftpRemotFilename = $this->getFtpUrl() . $oldImage->getFichier();
-                $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
-
-                if (!is_file($filename)) {
-                    @file_put_contents($filename, file_get_contents($ftpRemotFilename));
-                    if (!(@is_array(getimagesize($filename)))) {
-                        @file_put_contents($filename, file_get_contents($remoteFilename));
-                    }
-                }
-                if (!(@is_array(getimagesize($filename)))) {
-                    $this->output->writeln(PHP_EOL . "<error>Cannot download  $filename</error>");
-                    continue;
-                }
-
-                $bar->advance();
-
-                $media = $this
-                    ->getManager()
-                    ->getRepository('ApplicationSonataMediaBundle:Media')
-                    ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
-                ;
-                if ($this->input->getOption('force-reupload') && $media && $person) {
-                    if ($person->getSelfkitImages()->contains($media)) {
-                        $person->removeSelfkitImage($media);
-                        $this->getManager()->flush();
-                    }
-                    $media = null;
-                }
-                if (!$media) {
-                    $media = new Media();
-                    $media->setContext('film_director');
-                    $media->setProviderStatus(1);
-                    $media->setProviderName('sonata.media.provider.image');
-                    $media->setCreatedAt($oldImage->getDatemodification() ?: $oldImage->getDatecreation());
-                    $media->setUpdatedAt($oldImage->getDatemodification() ?: $oldImage->getDatecreation());
-                    $media->setBinaryContent($filename);
-                    $media->setEnabled(true);
-                    $media->setOldMediaPhoto((string)$oldImage->getIdphoto());
-                    $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
-                    $media->setOldMediaPhotoJury($oldImage->getIdjury());
-                    $media->setCopyright($oldImage->getCopyright());
-                }
-                $media->setName($oldImage->getTitre());
-                $media->setOldMediaFilm($oldImage->getIdfilm());
-                $media->setProviderReference($oldImage->getTitre());
-                $this->getMediaManager()->save($media, false);
-                if ($person) {
-                    if (!$person->getSelfkitImages()->contains($media)) {
-                        $person->addSelfkitImage($media);
-                        $this->getManager()->flush();
-                    }
-                }
-                unlink($filename);
+                $this->getMediaFromOldFilmPhoto($oldImage);
             } catch (\Exception $e) {
                 $this->output->writeln('<error>' . $e->getMessage() . '</error>');
             }
+            $i++;
         }
-        $bar->finish();
         $this->output->writeln('');
         $this->finalizeImport();
     }
 
+    /**
+     * @return int
+     */
     private function importPersonImagesCount()
     {
         return $count = $this
@@ -196,6 +146,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ;
     }
 
+    /**
+     * @param null $id
+     */
     private function importFilmImages($id = null)
     {
         if ($id) {
@@ -208,13 +161,11 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
                     ->getLegacyFilmImages($movie)
                 ;
             }
-
         } else {
             $maxResults = null;
             if (null !== $this->firstResult) {
                 $maxResults = $this->maxResults;
                 $pages = ceil($this->importFilmImagesCount() / $maxResults);
-                $this->output->writeln($this->input->getOption('page') . "/$pages");
             }
             $oldImages = $this
                 ->getManager()
@@ -228,85 +179,23 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             }
         }
         $this->output->writeln('<info>Import films</info>');
-        $bar = new ProgressBar($this->output, count($oldImages));
-        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
 
-        $bar->start();
-
+        $count = count($oldImages);
+        $i = 1;
         foreach ($oldImages as $oldImage) {
-            try {
-                $film = $this
-                    ->getManager()
-                    ->getRepository('BaseCoreBundle:FilmFilm')
-                    ->find($oldImage->getIdfilm())
-                ;
-                if (!$film) {
-                    $this->output->writeln(PHP_EOL . "<error>Film not found " . $oldImage->getIdfilm() . "</error>");
-                    continue;
-                }
-                if ($oldImage->getIdpersonne() && $this->isDirector($oldImage->getIdpersonne(), $film)) {
-                    $this->output->writeln(PHP_EOL . "<error>Director Image: $filename</error>");
-                    continue;
-                }
-
-                $filename = $this->getUploadsDirectory() . $oldImage->getFichier();
-                $ftpRemotFilename = $this->getFtpUrl() . $oldImage->getFichier();
-                $remoteFilename = $this->getAmazonDirectory() . $oldImage->getFichier();
-
-                if (!is_file($filename)) {
-                    @file_put_contents($filename, file_get_contents($ftpRemotFilename));
-                    if (!(@is_array(getimagesize($filename)))) {
-                        @file_put_contents($filename, file_get_contents($remoteFilename));
-                    }
-                }
-                if (!(@is_array(getimagesize($filename)))) {
-                    $this->output->writeln(PHP_EOL . "<error>Cannot download  $filename</error>");
-                    continue;
-                }
-
-                $bar->advance();
-
-                $media = $this
-                    ->getManager()
-                    ->getRepository('ApplicationSonataMediaBundle:Media')
-                    ->findOneBy(['oldMediaPhoto' => (string)$oldImage->getIdphoto()])
-                ;
-                if ($this->input->getOption('force-reupload') && $media && $film) {
-                    if ($film->getSelfkitImages()->contains($media)) {
-                        $film->removeSelfkitImage($media);
-                        $this->getManager()->flush();
-                    }
-                    $media = null;
-                }
-                if (!$media) {
-                    $media = new Media();
-                    $media->setContext('film_film');
-                    $media->setProviderStatus(1);
-                    $media->setProviderName('sonata.media.provider.image');
-                    $media->setCreatedAt(new \DateTime());
-                    $media->setBinaryContent($filename);
-                    $media->setEnabled(true);
-                    $media->setOldMediaPhoto((string)$oldImage->getIdphoto());
-                    $media->setOldMediaPhotoType($oldImage->getIdtypephoto());
-                    $media->setOldMediaPhotoJury($oldImage->getIdjury());
-                    $media->setCopyright($oldImage->getCopyright());
-                }
-
-                $media->setName($oldImage->getTitre());
-                $media->setProviderReference($oldImage->getTitre());
-                $this->getMediaManager()->save($media, false);
-                if ($film) {
-                    if (!$film->getSelfkitImages()->contains($media)) {
-                        $film->addSelfkitImage($media);
-                        $this->getManager()->flush();
-                    }
-                }
-                unlink($filename);
-            } catch (\Exception $e) {
-                dump($e->getMessage());
+            $this->output->writeln(PHP_EOL . str_repeat('=', 80));
+            if ($this->input->getOption('page') && !empty($pages)) {
+                $this->output->writeln('Page '.$this->input->getOption('page') . "/$pages");
             }
+            $message = "$i / $count";
+            $this->output->writeln("<info>$message</info>");
+            try {
+                $this->getMediaFromOldFilmPhoto($oldImage);
+            } catch (\Exception $e) {
+                $this->output->writeln('<error>' . $e->getMessage() . '</error>');
+            }
+            $i++;
         }
-        $bar->finish();
         $this->output->writeln('');
         $this->finalizeImport();
     }
@@ -385,14 +274,158 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
      * @param FilmFilm $movie
      * @return bool
      */
-    public function isDirector($idPerson, FilmFilm $movie)
+    private function isDirector($idPerson, FilmFilm $movie)
     {
         foreach ($movie->getDirectors(true) as $director) {
-            if ($director instanceof FilmFilmPerson) {
+            if ($director instanceof FilmFilmPerson && $director->getPerson()) {
                 if ($idPerson == $director->getPerson()->getId()) {
                     return true;
                 }
             }
         }
+    }
+
+    private function getMediaFromOldFilmPhoto(OldFilmPhoto $old)
+    {
+        $filename = $this->getUploadsDirectory() . $old->getFichier();
+        $ftpRemoteFilename = $this->getFtpUrl() . $old->getFichier();
+        $remoteFilename = $this->getAmazonDirectory() . $old->getFichier();
+
+        if (!is_file($filename)) {
+            @file_put_contents($filename, file_get_contents($ftpRemoteFilename));
+            if (!(@is_array(getimagesize($filename)))) {
+                @file_put_contents($filename, file_get_contents($remoteFilename));
+            }
+        }
+        if (!(@is_array(getimagesize($filename)))) {
+            $this->output->writeln(PHP_EOL . "<error>Cannot download  $filename</error>");
+            return null;
+        }
+
+        $media = $this
+            ->getManager()
+            ->getRepository('ApplicationSonataMediaBundle:Media')
+            ->findOneBy(['oldMediaPhoto' => (string)$old->getIdphoto()])
+        ;
+
+        if ($this->input->getOption('force-reupload') && $media) {
+            foreach ($media->getSelfkitFilms() as $selfkitFilm) {
+                $media->removeSelfkitFilm($selfkitFilm);
+            }
+            foreach ($media->getSelfkitPersons() as $selfkitPerson) {
+                $media->removeSelfkitPerson($selfkitPerson);
+            }
+            $this->getManager()->remove($media);
+            $this->getManager()->flush();
+            $media = null;
+        }
+
+        if (!$media) {
+            $media = new Media();
+            $media->setContext('film_film');
+            $media->setProviderStatus(1);
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setCreatedAt(new \DateTime());
+            $media->setBinaryContent($filename);
+            $media->setEnabled(true);
+            $media->setOldMediaPhoto((string)$old->getIdphoto());
+            $media->setOldMediaPhotoType($old->getIdtypephoto());
+            $media->setOldMediaPhotoJury($old->getIdjury());
+            $media->setCopyright($old->getCopyright());
+        }
+
+        $media->setName($old->getTitre());
+        $this->getMediaManager()->save($media, false);
+        $this->output->writeln("<info>Media {$media->getId()} saved.</info>");
+
+        $provider = $this->getContainer()->get($media->getProviderName());
+        $format = $provider->getFormatName($media, 'reference');
+        $url = $provider->generatePublicUrl($media, $format);
+        $this->output->writeln("<info>$url</info>");
+
+        if ((@is_array(getimagesize($url)))) {
+            $this->applyAssociation($media, $old);
+            if (!$media->getThumbsGenerated()) {
+                $this->generatePresets($media);
+            }
+            $this->getManager()->flush();
+            unlink($filename); // remove original file
+            return $media;
+        } else {
+            $this->getManager()->remove($media);
+            $this->getManager()->flush();
+            unlink($filename); // remove original file
+        }
+    }
+
+    private function applyAssociation(Media $media, OldFilmPhoto $old)
+    {
+        $film = $this->getFilm($old->getIdfilm());
+        $person = $this->getPerson($old->getIdpersonne());
+        if ($person && $film && !$this->isDirector($person, $film) && !$media->getSelfkitFilms()->contains($film)) {
+            $media->addSelfkitFilm($film);
+        } else if (!$person && $film && !$media->getSelfkitFilms()->contains($film)) {
+            $media->addSelfkitFilm($film);
+        } elseif ($media->getSelfkitFilms()->contains($film)) {
+            $media->removeSelfkitFilm($film);
+        }
+
+        if ($person && !$media->getSelfkitPersons()->contains($person)) {
+            $media->addSelfkitPerson($person);
+        }
+    }
+
+    /**
+     * @param $id
+     * @return FilmFilm|null|object
+     */
+    private function getFilm($id)
+    {
+        if ($id) {
+            return $this->getManager()->getRepository('BaseCoreBundle:FilmFilm')->find($id);
+        }
+    }
+
+    /**
+     * @param $id
+     * @return FilmPerson|null|object
+     */
+    private function getPerson($id)
+    {
+        if ($id) {
+            return $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
+        }
+    }
+
+    private function generatePresets(Media $media)
+    {
+        $provider = $this->getMediaPool()->getProvider($media->getProviderName());
+        try {
+            $provider->removeThumbnails($media);
+        } catch (\Exception $e) {
+            $message = 'Unable to remove old thumbnails, media: %s - %s';
+            $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+            $this->output->writeln("<error>$logMessage</error>");
+        }
+
+        try {
+            $this->output->writeln("<info>Generate preset for media {$media->getId()}</info>");
+            $provider->generateThumbnails($media);
+        } catch (\Exception $e) {
+            $message = 'Unable to generated new thumbnails, media: %s - %s';
+            $logMessage = sprintf($message, $media->getId(), $e->getMessage());
+            $this->output->writeln("<error>$logMessage</error>");
+        }
+
+        $media
+            ->setIgnoreListener(true)
+            ->setThumbsGenerated(true)
+        ;
+        $this->getManager()->flush();
+    }
+
+    public function getMediaPool()
+    {
+        return $this->getContainer()->get('sonata.media.pool');
     }
 }

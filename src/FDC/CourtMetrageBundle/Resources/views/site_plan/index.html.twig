@@ -1,0 +1,112 @@
+
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+
+{% block main %}
+    <div id="main" class="sitemap loading">
+        <h2 class="title">{{ 'site_plan.title'|trans }}</h2>
+        <section class="sitemap-container">
+            {% for key, mainNav in mainNavs %}
+                <article class="sitemap-item">
+                    {% if mainNav.translatable.isActive %}
+                        {% set menuURL = mainNav.route %}
+                        {% set menuIsExtern = (fdc_court_metrage_domain not in menuURL and ('http' in menuURL or 'https' in menuURL) ? true : false) %}
+                        <a href="{{ menuURL }}" {% if menuIsExtern %}target="_blank"{% endif %}>
+                            <h3 class="title sitemap-item-title">
+                                    {{ mainNav.name }}
+                            </h3>
+                        </a>
+                        {% if
+                            menuURL in [path('fdc_court_metrage_competition_selection'), url('fdc_court_metrage_competition_selection')] or
+                            menuURL in [path('fdc_court_metrage_competition_jury'), url('fdc_court_metrage_competition_jury')] or
+                            menuURL in [path('fdc_court_metrage_competition_palmares'), url('fdc_court_metrage_competition_palmares')]
+                        %}
+                            <ul>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_selection') }}">
+                                        {{ 'site_plan.competition_selection'|trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_jury') }}">
+                                        {{ 'site_plan.competition_jury'|trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sub-cat" href="{{ path('fdc_court_metrage_competition_palmares') }}">
+                                        {{ 'site_plan.competition_palmares'|trans }}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        {% if subNavs[key] is defined %}
+                            <ul>
+                            {% for subNav in subNavs[key] %}
+                                {% if subNav.translatable.isActive %}
+                                    {% set submenuURL = subNav.route %}
+                                    {% set submenuIsExtern = (fdc_court_metrage_domain not in submenuURL and ('http' in menuURL or 'https' in menuURL) ? true : false) %}
+                                    <li>
+                                        <a class="sub-cat" href="{{ submenuURL }}" {% if submenuIsExtern %}target="_blank"{% endif %}>
+                                            {{ subNav.name }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                </article>
+            {% endfor %}
+            <article class="sitemap-item">
+                <h3 class="title sitemap-item-title">
+                    {{ 'site_plan.footer'|trans }}
+                </h3>
+                <ul>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_contact') }}">
+                            {{ 'site_plan.contact'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_faq') }}">
+                            {{ 'site_plan.faq'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_footer_credits') }}">
+                            {{ 'site_plan.credits'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_footer_mentions_legales') }}">
+                            {{ 'site_plan.legal_mentions'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_site_plan') }}">
+                            {{ 'site_plan.plan_du_site'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sub-cat" href="{{ path('fdc_court_metrage_footer_politique_de_confidentialite') }}">
+                            {{ 'site_plan.politique_de_confidentialite'|trans }}
+                        </a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.home'|trans,
+    "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+    "name" : 'breadcrumb.plan_du_site'|trans,
+    "url"  : ''
+    }
+    ]
+    }
+    %}
+{% endblock %}

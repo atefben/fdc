@@ -423,7 +423,6 @@ class MediaController extends Controller
             return $response;
         }
 
-
         $bucket = $this->getParameter('s3_video_bucket_name');
         $region = $this->getParameter('s3_video_region');
         $url = "http://$bucket.s3-website-$region.amazonaws.com/";

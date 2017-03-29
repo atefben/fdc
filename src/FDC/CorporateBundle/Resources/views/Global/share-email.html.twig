@@ -4,8 +4,9 @@
     <div class="popin-mail popin">
         <div class="contain-popin popin">
             <div id="msg"></div>
-            <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}</strong><span class="date-article popin">{% if artist is defined and artist is not null %} {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ share_email.detail }}{% endif %}</span>
+            <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}</strong><span class="ensalle" style="display:none;font-size: 0.63rem;font-family: 'Camphor W01 Bold', Arial, Helvetica, sans-serif;">{{ 'movie.in.theaters'|trans }} </span><span class="date-article popin">{% if artist is defined and artist is not null %} {{ artist.nationality|trans_fallback('name') }} {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}{% else %}{{ share_email.detail }}{% endif %}</span>
             <h2 class="title-article popin" {% if color %}style="color:#000;"{% endif %}>{{ share_email.title }}</h2>
+            <div class="article-authors"></div>
             <div class="chap-article popin">{{ share_email.description|raw }}</div>
         </div>
         {{ form_start(form,{'attr': {'class':'popin', 'id':'form'}}) }}

@@ -1,7 +1,8 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
+{% block bodyClass %}loading retrospective fs-off selection retrospective-home restrospective-init dark{% endblock %}
+
 
 {% block body %}
     <section class="s-slider-retrospective">
@@ -12,7 +13,7 @@
     <div class="contain-ajax">
 
     {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-    {% set currentURL = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    {% set currentURL = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
     <div class="all-contain affiche-fdc">
         {% set affiche = null %}
         {% for poster in posters %}
@@ -37,7 +38,9 @@
                          data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
                         <div class="poster" data-url="pid={{ poster.file.id }}">
                             {% if poster.file is not empty %}
-                                <img src="{% path poster.file, '256x348' %}"/>
+                                <a class="link-update" href="#">
+                                    <img src="{% path poster.file, '256x348' %}"/>
+                                </a>
                             {% endif %}
                         </div>
                         <div class="infos">

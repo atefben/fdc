@@ -91,7 +91,7 @@ class FDCPageParticipateSectionWidgetTypethreeType extends FDCPageParticipateSec
                             'icon_point-infos' => 'Point infos',
                             'icon_consignes' => 'Consignes',
                             'icon_objets-trouves' => 'Objets trouvés',
-                            'icon_n-urgence' => 'Urgences',
+                            'icon_n-urgences' => 'Urgences',
                         ),
                         'label' => 'form.label_information_icon',
                         'translation_domain' => 'BaseAdminBundle',

@@ -1,0 +1,28 @@
+{% if isSelection %}
+    {% set translations = selectionTab.translatable.image.findTranslationByLocale(app.request.locale) %}
+    {% set backgroundImage = selectionTab.translatable.image %}
+{% endif %}
+{% if isJury %}
+    {% set translations = juryTab.translatable.image.findTranslationByLocale(app.request.locale) %}
+    {% set backgroundImage = juryTab.translatable.image %}
+{% endif %}
+{% if isPalmares %}
+    {% set translations = palmaresTab.translatable.image.findTranslationByLocale(app.request.locale) %}
+    {% set backgroundImage = palmaresTab.translatable.image %}
+{% endif %}
+<div class="bandeau-list">
+    <div class="bandeau-list-img bandeau-head vCenter subHeader" style="background-image:url({% path backgroundImage|trans_fallback('file'), 'reference' %}" alt="{{ translations.alt }})">
+        <h3>{{ 'ccm.competition.page_title'|trans }}</h3>
+    </div>
+    <ul class="sub-nav-list nav-list">
+        <li>
+            <a href="{{ path('fdc_court_metrage_competition_selection') }}" class='{{ isSelection ? 'active ' : ' ' }}'>{{ selectionTab.name }}</a>
+        </li>
+        <li>
+            <a href="{{ path('fdc_court_metrage_competition_jury') }}" class="{{ isJury ? 'active ' : ' ' }}">{{ juryTab.name }}</a>
+        </li>
+        <li>
+            <a href="{{ path('fdc_court_metrage_competition_palmares') }}" class="{{ isPalmares ? 'active ' : ' ' }}">{{ palmaresTab.name }}</a>
+        </li>
+    </ul>
+</div>

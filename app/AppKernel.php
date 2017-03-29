@@ -73,6 +73,7 @@ class AppKernel extends Kernel
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new FDC\PressMobileBundle\FDCPressMobileBundle(),
             new FDC\MarcheDuFilmBundle\FDCMarcheDuFilmBundle(),
+            new FDC\CourtMetrageBundle\FDCCourtMetrageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

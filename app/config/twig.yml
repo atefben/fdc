@@ -148,3 +148,6 @@ twig:
         mdf_google_analytics_first_id: '%mdf_google_analytics_first_id%'
         mdf_google_analytics_second_id: '%mdf_google_analytics_second_id%'
         mdf_locales: %mdf_locales%
+        ccm_locales: %ccm_locales%
+        fdc_court_metrage_domain: "%fdc_court_metrage_domain%"
+        fdc_court_metrage_scheme: "%fdc_court_metrage_scheme%"

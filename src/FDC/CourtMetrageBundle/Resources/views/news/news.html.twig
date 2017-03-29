@@ -1,0 +1,88 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div id="main" class="all-articles grid loading">
+        <span id="addtext">{#Ajouter à ma sélection#}{{ 'ccm.news.add_to_selection'|trans }}</span>
+        <h2 class="title">{#Tous les articles#}{{ 'ccm.news.all_articles'|trans }}</h2>
+        <div class="filters">
+            <div id="theme" class="filter">
+                <span class="label">{#Dates#}{{ 'ccm.news.dates'|trans }} :</span>
+                <span class="select">
+                    <span class="active" data-filter="all">{#Toutes#}{{ 'ccm.news.all'|trans }}</span><i class="icon icon_fleche-down"></i>
+                    {% for year, yearData in filters.years %}
+                        <span data-filter="date{{ year }}">{{ year }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+            <div id="format" class="filter">
+                <span class="label">{#Thèmes#}{{ 'ccm.news.themes'|trans }} :</span>
+                <span class="select">
+                    <span class="active" data-filter="all">{{ 'ccm.news.all-themes'|trans }}</span><i class="icon icon_fleche-down"></i>
+                    {% for themeId, themeData in filters.themes %}
+                        <span data-filter="theme{{ themeId }}">{{ themeData.name }}</span>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        {% if news|length > 0 %}
+        <div id="gridAudios" class="grid-wrapper" data-type="articles">
+            <div class="grid-sizer"></div>
+            {% for article in news %}
+                {% set articleTranslation = article.findTranslationByLocale(app.request.locale) %}
+                <div class="item date{{ article.publishedAt|date('Y') }} {% if article.theme %}theme{{ article.theme.id }}{% endif %} date theme article {{ loop.index > 15 ? 'hidden' : '' }}" >
+                    <article class="article">
+                        <div class="img">
+                            <span class="picto"><i class="icon icon_{{ article.getType != 'image' ? article.getType : 'photo' }}"></i></span>
+                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
+                                {% if article.header is not null %}
+                                    <img src="{% path article.header|trans_fallback('file'), '1144x724' %}" alt="{{ article.header|trans_fallback('alt') }}"/>
+                                {% elseif article.image is not null %}
+                                    <img src="{% path article.image|trans_fallback('file'), '1144x724' %}" alt="{{ article.image|trans_fallback('alt') }}"/>
+                                {% elseif  article.getType() == 'image' and article.gallery is not null %}
+                                    {% if article.gallery.medias.first() is not null and article.gallery.medias.first().media is not null %}
+                                        <img src="{% path article.gallery.medias.first().media|trans_fallback('file'), '1144x724' %}" alt="{{ article.gallery.medias.first().media|trans_fallback('alt') }}"/>
+                                    {% endif %}
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="info">
+                            {% if article.theme %}
+                                <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
+                            {% endif %}
+                            <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
+                                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
+                                <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
+                            </a>
+                            <h3>
+                                <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
+                                    {% if articleTranslation.title|length > 60 %}
+                                        {{ articleTranslation.title|slice(0, 60) ~ '...' }}
+                                    {% else %}
+                                        {{ articleTranslation.title }}
+                                    {% endif %}
+                                </a>
+                            </h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="title">{#Aucun article à afficher#}{{ 'ccm.news.no_news_to_show'|trans }}</h3>
+        {% endif %}
+        <a id="next" href="#"></a>
+    </div>
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_court_metrage_homepage')
+        },
+        {
+            "name" : 'ccm.news.all_articles'|trans,
+            "url"  : ''
+        }
+        ]
+    }
+%}
+{% endblock %}

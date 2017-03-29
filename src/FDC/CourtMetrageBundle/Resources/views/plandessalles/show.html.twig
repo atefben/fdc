@@ -1,0 +1,55 @@
+{% extends "@FDCCourtMetrage/base.html.twig" %}
+{% block main %}
+    <div id="main" class="press loading seatingchart lock">
+        <h2 class="title">{{ 'ccm.plan_des_salles.title'|trans }}</h2>
+        <div id='seatingchart'>
+            <div class="nav-map">
+                <ul>
+                    {% for sector in sectors %}
+                        <li class="{{ loop.index == 1 ? ' active ' : '' }}" data-maps="{{ sector|trans_fallback('slug') }}">
+                            {% if loop.index == 1 %}
+                                <i class="icon icon_a-votre-service"></i>
+                            {% endif %}
+                            {{ sector|trans_fallback('title') }}
+                        </li>
+                    {% endfor %}
+                    <li data-maps="zone-festival" id='more-map'>
+                        <strong>{{ 'ccm.plan_des_salles.festival_area'|trans }}</strong>
+                        {% for sector in sectors %}
+                            {% if loop.index == 1 %}
+                                <img src="{% path sector.festivalZone|trans_fallback('file'), '197x142' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="theatre" class="visible first">
+                            {% endif %}
+                            <img src="{% path sector.festivalZone|trans_fallback('file'), '197x142' %}" alt="{{ sector.festivalZone|trans_fallback('alt') }}" data-image="{{ sector|trans_fallback('slug') }}" class="">
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            <div class="maps">
+                {% for sector in sectors %}
+                    {% if loop.index == 1 %}
+                        <span id='default' class="first active"><img src="{% path sector.detailedPlan|trans_fallback('file'), '646x567' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
+                    {% endif %}
+                    <span id='{{ sector|trans_fallback('slug') }}'><img src="{% path sector.detailedPlan|trans_fallback('file'), '646x567' %}" alt="{{ sector.detailedPlan|trans_fallback('alt') }}"></span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+        "name" : 'breadcrumb.home'|trans,
+        "url"  : path('fdc_court_metrage_homepage')
+    },
+    {
+        "name" : 'breadcrumb.participer'| trans,
+        "url"  : path('fdc_court_metrage_register_movie' )
+    },
+    {
+        "name" : 'breadcrumb.plan_des_salles'|trans,
+        "url"  : ''
+    }
+    ]
+    }
+    %}
+{% endblock %}

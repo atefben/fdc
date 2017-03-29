@@ -1,29 +1,43 @@
-{% if homeArticles|length %}
-    <div class="articles right pad">
-        {% for article in homeArticles|slice(0, 3) %}
-            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.first ? 'double w2' : ''}) %}
+{% trans_default_domain 'FDCCorporateBundle' %}
+
+{% if filters.themes.content is defined and filters.themes.content|length %}
+    <div class="compute-filters theme">
+        {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
+            <span class="" data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
         {% endfor %}
+    </div>
+{% endif %}
+
+
+{% if homeArticles|length %}
+    <div class="articles ajax-filter-cards-container" style="opacity:0">
+        <div class="cards grid-01 isotope-01">
+            <div class="grid-sizer"></div>
+            {% for article in homeArticles|slice(0, 3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}
 
 {% if homeArticles|length > 3 %}
-    <div class="articles left">
-        {% for article in homeArticles|slice(3) %}
-            {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': loop.index == 2 ? 'double w2' : ''}) %}
-        {% endfor %}
+    <div class="articles article-inverse ajax-filter-cards-container" style="opacity:0">
+        <div class="cards grid-01 isotope-01">
+            <div class="grid-sizer"></div>
+            {% for article in homeArticles|slice(3) %}
+                {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': 'to-init'}) %}
+            {% endfor %}
+        </div>
     </div>
 {% endif %}
 
 {% if not last %}
-    <script type="text/javascript">
-        $('#home-news-statements-more').attr('href', '{{ path('fdc_corporate_default_getarticlesfrom') }}?timestamp={{ lastPublishedAt }}');
-    </script>
+    <a id="home-news-statements-more"
+       href="{{ path('fdc_corporate_default_getarticlesfrom') }}?page={{ page }}"
+       data-reverse=""
+       class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
 {% else %}
-    {% trans_default_domain 'FDCEventBundle' %}
-    <script type="text/javascript">
-        $('#home-news-statements-more').replaceWith('' +
-            '<a id="home-news-statements-more"' +
-            'href="{{ path('fdc_corporate_news_getarticles',{year: festivalYear}) }}"' +
-            'class="read-more">{{ "article.list.title.touslesarticles"|trans|raw }}</a>');
-    </script>
+    <a id="home-news-statements-more-end"
+       href="{{ path('fdc_corporate_news_infosandstatements') }}"
+       class="read-more">{{ "home.coporate.statements.and.infos.all.button"|trans|raw }}</a>
 {% endif %}

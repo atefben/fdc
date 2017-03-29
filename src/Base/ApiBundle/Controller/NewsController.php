@@ -2,25 +2,16 @@
 
 namespace Base\ApiBundle\Controller;
 
+use Base\ApiBundle\Component\FOSRestController;
 use Base\CoreBundle\Entity\FilmProjection;
-use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\Statement;
-use \DateTime;
-
-use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
-use Base\ApiBundle\Component\FOSRestController;
-
+use DateTime;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\Routing\ClassResourceInterface;
-
 use FOS\RestBundle\View\View;
-use JMS\SecurityExtraBundle\Annotation\Secure;
-use JMS\Serializer\SerializationContext;
-
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
@@ -78,41 +69,48 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Settings')
-            ->findOneBy(array('slug' => 'fdc-year'));
+            ->findOneBy(['slug' => 'fdc-year'])
+        ;
 
         if ($settings === null) {
             throw $this->createNotFoundException();
         }
 
+        $limitDate = new \DateTime();
+        $limitDate->setDate(2016, 9, 30);
+        $limitDate->setTime(23, 59, 59);
+
         // news
-        $news = $this->getApiSameDayNews($festival, $lang, $dateTime);
-        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime);
-        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime);
+        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate);
+        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate);
+        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate);
 
         // images
         $images = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:MediaImage')
-            ->getNewsApiImages($lang, $festival, $dateTime);
+            ->getNewsApiImages($lang, $festival, $dateTime, $limitDate)
+        ;
 
         $items = array_merge($news, $infos, $statements, $images);
 
         // if no content at all, reach the content of the last day
-        if(!count($items)) {
+        if (!count($items)) {
             $dateTime = $festival->getFestivalEndsAt();
 
             // news
-            $news = $this->getApiSameDayNews($festival, $lang, $dateTime);
-            $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime);
-            $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime);
+            $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate);
+            $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate);
+            $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate);
 
             // images
             $images = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BaseCoreBundle:MediaImage')
-                ->getNewsApiImages($lang, $festival, $dateTime);
+                ->getNewsApiImages($lang, $festival, $dateTime, $limitDate)
+            ;
         }
 
         $items = array_merge($news, $infos, $statements, $images);
@@ -122,8 +120,9 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getNewsApiProjections($festival, $dateTime);
-        $projections = array();
+            ->getNewsApiProjections($festival, $dateTime, $limitDate)
+        ;
+        $projections = [];
         $now = new DateTime();
         $endDateTime = new DateTime();
         $endDateTime->setDate($dateTime->format('Y'), $dateTime->format('m'), $dateTime->format('d'));
@@ -146,10 +145,10 @@ class NewsController extends FOSRestController
         }
 
         $items = array_merge($projections, $items);
-
         $items = $this->buildDays($items);
+
         // set context view
-        $groups = array('news_list');
+        $groups = ['news_list'];
         $context = $coreManager->setContext($groups, $paramFetcher);
         //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -161,48 +160,51 @@ class NewsController extends FOSRestController
         return $view;
     }
 
-    public function getApiSameDayNews($festival, $locale, $dateTime)
+    public function getApiSameDayNews($festival, $locale, $dateTime, DateTime $limitDate)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getNewsApiSameDayNews($locale, $festival, $dateTime);
-        return $items ? $items : array();
+            ->getNewsApiSameDayNews($locale, $festival, $dateTime, $limitDate)
+        ;
+        return $items ? $items : [];
     }
 
-    public function getApiSameDayInfos($festival, $locale, $dateTime)
+    public function getApiSameDayInfos($festival, $locale, $dateTime, DateTime $limitDate)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getNewsApiSameDayInfos($locale, $festival, $dateTime);
-        return $items ? $items : array();
+            ->getNewsApiSameDayInfos($locale, $festival, $dateTime, $limitDate)
+        ;
+        return $items ? $items : [];
     }
 
-    public function getApiSameDayStatements($festival, $locale, $dateTime)
+    public function getApiSameDayStatements($festival, $locale, $dateTime, DateTime $limitDate)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getNewsApiSameDayStatements($locale, $festival, $dateTime);
-        return $items ? $items : array();
+            ->getNewsApiSameDayStatements($locale, $festival, $dateTime, $limitDate)
+        ;
+        return $items ? $items : [];
     }
 
     protected function buildDaysGroup($items)
     {
-        $days = array();
+        $days = [];
         foreach ($items as $item) {
             $dayKey = $item->getPublishedAt()->format("Y-m-d");
             if (!array_key_exists($dayKey, $days)) {
                 $dateTime = $item->getPublishedAt();
                 $dayTime = clone $dateTime;
-                $days[$dayKey] = array(
+                $days[$dayKey] = [
                     'date' => $dayTime,
-                    'news' => array(),
-                );
+                    'news' => [],
+                ];
             }
             $itemKey = $item->getPublishedAt()->format('Y-m-d-H-i-s-') . $item->getId() . '-' . strtolower(get_class($item));
             $days[$dayKey]['news'][$itemKey] = $item;
@@ -218,7 +220,7 @@ class NewsController extends FOSRestController
 
     protected function buildDays($items)
     {
-        $days = array();
+        $days = [];
         foreach ($items as $item) {
             if ($item instanceof News || $item instanceof Info || $item instanceof Statement || $item instanceof MediaImage) {
                 $timeMethod = 'getPublishedAt';
@@ -229,10 +231,10 @@ class NewsController extends FOSRestController
             if (!array_key_exists($dayKey, $days)) {
                 $dateTime = $item->{$timeMethod}();
                 $dayTime = clone $dateTime;
-                $days[$dayKey] = array(
-                    'date' => $dayTime,
-                    'items' => array(),
-                );
+                $days[$dayKey] = [
+                    'date'  => $dayTime,
+                    'items' => [],
+                ];
             }
             if ($item instanceof FilmProjection && (int)$item->getStartsAt()->format('H') < 4) {
                 $tomorrow = clone $item->getStartsAt();
@@ -306,7 +308,7 @@ class NewsController extends FOSRestController
             $entity = $this->$entityFunction($id, $festival, $lang, $dateTime);
         }
 
-        $output = array();
+        $output = [];
         if ($entity) {
             $output['news'] = $entity;
             $count = 3;
@@ -315,7 +317,7 @@ class NewsController extends FOSRestController
         }
 
         // set context view
-        $groups = array('news_show');
+        $groups = ['news_show'];
         $context = $coreManager->setContext($groups, $paramFetcher);
         //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
         $context->setVersion($version);
@@ -339,7 +341,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getApiNewsById($id, $festival, $dateTime, $lang);
+            ->getApiNewsById($id, $festival, $dateTime, $lang)
+        ;
         return $news;
     }
 
@@ -357,7 +360,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getSameDayNews($festival, $locale, $dateTime, $count, $id, true);
+            ->getSameDayNews($festival, $locale, $dateTime, $count, $id, true)
+        ;
         return $news;
     }
 
@@ -374,7 +378,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getApiInfoById($id, $festival, $dateTime, $lang);
+            ->getApiInfoById($id, $festival, $dateTime, $lang)
+        ;
         return $info;
     }
 
@@ -392,7 +397,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getSameDayInfo($festival, $locale, $dateTime, $count, $id, true);
+            ->getSameDayInfo($festival, $locale, $dateTime, $count, $id, true)
+        ;
         return $news;
     }
 
@@ -409,7 +415,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getApiStatementById($id, $festival, $dateTime, $lang);
+            ->getApiStatementById($id, $festival, $dateTime, $lang)
+        ;
         return $statement;
     }
 
@@ -428,7 +435,8 @@ class NewsController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getSameDayStatement($festival, $locale, $dateTime, $count, $id, true);
+            ->getSameDayStatement($festival, $locale, $dateTime, $count, $id, true)
+        ;
         return $news;
     }
 

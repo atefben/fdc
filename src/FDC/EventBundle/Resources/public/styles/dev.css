@@ -1,3 +1,15 @@
+.title-list-cat .title-big {
+  color: #fff;
+  font-family: "Playfair Display";
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .searchpage #searchContainer {
     max-height: none;
 }
@@ -559,4 +571,25 @@ a.notloaded {
 
 .categorie-items article .infos-item-list .sub-title-item {
     padding-bottom: 14px;
+}
+.header #logo-wrapper #partners img.kering {
+    margin-top:8px !important;
+}
+#main.app {
+	height: 915px !important;
+}
+.app .contain-app {
+	width: 50% !important;
+}
+.app .contain-app h1 {
+	padding-top: 82px !important;
+}
+.single-movie .competition #slider-competition .owl-item .linkVid {
+    height:0 !important;
+}
+.press-home .landscape, .downloading-press .landscape {
+	visibility: visible !important;
+}
+.audio-live {
+	background-color: #000 !important;
 }

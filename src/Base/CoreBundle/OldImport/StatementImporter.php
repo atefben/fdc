@@ -3,19 +3,19 @@
 namespace Base\CoreBundle\OldImport;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Component\Interfaces\NodeTranslationInterface;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
+use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
+use Base\CoreBundle\Entity\StatementImage;
+use Base\CoreBundle\Entity\StatementImageTranslation;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 use Base\CoreBundle\Entity\StatementWidgetAudio;
 use Base\CoreBundle\Entity\StatementWidgetImage;
@@ -29,6 +29,8 @@ use Symfony\Component\Console\Helper\ProgressBar;
 class StatementImporter extends Importer
 {
     protected $widgetPosition = 0;
+
+    protected $isStatementImage = false;
 
     public function importStatements()
     {
@@ -88,7 +90,7 @@ class StatementImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return StatementArticle
+     * @return Statement
      */
     protected function importItem(OldArticle $oldArticle)
     {
@@ -137,18 +139,25 @@ class StatementImporter extends Importer
 
     /**
      * @param OldArticle $oldArticle
-     * @return StatementArticle
+     * @return Statement
      */
     protected function buildStatementArticle(OldArticle $oldArticle)
     {
+        if ($this->isStatementImage) {
+            $classStatement = StatementImage::class;
+            $this->removeStatement($oldArticle->getId());
+        } else {
+            $classStatement = StatementArticle::class;
+        }
+        
         $statement = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:StatementArticle')
+            ->getRepository($classStatement)
             ->findOneBy(['oldNewsId' => $oldArticle->getId()])
         ;
 
         if (!$statement) {
-            $statement = new StatementArticle();
+            $statement = new $classStatement();
             $statement
                 ->setOldNewsId($oldArticle->getId())
                 ->setOldNewsTable('OldNews')
@@ -172,26 +181,32 @@ class StatementImporter extends Importer
     }
 
     /**
-     * @param StatementArticle $statement
+     * @param Statement $statement
      * @param OldArticleI18n $oldTranslation
-     * @return StatementArticleTranslation
+     * @return NodeTranslationInterface
      */
-    protected function buildStatementArticleTranslation(StatementArticle $statement, OldArticleI18n $oldTranslation)
+    protected function buildStatementArticleTranslation(Statement $statement, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
+        if ($this->isStatementImage) {
+            $classStatementTranslation = StatementImageTranslation::class;
+        } else {
+            $classStatementTranslation = StatementArticleTranslation::class;
+        }
+        
+        $mapperFields = [
             'resume' => 'introduction',
-        );
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
             $translation = $this
                 ->getManager()
-                ->getRepository('BaseCoreBundle:StatementArticleTranslation')
+                ->getRepository($classStatementTranslation)
                 ->findOneBy(['locale' => $locale, 'translatable' => $statement])
             ;
 
             if (!$translation) {
-                $translation = new StatementArticleTranslation();
+                $translation = new $classStatementTranslation();
                 $translation
                     ->setCreatedAt($statement->getCreatedAt())
                     ->setUpdatedAt($statement->getCreatedAt())
@@ -271,7 +286,7 @@ class StatementImporter extends Importer
         }
     }
 
-    protected function buildStatementWidgetText(StatementArticle $statement, StatementArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildStatementWidgetText(Statement $statement, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getBody()) {
             return null;
@@ -309,7 +324,7 @@ class StatementImporter extends Importer
         return $widget;
     }
 
-    protected function buildStatementWidgetYoutube(StatementArticle $statement, StatementArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildStatementWidgetYoutube(Statement $statement, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         if (!$oldTranslation->getYoutubeLink() || !$oldTranslation->getYoutubeLinkDescription()) {
             return null;
@@ -350,7 +365,7 @@ class StatementImporter extends Importer
         return $widget;
     }
 
-    protected function buildStatementWidgetImage(StatementArticle $statement, StatementArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildStatementWidgetImage(Statement $statement, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -420,14 +435,14 @@ class StatementImporter extends Importer
                                 ;
                                 if ($widget) {
                                     $widget->setGallery(null);
-                                    $this->getManager()->remove($mediaImage);
+//                                    $this->getManager()->remove($mediaImage);
                                 }
-                                $this->getManager()->remove($gallery);
+//                                $this->getManager()->remove($gallery);
                             }
                         }
                     }
 
-                    $this->getManager()->remove($mediaImage);
+//                    $this->getManager()->remove($mediaImage);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -459,7 +474,7 @@ class StatementImporter extends Importer
         return $widget;
     }
 
-    protected function buildStatementWidgetsAudio(StatementArticle $statement, StatementArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildStatementWidgetsAudio(Statement $statement, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -496,7 +511,7 @@ class StatementImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaAudio);
+//                    $this->getManager()->remove($mediaAudio);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -515,7 +530,7 @@ class StatementImporter extends Importer
         }
     }
 
-    protected function buildStatementWidgetsVideo(StatementArticle $statement, StatementArticleTranslation $translation, OldArticleI18n $oldTranslation)
+    protected function buildStatementWidgetsVideo(Statement $statement, NodeTranslationInterface $translation, OldArticleI18n $oldTranslation)
     {
         $oldArticleAssociations = $this
             ->getManager()
@@ -552,7 +567,7 @@ class StatementImporter extends Importer
                         }
                     }
 
-                    $this->getManager()->remove($mediaVideo);
+//                    $this->getManager()->remove($mediaVideo);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -581,7 +596,7 @@ class StatementImporter extends Importer
         }
     }
 
-    protected function buildAssociatedFilms(StatementArticle $statement, OldArticle $oldArticle)
+    protected function buildAssociatedFilms(Statement $statement, OldArticle $oldArticle)
     {
         if (!$this->associateMovie) {
             foreach ($statement->getAssociatedFilms() as $associatedFilm) {
@@ -599,6 +614,7 @@ class StatementImporter extends Importer
             ->findBy(['id' => $oldArticle->getId(), 'objectClass' => 'Film'], ['order' => 'asc'])
         ;
 
+        $films = [];
         foreach ($oldArticleAssociations as $oldArticleAssociation) {
             $film = $this
                 ->getManager()
@@ -606,8 +622,18 @@ class StatementImporter extends Importer
                 ->find($oldArticleAssociation->getObjectId())
             ;
             if ($film) {
-                $statement->setAssociatedFilm(null);
-
+                $films[] = $film;
+            }
+        }
+        if (count($films) === 1) {
+            $statement->setAssociatedFilm(reset($films));
+            foreach ($statement->getAssociatedFilms() as $associatedFilm) {
+                $statement->removeAssociatedFilm($associatedFilm);
+                $this->getManager()->remove($associatedFilm);
+            }
+        } else {
+            $statement->setAssociatedFilm(null);
+            foreach ($films as $film) {
                 $found = false;
                 foreach ($statement->getAssociatedFilms() as $associatedFilm) {
                     if ($associatedFilm->getAssociation()->getId() == $film->getId()) {
@@ -620,14 +646,16 @@ class StatementImporter extends Importer
                         ->setStatement($statement)
                         ->setAssociation($film)
                     ;
-                    $this->getManager()->persist($film);
+                    $this->getManager()->persist($associatedFilm);
                 }
+
             }
-            $this->getManager()->flush();
         }
+        $this->getManager()->flush();
+
     }
 
-    protected function buildAssociatedStatements(StatementArticle $statement, OldArticle $oldArticle)
+    protected function buildAssociatedStatements(Statement $statement, OldArticle $oldArticle)
     {
         // association film
         $oldArticleAssociations = $this
@@ -671,6 +699,12 @@ class StatementImporter extends Importer
     protected function isStatementMatching(OldArticle $oldArticle)
     {
 
+        if ($oldArticle->getDisplayAsPortfolio()) {
+            $this->isStatementImage = true;
+        } else {
+            $this->isStatementImage = false;
+        }
+
         // Communiqués-Festival de 2001 > 2015
         $isAvailable = $oldArticle->getIsOnline() && $oldArticle->getCreatedAt();
         $isAvailable = $isAvailable && $oldArticle->getCreatedAt()->format('Y') >= 2001;
@@ -678,5 +712,70 @@ class StatementImporter extends Importer
         if ($isAvailable) {
             return true;
         }
+    }
+
+    /**
+     * @param $oldArticleId
+     * @return null
+     */
+    public function removeStatement($oldArticleId)
+    {
+        $statementArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:StatementArticle')
+            ->findOneBy(['oldNewsId' => $oldArticleId])
+        ;
+        if (!$statementArticle) {
+            return null;
+        }
+        $fields = $this->getManager()->getClassMetadata('BaseCoreBundle:StatementArticle')->getAssociationNames();
+        foreach ($statementArticle->getTranslations() as $translation) {
+            $statementArticle->getTranslations()->removeElement($translation);
+            $this->getManager()->remove($translation);
+        }
+
+        foreach ($statementArticle->getAssociatedStatement() as $statementAssociated) {
+            if ($statementAssociated instanceof StatementStatementAssociated) {
+                $statementAssociated->setAssociation(null);
+                $statementAssociated->setStatement(null);
+                $this->getManager()->remove($statementAssociated);
+                $this->getManager()->flush();
+                $statementArticle->removeAssociatedStatement($statementAssociated);
+            }
+        }
+
+
+        $statementStatementAssociations = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:StatementStatementAssociated')
+            ->findBy(['association' => $statementArticle->getId()])
+        ;
+        foreach ($statementStatementAssociations as $statementAssociated) {
+            $statementAssociated->setAssociation(null);
+            $statementAssociated->setStatement(null);
+            $this->getManager()->remove($statementAssociated);
+            $this->getManager()->flush();
+            $statementArticle->removeAssociatedNew($statementAssociated);
+        }
+
+        foreach ($fields as $field) {
+            $association = $this
+                ->getManager()
+                ->getClassMetadata('BaseCoreBundle:StatementArticle')
+                ->isCollectionValuedAssociation($field)
+            ;
+            $getter = 'get' . ucfirst($field);
+            $setter = 'set' . ucfirst($field);
+            if ($association) {
+                foreach ($statementArticle->$getter() as $item) {
+                    $statementArticle->$getter()->removeElement($item);
+                }
+            } else {
+                $statementArticle->$setter(null);
+            }
+        }
+
+        $this->getManager()->remove($statementArticle);
+        $this->getManager()->flush();
     }
 }

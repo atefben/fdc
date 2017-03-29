@@ -1,0 +1,16 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+
+{% block field %}
+    {% if admin.hasRoute('edit') %}
+        {% for domain in value %}
+            {% if domain.domain and domain.domain.translations[app.request.getLocale()] is defined and domain.domain.translations[app.request.getLocale()] is not null %}
+                {% set translation = domain.domain.translations[app.request.getLocale()] %}
+                <a class="fdc-check-lock-list{% if translation.lockedBy is not null %} fdc-is-locked{% endif %}" href="{% if translation.lockedBy is not null %}#{% else %}{{ path('admin_fdc_courtmetrage_ccmdomain_edit', {'id' : domain.domain.id}) }}?locale={{ app.request.getLocale() }}{% endif %}">
+                    {{ translation.name }}
+                </a>
+                <br/>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

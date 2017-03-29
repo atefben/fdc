@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- build:include ../include/head.html -->
+<!-- /build -->
+<body class="dark retrospective retrospective-home restrospective-init loading">
+<!-- build:include ../include/header.html -->
+<!-- /build -->
+
+<section class="s-slider-retrospective">
+
+    <div class="block-01">
+        <div class="timelapse block-drag" style="display: none;">
+            <span class="date date-first" data-firstdate="1946">1946</span>
+            <div class="avance noUi-target noUi-ltr noUi-horizontal noUi-background" id="timelapse-01"><span
+                    class="square"></span>
+                <div class="noUi-base">
+                    <div class="noUi-origin" style="left: 1.42857%;">
+                        <div class="noUi-handle noUi-handle-lower"></div>
+                    </div>
+                </div>
+            </div>
+            <span class="date date-last" data-lastdate="2015">2015</span>
+        </div>
+    </div>
+
+
+    <div class="ajax-section">
+        <div class="contain-ajax articles-list evenements padding-bottom" id="main">
+            <h2 class="title">Toute l'actualité</h2>
+            <div class="filters padding-small-top">
+
+                <div id="edition" class="filter">
+                    <span class="label">Editions  :</span>
+                      <span class="select">
+                        <span data-filter="date-18-05-5" class="active">2016</span>
+                        <span data-filter="date-19-05-5">2015</span>
+                        <span data-filter="date-20-05-5">2014</span>
+                        <i class="icon icon-arrow-down"></i>
+                      </span>
+                </div>
+
+                <div id="theme" class="filter">
+                    <span class="label">Thèmes :</span>
+                      <span class="select">
+                        <span data-filter="all" class="active">Tous </span>
+                        <span data-filter="competition">Compétition</span>
+                        <span data-filter="photocall">photocall</span>
+                        <i class="icon icon-arrow-down"></i>
+                      </span>
+                </div>
+
+                <div id="type" class="filter">
+                    <span class="label">Types :</span>
+                      <span class="select">
+                        <span data-filter="all" class="active">Tous </span>
+                        <span data-filter="info">Info</span>
+                        <span data-filter="communique">Communiqué</span>
+                        <i class="icon icon-arrow-down"></i>
+                      </span>
+                </div>
+
+                <div id="format" class="filter">
+                    <span class="label">Formats :</span>
+                      <span class="select">
+                        <span data-filter="all" class="active">Tous </span>
+                        <span data-filter="photo">Photo</span>
+                        <span data-filter="video">Vidéo</span>
+                        <span data-filter="audio">Audio</span>
+                        <span data-filter="article">Article</span>
+                        <i class="icon  icon-arrow-down"></i>
+                      </span>
+                </div>
+            </div> <!-- end filters -->
+
+            <div class="grid-01 isotope-01">
+                <div class="grid-sizer"></div>
+
+                <article class="card item photo date-20-05-5 all photocall" data-format="photo" data-theme="photocall"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all info competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo communique date-18-05-5 all photocall" data-format="photo" data-theme="photocall"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+
+                <article class="card item photo date-19-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-18-05-5 all photocall" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-18-05-5 all competition" data-format="video"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-18-05-5 all competition" data-format="photo"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-20-05-5 all competition" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item photo date-19-05-5 all photocall" data-format="photo" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-02.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-photo"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Photocall </a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Enragés, polar hybride d’Éric Hannezo</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item article date-18-05-5 all competition" data-format="article"
+                         data-theme="competition" data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/articles-01.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-article"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">compétition</a><span class="date">8.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Nie Yinniang (The Assassin) de Hou Hsiao-Hsien</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-20-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-18-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-20-05-5 all photocall" data-format="video" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item video date-19-05-5 all competition" data-format="video"
+                         data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-video"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+                <article class="card item audio date-20-05-5 all photocall" data-format="audio" data-theme="competition"
+                         data-time="1455909420" data-end="false" data-date="date-18-05-5">
+                    <div class="image">
+                        <div class="image-wrapper">
+                            <img src="media/images/home-image3.jpg" alt=""/>
+                        </div>
+                        <a href="article.html" class="linkImage"></a>
+                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        <span class="picto"><i class="icon icon-audio"></i></span>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="category">Entretien</a><span class="date">18.05.15</span> . <span
+                            class="hour">09:00</span>
+                        <strong><a href="article.html">Z de Costa-Gravas</a></strong>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="bright">
+                <a href="#" class="read-more block-01">Afficher <strong>plus d'infos</strong></a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- build:include ../include/footer.html -->
+<!-- /build -->
+
+<!-- build:include ../include/script.html -->
+<!-- /build -->
+</body>
+</html>

@@ -69,6 +69,12 @@ security:
                 target:         fdc_pressmobile_news_home
             anonymous:          true
 
+        ccm:
+            host: ^%fdc_court_metrage_domain%$
+            pattern: ^/
+            context: user
+            anonymous: true
+
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false

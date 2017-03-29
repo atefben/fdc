@@ -13,6 +13,7 @@ use Base\CoreBundle\Util\Soif;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -433,11 +434,21 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $associatedNews;
 
     /**
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $associatedCcmNews;
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="News", mappedBy="associatedFilm")
      */
     protected $news;
 
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmNews", mappedBy="associatedFilm")
+     */
+    protected $ccmNews;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaVideoFilmFilmAssociated", mappedBy="association", cascade={"all"}, orphanRemoval=true)
@@ -473,7 +484,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @var MediaImageSimple
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", inversedBy="imageMainFilms")
      * @Groups({
      *     "film_list",
      *     "film_show",
@@ -491,7 +502,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     protected $imageMain;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MediaImageSimple")
+     * @ORM\ManyToOne(targetEntity="MediaImageSimple", inversedBy="imageCoverFilms")
      * @Groups({
      *     "film_list",
      *     "film_show",
@@ -526,7 +537,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToMany(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="selfkitFilms")
      * @ORM\JoinTable(name="film_film_selfkit_images",
      *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
@@ -561,11 +572,13 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
         $this->languages = new ArrayCollection();
         $this->projectionProgrammationFilms = new ArrayCollection();
         $this->associatedNews = new ArrayCollection();
+        $this->associatedCcmNews = new ArrayCollection();
         $this->associatedInfo = new ArrayCollection();
         $this->associatedStatement = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->news = new ArrayCollection();
         $this->selfkitImages = new ArrayCollection();
+        $this->ccmNews = new ArrayCollection();
         $this->selfkitPdfFiles = new ArrayCollection();
     }
 
@@ -2264,6 +2277,40 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     }
 
     /**
+     * Add ccm associatedNews
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedNews
+     * @return FilmFilm
+     */
+    public function addAssociatedCcmNew(CcmNewsFilmFilmAssociated $associatedNews)
+    {
+        $associatedNews->setAssociation($this);
+        $this->associatedCcmNews[] = $associatedNews;
+
+        return $this;
+    }
+
+    /**
+     * Remove ccm associatedNews
+     *
+     * @param CcmNewsFilmFilmAssociated $associatedNews
+     */
+    public function removeAssociatedCcmNew(CcmNewsFilmFilmAssociated $associatedNews)
+    {
+        $this->associatedCcmNews->removeElement($associatedNews);
+    }
+
+    /**
+     * Get ccm associatedNews
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAssociatedCcmNews()
+    {
+        return $this->associatedCcmNews;
+    }
+
+    /**
      * Add associatedMediaVideos
      *
      * @param \Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated $associatedMediaVideos
@@ -2697,7 +2744,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get selfkitImages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSelfkitImages()
     {
@@ -2730,10 +2777,38 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     /**
      * Get selfkitPdfFiles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSelfkitPdfFiles()
     {
         return $this->selfkitPdfFiles;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     * @return $this
+     */
+    public function addCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $ccmNews->setAssociatedFilm($this);
+        $this->ccmNews[] = $ccmNews;
+
+        return $this;
+    }
+
+    /**
+     * @param \FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews
+     */
+    public function removeCcmNews(\FDC\CourtMetrageBundle\Entity\CcmNews $ccmNews)
+    {
+        $this->ccmNews->removeElement($ccmNews);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCcmNews()
+    {
+        return $this->ccmNews;
     }
 }

@@ -1,27 +1,50 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading article-single dark retrospective retrospective-home restrospective-init{% endblock %}
+{% block bodyClass %}loading article-single dark fs-off retrospective retrospective-home restrospective-init{% endblock %}
 
 {% block body %}
     <section class="s-slider-retrospective">
 
-        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {#{% if not hideSliderAndMenu|default(false) %}#}
+        {#{% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}#}
+        {#{% endif %}#}
 
         <div class="ajax-section">
             <div class="contain-ajax bright" id="main">
-                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
+                {#{% if not hideSliderAndMenu|default(false) %}#}
+                {#{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}#}
+                {#{% endif %}#}
                 <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
                     <div class="arrows">
-                        {% if prev[0] is defined and not prev[0] is empty %}
-                            <a href="{{ path('fdc_event_news_get', {'format': prev[0].newsFormat, 'slug': prev[0]|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                               class="prev"><i class="icon icon-arrow-left"></i></a>
+                        {% if prev is defined and not prev is empty %}
+                            {% if class(prev) starts with 'News' %}
+                                <a href="{{ path('fdc_corporate_news_get', {'format': prev.newsFormat, 'slug': prev|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
+                                   class="prev"><i class="icon icon-arrow-right"></i></a>
+                            {% else %}
+                                {% if class(prev) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
+                                {% endif %}
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(prev), 'slug': prev|trans_fallback('slug')}) }}"
+                                   class="prev"><i class="icon icon-arrow-left"></i></a>
+                            {% endif %}
                         {% endif %}
-                        {% if next[0] is defined and not next[0] is empty %}
-                            <a href="{{ path('fdc_event_news_get', {'format': next[0].newsFormat, 'slug': next[0]|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                               class="next"><i class="icon icon-arrow-right"></i></a>
+                        {% if next is defined and not next is empty %}
+                            {% if class(next) starts with 'News' %}
+                                <a href="{{ path('fdc_corporate_news_get', {'format': next.newsFormat, 'slug': next|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
+                                   class="next"><i class="icon icon-arrow-right"></i></a>
+                            {% else %}
+                                {% if class(next) starts with 'S' %}
+                                    {% set type = 'communique' %}
+                                {% else %}
+                                    {% set type = 'info' %}
+                                {% endif %}
+                                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, format: get_news_format_slug(next), 'slug': next|trans_fallback('slug')}) }}"
+                                   class="next"><i class="icon icon-arrow-right"></i></a>
+                            {% endif %}
                         {% endif %}
                     </div>
 
@@ -41,51 +64,53 @@
                                     class="icon icon-print"></i>{{ 'article.btn.imprimer'|trans }}</a>
                     </div>
 
-                    {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" %}
+                    {% if class(news) == "StatementArticle" or class(news) == "InfoArticle" or class(news) == "NewsArticle" %}
                         {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with {'photo' : news.header } %}
-                    {% elseif class(news) == "StatementAudio" or class(news) == "InfoAudio" %}
+                    {% elseif class(news) == "StatementAudio" or class(news) == "InfoAudio" or class(news) == "NewsAudio" %}
                         {% include 'FDCEventBundle:News:widgets/single-audio.html.twig' %}
-                    {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" %}
+                    {% elseif class(news) == "StatementVideo" or class(news) == "InfoVideo" or class(news) == "NewsVideo" %}
                         {% if is_available_video(news.video) %}
                             <div class="single-video">
                                 {% include 'FDCEventBundle:News:widgets/single-video.html.twig' %}
                             </div>
                         {% endif %}
-                    {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" %}
+                    {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" or class(news) == "NewsImage" %}
                         <div class="single-gallery">
                             {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                         </div>
                     {% endif %}
 
-                    <div class="contain-title vFlexAlign block-01-s">
+                    <div class="contain-title vFlexAlign block-01-m">
                         <span class="title-02">{{ news|trans_fallback('introduction')|raw }}</span>
                     </div>
                     {% for widget in news.widgets %}
                         {% if class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
-                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
-                            {% include 'FDCEventBundle:News:widgets/single-photo.html.twig' with ({
+                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
+                        or class(widget) == "NewsWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
+                            {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with ({
                             'photo' : widget.gallery.medias[0].media,
                             'photo_class' : ' large-photo'
                             }) %}
                         {% elseif class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1
-                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
-                            {% include 'FDCEventBundle:News:widgets/slideshow.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetText" or class(widget) == "InfoWidgetText" %}
+                        or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1
+                        or class(widget) == "NewsWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
+                            {% include 'FDCCorporateBundle:News:widgets/slideshow.html.twig' %}
+                        {% elseif class(widget) == "StatementWidgetText" or class(widget) == "InfoWidgetText" or class(widget) == "NewsWidgetText" %}
                             {% include 'FDCEventBundle:News:widgets/text.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetVideo" or class(widget) == "InfoWidgetVideo" %}
+                        {% elseif class(widget) == "StatementWidgetVideo" or class(widget) == "InfoWidgetVideo" or class(widget) == "NewsWidgetVideo" %}
                             {% if is_available_video(widget.file) %}
                                 {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                             {% endif %}
-                        {% elseif class(widget) == "StatementWidgetVideoYoutube" or class(widget) == "InfoWidgetVideoYoutube" %}
-                            {% include 'FDCEventBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
-                        {% elseif class(widget) == "StatementWidgetAudio" or class(widget) == "InfoWidgetAudio" %}
+                        {% elseif class(widget) == "StatementWidgetVideoYoutube" or class(widget) == "InfoWidgetVideoYoutube" or class(widget) == "NewsWidgetVideoYoutube" %}
+                            {% include 'FDCCorporateBundle:News:widgets/video-youtube.html.twig' with {'widget': widget} %}
+                        {% elseif class(widget) == "StatementWidgetAudio" or class(widget) == "InfoWidgetAudio" or class(widget) == "NewsWidgetAudio" %}
                             {% if widget.title is defined %}
                                 <h2 class="title">{{ widget.title }}</h2>
                             {% endif %}
                             {% include 'FDCCorporateBundle:News:widgets/audio.html.twig' with {'widget': widget} %}
-                        {% elseif class(widget) == "StatementWidgetQuote" or class(widget) == "InfoWidgetQuote" %}
+                        {% elseif class(widget) == "StatementWidgetQuote" or class(widget) == "InfoWidgetQuote" or class(widget) == "NewsWidgetQuote" %}
                             {% include 'FDCCorporateBundle:News:widgets/quote.html.twig' %}
-                        {% elseif class(widget) == "StatementWidgetImageDualAlign" or class(widget) == "InfoWidgetImageDualAlign" %}
+                        {% elseif class(widget) == "StatementWidgetImageDualAlign" or class(widget) == "InfoWidgetImageDualAlign" or class(widget) == "NewsWidgetImageDualAlign" %}
                             {% include 'FDCEventBundle:News:widgets/dual-photo.html.twig' %}
                         {% endif %}
                     {% endfor %}
@@ -97,7 +122,7 @@
                 </div>
 
 
-                <div class="border-top">
+                <div class="border-top border-bottom">
                     <strong class="title-9">{{ 'article.text.partagerarticle'|trans }}</strong>
                     <div class="relative">
                         <div class="block-social-network block-social-network-all">
@@ -118,26 +143,30 @@
                 </div>
 
                 {% if focusArticles is not empty %}
-                    <div class="focus">
-                        <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
-                        <div class="articles">
-                            {% for article in focusArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'focus'} %}
-                                {% endif %}
-                            {% endfor %}
+                    <div class="focus border-bottom">
+                        <div class="block-01">
+                            <h2 class="title">{{ 'article.film.title.focus'|trans }}</h2>
+                            <div class="articles center">
+                                {% for article in focusArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCCorporateBundle:News/widgets:article.same.day.html.twig' with {type : 'focus'} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 {% endif %}
                 {% if sameDayArticles is not empty and news.hideSameDay == false %}
                     <div class="same-day">
-                        <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
-                        <div class="articles center">
-                            {% for article in sameDayArticles %}
-                                {% if article is not null %}
-                                    {% include 'FDCEventBundle:News:widgets/article.html.twig' with {type : 'same-day'} %}
-                                {% endif %}
-                            {% endfor %}
+                        <div class="block-01">
+                            <h2 class="title">{{ 'article.film.title.lememejour'|trans }}</h2>
+                            <div class="articles center">
+                                {% for article in sameDayArticles %}
+                                    {% if article is not null %}
+                                        {% include 'FDCCorporateBundle:News/widgets:article.same.day.html.twig' with {type : 'same-day'} %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 {% endif %}
@@ -162,24 +191,20 @@
         })) }}
         </div> <!-- end all contain -->
     </section>
+
+    {% if class(news) starts with 'N' %}
+        {% set parentTitle = 'corpo.infos.and.statements.page'|trans %}
+        {% set parentUrl = path('fdc_corporate_news_getarticles', {'year': news.festival.year}) %}
+    {% else %}
+        {% set parentTitle = 'header.mainnav.nav.lactualite'|trans %}
+        {% set parentUrl = path('fdc_corporate_news_infosandstatements') %}
+    {% endif %}
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
     {
-    "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'header.mainnav.nav.lactualite'|trans,
-    "url"  : path('fdc_corporate_news_getarticles', {'year': app.request.attributes.get('year')})
+    "name" : parentTitle,
+    "url"  : parentUrl
     },
     {
     "name" : news|trans_fallback('title'),
@@ -191,7 +216,7 @@
     {'section': '',
         'detail' : '',
         'title'  : '',
-        'description': '',
+        'description' : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
 {% endblock %}

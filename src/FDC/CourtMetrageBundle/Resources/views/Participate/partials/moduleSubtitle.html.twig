@@ -1,0 +1,7 @@
+{% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+    {% set translation = module.translations[app.request.getLocale()] %}
+    <div class="sub-title">
+        <h4 class="title-cinema">{{ translation.title }}</h4>
+        {{ translation.description|raw }}
+    </div>
+{% endif %}

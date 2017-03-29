@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/home.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/home.css"
+        "bundles/fdceventmobile/css/article_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -17,9 +20,9 @@
         <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
             <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKid m-video">
                     <div id="player1"></div>
-                    <p class="category">Conférence de presse</p>
+                    <p class="category">Conférence de presse</p><span class="date">22.05.16 . 20:42</span>
                     <p class="title-video">Rencontre avec l'équipe de Carol</p>
                 </div>
             </div>
@@ -122,7 +125,7 @@
                         {% endif %}
                     {% endif %}
                         <div>
-                            {% set trans = article.findTranslationByLocale('fr') %}
+                            {% set trans = article.findTranslationByLocale(app.request.locale) %}
                             <div class="img-container">
                                 <div class="img" style="background-image:url({% path file , '2560x1620' %})"></div>
                             </div>
@@ -131,9 +134,9 @@
                                 <h2>{{ article|trans_fallback('title')|truncate(70) }}</h2>
                             </div>
                             {% if type == 'news' %}
-                            <a href="{{ url('fdc_eventmobile_news_get', { _locale: 'fr', format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
+                            <a href="{{ url('fdc_eventmobile_news_get', { _locale: app.request.locale, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
                             {% else %}
-                            <a href="{{ url('fdc_pressmobile_news_get', { _locale: 'fr', type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
+                            <a href="{{ url('fdc_pressmobile_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}" class="linkArticle"></a>
                             {% endif %}
                         </div>
                 {% endfor %}
@@ -330,7 +333,11 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/home.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/home.js'
+        '@FDCEventMobileBundle/Resources/public/js/home_custom.js'
+        '@FDCEventMobileBundle/Resources/public/js/article_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

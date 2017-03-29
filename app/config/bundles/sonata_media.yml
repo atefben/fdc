@@ -21,6 +21,9 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
         # SOIF
         film_director:
             providers:
@@ -40,6 +43,9 @@ sonata_media:
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 searchtiny: { width: 52 , height: 66 , quality: 100, constraint: false }
                 search: { width: 170 , height: 231 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_image_cover:
             providers:
@@ -47,6 +53,9 @@ sonata_media:
             formats:
                 2560x1103: { width: 2560, height: 1103, quality: 100, constraint: false }
                 976x535: { width: 976, height: 535, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_affiche:
             providers:
@@ -54,6 +63,9 @@ sonata_media:
             formats:
                 256x348: { width: 256 , height: 348 , quality: 100, constraint: false }
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_poster:
             providers:
@@ -90,6 +102,9 @@ sonata_media:
                 # film images mobile
                 1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
         film_main:
             providers:
                 - sonata.media.provider.image
@@ -128,6 +143,9 @@ sonata_media:
                   # film images mobile
                   1460x903: { width: 1460, height: 903, quality: 100, constraint: false }
                   320x220: { width: 320, height: 220, quality: 100, constraint: false }
+                  #corpo mediatheque
+                  640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                  320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         film_film:
             providers:
@@ -173,6 +191,9 @@ sonata_media:
                 320x220: { width: 320, height: 220, quality: 100, constraint: false }
                 #
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
+                #corpo mediatheque
+                640x404: { width: 640 , height: 404 , quality: 100, constraint: false}
+                320x404: { width: 320 , height: 404 , quality: 100, constraint: false}
 
         pdf:
             providers:
@@ -230,6 +251,7 @@ sonata_media:
                 463x292: { width: 463 , height: 292 , quality: 100, constraint: false}
                 # Last videos channels
                 926x584: { width: 926 , height: 584 , quality: 100, constraint: false}
+                x584: { height: 584 , quality: 100}
                 # Articles focus
                 918x580: { width: 918 , height: 580 , quality: 100, constraint: false}
                 # Articles le même jour
@@ -257,6 +279,18 @@ sonata_media:
                 640x400: { width: 640, height: 400, quality: 100, constraint: false}
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false }
                 363x260: { width: 363 , height: 260 , quality: 100, constraint: false }
+                351x222: { width: 351 , height: 222 , quality: 100, constraint: false }
+                703x443: { width: 703 , height: 443 , quality: 100, constraint: false }
+                702x444: { width: 702 , height: 444 , quality: 100, constraint: false }
+                1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
+                x404: { height: 404 , quality: 100}
+                293x397: { width: 293, height: 397, quality: 100, constraint: false }
+                # ccm homepage push image
+                455x348: { width: 455, height: 348, quality: 100, constraint: false }
+                # ccm participer plans
+                543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
+                # corpo sortie de cannes
+                674x382: { width: 674 , height: 382 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:
@@ -326,7 +360,6 @@ sonata_media:
                 480x640: { width: 480, height: 640, quality: 100, constraint: false }
                 #previmg/nextimg films
                 156x206: { width: 156 , height: 206 , quality: 100, constraint: false }
-                293x397: { width: 293, height: 397, quality: 100, constraint: false }
                 575x364: { width: 575 , height: 364 , quality: 100, constraint: false}
                 976x535: { width: 976 , height: 535 , quality: 100, constraint: false}
                 # film cover mobile
@@ -336,6 +369,14 @@ sonata_media:
                 292x397: { width: 292 , height: 397 , quality: 100, constraint: false }
                 954x606: { width: 954 , height: 606 , quality: 100, constraint: false }
                 420x266: { width: 420 , height: 266 , quality: 100, constraint: false }
+                351x222: { width: 351 , height: 222 , quality: 100, constraint: false }
+                703x443: { width: 703 , height: 443 , quality: 100, constraint: false }
+                702x444: { width: 702 , height: 444 , quality: 100, constraint: false }
+                1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
+                # ccm pros image
+                230x230: { width: 230 , height: 230 , quality: 100, constraint: false }
+                # corpo sortie de cannes
+                674x382: { width: 674 , height: 382 , quality: 100, constraint: false }
 
         media_audio:
             providers:

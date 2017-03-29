@@ -2,6 +2,15 @@
 
 {% block field %}
     <div>
+        {% if class(object) starts with 'CcmNews' %}
+            {% set trans = object.findTranslationByLocale('fr') %}
+            <p>
+                <a target="_blank"
+                   href="{{ url('fdc_court_metrage_news_detail', {slug: trans.slug, _locale: 'fr'}) }}">
+                    <i class="fa fa-search"></i> Prévisualiser
+                </a>
+            </p>
+        {% endif %}
         {% if object|is_published_on('site-evenementiel') %}
             {% set trans = object.findTranslationByLocale('fr') %}
             {% if trans and trans.slug and trans.status == 1 %}

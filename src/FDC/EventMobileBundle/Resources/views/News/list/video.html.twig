@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/videos.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/videos.css"
+        "bundles/fdceventmobile/css/videos_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -30,7 +33,7 @@
             {% include 'FDCEventBundle:News:components/filters.html.twig' %}
         </div>
 
-        <div class="list" id="list-videos">
+        <div class="list grid" id="list-videos">
             {% for video in videos %}
                 {% set trans = video.findTranslationByLocale(app.request.locale) %}
                 {% set transImage = null %}
@@ -52,7 +55,7 @@
                     {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
-                    <div class="item item-video {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }}"
+                    <div class="item item-video grid-item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }}"
                          data-video="{{ s3_server_video ~ trans.mp4Url }}"
                          data-poster="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
                         {% if transImage is not null %}

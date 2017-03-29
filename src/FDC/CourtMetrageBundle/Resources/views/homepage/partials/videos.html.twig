@@ -1,0 +1,40 @@
+<div class="aboutVideos" style="display:block!important">
+    {% if widget|length > 1 %}
+        <div id="slider-aboutVideos" class="owl-carousel">
+    {% endif %}
+    {% for key, video in widget  %}
+        {% set videoImage = null %}
+        {% set amazonImage = null %}
+        {% if video.translatable.image and video.translatable.image|trans_fallback('file') %}
+            {% set videoImage = media_public_url(video.translatable.image|trans_fallback('file'), 'reference') %}
+        {% elseif video.imageAmazonUrl %}
+            {% set amazonImage = s3_server_video ~ video.imageAmazonUrl %}
+        {% endif %}
+        <div class="vid shadow-bottom-vid">
+            <div class="item">
+                <div class="video-container state-init video"
+                     data-name="{{ video.title }}"
+                     data-file='[{% if(video.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ video.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ video.mp4Url }}"}]'
+                     data-img="{% if videoImage is not empty %}{{ videoImage }}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}">
+                    <div id="v_{{ key }}" class="video-player">
+                    </div>
+                    <div class="video-overlay"></div>
+                    <div class="infos-bar">
+                        <div class="picto"><i class="icon icon_video"></i></div>
+                        <div class="info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <a href="#" class="category">{{ video.theme }}</a><span class="date">{{ video.updatedAt|date("d.m.Y") }}</span> . <span class="hour">{{ video.updatedAt|date("g:i") }}</span>
+                                    <p>{{ video.title }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% if widget|length > 1 %}
+        </div>
+    {% endif %}
+</div>

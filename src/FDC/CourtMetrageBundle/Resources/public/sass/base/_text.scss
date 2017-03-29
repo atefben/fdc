@@ -1,0 +1,132 @@
+//       SUMMARY TABLE
+// =========================
+// 1. Global
+// =========================
+
+
+// 1. Global
+// =========================
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+.button {
+  /*border: 1px solid #dfdfdf;*/
+  border: 1px solid #dfdfdf;
+  border-right: none;
+  color: $gold;
+  display: inline-block;
+  font-family: $CamphorBold;
+  font-size: 0.688rem;
+  height: 38px;
+  line-height: 38px;
+  margin: 0 0 0 0;
+  padding: 0 19px 0 19px;
+  text-transform: uppercase;
+  @include transition(all 0.9s $smoothTransition);
+
+  &:last-child {
+    /*border-right: 1px solid #dfdfdf;*/
+    border-right: 1px solid $gold;
+  }
+
+  &:hover {
+    /*background-color: $gold;*/
+    border-color: $gold;
+  }
+}
+
+.buttons {
+  font-size: 0;
+  text-align: center;
+
+  &.square .button {
+    height: 73px;
+    // line-height: 73px;
+    position: relative;
+    padding: 0;
+    text-align: center;
+    width: 73px;
+
+    &:last-child {
+      /*border-right: 1px solid #dfdfdf;*/
+      border-right: 1px solid #dfdfdf;
+    }
+
+    &:hover {
+      border-color: $gold;
+      color: $gold;
+      background: white;
+    }
+    &:hover + a {
+      border-left-color: $gold;
+    }
+  }
+}
+
+.single-button{
+  border-right: 1px solid $gold !important;
+  border-color: $gold;
+}
+
+.bigButton {
+  width: 100%;
+  text-align:center;
+  padding: 0px!important;
+}
+
+.quote.italic{
+  font-family: $CamphorItalic;
+}
+
+.title {
+  //font-family: $Playfair;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  //font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal!important;
+}
+
+.subtitle {
+  font-family: $Playfair;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.canvasloader {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  z-index: 11;
+  @include transition(all 0.5s $smoothTransition);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.whiteText {
+  color: white!important;
+  height: 50px;
+  text-transform: uppercase;
+  border: 1px solid #c3a05f;
+  font-size: 12px;
+  font-family: $CamphorBold;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  line-height: 50px;
+  letter-spacing: 1px;
+}

@@ -115,9 +115,11 @@
         <div class="section">
             <h3>{{ 'juries.artiste.title.filmspresentes'|trans }}</h3>
             <div class="owl-carousel film-slider">
-                {% for filmPerson in artist.films %}
+                {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                     <div data-id="film{{ loop.index }}" class="thumb {% if loop.first %}active{% endif %}">
-                        <a href="{{ path('fdc_eventmobile_movie_get', {'slug': filmPerson.film.slug}) }}"></a>
+                        {% if filmPerson.film.festival.id == festival %}
+                            <a href="{{ path('fdc_eventmobile_movie_get', {'slug': filmPerson.film.slug}) }}"></a>
+                        {% endif %}
                         <div class="img-container" style="background-image:url(
                             {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                             film: filmPerson.film,
@@ -129,11 +131,11 @@
                             },
                             film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                             }) %}
-                        "></div>
+                        )"></div>
                         <div class="content-text">
                             <span class="item-title">{{ filmPerson.film.titleVO }}</span>
                             {% if filmPerson.film|trans_fallback('title') %}
-                                <span class="item-sub-title">{{ filmPerson.film|trans_fallback('title') }}</span>
+                                <span class="item-sub-title">({{ filmPerson.film|trans_fallback('title')}})</span>
                             {% endif %}
                             {% if filmPerson.film.festival %}
                                 <span class="item-date">{{ filmPerson.film.festival.year }}</span>
@@ -171,13 +173,15 @@
         <div class="section">
             <h3>{{ 'juries.artiste.title.palmares'|trans }}</h3>
             <div class="owl-carousel film-slider">
-                {% for filmPerson in artist.films %}
+                {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                     {% for awardAssociation in filmPerson.film.awards %}
                         {% if awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') or
                              (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and
                                 awardAssociation.person.id == artist.id) %}
                             <div data-id="film{{ loop.index }}" class="thumb {% if loop.first %}active{% endif %}">
-                                <a href="{{ path('fdc_eventmobile_movie_get', {'slug': filmPerson.film.slug}) }}"></a>
+                                {% if filmPerson.film.festival.id == festival %}
+                                    <a href="{{ path('fdc_eventmobile_movie_get', {'slug': filmPerson.film.slug}) }}"></a>
+                                {% endif %}
                                 <div class="img-container" style="background-image:url(
                                     {% include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                                         film: filmPerson.film,
@@ -189,9 +193,12 @@
                                         },
                                         film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                     }) %}
-                                "></div>
+                                )"></div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
+                                    {% if filmPerson.film|trans_fallback('title') %}
+                                        <span class="item-sub-title">({{ filmPerson.film|trans_fallback('title')}})</span>
+                                    {% endif %}
                                     {% if awardAssociation.award.festival %}
                                         <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
                                     {% endif %}
@@ -201,10 +208,10 @@
                                     {% if filmPerson.functions|length > 0 %}
                                         {% spaceless -%}
                                             <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
-                                        {% for filmPersonFunction in filmPerson.functions -%}
-                                            {{ loop.first == false ? ',' : '' }} {{ filmPersonFunction.function|trans_fallback('name') }}
-                                        {%- endfor %}
-                                        </span>
+                                            {% for filmPersonFunction in filmPerson.functions -%}
+                                                {{ loop.first == false ? ',' : '' }} {{ filmPerson.person|person_function_gender(filmPersonFunction.function, 'name') }}
+                                            {%- endfor %}
+                                            </span>
                                         {%- endspaceless %}
                                     {% endif %}
                                 </div>

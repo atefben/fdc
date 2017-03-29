@@ -21,7 +21,7 @@
         {% set type = (class(article) starts with 'Info') ? 'info' : 'communique' %}
         <article class="block-poster-search medias landscape-more">
             <div class="item communique">
-                <a href="{{ path('fdc_corporate_news_presssingle', {year: article.festival.year, type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
+                <a href="{{ path('fdc_corporate_news_presssingle', {type: type, 'format': article.newsFormat, 'slug': article|trans_fallback('slug') }) }}">
                     <div class="contain-img landscape">
                         {% if (class(article) == "StatementArticle" or class(article) == "InfoArticle") and article.header %}
                             {% set img = article.header %}

@@ -1,0 +1,40 @@
+
+{% if module.translations[app.request.getLocale()] is defined and module.translations[app.request.getLocale()] is not null %}
+    {% set translation = module.translations[app.request.getLocale()] %}
+    {% if module.image1 or translation.title1 or module.pdf1 or translation.description1 %}
+        <div class="contain-map">
+            <strong class="name">{{ translation.title1 }}</strong>
+            {% if module.image1 is not null %}
+                <img src="{% path module.image1|trans_fallback("file"), "543x326" %}" alt="" class="map">
+            {% endif %}
+            {% if module.pdf1 is not null %}
+                <a href="{% path module.pdf1|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+            {% endif %}
+            <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description1|raw }}</div>
+        </div>
+    {% endif %}
+    {% if module.image2 or translation.title2 or module.pdf2 or translation.description2 %}
+        <div class="contain-map">
+            <strong class="name">{{ translation.title2 }}</strong>
+            {% if module.image2 is not null %}
+                <img src="{% path module.image2|trans_fallback("file"), "543x326" %}" alt="" class="map">
+            {% endif %}
+            {% if module.pdf2 is not null %}
+                <a href="{% path module.pdf2|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+            {% endif %}
+            <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description2|raw }}</div>
+        </div>
+    {% endif %}
+    {% if module.image3 or translation.title3 or module.pdf3 or translation.description3 %}
+        <div class="contain-map">
+            <strong class="name">{{ translation.title3 }}</strong>
+            {% if module.image3 is not null %}
+                <img src="{% path module.image3|trans_fallback("file"), "543x326" %}" alt="" class="map">
+            {% endif %}
+            {% if module.pdf3 is not null %}
+                <a href="{% path module.pdf3|trans_fallback("file"), "reference" %}" class="btn ajax telecharger"><i class="icon icon_telecharger"></i>{{ 'ccm.telecharge'|trans }}</a>
+            {% endif %}
+            <div class="link"><i class="icon icon_a-votre-service"></i>{{ translation.description3|raw }}</div>
+        </div>
+    {% endif %}
+{% endif %}

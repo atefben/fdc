@@ -4,7 +4,6 @@ namespace Base\CoreBundle\Twig\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig_Extension;
-use Twig_SimpleFunction;
 
 /**
  * Class MediaExtension
@@ -25,16 +24,16 @@ class MediaPublicUrlExtension extends Twig_Extension
 
     public function getFilters()
     {
-        return array(
-            new \Twig_SimpleFilter('media_public_url', array($this, 'getMediaPublicUrl')),
-        );
+        return [
+            new \Twig_SimpleFilter('media_public_url', [$this, 'getMediaPublicUrl']),
+        ];
     }
 
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('media_public_url', array($this, 'getMediaPublicUrl')),
-        );
+        return [
+            new \Twig_SimpleFunction('media_public_url', [$this, 'getMediaPublicUrl']),
+        ];
     }
 
     /**
@@ -50,10 +49,8 @@ class MediaPublicUrlExtension extends Twig_Extension
     }
 
     /**
-     * getName function.
+     * @return string
      *
-     * @access public
-     * @return void
      */
     public function getName()
     {

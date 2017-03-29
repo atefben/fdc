@@ -10,7 +10,7 @@ var owInitValidateNewsletter = function() {
     });
 
     // on submit : check if there are errors in the form
-    $('.newsletter form').on('submit', function() {
+    $('.newsletter form').on('submit', function(event) {
 
         var input = $('.newsletter #email');
         var empty = false;

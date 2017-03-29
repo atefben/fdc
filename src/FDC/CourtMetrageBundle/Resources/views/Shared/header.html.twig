@@ -1,0 +1,175 @@
+<header>
+    <div id="top-bar">
+        <ul class="main-nav">
+            <li>
+                <a href="{{ header_fdc_com }}" target="_blank">{{ 'header.festival'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank">{{ 'header.fdc'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank">{{ 'header.cine'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ path('fdc_court_metrage_homepage') }}" class="active">{{ 'header.ccm'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ attribute(_context, 'header_mdf_'~ app.request.locale) }}" target="_blank">{{ 'header.mdf'|trans }}</a>
+            </li>
+        </ul>
+        <ul class="user-nav">
+            {#<li>#}
+                {#<a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>#}
+            {#</li>#}
+            <li class="lang">
+                <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }}</a>
+                <ul class="sub-languages">
+                    {% for locale in ccm_locales if locale != app.request.locale and routeName is not null %}
+                        {% set params = {'_locale' : locale} %}
+                        {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[locale] %}
+                            {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                        {% endif %}
+                        <li>
+                            <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale|upper }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="logo-wrapper">
+        <div class="container">
+            <div id="logo">
+                <a href="/"><img src="{{ asset('bundles/fdccourtmetrage/img/palme.svg') }}" alt="Cannes Court Metrage" class="palm" /></a>
+                <h1><a href="/"><img width="250" src="{{ asset('bundles/fdccourtmetrage/img/logo-ccm.png') }}" alt="Cannes Court Metrage" /></a></h1>
+                <h2><a href="/"><img width="110" src="{{ asset('bundles/fdccourtmetrage/img/logo-festival.png') }}" alt="Cannes Court Metrage" /></a></h2>
+                <p class="stick"><a href="/"><img width="215" src="{{ asset('bundles/fdccourtmetrage/img/logo-ccm.png') }}" alt="Cannes Court Metrage" /></a></p>
+            </div>
+            {% if menuPage is defined and menuPage is not null %}
+                {% set menuTranslation = menuPage.findTranslationByLocale(app.request.locale) %}
+                <div class="topiconsContainer">
+                    {% if menuTranslation.registerPicIsActive %}
+                        <div class="topIcons third{% if not menuTranslation.programPicIsActive and not menuTranslation.catalogPicIsActive %} icon-border-left{% endif %}">
+                            <a href="{{ menuTranslation.urlRegister }}" {% if fdc_court_metrage_scheme in menuTranslation.urlRegister %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/04-note.svg') }}"></i></a>
+                        </div>
+                    {% endif %}
+                    {% if menuTranslation.catalogPicIsActive %}
+                        <div class="topIcons second">
+                            <a href="{{ menuTranslation.urlCatalog }}" {% if fdc_court_metrage_scheme in menuTranslation.urlCatalog %}target="_blank"{% endif %}><img class="biggerIcon" src="{{ asset('bundles/fdccourtmetrage/img/05-open-book.svg') }}"></i></a>
+                        </div>
+                    {% endif %}
+                    {% if menuTranslation.programPicIsActive %}
+                        <div class="topIcons first{% if not menuTranslation.catalogPicIsActive %} icon-border-right{% endif %}">
+                            <a href="{{ menuTranslation.urlProgram }}" {% if fdc_court_metrage_scheme in menuTranslation.urlProgram %}target="_blank"{% endif %}><img src="{{ asset('bundles/fdccourtmetrage/img/01-calendar.svg') }}"></a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div id="sticky-user">
+            <ul class="user-nav">
+                {#<li>#}
+                    {#<a href="{{ attribute(_context, 'header_account_'~ app.request.locale) }}" class="account" target="_blank"><i class="icon icon_mon-compte"></i>{{ 'header.my_account'|trans }}</a>#}
+                {#</li>#}
+                <li class="lang">
+                    <a href="#" class="language"><i class="icon icon_langue"></i> {{ app.request.locale|upper }} </a>
+                    <ul class="sub-languages">
+                        {% for locale in ccm_locales if locale != app.request.locale and routeName is not null %}
+                            {% set params = {'_locale' : locale} %}
+                            {% if localeSlugs is defined and localeSlugs|length > 0 and localeSlugs[locale] %}
+                                {% set params = params|merge({'slug': localeSlugs[locale]}) %}
+                            {% endif %}
+                            <li>
+                                <a href="{{ path(routeName, routeParams|merge(params)) }}">{{ locale|upper }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="container">
+            <nav>
+                <ul class="main">
+                    {% if mainNavs is defined and mainNavs is not null %}
+                        {% for key, mainTab in mainNavs %}
+                            {% if mainTab.translatable.isActive %}
+                                {% set menuIsExtern = (fdc_court_metrage_scheme in mainTab.route ? true : false) %}
+                                {% if menuIsExtern == false or isValidMenuElement(mainTab.route) %}
+                                    <li>
+                                        {% set menuIsActive = ((mainTab.route|routeFromURL == routeName and routeName is not null)
+                                        or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_jury')
+                                        or (mainTab.route|routeFromURL == 'fdc_court_metrage_competition_selection' and routeName == 'fdc_court_metrage_competition_palmares') ? true : false)
+                                        or (isSFC(mainTab.route|routeFromURL) and mainTab.route|routeFromURL == routeName) %}
+                                        {% if subNavs[key] is defined and subNavs[key] is not null %}
+                                            {% for subTab in subNavs[key] %}
+                                                {% if subTab.translatable.isActive and subTab.route|routeFromURL == routeName  and routeName is not null and subTab.route|equalRouteParams(route_params) %}
+                                                    {% set menuIsActive = true %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <a href="{{ mainTab.route }}" {% if menuIsActive %}class="active"{% endif %} {% if menuIsExtern %}target="_blank"{% endif %}>{{ mainTab.name }}</a>
+                                        {% if subNavs[key] is defined and subNavs[key] is not null %}
+                                            <ul class="tcenter">
+                                                {% for subTab in subNavs[key] %}
+                                                    {% if subTab.translatable.isActive %}
+                                                        {% set submenuIsExtern = (fdc_court_metrage_scheme in subTab.route ? true : false) %}
+                                                        {% if submenuIsExtern == false or isValidMenuElement(subTab.route) %}
+                                                        {% set subIsActive = (subTab.route|routeFromURL == routeName and routeName is not null and subTab.route|equalRouteParams(route_params))
+                                                        or (isSFC(subTab.route|routeFromURL) and subTab.route|routeFromURL == routeName) %}
+                                                            <li>
+                                                                <a {% if subIsActive %}class="active"{% endif %} href="{{ subTab.route }}" {% if submenuIsExtern %}target="_blank"{% endif %}>{{ subTab.name }}</a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="selection">
+        <h2 class="title">{{ 'header.my_selection'|trans }}<strong>(<span></span>)</strong></h2>
+        <ul class="filters-selection">
+            <li><a href="#" data-selection='all' class="active">{{ 'header.all'|trans }}</a></li>
+            <li><a href="#" data-selection='article'>{{ 'header.articles'|trans }}</a></li>
+            <li><a href="#" data-selection='video'>{{ 'header.videos'|trans }}</a></li>
+            <li><a href="#" data-selection='audio'>{{ 'header.audios'|trans }}</a></li>
+            <li><a href="#" data-selection='suggestion'>{{ 'header.suggestions'|trans }}</a></li>
+        </ul>
+        <div id="slider-selection" class="owl-carousel"></div>
+        <div id="slider-suggestion" class="owl-carousel"></div>
+        <div id="toClone" class="article">
+            <article class="" data-format="" data-theme="">
+                <div class="image">
+                    <div class="image-wrapper">
+                        <img src="" alt="" />
+                    </div>
+                    <a href="" class="linkImage"></a>
+                    <span class="picto"></span>
+                </div>
+                <div class="info">
+                    <a href="#" class="category"></a><span class="date"></span> . <span class="hour"></span>
+                    <h2><a href="#"></a></h2>
+                </div>
+            </article>
+            <a href="#" class="delete"></a>
+        </div>
+    </div>
+    <div id="searchContainer">
+        <div class="container">
+            <form action="#">
+                <input id="inputSearch" class="suggestSearch" type="text" name="name" placeholder="{{ 'header.search.placeholder'|trans }}..." autocomplete="off" />
+                <i class="icon icon_recherche"></i><input id="submitSearch" type="submit" value="" /> <!-- todo -->
+            </form>
+            <ul id="suggest"></ul>
+        </div>
+    </div>
+</header>

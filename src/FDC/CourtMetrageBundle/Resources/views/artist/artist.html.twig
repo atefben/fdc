@@ -1,0 +1,314 @@
+{% extends 'FDCCourtMetrageBundle::base.html.twig' %}
+
+{% block main %}
+    <div id="main" class="single-article artist loading">
+        <div class="content-article">
+            <div class="container">
+                <div class="info">
+                    {% set profession = artist|trans_fallback('profession') %}
+                    {% if profession %}
+                        <span href="#" class="category">
+                            {{ artist|profession_gender('profession') }}
+                        </span>
+                    {% endif %}
+                    {% if artist.nationality %}
+                        <span class="city" {{ artist.nationality|content_lang('name') }}>
+                            {{ artist.nationality|trans_fallback('name') }}
+                            {% if artist.nationality2 %}, {{ artist.nationality2|trans_fallback('name') }}{% endif %}
+                        </span>
+                    {% endif %}
+                </div>
+                <h2 class="title-article">{{ artist.fullName }}</h2>
+                <div class="buttons">
+                    <a id="share-article" href="#" class="button"><i class="icon icon_share"></i>{{ 'ccm.artist.share'|trans }}</a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i>{{ 'ccm.artist.print'|trans }}</a>
+                </div>
+                {% set artistImage = artist_page_media(artist, app.request.locale) %}
+                {% if artistImage %}
+                    {% set hasImage = true %}
+                    <div class="single-photo">
+                        <div class="photo-container">
+                            {% set artistCredits = artist_page_credits(artist, app.request.locale) %}
+                            {% if artistImage %}
+                                {% if artistImage.width > artistImage.height %}
+                                    <img src="{% path artistImage, 'mobile' %}" height="485"
+                                         alt="{{ artist.fullName }}"/>
+                                {% else %}
+                                    <img src="{% path artistImage, '384x485' %}" alt="{{ artist.fullName }}"/>
+                                {% endif %}
+                                {% if artistCredits %}
+                                    <p class="caption" id="captionCopyright">© {{ artistCredits }}</p>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    {% set hasImage = false %}
+                {% endif %}
+                <div class="small-container">
+                    {% set biography = artist|trans_fallback('biography') %}
+                    {% if biography %}
+                        <div class="biographie">
+                            <h2 class="title title-cat-artist {% if hasImage == false %}bio-top-padding{% endif %}">{{ 'ccm.artist.biography'|trans }}</h2>
+                            <p class="paragraph" {{ artist|content_lang('biography') }}>
+                                {{ biography|raw }}
+                            </p>
+                        </div>
+                    {% endif %}
+                    {% if artist.films|length > 0 %}
+                        {% set countera = 0 %}
+                        {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
+                            {% if countera == 0 %}
+                                <h2 class="title title-art-artist {% if hasImage == false and biography|length == 0 %}hide-top-border{% endif %}">{{ 'ccm.artist.cannes_films'|trans }}</h2>
+                                <div class="contain-films-list">
+                                {% set countera = countera+1 %}
+                            {% endif %}
+                            <div class="item">
+                                {% if filmPerson.film.festival.id == festival %}
+                                    <a href="{{ path('fdc_court_metrage_movie_show', {'slug': filmPerson.film.slug}) }}">
+                                {% endif %}
+                                <div class="image">
+                                    {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
+                                    film: filmPerson.film,
+                                    film_format: '366x488',
+                                    film_attrs: {
+                                    alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
+                                    'data-object-fit': 'cover'
+                                    },
+                                    film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                    }) %}
+
+                                </div>
+                                <div class="content-text">
+                                    </ul>
+                                    {% set secondTitle = null %}
+                                    {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
+                                        {% set mainTitle = filmPerson.film.titleVO %}
+                                        {% set secondTitle = filmPerson.film|trans_fallback_movie('title') %}
+                                    {% else %}
+                                        {% set mainTitle = filmPerson.film.titleVO %}
+                                    {% endif %}
+                                    <span class="item-title">{{ mainTitle }}</span>
+                                    {% if secondTitle is not null %}
+                                        <span class="item-sub-title">{{ secondTitle }}</span>
+                                    {% endif %}
+                                    {% if filmPerson.film.festival %}
+                                        <span class="item-date">{{ filmPerson.film.festival.year }}</span>
+                                    {% endif %}
+                                    {% if filmPerson.film.selectionSection %}
+                                        <span class="item-categ" {{ filmPerson.film.selectionSection|content_lang('name') }}>{{ filmPerson.film.selectionSection|trans_fallback('name') }}</span>
+                                    {% endif %}
+                                    {% if filmPerson.functions|length > 0 %}
+                                        {% spaceless -%}
+                                            <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                            {% for filmPersonFunction in filmPerson.functions -%}
+                                                {{ loop.first == false ? ',' : '' }} {{ filmPerson.person|person_function_gender(filmPersonFunction.function, 'name') }}
+                                            {%- endfor %}
+                                                </span>
+                                        {%- endspaceless %}
+                                    {% endif %}
+                                </div>
+                                {% if filmPerson.film.festival.id == festival %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        {% if countera == 1 %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    {% set awardsCount = 0 %}
+                    {% for filmPerson in artist.films %}
+                        {% for awardAssociation in filmPerson.film.awards %}
+                            {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') and awardAssociation.person.id == artist.id) or
+                            (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
+                                {% set awardsCount = awardsCount + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% if awardsCount > 0 %}
+                        {% set counter = 0 %}
+                        {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
+                            {% for awardAssociation in filmPerson.film.awards %}
+                                {% if (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_FILM') and awardAssociation.person.id == artist.id) or
+                                (awardAssociation.award.prize.type == constant('Base\\CoreBundle\\Entity\\FilmPrizeInterface::TYPE_PERSON') and awardAssociation.person.id == artist.id) %}
+                                    {% if counter == 0 %}
+                                        <h2 class="title title-art-artist">{{ 'ccm.artist.palmares'|trans }}</h2>
+                                        <div class="contain-films-list">
+                                        {% set counter = counter+1 %}
+                                    {% endif %}
+                                    <div class="item">
+                                        {% if filmPerson.film.festival.id == festival %}
+                                            <a href="{{ path('fdc_court_metrage_movie_show', {'slug': filmPerson.film.slug}) }}">
+                                        {% endif %}
+                                        <div class="image">
+                                            {% include 'FDCCourtMetrageBundle:Shared:filmPoster.html.twig' with ({
+                                            film: filmPerson.film,
+                                            film_format: '366x488',
+                                            film_attrs: {
+                                            alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
+                                            'data-object-fit': 'cover'
+                                            },
+                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                            }) %}
+                                        </div>
+
+                                        <div class="content-text">
+                                            {% set secondTitle = null %}
+                                            {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
+                                                {% set mainTitle = filmPerson.film.titleVO %}
+                                                {% set secondTitle = filmPerson.film|trans_fallback_movie('title') %}
+                                            {% else %}
+                                                {% set mainTitle = filmPerson.film.titleVO %}
+                                            {% endif %}
+                                            <span class="item-title">{{ mainTitle }}</span>
+                                            {% if secondTitle is not null %}
+                                                <span class="item-sub-title">{{ secondTitle }}</span>
+                                            {% endif %}
+                                            {% if awardAssociation.award.festival %}
+                                                <span class="item-date">{{ awardAssociation.award.festival.year }}</span>
+                                            {% endif %}
+                                            <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
+                                                        {{- awardAssociation.award.prize|trans_fallback('title') -}}
+                                                {%- if awardAssociation.award.exAequo == 1 -%}
+                                                    {{ ' ' }}({{ 'award.ex_aequo'|trans }})
+                                                {%- endif -%}
+                                                    </span>
+                                            {% if filmPerson.functions|length > 0 %}
+                                                {% spaceless -%}
+                                                    <span class="item-details" {{ filmPerson.functions[0].function|content_lang('name') }}>
+                                                        {% for filmPersonFunction in filmPerson.functions -%}
+                                                            {{ loop.first == false ? ',' : '' }} {{ filmPerson.person|person_function_gender(filmPersonFunction.function, 'name') }}
+                                                        {%- endfor %}
+                                                        </span>
+                                                {%- endspaceless %}
+                                            {% endif %}
+                                        </div>
+                                        {% if filmPerson.film.festival.id == festival %}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        {% if counter == 1 %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if artist.juries|length > 0 %}
+                        <h2  class="title title-art-artist">{{ 'ccm.artist.jury'|trans }}</h2>
+                        <div class="jury">
+                            {% for jury in artist.juries %}
+                                {% if jury.function %}
+                                    <span class="rank" {{ jury.function|content_lang('name') }}>{{ jury.function|trans_fallback('name') }}</span>
+                                {% endif %}
+                                {% if jury.type %}
+                                    {% if jury.function %}
+                                        <span class="item-separate">-</span>
+                                    {% endif %}
+                                    <span class="role" {{ jury.type|content_lang('name') }}>{{ jury.type|trans_fallback('name') }}</span>
+                                {% endif %}
+                                {% if jury.festival %}
+                                    {% if jury.function or jury.type %}
+                                        <span class="item-separate">-</span>
+                                    {% endif %}
+                                    <span class="date">{{ jury.festival.year }}</span>
+                                {% endif %}
+                                {{ loop.last == false ? '<br>':'' }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="share">
+                <p>{{ 'ccm.artist.share_article'|trans }}</p>
+                {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
+                <div class="buttons square">
+                    <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ currentUrl }}&picture={% spaceless -%}{% if shareMedia is defined %}{% path shareMedia.file, '384x485' -%}{% elseif artist.portraitImage and artist.displayedImage == 0 %}{% path artist.portraitImage|trans_fallback('file'), 'reference' %}{% elseif artist.landscapeImage and artist.displayedImage == 1 %}{% path artist.landscapeImage|trans_fallback('file'), 'reference' %}{% elseif artistImage is not null and artist.displayedImage == 0 %}{% path artistImage, '384x485' %}{% elseif artistImage is not null and artist.displayedImage == 1 %}{% path artistImage, '625x384' %}{% endif %}{% endspaceless -%}&name={{ artist.fullName|url_encode(true) }}&caption={{ artist|profession_gender('profession') }}&description={% if biography %}{{ biography|raw|url_encode(true) }}{% else %}Cannes%20Court%20Métrage{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                       rel="nofollow" class="button facebook">
+                        <i class="icon icon_facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text={{ artist.fullName|url_encode(true) }} {{ currentUrl }}"
+                       rel="nofollow"
+                       class="button twitter">
+                        <i class="icon icon_twitter"></i>
+                    </a>
+                    <a href="#" class="button link self"><i class="icon icon_link"></i></a>
+                    <a href="#" class="button email self"><i class="icon icon_lettre"></i></a>
+                    <a href="#" class="button print" onclick="window.print()"><i class="icon icon_print"></i></a>
+                </div>
+            </div>
+            <div class="realisateurs">
+                <h1 class="title">{{ 'ccm.artist.filmmakers'|trans }}</h1>
+                <div id="slide-artist">
+                    {% for director in directors %}
+                        <div class="item first">
+                            <figure>
+                                <a href="{{ path('fdc_court_metrage_artist', {'slug': director.slug }) }}">
+                                    <div class="image">
+                                        {% set directorImage = director|person_image_portait %}
+                                        {% if directorImage %}
+                                            <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}"
+                                                 data-object-fit="cover">
+                                        {% else %}
+                                            {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
+                                            {% if media is empty %}
+                                                {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_JURY'))|first %}
+                                            {% endif %}
+                                            {% if media is empty %}
+                                                {% set photo = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR'))|first %}
+                                            {% endif %}
+                                            {% if media is not empty %}
+                                                <img src="{% path media, '210x284' %}" alt="{{ director.fullName }}"
+                                                     data-object-fit="cover">
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <figcaption>
+                                        <span class="name">{% include 'FDCCourtMetrageBundle:artist:checkAsianName.html.twig' with {'person': director, 'link': false}
+                                            %}</span>
+                                        <span class="rank" {{ director|content_lang('profession') }}>{{ director|profession_gender('profession') }}</span>
+                                    </figcaption>
+                                </a>
+                            </figure>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <span class="anim"></span>
+    </div>
+
+{% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {"breadcrumb":
+        [
+        {
+            "name" : 'breadcrumb.home'|trans,
+            "url"  : path('fdc_court_metrage_homepage')
+        },
+        {
+            "name" : 'breadcrumb.le_court_en_competition'|trans,
+            "url"  : path('fdc_court_metrage_competition_selection')
+        },
+        {
+            "name" : 'breadcrumb.jury'|trans,
+            "url"  : path('fdc_court_metrage_competition_jury')
+        },
+        {
+            "name" : artist.fullName,
+            "url"  : ''
+        }
+        ]
+    }
+%}
+    {{ render(controller('FDCCourtMetrageBundle:Default:shareEmail',
+    {'section': '',
+        'detail': '',
+        'title': artist.fullName,
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+        'artist' : artist.id
+    })) }}
+
+{% endblock main %}

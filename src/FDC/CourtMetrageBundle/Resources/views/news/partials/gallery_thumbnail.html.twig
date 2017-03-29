@@ -1,0 +1,5 @@
+{% if mediaImage is defined and mediaImage is not null %}
+<div data-id="{{ 'photo' ~ mediaImage.id }}" class="thumb {{ index is defined and index == 1 ? 'active' : '' }}" data-caption="<strong>{{ mediaImage|trans_fallback('legend') }}</strong>{% if mediaImage|trans_fallback('copyright') %} © {{ mediaImage|trans_fallback('copyright') }}{% endif %}">
+    {% thumbnail mediaImage|trans_fallback('file'), '97x61' %}
+</div>
+{% endif %}

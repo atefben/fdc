@@ -15,6 +15,7 @@
 {% endfor %}
 
 {% if hasPublishedMedias == true %}
+<div class="section photos">
     <div class="{% if class(widget) starts with 'StatementW' or class(widget) starts with 'InfoW' %}slideshow{% else %}slideshow{% endif %}">
         {% set file = "" %}
         <div class="slideshow-img">
@@ -71,9 +72,9 @@
             </div>
         </div>
         <p class="caption">
-            <strong>{{ firstLegend }}</strong>
-            {% if firstCopyright is not empty %} © {{ firstCopyright }}{% endif %}
+            <strong>{{ firstLegend }}{% if firstCopyright is not empty %} © {{ firstCopyright }}{% endif %}</strong>
         </p>
 
     </div>
+</div>
 {% endif %}

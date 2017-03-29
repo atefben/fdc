@@ -1,0 +1,21 @@
+{% macro name(person, link) %}
+    {% spaceless %}
+        {% if link|default(true) %}
+            {% if person.asianName %}
+                <a href="{{ path('fdc_corporate_artist_get', {slug: person.slug }) }}">
+                    <span class="names-a">{{- person.lastName|trim ~ ' ' ~ person.firstName|trim -}}</span>
+                </a>
+            {% else %}
+                <a href="{{ path('fdc_corporate_artist_get', {slug: person.slug }) }}">
+                    <span class="names-a">{{- person.fullName|trim -}}</span>
+                </a>
+            {% endif %}
+        {% else %}
+            {% if person.asianName %}
+                {{ person.lastName ~ ' ' ~ person.firstName }}
+            {% else %}
+                {{ person.fullName }}
+            {% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}

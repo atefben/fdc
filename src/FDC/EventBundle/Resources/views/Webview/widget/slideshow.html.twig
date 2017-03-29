@@ -1,13 +1,17 @@
 <div class="Article-slider-wrapper">
           <a class="Article-slider-prev" href="#"></a>
           <a class="Article-slider-next" href="#"></a>
-          <div class="Article-slider">
+          <div class="Article-slider"><!--
             {% for key, gallery in medias %}
-            <div class="Article-slider-item">
+            --><div class="Article-slider-item">
               <img src="{% path gallery.media|trans_fallback('file'), '640x400' %}"/>
-              <span class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</span> 
+              {% if gallery.media|trans_fallback('copyright') %}
+              <div class="Article-slider-caption"><strong>{{ gallery.media|trans_fallback('legend')}}</strong> ©{{ gallery.media|trans_fallback('copyright')|replace({'©': ''}) }}</div> 
+              {% endif %}
             </div>
+              <!--
             {% endfor %}
-          </div>
-          <div class="Article-slider-count"><strong>1</strong>/{{ medias|length }}</div>
+          --></div>
+        <div class="Article-slider-count cnta"><strong>1</strong>/{{ medias|length }}</div>
         </div>
+<div class="Article-slider-count cntb"><strong>1</strong>/{{ medias|length }}</div>

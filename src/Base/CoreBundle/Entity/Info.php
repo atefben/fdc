@@ -3,22 +3,16 @@
 namespace Base\CoreBundle\Entity;
 
 use Base\AdminBundle\Component\Admin\Export;
-use Base\CoreBundle\Util\TruncatePro;
-use \DateTime;
-
+use Base\CoreBundle\Component\Interfaces\NodeInterface;
+use Base\CoreBundle\Interfaces\TranslateMainInterface;
 use Base\CoreBundle\Util\SeoMain;
 use Base\CoreBundle\Util\Time;
-
+use Base\CoreBundle\Util\TranslateMain;
+use Base\CoreBundle\Util\TruncatePro;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Interfaces\TranslateMainInterface;
-
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -30,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"article" = "InfoArticle", "audio" = "InfoAudio", "image" = "InfoImage", "video" = "InfoVideo"})
  */
-abstract class Info implements TranslateMainInterface
+abstract class Info implements TranslateMainInterface, NodeInterface
 {
     use Time;
     use SeoMain;
@@ -82,6 +76,14 @@ abstract class Info implements TranslateMainInterface
      * @var boolean
      *
      * @ORM\Column(type="boolean", options={"default":0})
+     *
+     */
+    protected $displayedOnCorpoHome = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     protected $displayedMobile;
 
@@ -102,7 +104,7 @@ abstract class Info implements TranslateMainInterface
     protected $typeClone;
 
     /**
-     * @var InfoTag
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="InfoTag", mappedBy="info", cascade={"all"}, orphanRemoval=true)
      *
@@ -150,7 +152,7 @@ abstract class Info implements TranslateMainInterface
     protected $widgets;
 
     /**
-     * @var Site
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Site")
      *
@@ -245,13 +247,14 @@ abstract class Info implements TranslateMainInterface
         $this->sites = new ArrayCollection();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $string = null;
         $class = substr(strrchr(get_class($this), '\\'), 1);
 
         if ($this->getId()) {
             if ($this->findTranslationByLocale('fr') && $this->findTranslationByLocale('fr')->getTitle()) {
-                $string = $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
+                $string = "$class " . $this->truncate($this->findTranslationByLocale('fr')->getTitle(), 40, '...', true);
             } else {
                 $string = "$class {$this->getId()}";
             }
@@ -266,12 +269,12 @@ abstract class Info implements TranslateMainInterface
 
     public static function getTypes()
     {
-        return array(
+        return [
             'Base\CoreBundle\Entity\InfoArticle' => 'article',
             'Base\CoreBundle\Entity\InfoAudio'   => 'audio',
             'Base\CoreBundle\Entity\InfoImage'   => 'photo',
             'Base\CoreBundle\Entity\InfoVideo'   => 'video'
-        );
+        ];
     }
 
     /**
@@ -358,7 +361,7 @@ abstract class Info implements TranslateMainInterface
      * Add widgets
      *
      * @param \Base\CoreBundle\Entity\InfoWidget $widgets
-     * @return InfoArticleTranslation
+     * @return $this
      */
     public function addWidget(\Base\CoreBundle\Entity\InfoWidget $widgets)
     {
@@ -932,7 +935,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get typeClone
      *
-     * @return string 
+     * @return string
      */
     public function getTypeClone()
     {
@@ -955,7 +958,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get oldNewsId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOldNewsId()
     {
@@ -978,7 +981,7 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get oldNewsTable
      *
-     * @return string 
+     * @return string
      */
     public function getOldNewsTable()
     {
@@ -1001,10 +1004,28 @@ abstract class Info implements TranslateMainInterface
     /**
      * Get mobileDisplay
      *
-     * @return string 
+     * @return string
      */
     public function getMobileDisplay()
     {
         return $this->mobileDisplay;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDisplayedOnCorpoHome()
+    {
+        return $this->displayedOnCorpoHome;
+    }
+
+    /**
+     * @param bool $displayedOnCorpoHome
+     * @return $this
+     */
+    public function setDisplayedOnCorpoHome($displayedOnCorpoHome)
+    {
+        $this->displayedOnCorpoHome = $displayedOnCorpoHome;
+        return $this;
     }
 }

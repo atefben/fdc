@@ -1,0 +1,193 @@
+<div class="main-image">
+    {% set media = null %}
+    {% if film.imageCover %}
+        {% set media = film.imageCover|trans_fallback('file') %}
+    {% endif %}
+
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {%- set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first -%}
+    {% endif %}
+    {%- if media is empty -%}
+        {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') %}
+            {% set media = selfkitImage %}
+        {% endfor %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film.getSelfkitImages()|first %}
+        {% endif %}
+    {%- endif -%}
+
+    {% if film_attrs is not defined %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
+    {% endif %}
+
+    {% if film_format is not defined %}
+        {% set film_format = 'small' %}
+    {% endif %}
+
+    {% if media is not empty %}
+        {% set imgPath %}
+            {% path media, film_format %}
+        {% endset %}
+    {% else %}
+        {% set legacy = get_legacy_film_image(film) %}
+        {% if legacy %}
+            {% set imgPath = selfkit_amazon_url ~ legacy.fichier %}
+        {% else %}
+            {% set imgPath = film_image_default %}
+        {% endif %}
+    {% endif %}
+    <div class="img" style="background-image: url('{%- spaceless -%}{{ imgPath }}{%- endspaceless %}')"></div>
+    <div class="links">
+        <div class="container">
+            <a class="movies" href="{{ path('fdc_court_metrage_competition_selection') }}"><i class="icon icon_flecheGauche"></i>{{ 'ccm.all_movies'|trans }}</a>
+            <a class="programmation" href="http://www.festival-cannes.com/fr/press/programmation/" target="_blank"><i class="icon icon_programmation"></i>{{ 'ccm.see_schedule'|trans }}</a>
+        </div>
+    </div>
+    <div class="trailer">
+        {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+            {% set trans = get_available_video(movie.videoMain, false, app.request.locale) %}
+            <div class="video-container state-init video"
+                 data-facebook="//www.facebook.com/sharer.php?u=html.festival-cannes-2016.com.ohwee.fr&t=le%20titre"
+                 data-twitter="//www.twitter.com"
+                 data-link="//www.example.com"
+                 data-email="//www.gmail.com"
+                 data-file='[{% if trans.jobWebmState == 3 %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                 data-img="{{ imgPath }}">
+                <div id="video-movie-trailer" class="video-player"></div>
+                <div class="video-overlay"></div>
+                <div class="infos-bar">
+                    <div class="picto"><i class="icon icon_video"></i></div>
+                    <div class="info">
+                        <div class="vCenter">
+                            <div class="vCenterKid">
+                                <a href="#" class="category">{{ 'ccm.trailer'|trans }}</a><span class="date">{{ movie.videoMain.publishedAt|date('d.m.Y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(movie.videoMain.publishedAt|date('H:i'), true, true) }}</span>
+                                <p>{{ film.titleVO }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container container-top">
+    {% set hasVideo = false %}
+    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+        {% set hasVideo = true %}
+    {% endif %}
+    <div class="poster video">
+        {% if hasVideo == true %}
+            <a href="#" class="picto"><i class="icon icon_video"></i></a>
+        {% endif %}
+
+        {% set media = film.imageMain|trans_fallback('file') %}
+
+        {% if media is empty %}
+            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film.getSelfkitImages()|first %}
+        {% endif %}
+
+        {% if film_attrs is not defined %}
+            {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
+        {% endif %}
+
+        {% if media is not empty and film_format is not empty and film_attrs is not empty %}
+            <img src="{% path media, '293x397' %}" alt="{{ movie|trans_fallback('title')?:movie.titleVO }}" data-object-fit="cover">
+        {% else %}
+            {% set film_image_default_attrs = 'style="width: 293px;height: 397px;object-fit: cover;"' %}
+            {% set legacy = get_legacy_film_image(film) %}
+            {% set film_image_default = 'bundles/fdccourtmetrage/img/palmares/film_w293.jpg' %}
+            {% if legacy %}
+                <img src="{{ selfkit_amazon_url }}{{ legacy.fichier }}"
+                     alt="{{ legacy.titre?:'Affiche du film' }}"
+                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
+            {% else %}
+                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"
+                     data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="info-film tetiere-movie">
+        <div class="categories"><span>{{ 'ccm.in_competition'|trans }}</span>{% if movie.selectionSection %}<span>{{ movie.selectionSection|trans_fallback('name') }}</span>{% endif %}</div>
+        {% set secondTitle = null %}
+        {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
+            {% set mainTitle = movie.titleVO %}
+            {% set secondTitle = movie|trans_fallback_movie('title') %}
+        {% else %}
+            {% set mainTitle = movie.titleVO %}
+        {% endif %}
+        <h2>{{ mainTitle }}</h2>
+        {% if secondTitle != '' and secondTitle != null and mainTitle != secondTitle %}
+            <div class="title-original">({{ secondTitle }})</div>
+        {% endif %}
+        {% set directors = movie.getDirectors() %}
+        {% if directors|length > 0 %}
+        <p>{{ 'ccm.realized_by'|trans }} :
+            {% for director in directors %}
+                <a href="{{ path('fdc_court_metrage_artist', {'slug' : director.person.slug}) }}">{{ director.person.fullName }}</a>
+                {% if loop.last == false %}, {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+        <p>
+            {% if movie.productionYear is not null and movie.productionYear != 0 %}
+                {{ 'ccm.production_year'|trans }} : <span>{{ movie.productionYear }}</span>
+            {% endif %}
+            {% if movie.countries is not null and movie.countries|length > 0 %}
+                {{ 'ccm.country'|trans }} :
+                {% for country in movie.countries %}
+                    <span>{{ country.country|trans_fallback('name') }}{% if loop.last == false %}, {% endif %}</span>
+                {% endfor %}
+            {% endif %}
+            {% if movie.duration is not null and movie.duration > 0 %}
+                {% set duration = movie.duration|split('.') %}
+                {{ 'ccm.time'|trans }} : <span>{{ duration[0] }} {{ 'ccm.minutes'|trans }}</span>
+            {% endif %}
+            {% if movie.publishedAt is not null and app.request.locale == 'fr' %}
+                {{ 'ccm.release_date'|trans }} : <span>{{ movie.publishedAt|localizeddate('long', 'none', app.request.locale) }}</span>
+            {% endif %}
+        </p>
+    </div>
+    {% if movie.awards|length > 0 %}
+        <div class="palmares">
+            {% set awardsUnique = [] %}
+            {% for movieAward in movie.awards %}
+                {% if movieAward.award and movieAward.award.prize %}
+                    {% if movieAward.award.id not in awardsUnique %}
+                        {% set awardsUnique = awardsUnique|merge([movieAward.award.id]) %}
+                            <i class="icon icon_palme"></i>
+                            <p>{{ movieAward.award.prize|trans_fallback('title')|trim }}{% if movieAward.award.exAequo == 1 %}{{ ' ' }}({{ 'award.ex_aequo'|trans }}){% endif %}
+                                , {{ movieAward.award.festival.year }}</p></div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="info-film">
+        <div  class="synopsis">
+            <h3 class="title-section">{% if movie|trans_fallback('synopsis') %}{{ 'ccm.synopsis'|trans }}{% endif %}</h3>
+            <p>{{ movie|trans_fallback('synopsis')|nl2br|raw }}</p>
+        </div>
+    </div>
+</div>
