@@ -7815,6 +7815,11 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   font-size: .75rem;
 }
 
+.block-01-s .half-photos {
+  width: 663px;
+  margin: 0 auto;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
