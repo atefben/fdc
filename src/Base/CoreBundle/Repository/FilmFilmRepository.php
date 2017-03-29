@@ -190,8 +190,8 @@ class FilmFilmRepository extends EntityRepository
         $films = $qb->getQuery()->getResult();
 
         $day = date('w');
-        $weekStart = strtotime('-' . $day . ' days');
-        $weekEnd = strtotime('+' . (6 - $day) . ' days');
+        $weekStart = strtotime("last monday midnight",$day);
+        $weekEnd = strtotime("next sunday",$weekStart);
         $start = new \DateTime();
         $start->setTimestamp($weekStart);
         $start->setTime(0, 0, 0);
@@ -203,8 +203,8 @@ class FilmFilmRepository extends EntityRepository
 
         $previousWeek = strtotime("-1 week +1 day");
 
-        $previousWeekStart = strtotime("last sunday midnight",$previousWeek);
-        $previousWeekEnd = strtotime("next saturday",$previousWeekStart);
+        $previousWeekStart = strtotime("last monday midnight",$previousWeek);
+        $previousWeekEnd = strtotime("next sunday",$previousWeekStart);
 
         $previousStart = new \DateTime();
         $previousStart->setTimestamp($previousWeekStart);
