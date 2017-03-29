@@ -966,9 +966,13 @@ header #navigation ul.user li a {
     font-size: .75rem;
 }
 
-.block-01-s .half-photos {
-    width: 663px;
+.who-fdc .block-01-s .half-photos {
+    width: 730px;
     margin: 0 auto;
+
+    .half-photo {
+        width: 330px;
+    }
 }
 
 /* thomon - end fixes */
