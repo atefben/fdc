@@ -3717,7 +3717,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
       justify-content: center;
 }
 .ie .block-movie-preview .wrapper-item {
-  width: 87%;
+  width: 100%;
 }
 .block-movie-preview .wrapper-item .poster {
   width: 256px;

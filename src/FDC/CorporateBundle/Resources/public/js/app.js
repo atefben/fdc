@@ -7591,7 +7591,7 @@ $(document).ready(function () {
     if($('body').hasClass('ie') && $('.block-movie-preview').length){
         $('.block-movie-preview').each(function(){
             var img = $(this).find('.poster img');
-            var wrapper = img.parent();
+            var wrapper = img.closest('.poster');
             var leftMargin = (img.width() - wrapper.width()) / 2;
             wrapper.css('position','relative');
             img.css({
