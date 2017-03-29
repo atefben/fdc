@@ -853,6 +853,7 @@ form:
             image: Module 1 photo
         label:
             external_url: La valeur doit commencer par http ou https
+            help_relative_url: Pour un interne URL, fournir une URL relative avec une barre oblique, ex: /fr/jury<br>Pour un externe URL, fournir un URL absolu qui commence par http ou https
             plan_des_salles_sector: Sections
             plan_des_salles_sector_list: Navigation de gauche
             plan_des_salles_info: Nom de la section
@@ -883,7 +884,7 @@ form:
                 main_nav_conf: Configuration de l'onglet de navigation principal
                 main_nav_fo_translation_key: Touche de traduction de l'onglet principal de navigation
                 main_nav_route: URL
-                main_nav_help: Assurez-vous d'ajouter un URL valide
+                main_nav_help: Pour un interne URL, fournir une URL relative avec une barre oblique, ex: /fr/jury<br>Pour un externe URL, fournir un URL absolu qui commence par http ou https
                 main_nav_is_active: Cet onglet de navigation principal est actif?
                 sub_nav_conf: Configuration de l'onglet de navigation secondaire
                 sub_nav_list: Liste des onglets de navigation secondaire
