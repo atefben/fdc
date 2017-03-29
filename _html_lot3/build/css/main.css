@@ -16676,7 +16676,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.7rem;
 }
 .single-movie .single-article .nav.prev:hover {
-  border-color: none;
+  border-color: none !important;
 }
 .single-movie .single-article .nav.next {
   left: auto;
@@ -16689,7 +16689,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.7rem;
 }
 .single-movie .single-article .nav.next:hover {
-  border-color: none;
+  border-color: none !important;
 }
 .single-movie .single-article .text table td p {
   color: #666;
