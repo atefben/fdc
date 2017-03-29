@@ -1,0 +1,71 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% spaceless %}
+    {% set media = film.imageMain|trans_fallback('file') %}
+
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
+    {% endif %}
+    {% if media is empty %}
+        {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_POSTER') %}
+            {% set media = selfkitImage %}
+        {% endfor %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_MAIN') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% for selfkitImage in film.getSelfkitImages() if selfkitImage.oldMediaPhotoType == constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM') %}
+                {% set media = selfkitImage %}
+            {% endfor %}
+        {% endif %}
+        {% if media is empty %}
+            {% set media = film.getSelfkitImages()|first %}
+        {% endif %}
+    {% endif %}
+
+    {% if film_attrs is not defined %}
+        {% set film_attrs = {'alt': (film|trans_fallback('title')?:film.titleVO)} %}
+    {% endif %}
+
+    {% if film_format is not defined %}
+        {% set film_format = 'small' %}
+    {% endif %}
+
+
+    {% if display_film_path is defined and display_film_path %}
+        {% if media is not empty %}
+            {% path media, film_format %}
+        {% else %}
+            {{ asset(film_image_default) }}
+        {% endif %}
+    {% else %}
+        {% if corpo is defined %}
+            {% if film_attrs is defined %}
+                {% set film_attrs = {style:"width: 183px;height: 244px;object-fit: cover;"} %}
+            {% else %}
+                {% set film_attrs = film_attrs|merge({style:"width: 183px;height: 244px;object-fit: cover;"}) %}
+            {% endif %}
+        {% endif %}
+        {% if media is not empty and film_format is not empty and film_attrs is not empty %}
+            {% path media, film_format %}
+        {% else %}
+            {% if corpo is defined %}
+                {% if film_image_default_attrs is defined %}
+                    {% set film_image_default_attrs = film_image_default_attrs ~ 'style="width: 183px;height: 244px;object-fit: cover;"' %}
+                {% else %}
+                    {% set film_image_default_attrs = 'style="width: 183px;height: 244px;object-fit: cover;"' %}
+                {% endif %}
+            {% endif %}
+            {% set legacy = get_legacy_film_image(film) %}
+            {{ asset(film_image_default) }}
+        {% endif %}
+    {% endif %}
+{% endspaceless %}
