@@ -3406,7 +3406,20 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-  
+
+  if($('.content-movie').length) {
+    $('.content-movie .prevmovie').on('click', function (e) {
+      console.log('click');
+      $('.content-movie .nav.prev').trigger('click');
+    });
+
+    $('.content-movie .nextmovie').on('click', function (e) {
+      console.log('click');
+      $('.content-movie .nav.next').trigger('click');
+    });
+  }
+
+
   //fix tatiana
   if($('.single-movie').length) {
     var h = $('.press[data-section]').height();
@@ -3454,6 +3467,8 @@ $(document).ready(function() {
     }
   }
   /* end tetiere height computing */
+
+
 
   if($('.single-movie').length) {
 
@@ -3546,14 +3561,6 @@ $(document).ready(function() {
       } else {
         $('.nextmovie').addClass('show');
       }
-    });
-
-    $('body').on('click', '.single-movie .prevmovie', function(e) {
-      $('.single-movie .nav.prev').trigger('click');
-    });
-
-    $('body').on('click', '.single-movie .nextmovie', function(e) {
-      $('.single-movie .nav.next').trigger('click');
     });
 
     // previous and next over
@@ -7591,7 +7598,7 @@ $(document).ready(function () {
     if($('body').hasClass('ie') && $('.block-movie-preview').length){
         $('.block-movie-preview').each(function(){
             var img = $(this).find('.poster img');
-            var wrapper = img.parent();
+            var wrapper = img.closest('.poster');
             var leftMargin = (img.width() - wrapper.width()) / 2;
             wrapper.css('position','relative');
             img.css({

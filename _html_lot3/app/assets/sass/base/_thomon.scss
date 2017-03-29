@@ -660,8 +660,8 @@ header #navigation ul.user li a .icon {
     color: $gold;
 }
 
-.article-single .text a.button,
-.article-single .text .button a {
+.article-single .text a.button:hover,
+.article-single .text .button a:hover {
     background: $gold;
     color: #fff;
 }
@@ -957,5 +957,13 @@ header #navigation ul.user li a {
     }
 }
 
+.article-single .half-photo {
+    width: 50%;
+}
+
+.article-single .small-pres p.caption strong,
+.article-single .pres-honneur p.caption strong {
+    font-size: .75rem;
+}
 
 /* thomon - end fixes */

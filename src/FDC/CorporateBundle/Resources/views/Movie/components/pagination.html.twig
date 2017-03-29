@@ -6,6 +6,7 @@
 {% if next is not null %}
     {{ macroMovie.navigation(next, 'nextmovie') }}
 {% endif %}
+
 <div class="arrows">
     {% if prev is not null %}
         <a href="{{ path('fdc_corporate_movie_get', {'slug':  prev.slug }) }}" class="nav prev"><i

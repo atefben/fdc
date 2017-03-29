@@ -3717,7 +3717,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
       justify-content: center;
 }
 .ie .block-movie-preview .wrapper-item {
-  width: 87%;
+  width: 100%;
 }
 .block-movie-preview .wrapper-item .poster {
   width: 256px;
@@ -7549,8 +7549,8 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
-.article-single .text a.button,
-.article-single .text .button a {
+.article-single .text a.button:hover,
+.article-single .text .button a:hover {
   background: #c8a461;
   color: #fff;
 }
@@ -7804,6 +7804,15 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 }
 .block-contact .item.i-2 a.button {
   margin-top: 22px;
+}
+
+.article-single .half-photo {
+  width: 50%;
+}
+
+.article-single .small-pres p.caption strong,
+.article-single .pres-honneur p.caption strong {
+  font-size: .75rem;
 }
 
 /* thomon - end fixes */
