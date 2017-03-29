@@ -3406,16 +3406,15 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-
   if($('.content-movie').length) {
-    $('body').on('click', '.content-movie .prevmovie', function (e) {
+    $('.content-movie .prevmovie').on('click', function (e) {
       console.log('click');
       $('.content-movie .nav.prev').trigger('click');
     });
 
-    $('body').on('click', '.content-movie .nextmovie', function (e) {
+    $('.content-movie .nextmovie'.on('click', function (e) {
       console.log('click');
-      $('.single-movie .nav.next').trigger('click');
+      $('.content-movie .nav.next').trigger('click');
     });
   }
 
