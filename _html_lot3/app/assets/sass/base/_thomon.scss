@@ -956,4 +956,8 @@ header #navigation ul.user li a {
     width: 420px;
 }
 
+div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .owl-stage {
+    min-width: 999999px;
+}
+
 /* thomon - end fixes */

@@ -5294,7 +5294,6 @@ var owinitSlideShow = function (slider, hash) {
                 $(this).parent().addClass('active center');
                 var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
                 var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-                console.log('affiche index',index);
                 openSlideShow(slider,hash, true, index);
             })
 
