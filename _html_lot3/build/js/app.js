@@ -5376,7 +5376,6 @@ var openSlideShow = function (slider, hash, affiche) {
             }
 
             if($('.affiche-fdc').length ) {
-                console.log('switch data one');
                 var src = $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).parent().find('.infos  .name-f').html();
@@ -5390,7 +5389,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             } else if($('.photo-module').length ) {
-                console.log('switch data two');
                 var src = $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).find('a').attr('title');
@@ -5404,7 +5402,6 @@ var openSlideShow = function (slider, hash, affiche) {
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
-                console.log('switch data three');
                 var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
                 
                 if(typeof getTitle === 'undefined'){

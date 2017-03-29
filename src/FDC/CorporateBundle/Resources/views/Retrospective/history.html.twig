@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}
-    article-single edition-69 story-movie dark not-mobile
+    article-single edition-69 {%if if archives is defined and archives %}story-movie {% endif %}dark not-mobile
 {% endblock bodyClass %}
 {% block body %}
 
