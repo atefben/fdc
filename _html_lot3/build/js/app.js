@@ -3409,12 +3409,10 @@ $(document).ready(function() {
 
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
-      e.preventDefault();
       $('.content-movie .arrows .nav.prev').trigger('click');
     });
 
     $('.content-movie .nextmovie').on('click', function (e) {
-      e.preventDefault();
       $('.content-movie .arrows .nav.next').trigger('click');
     });
   }
