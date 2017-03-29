@@ -7,13 +7,11 @@ $(document).ready(function() {
 
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
-      console.log('click');
-      $('.content-movie .nav.prev').trigger('click');
+      $('.content-movie .prevmovie a.img').trigger('click');
     });
 
     $('.content-movie .nextmovie').on('click', function (e) {
-      console.log('click');
-      $('.content-movie .nav.next').trigger('click');
+      $('.content-movie .nextmovie a.img').trigger('click');
     });
   }
 
