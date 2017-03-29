@@ -289,6 +289,8 @@ sonata_media:
                 455x348: { width: 455, height: 348, quality: 100, constraint: false }
                 # ccm participer plans
                 543x326: { width: 543 , height: 326 , quality: 100, constraint: false }
+                # corpo sortie de cannes
+                674x382: { width: 674 , height: 382 , quality: 100, constraint: false }
 
         media_image_simple:
             providers:
@@ -373,6 +375,8 @@ sonata_media:
                 1406x886: { width: 1406 , height: 886 , quality: 100, constraint: false }
                 # ccm pros image
                 230x230: { width: 230 , height: 230 , quality: 100, constraint: false }
+                # corpo sortie de cannes
+                674x382: { width: 674 , height: 382 , quality: 100, constraint: false }
 
         media_audio:
             providers:

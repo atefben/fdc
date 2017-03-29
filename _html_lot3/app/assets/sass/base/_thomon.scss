@@ -660,6 +660,17 @@ header #navigation ul.user li a .icon {
     color: $gold;
 }
 
+.article-single .text a.button,
+.article-single .text .button a {
+    background: $gold;
+    color: #fff;
+}
+
+.test {
+    position: static;
+}
+
+
 /* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
     min-width: 999999px;    
@@ -932,5 +943,19 @@ header #navigation ul.user li a {
 .block-contact .title-25 {
     letter-spacing: 3px;
 }
+
+.block-contact {
+    padding-bottom: 55px;
+}
+
+.block-contact .item.i-2 {
+    width: 241px;
+    float: right;
+
+    a.button {
+        margin-top: 22px;
+    }
+}
+
 
 /* thomon - end fixes */

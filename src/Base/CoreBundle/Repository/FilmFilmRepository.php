@@ -159,7 +159,9 @@ class FilmFilmRepository extends EntityRepository
     }
 
     /**
-     * @param $dateTime
+     * @param $locale
+     * @param string $site
+     * @param null $now
      * @return FilmFilm[]
      */
     public function getFilmsReleases($locale, $site = 'site-evenementiel', $now = null)
@@ -180,13 +182,60 @@ class FilmFilmRepository extends EntityRepository
             ->innerJoin('mv.translations', 'videotranslations')
             ->andWhere('s.slug = :slugSite')
             ->setParameter(':slugSite', $site)
-            ;
+            ->addOrderBy('f.publishedAt', 'asc')
+        ;
+
         $this->addTranslationQueries($qb, 'videotranslations', $locale);
 
-        return
-            $qb->getQuery()
-            ->getResult()
-            ;
+        $films = $qb->getQuery()->getResult();
+
+        $day = date('w');
+        $weekStart = strtotime("last monday midnight",$day);
+        $weekEnd = strtotime("next sunday",$weekStart);
+        $start = new \DateTime();
+        $start->setTimestamp($weekStart);
+        $start->setTime(0, 0, 0);
+        $start = $start->getTimestamp();
+        $end = new \DateTime();
+        $end->setTimestamp($weekEnd);
+        $end->setTime(23, 59, 59);
+        $end = $end->getTimestamp();
+
+        $previousWeek = strtotime("-1 week +1 day");
+
+        $previousWeekStart = strtotime("last monday midnight",$previousWeek);
+        $previousWeekEnd = strtotime("next sunday",$previousWeekStart);
+
+        $previousStart = new \DateTime();
+        $previousStart->setTimestamp($previousWeekStart);
+        $previousStart->setTime(0, 0, 0);
+        $previousStart = $previousStart->getTimestamp();
+        $previousEnd = new \DateTime();
+        $previousEnd->setTimestamp($previousWeekEnd);
+        $previousEnd->setTime(23, 59, 59);
+        $previousEnd = $previousEnd->getTimestamp();
+
+        $currentWeek = [];
+        $previous = [];
+        $old = [];
+        $others = [];
+
+        foreach ($films as $film) {
+            if ($film instanceof FilmFilm) {
+                $time = $film->getPublishedAt()->getTimestamp();
+                if ($time >= $start && $time <= $end) {
+                    $currentWeek[] = $film;
+                } elseif ($time >= $previousStart && $time <= $previousEnd) {
+                    $previous[] = $film;
+                }  elseif ($time < $start) {
+                    $old[] = $film;
+                } else {
+                    $others[] = $film;
+                }
+            }
+        }
+
+        return array_merge($currentWeek, $others, $old, $previous);
     }
 
     /**

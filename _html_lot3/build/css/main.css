@@ -4884,7 +4884,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .85rem;
   line-height: 1.8em;
   margin-bottom: 30px;
-  color: #000 !important;
 }
 .block-contact .bold-1, .block-contact h3 {
   font-size: .85rem;
@@ -7550,6 +7549,16 @@ header #navigation ul.user li a .icon {
   color: #c8a461;
 }
 
+.article-single .text a.button,
+.article-single .text .button a {
+  background: #c8a461;
+  color: #fff;
+}
+
+.test {
+  position: static;
+}
+
 /* hotfix bad width calculation */
 .block-diaporama .owl-stage-outer .owl-stage {
   min-width: 999999px;
@@ -7783,6 +7792,18 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 
 .block-contact .title-25 {
   letter-spacing: 3px;
+}
+
+.block-contact {
+  padding-bottom: 55px;
+}
+
+.block-contact .item.i-2 {
+  width: 241px;
+  float: right;
+}
+.block-contact .item.i-2 a.button {
+  margin-top: 22px;
 }
 
 /* thomon - end fixes */
@@ -13910,6 +13931,18 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .edition-69.dark .contain-img-honneur .copy {
   text-align: left;
   color: #666666;
+}
+.who-fdc .contain-img-honneur .copy {
+  text-align: left;
+  color: #666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  margin: 20px 0;
+  display: block;
+}
+.who-fdc .contain-img-honneur img {
+  width: 100%;
+  display: block;
 }
 
 .retrospective .poster .block-push-top .vFlexAlign, .retrospective .palmares .block-push-top .vFlexAlign, .retrospective .article-single .block-push-top .vFlexAlign, .retrospective .articles-list .block-push-top .vFlexAlign {
