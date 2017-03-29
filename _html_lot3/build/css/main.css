@@ -16681,7 +16681,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.7rem;
 }
 .single-movie .single-article .nav.prev:hover {
-  border-color: #141414;
+  border-color: none;
 }
 .single-movie .single-article .nav.next {
   left: auto;
@@ -16692,6 +16692,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 33px;
   color: #000;
   font-size: 0.7rem;
+}
+.single-movie .single-article .nav.next:hover {
+  border-color: none;
 }
 .single-movie .single-article .text table td p {
   color: #666;
