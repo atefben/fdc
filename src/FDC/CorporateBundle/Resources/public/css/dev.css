@@ -13,3 +13,7 @@
   text-align: center;
   padding-bottom: 20px; 
 }
+
+.isotope-01 .item.block-poster img.portrait {
+  display:none;
+}
