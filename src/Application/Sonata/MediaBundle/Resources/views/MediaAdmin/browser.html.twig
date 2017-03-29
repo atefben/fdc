@@ -102,7 +102,7 @@
                         <tbody>
                             {% for object in admin.datagrid.results %}
                                 <tr>
-                                    {% for field_description in admin.list.elements %}
+                                    {% for field_description in admin.list.elements %} 
                                         {% if field_description.getOption('code') == '_batch' or field_description.name == '_action' %}
                                         {# Disable batch and actions #}
                                         {% elseif field_description.name == 'name' %}
