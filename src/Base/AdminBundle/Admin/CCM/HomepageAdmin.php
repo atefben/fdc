@@ -80,7 +80,7 @@ class HomepageAdmin extends Admin
                         'label'              => 'form.ccm.label.a_propos.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
-                        'sonata_help' => 'form.ccm.label.help_absolute_url',
+                        'sonata_help' => 'form.ccm.label.help_relative_url',
                     ),
 
                 )

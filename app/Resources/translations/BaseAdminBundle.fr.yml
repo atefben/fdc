@@ -853,7 +853,7 @@ form:
             image: Module 1 photo
         label:
             external_url: La valeur doit commencer par http ou https
-            help_absolute_url: Fournir une URL relative avec une barre oblique, ex: /fr/jury
+            help_relative_url: Pour un interne URL, fournir une URL relative avec une barre oblique, ex: /fr/jury<br>Pour un externe URL, fournir un URL absolu qui commence par http ou https
             plan_des_salles_sector: Sections
             plan_des_salles_sector_list: Navigation de gauche
             plan_des_salles_info: Nom de la section
