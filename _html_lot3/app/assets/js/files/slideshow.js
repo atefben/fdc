@@ -15,7 +15,9 @@ var owinitSlideShow = function (slider, hash) {
                 slider = $('.all-contain');
                 $(this).parent().addClass('active center');
                 var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                openSlideShow(slider,hash, true);
+                var index = $(this).closest('.block-movie-preview');
+                console.log('affiche index',index);
+                openSlideShow(slider,hash, true, index);
             })
 
         } else if($('.article-single').length){
@@ -59,10 +61,11 @@ var owinitSlideShow = function (slider, hash) {
 }
 
 
-var openSlideShow = function (slider, hash, affiche) {
+var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
+    //handle undefined for other uses cases than affiches slider
+    fdcAfficheIndex = typeof fdcAfficheIndex !== 'undefined' ? fdcAfficheIndex : -1;
     $('html').addClass('slideshow-open');
 
-    
     if($('.medias').length > 0 || $('.media-library').length > 0) {
         slider = $('.isotope-01');
     }
@@ -181,6 +184,12 @@ var openSlideShow = function (slider, hash, affiche) {
             }
         }
     }
+
+    //affiche fdc current index
+    if(fdcAfficheIndex > -1){
+        centerElement = fdcAfficheIndex;
+    }
+
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
         var hashPush = '#'+hash;
