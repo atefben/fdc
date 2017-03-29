@@ -4,6 +4,7 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
+  
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       console.log('click');
