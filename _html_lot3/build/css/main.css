@@ -13922,6 +13922,17 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   text-align: left;
   color: #666666;
 }
+.who-fdc .contain-img-honneur .copy {
+  text-align: left;
+  color: #666666;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-size: 0.750rem;
+  margin: 20px 0;
+}
+.who-fdc .contain-img-honneur img {
+  width: 100%;
+  display: block;
+}
 
 .retrospective .poster .block-push-top .vFlexAlign, .retrospective .palmares .block-push-top .vFlexAlign, .retrospective .article-single .block-push-top .vFlexAlign, .retrospective .articles-list .block-push-top .vFlexAlign {
   height: calc( 100% - 42px );
