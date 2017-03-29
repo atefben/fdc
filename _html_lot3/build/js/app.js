@@ -3409,11 +3409,14 @@ $(document).ready(function() {
 
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
-      $('.content-movie .arrows .nav.prev').trigger('click');
+      var link = $('.content-movie .arrows .nav.prev').attr('href');
+      document.location.href = link;
     });
 
     $('.content-movie .nextmovie').on('click', function (e) {
-      $('.content-movie .arrows .nav.next').trigger('click');
+      var link = $('.content-movie .arrows .nav.next').attr('href');
+      console.log(link);
+      document.location.href = link;
     });
   }
 
