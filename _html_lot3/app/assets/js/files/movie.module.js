@@ -13,7 +13,6 @@ $(document).ready(function() {
 
     $('.content-movie .nextmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.next').attr('href');
-      console.log(link);
       document.location.href = link;
     });
   }
