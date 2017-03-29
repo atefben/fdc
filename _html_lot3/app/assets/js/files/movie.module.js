@@ -4,7 +4,20 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-  
+
+  if($('.content-movie').length) {
+    $('body').on('click', '.content-movie .prevmovie', function (e) {
+      console.log('click');
+      $('.content-movie .nav.prev').trigger('click');
+    });
+
+    $('body').on('click', '.content-movie .nextmovie', function (e) {
+      console.log('click');
+      $('.single-movie .nav.next').trigger('click');
+    });
+  }
+
+
   //fix tatiana
   if($('.single-movie').length) {
     var h = $('.press[data-section]').height();
@@ -52,6 +65,8 @@ $(document).ready(function() {
     }
   }
   /* end tetiere height computing */
+
+
 
   if($('.single-movie').length) {
 
@@ -144,14 +159,6 @@ $(document).ready(function() {
       } else {
         $('.nextmovie').addClass('show');
       }
-    });
-
-    $('body').on('click', '.single-movie .prevmovie', function(e) {
-      $('.single-movie .nav.prev').trigger('click');
-    });
-
-    $('body').on('click', '.single-movie .nextmovie', function(e) {
-      $('.single-movie .nav.next').trigger('click');
     });
 
     // previous and next over
