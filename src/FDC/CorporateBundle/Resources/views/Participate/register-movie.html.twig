@@ -51,7 +51,7 @@
                 ( section.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_PUBLISHED') and app.request.locale != 'fr' and section.procedure.findTranslationByLocale('fr').status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATED')) %}
 
                     <div class="block-contain-txt-register-movie"
-                         data-article="{{ section.procedure|trans_fallback('title')|replace({' ':'-'})|replace({',':'-'})|lower }}">
+                         data-article="{{ section.procedure|trans_fallback('title')|urlize }}">
                         <div class="block-01-ms">
                             <h4>{{ section.procedure|trans_fallback('title') }}</h4>
                             {{ section.procedure|trans_fallback('procedureContent')|raw }}
