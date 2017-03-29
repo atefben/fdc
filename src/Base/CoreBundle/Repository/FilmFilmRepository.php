@@ -209,7 +209,7 @@ class FilmFilmRepository extends EntityRepository
         $previousStart = new \DateTime();
         $previousStart->setTimestamp($previousWeekStart);
         $previousStart->setTime(0, 0, 0);
-        $previousStart = $start->getTimestamp();
+        $previousStart = $previousStart->getTimestamp();
         $previousEnd = new \DateTime();
         $previousEnd->setTimestamp($previousWeekEnd);
         $previousEnd->setTime(23, 59, 59);
