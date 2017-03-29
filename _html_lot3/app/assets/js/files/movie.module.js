@@ -4,8 +4,9 @@ var videoMovie;
 // Single Movie
 // =========================
 $(document).ready(function() {
-
+  console.log('lalal');
   if($('.content-movie').length) {
+    console.log('la');
     $('body').on('click', '.content-movie .prevmovie', function (e) {
       console.log('click');
       $('.content-movie .nav.prev').trigger('click');
@@ -13,7 +14,7 @@ $(document).ready(function() {
 
     $('body').on('click', '.content-movie .nextmovie', function (e) {
       console.log('click');
-      $('.single-movie .nav.next').trigger('click');
+      $('.content-movie .nav.next').trigger('click');
     });
   }
 
