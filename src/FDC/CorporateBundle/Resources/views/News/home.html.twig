@@ -279,7 +279,7 @@
                                          data-playlist='[
                                               {% for movie in filmReleases %}
                                                 {%- if movie.videoMain and movie.videoMain.image -%}
-                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '135x185') %}
+                                                    {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '674x382') %}
                                                 {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                                     {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                                 {%- endif -%}
