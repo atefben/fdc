@@ -7839,7 +7839,8 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 }
 
 .who-fdc .half-photos .half-photo .caption strong {
-  font-weight: normal;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 300;
 }
 
 .who-fdc .slideshow .caption strong {

@@ -987,12 +987,13 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 }
 
 .who-fdc .half-photos .half-photo .caption strong {
-    font-weight: normal;
+    font-family: $CamphorRegular;
+    font-weight: 300;
 }
 
 .who-fdc .slideshow .caption strong {
     font-family: $CamphorRegular;
-    font-weight: 300;  
+    font-weight: 300;
 }
 
 .slideshow .slideshow-img .images .img img {
