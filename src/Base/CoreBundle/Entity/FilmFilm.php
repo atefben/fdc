@@ -3,22 +3,17 @@
 namespace Base\CoreBundle\Entity;
 
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
-use Base\CoreBundle\Entity\FilmSelectionSectionInterface;
 use Base\CoreBundle\Interfaces\FilmFunctionInterface;
 use Base\CoreBundle\Interfaces\TranslateMainInterface;
-use Base\CoreBundle\Util\TranslateMain;
-use Base\CoreBundle\Util\Time;
 use Base\CoreBundle\Util\Soif;
-
+use Base\CoreBundle\Util\Time;
+use Base\CoreBundle\Util\TranslateMain;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 use FDC\CourtMetrageBundle\Entity\CcmNewsFilmFilmAssociated;
 use Gedmo\Mapping\Annotation as Gedmo;
-
 use JMS\Serializer\Annotation as Serializer;
 use JMS\Serializer\Annotation\Groups;
-use JMS\Serializer\Annotation\Since;
 use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
@@ -35,6 +30,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     use TranslateMain;
     use Time;
     use Soif;
+
+    protected $api2017 = false;
 
     /**
      * @var string
@@ -682,10 +679,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                 if ($person->getFunctions()->count() > 0) {
                     foreach ($person->getFunctions() as $personFunction) {
                         if ($personFunction->getFunction()) {
-                            $exclude = array(
+                            $exclude = [
                                 FilmFunctionInterface::FUNCTION_DIRECTOR,
                                 FilmFunctionInterface::FUNCTION_ACTOR,
-                            );
+                            ];
                             $personFunctionFunctionId = $personFunction->getFunction()->getId();
 
                             $clone = clone $person;
@@ -1951,25 +1948,25 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         $contacts = $this->getContacts();
 
-        $collection = array();
+        $collection = [];
 
         $translation = $this->selectionSection ? $this->selectionSection->findTranslationByLocale('fr') : null;
 
         if ($translation && mb_strtoupper($translation->getName()) == 'CINÉFONDATION') {
-            $order = array(
+            $order = [
                 FilmContactInterface::TYPE_PRODUCTION_COMPANY,
                 FilmContactInterface::TYPE_FRENCH_DISTRIBUTION,
                 FilmContactInterface::TYPE_SCHOOL,
-            );
+            ];
         } else {
-            $order = array(
+            $order = [
                 FilmContactInterface::TYPE_PRODUCTION_COMPANY,
                 FilmContactInterface::TYPE_MINOR_PRODUCTION_COMPANY,
                 FilmContactInterface::TYPE_FRENCH_DISTRIBUTION,
                 FilmContactInterface::TYPE_FRENCH_PRESS_COMPANY,
                 FilmContactInterface::TYPE_INTERNATIONAL_PRESS_COMPANY,
                 FilmContactInterface::TYPE_INTERNATIONAL_SELLING,
-            );
+            ];
         }
 
         foreach ($order as $type) {
@@ -2067,19 +2064,20 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     {
         $now = time();
 
-        $days = array();
+        $days = [];
         $typeUCR = false;
         if (!isset($_GET['v'])) {
-            $exclude = array('Séance de presse', 'Conférence de presse');
+            $exclude = ['Séance de presse', 'Conférence de presse'];
         } else {
-            $exclude = array();
+            $exclude = [];
         }
 
-        $projections = array();
         foreach ($this->projectionProgrammationFilms as $projection) {
             if ($projection instanceof FilmProjectionProgrammationFilm) {
-
-                if ($projection->getProjection()->getProgrammationSection() != 'Cinéfondation' && $projection->getProjection()->getProgrammationSection() != 'En Compétition - Courts métrages') {
+                $programSection = $projection->getProjection()->getProgrammationSection();
+                $cond = $programSection != 'Cinéfondation';
+                $cond = $cond && $programSection != 'En Compétition - Courts métrages';
+                if ($cond || $this->api2017) {
                     $typeUCR = false;
                     if ($this->getSelectionSection()->getId() == FilmSelectionSectionInterface::FILM_SELECTION_SECTION_UNCERTAINREGARD) {
                         $typeUCR = true;
@@ -2097,11 +2095,8 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
                         $newTime->setTime(3, 0, 0);
                         if (!array_key_exists($dayKey, $days)) {
                             $days[$dayKey]['date'] = $newTime->getTimestamp();
-                            $days[$dayKey]['projections'] = array();
+                            $days[$dayKey]['projections'] = [];
                         }
-                        /**
-                         * @todo : remove this condition
-                         */
                         if (!in_array($projection->getProjection()->getType(), $exclude)) {
                             $days[$dayKey]['projections'][$key] = $projection->getProjection();
                         }
@@ -2351,7 +2346,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      */
     public function getPublishedAssociatedMediaVideos($locale)
     {
-        $collection = array();
+        $collection = [];
         foreach ($this->associatedMediaVideos as $associatedMediaVideo) {
             if ($associatedMediaVideo) {
                 $mediaVideo = $associatedMediaVideo->getMediaVideo();
@@ -2810,5 +2805,10 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
     public function getCcmNews()
     {
         return $this->ccmNews;
+    }
+
+    public function setApi2017($api2017)
+    {
+        $this->api2017 = $api2017;
     }
 }
