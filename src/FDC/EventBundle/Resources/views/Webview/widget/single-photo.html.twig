@@ -1,13 +1,11 @@
 {% if widget.header is defined %}
 	{% set img = widget.header|trans_fallback('file') %}
 {% elseif widget.gallery is defined %}
+	{% set firstMediaGallery = widget.gallery.media|first %}
 	{% set img = widget.gallery.media|first %}
-		<p>widget.gallery</p>
-		{{ dump(widget.gallery) }}
-		<p>widget.gallery.medias</p>
-		{{ dump(widget.gallery.medias) }}
 		<p>widget.gallery.medias|first</p>
 		{{ dump(widget.gallery.medias|first) }}
-		<p>widget.gallery.medias|first|trans_fallback('file')</p>
-		{{ dump(widget.gallery.medias|first|trans_fallback('file')) }}
+		<p>firstMediaGallery.media|trans_fallback('file')</p>
+		{{ dump(firstMediaGallery.media|trans_fallback('file')) }}
+	}
 {% endif %}
