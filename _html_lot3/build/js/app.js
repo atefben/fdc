@@ -2846,7 +2846,7 @@ var owInitGrid = function (id) {
                     }
                 }
             });
-        }
+        };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
@@ -2863,7 +2863,10 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
 
-            //$gridMore.isotope();
+            //hotfix isotope bugs : trigger layout to avoid messy cards
+            var layoutInterval = window.setInterval(function(){
+                $gridMore.isotope('layout');
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
