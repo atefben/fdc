@@ -3,4 +3,4 @@
 {% elseif widget.gallery is defined %}
 	{% set img = widget.gallery.medias|first|trans_fallback('file') %}
 {% endif %}
-{{ dump(img) }}
+{{ img }}
