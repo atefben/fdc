@@ -6884,7 +6884,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
+    var playerHeight = $('.home').length ? 550 : $container.height();
 
     console.log('setup',{
         sources: $container.data('file'),
