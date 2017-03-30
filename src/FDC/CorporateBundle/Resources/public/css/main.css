@@ -4783,7 +4783,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .75rem;
   padding-right: 13px;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  text-decoration: underline;
+  text-decoration: none;
+  text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-accordion-02 .item-partners .text-partners .content-text-with-portrait {
