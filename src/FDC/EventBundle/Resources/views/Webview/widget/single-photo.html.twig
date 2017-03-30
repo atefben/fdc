@@ -1,2 +1,12 @@
-{{ dump(widget.header) }}
-{{ dump(widget.gallery) }}
+{% if widget.header is defined %}
+	{% set img = widget.header|trans_fallback('file') %}
+{% endif %}
+{% if widget.gallery is defined %}
+	{{ dump(widget.gallery) }}
+{% endif %}
+<div class="Article-content">
+	<img src="{% path img, 'reference' %}"/>
+	{% if widget.header|trans_fallback('copyright') %}
+    <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend')}}</strong> ©{{ widget.header|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+    {% endif %}
+</div>
