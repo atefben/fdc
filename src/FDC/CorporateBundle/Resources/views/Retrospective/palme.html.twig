@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}
-    article-single edition-69 story-movie dark not-mobile
+    article-single edition-69 story-movie dark not-mobile {% if archives is defined and archives %}{% else %}story-palme {% endif %}
 {% endblock bodyClass %}
 {% block body %}
     <section class="border-bottom  wysiwyg-article-02">
@@ -197,6 +197,7 @@
                                                                                          <figure>
                                                                                              <img src="{% path image, format %}"
                                                                                                   alt="{{ widget.image|trans_fallback('alt') }}">
+                                                                                             {% set legend = widget.image|trans_fallback('legend') %}
                                                                                              {% set copyright = widget.image|trans_fallback('copyright') %}
                                                                                              {% if copyright is not empty -%}
                                                                                                  <br><br><span class="copy"> © {{ copyright }}</span>

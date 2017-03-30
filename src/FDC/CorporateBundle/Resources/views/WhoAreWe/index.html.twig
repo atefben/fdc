@@ -110,10 +110,9 @@
                             {% endif %}
                         </div>
                     {% endif %}
-                </div>
                 {% endfor %}
 
-                <div class="border-top black margin-top">
+                <div class="border-top margin-top">
                     <strong class="title-9">Partager la page</strong>
                     {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                     <div class="relative">
@@ -133,7 +132,6 @@
                     </div>
                 </div>
             </div> <!-- end all contain -->
-        </div>
         </div>
     </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',

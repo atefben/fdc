@@ -47,7 +47,7 @@ class NodeRepository extends EntityRepository
             ->select('n')
             ->andWhere('n.entityClass IN (:entities)')
             ->setParameter(':entities', $entities)
-            ->innerJoin('n.translations', 'translations')
+            ->innerJoin('n.translations', 'nt')
             ->innerJoin('n.sites', 'site')
             ->andWhere('site.slug = :site_slug')
             ->setParameter('site_slug', $site)
@@ -77,7 +77,7 @@ class NodeRepository extends EntityRepository
             ;
         }
 
-        $this->addTranslationQueries($qb, 'translations', $locale);
+        $this->addTranslationQueries($qb, 'nt', $locale);
 
         if ($maxResults) {
             $qb->setMaxResults($maxResults);

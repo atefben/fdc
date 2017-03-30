@@ -134,8 +134,22 @@
                         )"></div>
                         <div class="content-text">
                             <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                            {% if filmPerson.film|trans_fallback('title') %}
-                                <span class="item-sub-title">({{ filmPerson.film|trans_fallback('title')}})</span>
+                            {% if filmPerson.film.findTranslationByLocale('en') and (app.request.get('_locale') == 'es' or app.request.get('_locale') == 'zh') %}
+                                {% if filmPerson.film.findTranslationByLocale('en').title %}
+                                    {% if filmPerson.film.findTranslationByLocale('en').title != filmPerson.film.titleVO %}
+                                        <span class="item-sub-title">
+                                            ({{ filmPerson.film.findTranslationByLocale('en').title }})
+                                        </span>
+                                    {% endif %}
+                                {% endif %}
+                            {% elseif filmPerson.film.findTranslationByLocale(app.request.get('_locale')) %}
+                                {% if filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title %}
+                                    {% if filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title != filmPerson.film.titleVO %}
+                                        <span class="item-sub-title">
+                                            ({{ filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title }})
+                                        </span>
+                                    {% endif %}
+                                {% endif %}
                             {% endif %}
                             {% if filmPerson.film.festival %}
                                 <span class="item-date">{{ filmPerson.film.festival.year }}</span>
@@ -196,8 +210,22 @@
                                 )"></div>
                                 <div class="content-text">
                                     <span class="item-title">{{ filmPerson.film.titleVO }}</span>
-                                    {% if filmPerson.film|trans_fallback('title') %}
-                                        <span class="item-sub-title">({{ filmPerson.film|trans_fallback('title')}})</span>
+                                    {% if filmPerson.film.findTranslationByLocale('en') and (app.request.get('_locale') == 'es' or app.request.get('_locale') == 'zh') %}
+                                        {% if filmPerson.film.findTranslationByLocale('en').title %}
+                                            {% if filmPerson.film.findTranslationByLocale('en').title != filmPerson.film.titleVO %}
+                                                <span class="item-sub-title">
+                                                    ({{ filmPerson.film.findTranslationByLocale('en').title }})
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% elseif filmPerson.film.findTranslationByLocale(app.request.get('_locale')) %}
+                                        {% if filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title %}
+                                            {% if filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title != filmPerson.film.titleVO %}
+                                                <span class="item-sub-title">
+                                                    ({{ filmPerson.film.findTranslationByLocale(app.request.get('_locale')).title }})
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
                                     {% endif %}
                                     {% if awardAssociation.award.festival %}
                                         <span class="item-date">{{ awardAssociation.award.festival.year }}</span>

@@ -22,7 +22,8 @@ var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
     if (sliderName == 'home') {
-        var isFirefox = window.mozInnerScreenX ? true : false;
+        var browser = navigator.userAgent.toLowerCase();
+        var isFirefox = browser.indexOf('firefox') > -1 ? true : false;
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
             items: 1,
@@ -41,7 +42,8 @@ var owInitSlider = function (sliderName) {
                     container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
-
+                
+                console.log(isFirefox);
                 if(isFirefox){
                     $('.container-images').addClass('ff');
                 }
