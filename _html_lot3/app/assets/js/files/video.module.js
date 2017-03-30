@@ -79,9 +79,12 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
+    console.log("video.module.js playerInit", id);
+
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
+            console.log('Player Load 0');
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -93,9 +96,10 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            var videoPlayer = jwplayer(this.id);
+            var videoPlayer = jwplayer(this.firstElementChild.id);
             if (!$(videoPlayer).data('loaded')) {
-                playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
+                console.log('Player Load 1');
+                playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -108,7 +112,10 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    var $container = $("#" + vid.id).closest('.video-container');
+    // var $container = $("#" + vid.id).parent();
+    var $container = $("#" + vid.id).parent();
+    // var $container = $("#" + vid.id).closest('.video-container');
+    console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -434,7 +441,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         initChannel();
         playerInstance.load(playlist);
 
-        if(typeof playlist[0] !== 'undefined'){ 
+        if(typeof playlist[0] !== 'undefined'){
             $topBar.find('.info .category').text(playlist[0].category);
             $topBar.find('.info .date').text(playlist[0].date);
             $topBar.find('.info .hour').text(playlist[0].hour);
@@ -473,7 +480,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     function updateShareLink(index, secondaryContainer) {
         index = index || 0;
         sc = secondaryContainer || 0;
-        
+
         if(typeof $playlist[index] !== 'undefined'){
             // CUSTOM LINK FACEBOOK
             if ($('.container-webtv-ba-video').length > 0) {
@@ -536,7 +543,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                         $('.popin-mail').find('form #contact_url').val(data['url']);
                     }
                     $('.popin-mail').find('.chap-article').html('');
-                    
+
                 }
             }
             updatePopinMedia({
@@ -547,7 +554,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 'url': shareUrl
             });
         }
-        
+
         if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
             $(sc).find('.buttons .facebook').attr('href', fbHref);
@@ -572,7 +579,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $stateBtn.removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function () {
-        // console.log("");
     }).on('complete', function () {
         this.stop();
         $stateBtn.removeClass('icon-pause').addClass('icon-play');
@@ -679,6 +685,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
+
+    console.log('video.module.js $(document).ready');
+
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
     }
@@ -690,13 +699,10 @@ $(document).ready(function () {
             if(typeof dataFile === 'string'){
                 dataFile = JSON.parse(dataFile);
             }
-            console.log(dataFile.length);
             if(dataFile.length > 2){
                 isPlaylist = true;
             }
         }
-
-
         videoPlayer = playerInit(false, 'video-player', isPlaylist);
     }
 
