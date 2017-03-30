@@ -101,6 +101,7 @@ html {
     background: #c9a45e;
     padding: 0px 15px; }
   .Article-header-meta-date {
+    text-transform: uppercase;
     color: #bfbfbf;
     padding-left: 10px; }
   .Article-header-meta-misc {
@@ -196,7 +197,8 @@ html {
 
 .Article-slider-caption {
   height: auto;
-  font-size: 0.8rem; margin: 0 76px 8px 0; padding: 0 0 0 6px; }
+  line-height: 0px;
+  font-size: 0.8rem; }
   .Article-slider-caption strong {
     display: block;
     word-wrap: break-word; }
@@ -562,9 +564,9 @@ html {
   top: -0.2rem; }
   .jwplayer.jw-skin-fdc.jw-state-paused .jw-icon-playback:before {
     content: ""; }
-	  
-.Article-content .jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
-  display: inline-block; }
+
+.Article-header .jwplayer.jw-skin-fdc.jw-state-paused .jw-controlbar-center-group {
+  display: none; }
 
 .jwplayer.jw-skin-fdc {
   height: 9rem;
@@ -674,6 +676,8 @@ html {
     background: transparent url(../../img/article/video-play-btn.png) no-repeat center;
     background-size: 2.2rem;
     z-index: 1; }
+    .Article-header .jwplayer.jw-skin-fdc-video .jw-display-icon-container > .jw-icon {
+      background-size: 3.5rem; }
   .jwplayer.jw-skin-fdc-video .jw-slider-container {
     height: 3px;
     top: -18px;
@@ -707,7 +711,7 @@ html {
     top: auto;
     color: #fff;
     width: 100%;
-    padding: 0 5% 2.5% 5%;
+    padding: 0 5% 5% 5%;
     height: auto;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
     background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0, black), color-stop(1, transparent));
@@ -721,7 +725,7 @@ html {
       padding: 0px;
       overflow: visible;
       width: 100%;
-      position: relative;font-weight: normal; }
+      position: relative; }
     .jwplayer.jw-skin-fdc-video .jw-title-secondary {
       padding: 0px;
       padding-top: 1rem;
@@ -732,7 +736,7 @@ html {
       font-size: 1.2rem;
       line-height: 1.5rem;
       white-space: initial;
-      width: 100%; font-weight: normal;}
+      width: 100%; }
     .jwplayer.jw-skin-fdc-video .jw-title h4 {
       display: inline;
       color: #c9a45e;
