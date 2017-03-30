@@ -34,7 +34,11 @@
                             </div>
                             {% if form.vars.default_locale == locale %}
                                 {% if translationsFields.vars.value.slug is defined %}
-                                    <div id="btn-preview" data-preview="{{ translationsFields.vars.value.slug }}"></div>
+                                    <div id="btn-preview"
+                                         data-preview="{{ translationsFields.vars.value.slug }}"
+                                         data-type="info"
+                                         data-id="{{ translationsFields.vars.value.translatable.id }}"
+                                         data-site="event"></div>
                                 {% endif %}
                                 <div class="box-body">
                                     <div class="sonata-ba-collapsed-fields">
