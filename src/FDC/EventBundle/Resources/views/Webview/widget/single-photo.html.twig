@@ -1,8 +1,9 @@
 {% if widget.gallery is defined %}
-	{{ dump(widget.gallery.medias[0].media) }}
+	{% set imgObject = widget.gallery.medias[0].media %}
 {% elseif widget.header is defined %}
-	{% set img = widget.header|trans_fallback('file') %}
+	{% set imgObject = widget.header %}
 {% endif %}
+{% set img = imgObject|trans_fallback('file') %}
 <div class="Article-content">
 	<img src="{% path img, 'reference' %}"/>
 	{% if widget.header|trans_fallback('copyright') %}
