@@ -7843,11 +7843,11 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 }
 
 .who-fdc .slideshow .caption strong {
-  font-weight: normal;
+  font-family: "Camphor W01 Medium";
 }
 
 .slideshow .slideshow-img .images .img img {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .test {
