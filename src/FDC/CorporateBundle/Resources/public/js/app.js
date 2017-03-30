@@ -2983,6 +2983,7 @@ var owInitGrid = function (id) {
 
                                     $(this).find('span').each(function(){
                                         //test if filter exists
+                                        console.log('test exists in top filters','#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]');
                                         if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                             $('#'+slug+' .select .icon-arrow-down').before($(this));
                                         }
