@@ -8,7 +8,7 @@
 {% set img = imgObject|trans_fallback('file') %}
 <div class="Article-content">
 	<img src="{% path img, 'reference' %}"/>
-	{% if widget.header|trans_fallback('copyright') %}
-    <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend')}}</strong> ©{{ widget.header|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+	{% if imgObject|trans_fallback('copyright') %}
+    <div class="Article-picture-caption"><strong>{{ imgObject|trans_fallback('legend')}}</strong> ©{{ imgObject|trans_fallback('copyright')|replace({'©': ''}) }}</div>
     {% endif %}
 </div>
