@@ -1,8 +1,8 @@
-{% if widget.header is defined %}
-	{% set img = widget.header|trans_fallback('file') %}
-{% elseif widget.gallery is defined %}
-	{% set firstMediaGallery = widget.gallery.media|first %}
-	{% set img = widget.gallery.media|first %}
-		<p>widget.gallery.medias|first</p>
-		{{ dump(firstMediaGallery.media) }}
-{% endif %}
+{{ dump(widget.gallery.medias[0].media) }}
+{% set img = widget.header|trans_fallback('file') %}
+<div class="Article-content">
+	<img src="{% path img, 'reference' %}"/>
+	{% if widget.header|trans_fallback('copyright') %}
+    <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend')}}</strong> ©{{ widget.header|trans_fallback('copyright')|replace({'©': ''}) }}</div>
+    {% endif %}
+</div>
