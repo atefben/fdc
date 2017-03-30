@@ -7843,7 +7843,8 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 }
 
 .who-fdc .slideshow .caption strong {
-  font-family: "Camphor W01 Medium";
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 300;
 }
 
 .slideshow .slideshow-img .images .img img {
