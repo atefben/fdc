@@ -4,9 +4,7 @@
 	{% set imgObject = widget.header %}
 {% endif %}
 {% set img = imgObject|trans_fallback('file') %}
-<div class="Article-content">
 	<img src="{% path img, 'reference' %}"/>
 	{% set legend = imgObject|trans_fallback('legend') %}
 	{% set copyright = imgObject|trans_fallback('copyright') %}
     <div class="Article-picture-caption">{% if legend is defined %}<strong>{{ imgObject|trans_fallback('legend')}}</strong>{% endif %}{% if copyright is defined %} ©{{ copyright|replace({'©': ''}) }}{% endif %}</div>
-</div>
