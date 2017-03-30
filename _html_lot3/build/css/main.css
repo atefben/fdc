@@ -7852,8 +7852,16 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   margin: 0 !important;
 }
 
-.test {
-  position: static;
+.video-container .control-bar .time .time-info {
+  width: 100px;
+}
+
+.story-palme .block-movie-preview .poster {
+  text-align: center;
+}
+.story-palme .block-movie-preview .poster figure {
+  display: inline-block;
+  text-align: left;
 }
 
 /* thomon - end fixes */
