@@ -1,6 +1,8 @@
 {% if widget.gallery is defined %}
+	{{ dump(widget.gallery) }}
+
 	{% set imgObject = widget.gallery.medias[0].media %}
-{% elseif widget.header is defined %}
+{% else %}
 	{% set imgObject = widget.header %}
 {% endif %}
 {% set img = imgObject|trans_fallback('file') %}
