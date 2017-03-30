@@ -506,7 +506,7 @@ $(document).ready(function() {
     });
 
     $.each(events, function(index, evt){
-      $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="'+evt.url+'" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><img src="'+evt.picture+'"><div class="txt"><span>'+evt.title+'</span><strong>'+evt.author+'</strong></div></div><div class="bottom"><span class="duration">'+evt.duration/60+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span><span class="competition">'+evt.selection+'</span></div></div>');
+      $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="'+evt.url+'" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><img src="'+evt.picture+'"><div class="txt"><span>'+evt.title+'</span><strong>'+evt.author+'</strong></div></div><div class="bottom"><span class="duration">'+Math.round((evt.duration/60)*100)/100+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span><span class="competition">'+evt.selection+'</span></div></div>');
     });
 
     var endDate = new Date("1900-01-01T00:00:00").getTime();
