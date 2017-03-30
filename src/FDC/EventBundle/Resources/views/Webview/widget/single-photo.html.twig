@@ -1,8 +1,1 @@
 {{ dump(widget) }}
-{% set img = widget.header|trans_fallback('file') %}
-<div class="Article-content">
-	<img src="{% path img, 'reference' %}"/>
-	{% if widget.header|trans_fallback('copyright') %}
-    <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend')}}</strong> ©{{ widget.header|trans_fallback('copyright')|replace({'©': ''}) }}</div>
-    {% endif %}
-</div>
