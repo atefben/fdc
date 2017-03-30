@@ -35,7 +35,7 @@
                                    title='{{ gallery.media|trans_fallback('legend')}}'
                                    class="chocolat-image ajax portrait"
                                    href="{% path file, '2560x1620' %}"
-                                   data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
+                                   data-credit="{{ 'slider.credit_image'|trans }} : {{ copyright }}"
                                    data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ gallery.media.id }}&picture=
 {% path file, resolution %}&name={{ gallery.media|trans_fallback('legend')}}%20-%20Festival%20de%20Cannes&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                    data-twitter="https://twitter.com/intent/tweet?text={{ gallery.media|trans_fallback('legend')}}%20{{app.request.uri}}"
