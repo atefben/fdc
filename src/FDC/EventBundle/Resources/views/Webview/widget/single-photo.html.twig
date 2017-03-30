@@ -4,6 +4,5 @@
 	{% set firstMediaGallery = widget.gallery.media|first %}
 	{% set img = widget.gallery.media|first %}
 		<p>widget.gallery.medias|first</p>
-		{{ dump(widget.gallery.medias|first) }}
-		{{ firstMediaGallery }}
+		{{ dump(firstMediaGallery.media) }}
 {% endif %}
