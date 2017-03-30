@@ -108,7 +108,7 @@
                                         {% elseif field_description.name == 'name' %}
                                             <td>
                                                 <div>
-                                                <a href="{% path object, 'reference' %}" class="select" style="float: left; margin-right: 6px;">{% if object.context != 'pdf' %}{% thumbnail object, 'admin' with {'width': 75, 'height': 60} %}{% endif %}</a>
+                                                <a href="{% path object, 'reference' %}" class="select" style="float: left; margin-right: 6px;">{% if object.context != 'pdf' and object.context != 'media_archive' and object.context != 'seo_file'  %}{% thumbnail object, 'admin' with {'width': 75, 'height': 60} %}{% endif %}</a>
 
                                                 <strong><a href="{% path object, 'reference' %}" class="select">{{ object.name }}</a></strong> <br />
                                                 {{ object.providerName|trans({}, 'SonataMediaBundle') }}{% if object.width %}: {{ object.width }}{% if object.height %}x{{ object.height }}{% endif %}px{% endif %}
