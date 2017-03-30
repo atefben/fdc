@@ -249,38 +249,19 @@
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
         'color' : true
     })) }}
-    {% set palme_breadcrumb  = archives is not defined ? {"name" : 'header.nav.69editions.palme'|trans, "url"  : path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})} : "" %}
 
-    {% if palme_breadcrumb!= "" %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
-            palme_breadcrumb,
-            {
-            "name" :  currentPage|trans_fallback('title'),
-            "url"  :  path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})
-            },
-            ]
-            } 
-        %}
-    {% else %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
-            {
-            "name" :  currentPage|trans_fallback('title'),
-            "url"  :  path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})
-            },
-            ]
-            } 
-        %}
-    {% endif %}
-{% endblock %}
+                                                     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" :  currentPage|trans_fallback('title'),
+    "url"  :  path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})
+    },
+    ]
+    } %}
+
+                                                     {% endblock %}
