@@ -6,4 +6,8 @@
 		{{ dump(widget.gallery) }}
 		<p>widget.gallery.medias</p>
 		{{ dump(widget.gallery.medias) }}
+		<p>widget.gallery.medias|first</p>
+		{{ dump(widget.gallery.medias|first) }}
+		<p>widget.gallery.medias|first|trans_fallback('file')</p>
+		{{ dump(widget.gallery.medias|first|trans_fallback('file')) }}
 {% endif %}
