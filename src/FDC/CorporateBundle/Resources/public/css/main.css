@@ -7838,6 +7838,18 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   color: #c8a461;
 }
 
+.who-fdc .half-photos .half-photo .caption strong {
+  font-weight: normal;
+}
+
+.who-fdc .slideshow .caption strong {
+  font-weight: normal;
+}
+
+.slideshow .slideshow-img .images .img img {
+  margin: 0;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
