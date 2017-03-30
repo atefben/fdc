@@ -112,9 +112,8 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    // var $container = $("#" + vid.id).parent();
     var $container = $("#" + vid.id).parent();
-    // var $container = $("#" + vid.id).closest('.video-container');
+
     console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);

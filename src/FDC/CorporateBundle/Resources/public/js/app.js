@@ -104,9 +104,9 @@ function playerInit(id, cls, havePlaylist, live) {
         } else {
             tmp = [];
             $("."+cls).each(function(i,v) {
-                var videoPlayer  = jwplayer(this.id);
+                var videoPlayer  = jwplayer(this.firstElementChild.id);
                 if(!$(videoPlayer).data('loaded')) {
-                    playerLoad(this, videoPlayer, havePlaylist, live, function(vid) {
+                    playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function(vid) {
                         $(vid).data('loaded', true);
                         tmp[i] = vid;
                     });
@@ -119,7 +119,8 @@ function playerInit(id, cls, havePlaylist, live) {
     };
 
     function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-        var $container    = $("#"+vid.id).closest('.video-container');
+        var $container = $("#" + vid.id).parent();
+
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
             if($container.find('.jwplayer').hasClass('jw-skin-seven')){
@@ -576,7 +577,7 @@ function playerInit(id, cls, havePlaylist, live) {
         var videoImage =  $container.data('img');
         var controls = ($('body').hasClass('mobile')) ? true : false;
         var playerWidth = $(vid).closest('div').width();
-        var playerHeight = $(vid).closest('div').height();
+        var playerHeight = $('.home').length ? 550 : $container.height();
 
         if($('.activeVideo').length > 0) {
             var videoFile =  $('.activeVideo').data('file');
@@ -586,9 +587,6 @@ function playerInit(id, cls, havePlaylist, live) {
         }
 
 
-        if($('.home').length){
-            playerHeight = 550;
-        }
 
         if($(vid).is('#homepage-playlist-player')){
             playerHeight = 382;
@@ -6622,9 +6620,8 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    // var $container = $("#" + vid.id).parent();
     var $container = $("#" + vid.id).parent();
-    // var $container = $("#" + vid.id).closest('.video-container');
+
     console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
