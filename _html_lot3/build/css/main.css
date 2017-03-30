@@ -7850,6 +7850,10 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   margin: 0;
 }
 
+.test {
+  position: static;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
