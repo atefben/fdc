@@ -415,8 +415,10 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
                                     {% endfor %}
                                     {%- if movie.videoMain and movie.videoMain.image -%}
                                         {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
+                                        {% set videoImageFB = media_public_url(movie.videoMain.image|trans_fallback('file'), '674x382') %}
                                     {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                         {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                                        {% set videoImageFB = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                     {%- endif -%}
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
@@ -428,7 +430,7 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
                                          data-email-content="{{ movie|trans_fallback('synopsis')|truncate(200, true)|escape('html_attr') }}"
-                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={{ videoImage }}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={{ videoImageFB }}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                          data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">
