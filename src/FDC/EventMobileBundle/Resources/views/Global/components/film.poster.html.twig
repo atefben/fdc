@@ -21,7 +21,12 @@
         {%- if media is not empty -%}
             {%- path media, film_format -%}
         {%- else -%}
-            {{- asset(film_image_default) -}}
+            {%- set legacy = get_legacy_film_image(film) -%}
+            {%- if legacy -%}
+                {{ selfkit_amazon_url }}{{ legacy.fichier }}
+            {%- else -%}
+                {{ asset(film_image_default) }}
+            {%- endif -%}
         {%- endif -%}
     {%- else -%}
         {%- if media is not empty -%}
