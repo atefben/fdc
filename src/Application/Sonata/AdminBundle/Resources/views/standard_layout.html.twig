@@ -723,7 +723,7 @@ file that was distributed with this source code.
                                     {% endif %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
-                                        {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpomediatheque_edit'] ? ' active': '' %}
+                                        {% set active = app.request.attributes.get('_route') in ['admin_base_core_corpomediatheque_edit'] ? ' active': '' %}
                                         <li class="treeview {% if active %} active{% endif %}">
                                             <a href="#">
                                                 <i class="fa fa-folder"></i>
