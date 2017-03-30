@@ -5,7 +5,6 @@
 	{% set img = widget.gallery.media|first %}
 		<p>widget.gallery.medias|first</p>
 		{{ dump(widget.gallery.medias|first) }}
-		<p>firstMediaGallery.media|trans_fallback('file')</p>
-		{{ dump(firstMediaGallery.media|trans_fallback('file')) }}
+		{{ firstMediaGallery }}
 	}
 {% endif %}
