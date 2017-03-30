@@ -1,6 +1,7 @@
 {% if widget.header is defined %}
 	{% set img = widget.header|trans_fallback('file') %}
 {% elseif widget.gallery is defined %}
-	{% set img = widget.gallery.medias|first|trans_fallback('file') %}
+	{% set img = widget.gallery.medias|first %}
 {% endif %}
-{{ img }}
+{{ img|trans_fallback('file') }}
+{{ dump(img) }}
