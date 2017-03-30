@@ -1,4 +1,3 @@
-
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
         s_ = isTooLong ? this.substr(0, n - 1) : this;
@@ -82,12 +81,13 @@ var initVideo = function(hash) {
             '&display=popup',
         twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-    function playerInit(id, cls, havePlaylist, live) {
+function playerInit(id, cls, havePlaylist, live) {
+    cls = cls || 'video-player';
+    havePlaylist = havePlaylist || false;
+    live = live || false;
+    var tmp;
 
-        cls          = cls || 'video-player';
-        havePlaylist = havePlaylist || false;
-        live         = live || false;
-        var tmp;
+        console.log('01-video.js playerInit', id)
 
         if (id) {
             var videoPlayer = jwplayer(id);
@@ -172,7 +172,7 @@ var initVideo = function(hash) {
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = $topBar.find('.buttons .twitter').attr('href');
-        
+
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
         } else {
@@ -288,7 +288,7 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            
+
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
             }
@@ -445,11 +445,11 @@ var initVideo = function(hash) {
                 }
             },300);
 
-            
+
             sliderChannelsVideo.on('translated.owl.carousel', function () {
                 index = $('.slider-02 .center').index();
                 changeVideo(index,playerInstance,$('.slider-02 .center'));
-                
+
                 $this = $('.slider-02 .center');
 
                 var data = {
@@ -480,7 +480,7 @@ var initVideo = function(hash) {
                 sliderChannelsVideo.trigger('to.owl.carousel', index);
                 playerInstance.playlistItem(index);
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-                
+
             }
 
 
@@ -536,7 +536,7 @@ var initVideo = function(hash) {
                 index = parseInt(index)
 
                 playerInstance.playlistItem(index);
-                
+
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
                 $topBar.find('.info .category').text(infos.category);
@@ -585,7 +585,7 @@ var initVideo = function(hash) {
 
         }
 
-        
+
         if($('.home').length){
             playerHeight = 550;
         }
@@ -599,7 +599,7 @@ var initVideo = function(hash) {
             havePlaylist = false;
         }
 
-        console.log($(vid),$(vid).is('#homepage-featured-video'));
+        console.log("01-video.js playerLoad", $(vid), $(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,
@@ -729,7 +729,7 @@ var initVideo = function(hash) {
             _duration = playerInstance.getDuration();
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
-            
+
             if (duration_secs < 10) {
                 duration_secs = "0" + duration_secs;
             }
@@ -833,7 +833,7 @@ var initVideo = function(hash) {
         });
 
         callback(playerInstance);
-    };
+    }
 
 
     var initPopinVideo = function(hash) {
@@ -1087,7 +1087,7 @@ var initVideo = function(hash) {
             $('.popin-mail').find('form #contact_detail').val(data['date']);
             $('.popin-mail').find('form #contact_title').val(data['title']);
             $('.popin-mail').find('form #contact_url').val(data['url']);
-            
+
         }
     }
 
@@ -1138,10 +1138,7 @@ var initVideo = function(hash) {
             videoPlayer = playerInit(id, 'video-player', false, false);
         });
     }
-    
-
 }
-
 var owInitAccordion = function(id) {
 
   if(id == "block-accordion") {
@@ -1481,7 +1478,7 @@ var initAudio = function (hash) {
             var tempArray = fileArray[0];
 
             if(typeof tempArray !== 'undefined'){
-                console.log('tempArray',tempArray,tempArray.file);
+                // console.log('tempArray',tempArray,tempArray.file);
                 var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
@@ -1495,9 +1492,8 @@ var initAudio = function (hash) {
                 
             }
         }
-
-        console.log('audioplayer config',config);
-        console.log('player instance',playerInstance);
+        // console.log('audioplayer config',config);
+        // console.log('player instance',playerInstance);
         playerInstance.setup(config);
 
         playerInstance.on('ready', function () {
@@ -3413,6 +3409,8 @@ var videoMovie;
 // =========================
 $(document).ready(function() {
 
+  console.log('movie.module.js $(document).ready');
+
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.prev').attr('href');
@@ -3447,7 +3445,6 @@ $(document).ready(function() {
       posT -= 32;
     }
 
-    console.log(posT);
 
     $('html, body').animate({
       scrollTop: posT
@@ -6592,9 +6589,12 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
+    console.log("video.module.js playerInit", id);
+
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
+            console.log('Player Load 0');
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -6606,9 +6606,10 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            var videoPlayer = jwplayer(this.id);
+            var videoPlayer = jwplayer(this.firstElementChild.id);
             if (!$(videoPlayer).data('loaded')) {
-                playerLoad(this, videoPlayer, havePlaylist, live, function (vid) {
+                console.log('Player Load 1');
+                playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
                 });
@@ -6621,7 +6622,10 @@ function playerInit(id, cls, havePlaylist, live) {
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-    var $container = $("#" + vid.id).closest('.video-container');
+    // var $container = $("#" + vid.id).parent();
+    var $container = $("#" + vid.id).parent();
+    // var $container = $("#" + vid.id).closest('.video-container');
+    console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -6889,7 +6893,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         }
     }
 
-    var playerHeight = $('.home').length ? 550 : $(vid).closest('div').height();
+    var playerHeight = $('.home').length ? 550 : $container.height();
 
     console.log('setup',{
         sources: $container.data('file'),
@@ -6947,7 +6951,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         initChannel();
         playerInstance.load(playlist);
 
-        if(typeof playlist[0] !== 'undefined'){ 
+        if(typeof playlist[0] !== 'undefined'){
             $topBar.find('.info .category').text(playlist[0].category);
             $topBar.find('.info .date').text(playlist[0].date);
             $topBar.find('.info .hour').text(playlist[0].hour);
@@ -6986,7 +6990,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     function updateShareLink(index, secondaryContainer) {
         index = index || 0;
         sc = secondaryContainer || 0;
-        
+
         if(typeof $playlist[index] !== 'undefined'){
             // CUSTOM LINK FACEBOOK
             if ($('.container-webtv-ba-video').length > 0) {
@@ -7049,7 +7053,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                         $('.popin-mail').find('form #contact_url').val(data['url']);
                     }
                     $('.popin-mail').find('.chap-article').html('');
-                    
+
                 }
             }
             updatePopinMedia({
@@ -7060,7 +7064,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 'url': shareUrl
             });
         }
-        
+
         if (sc) {
             $(sc).find('.buttons .facebook').attr('data-href', fbHref);
             $(sc).find('.buttons .facebook').attr('href', fbHref);
@@ -7085,7 +7089,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $stateBtn.removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function () {
-        // console.log("");
     }).on('complete', function () {
         this.stop();
         $stateBtn.removeClass('icon-pause').addClass('icon-play');
@@ -7192,6 +7195,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
+
+    console.log('video.module.js $(document).ready');
+
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
     }
@@ -7203,13 +7209,10 @@ $(document).ready(function () {
             if(typeof dataFile === 'string'){
                 dataFile = JSON.parse(dataFile);
             }
-            console.log(dataFile.length);
             if(dataFile.length > 2){
                 isPlaylist = true;
             }
         }
-
-
         videoPlayer = playerInit(false, 'video-player', isPlaylist);
     }
 

@@ -5,6 +5,8 @@ var videoMovie;
 // =========================
 $(document).ready(function() {
 
+  console.log('movie.module.js $(document).ready');
+
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.prev').attr('href');
@@ -39,7 +41,6 @@ $(document).ready(function() {
       posT -= 32;
     }
 
-    console.log(posT);
 
     $('html, body').animate({
       scrollTop: posT

@@ -1,4 +1,3 @@
-
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
         s_ = isTooLong ? this.substr(0, n - 1) : this;
@@ -82,12 +81,13 @@ var initVideo = function(hash) {
             '&display=popup',
         twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-    function playerInit(id, cls, havePlaylist, live) {
+function playerInit(id, cls, havePlaylist, live) {
+    cls = cls || 'video-player';
+    havePlaylist = havePlaylist || false;
+    live = live || false;
+    var tmp;
 
-        cls          = cls || 'video-player';
-        havePlaylist = havePlaylist || false;
-        live         = live || false;
-        var tmp;
+        console.log('01-video.js playerInit', id)
 
         if (id) {
             var videoPlayer = jwplayer(id);
@@ -172,7 +172,7 @@ var initVideo = function(hash) {
         $topBar.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = $topBar.find('.buttons .twitter').attr('href');
-        
+
         if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
         } else {
@@ -288,7 +288,7 @@ var initVideo = function(hash) {
 
             var fbHref   = facebookLink;
             fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-            
+
             if(typeof index === 'undefined'){
                 index = $('.activeVideo').index('.video');
             }
@@ -445,11 +445,11 @@ var initVideo = function(hash) {
                 }
             },300);
 
-            
+
             sliderChannelsVideo.on('translated.owl.carousel', function () {
                 index = $('.slider-02 .center').index();
                 changeVideo(index,playerInstance,$('.slider-02 .center'));
-                
+
                 $this = $('.slider-02 .center');
 
                 var data = {
@@ -480,7 +480,7 @@ var initVideo = function(hash) {
                 sliderChannelsVideo.trigger('to.owl.carousel', index);
                 playerInstance.playlistItem(index);
                 sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-                
+
             }
 
 
@@ -536,7 +536,7 @@ var initVideo = function(hash) {
                 index = parseInt(index)
 
                 playerInstance.playlistItem(index);
-                
+
                 var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
                 $topBar.find('.info .category').text(infos.category);
@@ -585,7 +585,7 @@ var initVideo = function(hash) {
 
         }
 
-        
+
         if($('.home').length){
             playerHeight = 550;
         }
@@ -599,7 +599,7 @@ var initVideo = function(hash) {
             havePlaylist = false;
         }
 
-        console.log($(vid),$(vid).is('#homepage-featured-video'));
+        console.log("01-video.js playerLoad", $(vid), $(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,
@@ -729,7 +729,7 @@ var initVideo = function(hash) {
             _duration = playerInstance.getDuration();
             duration_mins = Math.floor(_duration / 60);
             duration_secs = Math.floor(_duration - duration_mins * 60);
-            
+
             if (duration_secs < 10) {
                 duration_secs = "0" + duration_secs;
             }
@@ -833,7 +833,7 @@ var initVideo = function(hash) {
         });
 
         callback(playerInstance);
-    };
+    }
 
 
     var initPopinVideo = function(hash) {
@@ -1087,7 +1087,7 @@ var initVideo = function(hash) {
             $('.popin-mail').find('form #contact_detail').val(data['date']);
             $('.popin-mail').find('form #contact_title').val(data['title']);
             $('.popin-mail').find('form #contact_url').val(data['url']);
-            
+
         }
     }
 
@@ -1138,6 +1138,4 @@ var initVideo = function(hash) {
             videoPlayer = playerInit(id, 'video-player', false, false);
         });
     }
-    
-
 }
