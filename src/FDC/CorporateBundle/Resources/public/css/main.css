@@ -17007,6 +17007,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   color: #000;
   border-color: #000;
 }
+.participate .block-accordion-02 .item-manual .contain-infos .item-infos a:hover i {
+  color: #000;
+}
 
 .c-contact input[type=text],
 .c-contact input[type=email],
