@@ -50,11 +50,11 @@
                          {% if(firstVideo.jobWebmState == 3) %}data-video="{{ s3_server_video ~ firstVideo.webmUrl }}"{% else %}}data-video="{{ s3_server_video ~ firstVideo.mp4Url }}"{% endif %}
                          data-poster="{{ videoImage }}">
                     </div>
-                    </div>
                     <div class="container">
                         <h3 class="title-video"></h3>
                         <span class="time"></span>
                         <p class="caption"></p>
+                    </div>
                     </div>
                     <div class="owl-carousel thumbnails">
                 {% endif %}
