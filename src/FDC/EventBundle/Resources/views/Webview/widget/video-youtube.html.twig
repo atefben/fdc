@@ -12,9 +12,7 @@
         {% set imageTrans = header.findTranslationByLocale('fr') %}
     {% endif %}
 {% endif %}
-{% if imageTrans is defined %}
-    {% set image = imageTrans.file %}
-{% endif %}
+{% set image = widget.image|trans_fallback('file') %}
 <div id="videoplayer-{{ random() }}" class="Article-videoPlayer"
      {% if image is defined %}data-poster="{% path image, 'reference' %}"{% endif %}
 data-file="{{ widget|trans_fallback('url') }}" 
