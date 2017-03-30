@@ -113,7 +113,7 @@
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         </div>
         <h2>
-            {{ article|trans_fallback('title')|truncate(40) }}
+            {{ article|trans_fallback('title')|truncate(34) }}
         </h2>
     </div>
 </div>
