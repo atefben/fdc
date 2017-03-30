@@ -45,7 +45,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCPressMobileBundle/Resources/public/js/communiques.js' %}
+    {% javascripts
+        '@FDCPressMobileBundle/Resources/public/js/communiques.js'
+        '@FDCPressMobileBundle/Resources/public/js/communiques_custom.js'
+    %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
