@@ -1007,4 +1007,13 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
         text-align: left;
     }
 }
+
+.article-single.dark .slideshow .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.article-single.dark #main .slideshow .caption strong {
+    color: #969696;
+}
 /* thomon - end fixes */
