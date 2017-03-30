@@ -169,7 +169,6 @@ var owInitGrid = function (id) {
 
                 if(!ajaxLock){
                     ajaxLock = true;
-                    console.log('data sent to GET on ajax button click',postData);
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -194,7 +193,6 @@ var owInitGrid = function (id) {
                                 //$this.remove();
                             }
 
-                            console.log('new filters check',$data.filter('.compute-filters').length);
                             //manage filters
                             if($data.filter('.compute-filters').length){
                                 $data.filter('.compute-filters').each(function(){
@@ -202,7 +200,6 @@ var owInitGrid = function (id) {
 
                                     $(this).find('span').each(function(){
                                         //test if filter exists
-                                        console.log('test exists in top filters','#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]');
                                         if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                             $('#'+slug+' .select .icon-arrow-down').before($(this));
                                         }
