@@ -4732,7 +4732,10 @@ var owInitSlider = function (sliderName) {
                     container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
-
+                var browser = navigator.userAgent.toLowerCase();
+                console.log(navigator.userAgent);
+                console.log(browser.indexOf('firefox'));
+                console.log(isFirefox);
                 if(isFirefox){
                     $('.container-images').addClass('ff');
                 }
