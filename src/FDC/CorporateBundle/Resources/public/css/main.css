@@ -1507,7 +1507,7 @@ sub {
 
 .bright .quote .italic {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  /*color: #141414 !important;*/
+  color: #141414 !important;
 }
 
 .title, .title-item {
@@ -1666,7 +1666,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Light", Arial, Helvetica, sans-serif;
   font-size: 3rem;
   line-height: 60px;
   display: block;
