@@ -7834,6 +7834,10 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   color: #dbdbb;
 }
 
+.block-contact a strong {
+  color: #c8a461;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
