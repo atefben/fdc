@@ -3090,7 +3090,7 @@ video {
     opacity: 0;
   }
 }
-/* emp├¬che la s├®lection */
+/* empêche la sélection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -4560,20 +4560,20 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   width: 100% !important;
   text-align: left !important;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p {
+.block-accordion-02 .item-manual .contain-infos p {
   line-height: 24px;
   font-size: .8125rem;
   width: 100%;
   padding: 0px;
   text-align: left;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p a {
+.block-accordion-02 .item-manual .contain-infos p a {
   color: #c8a461;
   text-decoration: none;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p a:hover {
+.block-accordion-02 .item-manual .contain-infos p a:hover {
   color: #966505;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .btn {
@@ -6219,7 +6219,7 @@ strong.title-center {
 
 /*!
  * Pikaday
- * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -7852,8 +7852,16 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   margin: 0 !important;
 }
 
-.test {
-  position: static;
+.video-container .control-bar .time .time-info {
+  width: 100px;
+}
+
+.story-palme .block-movie-preview .poster {
+  text-align: center;
+}
+.story-palme .block-movie-preview .poster figure {
+  display: inline-block;
+  text-align: left;
 }
 
 /* thomon - end fixes */
@@ -11555,9 +11563,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -11583,11 +11591,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -11610,19 +11618,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -14286,9 +14294,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect g├®n├®ral de la coche */
-  /* Aspect si "pas coch├®e" */
-  /* Aspect si "coch├®e" */
+  /* Aspect général de la coche */
+  /* Aspect si "pas cochée" */
+  /* Aspect si "cochée" */
 }
 .block-search .more-search.active {
   display: table;
@@ -14367,11 +14375,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-├®l├®ments */
+  /* permet de positionner les pseudo-éléments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case ├á venir */
+  /* fait un peu d'espace pour notre case à venir */
   cursor: pointer;
-  /* affiche un curseur adapt├® */
+  /* affiche un curseur adapté */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -14394,19 +14402,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on pr├®voit une animation */
+  /* on prévoit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise ├á l'├®chelle ├á 0 */
+  /* mise à l'échelle à 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise ├á l'├®chelle 1:1 */
+  /* mise à l'échelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;

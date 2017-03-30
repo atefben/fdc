@@ -99,7 +99,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
                 centerElement = index;
             }
 
-            if($('.affiche-fdc').length ) {
+            if($('.affiche-fdc').length) {
                 var src = $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).parent().find('.infos  .name-f').html();
@@ -112,7 +112,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
                 var url = $(value).parent().data('url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
-            } else if($('.photo-module').length ) {
+            } else if($('.photo-module').length) {
                 var src = $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).find('a').attr('title');
@@ -147,6 +147,34 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+
+                if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
+                    var dataItem = $(value).find('a');
+
+                    var title = dataItem.attr('title');
+                    var label = dataItem.data('label');
+                    var date = dataItem.data('date');
+                    var caption = dataItem.data('caption');
+                    var id = dataItem.data('pid');
+                    var facebookurl = dataItem.data('facebook');
+                    var twitterurl = dataItem.data('twitter');
+                    var url = dataItem.data('url');
+                    var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
+                }
+
+                console.log('slideshow img config',{
+                    id: id,
+                    url: url,
+                    src: src,
+                    alt: alt,
+                    title: title,
+                    label: label,
+                    date: date,
+                    caption: caption,
+                    facebookurl: facebookurl,
+                    twitterurl: twitterurl,
+                    isPortrait: isPortrait
+                });
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');

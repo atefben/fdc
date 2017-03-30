@@ -94,6 +94,7 @@ var owInitFilter = function (isTabSelection) {
 
                             if($('.articles-list').length){
                                 var numItems = $('.item.' + getVal + ':not([style*="display: none"])').length;
+                                console.log('filter disabling selector','.item.' + getVal + ':not([style*="display: none"])');
                             }else{
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }

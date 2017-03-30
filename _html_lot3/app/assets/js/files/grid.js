@@ -61,7 +61,7 @@ var owInitGrid = function (id) {
                     }
                 }
             });
-        }
+        };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
@@ -78,7 +78,10 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
 
-            //$gridMore.isotope();
+            //hotfix isotope bugs : trigger layout to avoid messy cards
+            var layoutInterval = window.setInterval(function(){
+                $gridMore.isotope('layout');
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
@@ -166,7 +169,6 @@ var owInitGrid = function (id) {
 
                 if(!ajaxLock){
                     ajaxLock = true;
-                    console.log('data sent to GET on ajax button click',postData);
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -198,7 +200,6 @@ var owInitGrid = function (id) {
 
                                     $(this).find('span').each(function(){
                                         //test if filter exists
-                                        console.log('test exists in top filters','#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]');
                                         if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
                                             $('#'+slug+' .select .icon-arrow-down').before($(this));
                                         }

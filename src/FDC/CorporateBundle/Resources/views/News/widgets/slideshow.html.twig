@@ -25,6 +25,7 @@
                         {% if gallery.media|is_published('site-institutionnel') %}
                             {% set file = trans.file %}
                             {% set copyright = gallery.media|trans_fallback('copyright') %}
+                            {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                             <div class="img {% if loop.index0 == 0 %}active{% endif %}">
                                 <a id="photo{{ gallery.media.id }}"
                                    data-pid="pid={{ gallery.media.id }}"
@@ -35,10 +36,10 @@
                                    href="{% path file, '2560x1620' %}"
                                    data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
                                    data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ gallery.media.id }}&picture=
-{% path file, '293x397' %}&name={{ gallery.media|trans_fallback('legend')}}%20-%20Festival%20de%20Cannes&caption=&description={{currentPage|trans_fallback('chapo')|striptags}}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+{% path file, resolution %}&name={{ gallery.media|trans_fallback('legend')}}%20-%20Festival%20de%20Cannes&caption=&description={{currentPage|trans_fallback('chapo')|striptags}}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                    data-twitter="https://twitter.com/intent/tweet?text=text={{ gallery.media|trans_fallback('legend')}}%20{{app.request.uri}}"
                                    data-link="localhost:3000#102">
-                                    <img src="{% path file, '1266x798' %}" alt="{{ gallery.media|trans_fallback('alt') }}" title="{{ gallery.media|trans_fallback('legend')  }}">
+                                    <img src="{% path file, '1266x798' %}" alt="{{ gallery.media|trans_fallback('alt') }}" title="{{ gallery.media|trans_fallback('legend') }}">
                                 </a>
                             </div>
                         {% endif %}
