@@ -1,6 +1,4 @@
 {% if widget.gallery is defined %}
-	{{ dump(widget.gallery) }}
-
 	{% set imgObject = widget.gallery.medias[0].media %}
 {% else %}
 	{% set imgObject = widget.header %}
