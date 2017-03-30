@@ -3000,7 +3000,7 @@ var owInitGrid = function (id) {
                                 var catText;
 
                                 $clamp(title.get(0), {clamp: 2});
-                                $clamp(cat.get(0), {clamp: 1});
+                                //$clamp(cat.get(0), {clamp: 1});
                             });
 
                             $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
@@ -3048,7 +3048,7 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     $clamp(title.get(0), {clamp: 2});
-                    $clamp(cat.get(0), {clamp: 1});
+                    //$clamp(cat.get(0), {clamp: 1});
                 });
             }
     
