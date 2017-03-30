@@ -1,0 +1,6 @@
+#main.articles .selection-item .jury-info {
+    height: 145px;
+}
+#main.articles .selection-item .jury-info .name {
+    padding-top: 0;
+}
