@@ -2225,6 +2225,10 @@
     display: inline-block;
     width: 277px;
     vertical-align: top;
+
+    .participate & {
+      width: 277px;
+    }
   }
 
   .i-1 {

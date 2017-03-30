@@ -4904,6 +4904,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   width: 277px;
   vertical-align: top;
 }
+.participate .block-contact .item {
+  width: 277px;
+}
 .block-contact .i-1 {
   margin-right: 105px;
 }
@@ -7824,6 +7827,11 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 
 .block-01-s .half-photo {
   width: 47%;
+}
+
+.dark .block-movie-preview .description,
+.dark.article-single .text p {
+  color: #dbdbb;
 }
 
 /* thomon - end fixes */
