@@ -296,6 +296,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('.chap-article').html('');
 
             //clamp title 3 lines
+            console.log('clamping slideshow title for email popins');
             $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
         }
     }
