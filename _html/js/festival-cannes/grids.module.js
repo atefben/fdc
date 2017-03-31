@@ -311,8 +311,8 @@ function setGrid(grid, dom, init){
     }
 
     grid.append($data).isotope('appended', $data);
-    console.log($data);
-    $gridMore.isotope('insert',$data);
+
+    //grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
       console.log('imagesloaded progress');
       grid.isotope('layout');
@@ -740,9 +740,10 @@ $(document).ready(function () {
         });
       });
 
-      $('.read-more').on('click', function (e) {
+      $('.read-more').off('click').on('click', function (e) {
         e.preventDefault();
         $(this).hide();
+        console.log('readmore ajax valid click');
 
         $.ajax({
           type: "GET",
