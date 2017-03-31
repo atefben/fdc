@@ -4629,7 +4629,7 @@ var initRs = function () {
                 window.setTimeout(function(){
                     console.log('trigger clamp');
                     $clamp(title.get(0), {clamp: 3});
-                },2000);
+                },200);
             }
             $('.overlay-popin').on('click', function (e) {
 
