@@ -743,6 +743,7 @@ $(document).ready(function () {
       $('.read-more').off('click').on('click', function (e) {
         e.preventDefault();
         $(this).hide();
+        console.log('readmore ajax valid click');
 
         $.ajax({
           type: "GET",
