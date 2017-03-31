@@ -5295,21 +5295,29 @@ function resizeend() {
  */
 var owinitSlideShow = function (slider, hash) {
 
-    if (typeof hash != "undefined") {
+    if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
         setTimeout(function () {
             openSlideShow(slider, hash);
         }, 100);
     }else{
 
         if($('.affiche-fdc').length) {
+            if (typeof hash != "undefined") {
+                setTimeout(function () {
+                    var index = $('[data-url="'+hash+'"]').closest('.block-movie-preview').index('.block-movie-preview');
 
-            $('.poster').off('click').on('click', function(e){
-                slider = $('.all-contain');
-                $(this).parent().addClass('active center');
-                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-                openSlideShow(slider,hash, true, index);
-            })
+                    openSlideShow(slider, hash, true, index);
+                }, 100);
+            }else{
+                $('.poster').off('click').on('click', function(e){
+                    slider = $('.all-contain');
+                    $(this).parent().addClass('active center');
+                    var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+                    
+                    var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
+                    openSlideShow(slider,hash, true, index);
+                });
+            }
 
         } else if($('.article-single').length){
 
@@ -5352,7 +5360,7 @@ var owinitSlideShow = function (slider, hash) {
 }
 
 
-var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
+var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
     //handle undefined for other uses cases than affiches slider
     fdcAfficheIndex = typeof fdcAfficheIndex !== 'undefined' ? fdcAfficheIndex : -1;
     $('html').addClass('slideshow-open');
@@ -5367,22 +5375,25 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
     var caption = "";
     slider.find('.item, .img, .poster').each(function (index, value) {
         if(!$(value).hasClass('video') && !$(value).hasClass('audio')){
-
             var activeClass = '';
             if(slider.closest('.block-diaporama').length){
                 activeClass = 'center';
+            }
+            if($('.affiche-fdc').length){
+                activeClass = 'active';
             }
             if ($(value).parent().hasClass(activeClass)) {
                 centerElement = index;
 
                 if($('.affiche-fdc').length ) {
                     var hashPush = hash;
-
-
                     var CheminComplet = document.location.href;
 
-                    hashPush = CheminComplet + "#" +hashPush;
-                    
+                    if(hashPush.indexOf('#') == -1 && CheminComplet.indexOf('#') == -1){
+                        hashPush = "#" + hashPush;
+                    }
+
+                    hashPush = CheminComplet + hashPush;
                     history.pushState(null, null, hashPush);
                 }
             }
@@ -5670,7 +5681,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
         fullscreen.css('width', wSlide);
     });
 
-
     setTimeout(function(){
         if (typeof hash != "undefined") {
 
@@ -5698,7 +5708,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
 
     var translate = (w + 0) * centerElement;
     translate = -translate + "px";
-
 
     numberDiapo = centerElement + 1;
 
@@ -5982,7 +5991,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
         });
     };
     
-    
     //block image open on title click
     $('body').on('click','.chocolat-description a',function(){
         return false;
@@ -6086,7 +6094,6 @@ $(document).ready(function() {
 });
 
 var timeoutCursor;
-
 // HELPERS ================ //
 // parse URL in string
 String.prototype.parseURL = function() {
