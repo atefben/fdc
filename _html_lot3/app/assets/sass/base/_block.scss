@@ -1809,23 +1809,21 @@
     }
 
     .item-manual .contain-infos {
-      :not(.descrip-section) {
-        p {
-          line-height: 24px;
-          font-size: .8125rem;
-          width: 100%;
-          padding: 0px;
-          text-align: left;
+      p {
+        line-height: 24px;
+        font-size: .8125rem;
+        width: 100%;
+        padding: 0px;
+        text-align: left;
 
-          a {
-            color: $gold;
-            text-decoration: none;
-            transition: all .9s cubic-bezier(.25,.46,.45,.94);
-            font-family: $CamphorBold;
+        a {
+          color: $gold;
+          text-decoration: none;
+          transition: all .9s cubic-bezier(.25,.46,.45,.94);
+          font-family: $CamphorBold;
 
-            &:hover {
-              color: #966505;
-            }
+          &:hover {
+            color: #966505;
           }
         }
       }
@@ -2017,14 +2015,16 @@
       font-size: .8125rem;
     }
 
-    .descrip-section p {
-      width: 750px;
-      margin: 0 auto;
-      font-size: 1.25rem;
-      line-height: 36px;
-      padding: 39px 0;
-      text-align: center;
-      color: #000;
+    .item-manual .contain-infos .block-01 .descrip-section {
+      p {
+        width: 750px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        line-height: 36px;
+        padding: 39px 0;
+        text-align: center;
+        color: #000;
+      }
     }
 
     .item-manual .item-partners .contain-img img {
