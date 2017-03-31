@@ -3212,7 +3212,7 @@ video {
 }
 .block-01-xs img {
   max-width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .block-01-xs .video-container {
   height: calc(663px / 1.58);
@@ -7872,6 +7872,11 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 
 .article-single.dark #main .slideshow .caption strong {
   color: #969696;
+}
+
+.block-movie-preview .contain-authors {
+  width: 100%;
+  text-align: center;
 }
 
 /* thomon - end fixes */
@@ -16847,6 +16852,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .article-single .text, .single-movie .text {
   width: 630px;
   margin: 0 auto 70px;
+}
+.article-single .text .quote, .single-movie .text .quote {
+  width: 977px;
 }
 .article-single .text p, .single-movie .text p {
   color: #666;
