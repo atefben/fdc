@@ -4624,6 +4624,18 @@ var initRs = function () {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
 
+            var title = $('.overlay-popin').find('.contain-popin .title-article');
+            //title.css('opacity',0);
+            if(title.height() > 150){
+                window.setTimeout(function(){
+
+                    $clamp(title.get(0), {clamp: 3});
+                    /*title.animate({
+                        'opacity': 1
+                    },300);*/
+
+                },20);
+            }
             $('.overlay-popin').on('click', function (e) {
 
                 if (!$(e.target).hasClass('popin')) {
@@ -5574,13 +5586,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
-
-            //clamp title 3 lines
-            var clampTimeout = window.setTimeout(function(){
-                console.log('delayed clamp');
-                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
-                window.clearTimeout(t);
-            },200);
         }
     }
 
@@ -5644,9 +5649,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
-
-            //clamp title 3 lines
-            $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
         }
 
     }
@@ -5856,9 +5858,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
         $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
         $('.popin-mail').find('.chap-article').html('');
 
-        //clamp title 3 lines
-        $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
-
     }
     
     /*
@@ -5872,7 +5871,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
 
     $('.chocolat-right').on('click', function () {
         goToNextPrev(0);
-    })
+    });
 
     $('.chocolat-left').on('click', function () {
         goToNextPrev(1);
