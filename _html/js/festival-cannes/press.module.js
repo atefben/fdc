@@ -1066,7 +1066,8 @@ $(document).ready(function () {
 
       $grid.isotope('layout');
     });
-    $('.press .read-more').on('click', function (e) {
+    $('.press .read-more').off('click').on('click', function (e) {
+      console.log('ajax click ok');
       e.preventDefault();
       $(this).hide();
       var value = jQuery(this).attr('data-offset');

@@ -520,7 +520,7 @@ $(document).ready(function () {
         });
 
         $grid.isotope('layout');
-        window.setInterval(function() {
+        window.setTimeout(function() {
           $grid.isotope('layout');
         }, 1000);
         var timer;
