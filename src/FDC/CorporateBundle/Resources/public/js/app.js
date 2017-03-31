@@ -5577,7 +5577,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
 
             //clamp title 3 lines
             var clampTimeout = window.setTimeout(function(){
-                console.log('delayed clamp');
                 $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
                 window.clearTimeout(t);
             },200);
@@ -5646,7 +5645,10 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('.chap-article').html('');
 
             //clamp title 3 lines
-            $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
+            var clampTimeout = window.setTimeout(function(){
+                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
+                window.clearTimeout(t);
+            },200);
         }
 
     }
@@ -5857,7 +5859,10 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
         $('.popin-mail').find('.chap-article').html('');
 
         //clamp title 3 lines
-        $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
+        var clampTimeout = window.setTimeout(function(){
+            $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
+            window.clearTimeout(t);
+        },200);
 
     }
     
