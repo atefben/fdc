@@ -310,8 +310,18 @@ function setGrid(grid, dom, init){
       $data = $(dom);
     }
 
-    grid.append($data).isotope('appended', $data);
-
+    grid.append($data);
+    //.isotope('appended', $data);
+    grid.isotope('destroy');
+    grid.isotope({
+        itemSelector    : '.item',
+        percentPosition : true,
+        // sortBy          : 'original-order',
+        layoutMode      : 'packery',
+        packery         : {
+          columnWidth : '.grid-sizer'
+        }
+      });
     //grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
