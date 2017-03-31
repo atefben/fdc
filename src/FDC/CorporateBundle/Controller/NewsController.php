@@ -180,6 +180,8 @@ class NewsController extends Controller
         $theme = $request->query->get('theme', null);
         $format = $request->query->get('format', null);
         $type = $request->query->get('type', null);
+        $exclude = $request->query->get('exclude', null);
+
         if ($format == 'all') {
             $format = null;
         }
@@ -199,19 +201,21 @@ class NewsController extends Controller
             }
         }
 
-        $parameters = $this->infosAndStatementsFilters($locale, $timestamp, $day, $theme, $format, $type);
+        $parameters = $this->infosAndStatementsFilters($locale, $timestamp, $day, $theme, $format, $type, $exclude);
         return $this->render('FDCCorporateBundle:News:infos-and-statement-more.html.twig', $parameters);
     }
 
 
-    private function infosAndStatementsFilters($locale, $time = null, $festivalYear = null, Theme $theme = null, $format = null, $type = null)
+    private function infosAndStatementsFilters($locale, $time = null, $festivalYear = null, Theme $theme = null, $format = null, $type = null, $exclude = null)
     {
         $before = null;
         if ($time) {
             $before = new DateTime();
             $before->setTimestamp($time);
         }
-        $maxResults = 50;
+        $maxResults = 31;
+
+        $filters = [];
 
         $festival = null;
         if ($festivalYear) {
@@ -220,38 +224,40 @@ class NewsController extends Controller
                 ->getRepository('BaseCoreBundle:FilmFestival')
                 ->findOneBy(['year' => $festivalYear])
             ;
+            if ($festival) {
+                $filters['festival'] = $festival->getId();
+            }
         }
 
-        $infos = [];
-        if ($type != 'communique') {
-            $infos = $this
+        if ($format) {
+            $filters['typeClone'] = $format;
+        }
+
+        if ($theme) {
+            $filters['theme'] = $theme->getId();
+        }
+
+        $nodes = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getStatementsAndInfos($locale, 'site-institutionnel', $type, $exclude, $before, $filters, $maxResults)
+        ;
+
+        $articles = [];
+        foreach ($nodes as $node) {
+            $articles[] = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:Info')
-                ->getInfoRetrospective($locale, $festival, null, $maxResults, $before, null, $theme, $format)
+                ->getRepository($node->getEntityClass())
+                ->find($node->getEntityId())
             ;
         }
 
-        $statements = [];
-        if ($type != 'info') {
-            $statements = $this
-                ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:Statement')
-                ->getStatementRetrospective($locale, $festival, null, $maxResults, $before, null, $theme, $format)
-            ;
-        }
-
-        $articles = array_merge($infos, $statements);
-        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
-        usort($articles, [$this, 'compareArticle']);
         if (count($articles) > 30) {
             $last = false;
             $articles = array_slice($articles, 0, 30);
         } else {
             $last = true;
         }
-//        if (!$articles) {
-//            throw new NotFoundHttpException();
-//        }
 
         //set default filters
         $filters = [];
@@ -261,8 +267,6 @@ class NewsController extends Controller
         $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
         $filters['types']['all'] = 'all';
-
-
         foreach ($articles as $key => $article) {
             $date = $article->getFestival()->getYear();
             if ($date && !array_key_exists($date, $filters['editions'])) {
@@ -281,16 +285,17 @@ class NewsController extends Controller
             }
             if ($article instanceof Info) {
                 $filters['types']['info'] = 'filters.type.info';
-            }
-            elseif ($article instanceof Statement) {
+            } elseif ($article instanceof Statement) {
                 $filters['types']['communique'] = 'filters.type.statement';
             }
         }
 
+        $exclude = null;
         $time = null;
         if ($articles && ($lastArticle = end($articles))) {
             if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
                 $time = $lastArticle->getPublishedAt()->getTimestamp();
+                $exclude = $lastArticle->getId();
             }
         }
 
@@ -299,7 +304,8 @@ class NewsController extends Controller
             'filters'      => $filters,
             'time'         => $time,
             'last'         => $last,
-            'festivalYear' => $this->getFestival()->getYear()
+            'exclude'      => $exclude,
+            'festivalYear' => $this->getFestival()->getYear(),
         ];
     }
 

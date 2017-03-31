@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmFestival;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoAudio;
 use Base\CoreBundle\Entity\InfoImage;
@@ -85,6 +86,104 @@ class NodeRepository extends EntityRepository
 
         if ($firstResult !== null) {
             $qb->setFirstResult($firstResult);
+        }
+
+        return $qb
+            ->orderBy('n.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param string $site
+     * @param null $type
+     * @param null $exclude
+     * @param null $before
+     * @param array $filters
+     * @param null $maxResults
+     * @return Node[]
+     */
+    public function getStatementsAndInfos($locale, $site = 'site-press', $type = null, $exclude = null, $before = null, $filters = [], $maxResults = null)
+    {
+        $infoEntities = [
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+        $statementEntities = [
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+        if ('info' == $type) {
+            $entities = $infoEntities;
+        }
+        elseif ('statement' == $type|| 'communique' == $type) {
+            $entities = $statementEntities;
+        }
+        else{
+            $entities = array_merge($infoEntities, $statementEntities);
+        }
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->andWhere('n.entityClass IN (:entities)')
+            ->setParameter(':entities', $entities)
+            ->innerJoin('n.translations', 'nt')
+            ->innerJoin('n.sites', 'site')
+            ->andWhere('site.slug = :site_slug')
+            ->setParameter('site_slug', $site)
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
+        ;
+
+        foreach ($filters as $field => $value) {
+            $qb
+                ->andWhere("n.{$field} = :{$field}")
+                ->setParameter(":{$field}", $value)
+            ;
+        }
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id != :exclude')
+                ->setParameter(':exclude', $exclude)
+            ;
+        }
+
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt <= :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        $this->addTranslationQueries($qb, 'nt', $locale);
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
         }
 
         return $qb
