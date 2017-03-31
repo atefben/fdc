@@ -1066,30 +1066,36 @@ $(document).ready(function () {
 
       $grid.isotope('layout');
     });
+    var ajaxLock = false;
     $('.press .read-more').off('click').on('click', function (e) {
 
       e.preventDefault();
       $(this).hide();
       var value = jQuery(this).attr('data-offset');
-      $.ajax({
-        type: "GET",
-        dataType: "html",
-        cache: false,
-        url: GLOBALS.urls.loadPressReleaseUrl + "?offset=" + value,
-        success: function (data) {
-          var $data = data;
-          var $container = $('#gridAudios');
-          var  $grid;
-          $grid = $container.imagesLoaded(function () {
-            setGrid($grid, $data, false);
-          });
-          setInterval(function() {
-            $('.item').addClass('visible');
-            $grid.isotope('layout');
-          },1000);
+      console.log('ajax attempt, lock state',ajaxLock);
+      if(!ajaxLock){
+        ajaxLock = true;
+        $.ajax({
+          type: "GET",
+          dataType: "html",
+          cache: false,
+          url: GLOBALS.urls.loadPressReleaseUrl + "?offset=" + value,
+          success: function (data) {
+            var $data = data;
+            var $container = $('#gridAudios');
+            var  $grid;
+            ajaxLock = false;
+            $grid = $container.imagesLoaded(function () {
+              setGrid($grid, $data, false);
+            });
+            setInterval(function() {
+              $('.item').addClass('visible');
+              $grid.isotope('layout');
+            },1000);
 
+          }
+        });
         }
-      });
     });
   }
 
