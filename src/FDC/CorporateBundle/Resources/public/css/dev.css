@@ -73,3 +73,13 @@
   text-align: left;
 }
 
+.dark.history .text h2.sub-title2, .dark.archive .text h2.sub-title2 {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 23px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #141414;
+}
