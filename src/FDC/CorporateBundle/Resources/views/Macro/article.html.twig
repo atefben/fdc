@@ -43,7 +43,7 @@
                 <span class="hour">
                 {{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}
             </span>
-                <strong><a href="{{ articleUrl }}">{% if article|trans_fallback('title')|length > 55 %}{{ article|trans_fallback('title')|truncate(55) }}{% else %}{{  article|trans_fallback('title') }}{% endif %}</a></strong>
+                <strong><a href="{{ articleUrl }}">{% if article|trans_fallback('title')|length > 40 %}{{ article|trans_fallback('title')|truncate(40) }}{% else %}{{  article|trans_fallback('title') }}{% endif %}</a></strong>
             </div>
         </article>
     {% endif %}
