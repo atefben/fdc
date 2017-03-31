@@ -200,7 +200,7 @@
                                                                                              {% set legend = widget.image|trans_fallback('legend') %}
                                                                                              {% set copyright = widget.image|trans_fallback('copyright') %}
                                                                                              {% if copyright is not empty -%}
-                                                                                                 <br><br><span class="copy">{% if legend is not nu} © {{ copyright }}</span>
+                                                                                                 <br><br><span class="copy">{% if legend is not null %} © {{ copyright }}{% endif %}</span>
                                                                                                  {%- endif %}
                                                                                              </figure>
                                                                                          {% endif %}
