@@ -590,6 +590,11 @@ a.notloaded {
 .press-home .landscape, .downloading-press .landscape {
 	visibility: visible !important;
 }
+
 .audio-live {
 	background-color: #000 !important;
+}
+
+.notloaded:before, .notloaded {
+    background: transparent!important;
 }
