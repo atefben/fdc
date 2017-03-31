@@ -11563,8 +11563,8 @@ Slider channel
   font-size: 36px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   line-height: 50px;
-  padding-bottom: 32px;
-  padding-top: 7px;
+  margin-bottom: 32px;
+  margin-top: 7px;
 }
 .popin-mail .contain-popin .chap-article {
   font-size: 0.88rem;
