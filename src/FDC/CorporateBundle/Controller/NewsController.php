@@ -240,7 +240,7 @@ class NewsController extends Controller
         $nodes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Node')
-            ->getStatementsAndInfos($locale, 'site-evenementiel', $type, $exclude, $before, $filters, $maxResults)
+            ->getStatementsAndInfos($locale, 'site-institutionnel', $type, $exclude, $before, $filters, $maxResults)
         ;
 
         $articles = [];
