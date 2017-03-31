@@ -15,11 +15,11 @@
             {% set globalsCurrentPage = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
-                "locale" : "fr",
-                "defaultDate" : "2016-05-12",
-                "dateStart": "2016-05-12",
-                "dateEnd": "2016-05-24",
-                "year" : 2016,
+                "locale" : "{{ app.request.locale }}",
+                "defaultDate" : "{{ defaultDate }}",
+                "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
+                "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
+                "year" : 2017,
                 "api" : {
                     "instagramUrl" : "{{ path('get_social_wall_instagram') }}",
                     "twitterUrl" : "{{ path('get_social_wall_twitter') }}"
