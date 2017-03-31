@@ -33,6 +33,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
+                {% set firstCopyright = '' %}
                 <div class="owl-carousel thumbnails">
                     {% set firstPicture = true %}
                     {% for key, photo in photos %}
@@ -40,6 +41,9 @@
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF') and
                         photo.type != constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_DIRECTOR')
                         %}
+                            {% if firstCopyright|length == 0 and photo.media.copyright is defined %}
+                                {% set firstCopyright = photo.media.copyright %}
+                            {% endif %}
                             {% set title = '' %}
                             {% if app.request.locale == 'fr' and photo.media.titleVf %}
                                 {% set title =  photo.media.titleVf %}
@@ -55,6 +59,9 @@
                     {% endfor %}
                 </div>
             </div>
+            <p class="caption">
+                <strong>{% if firstCopyright is not empty %} © {{ firstCopyright }}{% endif %}</strong>
+            </p>
         </div>
     </div>
 {% endif %}
