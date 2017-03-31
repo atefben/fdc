@@ -4,13 +4,13 @@
 
         {% for page in pages %}
             <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
-                <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}">
+                <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}" class="noajax">
                     {{ page|trans_fallback('title') }}
                 </a>
             </li>
         {% endfor %}
         <li class="{% if slug == 'equipe' %}active{% endif %}">
-            <a href="{{ path('fdc_corporate_whoarewe_equipe') }}">
+            <a href="{{ path('fdc_corporate_whoarewe_equipe') }}" class="noajax">
                 {{ 'aboutus.team'|trans }}
             </a>
         </li>

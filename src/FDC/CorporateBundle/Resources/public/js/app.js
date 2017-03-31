@@ -1182,7 +1182,7 @@ b
 
 var owInitAjax = function() {
 
-  $('.ajax-section nav li:not(.active) a').on('click', function(e){
+  $('.ajax-section nav li:not(.active) a:not(.noajax)').on('click', function(e){
     e.preventDefault;
 
     var url = $(this).attr('href');
