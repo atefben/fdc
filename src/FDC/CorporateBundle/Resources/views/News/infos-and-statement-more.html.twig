@@ -17,7 +17,7 @@
     {% if filters.editions is defined %}
         <div class="compute-filters date">
             {% for key, year in filters.editions if key %}
-                <span class="" data-filter="{{ year }}">
+                <span class="" data-filter="date-{{ year }}">
                 {% if app.request.locale != 'cn' %}
                     {{ year }}
                 {% else %}

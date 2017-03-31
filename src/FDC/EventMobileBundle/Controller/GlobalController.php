@@ -187,7 +187,10 @@ class GlobalController extends Controller {
     public function footerAction(Request $request, $route) {
         $em = $this->get('doctrine')->getManager();
         $displayedFooterElements = $em->getRepository('BaseCoreBundle:FDCEventRoutes')->findBy(
-            array('type' => 2),
+            array(
+                'type' => 2,
+                'site' => 1
+            ),
             array('position' => 'asc'),
             null,
             null

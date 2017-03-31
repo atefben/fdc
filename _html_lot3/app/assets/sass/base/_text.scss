@@ -33,7 +33,7 @@ sub {
 
   .quote .italic {
     font-family: $CamphorItalic;
-    /*color: #141414 !important;*/
+    color: #141414 !important;
   }
 }
 
@@ -197,7 +197,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: $CamphorThin;
+  font-family: $CamphorLight;
   font-size: 3rem;
   line-height: 60px;
   display: block;
