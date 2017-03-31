@@ -4624,6 +4624,9 @@ var initRs = function () {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
 
+            var title = $('.overlay-popin').find('.contain-popin .title-article');
+            console.log(title.height());
+            $clamp(title.get(0), {clamp: 3});
             $('.overlay-popin').on('click', function (e) {
 
                 if (!$(e.target).hasClass('popin')) {
@@ -5859,7 +5862,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
 
     $('.chocolat-right').on('click', function () {
         goToNextPrev(0);
-    })
+    }
 
     $('.chocolat-left').on('click', function () {
         goToNextPrev(1);
