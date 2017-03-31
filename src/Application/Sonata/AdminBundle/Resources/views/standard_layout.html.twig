@@ -722,6 +722,25 @@ file that was distributed with this source code.
                                     </li>
                                     {% endif %}
 
+                                    {% if is_granted('ROLE_BASE_ADMIN_CORPO_MEDIATHEQUE_ADMIN') %}
+                                        {% set active = app.request.attributes.get('_route') in ['admin_base_core_corpomediatheque_edit'] ? ' active': '' %}
+                                        <li class="treeview {% if active %} active{% endif %}">
+                                            <a href="#">
+                                                <i class="fa fa-folder"></i>
+                                                <span>Médiathèque</span>
+                                                <i class="fa pull-right fa-angle-left"></i>
+                                            </a>
+                                            <ul class="treeview-menu {% if active %} active{% endif %}">
+                                                <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_corpomediatheque_edit'] %} active{% endif %}">
+                                                    <a href="{{ path('admin_base_core_corpomediatheque_edit', {'id': 1}) }}">
+                                                        <i class="fa fa-angle-double-right"></i>
+                                                        {{ 'form.label_our_selection'|trans({}, 'BaseAdminBundle') }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+
                                     {% if is_granted('ROLE_BASE_ADMIN_PRESS_HOMEPAGE_ADMIN') %}
                                         {% set active = false %}
                                         {% if

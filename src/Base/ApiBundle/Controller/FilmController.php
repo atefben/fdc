@@ -2,7 +2,6 @@
 
 namespace Base\ApiBundle\Controller;
 
-use Base\ApiBundle\Exclusion\TranslationExclusionStrategy;
 use Base\CoreBundle\Component\Gender;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmPerson;
@@ -11,18 +10,13 @@ use Base\CoreBundle\Entity\FilmFunctionTranslation;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\Routing\ClassResourceInterface;
-
 use FOS\RestBundle\View\View;
-use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\Serializer\SerializationContext;
-
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-use Symfony\Component\HttpFoundation\Request;
 /**
  * FilmController class.
- * 
+ *
  * \@extends FOSRestController
  */
 class FilmController extends FOSRestController
@@ -77,13 +71,13 @@ class FilmController extends FOSRestController
         // get items
         $items = $coreManager->getPaginationItems($query, $paramFetcher);
 
-        foreach($items as $item) {
+        foreach ($items as $item) {
             $this->translateFunction($item, $lang);
         }
 
-		
+
         // set context view
-        $groups = array('film_list');
+        $groups = ['film_list'];
         $context = $coreManager->setContext($groups, $paramFetcher);
         $context->setVersion($version);
         //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
@@ -102,7 +96,7 @@ class FilmController extends FOSRestController
             $persons = $film->getPersons();
             foreach ($persons as &$person) {
                 if ($person instanceof FilmFilmPerson && $person->getPerson() && $person->getPerson()->findTranslationByLocale($locale)) {
-                    $functions  = $person->getFunctions();
+                    $functions = $person->getFunctions();
                     foreach ($functions as &$function) {
                         if ($function instanceof FilmFilmPersonFunction) {
                             $subFunction = $function->getFunction();
@@ -156,7 +150,7 @@ class FilmController extends FOSRestController
     public function getFilmAction(ParamFetcher $paramFetcher, $id)
     {
         // coremanager shortcut
-        $coreManager =  $this->get('base.api.core_manager');
+        $coreManager = $this->get('base.api.core_manager');
 
         // parameters
         $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
@@ -173,7 +167,77 @@ class FilmController extends FOSRestController
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(array('film_show'));
+        $context->setGroups(['film_show']);
+        $context->setVersion($version);
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+
+        // create view
+        $view = $this->view($film, 200);
+        $view->setSerializationContext($context);
+
+        return $view;
+    }
+
+    /**
+     * Return a single film by $id, the id format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+     *
+     * @Rest\View()
+     * @Rest\Get("/film-2017/{id}")
+     * @ApiDoc(
+     *  resource = true,
+     *  description = "Get a film by $id",
+     *  section="Films",
+     *  statusCodes = {
+     *     200 = "Returned when successful",
+     *     204 = "Returned when no film is found"
+     *  },
+     *  requirements={
+     *      {
+     *          "name"="id",
+     *          "requirement"="[\s-+]",
+     *          "dataType"="string",
+     *          "description"="The film identifier"
+     *      }
+     *  },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\FilmFilm",
+     *      "groups"={"film_show"}
+     *  }
+     * )
+     *
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
+     *
+     * @param ParamFetcher $paramFetcher
+     * @return View
+     */
+    public function getFilm2017Action(ParamFetcher $paramFetcher, $id)
+    {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // parameters
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
+
+        // get festival
+        $festival = $coreManager->getApiFestivalYear();
+
+        // create query
+
+        $film = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->getApiFilm($id, $festival)
+        ;
+        $film->setApi2017(true);
+
+        $this->translateFunction($film, $lang);
+
+        // set context view
+        $context = SerializationContext::create();
+        $context->setGroups(['film_show']);
         $context->setVersion($version);
         //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
 
