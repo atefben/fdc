@@ -1067,12 +1067,13 @@ $(document).ready(function () {
       $grid.isotope('layout');
     });
     var ajaxLock = false;
-    $('.press .read-more').off('click').on('click', function (e) {console.log('debug read more click 3');
+    $('.press .read-more').on('click', function (e) {
 
       e.preventDefault();
       $(this).hide();
       var value = jQuery(this).attr('data-offset');
       console.log('ajax attempt, lock state',ajaxLock);
+      console.log('ajax url',GLOBALS.urls.loadPressReleaseUrl);
       if(!ajaxLock){
         ajaxLock = true;
         $.ajax({

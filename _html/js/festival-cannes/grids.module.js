@@ -739,8 +739,7 @@ $(document).ready(function () {
         });
       });
 
-      $('.read-more').off('click').on('click', function (e) {
-        console.log('debug read more click 1');
+      $('.read-more').on('click', function (e) {
         e.preventDefault();
         $(this).hide();
         
