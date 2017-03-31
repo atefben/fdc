@@ -314,7 +314,6 @@ function setGrid(grid, dom, init){
 
     //grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
-      console.log('imagesloaded progress');
       grid.isotope('layout');
     });
   }
@@ -741,9 +740,10 @@ $(document).ready(function () {
       });
 
       $('.read-more').off('click').on('click', function (e) {
+        console.log('debug read more click 1');
         e.preventDefault();
         $(this).hide();
-        console.log('readmore ajax valid click');
+        
 
         $.ajax({
           type: "GET",

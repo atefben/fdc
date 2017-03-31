@@ -1067,7 +1067,7 @@ $(document).ready(function () {
       $grid.isotope('layout');
     });
     var ajaxLock = false;
-    $('.press .read-more').off('click').on('click', function (e) {
+    $('.press .read-more').off('click').on('click', function (e) {console.log('debug read more click 3');
 
       e.preventDefault();
       $(this).hide();

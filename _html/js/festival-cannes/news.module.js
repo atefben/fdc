@@ -108,7 +108,7 @@ $(document).ready(function() {
       });
 
       // load more
-      $('.read-more').on('click', function(e) {
+      $('.read-more').on('click', function(e) {console.log('debug read more click 2');
         e.preventDefault();
 
         $('#timeline').removeClass('bottom');
