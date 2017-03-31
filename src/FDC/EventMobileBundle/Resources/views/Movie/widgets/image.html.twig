@@ -19,14 +19,14 @@
                             {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
                                 {% set title = photo.media.titleVa %}
                             {% endif %}
-
                             <div class="img {% if firstPicture == true %}active{% endif %}">
                                 <a id="photo{{ photo.id }}"
+                                   data-pid="{{ photo.id }}"
                                    class="chocolat-image ajax"
-                                   href="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}"
+                                   href="{% path photo.media.file, '2560x1103' %}"
                                    title='<span>{{ title }}</span>'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                                    <img src="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}" alt="" />
+                                    <img src="{% path photo.media.file, '976x535' %}" alt="" />
                                 </a>
                             </div>
                             {% set firstPicture = false %}
@@ -47,7 +47,7 @@
                                 {% set title = photo.media.titleVa %}
                             {% endif %}
 
-                            <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
+                            <div data-id="photo{{ photo.id }}" class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_320x220' %}" />
                             </div>
                             {% set firstPicture = false %}
