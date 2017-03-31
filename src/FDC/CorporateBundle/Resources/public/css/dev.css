@@ -21,3 +21,7 @@
 .articles-list .card.item .info .category {
   top:0 !important;
 }
+
+.block-push-top .vFlexAlign {
+  background: none !important;
+}
