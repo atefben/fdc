@@ -11565,8 +11565,7 @@ Slider channel
   line-height: 50px;
   margin-bottom: 32px;
   margin-top: 7px;
-  overflow: hidden;
-  height: auto;
+  overflow: visible;
 }
 .popin-mail .contain-popin .chap-article {
   font-size: 0.88rem;
