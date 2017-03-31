@@ -5989,7 +5989,6 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
-
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
@@ -6067,9 +6066,10 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
 
 $(document).ready(function() {
   initSlideshows();
-
+  $("li > a").click(function() {
+    initSlideshows();
+  });
 });
-
 
 var timeoutCursor;
 
