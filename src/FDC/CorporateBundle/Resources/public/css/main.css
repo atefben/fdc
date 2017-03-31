@@ -7853,7 +7853,7 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   margin: 0 !important;
 }
 
-.video-container .control-bar .time .time-info {
+.home .video-container .control-bar .time .time-info {
   width: 100px;
 }
 
@@ -16850,7 +16850,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border: none !important;
 }
 .article-single .text-quote, .single-movie .text-quote {
-  width: 977px !important;
+  width: 830px !important;
 }
 .article-single .text, .single-movie .text {
   width: 630px;
