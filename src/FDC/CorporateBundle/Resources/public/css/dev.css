@@ -31,9 +31,14 @@
 }
 
 .story-movie.dark {
-  background-color:#FFF;
+  background-color: #FFF;
 }
 
-.dark .title-list-cat.block-01-xs {
+.dark.story-palme .title-list-cat.block-01-xs {
   background-color: #141414;
 }
+
+.story-movie.dark.story-palme {
+  background-color: #141414;
+}
+
