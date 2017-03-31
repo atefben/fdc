@@ -16849,12 +16849,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .article-single table[border="0"] td, .article-single table[border="0"] td, .article-single table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td {
   border: none !important;
 }
+.article-single .text-quote, .single-movie .text-quote {
+  width: 977px !important;
+}
 .article-single .text, .single-movie .text {
   width: 630px;
   margin: 0 auto 70px;
-}
-.article-single .text .quote, .single-movie .text .quote {
-  width: 977px;
 }
 .article-single .text p, .single-movie .text p {
   color: #666;
