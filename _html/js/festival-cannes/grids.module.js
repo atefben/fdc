@@ -311,18 +311,12 @@ function setGrid(grid, dom, init){
     }
 
     grid.append($data).isotope('appended', $data);
-    console.log('grid',grid);
+
     //grid.isotope('insert',$data);
-    /*grid.imagesLoaded().progress(function () {
+    grid.imagesLoaded().progress(function () {
       console.log('imagesloaded progress');
       grid.isotope('layout');
-    });*/
-
-    //hotfix rebuild grid
-    var i = window.setInterval(function(){
-      console.log('rebuilding');
-      grid.isotope('layout');
-    },500);
+    });
   }
 
   buildGrid();
@@ -746,7 +740,7 @@ $(document).ready(function () {
         });
       });
 
-      $('.read-more').on('click', function (e) {
+      $('.read-more').off('click').on('click', function (e) {
         e.preventDefault();
         $(this).hide();
 
