@@ -87,3 +87,15 @@
 .dark.history .wysiwyg-article-02 .text ul strong, .dark.archive .wysiwyg-article-02 .text ul strong {
   color: #333;
 }
+
+.dark.history .block-social-network-all a:first-child, .dark.archive .block-social-network-all a:first-child {
+  border-left: 1px solid #C8A464;
+}
+.dark.history .block-social-network-all a, .dark.archive .block-social-network-all a {
+  width: 76px;
+  height: 76px;
+  border-color: #C9A472;
+}
+.dark.history .border-top, .dark.archive .border-top {
+  border-top: none;
+}
