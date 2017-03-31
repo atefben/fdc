@@ -57,7 +57,8 @@ CKEDITOR.editorConfig = function( config ) {
     ];
 
     // CUSTOM DISPLAY
-    CKEDITOR.config.allowedContent = true;
+    config.allowedContent = true;
+    
     CKEDITOR.on('dialogDefinition', function( ev ) {
         var dialogName = ev.data.name;
         var dialogDefinition = ev.data.definition;
