@@ -4730,7 +4730,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   line-height: 24px;
   font-size: .8125rem;
 }
-.block-accordion-02 .block-01 .descrip-section p {
+.block-accordion-02 .item .item-manual .contain-infos .block-01 .descrip-section p {
   width: 750px;
   margin: 0 auto;
   font-size: 1.25rem;

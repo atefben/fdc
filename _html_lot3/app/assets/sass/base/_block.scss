@@ -2015,17 +2015,15 @@
       font-size: .8125rem;
     }
 
-    .block-01 {
-      .descrip-section {
-        p {
-          width: 750px;
-          margin: 0 auto;
-          font-size: 1.25rem;
-          line-height: 36px;
-          padding: 39px 0;
-          text-align: center;
-          color: #000;
-        }
+    .item .item-manual .contain-infos .block-01 .descrip-section {
+      p {
+        width: 750px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        line-height: 36px;
+        padding: 39px 0;
+        text-align: center;
+        color: #000;
       }
     }
 
