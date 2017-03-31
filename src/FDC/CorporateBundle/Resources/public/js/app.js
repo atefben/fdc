@@ -4627,6 +4627,8 @@ var initRs = function () {
             var title = $('.overlay-popin').find('.contain-popin .title-article');
             if(title.height() > 150){
                 $clamp(title.get(0), {clamp: 3});
+                //hotfix for weird clamp plugin bug
+                title.css('overflow','visible').css('overflow','hidden');
             }
             $('.overlay-popin').on('click', function (e) {
 
