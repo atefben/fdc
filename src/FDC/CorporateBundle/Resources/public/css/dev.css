@@ -43,9 +43,26 @@
 }
 
 .dark.history .text p, .dark.archive .text p {
-  color: #666;
+  color: #666 !important;
   line-height: 1.7em;
   margin-bottom: 5px;
+}
+
+.dark.history .black, .dark.archive .black {
+  background-color:#FFF;
+}
+
+.dark.history .contain-title p, .dark.archive .contain-title p {
+  color: #666 !important;
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  max-width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .dark.history .text p strong, .dark.archive .text p strong {
