@@ -83,3 +83,7 @@
   text-transform: uppercase;
   color: #141414;
 }
+
+.dark.history .wysiwyg-article-02 .text ul strong, .dark.archive .wysiwyg-article-02 .text ul strong {
+  color: #333;
+}
