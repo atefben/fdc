@@ -33,7 +33,7 @@ CKEDITOR.editorConfig = function( config ) {
         {name: 'Cadre doré', element: 'div', attributes: {'class': 'info'}},
         {name: 'Paragraphe', element: 'p', attributes: {'class': 'paragraph'}}
     ];
-
+    config.extraAllowedContent = 'iframe[*]';
     // TOOLBAR
     config.toolbar = [
         {name: 'document', items: ['Source']},
