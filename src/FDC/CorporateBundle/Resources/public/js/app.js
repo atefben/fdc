@@ -5862,7 +5862,7 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
 
     $('.chocolat-right').on('click', function () {
         goToNextPrev(0);
-    }
+    });
 
     $('.chocolat-left').on('click', function () {
         goToNextPrev(1);
