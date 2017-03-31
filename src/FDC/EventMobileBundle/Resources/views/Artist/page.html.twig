@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/artist.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/artist.css"
+        "bundles/fdceventmobile/css/artist_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
