@@ -89,13 +89,26 @@
 }
 
 .dark.history .block-social-network-all a:first-child, .dark.archive .block-social-network-all a:first-child {
-  border-left: 1px solid #C8A464;
+  border-left: 1px solid #e7e7e7;
 }
 .dark.history .block-social-network-all a, .dark.archive .block-social-network-all a {
   width: 76px;
   height: 76px;
-  border-color: #C9A472;
+  border-color: #e7e7e7;
 }
 .dark.history .border-top, .dark.archive .border-top {
-  border-top: none;
+  margin-top: 30px;
+  border-color: #e5e5e5;
+}
+
+.dark.history .buttons-01 .button, .dark.archive .buttons-01 .button {
+  border-color: #e7e7e7;
+}
+
+.dark.history .title-9, .dark.archive .title-9 {
+  color:#4f4f4f;
+}
+
+.dark.history #breadcrumb, .dark.archive #breadcrumb {
+  background-color:#141414;
 }
