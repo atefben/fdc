@@ -593,3 +593,7 @@ a.notloaded {
 .audio-live {
 	background-color: #000 !important;
 }
+
+.notloaded:before, .notloaded {
+    background: transparent!important;
+}
