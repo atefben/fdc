@@ -17,3 +17,7 @@
 .s-slider-retrospective .isotope-01 .item.block-poster img {
   display:none !important;
 }
+
+.articles-list .card.item .info .category {
+  top:0 !important;
+}

@@ -310,7 +310,8 @@ function setGrid(grid, dom, init){
       $data = $(dom);
     }
 
-    grid.append($data).isotope('appended', $data);
+    //grid.append($data).isotope('appended', $data);
+    grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
     });
