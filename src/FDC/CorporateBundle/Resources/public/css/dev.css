@@ -25,3 +25,15 @@
 .block-push-top .vFlexAlign {
   background: none !important;
 }
+
+.dark.story-movie .wysiwyg-article-02 p {
+  color: #f5f5f5 !important;
+}
+
+.story-movie.dark {
+  background-color:#FFF;
+}
+
+.dark .title-list-cat.block-01-xs {
+  background-color: #141414;
+}
