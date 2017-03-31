@@ -16,7 +16,7 @@
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
                 "locale" : "{{ app.request.locale }}",
-                "defaultDate" : "{{ defaultDate }}",
+                "defaultDate" : "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
                 "dateStart": "{{ festival_date.festivalStartsAt|date('Y-m-d') }}",
                 "dateEnd": "{{ festival_date.festivalEndsAt|date('Y-m-d') }}",
                 "year" : 2017,

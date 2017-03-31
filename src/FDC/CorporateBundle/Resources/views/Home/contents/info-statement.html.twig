@@ -118,6 +118,6 @@
            class="category">{{ article.theme|trans_fallback('name') }}</a><span
                 class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                 class="hour">{{ article.publishedAt|date('H:i') }}</span>
-        <strong><a href="{{ sliderUrl }}">{{ article|trans_fallback('title') }}</a></strong>
+        <strong><a href="{{ sliderUrl }}">{% if article|trans_fallback('title')|length > 55 %}{{ article|trans_fallback('title')|truncate(55) }}{% else %}article|trans_fallback('title'){% endif %}</a></strong>
     </div>
 </article>
