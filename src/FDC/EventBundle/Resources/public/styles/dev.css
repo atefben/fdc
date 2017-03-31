@@ -594,6 +594,3 @@ a.notloaded {
 	background-color: #000 !important;
 }
 
-.notloaded:before, .notloaded {
-    background: transparent!important;
-}
