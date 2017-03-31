@@ -312,7 +312,7 @@ function setGrid(grid, dom, init){
 
     grid.append($data);
     //memorize scrolltop
-    var scrolltop = $(window).scrolltop();
+    var scrolltop = window.pageYOffset || document.documentElement.scrollTop;
     grid.isotope('destroy');
     grid.isotope({
         itemSelector    : '.item',
@@ -323,7 +323,7 @@ function setGrid(grid, dom, init){
           columnWidth : '.grid-sizer'
         }
       });
-    $('html,body').scrollTop(scrolltop);
+      window.scrollTo(0,scrolltop);
     //grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
