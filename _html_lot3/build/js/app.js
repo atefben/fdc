@@ -5574,12 +5574,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
-
-            //clamp title 3 lines
-            var clampInterval = window.setInterval(function(){
-                console.log($('.popin-mail').find('.contain-popin .title-article').height());
-                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
-            },200);
         }
     }
 
@@ -5643,12 +5637,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
-
-            //clamp title 3 lines
-            var clampInterval = window.setInterval(function(){
-                console.log($('.popin-mail').find('.contain-popin .title-article').height());
-                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
-            },200);
         }
 
     }
@@ -5857,12 +5845,6 @@ var openSlideShow = function (slider, hash, affiche, fdcAfficheIndex) {
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
         $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
         $('.popin-mail').find('.chap-article').html('');
-
-        //clamp title 3 lines
-        var clampInterval = window.setInterval(function(){
-            console.log($('.popin-mail').find('.contain-popin .title-article').height());
-            $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
-        },200);
 
     }
     
