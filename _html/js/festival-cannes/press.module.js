@@ -1067,7 +1067,7 @@ $(document).ready(function () {
       $grid.isotope('layout');
     });
     $('.press .read-more').off('click').on('click', function (e) {
-      console.log('ajax click ok');
+
       e.preventDefault();
       $(this).hide();
       var value = jQuery(this).attr('data-offset');
@@ -1083,7 +1083,7 @@ $(document).ready(function () {
           $grid = $container.imagesLoaded(function () {
             setGrid($grid, $data, false);
           });
-          setTimeout(function() {
+          setInterval(function() {
             $('.item').addClass('visible');
             $grid.isotope('layout');
           },1000);
