@@ -38,15 +38,21 @@
   background-color: #FFF;
 }
 
-.dark.history .title-list-cat.block-01-xs {
+.dark.history .title-list-cat.block-01-xs, .dark.archive .title-list-cat.block-01-xs {
   background-color: #141414;
 }
 
-.dark.history .text p {
+.dark.history .text p, .dark.archive .text p {
   color: #666;
   line-height: 1.7em;
   margin-bottom: 5px;
 }
 
-
+.dark.history .text p strong, .dark.archive .text p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+  text-align: left;
+}
 
