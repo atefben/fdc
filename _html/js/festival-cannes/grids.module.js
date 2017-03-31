@@ -323,7 +323,7 @@ function setGrid(grid, dom, init){
           columnWidth : '.grid-sizer'
         }
       });
-    $('html,body').scrollTop(scrolltop);
+      window.scrollTo(0,scrolltop);
     //grid.isotope('insert',$data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
