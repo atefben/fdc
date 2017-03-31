@@ -4625,10 +4625,15 @@ var initRs = function () {
             $('.overlay-popin').addClass('visible-popin');
 
             var title = $('.overlay-popin').find('.contain-popin .title-article');
+            title.css('opacity',0);
             if(title.height() > 150){
                 window.setTimeout(function(){
-                    console.log('trigger clamp');
+
                     $clamp(title.get(0), {clamp: 3});
+                    title.animate({
+                        'opacity': 1
+                    },300);
+
                 },200);
             }
             $('.overlay-popin').on('click', function (e) {
