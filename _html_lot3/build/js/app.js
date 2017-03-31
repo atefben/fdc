@@ -4625,16 +4625,16 @@ var initRs = function () {
             $('.overlay-popin').addClass('visible-popin');
 
             var title = $('.overlay-popin').find('.contain-popin .title-article');
-            title.css('opacity',0);
+            //title.css('opacity',0);
             if(title.height() > 150){
                 window.setTimeout(function(){
 
                     $clamp(title.get(0), {clamp: 3});
-                    title.animate({
+                    /*title.animate({
                         'opacity': 1
-                    },300);
+                    },300);*/
 
-                },200);
+                },20);
             }
             $('.overlay-popin').on('click', function (e) {
 
