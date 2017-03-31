@@ -97,6 +97,7 @@
   border-color: #e7e7e7;
 }
 .dark.history .border-top, .dark.archive .border-top {
+  margin-top: 30px;
   border-color: #e5e5e5;
 }
 
@@ -106,4 +107,8 @@
 
 .dark.history .title-9, .dark.archive .title-9 {
   color:#4f4f4f;
+}
+
+.dark.history #breadcrumb, .dark.archive #breadcrumb {
+  background-color:#141414;
 }
