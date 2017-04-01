@@ -316,3 +316,7 @@
   margin: 0 auto;
   display: block;
 }
+
+.who-fdc .text-quote {
+  width: 800px !important;
+}
