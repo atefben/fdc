@@ -112,3 +112,7 @@
 .dark.history #breadcrumb, .dark.archive #breadcrumb {
   background-color:#141414;
 }
+
+.participate, .participate #main {
+  overflow: hidden !important;
+}
