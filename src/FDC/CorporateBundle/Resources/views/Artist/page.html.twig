@@ -290,19 +290,15 @@
         'description': '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
-
+    }}
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb": [
     { "name" : 'breadcrumb.69editions.home'|trans,
     "url"  : ''
     },
     {
-    "name" : 'breadcrumb.retrospective.home'|trans,
-    "url"  : path('fdc_corporate_editions_retrospective')
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
-    "url"  : path('fdc_event_movie_selection')
+    "name" : artist.fullName,
+    "url"  : ''
     },
     ]
     } %}
