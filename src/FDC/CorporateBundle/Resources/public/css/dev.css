@@ -317,6 +317,6 @@
   display: block;
 }
 
-.who-fdc .text-quote {
+.who-fdc .text-quote, .article-single .text-quote {
   width: 800px !important;
 }
