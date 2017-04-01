@@ -23,7 +23,7 @@
     {% endif %}
 {% endif %}
 
-{% if imageTrans is defined and trans and trans.jobMp3State == 3 and trans.mp3Url %}
+{% if imageTrans is defined and trans and trans.jobMp3State == 3 and trans.mp3Url and '.mpga' not in trans.mp3Url %}
     <div class="audio-container"
          data-link="{{ currentUrl }}"
          data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
