@@ -30,7 +30,7 @@
                     {% set titleTranslated = film|trans_fallback_movie('title') %}
                 {% endif %}
 
-                <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
+                <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
 
                 {% set directors = film.getDirectors() %}
                 {% for director in directors %}
