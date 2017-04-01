@@ -263,7 +263,7 @@
                                     {% endif %}
                                 {% endif %}
                                 <a class="linkVid"
-                                   href="{{ path('fdc_event_artist_get', {'slug': director.slug }) }}"></a>
+                                   href="{{ path('fdc_corporate_artist_get', {'slug': director.slug }) }}"></a>
                                 <div class="info-movie">
                                     <p>{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</p>
                                     <a class="director" href="#">{{ director|profession_gender('profession') }}</a>
@@ -302,7 +302,7 @@
     },
     {
     "name" : 'breadcrumb.la_selection'|trans,
-    "url"  : path('fdc_event_movie_selection')
+    "url"  : path('fdc_corporate_movie_selection')
     },
     ]
     } %}

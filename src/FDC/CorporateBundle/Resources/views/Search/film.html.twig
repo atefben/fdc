@@ -27,7 +27,7 @@
                                 {% set directors = film.getDirectors() %}
                                 {% for key,director in directors %}
                                     {% if director %}
-                                        <a class="title-12" href="{{ path('fdc_event_artist_get', {slug: director.person.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
+                                        <a class="title-12" href="{{ path('fdc_corporate_artist_get', {slug: director.person.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}

@@ -112,7 +112,7 @@
                                                     {% set directors = film.getDirectors() %}
                                                     {% set directorsName = '' %}
                                                     {% for director in directors %}
-                                                        <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span
+                                                        <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
                                                                     class="names-a">
                                                                     {{ directorsName ~ director.person.fullName }}
                                                                 {% if loop.index != directors|length %} - {% endif %}
