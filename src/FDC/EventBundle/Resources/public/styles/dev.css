@@ -598,3 +598,8 @@ a.notloaded {
 .notloaded:before, .notloaded {
     background: transparent!important;
 }
+
+.container .audio-container .audio-player {
+    width: 640px;
+    margin: 0 auto;
+}
