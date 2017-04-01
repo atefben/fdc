@@ -73,7 +73,7 @@
                                 {#{% set countera = countera+1 %}#}
                                 {#{% endif %}#}
                                 <div class="item">
-                                    <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                    <a href="{{ path('fdc_corporate_movie_get', {'slug': filmPerson.film.slug}) }}">
                                         {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: filmPerson.film,
                                         film_format: '366x488',
@@ -139,7 +139,7 @@
                                         {% set counter = counter+1 %}
                                     {% endif %}
                                     <div class="item">
-                                        <a href="{{ path('fdc_event_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                        <a href="{{ path('fdc_corporate_movie_get', {'slug': filmPerson.film.slug}) }}">
                                             <div class="image">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                 film: filmPerson.film,
