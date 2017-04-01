@@ -3407,6 +3407,14 @@ var videoMovie;
 
 // Single Movie
 // =========================
+$( window ).resize( function(){
+  if($('.grid-selection .isotope-01').length) {
+    var w = $('.grid-selection .isotope-01 .contain-img').first().width();
+    $('.grid-selection .isotope-01 .contain-img').each(function() {
+      $(this).css('height', (w / 0.75));
+    });
+  }
+});
 $(document).ready(function() {
 
   console.log('movie.module.js $(document).ready');
@@ -3420,6 +3428,17 @@ $(document).ready(function() {
     $('.content-movie .nextmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.next').attr('href');
       document.location.href = link;
+    });
+  }
+
+  if($('.grid-selection .isotope-01').length) {
+    var w = $('.grid-selection .isotope-01 .contain-img').first().width();
+    $('.grid-selection .isotope-01 .contain-img').each(function() {
+      $(this).css('height', (w / 0.75));
+      var $container = $(this), imgUrl = $container.find('img').prop('src');
+      if (imgUrl) {
+        $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+      }
     });
   }
 
