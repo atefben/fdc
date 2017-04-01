@@ -536,7 +536,7 @@ blockquote, .quote {
     display: block;
     // letter-spacing: .1rem;
     text-align: center;
-    line-height: 36px;
+    line-height: 2em;
 
     .ie & {
       margin-top: 67px;
@@ -666,11 +666,11 @@ blockquote, .quote {
     }
 
     strong {
-      color: #141414;
+      color: #333;
     }
 
     .bright & {
-      color: #141414;
+      color: #333;
     }
   }
 

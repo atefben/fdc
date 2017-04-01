@@ -1986,7 +1986,7 @@ blockquote, .quote {
   color: #fff;
   display: block;
   text-align: center;
-  line-height: 36px;
+  line-height: 2em;
     /*
         sub {
           vertical-align: text-bottom;
@@ -2092,10 +2092,10 @@ blockquote, .quote {
   width: 100%;
 }
 .contain-title .title-02 strong {
-  color: #141414;
+  color: #333;
 }
 .bright .contain-title .title-02 {
-  color: #141414;
+  color: #333;
 }
 .contain-title .title-03 {
   text-align: center;
@@ -3162,9 +3162,9 @@ video {
 }
 
 .block-01-m {
-  margin: 40px auto;
+  margin: 0 auto;
   max-width: 100%;
-  width: 900px;
+  width: 942px;
   margin-bottom: 20px;
 }
 .block-01-m img {
