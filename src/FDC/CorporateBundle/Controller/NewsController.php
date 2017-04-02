@@ -776,10 +776,20 @@ class NewsController extends Controller
         $focusArticles = [];
 
         //get focus articles
-        if ($news->getAssociatedStatement() !== null) {
-            foreach ($news->getAssociatedStatement() as $associatedNew) {
-                if ($associatedNew->getAssociation() != null) {
-                    $focusArticles[] = $associatedNew->getAssociation();
+        if ($news instanceof Statement) {
+            if ($news->getAssociatedStatement() !== null) {
+                foreach ($news->getAssociatedStatement() as $associatedStatement) {
+                    if ($associatedStatement->getAssociation() != null) {
+                        $focusArticles[] = $associatedStatement->getAssociation();
+                    }
+                }
+            }
+        } elseif ($news instanceof Info) {
+            if ($news->getAssociatedInfo() !== null) {
+                foreach ($news->getAssociatedInfo() as $associatedInfo) {
+                    if ($associatedInfo->getAssociation() != null) {
+                        $focusArticles[] = $associatedInfo->getAssociation();
+                    }
                 }
             }
         }
