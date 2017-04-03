@@ -3234,9 +3234,10 @@ var owInitGrid = function (id) {
                             .isotope('remove', $currentItems)
                             .isotope('insert',articles);
 
-                            var t = window.setTimeout(function(){
+                            var t = window.setInterval(function(){
+                                console.log($('.isotope-01 .item:first-child').hasClass('w2'));
                                 owsetGridBigImg($gridMore, $('.grid-01'), false);
-                            },500);
+                            },200);
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
