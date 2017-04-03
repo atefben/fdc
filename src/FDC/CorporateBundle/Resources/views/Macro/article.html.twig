@@ -41,7 +41,7 @@
             </span>
         </div>
         <div class="info">
-            <a href="#" class="category">{% if article.theme %}{{ article.theme|trans_fallback('name') }}{% endifgit %}</a>
+            <a href="#" class="category">{% if article.theme %}{{ article.theme|trans_fallback('name') }}{% endif %}</a>
             <span class="date">
                 {{ article.publishedAt|date('d.m.y') }}
             </span>
