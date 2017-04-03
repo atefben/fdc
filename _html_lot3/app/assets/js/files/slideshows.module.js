@@ -4,6 +4,7 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
+  console.log('initSlideshows');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 

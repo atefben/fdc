@@ -87,7 +87,6 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
-        console.log('01-video.js playerInit', id)
 
         if (id) {
             var videoPlayer = jwplayer(id);
@@ -597,7 +596,6 @@ function playerInit(id, cls, havePlaylist, live) {
             havePlaylist = false;
         }
 
-        console.log("01-video.js playerLoad", $(vid), $(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,

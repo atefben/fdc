@@ -26,6 +26,7 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
+            extraPlugins: ["iframe"]
         widget:
            # extra_plugins: divarea
             customConfig: /bundles/baseadmin/ckeditor/config_widget.js
@@ -44,6 +45,7 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
+            extraPlugins: ["iframe"]
         ccm_widget:
            # extra_plugins: divarea
             customConfig: /bundles/baseadmin/ckeditor/config_ccm_widget.js
@@ -80,6 +82,7 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
+            extraPlugins: ["iframe"]
         corpo:
             # extra_plugins: divarea
             customConfig: /bundles/baseadmin/ckeditor/config_corpo.js
@@ -98,3 +101,4 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
+            extraPlugins: ["iframe"]

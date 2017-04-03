@@ -12,9 +12,6 @@ $( window ).resize( function(){
   }
 });
 $(document).ready(function() {
-
-  console.log('movie.module.js $(document).ready');
-
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.prev').attr('href');
