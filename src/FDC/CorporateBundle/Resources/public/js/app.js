@@ -3235,8 +3235,8 @@ var owInitGrid = function (id) {
                             .isotope('insert',articles);
 
                             var bigInterval = window.setInterval(function(){
-                                console.log($('.isotope-01').children().eq(1).hasClass('w2'));
-                                if($('.isotope-01').children().eq(1).hasClass('w2')){
+                                console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
                                     window.clearInterval(bigInterval);
                                 }else{
                                     owsetGridBigImg($gridMore, $('.grid-01'), false);
