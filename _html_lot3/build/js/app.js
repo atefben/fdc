@@ -346,7 +346,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+vidN;
                 history.pushState(null, null, hashPush);
-                console.log('pushstate 1');
             });
 
             var updateHomeTextRight = function(data){
@@ -470,7 +469,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+data.vidN;
                 history.pushState(null, null, hashPush);
-                console.log('pushstate 2');
                 updateHomeTextRight(data);
 
             });
@@ -853,7 +851,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
-            console.log('pushstate 3');
             setTimeout(function(){
                 videoNews.play();
             }, 800);
@@ -1279,7 +1276,6 @@ var owInitAjax = function() {
       }
 
       window.history.pushState('','',url);
-      console.log('pushstate 7');
       owInitAjax();
     });
 
@@ -1474,7 +1470,6 @@ var initAudio = function (hash) {
             var tempArray = fileArray[0];
 
             if(typeof tempArray !== 'undefined'){
-                // console.log('tempArray',tempArray,tempArray.file);
                 var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
@@ -1496,7 +1491,6 @@ var initAudio = function (hash) {
             updateShareLink();
             this.setVolume(100);
         }).on('play', function () {
-            console.log('play');
             $container.removeClass('state-init').removeClass('state-complete');
             $stateBtn.find('i').removeClass('icon-play').addClass('icon-pause');
             $infoBar.find('.picto').addClass('hide');
@@ -2315,7 +2309,6 @@ var initContact = function () {
     }else{
         var textSelectValue = $('.select select option.default').text();
     }
-    console.log(textSelectValue);
     
     //init value
     $('.select .select-value .val span').html(textSelectValue);
@@ -2858,9 +2851,9 @@ var owInitGrid = function (id) {
             });
 
             //hotfix isotope bugs : trigger layout to avoid messy cards
-            /*var layoutInterval = window.setInterval(function(){
+            var layoutInterval = window.setInterval(function(){
                 $gridMore.isotope('layout');
-            },500);*/
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
@@ -2924,7 +2917,7 @@ var owInitGrid = function (id) {
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
 
-                console.log('data sent to GET',postData);
+                //console.log('data sent to GET',postData);
 
                 if(!ajaxLock){
                     ajaxLock = true;
@@ -2965,7 +2958,7 @@ var owInitGrid = function (id) {
                                     });
                                 });
                             }
-                            
+
                             
 
                             $('.card.item').each(function(){
@@ -3212,7 +3205,6 @@ var owInitGrid = function (id) {
                     }
                 });
 
-                console.log('ajax send data',ajaxData);
                 $.ajax({
                     type: 'GET',
                     url: ajaxUrl,
@@ -3246,9 +3238,10 @@ var owInitGrid = function (id) {
                                 },500);
                                 $gridMore.isotope('layout');
                             },300);
-
                         if(typeof moreBtn !== 'undefined'){
-                            $this.attr('href',moreBtn);
+                            if($('.isotope-01').parent().find('.read-more').length){
+                                $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
+                            }
                         }else{
                             //$this.remove();
                         }
@@ -3305,7 +3298,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('bigging');
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -4806,7 +4799,6 @@ var owInitSlider = function (sliderName) {
                     $clamp(container.get(0), {clamp: 3});
                 });
                 
-                console.log(isFirefox);
                 if(isFirefox){
                     $('.container-images').addClass('ff');
                 }
@@ -4877,7 +4869,7 @@ var owInitSlider = function (sliderName) {
 
             var openSlideshowClick = function(){
                 $('body').off('click').on('click', '.block-diaporama .owl-item.center', function() {
-                    console.log('click');
+
                     openSlideShow(slide01);
                 });
             }
@@ -5525,7 +5517,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
                 }
 
-                console.log('slideshow img config',{
+                /*console.log('slideshow img config',{
                     id: id,
                     url: url,
                     src: src,
@@ -5537,7 +5529,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     facebookurl: facebookurl,
                     twitterurl: twitterurl,
                     isPortrait: isPortrait
-                });
+                });*/
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
@@ -6057,7 +6049,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     //compute title width
     computeSlideshowTitleWidth();
-    alert('hash OK');
+
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 0) * centerElement;
@@ -6070,7 +6062,6 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
-  console.log('initSlideshows');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
@@ -6514,8 +6505,6 @@ var owInitTab = function(id) {
       var dataTab = hash;
       var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
       var $element = $('td[data-tab='+dataTab+']');
-
-      console.log('td[data-tab='+dataTab+']');
 
       $tab.removeClass('active');
       $element.addClass('active');

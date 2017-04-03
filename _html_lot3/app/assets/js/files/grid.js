@@ -83,9 +83,9 @@ var owInitGrid = function (id) {
             });
 
             //hotfix isotope bugs : trigger layout to avoid messy cards
-            /*var layoutInterval = window.setInterval(function(){
+            var layoutInterval = window.setInterval(function(){
                 $gridMore.isotope('layout');
-            },500);*/
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
@@ -149,7 +149,7 @@ var owInitGrid = function (id) {
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
 
-                console.log('data sent to GET',postData);
+                //console.log('data sent to GET',postData);
 
                 if(!ajaxLock){
                     ajaxLock = true;
@@ -190,7 +190,7 @@ var owInitGrid = function (id) {
                                     });
                                 });
                             }
-                            
+
                             
 
                             $('.card.item').each(function(){
@@ -437,7 +437,6 @@ var owInitGrid = function (id) {
                     }
                 });
 
-                console.log('ajax send data',ajaxData);
                 $.ajax({
                     type: 'GET',
                     url: ajaxUrl,
@@ -471,9 +470,10 @@ var owInitGrid = function (id) {
                                 },500);
                                 $gridMore.isotope('layout');
                             },300);
-
                         if(typeof moreBtn !== 'undefined'){
-                            $this.attr('href',moreBtn);
+                            if($('.isotope-01').parent().find('.read-more').length){
+                                $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
+                            }
                         }else{
                             //$this.remove();
                         }
@@ -530,7 +530,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('bigging');
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
