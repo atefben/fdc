@@ -3231,9 +3231,9 @@ var owInitGrid = function (id) {
                         //empty isotope
                         var $currentItems = $gridMore.data('isotope').$element.find('article.item');
                         $gridMore.isotope('remove', $currentItems);
-                        $gridMore.isotope('insert',articles);
-                        owsetGridBigImg(false, $('.grid-01'), false);
-                        $gridMore.isotope('layout');
+                        //$gridMore.isotope('insert',articles);
+                        //owsetGridBigImg(false, $('.grid-01'), false);
+                        //$gridMore.isotope('layout');
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
