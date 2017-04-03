@@ -3233,7 +3233,10 @@ var owInitGrid = function (id) {
                         $gridMore
                             .isotope('remove', $currentItems)
                             .isotope('insert',articles);
-                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+
+                            var t = window.setTimeout(function(){
+                                owsetGridBigImg($gridMore, $('.grid-01'), false);
+                            },500);
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
