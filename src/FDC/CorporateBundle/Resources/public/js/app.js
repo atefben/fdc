@@ -3217,7 +3217,7 @@ var owInitGrid = function (id) {
                     data: ajaxData,
                     success: function(data) {
                         $data = $(data);
-                        
+
                         var moreBtn = $data.find('.ajax-request').attr('href');
                         var articles = $data.find('article');
                         var scroll = $(document).scrollTop();
@@ -3226,6 +3226,10 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
 
+                        //empty isotope
+                        var $currentItems = $container.data('isotope').$allAtoms;
+                        $container.isotope( 'remove', $currentItems );
+                        
                         $gridMore.isotope('insert',articles);
                         $gridMore.isotope('layout');
                         if(typeof moreBtn !== 'undefined'){
