@@ -17,7 +17,7 @@
     <article
             class="card item date-{{ article.festival.year }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }} {{ article.typeClone }}"
             data-format="{{ article.typeClone }}"
-            data-theme="{{ article.theme|trans_fallback('slug') }}"
+            data-theme="{% if article.theme %}{{ article.theme|trans_fallback('slug') }}{% endif %}"
             data-time="{{ article.publishedAt|date('U') }}"
             data-end="{{ last|default(false) ? 'true':'false' }}"
             data-date="{{ article.publishedAt|date('d-m-y') }}">
@@ -25,6 +25,10 @@
             <div class="image-wrapper">
                 {% if tagImageArticle|trim %}
                     {{ tagImageArticle|raw }}
+                {% else %}
+                    <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
+                         srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
+                         alt="{{ article|trans_fallback('title')|escape('html_attr') }}">
                 {% endif %}
             </div>
             <a href="{{ articleUrl }}" class="linkImage"></a>
@@ -37,7 +41,7 @@
             </span>
         </div>
         <div class="info">
-            <a href="#" class="category">{{ article.theme|trans_fallback('name') }} </a>
+            <a href="#" class="category">{% if article.theme %}{{ article.theme|trans_fallback('name') }}{% endif %}</a>
             <span class="date">
                 {{ article.publishedAt|date('d.m.y') }}
             </span>

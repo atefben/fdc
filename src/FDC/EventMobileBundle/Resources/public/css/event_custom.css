@@ -1,3 +1,7 @@
+.audio-container {
+    margin-bottom: 20px;
+}
+
 .audio-container .audio-player2 {
     box-sizing: border-box;
     height: 87px;
@@ -240,6 +244,10 @@
 
 .audio-container .audio-player2 .off .info {
     max-width: calc(100% - 87px);
+}
+
+#main.movie-page .audio-container .audio-player2 .off .info {
+    max-width: 100%;
 }
 
 .audio-container .audio-player2 .play-btn {

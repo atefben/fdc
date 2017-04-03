@@ -2839,10 +2839,12 @@ var owInitGrid = function (id) {
         };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
+        owsetGridBigImg(false, $('.grid-01'), false);
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
+                percentPosition : true,
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
@@ -2854,14 +2856,13 @@ var owInitGrid = function (id) {
             });
 
             //hotfix isotope bugs : trigger layout to avoid messy cards
-            var layoutInterval = window.setInterval(function(){
+            /*var layoutInterval = window.setInterval(function(){
                 $gridMore.isotope('layout');
-            },500);
+            },500);*/
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg(false, $('.grid-01'), false);
             });
 
             $('html').on('click','#filters span',function(){
@@ -3224,12 +3225,23 @@ var owInitGrid = function (id) {
                             rawHtml += $(this).get(0).outerHTML;
                         });
 
+                        var $gridMore =  $('.isotope-01');
                         //empty isotope
-                        var $currentItems = $('.isotope-01').data('isotope').filteredItems;
-                        $gridMore.isotope('remove', $currentItems);
-                        
-                        $gridMore.isotope('insert',articles);
-                        $gridMore.isotope('layout');
+                        var $currentItems = $gridMore.data('isotope').$element.find('article.item');
+                        $gridMore
+                            .isotope('remove', $currentItems)
+                            .isotope('insert',articles);
+
+                            var timeout = window.setTimeout(function(){
+                                var bigInterval = window.setInterval(function(){
+                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
+                                        window.clearInterval(bigInterval);
+                                    }else{
+                                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+                                    }
+                                },500);
+                            },300);
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
@@ -3302,69 +3314,51 @@ var owsetGridBigImg = function (grid, dom, init) {
         nbImage = $img.length;
 
     dom.find('article.card').removeClass('double w2');
-    console.log('init grid double items');
     if (window.matchMedia("(max-width: 1279px)").matches) {
-        console.log('match 1279');
         while (i < $img.length) {
-            if (j < 15) {
-                if (j == 1 || j == 5) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 14) {
-                j = 0;
-            }
-            i++;
+        if (j < 15) {
+          if (j == 1 || j == 5 || j == 11) {
+            $($img[i]).closest('article.card').addClass('double w2');
+          }
+          j++;
         }
+        if (j == 14) {
+          j = 0;
+        }
+        i++;
+      }
 
 
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
-        console.log('match 1599');
         while (i < $img.length) {
-            if (j < 10) {
-                if (j == 1 || j == 6) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 9) {
-                j = 0;
-            }
-            i++;
+        if (j < 10) {
+          if (j == 1 || j == 3) {
+            $($img[i]).closest('article.card').addClass('double w2');
+          }
+          j++;
         }
-
-
-    } else if (window.matchMedia("(max-width: 1919px)").matches) {
-        console.log('match 1919');
+        if (j == 9) {
+          j = 0;
+        }
+        i++;
+      }
+    } else if (window.matchMedia("(min-width: 1600px)").matches) {
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 18 || j == 25) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
+              if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
+                $($img[i]).closest('article.card').addClass('double w2');
+              }
+              j++;
             }
             if (j == 29) {
-                j = 0;
+              j = 0;
             }
             i++;
         }
+    }
 
-
-    } else if (window.matchMedia("(min-width: 1920px)").matches) {
-        console.log('match 1920');
-        while (i < $img.length) {
-            if (j < 15) {
-                if (j == 1 || j == 5 || j == 14) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 14) {
-                j = 0;
-            }
-            i++;
-        }
+    if(grid){
+        grid.isotope('layout');
     }
 };
 
