@@ -3243,7 +3243,7 @@ var owInitGrid = function (id) {
                                 $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
                             }
                         }else{
-                            //$this.remove();
+                            $('.isotope-01').parent().find('.read-more').attr('href','#');
                         }
 
                         //manage filters
