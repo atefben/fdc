@@ -150,8 +150,8 @@ var owInitGrid = function (id) {
                 }
 
                 //console.log('data sent to GET',postData);
-
-                if(!ajaxLock){
+                console.log('ajax url',url);
+                if(!ajaxLock && url != '#'){
                     ajaxLock = true;
                     $.ajax({
                         type: 'GET',
@@ -475,7 +475,7 @@ var owInitGrid = function (id) {
                                 $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
                             }
                         }else{
-                            //$this.remove();
+                            $('.isotope-01').parent().find('.read-more').attr('href','#');
                         }
 
                         //manage filters
@@ -530,7 +530,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-
+    console.log('gridBigImg');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
