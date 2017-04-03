@@ -244,6 +244,22 @@ class NewsController extends Controller
             ->getStatementsAndInfos($locale, 'site-institutionnel', $type, $exclude, $before, $filters, $maxResults)
         ;
 
+        if (count($nodes) > 30) {
+            $last = false;
+            $nodes = array_slice($nodes, 0, 30);
+        } else {
+            $last = true;
+        }
+
+        $exclude = null;
+        $time = null;
+        if ($nodes && ($lastArticle = end($nodes))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
+                $exclude = $lastArticle->getId();
+            }
+        }
+
         $articles = [];
         foreach ($nodes as $node) {
             $articles[] = $this
@@ -251,13 +267,6 @@ class NewsController extends Controller
                 ->getRepository($node->getEntityClass())
                 ->find($node->getEntityId())
             ;
-        }
-
-        if (count($articles) > 30) {
-            $last = false;
-            $articles = array_slice($articles, 0, 30);
-        } else {
-            $last = true;
         }
 
         //set default filters
@@ -309,15 +318,6 @@ class NewsController extends Controller
             if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
                 $filters['themes']['id'][] = $theme->getId();
                 $filters['themes']['content'][] = $theme;
-            }
-        }
-
-        $exclude = null;
-        $time = null;
-        if ($articles && ($lastArticle = end($articles))) {
-            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
-                $time = $lastArticle->getPublishedAt()->getTimestamp();
-                $exclude = $lastArticle->getId();
             }
         }
 
