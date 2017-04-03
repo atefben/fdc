@@ -1245,7 +1245,7 @@ var owInitAjax = function() {
         owInitGrid('isotope-02');
       }
 
-      if($('.grid-01').length) {
+      if($('.grid-01').length && !$('.home').length) {
         var grid = owInitGrid('isotope-01');
         owsetGridBigImg(grid, $('.grid-01'), true);
 
@@ -2841,7 +2841,9 @@ var owInitGrid = function (id) {
         };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
-        owsetGridBigImg(false, $('.grid-01'), false);
+        if(!$('.home').length){
+            owsetGridBigImg(false, $('.grid-01'), false);
+        }
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
@@ -3243,6 +3245,7 @@ var owInitGrid = function (id) {
                                         owsetGridBigImg($gridMore, $('.grid-01'), false);
                                     }
                                 },500);
+                                $gridMore.isotope('layout');
                             },300);
 
                         if(typeof moreBtn !== 'undefined'){
@@ -3303,7 +3306,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-
+    console.log('bigging');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
