@@ -346,7 +346,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+vidN;
                 history.pushState(null, null, hashPush);
-                console.log('pushstate 1');
             });
 
             var updateHomeTextRight = function(data){
@@ -470,7 +469,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+data.vidN;
                 history.pushState(null, null, hashPush);
-                console.log('pushstate 2');
                 updateHomeTextRight(data);
 
             });
@@ -853,7 +851,6 @@ function playerInit(id, cls, havePlaylist, live) {
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
-            console.log('pushstate 3');
             setTimeout(function(){
                 videoNews.play();
             }, 800);

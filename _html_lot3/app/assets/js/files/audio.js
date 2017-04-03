@@ -127,7 +127,6 @@ var initAudio = function (hash) {
             var tempArray = fileArray[0];
 
             if(typeof tempArray !== 'undefined'){
-                // console.log('tempArray',tempArray,tempArray.file);
                 var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
@@ -149,7 +148,6 @@ var initAudio = function (hash) {
             updateShareLink();
             this.setVolume(100);
         }).on('play', function () {
-            console.log('play');
             $container.removeClass('state-init').removeClass('state-complete');
             $stateBtn.find('i').removeClass('icon-play').addClass('icon-pause');
             $infoBar.find('.picto').addClass('hide');

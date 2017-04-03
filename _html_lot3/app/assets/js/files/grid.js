@@ -149,7 +149,7 @@ var owInitGrid = function (id) {
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
 
-                console.log('data sent to GET',postData);
+                //console.log('data sent to GET',postData);
 
                 if(!ajaxLock){
                     ajaxLock = true;
@@ -477,7 +477,6 @@ var owInitGrid = function (id) {
                         }else{
                             //$this.remove();
                         }
-                        console.log('test push');
 
                         //manage filters
                         if($data.filter('.compute-filters').length){
@@ -531,7 +530,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('bigging');
+
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,

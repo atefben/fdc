@@ -43,7 +43,6 @@ var owInitSlider = function (sliderName) {
                     $clamp(container.get(0), {clamp: 3});
                 });
                 
-                console.log(isFirefox);
                 if(isFirefox){
                     $('.container-images').addClass('ff');
                 }
@@ -114,7 +113,7 @@ var owInitSlider = function (sliderName) {
 
             var openSlideshowClick = function(){
                 $('body').off('click').on('click', '.block-diaporama .owl-item.center', function() {
-                    console.log('click');
+
                     openSlideShow(slide01);
                 });
             }
