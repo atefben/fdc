@@ -322,7 +322,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         hash = "#"+images[id].id;
 
         history.pushState(null, null, hash);
-
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');
@@ -706,7 +705,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     //compute title width
     computeSlideshowTitleWidth();
-
+    alert('hash OK');
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 0) * centerElement;

@@ -347,7 +347,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+vidN;
                 history.pushState(null, null, hashPush);
-
+                console.log('pushstate 1');
             });
 
             var updateHomeTextRight = function(data){
@@ -471,7 +471,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+data.vidN;
                 history.pushState(null, null, hashPush);
-
+                console.log('pushstate 2');
                 updateHomeTextRight(data);
 
             });
@@ -855,7 +855,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
-
+            console.log('pushstate 3');
             setTimeout(function(){
                 videoNews.play();
             }, 800);
@@ -1281,7 +1281,7 @@ var owInitAjax = function() {
       }
 
       window.history.pushState('','',url);
-
+      console.log('pushstate 7');
       owInitAjax();
     });
 
@@ -3227,12 +3227,11 @@ var owInitGrid = function (id) {
                         });
 
                         //empty isotope
-                        console.log($('.isotope-01'),$('.isotope-01').data('isotope'));
-                        //var $currentItems = $gridMore.data('isotope').$allAtoms;
-                        //$gridMore.isotope( 'remove', $currentItems );
+                        var $currentItems = $('.isotope-01').data('isotope').filteredItems;
+                        $gridMore.isotope('remove', $currentItems);
                         
-                        //$gridMore.isotope('insert',articles);
-                        //$gridMore.isotope('layout');
+                        $gridMore.isotope('insert',articles);
+                        $gridMore.isotope('layout');
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
@@ -3341,7 +3340,7 @@ var owsetGridBigImg = function (grid, dom, init) {
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 16 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -5680,7 +5679,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         hash = "#"+images[id].id;
 
         history.pushState(null, null, hash);
-
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');
@@ -6064,7 +6062,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     //compute title width
     computeSlideshowTitleWidth();
-
+    alert('hash OK');
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 0) * centerElement;
@@ -6147,9 +6145,7 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   }
 
   $('.chocolat-pagination').trigger('click');
-
   window.location.hash = 'pid='+$('#'+$(this).data('id')).data('pid');
-
 });
 
 $(document).ready(function() {

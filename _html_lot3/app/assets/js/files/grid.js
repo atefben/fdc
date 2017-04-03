@@ -450,12 +450,11 @@ var owInitGrid = function (id) {
                         });
 
                         //empty isotope
-                        console.log($('.isotope-01'),$('.isotope-01').data('isotope'));
-                        //var $currentItems = $gridMore.data('isotope').$allAtoms;
-                        //$gridMore.isotope( 'remove', $currentItems );
+                        var $currentItems = $('.isotope-01').data('isotope').filteredItems;
+                        $gridMore.isotope('remove', $currentItems);
                         
-                        //$gridMore.isotope('insert',articles);
-                        //$gridMore.isotope('layout');
+                        $gridMore.isotope('insert',articles);
+                        $gridMore.isotope('layout');
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
@@ -564,7 +563,7 @@ var owsetGridBigImg = function (grid, dom, init) {
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 16 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;

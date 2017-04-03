@@ -74,9 +74,7 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   }
 
   $('.chocolat-pagination').trigger('click');
-
   window.location.hash = 'pid='+$('#'+$(this).data('id')).data('pid');
-
 });
 
 $(document).ready(function() {
