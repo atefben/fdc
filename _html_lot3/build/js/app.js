@@ -347,7 +347,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+vidN;
                 history.pushState(null, null, hashPush);
-
+                console.log('pushstate 1');
             });
 
             var updateHomeTextRight = function(data){
@@ -471,7 +471,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 var hashPush = '#vid='+data.vidN;
                 history.pushState(null, null, hashPush);
-
+                console.log('pushstate 2');
                 updateHomeTextRight(data);
 
             });
@@ -855,7 +855,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
-
+            console.log('pushstate 3');
             setTimeout(function(){
                 videoNews.play();
             }, 800);
@@ -1281,7 +1281,7 @@ var owInitAjax = function() {
       }
 
       window.history.pushState('','',url);
-
+      console.log('pushstate 7');
       owInitAjax();
     });
 
@@ -2518,7 +2518,6 @@ var contains = function(needle) {
     return indexOf.call(this, needle) > -1;
 };
 
-
 var owInitFilter = function (isTabSelection) {
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
@@ -2581,7 +2580,6 @@ var owInitFilter = function (isTabSelection) {
 
                             if($('.articles-list').length){
                                 var numItems = $('.item.' + getVal + ':not([style*="display: none"])').length;
-                                console.log('filter disabling selector','.item.' + getVal + ':not([style*="display: none"])');
                             }else{
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
@@ -2621,9 +2619,6 @@ var owInitFilter = function (isTabSelection) {
                             $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
                             owInitGrid('filter');
-                            var grid;
-
-                            var activeFiltersString = '';
 
                             fnArraySortFilters();
                         });
@@ -3203,6 +3198,83 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat + filterType;
+
+            //fix infos & communiques : add empty grid + ajax call on filter change
+            if($('.articles-list').length){
+                var ajaxUrl = $('#stamp-ajax-filter-url').text();
+                var ajaxData = {};
+                $('.articles-list .filters .filter').each(function(){
+                    var filterId = $(this).attr('id');
+                    if(typeof filterId !== 'undefined'){
+                        ajaxData[filterId] = $(this).find('.select .active').data('filter');
+                    }
+                });
+
+                console.log('ajax send data',ajaxData);
+                $.ajax({
+                    type: 'GET',
+                    url: ajaxUrl,
+                    data: ajaxData,
+                    success: function(data) {
+                        $data = $(data);
+
+                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        var scroll = $(document).scrollTop();
+                        var rawHtml = '';
+                        articles.each(function(){
+                            rawHtml += $(this).get(0).outerHTML;
+                        });
+
+                        //empty isotope
+                        var $currentItems = $('.isotope-01').data('isotope').filteredItems;
+                        $gridMore.isotope('remove', $currentItems);
+                        
+                        $gridMore.isotope('insert',articles);
+                        $gridMore.isotope('layout');
+
+                        if(typeof moreBtn !== 'undefined'){
+                            $this.attr('href',moreBtn);
+                        }else{
+                            //$this.remove();
+                        }
+
+                        //manage filters
+                        if($data.filter('.compute-filters').length){
+                            $data.filter('.compute-filters').each(function(){
+                                var slug = $(this).attr('class').replace('compute-filters ','');
+
+                                $(this).find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                            });
+                        }
+                        
+
+                        $('.card.item').each(function(){
+                            var $this = $(this);
+                            var title = $this.find('.info strong a');
+                            var cat = $this.find('.info .category');
+                            var titleText;
+                            var catText;
+
+                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(cat.get(0), {clamp: 1});
+                        });
+
+                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                        
+                        //if no button ajax-request, then remove current button
+                        owinitSlideShow($gridMore);
+                        initVideo();
+                        initAudio();
+                    }
+                });
+            }
+
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
@@ -3232,9 +3304,9 @@ var owsetGridBigImg = function (grid, dom, init) {
         nbImage = $img.length;
 
     dom.find('article.card').removeClass('double w2');
-
+    console.log('init grid double items');
     if (window.matchMedia("(max-width: 1279px)").matches) {
-
+        console.log('match 1279');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 1 || j == 5) {
@@ -3250,7 +3322,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
-
+        console.log('match 1599');
         while (i < $img.length) {
             if (j < 10) {
                 if (j == 1 || j == 6) {
@@ -3266,9 +3338,10 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
+        console.log('match 1919');
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 18 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
@@ -3281,6 +3354,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
+        console.log('match 1920');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 1 || j == 5 || j == 14) {
@@ -5607,7 +5681,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         hash = "#"+images[id].id;
 
         history.pushState(null, null, hash);
-
         numberDiapo = centerElement + 1;
         var title = $('.c-fullscreen-slider').find('.title-slide');
         var pagination = $('.c-fullscreen-slider').find('.chocolat-pagination');
@@ -5991,7 +6064,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     //compute title width
     computeSlideshowTitleWidth();
-
+    alert('hash OK');
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 0) * centerElement;
@@ -6074,9 +6147,7 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
   }
 
   $('.chocolat-pagination').trigger('click');
-
   window.location.hash = 'pid='+$('#'+$(this).data('id')).data('pid');
-
 });
 
 $(document).ready(function() {

@@ -99,7 +99,7 @@ var owInitAjax = function() {
       }
 
       window.history.pushState('','',url);
-
+      console.log('pushstate 7');
       owInitAjax();
     });
 
