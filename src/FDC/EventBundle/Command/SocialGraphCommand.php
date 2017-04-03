@@ -57,12 +57,13 @@ class SocialGraphCommand extends ContainerAwareCommand
         }
 
         // get current social graph twitter hashtag
-        $socialGraphSettings = $em->getRepository('BaseCoreBundle:HomepageCorporate')->find(1);
+        $socialGraphSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
         if ($socialGraphSettings === null) {
             $msg = 'Can\'t find social graph settings';
             $this->writeError($output, $logger, $msg);
         }
 
+        // get social graph by date
         $socialGraph = $em->getRepository('BaseCoreBundle:SocialGraph')->findOneBy(array(
             'date' => $datetime,
             'festival' => $festival->getId()
