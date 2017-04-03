@@ -457,9 +457,13 @@ var owInitGrid = function (id) {
                             .isotope('remove', $currentItems)
                             .isotope('insert',articles);
 
-                            var t = window.setInterval(function(){
+                            var bigInterval = window.setInterval(function(){
                                 console.log($('.isotope-01 .item').children().eq(1).hasClass('w2'));
-                                owsetGridBigImg($gridMore, $('.grid-01'), false);
+                                if($('.isotope-01 .item').children().eq(1).hasClass('w2')){
+                                    window.clearInterval(bigInterval);
+                                }else{
+                                    owsetGridBigImg($gridMore, $('.grid-01'), false);
+                                }
                             },200);
 
                         if(typeof moreBtn !== 'undefined'){
