@@ -83,9 +83,9 @@ var owInitGrid = function (id) {
             });
 
             //hotfix isotope bugs : trigger layout to avoid messy cards
-            /*var layoutInterval = window.setInterval(function(){
+            var layoutInterval = window.setInterval(function(){
                 $gridMore.isotope('layout');
-            },500);*/
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
@@ -190,7 +190,7 @@ var owInitGrid = function (id) {
                                     });
                                 });
                             }
-                            
+
                             
 
                             $('.card.item').each(function(){
