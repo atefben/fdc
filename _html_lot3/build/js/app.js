@@ -2920,6 +2920,7 @@ var owInitGrid = function (id) {
                 if(typeof $('input[name="photo"]').val() !== 'undefined'){
                     postData.photo = $('input[name="photo"]').val();
                 }
+                console.log('debug input mediatheque search',$('input[name="photo"]'),$('input[name="photo"]').val(),$('input[name="photo"]').is(':checked'));
                 if(typeof $('input[name="video"]').val() !== 'undefined'){
                     postData.video = $('input[name="video"]').val();
                 }
