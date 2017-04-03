@@ -81,7 +81,7 @@ $(document).ready(function(){
 
     if ($('.section.photos').length > 0) {
         $('.section.photos .thumbnails .thumb').on('click', function () {
-            $('.section.photos p.caption').html('<strong>' + $(this).data('caption') + '</strong>')
+            $(this).closest('.section.photos').find('p.caption').html('<strong>' + $(this).data('caption') + '</strong>');
         });
     }
 });
