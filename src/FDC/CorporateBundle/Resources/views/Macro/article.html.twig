@@ -25,6 +25,10 @@
             <div class="image-wrapper">
                 {% if tagImageArticle|trim %}
                     {{ tagImageArticle|raw }}
+                {% else %}
+                    <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
+                         srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
+                         alt="{{ article|trans_fallback('title')|escape('html_attr') }}">
                 {% endif %}
             </div>
             <a href="{{ articleUrl }}" class="linkImage"></a>
