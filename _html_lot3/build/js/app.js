@@ -2977,7 +2977,7 @@ var owInitGrid = function (id) {
                                 $clamp(title.get(0), {clamp: 2});
                                 //$clamp(cat.get(0), {clamp: 1});
                             });
-
+                            owsetGridBigImg(false, $('.grid-01'), false);
                             $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
                             
                             //if no button ajax-request, then remove current button
