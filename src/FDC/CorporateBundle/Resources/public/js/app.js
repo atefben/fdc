@@ -3234,14 +3234,16 @@ var owInitGrid = function (id) {
                             .isotope('remove', $currentItems)
                             .isotope('insert',articles);
 
-                            var bigInterval = window.setInterval(function(){
-                                console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
-                                if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
-                                    window.clearInterval(bigInterval);
-                                }else{
-                                    owsetGridBigImg($gridMore, $('.grid-01'), false);
-                                }
-                            },200);
+                            var timeout = window.setTimeout(function(){
+                                var bigInterval = window.setInterval(function(){
+                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
+                                        window.clearInterval(bigInterval);
+                                    }else{
+                                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+                                    }
+                                },500);
+                            },300);
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
