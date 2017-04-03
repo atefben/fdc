@@ -477,6 +477,7 @@ var owInitGrid = function (id) {
                         }else{
                             //$this.remove();
                         }
+                        console.log('test push');
 
                         //manage filters
                         if($data.filter('.compute-filters').length){
