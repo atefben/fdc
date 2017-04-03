@@ -191,6 +191,7 @@ var owInitGrid = function (id) {
                                 });
                             }
                             
+                            
 
                             $('.card.item').each(function(){
                                 var $this = $(this);
