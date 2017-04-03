@@ -3212,7 +3212,6 @@ var owInitGrid = function (id) {
                     }
                 });
 
-                console.log('ajax send data',ajaxData);
                 $.ajax({
                     type: 'GET',
                     url: ajaxUrl,
@@ -3248,7 +3247,9 @@ var owInitGrid = function (id) {
                             },300);
 
                         if(typeof moreBtn !== 'undefined'){
-                            $this.attr('href',moreBtn);
+                            if($('.isotope-01 .read-more').length){
+                                $('.isotope-01 .read-more').attr('href',moreBtn);
+                            }
                         }else{
                             //$this.remove();
                         }
