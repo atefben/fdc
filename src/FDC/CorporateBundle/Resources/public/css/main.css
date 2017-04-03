@@ -1986,7 +1986,7 @@ blockquote, .quote {
   color: #fff;
   display: block;
   text-align: center;
-  line-height: 36px;
+  line-height: 2em;
     /*
         sub {
           vertical-align: text-bottom;
@@ -1997,7 +1997,7 @@ blockquote, .quote {
           vertical-align: super;
           font-size: .5rem;
         }*/
-  line-height: 30px;
+  line-height: 1.9em;
   list-style: inside;
   color: #666666;
 }
@@ -2092,10 +2092,10 @@ blockquote, .quote {
   width: 100%;
 }
 .contain-title .title-02 strong {
-  color: #141414;
+  color: #333;
 }
 .bright .contain-title .title-02 {
-  color: #141414;
+  color: #333;
 }
 .contain-title .title-03 {
   text-align: center;
@@ -3090,7 +3090,7 @@ video {
     opacity: 0;
   }
 }
-/* empêche la sélection */
+/* emp├¬che la s├®lection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -3162,10 +3162,10 @@ video {
 }
 
 .block-01-m {
-  margin: 40px auto;
+  margin: 0 auto;
   max-width: 100%;
-  width: 900px;
-  margin-bottom: 20px;
+  width: 942px;
+  margin-bottom: 45px;
 }
 .block-01-m img {
   max-width: 100%;
@@ -6220,7 +6220,7 @@ strong.title-center {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -7367,10 +7367,6 @@ article.communique .picto .icon {
   padding-top: 25px;
 }
 
-.block-01 .title-12 {
-  display: inline-block !important;
-}
-
 .block-movie-preview .wrapper-item .description {
   width: 475px;
 }
@@ -7849,10 +7845,6 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   font-weight: 300;
 }
 
-.slideshow .slideshow-img .images .img img {
-  margin: 0 !important;
-}
-
 .home .video-container .control-bar .time .time-info {
   width: 100px;
 }
@@ -7863,6 +7855,7 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 .story-palme .block-movie-preview .poster figure {
   display: inline-block;
   text-align: left;
+  max-width: 363px;
 }
 
 .article-single.dark .slideshow .caption strong {
@@ -8272,7 +8265,7 @@ header #navigation ul li ul {
   box-sizing: border-box;
   margin-top: 1px;
   opacity: 0;
-  padding-left: 100px;
+  padding-left: 30px;
   position: absolute;
   visibility: hidden;
   width: 977px;
@@ -8381,7 +8374,7 @@ header #navigation ul.user li ul li a {
 }
 header #navigation ul.user .participate-wrapper ul {
   left: auto;
-  margin-left: -762px;
+  margin-left: -768px;
   text-align: right;
   border-top: 1px solid #404040;
   margin-top: 0px;
@@ -11578,9 +11571,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -11606,11 +11599,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -11633,19 +11626,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -13387,7 +13380,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.750rem;
   text-align: left;
   margin-top: 5px;
-  width: 400px;
 }
 .audio-container .audio-player .on {
   opacity: 0;
@@ -14309,9 +14301,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .block-search .more-search.active {
   display: table;
@@ -14390,11 +14382,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -14417,19 +14409,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
@@ -16848,9 +16840,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .article-single table[border="0"] td, .article-single table[border="0"] td, .article-single table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td, .single-movie table[border="0"] td {
   border: none !important;
-}
-.article-single .text-quote, .single-movie .text-quote {
-  width: 830px !important;
 }
 .article-single .text, .single-movie .text {
   width: 630px;

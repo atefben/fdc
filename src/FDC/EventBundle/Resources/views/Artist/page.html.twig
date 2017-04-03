@@ -295,36 +295,16 @@
         'description': '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
         'artist' : artist.id
-    })) }}
-
-    {% if 'CorporateBundle' in app.request.attributes.get("_controller") %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-        {"breadcrumb":
-        [
-        {
-        "name" : 'breadcrumb.69editions.home'|trans,
-        "url"  : ''
-        },
-        {
-        "name" : 'breadcrumb.retrospective.home'|trans,
-        "url"  : path('fdc_corporate_editions_retrospective')
-        },
-        {
-        "name" : artist.fullName,
-        "url"  : ''
-        }
-        ]
-        } %}
-    {% else %}
-        {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
-        {
-        "name" : 'breadcrumb.webtv.home'|trans,
-        "url"  : path('fdc_event_news_index')
-        },
-        {
-        "name" : artist.fullName,
-        "url"  : ''
-        }
-        ]} %}
-    {% endif %}
+    }))
+    }}
+    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {
+    "name" : 'breadcrumb.webtv.home'|trans,
+    "url"  : path('fdc_event_news_index')
+    },
+    {
+    "name" : artist.fullName,
+    "url"  : ''
+    }
+    ]} %}
 {% endblock body %}

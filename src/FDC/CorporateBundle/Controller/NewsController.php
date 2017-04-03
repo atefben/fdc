@@ -237,11 +237,28 @@ class NewsController extends Controller
             $filters['theme'] = $theme->getId();
         }
 
+
         $nodes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Node')
             ->getStatementsAndInfos($locale, 'site-institutionnel', $type, $exclude, $before, $filters, $maxResults)
         ;
+
+        if (count($nodes) > 30) {
+            $last = false;
+            $nodes = array_slice($nodes, 0, 30);
+        } else {
+            $last = true;
+        }
+
+        $exclude = null;
+        $time = null;
+        if ($nodes && ($lastArticle = end($nodes))) {
+            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
+                $time = $lastArticle->getPublishedAt()->getTimestamp();
+                $exclude = $lastArticle->getId();
+            }
+        }
 
         $articles = [];
         foreach ($nodes as $node) {
@@ -252,37 +269,10 @@ class NewsController extends Controller
             ;
         }
 
-        if (count($articles) > 30) {
-            $last = false;
-            $articles = array_slice($articles, 0, 30);
-        } else {
-            $last = true;
-        }
-
         //set default filters
         $filters = [];
-        $filters['editions'][0] = 'all';
-        $filters['dateFormated'][0] = 'all';
-        $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0] = 'all';
-        $filters['format'][0] = 'all';
         $filters['types']['all'] = 'all';
         foreach ($articles as $key => $article) {
-            $date = $article->getFestival()->getYear();
-            if ($date && !array_key_exists($date, $filters['editions'])) {
-                $filters['editions'][$date] = $date;
-            }
-
-            $theme = $article->getTheme();
-            if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $theme->getId();
-                $filters['themes']['content'][] = $theme;
-            }
-
-            $format = $article->getTypeClone();
-            if (!in_array($format, $filters['format'])) {
-                $filters['format'][] = $format;
-            }
             if ($article instanceof Info) {
                 $filters['types']['info'] = 'filters.type.info';
             } elseif ($article instanceof Statement) {
@@ -290,12 +280,44 @@ class NewsController extends Controller
             }
         }
 
-        $exclude = null;
-        $time = null;
-        if ($articles && ($lastArticle = end($articles))) {
-            if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
-                $time = $lastArticle->getPublishedAt()->getTimestamp();
-                $exclude = $lastArticle->getId();
+        $filters['format'][0] = 'all';
+        $formatsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getFormatsStatementsAndInfos($locale, 'site-institutionnel')
+        ;
+        foreach ($formatsResults as $formatResult) {
+            $format = reset($formatResult);
+            $filters['format'][] = $format;
+        }
+
+
+        $filters['editions'][0] = 'all';
+        $yearsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getYearsStatementsAndInfos($locale, 'site-institutionnel')
+        ;
+        foreach ($yearsResults as $yearResult) {
+            $date = reset($yearResult);
+            if ($date && !array_key_exists($date, $filters['editions'])) {
+                $filters['editions'][$date] = $date;
+            }
+        }
+
+
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['id'][0] = 'all';
+        $themesResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getThemesStatementsAndInfos($locale, 'site-institutionnel')
+        ;
+        foreach ($themesResults as $themeResult) {
+            $theme = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Theme')->find($themeResult['id']);
+            if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $theme->getId();
+                $filters['themes']['content'][] = $theme;
             }
         }
 
@@ -776,10 +798,20 @@ class NewsController extends Controller
         $focusArticles = [];
 
         //get focus articles
-        if ($news->getAssociatedStatement() !== null) {
-            foreach ($news->getAssociatedStatement() as $associatedNew) {
-                if ($associatedNew->getAssociation() != null) {
-                    $focusArticles[] = $associatedNew->getAssociation();
+        if ($news instanceof Statement) {
+            if ($news->getAssociatedStatement() !== null) {
+                foreach ($news->getAssociatedStatement() as $associatedStatement) {
+                    if ($associatedStatement->getAssociation() != null) {
+                        $focusArticles[] = $associatedStatement->getAssociation();
+                    }
+                }
+            }
+        } elseif ($news instanceof Info) {
+            if ($news->getAssociatedInfo() !== null) {
+                foreach ($news->getAssociatedInfo() as $associatedInfo) {
+                    if ($associatedInfo->getAssociation() != null) {
+                        $focusArticles[] = $associatedInfo->getAssociation();
+                    }
                 }
             }
         }

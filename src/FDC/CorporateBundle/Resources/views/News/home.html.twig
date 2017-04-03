@@ -334,7 +334,7 @@
                                             <span class="title-5">
                                         {% set dataWho = '' %}
                                                 {% for director in directors %}
-                                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
+                                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_corporate_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                                     {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                                 {% endfor %}
                                                 {{ dataWho|raw }}</span>

@@ -147,6 +147,7 @@ class CorpoPalmeOrAdmin extends Admin
                         'field_type' => 'ckeditor',
                         'label' => 'Chapô',
                         'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
                         'config_name' => 'press'
                     ),
                     'titleNav'       => array(

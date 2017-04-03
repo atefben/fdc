@@ -473,7 +473,7 @@ article.communique .picto {
 }
 
 .block-01 .title-12 {
-  display: inline-block !important;
+
 }
 
 .block-movie-preview .wrapper-item .description {
@@ -992,7 +992,7 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 }
 
 .slideshow .slideshow-img .images .img img {
-    margin: 0!important;
+
 }
 
 .home .video-container .control-bar .time .time-info {
@@ -1005,6 +1005,7 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
     figure {
         display: inline-block;
         text-align: left;
+        max-width: 363px;
     }
 }
 
@@ -1022,4 +1023,7 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
     text-align: center;
 }
 
+.media-library .card.w2.double .image {
+    width: auto;
+}
 /* thomon - end fixes */

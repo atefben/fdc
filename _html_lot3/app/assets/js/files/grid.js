@@ -132,27 +132,6 @@ var owInitGrid = function (id) {
                 var url = $(this).attr('href');
 
                 var postData = {};
-                if(typeof $('input[name="search"]').val() !== 'undefined'){
-                    postData.search = $('input[name="search"]').val();
-                }
-                if(typeof $('input[name="photo"]').val() !== 'undefined'){
-                    postData.photo = $('input[name="photo"]').val();
-                }
-                if(typeof $('input[name="video"]').val() !== 'undefined'){
-                    postData.video = $('input[name="video"]').val();
-                }
-                if(typeof $('input[name="audio"]').val() !== 'undefined'){
-                    postData.audio = $('input[name="audio"]').val();
-                }
-                if(typeof $('input[name="year-start"]').val() !== 'undefined'){
-                    postData['year-start'] = $('input[name="year-start"]').val();
-                }
-                if(typeof $('input[name="year-end"]').val() !== 'undefined'){
-                    postData['year-end'] = $('input[name="year-end"]').val();
-                }
-                if(typeof $('input[name="pg"]').val() !== 'undefined'){
-                    postData.pg = parseInt($('input[name="pg"]').val())+1;
-                }
 
                 if($('#date.filter .select .active').length){
                     postData.date = $('#date.filter .select .active').data('filter');
@@ -166,6 +145,8 @@ var owInitGrid = function (id) {
                 if($('#type.filter .select .active').length){
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
+
+                console.log('data sent to GET',postData);
 
                 if(!ajaxLock){
                     ajaxLock = true;

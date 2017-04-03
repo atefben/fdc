@@ -96,6 +96,7 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
+            if(this.firstElementChild !== null) {
             var videoPlayer = jwplayer(this.firstElementChild.id);
             if (!$(videoPlayer).data('loaded')) {
                 console.log('Player Load 1');
@@ -105,6 +106,7 @@ function playerInit(id, cls, havePlaylist, live) {
                 });
             } else {
                 tmp[i] = videoPlayer;
+            }
             }
         });
         return tmp;

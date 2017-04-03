@@ -29,7 +29,7 @@
                         {% for movie in movies %}
                             <div class="item block-poster">
                                 <a href="{{ path('fdc_corporate_movie_get', {'slug': movie.slug}) }}">
-                                    <div class="contain-img" style="background-image:url({% include 'FDCCorporateBundle:Global:components/film.poster.bg.html.twig' with ({
+                                    <div class="contain-img compat-object-fit" style="background-image:url({% include 'FDCCorporateBundle:Global:components/film.poster.bg.html.twig' with ({
                                     film: movie,
                                     film_format: '240x320',
                                     film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
@@ -50,7 +50,7 @@
                                         {% if movie.getDirectors()|length %}
                                             <div class="title-12">
                                                 {% for director in movie.getDirectors() %}
-                                                    <a class="title-12" href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', ' }}</a>
+                                                    <a class="title-12" href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName|trim }}{{ loop.last == true ? '':', ' }}</a>
                                                 {% endfor %}
                                             </div>
                                         {% endif %}

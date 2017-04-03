@@ -12,7 +12,7 @@
         {% for artist in result.artist.items %}
             <article class="block-poster-search">
                 <div class="item">
-                    <a href="{{ path('fdc_event_artist_get', {'slug': artist.slug }) }}">
+                    <a href="{{ path('fdc_corporate_artist_get', {'slug': artist.slug }) }}">
                         <div class="contain-img portrait">
                             {% set artistImage = artist|person_image(true) %}
                             {% if artist.portraitImage and artist.portraitImage|trans_fallback('file') %}

@@ -97,7 +97,7 @@
                                         <div class="bck-hover">
                                             <div class="wrapper-item">
                                                 <div class="poster">
-                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}">
+                                                    <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}">
                                                         <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                         film: film.film,
                                                         film_format: '259x352',
@@ -107,12 +107,12 @@
                                                     </a>
                                                 </div>
                                                 <div class="infos">
-                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
+                                                    <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                 class="name-f">{{ film.film.titleVO }}</strong></a>
                                                     {% set directors = film.getDirectors() %}
                                                     {% set directorsName = '' %}
                                                     {% for director in directors %}
-                                                        <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span
+                                                        <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
                                                                     class="names-a">
                                                                     {{ directorsName ~ director.person.fullName }}
                                                                 {% if loop.index != directors|length %} - {% endif %}

@@ -100,7 +100,7 @@
             <p>
                 {{ 'movie.label.realisepar'|trans }} :
                 {% for director in directors %}
-                    <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
+                    <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
                     {% if loop.index != directors|length %}, {% endif %}
                 {% endfor %}
             </p>

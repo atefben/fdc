@@ -190,17 +190,10 @@ var initRs = function () {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
 
-            var title = $('.overlay-popin').find('.contain-popin .title-article');
-            //title.css('opacity',0);
-            if(title.height() > 150){
-                window.setTimeout(function(){
-
-                    $clamp(title.get(0), {clamp: 3});
-                    /*title.animate({
-                        'opacity': 1
-                    },300);*/
-
-                },20);
+            var title = $('.overlay-popin').find('.contain-popin .title-article').html();
+            if(title.length > 80){
+                var croptile = title.substring(0, 80) + "...";
+                $('.overlay-popin').find('.contain-popin .title-article').html(croptile);
             }
             $('.overlay-popin').on('click', function (e) {
 

@@ -6,11 +6,11 @@
         <h2 class="title">{{ 'sitemap.title.plandusite'|trans }}</h2>
         <section class="sitemap-container">
             {% for route in routes %}
-                {% if route.route == 'fdc_event_movie_selection' and route.enabled == true %}
+                {% if route.route == 'fdc_corporate_movie_selection' and route.enabled == true %}
                     <article class="sitemap-item">
                         <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
                         <ul>
-                            <li><a href="{{ path('fdc_event_movie_selection', {'slug': selectionSlug}) }}">{{ selectionName }}</a></li>
+                            <li><a href="{{ path('fdc_corporate_movie_selection', {'slug': selectionSlug}) }}">{{ selectionName }}</a></li>
                         </ul>
                     </article>
                 {% elseif route.route == 'fdc_corporate_default_home' and route.enabled == true %}
