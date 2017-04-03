@@ -47,7 +47,9 @@
     <div class="grid-01 isotope-01 add-ajax-request">
         <div class="grid-sizer"></div>
         {% for article in articles %}
-            {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+            {% if article %}
+                {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+            {% endif %}
         {% endfor %}
     </div>
 
