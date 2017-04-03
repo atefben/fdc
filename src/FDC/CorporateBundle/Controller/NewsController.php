@@ -169,11 +169,11 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/69-editions/retrospective/infos-et-communiques/more/{timestamp}")
+     * @Route("/infos-et-communiques/more/{timestamp}")
      * @param Request $request
      * @return Response
      */
-    public function infosAndStatementsMoreAction(Request $request, $timestamp)
+    public function infosAndStatementsMoreAction(Request $request, $timestamp = null)
     {
         $locale = $request->getLocale();
 
