@@ -196,8 +196,13 @@
                                                                                              {% set format = '363x260' %}
                                                                                          {% endif %}
                                                                                          <figure>
-                                                                                             <img src="{% path image, format %}"
-                                                                                                  alt="{{ widget.image|trans_fallback('alt') }}">
+                                                                                             {% if image is null %}
+                                                                                                 <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}">
+                                                                                             {% else %}
+                                                                                                 <img src="{% path image, format %}"
+                                                                                                      alt="{{ widget.image|trans_fallback('alt') }}">
+                                                                                             {% endif %}
+                                                                                             
                                                                                              {% set legend = widget.image|trans_fallback('legend') %}
                                                                                              {% set copyright = widget.image|trans_fallback('copyright') %}
                                                                                              {% if copyright is not empty -%}
