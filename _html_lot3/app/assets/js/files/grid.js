@@ -561,9 +561,10 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1919px)").matches) {
+        console.log('match 1919');
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 16 || j == 25) {
+                if (j == 1 || j == 3 || j == 12 || j == 18 || j == 25) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
