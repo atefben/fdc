@@ -2949,6 +2949,8 @@ var owInitGrid = function (id) {
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
 
+                console.log('data sent to GET',postData);
+
                 if(!ajaxLock){
                     ajaxLock = true;
                     $.ajax({
