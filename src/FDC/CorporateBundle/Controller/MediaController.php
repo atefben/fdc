@@ -98,12 +98,12 @@ class MediaController extends Controller
     private function getMediasParameters($locale, $search, $photo, $video, $audio, $yearStart, $yearEnd, $since = null)
     {
         if (!$photo && !$video && !$audio) {
-            $photo = true;
-            $video = true;
-            $audio = true;
+            $photoFilter = true;
+            $videoFilter = true;
+            $audioFilter = true;
         }
         $medias = [];
-        if ($photo) {
+        if ($photoFilter) {
             //MediaImage
             $items = $this
                 ->getDoctrineManager()
@@ -135,7 +135,7 @@ class MediaController extends Controller
             $medias = array_merge($medias, $items);
         }
 
-        if ($video) {
+        if ($videoFilter) {
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Media')
@@ -144,7 +144,7 @@ class MediaController extends Controller
             $medias = array_merge($medias, $items);
         }
 
-        if ($audio) {
+        if ($audioFilter) {
             $items = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:Media')
