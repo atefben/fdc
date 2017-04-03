@@ -3304,9 +3304,9 @@ var owsetGridBigImg = function (grid, dom, init) {
         nbImage = $img.length;
 
     dom.find('article.card').removeClass('double w2');
-
+    console.log('init grid double items');
     if (window.matchMedia("(max-width: 1279px)").matches) {
-
+        console.log('match 1279');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 1 || j == 5) {
@@ -3322,7 +3322,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
-
+        console.log('match 1599');
         while (i < $img.length) {
             if (j < 10) {
                 if (j == 1 || j == 6) {
@@ -3354,6 +3354,7 @@ var owsetGridBigImg = function (grid, dom, init) {
 
 
     } else if (window.matchMedia("(min-width: 1920px)").matches) {
+        console.log('match 1920');
         while (i < $img.length) {
             if (j < 15) {
                 if (j == 1 || j == 5 || j == 14) {
