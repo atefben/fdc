@@ -2,6 +2,6 @@ security:
     role_hierarchy:
         ROLE_ORANGE_ADMIN:
         - ROLE_ADMIN
-        - ROLE_ORANGE
+        - ROLE_ORANGE_TRANSLATOR
         - ROLE_TRANSLATE_FR
         - ROLE_TRANSLATE_EN
