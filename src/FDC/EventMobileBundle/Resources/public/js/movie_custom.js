@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // add both webm and mp4 sources for butter iOS support
-    $('.thumbnails .owl-item').off('click').on('click', function(e) {
+    $('.section.videos .thumbnails .owl-item').off('click').on('click', function(e) {
         e.preventDefault();
         $(this).parents('.slideshow').find('.thumb').removeClass('active');
 

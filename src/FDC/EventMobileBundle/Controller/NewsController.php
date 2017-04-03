@@ -2,6 +2,7 @@
 
 namespace FDC\EventMobileBundle\Controller;
 
+use Base\CoreBundle\Entity\Settings;
 use \DateTime;
 
 use Base\CoreBundle\Entity\News;
@@ -37,6 +38,7 @@ class NewsController extends Controller
         $locale = $request->getLocale();
 
         // GET FDC SETTINGS
+        /** @var Settings $settings */
         $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
         if ($settings === null || $settings->getFestival() === null) {
             throw new NotFoundHttpException('Festival year settings not set');
@@ -101,6 +103,15 @@ class NewsController extends Controller
 
         $count = 7;
         $homeArticles = array();
+        if (!($dateTime > $settings->getFestival()->getFestivalStartsAt() && $dateTime < $settings->getFestival()->getFestivalEndsAt())) {
+            /**
+             * if we are viewing the homepage outside of the festival duration,
+             * we limit the news results to not be newer than the last day of the festival
+             */
+            $dateTime = clone $settings->getFestival()->getFestivalEndsAt();
+            $dateTime->setTime(23,59,59);
+        }
+
         if ($homepage->getTopNewsType() == false) {
             $homeArticles = $em->getRepository('BaseCoreBundle:News')->getNewsByDate($locale, $this->getFestival()->getId(), $dateTime, $count);
         } else {

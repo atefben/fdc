@@ -78,4 +78,10 @@ $(document).ready(function(){
 
         })
     }
+
+    if ($('.section.photos').length > 0) {
+        $('.section.photos .thumbnails .thumb').on('click', function () {
+            $(this).closest('.section.photos').find('p.caption').html('<strong>' + $(this).data('caption') + '</strong>');
+        });
+    }
 });
