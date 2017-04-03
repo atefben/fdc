@@ -3228,7 +3228,7 @@ var owInitGrid = function (id) {
 
                         //empty isotope
                         console.log($('.isotope-01'),$('.isotope-01').data('isotope'));
-                        var $currentItems = $gridMore.data('isotope').$allAtoms;
+                        //var $currentItems = $gridMore.data('isotope').$allAtoms;
                         //$gridMore.isotope( 'remove', $currentItems );
                         
                         //$gridMore.isotope('insert',articles);
