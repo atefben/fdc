@@ -120,7 +120,7 @@ class SocialWallCommand extends ContainerAwareCommand {
                         break;
                     }
                 } catch (\Exception $e) {
-                    //$output->writeln($e->getMessage());
+                    $output->writeln($e->getMessage());
                     //$tweets = array();
                     //break;
                 }
