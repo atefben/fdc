@@ -6058,7 +6058,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     //compute title width
     computeSlideshowTitleWidth();
-    alert('hash OK');
+
     $(window).resize(function () {
         w = $(window).width();
         translate = -(w + 0) * centerElement;
