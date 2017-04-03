@@ -455,8 +455,8 @@ var owInitGrid = function (id) {
                         
                         $gridMore.isotope('insert',articles);
                         $gridMore.isotope('layout');
+
                         if(typeof moreBtn !== 'undefined'){
-                            
                             $this.attr('href',moreBtn);
                         }else{
                             //$this.remove();
