@@ -814,6 +814,7 @@ $(document).ready(function () {
                 $(this).parent().addClass('active center');
 
                 openSlideShow(slider, "undefined", true);
+                return false;
             })
 
         }else{
