@@ -470,10 +470,9 @@ var owInitGrid = function (id) {
                                 },500);
                                 $gridMore.isotope('layout');
                             },300);
-                        console.log(moreBtn,$('.isotope-01 .read-more'));
                         if(typeof moreBtn !== 'undefined'){
-                            if($('.isotope-01 .read-more').length){
-                                $('.isotope-01 .read-more').attr('href',moreBtn);
+                            if($('.isotope-01').parent().find('.read-more').length){
+                                $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
                             }
                         }else{
                             //$this.remove();
