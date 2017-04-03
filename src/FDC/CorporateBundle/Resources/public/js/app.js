@@ -87,7 +87,6 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
-        console.log('01-video.js playerInit', id)
 
         if (id) {
             var videoPlayer = jwplayer(id);
@@ -597,7 +596,6 @@ function playerInit(id, cls, havePlaylist, live) {
             havePlaylist = false;
         }
 
-        console.log("01-video.js playerLoad", $(vid), $(vid).is('#homepage-featured-video'));
 
         playerInstance.setup({
             sources: videoFile,
@@ -3471,9 +3469,6 @@ $( window ).resize( function(){
   }
 });
 $(document).ready(function() {
-
-  console.log('movie.module.js $(document).ready');
-
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.prev').attr('href');
@@ -6077,6 +6072,7 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
+  console.log('initSlideshows');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
@@ -6700,12 +6696,10 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
-    console.log("video.module.js playerInit", id);
 
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
-            console.log('Player Load 0');
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -6720,7 +6714,6 @@ function playerInit(id, cls, havePlaylist, live) {
             if(this.firstElementChild !== null) {
             var videoPlayer = jwplayer(this.firstElementChild.id);
             if (!$(videoPlayer).data('loaded')) {
-                console.log('Player Load 1');
                 playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function (vid) {
                     $(vid).data('loaded', true);
                     tmp[i] = vid;
@@ -7308,7 +7301,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
 $(document).ready(function () {
 
-    console.log('video.module.js $(document).ready');
 
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
