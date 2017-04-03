@@ -2518,7 +2518,6 @@ var contains = function(needle) {
     return indexOf.call(this, needle) > -1;
 };
 
-
 var owInitFilter = function (isTabSelection) {
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
@@ -2581,7 +2580,6 @@ var owInitFilter = function (isTabSelection) {
 
                             if($('.articles-list').length){
                                 var numItems = $('.item.' + getVal + ':not([style*="display: none"])').length;
-                                console.log('filter disabling selector','.item.' + getVal + ':not([style*="display: none"])');
                             }else{
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
@@ -2621,9 +2619,6 @@ var owInitFilter = function (isTabSelection) {
                             $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
                             owInitGrid('filter');
-                            var grid;
-
-                            var activeFiltersString = '';
 
                             fnArraySortFilters();
                         });
@@ -3203,6 +3198,13 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat + filterType;
+
+            //fix infos & communiques : add empty grid + ajax call on filter change
+            if($('.articles-list').length){
+                var ajaxUrl = $('#stamp-ajax-filter-url').text();
+                console.log('ajax on filter reorder',ajaxUrl);
+            }
+
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 

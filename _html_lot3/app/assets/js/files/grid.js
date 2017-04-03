@@ -421,6 +421,13 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat + filterType;
+
+            //fix infos & communiques : add empty grid + ajax call on filter change
+            if($('.articles-list').length){
+                var ajaxUrl = $('#stamp-ajax-filter-url').text();
+                console.log('ajax on filter reorder',ajaxUrl);
+            }
+
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
