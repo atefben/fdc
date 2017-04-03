@@ -60,7 +60,7 @@ class SocialWallCommand extends ContainerAwareCommand {
         }
 
         // get current social graph twitter hashtag
-        $tagSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
+        $tagSettings = $em->getRepository('BaseCoreBundle:HomepageCorporate')->findOneByFestival($festival->getId());
         if ($tagSettings === null) {
             $msg = 'Can\'t find social wall settings';
             $this->writeError($output, $logger, $msg);

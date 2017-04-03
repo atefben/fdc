@@ -57,19 +57,12 @@ class SocialGraphCommand extends ContainerAwareCommand
         }
 
         // get current social graph twitter hashtag
-        $socialGraphSettings = $em->getRepository('BaseCoreBundle:Homepage')->findOneByFestival($festival->getId());
+        $socialGraphSettings = $em->getRepository('BaseCoreBundle:HomepageCorporate')->findOneByFestival($festival->getId());
         if ($socialGraphSettings === null) {
             $msg = 'Can\'t find social graph settings';
             $this->writeError($output, $logger, $msg);
         }
 
-        $socialGraphSettingsCorpo = $em->getRepository('BaseCoreBundle:HomepageCorporate')->findOneByFestival($festival->getId());
-        if ($socialGraphSettings === null) {
-            $msg = 'Can\'t find social graph settings';
-            $this->writeError($output, $logger, $msg);
-        }
-        $this->writeError($output, $logger, $socialGraphSettingsCorpo);
-        // get social graph by date
         $socialGraph = $em->getRepository('BaseCoreBundle:SocialGraph')->findOneBy(array(
             'date' => $datetime,
             'festival' => $festival->getId()
@@ -102,7 +95,7 @@ class SocialGraphCommand extends ContainerAwareCommand
         // Count all tweet with hashtag during today
         while(true) {
             try {
-                $request->getQuery()->set('q', $socialGraphSettings->getSocialGraphHashtagTwitter() . $socialGraphSettingsCorpo->getSocialGraphHashtagTwitter());
+                $request->getQuery()->set('q', $socialGraphSettings->getSocialGraphHashtagTwitter());
                 $request->getQuery()->set('count', $offset);
                 $request->getQuery()->set('since', $datetime->format('Y-m-d'));
                 if ($maxId !== null) {
