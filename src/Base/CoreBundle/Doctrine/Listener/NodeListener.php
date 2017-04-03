@@ -98,6 +98,7 @@ class NodeListener
             ->setDisplayedOnCorpoHome($object->isDisplayedOnCorpoHome())
             ->setSignature($object->getSignature())
             ->setMainImage($object->getHeader())
+            ->setTheme($object->getTheme())
             ->setTypeClone($object->getTypeClone())
         ;
 
