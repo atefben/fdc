@@ -22931,6 +22931,15 @@ body:not(.tablette) .webtv #live .img {
   margin-bottom: 35px;
 }
 
+.block-accordion .download.no-flex {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.block-accordion .s-margin-top {
+  margin-top: 10px;
+}
+
 .press {
   overflow: hidden;
   padding-top: 0 !important;
