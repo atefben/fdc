@@ -120,51 +120,9 @@ class SocialWallCommand extends ContainerAwareCommand {
                         break;
                     }
                 } catch (\Exception $e) {
-                    $socialWalls = array();
-                    if (count($tweets) > 0) {
-                        krsort($tweets);
-                        foreach ($tweets as $tweet) {
-
-                            $socialWall = new SocialWall();
-                            $socialWall->setMessage($tweet->text);
-                            if (isset($tweet->entities->media[0]->media_url)) {
-                                $socialWall->setContent($tweet->entities->media[0]->media_url);
-                            } else {
-                                $socialWall->setContent(NULL);
-                            }
-                            $socialWall->setUrl('https://twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id);
-                            $socialWall->setNetwork(constant('Base\\CoreBundle\\Entity\\SocialWall::NETWORK_TWITTER'));
-                            $socialWall->setEnabledMobile(0);
-                            $socialWall->setEnabledDesktop(0);
-                            $socialWall->setMaxIdTwitter($maxId);
-                            $socialWall->setDate($datetime);
-                            $socialWall->setTags($tagSettings->getSocialWallHashtags());
-                            $em->persist($socialWall);
-                            $socialWalls[] = $socialWall;
-                        }
-                        $em->flush();
-
-                        //update ACL
-                        foreach ($socialWalls as $socialWall) {
-                            $objectIdentity = ObjectIdentity::fromDomainObject($socialWall);
-                            $acl = $adminSecurityHandler->getObjectAcl($objectIdentity);
-                            if (is_null($acl)) {
-                                $acl = $adminSecurityHandler->createAcl($objectIdentity);
-                            }
-                            $adminSecurityHandler->addObjectClassAces($acl, $securityInformation);
-                            $adminSecurityHandler->updateAcl($acl);
-                        }
-                    }
-
-                    // regenerating acl
-                    $tweetsCount = count($socialWalls);
-                    $lines = array();
-                    exec("php app/console base:admin:regenerate_acl_social_wall_twitter {$tweetsCount}", $lines);
-                    foreach ($lines as $line) {
-                        $output->writeln($line);
-                    }
-
-                    $output->writeln('Tweet added: '. $tweetsCount);
+                    $output->writeln($e->getMessage());
+                    //$tweets = array();
+                    break;
                 }
             }
         }
