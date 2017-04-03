@@ -99,11 +99,11 @@ var owInitFilter = function (isTabSelection) {
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
 
-                            if (numItems === 0) {
+                            /*if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
                                 $this.removeClass('disabled');
-                            }
+                            }*/
                         });
                     });
 
@@ -167,11 +167,11 @@ var owInitFilter = function (isTabSelection) {
                             var getVal = $this.data('filter');
                             var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
-                            if (numItems === 0) {
+                            /*if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
                                 $this.removeClass('disabled');
-                            }
+                            }*/
                         });
                     });
 
