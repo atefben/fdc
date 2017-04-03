@@ -34,7 +34,7 @@ trait NodeTranslation
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title"}, updatable=false)
+     * @Gedmo\Slug(fields={"title"}, updatable=true)
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      * @Groups({"news_list", "search", "news_show"})
      */

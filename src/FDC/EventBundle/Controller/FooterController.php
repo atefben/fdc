@@ -28,7 +28,7 @@ class FooterController extends Controller
      */
     public function staticAction($page)
     {
-        if ($page != 'application-mobile' && $page != 'audio') {
+        if ($page != 'application-mobile' && $page != 'radio-festival') {
             throw new NotFoundHttpException();
         }
         $pageContent = '';

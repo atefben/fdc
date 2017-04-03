@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/jury.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/jury.css"
+        "bundles/fdceventmobile/css/jury_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -92,13 +95,19 @@
                                 {%- endif -%}
                             {%- endif -%}
                         )"></div>{{- '' -}}
-                        <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
-                        {%- set profession =  member['jury'].person|profession_gender('profession') -%}
-                        {%- if profession -%}
-                            <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
-                                {{- profession -}}
-                            </p>{{- '' -}}
-                        {%- endif -%}
+                        <div class="jury-info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
+                                    {%- set profession =  member['jury'].person|profession_gender('profession') -%}
+                                    {%- if profession -%}
+                                    <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
+                                        {{- profession -}}
+                                        </p>{{- '' -}}
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        </div>
                     </div>{{- '' -}}
                 {%- endfor -%}
             </div>

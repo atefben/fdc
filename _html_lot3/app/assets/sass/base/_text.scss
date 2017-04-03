@@ -33,7 +33,7 @@ sub {
 
   .quote .italic {
     font-family: $CamphorItalic;
-    /*color: #141414 !important;*/
+    color: #141414 !important;
   }
 }
 
@@ -197,7 +197,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: $CamphorThin;
+  font-family: $CamphorLight;
   font-size: 3rem;
   line-height: 60px;
   display: block;
@@ -536,7 +536,7 @@ blockquote, .quote {
     display: block;
     // letter-spacing: .1rem;
     text-align: center;
-    line-height: 36px;
+    line-height: 2em;
 
     .ie & {
       margin-top: 67px;
@@ -581,7 +581,7 @@ blockquote, .quote {
       font-size: .5rem;
     }
 
-    line-height: 30px;
+    line-height: 1.9em;
     list-style: inside;
     color: #666666;
 
@@ -666,11 +666,11 @@ blockquote, .quote {
     }
 
     strong {
-      color: #141414;
+      color: #333;
     }
 
     .bright & {
-      color: #141414;
+      color: #333;
     }
   }
 

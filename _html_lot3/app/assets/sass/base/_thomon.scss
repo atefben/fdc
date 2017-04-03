@@ -473,7 +473,7 @@ article.communique .picto {
 }
 
 .block-01 .title-12 {
-  display: inline-block !important;
+
 }
 
 .block-movie-preview .wrapper-item .description {
@@ -960,4 +960,74 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
     min-width: 999999px;
 }
 
+.dark.story-movie .wysiwyg-article-02 p {
+    color: #dbdbdb;
+}
+
+.article-single.dark .wysiwyg-article-02 .caption {
+    color: #dbdbdb;
+}
+
+.block-01-s .half-photo {
+    width: 47%;
+}
+
+.dark .block-movie-preview .description,
+.dark.article-single .text p {
+    color: #dbdbb;
+}
+
+.block-contact a strong {
+    color: $gold;    
+}
+
+.who-fdc .half-photos .half-photo .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.who-fdc .slideshow .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.slideshow .slideshow-img .images .img img {
+
+}
+
+.home .video-container .control-bar .time .time-info {
+    width: 100px;
+}
+
+.story-palme .block-movie-preview .poster{
+    text-align: center;
+
+    figure {
+        display: inline-block;
+        text-align: left;
+        max-width: 363px;
+    }
+}
+
+.article-single.dark .slideshow .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.article-single.dark #main .slideshow .caption strong {
+    color: #969696;
+}
+
+.block-movie-preview .contain-authors {
+    width: 100%;
+    text-align: center;
+}
+
+.media-library .card.w2.double .image {
+    width: auto;
+}
+
+#stamp-ajax-filter-url {
+    display: none!important;
+}
 /* thomon - end fixes */

@@ -68,11 +68,12 @@
                                 {% include 'FDCCorporateBundle:News:widgets/video.html.twig' with {'widget': widget} %}
                             </div>
                         {% elseif widget is  fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
-                            <div class="contain-img-honneur block-01-xs">
+                            <div class="contain-img-honneur block-01">
                                 {% set photo = widget.gallery.medias[0].media %}
                                 {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                 {% set copyright = photo|trans_fallback('copyright') %}
-                                <span class="copy">{% if copyright is not empty %} © {{ copyright }}{% endif %}</span>
+                                {% set legend = widget.image|trans_fallback('legend') %}
+                                <br><br><span class="copy">{% if copyright is not empty %} {{ legend }} © {{ copyright }}{% endif %}</span>
                             </div>
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                             <div class="photos photo-module block-01-xs" data-section="photos">
@@ -97,7 +98,7 @@
                                         <div class="bck-hover">
                                             <div class="wrapper-item">
                                                 <div class="poster">
-                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}">
+                                                    <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}">
                                                         <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                         film: film.film,
                                                         film_format: '259x352',
@@ -107,12 +108,12 @@
                                                     </a>
                                                 </div>
                                                 <div class="infos">
-                                                    <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
+                                                    <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                 class="name-f">{{ film.film.titleVO }}</strong></a>
                                                     {% set directors = film.getDirectors() %}
                                                     {% set directorsName = '' %}
                                                     {% for director in directors %}
-                                                        <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span
+                                                        <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
                                                                     class="names-a">
                                                                     {{ directorsName ~ director.person.fullName }}
                                                                 {% if loop.index != directors|length %} - {% endif %}

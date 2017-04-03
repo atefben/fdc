@@ -6,15 +6,21 @@
 {% block body %}
 
     <section id="main">
+    {% if currentPage.image is defined and currentPage.image is not null %}
+        {% set mainTrans = currentPage.image.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set mainImage = mainTrans.file %}
         <div class="block-push block-push-top"
-             style="background-image: url({{ asset('bundles/fdccorporate/media/images/who-fdc-01.jpg') }});">
+             style="background-image: url({% path mainImage, '1280x808' %});">
             <div class="vFlexAlign">
                 <div class="txts">
-                    <h1 class="title-3">qui sommes nous ?</h1>
+                    <h1 class="title-3"> {{ 'header.nav.whoweare'|trans }}</h1>
                 </div>
             </div>
         </div> <!-- end block push -->
-
+        {% endif %}
         <div class="ajax-section">
             <div class="contain-ajax">
                 {{ render(controller('FDCCorporateBundle:WhoAreWe:nav',{'slug': app.request.attributes.get('slug')})) }}
@@ -110,10 +116,9 @@
                             {% endif %}
                         </div>
                     {% endif %}
-                </div>
                 {% endfor %}
 
-                <div class="border-top black margin-top">
+                <div class="border-top margin-top">
                     <strong class="title-9">Partager la page</strong>
                     {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                     <div class="relative">
@@ -133,7 +138,6 @@
                     </div>
                 </div>
             </div> <!-- end all contain -->
-        </div>
         </div>
     </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',

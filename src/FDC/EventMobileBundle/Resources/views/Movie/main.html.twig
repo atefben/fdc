@@ -3,13 +3,17 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/movie.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/movie.css"
+        "bundles/fdceventmobile/css/movie_custom.css"
+        "bundles/fdceventmobile/css/article_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
-<div id="main" data-menu="selection" class="movie-page">
+<div id="main" data-menu="selection" class="movie-page ba">
 
     {% include 'FDCEventMobileBundle:Global:menu.html.twig' %}
     {% include 'FDCEventMobileBundle:Global:my_selection.html.twig' %}
@@ -61,7 +65,12 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/movie.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/movie.js'
+        '@FDCEventMobileBundle/Resources/public/js/article_custom.js'
+        '@FDCEventMobileBundle/Resources/public/js/trailer_custom.js'
+        '@FDCEventMobileBundle/Resources/public/js/movie_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

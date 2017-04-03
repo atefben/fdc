@@ -1,7 +1,10 @@
-{% set img = widget.header|trans_fallback('file') %}
-<div class="Article-content">
+{% if widget.gallery is defined %}
+	{% set imgObject = widget.gallery.medias[0].media %}
+{% else %}
+	{% set imgObject = widget.header %}
+{% endif %}
+{% set img = imgObject|trans_fallback('file') %}
 	<img src="{% path img, 'reference' %}"/>
-	{% if widget.header|trans_fallback('copyright') %}
-    <div class="Article-picture-caption"><strong>{{ widget.header|trans_fallback('legend')}}</strong> ©{{ widget.header|trans_fallback('copyright')|replace({'©': ''}) }}</div>
-    {% endif %}
-</div>
+	{% set legend = imgObject|trans_fallback('legend') %}
+	{% set copyright = imgObject|trans_fallback('copyright') %}
+    <div class="Article-picture-caption">{% if legend is defined %}<strong>{{ imgObject|trans_fallback('legend')}}</strong>{% endif %}{% if copyright is defined %} ©{{ copyright|replace({'©': ''}) }}{% endif %}</div>

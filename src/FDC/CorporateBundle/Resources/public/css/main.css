@@ -1507,7 +1507,7 @@ sub {
 
 .bright .quote .italic {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
-  /*color: #141414 !important;*/
+  color: #141414 !important;
 }
 
 .title, .title-item {
@@ -1666,7 +1666,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: "Camphor W01 Thin", Arial, Helvetica, sans-serif;
+  font-family: "Camphor W01 Light", Arial, Helvetica, sans-serif;
   font-size: 3rem;
   line-height: 60px;
   display: block;
@@ -1986,7 +1986,7 @@ blockquote, .quote {
   color: #fff;
   display: block;
   text-align: center;
-  line-height: 36px;
+  line-height: 2em;
     /*
         sub {
           vertical-align: text-bottom;
@@ -1997,7 +1997,7 @@ blockquote, .quote {
           vertical-align: super;
           font-size: .5rem;
         }*/
-  line-height: 30px;
+  line-height: 1.9em;
   list-style: inside;
   color: #666666;
 }
@@ -2092,10 +2092,10 @@ blockquote, .quote {
   width: 100%;
 }
 .contain-title .title-02 strong {
-  color: #141414;
+  color: #333;
 }
 .bright .contain-title .title-02 {
-  color: #141414;
+  color: #333;
 }
 .contain-title .title-03 {
   text-align: center;
@@ -3162,10 +3162,10 @@ video {
 }
 
 .block-01-m {
-  margin: 40px auto;
+  margin: 0 auto;
   max-width: 100%;
-  width: 900px;
-  margin-bottom: 20px;
+  width: 942px;
+  margin-bottom: 45px;
 }
 .block-01-m img {
   max-width: 100%;
@@ -3212,7 +3212,7 @@ video {
 }
 .block-01-xs img {
   max-width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .block-01-xs .video-container {
   height: calc(663px / 1.58);
@@ -4560,20 +4560,20 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   width: 100% !important;
   text-align: left !important;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p {
+.block-accordion-02 .item-manual .contain-infos p {
   line-height: 24px;
   font-size: .8125rem;
   width: 100%;
   padding: 0px;
   text-align: left;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p a {
+.block-accordion-02 .item-manual .contain-infos p a {
   color: #c8a461;
   text-decoration: none;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
-.block-accordion-02 .item-manual .contain-infos .descrip-section p a:hover {
+.block-accordion-02 .item-manual .contain-infos p a:hover {
   color: #966505;
 }
 .block-accordion-02 .item-manual .contain-infos .contain-map .btn {
@@ -4730,7 +4730,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   line-height: 24px;
   font-size: .8125rem;
 }
-.block-accordion-02 .descrip-section p {
+.block-accordion-02 .item-manual .contain-infos .block-01 .descrip-section p {
   width: 750px;
   margin: 0 auto;
   font-size: 1.25rem;
@@ -4783,7 +4783,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: .75rem;
   padding-right: 13px;
   transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  text-decoration: underline;
+  text-decoration: none;
+  text-transform: uppercase;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-accordion-02 .item-partners .text-partners .content-text-with-portrait {
@@ -4903,6 +4904,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: inline-block;
   width: 277px;
   vertical-align: top;
+}
+.participate .block-contact .item {
+  width: 277px;
 }
 .block-contact .i-1 {
   margin-right: 105px;
@@ -7363,10 +7367,6 @@ article.communique .picto .icon {
   padding-top: 25px;
 }
 
-.block-01 .title-12 {
-  display: inline-block !important;
-}
-
 .block-movie-preview .wrapper-item .description {
   width: 475px;
 }
@@ -7814,6 +7814,72 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
   min-width: 999999px;
 }
 
+.dark.story-movie .wysiwyg-article-02 p {
+  color: #dbdbdb;
+}
+
+.article-single.dark .wysiwyg-article-02 .caption {
+  color: #dbdbdb;
+}
+
+.block-01-s .half-photo {
+  width: 47%;
+}
+
+.dark .block-movie-preview .description,
+.dark.article-single .text p {
+  color: #dbdbb;
+}
+
+.block-contact a strong {
+  color: #c8a461;
+}
+
+.who-fdc .half-photos .half-photo .caption strong {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.who-fdc .slideshow .caption strong {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.home .video-container .control-bar .time .time-info {
+  width: 100px;
+}
+
+.story-palme .block-movie-preview .poster {
+  text-align: center;
+}
+.story-palme .block-movie-preview .poster figure {
+  display: inline-block;
+  text-align: left;
+  max-width: 363px;
+}
+
+.article-single.dark .slideshow .caption strong {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.article-single.dark #main .slideshow .caption strong {
+  color: #969696;
+}
+
+.block-movie-preview .contain-authors {
+  width: 100%;
+  text-align: center;
+}
+
+.media-library .card.w2.double .image {
+  width: auto;
+}
+
+#stamp-ajax-filter-url {
+  display: none !important;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
@@ -8207,7 +8273,7 @@ header #navigation ul li ul {
   box-sizing: border-box;
   margin-top: 1px;
   opacity: 0;
-  padding-left: 100px;
+  padding-left: 30px;
   position: absolute;
   visibility: hidden;
   width: 977px;
@@ -8316,7 +8382,7 @@ header #navigation ul.user li ul li a {
 }
 header #navigation ul.user .participate-wrapper ul {
   left: auto;
-  margin-left: -762px;
+  margin-left: -768px;
   text-align: right;
   border-top: 1px solid #404040;
   margin-top: 0px;
@@ -11498,8 +11564,8 @@ Slider channel
   font-size: 36px;
   font-family: "Playfair Display", Times New Roman, Times, serif;
   line-height: 50px;
-  padding-bottom: 32px;
-  padding-top: 7px;
+  margin-bottom: 32px;
+  margin-top: 7px;
 }
 .popin-mail .contain-popin .chap-article {
   font-size: 0.88rem;
@@ -13322,7 +13388,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 0.750rem;
   text-align: left;
   margin-top: 5px;
-  width: 400px;
 }
 .audio-container .audio-player .on {
   opacity: 0;
@@ -16785,6 +16850,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border: none !important;
 }
 .article-single .text, .single-movie .text {
+  width: 630px;
   margin: 0 auto 70px;
 }
 .article-single .text p, .single-movie .text p {
@@ -16956,6 +17022,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .participate .block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
   color: #000;
   border-color: #000;
+}
+.participate .block-accordion-02 .item-manual .contain-infos .item-infos a:hover i {
+  color: #000;
 }
 
 .c-contact input[type=text],

@@ -3,11 +3,10 @@
 namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\CorpoWhoAreWe;
-use Symfony\Component\HttpFoundation\Request;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("/qui-sommes-nous")
@@ -25,16 +24,17 @@ class WhoAreWeController extends Controller
         $equipes = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoTeam')
-            ->findOneById(1);
+            ->findOneById(1)
+        ;
 
-        if(!$equipes) {
+        if (!$equipes) {
             throw $this->createNotFoundException('There is not available Team.');
         }
 
-        if($equipes->findTranslationByLocale('fr')->getStatus() == 1) {
-            return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', array(
+        if ($equipes->findTranslationByLocale('fr')->getStatus() == 1) {
+            return $this->render('FDCCorporateBundle:WhoAreWe:equipe.html.twig', [
                 'datas' => $equipes,
-            ));
+            ]);
         } else {
             throw $this->createNotFoundException('There is not available Team.');
         }
@@ -54,16 +54,16 @@ class WhoAreWeController extends Controller
             ->findBy([], ['weight' => 'asc'])
         ;
 
-        $pages = array();
-        foreach($nav as $n){
-            if($n->findTranslationByLocale('fr')->getStatus() == 1) {
+        $pages = [];
+        foreach ($nav as $n) {
+            if ($n->findTranslationByLocale('fr')->getStatus() == 1) {
                 $pages[] = $n;
             }
         }
-        return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', array(
+        return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', [
             'pages' => $pages,
             'slug'  => $slug
-        ));
+        ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class WhoAreWeController extends Controller
                         $slug = $page->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_corporate_whoarewe_show', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_corporate_whoarewe_show', ['slug' => $slug]);
                     }
                 }
             }
@@ -100,10 +100,10 @@ class WhoAreWeController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
-        return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', array(
-            'pages' => $pages,
+        return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', [
+            'pages'       => $pages,
             'currentPage' => $page
-        ));
+        ]);
     }
 
 }

@@ -113,7 +113,7 @@ class SearchType extends AbstractType {
                 'data' => '1946',
             ))
             ->add('yearEnd', 'hidden', array(
-                'data' => '2016',
+                'data' => '2017',
             ))
             ->add('artistCountry',  new TextType() , array(
                 'attr' => array(

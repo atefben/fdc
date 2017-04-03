@@ -4,3 +4,17 @@
     font-size: .88rem;
     text-transform: uppercase;
 }
+
+.m-video > .container {
+    position: absolute;
+    bottom: 0;
+    left: 65px;
+}
+
+.m-video .jwplayer .jw-preview {
+    background-size: cover;
+}
+
+.m-video .jw-state-playing + .container, .m-video .jw-state-paused + .container {
+    display: none;
+}

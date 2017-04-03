@@ -188,16 +188,16 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video video-container"
-                                data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
-                                {% if featuredVideo.image|trans_fallback('file') %}
-                                    data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
-                                {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
-                                    data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
-                                {% else %}
-                                    data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
-                                {% endif %}>
+                                <article class="video video-container">
                                     <div class=" state-init video video-player"
+                                         data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
+                                        {% if featuredVideo.image|trans_fallback('file') %}
+                                            data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
+                                        {% elseif featuredVideo|trans_fallback('imageAmazonUrl') %}
+                                            data-img="{{ s3_server_video ~ featuredVideo|trans_fallback('imageAmazonUrl') }}"
+                                        {% else %}
+                                            data-img="{% path featuredVideo.image|trans_fallback('file', 'fr'), '926x584' %}"
+                                        {% endif %}
                                          data-link="{{ featuredVideo.id }}"
                                          id="homepage-featured-video"
                                          data-email='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
@@ -334,7 +334,7 @@
                                             <span class="title-5">
                                         {% set dataWho = '' %}
                                                 {% for director in directors %}
-                                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_event_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
+                                                    {% set dataWho = dataWho ~ '<a class="title-5" href="' ~ path('fdc_corporate_artist_get', {'slug': director.person.slug}) ~ '">' ~ director.person.fullName ~ '</a>' %}
                                                     {% if loop.index != directors|length %}{% set dataWho = dataWho ~ ', ' %}{% endif %}
                                                 {% endfor %}
                                                 {{ dataWho|raw }}</span>
@@ -415,8 +415,10 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
                                     {% endfor %}
                                     {%- if movie.videoMain and movie.videoMain.image -%}
                                         {% set videoImage = media_public_url(movie.videoMain.image|trans_fallback('file'), '293x397') %}
+                                        {% set videoImageFB = media_public_url(movie.videoMain.image|trans_fallback('file'), '674x382') %}
                                     {%- elseif video|trans_fallback('imageAmazonUrl') -%}
                                         {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                                        {% set videoImageFB = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                                     {%- endif -%}
                                     <div class="item"
                                          data-vid="{{ trans.id }}"
@@ -428,7 +430,7 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
                                          data-palmdate="{{ movie.productionYear }}"
                                          data-url="{{ movieUrl }}"
                                          data-email-content="{{ movie|trans_fallback('synopsis')|truncate(200, true)|escape('html_attr') }}"
-                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={{ videoImage }}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                         data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ movieUrl }}&picture={{ videoImageFB }}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsNames|url_encode(true) }}&caption=&description={{ inTheaters|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                          data-twitter="https://twitter.com/intent/tweet?text={{ (movie.titleVO ~ ' - ' ~ directorsNames ~ ' - ' ~ inTheaters ~ ' ' ~ movieUrl)|escape('url') }}"
                                          data-who="{{ dataWho|length > 1 ? dataWho|json_encode : dataWho|first|json_encode }}">
                                         <div class="wrapper">

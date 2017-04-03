@@ -8,7 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SettingsFDCYearType extends AbstractType
+class SettingsFDCDateStartType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder

@@ -61,7 +61,7 @@ var owInitGrid = function (id) {
                     }
                 }
             });
-        }
+        };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
         var $gridMore = $gridDom.imagesLoaded(function(){
@@ -78,7 +78,10 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
 
-            //$gridMore.isotope();
+            //hotfix isotope bugs : trigger layout to avoid messy cards
+            var layoutInterval = window.setInterval(function(){
+                $gridMore.isotope('layout');
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
@@ -129,27 +132,6 @@ var owInitGrid = function (id) {
                 var url = $(this).attr('href');
 
                 var postData = {};
-                if(typeof $('input[name="search"]').val() !== 'undefined'){
-                    postData.search = $('input[name="search"]').val();
-                }
-                if(typeof $('input[name="photo"]').val() !== 'undefined'){
-                    postData.photo = $('input[name="photo"]').val();
-                }
-                if(typeof $('input[name="video"]').val() !== 'undefined'){
-                    postData.video = $('input[name="video"]').val();
-                }
-                if(typeof $('input[name="audio"]').val() !== 'undefined'){
-                    postData.audio = $('input[name="audio"]').val();
-                }
-                if(typeof $('input[name="year-start"]').val() !== 'undefined'){
-                    postData['year-start'] = $('input[name="year-start"]').val();
-                }
-                if(typeof $('input[name="year-end"]').val() !== 'undefined'){
-                    postData['year-end'] = $('input[name="year-end"]').val();
-                }
-                if(typeof $('input[name="pg"]').val() !== 'undefined'){
-                    postData.pg = parseInt($('input[name="pg"]').val())+1;
-                }
 
                 if($('#date.filter .select .active').length){
                     postData.date = $('#date.filter .select .active').data('filter');
@@ -164,9 +146,10 @@ var owInitGrid = function (id) {
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
 
+                console.log('data sent to GET',postData);
+
                 if(!ajaxLock){
                     ajaxLock = true;
-                    console.log('data sent to GET on ajax button click',postData);
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -214,7 +197,7 @@ var owInitGrid = function (id) {
                                 var catText;
 
                                 $clamp(title.get(0), {clamp: 2});
-                                $clamp(cat.get(0), {clamp: 1});
+                                //$clamp(cat.get(0), {clamp: 1});
                             });
 
                             $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
@@ -262,7 +245,7 @@ var owInitGrid = function (id) {
                     var cat = $(e).find('.info .category');
 
                     $clamp(title.get(0), {clamp: 2});
-                    $clamp(cat.get(0), {clamp: 1});
+                    //$clamp(cat.get(0), {clamp: 1});
                 });
             }
     
@@ -438,6 +421,84 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat + filterType;
+
+            //fix infos & communiques : add empty grid + ajax call on filter change
+            if($('.articles-list').length){
+                var ajaxUrl = $('#stamp-ajax-filter-url').text();
+                var ajaxData = {};
+                $('.articles-list .filters .filter').each(function(){
+                    var filterId = $(this).attr('id');
+                    if(typeof filterId !== 'undefined'){
+                        ajaxData[filterId] = $(this).find('.select .active').data('filter');
+                    }
+                });
+
+                console.log('ajax send data',ajaxData);
+                $.ajax({
+                    type: 'GET',
+                    url: ajaxUrl,
+                    data: ajaxData,
+                    success: function(data) {
+                        $data = $(data);
+
+                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        var scroll = $(document).scrollTop();
+                        var rawHtml = '';
+                        articles.each(function(){
+                            rawHtml += $(this).get(0).outerHTML;
+                        });
+
+                        //empty isotope
+                        console.log($('.isotope-01'),$('.isotope-01').data('isotope'));
+                        //var $currentItems = $gridMore.data('isotope').$allAtoms;
+                        //$gridMore.isotope( 'remove', $currentItems );
+                        
+                        //$gridMore.isotope('insert',articles);
+                        //$gridMore.isotope('layout');
+
+                        if(typeof moreBtn !== 'undefined'){
+                            $this.attr('href',moreBtn);
+                        }else{
+                            //$this.remove();
+                        }
+
+                        //manage filters
+                        if($data.filter('.compute-filters').length){
+                            $data.filter('.compute-filters').each(function(){
+                                var slug = $(this).attr('class').replace('compute-filters ','');
+
+                                $(this).find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                            });
+                        }
+                        
+
+                        $('.card.item').each(function(){
+                            var $this = $(this);
+                            var title = $this.find('.info strong a');
+                            var cat = $this.find('.info .category');
+                            var titleText;
+                            var catText;
+
+                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(cat.get(0), {clamp: 1});
+                        });
+
+                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                        
+                        //if no button ajax-request, then remove current button
+                        owinitSlideShow($gridMore);
+                        initVideo();
+                        initAudio();
+                    }
+                });
+            }
+
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 

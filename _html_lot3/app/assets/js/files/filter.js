@@ -31,7 +31,6 @@ var contains = function(needle) {
     return indexOf.call(this, needle) > -1;
 };
 
-
 var owInitFilter = function (isTabSelection) {
     isTabSelection = isTabSelection || false;
     var homepageItemsFilled = false;
@@ -98,11 +97,11 @@ var owInitFilter = function (isTabSelection) {
                                 var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"])').length;
                             }
 
-                            if (numItems === 0) {
+                            /*if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
                                 $this.removeClass('disabled');
-                            }
+                            }*/
                         });
                     });
 
@@ -133,9 +132,6 @@ var owInitFilter = function (isTabSelection) {
                             $('#' + id + ' .select span[data-filter="' + f + '"]').addClass('active');
 
                             owInitGrid('filter');
-                            var grid;
-
-                            var activeFiltersString = '';
 
                             fnArraySortFilters();
                         });
@@ -166,11 +162,11 @@ var owInitFilter = function (isTabSelection) {
                             var getVal = $this.data('filter');
                             var numItems = $('.item[data-' + $id + '="' + getVal + '"]:not([style*="display: none"]').length;
 
-                            if (numItems === 0) {
+                            /*if (numItems === 0) {
                                 $this.addClass('disabled');
                             } else {
                                 $this.removeClass('disabled');
-                            }
+                            }*/
                         });
                     });
 
