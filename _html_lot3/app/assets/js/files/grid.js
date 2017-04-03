@@ -558,29 +558,11 @@ var owsetGridBigImg = function (grid, dom, init) {
             }
             i++;
         }
+    } else if (window.matchMedia("(min-width: 1600px)").matches) {
 
-
-    } else if (window.matchMedia("(max-width: 1919px)").matches) {
-        console.log('match 1919');
-        while (i < $img.length) {
-            if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 18 || j == 25) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 29) {
-                j = 0;
-            }
-            i++;
-        }
-
-
-    } else if (window.matchMedia("(min-width: 1920px)").matches) {
-        console.log('match 1920');
         while (i < $img.length) {
             if (j < 15) {
-                if (j == 1 || j == 5 || j == 15) {
+                if (j == 0 || j == 4 || j == 6 || j == 10 || j == 12 || j == 15) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
