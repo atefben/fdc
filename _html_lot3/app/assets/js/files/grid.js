@@ -453,9 +453,13 @@ var owInitGrid = function (id) {
                         var $gridMore =  $('.isotope-01');
                         //empty isotope
                         var $currentItems = $gridMore.data('isotope').$element.find('article.item');
-                        $gridMore.isotope('remove', $currentItems);
-                        //$gridMore.isotope('insert',articles);
-                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+                        $gridMore
+                            .isotope('remove', $currentItems)
+                            .isotope('insert',articles);
+
+                            var t = window.setTimeout(function(){
+                                owsetGridBigImg($gridMore, $('.grid-01'), false);
+                            },500);
 
                         if(typeof moreBtn !== 'undefined'){
                             $this.attr('href',moreBtn);
