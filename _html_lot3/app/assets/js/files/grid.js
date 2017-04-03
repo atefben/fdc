@@ -580,12 +580,12 @@ var owsetGridBigImg = function (grid, dom, init) {
         console.log('match 1920');
         while (i < $img.length) {
             if (j < 15) {
-                if (j == 1 || j == 5 || j == 14) {
+                if (j == 1 || j == 5 || j == 15) {
                     $($img[i]).closest('article.card').addClass('double w2');
                 }
                 j++;
             }
-            if (j == 14) {
+            if (j == 15) {
                 j = 0;
             }
             i++;
