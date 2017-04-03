@@ -42,3 +42,12 @@
 .movie-page .section.videos .slideshow-img .images {
     overflow: hidden;
 }
+
+.movie-page .main-movie-img {
+    background: #000;
+    text-align: center;
+}
+
+.movie-page .main-movie-img img {
+    max-width: 100%;
+}
