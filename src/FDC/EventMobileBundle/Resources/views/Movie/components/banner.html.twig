@@ -1,24 +1,26 @@
 {% trans_default_domain 'FDCEventBundle' %}
-
-    <div class="m-video">
-        <div class="players2" id="player3"{% if movie.videoMain is not null and is_available_video(movie.videoMain) %} {% if movie.videoMain.jobMp4State == 3 %}data-mp4url="{{ s3_server_video ~ movie.videoMain.mp4Url }}"{% endif %} {% if movie.videoMain.jobWebmState == 3 %}data-webmurl="{{ s3_server_video ~ movie.videoMain.webmUrl }}"{% endif %}{% endif %} data-poster="{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
-                film: movie,
-                film_format: '1600x903',
-                display_film_path: true,
-                film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
-            })
-        %}">
-        </div>
-        {#<div class="infos-bar">
-            <div class="info">
-                <p class="category">{{ movie.videoMain.theme|trans_fallback('name') }}
-                    <span class="date">{{ movie.videoMain.publishedAt|date('d.m.Y') }}</span> . <span
-                            class="hour">{{ agenda_leftbar_translate_hour(movie.videoMain.publishedAt|date('H:i'), true, true) }}</span>
-                </p>
-                <p>{{ movie.videoMain|trans_fallback('title') }}</p>
+    {% if movie.videoMain is not null and is_available_video(movie.videoMain) %}
+        <div class="m-video">
+            <div class="players2" data-ceva="" id="player3"{% if movie.videoMain is not null and is_available_video(movie.videoMain) %} {% if movie.videoMain.jobMp4State == 3 %}data-mp4url="{{ s3_server_video ~ movie.videoMain.mp4Url }}"{% endif %} {% if movie.videoMain.jobWebmState == 3 %}data-webmurl="{{ s3_server_video ~ movie.videoMain.webmUrl }}"{% endif %}{% endif %} data-poster="{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                    film: movie,
+                    film_format: '1600x903',
+                    display_film_path: true,
+                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                })
+            %}">
             </div>
-        </div>#}
-    </div>
+        </div>
+    {% else %}
+        <div class="main-movie-img">
+            <img src="{% include 'FDCEventBundle:Global:components/film.cover.html.twig' with ({
+                    film: movie,
+                    film_format: '1600x903',
+                    display_film_path: true,
+                    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+                })
+            %}">
+        </div>
+    {% endif %}
 
     <div class="pictos-nav">
         <div class="back"><i class="icon-mobile-return"></i></div>
