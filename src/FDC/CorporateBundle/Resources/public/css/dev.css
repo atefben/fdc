@@ -320,3 +320,7 @@
 .who-fdc .text-quote {
   width: 800px !important;
 }
+
+.isotope-01 .item .contain-img {
+  background-position: center;
+}
