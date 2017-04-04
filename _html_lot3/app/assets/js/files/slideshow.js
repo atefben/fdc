@@ -21,9 +21,9 @@ var owinitSlideShow = function (slider, hash) {
                     slider = $('.all-contain');
                     $(this).parent().addClass('active center');
                     var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                    
                     var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
                     openSlideShow(slider,hash, true, index);
+                    return false;
                 });
             }
 
