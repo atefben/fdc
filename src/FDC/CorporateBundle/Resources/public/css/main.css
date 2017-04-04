@@ -2126,7 +2126,7 @@ figcaption, .caption {
   color: #868686;
   font-size: .625rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
+  margin: 10px 0;
   text-align: left;
 }
 
