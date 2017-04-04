@@ -5703,9 +5703,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         date.html(images[centerElement].date);
         caption.html(images[centerElement].caption)
 
-        console.log('debug twitter url',centerElement,images[centerElement]);
+        var twitterUrl = images[centerElement].twitter;
+        if(typeof twitterUrl === 'undefined'){
+            twitterUrl = images[centerElement].twitterurl;
+        }
+        console.log('twitter share url',twitterUrl);
+
         facebook.attr('href', images[centerElement].facebookurl);
-        twitter.attr('href', images[centerElement].twitter);
+        twitter.attr('href',twitterUrl );
         link.attr('data-clipboard-text', images[centerElement].url);
 
         if($('.popin-mail').length) {
