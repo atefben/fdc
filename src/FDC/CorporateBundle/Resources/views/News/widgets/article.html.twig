@@ -110,9 +110,9 @@
             {% endif %}
         </div>
         {% if article is news_object %}
-            <a href="{{ path('fdc_corporate_news_getarticles', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': article.festival.year}) }}" class="linkImage"></a>
         {% elseif article is info_object %}
-            <a href="{{ path('fdc_corporate_news_getarticles', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
+            <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'type': 'info', 'slug': article|trans_fallback('slug'), 'year': article.festival.year}) }}" class="linkImage"></a>
         {% elseif article is statement_object %}
             <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'type': 'communique', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         {% endif %}
@@ -132,7 +132,7 @@
         <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span
                 class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         <h2>
-            <a href="{{ path('fdc_corporate_news_getarticles', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
+            <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': article.festival.year}) }}">
                 {{ article|trans_fallback('title')|truncate(40) }}
             </a>
         </h2>
