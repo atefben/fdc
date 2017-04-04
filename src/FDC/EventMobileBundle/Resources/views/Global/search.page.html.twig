@@ -28,35 +28,129 @@
             <ul id="suggest"></ul>
         </div>
         {%- include 'FDCEventMobileBundle:Global:components/search.categories.html.twig' -%}
+        <div id="filtered" class="show">
+            <div id="" class="owl-carousel sliderDrag videosSlider filters-slider">
+                <div class="filter" id="date">
+                    <span class="label">Dates :</span>
+                    <div class="select">
+                        <span class="active" data-filter="all">Toutes</span>
+                        <span data-filter="date1">Date 1</span>
+                        <span data-filter="date2">Date 2</span>
+                        <i class="icon icon_fleche-down"></i>
+                    </div>
+                </div>
+
+                <div id="format" class="filter">
+                    <span class="label">Format :</span>
+                    <div class="select">
+                        <span class="active" data-filter="all">Tous</span>
+                        <span data-filter="photo">Photo</span>
+                        <span data-filter="video">Vidéo</span>
+                        <span data-filter="audio">Audio</span>
+                        <span data-filter="article">Article</span>
+                        <i class="icon icon_fleche-down"></i>
+                    </div>
+                </div>
+                <div id="theme" class="filter">
+                    <span class="label">Thème :</span>
+                    <div class="select">
+                        <span class="active" data-filter="all">Tous</span>
+                        <span data-filter="press">Conférence de Presse</span>
+                        <span data-filter="steps">Montée des marches</span>
+                        <i class="icon icon_fleche-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="filteredContent"></div>
+        </div>
         <div class="result">
-            {% if searchResult.category.actualite|length %}
-            <div class="resultsContainer">
-                <h2 class="titleSection">{{ 'search.result.title.actualites'|trans }}</h2>
-                <a href="#" data-class="news" data-ajax="ajax/news/{{ searchTerm }}" class="view-all ajax">
-                    {{- 'search.result.btn.toutvoir'|trans -}}
-                </a>
-                <div class="owl-carousel portrait-slider">
-                    {% include 'FDCEventMobileBundle:Search:news.html.twig' with { 'items': searchResult.category.actualite } %}
+            {% if searchResult.category.artist|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
+                    <a href="#" data-class="artists" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'artist', 'searchTerm': searchTerm}) }}" class="view-all ajax">
+                        {{- 'search.result.btn.toutvoir'|trans -}}
+                    </a>
+                    <div class="owl-carousel portrait-slider">
+                        {% include 'FDCEventMobileBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
+                    </div>
                 </div>
-            </div>
-            {% elseif searchResult.category.artist|length %}
-            <div class="resultsContainer">
-                <h2 class="titleSection">{{ 'search.result.title.artistes'|trans }}</h2>
-                <a href="#" data-class="artists" data-ajax="ajax/news/{{ searchTerm }}" class="view-all ajax">
-                    {{- 'search.result.btn.toutvoir'|trans -}}
-                </a>
-                <div class="owl-carousel portrait-slider">
-                    {% include 'FDCEventMobileBundle:Search:artist.html.twig' with { 'items': searchResult.category.artist } %}
-                </div>
-            </div>
-            {% else %}
+            {% endif %}
+            {% if searchResult.category.film|length %}
                 <div class="resultsContainer">
                     <h2 class="titleSection">{{ 'search.result.title.films'|trans }}</h2>
-                    <a href="#" class="view-all ajax" data-ajax="ajax/film/{{ searchTerm }}" data-class="artists">
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'film', 'searchTerm': searchTerm}) }}" data-class="films">
                         {{- 'search.result.btn.toutvoir'|trans -}}
                     </a>
                     <div class="owl-carousel portrait-slider">
                         {% include 'FDCEventMobileBundle:Search:film.html.twig' with { 'items': searchResult.category.film } %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if searchResult.category.actualite|length %}
+            <div class="resultsContainer">
+                <h2 class="titleSection">{{ 'search.result.title.actualites'|trans }}</h2>
+                <a href="#" data-class="news" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'news', 'searchTerm': searchTerm}) }}" class="view-all ajax">
+                    {{- 'search.result.btn.toutvoir'|trans -}}
+                </a>
+                <div class="owl-carousel landscape-carousel">
+                    {% include 'FDCEventMobileBundle:Search:news.html.twig' with { 'items': searchResult.category.actualite } %}
+                </div>
+            </div>
+            {% endif %}
+            {% if searchResult.category.statement|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.communiques'|trans }}</h2>
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'statement', 'searchTerm': searchTerm}) }}" data-class="communiques">
+                        {{ 'search.result.btn.toutvoir'|trans }}
+                    </a>
+
+                    <div class="owl-carousel landscape-carousel">
+                        {% include 'FDCEventMobileBundle:Search:statement.html.twig' with { 'items': searchResult.category.statement } %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if searchResult.category.info|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.infos'|trans }}</h2>
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'info', 'searchTerm': searchTerm}) }}" data-class="communiques">
+                        {{ 'search.result.btn.toutvoir'|trans }}
+                    </a>
+
+                    <div class="owl-carousel landscape-carousel">
+                        {% include 'FDCEventMobileBundle:Search:info.html.twig' with { 'items': searchResult.category.info } %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if searchResult.category.media|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.medias'|trans }}</h2>
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'media', 'searchTerm': searchTerm}) }}" data-class="medias">
+                        {{ 'search.result.btn.toutvoir'|trans }}
+                    </a>
+                    <div class="owl-carousel landscape-carousel">
+                        {% include 'FDCEventMobileBundle:Search:media.html.twig' with { 'items': searchResult.category.media } %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if searchResult.category.event|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.evenement'|trans }}</h2>
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'event', 'searchTerm': searchTerm}) }}" data-class="events">
+                        {{ 'search.result.btn.toutvoir'|trans }}
+                    </a>
+                    <div class="owl-carousel landscape-carousel">
+                        {% include 'FDCEventMobileBundle:Search:event.html.twig' with { 'items': searchResult.category.event } %}
+                    </div>
+                </div>
+            {% endif %}
+            {% if searchResult.category.participate|length %}
+                <div class="resultsContainer">
+                    <h2 class="titleSection">{{ 'search.result.title.participer'|trans }}</h2>
+                    <a href="#" class="view-all ajax" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'participate', 'searchTerm': searchTerm}) }}" data-class="participate">
+                        {{ 'search.result.btn.toutvoir'|trans }}
+                    </a>
+                    <div class="owl-carousel landscape-carousel">
+                        {% include 'FDCEventMobileBundle:Search:participate.html.twig' with { 'items': searchResult.category.participate } %}
                     </div>
                 </div>
             {% endif %}

@@ -5,24 +5,24 @@
         <p><a href="#" class="active all">{{ 'search.result.category.tout'|trans }} (<span>{{ nbResult }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchArtists.html" class="artists ajax">{{ 'search.result.category.artistes'|trans }} (<span>{{ searchResult.category.artist|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'artist', 'searchTerm': searchTerm}) }}" class="artists ajax">{{ 'search.result.category.artistes'|trans }} (<span>{{ searchResult.category.artist|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchFilms.html" class="films ajax">{{ 'search.result.category.films'|trans }} (<span>{{ searchResult.category.actualite|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'film', 'searchTerm': searchTerm}) }}" class="films ajax">{{ 'search.result.category.films'|trans }} (<span>{{ searchResult.category.actualite|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchNews.html" class="news ajax">{{ 'search.result.category.actualites'|trans }} (<span>{{ searchResult.category.actualite|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'news', 'searchTerm': searchTerm}) }}" class="news ajax">{{ 'search.result.category.actualites'|trans }} (<span>{{ searchResult.category.actualite|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchCommuniques.html" class="communiques ajax">{{ 'search.result.category.communiques'|trans }} (<span>{{ searchResult.category.info|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'statement', 'searchTerm': searchTerm}) }}" class="communiques ajax">{{ 'search.result.category.communiques'|trans }} (<span>{{ searchResult.category.info|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchMedias.html" class="medias ajax">{{ 'search.result.category.medias'|trans }} (<span>{{ searchResult.category.media|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'media', 'searchTerm': searchTerm}) }}" class="medias ajax">{{ 'search.result.category.medias'|trans }} (<span>{{ searchResult.category.media|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchEvents.html" class="events ajax">{{ 'search.result.category.evenements'|trans }} (<span>{{ searchResult.category.event|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'event', 'searchTerm': searchTerm}) }}" class="events ajax">{{ 'search.result.category.evenements'|trans }} (<span>{{ searchResult.category.event|length }}</span>)</a></p>
     </div>
     <div class="vid">
-        <p><a href="#" data-ajax="searchParticipate.html" class="participate ajax">{{ 'search.result.category.participer'|trans }} (<span>{{ searchResult.category.participate|length }}</span>)</a></p>
+        <p><a href="#" data-ajax="{{ path('fdc_eventmobile_search_searchajax',{'searchFilter':'participate', 'searchTerm': searchTerm}) }}" class="participate ajax">{{ 'search.result.category.participer'|trans }} (<span>{{ searchResult.category.participate|length }}</span>)</a></p>
     </div>
 </div>

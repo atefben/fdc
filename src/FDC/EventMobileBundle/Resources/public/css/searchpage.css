@@ -4260,3 +4260,5 @@ display: inline-block;
   transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.5s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
 /* ************** */
+
+.owl-carousel .owl-nav.disabled{display:none}

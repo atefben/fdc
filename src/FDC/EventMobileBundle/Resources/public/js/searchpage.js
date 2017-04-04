@@ -331,11 +331,16 @@ $(document).ready(function() {
         $suggest.empty();
         return false;
       }
+      if (GLOBALS.env == "html") {
+        searchUrl = GLOBALS.urls.searchUrl;
+      } else {
+        searchUrl = GLOBALS.urls.searchUrl+'/'+encodeURIComponent(value);
+      }
       if (noWhitespaceCount >= 3) {
         $suggest.empty();
         $.ajax({
           type : "GET",
-          url  : 'searchsuggest.json',
+          url  : searchUrl,
           success: function(data) {
             for (var i = 0; i < data.length; i++) {
               var name = data[i].name,
@@ -546,48 +551,6 @@ $(document).ready(function() {
         items        : 1
       });
       sliderArticles.owlCarousel();
-    });
-
-    // test : remove once on server
-    if ($('.searchpage #inputSearch').val() == 'Léonardo Di Caprio') { //TODO a revoir//
-      $('#noResult').show();
-      $('#count span').text('0');
-      return false;
-    }
-    
-    $.ajax({
-      type: "GET",
-      url: 'results.json', //TODO  a revoir//
-      success: function(data) {
-        if (data.all.count == 0) {
-            $('#noResult').show();
-            return false;
-        } else {
-          $('.result').show();
-          $('#horizontal-menu .all span').text(data.all.count);
-          // ARTISTS
-          var artists = data.persons;
-          $('#horizontal-menu .artists span').text(artists.count);
-          // FILMS
-          var films = data.films;
-          $('#horizontal-menu .films span').text(films.count);
-          // FILMS
-          var medias = data.medias;
-          $('#horizontal-menu .medias span').text(medias.count);
-          // NEWS
-          var news = data.news;
-          $('#horizontal-menu .news span').text(news.count);
-          // COMMUNIQUES
-          var communiques = data.communiques;
-          $('#horizontal-menu .communiques span').text(communiques.count);
-          // EVENTS
-          var events = data.events;
-          $('#horizontal-menu .events span').text(events.count);
-          // PARTICIPATE
-          var participate = data.participate;
-          $('#horizontal-menu .participate span').text(participate.count);
-        }
-      }
     });
   }
 });
