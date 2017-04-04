@@ -3262,7 +3262,7 @@ video {
 }*/
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-size: 100%;
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
   position: relative;
 }
@@ -3469,6 +3469,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top, .media-library .block-push-top, .participate .block-push-top {
   background-attachment: fixed;
+  background-size: 100%;
 }
 .block-push-top .vFlexAlign {
   height: 100%;
