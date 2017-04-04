@@ -2941,7 +2941,11 @@ var owInitGrid = function (id) {
                             if(typeof moreBtn !== 'undefined'){
                                 $this.attr('href',moreBtn);
                             }else{
-                                $this.attr('href','#');
+                                if($('.media-library').length){
+                                    $this.remove();
+                                }else{
+                                    $this.attr('href','#');
+                                }
                             }
 
                             //manage filters
@@ -6644,7 +6648,7 @@ var timeout = 1000,
                 </div>\
             </div>\
             <div class="sound">\
-                <button class="icon icon-son"></button>\
+                <button class="icon icon-sound"></button>\
                 <div class="sound-bar">\
                     <div class="sound-seek"></div>\
                 </div>\
