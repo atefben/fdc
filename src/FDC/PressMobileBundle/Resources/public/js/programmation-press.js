@@ -933,7 +933,10 @@ $(document).ready(function () {
 
             //USAGE:
 
-            var el = document.getElementById('touchsurface')
+            var el = document.getElementById('touchsurface');
+
+            if (!el) return;
+
             swipedetect(el, function(swipedir){
 
                 if (swipedir =='left'){

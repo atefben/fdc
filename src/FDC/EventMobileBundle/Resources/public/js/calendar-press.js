@@ -952,8 +952,11 @@ $(document).ready(function() {
 
 //USAGE:
 
-   var el = document.getElementById('touchsurface')
-   swipedetect(el, function(swipedir){
+   var el = document.getElementById('touchsurface');
+
+    if (!el) return;
+
+    swipedetect(el, function(swipedir){
 
      if (swipedir =='left'){
        var day = $('.timeline-container').find('.active').data('date'), numDay = 0;

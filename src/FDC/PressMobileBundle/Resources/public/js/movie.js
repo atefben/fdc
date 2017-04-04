@@ -1513,7 +1513,7 @@ $(document).ready(function() {
     });
     sliderThumb.owlCarousel();
 
-    $('.thumbnails .owl-item').on('click', function(e) {
+    $('.videos .thumbnails .owl-item').on('click', function(e) {
       e.preventDefault();
       $(this).parents('.slideshow').find('.thumb').removeClass('active');
      
