@@ -5360,16 +5360,16 @@ var owinitSlideShow = function (slider, hash) {
 
                     openSlideShow(slider, hash, true, index);
                 }, 100);
-            }else{
-                $('.poster').off('click').on('click', function(e){
-                    slider = $('.all-contain');
-                    $(this).parent().addClass('active center');
-                    var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                    var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-                    openSlideShow(slider,hash, true, index);
-                    return false;
-                });
             }
+
+            $('.poster').off('click').on('click', function(e){
+                slider = $('.all-contain');
+                $(this).parent().addClass('active center');
+                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+                var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
+                openSlideShow(slider,hash, true, index);
+                return false;
+            });
 
         } else if($('.article-single').length){
 
@@ -5703,8 +5703,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         date.html(images[centerElement].date);
         caption.html(images[centerElement].caption)
 
+        var twitterUrl = images[centerElement].twitter;
+        if(typeof twitterUrl === 'undefined'){
+            twitterUrl = images[centerElement].twitterurl;
+        }
+        console.log('twitter share url',twitterUrl);
+
         facebook.attr('href', images[centerElement].facebookurl);
-        twitter.attr('href', images[centerElement].twitter);
+        twitter.attr('href',twitterUrl );
         link.attr('data-clipboard-text', images[centerElement].url);
 
         if($('.popin-mail').length) {
