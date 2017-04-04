@@ -235,6 +235,12 @@
                                     {% endif %}
                                     <span class="item-categ" {{ awardAssociation.award.prize|content_lang('title') }}>
                                     {{ awardAssociation.award.prize|trans_fallback('title') }}
+                                    {% if awardAssociation.award.exAequo == 1 %}
+                                        {{ ' ' }}({{ 'award.ex_aequo'|trans }})
+                                    {% endif %}
+                                    {% if awardAssociation.award.unanimity == 1 %}
+                                        {{ ' ' }}({{ 'award.unanimity'|trans }})
+                                    {% endif %}
                                     </span>
                                     {% if filmPerson.functions|length > 0 %}
                                         {% spaceless -%}
