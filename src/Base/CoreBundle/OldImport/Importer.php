@@ -739,7 +739,7 @@ class Importer
             }
         }
 
-        if (!$file) {
+        if (!$file && $oldMediaI18n->getHdFormatFilename()) {
             $url = 'http://canneshd-f.akamaihd.net/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
             dump($url);
             $file = $this->createVideo($url);
