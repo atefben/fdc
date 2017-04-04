@@ -118,6 +118,8 @@
                 <img src="{% path file , '572x362' %}"
                      srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x"
                      alt="{{ img|trans_fallback('alt') }} ">
+            {% else %}
+                <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}">
             {% endif %}
         </div>
         <a href="{{ path('fdc_corporate_news_get', {'format': article.translatable.newsFormat, 'slug': article|trans_fallback('slug') , 'year': article.festival.year}) }}"

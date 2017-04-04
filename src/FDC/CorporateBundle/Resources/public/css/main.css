@@ -3213,6 +3213,7 @@ video {
 .block-01-xs img {
   max-width: 100%;
   object-fit: contain;
+  height: 100%;
 }
 .block-01-xs .video-container {
   height: calc(663px / 1.58);
