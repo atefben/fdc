@@ -15683,7 +15683,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin: 0 4.5%;
 }
 .single-movie .audios {
-  padding: 45px 0;
+  padding: 45px 0 !important;
 }
 .single-movie .audios .audio-container + .audio-container {
   margin-top: 30px;
