@@ -16,14 +16,14 @@
 
                 <div class="all-contain palmares selection">
 
-                    {% if projections|length %}
+                    {% if projections|length %}projections
                         {% for projection in projections %}
                             {% if projection.programmationFilms|length > 0 %}
                                 {% set film = projection.programmationFilms[0].film %}
                                 {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
                             {% endif %}
                         {% endfor %}
-                    {% elseif movies|length %}
+                    {% elseif movies|length %}movies
                         {% for movie in movies %}
                             {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': movie, 'restauration': true} only %}
                         {% endfor %}

@@ -31,7 +31,7 @@
                 {% endif %}
 
                 <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
-                <p>widget template cinema plage</p>
+                
                 {% set directors = film.getDirectors() %}
                 <span class="names-a">
                 {% for director in directors %}
