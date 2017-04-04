@@ -1,3 +1,7 @@
 .artist-picture .artiste-picture-inner img {
     max-width: 100%;
 }
+
+.text-content-artist {
+    max-height: none !important;
+}
