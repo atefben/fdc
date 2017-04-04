@@ -31,6 +31,8 @@
             {% set posterCopyright = poster.copyright %}
             <article class="block-movie-preview" style="background-image: url('{% path poster.file, '976x535' %}')">
                 <div class="bck-hover">
+                    {% path poster.file, '256x348' %}
+                    {% path poster.file, 'small' %}
                     <div class="wrapper-item" data-date="afficher" data-pid="pid={{ poster.file.id }}"
                          data-credit="{% if posterCopyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ poster.copyright }}{% endif %}"
                          data-url="{{ currentURL }}#pid={{ poster.file.id }}"
