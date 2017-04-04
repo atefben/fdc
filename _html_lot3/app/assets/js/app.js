@@ -807,7 +807,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.affiche-fdc');
             owinitSlideShow(slider, hash);
-
+            
         }else{
             owinitSlideShow();
         }
