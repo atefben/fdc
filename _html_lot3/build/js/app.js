@@ -6159,9 +6159,10 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
 
 $(document).ready(function() {
   initSlideshows();
-  $("li").click(function() {
+});
+
+$(document).ajaxComplete(function() {
     initSlideshows();
-  });
 });
 
 var timeoutCursor;
