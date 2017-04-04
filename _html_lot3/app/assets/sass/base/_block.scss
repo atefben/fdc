@@ -244,7 +244,7 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: 100%;
+  background-size: fixed;
   transition: $smoothTransition .7s;
   position: relative;
 
@@ -481,7 +481,6 @@
 
   .who &, .edition-69.story-movie &, .palm-gold &, .media-library &, .participate &{
     background-attachment: fixed;
-    background-size: 100%;
   }
 
   .vFlexAlign {
