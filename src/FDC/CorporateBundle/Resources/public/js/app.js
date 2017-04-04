@@ -5360,16 +5360,16 @@ var owinitSlideShow = function (slider, hash) {
 
                     openSlideShow(slider, hash, true, index);
                 }, 100);
-            }else{
-                $('.poster').off('click').on('click', function(e){
-                    slider = $('.all-contain');
-                    $(this).parent().addClass('active center');
-                    var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                    var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-                    openSlideShow(slider,hash, true, index);
-                    return false;
-                });
             }
+
+            $('.poster').off('click').on('click', function(e){
+                slider = $('.all-contain');
+                $(this).parent().addClass('active center');
+                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+                var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
+                openSlideShow(slider,hash, true, index);
+                return false;
+            });
 
         } else if($('.article-single').length){
 
