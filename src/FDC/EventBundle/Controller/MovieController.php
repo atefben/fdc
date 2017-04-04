@@ -46,7 +46,7 @@ class MovieController extends Controller
             throw $this->createNotFoundException("Artist $id not found");
         }
 
-        return $this->redirectToRoute('fdc_corporate_movie_get', ['slug' => $movie->getSlug()]);
+        return $this->redirectToRoute('fdc_corporate_movie_get', ['slug' => $movie->getSlug()], 301);
     }
 
     /**

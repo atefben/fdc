@@ -38,7 +38,7 @@ class ArtistController extends Controller
         if (!$artist) {
             throw $this->createNotFoundException("Artist $id not found");
         }
-        return $this->redirectToRoute('fdc_corporate_artist_get', ['slug' => $artist->getSlug()]);
+        return $this->redirectToRoute('fdc_corporate_artist_get', ['slug' => $artist->getSlug()], 301);
     }
 
     /**
