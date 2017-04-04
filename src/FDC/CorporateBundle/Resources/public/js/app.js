@@ -2918,7 +2918,6 @@ var owInitGrid = function (id) {
                 }
 
                 //console.log('data sent to GET',postData);
-                console.log('ajax url',url);
                 if(!ajaxLock && url != '#'){
                     ajaxLock = true;
                     $.ajax({
