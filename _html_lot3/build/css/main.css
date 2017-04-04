@@ -3488,7 +3488,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-push-top .title-3 {
   font-size: 1.75rem;
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
-  color: #141414;
+  color: #fff;
   display: block;
   letter-spacing: 0.85rem;
 }
@@ -7034,7 +7034,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .module-title .title-big {
-  color: #fff;
+  color: #141414;
   font-family: "Playfair Display";
   font-size: 3rem;
   font-weight: 400;
