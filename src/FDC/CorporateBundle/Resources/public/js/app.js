@@ -4073,10 +4073,10 @@ var onInitParallax = function () {
         $('.block-push').css('background-position', '0px -10px');
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 240;
+                var s = $(this).scrollTop();
                 $('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '-240px');
+                $('.block-push.big').css('background-position', '0px ' + '0px');
             }
         });
     }
@@ -4980,7 +4980,7 @@ var owInitSlider = function (sliderName) {
                 var imgurl = $('.block-push-top.big .container img').attr('src');
                 $('.block-push-top.big .container img').css('display', 'none');
 
-                $('.block-push').css('background-position', '0px -240px');
+                $('.block-push').css('background-position', '0px 0px');
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                 $.get(url, function (data) {
