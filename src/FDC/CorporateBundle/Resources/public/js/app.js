@@ -1685,8 +1685,8 @@ var initAudio = function (hash) {
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
-            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
-            fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_DESC', '');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
@@ -1781,8 +1781,8 @@ var initAudio = function (hash) {
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
-            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
-            fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_DESC', '');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
