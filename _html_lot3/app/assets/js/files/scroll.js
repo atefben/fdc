@@ -88,7 +88,7 @@ var onInitParallax = function () {
                 var s = $(this).scrollTop() - 120;
                 $('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '-120px');
+                $('.block-push.big').css('background-position', '0px ' + '-20%');
             }
         });
     }
