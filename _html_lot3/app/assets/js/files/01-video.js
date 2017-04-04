@@ -854,6 +854,7 @@ function playerInit(id, cls, havePlaylist, live) {
             setTimeout(function(){
                 videoNews.play();
             }, 800);
+            
 
 
             // CUSTOM LINK FACEBOOK
