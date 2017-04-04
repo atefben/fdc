@@ -5043,6 +5043,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #969696 !important;
   font-size: 0.750rem !important;
   margin: 0 !important;
+  line-height: 12px !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
