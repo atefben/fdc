@@ -719,6 +719,7 @@ class Importer
 
 
         if (!$file && $locale == 'fr') {
+            dump($oldMediaI18n->getId());
             $biOldMediaI18n = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:OldMediai18n')
