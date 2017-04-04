@@ -338,19 +338,18 @@
 @media screen and (max-width: 1280px)
 {
     .media-library  .isotope-01 .item.w2 {
-        width: calc(200% );
-    }
-}
-
-@media screen and (min-width: 1920px)
-{
-    .media-library  .isotope-01 .item {
-        width: calc(100%);
+        width: calc(200% / 8);
     }
 }
 @media screen and (min-width: 1600px){
-    .media-library .isotope-01 .item
+    .media-library .isotope-01 .item.w2
     {
-       width: calc(100%);
+        width: calc(200% / 8);
+    }
+}
+@media screen and (min-width: 1920px)
+{
+    .media-library  .isotope-01 .item.w2 {
+        width: calc(100% / 8);
     }
 }
