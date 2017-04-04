@@ -56,7 +56,6 @@
     <div class="contact-content">
         {% if movie.contacts|length > 0 %}
             {% if movie.selectionSection and movie.selectionSection.id == constant('Base\\CoreBundle\\Entity\\FilmSelectionSection::FILM_SELECTION_SECTION_CINEFONDATION') %}
-                <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
                 {% set hasProd = false %}
                 {% for contact in movie.contacts %}
                     {% if
@@ -241,7 +240,6 @@
                     {% endif %}
                 {% endfor %}
             {% else %}
-                <h3>{{ 'movie.contact.title.contacts'|trans }}</h3>
                 {% set hasProd = false %}
                 {% for contact in movie.contacts %}
                     {% if
