@@ -738,8 +738,9 @@ class Importer
                         $this->output->writeln('<error>' . $e->getMessage() . '</error>');
                     }
                 } else {
-                    dump($url);
+
                     $url = 'http://canneshd-f.akamaihd.net/' . ltrim($biOldMediaI18n->getHdFormatFilename(), '/');
+                    dump($url);
                     $file = $this->createVideo($url);
                     if ($file) {
                         dump($url);
