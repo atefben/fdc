@@ -38,7 +38,7 @@
     {% set currentYear = festivals|first.year %}
     {% set yearEdition = 1 %}
     {% set slideId = 1 %}
-    {% set lastSlideId = festivals|last.year - festivals|first.year %}
+    {% set lastSlideId = ((festivals|last.year) - 1) - festivals|first.year %}
     {% for festival in festivals %}
         {% set images = get_festival_images(festival, 'site-institutionnel') %}
         {% if currentYear != festival.year %}
@@ -79,7 +79,7 @@
                 </div>
 
                 {% if yearEdition > 1 %}<div class="date-back" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear-1} ) }}'><a href="#">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                {% if yearEdition < lastSlideId %}<div class="date-next" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear+1} ) }}'><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if slideId < lastSlideId %} < lastSlideId %}<div class="date-next" data-url='{{ path('fdc_corporate_movie_selection', {year: currentYear+1} ) }}'><a href="#">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                 <div class="vFlexAlign">
                     {% if images|length %}
@@ -134,7 +134,7 @@
     <div class="timelapse block-drag">
         <span class="date date-first" data-firstdate='{{ festivals|first.year }}'>{{ festivals|first.year }}</span>
         <div class="avance" id="timelapse-01"><span class="square"></span></div>
-        <span class="date date-last" data-lastdate='{{ festivals|last.year }}'>{{ festivals|last.year }}</span>
+        <span class="date date-last" data-lastdate='{{ (festivals|last.year) - 1 }}'>{{ (festivals|last.year) - 1 }}</span>
     </div>
 </div>
 {% else %}
