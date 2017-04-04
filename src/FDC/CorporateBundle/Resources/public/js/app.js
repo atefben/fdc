@@ -2941,7 +2941,7 @@ var owInitGrid = function (id) {
                             if(typeof moreBtn !== 'undefined'){
                                 $this.attr('href',moreBtn);
                             }else{
-                                $this.attr('href','#');
+                                $this.remove();
                             }
 
                             //manage filters
