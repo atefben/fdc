@@ -2716,7 +2716,7 @@ body .icon:before {
   line-height: 39px;
 }
 .picto .icon {
-  font-size: .7rem;
+  font-size: 16px;
 }
 
 .video .picto {
@@ -5785,11 +5785,11 @@ strong.title-center {
   content: "\E007";
 }
 
-.icon-article:before {
+.icon-article:before, .icon_article:before {
   content: "\E008";
 }
 
-.icon-audio:before {
+.icon-audio:before, .icon_audio:before {
   content: "\E009";
 }
 
@@ -14778,7 +14778,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 17px;
   position: relative;
   top: -2px;
-  left: 17px;
 }
 .single-movie .block-films {
   height: auto;
