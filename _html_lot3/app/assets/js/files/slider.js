@@ -223,6 +223,7 @@ var owInitSlider = function (sliderName) {
                 $('.title-edition').addClass('title-4').removeClass('title-edition');
 
                 var imgurl = $('.block-push-top.big .container img').attr('src');
+                
                 $('.block-push').css('background-position', '0px 20%');
                 $('.block-push-top.big .container img').css('display', 'none');
 
