@@ -123,12 +123,11 @@ $(document).ready(function () {
         },
         success: function(data) {
             $('#articles-wrapper').append(data);
-            console.log('asfdasdasd');
             if($('#articles-wrapper .nextDay').length > 0) {
               $('.read-more').html(GLOBALS.texts.readMore.nextDay).addClass('prevDay');
               $('#articles-wrapper .nextDay').hide();
             } else if ($('#news .articles-container').length == 0 || $('#news .articles-container:not(.nextDay) article:last').data('end') || $('#timeline a.active').attr('data-date') == '11') {
-              $('.read-more').addClass('hidden');
+              $('.read-more').hide();
             }
             initAddToSelection();
 
