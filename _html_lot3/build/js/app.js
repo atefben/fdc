@@ -5352,6 +5352,8 @@ var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
         setTimeout(function () {
+            console.log('slider to open in fullscreen',slider);
+            console.log('hash to open',hash);
             openSlideShow(slider, hash);
         }, 100);
     }else{
