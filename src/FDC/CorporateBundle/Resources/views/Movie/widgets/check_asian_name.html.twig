@@ -9,10 +9,10 @@
         {% if person.asianName %}
             <a href="{{ path('fdc_corporate_artist_get', {slug: person.slug }) }}">
                 {{- person.lastName|trim ~ ' ' ~ person.firstName|trim -}}
-            </a></span>
+            </a>
         {% else %}
             <a href="{{ path('fdc_corporate_artist_get', {slug: person.slug }) }}">
-                {{- person.fullName|trim -}}</span>
+                {{- person.fullName|trim -}}
             </a>
         {% endif %}
     {% endif %}
