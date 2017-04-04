@@ -251,11 +251,7 @@ $(document).ready(function() {
       });
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
-        
-        
-
         var number = $(this).closest('.owl-item').index();
-        videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
