@@ -4982,6 +4982,7 @@ var owInitSlider = function (sliderName) {
                 $('.title-edition').addClass('title-4').removeClass('title-edition');
 
                 var imgurl = $('.block-push-top.big .container img').attr('src');
+                
                 $('.block-push').css('background-position', '0px 20%');
                 $('.block-push-top.big .container img').css('display', 'none');
 
@@ -5362,6 +5363,11 @@ var owinitSlideShow = function (slider, hash) {
             if (typeof hash != "undefined") {
                 setTimeout(function () {
                     var index = $('[data-url="'+hash+'"]').closest('.block-movie-preview').index('.block-movie-preview');
+
+                    /*if(slider.length > 1){
+                        //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+
+                    }*/
 
                     openSlideShow(slider, hash, true, index);
                 }, 100);
