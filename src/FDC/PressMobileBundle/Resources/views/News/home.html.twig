@@ -289,8 +289,11 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press.js' %}
-    <script src="{{ asset_url }}"></script>
+    {% javascripts
+        '@FDCPressMobileBundle/Resources/public/js/press.js'
+        '@FDCPressMobileBundle/Resources/public/js/press_custom.js'
+    %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
 {% endblock %}
