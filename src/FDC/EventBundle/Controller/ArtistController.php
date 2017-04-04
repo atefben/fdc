@@ -8,15 +8,41 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/artist")
  * Class ArtistController
  * @package FDC\EventBundle\Controller
  */
 class ArtistController extends Controller
 {
+    /**
+     * @Route("/archives/artist/id/{id}.html")
+     */
+    public function archiveGetAction($id)
+    {
+        $oldPersonAssoc = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:OldPersonsassoc')
+            ->findOneBy(['idselfkit' => $id])
+        ;
+
+        if ($oldPersonAssoc) {
+            $artist = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmPerson')
+                ->find($oldPersonAssoc->getIdsoif())
+            ;
+        }
+        else {
+            $artist = null;
+        }
+
+        if (!$artist) {
+            throw $this->createNotFoundException("Artist $id not found");
+        }
+        return $this->redirectToRoute('fdc_corporate_artist_get', ['slug' => $artist->getSlug()]);
+    }
 
     /**
-     * @Route("/{slug}")
+     * @Route("/artist/{slug}")
      * @param  string $slug
      * @return Response
      */

@@ -20,6 +20,36 @@ class MovieController extends Controller
 {
 
     /**
+     * @Route("/archives/ficheFilm/id/{id}/year/2014.html")
+     */
+    public function archiveGetAction($id)
+    {
+        $oldFilmAssoc = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:OldFilmsassoc')
+            ->findOneBy(['idselfkit' => $id])
+        ;
+
+
+        if ($oldFilmAssoc) {
+            $movie = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->find($oldFilmAssoc->getIdSoif())
+            ;
+        }
+        else {
+            $movie = null;
+        }
+
+        if (!$movie) {
+            throw $this->createNotFoundException("Artist $id not found");
+        }
+
+        return $this->redirectToRoute('fdc_corporate_movie_get', ['slug' => $movie->getSlug()]);
+    }
+
+    /**
      * @Route("/films/{slug}")
      * @param $slug
      * @param Request $request
