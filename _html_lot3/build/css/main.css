@@ -3596,7 +3596,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 
 .block-films {
-  padding-top: 15px;
   height: 382px;
 }
 .block-films video {
@@ -4035,7 +4034,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
-  padding-bottom: 60px;
   height: 76px;
   box-sizing: inherit;
 }
@@ -13537,7 +13535,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 635px;
 }
 .single-article .audio-container {
-  margin: 0 auto 70px;
+  margin: 0 auto;
   width: 630px;
 }
 
@@ -15234,7 +15232,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 @media screen and (max-width: 1600px) {
   .single-movie .main-image {
-    height: 510px;
+    height: 541px;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -15396,10 +15394,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie #nav-movie ul li:first-child a {
   margin-left: 0;
-}
-.single-movie #nav-movie .block-social-network-all {
-  float: right;
-  position: relative;
 }
 .single-movie #nav-movie .block-social-network-all a {
   border-top: none;
@@ -15808,7 +15802,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding-top: 60px;
 }
 .single-movie .press .contacts .wrapper .vCenterKidTop div {
-  padding: 0 0 20px 0;
+  padding: 2px 0;
 }
 .single-movie .press .contacts .wrapper .vCenterKidTop div.prod {
   border-bottom: 1px solid #383838;
@@ -15899,6 +15893,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: block;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
+}
+.single-movie .competition #slider-competition .info-movie .translated-title {
+  font-size: 10px;
 }
 .single-movie .articles {
   overflow: hidden;
