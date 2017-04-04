@@ -5703,6 +5703,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         date.html(images[centerElement].date);
         caption.html(images[centerElement].caption)
 
+        console.log(centerElement,images[centerElement].twitter);
         facebook.attr('href', images[centerElement].facebookurl);
         twitter.attr('href', images[centerElement].twitter);
         link.attr('data-clipboard-text', images[centerElement].url);
