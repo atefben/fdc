@@ -2939,10 +2939,9 @@ var owInitGrid = function (id) {
                             $gridMore.isotope('insert',articles);
                             $gridMore.isotope('layout');
                             if(typeof moreBtn !== 'undefined'){
-                                
                                 $this.attr('href',moreBtn);
                             }else{
-                                //$this.remove();
+                                $this.attr('href','#');
                             }
 
                             //manage filters
@@ -8143,7 +8142,7 @@ $(document).ready(function () {
         if (hash.length > 0 && verif == "pid") {
             var slider = $('.affiche-fdc');
             owinitSlideShow(slider, hash);
-
+            
         }else{
             owinitSlideShow();
         }
