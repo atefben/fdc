@@ -2941,7 +2941,11 @@ var owInitGrid = function (id) {
                             if(typeof moreBtn !== 'undefined'){
                                 $this.attr('href',moreBtn);
                             }else{
-                                $this.attr('href','#');
+                                if($('.media-library').length){
+                                    $this.remove();
+                                }else{
+                                    $this.attr('href','#');
+                                }
                             }
 
                             //manage filters
