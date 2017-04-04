@@ -21,9 +21,9 @@ var owinitSlideShow = function (slider, hash) {
                     slider = $('.all-contain');
                     $(this).parent().addClass('active center');
                     var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                    
                     var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
                     openSlideShow(slider,hash, true, index);
+                    return false;
                 });
             }
 
@@ -305,6 +305,11 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
+
+            if($('.affiche-fdc').length){
+                $('.popin-mail').find('.contain-popin .theme-article').empty();
+                $('.popin-mail').find('.contain-popin .date-article').empty();
+            }
         }
     }
 
@@ -367,6 +372,11 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
+
+            if($('.affiche-fdc').length){
+                $('.popin-mail').find('.contain-popin .theme-article').empty();
+                $('.popin-mail').find('.contain-popin .date-article').empty();
+            }
         }
 
     }
@@ -573,6 +583,11 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
         $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
         $('.popin-mail').find('.chap-article').html('');
+
+        if($('.affiche-fdc').length){
+            $('.popin-mail').find('.contain-popin .theme-article').empty();
+            $('.popin-mail').find('.contain-popin .date-article').empty();
+        }
 
     }
     
