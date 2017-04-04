@@ -5040,10 +5040,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
       flex-direction: row;
 }
 .half-photos p.caption {
-  color: #666 !important;
+  color: #969696 !important;
   font-size: 0.750rem !important;
   margin: 0 !important;
-  line-height: 18px !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
@@ -12552,15 +12551,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   transform: scale(1.02) translate(-50%, 0%);
 }
 .slideshow .caption {
-  color: #666;
+  color: #969696;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
-  margin: 20px 0;
-}
-.slideshow .caption strong {
-  color: #333;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-weight: normal;
 }
 .slideshow h3 {
   color: #c8a461;
