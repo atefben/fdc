@@ -310,21 +310,7 @@ function setGrid(grid, dom, init){
       $data = $(dom);
     }
 
-    grid.append($data);
-    //memorize scrolltop
-    var scrolltop = window.pageYOffset || document.documentElement.scrollTop;
-    grid.isotope('destroy');
-    grid.isotope({
-        itemSelector    : '.item',
-        percentPosition : true,
-        // sortBy          : 'original-order',
-        layoutMode      : 'packery',
-        packery         : {
-          columnWidth : '.grid-sizer'
-        }
-      });
-      window.scrollTo(0,scrolltop);
-    //grid.isotope('insert',$data);
+    grid.append($data).isotope('appended', $data);
     grid.imagesLoaded().progress(function () {
       grid.isotope('layout');
     });
@@ -754,7 +740,6 @@ $(document).ready(function () {
       $('.read-more').on('click', function (e) {
         e.preventDefault();
         $(this).hide();
-        
 
         $.ajax({
           type: "GET",
