@@ -18,12 +18,14 @@
 
                 {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
                     {% set img = article.header %}
-                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% if img is not null %}
+                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                        {% if trans is null or trans.file is null %}
+                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
-                    {% set file = trans.file %}
-                    {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                 {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
                     {% set header = article.header %}
                     {% if header is not null %}
@@ -68,12 +70,15 @@
                         {% set file = imageTrans.file %}
                         {% set img = article.header %}
                     {% else %}
+                        {% set file = null %}
                         {% set img = article.audio.image %}
-                        {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = img.findTranslationByLocale('fr') %}
+                        {% if img is not null %}
+                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                            {% if trans is null or trans.file is null %}
+                                {% set trans = img.findTranslationByLocale('fr') %}
+                            {% endif %}
+                            {% set file = trans.file %}
                         {% endif %}
-                        {% set file = trans.file %}
                     {% endif %}
 
                     {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}

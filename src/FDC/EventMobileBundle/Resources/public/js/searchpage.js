@@ -472,7 +472,7 @@ $(document).ready(function() {
       if ($('#horizontal-menu a.active').hasClass('all')) {
         fromAll = true;
       }
-      if ($('#horizontal-menu a.active').hasClass('news') || $('#horizontal-menu a.active').hasClass('communiques') || $('#horizontal-menu a.active').hasClass('medias')) {
+      if ($('#horizontal-menu a.active').hasClass('news') || $('#horizontal-menu a.active').hasClass('communiques') || $('#horizontal-menu a.active').hasClass('medias') || $('#horizontal-menu a.active').hasClass('infos')) {
         fromfiltered = true;
       }
       if ($this.hasClass('active')) {
