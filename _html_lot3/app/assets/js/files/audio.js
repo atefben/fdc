@@ -321,7 +321,7 @@ var initAudio = function (hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-                console.log(name);
+
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
 
@@ -338,6 +338,7 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
+            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
