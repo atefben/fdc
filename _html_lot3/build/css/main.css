@@ -16756,10 +16756,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin: 0px !important;
 }
 .article-single h2.sub-title, .single-movie h2.sub-title {
-  font-size: 1.5rem;
+  font-size: 24pt;
   margin-bottom: 50px;
   text-align: center;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  color: #333;
 }
 .article-single .table-article td, .article-single .table-article th, .single-movie .table-article td, .single-movie .table-article th {
   font-weight: 400;
@@ -17422,7 +17423,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .legal-notice h3.sub-title {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: .875rem;
+  font-size: 14pt;
   margin: 50px 0;
   text-align: center;
   text-transform: uppercase;
