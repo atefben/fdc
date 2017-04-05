@@ -3,7 +3,7 @@
 {% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for article in items %}
-        <div data-id="article-{{ article.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}" >
+        <div data-id="article-{{ article.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}" data-date="{{ article.publishedAt|date('dmY') }}" data-format="{{ article.newsType|get_news_type }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
             <a href="{{ path('fdc_eventmobile_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
             <div class="img-container">
                 {% if type is defined %}

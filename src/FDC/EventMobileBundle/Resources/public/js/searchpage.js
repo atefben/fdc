@@ -415,6 +415,23 @@ $(document).ready(function() {
     }
   }
 
+  function extractAndPopulateFilters(data)
+  {
+      var $data = $(data),
+          $filtersSlider = $('#filter-slider'),
+          $filters = $data.find('.owl-carousel>.filters')
+      ;
+      $filtersSlider.trigger('destroy.owl.carousel').removeClass('owl-loaded');
+      if ($filters.length > 0) {
+        $filtersSlider.html($filters.html());
+        $filters.remove();
+      } else {
+        $filtersSlider.html('');
+      }
+
+      return $data.wrap('<div/>').parent().html();
+  }
+
   function initFilters(data){
     if ($('#horizontal-menu a.active').hasClass('artists') || $('#horizontal-menu a.active').hasClass('events') || $('#horizontal-menu a.active').hasClass('films') || $('#horizontal-menu a.active').hasClass('participate')) {
 
@@ -489,6 +506,7 @@ $(document).ready(function() {
             type : "GET",
             url  : url,
             success: function(data) {
+              data = extractAndPopulateFilters(data);
               initsearchCategory(data);
               $('.result').fadeOut(900, function() {
                 $('#filtered').fadeIn(900, function() {
@@ -508,6 +526,7 @@ $(document).ready(function() {
               type : "GET",
               url  : url,
               success: function(data) {
+                data = extractAndPopulateFilters(data);
                 initsearchCategory(data);
                 initFilters(data);
                 $('#filteredContent').animate({
@@ -593,7 +612,7 @@ $(document).ready(function() {
   }
 
   if ($('.filters-slider').length) {
-    $('.filters-slider .select span').on('click', function() {
+    $('body').on('click', '.filters-slider .select span', function() {
       var h = $(this).parent().html();
 
       $('#filters').remove();
