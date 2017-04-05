@@ -3707,6 +3707,8 @@ $(document).ready(function() {
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         var number = $(this).closest('.owl-item').index();
+        videoMovieBa.playlistItem(number);
+        videoMovieBa.play(false);
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
