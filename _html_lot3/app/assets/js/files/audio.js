@@ -428,13 +428,17 @@ var initAudio = function (hash) {
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
 
+
                 audioPopin.play();
                 audioPopin.play();
             }, 900);
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($(e.target),$(e.target).closest('.audio').data('facebookurl'));
+            if($('.media-library').length){
+                shareUrl += '#aid='+ $(this).data('aid');
+            }
+
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
                 shareUrl = $(e.target).closest('.audio').data('facebookurl');
             }
