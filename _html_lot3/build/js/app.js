@@ -3711,7 +3711,10 @@ $(document).ready(function() {
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         var number = $(this).closest('.owl-item').index();
-        videoMovieBa = playerInit('video-player-ba', false, true, undefined, number);
+        videoMovieBa = playerLoad($("#video-player-ba")[number], videoMovieBa, true, false, function (vid) {
+          $(vid).data('loaded', true);
+          return vid;
+        });
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
@@ -6721,18 +6724,17 @@ var timeout = 1000,
     $topBar = '',
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-function playerInit(id, cls, havePlaylist, live, index) {
+function playerInit(id, cls, havePlaylist, live) {
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
     live = live || false;
-    index = index || 0;
     var tmp;
 
 
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
-            playerLoad($("#" + id)[index], videoPlayer, havePlaylist, live, function (vid) {
+            playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
             });
