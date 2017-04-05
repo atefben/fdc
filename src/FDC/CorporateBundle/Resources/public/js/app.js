@@ -1771,6 +1771,7 @@ var initAudio = function (hash) {
             setTimeout(function(){
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
+                
 
                 audioPopin.play();
                 audioPopin.play();
@@ -1778,7 +1779,7 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($(e.target),$(e.target).closest('.audio').data('facebookurl'));
+            console.log($(e.target),$(e.target).closest('.audio').data('aid'));
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
                 shareUrl = $(e.target).closest('.audio').data('facebookurl');
             }
