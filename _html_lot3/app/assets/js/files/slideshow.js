@@ -5,9 +5,18 @@ var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
         setTimeout(function () {
-            console.log('slider to open in fullscreen',slider);
-            console.log('hash to open',hash);
-            openSlideShow(slider, hash);
+
+            var finalSlider = slider;
+            if(slider.length > 1){
+                //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+                slider.each(function(){
+                    console.log(slider,slider.find('[data-url="'+hash+'"]').length);
+                    if(slider.find('[data-url="'+hash+'"]').length){
+                        finalSlider = $(this);
+                    }
+                })
+            }
+            openSlideShow(finalSlider, hash);
         }, 100);
     }else{
 
@@ -15,19 +24,9 @@ var owinitSlideShow = function (slider, hash) {
             if (typeof hash != "undefined") {
                 setTimeout(function () {
                     var index = $('[data-url="'+hash+'"]').closest('.block-movie-preview').index('.block-movie-preview');
-                    var finalSlider = slider;
-                    console.log('slider numbers',slider,slider.length);
-                    if(slider.length > 1){
-                        //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
-                        slider.each(function(){
-                            console.log(slider,slider.find('[data-url="'+hash+'"]').length);
-                            if(slider.find('[data-url="'+hash+'"]').length){
-                                finalSlider = $(this);
-                            }
-                        })
-                    }
 
-                    openSlideShow(finalSlider, hash, true, index);
+
+                    openSlideShow(slider, hash, true, index);
                 }, 100);
             }
 
