@@ -1779,7 +1779,7 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($(e.target),$(e.target).data('aid'));
+            console.log($(this).data('aid'));
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
                 shareUrl = $(e.target).closest('.audio').data('facebookurl');
             }
