@@ -5,3 +5,7 @@
 .all-slider .contain-winner {
     height: auto;
 }
+
+.film-slider .owl-item {
+    height: auto !important;
+}
