@@ -1682,7 +1682,6 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -1780,7 +1779,10 @@ var initAudio = function (hash) {
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
             if($('.media-library').length){
-                shareUrl += '#aid='+ $(this).data('aid');
+                if(shareUrl.indexOf('#') == -1){
+                    shareUrl += '#';
+                }
+                shareUrl += 'aid='+ $(this).data('aid');
             }
 
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
@@ -4030,7 +4032,7 @@ var onInitParallax = function () {
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 120;
-                $('.block-push.big').css('background-position', '0px ' + s + 'px');
+                //$('.block-push.big').css('background-position', '0px ' + s + 'px');
             } else {
                 $('.block-push.big').css('background-position', '0px ' + '-20%');
             }
