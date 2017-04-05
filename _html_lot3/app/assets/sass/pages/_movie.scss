@@ -1461,7 +1461,7 @@
     &.sub-title2{
       font-family: $Playfair;
       font-weight: 700;
-      font-size: 1.125rem;
+      font-size: 18pt;
       margin: 25px 0px;
     }
   }
@@ -1469,10 +1469,11 @@
   h3 {
     &.sub-title{
       font-family: $CamphorBold;
-      font-size: 0.875rem;
+      font-size: 14pt;
       margin: 50px 0;
       text-align: center;
       text-transform: uppercase;
+      color: #333;
     }
   }
 
