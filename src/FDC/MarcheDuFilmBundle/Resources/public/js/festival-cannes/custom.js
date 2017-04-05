@@ -189,11 +189,11 @@ menuMDF();
 
 
 $(window).scroll(function(){
-    if ($(window).scroll(200)){
+    /*if ($(window).scroll(200)){
         $('#leaderBoard').hide();
     } else {
       $('#leaderBoard').show();
-    }
+    }*/
 });
 
 
@@ -774,8 +774,9 @@ $('p').each(function() {
     }
 });
 
-var topTrigger = $('.subNavigation').offset().tpo;
+
 if($('.subNavigation').length){
+    var topTrigger = $('.subNavigation').offset().top;
   $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {
