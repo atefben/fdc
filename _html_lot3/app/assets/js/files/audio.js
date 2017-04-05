@@ -338,7 +338,6 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -436,7 +435,10 @@ var initAudio = function (hash) {
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
             if($('.media-library').length){
-                shareUrl += '#aid='+ $(this).data('aid');
+                if(shareUrl.indexOf('#') == -1){
+                    shareUrl += '#';
+                }
+                shareUrl += 'aid='+ $(this).data('aid');
             }
 
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
