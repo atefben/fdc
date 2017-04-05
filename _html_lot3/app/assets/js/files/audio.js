@@ -407,7 +407,6 @@ var initAudio = function (hash) {
 
             e.preventDefault();
 
-
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
@@ -419,7 +418,7 @@ var initAudio = function (hash) {
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
                 name = $(this).find('.contain-txt strong a').text();
-            console.log(name);
+
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
 
@@ -435,6 +434,10 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
+            console.log($(e.target),$(e.target).closest('.audio').data('facebookurl'));
+            if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
+                shareUrl = $(e.target).closest('.audio').data('facebookurl');
+            }
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));

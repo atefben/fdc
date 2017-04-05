@@ -342,10 +342,10 @@ class GlobalController extends Controller {
         try {
             $request->send();
         } catch (BadResponseException $e) {
-            $this->get('logger')->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
+            //$this->get('logger')->err('Unable to verify if email exists in newsletter - '. $e->getMessage());
             return false;
         } catch (Exception $e) {
-            $this->get('logger')->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
+            //$this->get('logger')->err('Unexpected error when verifying if email exists in newsletter - '. $e->getMessage());
             return false;
         }
 

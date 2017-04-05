@@ -1,3 +1,12 @@
 .artist-picture .artiste-picture-inner img {
     max-width: 100%;
 }
+
+.text-content-artist {
+    max-height: none !important;
+}
+
+.artist-picture .artiste-picture-inner .caption {
+    margin-top: 10px;
+    margin-left: 5px;
+}
