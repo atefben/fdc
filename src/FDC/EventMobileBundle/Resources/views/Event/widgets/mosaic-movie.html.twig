@@ -13,7 +13,7 @@
                             {% set media = film.image.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% if media is not empty and media.file is not empty %}
-                            <div class="img-container" style="background-image:url({% path media.file, '368x500' %})"></div>
+                            <div class="img-container" style="background-image:url({% path media.file, '180x240' %})"></div>
                         {% endif %}
                     {% endif %}
                     <div class="info">
