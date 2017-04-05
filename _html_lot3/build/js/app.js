@@ -5353,6 +5353,7 @@ var owinitSlideShow = function (slider, hash) {
             var finalSlider = slider;
             if(slider.length > 1){
                 //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+                console.log('before each',slider);
                 slider.each(function(){
                     console.log($(this),$(this).find('[data-url="'+hash+'"]').length);
                     if($(this).find('[data-url="'+hash+'"]').length){
