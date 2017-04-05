@@ -455,31 +455,7 @@ $(document).ready(function () {
 
     window.addEventListener('orientationchange', scale);
 
-    /*if ('ontouchstart' in window) {
-        if (navigator.userAgent.indexOf("iPad") > -1 ||
-            navigator.userAgent.indexOf("iPhone") > -1 ||
-            navigator.userAgent.indexOf("Android") > -1) {
-            $('body').addClass('mobile');
-        } else {
-            $('body').addClass('mobile');
-        }
-    } else {
-        $('body').addClass('not-mobile');
-    }*/
     $('body').addClass('not-mobile');
-    if ($('body').hasClass('mobile') > 0) {
-        var hideKeyboard = function () {
-            document.activeElement.blur();
-            $(".newsletter#email").blur();
-        };
-
-        $('.newsletter').focusin(function () {
-
-            $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
-                hideKeyboard();
-            })
-        });
-    }
 
     if ($('#breadcrumb').length > 0) {
         owInitFooterScroll();
