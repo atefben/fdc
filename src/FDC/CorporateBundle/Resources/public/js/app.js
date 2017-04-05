@@ -1778,7 +1778,10 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($(e.target),$(e.target).data('facebookurl'));
+            console.log($(e.target),$(e.target).closest('.audio').data('facebookurl'));
+            if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
+                shareUrl = $(e.target).closest('.audio').data('facebookurl');
+            }
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
