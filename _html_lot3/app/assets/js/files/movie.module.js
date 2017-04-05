@@ -252,7 +252,10 @@ $(document).ready(function() {
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         var number = $(this).closest('.owl-item').index();
-        videoMovieBa = playerInit('video-player-ba', false, true, undefined, number);
+        videoMovieBa = playerLoad($("#video-player-ba")[number], videoMovieBa, true, false, function (vid) {
+          $(vid).data('loaded', true);
+          return vid;
+        });
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
