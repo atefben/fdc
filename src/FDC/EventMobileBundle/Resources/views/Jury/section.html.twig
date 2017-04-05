@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/jury.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/jury.css"
+        "bundles/fdceventmobile/css/jury_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -25,8 +28,9 @@
             <div id="horizontal-menu" class="owl-carousel sliderDrag videosSlider">
                 {%- for tab in pages -%}
                     <div class="vid">
-                        <p><a href="#" data-url="{{ path('fdc_eventmobile_jury_get', {'slug': tab|trans_fallback('slug')}) }}"
-                           class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajax">
+                        <p><a href="{{ path('fdc_eventmobile_jury_get', {'slug': tab|trans_fallback('slug')}) }}"
+                            data-url="{{ path('fdc_eventmobile_jury_get', {'slug': tab|trans_fallback('slug')}) }}"
+                            class="{% if app.request.attributes.get('slug') == (tab|trans_fallback('slug')) %}active {% endif %}ajaxi">
                             {{ (tab|trans_fallback('overrideName'))?:(tab.juryType|trans_fallback('name')) }}
                         </a></p>
                     </div>
@@ -92,13 +96,19 @@
                                 {%- endif -%}
                             {%- endif -%}
                         )"></div>{{- '' -}}
-                        <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
-                        {%- set profession =  member['jury'].person|profession_gender('profession') -%}
-                        {%- if profession -%}
-                            <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
-                                {{- profession -}}
-                            </p>{{- '' -}}
-                        {%- endif -%}
+                        <div class="jury-info">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
+                                    {%- set profession =  member['jury'].person|profession_gender('profession') -%}
+                                    {%- if profession -%}
+                                    <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
+                                        {{- profession -}}
+                                        </p>{{- '' -}}
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        </div>
                     </div>{{- '' -}}
                 {%- endfor -%}
             </div>

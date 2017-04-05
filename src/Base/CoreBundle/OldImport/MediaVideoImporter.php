@@ -3,6 +3,7 @@
 namespace Base\CoreBundle\OldImport;
 
 use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated;
 use Base\CoreBundle\Entity\OldMedia;
 use Symfony\Component\Console\Helper\ProgressBar;
 
@@ -68,9 +69,6 @@ class MediaVideoImporter extends Importer
                 $this->importItem($oldMedia);
             }
 
-            //$this->getManager()->clear();
-            //unset($oldArticles);
-
             $this->getSiteEvent(true);
             $this->getSiteCorporate(true);
             $this->getDefaultTheme(true);
@@ -119,15 +117,61 @@ class MediaVideoImporter extends Importer
         if ($this->isAvailable($oldMedia)) {
             foreach ($this->langs as $lang) {
                 $mediaVideo = $this->createMediaVideoFromOldMedia($oldMedia->getId(), $lang, $this->status, $this->setCorporate);
+                if ($mediaVideo) {
+                    $this->associateFilms($mediaVideo, $oldMedia);
+                }
             }
         }
         return $mediaVideo;
     }
 
+    protected function associateFilms(MediaVideo $mediaVideo, OldMedia $oldMedia)
+    {
+        $associatedFilms = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldMediaAssociation')
+            ->findBy([
+                'id' => $oldMedia->getId(),
+                'objectClass' => 'Film',
+            ])
+        ;
+
+        foreach ($associatedFilms as $associatedFilm) {
+            $movie = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->find($associatedFilm->getObjectId())
+            ;
+            if (!$movie) {
+                continue;
+            }
+            $associatedMediaVideo = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:MediaVideoFilmFilmAssociated')
+                ->findOneBy([
+                    'mediaVideo'  => $mediaVideo->getId(),
+                    'association' => $movie->getId(),
+                ])
+            ;
+
+            if (!$associatedMediaVideo) {
+                $associatedMediaVideo = new MediaVideoFilmFilmAssociated();
+                $associatedMediaVideo
+                    ->setAssociation($movie)
+                    ->setMediaVideo($mediaVideo)
+                ;
+                $this->getManager()->persist($associatedMediaVideo);
+            }
+            $this->getManager()->flush();
+        }
+    }
+
 
     private function isAvailable(OldMedia $oldMedia)
     {
-        if ($oldMedia->getPublished() == static::MEDIA_QUOTIDIEN_VIDEO) {
+        $isQuotidien = $oldMedia->getIsOnline() == static::MEDIA_QUOTIDIEN_VIDEO;
+        $trailerIds = [2, 3, 4, 5];
+        if (in_array($oldMedia->getVideoType(), $trailerIds) || $isQuotidien) {
                 $this->setCorporate = true;
                 $this->status = null;
                 return true;

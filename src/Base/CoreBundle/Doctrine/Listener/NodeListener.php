@@ -98,6 +98,7 @@ class NodeListener
             ->setDisplayedOnCorpoHome($object->isDisplayedOnCorpoHome())
             ->setSignature($object->getSignature())
             ->setMainImage($object->getHeader())
+            ->setTheme($object->getTheme())
             ->setTypeClone($object->getTypeClone())
         ;
 
@@ -113,9 +114,16 @@ class NodeListener
             $node->setMainVideo($object->getVideo());
         }
 
+        $sites =[];
         foreach ($object->getSites() as $site) {
+            $sites[] = $site->getId();
             if (!$node->getSites()->contains($site)) {
                 $node->addSite($site);
+            }
+        }
+        foreach ($node->getSites() as $site) {
+            if (!in_array($site->getId(), $sites)) {
+                $node->removeSite($site);
             }
         }
 

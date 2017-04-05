@@ -4,7 +4,7 @@
     {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
     film: film,
     film_format: '976x535',
-    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+    film_image_default: '/bundles/fdccorporate/media/images/film1900x800.jpg',
     display_film_path: true
     }) %}
 {% endspaceless %}')">
@@ -30,15 +30,15 @@
                     {% set titleTranslated = film|trans_fallback_movie('title') %}
                 {% endif %}
 
-                <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
+                <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
 
                 {% set directors = film.getDirectors() %}
+                <span class="names-a">
                 {% for director in directors %}
                     {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
-                    {% if loop.index != directors|length %}
-                        ,
-                    {% endif %}
+                    {% if loop.index != directors|length %} , {% endif %}
                 {% endfor %}
+                </span>
 
 
                 <span class="date">

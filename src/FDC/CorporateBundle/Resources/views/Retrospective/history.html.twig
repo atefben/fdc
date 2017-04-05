@@ -1,7 +1,7 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 {% block bodyClass %}
-    article-single edition-69 story-movie dark not-mobile
+    article-single edition-69 story-movie dark history not-mobile
 {% endblock bodyClass %}
 {% block body %}
 
@@ -104,7 +104,7 @@
                                             <div class="bck-hover">
                                                 <div class="wrapper-item">
                                                     <div class="poster">
-                                                        <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}">
+                                                        <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}">
                                                             <img src="{% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                             film: film.film,
                                                             film_format: '259x352',
@@ -114,12 +114,12 @@
                                                         </a>
                                                     </div>
                                                     <div class="infos">
-                                                        <a href="{{ path('fdc_event_movie_get', {'slug': film.film.slug}) }}"><strong
+                                                        <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                     class="name-f">{{ film.film.titleVO }}</strong></a>
                                                         {% set directors = film.film.getDirectors() %}
                                                         {% set directorsName = '' %}
                                                         {% for director in directors %}
-                                                            <a href="{{ path('fdc_event_artist_get', {'slug': director.person.slug}) }}"><span
+                                                            <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
                                                                         class="names-a">
                                                                     {{ directorsName ~ director.person.fullName }}
                                                                     {% if loop.index != directors|length %} - {% endif %}
@@ -183,7 +183,7 @@
                         {% endfor %}
                     </div>
 
-                    <div class="border-top">
+                    <div class="border-top black margin-top">
                         <strong class="title-9">Partager la page</strong>
                         {% set currentUrl = app.request.schemeAndHttpHost ~ app.request.requestUri %}
                         <div class="relative">

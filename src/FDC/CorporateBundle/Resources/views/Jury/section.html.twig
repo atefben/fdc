@@ -28,7 +28,7 @@
 
                     {% for president in presidents %}
                         <div class="block-jury">
-                            <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
+                            <a href="{{ path('fdc_corporate_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                                     <div class="contain-img"
                                          style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})">
@@ -51,7 +51,7 @@
                                             {{ 'juries.role.title.presidentdujury'|trans }}
                                         {% endif %}
                                     </strong>
-                                    <a href="{{ path('fdc_event_artist_get', {'slug': president['jury'].person.slug}) }}">
+                                    <a href="{{ path('fdc_corporate_artist_get', {'slug': president['jury'].person.slug}) }}">
                                         <h1 class="title-19">{{ president['jury'].person.firstname }} {{ president['jury'].person.lastname }}</h1>
                                     </a>
                                     <strong class="title-20">{{ president['jury'].person|profession_gender('profession') }}</strong>
@@ -83,7 +83,7 @@
 
                         {% for member in members %}
                             <div class="item block-poster">
-                                <a href="{{ path('fdc_event_artist_get', {'slug': member['jury'].person.slug}) }}">
+                                <a href="{{ path('fdc_corporate_artist_get', {'slug': member['jury'].person.slug}) }}">
                                     <div class="contain-img">
                                         {% set artistImage = jury_page_media(member['jury'], app.request.locale, festival) %}
                                         {% if artistImage is not empty %}

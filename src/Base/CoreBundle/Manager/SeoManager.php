@@ -139,9 +139,8 @@ class SeoManager
             // PICTURE
             $header = null;
             if ($news->getHeader() !== null) {
-                $header = $news->getHeader()->findTranslationByLocale($this->localeDefaultTranslation)->getFile();
                 $transImage = $news->getHeader()->findTranslationByLocale($locale);
-                if ($transImage->getFile() !== null) {
+                if ($transImage && $transImage->getFile() !== null) {
                     $header = $transImage->getFile();
                 }
             } else if (method_exists($news, 'getGallery') && count($news->getGallery()->getMedias()) >= 1) {

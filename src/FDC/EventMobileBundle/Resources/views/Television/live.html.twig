@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/webtv.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/webtv.css"
+        "bundles/fdceventmobile/css/webtv_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -18,7 +21,7 @@
     <div class="fullscreenplayer">
         <div class="close-button"><i class="icon icon_close"></i></div>
         <div class="vCenter">
-            <div class="vCenterKid">
+            <div class="vCenterKid m-video">
                 <div id="player1"></div>
                 <p class="category">Conférence de presse</p>
                 <span class="date"></span>
@@ -30,7 +33,7 @@
 
     <div id="banner-top">
         <div class="banner-video ">
-            <div class="video-container " style="background-image:url({% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %});">
+            <div class="video-container m-video" style="background-image:url({% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %});">
                 {% if videoUrl %}
                 <div id="player" data-video="{{ videoUrl }}" data-poster="{% if page.image and page.image|trans_fallback('file') %}{% path page.image|trans_fallback('file'), '1280x808' %}{% endif %}"></div>
                 {% endif %}
@@ -102,8 +105,8 @@
                             <div class="vCenter">
                                 <div class="vCenterKid">
                                     <a href="#" class="category">{{ trailer.theme|trans_fallback('name') }}</a>
-                                    <a href="#" class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
-                                    <a href="#" class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
+                                    <span class="date">{{ trailer.publishedAt|date('d.m.Y') }}</span> .
+                                    <span class="hour">{{ agenda_leftbar_translate_hour(trailer.publishedAt|date('H:i'), true, true) }}</span>
                                     <a href="#" class="titleLink">{{ trailer|trans_fallback('title')|truncate(85) }}</a>
                                 </div>
                             </div>
@@ -124,7 +127,16 @@
                 {% for video in lastVideos %}
                     <div class="vid item-video"
                          {#data-vid="{{ video.id }}"#}
-                         data-video='{{ s3_server_video ~ video|trans_fallback('mp4Url') }}'
+                        {% set transVideo = video.findTranslationByLocale(app.request.locale) %}
+                        {% if transVideo is null %}
+                            {% set transVideo = video.findTranslationByLocale('fr') %}
+                        {% endif %}
+                        {% if(transVideo.jobWebmState == 3) %}
+                            data-webmurl="{{ s3_server_video ~ transVideo.webmUrl }}"
+                        {% endif %}
+                        {% if transVideo.jobMp4State == 3 %}
+                            data-mp4url="{{ s3_server_video ~ transVideo.mp4Url }}"
+                        {% endif %}
                         {% if video.image|trans_fallback('file') %}
                             data-poster="{% path video.image|trans_fallback('file'), '463x292' %}"
                         {% else %}
@@ -132,7 +144,7 @@
                         {% endif %}>
                         <div class="image-wrapper">
                             {% if video.image|trans_fallback('file') %}
-                                <div class="img" style="background-image:url({% path video.image|trans_fallback('file'), '463x292' %}"></div>
+                                <div class="img" style="background-image:url({% path video.image|trans_fallback('file'), '463x292' %})"></div>
                             {% endif %}
                         </div>
                         <a class="linkVid" href="#"></a>
@@ -143,9 +155,9 @@
                             <div class="info-container">
                                 <div class="vCenter">
                                     <div class="vCenterKid">
-                                        <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
-                                        <a href="#" class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
-                                        <a href="#" class="hour">{{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
+                                        <a href="#" class="category">{{ video.theme|trans_fallback('name') }}
+                                        <span class="date">{{ video.publishedAt|date('d.m.Y') }}</span> .
+                                        <span class="hour">{{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span></a>
                                         <a href="#" class="titleLink">{{ video|trans_fallback('title')|truncate(50) }}</a>
                                     </div>
                                 </div>
@@ -198,7 +210,10 @@
 {% endblock WebTvLiveChannel %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/webtv.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/webtv.js'
+        '@FDCEventMobileBundle/Resources/public/js/webtv_custom.js'
+    %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}

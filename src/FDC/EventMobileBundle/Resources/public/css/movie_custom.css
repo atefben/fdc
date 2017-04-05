@@ -1,0 +1,53 @@
+.movie-page .section.videos .slideshow .caption {
+    margin-bottom: 0;
+    margin-top: 14px;
+    height: auto;
+}
+.movie-page .section.videos .slideshow .container {
+    border-bottom: 1px solid #2c2c2c;
+    padding:30px 40px;
+}
+
+.movie-page .section.videos  .slideshow-img .images {
+    height: auto;
+}
+
+.movie-page .section.videos  .slideshow .container, .channel .slideshow .container{
+    width: 100%;
+    padding:30px 40px 20px;
+    box-sizing:border-box;
+}
+
+.section.videos .slideshow .time {
+    margin-left: 9px;
+    color: #666;
+    font-size: .88rem;
+    text-transform: uppercase;
+}
+
+.m-video > .container {
+    position: absolute;
+    bottom: 0;
+    left: 65px;
+}
+
+.m-video .jwplayer .jw-preview {
+    background-size: cover;
+}
+
+.m-video .jw-state-playing + .container, .m-video .jw-state-paused + .container {
+    display: none;
+}
+
+.movie-page .section.videos .slideshow-img .images {
+    overflow: hidden;
+}
+
+.movie-page .main-movie-img {
+    background: #000;
+    text-align: center;
+}
+
+.movie-page .main-movie-img img {
+    max-width: 100%;
+}

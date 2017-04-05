@@ -13,3 +13,358 @@
   text-align: center;
   padding-bottom: 20px; 
 }
+
+.s-slider-retrospective .isotope-01 .item.block-poster img {
+  display:none !important;
+}
+
+.articles-list .card.item .info .category {
+  top:0 !important;
+}
+
+.block-push-top .vFlexAlign {
+  background: none !important;
+}
+
+.dark.story-movie.story-palme .wysiwyg-article-02 p {
+  color: #f5f5f5 !important;
+}
+
+.story-movie.dark.story-palme {
+  background-color: #141414;
+}
+
+.story-movie.dark.history, .story-movie.dark.archive {
+  background-color: #FFF;
+}
+
+.dark.history .title-list-cat.block-01-xs, .dark.archive .title-list-cat.block-01-xs {
+  background-color: #141414;
+}
+
+.dark.history .text p, .dark.archive .text p {
+  color: #666 !important;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+}
+
+.dark.history .black, .dark.archive .black {
+  background-color:#FFF;
+}
+
+.dark.history .contain-title p, .dark.archive .contain-title p {
+  color: #666 !important;
+  text-align: center;
+  padding: 20px 20px 0;
+  font-size: .875rem;
+  max-width: 977px;
+  margin: 10px auto 2px;
+  line-height: 26px;
+  font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.dark.history .text p strong, .dark.archive .text p strong {
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #141414;
+  line-height: 24px;
+  text-align: left;
+}
+
+.dark.history .text h2.sub-title2, .dark.archive .text h2.sub-title2 {
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: 0.5em;
+  margin-bottom: 23px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #141414;
+}
+
+.dark.history .wysiwyg-article-02 .text ul strong, .dark.archive .wysiwyg-article-02 .text ul strong {
+  color: #333;
+}
+
+.dark.history .block-social-network-all a:first-child, .dark.archive .block-social-network-all a:first-child {
+  border-left: 1px solid #e7e7e7;
+}
+.dark.history .block-social-network-all a, .dark.archive .block-social-network-all a {
+  width: 76px;
+  height: 76px;
+  border-color: #e7e7e7;
+}
+.dark.history .border-top, .dark.archive .border-top {
+  margin-top: 30px;
+  border-color: #e5e5e5;
+}
+
+.dark.history .buttons-01 .button, .dark.archive .buttons-01 .button {
+  border-color: #e7e7e7;
+}
+
+.dark.history .title-9, .dark.archive .title-9 {
+  color:#4f4f4f;
+}
+
+.dark.history #breadcrumb, .dark.archive #breadcrumb {
+  background-color:#141414;
+}
+
+.participate, .participate #main {
+  overflow: hidden !important;
+}
+
+.artist .brigth .title-15, .artist .title-16 {
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+}
+
+.artist .contentartist {
+  padding:62px 0 0 0;
+}
+
+.artist .block-poster-01 .item {
+  margin: 0 17px;
+}
+
+.artist .block-poster-01 {
+  width: 649px;
+  margin: 0 auto;
+}
+.artist .brigth .title-15 {
+  color: #333;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto 30px auto;
+  max-width: 775px;
+  text-align: center;
+}
+
+.artist .title-16 {
+  padding-top: 40px;
+  border-top: 1px solid #dfdfdf;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1.375rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.artist .buttons-01 {
+  margin-bottom: 50px;
+}
+
+.artist .info .category {
+  margin-right: 0px;
+}
+
+.artist a.title-7 {
+  color: #c8a461;
+}
+
+.artist .item-sub-title {
+  font-size: .625rem;
+  text-transform: uppercase;
+  color: #c8a461;
+  display: block;
+}
+
+.artist .contain-txt {
+  text-align:center;
+}
+
+.artist .title-12 {
+  font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: .6875rem;
+  color: #333;
+}
+
+.artist .title-17 {
+  margin-right: 5px;
+}
+
+.artist .item-details {
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+  font-size: .75rem;
+  color: #666;
+  display: block;
+}
+
+.artist .title-art-artist {
+  margin-bottom: 50px;
+  padding-top: 45px;
+  border-top: 1px solid #dfdfdf;
+}
+
+.artist .title-art-artist, .artist .title-cat-artist {
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1.375rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.artist .contentartist .award .item img {
+  width: 183px;
+  height: 244px;
+  object-fit: cover;
+}
+
+.artist .contentartist .award .item {
+  line-height: 18px;
+  margin: 0 16px;
+  display: inline-block;
+  min-height: 418px;
+  vertical-align: bottom;
+  width: 181px;
+}
+
+.artist .contentartist .award .item {
+  line-height: 18px;
+  margin: 0 16px;
+  display: inline-block;
+  min-height: 418px;
+  vertical-align: bottom;
+  width: 181px;
+}
+
+.artist .contentartist .award .item .content-text {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.artist .contentartist .separator1 {
+  margin:50px auto 0 auto;
+}
+
+.artist .contentartist .award .item .content-text .item-title {
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  color: #c8a461;
+  font-size: .875rem;
+  display: block;
+  padding-top: 13px;
+}
+
+.artist .contentartist .award .item .content-text .item-sub-title {
+  font-size: .625rem;
+  text-transform: uppercase;
+  color: #c8a461;
+  display: block;
+}
+
+.artist .contentartist .award .item .content-text .item-date {
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+  color: #999;
+  font-size: .6875rem;
+  padding-right: 5px;
+}
+
+.artist .contentartist .award .item .content-text .item-categ {
+  font-family: "Camphor W01 Medium",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: .6875rem;
+  color: #333;
+}
+
+.artist .contentartist .award .item .content-text .item-details {
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+  font-size: .75rem;
+  color: #666;
+  display: block;
+}
+
+.artist .contentartist .padding-bottom {
+  padding-bottom: 30px;
+}
+
+.artist .contentartist .block-poster-01 img {
+  margin-bottom: 0px;
+}
+
+.artist .contentartist .item {
+  line-height: 18px;
+  display: inline-block;
+  min-height: 400px;
+  vertical-align: bottom;
+  width: 181px;
+}
+
+.artist .contentartist .single-photo {
+  text-align:center;
+}
+
+.artist .contentartist .photo-container {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+
+}
+
+.artist .contentartist .biographie {
+  margin: 40px auto 0 auto;
+  width: 649px;
+}
+.artist .contentartist .title-cat-artist {
+  text-align:center;
+  margin: 0 auto;
+  display: block;
+}
+
+.who-fdc .text-quote {
+  width: 800px !important;
+}
+
+.isotope-01 .item .contain-img {
+  background-position: center;
+}
+
+.history .article-single.dark section .caption, .history .article-single.dark section .caption strong {
+  font-size: 0.750rem;
+  color: #969696;
+  margin-top: 2px;
+}
+
+.article-single .border-top .relative {
+  margin-bottom:50px;
+}
+
+
+@media screen and (min-width: 1280px) {
+  .media-library .isotope-01 .item.w2 {
+    width: calc(200% / 8);
+  }
+}
+@media screen and (max-width: 1280px)
+{
+    .media-library  .isotope-01 .item.w2 {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}
+@media screen and (min-width: 1600px){
+    .media-library .isotope-01 .item.w2
+    {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}
+@media screen and (min-width: 1920px)
+{
+    .media-library  .isotope-01 .item.w2 {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}

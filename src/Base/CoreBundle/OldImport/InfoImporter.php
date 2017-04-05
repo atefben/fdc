@@ -60,7 +60,7 @@ class InfoImporter extends Importer
                     foreach ($this->langs as $lang) {
                         $translation = $info->findTranslationByLocale($lang);
                     }
-                    
+
                 }
             }
 
@@ -150,7 +150,7 @@ class InfoImporter extends Importer
         } else {
             $classInfo = InfoArticle::class;
         }
-        
+
         $info = $this
             ->getManager()
             ->getRepository($classInfo)

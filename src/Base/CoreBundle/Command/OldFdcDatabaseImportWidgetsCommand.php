@@ -7,7 +7,7 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidget;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetImage;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetTextTranslation;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoFilmFilmAssociated;
 use Base\CoreBundle\Entity\InfoInfoAssociated;
 use Base\CoreBundle\Entity\InfoWidget;
@@ -15,7 +15,7 @@ use Base\CoreBundle\Entity\InfoWidgetAudio;
 use Base\CoreBundle\Entity\InfoWidgetImage;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideo;
-use Base\CoreBundle\Entity\NewsArticle;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
 use Base\CoreBundle\Entity\NewsNewsAssociated;
 use Base\CoreBundle\Entity\NewsWidgetAudio;
@@ -23,7 +23,7 @@ use Base\CoreBundle\Entity\NewsWidgetImage;
 use Base\CoreBundle\Entity\NewsWidgetText;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideo;
-use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementFilmFilmAssociated;
 use Base\CoreBundle\Entity\StatementStatementAssociated;
 use Base\CoreBundle\Entity\StatementWidget;
@@ -177,13 +177,13 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         }
     }
 
-    protected function factorizeNewsWidgetText(NewsArticle $news)
+    protected function factorizeNewsWidgetText(News $news)
     {
         /**
          * @var NewsWidgetText
          */
         $first = null;
-        $langs = array('fr', 'en', 'es', 'zh');
+        $langs = ['fr', 'en', 'es', 'zh'];
         $done = [];
         foreach ($news->getWidgets() as $widget) {
             if ($widget instanceof NewsWidgetText && $widget->getOldImportReference() == 'body') {
@@ -215,9 +215,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsWidgetImage(NewsArticle $news)
+    protected function factorizeNewsWidgetImage(News $news)
     {
-        $first = array();
+        $first = [];
         foreach ($news->getWidgets() as $widget) {
             if ($widget instanceof NewsWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -235,9 +235,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsWidgetAudio(NewsArticle $news)
+    protected function factorizeNewsWidgetAudio(News $news)
     {
-        $first = array();
+        $first = [];
         foreach ($news->getWidgets() as $widget) {
             if ($widget instanceof NewsWidgetAudio) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -251,9 +251,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsWidgetVideo(NewsArticle $news)
+    protected function factorizeNewsWidgetVideo(News $news)
     {
-        $first = array();
+        $first = [];
         foreach ($news->getWidgets() as $widget) {
             if ($widget instanceof NewsWidgetVideo) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -267,9 +267,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsAssociatedFilms(NewsArticle $news)
+    protected function factorizeNewsAssociatedFilms(News $news)
     {
-        $done = array();
+        $done = [];
         foreach ($news->getAssociatedFilms() as $associatedFilm) {
             if ($associatedFilm instanceof NewsFilmFilmAssociated) {
                 if (!$associatedFilm->getAssociation()) {
@@ -287,9 +287,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeNewsAssociated(NewsArticle $news)
+    protected function factorizeNewsAssociated(News $news)
     {
-        $done = array();
+        $done = [];
         foreach ($news->getAssociatedNews() as $associatedNews) {
             if ($associatedNews instanceof NewsNewsAssociated) {
                 if (!$associatedNews->getAssociation()) {
@@ -307,13 +307,13 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoWidgetText(InfoArticle $info)
+    protected function factorizeInfoWidgetText(Info $info)
     {
         /**
          * @var NewsWidgetText
          */
         $first = null;
-        $langs = array('fr', 'en', 'es', 'zh');
+        $langs = ['fr', 'en', 'es', 'zh'];
         $done = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof InfoWidget && $widget->getOldImportReference() == 'body') {
@@ -345,9 +345,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoWidgetImage(InfoArticle $info)
+    protected function factorizeInfoWidgetImage(Info $info)
     {
-        $first = array();
+        $first = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof InfoWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -365,9 +365,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoWidgetAudio(InfoArticle $info)
+    protected function factorizeInfoWidgetAudio(Info $info)
     {
-        $first = array();
+        $first = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof InfoWidgetAudio) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -381,9 +381,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoWidgetVideo(InfoArticle $info)
+    protected function factorizeInfoWidgetVideo(Info $info)
     {
-        $first = array();
+        $first = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof InfoWidgetVideo) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -397,9 +397,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoAssociatedFilms(InfoArticle $info)
+    protected function factorizeInfoAssociatedFilms(Info $info)
     {
-        $done = array();
+        $done = [];
         foreach ($info->getAssociatedFilms() as $associatedFilm) {
             if ($associatedFilm instanceof InfoFilmFilmAssociated) {
                 if (!$associatedFilm->getAssociation()) {
@@ -417,9 +417,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeInfoAssociated(InfoArticle $info)
+    protected function factorizeInfoAssociated(Info $info)
     {
-        $done = array();
+        $done = [];
         foreach ($info->getAssociatedInfo() as $associatedInfo) {
             if ($associatedInfo instanceof InfoInfoAssociated) {
                 if (!$associatedInfo->getAssociation()) {
@@ -437,13 +437,13 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeStatementWidgetText(StatementArticle $info)
+    protected function factorizeStatementWidgetText(Statement $info)
     {
         /**
          * @var NewsWidgetText
          */
         $first = null;
-        $langs = array('fr', 'en', 'es', 'zh');
+        $langs = ['fr', 'en', 'es', 'zh'];
         $done = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof StatementWidget && $widget->getOldImportReference() == 'body') {
@@ -475,9 +475,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeStatementWidgetImage(StatementArticle $statement)
+    protected function factorizeStatementWidgetImage(Statement $statement)
     {
-        $first = array();
+        $first = [];
         foreach ($statement->getWidgets() as $widget) {
             if ($widget instanceof StatementWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -501,7 +501,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
          * @var NewsWidgetText
          */
         $first = null;
-        $langs = array('fr', 'en', 'es', 'zh');
+        $langs = ['fr', 'en', 'es', 'zh'];
         $done = [];
         foreach ($info->getWidgets() as $widget) {
             if ($widget instanceof FDCPageLaSelectionCannesClassicsWidget && $widget->getOldImportReference() == 'body') {
@@ -538,7 +538,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
      */
     protected function factorizeClassicsWidgetImage(FDCPageLaSelectionCannesClassics $classics)
     {
-        $first = array();
+        $first = [];
         foreach ($classics->getWidgets() as $widget) {
             if ($widget instanceof FDCPageLaSelectionCannesClassicsWidgetImage) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -559,11 +559,11 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     }
 
     /**
-     * @param StatementArticle $statement
+     * @param Statement $statement
      */
-    protected function factorizeStatementWidgetAudio(StatementArticle $statement)
+    protected function factorizeStatementWidgetAudio(Statement $statement)
     {
-        $first = array();
+        $first = [];
         foreach ($statement->getWidgets() as $widget) {
             if ($widget instanceof StatementWidgetAudio) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -578,11 +578,11 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     }
 
     /**
-     * @param StatementArticle $statement
+     * @param Statement $statement
      */
-    protected function factorizeStatementWidgetVideo(StatementArticle $statement)
+    protected function factorizeStatementWidgetVideo(Statement $statement)
     {
-        $first = array();
+        $first = [];
         foreach ($statement->getWidgets() as $widget) {
             if ($widget instanceof StatementWidgetVideo) {
                 if (!array_key_exists($widget->getOldImportReference(), $first)) {
@@ -596,9 +596,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeStatementAssociatedFilms(StatementArticle $statement)
+    protected function factorizeStatementAssociatedFilms(Statement $statement)
     {
-        $done = array();
+        $done = [];
         foreach ($statement->getAssociatedFilms() as $associatedFilm) {
             if ($associatedFilm instanceof StatementFilmFilmAssociated) {
                 if (!$associatedFilm->getAssociation()) {
@@ -616,9 +616,9 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
         $this->getManager()->flush();
     }
 
-    protected function factorizeStatementAssociated(StatementArticle $statement)
+    protected function factorizeStatementAssociated(Statement $statement)
     {
-        $done = array();
+        $done = [];
         foreach ($statement->getAssociatedStatement() as $associatedStatement) {
             if ($associatedStatement instanceof StatementStatementAssociated) {
                 if (!$associatedStatement->getAssociation()) {
@@ -639,7 +639,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
 
     /**
      * @param $page
-     * @return NewsArticle[]
+     * @return News[]
      */
     protected function getNews($page)
     {
@@ -664,7 +664,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     {
         $qb = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:NewsArticle')
+            ->getRepository('BaseCoreBundle:News')
             ->createQueryBuilder('n')
             ->select('count(n)')
             ->distinct()
@@ -688,13 +688,13 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     }
 
     /**
-     * @return InfoArticle[]
+     * @return Info[]
      */
     protected function getInfos($offset)
     {
         return $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:InfoArticle')
+            ->getRepository('BaseCoreBundle:Info')
             ->createQueryBuilder('n')
             ->distinct()
             ->andWhere('n.oldNewsId is not null')
@@ -712,7 +712,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     {
         return (int)$this
             ->getManager()
-            ->getRepository('BaseCoreBundle:InfoArticle')
+            ->getRepository('BaseCoreBundle:Info')
             ->createQueryBuilder('n')
             ->select('count(n)')
             ->distinct()
@@ -723,13 +723,13 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     }
 
     /**
-     * @return StatementArticle[]
+     * @return Statement[]
      */
     protected function getStatements($offset)
     {
         return $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:StatementArticle')
+            ->getRepository('BaseCoreBundle:Statement')
             ->createQueryBuilder('n')
             ->distinct()
             ->andWhere('n.oldNewsId is not null')
@@ -747,7 +747,7 @@ class OldFdcDatabaseImportWidgetsCommand extends ContainerAwareCommand
     {
         return (int)$this
             ->getManager()
-            ->getRepository('BaseCoreBundle:StatementArticle')
+            ->getRepository('BaseCoreBundle:Statement')
             ->createQueryBuilder('n')
             ->select('count(n)')
             ->distinct()

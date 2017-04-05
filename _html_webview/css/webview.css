@@ -454,6 +454,9 @@ html {
   margin: 10px 0 0;
   text-align: left; }
 
+.Article-content .little-txt strong {
+  font-size: 0.750rem; }
+  
 .Article-content .big-txt {
   color: #333333;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;

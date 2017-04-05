@@ -260,6 +260,15 @@ class SearchController extends Controller
             }
         }
 
+        if ($searchFilter=="info_statement") {
+            foreach ($searchResults['items'] as $key => $item) {
+                if($item->isDisplayedOnCorpoHome() == false) {
+                    unset($searchResults['items'][$key]);
+                    --$searchResults['count'];
+                }
+            }
+        }
+
         return $this->render("FDCCorporateBundle:Search:result_more.html.twig", [
             'result'  => [$searchFilter => $searchResults],
             'filters' => $filters,

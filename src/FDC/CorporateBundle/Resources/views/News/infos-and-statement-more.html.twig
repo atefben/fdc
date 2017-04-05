@@ -7,21 +7,21 @@
 {% if articles|length %}
     {% if filters.themes.content is defined and filters.themes.content|length %}
         <div class="compute-filters theme">
-            {% for theme in filters.themes.content if theme|trans_fallback('name') and theme|trans_fallback('slug') %}
+            {% for keytheme, theme in filters.themes.content if keytheme and theme|trans_fallback('name') and theme|trans_fallback('slug') %}
                 <span class=""
                       data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
             {% endfor %}
         </div>
     {% endif %}
 
-    {% if filters.dates is defined %}
+    {% if filters.editions is defined %}
         <div class="compute-filters date">
-            {% for key, date in filters.dates if key %}
-                <span class="" data-filter="date-{{ date|date('d-m-y') }}">
+            {% for key, year in filters.editions if key %}
+                <span class="" data-filter="date-{{ year }}">
                 {% if app.request.locale != 'cn' %}
-                    {{ date|localizeddate('full', 'none') }}
+                    {{ year }}
                 {% else %}
-                    {{ date|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
+                    {{ year }}
                 {% endif %}
             </span>
             {% endfor %}
@@ -47,14 +47,16 @@
     <div class="grid-01 isotope-01 add-ajax-request">
         <div class="grid-sizer"></div>
         {% for article in articles %}
-            {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+            {% if article %}
+                {{ macroArticle.retrospectiveInfoOrStatement(article, loop.last) }}
+            {% endif %}
         {% endfor %}
     </div>
 
     {% if not last %}
         <div class="bright" style="display:none">
             <a id="infos-and-statements-more"
-               href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time}) }}"
+               href="{{ path('fdc_corporate_news_infosandstatementsmore', {'timestamp': time, 'exclude': exclude}) }}"
                class="read-more ajax-request block-01">{{ 'info.and.statements.more'|trans }}</strong></a>
         </div>
     {% endif %}

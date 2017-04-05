@@ -16,11 +16,45 @@ html {
   overflow-x: hidden;
 }
 
+i {
+  font-style:italic;
+}
+
+sup { 
+    vertical-align: super;
+    font-size: smaller;
+    margin-left: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+ol > li {
+  list-style-type:decimal!important;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding: 5px 20px;
+}
+
+#main ul > li > ul, #main ol > li > ol {
+  padding: 0px 0px 0px 50px!important;
+}
+
+/*strong, b, em {
+  font: normal;
+  font-weight:bold!important;
+}*/
+
 body {
-  background-color: $black;
+  background-color: #FFFFFF;
   font-family: $CamphorRegular;
   font-size: 16px;
   overflow-x: hidden;
+  min-height: 1000px;
 
   &.fix {
     overflow-y: hidden;
@@ -129,4 +163,10 @@ body {
       height: 576px!important;
     }
   }
+}
+
+.bigContainer {
+   @media screen and(max-width: $mobileWidth) {
+      max-width: 1024px;
+    }
 }

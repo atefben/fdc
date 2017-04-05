@@ -6,7 +6,9 @@ use Base\CoreBundle\Entity\FDCPageLaSelection;
 use Base\CoreBundle\Entity\FilmProjectionProgrammationFilm;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\NewsAudio;
 use Base\CoreBundle\Entity\NewsFilmFilmAssociated;
+use Base\CoreBundle\Entity\NewsVideo;
 use FDC\EventMobileBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -69,12 +71,33 @@ class MovieController extends Controller
         ;
 
         $articles = array();
+        $articlesIds = array();
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
                 if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
                     $key = $article->getPublishedAt()->getTimestamp();
                     $articles[$key] = $article;
+                    $articlesIds[] = $article->getId();
+                }
+            }
+        }
+        foreach ($movie->getNews() as $news) {
+            if (!in_array($news->getId(), $articlesIds)) {
+                if ($news instanceof NewsAudio) {
+                    if ($news->getAudio()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
+                if ($news instanceof NewsVideo) {
+                    if ($news->getVideo()->getDisplayedHome()) {
+                        continue;
+                    }
+                }
+                if ($this->isPublished($news, $locale)) {
+                    $key = $news->getPublishedAt()->getTimestamp();
+                    $articles[$key] = $news;
+                    $articlesIds[] = $news->getId();
                 }
             }
         }

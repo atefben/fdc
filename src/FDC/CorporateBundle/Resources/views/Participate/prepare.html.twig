@@ -37,9 +37,13 @@
                         {% endfor %}
                     </ul>
                 </nav>
-                <div class="all-contain"><div class="contain-descript">
-                <div class="descrip">{% if app.request.attributes.get('slug') == 'prepare' %}{{ content|trans_fallback('mainDescription')|raw }}{% else%}{{ datas|trans_fallback('content')|raw }}{% endif %}</div>
-            </div>
+                <div class="all-contain">
+                    {% if app.request.attributes.get('slug') == 'prepare' %}{% set description = content|trans_fallback('mainDescription') %}{% else %}{% set description = datas|trans_fallback('content') %}{% endif %}
+                    {% if description != '' %}
+                    <div class="contain-descript">
+                        <div class="descrip">{{ description|raw }}</div>
+                    </div>
+                    {% endif %}
                     <div class="accordion">
                         <div class="block-accordion block-accordion-02">
                             {% if app.request.attributes.get('slug') == 'prepare' %}

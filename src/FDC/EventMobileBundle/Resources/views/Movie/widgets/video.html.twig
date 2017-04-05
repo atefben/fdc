@@ -7,64 +7,72 @@
 
         <div class="slideshow">
             <div class="slideshow-img">
-                <div class="video">
-                    {% set videoImage = null %}
-                    {% set amazonImage = null %}
-                    {% if videos[0].mediaVideo.image %}
-                        {% set videoImage = media_public_url(videos[0].mediaVideo.image|trans_fallback('file'), '586x370') %}
-                    {% elseif videos[0].mediaVideo|trans_fallback('imageAmazonUrl') %}
-                        {% set amazonImage = s3_server_video ~ videos[0].mediaVideo|trans_fallback('imageAmazonUrl') %}
+                {% for videoAssociated in videos %}
+                    {% set video = videoAssociated.mediaVideo %}
+                    {%- set trans = video.findTranslationByLocale(app.request.locale) -%}
+                    {% if video.image %}
+                        {% set videoImage = media_public_url(video.image|trans_fallback('file'), '463x292') %}
+                    {% elseif video|trans_fallback('imageAmazonUrl') %}
+                        {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
                     {% endif %}
-
-                    <img src="{{ videoImage }}" alt="" />
-                    <div class="info">
-                        <div class="picto"><i class="icon icon_video"></i></div>
-                        <div class="info-container">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <span class="category mainCategory">{{ videos[0].mediaVideo.theme|trans_fallback('name') }}</span>
-                                    <span class="date">{{ videos[0].mediaVideo.publishedAt()|date('d/m/Y') }}</span>
-                                    .
-                                    <span class="hour">{{ agenda_leftbar_translate_hour(videos[0].mediaVideo.publishedAt()|date('H:i'), true, true) }}</span>
-                                    <a href="#" class="titleLink">{{ videos[0].mediaVideo|trans_fallback('title') }}</a>
-                                </div>
+                    {%- if trans is null or trans.file is null -%}
+                        {%- set trans = video.file.findTranslationByLocale('fr') -%}
+                    {%- endif -%}
+                    {% if loop.first %}
+                        <div class="images m-video">
+                            <div class="players2" id="player"
+                                    {% if trans.jobWebmState == 3 %}
+                                        data-webmUrl="{{ s3_server_video ~ trans.webmUrl }}"
+                                    {% endif %}
+                                    {% if trans.jobWebmState == 3 %}
+                                        data-mp4Url="{{ s3_server_video ~ trans.mp4Url }}"
+                                    {% endif %}
+                                 data-poster="{{ videoImage }}"></div>
+                            <div class="container">
+                                <h3 class="title-video"></h3>
+                                <span class="time"></span>
+                                <p class="caption"></p>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="owl-carousel thumbnails">
-                    {% for video in videos %}
-                        {% set video = video.mediaVideo %}
-                        {% if video.image %}
-                            {% set videoImage = media_public_url(video.image|trans_fallback('file'), '586x370') %}
+                        <div class="owl-carousel thumbnails">
+                    {% endif %}
+                    <div data-id="photo{{ video.id }}" class="thumb {% if loop.first %}active{% endif %}"
+                         data-time="{{ video.publishedAt|date('d.m.y') }} {{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}"
+                        {% if trans.jobWebmState == 3 %}
+                            data-webmUrl="{{ s3_server_video ~ trans.webmUrl }}"
+                        {% endif %}
+                        {% if trans.jobWebmState == 3 %}
+                            data-mp4Url="{{ s3_server_video ~ trans.mp4Url }}"
+                        {% endif %}
+                         data-poster='{{ videoImage }}'>
+                        {% if video.image and video.image|trans_fallback('file') %}
+                            {% set videoImage = media_public_url(video.image|trans_fallback('file'), '293x185') %}
+                            {% set alt = video.image|trans_fallback('alt') %}
                         {% elseif video|trans_fallback('imageAmazonUrl') %}
                             {% set videoImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+                            {% if video.image %}
+                                {% set alt = video.image|trans_fallback('alt') %}
+                            {% else %}
+                                {% set alt = '' %}
+                            {% endif %}
                         {% endif %}
-
-                        <div data-id="video{{ loop.index }}"
-                             class="thumb {% if loop.first %}active{% endif %}"
-                             data-category="{{ video.theme|trans_fallback('name') }}"
-                             data-title="{{ video|trans_fallback('title') }}"
-                             data-img="{{ videoImage }}"
-                             data-date="{{ video.publishedAt()|date('d/m/Y') }}"
-                             data-hour="{{ video.publishedAt()|date('H:i') }}">
-                            <img src="{{ videoImage }}" />
-                            <div class="info">
-                                <div class="picto"><i class="icon icon_video"></i></div>
-                                <div class="info-container">
-                                    <div class="vCenter">
-                                        <div class="vCenterKid">
-                                            <span class="category">{{ video.theme|trans_fallback('name') }}</span>
-                                            <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
-                                        </div>
+                        <img src="{{ videoImage }}" alt="{{ alt }}"/>
+                        <div class="info">
+                            <div class="picto"><i class="icon icon_video"></i></div>
+                            <div class="info-container">
+                                <div class="vCenter">
+                                    <div class="vCenterKid">
+                                        <a href="#" class="category">{{ video.theme|trans_fallback('name') }}</a>
+                                        <a href="#" class="titleLink">{{ video|trans_fallback('title') }}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    {% endfor %}
-                </div>
+                    </div>
+                    {% if loop.last %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -72,7 +72,7 @@ class CcmProgramScheduleAdmin extends Admin
                         'label'              => 'form.ccm.label.program.schedule.url',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
-                        'sonata_help' => 'form.ccm.label.external_url',
+                        'sonata_help' => 'form.ccm.label.help_relative_url',
                     ),
                     'accessType'     => array(
                         'label'              => 'form.ccm.label.program.schedule.access_type',

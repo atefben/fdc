@@ -1,0 +1,41 @@
+
+/* EVENTS PAGE */
+
+
+.content {
+  display: none;
+}
+
+.showContent {
+  display: block;
+}
+
+.hideContent {
+  display:none;
+}
+
+.selectbtn {
+    
+    background: white;
+    border: 2px solid #ECECEC;
+    padding: 20px 20px;
+    font-size: 12px;
+    color: #505050;
+    text-transform: uppercase;
+    font-family: $CamphorHeavy;
+    min-width: 100px;
+    max-width: 240px;
+    margin: 1% 1%;
+    text-transform: uppercase;
+    display: inline-block;
+    float: left;
+    &:focus { outline: none; border:none; }
+}
+
+.purpleBtn {
+  background: #ec3050;
+  color: white;
+}
+
+/*END EVENT PAGE*/
+

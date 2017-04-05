@@ -55,7 +55,7 @@
                      alt="{{ legacy.titre?:'Affiche du film' }}"
                      data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
             {% else %}
-                <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans }}"
+                <img src="{{ asset(film_image_default) }}" alt="{{ 'ccm.movie.poster'|trans }}"
                      data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
             {% endif %}
         {% endif %}

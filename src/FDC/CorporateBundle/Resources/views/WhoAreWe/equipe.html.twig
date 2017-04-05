@@ -11,10 +11,10 @@
         {% endif %}
         {% set mainImage = mainTrans.file %}
         <div class="block-push block-push-top"
-             style="background-image: url({% path mainImage, 'reference' %});">
+             style="background-image: url({% path mainImage, '2560x1103' %});">
             <div class="vFlexAlign">
                 <div class="txts">
-                    <h1 class="title-3">qui sommes nous ?</h1>
+                    <h1 class="title-3">{{ 'header.nav.whoweare'|trans }}</h1>
                 </div>
             </div>
         </div> <!-- end block push -->

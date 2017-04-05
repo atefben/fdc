@@ -19,20 +19,22 @@
                             {% elseif app.request.locale != 'fr' and photo.media.titleVa %}
                                 {% set title = photo.media.titleVa %}
                             {% endif %}
-
                             <div class="img {% if firstPicture == true %}active{% endif %}">
                                 <a id="photo{{ photo.id }}"
+                                   data-pid="{{ photo.id }}"
                                    class="chocolat-image ajax"
-                                   href="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}"
-                                   title='<span>{{ title }}</span>'
+                                   href="{% path photo.media.file, '2560x1103' %}"
+                                   title='{{ title }}'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
-                                    <img src="{% path photo.media.file, photo.media.file.context ~ '_1460x903' %}" alt="" />
+                                    <img src="{% path photo.media.file, '976x535' %}" alt="" />
                                 </a>
                             </div>
                             {% set firstPicture = false %}
                         {% endif %}
                     {% endfor %}
                 </div>
+                {% set firstCopyright = '' %}
+                {% set firstTitle = '' %}
                 <div class="owl-carousel thumbnails">
                     {% set firstPicture = true %}
                     {% for key, photo in photos %}
@@ -47,7 +49,14 @@
                                 {% set title = photo.media.titleVa %}
                             {% endif %}
 
-                            <div class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
+                            {% if loop.index == 1 %}
+                                {% if photo.media.copyright is not empty %}
+                                    {% set firstCopyright = photo.media.copyright %}
+                                {% endif %}
+                                {% set firstTitle = title %}
+                            {% endif %}
+
+                            <div data-id="photo{{ photo.id }}" class="thumb {% if firstPicture == true %}active{% endif %}" data-caption="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                 <img src="{% path photo.media.file, photo.media.file.context ~ '_320x220' %}" />
                             </div>
                             {% set firstPicture = false %}
@@ -55,6 +64,9 @@
                     {% endfor %}
                 </div>
             </div>
+            <p class="caption">
+                <strong>{{ firstTitle }}{% if firstCopyright is not empty %} © {{ firstCopyright }}{% endif %}</strong>
+            </p>
         </div>
     </div>
 {% endif %}

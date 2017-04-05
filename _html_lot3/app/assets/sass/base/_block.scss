@@ -115,10 +115,10 @@
 
 // - BLOCK 01 medium
 .block-01-m {
-  margin: 40px auto;
+  margin: 0 auto;
   max-width: 100%;
-  width: 900px;
-  margin-bottom: 20px;
+  width: 942px;
+  margin-bottom: 45px;
 
   img {
     max-width: 100%;
@@ -178,7 +178,8 @@
 
   img {
     max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    height: 100%;
   }
 
   .video-container {
@@ -243,7 +244,8 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
   transition: $smoothTransition .7s;
   position: relative;
 
@@ -647,7 +649,6 @@
 
 // - BLOCK FILMS
 .block-films {
-  padding-top: 15px;
   height: 382px;
 
   video {
@@ -777,7 +778,7 @@
     justify-content: center;
 
     .ie & {
-      width: 87%;
+      width: 100%;
     }
 
     .poster {
@@ -1178,7 +1179,6 @@
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
-  padding-bottom: 60px;
   height: 76px;
   box-sizing: inherit;
 
@@ -1808,8 +1808,7 @@
       text-align: left !important;
     }
 
-    .item-manual .contain-infos .descrip-section {
-
+    .item-manual .contain-infos {
       p {
         line-height: 24px;
         font-size: .8125rem;
@@ -2016,14 +2015,16 @@
       font-size: .8125rem;
     }
 
-    .descrip-section p {
-      width: 750px;
-      margin: 0 auto;
-      font-size: 1.25rem;
-      line-height: 36px;
-      padding: 39px 0;
-      text-align: center;
-      color: #000;
+    .descrip-section {
+      p {
+        width: 750px !important;
+        margin: 0 auto !important;
+        font-size: 1.25rem !important;
+        line-height: 36px !important;
+        padding: 39px 0 !important;
+        text-align: center !important;
+        color: #000 !important;
+      }
     }
 
     .item-manual .item-partners .contain-img img {
@@ -2078,8 +2079,8 @@
       font-size: .75rem;
       padding-right: 13px;
       transition: all .9s cubic-bezier(.25, .46, .45, .94);
-      text-decoration: underline;
-      //text-transform: uppercase;
+      text-decoration: none;
+      text-transform: uppercase;
       font-family: $CamphorBold;
     }
 
@@ -2225,6 +2226,10 @@
     display: inline-block;
     width: 277px;
     vertical-align: top;
+
+    .participate & {
+      width: 277px;
+    }
   }
 
   .i-1 {
@@ -2373,15 +2378,13 @@
   flex-direction: row;
 
   p.caption {
-    color: #666 !important;
+    color: #969696 !important;
     font-size: 0.750rem !important;
     margin: 0 !important;
-    line-height: 18px !important;
+    line-height: 12px !important;
     text-align: left !important;
     font-family: $CamphorRegular !important;
   }
-
-
 }
 
 .half-photo {

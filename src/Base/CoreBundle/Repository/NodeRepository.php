@@ -47,7 +47,7 @@ class NodeRepository extends EntityRepository
             ->select('n')
             ->andWhere('n.entityClass IN (:entities)')
             ->setParameter(':entities', $entities)
-            ->innerJoin('n.translations', 'translations')
+            ->innerJoin('n.translations', 'nt')
             ->innerJoin('n.sites', 'site')
             ->andWhere('site.slug = :site_slug')
             ->setParameter('site_slug', $site)
@@ -77,7 +77,7 @@ class NodeRepository extends EntityRepository
             ;
         }
 
-        $this->addTranslationQueries($qb, 'translations', $locale);
+        $this->addTranslationQueries($qb, 'nt', $locale);
 
         if ($maxResults) {
             $qb->setMaxResults($maxResults);
@@ -89,6 +89,279 @@ class NodeRepository extends EntityRepository
 
         return $qb
             ->orderBy('n.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param string $site
+     * @param null $type
+     * @param null $exclude
+     * @param null $before
+     * @param array $filters
+     * @param null $maxResults
+     * @return Node[]
+     */
+    public function getStatementsAndInfos($locale, $site = 'site-press', $type = null, $exclude = null, $before = null, $filters = [], $maxResults = null)
+    {
+        $infoEntities = [
+            InfoArticle::class,
+            InfoAudio::class,
+            InfoImage::class,
+            InfoVideo::class,
+        ];
+
+        $statementEntities = [
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+        if ('info' == $type) {
+            $entities = $infoEntities;
+        } elseif ('statement' == $type || 'communique' == $type) {
+            $entities = $statementEntities;
+        } else {
+            $entities = array_merge($infoEntities, $statementEntities);
+        }
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n')
+            ->andWhere('n.entityClass IN (:entities)')
+            ->setParameter(':entities', $entities)
+            ->innerJoin('n.translations', 'nt')
+            ->innerJoin('n.sites', 'site')
+            ->andWhere('site.slug = :site_slug')
+            ->setParameter('site_slug', $site)
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
+        ;
+
+        foreach ($filters as $field => $value) {
+            $qb
+                ->andWhere("n.{$field} = :{$field}")
+                ->setParameter(":{$field}", $value)
+            ;
+        }
+
+        if ($exclude) {
+            $qb
+                ->andWhere('n.id != :exclude')
+                ->setParameter(':exclude', $exclude)
+            ;
+        }
+
+        if ($before) {
+            $qb
+                ->andWhere('n.publishedAt <= :before')
+                ->setParameter(':before', $before)
+            ;
+        }
+
+        $this->addTranslationQueries($qb, 'nt', $locale);
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
+        return $qb
+            ->orderBy('n.publishedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param string $site
+     * @return array
+     */
+    public function getFormatsStatementsAndInfos($locale, $site = 'site-press')
+    {
+        $entities = [
+            InfoArticle::class,
+            InfoAudio::class,
+            InfoImage::class,
+            InfoVideo::class,
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('n.typeClone')
+            ->andWhere('n.entityClass IN (:entities)')
+            ->setParameter(':entities', $entities)
+            ->innerJoin('n.translations', 'nt')
+            ->innerJoin('n.sites', 'site')
+            ->andWhere('site.slug = :site_slug')
+            ->setParameter('site_slug', $site)
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
+        ;
+
+
+        $this->addTranslationQueries($qb, 'nt', $locale);
+
+        return $qb
+            ->addGroupBy('n.typeClone')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param string $site
+     * @return array
+     */
+    public function getYearsStatementsAndInfos($locale, $site = 'site-press')
+    {
+        $entities = [
+            InfoArticle::class,
+            InfoAudio::class,
+            InfoImage::class,
+            InfoVideo::class,
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('f.year')
+            ->andWhere('n.entityClass IN (:entities)')
+            ->setParameter(':entities', $entities)
+            ->innerJoin('n.translations', 'nt')
+            ->innerJoin('n.sites', 'site')
+            ->innerJoin('n.festival', 'f')
+            ->andWhere('site.slug = :site_slug')
+            ->setParameter('site_slug', $site)
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
+        ;
+
+
+        $this->addTranslationQueries($qb, 'nt', $locale);
+
+        return $qb
+            ->addGroupBy('f.year')
+            ->addOrderBy('f.year', 'desc')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param string $site
+     * @return array
+     */
+    public function getThemesStatementsAndInfos($locale, $site = 'site-press')
+    {
+        $entities = [
+            InfoArticle::class,
+            InfoAudio::class,
+            InfoImage::class,
+            InfoVideo::class,
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+        ];
+
+
+        $qb = $this
+            ->createQueryBuilder('n')
+            ->select('t.id')
+            ->andWhere('n.entityClass IN (:entities)')
+            ->setParameter(':entities', $entities)
+            ->innerJoin('n.translations', 'nt')
+            ->innerJoin('n.sites', 'site')
+            ->innerJoin('n.theme', 't')
+            ->innerJoin('t.translations', 'tt')
+            ->andWhere('tt.locale = :themeLocale')
+            ->setParameter(':themeLocale', $locale)
+            ->andWhere('site.slug = :site_slug')
+            ->setParameter('site_slug', $site)
+            ->andWhere('(n.publishedAt <= :dateTime)')
+            ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
+            ->setParameter('dateTime', new DateTime())
+        ;
+
+        $qb
+            ->leftJoin('n.mainVideo', 'mv')
+            ->leftJoin('mv.sites', 'mvs')
+            ->andWhere('n.typeClone != :video OR (n.mainVideo is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+            ->setParameter(':video', 'video')
+        ;
+
+        $qb
+            ->leftJoin('n.mainAudio', 'ma')
+            ->leftJoin('ma.sites', 'mas')
+            ->andWhere('n.typeClone != :audio OR (n.mainAudio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+            ->setParameter(':audio', 'audio')
+        ;
+
+
+        $this->addTranslationQueries($qb, 'nt', $locale);
+
+        return $qb
+            ->addGroupBy('t.id')
             ->getQuery()
             ->getResult()
             ;

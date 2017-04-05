@@ -22,7 +22,8 @@ var owInitSlider = function (sliderName) {
     /* SLIDER HOME
      ----------------------------------------------------------------------------- */
     if (sliderName == 'home') {
-        var isFirefox = window.mozInnerScreenX ? true : false;
+        var browser = navigator.userAgent.toLowerCase();
+        var isFirefox = browser.indexOf('firefox') > -1 ? true : false;
         var slide = $('.slider-carousel').owlCarousel({
             navigation: true,
             items: 1,
@@ -41,7 +42,7 @@ var owInitSlider = function (sliderName) {
                     container.empty().html(desc);
                     $clamp(container.get(0), {clamp: 3});
                 });
-
+                
                 if(isFirefox){
                     $('.container-images').addClass('ff');
                 }
@@ -112,7 +113,7 @@ var owInitSlider = function (sliderName) {
 
             var openSlideshowClick = function(){
                 $('body').off('click').on('click', '.block-diaporama .owl-item.center', function() {
-                    console.log('click');
+
                     openSlideShow(slide01);
                 });
             }
@@ -222,9 +223,10 @@ var owInitSlider = function (sliderName) {
                 $('.title-edition').addClass('title-4').removeClass('title-edition');
 
                 var imgurl = $('.block-push-top.big .container img').attr('src');
+                
+                $('.block-push').css('background-position', '0px 20%');
                 $('.block-push-top.big .container img').css('display', 'none');
 
-                $('.block-push').css('background-position', '0px -240px');
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
 
                 $.get(url, function (data) {

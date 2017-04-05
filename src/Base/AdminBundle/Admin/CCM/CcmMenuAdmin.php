@@ -64,13 +64,13 @@ class CcmMenuAdmin extends Admin
                     'urlCatalog'          => array(
                         'label'              => 'form.ccm.label.menu.urlCatalog',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.ccm.label.external_url',
+                        'sonata_help'        => 'form.ccm.label.help_relative_url',
                         'required' => false,
                     ),
                     'urlRegister'          => array(
                         'label'              => 'form.ccm.label.menu.urlRegister',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help'        => 'form.ccm.label.external_url',
+                        'sonata_help'        => 'form.ccm.label.help_relative_url',
                         'required' => false,
                     ),
                     'programPicIsActive'    => array(

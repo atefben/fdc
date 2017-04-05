@@ -20,7 +20,7 @@ header {
     overflow: initial;
 
     #navigation ul li ul.tcenter {
-      width: 836px
+      width: 836px;
     }
 
     #navigation ul.main {
@@ -33,6 +33,7 @@ header {
 
       li a {
         color: #a7a7a7;
+
 
         &:hover {
           color: $gold;
@@ -51,7 +52,7 @@ header {
     opacity: 0;
     position: absolute;
     pointer-events: none;
-    bottom: 18px;
+    bottom: 12px;
     right: 0;
     @include transform(translate3d(0, 5px, 0));
     @include transition(opacity 0.3s $smoothTransition, transform 0.3s $smoothTransition);
@@ -66,10 +67,14 @@ header {
     position: fixed;
     top: 0;
     @include transform(translateZ(0));
-    z-index: 15;
+    z-index: 1005;
 
     #top-bar, h1 {
       display: none;
+    }
+
+    #edition {
+      margin-left: 10px!important;
     }
 
     #sticky-user {
@@ -80,6 +85,7 @@ header {
       pointer-events: auto;
       margin-top: 18px;
       transition-delay: 0.5s;
+      margin-right: 85px;
 
       .user-nav {
         border: none;
@@ -104,11 +110,12 @@ header {
     }
 
     #logo-wrapper {
-      height: 50px;
+      height: 50px!important;
       @include transition(all 0.5s $smoothTransition);
 
       #logo {
-        width: 290px;
+        width:310px;
+        padding-top: 5px;
 
         img.palm {
           float: left;
@@ -123,7 +130,7 @@ header {
         p.stick {
           float: left;
           font-size: 1.1rem;
-          margin: 12px 0 0 30px;
+          margin: 7px 0 0 30px;
           opacity: 1;
           visibility: visible;
 
@@ -143,11 +150,11 @@ header {
 
   .user-nav {
     background-color: $black;
-    border-left: 1px solid #404040;
+    border-left: 1px solid #141414;
     float: right;
     font-family: $CamphorBold;
     padding: 0 15px 0 10px;
-
+    @include transition(all 0s $smoothTransition);
     li {
       display: inline-block;
 
@@ -224,17 +231,30 @@ header {
   }
 
   #top-bar {
-    border-bottom: 1px solid #404040;
+    border-bottom: 1px solid #080808;
+    background-color: #141414;
     font-size: 0.750rem;
     height: 28px;
     line-height: 28px;
+    @include transition(all .6s $smoothTransition);
 
     .main-nav {
       float: left;
       font-family: $CamphorBold;
+      background-color: #080808;
+      @include transition(all .6s $smoothTransition);
 
       li {
+        margin-left: -4px;
         display: inline-block;
+        background-color: #080808;
+        border-left: 0px solid #404040;
+        border-right: 0px solid #404040;
+        border-bottom: 1px solid #404040;
+
+        &:last-child {
+          border-bottom: 1px solid #141414!important;
+        }
 
         a {
           color: $grey;
@@ -245,12 +265,11 @@ header {
 
           &:hover, &.active {
             color: $gold;
+            background-color: #141414!important;
           }
 
           &.active {
-            background-color: $black;
-            border-right: 1px solid #404040;
-            padding-bottom: 1px;
+            border-left: 1px solid #404040!important;
           }
         }
       }
@@ -267,14 +286,14 @@ header {
 
   #logo-wrapper {
     background-color: $black;
-    height: 160px;
-    overflow: hidden;
+    height: 159px !important;
     @include transition(all 0.1s $smoothTransition);
     @include transform(translateY(0));
 
     .container {
       height: 100%;
       position: relative;
+      width: 977px;
     }
 
     #logo {
@@ -282,8 +301,9 @@ header {
       padding: 5px 100px 0 0;
       text-align: center;
       vertical-align: middle;
-      width: 200px;
-      positon: relative;
+      /*width: 200px;*/
+      width: 165px;
+      margin-left: 10px;
 
       h1, p.stick {
         font-family: $CamphorBold;
@@ -298,8 +318,8 @@ header {
 
       h1 {
         position: absolute;
-        top: 108px;
-        left: 0px;
+        top: 100px!important;
+        left: 10px!important;
       }
 
       h2 {
@@ -394,6 +414,18 @@ header {
       }
     }
 
+    #leaderBoard {
+      position: absolute;
+      width: 720px;
+      height: 90px;
+      @include transition(all 0.5s $smoothTransition);
+      top: 30px;
+      left: 230px;
+      background: #333333;
+      text-align: center;
+      color: white;
+    }
+
     #search {
       border: 1px solid #404040;
       display: block;
@@ -424,12 +456,21 @@ header {
     }
   }
 
+  .bigContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden!important;
+  }
+
   #navigation {
     background-color: $black;
     border-bottom: 1px solid #404040;
     border-top: 1px solid #404040;
     height: 39px;
     line-height: 39px;
+    z-index: 1005;
+    @include transition(all .8s $smoothTransition);
 
     /*.container {
       overflow: hidden;
@@ -440,25 +481,38 @@ header {
 
       li {
         display: inline-block;
-        margin-left: -4px;
+
+
+        @media screen and(max-width: $mobileWidth) {
+          margin-left: 5px;
+        }
 
         &:hover>a {
-          color: $gold;
+          color: #FFFFFF;
+          @include transition(all .8s $smoothTransition);
         }
 
         &:first-child {
-          margin-left: 0;
+          margin-left: 10px;
+          @media screen and(max-width: $mobileWidth) {
+            margin-left: 10px;
+          }
         }
 
         a {
           color: #fff;
+          font-size: 14px;
           display: block;
           padding-right: 20px;
           text-transform: uppercase;
           @include transition(color 0.9s $smoothTransition);
 
+          @media screen and(max-width: $mobileWidth) {
+              padding-right: 20px;
+          }
+
           &:hover, &.active {
-            color: $gold;
+            color: #ec3050;
           }
         }
 
@@ -467,7 +521,6 @@ header {
         }
 
         ul {
-          background-color: $black;
           box-sizing: border-box;
           margin-top: 1px;
           opacity: 0;
@@ -480,11 +533,12 @@ header {
           @include transform(translateY(0));
 
           &:before {
-            background-color: $black;
-            border-bottom: 1px solid #404040;
+
+            border-bottom: 0px solid #404040;
             content: '';
             display: block;
             height: 100%;
+            height: auto;
             left: -150%;
             position: absolute;
             width: 450%;
@@ -500,27 +554,49 @@ header {
 
           &.tcenter {
             text-align: center;
-            width: 639px;
             padding-left: 0;
             left: 0;
+            opacity: 1;
+            min-height: 500px!important;
+            visibility: visible;
+            display: block;
+            @include transition(all 0.5s $smoothTransition);
 
-            li:last-child a {
-              padding-right: 0;
-            }
+              li {
+                display: block;
+                width: 34%;
+                text-align: left;
+                margin-left: 0px;
+                @include transition(all 0.5s $smoothTransition);
+              }
+
+              li:last-child a {
+                padding-right: 0;
+              }
           }
+
         }
 
-        &:hover ul {
+        &:hover ul, &:hover ul li {
           opacity: 1;
           visibility: visible;
+          display: block;
+          @include transition(all .8s $smoothTransition);
         }
+      }
+
+      .redBckg {
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+        z-index: 1005;
       }
 
       &.main {
         border-right: 1px solid #404040;
         font-family: $CamphorHeavy;
-        font-size: 0.875rem;
-        position: relative;
+        font-size: 0.78rem;
+        /*position: relative;*/
       }
 
       &.user {
@@ -530,10 +606,14 @@ header {
 
         li {
           vertical-align: top;
+          font-size: 0.78rem;
+          @include transition(all .8s $smoothTransition);
         }
 
         li:hover>a {
-          color: $gold;
+          color: #FFFFFF;
+          font-size: 0.78rem;
+          @include transition(all .8s $smoothTransition);
 
           &:after {
             opacity: 1;
@@ -546,6 +626,7 @@ header {
           padding: 0 0 0 26px; //todo
           padding: 0px;
           position: relative;
+          @include transition(all .8s $smoothTransition);
 
           &:after {
             content: '';
@@ -565,7 +646,8 @@ header {
             margin-left: 14px;
           }
           &:hover {
-            color: $gold;
+            color: #FFFFFF;
+            @include transition(all .8s $smoothTransition);
 
             &:after {
               opacity: 1;
@@ -576,9 +658,10 @@ header {
 
         li ul li a {
           color: #fff;
-          font-size: 0.750rem;
+          font-size: 0.78rem;
           font-family: $CamphorHeavy;
           padding: 0 0 0 26px; //todo
+          @include transition(all .8s $smoothTransition);
         }
 
         .participate-wrapper ul {
@@ -618,6 +701,245 @@ header {
   }
 }
 
+#edition:hover, #edition {
+    @include transition(all .8s $smoothTransition);
+}
+
+.searchBox {
+  @include transition(all  2s $smoothTransition);
+  right: 0%;
+  display: none;
+  width: 0px;
+  direction: rtl;
+  @include transition(all  0.9s $smoothTransition);
+
+  input {
+    background: white;
+    height: 30px;
+    width: 190px;
+    padding-left: 15px;
+    
+    }
+}
+
+#searchInput {
+    background-color: white;
+    background-image: url("/img/loupe.png");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;  
+}
+
+#searchBar {
+    margin-left: 85px !important;
+    border-left: 1px solid #404040;
+    padding-left: 20px;
+    @media screen and (max-width: 1279px) {
+      margin-left: 55px !important;
+    }
+  }  
+
+#searchBarA {
+  padding-right: 20px!important;
+}
+  
+.showsearchBox {
+  right: 30%;
+  direction: rtl;
+  @include transition(all  2s $smoothTransition);
+  display: inline-block!important;
+  width: 100px!important;
+}
+
+.marginli {
+  margin-left: 0px!important;
+  @include transition(all  0.9s $smoothTransition);
+}
+
+.marginLastli {
+  display: none!important;
+  @include transition(all  0.9s $smoothTransition);
+}
+
+.showsearchBox > *, .searchBox > * {
+  direction: ltr;
+}
+
+.blackIcon, .icon_recherche:checked {
+  color: black!important;
+  margin-left: 50px!important;
+}
+
+.tleft, .tright {
+  @include transition(all 0.2s $smoothTransition);
+  opacity: 0;
+  visibility: hidden;
+  margin-top: -20px;
+  height: 0px;
+  li {
+    &:hover {
+      color: #FFFFFF!important;
+      opacity: 1!important;
+        @include transition(all 0.2s $smoothTransition);
+    }
+  }
+}
+
+.tleft {
+    margin-left: 100px;
+}
+
+.showT {
+  @include transition(all 0.2s $smoothTransition);
+  visibility: visible;
+  opacity: 1;
+  margin-top: 30px;
+  height: 300px;
+
+}
+
+#subMenu{
+    height: 0px;
+    position: absolute;
+    width: 100%;
+    background: url(/img/purpleBackg.png);
+    background-size: 100% 600px;
+    border-bottom: 0px solid #404040;
+    border: 0px solid #404040;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: middle;
+    color: white !important;
+    margin-top: 0px;
+    z-index: 999;
+    @include transition(all 0.8s $smoothTransition);
+
+  ul {
+    width: 34%;
+    @include transition(all .8s $smoothTransition);
+  }
+
+  li {
+    max-width: 100%!important;
+    display: block!important;
+    margin-left: 0px!important;
+    font-family: $CamphorHeavy;
+    font-size: 0.78rem;
+    text-align: left;
+    @include transition(all .8s $smoothTransition);
+    
+    .active, &:hover {
+      color: #FFFFFF!important;
+      opacity: 1!important;
+      @include transition(all .8s $smoothTransition);
+    }
+    
+  }
+    
+  a {
+      &:hover, &.active {
+        color: #FFFFFF!important;
+      }
+    } 
+}
+
+.liMargin {
+  z-index: 1004;
+}
+
+.littleMargin {
+  margin-top: 50px;
+  height: 50px;
+  @include transition(all .6s $smoothTransition);
+}
+
+.seeSub {
+  @include transition(all .6s $smoothTransition);
+
+  span {
+    font-size: 10px;
+    -ms-transform: rotate(0deg); 
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.showMenu {
+  height: 300px!important;
+  @include transition(all .6s $smoothTransition);
+}
+
+.rotateArrow {
+    width: 5px;
+    float: left;
+    margin-right: 5px;
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    @include transition(all .1s $smoothTransition);
+    font-size: 10px;
+    margin-top: 8px;
+}
+
+.arrowRotated {
+  -ms-transform: rotate(90deg); 
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  @include transition(all .1s $smoothTransition);
+  margin-top: 11px;
+}
+
+.subsubMenu  {
+  overflow: hidden;
+  height: 0px;
+  padding-left: 20px!important;
+  margin-top: -15px!important;
+  margin-bottom: 10px;
+  @include transition(all  0.9s $smoothTransition);
+
+  li {
+    height: 20px;
+    .active, &:hover {
+      color: #FFFFFF!important;
+      opacity: 1!important;
+      text-transform: initial!important;
+    }
+
+    a { 
+      text-transform: initial!important;
+      .active, &:hover {
+        color: #FFFFFF;
+      }   
+    }
+  }
+}
+
+.seesubsubMenu {
+    height: 50px;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+  }
+
+header {
+
+  z-index: 1005;
+
+  #navigation {
+    @include transition(all  0.9s $smoothTransition);
+        /*.tleft:before {
+        background: url("/img/purpleBackg.png");
+        background-size: 100% 450px;
+        border-bottom: 0px solid #404040;
+        border: 0px solid #404040;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position:middle;
+        }*/
+    }
+
+  }
+
 .mob:not(.tablet) {
   #navigation {
     ul {
@@ -655,5 +977,52 @@ header {
     .mob header #navigation ul.user {
       font-size: 0.7rem;
     }
+  }
+}
+
+.blackBckg {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    margin-top: -30px;
+    height: 0%;
+    background: black;
+    padding: 0px;
+    margin: 0px;
+    @include transition(all .6s $smoothTransition);
+    z-index: 1001;
+}
+
+.showblackBckg {
+  display: block!important;
+  height: 100%!important;
+  opacity: 0.9;
+  @include transition(all .6s $smoothTransition);
+}
+
+@media screen and (max-width: 1155px) {
+    .main {
+      float:none;
+    }
+}
+
+.minifiedBar {
+  display: block!important;
+  height: 0px!important;
+}
+
+.minifiedNav {
+    position: absolute!important;
+    right: 0%!important;
+    z-index: 1000!important;
+}
+
+header {
+    .bigContainer {
+      max-width: 977px;
+      margin: 0 auto;
+      text-align: center;
+      overflow: hidden!important;
   }
 }

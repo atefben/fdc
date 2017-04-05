@@ -3,7 +3,7 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
 {% set selfkits = movie.selfkitImages %}
-{% block bodyClass %}article-single retrospective retrospective-home restrospective-init loading{% endblock bodyClass %}
+{% block bodyClass %}article-single retrospective retrospective-home restrospective-init {% endblock bodyClass %}
 
 {% block body %}
     <section class="s-slider-retrospective">
@@ -91,7 +91,7 @@
 
         <div class="container">
 
-            {% include 'FDCEventBundle:Movie:widgets/casting.html.twig' %}
+            {% include 'FDCCorporateBundle:Movie:widgets/casting.html.twig' %}
 
             {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias, 'selfkits': selfkits} %}
 
@@ -99,7 +99,7 @@
             <div class="news" data-section="news">
                 <div class="articles center">
                 {% for article in articles %}
-					{% include 'FDCEventBundle:News:widgets/article.html.twig' %}
+					{% include 'FDCCorporateBundle:News:widgets/article.html.twig' %}
                 {% endfor %}
                 </div>
             </div>
@@ -155,7 +155,7 @@
         "url"  : path('fdc_corporate_editions_retrospective')
         },
         {
-        "name" : 'breadcrumb.la_selection'|trans,
+        "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ movie.festival.year,
         "url"  : path('fdc_event_movie_selection')
         },
         {

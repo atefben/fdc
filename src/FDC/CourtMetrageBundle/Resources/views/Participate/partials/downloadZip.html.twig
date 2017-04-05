@@ -3,7 +3,7 @@
         <strong class="title-dowload">{{ tab.buttonsSectionTitle }}</strong>
         <div class="buttons buttons-02 a-left s-margin-top">
             {% for fileWidget in files[tab.translatable.id] %}
-                <a href="{% path fileWidget.file, 'reference' %}" class="button"><i class="icon icon_telecharger"></i> {{ fileWidget.fileTitle }}</a>
+                <a href="{% path fileWidget.file, 'reference' %}" class="button ajax"><i class="icon icon_telecharger"></i> {{ fileWidget.fileTitle }}</a>
             {% endfor %}
         </div>
         {% if constraints %}

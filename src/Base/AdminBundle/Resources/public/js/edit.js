@@ -47,83 +47,32 @@ jQuery(document).ready(function ($) {
 
     $('.sonata-ba-collapsed-fields .form-group .item a').each(function () {
         $(this).attr('title', $(this).attr('href'));
-    })
+    });
+
     // preview
     var url = window.location.href;
-    var newsUrl = url.split("/");
-
-    if (newsUrl[6] == 'newsarticle' || newsUrl[6] == 'newsvideo' || newsUrl[6] == 'newsimage' || newsUrl[6] == 'newsaudio') {
-        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
-
-        switch (newsUrl[6]) {
-            case 'newsarticle':
-                var format = 'articles';
-                break;
-            case 'newsvideo':
-                var format = 'videos';
-                break;
-            case 'newsimage':
-                var format = 'photos';
-                break;
-            case 'newsaudio':
-                var format = 'audios';
-                break;
+    function previewNodeUrl() {
+        var $btnPreview = $('#btn-preview');
+        if ($btnPreview.length) {
+            var nodeUrlPath = Routing.generate('base_admin_ajax_nodeurl', {
+                type: $btnPreview.data('type'),
+                id: $btnPreview.data('id'),
+                locale: $('.a2lix_translationsLocales.nav.nav-tabs li.nav-tab-active.active').data('locale'),
+                site: 'event',
+            });
+            console.log(nodeUrlPath);
+            $.post(nodeUrlPath, function (data) {
+                console.log(data);
+                $('.preview-button').remove();
+                $('.well.well-small.form-actions').append('<a target="_blank" href="' + data + '" class="btn btn-info preview-button" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
+            })
         }
-
-        var route = Routing.generate('fdc_event_news_get', {_locale: 'fr', format: format, slug: slug});
-        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
     }
-    else if (newsUrl[6] == 'statementarticle' || newsUrl[6] == 'statementvideo' ||
-        newsUrl[6] == 'statementimage' || newsUrl[6] == 'statementaudio' ||
-        newsUrl[6] == 'infoarticle' || newsUrl[6] == 'infovideo' ||
-        newsUrl[6] == 'infoimage' || newsUrl[6] == 'infoaudio') {
-        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview')
+    previewNodeUrl();
+    $('.a2lix_translationsLocales.nav.nav-tabs > li').on('shown.bs.tab', function (e) {
+        previewNodeUrl();
+    });
 
-        switch (newsUrl[6]) {
-            case 'statementarticle':
-                var format = 'articles';
-                var type = 'communique';
-                break;
-            case 'statementvideo':
-                var format = 'videos';
-                var type = 'communique';
-                break;
-            case 'statementimage':
-                var format = 'photos';
-                var type = 'communique';
-                break;
-            case 'statementaudio':
-                var format = 'audios';
-                var type = 'communique';
-                break;
-            case 'infoarticle':
-                var format = 'articles';
-                var type = 'info';
-                break;
-            case 'infovideo':
-                var format = 'videos';
-                var type = 'info';
-                break;
-            case 'infoimage':
-                var format = 'photos';
-                var type = 'info';
-                break;
-            case 'infoaudio':
-                var format = 'audios';
-                var type = 'info';
-                break;
-        }
-        var route = Routing.generate('fdc_press_news_get', {_locale: 'fr', format: format, slug: slug, type: type});
-        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
-    }
-    else if (newsUrl[4] == 'ccmnewsarticle' || newsUrl[4] == 'ccmnewsvideo' ||
-        newsUrl[4] == 'ccmnewsimage' || newsUrl[4] == 'ccmnewsaudio') {
-        var slug = $('.a2lix_translationsFields-fr #btn-preview').data('preview');
-
-
-        var route = Routing.generate('fdc_court_metrage_news_detail', {_locale: 'fr', slug: slug});
-        $('.well.well-small.form-actions').append('<a target="_blank" href="' + route + '" class="btn btn-info" id="prev"> <i class="fa fa-search"></i> Prévisualiser </a>');
-    }
     // on modal add, reload function
     $(window).on('shown.bs.modal', function () {
         if ($('.modal[aria-hidden="false"]').find('form[action*="create"]').length) {

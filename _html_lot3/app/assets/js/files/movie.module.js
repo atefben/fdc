@@ -3,8 +3,39 @@ var videoMovie;
 
 // Single Movie
 // =========================
+$( window ).resize( function(){
+  if($('.grid-selection .isotope-01').length) {
+    var w = $('.grid-selection .isotope-01 .contain-img').first().width();
+    $('.grid-selection .isotope-01 .contain-img').each(function() {
+      $(this).css('height', (w / 0.75));
+    });
+  }
+});
 $(document).ready(function() {
-  
+  if($('.content-movie').length) {
+    $('.content-movie .prevmovie').on('click', function (e) {
+      var link = $('.content-movie .arrows .nav.prev').attr('href');
+      document.location.href = link;
+    });
+
+    $('.content-movie .nextmovie').on('click', function (e) {
+      var link = $('.content-movie .arrows .nav.next').attr('href');
+      document.location.href = link;
+    });
+  }
+
+  if($('.grid-selection .isotope-01').length) {
+    var w = $('.grid-selection .isotope-01 .contain-img').first().width();
+    $('.grid-selection .isotope-01 .contain-img').each(function() {
+      $(this).css('height', (w / 0.75));
+      var $container = $(this), imgUrl = $container.find('img').prop('src');
+      if (imgUrl) {
+        $container.css('backgroundImage', 'url('+imgUrl+')').addClass('compat-object-fit');
+      }
+    });
+  }
+
+
   //fix tatiana
   if($('.single-movie').length) {
     var h = $('.press[data-section]').height();
@@ -26,7 +57,6 @@ $(document).ready(function() {
       posT -= 32;
     }
 
-    console.log(posT);
 
     $('html, body').animate({
       scrollTop: posT
@@ -52,6 +82,8 @@ $(document).ready(function() {
     }
   }
   /* end tetiere height computing */
+
+
 
   if($('.single-movie').length) {
 
@@ -146,14 +178,6 @@ $(document).ready(function() {
       }
     });
 
-    $('body').on('click', '.single-movie .prevmovie', function(e) {
-      $('.single-movie .nav.prev').trigger('click');
-    });
-
-    $('body').on('click', '.single-movie .nextmovie', function(e) {
-      $('.single-movie .nav.next').trigger('click');
-    });
-
     // previous and next over
     $('body').on('mouseover', '.single-movie .prevmovie', function(e) {
       $('.single-movie .nav.prev').addClass('over');
@@ -227,11 +251,7 @@ $(document).ready(function() {
       });
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
-        
-        
-
         var number = $(this).closest('.owl-item').index();
-        videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }

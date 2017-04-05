@@ -89,7 +89,7 @@ class HomepageActualiteType extends AbstractType
                     'url'          => array(
                         'label'              => 'form.ccm.label.actualite.url',
                         'translation_domain' => 'BaseAdminBundle',
-                        'sonata_help' => 'form.ccm.label.external_url',
+                        'sonata_help' => 'form.ccm.label.help_relative_url',
                     ),
                 ),
             ))

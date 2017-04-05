@@ -13,7 +13,7 @@
                 {% set copyright = photo|trans_fallback('copyright') %}
                 <div class="img {% if key == 0 %}active{% endif %}">
                     <a id="photo{{ photo.id }}" data-pid="{{ photo.id }}" class="chocolat-image ajax" href="{% if file.width > file.height %}{% path file, '1280x808' %}{% else %}{% path file, '808x1280' %}{% endif %}" title="<span class='category'>{{ photo.theme|trans_fallback('name') }}</span><span class='date'>{{ photo.createdAt|date('d.m.y H:i') }}</span><h2>{{ photo|trans_fallback('legend')  }}</h2>" data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}">
-                        <img src="{% if file.width > file.height %}{% path file, '880x554' %}{% else %}{% path file, '554x880' %}{% endif %}" srcset="{% if file.width > file.height %}{% path file, '880x554' %}{% else %}{% path file, '554x880' %}{% endif %} 1x, {% if file.width > file.height %}{% path file, '1760x1108' %}{% else %}{% path file, '1760x1108' %}{% endif %} 2x" alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}">
+                        <img src="{% if file.width > file.height %}{% path file, '880x554' %}{% else %}{% path file, '554x880' %}{% endif %}" alt="{{ photo|trans_fallback('alt') }}" title="{{ photo|trans_fallback('legend') }}">
                     </a>
                 </div>
             {% endfor %}

@@ -23,6 +23,29 @@
           </span>
         </div>
     {% endif %}
+    
+    {% if filters.editions is defined %}
+        <div id="date" class="filter">
+            <span class="label">{{ 'article.filter.label.editions'|trans }} :</span>
+            <span class="select">
+            {% for key, year in filters.editions %}
+                <span class="{% if key == 0 %}active{% endif %}"
+                      data-filter="{% if key != 0 %}date-{{ year }}{% else %}all{% endif %}">
+                {% if key != 0 %}
+                    {% if app.request.locale != 'cn' %}
+                        {{ year }}
+                    {% else %}
+                        {{ year }}
+                    {% endif %}
+                {% else %}
+                    [ {{ 'search.result.filter.toutes'|trans }} ]
+                {% endif %}
+            </span>
+            {% endfor %}
+                <i class="icon icon-arrow-down"></i>
+          </span>
+        </div>
+    {% endif %}
 
     <div id="theme" class="filter">
         <span class="label">{{ 'article.filter.label.theme'|trans }} :</span>

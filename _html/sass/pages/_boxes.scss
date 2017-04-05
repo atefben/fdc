@@ -1,0 +1,534 @@
+.our-news {
+    background: url("/img/background-gold.png") no-repeat;
+    background-size: 100% 100%;
+    text-align:center;
+    height: 865px;
+    vertical-align: middle;
+    padding-top: 5%;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    
+    @media screen and (max-width: $mobileWidth) {
+
+          .innerWrapper {
+            width: 70%!important;
+            max-width: 70%!important;
+          }
+          .noShow {
+            display: none!important;
+          }
+      }
+    
+    span {
+      color:#533b0e;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: $CamphorHeavy;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-size: 48px;
+      color: white;
+      margin: 25px 0px 100px 0px;
+      letter-spacing: 7px;
+      font-family: "Playfair Display",Times New Roman,Times,serif;
+    }
+
+    .articles {
+      height: 560px;
+      background: #FFFFFF;
+      width: 32.5%;
+      display: block;
+      float: left;
+      text-align: left;
+      margin-left: 0.5%;
+
+      .readMore {
+          position: absolute;
+          /* top: 1%; */
+          margin-top: 500px;
+          margin-left: 30px;
+          font-size: 25px;
+          color: #333;
+      }
+
+      @media screen and (max-width: $mobileWidth) {
+          width: 49% !important;
+          margin-left: 0% !important;
+          margin: 0.5% !important;
+      }
+
+        .articles-content {
+          padding: 30px;
+          display: block;
+            .readMore {
+              font-size: 25px;
+              position: absolute;
+            }
+        }
+
+        .articles-img {
+          height: 215px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &:nth-child(2), &:nth-child(3) {
+          margin-left: 2%;
+        }
+
+        span {
+          text-transform: uppercase;
+          color: #c3a05f;
+          font-size: 10px;
+          font-family: $CamphorHeavy;
+          letter-spacing: 2px;
+        }
+      
+        .article-date {
+            color: #333;
+            padding-left: 5px;
+          }
+
+        h6 {
+          margin: 25px 0px;
+          letter-spacing: 2px;
+          font-size:20px;
+          line-height: 35px;
+          opacity: 0.8;
+          color: #000000;
+          font-family: "Playfair Display","Times New Roman",Times,serif;
+          text-transform: none!important;
+        }
+
+        p {
+          font-size: 13px;
+          color: #b1b1b1;
+          overflow: hidden;
+          font-family: $CamphorRegular;
+          line-height: 30px;
+          /*overflow: hidden!important;
+          text-overflow: ellipsis!important;
+          text-align: left;
+          opacity: 0.8;
+          text-align: left;*/
+          @-moz-document url-prefix() { 
+            font-size: 13px;
+          }
+        }
+    }
+}
+
+/* BOX PRODUCERS WORKSHOP */
+
+.producersWorkshop {
+    width: 100%;
+    height: 310px;
+    padding: 0px 0px;
+    background: url("/img/redBackg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+    h3 {
+      color: white;
+      margin: 85px 0px 105px 0px;
+      text-transform: initial;
+      letter-spacing: 1px;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.opportunites {
+    width: 100%;
+    height: 310px;
+    padding: 0px 0px;
+    background: url("/img/ligthblueBckg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: 0px solid #404040;
+    overflow: hidden;
+
+    h3 {
+      color: white;
+      margin: 90px 0px 100px 0px;
+      text-transform: initial;
+      letter-spacing: 3px;
+    }
+}
+
+.subNavigation {
+  background: black;
+  height: 50px;
+  line-height: 50px;
+
+    .active {
+      color: #ec3050;
+    }
+
+    ul {
+      font-size: 0.875rem;
+      li {
+        display: inline-block;
+        margin-left: 30px;
+        a {
+          color: #fff;
+          font-family: $CamphorHeavy;
+          display: block;
+          padding-right: 20px;
+          text-transform: uppercase;
+          -moz-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -o-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          -webkit-transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          transition: color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
+          letter-spacing: 1px;
+          font-weight: normal;
+        }
+      }
+    }
+}
+
+.opportunites {
+  .subNavigation {
+    .active {
+      color: #1bafd1;
+    }
+  }
+}
+
+/* END BOX PRODUCERS WORKSHOP */
+
+
+/* BOX CONTACT */
+
+#contact-box {
+  z-index: 1000!important;
+  position: relative;
+}
+
+.backgroundImg {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  min-height: 660px;
+}
+
+.contact-box {
+    position: relative;
+    width: 100%;
+    height: 660px;
+    overflow: hidden;
+    /*background: url("/img/plage-cannes.png");*/
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .contact-details {
+      background: white;
+      position: relative;
+      width: 309px;
+      height: 580px;
+      float: right;
+      margin-right: 150px;
+      margin-top: 50px;
+      padding: 0px 60px 0px 30px;
+
+      /*@media screen and (max-width: 1366px) {
+        height: 320px;
+        max-height: 320px;
+        width: 230px;
+        padding: 0px 30px 0px 30px;
+      }*/
+
+      span {
+        width: 300px;
+        float: left;
+        text-align: left;
+        line-height: 30px;
+      }
+
+      .howTo {
+        font-size: 15px;
+        color:#989898;
+        font-family: $CamphorRegular;
+        line-height: 45px;
+          /*@media screen and (max-width: 1366px) {
+            line-height: 25px;
+          }*/
+      }
+
+      .getTo {
+        font-size: 22px;
+            margin-bottom: 30px;
+            color: #141414;
+            letter-spacing: 2px;
+            font-family: "Playfair Display",Times New Roman,Times,serif;
+            opacity: 0.6;   
+      }
+
+      .informations {
+        font-size: 14px;
+        color: #141414;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        line-height: 45px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-family: $CamphorHeavy;
+          /*@media screen and (max-width: 1366px) {
+            margin-top: 15px;
+            margin-bottom: 10px;
+          }*/
+      }
+
+      .knowMore {
+        margin-top: 80px;
+        text-transform: uppercase;
+        font-family: $CamphorHeavy;
+        text-decoration: none;
+        color: #141414;
+        opacity: 0.8;
+          /*@media screen and (max-width: 1366px) {
+            margin-top: 25px;
+          }*/
+      }
+    }
+}
+
+
+.reverse {
+      -ms-transform: rotate(180deg); 
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+/* COMPONENTS : FLOATING BUTTONS*/
+
+.blackBtn {
+  width: 180px;
+  height: 50px;
+  background: black;
+  color:white;
+  text-transform: uppercase;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.floatingButton {
+    position: absolute;
+    z-index: 1004;
+    z-index: 999;    
+    right: 1%;
+    top: 100%;
+    
+    span:first-child {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      float: right;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+      
+    }
+    
+    .icon_flecheGauche:hover span:first-child {
+      opacity: 1;
+      visibility: visible;
+      @include transition(all .5s $smoothTransition);
+    }
+    
+    &:hover .arrow {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(all .5s $smoothTransition);
+
+    }
+}
+
+
+.showBtn {
+  display: block!important;
+}
+
+.floatingButtonRight {
+  /*position: absolute;
+  z-index: 1004;  
+  right: 1%;
+  top: 100%;*/
+  display: none;
+  position: fixed;
+  z-index: 999;  
+  right: 1%; 
+  top: 50%;
+  @include transition(all .5s $smoothTransition);
+
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }      
+
+    span {
+      float: left;
+    }
+
+    .floatingButtonText{
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      text-transform: uppercase;
+      display: none;
+      float: left;
+      max-width: 200px;
+      @include transition(all .5s $smoothTransition);
+      @include transition(all .5s $smoothTransition);
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: right;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+    }
+    
+    &:hover {
+      @include transition(all .5s $smoothTransition);
+    }
+}
+
+.floatingButtonLeft {
+  display: none;
+  position: fixed;
+  z-index: 999;  
+  left: 1%; 
+  top: 50%;
+  @include transition(all .5s $smoothTransition);
+
+  @media screen and (max-width: $mobileWidth) {
+    top: 48%;
+  }  
+    span {
+      float: left;
+    }
+
+    .floatingButtonText {
+      background: black;
+      padding: 20px 30px;
+      color: white;
+      max-width: 200px;
+      text-transform: uppercase;
+      display: none;
+      float: left;
+      @include transition(all .5s $smoothTransition);
+
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px 20px;
+      }
+    }
+
+    .arrow {
+      opacity: 1;
+      visibility: visible;
+      width: 70px;
+      height: 70px;
+      float: left;
+      @include transition(all .5s $smoothTransition);
+    }
+    .icon_flecheGauche {
+      
+      padding: 20px;
+      font-size: 15px;
+      border:1px solid #ECECEC;
+      @media screen and (max-width: $mobileWidth) {
+        padding: 10px;
+      }
+      
+    }
+
+    &:hover {
+      @include transition(all .5s $smoothTransition);
+    }
+}
+
+.message {
+  margin-left: 50px;
+  text-transform: initial;
+  font-size: 16px;
+  color: #505050;
+  font-family: $CamphorHeavy;
+  @include transition(all 1s $smoothTransition);
+}
+
+.blueBtn {
+    float: right;
+    right: 5%;
+    width: 139px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #29afcf;
+    color: #29afcf;
+    line-height: 50px;
+    text-decoration: none;
+    background: transparent;
+    z-index: 1005;
+    cursor: pointer;
+
+    &:hover {
+      background: #29afcf!important;
+      color: white!important;
+      cursor: pointer;
+    }
+}

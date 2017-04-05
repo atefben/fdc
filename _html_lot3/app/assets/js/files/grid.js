@@ -61,13 +61,17 @@ var owInitGrid = function (id) {
                     }
                 }
             });
-        }
+        };
         var clickAllow = true;
         var $gridDom = $('.add-ajax-request');
+        if(!$('.home').length){
+            owsetGridBigImg(false, $('.grid-01'), false);
+        }
         var $gridMore = $gridDom.imagesLoaded(function(){
             $gridMore.isotope({
                 itemSelector: '.item',
                 layoutMode: 'masonry',
+                percentPosition : true,
                 packery: {
                     columnWidth: '.grid-sizer'
                 },
@@ -78,12 +82,14 @@ var owInitGrid = function (id) {
                 sortBy: ['number']
             });
 
-            //$gridMore.isotope();
+            //hotfix isotope bugs : trigger layout to avoid messy cards
+            var layoutInterval = window.setInterval(function(){
+                $gridMore.isotope('layout');
+            },500);
 
             //reset big imgs
             $gridMore.on('layoutComplete',function(event,laidOutItems){
                 $('.grid-01').find('double').removeClass('double').removeClass('w2');
-                owsetGridBigImg(false, $('.grid-01'), false);
             });
 
             $('html').on('click','#filters span',function(){
@@ -120,36 +126,15 @@ var owInitGrid = function (id) {
         });
 
         var number = 0;
-
+        var ajaxLock = false;
         if(!$('.home').length){
 
             $('.read-more.ajax-request').off('click').on('click', function(e){
-                var ajaxLock = true;
+                
                 var $this = $(this);
                 var url = $(this).attr('href');
 
                 var postData = {};
-                if(typeof $('input[name="search"]').val() !== 'undefined'){
-                    postData.search = $('input[name="search"]').val();
-                }
-                if(typeof $('input[name="photo"]').val() !== 'undefined'){
-                    postData.photo = $('input[name="photo"]').val();
-                }
-                if(typeof $('input[name="video"]').val() !== 'undefined'){
-                    postData.video = $('input[name="video"]').val();
-                }
-                if(typeof $('input[name="audio"]').val() !== 'undefined'){
-                    postData.audio = $('input[name="audio"]').val();
-                }
-                if(typeof $('input[name="year-start"]').val() !== 'undefined'){
-                    postData['year-start'] = $('input[name="year-start"]').val();
-                }
-                if(typeof $('input[name="year-end"]').val() !== 'undefined'){
-                    postData['year-end'] = $('input[name="year-end"]').val();
-                }
-                if(typeof $('input[name="pg"]').val() !== 'undefined'){
-                    postData.pg = parseInt($('input[name="pg"]').val())+1;
-                }
 
                 if($('#date.filter .select .active').length){
                     postData.date = $('#date.filter .select .active').data('filter');
@@ -163,66 +148,73 @@ var owInitGrid = function (id) {
                 if($('#type.filter .select .active').length){
                     postData.type = $('#type.filter .select .active').data('filter');
                 }
-                console.log('data sent to GET on ajax button click',postData);
 
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    data: postData,
-                    success: function(data) {
-                        $data = $(data);
-                        
-                        var moreBtn = $data.find('.ajax-request').attr('href');
-                        var articles = $data.find('article');
-                        var scroll = $(document).scrollTop();
-                        var rawHtml = '';
-                        articles.each(function(){
-                            rawHtml += $(this).get(0).outerHTML;
-                        });
-
-                        $gridMore.isotope('insert',articles);
-                        $gridMore.isotope('layout');
-                        if(typeof moreBtn !== 'undefined'){
-                            
-                            $this.attr('href',moreBtn);
-                        }else{
-                            //$this.remove();
-                        }
-
-                        //manage filters
-                        if($data.filter('.compute-filters').length){
-                            $data.filter('.compute-filters').each(function(){
-                                var slug = $(this).attr('class').replace('compute-filters ','');
-
-                                $(this).find('span').each(function(){
-                                    //test if filter exists
-                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
-                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
-                                    }
-                                });
+                //console.log('data sent to GET',postData);
+                if(!ajaxLock && url != '#'){
+                    ajaxLock = true;
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: postData,
+                        success: function(data) {
+                            $data = $(data);
+                            ajaxLock = false;
+                            var moreBtn = $data.find('.ajax-request').attr('href');
+                            var articles = $data.find('article');
+                            var scroll = $(document).scrollTop();
+                            var rawHtml = '';
+                            articles.each(function(){
+                                rawHtml += $(this).get(0).outerHTML;
                             });
+
+                            $gridMore.isotope('insert',articles);
+                            $gridMore.isotope('layout');
+                            if(typeof moreBtn !== 'undefined'){
+                                $this.attr('href',moreBtn);
+                            }else{
+                                if($('.media-library').length){
+                                    $this.remove();
+                                }else{
+                                    $this.attr('href','#');
+                                }
+                            }
+
+                            //manage filters
+                            if($data.filter('.compute-filters').length){
+                                $data.filter('.compute-filters').each(function(){
+                                    var slug = $(this).attr('class').replace('compute-filters ','');
+
+                                    $(this).find('span').each(function(){
+                                        //test if filter exists
+                                        if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                            $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                        }
+                                    });
+                                });
+                            }
+
+                            
+
+                            $('.card.item').each(function(){
+                                var $this = $(this);
+                                var title = $this.find('.info strong a');
+                                var cat = $this.find('.info .category');
+                                var titleText;
+                                var catText;
+
+                                $clamp(title.get(0), {clamp: 2});
+                                //$clamp(cat.get(0), {clamp: 1});
+                            });
+                            owsetGridBigImg(false, $('.grid-01'), false);
+                            $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                            
+                            //if no button ajax-request, then remove current button
+                            owinitSlideShow($gridMore);
+                            initVideo();
+                            initAudio();
                         }
-                        
-
-                        $('.card.item').each(function(){
-                            var $this = $(this);
-                            var title = $this.find('.info strong a');
-                            var cat = $this.find('.info .category');
-                            var titleText;
-                            var catText;
-
-                            $clamp(title.get(0), {clamp: 1});
-                            $clamp(cat.get(0), {clamp: 1});
-                        });
-
-                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
-                        
-                        //if no button ajax-request, then remove current button
-                        owinitSlideShow($gridMore);
-                        initVideo();
-                        initAudio();
-                    }
-                });
+                    });
+                }
 
                 return false;
             });
@@ -258,8 +250,8 @@ var owInitGrid = function (id) {
                     var title = $(e).find('.info strong a');
                     var cat = $(e).find('.info .category');
 
-                    $clamp(title.get(0), {clamp: 1});
-                    $clamp(cat.get(0), {clamp: 1});
+                    $clamp(title.get(0), {clamp: 2});
+                    //$clamp(cat.get(0), {clamp: 1});
                 });
             }
     
@@ -387,7 +379,7 @@ var owInitGrid = function (id) {
                 var title = $(e).find('.info strong a');
                 var cat = $(e).find('.info .category');
 
-                $clamp(title.get(0), {clamp: 1});
+                $clamp(title.get(0), {clamp: 2});
                 $clamp(cat.get(0), {clamp: 1});
             });
         }
@@ -435,6 +427,95 @@ var owInitGrid = function (id) {
             }
 
             var filters = filterDate + filterTheme + filterFormat + filterType;
+
+            //fix infos & communiques : add empty grid + ajax call on filter change
+            if($('.articles-list').length){
+                var ajaxUrl = $('#stamp-ajax-filter-url').text();
+                var ajaxData = {};
+                $('.articles-list .filters .filter').each(function(){
+                    var filterId = $(this).attr('id');
+                    if(typeof filterId !== 'undefined'){
+                        ajaxData[filterId] = $(this).find('.select .active').data('filter');
+                    }
+                });
+
+                $.ajax({
+                    type: 'GET',
+                    url: ajaxUrl,
+                    data: ajaxData,
+                    success: function(data) {
+                        $data = $(data);
+
+                        var moreBtn = $data.find('.ajax-request').attr('href');
+                        var articles = $data.find('article');
+                        var scroll = $(document).scrollTop();
+                        var rawHtml = '';
+                        articles.each(function(){
+                            rawHtml += $(this).get(0).outerHTML;
+                        });
+
+                        var $gridMore =  $('.isotope-01');
+                        //empty isotope
+                        var $currentItems = $gridMore.data('isotope').$element.find('article.item');
+                        $gridMore
+                            .isotope('remove', $currentItems)
+                            .isotope('insert',articles);
+
+                            var timeout = window.setTimeout(function(){
+                                var bigInterval = window.setInterval(function(){
+                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
+                                        window.clearInterval(bigInterval);
+                                    }else{
+                                        owsetGridBigImg($gridMore, $('.grid-01'), false);
+                                    }
+                                },500);
+                                $gridMore.isotope('layout');
+                            },300);
+                        if(typeof moreBtn !== 'undefined'){
+                            if($('.isotope-01').parent().find('.read-more').length){
+                                $('.isotope-01').parent().find('.read-more').attr('href',moreBtn);
+                            }
+                        }else{
+                            $('.isotope-01').parent().find('.read-more').attr('href','#');
+                        }
+
+                        //manage filters
+                        if($data.filter('.compute-filters').length){
+                            $data.filter('.compute-filters').each(function(){
+                                var slug = $(this).attr('class').replace('compute-filters ','');
+
+                                $(this).find('span').each(function(){
+                                    //test if filter exists
+                                    if(!$('#'+slug+' .select span[data-filter="'+$(this).data('filter')+'"]').length){
+                                        $('#'+slug+' .select .icon-arrow-down').before($(this));
+                                    }
+                                });
+                            });
+                        }
+                        
+
+                        $('.card.item').each(function(){
+                            var $this = $(this);
+                            var title = $this.find('.info strong a');
+                            var cat = $this.find('.info .category');
+                            var titleText;
+                            var catText;
+
+                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(cat.get(0), {clamp: 1});
+                        });
+
+                        $('input[name="pg"]').val(parseInt($('input[name="pg"]').val())+1);
+                        
+                        //if no button ajax-request, then remove current button
+                        owinitSlideShow($gridMore);
+                        initVideo();
+                        initAudio();
+                    }
+                });
+            }
+
             var $grid = $('.isotope-01').isotope({filter: filters});
         }
 
@@ -451,7 +532,7 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-
+    console.log('gridBigImg');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -464,67 +545,51 @@ var owsetGridBigImg = function (grid, dom, init) {
         nbImage = $img.length;
 
     dom.find('article.card').removeClass('double w2');
-
     if (window.matchMedia("(max-width: 1279px)").matches) {
-
         while (i < $img.length) {
-            if (j < 15) {
-                if (j == 1 || j == 5) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 14) {
-                j = 0;
-            }
-            i++;
+        if (j < 15) {
+          if (j == 1 || j == 5 || j == 11) {
+            $($img[i]).closest('article.card').addClass('double w2');
+          }
+          j++;
         }
+        if (j == 14) {
+          j = 0;
+        }
+        i++;
+      }
 
 
     } else if (window.matchMedia("(max-width: 1599px)").matches) {
-
         while (i < $img.length) {
-            if (j < 10) {
-                if (j == 1 || j == 6) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 9) {
-                j = 0;
-            }
-            i++;
+        if (j < 10) {
+          if (j == 1 || j == 3) {
+            $($img[i]).closest('article.card').addClass('double w2');
+          }
+          j++;
         }
-
-
-    } else if (window.matchMedia("(max-width: 1919px)").matches) {
+        if (j == 9) {
+          j = 0;
+        }
+        i++;
+      }
+    } else if (window.matchMedia("(min-width: 1600px)").matches) {
         while (i < $img.length) {
             if (j < 30) {
-                if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
+              if (j == 1 || j == 3 || j == 12 || j == 17 || j == 25) {
+                $($img[i]).closest('article.card').addClass('double w2');
+              }
+              j++;
             }
             if (j == 29) {
-                j = 0;
+              j = 0;
             }
             i++;
         }
+    }
 
-
-    } else if (window.matchMedia("(min-width: 1920px)").matches) {
-        while (i < $img.length) {
-            if (j < 15) {
-                if (j == 1 || j == 5 || j == 14) {
-                    $($img[i]).closest('article.card').addClass('double w2');
-                }
-                j++;
-            }
-            if (j == 14) {
-                j = 0;
-            }
-            i++;
-        }
+    if(grid){
+        grid.isotope('layout');
     }
 };
 

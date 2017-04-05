@@ -59,11 +59,6 @@
     border-bottom: 0px;
 }
 
-.block-accordion-02 .item-manual .contain-infos .item-infos a:hover {
-    color: #000;
-    border-color: #000;
-}
-
 .popin .article-authors {
     color: $gold;    
 }
@@ -73,7 +68,7 @@
 }
 
 .module-title .title-big {
-    color: #fff;
+    color: $black;
     font-family: "Playfair Display";
     font-size: 3rem;
     font-weight: 400;
@@ -395,10 +390,6 @@ article.communique .picto {
     margin-top: -6px;
 }
 
-.dark .title-list-cat .title-item {
-    font-weight: 300;
-}
-
 .articles-list .card .info strong{
     font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif!important;
 }
@@ -482,7 +473,7 @@ article.communique .picto {
 }
 
 .block-01 .title-12 {
-  display: inline-block !important;
+
 }
 
 .block-movie-preview .wrapper-item .description {
@@ -658,6 +649,12 @@ header #navigation ul.user li a .icon {
 
 .article-single .text a {
     color: $gold;
+}
+
+.article-single .text a.button:hover,
+.article-single .text .button a:hover {
+    background: $gold;
+    color: #fff;
 }
 
 /* hotfix bad width calculation */
@@ -946,4 +943,96 @@ header #navigation ul.user li a {
     }
 }
 
+.article-single .small-pres p.caption strong,
+.article-single .pres-honneur p.caption strong {
+    font-size: .75rem;
+}
+
+.who-fdc .block-01-s .half-photos {
+    margin: 0 auto;
+}
+
+.ie.story-palme .block-movie-preview .poster {
+    width: 420px;
+}
+
+div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .owl-stage {
+    min-width: 999999px;
+}
+
+.dark.story-movie .wysiwyg-article-02 p {
+    color: #dbdbdb;
+}
+
+.article-single.dark .wysiwyg-article-02 .caption {
+    color: #dbdbdb;
+}
+
+.block-01-s .half-photo {
+    width: 47%;
+}
+
+.dark .block-movie-preview .description,
+.dark.article-single .text p {
+    color: #dbdbb;
+}
+
+.block-contact a strong {
+    color: $gold;    
+}
+
+.who-fdc .half-photos .half-photo .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.who-fdc .slideshow .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.slideshow .slideshow-img .images .img img {
+
+}
+
+.home .video-container .control-bar .time .time-info {
+    width: 100px;
+}
+
+.story-palme .block-movie-preview .poster{
+    text-align: center;
+
+    figure {
+        display: inline-block;
+        text-align: left;
+        max-width: 363px;
+    }
+}
+
+.article-single.dark .slideshow .caption strong {
+    font-family: $CamphorRegular;
+    font-weight: 300;
+}
+
+.article-single.dark #main .slideshow .caption strong {
+    color: #969696;
+}
+
+.block-movie-preview .contain-authors {
+    width: 100%;
+    text-align: center;
+}
+
+.media-library .card.w2.double .image {
+    width: auto;
+}
+
+#stamp-ajax-filter-url {
+    display: none!important;
+}
+
+.who-fdc .slideshow .slideshow-img .images .img img {
+    margin: 0;
+    max-heiht: 105%;
+}
 /* thomon - end fixes */
