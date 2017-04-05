@@ -36,7 +36,6 @@
         margin-left: 17px;
         position: relative;
         top: -2px;
-        left: 17px;
     }
   }
 
@@ -427,6 +426,7 @@
 
     .palmares-item {
       display:block;
+      height: 44px;
     }
 
     i{
@@ -568,7 +568,7 @@
     @include transition(all 0.5s $smoothTransition);
 
     @include breakpoint(1600px) {
-      height: 510px;
+      height: 541px;
     }
 
     @include breakpoint(1280px) {
@@ -750,9 +750,6 @@
     }
 
     .block-social-network-all {
-      float: right;
-      position: relative;
-
       a {
         border-top: none;
         line-height: 73px;
@@ -926,11 +923,6 @@
         float: left;
 
         .info {
-
-          .picto {
-
-          }
-
           .category {
             font-size: 0.650rem;
           }
@@ -1124,7 +1116,7 @@
   }
 
   .audios {
-    padding: 45px 0;
+    padding: 45px 0 !important;
 
     .audio-container + .audio-container {
       margin-top: 30px;
@@ -1268,7 +1260,7 @@
         padding-top: 60px;
 
         .vCenterKidTop div {
-          padding: 0 0 20px 0;
+          padding: 2px 0;
 
           &.prod {
             border-bottom: 1px solid #383838;
@@ -1312,15 +1304,14 @@
 
     #slider-competition {
       margin-top: 65px;
-      height: 380px;
-      min-height: 380px;
+      height: 390px;
       overflow: hidden;
       padding-left: 424px;
       width: 200%;
 
       .slide {
         opacity: 1;
-        min-height: 380px;
+        min-height: 390px;
         display: inline-block;
         float: left;
         width: auto;
@@ -1379,6 +1370,11 @@
           font-family: $CamphorItalic;
           font-size: 0.813rem;
         }
+
+        .translated-title {
+          font-size: 10px;
+        }
+
       }
     }
   }

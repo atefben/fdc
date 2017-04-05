@@ -4,6 +4,7 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
+  console.log('initSlideshows()');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
@@ -79,9 +80,10 @@ $('body').on('click', '.chocolat-wrapper .thumb', function() {
 
 $(document).ready(function() {
   initSlideshows();
-  $("li > a").click(function() {
+});
+
+$(document).ajaxComplete(function() {
     initSlideshows();
-  });
 });
 
 var timeoutCursor;

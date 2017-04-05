@@ -80,7 +80,7 @@ var initAudio = function (hash) {
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent($audio.attr('data-link')));
         fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($audio.attr('data-img')));
         fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent($audio.parent().find('.title-article').html()));
-        fbHref = fbHref.replace('CUSTOM_DESC', '');
+        fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
         $container.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = twitterLink;
@@ -321,7 +321,7 @@ var initAudio = function (hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-                console.log(name);
+
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
 
@@ -338,11 +338,12 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
+            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
-            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
-            fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
@@ -406,7 +407,6 @@ var initAudio = function (hash) {
 
             e.preventDefault();
 
-
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
@@ -418,7 +418,7 @@ var initAudio = function (hash) {
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
                 name = $(this).find('.contain-txt strong a').text();
-            console.log(name);
+
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
 
@@ -428,17 +428,25 @@ var initAudio = function (hash) {
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
 
+
                 audioPopin.play();
                 audioPopin.play();
             }, 900);
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
+            if($('.media-library').length){
+                shareUrl += '#aid='+ $(this).data('aid');
+            }
+
+            if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
+                shareUrl = $(e.target).closest('.audio').data('facebookurl');
+            }
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
-            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(category));
-            fbHref = fbHref.replace('CUSTOM_DESC', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
+            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));

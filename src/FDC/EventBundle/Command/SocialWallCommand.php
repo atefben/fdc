@@ -200,7 +200,9 @@ class SocialWallCommand extends ContainerAwareCommand {
                 }
 
                 $instagramResults = json_decode($instagramResponse);
-                $nextUrl = $instagramResults->pagination->next_url;
+                if(isset($instagramResults->pagination->next_url)) {
+                    $nextUrl = $instagramResults->pagination->next_url;
+                }
 
                 foreach ($instagramResults->data as $instagramPost) {
                     if($em->getRepository('BaseCoreBundle:SocialWall')->findOneBy(array('maxIdInstagram' => $instagramPost->id)) != null){

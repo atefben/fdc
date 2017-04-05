@@ -229,7 +229,7 @@ var owRemoveElementListe = function () {
 
         $.each($('.filters-02 li'), function(i,e){
             id = $(e).data('id');
-            text = $(e).data('text');
+            text = $(e).text();
 
             $('input#' + id).val(text);
             $('input#' + id).prop("checked", true);

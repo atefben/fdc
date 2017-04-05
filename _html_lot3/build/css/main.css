@@ -2126,7 +2126,7 @@ figcaption, .caption {
   color: #868686;
   font-size: .625rem;
   font-family: "Camphor W01 Medium", Arial, Helvetica, sans-serif;
-  margin-top: 10px;
+  margin: 10px 0;
   text-align: left;
 }
 
@@ -2716,7 +2716,7 @@ body .icon:before {
   line-height: 39px;
 }
 .picto .icon {
-  font-size: .7rem;
+  font-size: 16px;
 }
 
 .video .picto {
@@ -3090,7 +3090,7 @@ video {
     opacity: 0;
   }
 }
-/* empêche la sélection */
+/* emp├¬che la s├®lection */
 [draggable] {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -3262,7 +3262,8 @@ video {
 }*/
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
   transition: cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.7s;
   position: relative;
 }
@@ -3467,9 +3468,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   position: relative;
   background-attachment: inherit;
 }
-.who .block-push-top, .edition-69.story-movie .block-push-top, .palm-gold .block-push-top, .media-library .block-push-top, .participate .block-push-top {
-  background-attachment: fixed;
-}
 .block-push-top .vFlexAlign {
   height: 100%;
   margin: 0 auto;
@@ -3596,7 +3594,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 
 .block-films {
-  padding-top: 15px;
   height: 382px;
 }
 .block-films video {
@@ -4035,7 +4032,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
-  padding-bottom: 60px;
   height: 76px;
   box-sizing: inherit;
 }
@@ -5040,10 +5036,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
       flex-direction: row;
 }
 .half-photos p.caption {
-  color: #666 !important;
+  color: #969696 !important;
   font-size: 0.750rem !important;
   margin: 0 !important;
-  line-height: 18px !important;
+  line-height: 12px !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif !important;
 }
@@ -6221,7 +6217,7 @@ strong.title-center {
 
 /*!
  * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+ * Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
  */
 .pika-single {
   z-index: 9999;
@@ -7036,7 +7032,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .module-title .title-big {
-  color: #fff;
+  color: #141414;
   font-family: "Playfair Display";
   font-size: 3rem;
   font-weight: 400;
@@ -7879,6 +7875,15 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 
 #stamp-ajax-filter-url {
   display: none !important;
+}
+
+.who-fdc .slideshow .slideshow-img .images .img img {
+  margin: 0;
+  max-heiht: 105%;
+}
+
+header #navigation ul.user li ul li a {
+  font-weight: normal;
 }
 
 /* thomon - end fixes */
@@ -11136,7 +11141,7 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective.big .vFlexAlign img {
   position: absolute;
-  top: 0px;
+  top: -20%;
   opacity: .3;
   left: 0px;
 }
@@ -11580,9 +11585,9 @@ Slider channel
 .popin-mail form {
   width: 528px;
   margin: 0 auto;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .popin-mail form .complet-infos {
   color: #c8a461;
@@ -11608,11 +11613,11 @@ Slider channel
 .popin-mail form [type="checkbox"]:not(:checked) + label,
 .popin-mail form [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 17px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:before,
 .popin-mail form [type="checkbox"]:checked + label:before {
@@ -11635,19 +11640,19 @@ Slider channel
   font-size: 9px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .popin-mail form [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .popin-mail form [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .popin-mail #form {
   margin: 0 auto;
@@ -12552,15 +12557,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   transform: scale(1.02) translate(-50%, 0%);
 }
 .slideshow .caption {
-  color: #666;
+  color: #969696;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
-  margin: 20px 0;
-}
-.slideshow .caption strong {
-  color: #333;
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-weight: normal;
 }
 .slideshow h3 {
   color: #c8a461;
@@ -13543,7 +13542,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 635px;
 }
 .single-article .audio-container {
-  margin: 0 auto 70px;
+  margin: 0 auto;
   width: 630px;
 }
 
@@ -14008,10 +14007,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .who-fdc .contain-img-honneur .copy {
   text-align: left;
-  color: #666666;
+  color: #969696;
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
   font-size: 0.750rem;
-  margin: 20px 0;
+  margin-top: 10px;
   display: block;
 }
 .who-fdc .contain-img-honneur img {
@@ -14310,9 +14309,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 0px solid #000;
   border-right: 0px solid #000;
   width: 100%;
-  /* Aspect général de la coche */
-  /* Aspect si "pas cochée" */
-  /* Aspect si "cochée" */
+  /* Aspect g├®n├®ral de la coche */
+  /* Aspect si "pas coch├®e" */
+  /* Aspect si "coch├®e" */
 }
 .block-search .more-search.active {
   display: table;
@@ -14391,11 +14390,11 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .block-search .more-search [type="checkbox"]:not(:checked) + label,
 .block-search .more-search [type="checkbox"]:checked + label {
   position: relative;
-  /* permet de positionner les pseudo-éléments */
+  /* permet de positionner les pseudo-├®l├®ments */
   padding-left: 29px;
-  /* fait un peu d'espace pour notre case à venir */
+  /* fait un peu d'espace pour notre case ├á venir */
   cursor: pointer;
-  /* affiche un curseur adapté */
+  /* affiche un curseur adapt├® */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:before,
 .block-search .more-search [type="checkbox"]:checked + label:before {
@@ -14418,19 +14417,19 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 12px;
   color: #c8a461;
   transition: all .2s;
-  /* on prévoit une animation */
+  /* on pr├®voit une animation */
 }
 .block-search .more-search [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   /* coche invisible */
   transform: scale(0);
-  /* mise à l'échelle à 0 */
+  /* mise ├á l'├®chelle ├á 0 */
 }
 .block-search .more-search [type="checkbox"]:checked + label:after {
   opacity: 1;
   /* coche opaque */
   transform: scale(1);
-  /* mise à l'échelle 1:1 */
+  /* mise ├á l'├®chelle 1:1 */
 }
 .block-search .content-result .block-poster-search {
   max-width: 218px;
@@ -14786,7 +14785,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin-left: 17px;
   position: relative;
   top: -2px;
-  left: 17px;
 }
 .single-movie .block-films {
   height: auto;
@@ -15111,6 +15109,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .palmares .palmares-item {
   display: block;
+  height: 44px;
 }
 .single-movie .palmares i {
   font-size: 2.75rem;
@@ -15240,7 +15239,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 @media screen and (max-width: 1600px) {
   .single-movie .main-image {
-    height: 510px;
+    height: 541px;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -15402,10 +15401,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie #nav-movie ul li:first-child a {
   margin-left: 0;
-}
-.single-movie #nav-movie .block-social-network-all {
-  float: right;
-  position: relative;
 }
 .single-movie #nav-movie .block-social-network-all a {
   border-top: none;
@@ -15691,7 +15686,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   margin: 0 4.5%;
 }
 .single-movie .audios {
-  padding: 45px 0;
+  padding: 45px 0 !important;
 }
 .single-movie .audios .audio-container + .audio-container {
   margin-top: 30px;
@@ -15814,7 +15809,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   padding-top: 60px;
 }
 .single-movie .press .contacts .wrapper .vCenterKidTop div {
-  padding: 0 0 20px 0;
+  padding: 2px 0;
 }
 .single-movie .press .contacts .wrapper .vCenterKidTop div.prod {
   border-bottom: 1px solid #383838;
@@ -15846,15 +15841,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .competition #slider-competition {
   margin-top: 65px;
-  height: 380px;
-  min-height: 380px;
+  height: 390px;
   overflow: hidden;
   padding-left: 424px;
   width: 200%;
 }
 .single-movie .competition #slider-competition .slide {
   opacity: 1;
-  min-height: 380px;
+  min-height: 390px;
   display: inline-block;
   float: left;
   width: auto;
@@ -15905,6 +15899,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   display: block;
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
+}
+.single-movie .competition #slider-competition .info-movie .translated-title {
+  font-size: 10px;
 }
 .single-movie .articles {
   overflow: hidden;

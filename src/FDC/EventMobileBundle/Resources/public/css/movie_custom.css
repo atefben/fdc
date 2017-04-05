@@ -51,3 +51,8 @@
 .movie-page .main-movie-img img {
     max-width: 100%;
 }
+
+.competition .info .item-sub-title {
+    display: block;
+    font-size: 15px;
+}

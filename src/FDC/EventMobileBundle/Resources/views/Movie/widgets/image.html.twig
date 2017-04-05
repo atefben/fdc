@@ -24,7 +24,7 @@
                                    data-pid="{{ photo.id }}"
                                    class="chocolat-image ajax"
                                    href="{% path photo.media.file, '2560x1103' %}"
-                                   title='<span>{{ title }}</span>'
+                                   title='{{ title }}'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                     <img src="{% path photo.media.file, '976x535' %}" alt="" />
                                 </a>

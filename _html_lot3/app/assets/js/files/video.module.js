@@ -18,7 +18,7 @@ var timeout = 1000,
                 </div>\
             </div>\
             <div class="sound">\
-                <button class="icon icon-son"></button>\
+                <button class="icon icon-sound"></button>\
                 <div class="sound-bar">\
                     <div class="sound-seek"></div>\
                 </div>\

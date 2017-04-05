@@ -244,7 +244,8 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
   transition: $smoothTransition .7s;
   position: relative;
 
@@ -480,7 +481,7 @@
   background-attachment: inherit;
 
   .who &, .edition-69.story-movie &, .palm-gold &, .media-library &, .participate &{
-    background-attachment: fixed;
+
   }
 
   .vFlexAlign {
@@ -648,7 +649,6 @@
 
 // - BLOCK FILMS
 .block-films {
-  padding-top: 15px;
   height: 382px;
 
   video {
@@ -1179,7 +1179,6 @@
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
-  padding-bottom: 60px;
   height: 76px;
   box-sizing: inherit;
 
@@ -2379,15 +2378,13 @@
   flex-direction: row;
 
   p.caption {
-    color: #666 !important;
+    color: #969696 !important;
     font-size: 0.750rem !important;
     margin: 0 !important;
-    line-height: 18px !important;
+    line-height: 12px !important;
     text-align: left !important;
     font-family: $CamphorRegular !important;
   }
-
-
 }
 
 .half-photo {

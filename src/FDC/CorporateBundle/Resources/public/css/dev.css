@@ -324,3 +324,47 @@
 .isotope-01 .item .contain-img {
   background-position: center;
 }
+
+.history .article-single.dark section .caption, .history .article-single.dark section .caption strong {
+  font-size: 0.750rem;
+  color: #969696;
+  margin-top: 2px;
+}
+
+.article-single .border-top .relative {
+  margin-bottom:50px;
+}
+
+
+@media screen and (min-width: 1280px) {
+  .media-library .isotope-01 .item.w2 {
+    width: calc(200% / 8);
+  }
+}
+@media screen and (max-width: 1280px)
+{
+    .media-library  .isotope-01 .item.w2 {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}
+@media screen and (min-width: 1600px){
+    .media-library .isotope-01 .item.w2
+    {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}
+@media screen and (min-width: 1920px)
+{
+    .media-library  .isotope-01 .item.w2 {
+        width: calc(200% / 8);
+    }
+  .media-library .isotope-01 .item {
+    width: calc(100% / 4);
+  }
+}
