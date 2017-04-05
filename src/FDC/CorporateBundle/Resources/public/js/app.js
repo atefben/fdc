@@ -1665,7 +1665,7 @@ var initAudio = function (hash) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-                console.log(name);
+
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
 
@@ -1682,6 +1682,7 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
+            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
@@ -7803,31 +7804,7 @@ $(document).ready(function () {
 
     window.addEventListener('orientationchange', scale);
 
-    if ('ontouchstart' in window) {
-        if (navigator.userAgent.indexOf("iPad") > -1 ||
-            navigator.userAgent.indexOf("iPhone") > -1 ||
-            navigator.userAgent.indexOf("Android") > -1) {
-            $('body').addClass('mobile');
-        } else {
-            $('body').addClass('mobile');
-        }
-    } else {
-        $('body').addClass('not-mobile');
-    }
-
-    if ($('body').hasClass('mobile') > 0) {
-        var hideKeyboard = function () {
-            document.activeElement.blur();
-            $(".newsletter#email").blur();
-        };
-
-        $('.newsletter').focusin(function () {
-
-            $('#breadcrumb, .all-contain, .social, .title, .subtitle, .footer-menu').on('click', function () {
-                hideKeyboard();
-            })
-        });
-    }
+    $('body').addClass('not-mobile');
 
     if ($('#breadcrumb').length > 0) {
         owInitFooterScroll();
