@@ -4022,6 +4022,7 @@ var owArrowDisplay = function () {
         } else {
             $btnsArrow.removeClass('visible')
         }
+        
     });
 };
 
