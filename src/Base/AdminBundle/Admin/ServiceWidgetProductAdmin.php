@@ -91,7 +91,13 @@ class ServiceWidgetProductAdmin extends Admin
                         'constraints'        => array(
                             new NotBlank(),
                         ),
-                        'required' => true
+                        'required' => true,
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        ),
+                        'field_type'         => 'ckeditor',
+                        'config_name' => 'widget',
+                        'input_sync' => true
                     ),
                     'toggledBody'  => array(
                         'label'              => 'form.mdf.label.service_widget_product_toggled_body',
