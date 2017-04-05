@@ -185,19 +185,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
                 }
 
-                console.log('slideshow img config',{
-                    id: id,
-                    url: url,
-                    src: src,
-                    alt: alt,
-                    title: title,
-                    label: label,
-                    date: date,
-                    caption: caption,
-                    facebookurl: facebookurl,
-                    twitterurl: twitterurl,
-                    isPortrait: isPortrait
-                });
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
