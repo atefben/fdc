@@ -1751,7 +1751,6 @@ var initAudio = function (hash) {
 
             e.preventDefault();
 
-
             $('.activeAudio').removeClass('activeAudio');
             $(this).addClass('activeAudio')
 
@@ -1779,7 +1778,7 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($this,$this.data('facebookurl'));
+            console.log($(e.target),$(e.target).data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
