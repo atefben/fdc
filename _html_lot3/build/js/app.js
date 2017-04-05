@@ -7804,7 +7804,7 @@ $(document).ready(function () {
 
     window.addEventListener('orientationchange', scale);
 
-    if ('ontouchstart' in window) {
+    /*if ('ontouchstart' in window) {
         if (navigator.userAgent.indexOf("iPad") > -1 ||
             navigator.userAgent.indexOf("iPhone") > -1 ||
             navigator.userAgent.indexOf("Android") > -1) {
@@ -7814,8 +7814,8 @@ $(document).ready(function () {
         }
     } else {
         $('body').addClass('not-mobile');
-    }
-
+    }*/
+    $('body').addClass('not-mobile');
     if ($('body').hasClass('mobile') > 0) {
         var hideKeyboard = function () {
             document.activeElement.blur();
