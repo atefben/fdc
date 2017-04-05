@@ -173,3 +173,7 @@ header.sticky #sticky-user .user-nav a {
 .show {
     position: inherit !important;
 }
+
+#main.home .owl-carousel .icon_flecheGauche {
+    color: #fff!important;
+}
