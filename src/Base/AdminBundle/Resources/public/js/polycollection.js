@@ -449,4 +449,16 @@ jQuery(document).ready(function($) {
             $(this).val(idx + 1);
         });
     });
+    $('form[action*="graphicalcharter"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
+    $('form[action*="graphicalchartersection"]').submit(function() {
+        var inputs = $('.fdc-widgets input[name$="[position]"]');
+        inputs.each(function(idx) {
+            $(this).val(idx + 1);
+        });
+    });
 });

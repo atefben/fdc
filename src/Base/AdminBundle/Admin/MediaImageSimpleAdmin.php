@@ -75,7 +75,7 @@ class MediaImageSimpleAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $requiredFile = ($this->subject && $this->subject->getId()) ? false : true;
-        $context = ($this->getRequest()->query->get('context') !== null) ? $this->getRequest()->query->get('context') : 'media_image_simple';
+        $context = ($this->hasRequest() && $this->getRequest()->query->get('context') !== null) ? $this->getRequest()->query->get('context') : 'media_image_simple';
 
         $formMapper
             ->add('translations', 'a2lix_translations', array(
