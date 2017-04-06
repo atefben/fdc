@@ -312,7 +312,7 @@ class Importer
         if (is_file("$folder$file") && filesize("$folder$file")) {
             return $folder . $file;
         }
-        exec("wget $url -O $folder$file");
+        exec("wget -c $url -O $folder$file");
         if (!is_file($folder . $file) || !filesize("$folder$file")) {
             return null;
         }

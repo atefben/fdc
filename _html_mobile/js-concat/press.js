@@ -952,7 +952,7 @@ $(document).ready(function() {
     $("#popin-press").addClass('visible');
     $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
     $("#overlay").css('top', scrollTop);
-    $('#password').focus();
+    $('#popin-press #password').focus();
     
     document.body.addEventListener('touchmove', listener,false);
 
