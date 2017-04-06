@@ -10,7 +10,7 @@
 
 {% block body %}
     <section id="main">
-        {% set mainTrans = datas.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% set mainTrans = corpoTeam.mainImage.findTranslationByLocale(app.request.locale) %}
         {% if mainTrans is null or mainTrans.file is null %}
             {% set mainTrans = datas.mainImage.findTranslationByLocale('fr') %}
         {% endif %}
