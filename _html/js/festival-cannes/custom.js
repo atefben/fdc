@@ -648,23 +648,7 @@ if ( $("#main").hasClass( "single-article" ) ) {
    });
 }
 
-if ( $("#main").hasClass("list-article" ) ) {
-  var fixed = false;
-   var topTrigger = $('.list-article').offset().top +10;
-   $(document).scroll(function() {
-     if( $(this).scrollTop() >= topTrigger ) {
-       if( !fixed ) {
-         fixed = true;
-         $('.sub-nav-list').addClass("subNavigationFixed");
-       }
-     } else {
-       if( fixed ) {
-         fixed = false;
-         $('.sub-nav-list').removeClass("subNavigationFixed");
-       }
-     }
-   });
-}
+
 
 /*var programmButton = $('.programmButton');
 
