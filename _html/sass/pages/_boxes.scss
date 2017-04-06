@@ -17,6 +17,14 @@
     width: 100%;
     z-index: 2;
 
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     margin-bottom: -15px;
+    }
+
+    @supports (-ms-accelerator:true) {
+      margin-bottom: -15px;
+    }
+
     .innerWrapper {
       width: 1072px;
       @include align();

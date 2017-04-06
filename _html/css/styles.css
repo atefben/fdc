@@ -2681,6 +2681,22 @@ sup {
   color: #0c0c0c !important;
 }
 
+.inherit-p {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 30px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.caption {
+  font-size: 0.75rem !important;
+  margin: 10px 0 0;
+  color: #666 !important;
+  line-height: 18px;
+  text-align: left;
+}
+
 .owl-carousel {
   display: none;
   width: 100%;
@@ -19462,7 +19478,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-align: center;
   padding-left: 0;
   padding-right: 0;
-  top: 0px !important;
+  top: 0px;
 }
 .list-article .bandeau-list .sub-nav-list:after {
   background-color: #141414;
@@ -26698,6 +26714,16 @@ body:not(.tablette) .webtv #live .img {
   width: 100%;
   z-index: 2;
 }
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .our-news {
+    margin-bottom: -15px;
+  }
+}
+@supports (-ms-accelerator: true) {
+  .our-news {
+    margin-bottom: -15px;
+  }
+}
 .our-news .innerWrapper {
   width: 1072px;
   margin: 0 auto;
@@ -28894,7 +28920,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   position: fixed;
   z-index: 1002;
   width: 100%;
-  top: 90px;
+  top: 90px !important;
   -moz-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0s cubic-bezier(0.15, 0.9, 0.34, 0.95);
