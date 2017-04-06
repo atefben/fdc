@@ -44,17 +44,18 @@ class CcmMediaListener
     {
         $entity = $args->getEntity();
 
-        $this->flush = true;
-
         if ($entity instanceof CcmMediaAudioTranslation && $entity->getAmazonRemoteFile()) {
+            $this->flush = true;
             $this->createAmazonAudioJob($entity, $args);
         }
 
         if ($entity instanceof CcmMediaVideoTranslation && $entity->getAmazonRemoteFile()) {
+            $this->flush = true;
             $this->createAmazonVideoJob($entity, $args);
         }
 
         if (($entity instanceof CcmMediaVideoTranslation || $entity instanceof CcmMediaAudioTranslation) && $entity->getFile()) {
+            $this->flush = true;
             $this->generateThumbnails($entity->getFile());
         }
     }

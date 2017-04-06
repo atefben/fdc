@@ -9,9 +9,16 @@
                 </a>
             </li>
         {% endfor %}
+
         <li class="{% if slug == 'equipe' %}active{% endif %}">
             <a href="{{ path('fdc_corporate_whoarewe_equipe') }}" class="noajax">
                 {{ 'aboutus.team'|trans }}
+            </a>
+        </li>
+
+        <li class="{% if slug == 'charte-graphique' %}active{% endif %}">
+            <a href="{{ path('fdc_corporate_whoarewe_graphicalcharter') }}" class="noajax">
+                {{ 'aboutus.graphical_charter'|trans }}
             </a>
         </li>
     </ul>

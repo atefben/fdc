@@ -870,7 +870,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -976,7 +976,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -1424,7 +1424,7 @@ var initAudio = function (hash) {
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent($audio.attr('data-link')));
         fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($audio.attr('data-img')));
         fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent($audio.parent().find('.title-article').html()));
-        fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+        fbHref = fbHref.replace('CUSTOM_DESC', '%20');
         $container.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = twitterLink;
@@ -1682,12 +1682,11 @@ var initAudio = function (hash) {
 
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
-            console.log($this,$this.data('facebookurl'));
             var fbHref = facebookLink;
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
@@ -1780,7 +1779,10 @@ var initAudio = function (hash) {
             // CUSTOM LINK FACEBOOK
             var shareUrl = document.location.href;
             if($('.media-library').length){
-                shareUrl += '#aid='+ $(this).data('aid');
+                if(shareUrl.indexOf('#') == -1){
+                    shareUrl += '#';
+                }
+                shareUrl += 'aid='+ $(this).data('aid');
             }
 
             if(typeof $(e.target).closest('.audio').data('facebookurl') !== 'undefined'){
@@ -1790,7 +1792,7 @@ var initAudio = function (hash) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
@@ -3711,68 +3713,12 @@ $(document).ready(function() {
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         var number = $(this).closest('.owl-item').index();
-        videoMovieBa = playerLoad($("#video-player-ba")[number], videoMovieBa, true, false, function (vid) {
-          $(vid).data('loaded', true);
-          return vid;
-        });
+        console.log('number', number);
+        videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
-
-    // previous and next
-    /*$('body').on('click', '.single-movie .nav', function(e) {
-      e.preventDefault();
-
-      var $that = $(this);
-
-      if($that.hasClass('next')) {
-        $('.anim').addClass('next');
-      } else {
-        $('.anim').removeClass('next');
-      }
-
-      $('.anim').addClass('show');
-      setTimeout(function() {
-        cl.show();
-        $('#canvasloader').addClass('show');
-      }, 800);
-
-      var urlPath = $that.attr('href');
-
-      // remove timeout once on server. only for animation.
-
-      /*setTimeout(function() {
-        $('html, body').animate({
-          scrollTop: 0
-        }, 0);
-        $.get(urlPath, function(data){
-          var matches = data.match(/<title>(.*?)<\/title>/);
-          var spUrlTitle = matches[1];
-
-          document.title = spUrlTitle;
-          $(".content-movie").html( $(data).find('.content-movie') );
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
-
-          $('#canvasloader').removeClass('show');
-
-          setTimeout(function() {
-            if($that.hasClass('next')) {
-              $('.anim').removeClass('next show');
-            }
-            else {
-              $('.anim').addClass('next').removeClass('show');
-            }
-            cl.hide();
-            initSliders();
-            initSlideshows();
-            initAudioPlayers();
-          }, 800);
-        });
-      }, 2000);
-    });*/
-
   }
-
 });
 
 var owInitPopin = function(id) {
@@ -4076,19 +4022,20 @@ var owArrowDisplay = function () {
         } else {
             $btnsArrow.removeClass('visible')
         }
+        
     });
 };
 
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-        $('.block-push').css('background-position', '0px -10px');
+        $('.block-push.big').css('background-position', '0px ' + '20%');
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
                 var s = $(this).scrollTop() - 120;
-                $('.block-push.big').css('background-position', '0px ' + s + 'px');
+                $('.block-push.big').css('background-position', '0px ' + '20%');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '-20%');
+                $('.block-push.big').css('background-position', '0px ' + '20%');
             }
         });
     }

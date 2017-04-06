@@ -756,3 +756,57 @@ services:
         calls:
             - ['setSliderAccreditationAdmin', ['@base.admin.mdf_slider_accreditation']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
+    base.admin.form.graphical_section_position:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\GraphicalCharterSectionPositionType
+        tags:
+            - { name: form.type, alias: 'graphical_charter_section_position_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.graphical_charter_section_position_dummy']]
+            - ['setGraphicalCharterSectionAdmin', ['@base.admin.graphical_charter_section']]
+
+    base.admin.form.graphical_section_text_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\GraphicalCharterSectionWidgetTextType
+        tags:
+            - { name: form.type, alias: 'graphical_charter_section_widget_text_type'}
+
+    base.admin.form.graphical_section_one_column_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\GraphicalCharterSectionWidgetOneColumnType
+        tags:
+            - { name: form.type, alias: 'graphical_charter_section_widget_one_column_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.graphical_charter_section_one_column_image_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.graphical_charter_section_one_column_dummy']]
+            - ['setContentFilesAdmin', ['@base.admin.graphical_charter_button_group']]
+
+    base.admin.form.graphical_section_two_columns_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\GraphicalCharterSectionWidgetTwoColumnsType
+        tags:
+            - { name: form.type, alias: 'graphical_charter_section_widget_two_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.graphical_charter_section_two_columns_image_dummy']]
+            - ['setSonataTwoAdmin', ['@base.admin.graphical_charter_section_two_columns_two_image_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.graphical_charter_section_two_columns_dummy']]
+            - ['setSonataAdminContentFilesTwo', ['@base.admin.graphical_charter_section_two_columns_two_dummy']]
+            - ['setContentFilesAdmin', ['@base.admin.graphical_charter_button_group']]
+
+    base.admin.form.graphical_charter_section_three_columns_type:
+        scope: prototype
+        class: Base\AdminBundle\Form\Type\GraphicalCharterSectionWidgetThreeColumnsType
+        tags:
+            - { name: form.type, alias: 'graphical_charter_section_widget_three_columns_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.graphical_charter_section_three_columns_image_dummy']]
+            - ['setSonataTwoAdmin', ['@base.admin.graphical_charter_section_three_columns_two_image_dummy']]
+            - ['setSonataThreeAdmin', ['@base.admin.graphical_charter_section_three_columns_three_image_dummy']]
+            - ['setMediaImageSimpleAdmin', ['@base.admin.media_image_simple']]
+            - ['setSonataAdminContentFiles', ['@base.admin.graphical_charter_section_three_columns_dummy']]
+            - ['setSonataAdminContentFilesTwo', ['@base.admin.graphical_charter_section_three_columns_two_dummy']]
+            - ['setSonataAdminContentFilesThree', ['@base.admin.graphical_charter_section_three_columns_three_dummy']]
+            - ['setContentFilesAdmin', ['@base.admin.graphical_charter_button_group']]

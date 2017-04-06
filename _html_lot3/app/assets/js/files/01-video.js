@@ -870,7 +870,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -976,7 +976,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER

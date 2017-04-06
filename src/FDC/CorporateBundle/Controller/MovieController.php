@@ -500,7 +500,26 @@ class MovieController extends Controller
             $next = reset($filters);
         }
 
+        $festival = $this->getFestival($year, TRUE);
+        $cinemaDelaPlage = false;
+        $selectionSectionTrans = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSectionTranslation')
+            ->findOneBy(['name' => 'Cinéma de la plage', 'locale' => 'fr'])
+        ;
+        if ($selectionSectionTrans) {
+            $temp = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
+            ;
+            if (count($temp)) {
+                $cinemaDelaPlage = true;
+            }
+        }
+
         return [
+            'cinemaDeLaPlage' => $cinemaDelaPlage,
             'cannesClassics' => $filters,
             'classic'        => $classic,
             'filters'        => $filters,

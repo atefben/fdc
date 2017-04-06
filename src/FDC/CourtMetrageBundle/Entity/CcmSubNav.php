@@ -38,13 +38,6 @@ class CcmSubNav
 
     /**
      * @var
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = true;
-
-    /**
-     * @var
      * @ORM\OneToMany(targetEntity="FDC\CourtMetrageBundle\Entity\CcmSubNavCollection", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="subNav")
      */
     protected $subNavsCollection;
@@ -140,21 +133,5 @@ class CcmSubNav
     public function getSubNavsCollection()
     {
         return $this->subNavsCollection;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param mixed $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
     }
 }
