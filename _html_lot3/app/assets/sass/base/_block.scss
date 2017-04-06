@@ -2028,6 +2028,11 @@
         padding: 39px 0 !important;
         text-align: center !important;
         color: #000 !important;
+
+        &.thanks {
+          font-size: 1rem !important;
+          line-height: 30px !important;
+        }
       }
     }
 
