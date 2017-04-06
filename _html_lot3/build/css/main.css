@@ -3783,6 +3783,9 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 .ie .block-movie-preview .infos {
   width: 30%;
 }
+.ie .block-movie-preview .infos > div {
+  width: 100%;
+}
 .block-movie-preview .infos a {
   color: #c8a461;
 }
