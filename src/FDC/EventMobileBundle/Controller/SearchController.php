@@ -164,7 +164,7 @@ class SearchController extends Controller
         $formats = array();
         
         foreach ($items as $item) {
-            if (!in_array($item->getPublishedAt()->format('dmY'), $dates)) {
+            if ($item->getPublishedAt() && !in_array($item->getPublishedAt()->format('dmY'), $dates)) {
                 $sortedDates[] = $item->getPublishedAt();
 
                 $dates[] = $item->getPublishedAt()->format('dmY');

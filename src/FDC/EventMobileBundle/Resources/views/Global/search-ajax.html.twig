@@ -18,7 +18,7 @@
     {% set sliderType = 'landscape-carousel' %}
 {% endif %}
 <div class="resultsContainer">
-    <div class="owl-carousel {{ sliderType }}">
+    <div class="owl-carousel list {{ sliderType }}">
         {% include 'FDCEventMobileBundle:Search:' ~ searchFilter ~ '.html.twig' with { 'items': items, 'searchFilters': searchFilters } %}
     </div>
 </div>

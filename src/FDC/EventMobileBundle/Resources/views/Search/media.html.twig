@@ -25,9 +25,8 @@
         {% endif %}
 
 
-        <div data-id="media-{{ media.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}">
+        <div data-id="media-{{ media.id }}" class="thumb item {{ media.publishedAt|date('dmY') }} {{ media.theme ? media.theme.slug : '' }} {{ format }} {{ loop.index == 1 ? 'active' : '' }}">
             <div class="img-container">
-                <a class="linkImage" href="{{ link }}"></a>
                 {% set trans = media.findTranslationByLocale(app.request.locale) %}
                 {% set transImage = null %}
                 {% set amazonImage = null %}
@@ -52,10 +51,11 @@
 
                 {% if transImage or amazonImage %}
                     <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
-                {% else %}
+                {% elseif trans is not null %}
                     <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
                 {% endif %}
                 <span class="picto"><i class="icon icon_{{ format }}"></i></span>
+                <a class="linkImage" href="{{ link }}"></a>
             </div>
             <div class="info">
                 <div class="top-info">
