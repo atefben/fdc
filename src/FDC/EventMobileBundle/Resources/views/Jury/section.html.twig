@@ -97,17 +97,13 @@
                             {%- endif -%}
                         )"></div>{{- '' -}}
                         <div class="jury-info">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
-                                    {%- set profession =  member['jury'].person|profession_gender('profession') -%}
-                                    {%- if profession -%}
-                                    <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
-                                        {{- profession -}}
-                                        </p>{{- '' -}}
-                                    {%- endif -%}
-                                </div>
-                            </div>
+                            <p class="name">{{ member['jury'].person.firstname }} {{ member['jury'].person.lastname }}</p>{{- '' -}}
+                            {%- set profession =  member['jury'].person|profession_gender('profession') -%}
+                            {%- if profession -%}
+                            <p class="rank" {{ member['jury'].person|content_lang('profession') }}>
+                                {{- profession -}}
+                                </p>{{- '' -}}
+                            {%- endif -%}
                         </div>
                     </div>{{- '' -}}
                 {%- endfor -%}

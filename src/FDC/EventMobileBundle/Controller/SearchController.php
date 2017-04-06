@@ -38,9 +38,11 @@ class SearchController extends Controller
     public function searchAjaxAction($_locale, $searchFilter, $searchTerm = null) 
     {
         $searchResults = $this->getSearchResults($_locale, $searchFilter, $searchTerm, 50, 1, $this->container->getParameter('fdc_year'));
-        
-        return $this->render("FDCEventMobileBundle:Search:{$searchFilter}.html.twig", array(
+
+        return $this->render("@FDCEventMobile/Global/search-ajax.html.twig", array(
           'items' => $searchResults['items'],
+          'searchFilter' => $searchFilter,
+          'searchTerm' => $searchTerm,
           'searchFilters' => $this->getSearchFilters($searchFilter, $searchResults['items']),
         ));
     }
@@ -162,12 +164,12 @@ class SearchController extends Controller
         $formats = array();
         
         foreach ($items as $item) {
-            if (!in_array($item->getPublishedAt()->format('dmY'), $dates)) {
+            if ($item->getPublishedAt() && !in_array($item->getPublishedAt()->format('dmY'), $dates)) {
                 $sortedDates[] = $item->getPublishedAt();
 
                 $dates[] = $item->getPublishedAt()->format('dmY');
             }
-            if (!in_array($item->getTheme()->getSlug(), $themes)) {
+            if ($item->getTheme() && !in_array($item->getTheme()->getSlug(), $themes)) {
                 $filters['theme'][] = $item->getTheme();
 
                 $themes[] = $item->getTheme()->getSlug();

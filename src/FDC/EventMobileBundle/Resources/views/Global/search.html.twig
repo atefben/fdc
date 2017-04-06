@@ -2,8 +2,8 @@
 
 <form action="{{ path('fdc_eventmobile_global_search') }}" method="get" {{ form_enctype(searchForm) }}>
     {{ form_widget(searchForm.search, { 'id': 'inputSearch', 'attr': {'class': 'suggestSearch'} }) }}
-    <button id="submitSearch" type="submit">
+    {#<button id="submitSearch" type="submit">
         <i class="icon icon_recherche"></i>
-    </button>
+    </button>#}
     {{ form_rest(searchForm) }}
 </form>

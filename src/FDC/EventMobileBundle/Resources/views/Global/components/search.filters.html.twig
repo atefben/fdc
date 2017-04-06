@@ -27,6 +27,7 @@
             {% endfor %}
         </span>
     </div>
+    {% if searchFilters.theme is defined %}
     <div id="theme" class="filter">
     <span class="label">{{ 'search.result.label.theme'|trans }} :</span>
         <span class="select">
@@ -40,6 +41,6 @@
                 {% endfor %}
         </span>
     </div>
-    <div id="filteredContent"></div>
+    {% endif %}
 </div>
 {% endif %}
