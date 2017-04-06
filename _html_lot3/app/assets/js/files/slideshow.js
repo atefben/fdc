@@ -205,6 +205,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 twitterurl: twitterurl,
                 isPortrait: isPortrait
             };
+            console.log('image before global array push',image);
             images.push(image);
         }
     });
