@@ -4,7 +4,8 @@
 
         {% for page in pages %}
             <li class="{% if slug == page|trans_fallback('slug') %}active{% endif %}">
-                <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}" class="noajax">
+                <a href="{{ path('fdc_corporate_whoarewe_show', {'slug': page|trans_fallback('slug')}) }}"
+                   class="noajax">
                     {{ page|trans_fallback('title') }}
                 </a>
             </li>
@@ -16,10 +17,12 @@
             </a>
         </li>
 
-        <li class="{% if slug == 'charte-graphique' %}active{% endif %}">
-            <a href="{{ path('fdc_corporate_whoarewe_graphicalcharter') }}" class="noajax">
-                {{ 'aboutus.graphical_charter'|trans }}
-            </a>
-        </li>
+        {% if graphicalCharter %}
+            <li class="{% if slug == 'charte-graphique' %}active{% endif %}">
+                <a href="{{ path('fdc_corporate_whoarewe_graphicalcharter') }}" class="noajax">
+                    {{ 'aboutus.graphical_charter'|trans }}
+                </a>
+            </li>
+        {% endif %}
     </ul>
 </nav>

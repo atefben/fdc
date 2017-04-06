@@ -250,12 +250,13 @@ class WhoAreWeController extends Controller
 
     /**
      * @Route("/nav")
-     *
+     * @param Request $request
      * @param null $slug
      * @return Response
      */
-    public function navAction($slug = null)
+    public function navAction(Request $request, $slug = null)
     {
+        $locale = $request->getLocale();
         $nav = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
@@ -268,9 +269,17 @@ class WhoAreWeController extends Controller
                 $pages[] = $n;
             }
         }
+
+        $graphicalCharter = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:GraphicalCharter')
+            ->getPage($locale)
+        ;
+
         return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', [
             'pages' => $pages,
-            'slug'  => $slug
+            'slug'  => $slug,
+            'graphicalCharter'  => $graphicalCharter,
         ]);
     }
 
