@@ -12,9 +12,6 @@ $( window ).resize( function(){
   }
 });
 $(document).ready(function() {
-
-  console.log('movie.module.js $(document).ready');
-
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
       var link = $('.content-movie .arrows .nav.prev').attr('href');
@@ -254,67 +251,11 @@ $(document).ready(function() {
       });
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
-        
-        
-
         var number = $(this).closest('.owl-item').index();
+        console.log('number', number);
         videoMovieBa.playlistItem(number);
         sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
       });
     }
-
-    // previous and next
-    /*$('body').on('click', '.single-movie .nav', function(e) {
-      e.preventDefault();
-
-      var $that = $(this);
-
-      if($that.hasClass('next')) {
-        $('.anim').addClass('next');
-      } else {
-        $('.anim').removeClass('next');
-      }
-
-      $('.anim').addClass('show');
-      setTimeout(function() {
-        cl.show();
-        $('#canvasloader').addClass('show');
-      }, 800);
-
-      var urlPath = $that.attr('href');
-
-      // remove timeout once on server. only for animation.
-
-      /*setTimeout(function() {
-        $('html, body').animate({
-          scrollTop: 0
-        }, 0);
-        $.get(urlPath, function(data){
-          var matches = data.match(/<title>(.*?)<\/title>/);
-          var spUrlTitle = matches[1];
-
-          document.title = spUrlTitle;
-          $(".content-movie").html( $(data).find('.content-movie') );
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
-
-          $('#canvasloader').removeClass('show');
-
-          setTimeout(function() {
-            if($that.hasClass('next')) {
-              $('.anim').removeClass('next show');
-            }
-            else {
-              $('.anim').addClass('next').removeClass('show');
-            }
-            cl.hide();
-            initSliders();
-            initSlideshows();
-            initAudioPlayers();
-          }, 800);
-        });
-      }, 2000);
-    });*/
-
   }
-
 });

@@ -24,6 +24,7 @@ use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 
 class Importer
@@ -53,12 +54,12 @@ class Importer
     /**
      * @var array
      */
-    protected $langs = array('fr', 'en', 'es', 'zh');
+    protected $langs = ['fr', 'en', 'es', 'zh'];
 
     /**
      * @var array
      */
-    protected $entitiesCount = array();
+    protected $entitiesCount = [];
 
     /**
      * @var bool
@@ -136,7 +137,7 @@ class Importer
         if (!preg_match('/[\x80-\xff]/', $string))
             return $string;
 
-        $chars = array(
+        $chars = [
             // Decompositions for Latin-1 Supplement
             chr(195) . chr(128) => 'A', chr(195) . chr(129) => 'A',
             chr(195) . chr(130) => 'A', chr(195) . chr(131) => 'A',
@@ -231,7 +232,7 @@ class Importer
             chr(197) . chr(186) => 'z', chr(197) . chr(187) => 'Z',
             chr(197) . chr(188) => 'z', chr(197) . chr(189) => 'Z',
             chr(197) . chr(190) => 'z', chr(197) . chr(191) => 's',
-        );
+        ];
 
         $string = strtr($string, $chars);
 
@@ -433,12 +434,12 @@ class Importer
      */
     protected function createMediaImageFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $imgTitle = array(
+        $imgTitle = [
             'fr' => 'photo',
             'en' => 'photo',
             'es' => 'foto',
             'zh' => '照片',
-        );
+        ];
 
         $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
@@ -545,12 +546,12 @@ class Importer
      */
     protected function createMediaAudioFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $audioTitle = array(
+        $audioTitle = [
             'fr' => 'audio',
             'en' => 'audio',
             'es' => 'audio',
             'zh' => '音频',
-        );
+        ];
 
         $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
@@ -573,10 +574,10 @@ class Importer
         $code = $oldMediaI18n->getCode();
 
         if (!$code) {
-            $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy(array(
+            $duplicate = $this->getManager()->getRepository('BaseCoreBundle:OldMediaI18n')->findOneBy([
                 'id'      => $oldMedia->getId(),
                 'culture' => 'bi',
-            ))
+            ])
             ;
             if ($duplicate && $duplicate->getCode()) {
                 $code = $duplicate->getCode();
@@ -686,12 +687,12 @@ class Importer
      */
     protected function createMediaVideoFromOldMedia($oldMediaId, $locale, $status = null, $setCorporate = true)
     {
-        $videoTitle = array(
+        $videoTitle = [
             'fr' => 'video',
             'en' => 'video',
             'es' => 'video',
             'zh' => '视频',
-        );
+        ];
 
         $oldLocale = $locale == 'zh' ? 'cn' : $locale;
 
@@ -715,6 +716,39 @@ class Importer
         $pathArray = explode(',', $path);
         $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
         $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+
+
+        if (!$file && $locale == 'fr') {
+            dump($oldMediaI18n->getId());
+            $biOldMediaI18n = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldMediai18n')
+                ->findOneBy(['culture' => 'bi', 'id' => $oldMediaId])
+            ;
+            if ($biOldMediaI18n && $biOldMediaI18n->getHdFormatFilename()) {
+                try {
+                    $url = 'http://www.festival-cannes.fr/' . $biOldMediaI18n->getHdFormatFilename();
+                    $contentFile = file_get_contents($url);
+                    $crawler = new Crawler($contentFile);
+                    $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
+                    $filename = $crawler->filter('video')->last()->attr('src');
+                    $file = $this->createVideo(trim($base) . trim($filename));
+                } catch (\Exception $e) {
+                    $this->output->writeln('<error>' . $e->getMessage() . '</error>');
+                }
+            }
+        }
+
+        if (!$file && $oldMediaI18n->getHdFormatFilename()) {
+            $url = 'http://canneshd-f.akamaihd.net/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
+            dump($url);
+            $file = $this->createVideo($url);
+            if (!$file) {
+                dump($url);
+                $url = 'http://canneshd-a.akamaihd.net/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
+                $file = $this->createVideo($url);
+            }
+        }
 
         if (!$file) {
             return null;

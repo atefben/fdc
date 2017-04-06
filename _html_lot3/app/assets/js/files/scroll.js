@@ -76,19 +76,20 @@ var owArrowDisplay = function () {
         } else {
             $btnsArrow.removeClass('visible')
         }
+        
     });
 };
 
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-        $('.block-push').css('background-position', '0px -10px');
+        $('.block-push.big').css('background-position', '0px ' + '20%');
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 240;
-                $('.block-push.big').css('background-position', '0px ' + s + 'px');
+                var s = $(this).scrollTop() - 120;
+                $('.block-push.big').css('background-position', '0px ' + '20%');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '-240px');
+                $('.block-push.big').css('background-position', '0px ' + '20%');
             }
         });
     }

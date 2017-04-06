@@ -6,7 +6,7 @@
         {% set tabPath = path('fdc_eventmobile_palmares_get', {'slug': tab|trans_fallback('slug') }) %}
         <div class="vid">
             <p>
-                <a href="#" data-url="{{ tabPath }}" class="{% if tabActive %}active{% endif %} ajax">
+                <a href="{{ tabPath }}" data-url="{{ tabPath }}" class="{% if tabActive %}active{% endif %} ajaxi">
                     {{ tab|trans_fallback('name') }}
                 </a>
             </p>

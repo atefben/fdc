@@ -265,7 +265,8 @@
                                 <a class="linkVid"
                                    href="{{ path('fdc_corporate_artist_get', {'slug': director.slug }) }}"></a>
                                 <div class="info-movie">
-                                    <p>{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</p>
+                                    <p>
+                                        <span class="names-a">{% include 'FDCEventBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} %}</span></p>
                                     <a class="director" href="#">{{ director|profession_gender('profession') }}</a>
                                 </div>
                             </div>

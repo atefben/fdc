@@ -12,16 +12,18 @@
                 {% if contactBlocks is defined and contactBlocks is not null %}
                     {% if contactBlocks|length > 1 %}
                         {% for block in contactBlocks %}
-                            <div class="contactInfo">
+                            <div class="contactInfo halfContact">
                                 <span class="customClass4">{{ block.contactDate }}</span>
                                 <h6>{{ block.contactAddress }}</h6>
                                 <h6>{{ block.contactPhone }}</h6>
                             </div>
                         {% endfor %}
                     {% else %}
-                        <span class="customClass4">{{ contactBlocks[0].contactDate }}</span>
-                        <h6>{{ contactBlocks[0].contactAddress }}</h6>
-                        <h6>{{ contactBlocks[0].contactPhone }}</h6>
+                        <div class="contactInfo">
+                            <span class="customClass4 ">{{ contactBlocks[0].contactDate }}</span>
+                            <h6>{{ contactBlocks[0].contactAddress }}</h6>
+                            <h6>{{ contactBlocks[0].contactPhone }}</h6>
+                        </div>
                     {% endif %}
                 {% endif %}
             </div>

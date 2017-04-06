@@ -63,7 +63,7 @@ var owInitAjax = function() {
         owInitGrid('isotope-02');
       }
 
-      if($('.grid-01').length) {
+      if($('.grid-01').length && !$('.home').length) {
         var grid = owInitGrid('isotope-01');
         owsetGridBigImg(grid, $('.grid-01'), true);
 
@@ -99,7 +99,6 @@ var owInitAjax = function() {
       }
 
       window.history.pushState('','',url);
-
       owInitAjax();
     });
 

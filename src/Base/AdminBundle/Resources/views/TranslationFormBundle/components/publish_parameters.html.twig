@@ -1,4 +1,9 @@
 {% trans_default_domain 'BaseAdminBundle' %}
+{% if  is_granted('ROLE_TRANSLATOR_MASTER') or is_granted('ROLE_TRANSLATOR') %}
+    {% set isTranslator = true %}
+{% else %}
+    {% set isTranslator = false %}
+{% endif %}
 <div class="box box-success">
     <div class="box-header">
         <h4 class="box-title">
@@ -11,7 +16,9 @@
     </div>
     <div class="box-body">
         {% if form.parent.children.mobileDisplay is defined %}
-            {{ form_row(form.parent.children.mobileDisplay) }}
+            <div{% if isTranslator %} class="hidden"{% endif %}>
+                {{ form_row(form.parent.children.mobileDisplay) }}
+            </div>
         {% endif %}
         {% if participate_section is defined %}
             <div class="fdc-help form-group">
@@ -40,8 +47,7 @@
             </div>
         {% endif %}
         <div class="sonata-ba-collapsed-fields">
-            {% if  is_granted('ROLE_TRANSLATOR_MASTER') or
-            is_granted('ROLE_TRANSLATOR') %}
+            {% if  is_granted('ROLE_TRANSLATOR_MASTER') or is_granted('ROLE_TRANSLATOR') %}
                 <div class="row">
                     {% if form.parent.children.sites is defined %}
                         <div class="col-md-6">
@@ -68,7 +74,10 @@
                     {% endif %}
                     {% if form.parent.children.displayedOnCorpoHome is defined %}
                         <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
-                            {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                            {% if form.parent.children.displayedOnCorpoHome.vars.data == 1 %}
+                                {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                            {% endif %}
+
                             {{ form_label(form.parent.children.displayedOnCorpoHome) }}
                         </div>
                     {% endif %}
@@ -149,13 +158,14 @@
                         </div>
                     {% endif %}
                     {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
-                        <div class="form-group col-xs-6{% if displayedHomeClass is defined %} {{ displayedHomeClass }}{% endif %}" id="displayedHomepageLabel" style="margin-top: 25px;">
+                        <div class="form-group col-xs-6{% if displayedHomeClass is defined %} {{ displayedHomeClass }}{% endif %}"
+                             id="displayedHomepageLabel" style="margin-top: 25px;">
                             {{ form_widget(form.parent.children.displayedHome) }}
                             {{ form_label(form.parent.children.displayedHome) }}
                         </div>
                     {% endif %}
                     {% if form.parent.children.displayedOnCorpoHome is defined %}
-                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel"">
+                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
                             {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
                             {{ form_label(form.parent.children.displayedOnCorpoHome) }}
                         </div>

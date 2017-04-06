@@ -68,7 +68,7 @@
 }
 
 .module-title .title-big {
-    color: #fff;
+    color: $black;
     font-family: "Playfair Display";
     font-size: 3rem;
     font-weight: 400;
@@ -520,25 +520,9 @@ article.communique .picto {
     font-size: 28px;
 }
 
-h2.sub-title {
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.text h2.sub-title, .text h2.sub-title2 {
-    font-family: "Playfair Display",Times New Roman,Times,serif;
-}
-
 .legal-notice h2 {
     padding: 60px;
     font-size: 28px;
-}
-
-.text h2.sub-title2 {
-    font-weight: 700;
-    font-size: 1.125rem;
-    margin: 25px 0;
 }
 
 .single-article .chapeau {
@@ -1030,4 +1014,14 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 #stamp-ajax-filter-url {
     display: none!important;
 }
+
+.who-fdc .slideshow .slideshow-img .images .img img {
+    margin: 0;
+    max-heiht: 105%;
+}
+
+header #navigation ul.user li ul li a {
+    font-weight: normal;
+}
+
 /* thomon - end fixes */

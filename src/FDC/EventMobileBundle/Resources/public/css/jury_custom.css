@@ -1,5 +1,9 @@
 #main.articles .selection-item .jury-info {
-    height: 145px;
+    height: 90px;
+    padding-bottom: 55px;
+}
+#main.articles .selection-item .jury-info .vCenterKid {
+    vertical-align: bottom;
 }
 #main.articles .selection-item .jury-info .name {
     padding-top: 0;

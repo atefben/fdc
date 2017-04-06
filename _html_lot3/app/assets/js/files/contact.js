@@ -47,7 +47,6 @@ var initContact = function () {
     }else{
         var textSelectValue = $('.select select option.default').text();
     }
-    console.log(textSelectValue);
     
     //init value
     $('.select .select-value .val span').html(textSelectValue);

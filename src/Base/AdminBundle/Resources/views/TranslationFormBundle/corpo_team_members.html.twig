@@ -69,34 +69,37 @@
                                         <label>
                                             Prénom
                                         </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.firstname }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
+                                        <span>
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <div>
+                                                {{ form.children.fr.vars.value.firstname }}
+                                            </div>
+                                        {% endif %}
+                                        </span>
+                                    </div>
                                     <div>
                                         <label>
                                             Nom
                                         </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.lastname }}
-                                        </div>
-                                    {% endif %}
+                                        <span>
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <div>
+                                                {{ form.children.fr.vars.value.lastname }}
+                                            </div>
+                                        {% endif %}
+                                        </span>
+                                    </div>
                                     <div>
                                         <label>
                                             Fonction
                                         </label>
-                                    <span>
-                                    {% if form.children.fr.vars.value is not null %}
-                                        <div>
-                                            {{ form.children.fr.vars.value.function }}
-                                        </div>
-                                    {% endif %}
-                                    </span>
+                                        <span>
+                                        {% if form.children.fr.vars.value is not null %}
+                                            <div>
+                                                {{ form.children.fr.vars.value.function }}
+                                            </div>
+                                        {% endif %}
+                                        </span>
                                     </div>
                                 </div>
                             </div>

@@ -179,6 +179,7 @@
   img {
     max-width: 100%;
     object-fit: contain;
+    height: 100%;
   }
 
   .video-container {
@@ -243,7 +244,8 @@
 // - BLOCK PUSH
 .block-push {
   background: center 0 no-repeat fixed;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
   transition: $smoothTransition .7s;
   position: relative;
 
@@ -479,7 +481,7 @@
   background-attachment: inherit;
 
   .who &, .edition-69.story-movie &, .palm-gold &, .media-library &, .participate &{
-    background-attachment: fixed;
+
   }
 
   .vFlexAlign {
@@ -647,7 +649,6 @@
 
 // - BLOCK FILMS
 .block-films {
-  padding-top: 15px;
   height: 382px;
 
   video {
@@ -1178,7 +1179,6 @@
 .block-social-network-all {
   width: 380px;
   margin: 0 auto;
-  padding-bottom: 60px;
   height: 76px;
   box-sizing: inherit;
 
@@ -2015,15 +2015,15 @@
       font-size: .8125rem;
     }
 
-    .item-manual .contain-infos .block-01 .descrip-section {
+    .descrip-section {
       p {
-        width: 750px;
-        margin: 0 auto;
-        font-size: 1.25rem;
-        line-height: 36px;
-        padding: 39px 0;
-        text-align: center;
-        color: #000;
+        width: 750px !important;
+        margin: 0 auto !important;
+        font-size: 1.25rem !important;
+        line-height: 36px !important;
+        padding: 39px 0 !important;
+        text-align: center !important;
+        color: #000 !important;
       }
     }
 
@@ -2378,15 +2378,13 @@
   flex-direction: row;
 
   p.caption {
-    color: #666 !important;
+    color: #969696 !important;
     font-size: 0.750rem !important;
     margin: 0 !important;
-    line-height: 18px !important;
+    line-height: 12px !important;
     text-align: left !important;
     font-family: $CamphorRegular !important;
   }
-
-
 }
 
 .half-photo {

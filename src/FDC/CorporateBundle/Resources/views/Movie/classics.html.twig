@@ -110,7 +110,8 @@
                                                 <div class="infos">
                                                     <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                 class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                    {% set directors = film.getDirectors() %}
+                                                    {% if film.film.getDirectors()|length %}
+                                                    {% set directors = film.film.getDirectors() %}
                                                     {% set directorsName = '' %}
                                                     {% for director in directors %}
                                                         <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
@@ -120,6 +121,7 @@
                                                                 </span></a>
 
                                                     {% endfor %}
+                                                    {% endif %}
                                                     <span class="date">
                                                             {% set duration = [] %}
                                                         {% if film.film.duration is not empty %}

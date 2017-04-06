@@ -2,6 +2,6 @@
 
 {% block field %}
     <div>
-        {{ object.createdAt|localizeddate }}
+        {{ object.createdAt|localizeddate('long', 'none', locale_fallback) }}
     </div>
 {% endblock %}

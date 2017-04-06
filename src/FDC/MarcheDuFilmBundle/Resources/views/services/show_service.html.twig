@@ -76,7 +76,7 @@
                                         <h5>{% if product.grayText is not null %}{{ product.grayText }} {% endif %} {% if product.colorText is not null %}<span class="fromPrice customClass1">{{ product.colorText }}</span>{% endif %}</h5>
                                     {% endif %}
                                     <div class="tabContent">
-                                        <p>{{ product.body }}</p>
+                                        <p>{{ product.body|raw }}</p>
                                     </div>
                                     {% if product.toggledBody is not null and product.toggledBody|length > 0 %}
                                         <input type="checkbox" class="read-more-state" id="post-{{ widgetId~product.id }}" style="opacity:0;"/>

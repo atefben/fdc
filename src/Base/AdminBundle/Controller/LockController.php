@@ -2,6 +2,8 @@
 
 namespace Base\AdminBundle\Controller;
 
+use Base\CoreBundle\Entity\GraphicalCharterButtonGroup;
+use Base\CoreBundle\Entity\GraphicalCharterSection;
 use \DateTime;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
@@ -116,7 +118,9 @@ class LockController extends Controller
         'gallerydualalign' => 'GalleryDualAlign',
         'filmselectionsection' => 'FilmSelectionSection',
         'filmfilm' => 'FilmFilm',
-
+        'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
+        'graphicalcharterbuttonfile' => 'GraphicalCharterButtonFile',
+        'graphicalcharterbuttonsection' => 'GraphicalCharterSection',
     );
 
     /**

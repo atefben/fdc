@@ -25,11 +25,13 @@
                             <span class="title-type">{{ film.selectionSection|trans_fallback('name') }}</span>
                             {% if film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) %}
                                 {% set directors = film.getDirectors() %}
+                                <span class="names-a">
                                 {% for key,director in directors %}
                                     {% if director %}
                                         <a class="title-12" href="{{ path('fdc_corporate_artist_get', {slug: director.person.slug }) }}">{% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person, 'link': false} %}{{ loop.last == true ? '' : ',' }}</a>
                                     {% endif %}
                                 {% endfor %}
+                                </span>
                             {% endif %}
                             {% if film.festival.year != 0 %}
                                 <span class="title-date">{{ film.festival.year }}</span>

@@ -13,8 +13,6 @@ var owInitTab = function(id) {
       var $block = $('.block-contain-txt-register-movie[data-article='+dataTab+']');
       var $element = $('td[data-tab='+dataTab+']');
 
-      console.log('td[data-tab='+dataTab+']');
-
       $tab.removeClass('active');
       $element.addClass('active');
 

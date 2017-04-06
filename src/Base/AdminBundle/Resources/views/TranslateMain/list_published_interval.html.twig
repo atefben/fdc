@@ -3,9 +3,9 @@
 {% block field %}
     <div>
         {% if object.publishedAt and object.publishEndedAt %}
-            Du {{ object.publishedAt|localizeddate }} au {{ object.publishedAt|localizeddate }}
+            Du {{ object.publishedAt|localizeddate('long', 'none', locale_fallback) }} au {{ object.publishedAt|localizeddate('long', 'none', locale_fallback) }}
         {% elseif object.publishedAt and object.publishEndedAt is null %}
-            {{ object.publishedAt|localizeddate }}
+            {{ object.publishedAt|localizeddate('long', 'none', locale_fallback) }}
         {% endif %}
     </div>
 {% endblock %}
