@@ -3,6 +3,7 @@
 {% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for media in items %}
+        {% set link = null %}
         {% if class(media) == "MediaImage" %}
             {% set title = media|trans_fallback('legend') %}
             {% set format = 'photo' %}
@@ -24,38 +25,41 @@
             {% set link = path('fdc_eventmobile_news_getaudios') ~ '#aid=' ~ media.id %}
         {% endif %}
 
-
+        {% set mediaImage = '' %}
         <div data-id="media-{{ media.id }}" class="thumb item {{ media.publishedAt|date('dmY') }} {{ media.theme ? media.theme.slug : '' }} {{ format }} {{ loop.index == 1 ? 'active' : '' }}">
-            <div class="img-container">
-                {% set trans = media.findTranslationByLocale(app.request.locale) %}
-                {% set transImage = null %}
-                {% set amazonImage = null %}
+            {% set trans = media.findTranslationByLocale(app.request.locale) %}
+            {% set transImage = null %}
+            {% set amazonImage = null %}
 
-                {% if trans is null or trans.file is null %}
-                    {% set trans = media.findTranslationByLocale('fr') %}
-                {% endif %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = media.findTranslationByLocale('fr') %}
+            {% endif %}
 
-                {% if media.header is not null %}
-                    {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
-                    {% if transImage is null or transImage.file is null  %}
-                        {% set transImage = media.header.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% elseif media.image %}
-                    {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
-                    {% if transImage is null or transImage.file is null %}
-                        {% set transImage = media.image.findTranslationByLocale('fr') %}
-                    {% endif %}
-                {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
-                    {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
+            {% if media.header is not null %}
+                {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null  %}
+                    {% set transImage = media.header.findTranslationByLocale('fr') %}
                 {% endif %}
+            {% elseif media.image %}
+                {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null %}
+                    {% set transImage = media.image.findTranslationByLocale('fr') %}
+                {% endif %}
+            {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
+                {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
+            {% endif %}
 
-                {% if transImage or amazonImage %}
-                    <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
-                {% elseif trans is not null %}
-                    <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
-                {% endif %}
+            {% if transImage or amazonImage %}
+                {% set mediaImage %}{% if transImage is not null %}{% path transImage.file , '976x615' %}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}{% endset %}
+            {% elseif trans is not null %}
+                {% set mediaImage %}{% path trans.file , '976x615' %}{% endset %}
+            {% endif %}
+
+            <div class="img-container" style="background-image: url({{ mediaImage }})">
                 <span class="picto"><i class="icon icon_{{ format }}"></i></span>
-                <a class="linkImage" href="{{ link }}"></a>
+                {% if link is not empty %}
+                    <a class="linkImage" href="{{ link }}"></a>
+                {% endif %}
             </div>
             <div class="info">
                 <div class="top-info">
