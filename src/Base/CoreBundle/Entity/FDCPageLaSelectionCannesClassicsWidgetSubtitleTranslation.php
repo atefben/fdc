@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Util\Time;
 
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,7 +23,7 @@ use JMS\Serializer\Annotation\Since;
 class FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation
 {
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use Time;
 
     /**
