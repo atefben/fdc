@@ -72,6 +72,12 @@ class WhoAreWeController extends Controller
             ->getPage($locale)
         ;
 
+        $corpoTeam = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoTeam')
+            ->findOneById(1)
+        ;
+
         if (!$graphicalCharter) {
             throw $this->createNotFoundException('There is not available Team.');
         }
@@ -80,6 +86,7 @@ class WhoAreWeController extends Controller
             return $this->render('FDCCorporateBundle:WhoAreWe:graphical-charter.html.twig', [
                 'graphicalCharter' => $graphicalCharter,
                 'sections'         => $this->getSections($locale),
+                'corpoTeam'         => $corpoTeam,
             ]);
         } else {
             throw $this->createNotFoundException('There is not available Team.');

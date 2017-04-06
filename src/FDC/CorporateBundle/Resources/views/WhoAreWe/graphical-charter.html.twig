@@ -10,7 +10,12 @@
 
 {% block body %}
     <section id="main">
-        <div class="block-push block-push-top" style="background-image: url('media/images/who-fdc-01.jpg')">
+        {% set mainTrans = datas.mainImage.findTranslationByLocale(app.request.locale) %}
+        {% if mainTrans is null or mainTrans.file is null %}
+            {% set mainTrans = datas.mainImage.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set mainImage = mainTrans.file %}
+        <div class="block-push block-push-top" style="background-image: url({% if mainImage %}{% path mainImage, '2560x1103' %}{% endif %})">
             <div class="vFlexAlign">
                 <div class="txts">
                     <h1 class="title-3">{{ 'header.nav.whoweare'|trans }}</h1>
