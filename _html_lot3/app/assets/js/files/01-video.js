@@ -81,7 +81,6 @@ var initVideo = function(hash) {
             '&display=popup',
         twitterLink  = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-console.log('01video');
 function playerInit(id, cls, havePlaylist, live) {
     cls = cls || 'video-player';
     havePlaylist = havePlaylist || false;
@@ -781,7 +780,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
         $sound.on('click', '.icon-sound', function() {
             console.log('player mute');
-            playerInstance.updateMute(true);
+            playerInstance.updateMute();
         });
 
         if (fullScreenApi.supportsFullScreen) {
