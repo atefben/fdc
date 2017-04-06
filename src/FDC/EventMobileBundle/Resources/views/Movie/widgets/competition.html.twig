@@ -20,7 +20,7 @@
                             <span class="item-title">{{ movie.titleVO|truncate(20) }}</span>
                             {% if movie|trans_fallback('title') is not empty and movie|trans_fallback('title') != movie.titleVO %}
                                 <span class="item-sub-title">
-                                    ({{ movie|trans_fallback('title')|truncate(30) }})
+                                    ({{ movie|trans_fallback('title')|truncate(25) }})
                                 </span>
                             {% endif %}
                         </a>
