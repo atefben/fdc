@@ -779,6 +779,7 @@ function playerInit(id, cls, havePlaylist, live) {
         });
 
         $sound.on('click', '.icon-sound', function() {
+            console.log('player mute');
             playerInstance.updateMute();
         });
 
@@ -5473,8 +5474,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-                console.log(facebookurl);
-                console.log(twitterurl);
+
                 if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
                     var dataItem = $(value).find('a');
 

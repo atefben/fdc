@@ -779,6 +779,7 @@ function playerInit(id, cls, havePlaylist, live) {
         });
 
         $sound.on('click', '.icon-sound', function() {
+            console.log('player mute');
             playerInstance.updateMute();
         });
 
