@@ -5605,9 +5605,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            console.log('url transfered to email 3',images[centerElement].link);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
-            console.log('url transfered to email',images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
 
             if($('.affiche-fdc').length){
@@ -5680,7 +5678,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            console.log('url transfered to email 1',images[centerElement].link);
             $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
             $('.popin-mail').find('.chap-article').html('');
 
