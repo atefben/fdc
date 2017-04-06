@@ -205,6 +205,8 @@ group:
             article:published_time : [valeur date de publication de l'actu]
             article:modified_time : [valeur date de modif actualité]
 entity:
+    graphical_charter: Charte graphique
+    graphical_charter_section: Section de Charte graphique
     corpo_festival_history: L'histoire du festival
     corpo_palme_or: La palme d'or
     corpo_mediatheque: Médiathèque

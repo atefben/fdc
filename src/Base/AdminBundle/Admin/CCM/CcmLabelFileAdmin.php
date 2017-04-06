@@ -24,6 +24,7 @@ class CcmLabelFileAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('label' => 'filter.common.label_id'))
+            ->add('fileTitle', null, array('label' => 'form.ccm.graphical_charter.section_file_title'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),

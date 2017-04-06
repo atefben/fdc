@@ -870,7 +870,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -976,7 +976,7 @@ function playerInit(id, cls, havePlaylist, live) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
 
             $('#video-player-popin + .top-bar').find('.buttons .facebook').attr('href', fbHref);
             // CUSTOM LINK TWITTER
@@ -1424,7 +1424,7 @@ var initAudio = function (hash) {
         fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent($audio.attr('data-link')));
         fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($audio.attr('data-img')));
         fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent($audio.parent().find('.title-article').html()));
-        fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+        fbHref = fbHref.replace('CUSTOM_DESC', '%20');
         $container.find('.buttons .facebook').attr('href', fbHref);
         // CUSTOM LINK TWITTER
         var twHref = twitterLink;
@@ -1686,7 +1686,7 @@ var initAudio = function (hash) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
@@ -1792,7 +1792,7 @@ var initAudio = function (hash) {
             fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
             fbHref = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent(img));
             fbHref = fbHref.replace('CUSTOM_NAME', encodeURIComponent(name));
-            fbHref = fbHref.replace('CUSTOM_DESC', 'Festival de Cannes');
+            fbHref = fbHref.replace('CUSTOM_DESC', '%20');
             // CUSTOM LINK TWITTER
             var twHref = twitterLink;
             twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent(name + " " + shareUrl));
