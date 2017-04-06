@@ -631,7 +631,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.icon_son', function () {
+    $sound.on('click', '.icon-sound', function () {
         playerInstance.updateMute();
     });
 

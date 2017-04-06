@@ -5308,21 +5308,19 @@ function resizeend() {
 var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
-        setTimeout(function () {
-
-            var finalSlider = slider;
-            if(slider.length > 1){
-                //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
-                slider.each(function(){
-                    console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
-                    if($(this).find('[data-pid="'+hash+'"]').length){
-                        finalSlider = $(this);
-                    }
-                })
-            }
-            openSlideShow(finalSlider, hash);
-        }, 100);
-    }else{
+        var finalSlider = slider;
+        if(slider.length > 1){
+            //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+            slider.each(function(){
+                console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
+                if($(this).find('[data-pid="'+hash+'"]').length){
+                    finalSlider = $(this);
+                }
+            })
+        }
+        openSlideShow(finalSlider, hash);
+    }
+    //else{
 
         if($('.affiche-fdc').length) {
             if (typeof hash != "undefined") {
@@ -5380,7 +5378,7 @@ var owinitSlideShow = function (slider, hash) {
             }
         }
 
-    }
+    //}
 }
 
 
@@ -5474,8 +5472,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-                console.log(facebookurl);
-                console.log(twitterurl);
+
                 if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
                     var dataItem = $(value).find('a');
 
@@ -5607,7 +5604,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+            $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
             $('.popin-mail').find('.chap-article').html('');
 
             if($('.affiche-fdc').length){
@@ -5680,7 +5677,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+            $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
             $('.popin-mail').find('.chap-article').html('');
 
             if($('.affiche-fdc').length){
@@ -5891,7 +5888,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
         $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-        $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+        $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
         $('.popin-mail').find('.chap-article').html('');
 
         if($('.affiche-fdc').length){
@@ -7218,7 +7215,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.icon_son', function () {
+    $sound.on('click', '.icon-sound', function () {
         playerInstance.updateMute();
     });
 

@@ -6,6 +6,7 @@ use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
 use Base\CoreBundle\Util\Time;
 
+use Base\CoreBundle\Util\TranslationChanges;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,13 +25,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 class FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation
 {
     use Translation;
-    use \Base\CoreBundle\Util\TranslationChanges;
+    use TranslationChanges;
     use Time;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "search", "news_show"})
      */
@@ -39,7 +40,7 @@ class FDCPageLaSelectionCannesClassicsWidgetVideoYoutubeTranslation
     /**
      * @var string
      *
-     * @ORM\Column(type="text", nullable=false)
+     * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({"news_list", "search", "news_show"})
      */
