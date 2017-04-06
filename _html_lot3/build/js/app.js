@@ -5307,6 +5307,7 @@ function resizeend() {
 var owinitSlideShow = function (slider, hash) {
 
     fnClickPoster = function(){
+        console.log('declare click poster');
         $('.poster').off('click').on('click', function(e){
             slider = $('.all-contain');
             $(this).parent().addClass('active center');
