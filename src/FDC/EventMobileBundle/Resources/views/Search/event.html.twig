@@ -4,8 +4,7 @@
 {% block content %}
     {% for event in items %}
         <div data-id="event{{ event.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}">
-            <div class="img-container">
-                <img src='{% path event.header|trans_fallback('file'), '976x615' %}' alt="{{ event.header|trans_fallback('alt') }}"/>
+            <div class="img-container" style="background-image: url({% path event.header|trans_fallback('file'), '976x615' %})">
                 <a class="linkImage" href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}"></a>
             </div>
             <div class="info">

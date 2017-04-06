@@ -348,6 +348,7 @@ $(document).ready(function() {
               var txt = name.toLowerCase();
               if (txt.indexOf(value.toLowerCase()) != -1) {
                 txt = txt.replace(value.toLowerCase(), '<strong>' + value.toLowerCase() + '</strong>');
+                txt = '<a href="' + link + '">' + txt + '</a>';
                 $suggest.append('<li data-link="' + link + '">' + txt + '</li>');
               }
             }
