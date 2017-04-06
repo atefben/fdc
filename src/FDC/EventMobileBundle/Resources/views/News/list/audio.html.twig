@@ -49,6 +49,7 @@
 
         <div class="list" id="list-audios">
             {% for audio in audios %}
+                {% set transImage = null %}
                 {% set trans = audio.findTranslationByLocale(app.request.locale) %}
                 {% if trans is null %}
                     {% set trans = audio.findTranslationByLocale('fr') %}
@@ -60,7 +61,7 @@
                     {% endif %}
                 {% elseif audio.image %}
                     {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
-                    {% if transImage is null %}
+                    {% if transImage is null or transImage.file is null %}
                         {% set transImage = audio.image.findTranslationByLocale('fr') %}
                     {% endif %}
                 {% endif %}
