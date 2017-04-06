@@ -5306,18 +5306,6 @@ function resizeend() {
  */
 var owinitSlideShow = function (slider, hash) {
 
-    fnClickPoster = function(){
-        console.log('declare click poster');
-        
-        $('.poster').off('click').on('click', function(e){
-            slider = $('.all-contain');
-            $(this).parent().addClass('active center');
-            var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-            var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-            openSlideShow(slider,hash, true, index);
-            return false;
-        });
-    }
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
         var finalSlider = slider;
         if(slider.length > 1){
@@ -5330,8 +5318,8 @@ var owinitSlideShow = function (slider, hash) {
             })
         }
         openSlideShow(finalSlider, hash);
-        fnClickPoster();
-    }else{
+    }
+    //else{
 
         if($('.affiche-fdc').length) {
             if (typeof hash != "undefined") {
@@ -5343,7 +5331,14 @@ var owinitSlideShow = function (slider, hash) {
                 }, 100);
             }
 
-            fnClickPoster();
+            $('.poster').off('click').on('click', function(e){
+                slider = $('.all-contain');
+                $(this).parent().addClass('active center');
+                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+                var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
+                openSlideShow(slider,hash, true, index);
+                return false;
+            });
 
         } else if($('.article-single').length){
 
@@ -5382,7 +5377,7 @@ var owinitSlideShow = function (slider, hash) {
             }
         }
 
-    }
+    //}
 }
 
 
