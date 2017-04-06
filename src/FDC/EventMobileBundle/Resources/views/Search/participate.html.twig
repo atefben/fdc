@@ -3,22 +3,17 @@
 {% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for article in items %}
-        <article class="article" data-format="article" data-theme="competition">
-            <div class="image">
-                <div class="image-wrapper">
-                    <img src='{% path article.image|trans_fallback('file'), '1280x808' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
-                </div>
+        <div data-id="participate{{ article.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}">
+            <div class="img-container">
+                <img src='{% path article.image|trans_fallback('file'), '1280x808' %}' alt="{{ article.header|trans_fallback('alt') }}"/>
+                <span class="picto"><i class="icon icon_article"></i></span>
                 <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': article|trans_fallback('slug') }) }}" class="linkImage"></a>
-                <span class="picto"><i class="icon icon_article"></i>
-                </span>
             </div>
             <div class="info">
-                <h2>
-                    <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': article|trans_fallback('slug') }) }}">
-                        {{ article|trans_fallback('title')|truncate(40) }}
-                    </a>
-                </h2>
+                <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': article|trans_fallback('slug') }) }}">
+                    <h2>{{ article|trans_fallback('title')|truncate(40) }}</h2>
+                </a>
             </div>
-        </article>
+        </div>
     {% endfor %}
 {% endblock %}
