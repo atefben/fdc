@@ -305,6 +305,9 @@ class Importer
      */
     private function createFile($url, $type)
     {
+        if ($this->is404($url)) {
+            return null;
+        }
         $folder = $this->container->get('kernel')->getRootDir() . "/../web/uploads/old/$type/";
         exec("mkdir -p $folder");
         $file = md5($url) . '.' . pathinfo($url, PATHINFO_EXTENSION);
@@ -312,7 +315,21 @@ class Importer
         if (is_file("$folder$file") && filesize("$folder$file")) {
             return $folder . $file;
         }
-        exec("wget -c $url -O $folder$file");
+
+        set_time_limit(0);
+        $fp = fopen ("$folder$file", 'w+');
+        $ch = curl_init(str_replace(" ","%20",$url));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_exec($ch);
+        if($errno = curl_errno($ch)) {
+            $error_message = curl_strerror($errno);
+            dump("cURL error ({$errno}):\n {$error_message}");
+        }
+        curl_close($ch);
+        fclose($fp);
+
         if (!is_file($folder . $file) || !filesize("$folder$file")) {
             return null;
         }
@@ -717,7 +734,7 @@ class Importer
         $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
         $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
 
-
+        dump($file);
         if (!$file && $locale == 'fr') {
             dump($oldMediaI18n->getId());
             $biOldMediaI18n = $this
@@ -982,6 +999,28 @@ class Importer
                     $this->getManager()->remove($mediaVideoFilmFilmAssociated);
                 }
             }
+        }
+    }
+
+
+
+    private function is404($url)
+    {
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+
+        /* Get the HTML or whatever is linked in $url. */
+        $response = curl_exec($handle);
+
+        /* Check for 404 (file not found). */
+        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+        curl_close($handle);
+
+        /* If the document has loaded successfully without any redirection or error */
+        if ($httpCode >= 200 && $httpCode < 300) {
+            return false;
+        } else {
+            return true;
         }
     }
 
