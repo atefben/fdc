@@ -8,6 +8,8 @@
     max-width: none!important;
     min-height: none!important;
     max-height: none!important;
+    position: static;
+    border: 1px solid red;
 
     &.open {
         height: auto;
