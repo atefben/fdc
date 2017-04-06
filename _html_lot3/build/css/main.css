@@ -2535,6 +2535,7 @@ a {
   margin-bottom: 50px;
   text-align: center;
   font-family: "Playfair Display", Times New Roman, Times, serif;
+  color: #333;
 }
 .text .sub-title2 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -5543,6 +5544,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   font-size: 24pt;
   margin-bottom: 50px;
   text-align: center;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
+  color: #333;
 }
 .wysiwyg-article-02 h2.sub-title2 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -15942,9 +15945,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie h2.sub-title {
   font-family: "Playfair Display", Times New Roman, Times, serif;
-  font-size: 1.5rem;
+  font-size: 24pt;
   margin-bottom: 50px;
   text-align: center;
+  color: #333;
 }
 .single-movie h2.sub-title2 {
   font-family: "Playfair Display", Times New Roman, Times, serif;
@@ -16765,7 +16769,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   font-size: 24pt;
   margin-bottom: 50px;
   text-align: center;
-  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   color: #333;
 }
 .article-single .table-article td, .article-single .table-article th, .single-movie .table-article td, .single-movie .table-article th {
