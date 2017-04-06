@@ -40,3 +40,5 @@ b
     });
   }
 };
+
+$('p:contains("remercie chaleureusement")').addClass('thanks');

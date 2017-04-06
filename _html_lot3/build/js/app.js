@@ -1176,6 +1176,7 @@ b
   }
 };
 
+$('p:contains("remercie chaleureusement")').addClass('thanks');
 var owInitAjax = function() {
 
   $('.ajax-section nav li:not(.active) a:not(.noajax)').on('click', function(e){
