@@ -20,9 +20,9 @@ class MovieController extends Controller
 {
 
     /**
-     * @Route("/archives/ficheFilm/id/{id}/year/2014.html")
+     * @Route("/archives/ficheFilm/id/{id}/year/{year}.html")
      */
-    public function archiveGetAction($id)
+    public function archiveGetAction($id, $year)
     {
         $oldFilmAssoc = $this
             ->getDoctrineManager()
