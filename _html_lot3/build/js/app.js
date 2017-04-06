@@ -5317,21 +5317,18 @@ var owinitSlideShow = function (slider, hash) {
         });
     }
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
-        //setTimeout(function () {
-
-            var finalSlider = slider;
-            if(slider.length > 1){
-                //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
-                slider.each(function(){
-                    console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
-                    if($(this).find('[data-pid="'+hash+'"]').length){
-                        finalSlider = $(this);
-                    }
-                })
-            }
-            openSlideShow(finalSlider, hash);
-            fnClickPoster();
-        //}, 100);
+        var finalSlider = slider;
+        if(slider.length > 1){
+            //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+            slider.each(function(){
+                console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
+                if($(this).find('[data-pid="'+hash+'"]').length){
+                    finalSlider = $(this);
+                }
+            })
+        }
+        openSlideShow(finalSlider, hash);
+        fnClickPoster();
     }else{
 
         if($('.affiche-fdc').length) {
