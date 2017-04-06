@@ -5306,6 +5306,16 @@ function resizeend() {
  */
 var owinitSlideShow = function (slider, hash) {
 
+    fnClickPoster = function(){
+        $('.poster').off('click').on('click', function(e){
+            slider = $('.all-contain');
+            $(this).parent().addClass('active center');
+            var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
+            var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
+            openSlideShow(slider,hash, true, index);
+            return false;
+        });
+    }
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
         //setTimeout(function () {
 
@@ -5320,6 +5330,7 @@ var owinitSlideShow = function (slider, hash) {
                 })
             }
             openSlideShow(finalSlider, hash);
+            fnClickPoster();
         //}, 100);
     }else{
 
@@ -5333,14 +5344,7 @@ var owinitSlideShow = function (slider, hash) {
                 }, 100);
             }
 
-            $('.poster').off('click').on('click', function(e){
-                slider = $('.all-contain');
-                $(this).parent().addClass('active center');
-                var hash = typeof $(this).data('url') !== 'undefined' ? $(this).data('url') : '';
-                var index = $(this).closest('.block-movie-preview').index('.block-movie-preview');
-                openSlideShow(slider,hash, true, index);
-                return false;
-            });
+            fnClickPoster();
 
         } else if($('.article-single').length){
 
