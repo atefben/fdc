@@ -309,8 +309,6 @@
         font-size: 2rem;
         margin-top: 24px;
         margin-left: 26px;
-        position: relative;
-        top: 27%;
       }
 
       &:hover + img {
@@ -485,10 +483,10 @@
   .nav {
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: block;
-    height: 82px;
+    height: 84px;
     position: fixed;
     top: 57%;
-    width: 82px;
+    width: 84px;
     z-index: 3;
     @include transition(all 0.3s $smoothTransition);
 
