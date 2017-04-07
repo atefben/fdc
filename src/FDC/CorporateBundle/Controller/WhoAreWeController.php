@@ -317,6 +317,10 @@ class WhoAreWeController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        if (!$page) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', [
             'pages'       => $pages,
             'currentPage' => $page,
