@@ -319,7 +319,8 @@ class WhoAreWeController extends Controller
 
         return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', [
             'pages'       => $pages,
-            'currentPage' => $page
+            'currentPage' => $page,
+            'localeSlugs' => $page->getLocaleSlugs(),
         ]);
     }
 
