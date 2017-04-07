@@ -455,7 +455,7 @@ class TelevisionController extends Controller
         $films = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getFilmsByIds(array_keys($groups))
+            ->getFilmsByIdsAndSelectionSection(array_keys($groups), $film->getSelectionSection())
         ;
 
         foreach ($films as $item) {

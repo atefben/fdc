@@ -230,7 +230,7 @@ class MovieController extends Controller
                 $next = $selectionTabs[0];
             }
 
-            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+            $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, $festival, true);
 
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
@@ -298,7 +298,7 @@ class MovieController extends Controller
         if ($next === true) {
             $filters = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true)
+                ->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, $festival, true)
             ;
             if ($filters) {
                 $next = $filters[0];
@@ -318,7 +318,7 @@ class MovieController extends Controller
 
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, true);
+        $cannesClassics = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, $festival, true);
 
         return $this->render('FDCEventMobileBundle:Movie:selection.html.twig', array(
             'cannesClassics' => $cannesClassics,
@@ -364,7 +364,7 @@ class MovieController extends Controller
             ->getPagesOrdoredBySelectionSectionOrder($locale)
         ;
 
-        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale,true);
+        $filters = $em->getRepository('BaseCoreBundle:FDCPageLaSelectionCannesClassics')->getAll($locale, $festival, true);
 
         //SEO
         $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($classic, $locale);
