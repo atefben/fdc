@@ -1030,7 +1030,7 @@ header #navigation ul.user li ul li a {
 }
 
 .video-container.video-data-layer{
-    &.state-init{
+    .state-init{
         .control-bar {
             opacity: 0;
 
