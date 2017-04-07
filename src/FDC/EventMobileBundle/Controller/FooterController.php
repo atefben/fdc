@@ -277,6 +277,8 @@ class FooterController extends Controller
 
                 $this->get('mailer')->send($message);
                 $this->get('session')->getFlashBag()->add('success', 'Email sent');
+
+                return $this->redirectToRoute('fdc_eventmobile_footer_contact');
             } else {
                 $hasErrors = true;
             }
