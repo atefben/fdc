@@ -6004,12 +6004,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.fullscreen-slider img').on('click', function (e) {
 
             $(this).toggleClass('isZoom');
+            $(this).css('transition-property', 'transform');
+            $(this).css('transition-duration', '5s');
 
             if($(this).hasClass('isZoom')) {
-                $(this).css('transform', 'scaleZ(2)');
+                $(this).css('transform', 'scale(2)');
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
             }else{
-                $(this).css('transform', 'scaleZ(1)');
+                $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
 
