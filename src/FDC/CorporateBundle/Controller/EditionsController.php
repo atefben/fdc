@@ -198,10 +198,16 @@ class EditionsController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        if (!$page) {
+            throw $this->createNotFoundException();
+        }
+
+
         return $this->render('FDCCorporateBundle:Retrospective:palme.html.twig', [
             'pages'       => $pages,
             'currentPage' => $page,
             'slug'        => $slug,
+            'localeSlugs' => $page->getLocaleSlugs(),
         ]);
     }
 
