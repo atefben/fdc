@@ -7909,6 +7909,10 @@ header #navigation ul.user li ul li a {
   height: 100% !important;
 }
 
+.home .shadow-bottom:before {
+  z-index: 3;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
