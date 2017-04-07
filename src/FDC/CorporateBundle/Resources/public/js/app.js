@@ -3715,7 +3715,16 @@ $(document).ready(function() {
       $('#slider-movie-videos .slide-video').on('mousedown', function(e) {
         var number = $(this).closest('.owl-item').index();
           setTimeout(function(){
-              if (!$(this).closest('.owl-item').parent().hasClass('owl-grab')) {
+
+              var testowlgrab = $(this).closest('.owl-item').parent().hasClass('owl-grab');
+
+              console.log('T E S T');
+              console.log($(this));
+              console.log($(this).closest('.owl-item'));
+              console.log($(this).closest('.owl-item').parent());
+              console.log('T E S T');
+
+              if (!testowlgrab) {
                   videoMovieBa.playlistItem(number);
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
