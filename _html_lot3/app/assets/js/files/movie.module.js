@@ -252,9 +252,12 @@ $(document).ready(function() {
 
       $('#slider-movie-videos .slide-video').on('click', function(e) {
         var number = $(this).closest('.owl-item').index();
-        console.log('number', number);
-        videoMovieBa.playlistItem(number);
-        sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
+          setTimeout(function(){
+              if (!$(this).closest('.owl-item').parent().hasClass('owl-grab')) {
+                  videoMovieBa.playlistItem(number);
+                  sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
+              }
+          }, 500);
       });
     }
   }
