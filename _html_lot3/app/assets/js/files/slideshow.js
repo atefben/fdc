@@ -441,7 +441,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         var a = document.createElement('div');
         a.innerHTML = str;
         for (var c = a.childNodes, i = c.length; i--; ) {
-            if (c[i].nodeType == 1) return true; 
+            if (c[i].nodeType == 1) return true;
         }
         return false;
     }
@@ -702,10 +702,10 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $(this).toggleClass('isZoom');
 
             if($(this).hasClass('isZoom')) {
-                $(this).css('transform', 'scale(2)');
+                $(this).css('transform', 'scaleZ(2)');
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
             }else{
-                $(this).css('transform', 'scale(1)');
+                $(this).css('transform', 'scaleZ(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
 
