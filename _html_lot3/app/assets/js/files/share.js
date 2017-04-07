@@ -185,7 +185,7 @@ var initRs = function () {
 
     if ($('.popin-mail').length > 0) {
         initPopinMail('.popin-mail');
-
+        console.log('popin mail init');
         $('.popin-mail-open').on('click touchstart', function (e) {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
