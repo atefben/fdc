@@ -253,20 +253,11 @@ $(document).ready(function() {
       $('#slider-movie-videos .slide-video').on('mousedown', function(e) {
         var number = $(this).closest('.owl-item').index();
           setTimeout(function(){
-
-              var testowlgrab = $('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab');
-
-              console.log('T E S T');
-              console.log($('#slider-movie-videos .slide-video'));
-              console.log($('#slider-movie-videos .slide-video').closest('.owl-item'));
-              console.log($('#slider-movie-videos .slide-video').closest('.owl-item').parent());
-              console.log('T E S T');
-
-              if (!testowlgrab) {
+              if (!$('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab')) {
                   videoMovieBa.playlistItem(number);
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
-          }, 500);
+          }, 100);
       });
     }
   }
