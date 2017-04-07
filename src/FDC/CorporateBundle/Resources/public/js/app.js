@@ -3716,12 +3716,12 @@ $(document).ready(function() {
         var number = $(this).closest('.owl-item').index();
           setTimeout(function(){
 
-              var testowlgrab = $(this).closest('.owl-item').parent().hasClass('owl-grab');
+              var testowlgrab = $('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab');
 
               console.log('T E S T');
-              console.log($(this));
-              console.log($(this).closest('.owl-item'));
-              console.log($(this).closest('.owl-item').parent());
+              console.log($('#slider-movie-videos .slide-video'));
+              console.log($('#slider-movie-videos .slide-video').closest('.owl-item'));
+              console.log($('#slider-movie-videos .slide-video').closest('.owl-item').parent());
               console.log('T E S T');
 
               if (!testowlgrab) {
