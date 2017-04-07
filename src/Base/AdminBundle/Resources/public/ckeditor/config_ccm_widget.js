@@ -63,7 +63,7 @@ CKEDITOR.editorConfig = function( config ) {
         },
         {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
         '/',
-        {name: 'insert', items: ['Table', 'HorizontalRule']},
+        {name: 'insert', items: ['Table', 'HorizontalRule', 'Iframe']},
         {name: 'styles', items: ['Styles']},
         {name: 'image', items: ['Image']},
         {name: 'tools', items: ['Maximize', 'ShowBlocks']}

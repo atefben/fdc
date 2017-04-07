@@ -1029,5 +1029,25 @@ header #navigation ul.user li ul li a {
     height: 100%;
 }
 
+.video-container.video-data-layer{
+
+    .control-bar {
+        opacity: 0;
+
+        .playstate {
+            cursor: pointer;
+        }
+    }
+
+    .jw-state-playing {
+        .control-bar {
+            opacity: 1;
+
+            .playstate {
+                cursor: default;
+            }
+        }
+    }
+} 
 
 /* thomon - end fixes */
