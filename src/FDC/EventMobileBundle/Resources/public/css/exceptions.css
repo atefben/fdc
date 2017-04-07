@@ -31,6 +31,7 @@ body {
     letter-spacing: .2rem;
     line-height: 24px;
     margin-bottom: 34px;
+    white-space: pre-wrap;
 }
 .error-not-found .texts a {
     color: #c8a461;
