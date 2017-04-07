@@ -7269,13 +7269,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 $(document).ready(function () {
 
     //hotfix thomon, trigger click on hidden layers to enlarge click zone
-    console.log('declare click',$('.video-data-layer .playstate').length);
-    $('.video-data-layer .playstate').on('click',function(){
-        console.log('zone click');
-        $(this).closest('.state-init').removeClass('state-init');
-        $(this).find('.play-btn').trigger('click');
-
-    });
+    var playerLoadInterval = window.setInterval(function(){
+        if($('.video-data-layer .playstate').length){
+            $('.video-data-layer .playstate').on('click',function(){
+                if($(this).closest('.state-init').length){
+                    $(this).closest('.state-init').removeClass('state-init');
+                }
+                $(this).find('.play-btn').trigger('click');
+            });
+            window.clearInterval(playerLoadInterval);
+        }
+    },300);
 
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
