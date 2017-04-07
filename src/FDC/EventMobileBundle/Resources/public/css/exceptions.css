@@ -1,0 +1,52 @@
+body {
+    background-color: #000;
+}
+#selection-btn {
+    display: none;
+}
+.error-not-found {
+    background-image: url("../img/error-bck.jpg");
+    height: 700px;
+    background-size: cover;
+}
+.error-not-found .texts {
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+}
+.error-not-found .texts h1 {
+    color: #fff;
+    font-size: 1.75rem;
+    letter-spacing: .5em;
+    line-height: 24px;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 19px;
+}
+.error-not-found .texts p {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: .2rem;
+    line-height: 24px;
+    margin-bottom: 34px;
+}
+.error-not-found .texts a {
+    color: #c8a461;
+    font-size: 0.69rem;
+    font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.error-not-found .texts a:hover {
+    color: rgba(200, 164, 97, 0.74);
+}
+.error-not-found .texts .icon {
+    font-size: .4rem;
+    vertical-align: middle !important;
+    margin-bottom: 2px;
+}
