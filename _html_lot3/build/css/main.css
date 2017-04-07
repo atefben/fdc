@@ -7903,6 +7903,11 @@ header #navigation ul.user li ul li a {
   opacity: 1;
 }
 
+/* hotfix bug ratio player */
+#video-player-popin .jwplayer {
+  width: 100% !important;
+}
+
 /* thomon - end fixes */
 header {
   background-color: #080808;
