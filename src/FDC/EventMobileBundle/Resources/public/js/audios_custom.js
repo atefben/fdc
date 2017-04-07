@@ -230,16 +230,7 @@ function audioLoad(aid, playerInstance, havePlaylist, callback) {
     callback(playerInstance);
 }
 
-function stopSound() {
-
-}
-
-function loadSound(url) {
-
-}
-
 $(document).ready(function() {
-
     $('.fullscreenplayer').hide();
     // AUDIO PLAYER
     $('#list-audios .item').off("click").on("click", function (e) {
@@ -249,56 +240,30 @@ $(document).ready(function() {
         $('.fullscreenplayer .date').html($(e.target).find('.date').text());
         $('.fullscreenplayer .hour').html($(e.target).find('.hour').text());
         $('.main-audio-player').attr('style', $(this).find('.img').attr('style'));
-        $('.audio-container').attr('data-file', '[{"file":"' + $(this).data('sound') + '"}]');
+        $('.audio-container').data('file', JSON.parse('[{"file":"' + $(this).data('sound') + '"}]'));
 
         audioPlayer = audioInit('audio-player', 'audio-player-container', false);
 
-        $('.audio-container').attr('data-id',  $(this).data('id'));
-
-//         if($('.jwplayer').length == 0) {
-//          //$('.audio-player').attr('data-sound',$(this).data('sound'));
-//          //initAudioPlayers(true);
-// audioPlayer = audioInit('audio-player', 'audio-player-container', false);
-//          } else {
-//          //loadSound($(this).data('sound'));
-//             audioPlayer.load($(this).data('sound')).play();
-//          }
-
         setTimeout(function() {
-            //audioPlayer = audioInit('audio-player', 'audio-player-container', false);
-         $('.fullscreenplayer').addClass('show').show();
-         }, 200);
+            $('.fullscreenplayer').addClass('show').show();
+        }, 200);
     });
 
     // CLOSE FULLSCREEN PLAYER
-  $('body').off('click', '.fullscreenplayer .close-button').on('click', '.fullscreenplayer .close-button', function(e) {
-    $('body').removeClass('allow-landscape');
+    $('body').off('click', '.fullscreenplayer .close-button').on('click', '.fullscreenplayer .close-button', function(e) {
+        $('body').removeClass('allow-landscape');
 
-    setTimeout(function() {
+        setTimeout(function() {
+            $('.fullscreenplayer').removeClass('show').hide();
 
-      $('.fullscreenplayer').removeClass('show').hide();
+            $('.fullscreenplayer .on').removeClass('show');
+            $('.fullscreenplayer .off').removeClass('hide');
+            $('.fullscreenplayer .play-btn .icon').removeClass('icon_play icon_pause').addClass('icon_audio');
 
-      $('.fullscreenplayer .on').removeClass('show');
-      $('.fullscreenplayer .off').removeClass('hide');
-      $('.fullscreenplayer .play-btn .icon').removeClass('icon_play icon_pause').addClass('icon_audio');
+            audioPlayer.setMute(true);
+            audioPlayer.setVolume(0);
+            audioPlayer.remove();
+        }, 200);
 
-      /*audioPlayer.setMute(true);
-        audioPlayer.setVolume(0);*/
-      audioPlayer.remove();
-        /*$('.audio-container').attr('data-file', '');
-        $('.audio-container').attr('data-id',  '');
-        $('.main-audio-player').attr('style', '');*/
-
-
-      /*if($('.audios').length !==0) {
-        $('.playpause').find(".icon").removeClass("icon_play");
-        stopSound();
-
-        audioPlayer.setMute(true);
-        audioPlayer.setVolume(0);
-
-      }*/
-    }, 200);
-
-  });
+    });
 });

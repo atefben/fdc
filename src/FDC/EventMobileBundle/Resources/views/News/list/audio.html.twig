@@ -6,6 +6,7 @@
     {% stylesheets
         "bundles/fdceventmobile/css/audios.css"
         "bundles/fdceventmobile/css/event_custom.css"
+        "bundles/fdceventmobile/css/audios_custom.css"
     %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
@@ -19,61 +20,35 @@
 
         <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
-
             <div class="vCenter">
                 <div class="vCenterKid">
                     <div class="img-container">
-            <div class="main-audio-player">
-                <div class="audio-container"
-                     data-file=''
-                     data-id=''>
-                    <div class="audio-player2">
-                        <div id="audio-player" class="audio-player-container"></div>
-                        <button class="play-btn play"><i class="icon icon_audio"></i></button>
-                        <div class="off">
-                            <div class="vCenter">
-                                <div class="vCenterKid">
-                                    <div class="info">
-                                        <span class="category"></span>
-                                        <span class="date"></span> .
-                                        <span class="hour"></span>
-                                        <p class="title-audio"></p>
+                        <div class="main-audio-player">
+                            <div class="audio-container"
+                                 data-file=''
+                                 data-id=''>
+                                <div class="audio-player2">
+                                    <div id="audio-player" class="audio-player-container"></div>
+                                    <button class="play-btn play"><i class="icon icon_audio"></i></button>
+                                    <div class="off">
+                                        <div class="vCenter">
+                                            <div class="vCenterKid">
+                                                <div class="info">
+                                                    <span class="category"></span>
+                                                    <span class="date"></span><span class="date-dot"> . </span>
+                                                    <span class="hour"></span>
+                                                    <p class="title-audio"></p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="on"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="on"></div>
                     </div>
                 </div>
             </div>
-                    </div>
-                </div>
-            </div>
-
-            {#<div class="vCenter">#}
-                {#<div class="vCenterKid">#}
-                    {#<div class="img-container">#}
-                        {#<div class="audio-player on" id="playerid">#}
-                            {#<div class="picto playpause">#}
-                                {#<i class="icon icon_pause"></i>#}
-                            {#</div>#}
-                            {#<div class="player-on">#}
-                                {#<div class="duration">#}
-                                    {#<span class="curr">0:00</span>/<span class="total">0:00</span>#}
-                                {#</div>#}
-                                {#<div class="wave-container" id="wave-0"></div>#}
-                            {#</div>#}
-                        {#</div>#}
-                        {#<div class="img"></div>#}
-                    {#</div>#}
-
-                    {#<p class="category"></p>#}
-                    {#<span class="date"></span>#}
-                    {#.#}
-                    {#<span class="hour"></span>#}
-                    {#<p class="title-audio"></p>#}
-                {#</div>#}
-            {#</div>#}
         </div>
 
         <div class="container">
@@ -109,7 +84,7 @@
                                 <div class="vCenter">
                                     <div class="vCenterKid">
                                         <span class="category">{{ audio.theme|trans_fallback('name') }}</span>
-                                        <span class="date hidden-element">{{ audio.publishedAt|date('d.m.y') }}</span> . <span class="hour hidden-element">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
+                                        <span class="date">{{ audio.publishedAt|date('d.m.y') }}</span><span class="date-dot"> . </span><span class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
                                         <p data-title="{{ audio|trans_fallback('title') }}">{{ audio|trans_fallback('title') }}</p>
                                     </div>
                                 </div>
@@ -120,30 +95,6 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <!-- <div class="popin-audio audio loading" data-sound="">
-            <div class="image-container">
-                <div class="image"></div>
-            </div>
-            <a href="#" class="playpause"></a>
-            <div class="on">
-                <div class="vCenter">
-                    <div class="vCenterKid">
-                        <div class="duration">
-                            <span class="curr">0:00</span>/<span class="total">0:00</span>
-                        </div>
-                        <div class="wave-container"></div>
-                        <div class="volume">
-                            <span></span>
-                        </div>
-                        <a href="#" class="fullscreen"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="info">
-                <span class="category"></span><span class="date"></span> . <span class="hour"></span>
-                <p></p>
-            </div>
-        </div> -->
     </div>
 {% endblock %}
 
