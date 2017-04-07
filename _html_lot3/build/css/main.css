@@ -7894,6 +7894,12 @@ header #navigation ul.user li ul li a {
 .video-container.video-data-layer .control-bar .playstate {
   cursor: pointer;
 }
+.video-container.video-data-layer .jw-state-playing .control-bar {
+  opacity: 1;
+}
+.video-container.video-data-layer .jw-state-playing .control-bar .playstate {
+  cursor: default;
+}
 
 /* thomon - end fixes */
 header {
