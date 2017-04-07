@@ -7888,17 +7888,24 @@ header #navigation ul.user li ul li a {
   height: 100%;
 }
 
-.video-container.video-data-layer .control-bar {
+.home .video-container .state-init .control-bar .playstate .play-btn {
+  width: 100%;
+  height: 100%;
+  margin-top: 6px;
+  top: 0px;
+  left: 0px;
+}
+
+.video-container.video-data-layer .state-init .control-bar {
   opacity: 0;
 }
-.video-container.video-data-layer .control-bar .playstate {
-  cursor: pointer;
-}
-.video-container.video-data-layer .jw-state-playing .control-bar {
+.video-container.video-data-layer .control-bar {
   opacity: 1;
 }
-.video-container.video-data-layer .jw-state-playing .control-bar .playstate {
-  cursor: default;
+
+/* hotfix bug ratio player */
+#video-player-popin .jwplayer {
+  width: 100% !important;
 }
 
 /* thomon - end fixes */
