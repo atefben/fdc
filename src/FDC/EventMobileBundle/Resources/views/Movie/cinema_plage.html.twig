@@ -3,8 +3,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/selection.css" %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    {% stylesheets
+        "bundles/fdceventmobile/css/selection.css"
+        "bundles/fdceventmobile/css/selection_custom.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
@@ -29,12 +32,14 @@
                     <div class="title-list-cat">
                         <p class="subtitle alone">{{ page|trans_fallback('subtitle') }}</p>
                     </div>
-                    {% for projection in projections %}
-                        {%  if projection.programmationFilms|length > 0 %}
-                            {% set film = projection.programmationFilms[0].film %}
-                            {% include 'FDCEventMobileBundle:Movie:widgets/movie_cinema_plage.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
-                        {% endif %}
-                    {% endfor %}
+                    <div class="owl-carousel film-slider">
+                        {% for projection in projections %}
+                            {%  if projection.programmationFilms|length > 0 %}
+                                {% set film = projection.programmationFilms[0].film %}
+                                {% include 'FDCEventMobileBundle:Movie:widgets/movie_cinema_plage.html.twig' with {'film': film, 'projection': projection, 'restauration': true} %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </section>
             </div>
         </div>
