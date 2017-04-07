@@ -78,7 +78,7 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
                 
                 return $this->ccmExceptionManager->render500Page($locale);
             }
-        } elseif ($requestHeaders['HOST'] == $this->eventMobileDomain) {
+        } elseif ($requestHeaders['HOST'] == $this->eventMobileDomain && $this->debug == false) {
             if ($exception->getStatusCode() === 404) {
 
                 return new Response($this->twig->render('FDCEventMobileBundle:Exceptions:404.html.twig'));
