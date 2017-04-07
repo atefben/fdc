@@ -116,10 +116,8 @@
             <span class="category">{{ article.theme|trans_fallback('name') }}</span>
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         </div>
-        <h2>
-            <a href="{{ path('fdc_pressmobile_news_get',{'type': articleType, 'format': articleFormat ~ 's', 'slug': article|trans_fallback('slug') }) }}">
-                {{- article|trans_fallback('title')|truncate(40) -}}
-            </a>
-        </h2>
+        <a href="{{ path('fdc_pressmobile_news_get',{'type': articleType, 'format': articleFormat ~ 's', 'slug': article|trans_fallback('slug') }) }}">
+            <h2>{{- article|trans_fallback('title')|truncate(40) -}}</h2>
+        </a>
     </div>
 </div>
