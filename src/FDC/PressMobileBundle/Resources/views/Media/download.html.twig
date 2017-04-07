@@ -57,7 +57,7 @@
             {% set sectionClass = "default" %}
             {% set sectionId = "default" %}
             {% if 'affiche' in s.section.findTranslationByLocale('fr').title|lower %}
-                {% set sectionClass = "affiche" %}
+                {% set sectionClass = "affiche affiche-officielle" %}
                 {% set sectionId = "affiche-officielle" %}
             {% elseif 'signature' in s.section.findTranslationByLocale('fr').title|lower %}
                 {% set sectionClass = "signature block" %}
