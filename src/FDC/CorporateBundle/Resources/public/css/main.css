@@ -15094,10 +15094,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .palmares {
   float: left;
   width: 63%;
-  /*
-  padding-bottom: 5px;
-  */
-  padding-bottom: 23px;
+  padding-bottom: 26px;
   margin-top: -66px;
 }
 .single-movie .palmares.trailer {

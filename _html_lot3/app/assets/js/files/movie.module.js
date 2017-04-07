@@ -68,7 +68,7 @@ $(document).ready(function() {
   /* thomon - tetiere height computing */
   if($('.tetiere-movie').length) {
     var tetiere = $('.tetiere-movie'),
-    defaultHeight = 290, //magic number, booooh
+    defaultHeight = 287, //magic number, booooh
     currentHeight = tetiere.outerHeight();
     
     if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
