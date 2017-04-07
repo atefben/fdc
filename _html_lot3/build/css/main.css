@@ -7884,6 +7884,7 @@ header #navigation ul.user li ul li a {
 }
 
 .home .video-player {
+  width: 100%;
   height: 100%;
 }
 
