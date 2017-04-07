@@ -3,8 +3,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/audios.css" %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    {% stylesheets
+        "bundles/fdceventmobile/css/audios.css"
+        "bundles/fdceventmobile/css/event_custom.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
@@ -16,30 +19,61 @@
 
         <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
+
             <div class="vCenter">
                 <div class="vCenterKid">
                     <div class="img-container">
-                        <div class="audio-player on" id="playerid">
-                            <div class="picto playpause">
-                                <i class="icon icon_pause"></i>
-                            </div>
-                            <div class="player-on">
-                                <div class="duration">
-                                    <span class="curr">0:00</span>/<span class="total">0:00</span>
+            <div class="main-audio-player">
+                <div class="audio-container"
+                     data-file=''
+                     data-id=''>
+                    <div class="audio-player2">
+                        <div id="audio-player" class="audio-player-container"></div>
+                        <button class="play-btn play"><i class="icon icon_audio"></i></button>
+                        <div class="off">
+                            <div class="vCenter">
+                                <div class="vCenterKid">
+                                    <div class="info">
+                                        <span class="category"></span>
+                                        <span class="date"></span> .
+                                        <span class="hour"></span>
+                                        <p class="title-audio"></p>
+                                    </div>
                                 </div>
-                                <div class="wave-container" id="wave-0"></div>
                             </div>
                         </div>
-                        <div class="img"></div>
+                        <div class="on"></div>
                     </div>
-
-                    <p class="category"></p>
-                    <span class="date"></span>
-                    .
-                    <span class="hour"></span>
-                    <p class="title-audio"></p>
                 </div>
             </div>
+                    </div>
+                </div>
+            </div>
+
+            {#<div class="vCenter">#}
+                {#<div class="vCenterKid">#}
+                    {#<div class="img-container">#}
+                        {#<div class="audio-player on" id="playerid">#}
+                            {#<div class="picto playpause">#}
+                                {#<i class="icon icon_pause"></i>#}
+                            {#</div>#}
+                            {#<div class="player-on">#}
+                                {#<div class="duration">#}
+                                    {#<span class="curr">0:00</span>/<span class="total">0:00</span>#}
+                                {#</div>#}
+                                {#<div class="wave-container" id="wave-0"></div>#}
+                            {#</div>#}
+                        {#</div>#}
+                        {#<div class="img"></div>#}
+                    {#</div>#}
+
+                    {#<p class="category"></p>#}
+                    {#<span class="date"></span>#}
+                    {#.#}
+                    {#<span class="hour"></span>#}
+                    {#<p class="title-audio"></p>#}
+                {#</div>#}
+            {#</div>#}
         </div>
 
         <div class="container">
@@ -67,7 +101,8 @@
                 {% endif %}
                 {% if transImage is defined %}
                     <div class="item {{ audio.theme|trans_fallback('slug') }} {{ audio.publishedAt|date('d-m-y') }} shadow-bottom audio"
-                         data-sound="{{ s3_server_audio ~ trans.mp3Url }}">
+                         data-sound='{{ s3_server_audio ~ trans.mp3Url }}'
+                         data-id='{{ audio.id }}'>
                         <div class="img-container">
                             <div class="infos">
                                 <div class="picto"><i class="icon icon_audio"></i></div>
@@ -113,7 +148,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/audios.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/audios.js'
+        '@FDCEventMobileBundle/Resources/public/js/audios_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
