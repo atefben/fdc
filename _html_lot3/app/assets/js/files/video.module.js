@@ -684,6 +684,11 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
 $(document).ready(function () {
 
+    //hotfix thomon, trigger click on hidden layers to enlarge click zone
+    $('body').on('click','.video-data-layer .playstate',function(){
+        console.log('zone click');
+        $(this).find('.play-btn').trigger('click');
+    });
 
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
