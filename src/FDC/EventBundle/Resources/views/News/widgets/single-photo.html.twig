@@ -12,7 +12,7 @@
             {% set copyright = photo|trans_fallback('copyright') %}
             {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
             {#{% if file.height > file.width %}#}
-                {% thumbnail file, 'x584' with {'alt': alt, 'title': alt } %}
+                <img src="{% path file, 'x584' %}" alt="{{ alt|escape('html_attr') }}" title="{{ alt|escape('html_attr') }}">
             {#{% else %}#}
                 {#{% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}#}
             {#{% endif %}#}
