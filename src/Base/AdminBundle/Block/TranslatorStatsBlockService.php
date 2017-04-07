@@ -173,6 +173,13 @@ class TranslatorStatsBlockService extends BaseBlockService
                 'BaseCoreBundle:ContactPage',
                 // pages
                 'BaseCoreBundle:FDCPageFooter',
+                'BaseCoreBundle:CorpoWhoAreWe',
+                'BaseCoreBundle:CorpoMediatheque',
+                'BaseCoreBundle:CorpoFestivalHistory',
+                'BaseCoreBundle:CorpoPalmeOr',
+                'BaseCoreBundle:CorpoAccredit',
+                'BaseCoreBundle:CorpoMovieInscriptionProcedure',
+                'BaseCoreBundle:CorpoMovieInscription',
                 // seo + tetieres
                 'BaseCoreBundle:FDCPageEvent',
                 'BaseCoreBundle:FDCPageWebTvChannels',

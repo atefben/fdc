@@ -167,6 +167,13 @@ class SearchBlockService extends BaseBlockService
                 'ContactPage'=> $this->pool->getAdminByAdminCode('base.admin.contact_page'),
                 // pages
                 'FDCPageFooter'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_footer'),
+                'CorpoWhoAreWe' => $this->pool->getAdminByAdminCode('base.admin.corpo_who_are_we'),
+                'CorpoMediatheque' => $this->pool->getAdminByAdminCode('base.admin_corpo_mediatheque'),
+                'CorpoFestivalHistory' => $this->pool->getAdminByAdminCode('base.admin.corpo_festival_history'),
+                'CorpoPalmeOr' => $this->pool->getAdminByAdminCode('base.admin.corpo_palme_or'),
+                'CorpoAccredit' => $this->pool->getAdminByAdminCode('base.admin.corpo_accredit'),
+                'CorpoMovieInscriptionProcedure' => $this->pool->getAdminByAdminCode('base.admin.corpo_movie_inscription_procedure'),
+                'CorpoMovieInscription' => $this->pool->getAdminByAdminCode('base.admin.corpo_movie_inscription'),
                 // seo + tetieres
                 'FDCPageEvent'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_event'),
                 'FDCPageWebTvChannels'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_web_tv_channels'),
@@ -250,6 +257,13 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:ContactPage',
             // pages
             'BaseCoreBundle:FDCPageFooter',
+            'BaseCoreBundle:CorpoWhoAreWe',
+            'BaseCoreBundle:CorpoMediatheque',
+            'BaseCoreBundle:CorpoFestivalHistory',
+            'BaseCoreBundle:CorpoPalmeOr',
+            'BaseCoreBundle:CorpoAccredit',
+            'BaseCoreBundle:CorpoMovieInscriptionProcedure',
+            'BaseCoreBundle:CorpoMovieInscription',
             // seo + tetieres
             'BaseCoreBundle:FDCPageEvent',
             'BaseCoreBundle:FDCPageWebTvChannels',
@@ -291,6 +305,13 @@ class SearchBlockService extends BaseBlockService
         'ContactPage' => 'Espace presse',
         // pages
         'FDCPageFooter' => 'Pages',
+        'CorpoWhoAreWe' => 'Pages',
+        'CorpoMediatheque' => 'Pages',
+        'CorpoFestivalHistory' => 'Pages',
+        'CorpoPalmeOr' => 'Pages',
+        'CorpoAccredit' => 'Pages',
+        'CorpoMovieInscriptionProcedure' => 'Pages',
+        'CorpoMovieInscription' => 'Pages',
         // seo + tetieres
         'FDCPageEvent' => 'SEO + TETIÈRES',
         'FDCPageWebTvChannels' => 'SEO + TETIÈRES',
@@ -343,6 +364,13 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:ContactPage',
             // pages
             'BaseCoreBundle:FDCPageFooter',
+            'BaseCoreBundle:CorpoWhoAreWe',
+            'BaseCoreBundle:CorpoMediatheque',
+            'BaseCoreBundle:CorpoFestivalHistory',
+            'BaseCoreBundle:CorpoPalmeOr',
+            'BaseCoreBundle:CorpoAccredit',
+            'BaseCoreBundle:CorpoMovieInscriptionProcedure',
+            'BaseCoreBundle:CorpoMovieInscription',
             // seo + tetieres
             'BaseCoreBundle:FDCPageEvent',
             'BaseCoreBundle:FDCPageWebTvChannels',
