@@ -189,7 +189,7 @@
 
                             <div class="center block-videos">
                                 <article class="video video-container video-data-layer">
-                                    <div class=" state-init video video-player"
+                                    <div class="state-init video video-player"
                                          data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                         {% if featuredVideo.image|trans_fallback('file') %}
                                             data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"

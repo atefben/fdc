@@ -7270,8 +7270,8 @@ $(document).ready(function () {
 
     //hotfix thomon, trigger click on hidden layers to enlarge click zone
     var playerLoadInterval = window.setInterval(function(){
-        if($('.video-data-layer .playstate').length){
-            $('.video-data-layer .playstate').on('click',function(){
+        if($('.video-data-layer .state-init .playstate').length){
+            $('.video-data-layer .state-init .playstate').on('click',function(){
                 if($(this).closest('.state-init').length){
                     $(this).closest('.state-init').removeClass('state-init');
                 }
