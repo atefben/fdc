@@ -7888,17 +7888,18 @@ header #navigation ul.user li ul li a {
   height: 100%;
 }
 
+.home .video-container .control-bar .playstate .play-btn {
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: 0px;
+}
+
 .video-container.video-data-layer .state-init .control-bar {
   opacity: 0;
 }
-.video-container.video-data-layer .state-init .control-bar .playstate {
-  cursor: pointer;
-}
 .video-container.video-data-layer .control-bar {
   opacity: 1;
-}
-.video-container.video-data-layer .control-bar .playstate {
-  cursor: default;
 }
 
 /* thomon - end fixes */
