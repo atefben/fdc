@@ -7909,7 +7909,12 @@ header #navigation ul.user li ul li a {
   height: 100% !important;
 }
 
+.home .shadow-bottom:before {
+  content: none;
+}
+
 .home .state-init.shadow-bottom:before {
+  content: "";
   z-index: 3;
 }
 
