@@ -32,15 +32,11 @@
                 <p>{{ 'contact.text.contact'|trans }}</p>
             </div>
 
-            {% for label, flashes in app.session.flashbag.all %}
-                {% if label == "success" %}
-                    <div class="success">
-                        {% for flash in flashes %}
-                            <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
-                            <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="success" style="display: block">
+                    <h3>{{ 'contact.sucess.title.votremessage'|trans }}</h3>
+                    <p>{{ 'contact.sucess.text.lequipeconcerne'|trans }}</p>
+                </div>
             {% endfor %}
 
             <div class="container">
