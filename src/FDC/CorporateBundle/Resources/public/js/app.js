@@ -4499,6 +4499,12 @@ var initRs = function () {
         $(cls).find('.info-popin').css('display','block');
         $(cls).find('#msg').html('');
 
+        //add artist name to popin on artist page
+        if($('.contentartist').length){
+            var title = $('.contentartist').find('.title-15').text();
+
+            $(cls).find('.contain-popin .title-article').text(title);
+        }
 
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
