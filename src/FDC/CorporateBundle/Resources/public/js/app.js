@@ -6004,8 +6004,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.fullscreen-slider img').on('click', function (e) {
 
             $(this).toggleClass('isZoom');
-            $(this).css('transition-property', 'transform');
-            $(this).css('transition-duration', '5s');
 
             if($(this).hasClass('isZoom')) {
                 $(this).css('transform', 'scale(2)');
