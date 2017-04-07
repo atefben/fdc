@@ -18,11 +18,20 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
     protected $headerFooterManager;
     protected $mdfDomain;
     protected $ccmDomain;
+    protected $eventMobileDomain;
     /**
      * @var ExceptionManager
      */
     protected $ccmExceptionManager;
 
+    /**
+     * ExceptionController constructor.
+     * @param \Twig_Environment $twig
+     * @param $debug
+     * @param NotFoundExceptionManager $notFound404Manager
+     * @param HeaderFooterManager $headerFooterManager
+     * @param $mdfDomain
+     */
     public function __construct(\Twig_Environment $twig, $debug, NotFoundExceptionManager $notFound404Manager, HeaderFooterManager $headerFooterManager, $mdfDomain)
     {
         parent::__construct($twig, $debug);
@@ -33,6 +42,12 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
 
     }
 
+    /**
+     * @param Request $request
+     * @param FlattenException $exception
+     * @param DebugLoggerInterface|null $logger
+     * @return Response
+     */
     public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null)
     {
         $requestHeaders = $request->server->getHeaders();
@@ -62,6 +77,16 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
             if ($exception->getStatusCode() === 500) {
                 
                 return $this->ccmExceptionManager->render500Page($locale);
+            }
+        } elseif ($requestHeaders['HOST'] == $this->eventMobileDomain) {
+            if ($exception->getStatusCode() === 404) {
+
+                return new Response($this->twig->render('FDCEventMobileBundle:Exceptions:404.html.twig'));
+            }
+            
+            if ($exception->getStatusCode() === 500) {
+
+                return new Response($this->twig->render('FDCEventMobileBundle:Exceptions:500.html.twig'));
             }
         }
 
@@ -123,5 +148,13 @@ class ExceptionController extends \Symfony\Bundle\TwigBundle\Controller\Exceptio
     public function setCcmExceptionManager($ccmExceptionManager)
     {
         $this->ccmExceptionManager = $ccmExceptionManager;
+    }
+
+    /**
+     * @param string $eventMobileDomain
+     */
+    public function setEventMobileDomain($eventMobileDomain)
+    {
+        $this->eventMobileDomain = $eventMobileDomain;
     }
 }
