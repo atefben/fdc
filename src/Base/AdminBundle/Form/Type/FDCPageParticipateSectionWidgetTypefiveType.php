@@ -94,7 +94,10 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press',
-                        'required' => false
+                        'required' => false,
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        )
                     ),
                     'twoIcon' => array(
                         'field_type' => 'choice',
@@ -114,7 +117,10 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press',
-                        'required' => false
+                        'required' => false,
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        )
                     ),
                     'threeIcon' => array(
                         'field_type' => 'choice',
@@ -134,7 +140,10 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press',
-                        'required' => false
+                        'required' => false,
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        )
                     ),
                     'fourIcon' => array(
                         'field_type' => 'choice',
@@ -154,7 +163,10 @@ class FDCPageParticipateSectionWidgetTypefiveType extends FDCPageParticipateSect
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
                         'config_name' => 'press',
-                        'required' => false
+                        'required' => false,
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        )
                     ),
                 )
             ));

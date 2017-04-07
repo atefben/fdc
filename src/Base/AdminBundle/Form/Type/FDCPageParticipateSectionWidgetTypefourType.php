@@ -90,7 +90,10 @@ class FDCPageParticipateSectionWidgetTypefourType extends FDCPageParticipateSect
                         'label' => 'form.label_content',
                         'sonata_help' => 'form.press_homepage.helper_desc',
                         'translation_domain' => 'BaseAdminBundle',
-                        'config_name' => 'press'
+                        'config_name' => 'press',
+                        'attr' => array(
+                            'class' => 'ckeditor'
+                        )
                     ),
                 )
             ))
