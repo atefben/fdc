@@ -3712,7 +3712,7 @@ $(document).ready(function() {
         }
       });
 
-      $('#slider-movie-videos .slide-video').on('click', function(e) {
+      $('#slider-movie-videos .slide-video').on('mousedown', function(e) {
         var number = $(this).closest('.owl-item').index();
           setTimeout(function(){
               if (!$(this).closest('.owl-item').parent().hasClass('owl-grab')) {
