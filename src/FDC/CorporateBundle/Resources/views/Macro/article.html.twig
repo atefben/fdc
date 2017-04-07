@@ -64,7 +64,7 @@
         {% if trans %}
             {% set file = trans.file %}
         {% endif %}
-        {% if file %}
+        {% if file is defined and file %}
             <img src="{% path file,preset %}"
                  srcset="{% path file, preset %} 1x, {% path file, presetBig %} 2x"
                  alt="{{ img|trans_fallback('alt') }} ">
