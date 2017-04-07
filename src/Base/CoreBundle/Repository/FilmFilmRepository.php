@@ -129,6 +129,35 @@ class FilmFilmRepository extends EntityRepository
     }
 
     /**
+     * Get movies from a list of ids and with a specific selection
+     * @param $ids
+     * @param $selectionSection
+     * @return array
+     */
+    public function getFilmsByIdsAndSelectionSection($ids, $selectionSection)
+    {
+        $qb = $this->createQueryBuilder('f');
+
+        $qb
+            ->where('f.id  IN (:ids)')
+            ->setParameter(':ids', $ids)
+        ;
+
+        if ($selectionSection) {
+            $qb
+                ->andWhere('f.selectionSection = :selectionSection')
+                ->setParameter('selectionSection', $selectionSection);
+        }
+
+        $qb
+            ->orderBy('f.titleVO', 'asc')
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
+
+    /**
      * @param $festival
      * @param $locale
      * @param $selectionSection
