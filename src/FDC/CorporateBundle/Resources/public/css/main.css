@@ -6986,8 +6986,6 @@ body.chocolat-open > .chocolat-content {
   max-width: none !important;
   min-height: none !important;
   max-height: none !important;
-  position: static;
-  border: 1px solid red;
 }
 .ie .slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
@@ -7883,6 +7881,10 @@ div.chocolat-wrapper .thumbnails .owl-stage, .c-fullscreen-slider .thumbnails .o
 
 header #navigation ul.user li ul li a {
   font-weight: normal;
+}
+
+.home .video-player {
+  height: 100%;
 }
 
 /* thomon - end fixes */
