@@ -15,7 +15,6 @@
     <h2 class="title">{{ 'sitemap.title.plandusite'|trans }}</h2>
     <section class="sitemap-container">
         {% for route in routes %}
-            {{ dump(route.route) }}
             {% if route.route == 'fdc_event_movie_selection' and route.enabled == true %}
                 <article class="sitemap-item">
                     <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
