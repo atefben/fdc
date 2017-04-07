@@ -1055,15 +1055,21 @@ header #navigation ul.user li ul li a {
     height: 100%!important;
 }
 
+.video-container.shadow-bottom:before {
+    z-index: 3;
+}
+
 .home .shadow-bottom:before {
     content: none;
 }
 
 .home .state-init.shadow-bottom:before {
     content: "";
-    z-index: 3;
 }
 
+.article-single .text .button:hover a {
+    color: #fff;
+}
 
 
 /* thomon - end fixes */
