@@ -12,6 +12,7 @@ ivory_ck_editor:
                 - ['Maximize', 'ShowBlocks']
                 - ['Image']
                 - ['Italic', 'Bold']
+                - ['Iframe']
             customConfig: /bundles/baseadmin/ckeditor/config_default.js
             contentsCss: /bundles/baseadmin/ckeditor/default.css
             filebrowserBrowseRoute: admin_sonata_media_media_browser
