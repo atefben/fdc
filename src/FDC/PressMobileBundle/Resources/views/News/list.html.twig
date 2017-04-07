@@ -3,8 +3,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdcpressmobile/css/communiques.css" %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    {% stylesheets
+        "bundles/fdcpressmobile/css/communiques.css"
+        "bundles/fdcpressmobile/css/communiques_custom.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 

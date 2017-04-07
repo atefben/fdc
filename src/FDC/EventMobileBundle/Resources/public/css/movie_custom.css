@@ -64,11 +64,14 @@
 }
 
 .competition .info .director {
-    display: block;
     font-family: "Camphor W01 Italic",Arial,Helvetica,sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
+}
+
+.competition .info span.director {
+    color: #c8a461;
 }
 
 .jw-controls .jw-reset {

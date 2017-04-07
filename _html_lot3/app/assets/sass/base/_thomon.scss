@@ -1055,7 +1055,8 @@ header #navigation ul.user li ul li a {
     height: 100%!important;
 }
 
-.video-container.shadow-bottom:before {
+.video-container.shadow-bottom:before,
+.video-container .shadow-bottom:before {
     z-index: 3;
 }
 
