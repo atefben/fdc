@@ -7270,7 +7270,7 @@ $(document).ready(function () {
 
     //hotfix thomon, trigger click on hidden layers to enlarge click zone
     console.log('declare click');
-    $('body').on('click','.video-data-layer .playstate',function(){
+    $('.video-data-layer .playstate').on('click',function(){
         console.log('zone click');
         $(this).find('.play-btn').trigger('click');
     });
