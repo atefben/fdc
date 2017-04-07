@@ -688,7 +688,9 @@ $(document).ready(function () {
     console.log('declare click');
     $('.video-data-layer .playstate').on('click',function(){
         console.log('zone click');
+        $(this).closest('.state-init').removeClass('state-init');
         $(this).find('.play-btn').trigger('click');
+
     });
 
     if ($('#video-player-ba').length > 0) {
