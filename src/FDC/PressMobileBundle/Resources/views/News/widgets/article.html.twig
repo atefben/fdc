@@ -16,6 +16,7 @@
 {% endif %}
 <div class="thumb{% if loop.index == 1 %} active{% endif %} {{ articleType == "communique" ? 'communique' : 'article' }}">
     <div class="img-container">
+        <a href="{{ path('fdc_pressmobile_news_get',{'type': articleType, 'format': articleFormat ~ 's', 'slug': article|trans_fallback('slug') }) }}">
             {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
                 {% set img = article.header %}
                 {% set trans = img.findTranslationByLocale(app.request.locale) %}
@@ -104,7 +105,8 @@
                     {% set file = trans.file %}
                 {% endif %}
                 {% thumbnail file, '572x362' with {'alt': img|trans_fallback('alt') } %}
-        {% endif %}
+            {% endif %}
+        </a>
         <div class="picto">
             <i class="icon icon_{{ articleType == "communique" ? 'communique-presse' : 'article' }}"></i>
         </div>
@@ -115,7 +117,9 @@
             <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
         </div>
         <h2>
-            {{- article|trans_fallback('title')|truncate(40) -}}
+            <a href="{{ path('fdc_pressmobile_news_get',{'type': articleType, 'format': articleFormat ~ 's', 'slug': article|trans_fallback('slug') }) }}">
+                {{- article|trans_fallback('title')|truncate(40) -}}
+            </a>
         </h2>
     </div>
 </div>
