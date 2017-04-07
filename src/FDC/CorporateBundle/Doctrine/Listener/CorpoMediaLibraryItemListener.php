@@ -14,7 +14,6 @@ class CorpoMediaLibraryItemListener
 
     public function setCorpoMediaLibraryItemManager(CorpoMediaLibraryItemManager $manager)
     {
-
         $this->corpoMediaLibraryItemManager = $manager;
     }
 

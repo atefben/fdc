@@ -529,6 +529,10 @@ class CorpoMediaLibraryItemManager
 
     private function isAvailableMedia(Media $media, $locale)
     {
+        if (!$media->getSites()->contains($this->getSiteCorpo())) {
+            return false;
+        }
+
         $fr = $media->findTranslationByLocale('fr');
         $trans = $media->findTranslationByLocale($locale);
         if (!$fr) {
@@ -549,5 +553,20 @@ class CorpoMediaLibraryItemManager
             return false;
         }
         return true;
+    }
+
+    public function getSiteCorpo()
+    {
+        static $site = null;
+
+        if (!$site) {
+            $site = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Site')
+                ->findOneBy(['slug' => 'site-institutionnel'])
+            ;
+        }
+
+        return $site;
     }
 }
