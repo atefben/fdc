@@ -8090,11 +8090,11 @@ $(document).ready(function () {
 
     //FIX IE
 
-    if($('body').hasClass('ie')){
-        $.each($('.slide'),function (i, e) {
-            var src = $(e).find('img').attr('src');
-            $(e).find('.linkVid').css('background-image','url('+src+')');
-            $(e).find('.linkVid').css('background-size','cover');
-        })
-    }
+    // if($('body').hasClass('ie')){
+    //     $.each($('.slide'),function (i, e) {
+    //         var src = $(e).find('img').attr('src');
+    //         $(e).find('.linkVid').css('background-image','url('+src+')');
+    //         $(e).find('.linkVid').css('background-size','cover');
+    //     })
+    // }
 });
