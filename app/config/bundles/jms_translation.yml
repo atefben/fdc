@@ -24,7 +24,7 @@ jms_translation:
         fdc_event_mobile:
             dirs: [%kernel.root_dir%/../src/FDC/EventMobileBundle]
             output_dir: %kernel.root_dir%/../src/FDC/EventMobileBundle/Resources/translations
-            ignored_domains: [FDCEventBundle, FDCPressBundle]
+            ignored_domains: [FDCEventBundle, FDCPressBundle, FDCPressMobileBundle]
             excluded_names: ["*TestCase.php", "*Test.php"]
             excluded_dirs: [Form]
             extractors: []
