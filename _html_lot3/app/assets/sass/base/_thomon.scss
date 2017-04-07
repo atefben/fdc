@@ -1050,8 +1050,9 @@ header #navigation ul.user li ul li a {
 }
 
 /* hotfix bug ratio player */
-#video-player-popin .jwplayer {
+#video-player-popin.jwplayer {
     width: 100%!important;
+    height: 100%!important;
 }
 
 /* thomon - end fixes */
