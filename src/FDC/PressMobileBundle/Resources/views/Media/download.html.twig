@@ -69,7 +69,7 @@
                 {% set sectionClass = "photos block slideshow" %}
                 {% set sectionId = "photos-institutionnelles" %}
             {% elseif 'dossier' in s.section.findTranslationByLocale('fr').title|lower %}
-                {% set sectionClass = "dossier block" %}
+                {% set sectionClass = "dossier-presse folder-press block" %}
                 {% set sectionId = "dossier-presse" %}
             {% endif %}
             <section class="{{ sectionClass }} {% if k == 0 %}section-active{% endif %}">
