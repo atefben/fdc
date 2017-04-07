@@ -12,3 +12,4 @@ services:
         calls:
             - [ setCcmDomain, ['%fdc_court_metrage_domain%']]
             - [ setCcmExceptionManager, ['@ccm.manager.exception']]
+            - [ setEventMobileDomain, ['%fdc_event_mobile_domain%']]
