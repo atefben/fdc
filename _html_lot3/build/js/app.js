@@ -7748,7 +7748,7 @@ $(document).ready(function () {
 
     window.addEventListener('orientationchange', scale);
 
-    $('body').addClass('mobile');
+    $('body').addClass('not-mobile');
 
     if ($('#breadcrumb').length > 0) {
         owInitFooterScroll();
