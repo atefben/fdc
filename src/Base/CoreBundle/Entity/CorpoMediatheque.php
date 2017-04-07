@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CorpoMediatheque
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  */
 class CorpoMediatheque implements TranslateMainInterface
 {
