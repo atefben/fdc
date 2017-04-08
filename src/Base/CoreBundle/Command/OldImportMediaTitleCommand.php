@@ -43,7 +43,7 @@ class OldImportMediaTitleCommand extends ContainerAwareCommand
         ;
 
         if ($medias) {
-            $progress = new ProgressBar($output, $medias);
+            $progress = new ProgressBar($output, count($medias));
             $progress->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
             $progress->start();
 
