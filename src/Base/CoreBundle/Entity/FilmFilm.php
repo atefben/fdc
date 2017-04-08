@@ -539,6 +539,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="image", referencedColumnName="id")}
      *      )
+     *
      */
     protected $selfkitImages;
 
@@ -549,6 +550,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *      joinColumns={@ORM\JoinColumn(name="film", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="pdf", referencedColumnName="id")}
      *      )
+     * @ORM\OrderBy({"updatedAt"="asc"})
      */
     protected $selfkitPdfFiles;
 
