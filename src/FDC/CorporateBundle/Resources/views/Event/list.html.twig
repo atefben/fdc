@@ -46,13 +46,13 @@
                                              alt="{{ event|trans_fallback('title')|escape('html_attr') }}">
                                     {% endif %}
                                 </div>
-                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}"
+                                <a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}"
                                    class="linkImage"></a>
                             </div>
                             <div class="info">
-                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}"
+                                <a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}"
                                    class="category">{{ event.theme|trans_fallback('name') }} </a>
-                                <strong><a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}">{{ event|trans_fallback('title') }}</a></strong>
+                                <strong><a href="{{ path('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}">{{ event|trans_fallback('title') }}</a></strong>
                             </div>
                         </article>
                     {% endfor %}

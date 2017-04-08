@@ -103,8 +103,6 @@ class EventController extends Controller
                 ->getEvents($festival, $locale)
         ;
 
-
-
         $prev = null;
         $next = null;
         $countEvents = count($events);
