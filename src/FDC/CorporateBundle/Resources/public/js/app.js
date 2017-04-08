@@ -3952,6 +3952,10 @@ var owCookieBanner = function() {
   }
 };
 
+$('body').live('contextmenu', function(e){
+    return false;
+});
+
 var initHeaderSticky = function () {
 
     $(window).on('scroll', function () {
