@@ -34,6 +34,9 @@ var owInitGrid = function (id) {
             var landscapeRatio = 0.7921; //height / width
             var portraitRatio = 1.5842; //height / width
             $items.each(function(){
+                if($items.hasClass('amazonimg')) {
+                    console.log('ici');
+                }
                 var $this = $(this);
                 var itemRatio = $this.outerHeight() / $this.outerWidth();
 
@@ -43,7 +46,7 @@ var owInitGrid = function (id) {
                     //compute height based on width & ratio
                     var newHeight = $this.outerWidth() * landscapeRatio;
                     if(itemRatio < landscapeRatio){
-                        //less large than desired output, scale width
+                        //less large than desired outpugridBigImgt, scale width
                         //$this.find('.image, .image-wrapper, img').css('width','100%');
                     }else{
                         //more large than desired output, scale height
@@ -532,7 +535,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('gridBigImg');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,

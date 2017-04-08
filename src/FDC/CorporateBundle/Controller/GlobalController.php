@@ -332,7 +332,7 @@ class GlobalController extends Controller
         $sort = ['position' => 'asc'];
         $displayedFooterElements = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCEventRoutes')
+            ->getRepository('BaseCoreBundle:FDCCorporateRoutes')
             ->findBy($criteria, $sort)
         ;
 

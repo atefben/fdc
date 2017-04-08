@@ -1,11 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-05-10T19:36:56Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2017-04-08T13:24:59Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="47c7f457754d3466b763d04179300995e36b4d25" resname="fdc_corporate_archive_index">
+        <source>/archives</source>
+        <target state="new">/archives</target>
+      </trans-unit>
+      <trans-unit id="e201992425b6c8bb411e1f57a863b81011f79669" resname="fdc_corporate_artist_get">
+        <source>/artist/{slug}</source>
+        <target state="new">/artist/{slug}</target>
+      </trans-unit>
+      <trans-unit id="e5cc27bb19d74965e656e9840f5af92d32db0668" resname="fdc_corporate_default_gallerycorpo">
+        <source>/homepagecorporate/gallery</source>
+        <target state="new">/homepagecorporate/gallery</target>
+      </trans-unit>
+      <trans-unit id="19e0a1a2ebf6599db77f767a418143d320df7187" resname="fdc_corporate_default_getarticlesfrom">
+        <source>/home-more-infos</source>
+        <target state="new">/home-more-infos</target>
+      </trans-unit>
+      <trans-unit id="14410377cb11b61e216257f36682d0cce48fe7ae" resname="fdc_corporate_default_home">
+        <source>/</source>
+        <target state="new">/</target>
+      </trans-unit>
+      <trans-unit id="439b65368747339dcbf6d4e449039cec4fd7b0e5" resname="fdc_corporate_default_videocorpo">
+        <source>/homepagecorporate/mediavideo</source>
+        <target state="new">/homepagecorporate/mediavideo</target>
+      </trans-unit>
+      <trans-unit id="e75fe0fc4285811454caa3e3f4dcb2bfd6ee4016" resname="fdc_corporate_editions_affiche">
+        <source>/69-editions/retrospective/{year}/affiche</source>
+        <target state="new">/69-editions/retrospective/{year}/affiche</target>
+      </trans-unit>
+      <trans-unit id="3dfa701546e9ca22a6d705ad26e008dda6871e5d" resname="fdc_corporate_editions_archives">
+        <source>/69-editions/archives</source>
+        <target state="new">/69-editions/archives</target>
+      </trans-unit>
+      <trans-unit id="ec3f47c62285bd4b804d072451ec750503cf3235" resname="fdc_corporate_editions_history">
+        <source>/69-editions/history</source>
+        <target state="new">/69-editions/history</target>
+      </trans-unit>
+      <trans-unit id="94a3cd3208619d9dface9293e25d7c83e3f9b861" resname="fdc_corporate_editions_menu">
+        <source>/69-editions/retrospective/menu</source>
+        <target state="new">/69-editions/retrospective/menu</target>
+      </trans-unit>
+      <trans-unit id="06a084618626cb56efa6dd54349dbbc8766d2ebc" resname="fdc_corporate_editions_palme">
+        <source>/69-editions/palme/{slug}</source>
+        <target state="new">/69-editions/palme/{slug}</target>
+      </trans-unit>
+      <trans-unit id="6bc85e7f24d8ee8b1aeae3473a4a4c988e738a72" resname="fdc_corporate_editions_retrospective">
+        <source>/69-editions/retrospective/</source>
+        <target state="new">/69-editions/retrospective/</target>
+      </trans-unit>
+      <trans-unit id="ac0ae81930c30a55ecd1daa73170cb86488744f0" resname="fdc_corporate_editions_year">
+        <source>/69-editions/retrospective/{year}/</source>
+        <target state="new">/69-editions/retrospective/{year}/</target>
+      </trans-unit>
+      <trans-unit id="cec9d65438913e0667d3a2377c1be0b7c568e135" resname="fdc_corporate_event_get">
+        <source>/69-editions/retrospective/{year}/event/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/event/{slug}</target>
+      </trans-unit>
+      <trans-unit id="9325106ce0a89301f7731f7810935ed496ec9c07" resname="fdc_corporate_event_getevents">
+        <source>/69-editions/retrospective/{year}/events</source>
+        <target state="new">/69-editions/retrospective/{year}/events</target>
+      </trans-unit>
+      <trans-unit id="6200febcc14fbf1efebed5dd007f1065bee362ea" resname="fdc_corporate_footer_contact">
+        <source>/contact</source>
+        <target state="new">/contact</target>
+      </trans-unit>
+      <trans-unit id="9346ec6d0a85696cddcdd1bf262151d5d21ef1a6" resname="fdc_corporate_footer_credits">
+        <source>/credits</source>
+        <target state="new">/credits</target>
+      </trans-unit>
+      <trans-unit id="043758881572b0067f63fc9a781f54af7cc4e44a" resname="fdc_corporate_footer_faq">
+        <source>/faq</source>
+        <target state="new">/faq</target>
+      </trans-unit>
+      <trans-unit id="f1556cddc73825bc83d83db5980c97db04b10810" resname="fdc_corporate_footer_mentionslegales">
+        <source>/mentions-legales</source>
+        <target state="new">/mentions-legales</target>
+      </trans-unit>
+      <trans-unit id="587fed8e6ef3665a477c8b4b4fba6993e1b37499" resname="fdc_corporate_footer_pagelibres">
+        <source>/page/{slug}</source>
+        <target state="new">/page/{slug}</target>
+      </trans-unit>
+      <trans-unit id="72e5cf8a5c7ea8ef83aa386c09e824fae6edc2fb" resname="fdc_corporate_footer_podcast">
+        <source>/podcast</source>
+        <target state="new">/podcast</target>
+      </trans-unit>
+      <trans-unit id="50836e1bee62c2bd5f9791df5fde8752c687d352" resname="fdc_corporate_footer_privacy">
+        <source>/privacy</source>
+        <target state="new">/privacy</target>
+      </trans-unit>
+      <trans-unit id="745cd729e553ad4385b5a313391c19018b423540" resname="fdc_corporate_footer_rssfeed">
+        <source>/rss</source>
+        <target state="new">/rss</target>
+      </trans-unit>
+      <trans-unit id="8acd7901cf8b3405e944518857c6f332e6f42034" resname="fdc_corporate_footer_sharing">
+        <source>/sharing</source>
+        <target state="new">/sharing</target>
+      </trans-unit>
+      <trans-unit id="5f52cee6aedbbb793e386becb99322363d557459" resname="fdc_corporate_footer_sitemap">
+        <source>/sitemap</source>
+        <target state="new">/sitemap</target>
+      </trans-unit>
+      <trans-unit id="6caf56b435b8eff861de45110041d412865d3e39" resname="fdc_corporate_footer_static">
+        <source>/static-{page}</source>
+        <target state="new">/static-{page}</target>
+      </trans-unit>
+      <trans-unit id="395e2507282e82fcf33e1d3042198e5f0f93c4dc" resname="fdc_corporate_global_footer">
+        <source>/menu</source>
+        <target state="new">/menu</target>
+      </trans-unit>
+      <trans-unit id="577e302f335b45d2be7fabab0be3061166b7d45b" resname="fdc_corporate_global_landing">
+        <source>/landing</source>
+        <target state="new">/landing</target>
+      </trans-unit>
+      <trans-unit id="90a3654f2c4cd8809cbea7fa9d4199310f23e506" resname="fdc_corporate_global_menu">
+        <source>/menu</source>
+        <target state="new">/menu</target>
+      </trans-unit>
+      <trans-unit id="6df16d35e5c1fc5b965010a6d2a92bcef1d680b0" resname="fdc_corporate_global_shareemail">
+        <source>/share-email/</source>
+        <target state="new">/share-email/</target>
+      </trans-unit>
+      <trans-unit id="1a62db2591ba7b81c23ea5eaaf89b7bcd9a73942" resname="fdc_corporate_global_timer">
+        <source>/timer</source>
+        <target state="new">/timer</target>
+      </trans-unit>
+      <trans-unit id="fe3280369993a94da868dab90eeffbd7f8f06cef" resname="fdc_corporate_jury_juries">
+        <source>/69-editions/retrospective/{year}/juries/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/juries/{slug}</target>
+      </trans-unit>
+      <trans-unit id="18e42c0bcec06fa546a750f9c57264d762a6523a" resname="fdc_corporate_media_index">
+        <source>/mediatheque/</source>
+        <target state="new">/mediatheque/</target>
+      </trans-unit>
+      <trans-unit id="ce82e4115f2381171c327f5f8f44c112732e7ca6" resname="fdc_corporate_media_index_ajax">
+        <source>/mediatheque/more/{since}</source>
+        <target state="new">/mediatheque/more/{since}</target>
+      </trans-unit>
+      <trans-unit id="fe71caadadec1b0d61a7adfaca2de04731eda45b" resname="fdc_corporate_movie_classics">
+        <source>/69-editions/retrospective/{year}/selection/cannes-classics/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/selection/cannes-classics/{slug}</target>
+      </trans-unit>
+      <trans-unit id="a22f0add97098d2497129026135e6bd1ec6d773e" resname="fdc_corporate_movie_get">
+        <source>/films/{slug}</source>
+        <target state="new">/films/{slug}</target>
+      </trans-unit>
+      <trans-unit id="12f5b3d1b033d4f051f2c7e205d2b5e132fa87c3" resname="fdc_corporate_movie_selection">
+        <source>/69-editions/retrospective/{year}/selection/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/selection/{slug}</target>
+      </trans-unit>
+      <trans-unit id="8dfdff5d6b4d3ade8d9883b7aca287bbfc5e04eb" resname="fdc_corporate_news_get">
+        <source>/69-editions/retrospective/{year}/actualites/{format}/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/actualites/{format}/{slug}</target>
+      </trans-unit>
+      <trans-unit id="d59e182bb223bb28e609c7c6ac27f1710b7d14ab" resname="fdc_corporate_news_getarticles">
+        <source>/69-editions/retrospective/{year}/articles</source>
+        <target state="new">/69-editions/retrospective/{year}/articles</target>
+      </trans-unit>
+      <trans-unit id="cfd0ccd37205cb20ee5980ffb19d0cc1bb0d6cb2" resname="fdc_corporate_news_getarticlesajax">
+        <source>/69-editions/retrospective/{year}/articles-ajax/{time}</source>
+        <target state="new">/69-editions/retrospective/{year}/articles-ajax/{time}</target>
+      </trans-unit>
+      <trans-unit id="711413ec83b30a66bec55ec34cd4f3030df40d7b" resname="fdc_corporate_news_getaudios">
+        <source>/69-editions/retrospective/audios</source>
+        <target state="new">/69-editions/retrospective/audios</target>
+      </trans-unit>
+      <trans-unit id="5e87dd6d1cc9e1f3cabb25b697b29e60b60eaa1a" resname="fdc_corporate_news_getmedias">
+        <source>/69-editions/retrospective/{year}/medias</source>
+        <target state="new">/69-editions/retrospective/{year}/medias</target>
+      </trans-unit>
+      <trans-unit id="95d8ebe50c28a759cf5af440f84cf2f3d7fc5ad3" resname="fdc_corporate_news_getmediasajax">
+        <source>/69-editions/retrospective/{year}/medias-ajax/{page}</source>
+        <target state="new">/69-editions/retrospective/{year}/medias-ajax/{page}</target>
+      </trans-unit>
+      <trans-unit id="15b7e6f92cd9a422dd002dc3210b515c294acf80" resname="fdc_corporate_news_getvideos">
+        <source>/69-editions/retrospective/videos</source>
+        <target state="new">/69-editions/retrospective/videos</target>
+      </trans-unit>
+      <trans-unit id="078cee226cf3c960573ab2d1ce0f9c2e5fe804d1" resname="fdc_corporate_news_infosandstatements">
+        <source>/infos-et-communiques</source>
+        <target state="new">/infos-et-communiques</target>
+      </trans-unit>
+      <trans-unit id="2d563232777d398de579a9c893eac80581499043" resname="fdc_corporate_news_infosandstatementsmore">
+        <source>/infos-et-communiques/more/{timestamp}</source>
+        <target state="new">/infos-et-communiques/more/{timestamp}</target>
+      </trans-unit>
+      <trans-unit id="f2d948dc2f01fbd3d23f28cc7e0b6fbe1867af17" resname="fdc_corporate_news_presssingle">
+        <source>/infos-communiques/{type}/{format}/{slug}</source>
+        <target state="new">/infos-communiques/{type}/{format}/{slug}</target>
+      </trans-unit>
+      <trans-unit id="287aa15a0a915cdf4f3f8653580c8dee69d6479f" resname="fdc_corporate_palmares_get">
+        <source>/69-editions/retrospective/{year}/palmares/{slug}</source>
+        <target state="new">/69-editions/retrospective/{year}/palmares/{slug}</target>
+      </trans-unit>
+      <trans-unit id="79ca1879b060086d19331ecbdaaf84f23c9918e1" resname="fdc_corporate_participate_accredit">
+        <source>/participer/accredit</source>
+        <target state="new">/participer/accredit</target>
+      </trans-unit>
+      <trans-unit id="9463a2c75344fe1a42984880cf8a3d6b9b93a137" resname="fdc_corporate_participate_getpage">
+        <source>/participer/prepare/{slug}</source>
+        <target state="new">/participer/prepare/{slug}</target>
+      </trans-unit>
+      <trans-unit id="7620c8f1066c755e0e1e645c1fe8789e74057cc3" resname="fdc_corporate_participate_guide">
+        <source>/participer/guide/{slug}</source>
+        <target state="new">/participer/guide/{slug}</target>
+      </trans-unit>
+      <trans-unit id="ef9278632b2dbc508b14dab8336fa49c2d7241c5" resname="fdc_corporate_participate_inscription">
+        <source>/participer/inscription</source>
+        <target state="new">/participer/inscription</target>
+      </trans-unit>
+      <trans-unit id="f370342e972e6da92f085ed423874512740b3f7c" resname="fdc_corporate_participate_rules">
+        <source>/participer/rules</source>
+        <target state="new">/participer/rules</target>
+      </trans-unit>
+      <trans-unit id="a8a6d2b668da2a5ff439d4a24276a1a8b869c037" resname="fdc_corporate_press_show">
+        <source>/press/</source>
+        <target state="new">/press/</target>
+      </trans-unit>
+      <trans-unit id="1c71e4b5ad228d9f7c527e3531723f8dda62405d" resname="fdc_corporate_search_countryautocomplete">
+        <source>/countryautocomplete/{searchTerm}</source>
+        <target state="new">/countryautocomplete/{searchTerm}</target>
+      </trans-unit>
+      <trans-unit id="26f3659ac6a5b8ad0c393a3848e8503fb57014e7" resname="fdc_corporate_search_searchautocomplete">
+        <source>/searchautocomplete/{searchTerm}</source>
+        <target state="new">/searchautocomplete/{searchTerm}</target>
+      </trans-unit>
+      <trans-unit id="dc369a842a9ecd1bdfda6c2f1cebfc4ca0e31b1b" resname="fdc_corporate_search_searchfilter">
+        <source>/search/{searchFilter}</source>
+        <target state="new">/search/{searchFilter}</target>
+      </trans-unit>
+      <trans-unit id="2db418699b9406a7375d3bcaf6dce0dc1b5065cd" resname="fdc_corporate_search_searchsubmit">
+        <source>/search</source>
+        <target state="new">/search</target>
+      </trans-unit>
+      <trans-unit id="e27d10c03a8e958085086974786b3b76c22bcdda" resname="fdc_corporate_whoarewe_equipe">
+        <source>/qui-sommes-nous/equipe</source>
+        <target state="new">/qui-sommes-nous/equipe</target>
+      </trans-unit>
+      <trans-unit id="1f387c0a2de862e477d89f210bf846b8f3e5c59c" resname="fdc_corporate_whoarewe_graphicalcharter">
+        <source>/qui-sommes-nous/charte-graphique</source>
+        <target state="new">/qui-sommes-nous/charte-graphique</target>
+      </trans-unit>
+      <trans-unit id="6ef7be3bbb3a22bcc9a0b3f7ffd0ae2d4f8bda79" resname="fdc_corporate_whoarewe_nav">
+        <source>/qui-sommes-nous/nav</source>
+        <target state="new">/qui-sommes-nous/nav</target>
+      </trans-unit>
+      <trans-unit id="9c6fbb6bdf8e117a4cb013fa2baf54ca01a271a5" resname="fdc_corporate_whoarewe_show">
+        <source>/qui-sommes-nous/{slug}</source>
+        <target state="new">/qui-sommes-nous/{slug}</target>
+      </trans-unit>
+      <trans-unit id="52a837579264b0620999e49688cca316d95fccec" resname="fdc_court_metrage_artist">
+        <source>/artist/{slug}</source>
+        <target state="new">/artist/{slug}</target>
+      </trans-unit>
+      <trans-unit id="fc959578f42334410666b0d5c7cd4d60e0a8924e" resname="fdc_court_metrage_competition_jury">
+        <source>/jury</source>
+        <target state="new">/jury</target>
+      </trans-unit>
+      <trans-unit id="3bbb0d7fee37cbec3e54d7e74ec9bdde12ac9880" resname="fdc_court_metrage_competition_palmares">
+        <source>/palmares</source>
+        <target state="new">/palmares</target>
+      </trans-unit>
+      <trans-unit id="976106cc12499b3891db71d16e024bbec994a5c1" resname="fdc_court_metrage_competition_selection">
+        <source>/selection</source>
+        <target state="new">/selection</target>
+      </trans-unit>
+      <trans-unit id="350a9281884fff03d1fbacc6e3b040567ba8c81a" resname="fdc_court_metrage_contact">
+        <source>/contact</source>
+        <target state="new">/contact</target>
+      </trans-unit>
+      <trans-unit id="09294c9b43be374b4438d107ac499df0c3e4dfa6" resname="fdc_court_metrage_faq">
+        <source>/faq</source>
+        <target state="new">/faq</target>
+      </trans-unit>
+      <trans-unit id="f50de3cfaa0b2c7f1a84c4bc297e1eab9b71627b" resname="fdc_court_metrage_footer_credits">
+        <source>/credits</source>
+        <target state="new">/credits</target>
+      </trans-unit>
+      <trans-unit id="873d445617ef6a3d446e8f30f66e39f46cd1a57b" resname="fdc_court_metrage_footer_mentions_legales">
+        <source>/mentions-legales</source>
+        <target state="new">/mentions-legales</target>
+      </trans-unit>
+      <trans-unit id="825dab61c52dba0b812db97c575d6eb67b1a7705" resname="fdc_court_metrage_footer_politique_de_confidentialite">
+        <source>/politique-de-confidentialite</source>
+        <target state="new">/politique-de-confidentialite</target>
+      </trans-unit>
+      <trans-unit id="08398960e6d93a9759632158aa0974a3fb971217" resname="fdc_court_metrage_homepage">
+        <source>/</source>
+        <target state="new">/</target>
+      </trans-unit>
+      <trans-unit id="d2aedfdcd6199433c3daedc1bbf56fa2f9306874" resname="fdc_court_metrage_label">
+        <source>/participer/label</source>
+        <target state="new">/participer/label</target>
+      </trans-unit>
+      <trans-unit id="27be504d8afb843bafcf4739cdb549687ab024cf" resname="fdc_court_metrage_movie_show">
+        <source>/films/{slug}</source>
+        <target state="new">/films/{slug}</target>
+      </trans-unit>
+      <trans-unit id="1e00986aee40f163afc5f62889377857e6cd9d7a" resname="fdc_court_metrage_news">
+        <source>/actualites</source>
+        <target state="new">/actualites</target>
+      </trans-unit>
+      <trans-unit id="4fb9f14e1980e28f96ff4e9eff4942e56e20a1f9" resname="fdc_court_metrage_news_detail">
+        <source>/actualites/{slug}</source>
+        <target state="new">/actualites/{slug}</target>
+      </trans-unit>
+      <trans-unit id="c2253eb546744ecac2e5ff3ef579ab7381d4f612" resname="fdc_court_metrage_participer_page">
+        <source>/participer/{slug}</source>
+        <target state="new">/participer/{slug}</target>
+      </trans-unit>
+      <trans-unit id="2eedfec6f59daadf1e07256d9385e334f41b5438" resname="fdc_court_metrage_plan_des_salles">
+        <source>/se-reperer-a-cannes</source>
+        <target state="new">/se-reperer-a-cannes</target>
+      </trans-unit>
+      <trans-unit id="2fe798a046de2743ae90057b8e90adf38a4dd1d3" resname="fdc_court_metrage_program">
+        <source>/short-film-corner/programme</source>
+        <target state="new">/short-film-corner/programme</target>
+      </trans-unit>
+      <trans-unit id="36fbef17ebda348a50ea68ad1ddd7b2ef30bad43" resname="fdc_court_metrage_program_en">
+        <source>/short-film-corner/program</source>
+        <target state="new">/short-film-corner/program</target>
+      </trans-unit>
+      <trans-unit id="4190b40f3c7818c5435bd57b2a7d8c0261c8ac80" resname="fdc_court_metrage_pros_du_court">
+        <source>/pros-du-court</source>
+        <target state="new">/pros-du-court</target>
+      </trans-unit>
+      <trans-unit id="54d72d867a509e9bdc2715958c3f3fc14ad627e6" resname="fdc_court_metrage_pros_du_court_modal">
+        <source>/pros-du-court/{id}</source>
+        <target state="new">/pros-du-court/{id}</target>
+      </trans-unit>
+      <trans-unit id="ea7f65a0a2398fc608cc1bdd2506f47172f8901c" resname="fdc_court_metrage_register_movie">
+        <source>/participer/inscrire-un-film</source>
+        <target state="new">/participer/inscrire-un-film</target>
+      </trans-unit>
+      <trans-unit id="e42477389a212c609d374d988bb3420bf1a5a73c" resname="fdc_court_metrage_regulation_detail">
+        <source>/participer/detail-du-reglement/{slug}</source>
+        <target state="new">/participer/detail-du-reglement/{slug}</target>
+      </trans-unit>
+      <trans-unit id="538a215d46e9b1b9318f78523b4cbb80651ec2d0" resname="fdc_court_metrage_sfc_our_events">
+        <source>/short-film-corner/nosevenements/{slug}</source>
+        <target state="new">/short-film-corner/nosevenements/{slug}</target>
+      </trans-unit>
+      <trans-unit id="4e594328f80280b2d94dda43f2816499b2baf6a6" resname="fdc_court_metrage_sfc_relive_edition">
+        <source>/short-film-corner/revivezledition/{slug}</source>
+        <target state="new">/short-film-corner/revivezledition/{slug}</target>
+      </trans-unit>
+      <trans-unit id="b989011dcb675da1f541b05e2cd57701673e9950" resname="fdc_court_metrage_sfc_who_are_we">
+        <source>/short-film-corner/quisommesnous/{slug}</source>
+        <target state="new">/short-film-corner/quisommesnous/{slug}</target>
+      </trans-unit>
+      <trans-unit id="c7577182e5b4e343bb2420274e6451898ecb3045" resname="fdc_court_metrage_shareemail">
+        <source>/share-email-ccm</source>
+        <target state="new">/share-email-ccm</target>
+      </trans-unit>
+      <trans-unit id="3438ebf8a6c236c09fdddcd7b6f9dd56bbae2cd6" resname="fdc_court_metrage_shareemail_media">
+        <source>/share-email-media-ccm</source>
+        <target state="new">/share-email-media-ccm</target>
+      </trans-unit>
+      <trans-unit id="81934e6c6b3a1ac4f0f6991186997fdce0ba9d9c" resname="fdc_court_metrage_site_plan">
+        <source>/sitemap</source>
+        <target state="new">/sitemap</target>
+      </trans-unit>
+      <trans-unit id="f7bbe94770442c61b48259f8a685a914ab115d05" resname="fdc_court_metrage_social_wall">
+        <source>/social-wall</source>
+        <target state="new">/social-wall</target>
+      </trans-unit>
+      <trans-unit id="6cdfd2bd0f103f75e30033c1d8ce8ec59da3f24a" resname="fdc_court_metrage_technical_characteristics">
+        <source>/participer/detail-des-caracteristiques-techniques/{slug}</source>
+        <target state="new">/participer/detail-des-caracteristiques-techniques/{slug}</target>
+      </trans-unit>
       <trans-unit id="9079f141ea1ed37469ad27f94fdc1c2baba9352b" resname="fdc_event_agenda_get">
         <source>/festival/programmation/agenda</source>
         <target state="new">/festival/programmation/agenda</target>
@@ -25,6 +393,10 @@
       <trans-unit id="70faaeada597b6f55bee5c8aa034572dbdb2781d" resname="fdc_event_agenda_scheduling">
         <source>/festival/programmation/</source>
         <target state="new">/festival/programmation/</target>
+      </trans-unit>
+      <trans-unit id="ba6dc3eee703f721132993fc297eefc51d19d88a" resname="fdc_event_artist_archiveget">
+        <source>/festival/archives/artist/id/{id}.html</source>
+        <target state="new">/festival/archives/artist/id/{id}.html</target>
       </trans-unit>
       <trans-unit id="a356a86a37c7c440cfa8a2efa17fa033a5b682c7" resname="fdc_event_artist_get">
         <source>/festival/artist/{slug}</source>
@@ -70,6 +442,10 @@
         <source>/festival/rss</source>
         <target state="new">/festival/rss</target>
       </trans-unit>
+      <trans-unit id="9e504a70bcc3375f653c4ae7f14fddbac69a8fb6" resname="fdc_event_footer_sharing">
+        <source>/festival/sharing</source>
+        <target state="new">/festival/sharing</target>
+      </trans-unit>
       <trans-unit id="121951d72811f3a1e30a2ac9d3ba833d280a19e8" resname="fdc_event_footer_sitemap">
         <source>/festival/sitemap</source>
         <target state="new">/festival/sitemap</target>
@@ -85,6 +461,10 @@
       <trans-unit id="75d298573d7c65d1b998c626efae3796043440f3" resname="fdc_event_global_footer">
         <source>/festival/menu</source>
         <target state="new">/festival/menu</target>
+      </trans-unit>
+      <trans-unit id="1ab8dbe25c6d154101e91ca60841625d1819d721" resname="fdc_event_global_generatebitly">
+        <source>/festival/generateBitly</source>
+        <target state="new">/festival/generateBitly</target>
       </trans-unit>
       <trans-unit id="61912239a0010b8e0f73a18b4310ad60103281d3" resname="fdc_event_global_menu">
         <source>/festival/menu</source>
@@ -110,6 +490,10 @@
         <source>/festival/suggestion</source>
         <target state="new">/festival/suggestion</target>
       </trans-unit>
+      <trans-unit id="b40e0efdeb5ebbc971bb867cd6866ccd13139ae2" resname="fdc_event_global_wishlist">
+        <source>/festival/wishlist</source>
+        <target state="new">/festival/wishlist</target>
+      </trans-unit>
       <trans-unit id="b99232b045f4039f3d334bcd761a6ab30803a89f" resname="fdc_event_jury_get">
         <source>/festival/juries/{slug}</source>
         <target state="new">/festival/juries/{slug}</target>
@@ -133,6 +517,14 @@
       <trans-unit id="efddb0cae454d1a12368abd995a19c7bb07859ec" resname="fdc_event_mobile_serendre">
         <source>/festival/mobile-se-rendre</source>
         <target state="new">/festival/mobile-se-rendre</target>
+      </trans-unit>
+      <trans-unit id="184c94f85923016af5d20acc9e24c36e978a6ec1" resname="fdc_event_movie_archiveget">
+        <source>/festival/archives/ficheFilm/id/{id}.html</source>
+        <target state="new">/festival/archives/ficheFilm/id/{id}.html</target>
+      </trans-unit>
+      <trans-unit id="48195301cb8af2da8f82aa5a49f096bfcf728d6e" resname="fdc_event_movie_archiveget_1">
+        <source>/festival/archives/ficheFilm/id/{id}/year/{year}.html</source>
+        <target state="new">/festival/archives/ficheFilm/id/{id}/year/{year}.html</target>
       </trans-unit>
       <trans-unit id="14e923b7db41dbe741b2046e549a0198489740cd" resname="fdc_event_movie_classics">
         <source>/festival/selection/cannes-classics/{slug}</source>
@@ -206,6 +598,10 @@
         <source>/festival/web-tv/channel/{slug}</source>
         <target state="new">/festival/web-tv/channel/{slug}</target>
       </trans-unit>
+      <trans-unit id="3c7b123b6c77117869dbbe4c4e05b46d68f548be" resname="fdc_event_television_getchannel_1">
+        <source>/festival/web-tv/channel/{slug}/{videoId}</source>
+        <target state="new">/festival/web-tv/channel/{slug}/{videoId}</target>
+      </trans-unit>
       <trans-unit id="706d995fad3ad87bb7544be0ce2c5379a95363b9" resname="fdc_event_television_gettrailer">
         <source>/festival/web-tv/trailer/{slug}/{video}</source>
         <target state="new">/festival/web-tv/trailer/{slug}/{video}</target>
@@ -217,6 +613,10 @@
       <trans-unit id="f997ba8e4de6716f4b011242e1ae768afd0237ea" resname="fdc_event_television_trailers">
         <source>/festival/web-tv/trailers/{slug}</source>
         <target state="new">/festival/web-tv/trailers/{slug}</target>
+      </trans-unit>
+      <trans-unit id="585a886a362a5f28711137aaf7fb970eb267616b" resname="fdc_event_webview_article">
+        <source>/festival/webview/article/{type}/{variant}/{id}</source>
+        <target state="new">/festival/webview/article/{type}/{variant}/{id}</target>
       </trans-unit>
       <trans-unit id="cb9b5ad29743f31635e3241204a93f75230e107e" resname="fdc_eventmobile_agenda_get">
         <source>/festival/programmation/agenda</source>
@@ -313,6 +713,10 @@
       <trans-unit id="dc6daa1dfb2e80e5d7887f188ccfa84756d47075" resname="fdc_eventmobile_global_search">
         <source>/festival/search</source>
         <target state="new">/festival/search</target>
+      </trans-unit>
+      <trans-unit id="4d0b54800a4c65d6ec8f6f602e98d71b0b18d8df" resname="fdc_eventmobile_global_searchdefault">
+        <source>/festival/search_page</source>
+        <target state="new">/festival/search_page</target>
       </trans-unit>
       <trans-unit id="3aad93892e35a9e016645fbae446cd763fd1a00b" resname="fdc_eventmobile_global_shareemail">
         <source>/festival/share-email</source>
@@ -434,6 +838,142 @@
         <source>/festival/web-tv/trailers/{slug}</source>
         <target state="new">/festival/web-tv/trailers/{slug}</target>
       </trans-unit>
+      <trans-unit id="3e5c8d8931cbaab9a808a2e473bcd38cab7f971f" resname="fdc_marche_du_film_accreditations">
+        <source>/accreditations</source>
+        <target state="new">/accreditations</target>
+      </trans-unit>
+      <trans-unit id="eaa5136ccbefddfadf15c51557eac5b5abc88076" resname="fdc_marche_du_film_conference_home">
+        <source>/{slug}/home</source>
+        <target state="new">/{slug}/home</target>
+      </trans-unit>
+      <trans-unit id="d60b32b8128d0825323afbd295b40e1caac3d70c" resname="fdc_marche_du_film_conference_infos_and_contacts">
+        <source>/{slug}/infos-et-contacts</source>
+        <target state="new">/{slug}/infos-et-contacts</target>
+      </trans-unit>
+      <trans-unit id="153df51a6a3853e1fd84d0c50859567f479af7be" resname="fdc_marche_du_film_conference_news">
+        <source>/{slug}/actualite</source>
+        <target state="new">/{slug}/actualite</target>
+      </trans-unit>
+      <trans-unit id="d22900df8b5fd9c452a0205ffdb284b89541b44e" resname="fdc_marche_du_film_conference_partners">
+        <source>/{slug}/partenaires</source>
+        <target state="new">/{slug}/partenaires</target>
+      </trans-unit>
+      <trans-unit id="b0329e891750ecd639b8189aa2e414f6e4dd2106" resname="fdc_marche_du_film_conference_program">
+        <source>/{slug}/programme</source>
+        <target state="new">/{slug}/programme</target>
+      </trans-unit>
+      <trans-unit id="0d945a1b2d02ddd369b6252d466ddd6e7626cfad" resname="fdc_marche_du_film_conference_speakers">
+        <source>/{slug}/speakers</source>
+        <target state="new">/{slug}/speakers</target>
+      </trans-unit>
+      <trans-unit id="0b73d2af5af87bf8450d944954c8b7b6c1670014" resname="fdc_marche_du_film_contact_us">
+        <source>/contact-us</source>
+        <target state="new">/contact-us</target>
+      </trans-unit>
+      <trans-unit id="82f0313b77020ca2ddab5a669e3173247bd592fe" resname="fdc_marche_du_film_download_image">
+        <source>/download-image/{url}/{name}</source>
+        <target state="new">/download-image/{url}/{name}</target>
+      </trans-unit>
+      <trans-unit id="7c6661bf83a2ae2ed17f95683c16a776744d7713" resname="fdc_marche_du_film_download_pdf">
+        <source>/download-pdf/{url}/{name}</source>
+        <target state="new">/download-pdf/{url}/{name}</target>
+      </trans-unit>
+      <trans-unit id="92344cd0483ef46d374640926c92083c03ecb0fc" resname="fdc_marche_du_film_edition_presentation">
+        <source>/presentation</source>
+        <target state="new">/presentation</target>
+      </trans-unit>
+      <trans-unit id="99923b71ee9b15237f7161e0de9727a2dbca6448" resname="fdc_marche_du_film_edition_projections">
+        <source>/projections</source>
+        <target state="new">/projections</target>
+      </trans-unit>
+      <trans-unit id="0c0663f4589bc2a97796ec6e25ce65d3137924be" resname="fdc_marche_du_film_general_conditions">
+        <source>/generalconditions</source>
+        <target state="new">/generalconditions</target>
+      </trans-unit>
+      <trans-unit id="a5aa86369c88cd6f507b666759cf497a668838d6" resname="fdc_marche_du_film_get_media_source">
+        <source>/media-source/{type}/{id}</source>
+        <target state="new">/media-source/{type}/{id}</target>
+      </trans-unit>
+      <trans-unit id="a17bcca20dc859966d098cf67d0bbbaa2fd526e3" resname="fdc_marche_du_film_get_news">
+        <source>/get_news</source>
+        <target state="new">/get_news</target>
+      </trans-unit>
+      <trans-unit id="6036befe46f19c9920d1e946b7ee51a5c8acf7ef" resname="fdc_marche_du_film_global_events">
+        <source>/global-events</source>
+        <target state="new">/global-events</target>
+      </trans-unit>
+      <trans-unit id="0753d3f7b4fcc6033f0ccead5c7077e3d0874c98" resname="fdc_marche_du_film_homepage">
+        <source>/</source>
+        <target state="new">/</target>
+      </trans-unit>
+      <trans-unit id="04144609ad12cddec9363a5c43d057ffaf616038" resname="fdc_marche_du_film_industry_program_home">
+        <source>/industryprogram</source>
+        <target state="new">/industryprogram</target>
+      </trans-unit>
+      <trans-unit id="8ae092d714fddc2152cbff0d2dbc83bbd1876118" resname="fdc_marche_du_film_infos_utiles">
+        <source>/infos-utiles</source>
+        <target state="new">/infos-utiles</target>
+      </trans-unit>
+      <trans-unit id="04e40c560261045b25386fed369137199b82f045" resname="fdc_marche_du_film_legal_mentions">
+        <source>/mentionslegales</source>
+        <target state="new">/mentionslegales</target>
+      </trans-unit>
+      <trans-unit id="c56b86e0b3be35d651d43c4506e677aec52c9943" resname="fdc_marche_du_film_news">
+        <source>/actualite</source>
+        <target state="new">/actualite</target>
+      </trans-unit>
+      <trans-unit id="3b52e6021eb19d532c71b4a2a220abc0e021f224" resname="fdc_marche_du_film_news_details">
+        <source>/actualite/{slug}</source>
+        <target state="new">/actualite/{slug}</target>
+      </trans-unit>
+      <trans-unit id="2d936dafc29ad83167caef52b53df42e467e8611" resname="fdc_marche_du_film_press_coverage">
+        <source>/presse/retombees-presse</source>
+        <target state="new">/presse/retombees-presse</target>
+      </trans-unit>
+      <trans-unit id="6767bcf83f7a43949302bea0c71a4f9772cdac82" resname="fdc_marche_du_film_press_gallery">
+        <source>/presse/galerie-photos</source>
+        <target state="new">/presse/galerie-photos</target>
+      </trans-unit>
+      <trans-unit id="e3bc30ddd2b94bc016294b826cbab76402a11c4c" resname="fdc_marche_du_film_press_graphical_charter">
+        <source>/presse/charte-graphique</source>
+        <target state="new">/presse/charte-graphique</target>
+      </trans-unit>
+      <trans-unit id="3f70637e9cc653f181ff83b0050fb24bd884a9a6" resname="fdc_marche_du_film_press_releases">
+        <source>/presse/communique-de-presse</source>
+        <target state="new">/presse/communique-de-presse</target>
+      </trans-unit>
+      <trans-unit id="7ba6e651c6489a8cd0314bc521f727ed04005289" resname="fdc_marche_du_film_search">
+        <source>/search</source>
+        <target state="new">/search</target>
+      </trans-unit>
+      <trans-unit id="a431478ce821cb652d98eb0a4205b5b324a51d02" resname="fdc_marche_du_film_services">
+        <source>/services</source>
+        <target state="new">/services</target>
+      </trans-unit>
+      <trans-unit id="f5e6454543167835a5eab8cb08097444fdbb68aa" resname="fdc_marche_du_film_services_widgets">
+        <source>/services/{slug}</source>
+        <target state="new">/services/{slug}</target>
+      </trans-unit>
+      <trans-unit id="538daa37dec4e2a7af8b3c2bb1c8baa856eccd08" resname="fdc_marche_du_film_site_plan">
+        <source>/plan-du-site</source>
+        <target state="new">/plan-du-site</target>
+      </trans-unit>
+      <trans-unit id="8bef66a1c18efc96f40dc8fd3d2490d7839a49a7" resname="fdc_marche_du_film_who_are_we_environmental_approaches">
+        <source>/quisommesnous/demarchesenvironnementales</source>
+        <target state="new">/quisommesnous/demarchesenvironnementales</target>
+      </trans-unit>
+      <trans-unit id="4648c6932365b1ff65003f157ce77b7edd201bad" resname="fdc_marche_du_film_who_are_we_history">
+        <source>/quisommesnous/historique</source>
+        <target state="new">/quisommesnous/historique</target>
+      </trans-unit>
+      <trans-unit id="ec016d392f59f166f5b83da2e968ec5a0749b171" resname="fdc_marche_du_film_who_are_we_key_figures">
+        <source>/quisommesnous/chiffrescles</source>
+        <target state="new">/quisommesnous/chiffrescles</target>
+      </trans-unit>
+      <trans-unit id="9d1ac5ce3826ae005600f5b673430fbe58e0f7ca" resname="fdc_marche_du_film_who_are_we_team">
+        <source>/quisommesnous/equipe</source>
+        <target state="new">/quisommesnous/equipe</target>
+      </trans-unit>
       <trans-unit id="79dd270b34180c40584d7865efe4186f0ca3db54" resname="fdc_press_accredit_main">
         <source>/press/accredit</source>
         <target state="new">/press/accredit</target>
@@ -515,6 +1055,90 @@
         <target state="new">/press/login</target>
       </trans-unit>
       <trans-unit id="4c5bbf02a47b7c1000b58c790636def814a1c031" resname="fdc_press_security_logout">
+        <source>/press/logout</source>
+        <target state="new">/press/logout</target>
+      </trans-unit>
+      <trans-unit id="95a27874e89bfadc62e4511af777207127d5b3b3" resname="fdc_pressmobile_accredit_main">
+        <source>/press/accredit</source>
+        <target state="new">/press/accredit</target>
+      </trans-unit>
+      <trans-unit id="e401744caac0d5b286de98776391389c7495c469" resname="fdc_pressmobile_agenda_get">
+        <source>/press/programmation/agenda</source>
+        <target state="new">/press/programmation/agenda</target>
+      </trans-unit>
+      <trans-unit id="8d44d9613dc5ce724b2c18a5fef5994d0c6f78d2" resname="fdc_pressmobile_agenda_room">
+        <source>/press/programmation/room</source>
+        <target state="new">/press/programmation/room</target>
+      </trans-unit>
+      <trans-unit id="f2dfcd627a4332ef4218a79c0676807d532d5873" resname="fdc_pressmobile_agenda_scheduling">
+        <source>/press/programmation/</source>
+        <target state="new">/press/programmation/</target>
+      </trans-unit>
+      <trans-unit id="1367c59050bd0891e0ce6dcb7b938e9fd3e36921" resname="fdc_pressmobile_global_contact">
+        <source>/press/press-contact</source>
+        <target state="new">/press/press-contact</target>
+      </trans-unit>
+      <trans-unit id="48247b45a37888db9f05426899d2e6eca2c6477b" resname="fdc_pressmobile_global_menu">
+        <source>/press/menu</source>
+        <target state="new">/press/menu</target>
+      </trans-unit>
+      <trans-unit id="92006714ec36f800c8a1470e291e8bf99f247a86" resname="fdc_pressmobile_guide_main">
+        <source>/press/guide</source>
+        <target state="new">/press/guide</target>
+      </trans-unit>
+      <trans-unit id="ffb83649323f87a2132a1c85d0dab1aabcd33c4c" resname="fdc_pressmobile_media_download">
+        <source>/press/download</source>
+        <target state="new">/press/download</target>
+      </trans-unit>
+      <trans-unit id="7e0642f8f012de40e9e898b37e0b8f9a9ea7e919" resname="fdc_pressmobile_media_filmarchive">
+        <source>/press/media/film/{id}/archive</source>
+        <target state="new">/press/media/film/{id}/archive</target>
+      </trans-unit>
+      <trans-unit id="aaf93cb80e8c8ab98763535cd0adcd5b306f81ca" resname="fdc_pressmobile_media_forcedownload">
+        <source>/press/force-trailer-download/{id}/{format}</source>
+        <target state="new">/press/force-trailer-download/{id}/{format}</target>
+      </trans-unit>
+      <trans-unit id="2d10a2a5097f6cbdfd8c687a992684c84d78f455" resname="fdc_pressmobile_media_galleryarchive">
+        <source>/press/media/gallery/{id}/archive</source>
+        <target state="new">/press/media/gallery/{id}/archive</target>
+      </trans-unit>
+      <trans-unit id="e5c795c1a39809509fd16115e1cea4fd4718b3dd" resname="fdc_pressmobile_media_main">
+        <source>/press/media/{sectionId}</source>
+        <target state="new">/press/media/{sectionId}</target>
+      </trans-unit>
+      <trans-unit id="a3dd50bfc7888bfe7cb2f02c999439e7b7a3d0dc" resname="fdc_pressmobile_media_mediasection">
+        <source>/press/media-section</source>
+        <target state="new">/press/media-section</target>
+      </trans-unit>
+      <trans-unit id="aa3d06cc6baea03c9b3fd42eb82b808c6214f2f6" resname="fdc_pressmobile_media_trailerdownload">
+        <source>/press/trailer-download</source>
+        <target state="new">/press/trailer-download</target>
+      </trans-unit>
+      <trans-unit id="07495fe3b69fcda3cac7838e0c72b87cc7eff58d" resname="fdc_pressmobile_news_get">
+        <source>/press/press-articles/{type}/{format}/{slug}</source>
+        <target state="new">/press/press-articles/{type}/{format}/{slug}</target>
+      </trans-unit>
+      <trans-unit id="dd19bf72a2e4af435661afc2bf104eb0e429dc07" resname="fdc_pressmobile_news_home">
+        <source>/press/</source>
+        <target state="new">/press/</target>
+      </trans-unit>
+      <trans-unit id="4b5105bb4ff0ee31f397fe47dedf66bbec2c01d5" resname="fdc_pressmobile_news_list">
+        <source>/press/press-actu</source>
+        <target state="new">/press/press-actu</target>
+      </trans-unit>
+      <trans-unit id="4b90c6312bc2155b762805f4a1142f047e3b4437" resname="fdc_pressmobile_news_listajax">
+        <source>/press/press-actu-ajax</source>
+        <target state="new">/press/press-actu-ajax</target>
+      </trans-unit>
+      <trans-unit id="70e08f13c1208da574ca45ec727caddcbdc53db6" resname="fdc_pressmobile_security_check">
+        <source>/press/login_check</source>
+        <target state="new">/press/login_check</target>
+      </trans-unit>
+      <trans-unit id="b125593aed9496d7a71ba68df4d029002418bceb" resname="fdc_pressmobile_security_login">
+        <source>/press/login</source>
+        <target state="new">/press/login</target>
+      </trans-unit>
+      <trans-unit id="85952d70d882a77f114057c77351e51320fa6cde" resname="fdc_pressmobile_security_logout">
         <source>/press/logout</source>
         <target state="new">/press/logout</target>
       </trans-unit>

@@ -7,7 +7,7 @@
     {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
     {% set copyright = photo|trans_fallback('copyright') %}
     <article
-            class="card card-01 item photo img shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }}"
+            class="card card-01 item photo img shadow-bottom date-{{ photo.publishedAt|date('d-m-y') }} all {{ photo.theme|trans_fallback('slug') }} {{ format }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
             data-format="photo"
             data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
             data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
@@ -60,11 +60,11 @@
             {% set transImage = video.image.findTranslationByLocale('fr') %}
         {% endif %}
     {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+        {% set imageamazon = 1 %}
         {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
     {%- endif -%}
     {% if transImage is defined or amazonImage is defined %}
-        <article
-                class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }}"
+        <article class="card card-01 item video shadow-bottom date-{{ video.publishedAt|date('d-m-y') }} all {{ video.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
                 data-format="video"
                 data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
                 data-vid="{{ video.id }}"
@@ -106,7 +106,7 @@
             {% set transImage = audio.image.findTranslationByLocale('fr') %}
         {% endif %}
     {% endif %}
-    <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }}"
+    <article class="card card-01 item audio shadow-bottom date-19-05-5 all {{ audio.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
              data-format="audio"
              data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
              data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
