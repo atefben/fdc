@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="e201992425b6c8bb411e1f57a863b81011f79669" resname="fdc_corporate_artist_get">
         <source>/artist/{slug}</source>
-        <target state="new">/artist/{slug}</target>
+        <target state="new">/artista/{slug}</target>
       </trans-unit>
       <trans-unit id="e5cc27bb19d74965e656e9840f5af92d32db0668" resname="fdc_corporate_default_gallerycorpo">
         <source>/homepagecorporate/gallery</source>
@@ -148,7 +148,7 @@
       </trans-unit>
       <trans-unit id="a22f0add97098d2497129026135e6bd1ec6d773e" resname="fdc_corporate_movie_get">
         <source>/films/{slug}</source>
-        <target state="new">/films/{slug}</target>
+        <target state="new">/peliculas/{slug}</target>
       </trans-unit>
       <trans-unit id="12f5b3d1b033d4f051f2c7e205d2b5e132fa87c3" resname="fdc_corporate_movie_selection">
         <source>/69-editions/retrospective/{year}/selection/{slug}</source>
@@ -217,10 +217,6 @@
       <trans-unit id="f370342e972e6da92f085ed423874512740b3f7c" resname="fdc_corporate_participate_rules">
         <source>/participer/rules</source>
         <target state="new">/participer/rules</target>
-      </trans-unit>
-      <trans-unit id="a8a6d2b668da2a5ff439d4a24276a1a8b869c037" resname="fdc_corporate_press_show">
-        <source>/press/</source>
-        <target state="new">/press/</target>
       </trans-unit>
       <trans-unit id="1c71e4b5ad228d9f7c527e3531723f8dda62405d" resname="fdc_corporate_search_countryautocomplete">
         <source>/countryautocomplete/{searchTerm}</source>
@@ -395,8 +391,8 @@
         <target state="new">/festival/programmation/</target>
       </trans-unit>
       <trans-unit id="ba6dc3eee703f721132993fc297eefc51d19d88a" resname="fdc_event_artist_archiveget">
-        <source>/festival/archives/artist/id/{id}.html</source>
-        <target state="new">/festival/archives/artist/id/{id}.html</target>
+        <source>/archives/artist/id/{id}.html</source>
+        <target state="new">/archives/artist/id/{id}.html</target>
       </trans-unit>
       <trans-unit id="a356a86a37c7c440cfa8a2efa17fa033a5b682c7" resname="fdc_event_artist_get">
         <source>/festival/artist/{slug}</source>
@@ -519,12 +515,12 @@
         <target state="new">/festival/mobile-se-rendre</target>
       </trans-unit>
       <trans-unit id="184c94f85923016af5d20acc9e24c36e978a6ec1" resname="fdc_event_movie_archiveget">
-        <source>/festival/archives/ficheFilm/id/{id}.html</source>
-        <target state="new">/festival/archives/ficheFilm/id/{id}.html</target>
+        <source>/archives/ficheFilm/id/{id}.html</source>
+        <target state="new">/archives/ficheFilm/id/{id}.html</target>
       </trans-unit>
       <trans-unit id="48195301cb8af2da8f82aa5a49f096bfcf728d6e" resname="fdc_event_movie_archiveget_1">
-        <source>/festival/archives/ficheFilm/id/{id}/year/{year}.html</source>
-        <target state="new">/festival/archives/ficheFilm/id/{id}/year/{year}.html</target>
+        <source>/archives/ficheFilm/id/{id}/year/{year}.html</source>
+        <target state="new">/archives/ficheFilm/id/{id}/year/{year}.html</target>
       </trans-unit>
       <trans-unit id="14e923b7db41dbe741b2046e549a0198489740cd" resname="fdc_event_movie_classics">
         <source>/festival/selection/cannes-classics/{slug}</source>
