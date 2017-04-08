@@ -2,7 +2,7 @@
 
 namespace Base\CoreBundle\Entity;
 
-use Base\CoreBundle\Interfaces\FDCCorporateRoutesInterface;
+use Base\CoreBundle\Interfaces\FDCEventRoutesInterface;
 use Base\CoreBundle\Util\Time;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
