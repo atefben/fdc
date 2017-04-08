@@ -312,6 +312,14 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     /**
      * @return string
      */
+    private function getAmazonDirectorySd()
+    {
+        return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
+    }
+
+    /**
+     * @return string
+     */
     private function getFtpUrl()
     {
         return 'ftp://Site_internet:inter8963@ftp2.cannesinteractive.com/SELFKIT/Presse/';
@@ -365,12 +373,16 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $filename = $this->getUploadsDirectory() . $old->getFichier();
         $ftpRemoteFilename = $this->getFtpUrl() . $old->getFichier();
         $remoteFilename = $this->getAmazonDirectory() . $old->getFichier();
-        dump($ftpRemoteFilename);
-        dump($remoteFilename);
+        $remoteFilenameSd = $this->getAmazonDirectorySd() . $old->getFichier();
+
+
         if (!is_file($filename)) {
             @file_put_contents($filename, file_get_contents($ftpRemoteFilename));
             if (!(@is_array(getimagesize($filename)))) {
                 @file_put_contents($filename, file_get_contents($remoteFilename));
+            }
+            if (!(@is_array(getimagesize($filename)))) {
+                @file_put_contents($filename, file_get_contents($remoteFilenameSd));
             }
         }
         if (!(@is_array(getimagesize($filename)))) {
