@@ -453,7 +453,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     {
         $film = $this->getFilm($old->getIdfilm());
         $person = $this->getPerson($old->getIdpersonne());
-        $jury = $this->getPerson($old->getIdjury());
+        $jury = $old->getIdjury();
         if ($person && $film && !$this->isDirector($person, $film) && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
         } else if (!$person && $film && !$media->getSelfkitFilms()->contains($film)) {
@@ -461,7 +461,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         } elseif ($media->getSelfkitFilms()->contains($film)) {
             $media->removeSelfkitFilm($film);
         }
-
         if ($jury) {
             if (!$person) {
                 $filmJury = $this->getManager()->getRepository('BaseCoreBundle:FilmJury')->find($jury);
