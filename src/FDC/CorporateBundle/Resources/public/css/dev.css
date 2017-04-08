@@ -368,3 +368,71 @@
     width: calc(100% / 4);
   }
 }
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.single-evenement .title-article {
+  margin-bottom: 37px;
+}
+
+.single-article.single-evenement .title-article {
+  color: #333;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto;
+  max-width: 775px;
+  text-align: center;
+}
+
+.single-evenement {
+  padding-bottom: 0;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.single-article.single-evenement {
+  padding: 65px 0;
+}
+
+.single-article.single-evenement .single-photo .caption {
+  color: #969696;
+  font-size: .75rem;
+  margin: 10px 0 0;
+  text-align: left;
+}
+
+.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
+  width: 100%;
+}
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-article.single-evenement .text {
+  width: 630px;
+  margin: 0 auto 70px;
+}
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-article.single-evenement .share {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 70px 0;
+}
+
+.single-evenement .share {
+  position: relative;
+}
+
