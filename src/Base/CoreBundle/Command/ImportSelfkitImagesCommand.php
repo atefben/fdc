@@ -375,6 +375,9 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $remoteFilename = $this->getAmazonDirectory() . $old->getFichier();
         $remoteFilenameSd = $this->getAmazonDirectorySd() . $old->getFichier();
 
+        dump($ftpRemoteFilename);
+        dump($remoteFilename);
+        dump($remoteFilenameSd);
 
         if (!is_file($filename)) {
             @file_put_contents($filename, file_get_contents($ftpRemoteFilename));
