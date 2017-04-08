@@ -26,6 +26,12 @@
 // 24. Evenement
 // =========================
 
+$(document).ready(function(){
+  $(document).bind("contextmenu",function(e){
+    return false;
+  });
+});
+
 
 // HELPERS ================ //
 // parse URL in string
