@@ -4,82 +4,95 @@
 {% block bodyClass %}loading dark retrospective fs-off retrospective-home restrospective-init{% endblock %}
 
 {% block body %}
-<section class="s-slider-retrospective">
+    <section class="s-slider-retrospective">
 
-    {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
-    <div class="ajax-section"><div class="contain-ajax articles-list evenements" id="main">
+        <div class="ajax-section">
+            <div class="contain-ajax articles-list evenements" id="main">
 
-    {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
-    <div class="filters padding-small-top">
-        <div id="theme" class="filter">
-            <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
-              <span class="select">
+                <div class="filters padding-small-top">
+                    <div id="theme" class="filter">
+                        <span class="label">{{ 'event.filter.label.theme'|trans }} :</span>
+                        <span class="select">
                 <span data-filter="all" class="active">{{ 'search.result.filter.tous'|trans }} </span>
-                  {% for theme in filters.themes %}
-                      <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
-                  {% endfor %}
-                <i class="icon icon-arrow-down"></i>
+                            {% for theme in filters.themes %}
+                                <span data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+                            {% endfor %}
+                            <i class="icon icon-arrow-down"></i>
               </span>
-        </div>
-    </div> <!-- end filters -->
+                    </div>
+                </div> <!-- end filters -->
 
-    <div class="grid-01 isotope-01 event-card">
+                <div class="grid-01 isotope-01 event-card">
 
-        <div class="grid-sizer"></div>
+                    <div class="grid-sizer"></div>
 
-    {% for event in events %}
-        <article class="card item photo all {{ event.theme|trans_fallback('slug') }}" data-format="photo" data-theme="press" data-time="1455909420" data-end="false" data-date="date-{{ event.publishedAt|date('d-m-y') }}">
-            <div class="image">
-                <div class="image-wrapper">
-                    <img src="{% path event.header|trans_fallback('file') , '575x364' %}" srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x" alt="{{ event.header|trans_fallback('alt') }} ">
+                    {% for event in events %}
+                        <article class="card item photo all {{ event.theme|trans_fallback('slug') }}"
+                                 data-format="photo" data-theme="press" data-time="1455909420" data-end="false"
+                                 data-date="date-{{ event.publishedAt|date('d-m-y') }}">
+                            <div class="image">
+                                <div class="image-wrapper">
+                                    {% if event.header and event.header|trans_fallback('file') %}
+                                        <img src="{% path event.header|trans_fallback('file') , '575x364' %}"
+                                             srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x"
+                                             alt="{{ event.header|trans_fallback('alt') }} ">
+                                    {% else %}
+                                        <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
+                                             srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
+                                             alt="{{ article|trans_fallback('title')|escape('html_attr') }}">
+                                    {% endif %}
+                                </div>
+                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}"
+                                   class="linkImage"></a>
+                            </div>
+                            <div class="info">
+                                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}"
+                                   class="category">{{ event.theme|trans_fallback('name') }} </a>
+                                <strong><a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}">{{ event|trans_fallback('title') }}</a></strong>
+                            </div>
+                        </article>
+                    {% endfor %}
+
                 </div>
-                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}" class="linkImage"></a>
-            </div>
-            <div class="info">
-                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}" class="category">{{ event.theme|trans_fallback('name') }} </a>
-                <strong><a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year' : app.request.attributes.get('year') }) }}">{{ event|trans_fallback('title') }}</a></strong>
-            </div>
-        </article>
-    {% endfor %}
 
-    </div>
-
-    <!--div class="bright padding-bottom">
+                <!--div class="bright padding-bottom">
         <a href="http://www.festival-cannes.fr/fr/archivesPage.html" class="read-more block-01">{{ 'event.btn.afficherplusdevenement'|trans|raw }}</a>
     </div-->
 
-    </div></div>
+            </div>
+        </div>
 
-</section>
-{% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
-{"breadcrumb":
-[
-{
-"name" : 'breadcrumb.69editions.home'|trans,
-"url"  : path('fdc_corporate_default_home')
-},
-{
-"name" : 'breadcrumb.retrospective.home'|trans,
-"url"  : path('fdc_corporate_editions_retrospective')
-},
-{
-"name" : app.request.attributes.get('year'),
-"url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-},
-{
-"name" : 'breadcrumb.event.list'|trans,
-"url"  : ''
-}
-]
-} %}
-{{ render(controller('FDCCorporateBundle:Global:shareEmail',
-{'section': '',
-    'detail' : '',
-    'title'  : '',
-    'description': '',
-    'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-}))
-}}
+    </section>
+    {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+    {"breadcrumb":
+    [
+    {
+    "name" : 'breadcrumb.69editions.home'|trans,
+    "url"  : path('fdc_corporate_default_home')
+    },
+    {
+    "name" : 'breadcrumb.retrospective.home'|trans,
+    "url"  : path('fdc_corporate_editions_retrospective')
+    },
+    {
+    "name" : app.request.attributes.get('year'),
+    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    },
+    {
+    "name" : 'breadcrumb.event.list'|trans,
+    "url"  : ''
+    }
+    ]
+    } %}
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section': '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
 {% endblock %}
