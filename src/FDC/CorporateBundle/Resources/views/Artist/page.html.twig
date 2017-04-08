@@ -58,7 +58,7 @@
                     {% if biography %}
                         <div class="biographie">
                             <strong class="title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</strong>
-                            <p class="texte-01">{{ biography|raw }}</p>
+                            <p class="texte-01">{{ biography|nl2br|raw }}</p>
                         </div>
                     {% endif %}
                     <div class="block-01-xs separator1">
