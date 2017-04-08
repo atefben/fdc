@@ -464,8 +464,12 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
         if ($jury) {
             if (!$person) {
-                $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($jury);
-                $media->setOldMediaPhotoType(FilmFilmMediaInterface::TYPE_JURY);
+                $filmJury = $this->getManager()->getRepository('BaseCoreBundle:FilmJury')->find($jury);
+                if ($filmJury) {
+                    $person = $filmJury->getPerson();
+                    $media->setOldMediaPhotoType(FilmFilmMediaInterface::TYPE_JURY);
+                }
+
             }
         }
 
