@@ -79,7 +79,7 @@ class EventController extends Controller
      */
     public function getAction(Request $request, $year, $slug)
     {
-        $festival = $this->getFestival()->getId();
+        $festival = $this->getFestival($year)->getId();
         $locale = $request->getLocale();
 
         $event = $this
@@ -87,6 +87,7 @@ class EventController extends Controller
             ->getRepository('BaseCoreBundle:Event')
             ->getEventBySlug($festival, $locale, $slug)
         ;
+
         $this->throwNotFoundExceptionOnNullObject($event);
 
         $programmations = array();
