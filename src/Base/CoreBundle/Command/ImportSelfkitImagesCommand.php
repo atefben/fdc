@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Command;
 
 use Application\Sonata\MediaBundle\Entity\Media;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmPerson;
 use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\OldFilmPhoto;
@@ -44,7 +45,8 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ->setName('base:import:selfkit-images')
             ->addOption('force-reupload', null, InputOption::VALUE_NONE, 'Force repload')
             ->addOption('films', null, InputOption::VALUE_NONE, 'Only films')
-            ->addOption('persons', null, InputOption::VALUE_NONE, 'Only films')
+            ->addOption('persons', null, InputOption::VALUE_NONE, 'Only persons')
+            ->addOption('juries', null, InputOption::VALUE_NONE, 'Only jury')
             ->addOption('count', null, InputOption::VALUE_NONE, 'Count element (works if film or persons is selected)')
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'Pagination (works if film or persons is selected)')
             ->addOption('id', null, InputOption::VALUE_OPTIONAL, 'Film or Person soif id')
@@ -58,7 +60,17 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         if ($input->getOption('page')) {
             $this->firstResult = ((int)$input->getOption('page') - 1) * $this->maxResults;
         }
-        if ($input->getOption('persons')) {
+        if ($input->getOption('juries')) {
+            if ($input->getOption('count')) {
+                $count = $this->importJuriesImagesCount();
+                $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
+            } else if ($input->getOption('id')) {
+                $this->importJuriesImages($input->getOption('id'));
+            } else {
+                $this->importJuriesImages();
+            }
+        }
+        elseif ($input->getOption('persons')) {
             if ($input->getOption('count')) {
                 $count = $this->importPersonImagesCount();
                 $output->writeln("<info>There are <comment>$count</comment> OldFilmPhoto items for persons to import</info>");
@@ -143,6 +155,69 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
             ->getManager()
             ->getRepository('BaseCoreBundle:OldFilmPhoto')
             ->getLegacyPersonImagesCount()
+            ;
+    }
+
+    private function importJuriesImages($id = null)
+    {
+        if ($id) {
+            $oldImages = [];
+            $person = $this->getManager()->getRepository('BaseCoreBundle:FilmJury')->find($id);
+            if ($person) {
+                $oldImages = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                    ->getLegacyJuriesImages($person)
+                ;
+            }
+
+        } else {
+            $maxResults = null;
+            if (null !== $this->firstResult) {
+                $maxResults = $this->maxResults;
+                $pages = ceil($this->importJuriesImagesCount() / $maxResults);
+            }
+            $oldImages = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:OldFilmPhoto')
+                ->getLegacyJuriesImages(null, $this->firstResult, $maxResults)
+            ;
+        }
+
+        if (!$oldImages) {
+            $this->output->writeln('<info>There is no images to import with these options</info>');
+            return;
+        }
+        $this->output->writeln('<info>Import juries</info>');
+        $count = count($oldImages);
+        $i = 1;
+        foreach ($oldImages as $oldImage) {
+            $this->output->writeln(PHP_EOL . str_repeat('=', 80));
+            if ($this->input->getOption('page') && !empty($pages)) {
+                $this->output->writeln('Page '.$this->input->getOption('page') . "/$pages");
+            }
+            $message = "$i / $count";
+            $this->output->writeln("<info>$message</info>");
+            try {
+                $this->getMediaFromOldFilmPhoto($oldImage);
+            } catch (\Exception $e) {
+                $this->output->writeln('<error>' . $e->getMessage() . '</error>');
+            }
+            $i++;
+        }
+        $this->output->writeln('');
+        $this->finalizeImport();
+    }
+
+    /**
+     * @return int
+     */
+    private function importJuriesImagesCount()
+    {
+        return $count = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldFilmPhoto')
+            ->getLegacyJuriesImagesCount()
             ;
     }
 
@@ -362,12 +437,20 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     {
         $film = $this->getFilm($old->getIdfilm());
         $person = $this->getPerson($old->getIdpersonne());
+        $jury = $this->getPerson($old->getIdjury());
         if ($person && $film && !$this->isDirector($person, $film) && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
         } else if (!$person && $film && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
         } elseif ($media->getSelfkitFilms()->contains($film)) {
             $media->removeSelfkitFilm($film);
+        }
+
+        if ($jury) {
+            if (!$person) {
+                $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($jury);
+                $media->setOldMediaPhotoType(FilmFilmMediaInterface::TYPE_JURY);
+            }
         }
 
         if ($person && !$media->getSelfkitPersons()->contains($person)) {
