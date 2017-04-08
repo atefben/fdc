@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\FDCCorporateRoutesRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class FDCCorporateRoutes implements FDCCorporateRoutesInterface
+class FDCCorporateRoutes implements FDCEventRoutesInterface
 {
     use Time;
 
