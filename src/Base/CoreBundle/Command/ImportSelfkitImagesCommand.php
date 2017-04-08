@@ -314,7 +314,7 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
      */
     private function getAmazonDirectorySd()
     {
-        return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
+        return $this->getContainer()->getParameter('selfkit_amazon_url');
     }
 
     /**
