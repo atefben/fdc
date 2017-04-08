@@ -450,7 +450,7 @@ class FilmManager extends CoreManager
         }
 
         // set persons (directors)
-        /*
+
         $persons = array();
         if (property_exists($resultObject, 'FilmRealisateurs') && property_exists($resultObject->FilmRealisateurs, 'RealisateurRefDto')) {
             $objects = $resultObject->FilmRealisateurs->RealisateurRefDto;
@@ -777,7 +777,7 @@ class FilmManager extends CoreManager
             }
             $this->removeOldRelations($entity->getContacts(), $collection, $entity, 'removeContact');
 
-        }*/
+        }
 
         return $entity;
     }
