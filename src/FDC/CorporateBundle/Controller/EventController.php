@@ -71,7 +71,7 @@ class EventController extends Controller
 
     /**
      * @Route("/{year}/event/{slug}")
-     * @Template("FDCEventBundle:Event:page.html.twig")
+     * @Template("FDCCorporateBundle:Event:page.html.twig")
      * @param Request $request
      * @param $year
      * @param $slug
