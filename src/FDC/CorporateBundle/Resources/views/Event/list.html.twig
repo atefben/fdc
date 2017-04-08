@@ -43,7 +43,7 @@
                                     {% else %}
                                         <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
                                              srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
-                                             alt="{{ article|trans_fallback('title')|escape('html_attr') }}">
+                                             alt="{{ event|trans_fallback('title')|escape('html_attr') }}">
                                     {% endif %}
                                 </div>
                                 <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug'), 'year': app.request.get('year')}) }}"
