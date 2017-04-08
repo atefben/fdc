@@ -23,7 +23,7 @@ class ArtistController extends Controller
             ->getRepository('BaseCoreBundle:OldPersonsassoc')
             ->findOneBy(['idselfkit' => $id])
         ;
-
+        $artist = null;
         if ($oldPersonAssoc) {
             $artist = $this
                 ->getDoctrineManager()
@@ -31,8 +31,12 @@ class ArtistController extends Controller
                 ->find($oldPersonAssoc->getIdsoif())
             ;
         }
-        else {
-            $artist = null;
+        if (!$artist) {
+            $artist = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmPerson')
+                ->find($id)
+            ;
         }
 
         if (!$artist) {
