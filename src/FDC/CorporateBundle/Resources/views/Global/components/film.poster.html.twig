@@ -31,7 +31,7 @@
             {% for selfkitImage in film.selfkitImages if selfkitImage.oldTitle|trim == 'Photo du Film' %}
                 {% set availableMedias = availableMedias|merge([selfkitImage]) %}
             {% endfor %}
-            {% set media = film.getSelfkitImages()|first %}
+            {% set media = availableMedias|first %}
         {% endif %}
     {% endif %}
 
