@@ -71,11 +71,11 @@
             <div class="share">
                 <p>{{ 'event.text.partagerlarticle'|trans }}</p>
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }}) }}"
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
                        rel="nofollow" class="button facebook">
                         <i class="icon icon_facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }}) }}"
+                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
                        rel="nofollow"
                        class="button twitter">
                         <i class="icon icon_twitter"></i>
@@ -139,7 +139,7 @@
     },
     {
     "name" : 'breadcrumb.event.list'|trans,
-    "url"  : path('fdc_corporate_event_getevents', {'year': prev.festival.year }})
+    "url"  : path('fdc_corporate_event_getevents', {'year': prev.festival.year })
     },
     {
     "name" : event|trans_fallback('title'),
