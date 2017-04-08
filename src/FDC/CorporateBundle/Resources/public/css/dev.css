@@ -402,7 +402,7 @@
 .single-article.single-evenement .fck-legend {
   color: #969696 !important;
   font-size: .75rem !important;
-  margin: 10px 0 0 !important;
+  margin: -10px 0 0 0 !important;
   text-align: left !important;
   font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
 }
@@ -455,3 +455,7 @@
   margin-bottom: 5px;
   text-align: left !important;
 }
+.single-article.single-evenement a, .single-article.single-evenement a:hover {
+  color: #c8a461;
+}
+
