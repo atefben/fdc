@@ -400,10 +400,11 @@
 }
 
 .single-article.single-evenement .fck-legend {
-  color: #969696;
-  font-size: .75rem;
-  margin: 10px 0 0;
-  text-align: left;
+  color: #969696 !important;
+  font-size: .75rem !important;
+  margin: 10px 0 0 !important;
+  text-align: left !important;
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
 }
 
 .single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
@@ -452,4 +453,5 @@
   font-size: 1rem;
   line-height: 1.7em;
   margin-bottom: 5px;
+  text-align: left !important;
 }
