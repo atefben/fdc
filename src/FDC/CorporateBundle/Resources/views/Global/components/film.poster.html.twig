@@ -29,7 +29,7 @@
         {% if media is empty %}
             {% set availableMedias = [] %}
             {% for selfkitImage in film.selfkitImages if selfkitImage.oldTitle|trim == 'Photo du Film' %}
-                {% set availableMedias|merge([selfkitImage]) %}
+                {% set availableMedias = availableMedias|merge([selfkitImage]) %}
             {% endfor %}
             {% set media = film.getSelfkitImages()|first %}
         {% endif %}
