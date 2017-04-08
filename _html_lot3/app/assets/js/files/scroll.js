@@ -1,5 +1,7 @@
-$('body').live('contextmenu', function(e){
-    return false;
+$(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
 });
 
 var initHeaderSticky = function () {
