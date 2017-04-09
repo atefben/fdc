@@ -2816,9 +2816,6 @@ var owInitGrid = function (id) {
             var landscapeRatio = 0.7921; //height / width
             var portraitRatio = 1.5842; //height / width
             $items.each(function(){
-                if($items.hasClass('amazonimg')) {
-                    console.log('ici');
-                }
                 var $this = $(this);
                 var itemRatio = $this.outerHeight() / $this.outerWidth();
 
@@ -2826,24 +2823,25 @@ var owInitGrid = function (id) {
                     //landscape
                     $this.addClass('landscape');
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * landscapeRatio;
-                    if(itemRatio < landscapeRatio){
+                    //var newHeight = $this.outerWidth() * landscapeRatio;
+                    // if(itemRatio < landscapeRatio){
                         //less large than desired outpugridBigImgt, scale width
                         //$this.find('.image, .image-wrapper, img').css('width','100%');
-                    }else{
+                        // }else{
                         //more large than desired output, scale height
                         //$this.find('img').css('height','100%');
-                    }
+                        //}
                 }else{
                     //portrait
                     $this.addClass('portrait');
+                    $this.height($this.height()+2);
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * portraitRatio;
-                    if(itemRatio < portraitRatio){
+                    //var newHeight = $this.outerWidth() * portraitRatio;
+                    //if(itemRatio < portraitRatio){
                         //less large than desired output, scale width
-                    }else{
+                    //}else{
                         //more large than desired output, scale width too (?)
-                    }
+                    //}
                 }
             });
         };
@@ -2987,7 +2985,7 @@ var owInitGrid = function (id) {
                                 var titleText;
                                 var catText;
 
-                                $clamp(title.get(0), {clamp: 2});
+
                                 //$clamp(cat.get(0), {clamp: 1});
                             });
                             owsetGridBigImg(false, $('.grid-01'), false);
