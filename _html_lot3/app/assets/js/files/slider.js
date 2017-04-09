@@ -40,7 +40,6 @@ var owInitSlider = function (sliderName) {
                     var desc = container.text();
                     desc = desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
                     container.empty().html(desc);
-                    $clamp(container.get(0), {clamp: 3});
                 });
                 
                 if(isFirefox){

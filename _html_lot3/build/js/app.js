@@ -3033,7 +3033,7 @@ var owInitGrid = function (id) {
                     var title = $(e).find('.info strong a');
                     var cat = $(e).find('.info .category');
 
-                    $clamp(title.get(0), {clamp: 2});
+                    //$clamp(title.get(0), {clamp: 2});
                     //$clamp(cat.get(0), {clamp: 1});
                 });
             }
@@ -3162,8 +3162,8 @@ var owInitGrid = function (id) {
                 var title = $(e).find('.info strong a');
                 var cat = $(e).find('.info .category');
 
-                $clamp(title.get(0), {clamp: 2});
-                $clamp(cat.get(0), {clamp: 1});
+                //$clamp(title.get(0), {clamp: 2});
+                //$clamp(cat.get(0), {clamp: 1});
             });
         }
 
@@ -3285,7 +3285,7 @@ var owInitGrid = function (id) {
                             var titleText;
                             var catText;
 
-                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(title.get(0), {clamp: 2});
                             //$clamp(cat.get(0), {clamp: 1});
                         });
 
@@ -4770,7 +4770,6 @@ var owInitSlider = function (sliderName) {
                     var desc = container.text();
                     desc = desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
                     container.empty().html(desc);
-                    $clamp(container.get(0), {clamp: 3});
                 });
                 
                 if(isFirefox){
