@@ -640,8 +640,9 @@ class CorpoMediaLibraryItemManager
         $types = [
             FilmFilmMediaInterface::TYPE_JURY => 28,
             FilmFilmMediaInterface::TYPE_POSTER => 26,
-            FilmFilmMediaInterface::TYPE_FILM => 24,
-            FilmFilmMediaInterface::TYPE_DIRECTOR => 22,
+            FilmFilmMediaInterface::TYPE_MAIN => 24,
+            FilmFilmMediaInterface::TYPE_FILM => 22,
+            FilmFilmMediaInterface::TYPE_DIRECTOR => 20,
         ];
 
         if (array_key_exists($type, $types)) {
