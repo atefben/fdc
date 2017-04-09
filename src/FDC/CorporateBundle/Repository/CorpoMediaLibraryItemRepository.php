@@ -78,8 +78,9 @@ class CorpoMediaLibraryItemRepository extends EntityRepository
         }
 
         return $qb
-            ->addOrderBy('i.sortedAt', 'desc')
             ->addOrderBy('i.weight', 'desc')
+            ->addOrderBy('i.filmTitleVO', 'asc')
+            ->addOrderBy('i.sortedAt', 'desc')
             ->setMaxResults(31)
             ->setFirstResult(($page - 1) * 30)
             ->getQuery()

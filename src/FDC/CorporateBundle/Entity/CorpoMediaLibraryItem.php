@@ -69,6 +69,12 @@ class CorpoMediaLibraryItem
      */
     private $weight = 0;
 
+    /**
+     * @var int
+     * @ORM\Column(name="film_title_vo", type="string", length=255, nullable=true)
+     */
+    private $filmTitleVO;
+
 
     /**
      * Get id
@@ -275,5 +281,28 @@ class CorpoMediaLibraryItem
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set filmTitleVO
+     *
+     * @param string $filmTitleVO
+     * @return CorpoMediaLibraryItem
+     */
+    public function setFilmTitleVO($filmTitleVO)
+    {
+        $this->filmTitleVO = $filmTitleVO;
+
+        return $this;
+    }
+
+    /**
+     * Get filmTitleVO
+     *
+     * @return string 
+     */
+    public function getFilmTitleVO()
+    {
+        return $this->filmTitleVO;
     }
 }

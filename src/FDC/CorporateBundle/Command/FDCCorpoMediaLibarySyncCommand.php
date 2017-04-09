@@ -112,4 +112,6 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
     {
         return $this->getContainer()->get('fdc_corpo.media_library_manager');
     }
+
+
 }
