@@ -89,13 +89,13 @@ var owArrowDisplay = function () {
 var onInitParallax = function () {
 
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-        $('.block-push.big').css('background-position', '0px ' + '20%');
+       //$('.block-push.big').css('background-position', '0px ' + '20%');
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 120;
-                $('.block-push.big').css('background-position', '0px ' + '20%');
+                //var s = $(this).scrollTop() - 120;
+                //$('.block-push.big').css('background-position', '0px ' + '20%');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '20%');
+                //$('.block-push.big').css('background-position', '0px ' + '20%');
             }
         });
     }

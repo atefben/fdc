@@ -224,7 +224,8 @@ var owInitSlider = function (sliderName) {
 
                 var imgurl = $('.block-push-top.big .container img').attr('src');
                 
-                $('.block-push').css('background-position', '0px 20%');
+                //$('.block-push').css('background-position', '0px 20%');
+                
                 $('.block-push-top.big .container img').css('display', 'none');
 
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
