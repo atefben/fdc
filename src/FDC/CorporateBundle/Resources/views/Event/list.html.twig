@@ -38,11 +38,9 @@
                                 <div class="image-wrapper">
                                     {% if event.header and event.header|trans_fallback('file') %}
                                         <img src="{% path event.header|trans_fallback('file') , '575x364' %}"
-                                             srcset="{% path event.header|trans_fallback('file') , '575x364' %} 1x, {% path event.header|trans_fallback('file') , '575x364' %} 2x"
                                              alt="{{ event.header|trans_fallback('alt') }} ">
                                     {% else %}
                                         <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
-                                             srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
                                              alt="{{ event|trans_fallback('title')|escape('html_attr') }}">
                                     {% endif %}
                                 </div>

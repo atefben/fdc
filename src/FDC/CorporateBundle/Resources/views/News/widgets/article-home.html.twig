@@ -23,7 +23,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
+                <img src="{% path file , '572x362' %}" alt="{{ img|trans_fallback('alt') }} ">
             {% elseif article is news_video or article is statement_video or article is info_video%}
                 {% set header = article.header %}
                 {% if header is not null %}
@@ -56,7 +56,7 @@
 					{% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
                 {% endif %}
 				{% if file is defined and file is not null %}
-                    <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
+                    <img src="{% path file , '572x362' %}"  alt="{{ img|trans_fallback('alt') }} ">
 				{% elseif imgamazon is defined and imgamazon is not null %}
 				<img src="{{ imgamazon }}" alt="" />
 				{% endif %}
@@ -84,7 +84,7 @@
                     {% endif %}
                     {% set file = trans.file %}
                 {% endif %}
-                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
+                <img src="{% path file , '572x362' %}" alt="{{ img|trans_fallback('alt') }} ">
             {% elseif article is news_image or article is statement_image or article is info_image %}
                 {% set header = article.header %}
                 {% if header is not null %}
@@ -109,7 +109,7 @@
                     {% endif %}
                     {% set file = trans.file %}
                 {% endif %}
-                <img src="{% path file , '572x362' %}" srcset="{% path file , '572x362' %} 1x, {% path file , '1144x724' %} 2x" alt="{{ img|trans_fallback('alt') }} ">
+                <img src="{% path file , '572x362' %}" alt="{{ img|trans_fallback('alt') }} ">
             {% endif %}
         </div>
         {% set trans = article.findTranslationByLocale(app.request.locale) %}
