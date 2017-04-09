@@ -2834,7 +2834,7 @@ var owInitGrid = function (id) {
                 }else{
                     //portrait
                     $this.addClass('portrait');
-                    $this.height($this.height()+2);
+                    //$this.height($this.height()+2);
                     //compute height based on width & ratio
                     //var newHeight = $this.outerWidth() * portraitRatio;
                     //if(itemRatio < portraitRatio){
@@ -6053,7 +6053,6 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
-  console.log('initSlideshows()');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 
