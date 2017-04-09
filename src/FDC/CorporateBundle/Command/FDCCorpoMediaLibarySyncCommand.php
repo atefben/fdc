@@ -73,7 +73,7 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
                     ->setParameter(':id', $id)
                 ;
             }
-            $qb->setFirstResult($input->getOption('first-result'))
+            $objects = $qb->setFirstResult($input->getOption('first-result'))
                 ->setMaxResults($input->getOption('max-results'))
                 ->getQuery()
                 ->getResult()
