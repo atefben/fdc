@@ -466,3 +466,7 @@ header #logo-wrapper #partners img.kering {
 .block-social-network-all {
   height: 136px;
 }
+
+.archive .block-01-xs img {
+  height: inherit;
+}
