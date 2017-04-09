@@ -85,9 +85,9 @@
                                     {% set copyright = photo|trans_fallback('copyright') %}
                                     {% set legend = photo|trans_fallback('legend') %}
                                     {% if copyright is not empty -%}
-                                        <br><br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
+                                        <br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
                                     {% elseif legend is not null %}
-                                        <br><br><span class="copy"> {{ legend }} </span>
+                                        <br><span class="copy"> {{ legend }} </span>
                                     {%- endif %}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
@@ -205,9 +205,9 @@
                                                                                              {% set legend = widget.image|trans_fallback('legend') %}
                                                                                              {% set copyright = widget.image|trans_fallback('copyright') %}
                                                                                             {% if copyright is not empty %}
-                                                                                                 <br><br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
+                                                                                                 <br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
                                                                                             {% elseif legend is not null %}
-                                                                                                <br><br><span class="copy"> {{ legend }} </span>
+                                                                                                <br><span class="copy"> {{ legend }} </span>
                                                                                             {%- endif %}
                                                                                              </figure>
                                                                                          {% endif %}
