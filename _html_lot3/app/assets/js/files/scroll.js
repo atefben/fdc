@@ -87,7 +87,6 @@ var owArrowDisplay = function () {
 };
 
 var onInitParallax = function () {
-
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
        //$('.block-push.big').css('background-position', '0px ' + '20%');
         $(window).on('scroll', function () {
