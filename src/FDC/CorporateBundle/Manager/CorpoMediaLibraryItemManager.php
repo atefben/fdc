@@ -171,6 +171,7 @@ class CorpoMediaLibraryItemManager
                         ->setSorted($object->getPublishedAt())
                         ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -238,6 +239,7 @@ class CorpoMediaLibraryItemManager
                         ->setSorted($object->getPublishedAt())
                         ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -316,6 +318,7 @@ class CorpoMediaLibraryItemManager
                         ->setSorted($object->getPublishedAt())
                         ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -347,9 +350,9 @@ class CorpoMediaLibraryItemManager
                 ;
                 $upperTitle = strtoupper($translation->getTitle());
                 if (strpos($upperTitle, 'UN CERTAIN REGARD')) {
-                    $item->setWeight(10);
+                    $item->setWeight(90);
                 } else {
-                    $item->setWeight(20);
+                    $item->setWeight(100);
                 }
                 $this->getDoctrineManager()->flush();
             }
@@ -379,6 +382,7 @@ class CorpoMediaLibraryItemManager
                         ->setSorted($sorted)
                         ->setFestivalYear($object->getFilm()->getFestival()->getYear())
                         ->setSearch($search)
+                        ->setWeight(30)
                     ;
                     $this->getDoctrineManager()->flush();
                 }
@@ -430,6 +434,7 @@ class CorpoMediaLibraryItemManager
                 ->setSorted($object->getMedia()->getFestival()->getFestivalStartsAt())
                 ->setFestivalYear($object->getMedia()->getFestival()->getYear())
                 ->setSearch($search)
+                ->setWeight(30)
             ;
 
             $this->getDoctrineManager()->flush();
@@ -480,6 +485,7 @@ class CorpoMediaLibraryItemManager
                 ->setSorted($sorted)
                 ->setFestivalYear($festivalYear)
                 ->setSearch($search)
+                ->setWeight(30)
             ;
             $this->getDoctrineManager()->flush();
         }

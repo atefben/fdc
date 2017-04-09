@@ -145,17 +145,17 @@ class CorpoSearchAdmin extends Admin
             ))
             ->add('pushImage1', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_pushes_515x327',
                 'required' => false,
             ))
             ->add('pushImage2', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_pushes',
+                'help' => 'form.homepage.helper_pushes_515x327',
                 'required' => false,
             ))
             ->add('pushImage3', 'sonata_type_model_list', array(
                 'label' => 'form.label_image_push',
-                'help' => 'form.homepage.helper_push3',
+                'help' => 'form.homepage.helper_pushes_1055x670',
                 'required' => false,
             ))
             ->add('translate')

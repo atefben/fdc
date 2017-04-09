@@ -1551,6 +1551,8 @@ form:
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes: Format de l'image recommandé : 650x410
         helper_pushes_306x206: Format de l'image recommandé : 306x206
+        helper_pushes_515x327: Format de l'image recommandé : 515x327
+        helper_pushes_1055x670: Format de l'image recommandé : 1055x670
         helper_pushes_325x205: Format de l'image recommandé : 351x222
         helper_pushes_702x444: Format de l'image recommandé : 702x444
         helper_pushes_703x443: Format de l'image recommandé : 703x443

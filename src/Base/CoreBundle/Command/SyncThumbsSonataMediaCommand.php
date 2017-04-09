@@ -111,7 +111,7 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy($criteria, null, $this->input->getOption('max-results'), $this->input->getOption('first-result'))
+            ->findBy($criteria, ['updatedAt' => 'desc'], $this->input->getOption('max-results'), $this->input->getOption('first-result'))
             ;
     }
 
