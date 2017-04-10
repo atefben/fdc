@@ -5,7 +5,7 @@
     {{ parent() }}
     {% stylesheets
         "bundles/fdceventmobile/css/videos.css"
-        "bundles/fdceventmobile/css/videos_custom.css"
+        "bundles/fdceventmobile/css/webtv_custom.css"
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
@@ -20,9 +20,11 @@
         <div class="fullscreenplayer">
             <div class="close-button"><i class="icon icon_close"></i></div>
             <div class="vCenter">
-                <div class="vCenterKid">
+                <div class="vCenterKid m-video">
                     <div id="player1"></div>
                     <p class="category"></p>
+                    <span class="date"></span>
+                    <span class="hour"></span>
                     <p class="title-video"></p>
                 </div>
             </div>
@@ -56,7 +58,12 @@
                 {%- endif -%}
                 {% if transImage is defined or amazonImage is defined %}
                     <div class="item item-video grid-item {{ video.theme|trans_fallback('slug') }} {{ video.publishedAt|date('d-m-y') }}"
-                         data-video="{{ s3_server_video ~ trans.mp4Url }}"
+                        {% if(trans.jobWebmState == 3) %}
+                            data-webmurl="{{ s3_server_video ~ trans.webmUrl }}"
+                        {% endif %}
+                        {% if trans.jobMp4State == 3 %}
+                            data-mp4url="{{ s3_server_video ~ trans.mp4Url }}"
+                        {% endif %}
                          data-poster="{% if transImage is not null %}{% path transImage.file, '1144x724' %}{% endif %}">
                         {% if transImage is not null %}
                             {% set resolution =  transImage.file.width > transImage.file.height ? '640x404' : '320x404' %}
@@ -66,7 +73,7 @@
                                 <div class="picto"><i class="icon icon_video"></i></div>
                                 <div class="right">
                                     <span class="category">{{ video.theme|trans_fallback('name')|truncate(22, false, '...') }}</span>
-                                    <p class="titlelink">{{ video|trans_fallback('title') }}</p>
+                                    <p data-date="{{ video.updatedAt|date('d.m.y . h:m') }}" class="titleLink">{{ video|trans_fallback('title') }}</p>
                                 </div>
                             </div>
                             {% if transImage is not null %}
@@ -114,7 +121,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/videos.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/videos.js'
+        '@FDCEventMobileBundle/Resources/public/js/videos_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
