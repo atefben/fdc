@@ -8,7 +8,7 @@ use Base\CoreBundle\Component\Repository\EntityRepository;
  * Class GraphicalCharterRepository
  * @package Base\CoreBundle\Repository
  */
-class GraphicalCharterRepository extends EntityRepository
+class GraphicalCharterRepository extends TranslationRepository
 {
 
     public function getPage($locale)
