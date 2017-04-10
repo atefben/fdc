@@ -31,6 +31,9 @@ class MediaSiteCommand extends ContainerAwareCommand
             ->addOption('begin', null, InputOption::VALUE_OPTIONAL, 'Min id')
             ->addOption('end', null, InputOption::VALUE_OPTIONAL, 'Max Id')
             ->addOption('site', null, InputOption::VALUE_REQUIRED, 'The site slug')
+            ->addOption('site', null, InputOption::VALUE_REQUIRED, 'The site slug')
+            ->addOption('offset', null, InputOption::VALUE_OPTIONAL, '', null)
+            ->addOption('limit', null, InputOption::VALUE_OPTIONAL, '', null)
         ;
     }
 
@@ -41,6 +44,8 @@ class MediaSiteCommand extends ContainerAwareCommand
         $begin = $input->getOption('begin');
         $end = $input->getOption('end');
         $siteSlug = $input->getOption('site');
+        $limit = $input->getOption('limit');
+        $offset = $input->getOption('offset');
 
         if ((!$begin || !$end) && !$festival) {
             throw new \Exception("Please check the options");
@@ -61,10 +66,10 @@ class MediaSiteCommand extends ContainerAwareCommand
         }
 
         if ($festival) {
-            $medias = $this->getMediasByFestival($entity, $festival);
+            $medias = $this->getMediasByFestival($entity, $festival, $limit, $offset);
         }
         else {
-            $medias = $this->getMediasByInterval($entity, $begin, $end);
+            $medias = $this->getMediasByInterval($entity, $begin, $end, $limit, $offset);
         }
 
         if ($medias) {
@@ -92,7 +97,7 @@ class MediaSiteCommand extends ContainerAwareCommand
         return $this->getContainer()->get('doctrine')->getManager();
     }
 
-    private function getMediasByInterval($entity, $begin, $end)
+    private function getMediasByInterval($entity, $begin, $end, $limit, $offset)
     {
         return $this
             ->getDoctrineManager()
@@ -101,12 +106,14 @@ class MediaSiteCommand extends ContainerAwareCommand
             ->andWhere('m.id BETWEEN :begin AND :end')
             ->setParameter(':begin', $begin)
             ->setParameter(':end', $end)
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    private function getMediasByFestival($entity, $festival)
+    private function getMediasByFestival($entity, $festival, $limit, $offset)
     {
         return $this
             ->getDoctrineManager()
@@ -115,6 +122,8 @@ class MediaSiteCommand extends ContainerAwareCommand
             ->innerJoin('m.festival', 'f')
             ->andWhere('f.year = :festival')
             ->setParameter(':festival', $festival)
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
             ->getQuery()
             ->getResult()
         ;
