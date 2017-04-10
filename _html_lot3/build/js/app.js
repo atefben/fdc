@@ -5508,6 +5508,9 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
             }
 
+            console.log('facebookurl', facebookurl);
+            console.log('twitterurl', twitterurl);
+
             var image = {
                 id: id,
                 url: url,
