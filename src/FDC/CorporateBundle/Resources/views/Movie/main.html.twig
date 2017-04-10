@@ -148,7 +148,7 @@
         [
         {
         "name" : 'breadcrumb.69editions.home'|trans,
-        "url"  : ''
+        "url"  : path('fdc_corporate_editions_retrospective')
         },
         {
         "name" : 'breadcrumb.retrospective.home'|trans,
@@ -156,11 +156,11 @@
         },
         {
         "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ movie.festival.year,
-        "url"  : path('fdc_event_movie_selection')
+        "url"  : path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': ''})
         },
         {
         "name" : movie.selectionSection|trans_fallback('name')|trans,
-        "url"  : path('fdc_event_movie_selection', {'slug': movie.selectionSection|trans_fallback('slug') })
+        "url"  : path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': movie.selectionSection|trans_fallback('slug')})
         },
         {
         "name" : mainTitle,
