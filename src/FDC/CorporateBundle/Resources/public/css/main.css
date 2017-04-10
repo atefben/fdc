@@ -4732,17 +4732,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   line-height: 24px;
   font-size: .8125rem;
 }
-.block-accordion-02 .contain-section .descrip-section em {
-  font-style: italic;
-}
-.block-accordion-02 .contain-section .descrip-section strong {
-  font-weight: bold;
-}
-.block-accordion-02 .contain-section .descrip-section sup {
-  vertical-align: super;
-  font-size: smaller;
-  line-height: normal;
-}
 .block-accordion-02 .descrip-section p {
   width: 750px !important;
   margin: 0 auto !important;

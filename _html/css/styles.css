@@ -10991,10 +10991,6 @@ article .read-later.rAlign span:after {
   padding-top: 410px;
   position: relative;
 }
-.single-movie .content-movie .tetiere-movie {
-  height: auto;
-  border: 1px solid red;
-}
 .single-movie .slide-video:before {
   background: transparent;
   background: -moz-linear-gradient(top, transparent 25%, transparent 25%, black 85%);
@@ -16062,6 +16058,17 @@ body:not(.tablette) .webtv #live .img {
 .participate .contain-participate section .contain-section .descrip-section {
   line-height: 24px;
   font-size: .8125rem;
+}
+.participate .contain-participate section .contain-section .descrip-section em {
+  font-style: italic;
+}
+.participate .contain-participate section .contain-section .descrip-section strong {
+  font-weight: bold;
+}
+.participate .contain-participate section .contain-section .descrip-section sup {
+  vertical-align: super;
+  font-size: smaller;
+  line-height: normal;
 }
 .participate .contain-participate section .contain-section .descrip-section .ask {
   font-size: 0.81rem;
