@@ -5508,8 +5508,15 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
             }
 
-            console.log('facebookurl', facebookurl);
-            console.log('twitterurl', twitterurl);
+
+            function clean(str) {
+                var res = str.replace(/%../gi, function myFunction(x)
+                {
+                    return decodeURI(x);
+                });
+
+                return (encodeURI(res));
+            }
 
             var image = {
                 id: id,
@@ -5520,8 +5527,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 label: label,
                 date: date,
                 caption: caption,
-                facebookurl: facebookurl.replace(' ', '%20'),
-                twitterurl: twitterurl.replace(' ', '%20'),
+                facebookurl: clean(facebookurl),
+                twitterurl: clean(twitterurl),
                 isPortrait: isPortrait
             };
             images.push(image);
