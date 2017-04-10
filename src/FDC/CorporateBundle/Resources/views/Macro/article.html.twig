@@ -12,7 +12,7 @@
     'format': (article|get_news_type)~'s',
     'slug': article|trans_fallback('slug')
     }) %}
-    {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
+    {% set tagImageArticle = macroSelf.imageArticle(article, '265x165', '1144x724') %}
 
     <article
             class="card item date-{{ article.festival.year }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }} {{ article.typeClone }}"
