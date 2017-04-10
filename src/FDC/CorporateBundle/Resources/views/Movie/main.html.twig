@@ -137,10 +137,10 @@
      'description': ''
     }))
 }}
-    {% if movie|trans_fallback('title') is not empty %}
-        {% set mainTitle = movie|trans_fallback('title') %}
-    {% else %}
+    {% if movie.titleVO is not empty %}
         {% set mainTitle = movie.titleVO %}
+    {% else %}
+        {% set mainTitle = movie|trans_fallback('title') %}
     {% endif %}
 
         {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
