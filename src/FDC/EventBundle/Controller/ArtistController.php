@@ -5,6 +5,7 @@ namespace FDC\EventBundle\Controller;
 use Base\CoreBundle\Entity\FilmPerson;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
