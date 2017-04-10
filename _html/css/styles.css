@@ -16059,17 +16059,6 @@ body:not(.tablette) .webtv #live .img {
   line-height: 24px;
   font-size: .8125rem;
 }
-.participate .contain-participate section .contain-section .descrip-section em {
-  font-style: italic;
-}
-.participate .contain-participate section .contain-section .descrip-section strong {
-  font-weight: bold;
-}
-.participate .contain-participate section .contain-section .descrip-section sup {
-  vertical-align: super;
-  font-size: smaller;
-  line-height: normal;
-}
 .participate .contain-participate section .contain-section .descrip-section .ask {
   font-size: 0.81rem;
 }

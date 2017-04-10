@@ -7074,6 +7074,17 @@ body.chocolat-open > .chocolat-content {
   color: #333;
   text-align: center;
 }
+.participate .contain-descript .descrip-section em {
+  font-style: italic;
+}
+.participate .contain-descript .descrip-section strong {
+  font-weight: bold;
+}
+.participate .contain-descript .descrip-section sup {
+  vertical-align: super;
+  font-size: smaller;
+  line-height: normal;
+}
 
 .article-single .focus .title,
 .article-single .same-day .title {
