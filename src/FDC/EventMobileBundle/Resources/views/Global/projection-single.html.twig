@@ -149,14 +149,11 @@
                                     <div class="info">
                                         {%- include 'FDCEventMobileBundle:Global:components/film.poster.html.twig' with ({
                                             film: film,
-                                            film_format: '90x120',
+                                            film_format: '156x206',
                                             film_attrs: {
-                                                alt: film|trans_fallback('title')?:film.titleVO,
-                                                width: 45,
-                                                height: 60
+                                                alt: film|trans_fallback('title')?:film.titleVO
                                             },
-                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                            film_image_default_attrs: 'width="45"'
+                                            film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                         }) -%}
                                         {%- if seance.programmationFilms|length == 1 -%}
                                             <div class="txt">
@@ -238,14 +235,11 @@
                                     <div class="info">
                                         {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: film,
-                                        film_format: '90x120',
+                                        film_format: '156x206',
                                         film_attrs: {
-                                            alt: film|trans_fallback('title')?:film.titleVO,
-                                            width: 45,
-                                            height: 60
+                                            alt: film|trans_fallback('title')?:film.titleVO
                                         },
-                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                        film_image_default_attrs: 'width="45"'
+                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                         }) -%}
                                         {%- if conference.programmationFilms|length == 1 -%}
                                             <div class="txt">
@@ -326,14 +320,11 @@
                                     <div class="info">
                                         {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: film,
-                                        film_format: '90x120',
+                                        film_format: '156x206',
                                         film_attrs: {
                                             alt: film|trans_fallback('title')?:film.titleVO,
-                                            width: 45,
-                                            height: 60
                                         },
-                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                        film_image_default_attrs: 'width="45"'
+                                        film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                         }) -%}
                                         {%- if relatedProjection.programmationFilms|length == 1 -%}
                                             <div class="txt">
