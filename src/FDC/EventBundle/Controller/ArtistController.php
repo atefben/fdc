@@ -16,7 +16,7 @@ class ArtistController extends Controller
     /**
      * @Route("/archives/artist/id/{id}.html")
      */
-    public function archiveGetAction($id)
+    public function archiveGetAction(Request $request, $id)
     {
         $locale = $request->getLocale();
         if ($request->getLocale() == 'cn') {
