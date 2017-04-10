@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/calendar.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/calendar.css"
+        "bundles/fdceventmobile/css/calendar_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -115,13 +118,13 @@
                 <input type="text" name="title">
                 <div class="time first">
                     <label for="begin">{{ 'agenda.popin.label.debut'|trans }} *</label>
-                    <input type="text" value="{{ date }}" name="datebegin" id="datepickerBegin"><span class="pictodate"><i class="icon icon_programmation"></i></span>
+                    <input type="date" value="{{ date }}" name="datebegin" id="datepickerBegin"><span class="pictodate"><i class="icon icon_programmation"></i></span>
                     {% set dateFirst = ('now'|date('i')>30)?'30':'00' %}
                     <input type="text" class="hours" name="hoursbegin" value="{{ 'now'|date('H') }}h{{ dateFirst }}">
                 </div>
                 <div class="time">
                     <label for="end">{{ 'agenda.popin.label.fin'|trans }} *</label>
-                    <input type="text"  value="{{ date }}" name="dateend" id="datepickerEnd"><span class="pictodate"><i class="icon icon_programmation"></i></span>
+                    <input type="date"  value="{{ date }}" name="dateend" id="datepickerEnd"><span class="pictodate"><i class="icon icon_programmation"></i></span>
                     <input type="text" value="{{ 'now'|date_modify("+1 hour")|date('H') }}h{{ dateFirst }}" class="hours" name="hoursend">
                 </div>
                 <label for="place">{{ 'agenda.popin.label.lieu'|trans }}</label>
