@@ -9,7 +9,7 @@ use Base\CoreBundle\Entity\GraphicalCharterSection;
  * Class GraphicalCharterSectionRepository
  * @package Base\CoreBundle\Repository
  */
-class GraphicalCharterSectionRepository extends EntityRepository
+class GraphicalCharterSectionRepository extends TranslationRepository
 {
     /**
      * @param $locale

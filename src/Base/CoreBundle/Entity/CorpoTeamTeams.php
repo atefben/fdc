@@ -14,7 +14,7 @@ use Base\CoreBundle\Util\SeoMain;
  * CorpoTeam
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class CorpoTeamTeams implements TranslateMainInterface

@@ -61,6 +61,10 @@ class FixFestivalCommand extends ContainerAwareCommand
         ;
 
 
+        if (!$items) {
+            return ;
+        }
+
         $bar = new ProgressBar($output, count($items));
         $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
         $bar->start();

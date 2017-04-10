@@ -8,6 +8,6 @@ use Base\CoreBundle\Component\Repository\EntityRepository;
  * Class GraphicalCharterButtonGroupRepository
  * @package Base\CoreBundle\Entity
  */
-class GraphicalCharterButtonGroupRepository extends EntityRepository
+class GraphicalCharterButtonGroupRepository extends TranslationRepository
 {
 }
