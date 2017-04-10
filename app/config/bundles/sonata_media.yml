@@ -377,6 +377,9 @@ sonata_media:
                 230x230: { width: 230 , height: 230 , quality: 100, constraint: false }
                 # corpo sortie de cannes
                 674x382: { width: 674 , height: 382 , quality: 100, constraint: false }
+                # corpo search push
+                515x327: { width: 515 , height: 327 , quality: 100, constraint: false }
+                1055x670: { width: 1055 , height: 670 , quality: 100, constraint: false }
 
         media_audio:
             providers:

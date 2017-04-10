@@ -137,10 +137,10 @@
      'description': ''
     }))
 }}
-    {% if movie|trans_fallback('title') is not empty %}
-        {% set mainTitle = movie|trans_fallback('title') %}
-    {% else %}
+    {% if movie.titleVO is not empty %}
         {% set mainTitle = movie.titleVO %}
+    {% else %}
+        {% set mainTitle = movie|trans_fallback('title') %}
     {% endif %}
 
         {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
@@ -148,7 +148,7 @@
         [
         {
         "name" : 'breadcrumb.69editions.home'|trans,
-        "url"  : ''
+        "url"  : path('fdc_corporate_editions_retrospective')
         },
         {
         "name" : 'breadcrumb.retrospective.home'|trans,
@@ -156,11 +156,11 @@
         },
         {
         "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ movie.festival.year,
-        "url"  : path('fdc_event_movie_selection')
+        "url"  : path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': ''})
         },
         {
         "name" : movie.selectionSection|trans_fallback('name')|trans,
-        "url"  : path('fdc_event_movie_selection', {'slug': movie.selectionSection|trans_fallback('slug') })
+        "url"  : path('fdc_corporate_movie_selection', {'year': movie.festival.year, 'slug': movie.selectionSection|trans_fallback('slug')})
         },
         {
         "name" : mainTitle,

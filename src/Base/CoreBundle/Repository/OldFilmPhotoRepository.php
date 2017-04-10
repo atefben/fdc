@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmJury;
 use Base\CoreBundle\Entity\FilmPerson;
 use Base\CoreBundle\Entity\OldFilmPhoto;
 
@@ -228,6 +229,71 @@ class OldFilmPhotoRepository extends EntityRepository
         return (int)$qb
             ->getQuery()
             ->getSingleScalarResult()
+            ;
+    }
+
+    /**
+     * @param FilmJury|null $filmJury
+     * @return int
+     */
+    public function getLegacyJuriesImagesCount(FilmJury $filmJury = null)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            ->select('count(fp)')
+            ->andWhere('fp.internet = :internet')
+            ->setParameter(':internet', 'O')
+        ;
+
+        if ($filmJury) {
+            $qb
+                ->andWhere('fp.idjury = :idjury')
+                ->setParameter(':idjury', $filmJury->getId())
+            ;
+        } else {
+            $qb->andWhere('fp.idjury IS NOT NULL');
+        }
+
+        return (int)$qb
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
+    /**
+     * @param FilmJury|null $filmJury
+     * @param null $firstResult
+     * @param null $maxResults
+     * @return OldFilmPhoto[]
+     */
+    public function getLegacyJuriesImages(FilmJury $filmJury = null, $firstResult = null, $maxResults = null)
+    {
+        $qb = $this
+            ->createQueryBuilder('fp')
+            ->andWhere('fp.internet = :internet')
+            ->setParameter(':internet', 'O')
+        ;
+
+        if ($filmJury) {
+            $qb
+                ->andWhere('fp.idjury = :idjury')
+                ->setParameter(':idjury', $filmJury->getId())
+            ;
+        } else {
+            $qb->andWhere('fp.idjury IS NOT NULL');
+        }
+
+        if ($firstResult) {
+            $qb->setFirstResult($firstResult);
+        }
+
+        if ($maxResults) {
+            $qb->setMaxResults($maxResults);
+        }
+
+        return $qb
+            ->getQuery()
+            ->getResult()
             ;
     }
 }

@@ -155,9 +155,10 @@ class Controller extends BaseController
 
     /**
      * @param null $year
-     * @return \Base\CoreBundle\Entity\FilmFestival
+     * @param bool $retrospective
+     * @return \Base\CoreBundle\Entity\FilmFestival|string
      */
-    public function getFestival($year = null, $retrospective = FALSE)
+    public function getFestival($year = null, $retrospective = false)
     {
 
         if (is_null($year)) {
@@ -167,7 +168,10 @@ class Controller extends BaseController
 
             return $this->getSettings()->getFestival();
         } else {
-            $festival = $this->get('doctrine')->getManager()->getRepository('BaseCoreBundle:FilmFestival')->findOneByYear($year);
+            $festival = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFestival')
+                ->findOneBy(['year' => $year]);
             if (!$festival && $retrospective) {
                 return "undefined";
             }

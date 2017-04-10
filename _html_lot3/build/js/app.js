@@ -103,6 +103,7 @@ function playerInit(id, cls, havePlaylist, live) {
         } else {
             tmp = [];
             $("."+cls).each(function(i,v) {
+                if(this.firstElementChild !== null) {
                 var videoPlayer  = jwplayer(this.firstElementChild.id);
                 if(!$(videoPlayer).data('loaded')) {
                     playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function(vid) {
@@ -111,6 +112,7 @@ function playerInit(id, cls, havePlaylist, live) {
                     });
                 } else {
                     tmp[i] = videoPlayer;
+                }
                 }
             });
             return tmp;
@@ -2821,24 +2823,25 @@ var owInitGrid = function (id) {
                     //landscape
                     $this.addClass('landscape');
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * landscapeRatio;
-                    if(itemRatio < landscapeRatio){
-                        //less large than desired output, scale width
+                    //var newHeight = $this.outerWidth() * landscapeRatio;
+                    // if(itemRatio < landscapeRatio){
+                        //less large than desired outpugridBigImgt, scale width
                         //$this.find('.image, .image-wrapper, img').css('width','100%');
-                    }else{
+                        // }else{
                         //more large than desired output, scale height
                         //$this.find('img').css('height','100%');
-                    }
+                        //}
                 }else{
                     //portrait
                     $this.addClass('portrait');
+                    //$this.height($this.height()+2);
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * portraitRatio;
-                    if(itemRatio < portraitRatio){
+                    //var newHeight = $this.outerWidth() * portraitRatio;
+                    //if(itemRatio < portraitRatio){
                         //less large than desired output, scale width
-                    }else{
+                    //}else{
                         //more large than desired output, scale width too (?)
-                    }
+                    //}
                 }
             });
         };
@@ -2982,7 +2985,7 @@ var owInitGrid = function (id) {
                                 var titleText;
                                 var catText;
 
-                                $clamp(title.get(0), {clamp: 2});
+
                                 //$clamp(cat.get(0), {clamp: 1});
                             });
                             owsetGridBigImg(false, $('.grid-01'), false);
@@ -3030,7 +3033,7 @@ var owInitGrid = function (id) {
                     var title = $(e).find('.info strong a');
                     var cat = $(e).find('.info .category');
 
-                    $clamp(title.get(0), {clamp: 2});
+                    //$clamp(title.get(0), {clamp: 2});
                     //$clamp(cat.get(0), {clamp: 1});
                 });
             }
@@ -3159,8 +3162,8 @@ var owInitGrid = function (id) {
                 var title = $(e).find('.info strong a');
                 var cat = $(e).find('.info .category');
 
-                $clamp(title.get(0), {clamp: 2});
-                $clamp(cat.get(0), {clamp: 1});
+                //$clamp(title.get(0), {clamp: 2});
+                //$clamp(cat.get(0), {clamp: 1});
             });
         }
 
@@ -3282,7 +3285,7 @@ var owInitGrid = function (id) {
                             var titleText;
                             var catText;
 
-                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(title.get(0), {clamp: 2});
                             //$clamp(cat.get(0), {clamp: 1});
                         });
 
@@ -3312,7 +3315,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('gridBigImg');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,
@@ -3948,6 +3950,12 @@ var owCookieBanner = function() {
   }
 };
 
+$(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+});
+
 var initHeaderSticky = function () {
 
     $(window).on('scroll', function () {
@@ -4031,15 +4039,14 @@ var owArrowDisplay = function () {
 };
 
 var onInitParallax = function () {
-
    if (!$('body').hasClass('mobile') && $('.retrospective').length) {
-        $('.block-push.big').css('background-position', '0px ' + '20%');
+       //$('.block-push.big').css('background-position', '0px ' + '20%');
         $(window).on('scroll', function () {
             if ($('header.sticky').length) {
-                var s = $(this).scrollTop() - 120;
-                $('.block-push.big').css('background-position', '0px ' + '20%');
+                //var s = $(this).scrollTop() - 120;
+                //$('.block-push.big').css('background-position', '0px ' + '20%');
             } else {
-                $('.block-push.big').css('background-position', '0px ' + '20%');
+                //$('.block-push.big').css('background-position', '0px ' + '20%');
             }
         });
     }
@@ -4499,6 +4506,12 @@ var initRs = function () {
         $(cls).find('.info-popin').css('display','block');
         $(cls).find('#msg').html('');
 
+        //add artist name to popin on artist page
+        if($('.contentartist').length){
+            var title = $('.contentartist').find('.title-15').text();
+
+            $(cls).find('.contain-popin .title-article').text(title);
+        }
 
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
@@ -4641,8 +4654,7 @@ var initRs = function () {
 
     if ($('.popin-mail').length > 0) {
         initPopinMail('.popin-mail');
-
-        $('.popin-mail-open').on('click touchstart', function (e) {
+        $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
 
@@ -4758,7 +4770,6 @@ var owInitSlider = function (sliderName) {
                     var desc = container.text();
                     desc = desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
                     container.empty().html(desc);
-                    $clamp(container.get(0), {clamp: 3});
                 });
                 
                 if(isFirefox){
@@ -4939,10 +4950,8 @@ var owInitSlider = function (sliderName) {
                 $('.slides-calc2').css('display', 'none');
                 $('.title-big-date').addClass('title-2').removeClass('title-big-date');
                 $('.title-edition').addClass('title-4').removeClass('title-edition');
-
                 var imgurl = $('.block-push-top.big .container img').attr('src');
-                
-                $('.block-push').css('background-position', '0px 20%');
+                //$('.block-push').css('background-position', '0px 20%');
                 $('.block-push-top.big .container img').css('display', 'none');
 
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
@@ -6043,7 +6052,6 @@ var slideshows = [],
     thumbnails = [];
 
 function initSlideshows() {
-  console.log('initSlideshows()');
   $('.slideshow-img .images .img:first-child').addClass('active');
   var idPhoto = $('.slideshow-img .images .img:first-child a').attr('id');
 

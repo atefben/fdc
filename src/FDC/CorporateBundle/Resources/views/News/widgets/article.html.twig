@@ -116,9 +116,6 @@
         {% elseif article is statement_object %}
             <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'type': 'communique', 'slug': article|trans_fallback('slug')}) }}" class="linkImage"></a>
         {% endif %}
-        <a href="#" class="read-later">
-            <i class="icon icon-read-latter"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
-        </a>
         {% if article is news_object %}
             <span class="picto"><i class="icon icon-{{ article|get_news_type }}"></i></span>
         {% elseif article is info_object %}

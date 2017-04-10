@@ -71,7 +71,7 @@ class EventController extends Controller
 
     /**
      * @Route("/{year}/event/{slug}")
-     * @Template("FDCEventBundle:Event:page.html.twig")
+     * @Template("FDCCorporateBundle:Event:page.html.twig")
      * @param Request $request
      * @param $year
      * @param $slug
@@ -79,7 +79,7 @@ class EventController extends Controller
      */
     public function getAction(Request $request, $year, $slug)
     {
-        $festival = $this->getFestival()->getId();
+        $festival = $this->getFestival($year)->getId();
         $locale = $request->getLocale();
 
         $event = $this
@@ -87,6 +87,7 @@ class EventController extends Controller
             ->getRepository('BaseCoreBundle:Event')
             ->getEventBySlug($festival, $locale, $slug)
         ;
+
         $this->throwNotFoundExceptionOnNullObject($event);
 
         $programmations = array();
@@ -102,8 +103,6 @@ class EventController extends Controller
                 ->getRepository('BaseCoreBundle:Event')
                 ->getEvents($festival, $locale)
         ;
-
-
 
         $prev = null;
         $next = null;

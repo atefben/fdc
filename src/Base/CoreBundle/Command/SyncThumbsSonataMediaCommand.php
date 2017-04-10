@@ -42,6 +42,7 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
         $this
             ->setName('base:media:sync-sonata-thumbnails')
             ->setDescription('Sync missing uploaded image thumbs with new media formats')
+            ->addOption('context', null, InputOption::VALUE_OPTIONAL)
             ->addOption('first-result', null, InputOption::VALUE_OPTIONAL, 10)
             ->addOption('max-results', null, InputOption::VALUE_OPTIONAL, 10)
             ->addOption('id', null, InputOption::VALUE_OPTIONAL)
@@ -104,10 +105,13 @@ class SyncThumbsSonataMediaCommand extends BaseCommand
         if ($this->input->getOption('id')) {
             $criteria['id'] = $this->input->getOption('id');
         }
+        if ($this->input->getOption('context')) {
+            $criteria['context'] = $this->input->getOption('context');
+        }
         return $this
             ->getDoctrineManager()
             ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->findBy($criteria, null, $this->input->getOption('max-results'), $this->input->getOption('first-result'))
+            ->findBy($criteria, ['updatedAt' => 'desc'], $this->input->getOption('max-results'), $this->input->getOption('first-result'))
             ;
     }
 

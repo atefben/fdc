@@ -94,11 +94,13 @@ app/config/bundles/fos_elastica.yml
 
 app/config/bundles/sonata_media_provider.yml
 
-app/Resources/translations/routes.en.xliff
+app/Resources/translations/routes.en.xliff*
 
-app/Resources/translations/routes.es.xliff
+app/Resources/translations/routes.es.xliff*
 
-app/Resources/translations/routes.fr.xliff
+app/Resources/translations/routes.fr.xliff*
+
+app/Resources/translations/routes.zh.xliff*
 
 #*.xliff
 

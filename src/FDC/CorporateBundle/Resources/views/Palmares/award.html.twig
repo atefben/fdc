@@ -36,7 +36,7 @@
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
     "name" : 'breadcrumb.retrospective.home'|trans,
@@ -48,7 +48,7 @@
     },
     {
     "name" : 'breadcrumb.palmares.main'|trans,
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
+    "url"  : path('fdc_corporate_palmares_get', {'year': app.request.attributes.get('year'), 'slug': '' })
     },
     {
     "name" : page|trans_fallback('name'),

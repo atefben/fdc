@@ -27,7 +27,11 @@
             {% endfor %}
         {% endif %}
         {% if media is empty %}
-            {% set media = film.getSelfkitImages()|first %}
+            {% set availableMedias = [] %}
+            {% for selfkitImage in film.selfkitImages if selfkitImage.oldTitle|trim in ['Photo du Film', 'Affiche du film']  %}
+                {% set availableMedias = availableMedias|merge([selfkitImage]) %}
+            {% endfor %}
+            {% set media = availableMedias|first %}
         {% endif %}
     {% endif %}
 
@@ -65,7 +69,8 @@
                 {% endif %}
             {% endif %}
             {% set legacy = get_legacy_film_image(film) %}
-            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"  data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
+            <img src="{{ asset(film_image_default) }}" alt="{{ 'movie.poster'|trans() }}"
+                 data-object-fit="cover"{% if film_image_default_attrs is defined %} {{ film_image_default_attrs }}{% endif %}>
         {% endif %}
     {% endif %}
 {% endspaceless %}

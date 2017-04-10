@@ -79,10 +79,11 @@
                             {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                         </div>
                     {% endif %}
-
+                    {% if news|trans_fallback('introduction')|length > 0 %}
                     <div class="contain-title vFlexAlign block-01-m">
                         <span class="title-02">{{ news|trans_fallback('introduction')|raw }}</span>
                     </div>
+                    {% endif %}
                     {% for widget in news.widgets %}
                         {% if class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
                         or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1

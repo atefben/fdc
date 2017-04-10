@@ -58,7 +58,7 @@
                     {% if biography %}
                         <div class="biographie">
                             <strong class="title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</strong>
-                            <p class="texte-01">{{ biography|raw }}</p>
+                            <p class="texte-01">{{ biography|raw|nl2br }}</p>
                         </div>
                     {% endif %}
                     <div class="block-01-xs separator1">
@@ -276,13 +276,6 @@
             </div>
         </div>
     </section>
-    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section': '',
-        'detail' : '',
-        'title'  : '',
-        'description': '',
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    })) }}
 
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',

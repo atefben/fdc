@@ -317,13 +317,13 @@ class Importer
         }
 
         set_time_limit(0);
-        $fp = fopen ("$folder$file", 'w+');
-        $ch = curl_init(str_replace(" ","%20",$url));
+        $fp = fopen("$folder$file", 'w+');
+        $ch = curl_init(str_replace(" ", "%20", $url));
         curl_setopt($ch, CURLOPT_TIMEOUT, 50);
         curl_setopt($ch, CURLOPT_FILE, $fp);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_exec($ch);
-        if($errno = curl_errno($ch)) {
+        if ($errno = curl_errno($ch)) {
             $error_message = curl_strerror($errno);
             dump("cURL error ({$errno}):\n {$error_message}");
         }
@@ -757,13 +757,15 @@ class Importer
         }
 
         if (!$file && $oldMediaI18n->getHdFormatFilename()) {
-            $url = 'http://canneshd-f.akamaihd.net/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
-            dump($url);
-            $file = $this->createVideo($url);
-            if (!$file) {
-                dump($url);
-                $url = 'http://canneshd-a.akamaihd.net/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
-                $file = $this->createVideo($url);
+            try {
+                $url = 'http://www.festival-cannes.fr/' . ltrim($oldMediaI18n->getHdFormatFilename(), '/');
+                $contentFile = file_get_contents($url);
+                $crawler = new Crawler($contentFile);
+                $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
+                $filename = $crawler->filter('video')->last()->attr('src');
+                $file = $this->createVideo(trim($base) . trim($filename));
+            } catch (\Exception $e) {
+                $this->output->writeln('<error>' . $e->getMessage() . '</error>');
             }
         }
 
@@ -1001,7 +1003,6 @@ class Importer
             }
         }
     }
-
 
 
     private function is404($url)

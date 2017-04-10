@@ -18,6 +18,4 @@ interface FilmFilmMediaInterface
     const TYPE_JURY      = 27;
     const TYPE_PERSON    = 48;
     const TYPE_MAIN      = 51;
-
-
 }

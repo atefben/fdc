@@ -14,7 +14,11 @@
         {% set media = film|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_FILM'))|first %}
     {% endif %}
     {% if media is empty %}
-        {% set media = film.getSelfkitImages()|first %}
+        {% set availableMedias = [] %}
+        {% for selfkitImage in film.selfkitImages if selfkitImage.oldTitle|trim in ['Photo du Film', 'Affiche du film']  %}
+            {% set availableMedias = availableMedias|merge([selfkitImage]) %}
+        {% endfor %}
+        {% set media = availableMedias|first %}
     {% endif %}
 
     {% if film_attrs is not defined %}

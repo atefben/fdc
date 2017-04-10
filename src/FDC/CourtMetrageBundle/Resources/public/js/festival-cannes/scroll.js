@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+});
+
 // init parallax elements and push them into an array
 var parallaxElements = {};
 

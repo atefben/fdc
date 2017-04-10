@@ -27,7 +27,6 @@
                     {{ tagImageArticle|raw }}
                 {% else %}
                     <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}"
-                         srcset="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }} 1x, {{ asset('bundles/fdccorporate/default_palme/film1144x724.jpg') }} 2x"
                          alt="{{ article|trans_fallback('title')|escape('html_attr') }}">
                 {% endif %}
             </div>
@@ -66,7 +65,6 @@
         {% endif %}
         {% if file is defined and file %}
             <img src="{% path file,preset %}"
-                 srcset="{% path file, preset %} 1x, {% path file, presetBig %} 2x"
                  alt="{{ img|trans_fallback('alt') }} ">
         {% endif %}
     {% elseif (article is news_video or article is statement_video or article is info_video) and article.header %}
@@ -100,7 +98,6 @@
         {% endif %}
         {% if file is defined and file is not null %}
             <img src="{% path file,preset %}"
-                 srcset="{% path file,preset %} 1x, {% path file,presetBig %} 2x"
                  alt="{{ img|trans_fallback('alt') }} ">
         {% elseif imgamazon is defined and imgamazon is not null %}
             <img src="{{ imgamazon }}" alt=""/>
@@ -131,7 +128,6 @@
         {% endif %}
 
         <img src="{% path file,preset %}"
-             srcset="{% path file,preset %} 1x, {% path file,presetBig %} 2x"
              alt="{{ img|trans_fallback('alt') }} ">
     {% elseif article is news_image and article.header %}
         {% set header = article.header %}
@@ -159,7 +155,6 @@
         {% endif %}
 
         <img src="{% path file,preset %}"
-             srcset="{% path file,preset %} 1x, {% path file,presetBig %} 2x"
              alt="{{ img|trans_fallback('alt') }} ">
     {% endif %}
 {% endmacro %}

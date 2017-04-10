@@ -14,7 +14,7 @@
         {% if trans is null or trans.file is null %}
             {% set trans = page.pushImage1.findTranslationByLocale('fr') %}
         {% endif %}
-        <img src="{% path trans.file , '325x205' %}" alt="">
+        <img src="{% path trans.file , '515x327' %}" alt="">
     </div>{% endif %}<!--
 -->{% if page and page.pushImage2 is not null %}
     <div class="half-div block-push block-push-item">
@@ -31,7 +31,7 @@
         {% if trans is null or trans.file is null %}
             {% set trans = page.pushImage2.findTranslationByLocale('fr') %}
         {% endif %}
-        <img src="{% path trans.file , '325x205' %}" alt="">
+        <img src="{% path trans.file , '515x327' %}" alt="">
     </div>
 </div>{% endif %}<!--
 -->{% if page and page.pushImage3 is not null %}
@@ -48,6 +48,6 @@
         {% if trans is null or trans.file is null %}
             {% set trans = page.pushImage3.findTranslationByLocale('fr') %}
         {% endif %}
-        <img src="{% path trans.file , '954x606' %}" alt="">
+        <img src="{% path trans.file , '1055x670' %}" alt="">
     </div>
 {% endif %}

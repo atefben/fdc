@@ -3,10 +3,12 @@
 namespace Base\AdminBundle\EventListener;
 
 use Application\Sonata\MediaBundle\Entity\Media;
+use Base\CoreBundle\Entity\Event;
 use Base\CoreBundle\Entity\EventWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\EventWidgetSubtitleTranslation;
 use Base\CoreBundle\Entity\EventWidgetTextTranslation;
 use Base\CoreBundle\Entity\EventWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassics;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetIntroTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetSubtitleTranslation;
@@ -23,9 +25,13 @@ use Base\CoreBundle\Entity\FDCPagePrepareWidgetImageTranslation;
 use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
+use Base\CoreBundle\Entity\Homepage;
+use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\MediaImageSimple;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\NewsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
@@ -40,9 +46,14 @@ use Base\CoreBundle\Entity\PressDownloadSectionWidgetVideoTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetColumnTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetImageTranslation;
 use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
+use Base\CoreBundle\Entity\PressHomepage;
+use Base\CoreBundle\Entity\SocialGraph;
+use Base\CoreBundle\Entity\SocialWall;
+use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\WebTv;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -80,28 +91,10 @@ class EntityListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        $allowedEntities = [
-            'NewsArticle', 'NewsImage', 'NewsVideo', 'NewsAudio',
-            'StatementArticle', 'StatementImage', 'StatementVideo', 'StatementAudio',
-            'InfoArticle', 'InfoImage', 'InfoVideo', 'InfoAudio',
-            'Homepage', 'PressHomepage',
-            'MediaImageSimple',
-            'MediaImage', 'MediaAudio', 'MediaVideo',
-            'Event',
-            'WebTv',
-            'SocialWall', 'SocialGraph'
-        ];
-        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
 
         // set festival year
-        if (method_exists($entity, 'setFestival') && in_array($entityName, $allowedEntities)) {
-            $em = $args->getEntityManager();
-
-            $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-            if ($settings !== null) {
-                $entity->setFestival($settings->getFestival());
-            }
-        }
+        $this->defineFestival($args);
 
         if (method_exists($entity, 'getTranslatable') && method_exists($entity->getTranslatable(), 'setPublishedAt')) {
             $this->setPublishedAt($entity, false);
@@ -200,7 +193,8 @@ class EntityListener
         $this->applyChanges($args);
 
         $entity = $args->getEntity();
-        $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
+        $this->defineFestival($args);
 
         if (method_exists($entity, 'getTranslate')) {
             if ($args->hasChangedField('translateOptions')) {
@@ -844,5 +838,56 @@ class EntityListener
         }
 
         $this->setTransWysiwyg($entity, $entityName);
+    }
+
+    private function defineFestival(LifecycleEventArgs $args)
+    {
+        $object = $args->getObject();
+        $entities = [
+            News::class,
+            Statement::class,
+            Info::class,
+            Homepage::class,
+            PressHomepage::class,
+            MediaImageSimple::class,
+            \Base\CoreBundle\Entity\Media::class,
+            Event::class,
+            WebTv::class,
+            SocialWall::class, SocialGraph::class,
+            FDCPageLaSelectionCannesClassics::class,
+        ];
+        if (!in_array(get_class($object), $entities)) {
+            return null;
+        }
+
+        $festival = null;
+        if (method_exists($object, 'setFestival')) {
+            /**
+             * @todo : Uncomment this section to define the festival year based on publishedAt value.
+             *
+             */
+            /* TIP: add slash before at the beginning of this line
+            if (method_exists($object, 'getPublishedAt') && $object->getPublishedAt() instanceof DateTime) {
+                $festival = $args
+                    ->getObjectManager()
+                    ->getRepository('BaseCoreBundle:FilmFestival')
+                    ->findOneBy(['year' => $object->getPublishedAt()->format('Y')])
+                ;
+            }
+            //*/
+            if (!$festival) {
+                $settings = $args
+                    ->getObjectManager()
+                    ->getRepository('BaseCoreBundle:Settings')
+                    ->findOneBy(['slug' => 'fdc-year'])
+                ;
+                $festival = $settings->getFestival();
+            }
+        }
+
+
+        if ($festival) {
+            $object->setFestival($festival);
+        }
     }
 }
