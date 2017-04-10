@@ -463,7 +463,7 @@ abstract class CoreManager
                 $translations = $this->mixedToArray($translations);
                 foreach ($translations as $translation) {
                     // the iso field has different name in GetMovie it's IdLangue, other ws CodeLangue.
-                    $iso = (isset($mapper['wsLangKey'])) ? $translation->$mapper['wsLangKey'] : ((property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue);
+                    $iso = (isset($mapper['wsLangKey'])) ? $translation->{$mapper['wsLangKey']} : ((property_exists($translation, 'CodeLangue')) ? $translation->CodeLangue : $translation->IdLangue);
                     if (!isset($localesMapper[$iso])) {
                         $this->logger->warning(__METHOD__. " the locales mapper {$iso} doesn't exist");
                         continue;
