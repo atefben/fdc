@@ -27,8 +27,9 @@ class MediaSiteCommand extends ContainerAwareCommand
         $this
             ->setName('base:core:media-site')
             ->addArgument('entity', InputArgument::REQUIRED, 'MediaImage, MediaAudio, MediaVideo')
-            ->addOption('begin', null, InputOption::VALUE_REQUIRED, 'Min id')
-            ->addOption('end', null, InputOption::VALUE_REQUIRED, 'Max Id')
+            ->addOption('festival', null, InputOption::VALUE_OPTIONAL, 'Min id')
+            ->addOption('begin', null, InputOption::VALUE_OPTIONAL, 'Min id')
+            ->addOption('end', null, InputOption::VALUE_OPTIONAL, 'Max Id')
             ->addOption('site', null, InputOption::VALUE_REQUIRED, 'The site slug')
         ;
     }
@@ -36,9 +37,14 @@ class MediaSiteCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $entity = $input->getArgument('entity');
+        $festival = $input->getOption('festival');
         $begin = $input->getOption('begin');
         $end = $input->getOption('end');
         $siteSlug = $input->getOption('site');
+
+        if ((!$begin || !$end) && !$festival) {
+            throw new \Exception("Please check the options");
+        }
 
         $site = $this
             ->getDoctrineManager()
@@ -54,16 +60,12 @@ class MediaSiteCommand extends ContainerAwareCommand
             throw new \Exception("$entity is not an available entity");
         }
 
-        $medias = $this
-            ->getDoctrineManager()
-            ->getRepository($this->entities[$entity])
-            ->createQueryBuilder('m')
-            ->andWhere('m.id BETWEEN :begin AND :end')
-            ->setParameter(':begin', $begin)
-            ->setParameter(':end', $end)
-            ->getQuery()
-            ->getResult()
-        ;
+        if ($festival) {
+            $medias = $this->getMediasByFestival($entity, $festival);
+        }
+        else {
+            $medias = $this->getMediasByInterval($entity, $begin, $end);
+        }
 
         if ($medias) {
             $progress = new ProgressBar($output, count($medias));
@@ -88,5 +90,33 @@ class MediaSiteCommand extends ContainerAwareCommand
     private function getDoctrineManager()
     {
         return $this->getContainer()->get('doctrine')->getManager();
+    }
+
+    private function getMediasByInterval($entity, $begin, $end)
+    {
+        return $this
+            ->getDoctrineManager()
+            ->getRepository($this->entities[$entity])
+            ->createQueryBuilder('m')
+            ->andWhere('m.id BETWEEN :begin AND :end')
+            ->setParameter(':begin', $begin)
+            ->setParameter(':end', $end)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    private function getMediasByFestival($entity, $festival)
+    {
+        return $this
+            ->getDoctrineManager()
+            ->getRepository($this->entities[$entity])
+            ->createQueryBuilder('m')
+            ->innerJoin('m.festival', 'f')
+            ->andWhere('f.year = :festival')
+            ->setParameter(':festival', $festival)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }
