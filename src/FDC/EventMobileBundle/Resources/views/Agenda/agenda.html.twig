@@ -24,7 +24,7 @@
         <div class="header-press">
             <div class="container">
                 <h2>{{ 'agenda.title.monagenda'|trans }}</h2>
-                <a href="#" class="button"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatics'|trans }}</a>
+                <a href="" class="button download-ics"><i class="icon icon_telecharger"></i>{{ 'agenda.btn.telechargerformatics'|trans }}</a>
                 <a href="" class="button create"><i class="icon icon_creer"></i>{{ 'agenda.btn.creerunevenement'|trans }}</a>
             </div>
         </div>
@@ -136,8 +136,11 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/calendar.js' %}
-    <script src="{{ asset_url }}"></script>
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/calendar.js'
+        '@FDCEventMobileBundle/Resources/public/js/calendar_custom.js'
+    %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
 {% endblock %}
