@@ -44,9 +44,10 @@
                             {%- else -%}
                                 <div class="title-original"></div>
                             {%- endif -%}
-                            <p>
+                            {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+                            <p {{ directors|length > 1 ? 'class="multiple"' : '' }}>
                                 {{- 'movie.label.realisepar'|trans }} :{{ ' ' }}
-                                {%- set directors = film|film_function(constant('Base\\CoreBundle\\Entity\\FilmFunction::FUNCTION_DIRECTOR')) -%}
+
                                 {%- for director in directors -%}
                                     <a href="{{- path('fdc_eventmobile_artist_get', {slug: director.slug }) -}}">
                                         {%- include 'FDCEventMobileBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director, 'link': false} -%}
