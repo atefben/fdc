@@ -12,8 +12,11 @@
     'format': (article|get_news_type)~'s',
     'slug': article|trans_fallback('slug')
     }) %}
-    {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
-
+    {% if(article.publishedAt|date('Y') <= 2011) %}
+        {% set tagImageArticle = macroSelf.imageArticle(article, '265x165', '1144x724') %}
+    {% else %}
+        {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
+    {% endif %}
     <article
             class="card item date-{{ article.festival.year }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all photocall {{ type }} {{ article.typeClone }}"
             data-format="{{ article.typeClone }}"
@@ -155,6 +158,7 @@
         {% endif %}
 
         <img src="{% path file,preset %}"
+
              alt="{{ img|trans_fallback('alt') }} ">
     {% endif %}
 {% endmacro %}

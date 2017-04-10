@@ -1,15 +1,16 @@
 <?php
-    
+
 namespace Base\AdminBundle\EventListener;
 
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class LocaleListener implements EventSubscriberInterface
 {
     private $defaultLocale;
-    
+
     public function __construct($defaultLocale)
     {
         $this->defaultLocale = $defaultLocale;
@@ -24,6 +25,14 @@ class LocaleListener implements EventSubscriberInterface
 
         // try to see if the locale has been set as a _locale routing parameter
         // only set fr for admin
+        if (false !== strpos($request->getPathInfo(), '/cn')) {
+            $event->setResponse(new RedirectResponse(str_replace('/cn', '/zh', $request->getPathInfo()), 301));
+        }
+        if ('cn' == $request->attributes->get('_locale')) {
+            dump($request->attributes->get('_route'));
+            dump($request->attributes->get('_route_params'));
+            die;
+        }
         if ($locale = $request->attributes->get('_locale')) {
             $request->getSession()->set('_locale', 'fr');
         } else {
@@ -34,9 +43,9 @@ class LocaleListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // must be registered before the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
-        );
+            KernelEvents::REQUEST => [['onKernelRequest', 17]],
+        ];
     }
 }

@@ -474,7 +474,13 @@ class CorpoMediaLibraryItemManager
     private function syncSonataMedia(SonataMedia $sonataMedia)
     {
         foreach ($this->locales as $locale) {
-            if (!$sonataMedia->getSelfkitFilms()->count() && !$sonataMedia->getOldMediaFestivalYear()) {
+            $festivalYear = null;
+            $filmJury = null;
+            if ($sonataMedia->getOldMediaPhotoJury()) {
+                $filmJury = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmJury')->find($sonataMedia->getOldMediaPhotoJury());
+                $festivalYear = $filmJury->getFestival()->getYear();
+            }
+            if (!$sonataMedia->getOldMediaFestivalYear() && !$filmJury) {
                 return;
             }
             $item = $this->getCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);
@@ -483,12 +489,11 @@ class CorpoMediaLibraryItemManager
             $search .= ' ' . $sonataMedia->getOldTitle();
 //            $search .= ' ' . $sonataMedia->getCopyright();
             $sorted = null;
-            $festivalYear = null;
             if ($sonataMedia->getSelfkitFilms()->count() && $sonataMedia->getSelfkitFilms()->first()) {
                 $film = $sonataMedia->getSelfkitFilms()->first();
                 if ($film instanceof FilmFilm) {
                     $sorted = $film->getFestival()->getFestivalStartsAt();
-                    $festivalYear = $film->getFestival()->getYear();
+                    $festivalYear = $festivalYear ?: $film->getFestival()->getYear();
                     $filmTranslation = $film->findTranslationByLocale($locale);
                     if ($filmTranslation instanceof FilmFilmTranslation) {
                         $search .= ' ' . $film->getTitleVO();
@@ -502,6 +507,18 @@ class CorpoMediaLibraryItemManager
 
             }
             foreach ($sonataMedia->getSelfkitPersons() as $person) {
+                $search .= '' . $person->getFullName();
+//                $search .= ' ' . $person->getCredits();
+//                $search .= ' ' . $person->getPresidentJuryCredits();
+                $personTrans = $person->findTranslationByLocale($locale);
+                if ($personTrans instanceof FilmPersonTranslation) {
+//                    $search .= ' ' . $personTrans->getBiography();
+                    $search .= ' ' . $personTrans->getProfession();
+                }
+            }
+
+            if ($filmJury && $filmJury->getPerson()) {
+                $person = $filmJury->getPerson();
                 $search .= '' . $person->getFullName();
 //                $search .= ' ' . $person->getCredits();
 //                $search .= ' ' . $person->getPresidentJuryCredits();
@@ -638,10 +655,10 @@ class CorpoMediaLibraryItemManager
     private function getSoifWeight($type)
     {
         $types = [
-            FilmFilmMediaInterface::TYPE_JURY => 28,
-            FilmFilmMediaInterface::TYPE_POSTER => 26,
-            FilmFilmMediaInterface::TYPE_MAIN => 24,
-            FilmFilmMediaInterface::TYPE_FILM => 22,
+            FilmFilmMediaInterface::TYPE_JURY     => 28,
+            FilmFilmMediaInterface::TYPE_POSTER   => 26,
+            FilmFilmMediaInterface::TYPE_MAIN     => 24,
+            FilmFilmMediaInterface::TYPE_FILM     => 22,
             FilmFilmMediaInterface::TYPE_DIRECTOR => 20,
         ];
 
