@@ -475,5 +475,5 @@ header #logo-wrapper #partners img.kering {
 }
 
 .article-single.dark .wysiwyg-article-02 .caption {
-  line-height:14px;
+  line-height:14px !important;
 }
