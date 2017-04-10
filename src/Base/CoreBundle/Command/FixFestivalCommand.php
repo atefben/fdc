@@ -38,11 +38,19 @@ class FixFestivalCommand extends ContainerAwareCommand
             return null;
         }
 
+        $type = ucfirst($input->getArgument('type'));
+
+        if (in_array($type, ['MediaVideo', 'MediaAudio', 'MediaImage'])) {
+            $oldField = 'oldMediaId';
+        }
+        else {
+            $oldField = 'oldNewsId';
+        }
         $items = $this
             ->getManager()
-            ->getRepository('BaseCoreBundle:' . ucfirst($input->getArgument('type')))
+            ->getRepository('BaseCoreBundle:' . $type)
             ->createQueryBuilder('n')
-            ->andWhere('n.oldNewsId is not null')
+            ->andWhere("n.$oldField is not null")
             ->setMaxResults(100)
             ->setFirstResult(($page -1) * 100)
             ->getQuery()
