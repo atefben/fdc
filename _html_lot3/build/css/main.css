@@ -12904,6 +12904,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 100px;
   height: 100%;
   display: inline-block;
+  cursor: pointer;
 }
 .video-container .control-bar .playstate .play-btn {
   position: absolute;

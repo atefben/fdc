@@ -122,7 +122,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     var $infoBar = $container.find('.infos-bar'),
-        $stateBtn = $container.find('.play-btn'),
+        $stateBtn = $container.find('.playstate'),
         $durationTime = $container.find('.duration-time'),
         $current = $container.find('.current-time'),
         $progressBar = $container.find('.progress-bar'),
@@ -571,15 +571,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
-        $stateBtn.removeClass('icon-play').addClass('icon-pause');
+        $stateBtn.children().removeClass('icon-play').addClass('icon-pause');
         fullScreenApi.isFullScreen() ? mouseMoving(true) : mouseMoving(false);
     }).on('pause', function () {
-        $stateBtn.removeClass('icon-pause').addClass('icon-play');
+        $stateBtn.children().removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function () {
     }).on('complete', function () {
         this.stop();
-        $stateBtn.removeClass('icon-pause').addClass('icon-play');
+        $stateBtn.children().removeClass('icon-pause').addClass('icon-play');
         $container.addClass('state-complete');
         mouseMoving(false);
     }).on('firstFrame', function () {
