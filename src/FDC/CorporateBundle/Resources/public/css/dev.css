@@ -477,3 +477,22 @@ header #logo-wrapper #partners img.kering {
 .article-single.dark .wysiwyg-article-02 .caption {
   line-height:14px !important;
 }
+
+.single-article.single-evenement #share-article .icon {
+  font-size: 1rem;
+  margin-right: 10px;
+  vertical-align: middle!important;
+}
+
+.single-evenement.icon {
+  font-family: icons;
+  display: inline-block;
+  line-height: 1;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

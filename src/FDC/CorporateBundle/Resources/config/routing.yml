@@ -1,0 +1,5 @@
+fdc_event:
+    resource: "@FDCCorporateBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    host:     "%fdc_corporate_domain%"
