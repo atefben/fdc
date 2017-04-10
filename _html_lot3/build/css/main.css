@@ -4732,7 +4732,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   line-height: 24px;
   font-size: .8125rem;
 }
-.block-accordion-02 .descrip-section p {
+.block-accordion-02 .descrip-section .descrip-participate p {
   width: 750px !important;
   margin: 0 auto !important;
   font-size: 1.25rem !important;
@@ -4741,7 +4741,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   text-align: center !important;
   color: #000 !important;
 }
-.block-accordion-02 .descrip-section p.thanks {
+.block-accordion-02 .descrip-section .descrip-participate p.thanks {
   font-size: 1rem !important;
   line-height: 30px !important;
 }
@@ -7073,17 +7073,6 @@ body.chocolat-open > .chocolat-content {
   line-height: 30px;
   color: #333;
   text-align: center;
-}
-.participate .contain-descript .descrip-section em {
-  font-style: italic;
-}
-.participate .contain-descript .descrip-section strong {
-  font-weight: bold;
-}
-.participate .contain-descript .descrip-section sup {
-  vertical-align: super;
-  font-size: smaller;
-  line-height: normal;
 }
 
 .article-single .focus .title,

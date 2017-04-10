@@ -2020,18 +2020,20 @@
     }
 
     .descrip-section {
-      p {
-        width: 750px !important;
-        margin: 0 auto !important;
-        font-size: 1.25rem !important;
-        line-height: 36px !important;
-        padding: 39px 0 !important;
-        text-align: center !important;
-        color: #000 !important;
+      .descrip-participate {
+        p {
+          width: 750px !important;
+          margin: 0 auto !important;
+          font-size: 1.25rem !important;
+          line-height: 36px !important;
+          padding: 39px 0 !important;
+          text-align: center !important;
+          color: #000 !important;
 
-        &.thanks {
-          font-size: 1rem !important;
-          line-height: 30px !important;
+          &.thanks {
+            font-size: 1rem !important;
+            line-height: 30px !important;
+          }
         }
       }
     }
