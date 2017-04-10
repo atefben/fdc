@@ -69,21 +69,13 @@
             </div>
 
             <div class="share">
-                <p>{{ 'event.text.partagerlarticle'|trans }}</p>
+                <p>{{ 'article.text.partagerarticle'|trans }}</p>
                 <div class="buttons square">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
-                       rel="nofollow" class="button facebook">
-                        <i class="icon icon_facebook icon-facebook"></i>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
-                       rel="nofollow"
-                       class="button twitter">
-                        <i class="icon icon_twitter icon-twitter"></i>
-                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}" rel="nofollow" class="button facebook"><i class="icon icon_facebook icon-facebook"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}" rel="nofollow"  class="button twitter"><i class="icon icon_twitter icon-twitter"></i></a>
                     <a href="#" rel="nofollow" class="button link self"><i class="icon icon-link"></i></a>
-                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon-letter"></i></a>
-                    <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i
-                                class="icon icon-print"></i></a>
+                    <a href="#" rel="nofollow" class="button email self popin-mail-open"><i class="icon icon-letter"></i></a>
+                    <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i class="icon icon-print"></i></a>
                 </div>
             </div>
         </div>
