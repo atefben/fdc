@@ -289,7 +289,7 @@ $(document).ready(function() {
   var calTop = $('.venues').offset().top - 80;
   console.log(calTop);
 
-  // when comming from /programmation calendar display the day the user was on see #
+  // when comming from /programmation calendar display the day the user was on see #3589
   if (localStorage.getItem('calendar_day')) {
     var calendar_day = $('.timeline-container').find('[data-date="' + parseInt(localStorage.getItem('calendar_day')) + '"]');
     if (calendar_day.length == 1) {
