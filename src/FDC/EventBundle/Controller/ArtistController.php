@@ -18,6 +18,11 @@ class ArtistController extends Controller
      */
     public function archiveGetAction($id)
     {
+        $locale = $request->getLocale();
+        if ($request->getLocale() == 'cn') {
+            $locale = 'zh';
+        }
+
         $oldPersonAssoc = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:OldPersonsassoc')
@@ -42,7 +47,7 @@ class ArtistController extends Controller
         if (!$artist) {
             throw $this->createNotFoundException("Artist $id not found");
         }
-        return $this->redirectToRoute('fdc_corporate_artist_get', ['slug' => $artist->getSlug()], 301);
+        return $this->redirectToRoute('fdc_corporate_artist_get', ['_locale' => $locale, 'slug' => $artist->getSlug()], 301);
     }
 
     /**
@@ -74,7 +79,7 @@ class ArtistController extends Controller
             ->getRepository('BaseCoreBundle:FilmPerson')
             ->getDirectorsRandomly($festival, $count, $artist->getId())
         ;
-        usort($directors, array($this, 'sortByFirstname'));
+        usort($directors, [$this, 'sortByFirstname']);
 
         return $this->render('FDCEventBundle:Artist:page.html.twig', [
             'festival'  => $festival,

@@ -23,8 +23,13 @@ class MovieController extends Controller
      * @Route("/archives/ficheFilm/id/{id}.html")
      * @Route("/archives/ficheFilm/id/{id}/year/{year}.html")
      */
-    public function archiveGetAction($id, $year = null)
+    public function archiveGetAction(Request $request, $id, $year = null)
     {
+
+        $locale = $request->getLocale();
+        if ($request->getLocale() == 'cn') {
+            $locale = 'zh';
+        }
         $oldFilmAssoc = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:OldFilmsassoc')
@@ -38,8 +43,7 @@ class MovieController extends Controller
                 ->getRepository('BaseCoreBundle:FilmFilm')
                 ->find($oldFilmAssoc->getIdSoif())
             ;
-        }
-        else {
+        } else {
             $movie = null;
         }
 
@@ -47,7 +51,7 @@ class MovieController extends Controller
             throw $this->createNotFoundException("Artist $id not found");
         }
 
-        return $this->redirectToRoute('fdc_corporate_movie_get', ['slug' => $movie->getSlug()], 301);
+        return $this->redirectToRoute('fdc_corporate_movie_get', ['_locale' => $locale, 'slug' => $movie->getSlug()], 301);
     }
 
     /**
@@ -84,8 +88,8 @@ class MovieController extends Controller
             ->getFilmsBySelectionSection($movie->getFestival()->getId(), $locale, $movie->getSelectionSection()->getId())
         ;
 
-        $articles = array();
-        $articlesIds = array();
+        $articles = [];
+        $articlesIds = [];
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
@@ -173,7 +177,7 @@ class MovieController extends Controller
         }
 
         $now = new \DateTime();
-        $projections = array();
+        $projections = [];
         foreach ($movie->getProjectionProgrammationFilms() as $projectionProgrammationFilm) {
             if ($projectionProgrammationFilm instanceof FilmProjectionProgrammationFilm && $projectionProgrammationFilm->getProjection()) {
                 $projection = $projectionProgrammationFilm->getProjection();
@@ -285,13 +289,13 @@ class MovieController extends Controller
             //SEO
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
 
-            return $this->render('FDCEventBundle:Movie:cinema_plage.html.twig', array(
+            return $this->render('FDCEventBundle:Movie:cinema_plage.html.twig', [
                 'page'           => $page,
                 'projections'    => $projections,
                 'cannesClassics' => $cannesClassics,
                 'selectionTabs'  => $selectionTabs,
                 'next'           => $next,
-            ));
+            ]);
         }
 
 
@@ -315,7 +319,7 @@ class MovieController extends Controller
                         $page->getSelectionSection()->findTranslationByLocale($locale)->getSlug();
                     }
                     if ($slug) {
-                        return $this->redirectToRoute('fdc_event_movie_selection', array('slug' => $slug));
+                        return $this->redirectToRoute('fdc_event_movie_selection', ['slug' => $slug]);
                     }
                 }
             }
@@ -375,7 +379,7 @@ class MovieController extends Controller
             ->getAll($locale, $festival, true)
         ;
 
-        return $this->render('FDCEventBundle:Movie:selection.html.twig', array(
+        return $this->render('FDCEventBundle:Movie:selection.html.twig', [
             'cannesClassics' => $cannesClassics,
             'selectionTabs'  => $pages,
             'page'           => $page,
@@ -383,7 +387,7 @@ class MovieController extends Controller
             'next'           => is_object($next) ? $next : false,
             'next_classics'  => !empty($nextClassics),
             'localeSlugs'    => $localeSlugs,
-        ));
+        ]);
     }
 
     /**
@@ -440,14 +444,14 @@ class MovieController extends Controller
             $next = reset($filters);
         }
 
-        return array(
+        return [
             'cannesClassics' => $filters,
             'classic'        => $classic,
             'filters'        => $filters,
             'selectionTabs'  => $pages,
             'next'           => is_object($next) ? $next : false,
             'localeSlugs'    => $localeSlugs,
-        );
+        ];
     }
 
 }
