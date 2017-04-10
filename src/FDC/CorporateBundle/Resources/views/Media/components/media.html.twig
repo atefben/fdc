@@ -16,6 +16,7 @@
             <div class="image">
                 <div class="image-wrapper">
                     {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+                    {% set resolutionRetina =  trans.file.width > trans.file.height ? '640x808' : '640x808' %}
                     <img src="{% path trans.file , resolution %}" alt="" data-id="pid=mi-{{ photo.id }}"
                          data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
                          data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }}"
@@ -116,7 +117,7 @@
             <a href="#" class="linkAllCover"></a>
             <div class="image">
                 <div class="image-wrapper">
-                    <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '265x165' %}{% endif %}"
+                    <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '572x362' %}{% endif %}"
                          alt=""/>
                 </div>
                 <a href="#" class="linkImage"></a>
