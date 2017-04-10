@@ -1,0 +1,8 @@
+#create-event-pop .container form .time .pictodate {
+    height: 46px;
+    margin-bottom: 14px;
+}
+
+#create-event-pop .container form .time .hours {
+    top: 0px;
+}
