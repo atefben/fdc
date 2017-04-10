@@ -194,7 +194,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
 
             function clean(str) {
-                var res = str.replace(/%../gi, function myFunction(x)
+                var res = str.replace(/%[2-7]./gi, function myFunction(x)
                 {
                     console.log(x);
                     return decodeURI(x);
