@@ -203,7 +203,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     }
                 });
                 res = encodeURI(res);
-                return (res.replace('%23', '#'));
+                return (res.replace('#', '%23'));
             }
 
             var image = {
@@ -215,8 +215,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 label: label,
                 date: date,
                 caption: caption,
-                facebookurl: encodeURI(decodeURIComponent(facebookurl)),
-                twitterurl: encodeURI(decodeURIComponent(twitterurl)),
+                facebookurl: clean(facebookurl),
+                twitterurl: clean(twitterurl),
                 isPortrait: isPortrait
             };
             images.push(image);
