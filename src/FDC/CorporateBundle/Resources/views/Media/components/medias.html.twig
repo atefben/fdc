@@ -39,7 +39,7 @@
                         <div>
                             <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
                         </div>
-                        <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend }}</a></strong>
+                        <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend|truncate(70) }}</a></strong>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <div>
                             <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
                         </div>
-                        <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend }}</a></strong>
+                        <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend|truncate(70) }}</a></strong>
                     </div>
                 </div>
             </div>
