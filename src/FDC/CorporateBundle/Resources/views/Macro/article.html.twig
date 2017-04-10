@@ -12,7 +12,7 @@
     'format': (article|get_news_type)~'s',
     'slug': article|trans_fallback('slug')
     }) %}
-    {% if(article.publishedAt|date('y') < 2011) { %}
+    {% if(article.publishedAt|date('y') < 2011) %}
         {% set tagImageArticle = macroSelf.imageArticle(article, '265x165', '1144x724') %}
     {% else %}
         {% set tagImageArticle = macroSelf.imageArticle(article, '572x362', '1144x724') %}
