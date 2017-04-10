@@ -501,3 +501,13 @@ text-rendering: auto;
 .single-evenement .share .buttons .icon {
   margin-right:0px;
 }
+
+#title-vf-selection {
+    font-size: 10px;
+    margin-bottom: 2px;
+    margin-top: -2px;
+}
+
+#title-vf-selection a {
+    color: #fff;
+}
