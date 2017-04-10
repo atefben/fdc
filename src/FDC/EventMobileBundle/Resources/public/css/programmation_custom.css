@@ -1,6 +1,15 @@
+.popin-event .content {
+    max-width: 480px;
+}
+.popin-event .content p.multiple {
+    max-height: none;
+}
 #timeline-calendar .prev.disabled, #timeline-calendar .next.disabled {
     background-color: #f2f2f2;
 }
 .agenda-access {
     z-index: 54;
+}
+.fc-event.one-hour .bottom, .fc-event.one-hour img {
+    display: block;
 }

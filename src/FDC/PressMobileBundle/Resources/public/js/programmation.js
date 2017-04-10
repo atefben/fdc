@@ -533,8 +533,11 @@ $(document).ready(function () {
                         }
 
                         $('.calendar').off('click', '.fc-event').on('click', '.fc-event', function (e) {
-                            var url = $(this).data('url');
-                            openPopinEvent(url);
+                            // don't re-open film popin if already in a popin see #3550
+                            if ($(this).closest('.popin-event').length == 0) {
+                                var url = $(this).data('url');
+                                openPopinEvent(url);
+                            }    
                         });
                     }
                 });
