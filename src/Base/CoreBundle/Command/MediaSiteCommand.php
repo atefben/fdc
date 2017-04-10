@@ -58,7 +58,7 @@ class MediaSiteCommand extends ContainerAwareCommand
             ->findOneBy(['slug' => $siteSlug])
         ;
 
-        if (!($site instanceof Site) {
+        if (!($site instanceof Site)) {
             throw new \Exception("$entity is not an available site");
         }
 
