@@ -473,3 +473,7 @@ header #logo-wrapper #partners img.kering {
 .archive .block-01-xs img {
   height: inherit;
 }
+
+.article-single.dark .wysiwyg-article-02 .caption {
+  line-height:14px;
+}
