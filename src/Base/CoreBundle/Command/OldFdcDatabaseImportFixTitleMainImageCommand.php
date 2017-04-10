@@ -57,7 +57,7 @@ class OldFdcDatabaseImportFixTitleMainImageCommand extends ContainerAwareCommand
 
     private function fixTitle($item)
     {
-        if ($item->getOldNewsId()) {
+        if ($item->getOldNewsId() && $item->getHeader()) {
             foreach ($item->getHeader()->getTranslations() as $imageTrans) {
                 $oldArticleI18n = $this
                     ->getManager()
