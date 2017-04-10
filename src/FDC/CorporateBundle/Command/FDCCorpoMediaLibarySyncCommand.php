@@ -64,7 +64,6 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
                 ->getDoctrineManager()
                 ->getRepository('ApplicationSonataMediaBundle:Media')
                 ->createQueryBuilder('m')
-                ->innerJoin('m.selfkitFilms', 'sf')
                 ->andWhere('m.oldMediaPhoto is not null')
             ;
             if ($id) {
