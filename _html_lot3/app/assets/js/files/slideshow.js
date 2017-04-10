@@ -192,6 +192,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
             }
 
+            function clean(str) {
+                var result = str.replace('%20', ' ');
+                result = result.replace('%23', '#');
+
+                return (encodeURI(result));
+            }
+
+
             var image = {
                 id: id,
                 url: url,
@@ -201,8 +209,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 label: label,
                 date: date,
                 caption: caption,
-                facebookurl: encodeURI(decodeURI(facebookurl)),
-                twitterurl: encodeURI(decodeURI(twitterurl)),
+                facebookurl: clean(facebookurl),
+                twitterurl: clean(twitterurl),
                 isPortrait: isPortrait
             };
             images.push(image);
