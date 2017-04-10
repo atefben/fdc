@@ -25,18 +25,7 @@ class FixFestivalCommand extends ContainerAwareCommand
     {
         $page = $input->getOption('page')?:1;
 
-        if ($input->getOption('count')) {
-            $count = $this
-                ->getManager()
-                ->getRepository('BaseCoreBundle:' . ucfirst($input->getArgument('type')))
-                ->createQueryBuilder('n')
-                ->select('count(n)')
-                ->andWhere('n.oldNewsId is not null')
-                ->getQuery()
-                ->getOneOrNullResult()
-            ;
-            return null;
-        }
+
 
         $type = ucfirst($input->getArgument('type'));
 
@@ -46,6 +35,20 @@ class FixFestivalCommand extends ContainerAwareCommand
         else {
             $oldField = 'oldNewsId';
         }
+
+        if ($input->getOption('count')) {
+            $count = $this
+                ->getManager()
+                ->getRepository('BaseCoreBundle:' . ucfirst($input->getArgument('type')))
+                ->createQueryBuilder('n')
+                ->select('count(n)')
+                ->andWhere("n.$oldField is not null")
+                ->getQuery()
+                ->getOneOrNullResult()
+            ;
+            return null;
+        }
+
         $items = $this
             ->getManager()
             ->getRepository('BaseCoreBundle:' . $type)
