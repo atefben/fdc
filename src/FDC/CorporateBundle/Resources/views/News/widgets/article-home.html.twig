@@ -122,9 +122,6 @@
         {% else %}
             <a class="linkImage" href="{{ url('fdc_press_news_get', { _locale: app.request.locale, type: type, format: trans.translatable.newsFormat, slug: trans.slug }) }}"></a>
         {% endif %}
-        <a href="#" class="read-later">
-            <i class="icon icon_lire-plus-tard"></i><span>{{ 'home.article.btn.ajouteramaselection'|trans }}</span>
-        </a>
         {% if article is news_object %}
             <span class="picto"><i class="icon icon_{{ article|get_news_type }}"></i></span>
         {% elseif article is info_object %}
