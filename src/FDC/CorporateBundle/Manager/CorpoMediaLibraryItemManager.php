@@ -474,7 +474,7 @@ class CorpoMediaLibraryItemManager
     private function syncSonataMedia(SonataMedia $sonataMedia)
     {
         foreach ($this->locales as $locale) {
-            if (!$sonataMedia->getSelfkitFilms()->count() && !$sonataMedia->getOldMediaFestivalYear()) {
+            if (!$sonataMedia->getOldMediaFestivalYear()) {
                 return;
             }
             $item = $this->getCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);
