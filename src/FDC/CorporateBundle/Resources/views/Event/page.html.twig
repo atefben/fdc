@@ -7,11 +7,11 @@
             <div class="container small-container">
                 {% if prev %}
                     <a href="{{ path('fdc_corporate_event_get', {'slug':  prev|trans_fallback('slug'), 'year': prev.festival.year }) }}"
-                       class="nav prev ajax"><i class="icon icon_flecheGauche"></i></a>
+                       class="nav prev ajax"><i class="icon icon_flecheGauche icon-flecheGauche"></i></a>
                 {% endif %}
                 {% if next %}
                     <a href="{{ path('fdc_corporate_event_get', {'slug':  next|trans_fallback('slug'), 'year': next.festival.year }) }}"
-                       class="nav next ajax"><i class="icon icon_fleche-right"></i></a>
+                       class="nav next ajax"><i class="icon icon_fleche-right icon-fleche-right"></i></a>
                 {% endif %}
                 <div class="info">
                     <span class="category">{{ event.theme|trans_fallback('name') }}</span>
@@ -19,11 +19,11 @@
                 <h2 class="title-article">{{ event|trans_fallback('title') }}</h2>
                 <div class="buttons">
                     <a id="share-article" href="#" class="button">
-                        <i class="icon icon_share"></i>
+                        <i class="icon icon-share"></i>
                         {{ 'event.btn.partager'|trans }}
                     </a>
                     <a href="#" onclick="javascript:window.print()" class="button print">
-                        <i class="icon icon_print"></i>
+                        <i class="icon icon-print"></i>
                         {{ 'event.btn.imprimer'|trans }}
                     </a>
                 </div>
@@ -73,17 +73,17 @@
                 <div class="buttons square">
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
                        rel="nofollow" class="button facebook">
-                        <i class="icon icon_facebook"></i>
+                        <i class="icon icon_facebook icon-facebook"></i>
                     </a>
                     <a href="https://twitter.com/intent/tweet?url={{ url('fdc_corporate_event_get', {'slug': event|trans_fallback('slug'), 'year': event.festival.year }) }}"
                        rel="nofollow"
                        class="button twitter">
-                        <i class="icon icon_twitter"></i>
+                        <i class="icon icon_twitter icon-twitter"></i>
                     </a>
-                    <a href="#" rel="nofollow" class="button link self"><i class="icon icon_link"></i></a>
-                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon_lettre"></i></a>
+                    <a href="#" rel="nofollow" class="button link self"><i class="icon icon-link"></i></a>
+                    <a href="#" rel="nofollow" class="button email self"><i class="icon icon-letter"></i></a>
                     <a href="#" rel="nofollow" onclick="javascript:window.print()" class="button print"><i
-                                class="icon icon_print"></i></a>
+                                class="icon icon-print"></i></a>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
     }
     )) }}
 
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
     "name" : 'breadcrumb.webtv.home'|trans,
     "url"  : path('fdc_event_news_index')

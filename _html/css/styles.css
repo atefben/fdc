@@ -10704,39 +10704,7 @@ article .read-later.rAlign span:after {
   margin: 65px auto 70px;
   width: 630px;
 }
-.single-article .share {
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
-  padding: 70px 0;
-}
-.single-article .share p {
-  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
-  font-size: 0.750rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 20px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.single-article .share a {
-  color: #c8a461;
-}
-.single-article .share a:hover {
-  background-color: #fff;
-  border-color: #c8a461 !important;
-}
-.single-article .share a:hover + .button {
-  border-left-color: #c8a461;
-}
-.single-article .share a:hover .icon {
-  color: #c8a461;
-  opacity: 1;
-}
-.single-article .share a .icon {
-  font-size: 0.8rem;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-}
+.icon-facebook:before
 .single-article .film {
   height: 365px;
   overflow: hidden;
