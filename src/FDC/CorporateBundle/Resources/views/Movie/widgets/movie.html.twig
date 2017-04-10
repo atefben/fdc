@@ -31,12 +31,21 @@
                 {% endif %}
 
                 <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
+                {% if titleTranslated is defined %}
+                    <p id="title-vf-selection" class="film-title-translations">
+                        <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}">
+                            ( {{ titleTranslated }} )
+                        </a>
+                    </p>
+                {% endif %}
 
                 {% set directors = film.getDirectors() %}
                 <span class="names-a">
                 {% for director in directors %}
-                    {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
-                    {% if loop.index != directors|length %} , {% endif %}
+                    {% if not director.person.duplicate %}
+                        {% if loop.index != 1 and loop.index+1 != directors|length %} , {% endif %}
+                        {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
+                    {% endif %}
                 {% endfor %}
                 </span>
 
