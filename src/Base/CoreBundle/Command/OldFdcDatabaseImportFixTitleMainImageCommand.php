@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Command;
 
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -50,9 +51,16 @@ class OldFdcDatabaseImportFixTitleMainImageCommand extends ContainerAwareCommand
             ->getResult()
         ;
 
+        $bar = new ProgressBar($output, count($items));
+        $bar->setFormat(' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%');
+        $bar->start();
+
         foreach ($items as $item) {
+            $bar->advance();
             $this->fixTitle($item);
         }
+        $bar->finish();
+        $output->writeln('');
     }
 
     private function fixTitle($item)
