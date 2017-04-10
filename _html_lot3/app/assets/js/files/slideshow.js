@@ -201,8 +201,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 label: label,
                 date: date,
                 caption: caption,
-                facebookurl: facebookurl,
-                twitterurl: twitterurl,
+                facebookurl: encodeURI(facebookurl),
+                twitterurl: encodeURI(twitterurl),
                 isPortrait: isPortrait
             };
             images.push(image);
