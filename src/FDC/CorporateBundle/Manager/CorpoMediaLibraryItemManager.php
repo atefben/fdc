@@ -519,7 +519,7 @@ class CorpoMediaLibraryItemManager
 
             if ($filmJury && $filmJury->getPerson()) {
                 $person = $filmJury->getPerson();
-                $search .= '' . $person->getFullName();
+                $search .= ' ' . $person->getFullName();
 //                $search .= ' ' . $person->getCredits();
 //                $search .= ' ' . $person->getPresidentJuryCredits();
                 $personTrans = $person->findTranslationByLocale($locale);

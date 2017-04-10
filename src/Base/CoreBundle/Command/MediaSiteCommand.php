@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\Media;
 use Base\CoreBundle\Entity\MediaAudio;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaVideo;
+use Base\CoreBundle\Entity\Site;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -57,7 +58,7 @@ class MediaSiteCommand extends ContainerAwareCommand
             ->findOneBy(['slug' => $siteSlug])
         ;
 
-        if (!$site) {
+        if (!($site instanceof Site) {
             throw new \Exception("$entity is not an available site");
         }
 

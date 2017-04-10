@@ -72,8 +72,11 @@ class FixFestivalCommand extends ContainerAwareCommand
 
     protected function fixItem($item)
     {
+        if (!$item->getPublishedAt()) {
+            return ;
+        }
         $year = $item->getPublishedAt()->format('Y');
-        if ($item->getFestival()->getYear() != $year) {
+        if (!$item->getFestival() || $item->getFestival()->getYear() != $year) {
             $item->setFestival($this->getFestivalByYear($year));
             $this->getManager()->flush();
         }
