@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/maps.css" %}
+    {% stylesheets
+        "bundles/fdceventmobile/css/maps.css"
+        "bundles/fdceventmobile/css/maps_custom.css"
+    %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -47,7 +50,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                <a href="#" class="popin-plan" data-id="{{ r.room.id }}">{%- thumbnail file, '197x142' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
+                <a href="#" class="popin-plan" data-id="{{ r.room.id }}">{%- thumbnail file, '543x326' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
             </div>
             {%- endfor -%}
         </div>
@@ -106,7 +109,10 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/maps.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/maps.js'
+        '@FDCEventMobileBundle/Resources/public/js/maps_custom.js'
+    %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
