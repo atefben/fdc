@@ -200,7 +200,9 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     return decodeURI(x);
                 });
 
-                return (encodeURI(res));
+                res = encodeURI(res);
+
+                return (res.replace('%23', '#'));
             }
 
             var image = {
