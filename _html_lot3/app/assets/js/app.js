@@ -803,8 +803,8 @@ $(document).ready(function () {
         $.each($('img'),function (i, e) {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
-            var dof = $(e).attr('data-object-fit');
-            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1) || dof) {
+            // var dof = $(e).attr('data-object-fit');
+            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-image', 'url('+src+')');
                 $(e).parent().css('background-size','cover');
