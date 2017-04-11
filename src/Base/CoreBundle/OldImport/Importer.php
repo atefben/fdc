@@ -734,6 +734,11 @@ class Importer
         $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
         $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
 
+        if (!$file) {
+            $path = $oldMediaI18n->getHdFormatFilename();
+            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+        }
+
         dump($file);
         if (!$file && $locale == 'fr') {
             dump($oldMediaI18n->getId());
