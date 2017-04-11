@@ -109,7 +109,6 @@ if ($('#slider-discover .item').length < 4) {
   });
 
 
-
 /* TABS */
 
     $(".tab_content").hide();

@@ -161,6 +161,14 @@
      .videos, .slideshow-img, .news, .audios, .press{
        display: none;
      }
-  }
+  }   
+    .confcourt .box {
+          width: 24%;
+          float: left;
+    }
+
+    .selector, .catalogue, .competition, .our-news {
+      display: none;
+    }
 
 }

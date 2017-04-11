@@ -51,7 +51,7 @@
           <div class="bigContainer">
             <div id="accordion-conf" class="conferences confcourtaccordion">
                 
-                <div class="dropdown"> 
+                <!--<div class="dropdown"> 
                   <span>AFFICHER</span>
                   <div id="eventSelector">
 
@@ -61,10 +61,8 @@
                     <div class="selectText" id="pitching-training">Pitching Training</div>
                     
                   </div>
-                  <!--<div class="dropArrow">
-                    <i class="icon icon_flecheGauche"></i>
-                  </div>-->
-                </div><br>
+    
+                </div><br>-->
                 <div class="selector">
                   <!--<div class="purpleBtn selectbtn" id="all">Tous</div>-->
                   <div class="selectbtn bigSelectbtn" id="d" rel="short-fim-corner">
@@ -476,6 +474,11 @@
           </div>
         </div>
       </div>
+
+        <?php include('box-catalogue.php'); ?>  
+  <?php include('box-social.php'); ?>  
+  <?php include('box-news.php'); ?>
+  <?php include('box-contact.php'); ?>  
 
     <?php include('footer.html'); ?>
 

@@ -224,7 +224,7 @@
 
         <!--<img class="palmeBckg" src="img/palmeBckg.png">-->
 
-      <div class="about">
+      <div class="about single-article">
         <div class="innerWrapper">
           <div class="aboutVideos">
             <div id="slider-aboutVideos" class="owl-carousel">
@@ -336,8 +336,23 @@
                   <div class="img">
                     <a id="photo5" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
                   </div>
+                  <div class="img">
+                    <a id="photo6" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo7" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo8" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo9" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
+                  <div class="img">
+                    <a id="photo10" class="chocolat-image ajax" href="img/slide001.jpg" title='<span class="category">Conférence de presse</span><span class="date">18.05.2012</span><h2>Sur le tournage de "Deephan" de Jacques Audiard</h2>' data-credit="Crédit Image : VALERY HACHE / AFP"><img src="img/slide002.jpg" alt="" /></a>
+                  </div>
                 </div>
-                <div class="owl-carousel thumbnails">
+                <div class="owl-carousel thumbnails owl-theme owl-loaded goldSlideshow">
                   <div data-id="photo1" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
                     <img src="img/thumb01.jpg" />
                   </div>
@@ -348,6 +363,24 @@
                     <img src="img/thumb01.jpg" />
                   </div>
                   <div data-id="photo4" class="thumb">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo5" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo6" class="thumb" data-caption="test">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo7" class="thumb">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo8" class="thumb">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo9" class="thumb active" data-caption="<strong>Équipe du film - Photocall - The Lobster</strong> © FDC / Théophile Delange">
+                    <img src="img/thumb01.jpg" />
+                  </div>
+                  <div data-id="photo10" class="thumb" data-caption="test">
                     <img src="img/thumb01.jpg" />
                   </div>
                 </div>
@@ -429,6 +462,293 @@
               <a class="linkVid" href="#"></a>
               <div class="info-movie">
                 <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
+                <a class="director" href="#">Todd HAYNES</a>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="http://dummyimage.com/210x284/000/fff" alt="" />
+              <a class="linkVid" href="#"></a>
+              <div class="info-movie">
+                <p>Carol</p>
+                <span class="translated-title">(LA JEUNE FILLE QUI DANSAIT AVEC LE DIABLE)</span>
                 <a class="director" href="#">Todd HAYNES</a>
               </div>
             </div>

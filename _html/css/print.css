@@ -136,4 +136,13 @@
   .single-movie .videos, .single-movie .slideshow-img, .single-movie .news, .single-movie .audios, .single-movie .press {
     display: none;
   }
+
+  .confcourt .box {
+    width: 24%;
+    float: left;
+  }
+
+  .selector, .catalogue, .competition, .our-news {
+    display: none;
+  }
 }

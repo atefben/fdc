@@ -1036,6 +1036,18 @@
   @include transition(all 0.1s $smoothTransition);
 }*/
 
+.goldSlideshow {
+  .owl-stage {
+        width: 1177px!important;
+
+  }
+}
+
+.goldSlideshowmargin  {
+      transform: translate3d(-642px, 0px, 0px)!important;
+    transition: 0.9s;
+}
+
 .eventSlideshow {
 
     margin: 0 auto;
