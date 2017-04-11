@@ -805,7 +805,8 @@ $(document).ready(function () {
             var tmp = $(e).attr('style');
             if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)) {
                 $(e).css('visibility', 'hidden');
-                $(e).parent().css('background-url', 'url('+src+')');
+                $(e).parent().css('background-image', 'url('+src+')');
+                $(e).parent().css('background-size','cover');
             }
         });
     }
