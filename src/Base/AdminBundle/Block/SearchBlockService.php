@@ -278,7 +278,7 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:CorpoTeamTeams',
             //'BaseCoreBundle:GraphicalCharter',
             'BaseCoreBundle:GraphicalCharterButtonGroup',
-            'BaseCoreBundle:GraphicalCharterSection',
+            //'BaseCoreBundle:GraphicalCharterSection',
             'BaseCoreBundle:CorpoAccreditProcedure',
             // seo + tetieres
             'BaseCoreBundle:FDCPageEvent',
@@ -334,7 +334,7 @@ class SearchBlockService extends BaseBlockService
         'CorpoTeamTeams' => 'Pages',
         //'GraphicalCharter' => 'Pages',
         'GraphicalCharterButtonGroup' => 'Pages',
-        'GraphicalCharterSection' => 'Pages',
+        //'GraphicalCharterSection' => 'Pages',
         'CorpoAccreditProcedure' => 'Pages',
         // seo + tetieres
         'FDCPageEvent' => 'SEO + TETIÈRES',
@@ -401,7 +401,7 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:CorpoTeamTeams',
             //'BaseCoreBundle:GraphicalCharter',
             'BaseCoreBundle:GraphicalCharterButtonGroup',
-            'BaseCoreBundle:GraphicalCharterSection',
+            //'BaseCoreBundle:GraphicalCharterSection',
             'BaseCoreBundle:CorpoAccreditProcedure',
             // seo + tetieres
             'BaseCoreBundle:FDCPageEvent',
