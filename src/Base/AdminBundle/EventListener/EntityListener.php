@@ -107,6 +107,8 @@ class EntityListener
                 'InfoArticle'      => 'article', 'InfoAudio' => 'audio', 'InfoImage' => 'image', 'InfoVideo' => 'video',
             ];
 
+            $entityName = substr(strrchr(get_class($entity), '\\'), 1);
+
             if (isset($mapper[$entityName])) {
                 $entity->setTypeClone($mapper[$entityName]);
             }

@@ -32,7 +32,7 @@ class NodeTranslation implements TranslateChildInterface
 
     /**
      * @var int
-     * @ORM\Column(name="entity_id", type="integer")
+     * @ORM\Column(name="entity_id", type="integer", nullable=true)
      */
     private $entityId;
 
