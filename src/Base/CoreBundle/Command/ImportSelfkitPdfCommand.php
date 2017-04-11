@@ -114,6 +114,15 @@ class ImportSelfkitPdfCommand extends ContainerAwareCommand
                 if (!is_file($filename)) {
                     file_put_contents($filename, file_get_contents($remoteFilename));
                 }
+                $remoteFilename = $this->getAmazonDirectoryHD() . $oldImage->getFichier();
+                if (!is_file($filename)) {
+                    file_put_contents($filename, file_get_contents($remoteFilename));
+                }
+                if (!(@filesize($filename))) {
+                    dump('Ignore ' . $filename);
+                    continue;
+                }
+
                 if (!(@filesize($filename))) {
                     dump('Ignore ' . $filename);
                     continue;
@@ -187,6 +196,14 @@ class ImportSelfkitPdfCommand extends ContainerAwareCommand
     private function getAmazonDirectory()
     {
         return $this->getContainer()->getParameter('selfkit_amazon_url');
+    }
+
+    /**
+     * @return string
+     */
+    private function getAmazonDirectoryHD()
+    {
+        return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
     }
 
     /**
