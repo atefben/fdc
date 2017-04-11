@@ -808,6 +808,8 @@ $(document).ready(function () {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-image', 'url('+src+')');
                 $(e).parent().css('background-size','cover');
+                $(e).parent().css('background-position-x','center');
+                $(e).parent().css('background-position-y','center');
                 $(e).parent().css('display', 'block');
             }
         });
