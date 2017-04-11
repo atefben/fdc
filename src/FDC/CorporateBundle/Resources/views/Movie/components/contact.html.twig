@@ -4,7 +4,7 @@
 {% set active = true %}
 
 {% if corpo is defined %}
-    {% if (medias|length or movie.selfkitPdfFiles|length) or 0 and movie.contacts|length == 0 %}
+    {% if (medias|length == 0 or movie.selfkitPdfFiles|length == 0) and movie.contacts|length == 0 %}
         {% set active = false %}
     {% endif %}
 {% endif %}
