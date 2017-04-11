@@ -194,15 +194,26 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
 
             function clean(str) {
+
+                console.log('Before', str);
+
                 var res = str.replace(/%[2-7]./gi, function myFunction(x)
                 {
                     if (x == '%23') {
                         return ('#');
                     } else {
+                        console.log(x, '=>', decodeURI(x));
                         return (decodeURI(x));
                     }
                 });
+
+                console.log('After', res);
+
                 res = encodeURI(res);
+
+                console.log('After encoding', res);
+                console.log('After # => %23', res.replace('#', '%23'));
+
                 return (res.replace('#', '%23'));
             }
 
