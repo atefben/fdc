@@ -382,9 +382,9 @@ $(document).ready(function() {
 
     $.each(events, function(index, evt){
       if (evt.type != 'custom') {
-        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="' + evt.url + '" data-id="' + evt.id + '" data-color="' + evt.eventColor + '" data-start="' + evt.start + '" data-end="' + evt.end + '" data-time="' + evt.time + '" data-duration="' + evt.duration + '"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon ' + evt.eventPictogram + '"></i><span class="cat-title">' + evt.type + '</span></span><div class="info"><img src="' + evt.picture + '"><div class="txt"><span>' + evt.title + '</span><strong>' + evt.author + '</strong></div></div><div class="bottom"><span class="duration">' + Math.round((evt.duration / 60) * 100) / 100 + 'H</span> <span class="dash">-</span> <span class="ven">' + evt.room + '</span><span class="competition">' + evt.selection + '</span></div></div>');
+        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="' + evt.url + '" data-id="' + evt.id + '" data-color="' + evt.eventColor + '" data-start="' + evt.start + '" data-end="' + evt.end + '" data-time="' + evt.time + '" data-duration="' + evt.duration + '"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon ' + evt.eventPictogram + '"></i><span class="cat-title">' + evt.type + '</span></span><div class="info"><img src="' + evt.picture + '"><div class="txt"><span>' + evt.title + '</span><strong>' + evt.author + '</strong></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">' + evt.room + '</span><span class="competition">' + evt.selection + '</span></div></div>');
       } else {
-        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><div class="txt"><span>'+evt.title+'</span></div></div><div class="bottom"><span class="duration">'+Math.round((evt.duration/60)*100)/100+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
+        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><div class="txt"><span>'+evt.title+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
       }
     });
 
@@ -422,6 +422,11 @@ $(document).ready(function() {
       //add color
       $(this).find('.category').css('background-color', $(this).data('color'));
       $(this).css('margin-top', mT*170+10);
+
+      // update height of the event
+      var h = $(this).data('duration');
+      h = h * 2.65;
+      $(this).css('height', h + 'px');
     });
 
     $('.calendar').on('click', '.fc-event', function (e) {
