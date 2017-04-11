@@ -165,7 +165,6 @@ var owInitGrid = function (id) {
                             var scroll = $(document).scrollTop();
                             var rawHtml = '';
                             articles.each(function(){
-                                console.log($(this).data('time'));
                                 rawHtml += $(this).get(0).outerHTML;
                             });
 

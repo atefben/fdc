@@ -2946,7 +2946,6 @@ var owInitGrid = function (id) {
                             var scroll = $(document).scrollTop();
                             var rawHtml = '';
                             articles.each(function(){
-                                console.log($(this).data('time'));
                                 rawHtml += $(this).get(0).outerHTML;
                             });
 
@@ -8127,6 +8126,13 @@ $(document).ready(function () {
             var src = $(e).find('img').attr('src');
             $(e).find('.linkVid').css('background-image','url('+src+')');
             $(e).find('.linkVid').css('background-size','cover');
-        })
+        });
+        $.each($('img'),function (i, e) {
+            var src = $(e).find('img').attr('src');
+            if ($(e).css('object-fit') == 'cover') {
+                $(e).css('visibility', 'hidden');
+                $(e).parent().css('background-url', $(e).attr('src'));
+            }
+        });
     }
 });
