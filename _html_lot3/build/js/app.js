@@ -7715,7 +7715,7 @@ $(document).ready(function () {
     }
 
     computeSlideshowTitleWidth();
-    
+
     //hotfix focus & sameday thumbs click
     if($('.focus').length){
         $('.focus .articles article')
@@ -8114,7 +8114,8 @@ $(document).ready(function () {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
             // var dof = $(e).attr('data-object-fit');
-            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)) {
+            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)
+                || (!$('body').hasClass('story-palme') && $('.block-movie-preview').length)) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-image', 'url('+src+')');
                 $(e).parent().css('background-size','cover');
