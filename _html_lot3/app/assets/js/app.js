@@ -780,7 +780,7 @@ $(document).ready(function () {
             $(e).find('.linkVid').css('background-size','cover');
         });
 
-
+        // IE object-fit hack
         $.each($('img'),function (i, e) {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
@@ -793,6 +793,9 @@ $(document).ready(function () {
                 $(e).parent().css('background-position-x','center');
                 $(e).parent().css('background-position-y','center');
                 $(e).parent().css('display', 'block');
+                if (!$('body').hasClass('story-palme')) {
+                    $(e).parent().css('height', '348px');
+                }
             }
         });
     }
