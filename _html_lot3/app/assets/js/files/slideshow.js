@@ -193,7 +193,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             }
 
             function prettyprint(link) {
-                console.log(link.replace('&', '\n\n&'));
+                console.log(link.replace(/&/g, '\n\n&'));
             }
 
             function clean(str) {
