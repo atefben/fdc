@@ -192,10 +192,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
             }
 
+            function prettyprint(link) {
+                console.log(link.replace('&', '\n\n&'));
+            }
 
             function clean(str) {
 
-                console.log('Before', str);
+                console.log('Before');
+                prettyprint(str);
 
                 var res = str.replace(/%[2-7]./gi, function myFunction(x)
                 {
@@ -207,12 +211,16 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     }
                 });
 
-                console.log('After', res);
+                console.log('After');
+                prettyprint(res);
 
                 res = encodeURI(res);
 
-                console.log('After encoding', res);
-                console.log('After # => %23', res.replace('#', '%23'));
+                console.log('After encoding');
+                prettyprint(res);
+
+                console.log('After # => %23');
+                prettyprint(res.replace('#', '%23'));
 
                 return (res.replace('#', '%23'));
             }
