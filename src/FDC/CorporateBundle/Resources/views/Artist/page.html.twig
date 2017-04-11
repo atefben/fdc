@@ -247,8 +247,7 @@
                             <div class="slide item">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
-                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}"
-                                         data-object-fit="cover">
+                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
                                 {% else %}
                                     {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                                     {% if media is empty %}
