@@ -803,7 +803,7 @@ $(document).ready(function () {
         $.each($('img'),function (i, e) {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
-            if ($(e).css('object-fit') == 'cover' || tmp.indexOf('object-fit') > -1) {
+            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-url', 'url('+src+')');
             }
