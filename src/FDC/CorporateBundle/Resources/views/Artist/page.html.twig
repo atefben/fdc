@@ -154,7 +154,7 @@
                                                 film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
                                             </div>
-
+                                        </a>
                                             <div class="content-text">
                                                 {% set secondTitle = null %}
                                                 {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
@@ -186,7 +186,6 @@
                                                     {%- endspaceless %}
                                                 {% endif %}
                                             </div>
-                                        </a>
                                     </div>
                                 {% endif %}
                             {% endfor %}
