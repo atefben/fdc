@@ -143,6 +143,7 @@
                                     {% endif %}
                                     <div class="item">
                                         <a href="{{ path('fdc_corporate_movie_get', {'slug': filmPerson.film.slug}) }}">
+                                            <div class="image">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                 film: filmPerson.film,
                                                 film_format: '366x488',
@@ -150,9 +151,9 @@
                                                 alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
                                                 'data-object-fit': 'cover'
                                                 },
-                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
-                                                corpo: 'true'
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
+                                            </div>
 
                                             <div class="content-text">
                                                 {% set secondTitle = null %}
