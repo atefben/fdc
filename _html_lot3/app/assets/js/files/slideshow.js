@@ -192,36 +192,17 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
             }
 
-            function prettyprint(link) {
-                console.log(link.replace(/&/g, '\n\n&'));
-            }
-
             function clean(str) {
-
-                console.log('Before');
-                prettyprint(str);
-
                 var res = str.replace(/%[2-7]./gi, function myFunction(x)
                 {
                     if (x == '%23') {
                         return ('#');
                     } else {
-                        console.log(x, '=>', decodeURI(x));
                         return (decodeURI(x));
                     }
                 });
 
-                // console.log('After');
-                // prettyprint(res);
-
                 res = encodeURI(res);
-
-                // console.log('After encoding');
-                // prettyprint(res);
-
-                console.log('After # => %23');
-                prettyprint(res.replace('#', '%23'));
-
                 return (res.replace('#', '%23'));
             }
 
