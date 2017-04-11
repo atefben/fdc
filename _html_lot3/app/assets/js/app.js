@@ -799,10 +799,10 @@ $(document).ready(function () {
             $(e).find('.linkVid').css('background-size','cover');
         });
         $.each($('img'),function (i, e) {
-            var src = $(e).find('img').attr('src');
-            if ($(e).css('object-fit') == 'cover') {
+            var src = $(e).attr('src');
+            if ($(e).css('object-fit') == 'cover' || $(e).attr('style').search('object-fit') > -1) {
                 $(e).css('visibility', 'hidden');
-                $(e).parent().css('background-url', $(e).attr('src'));
+                $(e).parent().css('background-url', 'url('+src+')');
             }
         });
     }
