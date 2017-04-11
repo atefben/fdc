@@ -27,12 +27,20 @@ use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\Homepage;
 use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\InfoArticle;
+use Base\CoreBundle\Entity\InfoAudio;
+use Base\CoreBundle\Entity\InfoImage;
+use Base\CoreBundle\Entity\InfoVideo;
 use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
 use Base\CoreBundle\Entity\MediaImageSimple;
 use Base\CoreBundle\Entity\News;
+use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
+use Base\CoreBundle\Entity\NewsAudio;
+use Base\CoreBundle\Entity\NewsImage;
+use Base\CoreBundle\Entity\NewsVideo;
 use Base\CoreBundle\Entity\NewsWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\NewsWidgetTextTranslation;
 use Base\CoreBundle\Entity\NewsWidgetVideoYoutubeTranslation;
@@ -50,6 +58,10 @@ use Base\CoreBundle\Entity\PressHomepage;
 use Base\CoreBundle\Entity\SocialGraph;
 use Base\CoreBundle\Entity\SocialWall;
 use Base\CoreBundle\Entity\Statement;
+use Base\CoreBundle\Entity\StatementArticle;
+use Base\CoreBundle\Entity\StatementAudio;
+use Base\CoreBundle\Entity\StatementImage;
+use Base\CoreBundle\Entity\StatementVideo;
 use Base\CoreBundle\Entity\StatementWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\StatementWidgetTextTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
@@ -847,8 +859,18 @@ class EntityListener
         $object = $args->getObject();
         $entities = [
             News::class,
-            Statement::class,
-            Info::class,
+            NewsArticle::class,
+            NewsAudio::class,
+            NewsImage::class,
+            NewsVideo::class,
+            StatementArticle::class,
+            StatementAudio::class,
+            StatementImage::class,
+            StatementVideo::class,
+            InfoArticle::class,
+            InfoAudio::class,
+            InfoImage::class,
+            InfoVideo::class,
             Homepage::class,
             PressHomepage::class,
             MediaImageSimple::class,
