@@ -61,6 +61,7 @@
                             <p class="texte-01">{{ biography|raw|nl2br }}</p>
                         </div>
                     {% endif %}
+                    {% if artist.films|length > 0 %}
                     <div class="block-01-xs separator1">
                         <h2 class="title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
                     </div>
@@ -115,6 +116,7 @@
                             {% endfor %}
                         {% endif %}
                     </div> <!-- fin block poster 01 -->
+                   {% endif %}
                     <div class="block-poster-01 award">
                     {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
