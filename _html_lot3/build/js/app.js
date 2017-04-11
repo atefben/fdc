@@ -8127,9 +8127,12 @@ $(document).ready(function () {
             $(e).find('.linkVid').css('background-image','url('+src+')');
             $(e).find('.linkVid').css('background-size','cover');
         });
+
+
         $.each($('img'),function (i, e) {
             var src = $(e).attr('src');
-            if ($(e).css('object-fit') == 'cover' || $(e).attr('style').search('object-fit') > -1) {
+            var tmp = $(e).attr('style');
+            if ($(e).css('object-fit') == 'cover' || tmp.indexOf('object-fit') > -1) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-url', 'url('+src+')');
             }
