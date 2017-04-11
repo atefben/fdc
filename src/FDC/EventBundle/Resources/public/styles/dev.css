@@ -604,7 +604,10 @@ a.notloaded {
     margin: 0 auto;
 }
 
-.single-article .text a strong {
+.single-article .big-quote a strong  {
     color: #c8a461;
     font-weight: 400;
+}
+.single-article .big-quote a  {
+    color: #c8a461;
 }
