@@ -11,7 +11,7 @@
             <strong class="title-24 title-rules">{{ 'ccm.register_movie.rules'|trans }} {{ "now"|date("Y") }}</strong>
 
             {% if registerProcedure.regulationDetailsText %}
-            <div class="block-01-ms texte-01">
+            <div class="block-01-ms texte-01 wysiwyg">
                 {{ registerProcedure.regulationDetailsText|raw }}
             </div>
             {% endif %}
@@ -35,11 +35,11 @@
         {% if registerProcedure.contactUsTitle %}
             <div class="block-contact block-01-ms block-custom-bottom">
                 <strong class="title-25">{{ registerProcedure.contactUsTitle }}</strong>
-                <div class="item i-1">
+                <div class="item i-1 wysiwyg">
                     {{ registerProcedure.contactUsLeftText|raw }}
                 </div>
 
-                <div class="item i-2">
+                <div class="item i-2 wysiwyg">
                     {{ registerProcedure.contactUsRightText|raw }}
                     <div class="buttons-02">
                         <a href="{{ path('fdc_court_metrage_contact') }}" class="button autoBtn centered">{{ 'ccm.register_movie.contact_form'|trans }}</a>
