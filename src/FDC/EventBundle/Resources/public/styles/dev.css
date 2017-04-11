@@ -603,3 +603,8 @@ a.notloaded {
     width: 640px;
     margin: 0 auto;
 }
+
+.single-article .text a strong {
+    color: #c8a461;
+    font-weight: 400;
+}
