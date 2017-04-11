@@ -52,6 +52,7 @@ class CorpoMediatheque implements TranslateMainInterface
      * @var CorpoMediathequeMedia
      *
      * @ORM\OneToMany(targetEntity="CorpoMediathequeMedia", mappedBy="mediatheque", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $medias;
 
