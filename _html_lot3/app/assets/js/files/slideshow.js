@@ -211,13 +211,13 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     }
                 });
 
-                console.log('After');
-                prettyprint(res);
+                // console.log('After');
+                // prettyprint(res);
 
                 res = encodeURI(res);
 
-                console.log('After encoding');
-                prettyprint(res);
+                // console.log('After encoding');
+                // prettyprint(res);
 
                 console.log('After # => %23');
                 prettyprint(res.replace('#', '%23'));
