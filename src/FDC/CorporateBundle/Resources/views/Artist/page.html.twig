@@ -75,7 +75,6 @@
                                 {#{% endif %}#}
                                 <div class="item">
                                     <a href="{{ path('fdc_corporate_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                        <div class="image">
                                         {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                         film: filmPerson.film,
                                         film_format: '366x488',
@@ -83,9 +82,10 @@
                                         alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
                                         'data-object-fit': 'cover'
                                         },
-                                        film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg'
+                                        film_image_default: 'bundles/fdccorporate/media/images/film_w181.jpg',
+                                        corpo: 'true'
                                         }) %}
-                                        </div>
+
                                     <div class="contain-txt">
                                         {% set secondTitle = null %}
                                         {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
@@ -143,7 +143,6 @@
                                     {% endif %}
                                     <div class="item">
                                         <a href="{{ path('fdc_corporate_movie_get', {'slug': filmPerson.film.slug}) }}">
-                                            <div class="image">
                                                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                                                 film: filmPerson.film,
                                                 film_format: '366x488',
@@ -151,9 +150,9 @@
                                                 alt: filmPerson.film|trans_fallback('title')?:filmPerson.film.titleVO,
                                                 'data-object-fit': 'cover'
                                                 },
-                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
+                                                film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg',
+                                                corpo: 'true'
                                                 }) %}
-                                            </div>
 
                                             <div class="content-text">
                                                 {% set secondTitle = null %}
