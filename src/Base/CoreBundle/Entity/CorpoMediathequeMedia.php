@@ -40,6 +40,11 @@ class CorpoMediathequeMedia
      * @ORM\ManyToOne(targetEntity="MediaAudio", cascade={"all"})
      */
     protected $audio;
+    
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    protected $position;
 
     /**
      * Get id
@@ -161,5 +166,28 @@ class CorpoMediathequeMedia
     public function getAudio()
     {
         return $this->audio;
+    }
+
+    /**
+     * Set position
+     *
+     * @param $position
+     * @return CorpoMediathequeMedia
+     */
+    public function setPosition($position = null)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return CorpoMediathequeMedia
+     */
+    public function getPosition()
+    {
+        return $this->position;
     }
 }

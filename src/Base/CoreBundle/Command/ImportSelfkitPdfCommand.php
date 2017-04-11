@@ -186,7 +186,7 @@ class ImportSelfkitPdfCommand extends ContainerAwareCommand
      */
     private function getAmazonDirectory()
     {
-        return $this->getContainer()->getParameter('selfkit_amazon_url_hd');
+        return $this->getContainer()->getParameter('selfkit_amazon_url');
     }
 
     /**
