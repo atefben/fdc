@@ -511,3 +511,7 @@ text-rendering: auto;
 #title-vf-selection a {
     color: #fff;
 }
+
+.block-push-top {
+  background-attachment: fixed;
+}
