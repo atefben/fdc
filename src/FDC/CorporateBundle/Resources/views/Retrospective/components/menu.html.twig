@@ -18,7 +18,7 @@
         {% endif %}
 
         {% if news %}
-        <li{% if 'fdc_corporate_news_getarticles' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getarticles', {year: app.request.attributes.get('year')}) }}">L'actualité</a></li>
+        <li{% if 'fdc_corporate_news_getarticles' in route or 'fdc_corporate_news_get' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getarticles', {year: app.request.attributes.get('year')}) }}">L'actualité</a></li>
         {% endif %}
     </ul>
 </nav>
