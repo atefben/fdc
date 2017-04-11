@@ -798,18 +798,5 @@ $(document).ready(function () {
             $(e).find('.linkVid').css('background-image','url('+src+')');
             $(e).find('.linkVid').css('background-size','cover');
         });
-
-
-        $.each($('img'),function (i, e) {
-            var src = $(e).attr('src');
-            var tmp = $(e).attr('style');
-            var dof = $(e).attr('data-object-fit');
-            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1) || dof) {
-                $(e).css('visibility', 'hidden');
-                $(e).parent().css('background-image', 'url('+src+')');
-                $(e).parent().css('background-size','cover');
-                $(e).parent().css('display', 'block');
-            }
-        });
     }
 });
