@@ -328,7 +328,7 @@ function updatePhotoShare(pid, title) {
     fbHref     = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
     fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($('[data-pid='+pid+']').attr('href')));
     fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent(t1.slice(0, -1)));
-    fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent('© ' + $('[data-pid='+pid+']').attr('data-credit')));
+    fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($('[data-pid='+pid+']').attr('data-credit')));
     $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
     // CUSTOM LINK TWITTER
     var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
