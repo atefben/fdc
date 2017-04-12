@@ -793,7 +793,7 @@ $(document).ready(function () {
                 $(e).parent().css('background-position-x','center');
                 $(e).parent().css('background-position-y','center');
                 $(e).parent().css('display', 'block');
-                if (!$('body').hasClass('story-palme')) {
+                if (!$('body').hasClass('story-palme') && $('.block-movie-preview').length) {
                     $(e).parent().css('height', '348px');
                 }
             }
