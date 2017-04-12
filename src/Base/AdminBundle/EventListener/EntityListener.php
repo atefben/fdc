@@ -857,6 +857,12 @@ class EntityListener
     private function defineFestival(LifecycleEventArgs $args)
     {
         $object = $args->getObject();
+
+        if (method_exists($object, 'getFestival')) {
+            if ($object->getFestival()) {
+                return;
+            }
+        }
         $entities = [
             News::class,
             NewsArticle::class,
