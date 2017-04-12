@@ -3591,7 +3591,6 @@ $(document).ready(function() {
     })
 
     $('body').on('click', '.gallery .thumbs a', function(e) {
-      e.preventDefault();
       var i = $(this).index(),
           cap = $(this).data('caption');
 
