@@ -453,5 +453,7 @@ body.chocolat-open.fixed {
     background-size: cover!important;
 }
 
-
+.single-article-space {
+    padding: 65px 0;
+}
 

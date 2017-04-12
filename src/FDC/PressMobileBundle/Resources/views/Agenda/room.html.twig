@@ -3,7 +3,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdcpressmobile/css/press_maps.css" %}
+    {% stylesheets
+        "bundles/fdcpressmobile/css/press_maps.css"
+        "bundles/fdcpressmobile/css/press_maps_custom.css"
+    %}
         <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
@@ -37,7 +40,7 @@
                 {% endif %}
                 {% set file = trans.file %}
                 {%- thumbnail file, '646x567' with {'title': '', 'alt': img|trans_fallback('alt'), 'class': 'map' } -%}
-                <h3>{{ 'plandessalles.label.lazonedufestival'|trans }}</h3>
+                <h3>{{ 'plandessalles.label.lazonedufestival'|trans({},'FDCEventBundle') }}</h3>
                 {% set roomActive = "room"~r.room.id %}
                 {% set active = "" %}
                 {% set img = r.room.zoneImage %}
@@ -46,7 +49,7 @@
                     {% set trans = img.findTranslationByLocale('fr') %}
                 {% endif %}
                 {% set file = trans.file %}
-                <a href="#" class="popin-plan" data-id="{{ r.room.id }}">{%- thumbnail file, '197x142' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
+                <a href="#" class="popin-plan" data-id="{{ r.room.id }}">{%- thumbnail file, '543x326' with {'title':'', 'alt': img|trans_fallback('alt'), 'data-image': roomActive, 'class': 'zone' } -%}</a>
             </div>
             {%- endfor -%}
         </div>
@@ -105,7 +108,10 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCPressMobileBundle/Resources/public/js/press_maps.js' %}
+    {% javascripts
+        '@FDCPressMobileBundle/Resources/public/js/press_maps.js'
+        '@FDCPressMobileBundle/Resources/public/js/press_maps_custom.js'
+    %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
