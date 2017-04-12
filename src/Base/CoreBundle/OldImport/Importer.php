@@ -1036,6 +1036,8 @@ class Importer
             $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
             $filename = $crawler->filter('video')->last()->attr('src');
             $aBase = str_replace('canneshd-f', 'canneshd-a', $base);
+            dump(trim($aBase) . trim($filename));
+            dump(trim($base) . trim($filename));
             if ($this->is404(trim($aBase) . trim($filename))) {
                 $file = $this->createVideo(trim($aBase) . trim($filename));
             } else {
