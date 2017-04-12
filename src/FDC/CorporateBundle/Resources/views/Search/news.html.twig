@@ -9,7 +9,7 @@
     {% for article in result.news.items %}
         <article class="block-poster-search medias landscape-more">
             <div class="item {{ article.newsType|get_news_type }} release-press">
-                <a href="{{ path('fdc_event_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug')}) }}">
+                <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': article.festival.year }) }}">
                     <div class="contain-img landscape">
                         {% if type is defined %}
                             {% if type == 'focus' %}
