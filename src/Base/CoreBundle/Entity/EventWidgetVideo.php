@@ -29,7 +29,7 @@ class EventWidgetVideo extends EventWidget
      * @param MediaVideo $file
      * @return $this
      */
-    public function setFile(MediaVideo $file)
+    public function setFile(MediaVideo $file = null)
     {
         $this->file = $file;
 
