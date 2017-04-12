@@ -36,11 +36,7 @@ class HomepageManager
     {
         return $this->em
             ->getRepository(HomepageSliderTranslation::class)
-            ->findBy(
-                array(
-                    'locale' => $this->requestStack->getMasterRequest()->get('_locale')
-                )
-            );
+            ->getOrderedSlidersByLocale($this->requestStack->getMasterRequest()->get('_locale'));
     }
 
     public function getPushes()

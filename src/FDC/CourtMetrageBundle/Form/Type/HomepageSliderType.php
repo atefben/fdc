@@ -115,6 +115,7 @@ class HomepageSliderType extends AbstractType
                 'btn_delete' => false,
                 'required' => true
             ))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 
