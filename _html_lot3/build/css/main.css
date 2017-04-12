@@ -5729,6 +5729,7 @@ strong.title-center {
   border-top: #2c2c2c 1px solid;
   font-size: 1rem;
   text-align: center;
+  background-color: #141414;
 }
 .dark .title-list-cat .title {
   max-width: 549px;
@@ -7065,6 +7066,7 @@ body.chocolat-open > .chocolat-content {
   max-width: 700px;
   text-align: center;
   padding-bottom: 20px;
+  background-color: #fff;
 }
 
 .article-single #main,
