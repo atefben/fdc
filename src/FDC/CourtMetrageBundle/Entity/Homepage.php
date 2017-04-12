@@ -31,6 +31,7 @@ class Homepage implements CcmAProposInterface
 
     /**
      * @ORM\OneToMany(targetEntity="HomepageSlider", mappedBy="homepage", cascade={"persist", "remove", "refresh"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      * @Assert\Count(
      *      min = "3",
      *      minMessage = "ccm.validation.homepage.sliders_min",

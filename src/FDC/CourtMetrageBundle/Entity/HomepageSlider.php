@@ -43,6 +43,13 @@ class HomepageSlider
     protected $homepage;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $position;
+
+    /**
      * HomepageSlider constructor.
      */
     public function __construct()
@@ -130,5 +137,21 @@ class HomepageSlider
         $this->translations = $translations;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }
