@@ -127,7 +127,11 @@ $(document).ready(function() {
       }
     });
 
-    $('body').on('click', '.gallery .thumbs a', function(e) {
+    $('.gallery .thumbs a').click(function () {
+        console.log('TEREZRZEZEEC');
+    });
+
+    $('body').on('click', '.gallery', function(e) {
       e.preventDefault();
       var i = $(this).index(),
           cap = $(this).data('caption');
