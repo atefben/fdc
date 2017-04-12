@@ -1032,13 +1032,8 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 });
             }, 1000);
-
-
             initRs();
-
-
         });
-
     }
 
     function updatePopinMedia(data) {

@@ -1032,13 +1032,8 @@ function playerInit(id, cls, havePlaylist, live) {
 
                 });
             }, 1000);
-
-
             initRs();
-
-
         });
-
     }
 
     function updatePopinMedia(data) {
@@ -2756,7 +2751,7 @@ var addNextFilters = function () {
 var owInitFilterSearch = function () {
     var block = $('.block-searh-more');
 
-    $('.result-more').on('click', function (e) {
+    $('.result-more > *:not(a)').on('click', function (e) {
         e.preventDefault();
 
         block.toggleClass('visible');
