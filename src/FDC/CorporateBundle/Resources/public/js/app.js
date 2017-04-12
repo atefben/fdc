@@ -1673,7 +1673,6 @@ var initAudio = function (hash) {
                 history.pushState(null, null, hashPush);
 
                 audioPopin.play();
-                audioPopin.play();
             }, 900);
 
 
