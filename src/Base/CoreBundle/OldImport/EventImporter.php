@@ -198,9 +198,9 @@ class EventImporter extends Importer
      */
     protected function buildEventTranslation(Event $event, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(
+        $mapperFields = [
             'resume' => 'introduction',
-        );
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
@@ -453,21 +453,9 @@ class EventImporter extends Importer
 
                                 $this->getManager()->remove($gallery);
                             }
-                            $mediaImage->removeGallery($galleryMedia);
-                            $this->getManager()->remove($galleryMedia);
                         }
                     }
-
-                    $newsWidgets = $this
-                        ->getManager()
-                        ->getRepository('BaseCoreBundle:GalleryMedia')
-                        ->findBy(['media' => $mediaImage->getId()])
-                    ;
-
-                    if (!$newsWidgets) {
-                        $this->getManager()->remove($mediaImage);
-                    }
-
+                    $this->getManager()->remove($mediaImage);
                     $this->getManager()->flush();
                 }
                 continue;
@@ -694,7 +682,7 @@ class EventImporter extends Importer
             if (in_array($oldArticle->getId(), [57610, 58049, 59042, 59675, 60062, 61390, 58232, 59120, 58048, 58286])) {
 
                 foreach ($oldArticleTranslations as $trans) {
-                    if ($trans->getCulture() == 'fr' && $oldArticle->getIsOnline() ) {
+                    if ($trans->getCulture() == 'fr' && $oldArticle->getIsOnline()) {
                         $this->status = TranslateChildInterface::STATUS_PUBLISHED;
                         ++$countEvents;
                         return true;
