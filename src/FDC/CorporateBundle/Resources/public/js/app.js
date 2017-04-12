@@ -3588,9 +3588,9 @@ $(document).ready(function() {
       if(w/h > 0.8179 && !jQuery('#main').hasClass('single-movie')) {
         $(this).addClass('landscape');
       }
-    })
+    });
 
-    $('body').on('click', '.gallery .thumbs img', function(e) {
+    $('body').on('click', '.gallery .thumbs a', function(e) {
       e.preventDefault();
       var i = $(this).index(),
           cap = $(this).data('caption');
