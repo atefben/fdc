@@ -94,6 +94,10 @@ sup {
     color: #c8a461;
 }
 
+.wysiwyg a > strong {
+    color: #c8a461!important;
+}
+
 .topiconsContainer .icon-border-right {
     border-right: 1px solid #404040;
 }
