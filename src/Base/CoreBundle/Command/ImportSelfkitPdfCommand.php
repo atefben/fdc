@@ -147,7 +147,7 @@ class ImportSelfkitPdfCommand extends ContainerAwareCommand
                 }
 
                 $media->setName($oldImage->getTitre());
-                $media->setProviderReference($oldImage->getTitre());
+//                $media->setProviderReference($oldImage->getTitre());
                 $this->getMediaManager()->save($media, false);
                 if ($film) {
                     if (!$film->getSelfkitPdfFiles()->contains($media)) {

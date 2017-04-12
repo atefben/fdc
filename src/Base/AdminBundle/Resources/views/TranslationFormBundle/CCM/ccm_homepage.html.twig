@@ -83,6 +83,7 @@
                                                 <h4><strong>{{ 'form.ccm.label.slider.homepage'|trans }}</strong></h4>
                                             {% endif %}
                                             {{ form_row(widget._type) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_row(widget.image) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
 
@@ -280,6 +281,7 @@
                                         <div class="item base-widget" data-itemtype="slider">
                                             {{ form_row(widget._type) }}
                                             {{ form_row(widget.image) }}
+                                            {{ form_row(widget.position) }}
                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
                                         </div>
                                     {% endfor %}
