@@ -9,12 +9,12 @@
         <div class="all-contain">
 
             {% if filmRegisterPage.translatable.isTextActive %}
-                <div class="block-p-register block-01-ms">
+                <div class="block-p-register block-01-mms wysiwyg">
                     {{ filmRegisterPage.text|raw }}
                 </div>
             {% endif %}
 
-            <div class="block-tab-switch block-01-ms">
+            <div class="block-tab-switch block-01-mms">
                 <h3 class="title-tab-swich">{{ filmRegisterPage.proceduresTitle|raw }}</h3>
             </div>
 
@@ -38,7 +38,7 @@
 
                 {% for item in registerProcedures %}
                     <div class="block-contain-txt-register-movie" data-article="{{ item.slug }}">
-                        <div class="block-01-ms w">
+                        <div class="block-01-mms w">
 
                             {% if item.name %}<h4>{{ item.name }}</h4>{% endif %}
                             {{ item.procedureText|raw }}
@@ -46,7 +46,7 @@
 
                         {% if item.isCharacteristicsActive %}
                             <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-                                <div class="block-01-ms">
+                                <div class="block-01-mms">
                                     {% if item.characteristicsTitle %}<strong class="title-25"><h3>{{ item.characteristicsTitle }}</h3></strong>{% endif %}
 
                                     {{ item.characteristicsText|raw }}
@@ -62,7 +62,7 @@
 
                         {% if item.isRegulationActive %}
                             <div class="block-s-info border-bottom border-top vFlexAlign movieOnline">
-                                <div class="block-01-ms">
+                                <div class="block-01-mms">
                                     {% if item.regulationTitle %}<strong class="title-25"><h3 class="reducedPadding">{{ item.regulationTitle }}</h3></strong>{% endif %}
                                     {{ item.regulationText|raw }}<br>
                                     <div class="buttons-02 centered">
@@ -85,7 +85,7 @@
                         {% endif %}
 
                         {% if item.contactUsTitle %}
-                            <div class="block-contact block-01-ms">
+                            <div class="block-contact block-01-mms">
                                 {% if item.contactUsTitle %}<strong class="title-25">{{ item.contactUsTitle }}</strong>{% endif %}
                                 {% if item.contactUsLeftText %}
                                 <div class="item i-1">

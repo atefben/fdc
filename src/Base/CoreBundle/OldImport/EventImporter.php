@@ -691,7 +691,7 @@ class EventImporter extends Importer
         if ($isAvailable) {
 
             // published
-            if (in_array($oldArticle->getId(), [57610, 58049, 59042, 59675, 60062, 61390, 58232])) {
+            if (in_array($oldArticle->getId(), [57610, 58049, 59042, 59675, 60062, 61390, 58232, 59120, 58048, 58286])) {
 
                 foreach ($oldArticleTranslations as $trans) {
                     if ($trans->getCulture() == 'fr' && $oldArticle->getIsOnline() ) {

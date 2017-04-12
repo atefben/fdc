@@ -2639,7 +2639,7 @@ sup {
 .little-txt {
   color: #969696;
   font-size: 0.750rem;
-  margin: 10px 0 0;
+  margin: 20px 0px 30px 0px;
   text-align: left;
   line-height: 20px;
 }
@@ -3699,7 +3699,7 @@ sup {
   @include transition(all 0.1s $smoothTransition);
 }
 
-.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
   border: 6px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
 }
@@ -3708,6 +3708,15 @@ sup {
   border: 0px solid #FFFFFF!important;
   @include transition(all 0.1s $smoothTransition);
 }*/
+.goldSlideshow .owl-stage {
+  width: 1177px !important;
+}
+
+.goldSlideshowmargin {
+  transform: translate3d(-642px, 0px, 0px) !important;
+  transition: 0.9s;
+}
+
 .eventSlideshow {
   margin: 0 auto;
 }
@@ -15648,7 +15657,7 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  /*-ms-transform: scale(1.1); 
+  /*-ms-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15724,11 +15733,11 @@ a {
   /*&:hover .plusSign {
     @include transition(all 0.9s $smoothTransition);
     -webkit-transition: all 0.5s;
-    -ms-transform: scale(1.2); 
-    -webkit-transform: scale(1.2); 
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
     transform: scale(1.2);
-    -ms-transform: rotate(360deg); 
-    -webkit-transform: rotate(360deg); 
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }*/
 }
@@ -16037,7 +16046,7 @@ a {
   width: 100%;
   height: 100%;
 }
-.about .aboutPhotos {
+.about .aboutVideos {
   display: none;
 }
 .about .aboutVideos article, .about .aboutVideos img {
@@ -16324,7 +16333,7 @@ article .read-later.rAlign span:after {
 }
 
 .single-article {
-  padding: 65px 0;
+  padding: 0px 0;
 }
 .single-article .text {
   margin: 35px 0px;
@@ -21168,7 +21177,7 @@ body:not(.tablette) .webtv #live .img {
   display: inline-block;
 }
 .faq h2 {
-  padding: 60px;
+  padding: 50px;
   font-size: 1.75rem;
 }
 .faq section {
@@ -27123,7 +27132,7 @@ body:not(.tablette) .webtv #live .img {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;  
+  z-index: 1004;
   right: 1%;
   top: 100%;*/
   display: none;
@@ -28015,7 +28024,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-      
+
         &:after {
         content: '';
     }
@@ -29569,7 +29578,7 @@ body:not(.mob) .list-article .bandeau-list .bandeau-list-img {
   text-transform: uppercase;
   line-height: 25px;
   margin-bottom: 0px !important;
-  margin-top: 30px;
+  margin-top: 40px;
   letter-spacing: 0px !important;
 }
 .onlinegoldBorders .specs span {

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * HomepageSliderTranslation
  * @ORM\Table(name="ccm_homepage_slider_translation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FDC\CourtMetrageBundle\Repository\HomepageSliderTranslationRepository")
  */
 class HomepageSliderTranslation
 {

@@ -78,6 +78,7 @@ class CorpoMediaLibraryItemRepository extends EntityRepository
         }
 
         return $qb
+            ->addOrderBy('i.festivalYear', 'desc')
             ->addOrderBy('i.weight', 'desc')
             ->addOrderBy('i.filmTitleVO', 'asc')
             ->addOrderBy('i.sortedAt', 'desc')

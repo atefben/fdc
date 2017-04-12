@@ -734,6 +734,18 @@ class Importer
         $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
         $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
 
+        if (!$file) {
+            $path = $oldMediaI18n->getHdFormatFilename();
+            if (false !== strpos($path, '.smil')) {
+                $this->getVideoFromSmil($path);
+
+            }
+            else{
+                $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+            }
+
+        }
+
         dump($file);
         if (!$file && $locale == 'fr') {
             dump($oldMediaI18n->getId());
@@ -1022,6 +1034,21 @@ class Importer
             return false;
         } else {
             return true;
+        }
+    }
+
+    protected function getVideoFromSmil($smil)
+    {
+        try {
+            $url = 'http://www.festival-cannes.fr/' . $smil;
+            $contentFile = file_get_contents($url);
+            $crawler = new Crawler($contentFile);
+            $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
+            $filename = $crawler->filter('video')->last()->attr('src');
+            $file = $this->createVideo(trim($base) . trim($filename));
+            return $file;
+        } catch (\Exception $e) {
+            $this->output->writeln('<error>' . $e->getMessage() . '</error>');
         }
     }
 

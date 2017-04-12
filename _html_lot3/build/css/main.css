@@ -5729,6 +5729,7 @@ strong.title-center {
   border-top: #2c2c2c 1px solid;
   font-size: 1rem;
   text-align: center;
+  background-color: #141414;
 }
 .dark .title-list-cat .title {
   max-width: 549px;
@@ -7056,7 +7057,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .module-title .title-big {
-  color: #141414;
+  color: #fff;
   font-family: "Playfair Display";
   font-size: 3rem;
   font-weight: 400;
@@ -7704,13 +7705,6 @@ header #navigation ul.user li a:hover .icon-pencil:before {
 
 .noscroll {
   overflow: hidden;
-}
-
-.fullscreen-slider img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -11314,7 +11308,12 @@ body#home .isotope-01 .item .info {
 .fullscreen-slider img {
   max-width: 100vw;
   height: 100%;
-  transition: all 900ms linear;
+  transition: transform 50ms linear;
+  will-change: transform;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*
@@ -11633,6 +11632,11 @@ Slider channel
 }
 .popin-mail .contain-popin .chap-article a {
   color: #c8a461;
+}
+.popin-mail .contain-popin .ensalle {
+  display: none;
+  font-size: 0.63rem;
+  font-family: 'Camphor W01 Bold', Arial, Helvetica, sans-serif;
 }
 .popin-mail form {
   width: 528px;

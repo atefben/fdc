@@ -25,7 +25,7 @@
 
         <div class="ajax-section">
             <div class="contain-ajax">
-                {{ render(controller('FDCCorporateBundle:WhoAreWe:nav', {'slug' : 'equipe'})) }}
+                {{ render(controller('FDCCorporateBundle:WhoAreWe:nav', {'slug' : 'charte-graphique'})) }}
 
                 <div class="all-contain">
 
@@ -804,16 +804,12 @@
     {"breadcrumb":
     [
     {
-    "name" : 'ccm.breadcrumb.home'|trans,
-    "url"  : path('fdc_court_metrage_homepage')
+    "name" : 'header.nav.qui'|trans,
+    "url"  : path('fdc_corporate_default_home')
     },
     {
-    "name" : 'breadcrumb.inscrire'|trans,
-    "url"  : path('fdc_court_metrage_register_movie')
-    },
-    {
-    "name" : 'breadcrumb.participer.label'|trans,
-    "url"  : ''
+    "name" : 'aboutus.graphical_charter'|trans,
+    "url"  : path('fdc_corporate_whoarewe_graphicalcharter')
     }
     ]
     } %}

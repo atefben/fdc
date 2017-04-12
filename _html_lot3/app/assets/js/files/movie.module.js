@@ -125,22 +125,20 @@ $(document).ready(function() {
       if(w/h > 0.8179 && !jQuery('#main').hasClass('single-movie')) {
         $(this).addClass('landscape');
       }
-    })
-
-    $('body').on('click', '.gallery .thumbs a', function(e) {
-      e.preventDefault();
-      var i = $(this).index(),
-          cap = $(this).data('caption');
-
-      $('.gallery .img img').removeClass('active');
-      $('.gallery .img img').eq(i).addClass('active');
-
-      $('.gallery .thumbs a').removeClass('active');
-      $(this).addClass('active');
-
-      $('.gallery .caption').text(cap);
     });
 
+    $('.gallery .thumbs a').click(function () {
+        var i = $(this).index(),
+            cap = $(this).data('caption');
+
+        $('.gallery .img img').removeClass('active');
+        $('.gallery .img img').eq(i).addClass('active');
+
+        $('.gallery .thumbs a').removeClass('active');
+        $(this).addClass('active');
+
+        $('.gallery .caption').text(cap);
+    });
 
     // anchors menu
     $('body').on('click', '#nav-movie ul a', function (e) {

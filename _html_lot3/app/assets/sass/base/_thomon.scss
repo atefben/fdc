@@ -68,7 +68,7 @@
 }
 
 .module-title .title-big {
-    color: $black;
+    color: #fff;
     font-family: "Playfair Display";
     font-size: 3rem;
     font-weight: 400;
@@ -812,13 +812,6 @@ header #navigation ul.user li a {
 
 .noscroll {
     overflow: hidden;
-}
-
-.fullscreen-slider img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-     user-select: none;
 }
 
 @media only screen and (max-width : 1440px) {
