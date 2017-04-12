@@ -7706,13 +7706,6 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   overflow: hidden;
 }
 
-.fullscreen-slider img {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc3 {
     zoom: 0.9;
@@ -11314,7 +11307,12 @@ body#home .isotope-01 .item .info {
 .fullscreen-slider img {
   max-width: 100vw;
   height: 100%;
-  transition: all 900ms linear;
+  transition: transform 900ms linear;
+  will-change: transform;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*
