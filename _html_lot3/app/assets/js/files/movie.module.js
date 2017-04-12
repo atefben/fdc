@@ -128,23 +128,18 @@ $(document).ready(function() {
     });
 
     $('.gallery .thumbs a').click(function () {
-        console.log('TEREZRZEZEEC');
+        e.preventDefault();
+        var i = $(this).index(),
+            cap = $(this).data('caption');
+
+        $('.gallery .img img').removeClass('active');
+        $('.gallery .img img').eq(i).addClass('active');
+
+        $('.gallery .thumbs a').removeClass('active');
+        $(this).addClass('active');
+
+        $('.gallery .caption').text(cap);
     });
-
-    $('body').on('click', '.gallery', function(e) {
-      e.preventDefault();
-      var i = $(this).index(),
-          cap = $(this).data('caption');
-
-      $('.gallery .img img').removeClass('active');
-      $('.gallery .img img').eq(i).addClass('active');
-
-      $('.gallery .thumbs a').removeClass('active');
-      $(this).addClass('active');
-
-      $('.gallery .caption').text(cap);
-    });
-
 
     // anchors menu
     $('body').on('click', '#nav-movie ul a', function (e) {
