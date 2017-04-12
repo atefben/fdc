@@ -72,7 +72,9 @@
                                                         <h6 class="conf60title">{{ scheduleCollection.schedule|trans_fallback('title') }}</h6>
                                                         <span>{{ scheduleCollection.schedule|trans_fallback('title') }}</span>
                                                         {% if scheduleCollection.schedule|trans_fallback('description') %}
-                                                            {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
+                                                            <div class="wysiwyg">
+                                                                {{ scheduleCollection.schedule|trans_fallback('description')|raw }}
+                                                            </div>
                                                         {% endif %}
                                                         {% if scheduleCollection.schedule|trans_fallback('url') %}
                                                             <a href="{{ scheduleCollection.schedule|trans_fallback('url') }}" {% if fdc_court_metrage_scheme in scheduleCollection.schedule|trans_fallback('url') %}target="_blank"{% endif %}>
