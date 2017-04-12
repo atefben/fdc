@@ -835,7 +835,7 @@ function playerInit(id, cls, havePlaylist, live) {
         var videoNews;
         if(hash != undefined) {
 
-            $this = $('.item.video[data-vid="'+hash+'"');
+            $this = $('.item.video[data-vid="'+hash+'"]');
 
             $('.activeVideo').removeClass('activeVideo');
             $this.addClass('activeVideo');
