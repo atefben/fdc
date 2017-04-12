@@ -833,7 +833,7 @@ function playerInit(id, cls, havePlaylist, live) {
 
     var initPopinVideo = function(hash) {
         var videoNews;
-        if(hash != undefined && $('.video[data-vid="'+hash+'"]')) {
+        if(hash != undefined && $('.video[data-vid="'+hash+'"]').length) {
 
             $this = $('.video[data-vid="'+hash+'"]');
 
