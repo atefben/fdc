@@ -3590,7 +3590,8 @@ $(document).ready(function() {
       }
     })
 
-    $('body').on('click', '.gallery .thumbs a', function(e) {
+    $('body').on('click', '.gallery .thumbs img', function(e) {
+      e.preventDefault();
       var i = $(this).index(),
           cap = $(this).data('caption');
 
