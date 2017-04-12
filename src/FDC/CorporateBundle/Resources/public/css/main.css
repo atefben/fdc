@@ -7057,7 +7057,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 .module-title .title-big {
-  color: #141414;
+  color: #fff;
   font-family: "Playfair Display";
   font-size: 3rem;
   font-weight: 400;
@@ -7066,7 +7066,6 @@ body.chocolat-open > .chocolat-content {
   max-width: 700px;
   text-align: center;
   padding-bottom: 20px;
-  background-color: #fff;
 }
 
 .article-single #main,
