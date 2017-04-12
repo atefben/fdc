@@ -848,7 +848,7 @@ function playerInit(id, cls, havePlaylist, live) {
                 date = $this.find('.date').text(),
                 hour = $this.find('.hour').text(),
                 name = $this.find('.contain-txt strong a').html();
-            videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
+            videoNews = playerInit('video-player-popin', 'video-playlist', null, false);
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
@@ -953,7 +953,7 @@ function playerInit(id, cls, havePlaylist, live) {
                     name = $(this).find('.contain-txt strong a').text();
                 }
 
-            videoNews = playerInit('video-player-popin', 'video-playlist', 'grid', false);
+            videoNews = playerInit('video-player-popin', 'video-playlist', null, false);
 
             var hashPush = '#vid='+vid;
             history.pushState(null, null, hashPush);
