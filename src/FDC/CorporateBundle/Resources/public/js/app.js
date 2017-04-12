@@ -2751,11 +2751,13 @@ var addNextFilters = function () {
 var owInitFilterSearch = function () {
     var block = $('.block-searh-more');
 
-    $('.result-more').find('*:not(a)').on('click', function (e) {
+    $('.result-more').on('click', function (e) {
         e.preventDefault();
-
         block.toggleClass('visible');
-    })
+    });
+    $('.result-more a').on('click', function (e) {
+        e.stopPropagation();
+    });
 }
 
 var owFixMobile = function() {
