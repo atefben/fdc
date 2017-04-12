@@ -305,6 +305,7 @@ class Importer
      */
     private function createFile($url, $type)
     {
+        dump($url);
         if ($this->is404($url)) {
             return null;
         }
@@ -729,26 +730,25 @@ class Importer
             return null;
         }
 
-        $path = $oldMediaI18n->getDeliveryUrl();
-        $pathArray = explode(',', $path);
-        $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-        $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+        $file = null;
+        if ($oldMediaI18n->getDeliveryUrl()) {
+            $path = $oldMediaI18n->getDeliveryUrl();
+            $pathArray = explode(',', $path);
+            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
+            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+        }
 
-        if (!$file) {
+        if (!$file && $oldMediaI18n->getHdFormatFilename()) {
             $path = $oldMediaI18n->getHdFormatFilename();
             if (false !== strpos($path, '.smil')) {
                 $this->getVideoFromSmil($path);
-
-            }
-            else{
+            } else {
                 $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
             }
 
         }
 
-        dump($file);
         if (!$file && $locale == 'fr') {
-            dump($oldMediaI18n->getId());
             $biOldMediaI18n = $this
                 ->getManager()
                 ->getRepository('BaseCoreBundle:OldMediai18n')
@@ -1019,22 +1019,12 @@ class Importer
 
     private function is404($url)
     {
-        $handle = curl_init($url);
-        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
-
-        /* Get the HTML or whatever is linked in $url. */
-        $response = curl_exec($handle);
-
-        /* Check for 404 (file not found). */
-        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-        curl_close($handle);
-
-        /* If the document has loaded successfully without any redirection or error */
-        if ($httpCode >= 200 && $httpCode < 300) {
+        $headers = @get_headers($url);
+        $httpStatus = intval(substr($headers[0], 9, 3));
+        if ($httpStatus < 400) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     protected function getVideoFromSmil($smil)
@@ -1045,7 +1035,15 @@ class Importer
             $crawler = new Crawler($contentFile);
             $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
             $filename = $crawler->filter('video')->last()->attr('src');
-            $file = $this->createVideo(trim($base) . trim($filename));
+            $aBase = str_replace('canneshd-f', 'canneshd-a', $base);
+            dump(trim($aBase) . trim($filename));
+            dump(trim($base) . trim($filename));
+            if ($this->is404(trim($aBase) . trim($filename))) {
+                $file = $this->createVideo(trim($aBase) . trim($filename));
+            } else {
+                $file = $this->createVideo(trim($base) . trim($filename));
+            }
+
             return $file;
         } catch (\Exception $e) {
             $this->output->writeln('<error>' . $e->getMessage() . '</error>');

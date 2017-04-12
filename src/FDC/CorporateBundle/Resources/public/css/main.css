@@ -5256,6 +5256,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   padding-top: 55px;
   display: none;
 }
+.block-contain-txt-register-movie h3 {
+  font-weight: bold;
+}
+.block-contain-txt-register-movie h4 {
+  padding-bottom: 32px;
+}
 .block-contain-txt-register-movie .info {
   text-align: left;
 }
@@ -7442,10 +7448,6 @@ article.communique .picto .icon {
   line-height: 2em;
   margin-bottom: 70px;
   text-align: center;
-}
-
-.block-contain-txt-register-movie h4 {
-  padding-bottom: 32px;
 }
 
 .block-contain-txt-register-movie h5 {
