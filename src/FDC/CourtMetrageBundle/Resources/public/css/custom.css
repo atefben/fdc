@@ -281,6 +281,9 @@ body.chocolat-open.fixed {
 .conferences .conf60 {
     padding-bottom: 25px;
 }
+.conferences .conf60 .confButton {
+    bottom: 30px;
+}
 
 .block-01-mms .audio-container {
     margin-top: 70px;
