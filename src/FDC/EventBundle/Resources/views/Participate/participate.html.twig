@@ -12,7 +12,7 @@
             {% set mainImage = mainTrans.file %}
 			{% endif %}
             <div class="bandeau-list-img vCenterKid"
-                 style="background-image:url({% if mainImage is defined %}{% path mainImage, '613h' %}{% endif %})">
+                 style="background-image:url({% if mainImage is defined %}{% path mainImage, '1280x808' %}{% endif %})">
                 <h2 class="title title-list-header">
                     {% if participatePage|trans_fallback('icon') is not null %}
                         <i class="icon {{ participatePage|trans_fallback('icon') }}"></i>
