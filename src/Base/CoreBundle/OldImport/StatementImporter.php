@@ -122,6 +122,9 @@ class StatementImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($statement, $oldArticle);
+                }
+                elseif ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildStatementWidgetsVideo($statement, $translation, $oldTranslation);
                 } else {
                     $this->buildStatementWidgetText($statement, $translation, $oldTranslation);
                     $this->buildStatementWidgetYoutube($statement, $translation, $oldTranslation);

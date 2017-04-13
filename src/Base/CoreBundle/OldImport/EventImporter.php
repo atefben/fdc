@@ -145,11 +145,16 @@ class EventImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildEventTranslation($event, $oldTranslation);
             if ($translation) {
-                $this->buildEventWidgetText($event, $translation, $oldTranslation);
-                $this->buildEventWidgetYoutube($event, $translation, $oldTranslation);
-                $this->buildEventWidgetImage($event, $translation, $oldTranslation);
-                $this->buildEventWidgetsAudio($event, $translation, $oldTranslation);
-                $this->buildEventWidgetsVideo($event, $translation, $oldTranslation);
+                if ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildEventWidgetsVideo($event, $translation, $oldTranslation);
+                }
+                else {
+                    $this->buildEventWidgetText($event, $translation, $oldTranslation);
+                    $this->buildEventWidgetYoutube($event, $translation, $oldTranslation);
+                    $this->buildEventWidgetImage($event, $translation, $oldTranslation);
+                    $this->buildEventWidgetsAudio($event, $translation, $oldTranslation);
+                    $this->buildEventWidgetsVideo($event, $translation, $oldTranslation);
+                }
             }
         }
 

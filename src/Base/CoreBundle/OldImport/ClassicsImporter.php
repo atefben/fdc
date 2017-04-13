@@ -13,18 +13,13 @@ use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideo;
 use Base\CoreBundle\Entity\FDCPageLaSelectionCannesClassicsWidgetVideoYoutube;
 use Base\CoreBundle\Entity\Gallery;
 use Base\CoreBundle\Entity\GalleryMedia;
-use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageTranslation;
-use Base\CoreBundle\Entity\MediaVideo;
-use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\OldArticle;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementArticleTranslation;
 use Base\CoreBundle\Entity\StatementWidgetVideoYoutubeTranslation;
-use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class ClassicsImporter extends Importer
@@ -118,11 +113,15 @@ class ClassicsImporter extends Importer
         foreach ($oldTranslations as $oldTranslation) {
             $translation = $this->buildClassicsArticleTranslation($classics, $oldTranslation);
             if ($translation) {
-                $this->buildClassicsWidgetText($classics, $translation, $oldTranslation);
-                $this->buildClassicsWidgetYoutube($classics, $translation, $oldTranslation);
-                $this->buildClassicsWidgetImage($classics, $translation, $oldTranslation);
-                $this->buildClassicsWidgetsAudio($classics, $translation, $oldTranslation);
-                $this->buildClassicsWidgetsVideo($classics, $translation, $oldTranslation);
+                if ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildClassicsWidgetsVideo($classics, $translation, $oldTranslation);
+                } else {
+                    $this->buildClassicsWidgetText($classics, $translation, $oldTranslation);
+                    $this->buildClassicsWidgetYoutube($classics, $translation, $oldTranslation);
+                    $this->buildClassicsWidgetImage($classics, $translation, $oldTranslation);
+                    $this->buildClassicsWidgetsAudio($classics, $translation, $oldTranslation);
+                    $this->buildClassicsWidgetsVideo($classics, $translation, $oldTranslation);
+                }
             }
         }
 
@@ -172,8 +171,8 @@ class ClassicsImporter extends Importer
      */
     protected function buildClassicsArticleTranslation(FDCPageLaSelectionCannesClassics $classics, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = array(//'resume' => 'introduction',
-        );
+        $mapperFields = [//'resume' => 'introduction',
+        ];
 
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
