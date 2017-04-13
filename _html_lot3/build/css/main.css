@@ -13597,7 +13597,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 635px;
 }
 .single-article .audio-container {
-  margin: 0 auto;
+  margin: 0 auto 70px;
   width: 630px;
 }
 
@@ -16188,9 +16188,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .single-article {
   padding: 65px 0;
-}
-.single-movie .single-article .audio-container {
-  margin: 0 auto 70px;
 }
 .single-movie .single-article ul li {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
