@@ -144,10 +144,10 @@ class WhoAreWeController extends Controller
                 } elseif ($widget instanceof GraphicalCharterSectionWidgetTwoColumns) {
                     $itemWidget['type'] = 'two-columns';
                     if ($widget->getImage()) {
-                        $itemWidget['image'][] = $widget->getImage();
+                        $itemWidget['image'] = $widget->getImage();
                     }
                     if ($widget->getImage2()) {
-                        $itemWidget['image2'][] = $widget->getImage2();
+                        $itemWidget['image2'] = $widget->getImage2();
                     }
                     if ($widgetTrans instanceof GraphicalCharterSectionWidgetTwoColumnsTranslation) {
                         $itemWidget['title'] = $widgetTrans->getTitle();
@@ -167,13 +167,13 @@ class WhoAreWeController extends Controller
                 } elseif ($widget instanceof GraphicalCharterSectionWidgetThreeColumns) {
                     $itemWidget['type'] = 'three-columns';
                     if ($widget->getImage()) {
-                        $itemWidget['image'][] = $widget->getImage();
+                        $itemWidget['image'] = $widget->getImage();
                     }
                     if ($widget->getImage2()) {
-                        $itemWidget['image2'][] = $widget->getImage2();
+                        $itemWidget['image2'] = $widget->getImage2();
                     }
                     if ($widget->getImage3()) {
-                        $itemWidget['image3'][] = $widget->getImage3();
+                        $itemWidget['image3'] = $widget->getImage3();
                     }
                     if ($widgetTrans instanceof GraphicalCharterSectionWidgetThreeColumnsTranslation) {
                         $itemWidget['title'] = $widgetTrans->getTitle();

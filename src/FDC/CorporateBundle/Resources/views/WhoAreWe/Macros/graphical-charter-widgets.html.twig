@@ -131,6 +131,7 @@
 
         <div class="three-images vFlexAlign">
             <div class="item-img">
+                {% dump(widget.image) %}
                 {% if widget.image|default(null) %}
                     <div class="contain-img vFlexAlign">
                         <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="image">
