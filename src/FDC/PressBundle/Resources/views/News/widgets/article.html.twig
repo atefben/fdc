@@ -26,7 +26,6 @@
                     {% set file = trans.file %}
                     {% thumbnail file, '265x165' with {'alt': img|trans_fallback('alt') } %}
                 {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
-                    <!-- img -->
                     {% set header = article.image %}
                     {% if header is not null %}
                         {% set trans = header.findTranslationByLocale(app.request.locale) %}
@@ -38,6 +37,8 @@
                                 {% set imageTrans = trans %}
                             {% endif %}
                         {% endif %}
+                        {% set file = trans.file %}
+                        {% thumbnail file, '265x165' with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                     {% if imageTrans is defined and imageTrans is not null %}
                         {% set file = imageTrans.file %}
