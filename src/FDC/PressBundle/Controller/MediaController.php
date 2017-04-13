@@ -314,11 +314,13 @@ class MediaController extends Controller
             $zip->open($zipPath, \ZipArchive::CREATE);
 
             foreach ($galleryImage as $media) {
-                array_push($galleryPhotos, $media->getFile());
-                $provider = $this->container->get($media->getFile()->getProviderName());
-                $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getFile(), true), $provider);
-                if (@file_get_contents($fUrl) !== false) {
-                    $zip->addFromString(basename($media->getFile()), file_get_contents($fUrl));
+                if ($media && $media->getFile()) {
+                    array_push($galleryPhotos, $media->getFile());
+                    $provider = $this->container->get($media->getFile()->getProviderName());
+                    $fUrl = $provider->getCdn()->getPath($provider->getReferenceImage($media->getFile(), true), $provider);
+                    if (@file_get_contents($fUrl) !== false) {
+                        $zip->addFromString(basename($media->getFile()), file_get_contents($fUrl));
+                    }
                 }
             }
             $zip->close();
