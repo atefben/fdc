@@ -24,6 +24,7 @@ class GetClassExtension extends \Twig_Extension
         );
     }
 
+    
     /**
      * @param $object
      * @return string
