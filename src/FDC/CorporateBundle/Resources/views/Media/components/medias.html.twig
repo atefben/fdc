@@ -3,7 +3,7 @@
     {% if class(media) == 'MediaImageSimple' %}
         {% set mediaPid  = 'mis' ~ media.id %}
         {% set film  = media.imageMainFilms|last|default(media.imageCoverFilms|last) %}
-        {% if  film is defined and film.festival %}
+        {% if  film is defined and film.festival is defined %}
             {% set dateMedia = film.festival.year %}
             {% set timestamp = film.festival.festivalStartsAt|date('U') %}
         {% else %}
@@ -52,7 +52,7 @@
     {% elseif class(media) == 'Media' %}
         {% set mediaPid  = 'sm' ~ media.id %}
         {% set film  = media.selfkitFilms|first %}
-        {% if  film is defined and film.festival %}
+        {% if  film is defined and film.festival is defined %}
             {% set dateMedia = film.festival.year %}
             {% set timestamp = film.festival.festivalStartsAt|date('U') %}
         {% else %}
