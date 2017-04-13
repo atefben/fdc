@@ -520,5 +520,6 @@ text-rendering: auto;
 .press.lock .affiche .buttons.active-btn .button {
   pointer-events: auto;
   border-color: #c8a461;
+  color: #c8a461;
   border-right: 1px solid #c8a461;
 }
