@@ -12651,7 +12651,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: calc(630px / 1.58);
   margin: 65px auto 70px;
 }
 .home .video-container {
