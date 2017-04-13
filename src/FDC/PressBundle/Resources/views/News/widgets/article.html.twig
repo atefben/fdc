@@ -37,7 +37,7 @@
                                 {% set imageTrans = trans %}
                             {% endif %}
                         {% endif %}
-                        {% set file = trans.file %}
+                        {% set file = imageTrans.file %}
                         {% thumbnail file, '265x165' with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
                     {% if imageTrans is defined and imageTrans is not null %}
