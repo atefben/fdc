@@ -20,16 +20,15 @@ class GetClassExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'class' => new \Twig_SimpleFunction('class', array($this, 'getClassFilter'))
+            'class' => new \Twig_SimpleFunction('class', array($this, 'getClass'))
         );
     }
 
-    
     /**
      * @param $object
      * @return string
      */
-    public function getClassFilter($object)
+    public function getClass($object)
     {
         return (new \ReflectionClass($object))->getShortName();
     }
