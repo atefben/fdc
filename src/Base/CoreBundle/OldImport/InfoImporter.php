@@ -123,6 +123,9 @@ class InfoImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($info, $oldArticle);
+                }
+                elseif ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
                 } else {
                     $this->buildInfoWidgetText($info, $translation, $oldTranslation);
                     $this->buildInfoWidgetYoutube($info, $translation, $oldTranslation);

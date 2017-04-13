@@ -187,12 +187,14 @@ class NewsImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($news, $oldArticle);
+                }
+                elseif ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
                 } else {
                     $this->buildNewsWidgetText($news, $translation, $oldTranslation);
                     $this->buildNewsWidgetYoutube($news, $translation, $oldTranslation);
                     $this->buildNewsWidgetImage($news, $translation, $oldTranslation);
                     $this->buildNewsWidgetsAudio($news, $translation, $oldTranslation);
-                    $this->buildNewsWidgetsVideo($news, $translation, $oldTranslation);
                     $this->buildAssociatedFilms($news, $oldArticle);
                     $this->buildAssociatedNews($news, $oldArticle);
                 }
