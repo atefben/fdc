@@ -477,18 +477,25 @@ class Importer
             return null;
         }
 
+        $mediaImage = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+
+        if ($mediaImage) {
+            $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+            if ($mediaImageTranslation && !$this->input->getOption('force-reupload')) {
+                return $mediaImage;
+            }
+        }
+
         $oldUrl = 'http://www.festival-cannes.fr/assets/Image/General/';
         $file = $this->createImage($oldUrl . trim($oldMedia->getFilename()));
 
         if (!$file) {
             return null;
         }
-
-        $mediaImage = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:MediaImage')
-            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
-        ;
 
         if (!$mediaImage) {
             $mediaImage = new MediaImage();
@@ -510,7 +517,10 @@ class Importer
             }
         }
 
-        $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+        if (!$mediaImageTranslation) {
+            $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+        }
+
 
         if (!$mediaImageTranslation) {
             $mediaImageTranslation = new MediaImageTranslation();
