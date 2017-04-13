@@ -483,6 +483,7 @@ class Importer
             ->findOneBy(['oldMediaId' => $oldMedia->getId()])
         ;
 
+        $mediaImageTranslation = null;
         if ($mediaImage) {
             $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
             if ($mediaImageTranslation && !$this->input->getOption('force-reupload')) {
