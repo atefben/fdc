@@ -85,6 +85,9 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if($('.medias').length > 0 || $('.media-library').length > 0) {
         slider = $('.isotope-01');
+        if (slider.length == 0) {
+            slider = $('section.medias');
+        }
     }
 
     var images = [];
