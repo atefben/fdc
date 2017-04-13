@@ -124,7 +124,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             }
 
             if($('.affiche-fdc').length) {
-                var src = $(value).find('img').attr('src');
+                var src = $(value).parent().data('img') || $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).parent().find('.infos  .name-f').html();
                 var label = $(value).parent().find('.infos .names-a').html();
