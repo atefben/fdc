@@ -618,15 +618,3 @@ a.notloaded {
     border-right: 1px solid #c8a461;
 }
 
-.audio-container.actu-article-audio .audio-player .off, .audio-container.actu-article-audio .audio-player .on {
-    height: 87px !important;
-    margin-top: 0px !important;
-}
-
-.audio-container.actu-article-audio .audio-player {
-    height: 90px !important;
-}
-
-.audio-container.actu-article-audio {
-    height: 90px !important;
-}
