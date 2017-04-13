@@ -84,6 +84,9 @@ class NodeListener
         if ($object instanceof NodeTranslationInterface) {
             $object = $object->getTranslatable();
         }
+        if (!$object->getId()) {
+            return;
+        }
 
         $node = $this->getNode($manager, get_class($object), $object->getId());
 
