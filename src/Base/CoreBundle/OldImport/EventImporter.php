@@ -450,7 +450,6 @@ class EventImporter extends Importer
                                     $widget->setGallery(null);
                                     $this->getManager()->remove($widget);
                                 }
-
                                 $this->getManager()->remove($gallery);
                             }
                         }
