@@ -6,12 +6,13 @@
         {% if  film is defined and film.festival is defined %}
             {% set dateMedia = film.festival.year %}
             {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+            {% set title = film.titleVO %}
         {% else %}
             {% set dateMedia = '' %}
             {% set timestamp = '' %}
+            {% set title = '' %}
         {% endif %}
         {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
-        {% set title = film.titleVO %}
         {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
             {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
         {% endif %}
@@ -55,12 +56,13 @@
         {% if  film is defined and film.festival is defined %}
             {% set dateMedia = film.festival.year %}
             {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+            {% set title = film.titleVO %}
         {% else %}
             {% set dateMedia = '' %}
             {% set timestamp = '' %}
+            {% set title = '' %}
         {% endif %}
         {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
-        {% set title = film.titleVO %}
         {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
             {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
         {% endif %}
