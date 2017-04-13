@@ -734,7 +734,8 @@ class Importer
         if ($oldMediaI18n->getDeliveryUrl()) {
             $path = $oldMediaI18n->getDeliveryUrl();
             $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
+
+            $path = $pathArray[0] . max(array_slice($pathArray, 1, count($pathArray) - 2)) . end($pathArray);
             $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
         }
 
