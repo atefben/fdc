@@ -12658,7 +12658,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 550px;
 }
 .video-container.video-single {
-  height: calc(977px / 1.58);
+  height: calc(980px / 1.58);
+  width: 980px;
 }
 .video-container.video-playlist {
   height: 382px;
