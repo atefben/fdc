@@ -600,7 +600,6 @@ a.notloaded {
 }
 
 .container .audio-container .audio-player {
-    width: 640px;
     margin: 0 auto;
 }
 
@@ -618,3 +617,6 @@ a.notloaded {
     border-right: 1px solid #c8a461;
 }
 
+.single-article .text a {
+    color: #c8a461;
+}
