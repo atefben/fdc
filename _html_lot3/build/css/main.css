@@ -14573,6 +14573,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 133px;
   width: 213px;
   background-size: cover;
+  cursor: pointer;
 }
 .block-search .content-result .contain-img.landscape img {
   height: 100%;
