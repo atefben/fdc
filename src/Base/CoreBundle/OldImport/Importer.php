@@ -320,7 +320,7 @@ class Importer
         set_time_limit(0);
         $fp = fopen("$folder$file", 'w+');
         $ch = curl_init(str_replace(" ", "%20", $url));
-        curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 0);
         curl_setopt($ch, CURLOPT_FILE, $fp);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_exec($ch);
@@ -734,8 +734,10 @@ class Importer
         if ($oldMediaI18n->getDeliveryUrl()) {
             $path = $oldMediaI18n->getDeliveryUrl();
             $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+            if (count($pathArray) > 2) {
+                $path = $pathArray[0] . max(array_slice($pathArray, 1, count($pathArray) - 2)) . end($pathArray);
+                $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+            }
         }
 
         if (!$file && $oldMediaI18n->getHdFormatFilename()) {

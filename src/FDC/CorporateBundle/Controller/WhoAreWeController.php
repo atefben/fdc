@@ -116,7 +116,7 @@ class WhoAreWeController extends Controller
 
             $item['widgets'] = [];
             foreach ($section->getGraphicalCharterSectionsWidgets() as $widget) {
-                $widgetTrans = $this->getTranslation($widget, $locale);
+                $widgetTrans = $this->getTranslation($widget, $locale, 'fr');
                 $itemWidget = [];
 
                 if ($widget instanceof GraphicalCharterSectionWidgetText) {
@@ -144,10 +144,10 @@ class WhoAreWeController extends Controller
                 } elseif ($widget instanceof GraphicalCharterSectionWidgetTwoColumns) {
                     $itemWidget['type'] = 'two-columns';
                     if ($widget->getImage()) {
-                        $itemWidget['image'][] = $widget->getImage();
+                        $itemWidget['image'] = $widget->getImage();
                     }
                     if ($widget->getImage2()) {
-                        $itemWidget['image2'][] = $widget->getImage2();
+                        $itemWidget['image2'] = $widget->getImage2();
                     }
                     if ($widgetTrans instanceof GraphicalCharterSectionWidgetTwoColumnsTranslation) {
                         $itemWidget['title'] = $widgetTrans->getTitle();
@@ -167,13 +167,13 @@ class WhoAreWeController extends Controller
                 } elseif ($widget instanceof GraphicalCharterSectionWidgetThreeColumns) {
                     $itemWidget['type'] = 'three-columns';
                     if ($widget->getImage()) {
-                        $itemWidget['image'][] = $widget->getImage();
+                        $itemWidget['image'] = $widget->getImage();
                     }
                     if ($widget->getImage2()) {
-                        $itemWidget['image2'][] = $widget->getImage2();
+                        $itemWidget['image2'] = $widget->getImage2();
                     }
                     if ($widget->getImage3()) {
-                        $itemWidget['image3'][] = $widget->getImage3();
+                        $itemWidget['image3'] = $widget->getImage3();
                     }
                     if ($widgetTrans instanceof GraphicalCharterSectionWidgetThreeColumnsTranslation) {
                         $itemWidget['title'] = $widgetTrans->getTitle();
@@ -221,7 +221,7 @@ class WhoAreWeController extends Controller
                 $section = $collection->getGraphicalCharterButtonSection();
                 if ($section instanceof GraphicalCharterButtonSection) {
                     $buttonGroupSection = [];
-                    $sectionTrans = $this->getTranslation($section, $locale);
+                    $sectionTrans = $this->getTranslation($section, $locale, 'fr');
                     if ($sectionTrans instanceof GraphicalCharterButtonSectionTranslation) {
                         $buttonGroupSection['title'] = $sectionTrans->getButtonsSectionTitle();
                     }
@@ -231,10 +231,20 @@ class WhoAreWeController extends Controller
                             $buttonFile = $fileCollection->getGraphicalCharterButtonFile();
                             if ($buttonFile instanceof GraphicalCharterButtonFile) {
                                 $button = [];
-                                $buttonFileTrans = $this->getTranslation($buttonFile, $locale);
+                                $buttonFileTrans = $this->getTranslation($buttonFile, $locale, 'fr');
+                                $buttonFileFr = $this->getTranslation($buttonFile, 'fr');
                                 if ($buttonFileTrans instanceof GraphicalCharterButtonFileTranslation) {
-                                    $button['title'] = $buttonFileTrans->getFileTitle();
-                                    $button['file'] = $buttonFileTrans->getFile();
+                                    if ($buttonFileTrans->getFileTitle()) {
+                                        $button['title'] = $buttonFileTrans->getFileTitle();
+                                    } elseif ($buttonFileFr instanceof GraphicalCharterButtonFileTranslation && $buttonFileFr->getFileTitle()) {
+                                        $button['title'] = $buttonFileFr->getFileTitle();
+                                    }
+                                    if ($buttonFileTrans->getFile()) {
+                                        $button['file'] = $buttonFileTrans->getFile();
+                                    } elseif ($buttonFileFr instanceof GraphicalCharterButtonFileTranslation && $buttonFileFr->getFile()) {
+                                        $button['file'] = $buttonFileFr->getFile();
+                                    }
+
                                 }
                                 $buttonGroupSection['files'][] = $button;
                             }

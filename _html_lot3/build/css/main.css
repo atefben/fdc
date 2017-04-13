@@ -13157,7 +13157,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   transform: translateY(0%);
 }
 .video-container.state-init .control-bar {
-  opacity: 1;
+  opacity: 0;
   transform: translateY(100%);
 }
 .single-movie .video-container.state-init .control-bar, .article-single .video-container.state-init .control-bar, .popin-video .video-container.state-init .control-bar {

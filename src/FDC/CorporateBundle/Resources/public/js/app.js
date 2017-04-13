@@ -5460,45 +5460,31 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
-                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
-                
+                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').data('title');
+                var dataItem = $(value).find('a');
+
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    getTitle = $(value).find('.info .contain-txt').html();
+                    getTitle = $(value).find('.info .contain-txt').html() || $(value).find('img').data('title');
                 }
-                if ($(value).find('a').hasClass('linkAllCover')) {
-                    var src = $(value).find('a').attr('href');
+                if (dataItem.hasClass('linkAllCover')) {
+                    var src = dataItem.attr('href');
                 } else {
                     var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 }
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
-                var title = getTitle;
-                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
-                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
-                var caption = $(value).find('img').attr('data-credit');
-                var id = $(value).find('img').attr('data-id');
-                var facebookurl = $(value).find('img').attr('data-facebookurl');
-                var twitterurl = $(value).find('img').attr('data-twitterurl');
-                var url = $(value).find('img').attr('data-url');
-                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-
-                if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
-                    var dataItem = $(value).find('a');
-
-                    var title = dataItem.attr('title');
-                    var label = dataItem.data('label');
-                    var date = dataItem.data('date');
-                    var caption = dataItem.data('credit');
-                    var id = dataItem.data('pid');
-                    var facebookurl = dataItem.data('facebook');
-                    var twitterurl = dataItem.data('twitter');
-                    var url = dataItem.data('url');
-                    var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-                }
-
+                var title = getTitle || dataItem.attr('title');;
+                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label") || dataItem.data('label');;
+                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');;
+                var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');;
+                var id = $(value).find('img').attr('data-id') || dataItem.data('pid');;
+                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');;
+                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');;
+                var url = $(value).find('img').attr('data-url') || dataItem.data('url');;
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';;
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');

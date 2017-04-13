@@ -37,6 +37,8 @@
                                 {% set imageTrans = trans %}
                             {% endif %}
                         {% endif %}
+                        {% set file = imageTrans.file %}
+                        {% thumbnail file, '265x165' with {'alt': header|trans_fallback('alt') } %}
                     {% endif %}
                     {% if imageTrans is defined and imageTrans is not null %}
                         {% set file = imageTrans.file %}

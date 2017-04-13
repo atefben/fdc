@@ -71,7 +71,7 @@
             {%- endif -%}
             {% set title = media|trans_fallback('title') %}
             {% if transImage is defined or amazonImage is defined %}
-                <article class="block-poster-search medias landscape-more item video {{ video.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
+                <article class="block-poster-search medias landscape-more video {{ video.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
                         data-format="video"
                         data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
                         data-vid="{{ video.id }}"
@@ -111,7 +111,7 @@
                 {% endif %}
             {% endif %}
             {% set title = media|trans_fallback('title') %}
-            <article class="block-poster-search medias landscape-more item audio {{ audio.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
+            <article class="block-poster-search medias landscape-more audio {{ audio.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
                      data-format="audio"
                      data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
                      data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
