@@ -116,7 +116,7 @@ class WhoAreWeController extends Controller
 
             $item['widgets'] = [];
             foreach ($section->getGraphicalCharterSectionsWidgets() as $widget) {
-                $widgetTrans = $this->getTranslation($widget, $locale);
+                $widgetTrans = $this->getTranslation($widget, $locale, 'fr');
                 $itemWidget = [];
 
                 if ($widget instanceof GraphicalCharterSectionWidgetText) {
