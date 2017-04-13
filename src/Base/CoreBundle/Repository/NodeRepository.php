@@ -178,15 +178,13 @@ class NodeRepository extends EntityRepository
         }
 
         $this->addTranslationQueries($qb, 'nt', $locale);
-        
-        $qb
-             ->orderBy('n.publishedAt', 'DESC');
 
         if ($maxResults) {
             $qb->setMaxResults($maxResults);
         }
 
         return $qb
+            ->orderBy('n.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
             ;
