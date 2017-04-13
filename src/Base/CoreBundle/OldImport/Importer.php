@@ -730,6 +730,20 @@ class Importer
             return null;
         }
 
+        $mediaVideo = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+        $mediaVideoTranslation = null;
+
+        if ($mediaVideo) {
+            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+            if ($mediaVideoTranslation && !$this->input->getOption('force-reupload')) {
+                return $mediaVideo;
+            }
+        }
+
         $file = null;
         if ($oldMediaI18n->getDeliveryUrl()) {
             $path = $oldMediaI18n->getDeliveryUrl();
@@ -787,12 +801,6 @@ class Importer
             return null;
         }
 
-        $mediaVideo = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:MediaVideo')
-            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
-        ;
-
         if (!$mediaVideo) {
             $mediaVideo = new MediaVideo();
             $mediaVideo->setOldMediaId($oldMedia->getId());
@@ -818,7 +826,9 @@ class Importer
             }
         }
 
-        $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+        if (!$mediaVideoTranslation) {
+            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+        }
 
         if (!$mediaVideoTranslation) {
             $mediaVideoTranslation = new MediaVideoTranslation();
