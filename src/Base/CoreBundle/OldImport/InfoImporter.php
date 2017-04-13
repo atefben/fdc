@@ -288,7 +288,7 @@ class InfoImporter extends Importer
 
             foreach ($mapperFields as $oldField => $field) {
                 $setter = 'set' . ucfirst($field);
-                $getter = 'get' . ucfirst($field);
+                $getter = 'get' . ucfirst($oldField);
                 $translation->{$setter}($this->processText($oldTranslation->{$getter}()));
             }
             $this->getManager()->flush();
