@@ -1,5 +1,6 @@
 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 {% for id, media in medias %}
+    {% if media is defined %}
     {% if class(media) == 'MediaImageSimple' %}
         {% set mediaPid  = 'mis' ~ media.id %}
         {% set film  = media.imageMainFilms|last|default(media.imageCoverFilms|last) %}
@@ -177,5 +178,6 @@
         {% endif %}
     {% else %}
         {% include "FDCCorporateBundle:Media:components/media.html.twig" with {"media": media} %}
+    {% endif %}
     {% endif %}
 {% endfor %}
