@@ -516,3 +516,9 @@ text-rendering: auto;
 .block-push-top {
   background-attachment: fixed !important;
 }
+
+.press.lock .affiche .buttons.active-btn .button {
+  pointer-events: auto;
+  border-color: #c8a461;
+  border-right: 1px solid #c8a461;
+}
