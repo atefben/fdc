@@ -5467,7 +5467,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     getTitle = $(value).find('.info .contain-txt').html();
                 }
                 if ($(value).find('a').hasClass('linkAllCover')) {
-                    var src = $(value).children('a').attr('src');
+                    var src = $(value).find('a').attr('src');
                 } else {
                     var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 }
