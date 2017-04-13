@@ -103,6 +103,13 @@
       line-height: 1.7em;
       margin-bottom: 5px;
     }
+
+    ul {
+      li {
+        line-height: 30px;
+        list-style: inside;
+      }
+    }
   }
 
   .big-quote {

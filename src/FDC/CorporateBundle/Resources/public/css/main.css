@@ -16908,6 +16908,10 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   line-height: 1.7em;
   margin-bottom: 5px;
 }
+.article-single .text ul li, .single-movie .text ul li {
+  line-height: 30px;
+  list-style: inside;
+}
 .article-single .big-quote, .single-movie .big-quote {
   width: 630px;
   margin: 0 auto;
