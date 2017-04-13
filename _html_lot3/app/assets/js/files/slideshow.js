@@ -156,8 +156,11 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
                     getTitle = $(value).find('.info .contain-txt').html();
                 }
-
-                var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                if ($(value).children('a').hasClass('linkAllCover')) {
+                    var src = $(value).children('a').attr('src');
+                } else {
+                    var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                }
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
                 var title = getTitle;
                 var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
