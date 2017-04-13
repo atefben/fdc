@@ -1662,6 +1662,10 @@
   .single-article {
     padding: 65px 0;
 
+    .audio-container {
+      margin: 0 auto 70px;
+    }
+
     ul {
       li {
         font-family: $CamphorRegular;

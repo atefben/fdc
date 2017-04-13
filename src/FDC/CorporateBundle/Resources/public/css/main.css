@@ -3166,7 +3166,6 @@ video {
 .block-01-m {
   margin: 0 auto;
   max-width: 100%;
-  width: 942px;
   margin-bottom: 45px;
 }
 .block-01-m img {
@@ -12419,7 +12418,8 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .slideshow {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 40px;
+  width: 730px;
+  margin: 0 auto 70px;
 }
 .slideshow .slideshow-img {
   background-color: #000;
@@ -12652,6 +12652,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   overflow: hidden;
   width: 100%;
   height: calc(977px / 1.58);
+  margin: 65px auto 70px;
 }
 .home .video-container {
   height: 550px;
@@ -13159,9 +13160,6 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .video-container.state-init .control-bar {
   opacity: 0;
   transform: translateY(100%);
-}
-.single-movie .video-container.state-init .control-bar, .article-single .video-container.state-init .control-bar, .popin-video .video-container.state-init .control-bar {
-  opacity: 0;
 }
 .video-container.state-init:hover .control-bar {
   transform: translateY(0px);
@@ -16190,6 +16188,9 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .single-movie .single-article {
   padding: 65px 0;
+}
+.single-movie .single-article .audio-container {
+  margin: 0 auto 70px;
 }
 .single-movie .single-article ul li {
   font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
