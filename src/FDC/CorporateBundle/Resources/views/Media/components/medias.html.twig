@@ -3,8 +3,13 @@
     {% if class(media) == 'MediaImageSimple' %}
         {% set mediaPid  = 'mis' ~ media.id %}
         {% set film  = media.imageMainFilms|last|default(media.imageCoverFilms|last) %}
-        {% set dateMedia = film.festival.year %}
-        {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+        {% if  film is defined and film.festival %}
+            {% set dateMedia = film.festival.year %}
+            {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+        {% else %}
+            {% set dateMedia = '' %}
+            {% set timestamp = '' %}
+        {% endif %}
         {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
         {% set title = film.titleVO %}
         {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
@@ -47,8 +52,13 @@
     {% elseif class(media) == 'Media' %}
         {% set mediaPid  = 'sm' ~ media.id %}
         {% set film  = media.selfkitFilms|first %}
-        {% set dateMedia = film.festival.year %}
-        {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+        {% if  film is defined and film.festival %}
+            {% set dateMedia = film.festival.year %}
+            {% set timestamp = film.festival.festivalStartsAt|date('U') %}
+        {% else %}
+            {% set dateMedia = '' %}
+            {% set timestamp = '' %}
+        {% endif %}
         {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
         {% set title = film.titleVO %}
         {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
