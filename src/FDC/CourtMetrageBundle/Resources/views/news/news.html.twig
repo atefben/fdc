@@ -49,7 +49,7 @@
                                 <span class="category">{{ article.theme.findTranslationByLocale(app.request.locale).name }}</span>
                             {% endif %}
                             <a href="{{ path('fdc_court_metrage_news_detail',{'slug':articleTranslation.slug}) }}">
-                                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> .
+                                <span class="date">{{ article.publishedAt|date('d.m.y') }} . </span>
                                 <span class="hour">{{ article.publishedAt|date('H:i') }}</span>
                             </a>
                             <h3>

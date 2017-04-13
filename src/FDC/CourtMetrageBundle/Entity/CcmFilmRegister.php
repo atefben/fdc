@@ -24,13 +24,6 @@ class CcmFilmRegister
     protected $id;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isTextActive = false;
-
-    /**
      * @var CcmMediaImage
      *
      * @ORM\ManyToOne(targetEntity="FDC\CourtMetrageBundle\Entity\CcmMediaImage")
@@ -64,26 +57,6 @@ class CcmFilmRegister
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isIsTextActive()
-    {
-        return $this->isTextActive;
-    }
-
-    /**
-     * @param $isActive
-     *
-     * @return $this
-     */
-    public function setIsTextActive($isActive)
-    {
-        $this->isTextActive = $isActive;
-
-        return $this;
     }
 
     /**
