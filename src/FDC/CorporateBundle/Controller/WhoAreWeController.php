@@ -232,9 +232,15 @@ class WhoAreWeController extends Controller
                             if ($buttonFile instanceof GraphicalCharterButtonFile) {
                                 $button = [];
                                 $buttonFileTrans = $this->getTranslation($buttonFile, $locale, 'fr');
+                                $buttonFileFr = $this->getTranslation($buttonFile, $locale, 'fr');
                                 if ($buttonFileTrans instanceof GraphicalCharterButtonFileTranslation) {
                                     $button['title'] = $buttonFileTrans->getFileTitle();
-                                    $button['file'] = $buttonFileTrans->getFile();
+                                    if ($buttonFileTrans->getFile()) {
+                                        $button['file'] = $buttonFileTrans->getFile();
+                                    } elseif ($buttonFileFr instanceof GraphicalCharterButtonFileTranslation && $buttonFileFr->getFile()) {
+                                        $button['file'] = $buttonFileFr->getFile();
+                                    }
+
                                 }
                                 $buttonGroupSection['files'][] = $button;
                             }
