@@ -287,7 +287,9 @@ class InfoImporter extends Importer
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
-                $translation->{'set' . ucfirst($field)}($oldTranslation->{'get' . ucfirst($oldField)}());
+                $setter = 'set' . ucfirst($field);
+                $getter = 'get' . ucfirst($field);
+                $translation->{$setter}($this->processText($oldTranslation->{$getter}()));
             }
             $this->getManager()->flush();
             return $translation;
@@ -326,7 +328,7 @@ class InfoImporter extends Importer
             $this->getManager()->persist($widgetTranslation);
         }
 
-        $widgetTranslation->setContent($oldTranslation->getBody());
+        $widgetTranslation->setContent($this->processText($oldTranslation->getBody()));
 
         $this->getManager()->flush();
         return $widget;

@@ -171,9 +171,6 @@ class ClassicsImporter extends Importer
      */
     protected function buildClassicsArticleTranslation(FDCPageLaSelectionCannesClassics $classics, OldArticleI18n $oldTranslation)
     {
-        $mapperFields = [//'resume' => 'introduction',
-        ];
-
         $locale = $oldTranslation->getCulture() == 'cn' ? 'zh' : $oldTranslation->getCulture();
         if (in_array($locale, $this->langs)) {
             $translation = $this
@@ -256,9 +253,6 @@ class ClassicsImporter extends Importer
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
             $translation->setTitleNav(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
-            //foreach ($mapperFields as $oldField => $field) {
-            //    $translation->{'set' . ucfirst($field)}($oldTranslation->{'get' . ucfirst($oldField)}());
-            //}
             $this->getManager()->flush();
             return $translation;
         }
@@ -296,7 +290,7 @@ class ClassicsImporter extends Importer
             $this->getManager()->persist($widgetTranslation);
         }
 
-        $widgetTranslation->setContent($oldTranslation->getBody());
+        $widgetTranslation->setContent($this->processText($oldTranslation->getBody()));
 
         $this->getManager()->flush();
         return $widget;

@@ -1050,4 +1050,15 @@ class Importer
         }
     }
 
+
+    public function processText($text)
+    {
+        $assetSearch = '="/asset';
+        $assetReplace = '="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/asset';
+
+        $text = str_replace($assetSearch, $assetReplace, $text);
+
+        return $text;
+    }
+
 }
