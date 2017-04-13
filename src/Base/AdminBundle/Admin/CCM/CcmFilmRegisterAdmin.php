@@ -89,10 +89,6 @@ class CcmFilmRegisterAdmin extends Admin
                     )
                 )
             ))
-            ->add('isTextActive', 'checkbox', array(
-                'label' => 'form.ccm.film_register.is_text_active',
-                'required' => false
-            ))
             ->add('headerPhoto', 'sonata_type_model_list', array(
                 'label' => 'form.ccm.film_register.header_photo',
                 'translation_domain' => 'BaseAdminBundle',
