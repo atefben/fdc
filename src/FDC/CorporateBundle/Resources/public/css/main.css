@@ -4654,7 +4654,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #000;
 }
 .block-accordion-02 .text-manual p strong {
-  color: #c29f5f;
   font-size: 0.88rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
@@ -5772,7 +5771,7 @@ strong.title-center {
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
-  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
+  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff2") format("woff2"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
 }
 .icon:before {
   font-family: "icon";
