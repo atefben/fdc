@@ -221,7 +221,7 @@ class WhoAreWeController extends Controller
                 $section = $collection->getGraphicalCharterButtonSection();
                 if ($section instanceof GraphicalCharterButtonSection) {
                     $buttonGroupSection = [];
-                    $sectionTrans = $this->getTranslation($section, $locale);
+                    $sectionTrans = $this->getTranslation($section, $locale, 'fr');
                     if ($sectionTrans instanceof GraphicalCharterButtonSectionTranslation) {
                         $buttonGroupSection['title'] = $sectionTrans->getButtonsSectionTitle();
                     }
@@ -231,7 +231,7 @@ class WhoAreWeController extends Controller
                             $buttonFile = $fileCollection->getGraphicalCharterButtonFile();
                             if ($buttonFile instanceof GraphicalCharterButtonFile) {
                                 $button = [];
-                                $buttonFileTrans = $this->getTranslation($buttonFile, $locale);
+                                $buttonFileTrans = $this->getTranslation($buttonFile, $locale, 'fr');
                                 if ($buttonFileTrans instanceof GraphicalCharterButtonFileTranslation) {
                                     $button['title'] = $buttonFileTrans->getFileTitle();
                                     $button['file'] = $buttonFileTrans->getFile();

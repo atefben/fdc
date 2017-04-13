@@ -233,10 +233,14 @@ class Controller extends BaseController
         return $site;
     }
 
-    protected function getTranslation($object, $locale = 'fr')
+    protected function getTranslation($object, $locale = 'fr', $defaultLocale = null)
     {
         if (method_exists($object, 'findTranslationByLocale')) {
             $trans = $object->findTranslationByLocale($locale);
+            if ($trans) {
+                return $trans;
+            }
+            $trans = $object->findTranslationByLocale($defaultLocale);
             if ($trans) {
                 return $trans;
             }
