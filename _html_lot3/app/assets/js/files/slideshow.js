@@ -150,7 +150,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
-                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
+                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').data('title');
                 var dataItem = $(value).find('a');
 
                 if(typeof getTitle === 'undefined'){
@@ -158,10 +158,10 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    getTitle = $(value).find('.info .contain-txt').html();
+                    getTitle = $(value).find('.info .contain-txt').html() || $(value).find('img').data('title');
                 }
-                if ($(value).find('a').hasClass('linkAllCover')) {
-                    var src = $(value).find('a').attr('href');
+                if (dataItem.hasClass('linkAllCover')) {
+                    var src = dataItem.attr('href');
                 } else {
                     var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 }
