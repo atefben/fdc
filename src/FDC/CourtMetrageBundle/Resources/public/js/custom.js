@@ -332,7 +332,7 @@ function updatePhotoShare(pid, title) {
     $('.chocolat-bottom .img-slideshow-share .facebook').attr('href', fbHref);
     // CUSTOM LINK TWITTER
     var twHref = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
-    twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+" "+shareUrl));
+    twHref     = twHref.replace('CUSTOM_TEXT', encodeURIComponent(t1[0]+ ' ' + ($('[data-pid='+pid+']').attr('data-legend')||'') + " "+shareUrl));
     $('.chocolat-bottom .img-slideshow-share .twitter').attr('href', twHref);
     // CUSTOM LINK COPY
     $('.chocolat-bottom .img-slideshow-share .button.link').attr('href', shareUrl);

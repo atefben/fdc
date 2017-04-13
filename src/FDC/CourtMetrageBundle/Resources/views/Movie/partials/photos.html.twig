@@ -19,7 +19,8 @@
                                    class="chocolat-image ajax"
                                    href="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
                                    title='<h2>{{ mainTitle }}</h2>'
-                                   data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
+                                   data-legend="{{ title }}"
+                                   data-credit="{{ title }}{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}">
                                     <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}" alt="" />
                                 </a>
                             </div>
