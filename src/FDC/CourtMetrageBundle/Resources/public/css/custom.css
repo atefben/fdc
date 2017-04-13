@@ -457,3 +457,7 @@ body.chocolat-open.fixed {
     padding: 65px 0;
 }
 
+.home .competition #slider-competition .info-movie a.director {
+    display: inline;
+}
+

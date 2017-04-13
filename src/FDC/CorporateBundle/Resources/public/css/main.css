@@ -4654,7 +4654,6 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   color: #000;
 }
 .block-accordion-02 .text-manual p strong {
-  color: #c29f5f;
   font-size: 0.88rem;
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
@@ -5257,7 +5256,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: none;
 }
 .block-contain-txt-register-movie h3 {
-  font-weight: bold;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
 }
 .block-contain-txt-register-movie h4 {
   padding-bottom: 32px;

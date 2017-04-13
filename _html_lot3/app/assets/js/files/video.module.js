@@ -94,16 +94,18 @@ function playerInit(id, cls, havePlaylist, live) {
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            if(this.firstElementChild !== null) {
-            var videoPlayer = jwplayer(this.firstElementChild.id);
-            if (!$(videoPlayer).data('loaded')) {
-                playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function (vid) {
-                    $(vid).data('loaded', true);
-                    tmp[i] = vid;
-                });
-            } else {
-                tmp[i] = videoPlayer;
-            }
+            var videoPlayerHTML = this.firstElementChild || this;
+
+            if(videoPlayerHTML !== null) {
+                var videoPlayer = jwplayer(videoPlayerHTML.id);
+                if (!$(videoPlayer).data('loaded')) {
+                    playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
+                        $(vid).data('loaded', true);
+                        tmp[i] = vid;
+                    });
+                } else {
+                    tmp[i] = videoPlayer;
+                }
             }
         });
         return tmp;
@@ -233,6 +235,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             playerInstance.playlistItem(index);
 
             var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info .date').text(infos.date);
             $topBar.find('.info .hour').text(infos.hour);

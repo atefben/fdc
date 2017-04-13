@@ -267,7 +267,9 @@ var owInitFilterSearch = function () {
 
     $('.result-more').on('click', function (e) {
         e.preventDefault();
-
         block.toggleClass('visible');
-    })
+    });
+    $('.result-more a').on('click', function (e) {
+        e.stopPropagation();
+    });
 }
