@@ -88,39 +88,41 @@ function playerInit(id, cls, havePlaylist, live) {
     var tmp;
 
 
-        if (id) {
-            var videoPlayer = jwplayer(id);
+    if (id) {
+        var videoPlayer = jwplayer(id);
 
-            if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
-                playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
-                    $(vid).data('loaded', true);
-                    tmp = vid;
-                });
-            } else {
-                tmp = videoPlayer
-            }
-            return tmp;
+        if(!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0 ) {
+            playerLoad($("#"+id)[0], videoPlayer, havePlaylist, live, function(vid) {
+                $(vid).data('loaded', true);
+                tmp = vid;
+            });
         } else {
-            tmp = [];
-            $("."+cls).each(function(i,v) {
-                if(this.firstElementChild !== null) {
-                var videoPlayer  = jwplayer(this.firstElementChild.id);
-                if(!$(videoPlayer).data('loaded')) {
-                    playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function(vid) {
+            tmp = videoPlayer;
+        }
+        return tmp;
+    } else {
+        tmp = [];
+        $("." + cls).each(function (i, v) {
+            var videoPlayerHTML = this.firstElementChild || this;
+
+            if(videoPlayerHTML !== null) {
+                var videoPlayer = jwplayer(videoPlayerHTML.id);
+                if (!$(videoPlayer).data('loaded')) {
+                    playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
                         $(vid).data('loaded', true);
                         tmp[i] = vid;
                     });
                 } else {
                     tmp[i] = videoPlayer;
                 }
-                }
-            });
-            return tmp;
-        }
-    };
+            }
+        });
+        return tmp;
+    }
+};
 
-    function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-        var $container = $("#" + vid.id).parent();
+function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
+    var $container = $("#" + vid.id).parent();
 
         var checkInt = window.setInterval(function(){
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -129,36 +131,36 @@ function playerInit(id, cls, havePlaylist, live) {
             }
         },500);
 
-        if($container.find('.control-bar').length <= 0) {
-            $container.append(controlBar);
+    if($container.find('.control-bar').length <= 0) {
+        $container.append(controlBar);
+    }
+    if($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#'+vid.id));
+    }
+
+    var $infoBar      = $container.find('.info'),
+        $stateBtn     = $container.find('.playstate'),
+        $durationTime = $container.find('.duration-time'),
+        $current      = $container.find('.current-time'),
+        $progressBar  = $container.find('.progress-bar'),
+        $fullscreen   = $container.find('.icon-fullscreen'),
+        $sound        = $container.find('.sound'),
+        $topBar       = $container.find('.top-bar'),
+        $playlist     = [];
+
+     setTimeout(function(){
+        var infos = {
+            'all': $container.parent().find('.info'),
+            "category": $container.parent().find('.info .category').html(),
+            "date": $container.parent().find('.info .date').html(),
+            "hour": $container.parent().find('.info .hour').html(),
+            "name": $container.parent().find('.info p').html()
         }
-        if($container.find('.top-bar').length <= 0) {
-            $(topBar).insertAfter($container.find('#'+vid.id));
-        }
 
-        var $infoBar      = $container.find('.info'),
-            $stateBtn     = $container.find('.playstate'),
-            $durationTime = $container.find('.duration-time'),
-            $current      = $container.find('.current-time'),
-            $progressBar  = $container.find('.progress-bar'),
-            $fullscreen   = $container.find('.icon-fullscreen'),
-            $sound        = $container.find('.sound'),
-            $topBar       = $container.find('.top-bar'),
-            $playlist     = [];
-
-         setTimeout(function(){
-            var infos = {
-                'all': $container.parent().find('.info'),
-                "category": $container.parent().find('.info .category').html(),
-                "date": $container.parent().find('.info .date').html(),
-                "hour": $container.parent().find('.info .hour').html(),
-                "name": $container.parent().find('.info p').html()
-            }
-
-            $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
+        $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
 
 
-        }, 700);
+    }, 700);
 
         if($('.container-webtv-ba-video').length > 0) {
             var shareUrl = $('.video .video-container').attr('data-link');
@@ -206,347 +208,347 @@ function playerInit(id, cls, havePlaylist, live) {
             fullScreenApi.cancelFullScreen();
         });
 
-        function updateVolume(x, vol) {
-            var volume = $sound.find('.sound-bar'),
-                percentage;
-            if (vol) {
-                percentage = vol;
+    function updateVolume(x, vol) {
+        var volume = $sound.find('.sound-bar'),
+            percentage;
+        if (vol) {
+            percentage = vol;
+        } else {
+            var position = x - volume.offset().left;
+            percentage = 100 * position / volume.width();
+        }
+
+        if (percentage > 100) {
+            percentage = 100;
+        } else if (percentage < 0) {
+            percentage = 0;
+        }
+
+        $sound.find('.sound-seek').css('width',percentage+'%');
+        playerInstance.setVolume(percentage);
+    };
+
+    playerInstance.updateMute = function(force) {
+        force = force || false;
+        if (force) {
+            playerInstance.setMute(true);
+            playerInstance.setVolume(0);
+            $sound.find('.sound-seek').css('width','0%');
+        } else {
+            if (playerInstance.getMute()) {
+                playerInstance.setMute(false);
+                $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
             } else {
-                var position = x - volume.offset().left;
-                percentage = 100 * position / volume.width();
-            }
-
-            if (percentage > 100) {
-                percentage = 100;
-            } else if (percentage < 0) {
-                percentage = 0;
-            }
-
-            $sound.find('.sound-seek').css('width',percentage+'%');
-            playerInstance.setVolume(percentage);
-        };
-
-        playerInstance.updateMute = function(force) {
-            force = force || false;
-            if (force) {
                 playerInstance.setMute(true);
-                playerInstance.setVolume(0);
                 $sound.find('.sound-seek').css('width','0%');
-            } else {
-                if (playerInstance.getMute()) {
-                    playerInstance.setMute(false);
-                    $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
-                } else {
-                    playerInstance.setMute(true);
-                    $sound.find('.sound-seek').css('width','0%');
-                }
             }
         }
+    }
 
-        playerInstance.stopMute = function() {
-            playerInstance.setMute(false);
-            playerInstance.setVolume(100);
-            $sound.find('.sound-seek').css('width','100%');
-        }
+    playerInstance.stopMute = function() {
+        playerInstance.setMute(false);
+        playerInstance.setVolume(100);
+        $sound.find('.sound-seek').css('width','100%');
+    }
 
-        playerInstance.removeFullscreen = function() {
-            $container.find('.channels-video').removeClass('active');
-            $container.find('.jwplayer').removeClass('overlay-channels');
-            fullScreenApi.cancelFullScreen();
-            $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
-            playerInstance.resize('100%','100%');
-            mouseMoving(false);
-        }
+    playerInstance.removeFullscreen = function() {
+        $container.find('.channels-video').removeClass('active');
+        $container.find('.jwplayer').removeClass('overlay-channels');
+        fullScreenApi.cancelFullScreen();
+        $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
+        playerInstance.resize('100%','100%');
+        mouseMoving(false);
+    }
 
-        function externeControl() {
+    function externeControl() {
 
-        }
+    }
 
-        function mouseMoving(listen) {
-            if(listen) {
-                $container.on('mousemove', function(event) {
-                    $container.removeClass('control-hide');
-                    clearTimeout(thread);
-                    thread = setTimeout(function() {
-                        $container.addClass('control-hide');
-                    }, timeout);
-                });
-            } else {
-                clearTimeout(thread);
-                $container.off('mousemove');
+    function mouseMoving(listen) {
+        if(listen) {
+            $container.on('mousemove', function(event) {
                 $container.removeClass('control-hide');
-            }
+                clearTimeout(thread);
+                thread = setTimeout(function() {
+                    $container.addClass('control-hide');
+                }, timeout);
+            });
+        } else {
+            clearTimeout(thread);
+            $container.off('mousemove');
+            $container.removeClass('control-hide');
+        }
+    }
+
+    function updateShareLink(index, secondaryContainer) {
+        sc    = secondaryContainer || 0;
+
+        // CUSTOM LINK FACEBOOK
+        if($('.container-webtv-ba-video').length > 0) {
+            var shareUrl = $('.video .video-container').attr('data-link');
+        } else {
+            var shareUrl = document.location.href;
         }
 
-        function updateShareLink(index, secondaryContainer) {
-            sc    = secondaryContainer || 0;
+        var fbHref   = facebookLink;
+        fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
-            // CUSTOM LINK FACEBOOK
-            if($('.container-webtv-ba-video').length > 0) {
-                var shareUrl = $('.video .video-container').attr('data-link');
-            } else {
-                var shareUrl = document.location.href;
-            }
-
-            var fbHref   = facebookLink;
-            fbHref       = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
-
-            if(typeof index === 'undefined'){
-                index = $('.activeVideo').index('.video');
-            }
-
-            if(typeof $playlist[index] !== 'undefined'){
-                fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
-                fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
-                fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
-            }
-
-
-            $topBar.find('.buttons .facebook').attr('href', fbHref);
-
-            // CUSTOM LINK TWITTER
-            var twHref   = twitterLink;
-            if(typeof $playlist[index] !== 'undefined'){
-                twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
-            }
-            $topBar.find('.buttons .twitter').attr('href', twHref);
-
-            // CUSTOM LINK COPY
-            $topBar.find('.buttons .link').attr('href', shareUrl);
-            $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-
-            if (sc) {
-                $(sc).find('.buttons .facebook').attr('data-href', fbHref);
-                $(sc).find('.buttons .facebook').attr('href', fbHref);
-                $(sc).find('.buttons .twitter').attr('href', twHref);
-                $(sc).find('.buttons .link').attr('href', shareUrl);
-                $(sc).find('.buttons .link').attr('data-clipboard-text', shareUrl);
-            }
+        if(typeof index === 'undefined'){
+            index = $('.activeVideo').index('.video');
         }
 
-        function initChannel() {
+        if(typeof $playlist[index] !== 'undefined'){
+            fbHref       = fbHref.replace('CUSTOM_IMAGE', encodeURIComponent($playlist[index].image));
+            fbHref       = fbHref.replace('CUSTOM_NAME', encodeURIComponent($playlist[index].category));
+            fbHref       = fbHref.replace('CUSTOM_DESC', encodeURIComponent($playlist[index].name));
+        }
 
-            sliderChannelsVideo = $('.slider-02').owlCarousel({
-                navigation          : false,
-                items               : 1,
-                autoWidth           : true,
-                smartSpeed          : 700,
-                center              : true,
-                margin              : 27.5
-            });
 
-            // Custom Navigation Events
-            $(document).on('click', '.slider-02 .owl-item', function(){
-                var index = $(this).index();
-                $('.slider-02 .center').removeClass('center');
-                $(this).addClass('center');
-                sliderChannelsVideo.trigger('to.owl.carousel', index);
+        $topBar.find('.buttons .facebook').attr('href', fbHref);
 
-                $this = $(this);
+        // CUSTOM LINK TWITTER
+        var twHref   = twitterLink;
+        if(typeof $playlist[index] !== 'undefined'){
+            twHref       = twHref.replace('CUSTOM_TEXT', encodeURIComponent($playlist[index].name+" "+shareUrl));
+        }
+        $topBar.find('.buttons .twitter').attr('href', twHref);
 
-                vidN = $this.find('.item').data('vid');
+        // CUSTOM LINK COPY
+        $topBar.find('.buttons .link').attr('href', shareUrl);
+        $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
 
-                var hashPush = '#vid='+vidN;
-                history.pushState(null, null, hashPush);
-            });
+        if (sc) {
+            $(sc).find('.buttons .facebook').attr('data-href', fbHref);
+            $(sc).find('.buttons .facebook').attr('href', fbHref);
+            $(sc).find('.buttons .twitter').attr('href', twHref);
+            $(sc).find('.buttons .link').attr('href', shareUrl);
+            $(sc).find('.buttons .link').attr('data-clipboard-text', shareUrl);
+        }
+    }
 
-            var updateHomeTextRight = function(data){
-                $.each($('.text-infos'), function(i,e){
-                    var $date = $(e).find('.title-3 .to-update');
-                    var $title = $(e).find('.title-4');
-                    var $who = $(e).find('.authors-container');
-                    var $label = $(e).find('.title-6');
-                    var $palm = $(e).find('.title-7');
-                    var $isPalm = $(e).find('.ispalme');
-                    var $palmDate = $(e).find('.date');
-                    var $facebook = $(e).parent().find('.block-social-network .facebook');
-                    var $twitter = $(e).parent().find('.block-social-network .twitter');
-                    var $link = $(e).parent().find('.block-social-network .link');
+    function initChannel() {
 
-                    $date.html(data.dateN);
-                    $title.html(data.titleN).attr('href',data.url);
+        sliderChannelsVideo = $('.slider-02').owlCarousel({
+            navigation          : false,
+            items               : 1,
+            autoWidth           : true,
+            smartSpeed          : 700,
+            center              : true,
+            margin              : 27.5
+        });
 
-                    var dataAuthors = data.whoN;
+        // Custom Navigation Events
+        $(document).on('click', '.slider-02 .owl-item', function(){
+            var index = $(this).index();
+            $('.slider-02 .center').removeClass('center');
+            $(this).addClass('center');
+            sliderChannelsVideo.trigger('to.owl.carousel', index);
 
-                    if(Array.isArray(dataAuthors)){
-                        var output = '';
-                        for(var i = 0;i<dataAuthors.length;i++){
-                            var item = dataAuthors[i];
-                            output += '<a href="'+item.url+'" class="title-5">'+item.name+'</a>, ';
-                        }
-                        //formatting
-                        output = $.trim(output);
-                        output = output.substring(0, output.length - 1);
-                        $who.empty().append(output);
-                    }else{
-                        var item = dataAuthors;
-                        var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
-                        $who.empty().append(output);
+            $this = $(this);
+
+            vidN = $this.find('.item').data('vid');
+
+            var hashPush = '#vid='+vidN;
+            history.pushState(null, null, hashPush);
+        });
+
+        var updateHomeTextRight = function(data){
+            $.each($('.text-infos'), function(i,e){
+                var $date = $(e).find('.title-3 .to-update');
+                var $title = $(e).find('.title-4');
+                var $who = $(e).find('.authors-container');
+                var $label = $(e).find('.title-6');
+                var $palm = $(e).find('.title-7');
+                var $isPalm = $(e).find('.ispalme');
+                var $palmDate = $(e).find('.date');
+                var $facebook = $(e).parent().find('.block-social-network .facebook');
+                var $twitter = $(e).parent().find('.block-social-network .twitter');
+                var $link = $(e).parent().find('.block-social-network .link');
+
+                $date.html(data.dateN);
+                $title.html(data.titleN).attr('href',data.url);
+
+                var dataAuthors = data.whoN;
+
+                if(Array.isArray(dataAuthors)){
+                    var output = '';
+                    for(var i = 0;i<dataAuthors.length;i++){
+                        var item = dataAuthors[i];
+                        output += '<a href="'+item.url+'" class="title-5">'+item.name+'</a>, ';
                     }
+                    //formatting
+                    output = $.trim(output);
+                    output = output.substring(0, output.length - 1);
+                    $who.empty().append(output);
+                }else{
+                    var item = dataAuthors;
+                    var output = '<a href="'+item.url+'" class="title-5">'+item.name+'</a>';
+                    $who.empty().append(output);
+                }
 
-                    $label.html(data.labelN);
-                    $palm.html(data.palmN);
+                $label.html(data.labelN);
+                $palm.html(data.palmN);
 
-                    if(data.isPalm) {
-                        $isPalm.addClass('icon-palme');
-                    }else{
-                        $isPalm.removeClass('icon-palme');
-                    }
+                if(data.isPalm) {
+                    $isPalm.addClass('icon-palme');
+                }else{
+                    $isPalm.removeClass('icon-palme');
+                }
 
 
-                    $palmDate.html(data.palmDateN);
+                $palmDate.html(data.palmDateN);
 
-                    updatePopinMedia({
-                        'type': "video",
-                        'category': data.labelN,
-                        'date': data.dateN,
-                        'who': data.whoN,
-                        'email-content': data.emailContent,
-                        'title': data.titleN,
-                        'url': data.url
-                    });
-
-                    initRs();
-                    if(!$facebook.length){
-                        $facebook = $(e).closest('#sortiecanne').find('.block-social-network .facebook');
-                    }
-                    if(!$twitter.length){
-                        $twitter = $(e).closest('#sortiecanne').find('.block-social-network .twitter');
-                    }
-                    if(!$link.length){
-                        $link = $(e).closest('#sortiecanne').find('.block-social-network .link');
-                    }
-                    $facebook.attr('href', data.fbN);
-                    $twitter.attr('href', data.twitterN);
-                    $link.attr('data-clipboard-text', data.url);
-
+                updatePopinMedia({
+                    'type': "video",
+                    'category': data.labelN,
+                    'date': data.dateN,
+                    'who': data.whoN,
+                    'email-content': data.emailContent,
+                    'title': data.titleN,
+                    'url': data.url
                 });
-            }
 
-            var loadInterval = window.setInterval(function(){
-                if($('.slider-02 .owl-item.center').length){
-                    var origData = {
-                        dateN: $('.slider-02 .owl-item.center').find('.item').data('date'),
-                        titleN: $('.slider-02 .owl-item.center').find('.item').data('title'),
-                        whoN: $('.slider-02 .owl-item.center').find('.item').data('who'),
-                        url: $('.slider-02 .owl-item.center').find('.item').data('url'),
-                        labelN: $('.slider-02 .owl-item.center').find('.item').data('label'),
-                        palmN: $('.slider-02 .owl-item.center').find('.item').data('palm'),
-                        emailContent: $('.slider-02 .owl-item.center').find('.item').data('email-content'),
-                        palmDateN: $('.slider-02 .owl-item.center').find('.item').data('palmdate'),
-                        fbN: $('.slider-02 .owl-item.center').find('.item').data('facebook'),
-                        twitterN: $('.slider-02 .owl-item.center').find('.item').data('twitter'),
-                        linkN: $('.slider-02 .owl-item.center').find('.item').data('link'),
-                        vidN: $('.slider-02 .owl-item.center').find('.item').data('vid'),
-                        isPalm: $('.slider-02 .owl-item.center').find('.item').data('ispalm')
-                    };
-
-                    updateHomeTextRight(origData);
-                    window.clearInterval(loadInterval);
+                initRs();
+                if(!$facebook.length){
+                    $facebook = $(e).closest('#sortiecanne').find('.block-social-network .facebook');
                 }
-            },300);
-
-
-            sliderChannelsVideo.on('translated.owl.carousel', function () {
-                index = $('.slider-02 .center').index();
-                changeVideo(index,playerInstance,$('.slider-02 .center'));
-
-                $this = $('.slider-02 .center');
-
-                var data = {
-                    dateN: $this.find('.item').data('date'),
-                    titleN: $this.find('.item').data('title'),
-                    whoN: $this.find('.item').data('who'),
-                    url: $this.find('.item').data('url'),
-                    labelN: $this.find('.item').data('label'),
-                    palmN: $this.find('.item').data('palm'),
-                    emailContent: $this.find('.item').data('email-content'),
-                    palmDateN: $this.find('.item').data('palmdate'),
-                    fbN: $this.find('.item').data('facebook'),
-                    twitterN: $this.find('.item').data('twitter'),
-                    linkN: $this.find('.item').data('link'),
-                    vidN: $this.find('.item').data('vid'),
-                    isPalm: $this.find('.item').data('ispalm')
+                if(!$twitter.length){
+                    $twitter = $(e).closest('#sortiecanne').find('.block-social-network .twitter');
                 }
-
-                var hashPush = '#vid='+data.vidN;
-                history.pushState(null, null, hashPush);
-                updateHomeTextRight(data);
+                if(!$link.length){
+                    $link = $(e).closest('#sortiecanne').find('.block-social-network .link');
+                }
+                $facebook.attr('href', data.fbN);
+                $twitter.attr('href', data.twitterN);
+                $link.attr('data-clipboard-text', data.url);
 
             });
-
-            var changeVideo = function (index, playerInstance, exThis) {
-
-                sliderChannelsVideo.trigger('to.owl.carousel', index);
-                playerInstance.playlistItem(index);
-                sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
-
-            }
-
-
-            if(hash > 0){
-
-                setTimeout(function(){
-
-                    if($('#sortiecanne').length > 0){
-                        var test =  $('#sortiecanne').offset().top - 200;
-
-                        test = parseInt(test);
-
-                        $('html, body').animate({
-                            scrollTop: test
-                        }, 'slow');
-                    }
-
-
-                    $('.slider-02 .center').removeClass('center');
-
-                    $.each($('.s-video-playlist .item'), function(i,e){
-                        var tVid = $(e).data('vid');
-
-                        if(tVid == hash) {
-                            $(e).parent().addClass('center');
-                            index = $(e).parent().index();
-                        }
-                    });
-
-                    if(!$('.media-library').length && !$('.medias').length){
-                        sliderChannelsVideo.trigger('to.owl.carousel', index);
-                    }
-
-
-                }, 1000);
-
-
-            }
         }
 
-        function initChannelTopBar() {
-            sliderChannelsVideoTop = $container.find(".slider-channels-video").owlCarousel({
-                nav: false,
-                dots: false,
-                smartSpeed: 500,
-                center: true,
-                loop: false,
-                margin: 81
-            });
+        var loadInterval = window.setInterval(function(){
+            if($('.slider-02 .owl-item.center').length){
+                var origData = {
+                    dateN: $('.slider-02 .owl-item.center').find('.item').data('date'),
+                    titleN: $('.slider-02 .owl-item.center').find('.item').data('title'),
+                    whoN: $('.slider-02 .owl-item.center').find('.item').data('who'),
+                    url: $('.slider-02 .owl-item.center').find('.item').data('url'),
+                    labelN: $('.slider-02 .owl-item.center').find('.item').data('label'),
+                    palmN: $('.slider-02 .owl-item.center').find('.item').data('palm'),
+                    emailContent: $('.slider-02 .owl-item.center').find('.item').data('email-content'),
+                    palmDateN: $('.slider-02 .owl-item.center').find('.item').data('palmdate'),
+                    fbN: $('.slider-02 .owl-item.center').find('.item').data('facebook'),
+                    twitterN: $('.slider-02 .owl-item.center').find('.item').data('twitter'),
+                    linkN: $('.slider-02 .owl-item.center').find('.item').data('link'),
+                    vidN: $('.slider-02 .owl-item.center').find('.item').data('vid'),
+                    isPalm: $('.slider-02 .owl-item.center').find('.item').data('ispalm')
+                };
+
+                updateHomeTextRight(origData);
+                window.clearInterval(loadInterval);
+            }
+        },300);
+
+
+        sliderChannelsVideo.on('translated.owl.carousel', function () {
+            index = $('.slider-02 .center').index();
+            changeVideo(index,playerInstance,$('.slider-02 .center'));
+
+            $this = $('.slider-02 .center');
+
+            var data = {
+                dateN: $this.find('.item').data('date'),
+                titleN: $this.find('.item').data('title'),
+                whoN: $this.find('.item').data('who'),
+                url: $this.find('.item').data('url'),
+                labelN: $this.find('.item').data('label'),
+                palmN: $this.find('.item').data('palm'),
+                emailContent: $this.find('.item').data('email-content'),
+                palmDateN: $this.find('.item').data('palmdate'),
+                fbN: $this.find('.item').data('facebook'),
+                twitterN: $this.find('.item').data('twitter'),
+                linkN: $this.find('.item').data('link'),
+                vidN: $this.find('.item').data('vid'),
+                isPalm: $this.find('.item').data('ispalm')
+            }
+
+            var hashPush = '#vid='+data.vidN;
+            history.pushState(null, null, hashPush);
+            updateHomeTextRight(data);
+
+        });
+
+        var changeVideo = function (index, playerInstance, exThis) {
+
+            sliderChannelsVideo.trigger('to.owl.carousel', index);
+            playerInstance.playlistItem(index);
+            sliderChannelsVideo.trigger('to.owl.carousel',[index,1,true]);
+
+        }
+
+
+        if(hash > 0){
+
+            setTimeout(function(){
+
+                if($('#sortiecanne').length > 0){
+                    var test =  $('#sortiecanne').offset().top - 200;
+
+                    test = parseInt(test);
+
+                    $('html, body').animate({
+                        scrollTop: test
+                    }, 'slow');
+                }
+
+
+                $('.slider-02 .center').removeClass('center');
+
+                $.each($('.s-video-playlist .item'), function(i,e){
+                    var tVid = $(e).data('vid');
+
+                    if(tVid == hash) {
+                        $(e).parent().addClass('center');
+                        index = $(e).parent().index();
+                    }
+                });
+
+                if(!$('.media-library').length && !$('.medias').length){
+                    sliderChannelsVideo.trigger('to.owl.carousel', index);
+                }
+
+
+            }, 1000);
+
+
+        }
+    }
+
+    function initChannelTopBar() {
+        sliderChannelsVideoTop = $container.find(".slider-channels-video").owlCarousel({
+            nav: false,
+            dots: false,
+            smartSpeed: 500,
+            center: true,
+            loop: false,
+            margin: 81
+        });
 
             sliderChannelsVideoTop.on('click', '.owl-item', function () {
                 var index = $(this).index();
                 index = parseInt(index)
 
-                playerInstance.playlistItem(index);
+            playerInstance.playlistItem(index);
 
-                var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+            var infos = $.parseJSON($(this).find('.channel.video').data('json'));
 
-                $topBar.find('.info .category').text(infos.category);
-                $topBar.find('.info .date').text(infos.date);
-                $topBar.find('.info .hour').text(infos.hour);
-                $topBar.find('.info p').text(infos.name);
+            $topBar.find('.info .category').text(infos.category);
+            $topBar.find('.info .date').text(infos.date);
+            $topBar.find('.info .hour').text(infos.hour);
+            $topBar.find('.info p').text(infos.name);
 
-                $container.find('.channels-video').removeClass('active');
-                $container.find('.jwplayer').removeClass('overlay-channels');
-                $container.find('.jwplayer').removeClass('overlay-channels over');
+            $container.find('.channels-video').removeClass('active');
+            $container.find('.jwplayer').removeClass('overlay-channels');
+            $container.find('.jwplayer').removeClass('overlay-channels over');
 
                 sliderChannelsVideoTop.trigger('to.owl.carousel', [index, 1, true])
 
@@ -608,21 +610,20 @@ function playerInit(id, cls, havePlaylist, live) {
             controls: controls
         });
 
-        if(havePlaylist) {
-            var tempSlider = $(slider),
-                playlist   = [];
+    if (havePlaylist) {
+        var tempSlider = $(slider),
+            playlist = [];
 
+        if(havePlaylist === "grid") {
 
-            if(havePlaylist === "grid") {
-
-                $.each($('.grid-01 .item.video'), function(i,p) {
-                    var tempList = {
-                        "sources"  : $(p).data('file'),
-                        "image"    : $(p).data('img'),
-                        "date"     : $(p).find('.date').html(),
-                        "hour"     : $(p).find('.hour').html(),
-                        "category" : $(p).find('.info .category').html(),
-                        "name"     : $(p).find('.info .contain-txt strong a').html()
+            $.each($('.grid-01 .item.video'), function(i,p) {
+                var tempList = {
+                    "sources"  : $(p).data('file'),
+                    "image"    : $(p).data('img'),
+                    "date"     : $(p).find('.date').html(),
+                    "hour"     : $(p).find('.hour').html(),
+                    "category" : $(p).find('.info .category').html(),
+                    "name"     : $(p).find('.info .contain-txt strong a').html()
                     }
 
                     playlist.push(tempList);
@@ -751,37 +752,37 @@ function playerInit(id, cls, havePlaylist, live) {
                 currentSecs = Math.floor(currentTime - currentMins * 60),
                 percent = (currentTime / e.duration) * 100;
 
-            if (currentSecs < 10) {
-                currentSecs = "0" + currentSecs;
-            }
+        if (currentSecs < 10) {
+            currentSecs = "0" + currentSecs;
+        }
 
-            $current.html(currentMins + ":" + currentSecs);
-            $progressBar.find('.current-bar').css('width', percent+'%');
-        }).on('fullScreen', function() {
-            this.resize('100%','100%');
-        });
+        $current.html(currentMins + ":" + currentSecs);
+        $progressBar.find('.current-bar').css('width', percent+'%');
+    }).on('fullScreen', function () {
+        this.resize('100%', '100%');
+    });
 
-        $stateBtn.off('click').on('click', function() {
-            playerInstance.play();
-        });
+    $stateBtn.off('click').on('click', function () {
+        playerInstance.play();
+    });
 
-        $progressBar.off('click').on('click', function(e) {
-            var ratio = e.offsetX / $progressBar.outerWidth(),
-                duration = playerInstance.getDuration(),
-                current = duration * ratio;
-            playerInstance.seek(current);
-        });
+    $progressBar.off('click').on('click', function (e) {
+        var ratio = e.offsetX / $progressBar.outerWidth(),
+            duration = playerInstance.getDuration(),
+            current = duration * ratio;
+        playerInstance.seek(current);
+    });
 
-        $container.find('.video-player, .infos-bar .picto').on('click', function(e) {
-            $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
-            $container.removeClass('state-init');
-            playerInstance.play();
-            // $(this).off('click');
-        });
+    $container.find('.video-player, .infos-bar .picto').on('click', function (e) {
+        $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
+        $container.removeClass('state-init');
+        playerInstance.play();
+        // $(this).off('click');
+    });
 
-        $sound.on('click', '.icon-sound', function() {
-            playerInstance.updateMute();
-        });
+    $sound.on('click', '.icon-sound', function () {
+        playerInstance.updateMute();
+    });
 
         if (fullScreenApi.supportsFullScreen) {
             $fullscreen[0].addEventListener('click', function() {
