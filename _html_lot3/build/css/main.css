@@ -12651,10 +12651,14 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   position: relative;
   overflow: hidden;
   width: 100%;
+  height: calc(630px / 1.58);
   margin: 65px auto 70px;
 }
 .home .video-container {
   height: 550px;
+}
+.video-container.single-video {
+  height: calc(977px / 1.58);
 }
 .video-container.video-playlist {
   height: 382px;
