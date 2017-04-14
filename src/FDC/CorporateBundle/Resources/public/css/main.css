@@ -4509,14 +4509,12 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin-top: 22px;
 }
 .block-accordion .download {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: inline-block;
   margin-top: 19px;
   -ms-flex-pack: justify;
       justify-content: space-between;
   overflow: visible;
+  width: 310px;
 }
 .block-accordion .download.two-column {
   -ms-flex-pack: initial;
