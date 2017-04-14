@@ -306,9 +306,9 @@ var initAudio = function (hash) {
         }
 
 
-        if(hash != undefined) {
+        if(hash != undefined && $('.item.audio[data-aid="' + hash + '"]').length > 0) {
 
-            $this = $('.item.audio[data-aid="' + hash + '"');
+            $this = $('.item.audio[data-aid="' + hash + '"]');
 
             $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
