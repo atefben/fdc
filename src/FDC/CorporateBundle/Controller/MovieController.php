@@ -72,7 +72,7 @@ class MovieController extends Controller
                         }
                     }
                     if ($this->isNewsPublished($article, $locale)) {
-                        $key = $article->getPublishedAt()->getTimestamp();
+                        $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
                         $articles[$key] = $article;
                         $articlesIds[] = $article->getId();
                     }
@@ -93,7 +93,7 @@ class MovieController extends Controller
                     }
                 }
                 if ($this->isNewsPublished($news, $locale)) {
-                    $key = $news->getPublishedAt()->getTimestamp();
+                    $key = $news->getPublishedAt()->getTimestamp() . '-' . $news->getId() . '-' . $news->getTypeClone();
                     $articles[$key] = $news;
                     $articlesIds[] = $news->getId();
                 }
@@ -104,7 +104,7 @@ class MovieController extends Controller
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
                 if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
-                    $key = $article->getPublishedAt()->getTimestamp();
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
@@ -113,7 +113,7 @@ class MovieController extends Controller
             if ($associatedStatement->getStatement()) {
                 $article = $associatedStatement->getStatement();
                 if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
-                    $key = $article->getPublishedAt()->getTimestamp();
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
@@ -223,8 +223,7 @@ class MovieController extends Controller
         $locale = $request->getLocale();
         $festival = $this->getFestival($year, TRUE);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-        if($festival == "undefined")
-        {
+        if ($festival == "undefined") {
             $pages = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FDCPageLaSelection')
@@ -248,10 +247,10 @@ class MovieController extends Controller
             $localeSlugs = $page->getLocaleSlugs();
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
             return $this->render('FDCCorporateBundle:Movie:selection.html.twig', [
-                'page'            => $page,
-                'localeSlugs'     => $localeSlugs,
-                'festivals'       => $festivals,
-                'festival'        => False
+                'page'        => $page,
+                'localeSlugs' => $localeSlugs,
+                'festivals'   => $festivals,
+                'festival'    => False
             ]);
         }
 
@@ -520,13 +519,13 @@ class MovieController extends Controller
 
         return [
             'cinemaDeLaPlage' => $cinemaDelaPlage,
-            'cannesClassics' => $filters,
-            'classic'        => $classic,
-            'filters'        => $filters,
-            'selectionTabs'  => $pages,
-            'next'           => is_object($next) ? $next : false,
-            'localeSlugs'    => $localeSlugs,
-            'festivals'      => $festivals,
+            'cannesClassics'  => $filters,
+            'classic'         => $classic,
+            'filters'         => $filters,
+            'selectionTabs'   => $pages,
+            'next'            => is_object($next) ? $next : false,
+            'localeSlugs'     => $localeSlugs,
+            'festivals'       => $festivals,
         ];
     }
 }
