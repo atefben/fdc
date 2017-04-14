@@ -544,16 +544,6 @@
       z-index: 5;
       transition: $smoothTransition .6s;
     }
-
-    // &-back:hover {
-    //   transform: translate(-20px);
-    //   cursor: pointer;
-    // }
-    //
-    // &-next:hover {
-    //   transform: translate(20px);
-    //   cursor: pointer;
-    // }
   }
 
   .calc3 {
@@ -918,7 +908,7 @@
   div {
     width: 100vw;
     height: 100vh;
-    object-fit: cover; //TODO IE !
+    object-fit: cover;
     display: inline-block;
     text-align: center;
     transform: translate3d(0,0,0);
