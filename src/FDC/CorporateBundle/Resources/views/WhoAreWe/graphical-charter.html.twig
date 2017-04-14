@@ -75,7 +75,7 @@
         </div>
     </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section': 'qui sommes nous ?',
+    {'section':{{ 'header.nav.whoweare'|trans }},
         'detail' : '',
         'title'  : currentPage|trans_fallback('title'),
         'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
