@@ -557,3 +557,7 @@ text-rendering: auto;
 .single-article .audio-container {
   margin: 0 auto 35px !important;
 }
+
+.who-identity-guidelines .item p a {
+  color: #c8a461 !important;
+}
