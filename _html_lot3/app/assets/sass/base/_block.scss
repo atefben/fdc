@@ -1749,11 +1749,11 @@
   }
 
   .download {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 19px;
     justify-content: space-between;
     overflow: visible;
-    width: 310px;
 
     &.two-column {
       justify-content: initial;
