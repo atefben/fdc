@@ -75,7 +75,7 @@
         </div>
     </section>
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section':{{ 'header.nav.whoweare'|trans }},
+    {'section': 'header.nav.whoweare'|trans ,
         'detail' : '',
         'title'  : currentPage|trans_fallback('title'),
         'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
@@ -86,7 +86,7 @@
     [
     {
     "name" : 'header.nav.qui'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_whoarewe_show')
     },
     {
     "name" : 'aboutus.graphical_charter'|trans,
