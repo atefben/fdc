@@ -51,7 +51,7 @@
                                         <strong class="title-22">
                                             {{ loop.index }}. {{ section.name }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion{% if loop.first %} icon-minus{% else %} icon-more-square{% endif %}"></i>
                                     </div>
                                     {% for widget in section.widgets %}
                                         {% if widget.type == 'text' %}
