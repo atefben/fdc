@@ -133,6 +133,7 @@ class SearchBlockService extends BaseBlockService
                 'video' => $this->pool->getAdminByAdminCode('base.admin.info_video'),
                 'image' => $this->pool->getAdminByAdminCode('base.admin.info_image')
             ) ,
+           'gallery' => $this->pool->getAdminByAdminCode('base.admin.gallery'),
             'videos' => $this->pool->getAdminByAdminCode('base.admin.media_video'),
             'audios' => $this->pool->getAdminByAdminCode('base.admin.media_audio'),
             'photos' => $this->pool->getAdminByAdminCode('base.admin.media_image'),
@@ -182,6 +183,7 @@ class SearchBlockService extends BaseBlockService
                 'GraphicalCharterButtonGroup' => $this->pool->getAdminByAdminCode('base.admin.graphical_charter_button_group'),
                 'GraphicalCharterSection' => $this->pool->getAdminByAdminCode('base.admin.graphical_charter_section'),
                 'CorpoAccreditProcedure' => $this->pool->getAdminByAdminCode('base.admin.corpo_accredit_procedure'),
+                'HomepageCorporate' => $this->pool->getAdminByAdminCode('base.admin.homepage_corporate'),
                 // seo + tetieres
                 'FDCPageEvent'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_event'),
                 'FDCPageWebTvChannels'=> $this->pool->getAdminByAdminCode('base.admin.fdc_page_web_tv_channels'),
@@ -204,6 +206,9 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:NewsAudio',
             'BaseCoreBundle:NewsVideo',
             'BaseCoreBundle:NewsImage',
+        ),
+        'gallery' => array(
+            'BaseCoreBundle:Gallery'
         ),
         'videos' => array(
             'BaseCoreBundle:MediaVideo'
@@ -276,6 +281,7 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:CorpoTeamDepartements',
             'BaseCoreBundle:CorpoTeamMembers',
             'BaseCoreBundle:CorpoTeamTeams',
+            'BaseCoreBundle:HomepageCorporate',
             //'BaseCoreBundle:GraphicalCharter',
             'BaseCoreBundle:GraphicalCharterButtonGroup',
             //'BaseCoreBundle:GraphicalCharterSection',
@@ -298,6 +304,7 @@ class SearchBlockService extends BaseBlockService
     private static $dashboards = array(
         'Homepage' => 'Général',
         'FDCPageWebTvLive' => 'Général',
+        'MobileNotification' => 'Général',
         'FDCPageWaiting' => 'Général',
         // events
         'Event' => 'Événements',
@@ -336,6 +343,7 @@ class SearchBlockService extends BaseBlockService
         'GraphicalCharterButtonGroup' => 'Pages',
         //'GraphicalCharterSection' => 'Pages',
         'CorpoAccreditProcedure' => 'Pages',
+        'HomepageCorporate' => 'Pages',
         // seo + tetieres
         'FDCPageEvent' => 'SEO + TETIÈRES',
         'FDCPageWebTvChannels' => 'SEO + TETIÈRES',
@@ -352,6 +360,7 @@ class SearchBlockService extends BaseBlockService
 
     private static $repositoriesSearch = array(
         'news' => 'BaseCoreBundle:News',
+        'gallery' => 'BaseCoreBundle:Gallery',
         'videos' => 'BaseCoreBundle:MediaVideo',
         'audios' => 'BaseCoreBundle:MediaAudio',
         'photos' => 'BaseCoreBundle:MediaImage',
@@ -403,6 +412,7 @@ class SearchBlockService extends BaseBlockService
             'BaseCoreBundle:GraphicalCharterButtonGroup',
             //'BaseCoreBundle:GraphicalCharterSection',
             'BaseCoreBundle:CorpoAccreditProcedure',
+            'BaseCoreBundle:HomepageCorporate',
             // seo + tetieres
             'BaseCoreBundle:FDCPageEvent',
             'BaseCoreBundle:FDCPageWebTvChannels',

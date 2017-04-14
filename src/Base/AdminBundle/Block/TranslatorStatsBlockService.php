@@ -113,6 +113,9 @@ class TranslatorStatsBlockService extends BaseBlockService
                 'BaseCoreBundle:NewsVideo',
                 'BaseCoreBundle:NewsImage',
             ),
+            'gallery' => array(
+                'BaseCoreBundle:Gallery'
+            ),
             'videos' => array(
                 'BaseCoreBundle:MediaVideo'
             ),
@@ -188,6 +191,7 @@ class TranslatorStatsBlockService extends BaseBlockService
                 'BaseCoreBundle:GraphicalCharterButtonGroup',
                 'BaseCoreBundle:GraphicalCharterSection',
                 'BaseCoreBundle:CorpoAccreditProcedure',
+                'BaseCoreBundle:HomepageCorporate',
                 // seo + tetieres
                 'BaseCoreBundle:FDCPageEvent',
                 'BaseCoreBundle:FDCPageWebTvChannels',

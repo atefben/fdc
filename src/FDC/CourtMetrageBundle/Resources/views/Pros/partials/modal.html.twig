@@ -32,8 +32,8 @@
                     {% if pro.translatable.getDomainsCollection is not null %}
                         {% for domainCollection in pro.translatable.getDomainsCollection %}
                             {% if domainCollection.domain is defined and domainCollection.domain is not null %}
-                                {% if domainCollection.domain.translations[app.request.locale] is defined and domainCollection.domain.translations[app.request.locale] is not null %}
-                                    {% set proDomain = domainCollection.domain.translations[app.request.locale] %}
+                                {% if domainCollection.domain.translations[currentLocale] is defined and domainCollection.domain.translations[currentLocale] is not null %}
+                                    {% set proDomain = domainCollection.domain.translations[currentLocale] %}
                                     <span>{{ proDomain.name }}</span>
                                 {% endif %}
                             {% endif %}
@@ -44,8 +44,8 @@
                     <div class="authors">
                         {% for contactCollection in pro.translatable.getContactsCollection %}
                             {% if contactCollection.contact is defined and contactCollection.contact is not null %}
-                                {% if contactCollection.contact.translations[app.request.locale] is defined and contactCollection.contact.translations[app.request.locale] is not null %}
-                                    {% set proContact = contactCollection.contact.translations[app.request.locale] %}
+                                {% if contactCollection.contact.translations[currentLocale] is defined and contactCollection.contact.translations[currentLocale] is not null %}
+                                    {% set proContact = contactCollection.contact.translations[currentLocale] %}
                                     <div class="full">
                                         <a href="mailto:{{ proContact.email }}"><h4 class="mailName">{{ proContact.name }}</h4></a>
                                         <div class="job"><h4>{{ proContact.function }}</h4></div>
@@ -58,8 +58,8 @@
                 {% if proDescription is defined and proDescription is not null %}
                     <div class="content">
                     {% for description in proDescription %}
-                        {% if description.translations[app.request.locale] is defined and description.translations[app.request.locale] is not null %}
-                            {% set translation = description.translations[app.request.locale] %}
+                        {% if description.translations[currentLocale] is defined and description.translations[currentLocale] is not null %}
+                            {% set translation = description.translations[currentLocale] %}
                         {% endif %}
                         {% if description.getType == 'singlecolumn' %}
                             <div class="content wysiwyg">

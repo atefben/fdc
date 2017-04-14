@@ -9,7 +9,7 @@
     {% for event in result.event.items %}
         <article class="block-poster-search medias landscape-more">
             <div class="item event conference-press">
-                <a href="{{ path('fdc_event_event_get', {'slug': event|trans_fallback('slug') }) }}">
+                <a href="{{ path('fdc_corporate_event_get', {'year': event.festival.year, 'slug': event|trans_fallback('slug') }) }}">
                     <div class="contain-img landscape">
                         <img src="{% path event.header|trans_fallback('file'), '976x615' %}" alt="{{ event.header|trans_fallback('alt') }}"/>
                         <i class="picto icon icon-speacker"></i>

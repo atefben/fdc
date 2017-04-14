@@ -1,0 +1,74 @@
+{% trans_default_domain 'BaseAdminBundle' %}
+<div class="dashboard-search-results bg-white">
+    <header>
+        Gallery -
+        {% if params.status == constant('Base\\CoreBundle\\Entity\\NewsArticleTranslation::STATUS_TRANSLATION_PENDING') %}
+            En attente de traduction
+        {% else %}
+            Traduction à valider
+        {% endif %}
+        ({{ entities|length }})
+    </header>
+    <div id="dashboard-search-container">
+        {% if search is defined and search == true and entities|length == 0 %}
+            Il n'y a pas de traduction.
+        {% else %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                    {% set queryParams = app.request.get('dashboard_search_type') %}
+                    <tr class="sonata-ba-list-field-header">
+                        <th data-field="id" data-val="{% if queryParams is not empty and queryParams.sortField == 'id' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter sonata-ba-list-field-header-integer  sonata-ba-list-field-header-order-asc sonata-ba-list-field-order-active">
+                            Id
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Titre
+                        </th>
+                        <th>
+                            Chapo
+                        </th>
+                        <th data-field="createdAt" data-val="{% if queryParams is not empty and queryParams.sortField == 'createdAt' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter">
+                            Date de création
+                        </th>
+                        <th data-field="publishedAt" data-val="{% if queryParams is not empty and queryParams.sortField == 'publishedAt' %}{% if queryParams is not empty and queryParams.sortValue == 'asc' %}desc{% else %}asc{% endif %}{% else %}asc{% endif %}" class="dashboard-search-filter">
+                            Date de publication
+                        </th>
+                        <th class="sonata-ba-list-field-header-text ">
+                            Libellés
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for entity in entities %}
+                    {% set object = entity %}
+                    {% set transFr = entity.findTranslationByLocale('fr') %}
+                    <tr>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-integer">
+                            {{ entity.id }}
+                        </td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">
+                            <div>
+                                {{ transFr.titleHomeCorpo|trans }}
+                            </div>
+                        </td>
+                        <td>
+                            {{ transFr.introductionHomeCorpo|trans|raw }}
+                        </td>
+                        <td>
+                            {{ object.createdAt|localizeddate }}
+                        </td>
+                        <td>
+                            {% if object.publishedAt and object.publishEndedAt %}
+                                Du {{ object.publishedAt|localizeddate }} au {{ object.publishedAt|localizeddate }}
+                            {% elseif object.publishedAt and object.publishEndedAt is null %}
+                                {{ object.publishedAt|localizeddate }}
+                            {% endif %}
+                        </td>
+                        {% include 'BaseAdminBundle:Block:components/edit.html.twig' %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>

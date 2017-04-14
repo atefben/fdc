@@ -74,7 +74,14 @@
             </div>
         </div>
     </section>
-    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section':{{ 'header.nav.whoweare'|trans }},
+        'detail' : '',
+        'title'  : currentPage|trans_fallback('title'),
+        'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
+        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+    })) }}
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
     {
@@ -83,7 +90,7 @@
     },
     {
     "name" : 'aboutus.graphical_charter'|trans,
-    "url"  : path('fdc_corporate_whoarewe_graphicalcharter')
+    "url"  : path('fdc_corporate_whoarewe_graphicalcharter', {'slug': app.request.attributes.get('slug')})
     }
     ]
     } %}

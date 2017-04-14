@@ -77,6 +77,7 @@ class ProsController extends Controller
                 return $this->render('FDCCourtMetrageBundle:Pros:partials/modal.html.twig', [
                         'pro' => $pro,
                         'proDescription' => $proDescription,
+                        'currentLocale' => $pro->getLocale()
                     ]
                 );
             } else {
