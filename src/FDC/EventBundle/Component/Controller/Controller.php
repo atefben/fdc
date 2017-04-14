@@ -233,6 +233,15 @@ class Controller extends BaseController
         return $site;
     }
 
+    public function getCorporateSite()
+    {
+        static $site = null;
+        if (!$site) {
+            $site = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Site')->findOneBy(['slug' => 'site-institutionnel']);
+        }
+        return $site;
+    }
+
     protected function getTranslation($object, $locale = 'fr', $defaultLocale = null)
     {
         if (method_exists($object, 'findTranslationByLocale')) {
