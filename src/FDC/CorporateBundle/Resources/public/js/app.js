@@ -1671,7 +1671,7 @@ var initAudio = function (hash) {
                 category = $this.find('span.title-type-media').data('title'),
                 date = $this.closest('.audio').find('.date').text() || $this.find('.title-dates').text().substring(0, 8),
                 hour = $this.closest('.audio').find('.hour').text() || $this.find('.title-dates').text().substring(13, 18),
-                name = $this.find('.title-media').data('title');
+                name = $this.find('.title-media').data('title') || $this.find('.title-media').text();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
