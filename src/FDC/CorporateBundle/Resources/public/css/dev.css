@@ -523,3 +523,13 @@ text-rendering: auto;
   margin: 10px 0 0 0 !important;
   text-align: left;
 }
+
+.dark.history .contain-title p {
+  color: #333 !important;
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
