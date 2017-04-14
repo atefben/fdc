@@ -221,6 +221,7 @@ class EventAdmin extends Admin
                 'label' => 'form.event.label_header_image',
                 'help' => 'form.news.helper_header_image',
                 'translation_domain' => 'BaseAdminBundle',
+                'required' => false,
             ))
             ->add('associatedProjections', 'sonata_type_collection', array(
                 'label' => 'form.label_news_film_projection_associated',
