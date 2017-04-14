@@ -113,6 +113,11 @@
     max-width: 100%;
     object-fit: cover;
   }
+
+  .text + img {
+    width: 923px;
+  }
+
 }
 
 // - BLOCK 01 medium
