@@ -1458,12 +1458,12 @@ var initAudio = function (hash) {
             var audioImage = $('.activeAudio').data('img') || $('.activeAudio').parent().data('img');
         } else {
             var fileArray = $container.data('file');
+            var audioImage = $container.data('img');
         }
 
         var config = {
-            //file: $container.data('file'),
             sources: fileArray,
-            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+            image: audioImage,
             primary: 'html5',
             aspectratio: '16:9',
             debug : true,
@@ -1478,14 +1478,13 @@ var initAudio = function (hash) {
                 var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
-                    image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                    image: audioImage,
                     primary: 'html5',
                     aspectratio: '16:9',
                     width: $(aid).parent('div').width(),
                     height: $(aid).parent('div').height(),
                     controls: false
                 };
-                
             }
         }
         // console.log('audioplayer config',config);
