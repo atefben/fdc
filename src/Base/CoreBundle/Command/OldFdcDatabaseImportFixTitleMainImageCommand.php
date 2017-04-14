@@ -2,6 +2,7 @@
 
 namespace Base\CoreBundle\Command;
 
+use Base\CoreBundle\Entity\MediaImageTranslation;
 use Base\CoreBundle\Entity\OldArticleI18n;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -16,7 +17,7 @@ class OldFdcDatabaseImportFixTitleMainImageCommand extends ContainerAwareCommand
     private $locales = [
         'fr' => 'fr',
         'en' => 'en',
-        'es' => 'fr',
+        'es' => 'es',
         'zh' => 'cn',
     ];
 
@@ -66,7 +67,15 @@ class OldFdcDatabaseImportFixTitleMainImageCommand extends ContainerAwareCommand
     private function fixTitle($item)
     {
         if ($item->getOldNewsId() && $item->getHeader()) {
-            foreach ($item->getHeader()->getTranslations() as $imageTrans) {
+            foreach (array_flip($this->locales) as $locale) {
+                $imageTrans = $item->getHeader()->findTranslationByLocale($locale);
+                if (!$imageTrans) {
+                    $imageTrans = new MediaImageTranslation();
+                    $imageTrans->setLocale($locale);
+                    $item->getHeader()->addTranslation($imageTrans);
+                    $this->getManager()->persist($imageTrans);
+                    $this->getManager()->flush();
+                }
                 $oldArticleI18n = $this
                     ->getManager()
                     ->getRepository('BaseCoreBundle:OldArticleI18n')
