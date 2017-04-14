@@ -321,10 +321,10 @@ var initAudio = function (hash) {
                 aid = $this.closest('.audio').data('aid') || $this.closest('article').data('aid'),
                 source = $this.closest('.audio').data('file'),
                 img = $this.closest('.audio').data('img') || $this.closest('article').data('img'),
-                category = $this.closest('.audio').find('.category').text() || $(this).find('span.title-type-media').data('title'),
-                date = $this.closest('.audio').find('.date').text() || $(this).find('.title-dates').text().substring(0, 8),
-                hour = $this.closest('.audio').find('.hour').text() || $(this).find('.title-dates').text().substring(13, 18),
-                name = $(this).find('.contain-txt strong a').text() || $(this).find('.title-media').data('title');
+                category = $this.closest('.audio').find('.category').text() || $this.find('span.title-type-media').data('title'),
+                date = $this.closest('.audio').find('.date').text() || $this.find('.title-dates').text().substring(0, 8),
+                hour = $this.closest('.audio').find('.hour').text() || $this.find('.title-dates').text().substring(13, 18),
+                name = $this.find('.contain-txt strong a').text() || $this.find('.title-media').data('title');
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
