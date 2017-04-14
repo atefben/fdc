@@ -8086,7 +8086,7 @@ $(document).ready(function () {
 
     //FIX IE
 
-    if($('body').hasClass('ie') || true){ // test
+    if($('body').hasClass('ie')){ // test
         $.each($('.slide'),function (i, e) {
             var src = $(e).find('img').attr('src');
             $(e).find('.linkVid').css('background-image','url('+src+')');
@@ -8098,11 +8098,14 @@ $(document).ready(function () {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
             // var dof = $(e).attr('data-object-fit');
-            if ($(e).css('object-fit') == 'initial' || $(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)
+            if ($(e).parent().parent().parent().hasClass('slider-restropective') || $(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)
                 || (!$('body').hasClass('story-palme') && $('.block-movie-preview').length)) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-image', 'url('+src+')');
-                $(e).parent().css('background-size', $(e).css('object-fit'));
+                $(e).parent().css('background-size', 'cover');
+                if ($(e).parent().parent().parent().hasClass('slider-restropective')) {
+                    $(e).parent().css('background-size', 'initial');
+                }
                 $(e).parent().css('background-position-x','center');
                 $(e).parent().css('background-position-y','center');
                 $(e).parent().css('display', 'block');
