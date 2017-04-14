@@ -5770,7 +5770,7 @@ strong.title-center {
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
-  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
+  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff2") format("woff2"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
 }
 .icon:before {
   font-family: "icon";
