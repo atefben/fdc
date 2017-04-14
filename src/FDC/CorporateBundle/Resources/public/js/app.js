@@ -1759,10 +1759,10 @@ var initAudio = function (hash) {
                 aid = $(e.target).closest('.audio').data('aid'),
                 source = $(e.target).closest('.audio').data('file'),
                 img = $(e.target).closest('.audio').data('img') || $(e.target).closest('article').data('img'),
-                category = $(e.target).closest('.audio').find('.category').text(),
-                date = $(e.target).closest('.audio').find('.date').text(),
-                hour = $(e.target).closest('.audio').find('.hour').text(),
-                name = $(this).find('.contain-txt strong a').text();
+                category = $(e.target).closest('.audio').find('.category').text() || $(this).find('span.title-type-media').data('title'),
+                date = $(e.target).closest('.audio').find('.date').text() || $(this).find('.title-dates').text().substring(0, 8),
+                hour = $(e.target).closest('.audio').find('.hour').text() || $(this).find('.title-dates').text().substring(13, 18),
+                name = $(this).find('.contain-txt strong a').text() || $(this).find('.title-media').data('title');
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
