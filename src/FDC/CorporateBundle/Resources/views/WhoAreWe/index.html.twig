@@ -141,20 +141,13 @@
             </div> <!-- end all contain -->
         </div>
     </section>
-    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section':  'header.nav.whoweare'|trans ,
-        'detail' : '',
-        'title'  : currentPage|trans_fallback('title'),
-        'description': currentPage|trans_fallback('chapo')|striptags|truncate(250),
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    })) }}
 
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
     {
     "name" : 'header.nav.qui'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_whoarewe_show')
     },
     {
     "name" :  currentPage|trans_fallback('title'),
