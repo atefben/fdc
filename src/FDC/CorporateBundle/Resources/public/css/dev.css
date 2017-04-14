@@ -27,7 +27,7 @@
 }
 
 .dark.story-movie.story-palme .wysiwyg-article-02 p {
-  color: #666666 !important;
+
 }
 
 .story-movie.dark.story-palme {
@@ -515,4 +515,11 @@ text-rendering: auto;
 
 .block-push-top {
   background-attachment: fixed !important;
+}
+
+.article-single.dark .caption, .article-single.dark .caption strong {
+  color: #969696 !important;
+  font-size: 0.750rem !important;
+  margin: 10px 0 0 0 !important;
+  text-align: left;
 }
