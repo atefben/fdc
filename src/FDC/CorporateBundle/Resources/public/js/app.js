@@ -951,7 +951,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 img = $(e.target).closest('.video').data('img') || $(e.target).closest('article').data('img'),
                 category = $(e.target).closest('.video').find('.category').text() || $(this).find('span.title-type-media').data('title'),
                 date = $(e.target).closest('.video').find('.date').text() || $(this).find('.title-dates').text().substring(0, 8),
-                hour = $(e.target).closest('.video').find('.hour').text() || $(this).find('.title-dates').text().substring(11, 16),
+                hour = $(e.target).closest('.video').find('.hour').text() || $(this).find('.title-dates').text().substring(13, 18),
                 name = $(this).find('.contain-txt strong a').data('title') || $(this).find('.title-media').data('title');
                 if(typeof name === 'undefined'){
                     name = $(this).find('.contain-txt strong a').text();
