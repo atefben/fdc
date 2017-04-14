@@ -625,13 +625,3 @@ a.notloaded {
     width: 630px;
     margin: 0 auto;
 }
-
-.single-movie .slideshow {
-    width: 100% !important;
-}
-
-.competition .title {
-    font-family: "Playfair Display",Times New Roman,Times,serif !important;
-    font-weight: 700 !important;
-    color:#000 !important;
-}

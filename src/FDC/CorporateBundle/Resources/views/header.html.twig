@@ -19,9 +19,6 @@
             </li>
         </ul>
         <ul class="user-nav">
-            <!-- <li>
-              <a href="#" class="selection"><i class="icon icon-hours-black"></i> Ma Sélection</a>
-            </li> -->
             <li>
                 <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
             </li>
@@ -73,14 +70,11 @@
             </div>
             <div id="sticky-user">
                 <ul class="user-nav">
-                    <!-- <li>
-                      <a href="#" class="selection"><i class="icon icon-hours-black"></i>Ma Sélection</a>
-                    </li> -->
                     <li>
                         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
                     </li>
                     <li>
-                        <a href="search.html" class="search"><i class="icon icon-search"></i>{{ 'header.usernav.nav.rechercher'|trans }}</a>
+                        <a href="{{ path('fdc_corporate_search_searchsubmit') }}" class="search"><i class="icon icon-search"></i>{{ 'header.usernav.nav.rechercher'|trans }}</a>
                     </li>
                 </ul>
             </div>
