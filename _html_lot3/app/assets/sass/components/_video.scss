@@ -3,6 +3,10 @@
   overflow: hidden;
   width:  100%;
   height: calc(630px / 1.58);
+
+  .content-article & {
+    margin: 65px auto 70px;
+  }
   .home & {
     height: 550px;
   }
