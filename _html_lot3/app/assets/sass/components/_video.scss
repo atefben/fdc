@@ -2,15 +2,15 @@
   position: relative;
   overflow: hidden;
   width:  100%;
-  height: calc(630px / 1.58);
+  height: 100%;
   margin: 65px auto 70px;
   .home & {
     height: 550px;
   }
 
   &.video-single, .block-films &, block-videos & {
-    height: calc(980px / 1.58);
-    width: 980px;
+    //height: calc(980px / 1.58);
+    //width: 980px;
   }
 
   &.video-playlist {
