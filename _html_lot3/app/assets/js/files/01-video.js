@@ -148,65 +148,65 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $topBar       = $container.find('.top-bar'),
         $playlist     = [];
 
-     setTimeout(function(){
+    setTimeout(function(){
         var infos = {
             'all': $container.parent().find('.info'),
             "category": $container.parent().find('.info .category').html(),
             "date": $container.parent().find('.info .date').html(),
             "hour": $container.parent().find('.info .hour').html(),
             "name": $container.parent().find('.info p').html()
-        }
+        };
 
         $topBar.find('.info').html($container.closest('.popin-video').find('.popin-info').html());
 
 
     }, 700);
 
-        if($('.container-webtv-ba-video').length > 0) {
-            var shareUrl = $('.video .video-container').attr('data-link');
-        } else {
-            var shareUrl = document.location.href;
-        }
+    if($('.container-webtv-ba-video').length > 0) {
+        var shareUrl = $('.video .video-container').attr('data-link');
+    } else {
+        var shareUrl = document.location.href;
+    }
 
-        // CUSTOM LINK FACEBOOK
-        var fbHref = $topBar.find('.buttons .facebook').attr('href');
+    // CUSTOM LINK FACEBOOK
+    var fbHref = $topBar.find('.buttons .facebook').attr('href');
 
-        fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
+    fbHref = fbHref.replace('CUSTOM_URL', encodeURIComponent(shareUrl));
 
-        $topBar.find('.buttons .facebook').attr('href', fbHref);
-        // CUSTOM LINK TWITTER
-        var twHref = $topBar.find('.buttons .twitter').attr('href');
+    $topBar.find('.buttons .facebook').attr('href', fbHref);
+    // CUSTOM LINK TWITTER
+    var twHref = $topBar.find('.buttons .twitter').attr('href');
 
-        if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
-            twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
-        } else {
-            twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($topBar.find('.info p').text()+" "+shareUrl));
-        }
+    if(typeof $container.data('name') != 'undefined' && $container.data('name').length > 0) {
+        twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($container.data('name')+" "+shareUrl));
+    } else {
+        twHref = twHref.replace('CUSTOM_TEXT', encodeURIComponent($topBar.find('.info p').text()+" "+shareUrl));
+    }
 
 
-        $topBar.find('.buttons .twitter').attr('href', twHref);
+    $topBar.find('.buttons .twitter').attr('href', twHref);
 
-        // CUSTOM LINK COPY
-        $topBar.find('.buttons .link').attr('href', shareUrl);
-        $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
-        /*
-         linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
-         */
+    // CUSTOM LINK COPY
+    $topBar.find('.buttons .link').attr('href', shareUrl);
+    $topBar.find('.buttons .link').attr('data-clipboard-text', shareUrl);
+    /*
+     linkPopinInit(shareUrl, '#'+vid.id+' + .'+$topBar[0].className.replace(' ','.')+' .buttons .link');
+     */
 
-        /*$topBar.find('.buttons .facebook').on('click',function() {
-            window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
-            return false;
-        });*/
-        $topBar.find('.buttons .twitter').off('click').on('click', function() {
-            window.open(this.href,'','width=700,height=500');
-            return false;
-        });
+    /*$topBar.find('.buttons .facebook').on('click',function() {
+        window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=700,height=500');
+        return false;
+    });*/
+    $topBar.find('.buttons .twitter').off('click').on('click', function() {
+        window.open(this.href,'','width=700,height=500');
+        return false;
+    });
 
-        // CUSTOM LINK MAIL
-        $topBar.find('.buttons .popin-mail-open').attr('href', $container.data('email'));
-        $topBar.find('.buttons .popin-mail-open').on('click', function(e) {
-            fullScreenApi.cancelFullScreen();
-        });
+    // CUSTOM LINK MAIL
+    $topBar.find('.buttons .popin-mail-open').attr('href', $container.data('email'));
+    $topBar.find('.buttons .popin-mail-open').on('click', function(e) {
+        fullScreenApi.cancelFullScreen();
+    });
 
     function updateVolume(x, vol) {
         var volume = $sound.find('.sound-bar'),
@@ -261,7 +261,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     function externeControl() {
-
+        $topBar.on('click', '.channels', function () {
+            $container.find('.channels-video').toggleClass('active');
+            $container.find('.jwplayer').toggleClass('overlay-channels');
+        });
     }
 
     function mouseMoving(listen) {
