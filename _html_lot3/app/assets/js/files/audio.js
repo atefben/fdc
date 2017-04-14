@@ -310,10 +310,10 @@ var initAudio = function (hash) {
 
             $this = $('.item.audio[data-aid="' + hash + '"]');
 
-            if ($this.length > 0) {
-                $this = $('article[data-aid="' + hash + '"]');
+            if ($this.length == 0) {
+                $this = $('article[data-aid="' + hash + '"]').children('.item.audio');
             }
-            
+
             $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
 
