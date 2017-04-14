@@ -12659,7 +12659,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .home .video-container {
   height: 550px;
 }
-.video-container.video-single, .block-films .video-container, block-videos .video-container {
+.video-container.video-single, .block-films .video-container, .block-videos article.video .video-container {
   height: calc(977px / 1.58);
   width: 977px;
 }
