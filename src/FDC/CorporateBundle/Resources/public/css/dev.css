@@ -516,3 +516,10 @@ text-rendering: auto;
 .block-push-top {
   background-attachment: fixed !important;
 }
+
+.article-single.dark .caption, .article-single.dark .caption strong {
+  color: #969696;
+  font-size: 0.750rem;
+  margin: 10px 0 0;
+  text-align: left;
+}
