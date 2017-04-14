@@ -686,20 +686,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
-
-    //hotfix thomon, trigger click on hidden layers to enlarge click zone
-    /*var playerLoadInterval = window.setInterval(function(){
-        if($('.video-data-layer .state-init .playstate').length){
-            $('.video-data-layer .state-init .playstate').on('click',function(){
-                if($(this).closest('.state-init').length){
-                    $(this).closest('.state-init').removeClass('state-init');
-                }
-                $(this).find('.play-btn').trigger('click');
-            });
-            window.clearInterval(playerLoadInterval);
-        }
-    },300);*/
-
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
     }
