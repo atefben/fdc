@@ -553,3 +553,7 @@ text-rendering: auto;
   font-weight: 700 !important;
   color:#000 !important;
 }
+
+.single-article .audio-container {
+  margin: 0 auto 35px !important;
+}
