@@ -949,10 +949,10 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 vid = $(e.target).closest('.video').data('vid'),
                 source = $(e.target).closest('.video').data('file') || $(e.target).closest('article').data('file'),
                 img = $(e.target).closest('.video').data('img') || $(e.target).closest('article').data('img'),
-                category = $(e.target).closest('.video').find('.category').text() || $(e.target).find('span.title-type-media').data('title'),
-                date = $(e.target).closest('.video').find('.date').text() || $(e.target).find('title-dates').text().substring(0, 8),
-                hour = $(e.target).closest('.video').find('.hour').text() || $(e.target).find('title-dates').text().substring(11, 5),
-                name = $(this).find('.contain-txt strong a').data('title') || $(e.target).find('title-media').data('title');
+                category = $(e.target).closest('.video').find('.category').text() || $(e).find('span.title-type-media').data('title'),
+                date = $(e.target).closest('.video').find('.date').text() || $(e).find('title-dates').text().substring(0, 8),
+                hour = $(e.target).closest('.video').find('.hour').text() || $(e).find('title-dates').text().substring(11, 5),
+                name = $(this).find('.contain-txt strong a').data('title') || $(e).find('title-media').data('title');
                 if(typeof name === 'undefined'){
                     name = $(this).find('.contain-txt strong a').text();
                 }
