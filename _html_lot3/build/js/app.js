@@ -134,8 +134,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
-    if($container.find('.top-bar').length <= 0) {
-        $(topBar).insertAfter($container.find('#'+vid.id));
+    if ($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#' + vid.id));
     }
 
     var $infoBar      = $container.find('.info'),
@@ -224,34 +224,34 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             percentage = 0;
         }
 
-        $sound.find('.sound-seek').css('width',percentage+'%');
+        $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
     };
 
-    playerInstance.updateMute = function(force) {
+    playerInstance.updateMute = function (force) {
         force = force || false;
         if (force) {
             playerInstance.setMute(true);
             playerInstance.setVolume(0);
-            $sound.find('.sound-seek').css('width','0%');
+            $sound.find('.sound-seek').css('width', '0%');
         } else {
             if (playerInstance.getMute()) {
                 playerInstance.setMute(false);
-                $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
+                $sound.find('.sound-seek').css('width', playerInstance.getVolume() + '%');
             } else {
                 playerInstance.setMute(true);
-                $sound.find('.sound-seek').css('width','0%');
+                $sound.find('.sound-seek').css('width', '0%');
             }
         }
     }
 
-    playerInstance.stopMute = function() {
+    playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
-        $sound.find('.sound-seek').css('width','100%');
+        $sound.find('.sound-seek').css('width', '100%');
     }
 
-    playerInstance.removeFullscreen = function() {
+    playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         fullScreenApi.cancelFullScreen();
@@ -581,8 +581,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var playerHeight = $('.home').length ? 550 : $container.height();
 
         if($('.activeVideo').length > 0) {
-            var videoFile =  $('.activeVideo').data('file');
-            var videoImage =  $('.activeVideo').data('img');
+            videoFile = $('.activeVideo').data('file') || $('.activeVideo').parent().data('file');
+            videoImage = $('.activeVideo').data('img') || $('.activeVideo').parent().data('img');
         }else{
 
         }
@@ -944,7 +944,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
             var $popinVideo = $('.popin-video'),
                 vid = $(e.target).closest('.video').data('vid'),
-                source = $(e.target).closest('.video').data('file'),
+                source = $(e.target).closest('.video').data('file') || $(e.target).closest('article').data('file'),
                 img = $(e.target).closest('.video').data('img'),
                 category = $(e.target).closest('.video').find('.category').text(),
                 date = $(e.target).closest('.video').find('.date').text(),
@@ -960,6 +960,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             history.pushState(null, null, hashPush);
 
             $popinVideo.css('display','block');
+
+            console.log(videoNews);
 
             setTimeout(function(){
                 videoNews.play();
@@ -5395,6 +5397,9 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if($('.medias').length > 0 || $('.media-library').length > 0) {
         slider = $('.isotope-01');
+        if (slider.length == 0) {
+            slider = $('section.medias');
+        }
     }
 
     var images = [];
@@ -5431,7 +5436,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             }
 
             if($('.affiche-fdc').length) {
-                var src = $(value).find('img').attr('src');
+                var src = $(value).parent().data('img') || $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).parent().find('.infos  .name-f').html();
                 var label = $(value).parent().find('.infos .names-a').html();
@@ -5457,42 +5462,31 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
-                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
-                
+                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').data('title');
+                var dataItem = $(value).find('a');
+
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    getTitle = $(value).find('.info .contain-txt').html();
+                    getTitle = $(value).find('.info .contain-txt').html() || $(value).find('img').data('title');
                 }
-
-                var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                if (dataItem.hasClass('linkAllCover')) {
+                    var src = dataItem.attr('href');
+                } else {
+                    var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                }
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
-                var title = getTitle;
-                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
-                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
-                var caption = $(value).find('img').attr('data-credit');
-                var id = $(value).find('img').attr('data-id');
-                var facebookurl = $(value).find('img').attr('data-facebookurl');
-                var twitterurl = $(value).find('img').attr('data-twitterurl');
-                var url = $(value).find('img').attr('data-url');
-                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-
-                if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
-                    var dataItem = $(value).find('a');
-
-                    var title = dataItem.attr('title');
-                    var label = dataItem.data('label');
-                    var date = dataItem.data('date');
-                    var caption = dataItem.data('credit');
-                    var id = dataItem.data('pid');
-                    var facebookurl = dataItem.data('facebook');
-                    var twitterurl = dataItem.data('twitter');
-                    var url = dataItem.data('url');
-                    var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-                }
-
+                var title = getTitle || dataItem.attr('title');;
+                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label") || dataItem.data('label');;
+                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');;
+                var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');;
+                var id = $(value).find('img').attr('data-id') || dataItem.data('pid');;
+                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');;
+                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');;
+                var url = $(value).find('img').attr('data-url') || dataItem.data('url');;
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';;
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
@@ -5503,17 +5497,21 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             }
 
             function clean(str) {
-                var res = str.replace(/%[2-7]./gi, function myFunction(x)
-                {
-                    if (x == '%23') {
-                        return ('#');
-                    } else {
-                        return (decodeURI(x));
-                    }
-                });
+                if (str) {
+                    var res = str.replace(/%[2-7]./gi, function myFunction(x)
+                    {
+                        if (x == '%23') {
+                            return ('#');
+                        } else {
+                            return (decodeURI(x));
+                        }
+                    });
 
-                res = encodeURI(res);
-                return (res.replace('#', '%23'));
+                    res = encodeURI(res);
+                    return (res.replace('#', '%23'));
+                } else {
+                    return '';
+                }
             }
 
             var image = {
@@ -6682,7 +6680,6 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
-
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
@@ -6693,7 +6690,6 @@ function playerInit(id, cls, havePlaylist, live) {
         } else {
             tmp = videoPlayer;
         }
-        return tmp;
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
@@ -6711,8 +6707,8 @@ function playerInit(id, cls, havePlaylist, live) {
                 }
             }
         });
-        return tmp;
     }
+    return tmp;
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
@@ -6764,7 +6760,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
-    };
+    }
 
     playerInstance.updateMute = function (force) {
         force = force || false;
@@ -6781,13 +6777,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $sound.find('.sound-seek').css('width', '0%');
             }
         }
-    }
+    };
 
     playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
         $sound.find('.sound-seek').css('width', '100%');
-    }
+    };
 
     playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
@@ -6796,7 +6792,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
         playerInstance.resize('100%', '100%');
         mouseMoving(false);
-    }
+    };
 
     function externeControl() {
         $topBar.on('click', '.channels', function () {
@@ -6829,7 +6825,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             center: true,
             loop: false,
             margin: 81,
-            autoWidth: true,
+            autoWidth: true
         });
 
         sliderChannelsVideo.owlCarousel();
@@ -7289,20 +7285,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 };
 
 $(document).ready(function () {
-
-    //hotfix thomon, trigger click on hidden layers to enlarge click zone
-    /*var playerLoadInterval = window.setInterval(function(){
-        if($('.video-data-layer .state-init .playstate').length){
-            $('.video-data-layer .state-init .playstate').on('click',function(){
-                if($(this).closest('.state-init').length){
-                    $(this).closest('.state-init').removeClass('state-init');
-                }
-                $(this).find('.play-btn').trigger('click');
-            });
-            window.clearInterval(playerLoadInterval);
-        }
-    },300);*/
-
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
     }

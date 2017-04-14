@@ -134,8 +134,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     if($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
-    if($container.find('.top-bar').length <= 0) {
-        $(topBar).insertAfter($container.find('#'+vid.id));
+    if ($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#' + vid.id));
     }
 
     var $infoBar      = $container.find('.info'),
@@ -224,34 +224,34 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             percentage = 0;
         }
 
-        $sound.find('.sound-seek').css('width',percentage+'%');
+        $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
     };
 
-    playerInstance.updateMute = function(force) {
+    playerInstance.updateMute = function (force) {
         force = force || false;
         if (force) {
             playerInstance.setMute(true);
             playerInstance.setVolume(0);
-            $sound.find('.sound-seek').css('width','0%');
+            $sound.find('.sound-seek').css('width', '0%');
         } else {
             if (playerInstance.getMute()) {
                 playerInstance.setMute(false);
-                $sound.find('.sound-seek').css('width',playerInstance.getVolume()+'%');
+                $sound.find('.sound-seek').css('width', playerInstance.getVolume() + '%');
             } else {
                 playerInstance.setMute(true);
-                $sound.find('.sound-seek').css('width','0%');
+                $sound.find('.sound-seek').css('width', '0%');
             }
         }
     }
 
-    playerInstance.stopMute = function() {
+    playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
-        $sound.find('.sound-seek').css('width','100%');
+        $sound.find('.sound-seek').css('width', '100%');
     }
 
-    playerInstance.removeFullscreen = function() {
+    playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
         fullScreenApi.cancelFullScreen();
@@ -581,8 +581,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         var playerHeight = $('.home').length ? 550 : $container.height();
 
         if($('.activeVideo').length > 0) {
-            var videoFile =  $('.activeVideo').data('file');
-            var videoImage =  $('.activeVideo').data('img');
+            videoFile = $('.activeVideo').data('file') || $('.activeVideo').parent().data('file');
+            videoImage = $('.activeVideo').data('img') || $('.activeVideo').parent().data('img');
         }else{
 
         }
@@ -944,7 +944,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
             var $popinVideo = $('.popin-video'),
                 vid = $(e.target).closest('.video').data('vid'),
-                source = $(e.target).closest('.video').data('file'),
+                source = $(e.target).closest('.video').data('file') || $(e.target).closest('article').data('file'),
                 img = $(e.target).closest('.video').data('img'),
                 category = $(e.target).closest('.video').find('.category').text(),
                 date = $(e.target).closest('.video').find('.date').text(),
@@ -960,6 +960,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             history.pushState(null, null, hashPush);
 
             $popinVideo.css('display','block');
+
+            console.log(videoNews);
 
             setTimeout(function(){
                 videoNews.play();

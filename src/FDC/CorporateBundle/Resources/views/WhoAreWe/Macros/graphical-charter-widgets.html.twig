@@ -90,17 +90,17 @@
                 {% endif %}
 
                 {% if widget.title2|default('')|trim %}
-                    <span class="title-img-top">{{ widget.title }}</span>
+                    <span class="title-img-top">{{ widget.title2 }}</span>
                 {% endif %}
                 {% if widget.legend2|default('')|trim %}
-                    <p class="caption">{{ widget.legend|raw }}</p>
+                    <p class="caption">{{ widget.legend2|raw }}</p>
                 {% endif %}
                 {#{% if widget.subLegend|default('')|trim %}#}
                 {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}
                 {#{% endif %}#}
 
                 {% if widget.buttonGroup2 is defined and widget.buttonGroup2|length %}
-                    {% for buttonSection in widget.buttonGroup %}
+                    {% for buttonSection in widget.buttonGroup2 %}
                         <div class="item download">
                             <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
                             {% if buttonSection.files|length %}
@@ -177,17 +177,17 @@
                 {% endif %}
 
                 {% if widget.title2|default('')|trim %}
-                    <span class="title-img-top">{{ widget.title }}</span>
+                    <span class="title-img-top">{{ widget.title2 }}</span>
                 {% endif %}
                 {% if widget.legend2|default('')|trim %}
-                    <p class="caption">{{ widget.legend|raw }}</p>
+                    <p class="caption">{{ widget.legend2|raw }}</p>
                 {% endif %}
                 {#{% if widget.subLegend|default('')|trim %}#}
                 {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}
                 {#{% endif %}#}
 
                 {% if widget.buttonGroup2 is defined and widget.buttonGroup2|length %}
-                    {% for buttonSection in widget.buttonGroup %}
+                    {% for buttonSection in widget.buttonGroup2 %}
                         <div class="item download">
                             <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
                             {% if buttonSection.files|length %}
@@ -217,10 +217,10 @@
                 {% endif %}
 
                 {% if widget.title3|default('')|trim %}
-                    <span class="title-img-top">{{ widget.title }}</span>
+                    <span class="title-img-top">{{ widget.title3 }}</span>
                 {% endif %}
                 {% if widget.legend3|default('')|trim %}
-                    <p class="caption">{{ widget.legend|raw }}</p>
+                    <p class="caption">{{ widget.legend3|raw }}</p>
                 {% endif %}
                 {#{% if widget.subLegend|default('')|trim %}#}
                 {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}

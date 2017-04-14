@@ -52,13 +52,18 @@ jQuery(document).ready(function ($) {
     // preview
     var url = window.location.href;
     function previewNodeUrl() {
+        var site;
         var $btnPreview = $('#btn-preview');
+        if($('input[id$=sites_1]').is(':checked'))
+            site = 'event';
+        else
+            site = 'corporate';
         if ($btnPreview.length) {
             var nodeUrlPath = Routing.generate('base_admin_ajax_nodeurl', {
                 type: $btnPreview.data('type'),
                 id: $btnPreview.data('id'),
                 locale: $('.a2lix_translationsLocales.nav.nav-tabs li.nav-tab-active.active').data('locale'),
-                site: 'event',
+                site: site,
             });
             console.log(nodeUrlPath);
             $.post(nodeUrlPath, function (data) {

@@ -15,7 +15,7 @@
                 {% if not hideSliderAndMenu|default(false) %}
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
                 {% endif %}
-                <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
+                <div class="block-01"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
                     <div class="arrows">
                         {% if prev is defined and not prev is empty %}

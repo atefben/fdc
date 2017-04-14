@@ -108,6 +108,8 @@
   }
 
   img {
+    margin: 0 auto;
+    display: block;
     max-width: 100%;
     object-fit: cover;
   }
@@ -117,7 +119,6 @@
 .block-01-m {
   margin: 0 auto;
   max-width: 100%;
-  width: 942px;
   margin-bottom: 45px;
 
   img {
@@ -1748,11 +1749,11 @@
   }
 
   .download {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
     margin-top: 19px;
     justify-content: space-between;
     overflow: visible;
+    width: 310px;
 
     &.two-column {
       justify-content: initial;

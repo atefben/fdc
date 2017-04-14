@@ -122,6 +122,9 @@ class StatementImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($statement, $oldArticle);
+                }
+                elseif ($this->input->getOption('update-widget-video-only')) {
+                    $this->buildStatementWidgetsVideo($statement, $translation, $oldTranslation);
                 } else {
                     $this->buildStatementWidgetText($statement, $translation, $oldTranslation);
                     $this->buildStatementWidgetYoutube($statement, $translation, $oldTranslation);
@@ -279,7 +282,9 @@ class StatementImporter extends Importer
             $translation->setTitle(html_entity_decode(strip_tags($oldTranslation->getTitle())));
 
             foreach ($mapperFields as $oldField => $field) {
-                $translation->{'set' . ucfirst($field)}($oldTranslation->{'get' . ucfirst($oldField)}());
+                $setter = 'set' . ucfirst($field);
+                $getter = 'get' . ucfirst($oldField);
+                $translation->{$setter}($this->processText($oldTranslation->{$getter}()));
             }
             $this->getManager()->flush();
             return $translation;
@@ -318,7 +323,7 @@ class StatementImporter extends Importer
             $this->getManager()->persist($widgetTranslation);
         }
 
-        $widgetTranslation->setContent($oldTranslation->getBody());
+        $widgetTranslation->setContent($this->processText($oldTranslation->getBody()));
 
         $this->getManager()->flush();
         return $widget;

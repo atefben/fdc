@@ -320,7 +320,7 @@ class Importer
         set_time_limit(0);
         $fp = fopen("$folder$file", 'w+');
         $ch = curl_init(str_replace(" ", "%20", $url));
-        curl_setopt($ch, CURLOPT_TIMEOUT, 50);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 0);
         curl_setopt($ch, CURLOPT_FILE, $fp);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_exec($ch);
@@ -477,18 +477,26 @@ class Importer
             return null;
         }
 
+        $mediaImage = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+
+        $mediaImageTranslation = null;
+        if ($mediaImage) {
+            $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+            if ($mediaImageTranslation && !$this->input->getOption('force-reupload')) {
+                return $mediaImage;
+            }
+        }
+
         $oldUrl = 'http://www.festival-cannes.fr/assets/Image/General/';
         $file = $this->createImage($oldUrl . trim($oldMedia->getFilename()));
 
         if (!$file) {
             return null;
         }
-
-        $mediaImage = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:MediaImage')
-            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
-        ;
 
         if (!$mediaImage) {
             $mediaImage = new MediaImage();
@@ -510,7 +518,10 @@ class Importer
             }
         }
 
-        $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+        if (!$mediaImageTranslation) {
+            $mediaImageTranslation = $mediaImage->findTranslationByLocale($locale);
+        }
+
 
         if (!$mediaImageTranslation) {
             $mediaImageTranslation = new MediaImageTranslation();
@@ -730,12 +741,28 @@ class Importer
             return null;
         }
 
+        $mediaVideo = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaVideo')
+            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
+        ;
+        $mediaVideoTranslation = null;
+
+        if ($mediaVideo) {
+            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+            if ($mediaVideoTranslation && !$this->input->getOption('force-reupload')) {
+                return $mediaVideo;
+            }
+        }
+
         $file = null;
         if ($oldMediaI18n->getDeliveryUrl()) {
             $path = $oldMediaI18n->getDeliveryUrl();
             $pathArray = explode(',', $path);
-            $path = $pathArray[0] . '80' . $pathArray[count($pathArray) - 1];
-            $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+            if (count($pathArray) > 2) {
+                $path = $pathArray[0] . max(array_slice($pathArray, 1, count($pathArray) - 2)) . end($pathArray);
+                $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
+            }
         }
 
         if (!$file && $oldMediaI18n->getHdFormatFilename()) {
@@ -785,12 +812,6 @@ class Importer
             return null;
         }
 
-        $mediaVideo = $this
-            ->getManager()
-            ->getRepository('BaseCoreBundle:MediaVideo')
-            ->findOneBy(['oldMediaId' => $oldMedia->getId()])
-        ;
-
         if (!$mediaVideo) {
             $mediaVideo = new MediaVideo();
             $mediaVideo->setOldMediaId($oldMedia->getId());
@@ -816,7 +837,9 @@ class Importer
             }
         }
 
-        $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+        if (!$mediaVideoTranslation) {
+            $mediaVideoTranslation = $mediaVideo->findTranslationByLocale($locale);
+        }
 
         if (!$mediaVideoTranslation) {
             $mediaVideoTranslation = new MediaVideoTranslation();
@@ -1046,6 +1069,17 @@ class Importer
         } catch (\Exception $e) {
             $this->output->writeln('<error>' . $e->getMessage() . '</error>');
         }
+    }
+
+
+    public function processText($text)
+    {
+        $assetSearch = '="/asset';
+        $assetReplace = '="http://affif-sitepublic-media-prod.s3-website-eu-west-1.amazonaws.com/asset';
+
+        $text = str_replace($assetSearch, $assetReplace, $text);
+
+        return $text;
     }
 
 }

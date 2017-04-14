@@ -34,7 +34,10 @@ use Base\CoreBundle\Entity\InfoVideo;
 use Base\CoreBundle\Entity\InfoWidgetQuoteTranslation;
 use Base\CoreBundle\Entity\InfoWidgetTextTranslation;
 use Base\CoreBundle\Entity\InfoWidgetVideoYoutubeTranslation;
+use Base\CoreBundle\Entity\MediaAudio;
+use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageSimple;
+use Base\CoreBundle\Entity\MediaVideo;
 use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -880,7 +883,9 @@ class EntityListener
             Homepage::class,
             PressHomepage::class,
             MediaImageSimple::class,
-            \Base\CoreBundle\Entity\Media::class,
+            MediaImage::class,
+            MediaAudio::class,
+            MediaVideo::class,
             Event::class,
             WebTv::class,
             SocialWall::class, SocialGraph::class,

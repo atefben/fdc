@@ -7,70 +7,135 @@
 
 <section class="medias">
     {% for media in result.media.items %}
-        {% if class(media) == "MediaImage" %}
-            {% set title = media|trans_fallback('legend') %}
-            {% set format = 'photo' %}
-            {% set icon = 'photo-single' %}
-            {% set link = path('fdc_event_news_getphotos') ~ '#pid=' ~ media.id %}
-        {% elseif class(media) == "MediaVideo" %}
-            {% set title = media|trans_fallback('title') %}
-            {% set format = 'video' %}
-            {% set icon = 'video' %}
-            {% set link = '' %}
-            {% if media.displayedAll == true %}
-                {% set link = path('fdc_event_news_getvideos') ~ '#vid=' ~ media.id %}
-            {% elseif media.displayedTrailer == true and media.associatedFilms|length > 0 %}
-                {% set link = path('fdc_event_television_gettrailer', {slug: media.associatedFilms[0].association.slug, video: media.id }) %}
-            {% elseif media.displayedWebTv == true and media.webTv is not empty %}
-                {% set link = path('fdc_event_television_getchannel_1', {slug: media.webTv.findTranslationByLocale(app.request.locale).slug, videoId: media.id }) %}
+        {% if media.mediaType == 'MediaImage' %}
+            {% set photo = media %}
+            {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = photo.findTranslationByLocale('fr') %}
             {% endif %}
-        {% elseif class(media) == "MediaAudio" %}
-            {% set title = media|trans_fallback('title') %}
-            {% set format = 'audio' %}
-            {% set icon = 'audio' %}
-            {% set link = path('fdc_event_news_getaudios') ~ '#aid=' ~ media.id %}
-        {% endif %}
-        <article class="block-poster-search medias landscape-more">
-            <div class="item {{ format }}">
-                <a href="{{ link }}">
-                    <div class="contain-img landscape">
-                        {% set trans = media.findTranslationByLocale(app.request.locale) %}
-                        {% set transImage = null %}
-                        {% set amazonImage = null %}
-
-                        {% if trans is null or trans.file is null %}
-                            {% set trans = media.findTranslationByLocale('fr') %}
-                        {% endif %}
-
-                        {% if media.header is not null %}
-                            {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
-                            {% if transImage is null or transImage.file is null  %}
-                                {% set transImage = media.header.findTranslationByLocale('fr') %}
-                            {% endif %}
-                        {% elseif media.image %}
-                            {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
-                            {% if transImage is null or transImage.file is null %}
-                                {% set transImage = media.image.findTranslationByLocale('fr') %}
-                            {% endif %}
-                        {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
-                            {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
-                        {% endif %}
-
-                        {% if transImage or amazonImage %}
-                            <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
-                        {% else %}
-                            <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
-                        {% endif %}
-                        <i class="picto icon icon-{{ icon }}"></i>
-                        <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+            {% set title = media|trans_fallback('legend') %}
+            {% set format = trans.file.width > trans.file.height ? 'paysage' : 'portrait' %}
+            {% set copyright = photo|trans_fallback('copyright') %}
+            <article
+                    class="block-poster-search medias landscape-more {{ photo.theme|trans_fallback('slug') }} {{ format }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
+                    data-format="photo"
+                    data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+                    data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
+                <div class="item photo">
+                    <div class="contain-img landscape item-inner">
+                        <a href="{% path trans.file , 'reference' %}" class="linkAllCover"></a>
+                        <div class="image">
+                            <div class="image-wrapper">
+                                {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
+                                <img src="{% path trans.file , resolution %}" alt="" data-id="pid=mi-{{ photo.id }}"
+                                     data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
+                                     data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }}"
+                                     data-label="{{ photo.theme|trans_fallback('slug') }}"
+                                     data-date="{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}"
+                                     data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ (app.request.uri ~ '#pid=mi-' ~ photo.id )|escape('url') }}&picture={% path trans.file , resolution %}&name={{ trans.legend|escape('url') }}&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                     data-twitterurl="https://twitter.com/intent/tweet?text={{ trans.legend ? trans.legend ~ ' ' : ''|escape('url') }}{{ (app.request.uri ~ '#pid=mi-' ~ photo.id )|escape('url') }}"/>
+                            </div>
+                            <a href="{% path trans.file , 'reference' %}" class="linkImage"></a>
+                            <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
+                        </div>
+                        <span class="picto"><i class="icon icon-photo"></i></span>
                     </div>
                     <div class="contain-txts">
                         <span class="title-type-media">{{ media.theme|trans_fallback('name') }}</span>
                         <span class="title-dates">{{ media.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
                         <span class="title-media">{{ title }}</span>
                     </div>
-                </a>
-            </div>
-        </article>
+                </div>
+            </article>
+        {% elseif media.mediaType == 'MediaVideo' %}
+            {% set video = media %}
+            {% set trans = get_available_video(video, false, app.request.locale) %}
+            {% set transImage = null %}
+            {% set amazonImage = null %}
+            {% if trans is null %}
+                {% set trans = video.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% if video.header is not null %}
+                {% set transImage = video.header.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null %}
+                    {% set transImage = video.header.findTranslationByLocale('fr') %}
+                {% endif %}
+            {% elseif video.image %}
+                {% set transImage = video.image.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null %}
+                    {% set transImage = video.image.findTranslationByLocale('fr') %}
+                {% endif %}
+            {%- elseif video|trans_fallback('imageAmazonUrl') -%}
+                {% set imageamazon = 1 %}
+                {% set amazonImage = s3_server_video ~ video|trans_fallback('imageAmazonUrl') %}
+            {%- endif -%}
+            {% set title = media|trans_fallback('title') %}
+            {% if transImage is defined or amazonImage is defined %}
+                <article class="block-poster-search medias landscape-more video {{ video.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
+                        data-format="video"
+                        data-theme="all {{ video.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+                        data-vid="{{ video.id }}"
+                        data-file='[{% if(trans.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ trans.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ trans.mp4Url }}"}]'
+                        data-img="{% if transImage is not null %}{% path transImage.file, '640x404' %}{% endif %}"
+                        data-date="date-{{ video.publishedAt|date('d-m-y') }}">
+                    <div class="item video">
+                        <div class="contain-img landscape">
+                            <a href="#" class="linkAllCover"></a>
+                            <div class="image">
+                                <div class="image-wrapper">
+                                    <img src="{% if transImage is not null %}{% path transImage.file , '640x404' %}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}"
+                                         alt="{{ transImage|trans_fallback('alt') }}">
+                                </div>
+                                <a href="#" class="linkImage"></a>
+                            </div>
+                            <span class="picto"><i class="icon icon-video"></i></span>
+                        </div>
+                        <div class="contain-txts">
+                            <span class="title-type-media">{{ media.theme|trans_fallback('name') }}</span>
+                            <span class="title-dates">{{ media.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
+                            <span class="title-media">{{ title }}</span>
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        {% elseif media.mediaType == 'MediaAudio' %}
+            {% set audio = media %}
+            {% set trans = audio.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null %}
+                {% set trans = audio.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% if audio.image %}
+                {% set transImage = audio.image.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null %}
+                    {% set transImage = audio.image.findTranslationByLocale('fr') %}
+                {% endif %}
+            {% endif %}
+            {% set title = media|trans_fallback('title') %}
+            <article class="block-poster-search medias landscape-more audio {{ audio.theme|trans_fallback('slug') }} {% if imageamazon is defined and imageamazon == 1 %}amazonimg{% endif %}"
+                     data-format="audio"
+                     data-theme="all {{ audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+                     data-file='[{"file":"{{ s3_server_audio ~ trans.mp3Url }}"}]'
+                     data-date="date-{{ audio.publishedAt|date('d-m-y') }}"
+                     data-img="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '640x404' %}{% endif %}"
+                     data-aid="{{ audio.id }}">
+                <div class="item audio">
+                    <div class="contain-img landscape">
+                        <a href="#" class="linkAllCover"></a>
+                        <div class="image">
+                            <div class="image-wrapper">
+                                <img src="{% if transImage is defined and transImage and transImage.file %}{% path transImage.file , '640x404' %}{% endif %}" alt=""/>
+                            </div>
+                            <a href="#" class="linkImage"></a>
+                        </div>
+                        <span class="picto"><i class="icon icon-audio"></i></span>
+                    </div>
+                    <div class="contain-txts">
+                        <span class="title-type-media">{{ media.theme|trans_fallback('name') }}</span>
+                        <span class="title-dates">{{ media.publishedAt|date('d.m.y') }}  .  {{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
+                        <span class="title-media">{{ title }}</span>
+                    </div>
+                </div>
+            </article>
+        {% endif %}
     {% endfor %}
 </section>
