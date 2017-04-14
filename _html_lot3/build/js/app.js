@@ -946,7 +946,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $(this).addClass('activeVideo');
 
             var $popinVideo = $('.popin-video'),
-                vid = $(e.target).closest('.video').data('vid'),
+                vid = $(e.target).closest('.video').data('vid') || $(e.target).closest('article').data('vid'),
                 source = $(e.target).closest('.video').data('file') || $(e.target).closest('article').data('file'),
                 img = $(e.target).closest('.video').data('img') || $(e.target).closest('article').data('img'),
                 category = $(e.target).closest('.video').find('.category').text() || $(this).find('span.title-type-media').data('title'),
@@ -1756,7 +1756,7 @@ var initAudio = function (hash) {
             $(this).addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
-                aid = $(e.target).closest('.audio').data('aid'),
+                aid = $(e.target).closest('.audio').data('aid') || $(e.target).closest('article').data('aid'),
                 source = $(e.target).closest('.audio').data('file'),
                 img = $(e.target).closest('.audio').data('img') || $(e.target).closest('article').data('img'),
                 category = $(e.target).closest('.audio').find('.category').text() || $(this).find('span.title-type-media').data('title'),
