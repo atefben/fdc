@@ -411,7 +411,7 @@ var initAudio = function (hash) {
             var $popinAudio = $('.popin-audio'),
                 aid = $(e.target).closest('.audio').data('aid'),
                 source = $(e.target).closest('.audio').data('file'),
-                img = $(e.target).closest('.audio').data('img'),
+                img = $(e.target).closest('.audio').data('img') || $(e.target).closest('article').data('img'),
                 category = $(e.target).closest('.audio').find('.category').text(),
                 date = $(e.target).closest('.audio').find('.date').text(),
                 hour = $(e.target).closest('.audio').find('.hour').text(),
@@ -425,9 +425,6 @@ var initAudio = function (hash) {
             setTimeout(function(){
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
-
-
-                audioPopin.play();
                 audioPopin.play();
             }, 900);
 
