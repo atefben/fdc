@@ -406,7 +406,7 @@ var initAudio = function (hash) {
             e.preventDefault();
 
             $('.activeAudio').removeClass('activeAudio');
-            $(this).addClass('activeAudio')
+            $(this).addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
                 aid = $(e.target).closest('.audio').data('aid'),
