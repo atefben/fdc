@@ -961,6 +961,8 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
             $popinVideo.css('display','block');
 
+            console.log(videoNews);
+
             setTimeout(function(){
                 videoNews.play();
             }, 800);
