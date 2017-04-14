@@ -27,6 +27,7 @@
             {% endfor %}
         {% endif %}
         {% if media is empty %}
+            {% set availableMedias = [] %}
             {% for selfkitImage in film.selfkitImages if selfkitImage.oldTitle|upper|trim in ['Photo du Film'|upper, 'Affiche du film'|upper]  %}
                 {% set availableMedias = availableMedias|merge([selfkitImage]) %}
             {% endfor %}
