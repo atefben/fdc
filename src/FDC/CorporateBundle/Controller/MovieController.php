@@ -72,7 +72,7 @@ class MovieController extends Controller
                         }
                     }
                     if ($this->isNewsPublished($article, $locale)) {
-                        $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
+                        $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-news-' . $article->getTypeClone();
                         $articles[$key] = $article;
                         $articlesIds[] = $article->getId();
                     }
@@ -93,7 +93,7 @@ class MovieController extends Controller
                     }
                 }
                 if ($this->isNewsPublished($news, $locale)) {
-                    $key = $news->getPublishedAt()->getTimestamp() . '-' . $news->getId() . '-' . $news->getTypeClone();
+                    $key = $news->getPublishedAt()->getTimestamp() . '-' . $news->getId() . '-news-' . $news->getTypeClone();
                     $articles[$key] = $news;
                     $articlesIds[] = $news->getId();
                 }
@@ -104,7 +104,7 @@ class MovieController extends Controller
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
                 if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
-                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-info-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
@@ -113,7 +113,7 @@ class MovieController extends Controller
             if ($associatedStatement->getStatement()) {
                 $article = $associatedStatement->getStatement();
                 if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
-                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-' . $article->getTypeClone();
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-statement-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
