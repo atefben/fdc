@@ -79,7 +79,6 @@ function playerInit(id, cls, havePlaylist, live) {
     live = live || false;
     var tmp;
 
-
     if (id) {
         var videoPlayer = jwplayer(id);
         if (!$(videoPlayer).data('loaded')) {
@@ -90,7 +89,6 @@ function playerInit(id, cls, havePlaylist, live) {
         } else {
             tmp = videoPlayer;
         }
-        return tmp;
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
@@ -108,8 +106,8 @@ function playerInit(id, cls, havePlaylist, live) {
                 }
             }
         });
-        return tmp;
     }
+    return tmp;
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
@@ -161,7 +159,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
-    };
+    }
 
     playerInstance.updateMute = function (force) {
         force = force || false;
@@ -178,13 +176,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $sound.find('.sound-seek').css('width', '0%');
             }
         }
-    }
+    };
 
     playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
         $sound.find('.sound-seek').css('width', '100%');
-    }
+    };
 
     playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
@@ -193,7 +191,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
         playerInstance.resize('100%', '100%');
         mouseMoving(false);
-    }
+    };
 
     function externeControl() {
         $topBar.on('click', '.channels', function () {
@@ -226,7 +224,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             center: true,
             loop: false,
             margin: 81,
-            autoWidth: true,
+            autoWidth: true
         });
 
         sliderChannelsVideo.owlCarousel();
