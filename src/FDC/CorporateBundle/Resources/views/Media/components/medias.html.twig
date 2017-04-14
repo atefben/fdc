@@ -44,7 +44,7 @@
                         <span class="picto"><i class="icon icon-photo"></i></span>
                         <div class="contain-txt">
                             <div>
-                                <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
+                                <a href="#" class="category">{{ title|truncate(70) }} </a><span class="date">{{ dateMedia }}</span>
                             </div>
                             <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend|truncate(70) }}</a></strong>
                         </div>
@@ -94,7 +94,7 @@
                         <span class="picto"><i class="icon icon-photo"></i></span>
                         <div class="contain-txt">
                             <div>
-                                <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
+                                <a href="#" class="category">{{ title|truncate(70) }} </a><span class="date">{{ dateMedia }}</span>
                             </div>
                             <strong><a href="{% path media, media.context ~ '_' ~ '_big' %}">{{ legend|truncate(70) }}</a></strong>
                         </div>
@@ -168,9 +168,9 @@
                             <span class="picto"><i class="icon icon-photo"></i></span>
                             <div class="contain-txt">
                                 <div>
-                                    <a href="#" class="category">{{ title }} </a><span class="date">{{ dateMedia }}</span>
+                                    <a href="#" class="category">{{ title|truncate(70) }} </a><span class="date">{{ dateMedia }}</span>
                                 </div>
-                                <strong><a href="{% path file, file.context ~ '_big' %}">{{ legend }}</a></strong>
+                                <strong><a href="{% path file, file.context ~ '_big' %}">{{ legend|truncate(70) }}</a></strong>
                             </div>
                         </div>
                     </div>
