@@ -543,3 +543,17 @@ text-rendering: auto;
 .affiche-fdc .block-social-network-all {
   height: 150px;
 }
+
+.single-movie .slideshow {
+  width: 100% !important;
+}
+
+.competition .title {
+  font-family: "Playfair Display",Times New Roman,Times,serif !important;
+  font-weight: 700 !important;
+  color:#000 !important;
+}
+
+.single-article .audio-container {
+  margin: 0 auto 35px !important;
+}
