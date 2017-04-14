@@ -476,7 +476,7 @@ var owInitSlider = function (sliderName) {
         });
 
 
-        $('.date-next').on('click', function () {
+        /*$('.date-next').on('click', function () {
             animation('next-open');
 
             var $this = $(this);
@@ -510,7 +510,7 @@ var owInitSlider = function (sliderName) {
             });
 
             animation('prev-open');
-        });
+        });*/
 
         if ($('.restrospective-init').length) {
 
