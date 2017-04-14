@@ -520,6 +520,6 @@ text-rendering: auto;
 .article-single.dark .caption, .article-single.dark .caption strong {
   color: #969696 !important;
   font-size: 0.750rem !important;
-  margin: 0 0 0 0 !important;
+  margin: 10px 0 0 0 !important;
   text-align: left;
 }
