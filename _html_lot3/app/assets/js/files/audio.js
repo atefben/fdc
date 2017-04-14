@@ -306,10 +306,14 @@ var initAudio = function (hash) {
         }
 
 
-        if(hash != undefined && $('.item.audio[data-aid="' + hash + '"]').length > 0) {
+        if(hash != undefined) {
 
             $this = $('.item.audio[data-aid="' + hash + '"]');
 
+            if ($this.length > 0) {
+                $this = $('article[data-aid="' + hash + '"]');
+            }
+            
             $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
 
