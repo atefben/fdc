@@ -259,13 +259,13 @@
     {% set palme_breadcrumb  = archives is not defined ? {"name" : 'header.nav.69editions.palme'|trans, "url"  : path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})} : "" %}
 
     {% if palme_breadcrumb!= "" %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
+        {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans ~ ' ' ~ 'breadcrumb.retrospective.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
             palme_breadcrumb,
             {
             "name" :  currentPage|trans_fallback('title'),
@@ -275,13 +275,13 @@
             } 
         %}
     {% else %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
+        {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans ~ ' ' ~ 'breadcrumb.retrospective.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
             {
             "name" :  currentPage|trans_fallback('title'),
             "url"  :  path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})
