@@ -532,4 +532,10 @@ text-rendering: auto;
   display: block;
   text-align: center;
   line-height: 36px;
+  margin: 0 0 20px 0;
+}
+
+.dark.history .contain-title p a {
+  color: #c8a461 !important;
+
 }
