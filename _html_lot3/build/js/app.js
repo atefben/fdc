@@ -1454,11 +1454,12 @@ var initAudio = function (hash) {
 
 
         if ($('.activeAudio').length > 0) {
-            var audioFile = $('.activeAudio').data('file');
-            var audioImage = $('.activeAudio').data('img');
+            var fileArray = $('.activeAudio').data('file') || $('.activeAudio').parent().data('file');
+            var audioImage = $('.activeAudio').data('img') || $('.activeAudio').parent().data('img');
+        } else {
+            var fileArray = $container.data('file');
         }
 
-        var fileArray = $('.activeAudio').length > 0 ? audioFile : $container.data('file');
         var config = {
             //file: $container.data('file'),
             sources: fileArray,
