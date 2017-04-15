@@ -1,6 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 <div class="overlay-popin">
-    <div class="popin-mail popin">
+    <div class="popin-mail popin{% if share_email.noreplace == 1 %} noreplace{% endif %}">
         <div class="contain-popin popin">
             <div id="msg"></div>
             <strong class="theme-article popin">{% if artist is defined and artist is not null %}{{ artist|profession_gender('profession') }}{% else %}{{ share_email.section }}{% endif %}</strong>
