@@ -4,8 +4,9 @@
     <ul>
         {% for selectionTab in selectionTabs %}
             {% set selectionSlug = selectionTab|trans_fallback('slug')?:selectionTab.selectionSection|trans_fallback('slug') %}
+            {{ selectionSlug }}
             {% set selectionName = selectionTab|trans_fallback('overrideName')?:selectionTab.selectionSection|trans_fallback('name') %}
-            <li class="{% if app.request.attributes.get('slug') == selectionSlug %}active{% endif %}">
+            <li{% if app.request.attributes.get('slug') == selectionSlug %} class="active"{% endif %}>
                 <a href="{{ path('fdc_corporate_movie_selection', {'slug': selectionSlug, 'year':app.request.attributes.get('year')}) }}">
                     {{ selectionName }}
                 </a>
@@ -14,7 +15,7 @@
         {% if cannesClassics is defined and cannesClassics|length > 0 %}
             {% set transClassics = cannesClassics[0].findTranslationByLocale(app.request.locale) %}
             {% if transClassics is not empty and transClassics.slug is not empty %}
-                <li class="{% if app.request.attributes.get('_route') == 'fdc_corporate_movie_classics' %}active{% endif %}">
+                <li{% if app.request.attributes.get('_route') == 'fdc_corporate_movie_classics' %} class="active"{% endif %}>
                     <a href="{{ path('fdc_corporate_movie_classics', {'slug': transClassics.slug, 'year': app.request.attributes.get('year')}) }}">
                         {{ 'selection.nav.cannes-classics'|trans }}
                     </a>
@@ -23,7 +24,7 @@
         {% endif %}
 
         {% if cinemaDeLaPlage is defined and cinemaDeLaPlage %}
-        <li class="{% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %}active{% endif %}">
+        <li {% if app.request.attributes.get('slug') == 'cinema-de-la-plage' %} class="active"{% endif %}>
             <a href="{{ path('fdc_corporate_movie_selection', {'slug': 'cinema-de-la-plage', 'year':app.request.attributes.get('year')}) }}">
                 {{ 'selection.nav.cinema-la-plage'|trans }}
             </a>

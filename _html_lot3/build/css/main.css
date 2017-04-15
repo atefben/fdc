@@ -5773,7 +5773,7 @@ strong.title-center {
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
-  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
+  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff2") format("woff2"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
 }
 .icon:before {
   font-family: "icon";
@@ -15172,7 +15172,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 47px;
 }
 .single-movie .palmares i {
-  font-size: 2.75rem;
+  font-size: 3.75rem;
   color: #c8a461;
   display: inline-block;
   vertical-align: middle !important;
@@ -15637,6 +15637,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   left: 10px;
   position: absolute;
   z-index: 1;
+  margin: 0 0 0 0 !important;
 }
 .single-movie .casting .gallery .img img {
   display: none;
@@ -15792,7 +15793,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
   height: 145px;
-  padding-left: 190px;
+  padding-left: 225px;
   position: relative;
 }
 .single-movie .press .info-press .wrapper .folder img {
