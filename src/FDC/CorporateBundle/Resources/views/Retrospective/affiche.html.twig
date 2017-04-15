@@ -37,7 +37,7 @@
                          data-url="{{ currentURL }}#pid={{ poster.file.id }}"
                          data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ absolute_url(currentURL)|escape('url') ~ '%23pid=' ~ poster.file.id }}&amp;picture={% if poster is not null %}{% path poster.file, '256x348' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ absolute_url(currentURL) }}&amp;display=popup"
                          data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare ~ '%23pid={{ poster.file.id }}')|escape('url') }}"
-                         data-img="{% path poster.file, '976x535' %}">
+                         data-img="{% path poster.file, '2560x1103' %}">
                         <div class="poster" data-url="pid={{ poster.file.id }}">
                             {% if poster.file is not empty %}
                                 <a class="link-update" href="#">
