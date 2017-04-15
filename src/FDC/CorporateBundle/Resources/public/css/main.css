@@ -1666,7 +1666,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: "Camphor W01 Light", Arial, Helvetica, sans-serif;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 3rem;
   line-height: 60px;
   display: block;
@@ -2197,7 +2197,7 @@ a {
 }
 
 .buttons-01 {
-  margin-bottom: 94px;
+  margin-bottom: 60px;
 }
 .buttons-01 .button {
   border-color: #292929;

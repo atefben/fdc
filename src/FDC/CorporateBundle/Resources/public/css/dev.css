@@ -561,3 +561,9 @@ text-rendering: auto;
 .who-identity-guidelines .item p a {
   color: #c8a461 !important;
 }
+
+.block-videos article.video .video-container {
+  height: calc(630px / 1.58) !important;
+  width: 630px !important;
+  margin: 0 auto !important;
+}
