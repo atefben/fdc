@@ -161,14 +161,14 @@
             'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
             'artist' : null,
             'color' : null,
-            'ismovie' : ' ismovie'
+            'ismovie' : ''
         }))
         }}
-       {# {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
+        {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
         {'section': '',
             'detail' : '',
             'title'  : '',
             'description': ''
         }))
-        }}#}
+        }}
 {% endblock body %}

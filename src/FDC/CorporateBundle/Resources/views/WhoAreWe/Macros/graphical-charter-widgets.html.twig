@@ -227,7 +227,7 @@
                 {#{% endif %}#}
 
                 {% if widget.buttonGroup3 is defined and widget.buttonGroup3|length %}
-                    {% for buttonSection in widget.buttonGroup %}
+                    {% for buttonSection in widget.buttonGroup3 %}
                         <div class="item download">
                             <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
                             {% if buttonSection.files|length %}

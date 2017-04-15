@@ -4650,25 +4650,27 @@ var initRs = function () {
 
     if ($('.popin-mail').length > 0) {
         if($('.popin-mail-open').hasClass('ismovie')){
+
         } else {
             initPopinMail('.popin-mail');
-        }
-        $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
-            e.preventDefault();
-            $('.overlay-popin').addClass('visible-popin');
+            $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
+                e.preventDefault();
+                $('.overlay-popin').addClass('visible-popin');
 
-            var title = $('.overlay-popin').find('.contain-popin .title-article').html();
-            if(title.length > 80){
-                var croptile = title.substring(0, 80) + "...";
-                $('.overlay-popin').find('.contain-popin .title-article').html(croptile);
-            }
-            $('.overlay-popin').on('click', function (e) {
-
-                if (!$(e.target).hasClass('popin')) {
-                    $(this).removeClass('visible-popin');
+                var title = $('.overlay-popin').find('.contain-popin .title-article').html();
+                if(title.length > 80){
+                    var croptile = title.substring(0, 80) + "...";
+                    $('.overlay-popin').find('.contain-popin .title-article').html(croptile);
                 }
+                $('.overlay-popin').on('click', function (e) {
+
+                    if (!$(e.target).hasClass('popin')) {
+                        $(this).removeClass('visible-popin');
+                    }
+                });
             });
-        });
+        }
+
     }
 
     //LINK POPIN//

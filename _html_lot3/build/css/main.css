@@ -4458,8 +4458,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
 }
 .block-accordion .three-images {
-  -ms-flex-align: baseline;
-      align-items: baseline;
+  -ms-flex-align: normal;
+      align-items: normal;
 }
 .block-accordion .three-images .caption {
   margin-top: 0px;
