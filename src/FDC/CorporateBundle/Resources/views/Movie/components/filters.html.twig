@@ -5,7 +5,7 @@
         {% for selectionTab in selectionTabs %}
             {% set selectionSlug = selectionTab|trans_fallback('slug')?:selectionTab.selectionSection|trans_fallback('slug') %}
             {% set selectionName = selectionTab|trans_fallback('overrideName')?:selectionTab.selectionSection|trans_fallback('name') %}
-            <li{% if app.request.attributes.get('slug') == selectionSlug or 'fdc_corporate_movie_selection' == route %} class="active"{% endif %}>
+            <li{% if app.request.attributes.get('slug') == selectionSlug or 'fdc_corporate_movie_selection' == app.request.attributes.get('slug') %} class="active"{% endif %}>
                 <a href="{{ path('fdc_corporate_movie_selection', {'slug': selectionSlug, 'year':app.request.attributes.get('year')}) }}">
                     {{ selectionName }}
                 </a>
