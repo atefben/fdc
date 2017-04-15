@@ -606,9 +606,17 @@ text-rendering: auto;
 
 @media screen and (max-width: 1280px)
 {
-  .retrospective .slider-restropective .calc3 {
-    width: 50%;
-    left: 18%;
+  .retrospective .slider-restropective .calc3 img.i1 {
+    right: -24%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i2 {
+    right: 17%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i3 {
+    top: -39%;
+    right: 34%;
   }
 }
 @media only screen and (max-width: 1440px) {
