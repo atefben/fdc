@@ -33,7 +33,7 @@ class GlobalController extends Controller
      * @param $color
      * @return array|JsonResponse
      */
-    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null, $color = false, $ismomvie = false)
+    public function shareEmailAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $artist = null, $color = false, $ismovie = false)
     {
         $email = [
             'section'     => $section,
@@ -41,7 +41,7 @@ class GlobalController extends Controller
             'title'       => $title,
             'description' => $description,
             'url'         => $url,
-            'ismovie' => $ismomvie
+            'ismovie'     => $ismovie
         ];
 
         $translator = $this->get('translator');
@@ -82,7 +82,7 @@ class GlobalController extends Controller
                             'description' => strip_tags($data['description'], '<p><em>'),
                             'detail'      => $data['detail'],
                             'url'         => $data['url'],
-                            'ismovie'         => $data['ismovie'],
+                            'ismovie'     => $data['ismovie'],
                             'artist'      => $artist,
                         ]), 'text/html')
                     ;
@@ -104,7 +104,7 @@ class GlobalController extends Controller
                                 'description' => strip_tags($data['description'], '<p><em>'),
                                 'detail'      => $data['detail'],
                                 'url'         => $data['url'],
-                                'ismovie'         => $data['ismovie'],
+                                'ismovie'     => $data['ismovie'],
                                 'artist'      => $artist,
                             ]), 'text/html')
                         ;
@@ -156,14 +156,14 @@ class GlobalController extends Controller
      * @param $description
      * @return array
      */
-    public function shareEmailMediaAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $ismomvie = null) {
+    public function shareEmailMediaAction(Request $request, $section = null, $detail = null, $title = null, $description = null, $url = null, $ismovie = null) {
         $email = array(
             'section' => $section,
             'detail' => $detail,
             'title' => $title,
             'description' => $description,
             'url' => $url,
-            'ismovie' => $ismomvie
+            'ismovie' => $ismovie
         );
 
         $translator = $this->get('translator');
