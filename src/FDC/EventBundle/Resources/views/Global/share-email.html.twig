@@ -1,6 +1,5 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-{{ dump(share_email) }}
-<div class="popin-mail popin">
+<div class="popin-mail popin{% if share_email.noreplace == 1 %} noreplace{% endif %}">
     <div class="contain-popin popin">
         <div id="popinContent">
             <div id="msg"></div>
