@@ -79,7 +79,7 @@
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',
         'detail' : '',
-        'title'  : 'L\'affiche du Festival ' ~ app.request.attributes.get('year'),
+        'title'  : 'Affiche ' ~ app.request.attributes.get('year'),
         'description': (affiche) ? affiche.copyright : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
