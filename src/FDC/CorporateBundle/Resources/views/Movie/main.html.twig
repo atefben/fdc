@@ -79,7 +79,7 @@
                             <i class="icon icon-twitter"></i>
                         </a><!--
                 --><a href="#" rel="nofollow" class="link self"><i class="icon icon-link"></i></a><!--
-                --><a href="#" class="popin-mail-open" ><i class="icon icon-letter"></i></a><!--
+                --><a href="#" class="popin-mail-open noreplacepopin"><i class="icon icon-letter"></i></a><!--
                 --><a href="#" onclick="window.print();" class="print"><i class="icon icon-print"></i></a>
                     </div>
                     <div class="texts-clipboard"></div>
@@ -127,7 +127,6 @@
     {% else %}
         {% set mainTitle = movie|trans_fallback('title') %}
     {% endif %}
-
         {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
         {"breadcrumb":
         [
@@ -159,14 +158,17 @@
             'title'  : mainTitle,
             'theaters' : 'TODO',
             'description': movie|trans_fallback('synopsis')|truncate(150),
-            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+            'artist' : '',
+            'color' : '',
+            'ismovie' : ' ismovie'
         }))
         }}
-        {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
+       {# {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
         {'section': '',
             'detail' : '',
             'title'  : '',
             'description': ''
         }))
-        }}
+        }}#}
 {% endblock body %}

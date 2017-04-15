@@ -113,7 +113,7 @@ function playerInit(id, cls, havePlaylist, live) {
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
 
-    console.log("cont", $container);
+    //console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -384,7 +384,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $container.height();
 
-    console.log('setup',{
+    /*console.log('setup',{
         sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
@@ -393,7 +393,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         skin: 'seven',
         height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
-    })
+    })*/
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -545,13 +545,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 }
             }
-            updatePopinMedia({
-                'type': "video",
-                'category': $playlist[index].category,
-                'date': $playlist[index].date,
-                'title': $playlist[index].name,
-                'url': shareUrl
-            });
+            if ($('.popin-mail').hasClass('ismovie')) {
+            } else {
+                updatePopinMedia({
+                    'type': "video",
+                    'category': $playlist[index].category,
+                    'date': $playlist[index].date,
+                    'title': $playlist[index].name,
+                    'url': shareUrl
+                });
+            }
+
         }
 
         if (sc) {

@@ -964,8 +964,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
             $popinVideo.css('display','block');
 
-            console.log(videoNews);
-
             setTimeout(function(){
                 videoNews.play();
             }, 800);
@@ -1512,7 +1510,7 @@ var initAudio = function (hash) {
             duration_secs = Math.floor(_duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0' + duration_secs : duration_secs));
         }).on('error',function(e){
-            console.log(e);
+
         }).on('bufferChange', function (e) {
             var currentBuffer = e.bufferPercent;
             $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');
@@ -3248,7 +3246,7 @@ var owInitGrid = function (id) {
 
                             var timeout = window.setTimeout(function(){
                                 var bigInterval = window.setInterval(function(){
-                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    //console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
                                     if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
                                         window.clearInterval(bigInterval);
                                     }else{
@@ -4653,7 +4651,10 @@ var initRs = function () {
 
 
     if ($('.popin-mail').length > 0) {
-        initPopinMail('.popin-mail');
+        if($('.popin-mail-open').hasClass('ismovie')){
+        } else {
+            initPopinMail('.popin-mail');
+        }
         $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
@@ -5324,7 +5325,6 @@ var owinitSlideShow = function (slider, hash) {
         if(slider.length > 1){
             //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
             slider.each(function(){
-                console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
                 if($(this).find('[data-pid="'+hash+'"]').length){
                     finalSlider = $(this);
                 }
@@ -5686,7 +5686,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         if(typeof twitterUrl === 'undefined'){
             twitterUrl = images[centerElement].twitterurl;
         }
-        console.log('twitter share url',twitterUrl);
 
         facebook.attr('href', images[centerElement].facebookurl);
         twitter.attr('href',twitterUrl );
@@ -6718,7 +6717,7 @@ function playerInit(id, cls, havePlaylist, live) {
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
 
-    console.log("cont", $container);
+    //console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -6989,7 +6988,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $container.height();
 
-    console.log('setup',{
+    /*console.log('setup',{
         sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
@@ -6998,7 +6997,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         skin: 'seven',
         height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
-    })
+    })*/
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -7150,13 +7149,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 }
             }
-            updatePopinMedia({
-                'type': "video",
-                'category': $playlist[index].category,
-                'date': $playlist[index].date,
-                'title': $playlist[index].name,
-                'url': shareUrl
-            });
+            if ($('.popin-mail').hasClass('ismovie')) {
+            } else {
+                updatePopinMedia({
+                    'type': "video",
+                    'category': $playlist[index].category,
+                    'date': $playlist[index].date,
+                    'title': $playlist[index].name,
+                    'url': shareUrl
+                });
+            }
+
         }
 
         if (sc) {

@@ -190,7 +190,10 @@ var initRs = function () {
 
 
     if ($('.popin-mail').length > 0) {
-        initPopinMail('.popin-mail');
+        if($('.popin-mail-open').hasClass('ismovie')){
+        } else {
+            initPopinMail('.popin-mail');
+        }
         $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
             e.preventDefault();
             $('.overlay-popin').addClass('visible-popin');
