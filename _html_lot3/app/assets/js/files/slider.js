@@ -254,7 +254,7 @@ var owInitSlider = function (sliderName) {
 
         //init width of slide
         noUiSlider.create(slider, {
-            start: [1945],//todo script
+            start: [1945],
             range: {
                 'min': 1945,
                 'max': maxDate
@@ -304,15 +304,15 @@ var owInitSlider = function (sliderName) {
 
             //paralax calc 3
 
-            var val2 = -(valuesFloat - 1945 - number) * 380; //todo script ?
+            var val2 = -(valuesFloat - 1945 - number) * 380;
             $('.slider-restropective[data-slide=' + number + '] .calc3').css('transform', 'translate(' + val2 + 'px)');
 
             //paralax cal 4
 
-            var val3 = -(valuesFloat - 1945 - number) * 80; //todo script ?
+            var val3 = -(valuesFloat - 1945 - number) * 80;
             $('.slider-restropective[data-slide=' + number + '] .calc4').css('transform', 'translate(' + val3 + 'px)');
 
-            var val = -w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945);
 
             $slide.css('transform', 'translate(' + val + 'px)');
 
@@ -322,7 +322,7 @@ var owInitSlider = function (sliderName) {
 
         });
 
-        slider.noUiSlider.on('end', function (values, handle) { //end drag
+        /*slider.noUiSlider.on('end', function (values, handle) { //end drag
 
             var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
@@ -331,7 +331,7 @@ var owInitSlider = function (sliderName) {
             number = values - 1945;
 
 
-            var val = -w * (number); //todo script ?
+            var val = -w * (number);
 
             $slide.css('transform', 'translate(' + val + 'px)');
 
@@ -359,7 +359,7 @@ var owInitSlider = function (sliderName) {
 
             $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
 
-        });
+        });*/
 
         var animation = function (event) {
 

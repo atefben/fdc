@@ -1,4 +1,4 @@
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
+.retrospective/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
 .slider-restropective .block-01 .vFlexAlign img {
   .ie & {
 
@@ -716,57 +716,16 @@ header #navigation ul.user li a {
             width: 50%;
             left: 0px;
 
-            img.i1 {
-                position: absolute;
-                top: 10%;
-                left: 10%;
-            }
-
-            img.i2 {
-                position: absolute;
-                bottom: 20%;
-                left: 15%;
-            }
-
-            img.i3 {
-                position: absolute;
-                top: 5%;
-                left: 15%;
-            }
         }
 
         .calc4{
             width: 50%;
             right: 0px;
-            img.i1 {
-                position: relative;
-                top: 1%;
-                left: 33%;
-            }
-
-            img.i2 {
-                top: 21%;
-                position: relative;
-                right: -24%;
-            }
         }
     }
 
     .slider-restropective[data-slide="10"] {
             .calc3 {
-                img.i1 {
-                    left: -23%;
-                }
-
-                img.i2 {
-                    right: -9%;
-
-                    @media only screen and (max-width : 1440px) {
-                        top: 8%;
-                        position: relative;
-                        right: -16%;
-                    }
-                }
             }
         }
 }

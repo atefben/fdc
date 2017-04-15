@@ -6997,8 +6997,8 @@ body.chocolat-open > .chocolat-content {
     background-attachment: initial;
   }
 }
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
-.ie .slider-restropective .block-01 .vFlexAlign img {
+.ie .retrospective
+.slider-restropective .block-01 .vFlexAlign img {
   height: auto !important;
   width: 100% !important;
   min-width: none !important;
@@ -7006,7 +7006,8 @@ body.chocolat-open > .chocolat-content {
   min-height: none !important;
   max-height: 100% !important;
 }
-.ie .slider-restropective .block-01 .vFlexAlign img.open {
+.ie .retrospective
+.slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
   max-height: none !important;
 }
@@ -7627,47 +7628,9 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   width: 50%;
   left: 0px;
 }
-.retrospective .slider-restropective .calc3 img.i1 {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-}
-.retrospective .slider-restropective .calc3 img.i2 {
-  position: absolute;
-  bottom: 20%;
-  left: 15%;
-}
-.retrospective .slider-restropective .calc3 img.i3 {
-  position: absolute;
-  top: 5%;
-  left: 15%;
-}
 .retrospective .slider-restropective .calc4 {
   width: 50%;
   right: 0px;
-}
-.retrospective .slider-restropective .calc4 img.i1 {
-  position: relative;
-  top: 1%;
-  left: 33%;
-}
-.retrospective .slider-restropective .calc4 img.i2 {
-  top: 21%;
-  position: relative;
-  right: -24%;
-}
-.retrospective .slider-restropective[data-slide="10"] .calc3 img.i1 {
-  left: -23%;
-}
-.retrospective .slider-restropective[data-slide="10"] .calc3 img.i2 {
-  right: -9%;
-}
-@media only screen and (max-width: 1440px) {
-  .retrospective .slider-restropective[data-slide="10"] .calc3 img.i2 {
-    top: 8%;
-    position: relative;
-    right: -16%;
-  }
 }
 
 .dark .grid-01 {
@@ -11015,18 +10978,18 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective .calc3 img.i1 {
   position: relative;
-  top: -2%;
-  left: -21%;
+  top: 0%;
+  right: -49%;
 }
 .slider-restropective .calc3 img.i2 {
-  top: 38%;
+  top: 39%;
   position: relative;
-  right: 7%;
+  right: -5%;
 }
 .slider-restropective .calc3 img.i3 {
   position: relative;
-  top: 0%;
-  left: 15%;
+  top: 6%;
+  right: 50%;
 }
 .slider-restropective .calc4 {
   position: absolute;
@@ -11043,18 +11006,18 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective .calc4 img.i1 {
   position: relative;
-  top: -14%;
-  left: 13%;
+  top: 1%;
+  left: 25%;
 }
 .slider-restropective .calc4 img.i2 {
-  top: 41%;
+  top: 20%;
   position: relative;
-  right: -21%;
+  right: -30%;
 }
 .slider-restropective .calc4 img.i3 {
   position: relative;
-  top: 31%;
-  left: -53%;
+  top: 46%;
+  left: -36%;
 }
 .slider-restropective.background-effet:after {
   content: '';
