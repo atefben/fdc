@@ -322,7 +322,7 @@ var owInitSlider = function (sliderName) {
 
         });
 
-        /*slider.noUiSlider.on('end', function (values, handle) { //end drag
+        slider.noUiSlider.on('end', function (values, handle) { //end drag
 
             var nm = isMac ? 4 : 21;
             var w = $('body').width() + nm;
@@ -359,7 +359,7 @@ var owInitSlider = function (sliderName) {
 
             $('.slider-restropective[data-slide="0"]').removeClass('big').removeClass('small');
 
-        });*/
+        });
 
         var animation = function (event) {
 
