@@ -630,3 +630,8 @@ text-rendering: auto;
 .retrospective .navigation-sticky-02.sticky {
   position: inherit !important;
 }
+
+.by-author {
+  width: 636px;
+  margin: 0px auto 10px auto;
+}
