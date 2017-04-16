@@ -40,9 +40,9 @@
                         {
                           "sources":[{% if(firstVideo.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ firstVideo|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ firstVideo|trans_fallback('mp4Url') }}"}],
                           "vid":"{{ firstVideo.id }}",
-                          "name":"{{ firstVideo|trans_fallback_movie('title')|replace({'"': "'"}) }}",
+                          "name":"{{ firstVideo|trans_fallback_movie('title')|replace({'"': "'"})|raw }}",
                           "image":"{% if videoImage is not empty %}{{ videoImage }}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}",
-                          "category":"{{ firstVideo.theme|trans_fallback('name') }}",
+                          "category":"{{ firstVideo.theme|trans_fallback('name')|replace({'"': "'"})|raw }}",
                           "date":"{{ firstVideo.publishedAt()|date('d/m/Y') }}",
                           "hour":"{{ firstVideo.publishedAt()|date('H:i') }}"
                         }{% if loop.last %}{% else %},{% endif %}{% endfor %}

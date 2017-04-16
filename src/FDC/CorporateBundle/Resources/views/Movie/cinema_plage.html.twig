@@ -42,11 +42,7 @@
     "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
+    "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ movie.festival.year,
     "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
     },
     {
