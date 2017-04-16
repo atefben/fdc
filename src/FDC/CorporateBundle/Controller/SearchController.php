@@ -241,11 +241,12 @@ class SearchController extends Controller
         }
 
         if ($searchFilter=="info_statement") {
+
             foreach ($searchResults['items'] as $key => $item) {
-                if($item->isDisplayedOnCorpoHome() == false) {
-                    unset($searchResults['items'][$key]);
-                    --$searchResults['count'];
-                }
+//                if($item->isDisplayedOnCorpoHome() == false) {
+//                    unset($searchResults['items'][$key]);
+//                    --$searchResults['count'];
+////                }
             }
         }
 
