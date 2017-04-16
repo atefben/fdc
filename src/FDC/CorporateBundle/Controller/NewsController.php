@@ -711,7 +711,7 @@ class NewsController extends Controller
         $nextArticlesURL = $this->removeUnpublishedNewsAudioVideo($nextArticlesURL, $locale);
         return $this->render('FDCCorporateBundle:News:main.html.twig', [
             'localeSlugs'            => $localeSlugs,
-            'focusArticles'          => $focusArticles,
+            'focusArticles'          => array_slice($focusArticles, 0, 2),
             'programmations'         => $programmations,
             'associatedFilmDuration' => $associatedFilmDuration,
             'news'                   => $news,
