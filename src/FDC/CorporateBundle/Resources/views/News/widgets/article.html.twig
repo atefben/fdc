@@ -108,6 +108,9 @@
                     {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                 {% endif %}
             {% endif %}
+            {% if (file is not defined or not file) and (imgamazon is not defined or not imgamazon)  %}
+                <img src="{{ asset('bundles/fdccorporate/media/images/film1144x724.jpg') }}" alt="" />
+            {% endif %}
         </div>
         {% if article is news_object %}
             <a href="{{ path('fdc_corporate_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'year': article.festival.year}) }}" class="linkImage"></a>
