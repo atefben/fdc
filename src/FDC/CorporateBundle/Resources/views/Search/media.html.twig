@@ -22,11 +22,11 @@
                     data-theme="{{ photo.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
                     data-date="date-{{ photo.publishedAt|date('d-m-y') }}">
                 <div class="item photo">
-                    <div class="contain-img landscape item-inner">
+                    <div class="contain-img landscape{% set affichage =  trans.file.width > trans.file.height ? 'largeur' : 'hauteur' %} {{ affichage }} item-inner">
                         <a href="{% path trans.file , 'reference' %}" class="linkAllCover"></a>
                         <div class="image">
                             <div class="image-wrapper">
-                                {% set resolution =  trans.file.width > trans.file.height ? 'x404' : 'x404' %}
+                                {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                                 <img src="{% path trans.file , resolution %}" alt="" data-id="pid=mi-{{ photo.id }}"
                                      data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
                                      data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }}"

@@ -643,3 +643,11 @@ text-rendering: auto;
 .classic .ajax-section .black {
   padding: 0 0 60px 0;
 }
+
+.block-search .content-result .contain-img.hauteur img {
+  zoom:0.6;
+}
+
+.block-search .content-result .contain-img.largeur img {
+  zoom:0.5;
+}
