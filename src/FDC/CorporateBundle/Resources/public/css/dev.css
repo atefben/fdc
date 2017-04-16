@@ -645,9 +645,13 @@ text-rendering: auto;
 }
 
 .block-search .content-result .contain-img.hauteur img {
-  zoom:0.6;
+  zoom:0.7;
 }
 
 .block-search .content-result .contain-img.largeur img {
   zoom:0.5;
+}
+
+.block-search .content-result .contain-txts .title-media {
+  font-family: "Playfair Display",Times New Roman,Times,serif !important;
 }
