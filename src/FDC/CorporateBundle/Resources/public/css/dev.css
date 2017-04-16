@@ -626,3 +626,7 @@ text-rendering: auto;
     top: -4% !important;
   }
 }
+
+.retrospective .navigation-sticky-02.sticky {
+  position: inherit !important;
+}
