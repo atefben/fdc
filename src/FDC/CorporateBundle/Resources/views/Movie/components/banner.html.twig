@@ -99,9 +99,10 @@
         {% if directors|length > 0 %}
             <p>
                 {{ 'movie.label.realisepar'|trans }} :
-                {% for director in directors %}
-                    <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
-                    {% if loop.index != directors|length %}, {% endif %}
+                {% set firstDirector = true %}
+                {% for director in directors if not director.duplicate %}
+                    {{ firstDirector ? '': ', ' }}<a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>{‰
+                    {% set firstDirector = false %}
                 {% endfor %}
             </p>
         {% endif %}
