@@ -123,23 +123,25 @@ class MovieController extends Controller
 
         $prev = null;
         $next = null;
-        foreach ($moviesAll as $key => $tmp) {
-            if ($tmp->getId() == $movie->getId()) {
-                if ($key == 0) {
-                    $prev = $movies[count($movies) - 1];
-                    $next = $movies[1];
-                } elseif ($key == count($movies) - 1) {
-                    $prev = $movies[count($movies) - 2];
-                    $next = $movies[0];
-                } else {
-                    if (isset($movies[$key - 1])) {
-                        $prev = $movies[$key - 1];
+        if ($movies) {
+            foreach ($moviesAll as $key => $tmp) {
+                if ($tmp->getId() == $movie->getId()) {
+                    if ($key == 0) {
+                        $prev = end($movies);
+                        $next = $movies[1];
+                    } elseif ($key == count($movies) - 1) {
+                        $prev = $movies[count($movies) - 2];
+                        $next = $movies[0];
+                    } else {
+                        if (isset($movies[$key - 1])) {
+                            $prev = $movies[$key - 1];
+                        }
+                        if (isset($movies[$key])) {
+                            $next = $movies[$key];
+                        }
                     }
-                    if (isset($movies[$key])) {
-                        $next = $movies[$key];
-                    }
+                    break;
                 }
-                break;
             }
         }
 
