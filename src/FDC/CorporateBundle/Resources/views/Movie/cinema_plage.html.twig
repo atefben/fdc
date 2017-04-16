@@ -1,13 +1,20 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
+{% block bodyClass %}loading retrospective selection retrospective-home fs-off restrospective-init dark not-mobile{% endblock %}
 
 {% block body %}
-    <section class="border-bottom s-slider-retrospective">
+    <section class="padding-bottom border-bottom s-slider-retrospective">
 
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
 
         <div class="ajax-section">
+            {% if festival == false %}
+            <div class="contain-ajax grid-selection">
+                <div class="block-01 dark">
+                    <h2 class="title" style="margin-top:30px;">{{ 'retrospective.pasdecontenu'|trans }}</h2>
+                </div>
+            </div>
+            {% else %}
             <div class="contain-ajax">
 
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
