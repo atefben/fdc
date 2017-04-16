@@ -11,6 +11,7 @@
     <div class="bck-hover">
         <div class="wrapper-item">
             <div class="poster">
+                <a href="{{ path('fdc_event_movie_get', {'slug': film.slug}) }}">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: film,
                 film_format: '259x352',
@@ -20,6 +21,7 @@
                 },
                 film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
                 }) %}
+                </a>
             </div>
             <div class="infos">
                 {% if projection is defined and projection is not empty %}
