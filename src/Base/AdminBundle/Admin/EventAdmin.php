@@ -256,7 +256,8 @@ class EventAdmin extends Admin
                 'label' => false,
                 'attr' => array (
                     'class' => 'hidden',
-                )
+                ),
+                'years' => range(1960, (int)date('Y') + 5),
             ))
             ->add('createdBy', null, array(
                 'label' => false,
