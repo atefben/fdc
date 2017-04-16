@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="padding-bottom border-bottom s-slider-retrospective">
-        {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
         <div class="ajax-section">
             <div class="contain-ajax">
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}

@@ -1,10 +1,10 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 
 <article class="block-movie-preview" style="background-image: url('{% spaceless %}
-    {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
+    {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
     film: film,
     film_format: '976x535',
-    film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg',
+    film_image_default: '/bundles/fdccorporate/media/images/film1900x800.jpg',
     display_film_path: true
     }) %}
 {% endspaceless %}')">
