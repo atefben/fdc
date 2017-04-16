@@ -20,7 +20,6 @@ class GraphicalCharterSectionRepository extends TranslationRepository
         $qb = $this
             ->createQueryBuilder('gcs')
             ->innerJoin('gcs.graphicalCharters', 'gcp')
-            ->innerJoin('gcs.po', 'gcp')
             ->innerJoin('gcp.graphicalCharter', 'gc')
             ->innerJoin('gcs.translations', 'gcst')
             ->andWhere('gc.id = :id')
