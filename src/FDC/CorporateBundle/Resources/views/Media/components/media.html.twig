@@ -82,7 +82,7 @@
                     <span class="picto"><i class="icon icon-video"></i></span>
                     <div class="contain-txt">
                         <div>
-                            <a href="#" class="category">{{ video.theme|trans_fallback('name') }} </a><span
+                            <a href="#" class="category">{{ video.theme|trans_fallback('name')|truncate(22) }} </a><span
                                     class="date">{{ video.publishedAt|date('d.m.y') }}</span> . <span
                                     class="hour">{{ agenda_leftbar_translate_hour(video.publishedAt|date('H:i'), true, true) }}</span>
                         </div>
@@ -123,7 +123,7 @@
                 <span class="picto"><i class="icon icon-audio"></i></span>
                 <div class="contain-txt">
                     <div>
-                        <a href="#" class="category">{{ audio.theme|trans_fallback('name') }} </a><span
+                        <a href="#" class="category">{{ audio.theme|trans_fallback('name')|truncate(22) }} </a><span
                                 class="date">{{ audio.publishedAt|date('d.m.y') }}</span> . <span
                                 class="hour">{{ agenda_leftbar_translate_hour(audio.publishedAt|date('H:i'), true, true) }}</span>
                     </div>
