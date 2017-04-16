@@ -106,6 +106,8 @@
                             {% if file is defined %}
                                 {% thumbnail file, gabarit with {'alt': img|trans_fallback('alt') } %}
                             {% endif %}
+                        {% else %}
+                            <img src="{{ asset('bundles/fdccorporate/media/images/film1144x724.jpg') }}" alt="" />
                         {% endif %}
                         <i class="picto icon icon-{{ article.newsType|get_news_type }}"></i>
                         <!--<a href="#" class="read-later"><i class="icon icon-read-latter"></i><span>Ajouter à ma sélection</span></a>-->
