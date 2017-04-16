@@ -3468,6 +3468,74 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   cursor: pointer;
 }
 
+.block-push-retro {
+  height: 300px;
+  display: block;
+}
+.block-push-retro .vFlexAlign {
+  height: 100%;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+.block-push-retro .txts {
+  text-align: center;
+}
+.block-push-retro .title-2 {
+  font-size: 3.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
+}
+.block-push-retro .title-3 {
+  font-size: 1.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: 0.85rem;
+}
+.block-push-retro .title-4 {
+  font-size: .75rem;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
+}
+.block-push-retro .date-back, .block-push-retro .date-next {
+  position: absolute;
+}
+.block-push-retro .date-back a, .block-push-retro .date-next a {
+  /* color: #fff;
+   font-size: .8rem;
+   font-family: $CamphorHeavy;*/
+  color: #fff;
+  font-size: .85rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: .5px;
+}
+.block-push-retro .date-back i, .block-push-retro .date-next i {
+  display: block;
+  color: #383738;
+}
+.block-push-retro .date-back {
+  left: 111px;
+  top: 50%;
+  transform: rotate(-90deg);
+  transition: left .4s ease;
+}
+.block-push-retro .date-back i {
+  transform: rotate(-180deg);
+  font-size: 1.4rem;
+}
+.block-push-retro .date-next {
+  right: 111px;
+  top: 50%;
+  transform: rotate(90deg);
+}
+.block-push-retro .date-next i {
+  transform: rotate(180deg);
+  font-size: 1.4rem;
+}
+
 .block-push-top {
   height: 300px;
   display: block;
@@ -11152,7 +11220,7 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective.big .vFlexAlign img {
   position: absolute;
-  top: -20%;
+  top: -200px;
   opacity: .3;
   left: 0px;
 }

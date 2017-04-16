@@ -5307,7 +5307,7 @@ function resizeend() {
 
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = -w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945);
 
 
             $slide.css('transform', 'translate(' + val + 'px)');
