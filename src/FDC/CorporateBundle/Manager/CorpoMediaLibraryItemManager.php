@@ -605,6 +605,9 @@ class CorpoMediaLibraryItemManager
         if (!$media->getSites()->contains($this->getSiteCorpo())) {
             return false;
         }
+        if ($media->getExcludeFromSearch()) {
+            return false;
+        }
 
         $fr = $media->findTranslationByLocale('fr');
         $trans = $media->findTranslationByLocale($locale);
