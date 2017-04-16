@@ -768,7 +768,7 @@ class Importer
         if (!$file && $oldMediaI18n->getHdFormatFilename()) {
             $path = $oldMediaI18n->getHdFormatFilename();
             if (false !== strpos($path, '.smil')) {
-                $this->getVideoFromSmil($path);
+                $file = $this->getVideoFromSmil($path);
             } else {
                 $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
             }
