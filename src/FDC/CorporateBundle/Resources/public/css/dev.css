@@ -635,3 +635,11 @@ text-rendering: auto;
   width: 636px;
   margin: 0px auto 10px auto;
 }
+
+.classic .padding-bottom {
+  padding-bottom: 0px;
+}
+
+.classic .ajax-section .black {
+  padding: 0 0 60px 0;
+}

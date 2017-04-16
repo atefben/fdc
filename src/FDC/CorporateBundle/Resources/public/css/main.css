@@ -12452,12 +12452,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .slideshow {
   border-bottom: 1px solid #e5e5e5;
-  width: 730px;
+  width: 977px;
   margin: 0 auto 70px;
 }
 .slideshow .slideshow-img {
   background-color: #000;
-  height: 557px;
+  height: 631px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -16282,7 +16282,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 100%;
 }
 .single-movie .single-article.single-actualite .small-container > div.half-div, .single-movie .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-movie .single-article.single-actualite .small-container > div.slideshow {
-  width: 730px;
+  width: 977px;
 }
 .single-movie .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
