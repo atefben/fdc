@@ -4,9 +4,7 @@
 
 {% block body %}
     <section class="padding-bottom border-bottom s-slider-retrospective">
-
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
-
         <div class="ajax-section">
             {% if festival == false %}
             <div class="contain-ajax grid-selection">
@@ -16,13 +14,9 @@
             </div>
             {% else %}
             <div class="contain-ajax">
-
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
                 {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
-
                 <div class="all-contain palmares selection">
-
                     {% if projections|length %}
                         {% for projection in projections %}
                             {% if projection.programmationFilms|length > 0 %}
@@ -35,9 +29,9 @@
                             {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': movie, 'restauration': true} only %}
                         {% endfor %}
                     {% endif %}
-
-                </div> <!-- end all contain -->
+                </div>
             </div>
+            {% endif %}
         </div>
     </section>
     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
