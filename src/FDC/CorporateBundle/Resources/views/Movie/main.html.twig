@@ -3,7 +3,7 @@
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
 {% if not movie.festival or movie.festival.year not in [2014, 2015] %}
-    
+
     {% set selfkits = movie.selfkitImages %}
 {% else %}
     {% set selfkits = [] %}

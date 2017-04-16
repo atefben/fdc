@@ -92,27 +92,7 @@ class SearchController extends Controller
             }
 
             if ($data['photos'] || $data['videos'] || $data['audios']) {
-
-                $i = 0;
-                if ($data['photos'])
-                    $i += 1;
-                if ($data['videos'])
-                    $i += 1;
-                if ($data['audios'])
-                    $i += 1;
-
                 $displayNb = 4;
-                switch ($i) {
-                    case 1:
-                        $displayNb = 4;
-                        break;
-                    case 2:
-                        $displayNb = 3;
-                        break;
-                    case 3:
-                        $displayNb = 2;
-                        break;
-                }
 
                 $default = ['items' => [], 'count' => 0];
                 $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : $default;
