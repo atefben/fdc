@@ -663,3 +663,11 @@ text-rendering: auto;
 .single-evenement .single-photo .caption {
   display:none;
 }
+
+.article-single .detailslideshow {
+  width: 730px;
+}
+
+.article-single .detailslideshow  .slideshow-img {
+  height: 557px;
+}

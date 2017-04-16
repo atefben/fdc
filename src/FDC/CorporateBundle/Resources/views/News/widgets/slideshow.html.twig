@@ -12,7 +12,7 @@
 {% endfor %}
 
 {% if hasPublishedMedias == true %}
-    <div class="{% if class(widget) starts with 'StatementW' or class(widget) starts with 'InfoW' %}slideshow{% else %}slideshow{% endif %}">
+    <div class="{% if class(widget) starts with 'StatementW' or class(widget) starts with 'InfoW' %}slideshow{% else %}slideshow{% endif %} detailslideshow">
         {% set file = "" %}
         <div class="slideshow-img">
             <div class="images">
