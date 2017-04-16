@@ -15851,6 +15851,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .press .info-press .wrapper .links {
   border-bottom: 1px solid #252525;
   padding: 22px 0;
+  padding-left: 225px;
 }
 .single-movie .press .info-press .wrapper .links a {
   color: #999;
