@@ -160,6 +160,12 @@
                 {% elseif class(media) == 'FilmFestivalPoster' %}
                     {% set copyright = file.copyright %}
                 {% endif %}
+
+                {% if class(media) == 'FilmFilmMedia' and media.type == 15 %}
+                    {% set title = ' ' %}
+                    {% set dateMedia = ' ' %}
+                {% endif %}
+
                 <article class="card card-01 item photo img shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}"
                          data-format="photo"
                          data-theme="{{ title }}" data-time="1455909420" data-end="false" data-date="date-{{ dateMedia }}">
