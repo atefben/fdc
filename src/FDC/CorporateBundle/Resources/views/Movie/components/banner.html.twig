@@ -101,7 +101,7 @@
                 {{ 'movie.label.realisepar'|trans }} :
                 {% set firstDirector = true %}
                 {% for director in directors if not director.duplicate %}
-                    {{ firstDirector ? '': ', ' }}<a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>{‰
+                    {{ firstDirector ? '': ', ' }}<a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}">{{ director.person.fullName }}</a>
                     {% set firstDirector = false %}
                 {% endfor %}
             </p>
