@@ -655,3 +655,11 @@ text-rendering: auto;
 .block-search .content-result .contain-txts .title-media {
   font-family: "Playfair Display",Times New Roman,Times,serif !important;
 }
+
+.single-evenement .single-photo {
+  margin:40px 0 0 0;
+  text-align:center;
+}
+.single-evenement .single-photo .caption {
+  display:none;
+}
