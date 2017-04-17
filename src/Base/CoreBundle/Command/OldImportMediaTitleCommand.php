@@ -70,6 +70,7 @@ class OldImportMediaTitleCommand extends ContainerAwareCommand
         ;
         if ($oldFilmPhoto) {
             $media->setOldTitle($oldFilmPhoto->getTitre());
+            $media->setOldTitleVa($oldFilmPhoto->getTitreVa());
             $this->getDoctrineManager()->flush();
         }
     }
