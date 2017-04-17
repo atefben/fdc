@@ -783,10 +783,10 @@ form:
             technical_constraints_1: Contraintes techniques colonne 1
             technical_constraints_2: Contraintes techniques colonne 2
             technical_constraints_3: Contraintes techniques colonne 3
-            is_technical_constraints_popup_active: Afficher vers la pop-in
-            is_technical_constraints_popup_active_1: Afficher vers la pop-in colonne 1
-            is_technical_constraints_popup_active_2: Afficher vers la pop-in colonne 2
-            is_technical_constraints_popup_active_3: Afficher vers la pop-in colonne 3
+            is_technical_constraints_popup_active: Afficher les contraintes techniques
+            is_technical_constraints_popup_active_1: Afficher les contraintes techniques - colonne N°1
+            is_technical_constraints_popup_active_2: Afficher les contraintes techniques - colonne N°2
+            is_technical_constraints_popup_active_3: Afficher les contraintes techniques - colonne N°3
             header: Chapô
             text: Bloc de texte
             form_title: Sections de charte graphique
