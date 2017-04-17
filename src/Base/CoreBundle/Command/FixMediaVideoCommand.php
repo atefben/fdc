@@ -112,7 +112,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
         dump('Size Reference: '. $sizeReference);
 
         if (($sizeOrigin - $sizeReference) > 100) {
-            $this->createMediaVideoTranslationClone($mediaVideoTrans, $file);
+            $this->createMediaVideoTranslationClone($mediaVideoTrans, $origin);
         }
         unlink($origin);
     }
