@@ -1,4 +1,4 @@
-{% macro oneColumn(widget) %}
+{% macro oneColumn(widget, extra) %}
     {% trans_default_domain 'FDCCorporateBundle' %}
     <div class="contain-infos">
         <div class="single-image vFlexAlign">
@@ -33,7 +33,7 @@
                 {% endif %}
                 {% if widget.technicalConstraintsPopupActive|default(false) %}
                     <a href="#" class="link a-left modal-toggle-label"
-                       data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                       data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                 {% endif %}
             </div>
         {% endfor %}
@@ -41,7 +41,7 @@
 {% endmacro %}
 
 
-{% macro twoColumns(widget) %}
+{% macro twoColumns(widget, extra) %}
     {% trans_default_domain 'FDCCorporateBundle' %}
     <div class="contain-infos">
 
@@ -117,7 +117,7 @@
                             {% endif %}
                             {% if widget.technicalConstraintsPopupActive2|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
-                                   data-content="{{ widget.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                                   data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -128,7 +128,7 @@
     </div>
 {% endmacro %}
 
-{% macro threeColumns(widget) %}
+{% macro threeColumns(widget, extra) %}
     {% trans_default_domain 'FDCCorporateBundle' %}
     <div class="contain-infos">
 
@@ -165,7 +165,7 @@
                             {% endif %}
                             {% if widget.technicalConstraintsPopupActive|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
-                                   data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                                   data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -204,7 +204,7 @@
                             {% endif %}
                             {% if widget.technicalConstraintsPopupActive2|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
-                                   data-content="{{ widget.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                                   data-content="{{ extra.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -244,7 +244,7 @@
                             {% endif %}
                             {% if widget.technicalConstraintsPopupActive3|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
-                                   data-content="{{ widget.technicalConstraints3|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                                   data-content="{{ extra.technicalConstraints3|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
                         </div>
                     {% endfor %}

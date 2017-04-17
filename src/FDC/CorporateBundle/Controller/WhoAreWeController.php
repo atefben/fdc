@@ -134,7 +134,6 @@ class WhoAreWeController extends Controller
                         $itemWidget['title'] = $widgetTrans->getTitle();
                         $itemWidget['legend'] = $widgetTrans->getLegend();
                         $itemWidget['subLegend'] = $widgetTrans->getSubLegend();
-                        $itemWidget['technicalConstraints'] = $widgetTrans->getTechnicalConstraints();
                         $itemWidget['technicalConstraintsPopupActive'] = $widgetTrans->getIsTechnicalConstraintsPopupActive();
                     }
 
@@ -154,9 +153,6 @@ class WhoAreWeController extends Controller
                         $itemWidget['title2'] = $widgetTrans->getTitle2();
                         $itemWidget['legend'] = $widgetTrans->getLegend();
                         $itemWidget['legend2'] = $widgetTrans->getLegend2();
-//                        $itemWidget['subLegend'] = $widgetTrans->getSubLegend();
-                        $itemWidget['technicalConstraints2'] = $widgetTrans->getTechnicalConstraints2();
-                        $itemWidget['technicalConstraintsPopupActive2'] = $widgetTrans->getIsTechnicalConstraintsPopupActive2();
                     }
                     if ($widget->getGraphicalCharterButtonGroup()) {
                         $itemWidget['buttonGroup'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup(), $locale);
@@ -182,10 +178,6 @@ class WhoAreWeController extends Controller
                         $itemWidget['legend'] = $widgetTrans->getLegend();
                         $itemWidget['legend2'] = $widgetTrans->getLegend2();
                         $itemWidget['legend3'] = $widgetTrans->getLegend3();
-//                        $itemWidget['subLegend'] = $widgetTrans->getSubLegend();
-                        $itemWidget['technicalConstraints'] = $widgetTrans->getTechnicalConstraints();
-                        $itemWidget['technicalConstraints2'] = $widgetTrans->getTechnicalConstraints2();
-                        $itemWidget['technicalConstraints3'] = $widgetTrans->getTechnicalConstraints3();
                         $itemWidget['technicalConstraintsPopupActive'] = $widgetTrans->getIsTechnicalConstraintsPopupActive();
                         $itemWidget['technicalConstraintsPopupActive2'] = $widgetTrans->getIsTechnicalConstraintsPopupActive2();
                         $itemWidget['technicalConstraintsPopupActive3'] = $widgetTrans->getIsTechnicalConstraintsPopupActive3();

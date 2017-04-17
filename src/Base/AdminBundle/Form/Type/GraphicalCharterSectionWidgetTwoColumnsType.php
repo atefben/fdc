@@ -121,17 +121,6 @@ class GraphicalCharterSectionWidgetTwoColumnsType extends GraphicalCharterSectio
                         'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
-                    'technicalConstraints'          => array(
-                        'label'              => 'form.ccm.graphical_charter.technical_constraints_1',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'field_type'         => 'ckeditor',
-                        'config_name' => 'ccm_widget',
-                        'input_sync' => true
-                    ),
                     'isTechnicalConstraintsPopupActive' => array(
                         'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_1',
                         'translation_domain' => 'BaseAdminBundle',
@@ -145,17 +134,6 @@ class GraphicalCharterSectionWidgetTwoColumnsType extends GraphicalCharterSectio
                     ),
                     'legend2'          => array(
                         'label'              => 'form.ccm.graphical_charter.legend_2',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'field_type'         => 'ckeditor',
-                        'config_name' => 'ccm_widget',
-                        'input_sync' => true
-                    ),
-                    'technicalConstraints2'          => array(
-                        'label'              => 'form.ccm.graphical_charter.technical_constraints_2',
                         'translation_domain' => 'BaseAdminBundle',
                         'required' => false,
                         'attr' => array(

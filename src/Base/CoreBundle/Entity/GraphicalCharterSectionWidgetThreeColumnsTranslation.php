@@ -58,27 +58,6 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
     protected $legend3;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $technicalConstraints;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $technicalConstraints2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $technicalConstraints3;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
@@ -180,46 +159,6 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
     }
 
     /**
-     * @return string
-     */
-    public function getTechnicalConstraints()
-    {
-        return $this->technicalConstraints;
-    }
-
-    /**
-     * @param $technicalConstraints
-     *
-     * @return $this
-     */
-    public function setTechnicalConstraints($technicalConstraints)
-    {
-        $this->technicalConstraints = $technicalConstraints;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTechnicalConstraints2()
-    {
-        return $this->technicalConstraints2;
-    }
-
-    /**
-     * @param $technicalConstraints2
-     *
-     * @return $this
-     */
-    public function setTechnicalConstraints2($technicalConstraints2)
-    {
-        $this->technicalConstraints2 = $technicalConstraints2;
-
-        return $this;
-    }
-
-    /**
      * @return boolean
      */
     public function isIsTechnicalConstraintsPopupActive()
@@ -295,26 +234,6 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
     public function setLegend3($legend3)
     {
         $this->legend3 = $legend3;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTechnicalConstraints3()
-    {
-        return $this->technicalConstraints3;
-    }
-
-    /**
-     * @param $technicalConstraints3
-     *
-     * @return $this
-     */
-    public function setTechnicalConstraints3($technicalConstraints3)
-    {
-        $this->technicalConstraints3 = $technicalConstraints3;
 
         return $this;
     }

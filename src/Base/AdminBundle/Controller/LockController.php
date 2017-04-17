@@ -120,8 +120,10 @@ class LockController extends Controller
         'filmselectionsection' => 'FilmSelectionSection',
         'filmfilm' => 'FilmFilm',
         'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
+        'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
         'graphicalcharterbuttonfile' => 'GraphicalCharterButtonFile',
-        'graphicalcharterbuttonsection' => 'GraphicalCharterSection',
+        'graphicalcharterbuttonsection' => 'GraphicalCharterButtonSection',
+        'graphicalchartersection' => 'GraphicalCharterSection',
     );
 
     /**

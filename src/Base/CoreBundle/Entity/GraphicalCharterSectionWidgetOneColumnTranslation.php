@@ -37,13 +37,6 @@ class GraphicalCharterSectionWidgetOneColumnTranslation
     protected $subLegend;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $technicalConstraints;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(type="boolean", nullable=true)
@@ -106,26 +99,6 @@ class GraphicalCharterSectionWidgetOneColumnTranslation
     public function setLegend($legend)
     {
         $this->legend = $legend;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTechnicalConstraints()
-    {
-        return $this->technicalConstraints;
-    }
-
-    /**
-     * @param $technicalConstraints
-     *
-     * @return $this
-     */
-    public function setTechnicalConstraints($technicalConstraints)
-    {
-        $this->technicalConstraints = $technicalConstraints;
 
         return $this;
     }
