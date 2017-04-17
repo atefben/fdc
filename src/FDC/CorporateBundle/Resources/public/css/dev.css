@@ -660,9 +660,6 @@ text-rendering: auto;
   margin:40px 0 0 0;
   text-align:center;
 }
-.single-evenement .single-photo .caption {
-  display:none;
-}
 
 .article-single .detailslideshow {
   width: 640px;
