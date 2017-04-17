@@ -61,6 +61,10 @@ class NewsImporter extends Importer
             ->getOneOrNullResult()
         ;
 
+        if ($oldArticle) {
+            return;
+        }
+
         $news = $this->importItem($oldArticle);
         if ($news) {
             foreach ($this->langs as $lang) {
