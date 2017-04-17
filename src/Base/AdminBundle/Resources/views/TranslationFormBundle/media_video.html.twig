@@ -147,7 +147,7 @@
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.introductionHomeCorpo }}
+                                                    {{ form.children.fr.vars.value.introductionHomeCorpo|raw }}
                                                 </div>
                                             {% endif %}
                                         </div>
