@@ -115,12 +115,6 @@ class GraphicalCharterSectionWidgetOneColumnType extends GraphicalCharterSection
                         'config_name'        => 'ccm_widget',
                         'input_sync'         => true,
                     ],
-                    'isTechnicalConstraintsPopupActive' => [
-                        'label'              => 'form.ccm.graphical_charter.is_technical_constraints_popup_active',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type'         => 'checkbox',
-                        'required'           => false
-                    ]
                 ],
             ])
             ->add('image', 'sonata_type_model_list', [
@@ -144,6 +138,11 @@ class GraphicalCharterSectionWidgetOneColumnType extends GraphicalCharterSection
                 'btn_delete'               => true,
                 'required'                 => false
             ])
+            ->add('isTechnicalConstraintsPopupActive' , 'checkbox', array(
+                'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_1',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
+            ))
         ;
     }
 
