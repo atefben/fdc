@@ -80,7 +80,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
                         continue;
                     }
                     foreach ($mediaVideo->getTranslations() as $mediaVideoTrans) {
-                        if ($mediaVideoTrans instanceof MediaVideoTranslation and $mediaVideoTrans->getFile()) {
+                        if ($mediaVideoTrans instanceof MediaVideoTranslation && $mediaVideoTrans->getFile()) {
                             $this->createClone($mediaVideoTrans);
                         }
                     }
