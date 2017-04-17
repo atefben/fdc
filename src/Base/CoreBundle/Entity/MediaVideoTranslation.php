@@ -218,7 +218,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set akamaiId
      *
      * @param integer $akamaiId
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setAkamaiId($akamaiId)
     {
@@ -241,7 +241,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set title
      *
      * @param string $title
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setTitle($title)
     {
@@ -264,7 +264,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set alt
      *
      * @param string $alt
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setAlt($alt)
     {
@@ -287,7 +287,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set copyright
      *
      * @param string $copyright
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setCopyright($copyright)
     {
@@ -310,7 +310,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set file
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $file
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setFile(\Application\Sonata\MediaBundle\Entity\Media $file = null)
     {
@@ -339,7 +339,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set theme
      *
      * @param \Base\CoreBundle\Entity\Theme $theme
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setTheme(\Base\CoreBundle\Entity\Theme $theme = null)
     {
@@ -362,7 +362,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set imageAmazonUrl
      *
      * @param string $imageAmazonUrl
-     * @return MediaVideo
+     * @return $this
      */
     public function setImageAmazonUrl($imageAmazonUrl)
     {
@@ -396,7 +396,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set webmUrl
      *
      * @param integer $webmUrl
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setWebmURL($webmUrl)
     {
@@ -418,8 +418,8 @@ class MediaVideoTranslation implements TranslateChildInterface
     /**
      * Set mp4Url
      *
-     * @param string $webmUrl
-     * @return MediaVideoTranslation
+     * @param string $mp4Url
+     * @return $this
      */
     public function setMp4Url($mp4Url)
     {
@@ -442,7 +442,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobWebmState
      *
      * @param string $jobWebmState
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setJobWebmState($jobWebmState)
     {
@@ -465,7 +465,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobMp4State
      *
      * @param integer $jobMp4State
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setJobMp4State($jobMp4State)
     {
@@ -488,7 +488,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobMp4Id
      *
      * @param string $jobMp4Id
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setJobMp4Id($jobMp4Id)
     {
@@ -511,7 +511,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set jobWebmId
      *
      * @param string $jobWebmId
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setJobWebmId($jobWebmId)
     {
@@ -534,7 +534,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set amazonRemoteFile
      *
      * @param \Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setAmazonRemoteFile(\Base\CoreBundle\Entity\AmazonRemoteFile $amazonRemoteFile = null)
     {
@@ -557,7 +557,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set titleHomeCorpo
      *
      * @param string $titleHomeCorpo
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setTitleHomeCorpo($titleHomeCorpo)
     {
@@ -580,7 +580,7 @@ class MediaVideoTranslation implements TranslateChildInterface
      * Set introductionHomeCorpo
      *
      * @param string $introductionHomeCorpo
-     * @return MediaVideoTranslation
+     * @return $this
      */
     public function setIntroductionHomeCorpo($introductionHomeCorpo)
     {
