@@ -96,6 +96,7 @@ class ReplaceMediaVideoTranslationWithCloneCommand extends ContainerAwareCommand
 
         if ($original) {
             $this->getDoctrineManager()->remove($original);
+            $this->getDoctrineManager()->flush();
             $mediaVideoTranslation->setLocale(str_replace('-clone', '', $mediaVideoTranslation->getLocale()));
             $this->getDoctrineManager()->flush();
         }
