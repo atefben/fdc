@@ -30,7 +30,7 @@
                                 {% set resolution =  trans.file.width > trans.file.height ? '640x404' : '320x404' %}
                                 <img src="{% path trans.file , resolution %}" alt="" data-id="pid=mi-{{ photo.id }}"
                                      data-credit="{% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}"
-                                     data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }}"
+                                     data-title="{{ photo.theme|trans_fallback('name')|escape('html_attr') }} - {{ photo|trans_fallback('legend')}}"
                                      data-label="{{ photo.theme|trans_fallback('slug') }}"
                                      data-date="{{ photo.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}"
                                      data-facebookurl="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ (app.request.uri ~ '#pid=mi-' ~ photo.id )|escape('url') }}&picture={% path trans.file , resolution %}&name={{ trans.legend|escape('url') }}&caption=&description={% if copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
