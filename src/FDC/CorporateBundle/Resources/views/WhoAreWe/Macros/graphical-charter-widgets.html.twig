@@ -31,7 +31,10 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-                <a href="#" class="link">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                {% if widget.technicalConstraintsPopupActive|default(false) %}
+                    <a href="#" class="link a-left modal-toggle-label"
+                       data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}
@@ -73,7 +76,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if widget.technicalConstraints|default('') %}
+                            {% if widget.technicalConstraintsPopupActive|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
                                    data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
@@ -112,7 +115,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if widget.technicalConstraints2|default('') %}
+                            {% if widget.technicalConstraintsPopupActive2|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
                                    data-content="{{ widget.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
@@ -160,7 +163,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if widget.technicalConstraints|default('') %}
+                            {% if widget.technicalConstraintsPopupActive|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
                                    data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
@@ -199,7 +202,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if widget.technicalConstraints2|default('') %}
+                            {% if widget.technicalConstraintsPopupActive2|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
                                    data-content="{{ widget.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
@@ -239,7 +242,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {% if widget.technicalConstraints3|default('') %}
+                            {% if widget.technicalConstraintsPopupActive3|default(false) %}
                                 <a href="#" class="link a-left modal-toggle-label"
                                    data-content="{{ widget.technicalConstraints3|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
                             {% endif %}
