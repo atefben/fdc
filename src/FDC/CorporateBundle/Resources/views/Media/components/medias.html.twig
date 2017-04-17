@@ -17,9 +17,6 @@
             {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
                 {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
             {% endif %}
-            {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
-                {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
-            {% endif %}
             {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
             {% set legend = media.alt %}
             {% set copyright = '' %}
