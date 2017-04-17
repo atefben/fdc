@@ -239,12 +239,17 @@ class PersonManager extends CoreManager
                 ;
                 $entityRelated = ($entityRelated !== null) ? $entityRelated : new FilmPersonMedia();
                 $entityRelated->setFilename($filmPersonMedia->FileName);
+                $entityRelated->setPerson($entity);
                 $entityRelated->setType($filmPersonMedia->IdType);
                 $entityRelated->setPosition($filmPersonMedia->Ordre);
 
                 // get the related media
                 $filmMedia = $this->mediaManager->getById($filmPersonMedia->Id, false);
                 $entityRelated->setMedia($filmMedia);
+                if (!$entityRelated->getId()) {
+                    $this->em->persist($entityRelated);
+                    $this->em->flush();
+                }
 
                 // add media
                 $collection->add($entityRelated);
