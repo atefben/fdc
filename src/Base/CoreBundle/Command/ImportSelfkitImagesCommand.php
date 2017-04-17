@@ -494,9 +494,23 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
      */
     private function getPerson($id)
     {
+        $person = null;
         if ($id) {
-            return $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
+            $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
         }
+        if (!$person) {
+            $personAssoc = $this->getManager()->getRepository('BaseCoreBundle:OldPersonsassoc')->findOneBy([
+                'idselfkit' => $id,
+            ]);
+
+            if ($personAssoc) {
+                $person = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmPerson')
+                    ->find($personAssoc->getIdsoif());
+            }
+        }
+        return $person;
     }
 
     private function generatePresets(Media $media)
