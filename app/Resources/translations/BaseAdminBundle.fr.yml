@@ -780,9 +780,9 @@ form:
             legend_2: Légende colonne 2
             legend_3: Légende colonne 3
             technical_constraints: Contraintes techniques
-            technical_constraints_1: Contraintes techniques colonne 1
-            technical_constraints_2: Contraintes techniques colonne 2
-            technical_constraints_3: Contraintes techniques colonne 3
+            technical_constraints_1: Contraintes techniques - colonne N°1
+            technical_constraints_2: Contraintes techniques - colonne N°2
+            technical_constraints_3: Contraintes techniques - colonne N°3
             is_technical_constraints_popup_active: Afficher les contraintes techniques
             is_technical_constraints_popup_active_1: Afficher les contraintes techniques - colonne N°1
             is_technical_constraints_popup_active_2: Afficher les contraintes techniques - colonne N°2
