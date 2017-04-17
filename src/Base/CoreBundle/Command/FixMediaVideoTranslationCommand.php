@@ -121,7 +121,7 @@ class FixMediaVideoTranslationCommand extends ContainerAwareCommand
 
                 $this->getDoctrineManager()->persist($translation);
             }
-            $oldMediaI18n = $this->getOldMediai18n($mediaVideo->getId(), $locale);
+            $oldMediaI18n = $this->getOldMediai18n($mediaVideo->getOldMediaId(), $locale);
             if ($oldMediaI18n && $oldMediaI18n->getLabel()) {
                 $translation->setTitle($oldMediaI18n->getLabel());
             } else {
