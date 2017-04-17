@@ -112,8 +112,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
         dump('Size Reference: '. $sizeReference);
 
         if (($sizeOrigin - $sizeReference) > 100) {
-            dump(($sizeOrigin - $sizeReference));
-            $this->createClone($mediaVideoTrans, $origin);
+            $this->createMediaVideoTranslationClone($mediaVideoTrans, $file);
         }
         unlink($origin);
     }
@@ -261,6 +260,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
      */
     private function createVideo($url)
     {
+        $url = str_replace('canneshd-f', 'canneshd-a', $url);
         return $this->createFile($url, 'video');
     }
 
