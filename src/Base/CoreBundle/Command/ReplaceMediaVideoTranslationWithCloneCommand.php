@@ -54,7 +54,7 @@ class ReplaceMediaVideoTranslationWithCloneCommand extends ContainerAwareCommand
                 ->find($id)
             ;
             if ($mediaVideoTranslation instanceof MediaVideoTranslation) {
-                $this->createMissingTranslations($mediaVideoTranslation);
+                $this->replaceWithClone($mediaVideoTranslation);
             }
             $output->writeln("<info>Video $id has been checked</info>");
         } else {
