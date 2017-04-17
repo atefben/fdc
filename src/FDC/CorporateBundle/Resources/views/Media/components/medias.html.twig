@@ -68,7 +68,7 @@
             {% if app.request.locale == 'fr' %}
                 {% set legend = media.oldTitle %}
             {% else %}
-                {% set legend = media.oldTitleVa %}
+                {% set legend = media.oldTitleVa|default(media.oldTitle) %}
             {% endif %}
             {% set copyright = media.copyright %}
             <article class="card card-01 item photo img shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}"
