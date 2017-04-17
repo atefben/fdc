@@ -97,6 +97,13 @@ class FixMediaVideoCommand extends ContainerAwareCommand
 
     private function createClone(MediaVideoTranslation $mediaVideoTrans)
     {
+        if (strpos($mediaVideoTrans->getLocale(), 'clone') !== false) {
+            return;
+        }
+        $clone = $mediaVideoTrans->getTranslatable()->findTranslationByLocale($mediaVideoTrans->getLocale() . '-clone');
+        if ($clone) {
+            return;
+        }
         $reference = $this->getReference($mediaVideoTrans->getFile());
         $oldMediaI18n = $this->getOldMediai18n($mediaVideoTrans->getTranslatable()->getOldMediaId(), $mediaVideoTrans->getLocale());
         $origin = $this->getOldVideoPath($oldMediaI18n, $mediaVideoTrans->getLocale());
