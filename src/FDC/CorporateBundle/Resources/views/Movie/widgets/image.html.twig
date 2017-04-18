@@ -23,7 +23,7 @@
                                    title='{{ title }}'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}"
                                    data-url="{{app.request.uri}}#pid={{ photo.media.id }}"
-                                   data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ photo.media.id }}&picture={{app.request.uri}}%23pid={{ photo.media.id }}&name={{ gallery.media|trans_fallback('legend')}}&caption=&description={% if photo.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ photo.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                   data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ photo.media.id }}&picture="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}&name={{ gallery.media|trans_fallback('legend')}}&caption=&description={% if photo.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ photo.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                    data-twitter="https://twitter.com/intent/tweet?text={{ photo.media|trans_fallback('legend')}}%20{{app.request.uri}}%23pid={{ photo.media.id }}"
                                    data-link="{{app.request.uri}}#pid={{ photo.media.id }}">
                                     <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
