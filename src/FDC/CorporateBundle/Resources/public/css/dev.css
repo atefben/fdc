@@ -607,7 +607,7 @@ text-rendering: auto;
   }
 }
 
-@media screen and (max-width: 1280px)
+@media screen and (max-width: 1200px)
 {
   .retrospective .slider-restropective .calc3 img.i1 {
     right: -24%;
