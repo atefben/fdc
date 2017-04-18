@@ -90,9 +90,9 @@ class DefaultController extends Controller
             $homeContents[] = $this->getDoctrineManager()->getRepository($node->getEntityClass())->find($node->getEntityId());
         }
         $homeContents = $this->removeUnpublishedNewsAudioVideo($homeContents, $locale);
-        if (count($homeContents) > 6) {
+        if (count($homeContents) > 9) {
             $last = false;
-            $homeContents = array_slice($homeContents, 0, 6);
+            $homeContents = array_slice($homeContents, 0, 9);
         } else {
             $last = true;
         }
