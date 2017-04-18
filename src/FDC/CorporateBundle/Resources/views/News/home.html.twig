@@ -60,7 +60,11 @@
                                             <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                         </a>
                                         <p class="text-trunc">
-                                            {{ sliderItem.introduction|striptags|raw|convert_encoding('UTF-8', 'HTML-ENTITIES')|truncate(180) }}
+                                            {% if app.request.locale != 'zh' %}
+                                                {{ sliderItem.introduction|striptags|raw|convert_encoding('UTF-8', 'HTML-ENTITIES')|truncate(180) }}
+                                            {% else %}
+                                                { sliderItem.introduction|striptags|raw|truncate(180) }}
+                                            {% endif %}
                                         </p>
                                     </div>
                                 {% endfor %}
