@@ -41,7 +41,7 @@
                                title='{{ selfkit.name?:'Affiche du film' }}"'
                                data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.copyright : '' }}"
                                data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ selfkit.id }}&picture=
-{% path file, resolution %}&name={{ selfkit|trans_fallback('legend')}}&caption=&description={% if selfkit.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ selfkit.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+{% path path selfkit, selfkit.context ~ '_big' %}&name={{ selfkit|trans_fallback('legend')}}&caption=&description={% if selfkit.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ selfkit.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                data-twitter="https://twitter.com/intent/tweet?text={{ selfkit.media|trans_fallback('legend')}}%20{{app.request.uri}}%23pid={{ selfkit.id }}"
                                data-link="{{app.request.uri}}#pid={{ selfkit.id }}">
                                 <img src="{% path selfkit, selfkit.context ~ '_big' %}" alt=""/>
