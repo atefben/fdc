@@ -34,7 +34,7 @@
                                 class="date">{{ photo.publishedAt|date('d.m.y') }}</span> . <span
                                 class="hour">{{ agenda_leftbar_translate_hour(photo.publishedAt|date('H:i'), true, true) }}</span>
                     </div>
-                    <strong><a href="{% path trans.file , 'reference' %}">{{ photo|trans_fallback('legend') }}</a></strong>
+                    <strong><a href="{% path trans.file , 'reference' %}">{{ photo|trans_fallback('legend')|truncate(70) }}</a></strong>
                 </div>
             </div>
         </div>
