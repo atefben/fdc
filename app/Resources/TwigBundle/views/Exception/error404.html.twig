@@ -1,13 +1,15 @@
 {% trans_default_domain 'FDCEventBundle' %}
 {% if app.request.pathInfo starts with '/fr/festival' or app.request.pathInfo starts with '/en/festival' or app.request.pathInfo starts with '/es/festival' or app.request.pathInfo starts with '/zh/festival' %}
     {% set layout = 'FDCEventBundle::layout.html.twig' %}
+    {% set mainClass = 'loading ' %}
 {% else %}
     {% set layout = 'FDCCorporateBundle::layout.html.twig' %}
+    {% set mainClass = '' %}
 {% endif %}
 {% extends layout %}
 {% set locales = [] %}
 {% block body %}
-    <div id="main" class="loading error-not-found">
+    <div id="main" class="{{ mainClass }}error-not-found">
         <div class="vCenter">
             <div class="vCenterKid">
                 <div class="texts">
