@@ -3165,6 +3165,10 @@ video {
 .block-01 .text + img {
   width: 640px;
 }
+.block-01 img + p.caption {
+  width: 640px;
+  margin: 10px auto 0;
+}
 
 .block-01-m {
   margin: 0 auto;
