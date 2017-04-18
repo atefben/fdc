@@ -5662,7 +5662,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             fullscreen.removeClass('fadeOut').addClass('animated fadeIn');
         }, 700);
 
-        hash = "#"+images[id].id;
+        hash = "#pid="+images[id].id;
 
         history.pushState(null, null, hash);
         numberDiapo = centerElement + 1;
