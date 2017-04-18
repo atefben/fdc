@@ -737,3 +737,7 @@ text-rendering: auto;
 body.ismobile .slider-home .container-images .item {
   background-size: inherit;
 }
+
+.ismobile .block-push {
+  background: none !important;
+}
