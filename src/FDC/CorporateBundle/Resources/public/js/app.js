@@ -7934,26 +7934,24 @@ $(document).ready(function () {
         owInitNavSticky(1);
         owArrowDisplay();
 
-        if (!$('.single-movie').length > 0) {
-            var slider = $('.slideshow-img .images');
+        var slider = $('.slideshow-img .images');
 
-            var hash = window.location.hash;
-            hash = hash.substring(1, hash.length);
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
 
-            verif = hash.slice(0, 3);
-            number = hash.slice(4);
+        var verif = hash.slice(0, 3);
+        var number = hash.slice(4);
 
-            if (hash.length > 0 && verif == "pid") {
-                owinitSlideShow(slider, hash);
-            } else {
-                owinitSlideShow(slider);
-            }
+        if (hash.length > 0 && verif == "pid") {
+            owinitSlideShow(slider, hash);
+        } else {
+            owinitSlideShow(slider);
+        }
 
-            if (hash.length > 0 && verif == "aid") {
-                initAudio(number);
-            } else {
-                initAudio();
-            }
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
         }
     }
 
