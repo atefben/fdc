@@ -4481,7 +4481,7 @@ var initRs = function () {
     
     $('.print').on('click', function(e){
         e.preventDefault();
-    })
+    });
 
     //POPIN facebook SHARE
     $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').off('click').on('click', function (e) {

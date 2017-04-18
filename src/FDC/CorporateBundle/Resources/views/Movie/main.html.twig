@@ -134,21 +134,6 @@
             </div>
             <span class="anim"></span>
         </div>
-
-        {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-        {'section': movie.selectionSection|trans_fallback('name')|trans,
-            'detail' : directorsName,
-            'title'  : mainTitle,
-            'description': movie|trans_fallback('synopsis')|truncate(150),
-            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-        })) }}
-        {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
-        {'section': '',
-            'detail' : '',
-            'title'  : '',
-            'description': ''
-        })) }}
-
         {% if movie.titleVO is not empty %}
             {% set mainTitle = movie.titleVO %}
         {% else %}
