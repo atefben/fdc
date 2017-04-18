@@ -75,14 +75,16 @@ class NewsController extends Controller
             $before = new DateTime();
             $before->setTimestamp($time);
         }
-        $maxResults = 50;
+        $maxResults = 200;
 
         $articles = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:News')
             ->getNewsRetrospective($locale, $festival, null, $maxResults, $before)
         ;
+
         $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
+
 
         if (count($articles) > 30) {
             $last = false;
