@@ -163,7 +163,7 @@
                                 <div class="grid-sizer"></div>
 
                                 {% if homeContents|length > 3 %}
-                                    {% for article in homeContents|slice(3) %}
+                                    {% for article in homeContents|slice(5) %}
                                         {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
                                     {% endfor %}
                                 {% endif %}
