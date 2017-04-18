@@ -1748,7 +1748,7 @@ var initAudio = function (hash) {
 
         }
 
-        $('.item.audio').on('click', function (e) {
+        $('.item.audio').not('.retrospective .articles-list .item.audio').on('click', function (e) {
 
             e.preventDefault();
 
