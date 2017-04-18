@@ -19,7 +19,7 @@
                 <div class="vFlexAlign">
                     <label for="s-text" class="search-txt vFlexAlign">
                         <i class="icon icon-search"></i>
-                        <input type="text" placeholder="Entrez votre recherche" name="search" id="s-text"
+                        <input type="text" placeholder="{{ 'search.form.entrezrecherche'|trans }}" name="search" id="s-text"
                                value="{% if app.request.get('search') %}{{ app.request.get('search') }}{% endif %}"/>
                     </label>
                     <label for="s-photo" class="icon-s vFlexAlign{% if app.request.get('photo') %} active{% endif %}">
