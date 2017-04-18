@@ -4505,9 +4505,17 @@ var initRs = function () {
         //add artist name to popin on artist page
         if($('.contentartist').length){
             var title = $('.contentartist').find('.title-15').text();
-
             $(cls).find('.contain-popin .title-article').text(title);
+        } else if ($('.tetiere-movie').length){
+
+            var title = $('.tetiere-movie').find('h2').text();
+            var authors = $('.tetiere-movie').find('a').text();
+            var synopsis = $('.synopsis').find('p').text().substring(0, 150);
+
+            $(cls).find('.contain-popin .article-authors').text(authors);
+            $(cls).find('.contain-popin .chap-article').text(synopsis);
         }
+        $(cls).find('.contain-popin .title-article').text(title);
 
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
