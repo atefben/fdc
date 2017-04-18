@@ -235,7 +235,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
-        var hashPush = '#'+hash;
+        var hashPush = '#pid='+hash;
         history.pushState(null, null, hashPush);
     }
 

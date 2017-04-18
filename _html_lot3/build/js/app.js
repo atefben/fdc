@@ -1762,7 +1762,7 @@ var initAudio = function (hash) {
                 category = $(e.target).closest('.audio').find('.category').text() || $(this).find('span.title-type-media').data('title'),
                 date = $(e.target).closest('.audio').find('.date').text() || $(this).find('.title-dates').text().substring(0, 8),
                 hour = $(e.target).closest('.audio').find('.hour').text() || $(this).find('.title-dates').text().substring(13, 18),
-                name = $(this).find('.contain-txt strong a').text() || $(this).find('.title-media').data('title');
+                name = $(this).find('.contain-txt strong a').text() || $(this).find('.title-media').data('title') || $(this).find('strong > a').text();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
@@ -5567,7 +5567,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
-        var hashPush = '#'+hash;
+        var hashPush = '#pid='+hash;
         history.pushState(null, null, hashPush);
     }
 
