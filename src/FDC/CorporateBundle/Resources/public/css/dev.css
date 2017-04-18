@@ -738,6 +738,6 @@ body.ismobile .slider-home .container-images .item {
   background-size: inherit;
 }
 
-.ismobile .block-03 .block-scale {
+.ismobile .block-03.block-scale {
   display:none !important;
 }
