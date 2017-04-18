@@ -733,3 +733,7 @@ text-rendering: auto;
 .ismobile .slider-home {
   height: 686px;
 }
+
+body.ismobile .slider-home .container-images .item {
+  background-size: inherit;
+}
