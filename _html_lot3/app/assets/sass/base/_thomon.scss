@@ -167,6 +167,11 @@
         padding: 0;
         width: 293px;
         display: inline-block;
+        vertical-align: top;
+
+        &:nth-child(1) {
+            margin: 0 4%;
+        }
 
         .info {
             strong,

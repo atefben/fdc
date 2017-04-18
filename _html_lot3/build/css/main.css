@@ -7224,6 +7224,10 @@ body.chocolat-open > .chocolat-content {
   padding: 0;
   width: 293px;
   display: inline-block;
+  vertical-align: top;
+}
+.same-day .articles.center article:nth-child(1) {
+  margin: 0 4%;
 }
 .same-day .articles.center article .info strong,
 .same-day .articles.center article .info h2 {
