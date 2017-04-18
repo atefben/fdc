@@ -58,27 +58,6 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
     protected $legend3;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isTechnicalConstraintsPopupActive = false;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isTechnicalConstraintsPopupActive2 = false;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isTechnicalConstraintsPopupActive3 = false;
-
-    /**
      * @return string
      */
     public function getTitle()
@@ -159,46 +138,6 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
     }
 
     /**
-     * @return boolean
-     */
-    public function isIsTechnicalConstraintsPopupActive()
-    {
-        return $this->isTechnicalConstraintsPopupActive;
-    }
-
-    /**
-     * @param $isTechnicalConstraintsPopupActive
-     *
-     * @return $this
-     */
-    public function setIsTechnicalConstraintsPopupActive($isTechnicalConstraintsPopupActive)
-    {
-        $this->isTechnicalConstraintsPopupActive = $isTechnicalConstraintsPopupActive;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isIsTechnicalConstraintsPopupActive2()
-    {
-        return $this->isTechnicalConstraintsPopupActive2;
-    }
-
-    /**
-     * @param $isTechnicalConstraintsPopupActive2
-     *
-     * @return $this
-     */
-    public function setIsTechnicalConstraintsPopupActive2($isTechnicalConstraintsPopupActive2)
-    {
-        $this->isTechnicalConstraintsPopupActive2 = $isTechnicalConstraintsPopupActive2;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getTitle3()
@@ -236,55 +175,5 @@ class GraphicalCharterSectionWidgetThreeColumnsTranslation
         $this->legend3 = $legend3;
 
         return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isIsTechnicalConstraintsPopupActive3()
-    {
-        return $this->isTechnicalConstraintsPopupActive3;
-    }
-
-    /**
-     * @param $isTechnicalConstraintsPopupActive3
-     *
-     * @return $this
-     */
-    public function setIsTechnicalConstraintsPopupActive3($isTechnicalConstraintsPopupActive3)
-    {
-        $this->isTechnicalConstraintsPopupActive3 = $isTechnicalConstraintsPopupActive3;
-
-        return $this;
-    }
-
-    /**
-     * Get isTechnicalConstraintsPopupActive
-     *
-     * @return boolean 
-     */
-    public function getIsTechnicalConstraintsPopupActive()
-    {
-        return $this->isTechnicalConstraintsPopupActive;
-    }
-
-    /**
-     * Get isTechnicalConstraintsPopupActive2
-     *
-     * @return boolean 
-     */
-    public function getIsTechnicalConstraintsPopupActive2()
-    {
-        return $this->isTechnicalConstraintsPopupActive2;
-    }
-
-    /**
-     * Get isTechnicalConstraintsPopupActive3
-     *
-     * @return boolean 
-     */
-    public function getIsTechnicalConstraintsPopupActive3()
-    {
-        return $this->isTechnicalConstraintsPopupActive3;
     }
 }

@@ -70,6 +70,27 @@ class GraphicalCharterSectionWidgetThreeColumns extends GraphicalCharterSectionW
     protected $translations;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive2 = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive3 = false;
+
+    /**
      * CcmLabelSectionContentOneColumn constructor.
      */
     public function __construct()
@@ -226,5 +247,91 @@ class GraphicalCharterSectionWidgetThreeColumns extends GraphicalCharterSectionW
         }
 
         return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive
+     * @return GraphicalCharterSectionWidgetThreeColumns
+     */
+    public function setIsTechnicalConstraintsPopupActive($isTechnicalConstraintsPopupActive)
+    {
+        $this->isTechnicalConstraintsPopupActive = $isTechnicalConstraintsPopupActive;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive2()
+    {
+        return $this->isTechnicalConstraintsPopupActive2;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive2
+     * @return GraphicalCharterSectionWidgetThreeColumns
+     */
+    public function setIsTechnicalConstraintsPopupActive2($isTechnicalConstraintsPopupActive2)
+    {
+        $this->isTechnicalConstraintsPopupActive2 = $isTechnicalConstraintsPopupActive2;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive3()
+    {
+        return $this->isTechnicalConstraintsPopupActive3;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive3
+     * @return GraphicalCharterSectionWidgetThreeColumns
+     */
+    public function setIsTechnicalConstraintsPopupActive3($isTechnicalConstraintsPopupActive3)
+    {
+        $this->isTechnicalConstraintsPopupActive3 = $isTechnicalConstraintsPopupActive3;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isTechnicalConstraintsPopupActive
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
+    }
+
+    /**
+     * Get isTechnicalConstraintsPopupActive2
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive2()
+    {
+        return $this->isTechnicalConstraintsPopupActive2;
+    }
+
+    /**
+     * Get isTechnicalConstraintsPopupActive3
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive3()
+    {
+        return $this->isTechnicalConstraintsPopupActive3;
     }
 }

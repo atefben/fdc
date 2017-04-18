@@ -14,8 +14,10 @@
                 {% set title = '' %}
             {% endif %}
             {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
-            {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
-                {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
+            {% if film and film.findTranslationByLocale(app.request.locale) and film.findTranslationByLocale(app.request.locale).title and film.findTranslationByLocale(app.request.locale).title != title %}
+                {% set title = title ~ ' (' ~ film.findTranslationByLocale(app.request.locale).title ~ ')' %}
+            {% elseif film and film.findTranslationByLocale('en') and film.findTranslationByLocale('en').title and film.findTranslationByLocale('en').title != title %}
+                {% set title = title ~ ' (' ~ film.findTranslationByLocale('en').title ~ ')' %}
             {% endif %}
             {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
             {% set legend = media.alt %}
@@ -61,11 +63,17 @@
                 {% set title = '' %}
             {% endif %}
             {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
-            {% if film|trans_fallback('title') != null and title != film|trans_fallback('title') %}
-                {% set title = title ~ ' (' ~ film|trans_fallback('title') ~ ')' %}
+            {% if film and film.findTranslationByLocale(app.request.locale) and film.findTranslationByLocale(app.request.locale).title and film.findTranslationByLocale(app.request.locale).title != title %}
+                {% set title = title ~ ' (' ~ film.findTranslationByLocale(app.request.locale).title ~ ')' %}
+            {% elseif film and film.findTranslationByLocale('en') and film.findTranslationByLocale('en').title and film.findTranslationByLocale('en').title != title %}
+                {% set title = title ~ ' (' ~ film.findTranslationByLocale('en').title ~ ')' %}
             {% endif %}
             {% set format = media.width > media.height ? 'paysage' : 'portrait' %}
-            {% set legend = media.name %}
+            {% if app.request.locale == 'fr' %}
+                {% set legend = media.oldTitle %}
+            {% else %}
+                {% set legend = media.oldTitleVa|default(media.oldTitle) %}
+            {% endif %}
             {% set copyright = media.copyright %}
             <article class="card card-01 item photo img shadow-bottom date-{{ dateMedia }} all {{ title }} {{ format }}"
                      data-format="photo"
@@ -115,8 +123,11 @@
                 {% if media.film is defined and media.film %}
                     {% set title = media.film.titleVO %}
                     {% if title is defined and title is not null %}
-                        {% if media.film|trans_fallback('title') != null and title != media.film|trans_fallback('title') %}
-                            {% set title = title ~ ' (' ~ media.film|trans_fallback('title') ~ ')' %}
+                        {% set film = media.film %}
+                        {% if film and film.findTranslationByLocale(app.request.locale) and film.findTranslationByLocale(app.request.locale).title and film.findTranslationByLocale(app.request.locale).title != title %}
+                            {% set title = title ~ ' (' ~ film.findTranslationByLocale(app.request.locale).title ~ ')' %}
+                        {% elseif film and film.findTranslationByLocale('en') and film.findTranslationByLocale('en').title and film.findTranslationByLocale('en').title != title %}
+                            {% set title = title ~ ' (' ~ film.findTranslationByLocale('en').title ~ ')' %}
                         {% endif %}
                     {% endif %}
                     {% set dateMedia = media.film.festival.year %}

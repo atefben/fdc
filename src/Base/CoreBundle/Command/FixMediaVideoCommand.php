@@ -53,7 +53,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
             ;
             if ($mediaVideo instanceof MediaVideo) {
                 foreach ($mediaVideo->getTranslations() as $mediaVideoTrans) {
-                    if ($mediaVideoTrans instanceof MediaVideoTranslation) {
+                    if ($mediaVideoTrans instanceof MediaVideoTranslation && $mediaVideoTrans->getFile()) {
                         $this->createClone($mediaVideoTrans);
                     }
                 }
@@ -80,7 +80,7 @@ class FixMediaVideoCommand extends ContainerAwareCommand
                         continue;
                     }
                     foreach ($mediaVideo->getTranslations() as $mediaVideoTrans) {
-                        if ($mediaVideoTrans instanceof MediaVideoTranslation) {
+                        if ($mediaVideoTrans instanceof MediaVideoTranslation && $mediaVideoTrans->getFile()) {
                             $this->createClone($mediaVideoTrans);
                         }
                     }

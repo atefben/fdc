@@ -55,6 +55,7 @@ class Media extends SonataBaseMedia
     private $uploadedFromBO = false;
 
     private $oldTitle;
+    private $oldTitleVa;
 
     private $ignoreListener = false;
 
@@ -539,5 +540,28 @@ class Media extends SonataBaseMedia
     public function getOldTitle()
     {
         return $this->oldTitle;
+    }
+
+    /**
+     * Set oldTitleVa
+     *
+     * @param string $oldTitleVa
+     * @return Media
+     */
+    public function setOldTitleVa($oldTitleVa)
+    {
+        $this->oldTitleVa = $oldTitleVa;
+
+        return $this;
+    }
+
+    /**
+     * Get oldTitleVa
+     *
+     * @return string 
+     */
+    public function getOldTitleVa()
+    {
+        return $this->oldTitleVa;
     }
 }

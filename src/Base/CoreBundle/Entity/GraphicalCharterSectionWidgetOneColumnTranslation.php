@@ -37,13 +37,6 @@ class GraphicalCharterSectionWidgetOneColumnTranslation
     protected $subLegend;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    protected $isTechnicalConstraintsPopupActive = false;
-
-    /**
      * @return bool
      */
     public function isIsTechnicalConstraintsPopupActive()
@@ -104,13 +97,13 @@ class GraphicalCharterSectionWidgetOneColumnTranslation
     }
 
     /**
-     * Get isTechnicalConstraintsPopupActive
+     * Get subLegend
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getIsTechnicalConstraintsPopupActive()
+    public function getSubLegend()
     {
-        return $this->isTechnicalConstraintsPopupActive;
+        return $this->subLegend;
     }
 
     /**
@@ -124,15 +117,5 @@ class GraphicalCharterSectionWidgetOneColumnTranslation
         $this->subLegend = $subLegend;
 
         return $this;
-    }
-
-    /**
-     * Get subLegend
-     *
-     * @return string 
-     */
-    public function getSubLegend()
-    {
-        return $this->subLegend;
     }
 }

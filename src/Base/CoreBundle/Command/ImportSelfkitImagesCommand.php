@@ -454,7 +454,8 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
         $film = $this->getFilm($old->getIdfilm());
         $person = $this->getPerson($old->getIdpersonne());
         $jury = $old->getIdjury();
-        if ($person && $film && !$this->isDirector($person, $film) && !$media->getSelfkitFilms()->contains($film)) {
+
+        if ($person && $film && !$this->isDirector($person->getId(), $film) && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
         } else if (!$person && $film && !$media->getSelfkitFilms()->contains($film)) {
             $media->addSelfkitFilm($film);
@@ -471,7 +472,6 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
 
             }
         }
-
         if ($person && !$media->getSelfkitPersons()->contains($person)) {
             $media->addSelfkitPerson($person);
         }
@@ -495,8 +495,22 @@ class ImportSelfkitImagesCommand extends ContainerAwareCommand
     private function getPerson($id)
     {
         if ($id) {
-            return $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
+            $person = $this->getManager()->getRepository('BaseCoreBundle:FilmPerson')->find($id);
         }
+
+        if (!$person) {
+            $personAssoc = $this->getManager()->getRepository('BaseCoreBundle:OldPersonsassoc')->findOneBy([
+                'idselfkit' => $id,
+            ]);
+
+            if ($personAssoc) {
+                $person = $this
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:FilmPerson')
+                    ->find($personAssoc->getIdsoif());
+            }
+        }
+        return $person;
     }
 
     private function generatePresets(Media $media)
