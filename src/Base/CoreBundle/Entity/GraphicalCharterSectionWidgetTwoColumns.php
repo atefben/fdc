@@ -56,6 +56,20 @@ class GraphicalCharterSectionWidgetTwoColumns extends GraphicalCharterSectionWid
     protected $translations;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive = false;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive2 = false;
+
+    /**
      * CcmLabelSectionContentOneColumn constructor.
      */
     public function __construct()
@@ -166,5 +180,63 @@ class GraphicalCharterSectionWidgetTwoColumns extends GraphicalCharterSectionWid
         }
 
         return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive
+     * @return GraphicalCharterSectionWidgetTwoColumns
+     */
+    public function setIsTechnicalConstraintsPopupActive($isTechnicalConstraintsPopupActive)
+    {
+        $this->isTechnicalConstraintsPopupActive = $isTechnicalConstraintsPopupActive;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive2()
+    {
+        return $this->isTechnicalConstraintsPopupActive2;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive2
+     * @return GraphicalCharterSectionWidgetTwoColumns
+     */
+    public function setIsTechnicalConstraintsPopupActive2($isTechnicalConstraintsPopupActive2)
+    {
+        $this->isTechnicalConstraintsPopupActive2 = $isTechnicalConstraintsPopupActive2;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isTechnicalConstraintsPopupActive
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
+    }
+
+    /**
+     * Get isTechnicalConstraintsPopupActive2
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive2()
+    {
+        return $this->isTechnicalConstraintsPopupActive2;
     }
 }

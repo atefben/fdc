@@ -38,6 +38,13 @@ class GraphicalCharterSectionWidgetOneColumn extends GraphicalCharterSectionWidg
     protected $translations;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $isTechnicalConstraintsPopupActive = false;
+
+    /**
      * CcmLabelSectionContentOneColumn constructor.
      */
     public function __construct()
@@ -102,5 +109,35 @@ class GraphicalCharterSectionWidgetOneColumn extends GraphicalCharterSectionWidg
         }
 
         return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
+    }
+
+    /**
+     * @param bool $isTechnicalConstraintsPopupActive
+     * @return GraphicalCharterSectionWidgetOneColumn
+     */
+    public function setIsTechnicalConstraintsPopupActive($isTechnicalConstraintsPopupActive)
+    {
+        $this->isTechnicalConstraintsPopupActive = $isTechnicalConstraintsPopupActive;
+        return $this;
+    }
+
+
+
+    /**
+     * Get isTechnicalConstraintsPopupActive
+     *
+     * @return boolean 
+     */
+    public function getIsTechnicalConstraintsPopupActive()
+    {
+        return $this->isTechnicalConstraintsPopupActive;
     }
 }

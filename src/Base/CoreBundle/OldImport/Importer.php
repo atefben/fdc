@@ -768,7 +768,7 @@ class Importer
         if (!$file && $oldMediaI18n->getHdFormatFilename()) {
             $path = $oldMediaI18n->getHdFormatFilename();
             if (false !== strpos($path, '.smil')) {
-                $this->getVideoFromSmil($path);
+                $file = $this->getVideoFromSmil($path);
             } else {
                 $file = $this->createVideo('http://canneshd-a.akamaihd.net/' . trim($path));
             }
@@ -1059,7 +1059,7 @@ class Importer
             $base = $crawler->filter('meta[name=httpBase]')->last()->attr('content');
             $filename = $crawler->filter('video')->last()->attr('src');
             $aBase = str_replace('canneshd-f', 'canneshd-a', $base);
-            if ($this->is404(trim($aBase) . trim($filename))) {
+            if (!$this->is404(trim($aBase) . trim($filename))) {
                 $file = $this->createVideo(trim($aBase) . trim($filename));
             } else {
                 $file = $this->createVideo(trim($base) . trim($filename));

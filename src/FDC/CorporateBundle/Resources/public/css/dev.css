@@ -557,3 +557,118 @@ text-rendering: auto;
 .single-article .audio-container {
   margin: 0 auto 35px !important;
 }
+
+.who-identity-guidelines .item p a {
+  color: #c8a461 !important;
+}
+
+.block-videos article.video .video-container {
+  height: calc(630px / 1.58) !important;
+  width: 630px !important;
+  margin: 0 auto !important;
+}
+
+@media screen and (max-width: 1920px)
+{
+  .retrospective .slider-restropective .calc3 {
+    width: 53%;
+  }
+
+  .retrospective .slider-restropective .calc3 img.i1 {
+    right: 0%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i2 {
+    top: 44%;
+    right: 46%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i3 {
+    top: -20%;
+    right: 55%;
+  }
+
+  .retrospective .slider-restropective .calc4 img.i1 {
+      top: 1%;
+      left: 22%;
+  }
+
+  .retrospective .slider-restropective .calc4  img.i2 {
+      top: 20%;
+      right: -16%;
+  }
+
+  .retrospective .slider-restropective .calc4 img.i3 {
+      top: 2%;
+      left: 7%;
+  }
+}
+
+@media screen and (max-width: 1280px)
+{
+  .retrospective .slider-restropective .calc3 img.i1 {
+    right: -24%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i2 {
+    right: 17%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i3 {
+    top: -39%;
+    right: 34%;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .retrospective .slider-restropective .calc4 {
+    zoom: 0.8 !important;
+    left: 52% !important;
+    top: -4% !important;
+  }
+}
+
+.retrospective .navigation-sticky-02.sticky {
+  position: inherit !important;
+}
+
+.by-author {
+  width: 636px;
+  margin: 0px auto 10px auto;
+}
+
+.classic .padding-bottom {
+  padding-bottom: 0px;
+}
+
+.classic .ajax-section .black {
+  padding: 0 0 60px 0;
+}
+
+.block-search .content-result .contain-img.hauteur img {
+  zoom:0.7;
+}
+
+.block-search .content-result .contain-img.largeur img {
+  zoom:0.5;
+}
+
+.block-search .content-result .contain-txts .title-media {
+  font-family: "Playfair Display",Times New Roman,Times,serif !important;
+}
+
+.single-evenement .single-photo {
+  margin:40px 0 0 0;
+  text-align:center;
+}
+
+.single-evenement .single-photo .caption {
+  margin: 0 0 0 32%;
+}
+
+.article-single .detailslideshow {
+  width: 640px;
+}
+
+.article-single .detailslideshow  .slideshow-img {
+  height: 530px;
+}

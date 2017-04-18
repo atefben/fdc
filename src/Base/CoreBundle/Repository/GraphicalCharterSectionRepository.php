@@ -29,6 +29,7 @@ class GraphicalCharterSectionRepository extends TranslationRepository
         $this->addTranslationQueries($qb, 'gcst', $locale);
 
         return $qb
+            ->addOrderBy('gcp.position', 'asc')
             ->getQuery()
             ->getResult()
             ;

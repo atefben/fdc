@@ -165,7 +165,7 @@ var initAudio = function (hash) {
             duration_secs = Math.floor(_duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0' + duration_secs : duration_secs));
         }).on('error',function(e){
-            console.log(e);
+
         }).on('bufferChange', function (e) {
             var currentBuffer = e.bufferPercent;
             $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');
@@ -300,8 +300,6 @@ var initAudio = function (hash) {
                 $('.popin-mail').find('form #contact_title').val(data['title']);
                 $('.popin-mail').find('form #contact_url').val(data['url']);
                 $('.popin-mail').find('.chap-article').html('');
-
-                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
             }
         }
 

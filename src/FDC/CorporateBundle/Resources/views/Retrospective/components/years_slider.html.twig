@@ -22,7 +22,7 @@
 
 <div class="slides cli">
 
-    <div data-slide="0" class="first-slide slider-restropective{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} isOpen block-push block-push-top background-effet animated fadeOut{% endif %}" style="background-image: url('{{ asset('bundles/fdccorporate/media/images/retrospective-home-01.jpg') }}')">
+    <div data-slide="0" class="first-slide slider-restropective{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} isOpen block-push block-push-retro background-effet animated fadeOut{% endif %}" style="background-image: url('{{ asset('bundles/fdccorporate/media/images/retrospective-home-01.jpg') }}')">
         <div class="container block-01 vFlexAlign" >
             <div class="vFlexAlign">
                 <h1 class="title-big">{{ 'retrospective.69ansfestival'|trans }}</h1>
@@ -42,7 +42,7 @@
     {% for festival in festivals %}
         {% set images = get_festival_images(festival, 'site-institutionnel') %}
         {% if currentYear != festival.year %}
-            <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-top background-effet small{% endif %}">
+            <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-retro background-effet small{% endif %}">
                 <div class="container block-01 vFlexAlign">
                     <div class="link-return-c">
                         <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
@@ -72,7 +72,7 @@
             {% set slideId = slideId + 1 %}
         {% endif %}
 
-        <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-top background-effet small{% endif %}">
+        <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-retro background-effet small{% endif %}">
             <div class="container block-01 vFlexAlign">
                 <div class="link-return-c">
                     <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>

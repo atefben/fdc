@@ -24,7 +24,8 @@ class NewsController extends Controller
      */
     public function preHomeAction()
     {
-        return $this->redirect($this->generateUrl('fdc_event_news_index', ['_locale' => 'fr']), 301);
+//        return $this->redirect($this->generateUrl('fdc_event_news_index', ['_locale' => 'fr']), 301);// Event
+        return $this->redirect($this->generateUrl('fdc_corporate_default_home', ['_locale' => 'fr']), 301);// Corpo
     }
 
     /**

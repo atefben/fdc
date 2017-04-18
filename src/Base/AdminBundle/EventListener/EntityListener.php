@@ -147,6 +147,7 @@ class EntityListener
         if ($entity instanceof Media && !$entity->getIgnoreListener()) {
             $entity->setThumbsGenerated(false);
         }
+
     }
 
     private function setPublishedOn($entity, $args)

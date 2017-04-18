@@ -21,7 +21,7 @@
                         {% if prev is defined and not prev is empty %}
                             {% if class(prev) starts with 'News' %}
                                 <a href="{{ path('fdc_corporate_news_get', {'format': prev.newsFormat, 'slug': prev|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                                   class="prev"><i class="icon icon-arrow-right"></i></a>
+                                   class="prev"><i class="icon icon-arrow-left"></i></a>
                             {% else %}
                                 {% if class(prev) starts with 'S' %}
                                     {% set type = 'communique' %}

@@ -37,10 +37,12 @@
                                             <a download target="_blank"
                                                href="{% path media.file, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.titleVf }}{% else %}{{ media.titleVa }}{% endif %}</a>
                                         {% endfor %}
-                                        {% for media in movie.selfkitPdfFiles %}
-                                            <a download target="_blank"
-                                               href="{% path media, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.name }}{% else %}{{ media.name }}{% endif %}</a>
-                                        {% endfor %}
+                                        {% if not movie.festival or movie.festival.year not in [2014, 2015] %}
+                                            {% for media in movie.selfkitPdfFiles %}
+                                                <a download target="_blank"
+                                                   href="{% path media, 'reference' %}">{% if app.request.locale == 'fr' %}{{ media.name }}{% else %}{{ media.name }}{% endif %}</a>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

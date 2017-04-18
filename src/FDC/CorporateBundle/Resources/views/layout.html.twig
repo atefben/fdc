@@ -76,13 +76,12 @@
             <div class="texts-clipboard"></div>
         </div>
     </div>
-
+    {{ render(controller('FDCCorporateBundle:Global:landing')) }}
     <div id="cookies-banner">
         <p>{{ 'cookie.text.enpoursuivantvotrenaviguationsurnossites'|trans|raw }}
             <span class="cookie-accept" title="Close"><i class="icon icon-close-big-square"></i></span>
         </p>
     </div>
-    {{ render(controller('FDCCorporateBundle:Global:landing')) }}
     {% include 'FDCCorporateBundle::footer.html.twig' %}
     {% include 'FDCCorporateBundle:Base:javascript_footer.html.twig' %}
     {% include 'FDCCorporateBundle:Base:javascript.html.twig' %}

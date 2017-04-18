@@ -43,6 +43,7 @@
                                                             {{ form_row(widget.image) }}
                                                             {{ form_row(widget.graphicalCharterButtonGroup) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive) }}
                                                         {% elseif widget.children._type.vars.value == 'graphical_charter_section_widget_two_columns_type'%}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.two_columns'|trans }}</strong></h4>
                                                             {{ form_row(widget.image) }}
@@ -50,6 +51,8 @@
                                                             {{ form_row(widget.graphicalCharterButtonGroup) }}
                                                             {{ form_row(widget.graphicalCharterButtonGroup2) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive2) }}
                                                         {% elseif widget.children._type.vars.value == 'graphical_charter_section_widget_three_columns_type'%}
                                                             <h4><strong>{{ 'form.ccm.graphical_charter.content.three_columns'|trans }}</strong></h4>
                                                             {{ form_row(widget.image) }}
@@ -59,6 +62,9 @@
                                                             {{ form_row(widget.graphicalCharterButtonGroup2) }}
                                                             {{ form_row(widget.graphicalCharterButtonGroup3) }}
                                                             {{ form_widget(attribute(widget.children.translations, locale)) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive2) }}
+                                                            {{ form_row(widget.isTechnicalConstraintsPopupActive3) }}
                                                         {% endif %}
                                                         {{ form_row(widget._type) }}
                                                         {{ form_row(widget.position) }}

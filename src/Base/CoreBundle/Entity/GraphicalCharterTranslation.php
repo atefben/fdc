@@ -48,6 +48,13 @@ class GraphicalCharterTranslation  implements TranslateChildInterface
      */
     protected $text;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $technicalConstraints;
+
 
     /**
      * Set pageTitle
@@ -139,5 +146,28 @@ class GraphicalCharterTranslation  implements TranslateChildInterface
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * Set technicalConstraints
+     *
+     * @param string $technicalConstraints
+     * @return GraphicalCharterTranslation
+     */
+    public function setTechnicalConstraints($technicalConstraints)
+    {
+        $this->technicalConstraints = $technicalConstraints;
+
+        return $this;
+    }
+
+    /**
+     * Get technicalConstraints
+     *
+     * @return string 
+     */
+    public function getTechnicalConstraints()
+    {
+        return $this->technicalConstraints;
     }
 }

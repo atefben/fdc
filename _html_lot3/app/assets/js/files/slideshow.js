@@ -8,7 +8,6 @@ var owinitSlideShow = function (slider, hash) {
         if(slider.length > 1){
             //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
             slider.each(function(){
-                console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
                 if($(this).find('[data-pid="'+hash+'"]').length){
                     finalSlider = $(this);
                 }
@@ -370,7 +369,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         if(typeof twitterUrl === 'undefined'){
             twitterUrl = images[centerElement].twitterurl;
         }
-        console.log('twitter share url',twitterUrl);
 
         facebook.attr('href', images[centerElement].facebookurl);
         twitter.attr('href',twitterUrl );

@@ -1,21 +1,15 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
+{% block bodyClass %}loading retrospective selection retrospective-home fs-off restrospective-init dark not-mobile{% endblock %}
 
 {% block body %}
-    <section class="border-bottom s-slider-retrospective">
-
+    <section class="padding-bottom border-bottom s-slider-retrospective">
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider_mini.html.twig' %}
-
         <div class="ajax-section">
             <div class="contain-ajax">
-
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
                 {% include 'FDCCorporateBundle:Movie:components/filters.html.twig' %}
-
                 <div class="all-contain palmares selection">
-
                     {% if projections|length %}
                         {% for projection in projections %}
                             {% if projection.programmationFilms|length > 0 %}
@@ -28,8 +22,7 @@
                             {% include 'FDCCorporateBundle:Movie:widgets/movie.html.twig' with {'film': movie, 'restauration': true} only %}
                         {% endfor %}
                     {% endif %}
-
-                </div> <!-- end all contain -->
+                </div>
             </div>
         </div>
     </section>
@@ -38,18 +31,10 @@
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
     "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
+    "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ app.request.attributes.get('year'),
     "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
     },
     {

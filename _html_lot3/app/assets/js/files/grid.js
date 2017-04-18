@@ -464,7 +464,7 @@ var owInitGrid = function (id) {
 
                             var timeout = window.setTimeout(function(){
                                 var bigInterval = window.setInterval(function(){
-                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    //console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
                                     if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
                                         window.clearInterval(bigInterval);
                                     }else{

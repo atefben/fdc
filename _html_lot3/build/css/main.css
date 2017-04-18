@@ -1666,7 +1666,7 @@ sub {
 
 .title-15 {
   color: #0c0c0c;
-  font-family: "Camphor W01 Light", Arial, Helvetica, sans-serif;
+  font-family: "Playfair Display", Times New Roman, Times, serif;
   font-size: 3rem;
   line-height: 60px;
   display: block;
@@ -2197,7 +2197,7 @@ a {
 }
 
 .buttons-01 {
-  margin-bottom: 94px;
+  margin-bottom: 60px;
 }
 .buttons-01 .button {
   border-color: #292929;
@@ -2826,8 +2826,6 @@ video {
 
 .shadow-bottom:before {
   background: transparent;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
   content: '';
   display: block;
   height: 100%;
@@ -3466,6 +3464,74 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   transition: all 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: scale(1.08) translateZ(0);
   cursor: pointer;
+}
+
+.block-push-retro {
+  height: 300px;
+  display: block;
+}
+.block-push-retro .vFlexAlign {
+  height: 100%;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+.block-push-retro .txts {
+  text-align: center;
+}
+.block-push-retro .title-2 {
+  font-size: 3.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
+}
+.block-push-retro .title-3 {
+  font-size: 1.75rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  letter-spacing: 0.85rem;
+}
+.block-push-retro .title-4 {
+  font-size: .75rem;
+  color: #fff;
+  display: block;
+  letter-spacing: .1rem;
+}
+.block-push-retro .date-back, .block-push-retro .date-next {
+  position: absolute;
+}
+.block-push-retro .date-back a, .block-push-retro .date-next a {
+  /* color: #fff;
+   font-size: .8rem;
+   font-family: $CamphorHeavy;*/
+  color: #fff;
+  font-size: .85rem;
+  font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
+  letter-spacing: .5px;
+}
+.block-push-retro .date-back i, .block-push-retro .date-next i {
+  display: block;
+  color: #383738;
+}
+.block-push-retro .date-back {
+  left: 111px;
+  top: 50%;
+  transform: rotate(-90deg);
+  transition: left .4s ease;
+}
+.block-push-retro .date-back i {
+  transform: rotate(-180deg);
+  font-size: 1.4rem;
+}
+.block-push-retro .date-next {
+  right: 111px;
+  top: 50%;
+  transform: rotate(90deg);
+}
+.block-push-retro .date-next i {
+  transform: rotate(180deg);
+  font-size: 1.4rem;
 }
 
 .block-push-top {
@@ -4458,8 +4524,8 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   display: block;
 }
 .block-accordion .three-images {
-  -ms-flex-align: baseline;
-      align-items: baseline;
+  -ms-flex-align: normal;
+      align-items: normal;
 }
 .block-accordion .three-images .caption {
   margin-top: 0px;
@@ -5773,7 +5839,7 @@ strong.title-center {
 @font-face {
   font-family: "icon";
   src: url("../fonts/icon.eot");
-  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
+  src: url("../fonts/icon.eot?#iefix") format("eot"), url("../fonts/icon.woff2") format("woff2"), url("../fonts/icon.woff") format("woff"), url("../fonts/icon.ttf") format("truetype"), url("../fonts/icon.svg#icon") format("svg");
 }
 .icon:before {
   font-family: "icon";
@@ -6997,8 +7063,8 @@ body.chocolat-open > .chocolat-content {
     background-attachment: initial;
   }
 }
-/* thomon 27/01/2017 - misc fixes retrospective 69e edition */
-.ie .slider-restropective .block-01 .vFlexAlign img {
+.ie .retrospective
+.slider-restropective .block-01 .vFlexAlign img {
   height: auto !important;
   width: 100% !important;
   min-width: none !important;
@@ -7006,7 +7072,8 @@ body.chocolat-open > .chocolat-content {
   min-height: none !important;
   max-height: 100% !important;
 }
-.ie .slider-restropective .block-01 .vFlexAlign img.open {
+.ie .retrospective
+.slider-restropective .block-01 .vFlexAlign img.open {
   height: auto;
   max-height: none !important;
 }
@@ -7627,47 +7694,9 @@ header #navigation ul.user li a:hover .icon-pencil:before {
   width: 50%;
   left: 0px;
 }
-.retrospective .slider-restropective .calc3 img.i1 {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-}
-.retrospective .slider-restropective .calc3 img.i2 {
-  position: absolute;
-  bottom: 20%;
-  left: 15%;
-}
-.retrospective .slider-restropective .calc3 img.i3 {
-  position: absolute;
-  top: 5%;
-  left: 15%;
-}
 .retrospective .slider-restropective .calc4 {
   width: 50%;
   right: 0px;
-}
-.retrospective .slider-restropective .calc4 img.i1 {
-  position: relative;
-  top: 1%;
-  left: 33%;
-}
-.retrospective .slider-restropective .calc4 img.i2 {
-  top: 21%;
-  position: relative;
-  right: -24%;
-}
-.retrospective .slider-restropective[data-slide="10"] .calc3 img.i1 {
-  left: -23%;
-}
-.retrospective .slider-restropective[data-slide="10"] .calc3 img.i2 {
-  right: -9%;
-}
-@media only screen and (max-width: 1440px) {
-  .retrospective .slider-restropective[data-slide="10"] .calc3 img.i2 {
-    top: 8%;
-    position: relative;
-    right: -16%;
-  }
 }
 
 .dark .grid-01 {
@@ -11015,18 +11044,18 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective .calc3 img.i1 {
   position: relative;
-  top: -2%;
-  left: -21%;
+  top: 0%;
+  right: -49%;
 }
 .slider-restropective .calc3 img.i2 {
-  top: 38%;
+  top: 39%;
   position: relative;
-  right: 7%;
+  right: -5%;
 }
 .slider-restropective .calc3 img.i3 {
   position: relative;
-  top: 0%;
-  left: 15%;
+  top: 6%;
+  right: 50%;
 }
 .slider-restropective .calc4 {
   position: absolute;
@@ -11043,18 +11072,18 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective .calc4 img.i1 {
   position: relative;
-  top: -14%;
-  left: 13%;
+  top: 1%;
+  left: 25%;
 }
 .slider-restropective .calc4 img.i2 {
-  top: 41%;
+  top: 20%;
   position: relative;
-  right: -21%;
+  right: -30%;
 }
 .slider-restropective .calc4 img.i3 {
   position: relative;
-  top: 31%;
-  left: -53%;
+  top: 46%;
+  left: -36%;
 }
 .slider-restropective.background-effet:after {
   content: '';
@@ -11189,7 +11218,7 @@ body#home .isotope-01 .item .info {
 }
 .slider-restropective.big .vFlexAlign img {
   position: absolute;
-  top: -20%;
+  top: -200px;
   opacity: .3;
   left: 0px;
 }
@@ -12421,12 +12450,12 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 }
 .slideshow {
   border-bottom: 1px solid #e5e5e5;
-  width: 730px;
+  width: 977px;
   margin: 0 auto 70px;
 }
 .slideshow .slideshow-img {
   background-color: #000;
-  height: 557px;
+  height: 631px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -15172,7 +15201,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   height: 47px;
 }
 .single-movie .palmares i {
-  font-size: 2.75rem;
+  font-size: 3rem;
   color: #c8a461;
   display: inline-block;
   vertical-align: middle !important;
@@ -15637,6 +15666,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   left: 10px;
   position: absolute;
   z-index: 1;
+  margin: 0 0 0 0 !important;
 }
 .single-movie .casting .gallery .img img {
   display: none;
@@ -15792,7 +15822,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
   height: 145px;
-  padding-left: 190px;
+  padding-left: 225px;
   position: relative;
 }
 .single-movie .press .info-press .wrapper .folder img {
@@ -15819,6 +15849,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
 .single-movie .press .info-press .wrapper .links {
   border-bottom: 1px solid #252525;
   padding: 22px 0;
+  padding-left: 225px;
 }
 .single-movie .press .info-press .wrapper .links a {
   color: #999;
@@ -16249,7 +16280,7 @@ div.chocolat-wrapper .zoomCursor .icon, .c-fullscreen-slider .zoomCursor .icon {
   width: 100%;
 }
 .single-movie .single-article.single-actualite .small-container > div.half-div, .single-movie .single-article.single-actualite .small-container > div.single-photo.large-photo, .single-movie .single-article.single-actualite .small-container > div.slideshow {
-  width: 730px;
+  width: 977px;
 }
 .single-movie .single-article .print {
   font-family: "Camphor W01 Heavy", Arial, Helvetica, sans-serif;
