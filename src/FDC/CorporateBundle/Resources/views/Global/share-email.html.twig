@@ -13,16 +13,16 @@
         {{ form_start(form,{'attr': {'class':'popin', 'id':'form'}}) }}
 
         {% if form_errors(form.email) %}
-            {{ form_widget(form.email, {'attr': {'class': 'invalid'}}) }}
+            {{ form_widget(form.email, {'attr': {'class': 'invalid', 'placeholder': 'sharemail.form.placeholder.email'|trans} }) }}
         {% else %}
-            {{ form_widget(form.email) }}
+            {{ form_widget(form.email, {'attr': {'placeholder': 'sharemail.form.placeholder.email'|trans} }) }}
         {% endif %}
         <span class="complet-infos popin">{{ 'sharemail.text.separerparvirgule'|trans }}</span>
 
         {% if form_errors(form.user) %}
-            {{ form_widget(form.user, {'attr': {'class': 'invalid'}}) }}
+            {{ form_widget(form.user, {'attr': {'class': 'invalid', 'placeholder': 'sharemail.form.placeholder.votreemail'|trans} }) }}
         {% else %}
-            {{ form_widget(form.user) }}
+            {{ form_widget(form.user, {'attr': {'placeholder': 'sharemail.form.placeholder.votreemail'|trans} }) }}
         {% endif %}
         <span class="complet-infos popin">
           {{ form_widget(form.copy) }}
@@ -31,9 +31,9 @@
 
 
         {% if form_errors(form.message) %}
-            {{ form_widget(form.message, {'attr': {'class': 'invalid'}}) }}
+            {{ form_widget(form.message, {'attr': {'class': 'invalid', 'placeholder': 'sharemail.form.placeholder.message'|trans} }) }}
         {% else %}
-            {{ form_widget(form.message) }}
+            {{ form_widget(form.message, {'attr': {'placeholder': 'sharemail.form.placeholder.message'|trans} }) }}
         {% endif %}
 
         {{ form_widget(form.section, {'value' : share_email.section}) }}
