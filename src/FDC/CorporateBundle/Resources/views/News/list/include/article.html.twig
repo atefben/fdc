@@ -18,8 +18,7 @@
             {% endif %}
         {% endif %}
         {% if imageTransAudio is defined and imageTransAudio is not null %}
-            {% set fileAudio = imageTransAudio.file %}
-            {% set imgAudio = article.header %}
+            {% set imgAudio = imageTransAudio.file %}
         {% else %}
             {% set transAudio = header.findTranslationByLocale('fr') %}
             {% set imgAudio = imageTransAudio.file %}
