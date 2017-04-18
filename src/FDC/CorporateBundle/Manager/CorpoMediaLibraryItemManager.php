@@ -172,6 +172,20 @@ class CorpoMediaLibraryItemManager
 //                        }
 //                    }
 
+                    $films = [];
+                    if ($object->getAssociatedFilm()) {
+                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+                    }
+                    foreach ($films as $film) {
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
+                        }
+                    }
+
                     $item
                         ->setType('image')
                         ->setSorted($object->getPublishedAt())
@@ -250,6 +264,20 @@ class CorpoMediaLibraryItemManager
 //                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
 //                        }
 //                    }
+
+                    $films = [];
+                    if ($object->getAssociatedFilm()) {
+                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+                    }
+                    foreach ($films as $film) {
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
+                        }
+                    }
 
                     $item
                         ->setType('audio')
@@ -340,6 +368,20 @@ class CorpoMediaLibraryItemManager
 //                            $search .= ' ' . $filmTranslation->getInfoRestauration();
 //                        }
 //                    }
+
+                    $films = [];
+                    if ($object->getAssociatedFilm()) {
+                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+                    }
+                    foreach ($films as $film) {
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
+                        }
+                    }
 
                     $item
                         ->setType('video')
