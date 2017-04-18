@@ -678,3 +678,16 @@ text-rendering: auto;
 .article-single .detailslideshow  .slideshow-img {
   height: 530px;
 }
+
+.home .read-more {
+  background: #FFF;
+  top: -450px;
+  position: relative;
+}
+
+.home #maskread {
+  height:288px;
+  background-color:#FFF;
+  position: relative;
+  top: -872px;
+}
