@@ -1,8 +1,41 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
+{% if (article is news_audio or article is info_audio or article is statement_audio) %}
+    {% set audioFile = article.audio.findTranslationByLocale('fr') %}
+    {% set header = article.header %}
+    {% if header is not null %}
+        {% set transAudio = header.findTranslationByLocale(app.request.locale) %}
+        {% if transAudio is not null and transAudio.file is not null %}
+            {% set imageTransAudio = transAudio %}
+        {% else %}
+            {% set transAudio = article.header.findTranslationByLocale('fr') %}
+            {% if transAudio is not null and transAudio.file is not null %}
+                {% set imageTransAudio = transAudio %}
+            {% endif %}
+        {% endif %}
+        {% if imageTransAudio is defined and imageTransAudio is not null %}
+            {% set fileAudio = imageTransAudio.file %}
+            {% set imgAudio = article.header %}
+        {% endif %}
+    {% else %}
+        {% set imgAudio = article.audio.image %}
+        {% set transAudio = imgAudio.findTranslationByLocale(app.request.locale) %}
+        {% if transAudio is null or transAudio.file is null %}
+            {% set transAudio = imgAudio.findTranslationByLocale('fr') %}
+        {% endif %}
+        {% set fileAudio = transAudio.file %}
+    {% endif %}
+{% endif %}
 <article
         class="card item article date-{{ article.publishedAt|date('d-m-y') }} {{ article.theme|trans_fallback('slug') }} {{ article.newsType|get_news_type }} all"
         data-format="{{ article.newsType|get_news_type }}"
         data-theme="{{ article.theme|trans_fallback('slug') }}" data-time="{{ article.publishedAt|date('U') }}"
+        {% if (article is news_audio or article is info_audio or article is statement_audio) %}
+            data-file='[{"file":"{{ s3_server_audio ~ audioFile.mp3Url }}"}]'
+            data-theme="all {{ article.audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
+            data-date="date-{{ article.audio.publishedAt|date('d-m-y') }}"
+            data-img="{% if imageTransAudio is defined and imageTransAudio and imageTransAudio.file %}{% path imageTransAudio.file , '640x404' %}{% endif %}"
+            data-aid="{{ article.audio.id }}
+        {% endif %}
         data-end="false" data-date="date-{{ article.publishedAt|date('d-m-y') }}">
     <div class="image">
         <div class="image-wrapper">
