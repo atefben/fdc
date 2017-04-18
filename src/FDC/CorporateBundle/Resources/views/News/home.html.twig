@@ -163,14 +163,14 @@
                                 <div class="grid-sizer"></div>
 
                                 {% if homeContents|length > 3 %}
-                                    {% for article in homeContents|slice(5) %}
+                                    {% for article in homeContents|slice(3) %}
                                         {% include 'FDCCorporateBundle:Home/contents:info-statement.html.twig' with({'articleClass': ''}) %}
                                     {% endfor %}
                                 {% endif %}
 
                             </div>
-                        </div> <!-- end articles -->
-                    </div> <!-- end article wrapper-->
+                        </div>
+                    </div>
 
                     {% if not last %}
                         <a id="home-news-statements-more"
