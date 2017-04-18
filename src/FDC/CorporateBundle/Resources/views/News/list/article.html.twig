@@ -12,7 +12,7 @@
 
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
 
-                {% include 'FDCCorporateBundle:News:components/filters.html.twig' %}
+                {% include 'FDCCorporateBundle:News:components/filters.html.twig' with {'hideFilters': true} %}
 
                 <div class="grid-01 isotope-01 add-ajax-request">
                     <div class="grid-sizer"></div>
