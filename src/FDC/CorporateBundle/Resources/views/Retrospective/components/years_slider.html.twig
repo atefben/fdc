@@ -42,7 +42,7 @@
     {% for festival in festivals %}
         {% set images = get_festival_images(festival, 'site-institutionnel') %}
         {% if currentYear != festival.year %}
-           {# <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-retro background-effet small{% endif %}">
+            <div data-slide="{{ slideId }}" class="slider-restropective small{% if app.request.attributes.get('_route') != 'fdc_corporate_editions_retrospective' %} slider-restropective isOpen block-push block-push-retro background-effet small{% endif %}">
                 <div class="container block-01 vFlexAlign">
                     <div class="link-return-c">
                         <a href="{{ path('fdc_corporate_editions_retrospective') }}" class="return-back block-01"><i class="icon icon-arrow-left"></i>{{ 'retrospective.retour'|trans }}</a>
@@ -67,7 +67,7 @@
                 <div class="calc4">
 
                 </div>
-            </div>#}
+            </div>
             {% set currentYear = currentYear + 1 %}
             {% set slideId = slideId + 1 %}
         {% endif %}
