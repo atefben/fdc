@@ -622,15 +622,21 @@ text-rendering: auto;
     right: 14%;
   }
   .retrospective .slider-restropective .calc3 {
-    left: -23%;
+    zoom: 0.7;
+    left: -15%;
     top: 3%;
+  }
+  .retrospective .slider-restropective .calc4 {
+    zoom: 0.59;
+    left: 47%;
+    top: 4%;
   }
 }
 @media only screen and (max-width: 1440px) {
   .retrospective .slider-restropective .calc4 {
-    zoom: 0.8 !important;
-    left: 52% !important;
-    top: -4% !important;
+    zoom: 0.8;
+    left: 52%;
+    top: -4%;
   }
 }
 
