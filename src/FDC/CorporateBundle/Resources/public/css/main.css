@@ -7222,7 +7222,8 @@ body.chocolat-open > .chocolat-content {
 }
 .same-day .articles.center article {
   padding: 0;
-  width: 29%;
+  width: 293px;
+  display: inline-block;
 }
 .same-day .articles.center article .info strong,
 .same-day .articles.center article .info h2 {
