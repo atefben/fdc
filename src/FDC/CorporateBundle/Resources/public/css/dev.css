@@ -520,10 +520,7 @@ text-rendering: auto;
 .article-single.dark .caption, .article-single.dark .caption strong {
   color: #969696 !important;
   font-size: 0.750rem !important;
-<<<<<<< HEAD
-=======
   margin: 10px auto 0 !important;
->>>>>>> origin/master
   text-align: left;
 }
 
@@ -691,4 +688,44 @@ text-rendering: auto;
   position: relative;
   display: block;
   margin: -325px 0 -127px 0;
+}
+
+.error-not-found {
+  background-image: url("http://www.festival-cannes.com/bundles/fdcevent/img/error-bck.jpg");
+  height: 593px;
+  background-size: cover
+}
+
+.error-not-found .texts {
+  width: 900px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center
+}
+
+.error-not-found .texts h1 {
+  color: #fff;
+  font-size: 1.75rem;
+  letter-spacing: .5em;
+  line-height: 24px;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 19px
+}
+
+.error-not-found .texts p {
+  text-transform: uppercase;
+  color: #fff !important;
+  font-size: .75rem;
+  letter-spacing: .2rem;
+  line-height: 24px;
+  margin-bottom: 34px
+}
+
+.error-not-found .texts a {
+  color: #c8a461;
+  font-size: .69rem;
+  font-family: "Camphor W01 Heavy",Arial,Helvetica,sans-serif;
+  transition: all .5s cubic-bezier(.25,.46,.45,.94)
 }

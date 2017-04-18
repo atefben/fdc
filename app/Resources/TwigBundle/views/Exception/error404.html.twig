@@ -1,16 +1,23 @@
 {% trans_default_domain 'FDCEventBundle' %}
-{% extends 'FDCEventBundle::layout.html.twig' %}
+{% if app.request.pathInfo starts with '/fr/festival' or app.request.pathInfo starts with '/en/festival' or app.request.pathInfo starts with '/es/festival' or app.request.pathInfo starts with '/zh/festival' %}
+    {% set layout = 'FDCEventBundle::layout.html.twig' %}
+{% else %}
+    {% set layout = 'FDCCorporateBundle::layout.html.twig' %}
+{% endif %}
+{% extends layout %}
+
 {% set locales = [] %}
 {% block body %}
-<div id="main" class="loading error-not-found">
-       <div class="vCenter">
-         <div class="vCenterKid">
-           <div class="texts">
-            <h1>Error 404</h1>
-            <p>The page you are trying to view does not exist.<br />It's possible that its content is currently being translated.<br />Please try again later.</p>
-             <a href="/"><i class="icon icon_fleche-right"></i> return to news</a>
-           </div>
-         </div>
-       </div>
+    <div id="main" class="loading error-not-found">
+        <div class="vCenter">
+            <div class="vCenterKid">
+                <div class="texts">
+                    <h1>Error 404</h1>
+                    <p>The page you are trying to view does not exist.<br/>It's possible that its content is currently
+                        being translated.<br/>Please try again later.</p>
+                    <a href="/"><i class="icon icon_fleche-right"></i> return to news</a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
