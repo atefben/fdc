@@ -53,7 +53,7 @@ var initRs = function () {
             var authors = $('.tetiere-movie').find('a').text();
             var synopsis = $('.synopsis').find('p').text().substring(0, 150);
 
-            $(cls).find('.contain-popin .article-authors').text(authors);
+            $(cls).find('.contain-popin .date-article').text(authors);
             $(cls).find('.contain-popin .chap-article').text(synopsis);
         }
         $(cls).find('.contain-popin .title-article').text(title);
@@ -225,7 +225,7 @@ var initRs = function () {
     //LINK POPIN//
     var linkPopinInit = function(link, cls) {
         var link = link || document.location.href;
-        var cls = cls || '.link.self';
+        var cls = cls || '.link';
 
 
         clipboard = new Clipboard(cls);
