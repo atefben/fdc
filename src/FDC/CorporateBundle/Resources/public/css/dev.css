@@ -681,14 +681,14 @@ text-rendering: auto;
 
 .home .read-more {
   background: #FFF;
-  top: -341px;
+  top: -170px;
   position: relative;
 }
 
 .home #maskread {
-  height: 440px;
+  height: 289px;
   background-color: #FFF;
   position: relative;
   display: block;
-  margin: -519px 0 -127px 0;
+  margin: -325px 0 -127px 0;
 }
