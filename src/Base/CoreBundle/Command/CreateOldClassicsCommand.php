@@ -26,6 +26,22 @@ use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 class CreateOldClassicsCommand extends ContainerAwareCommand
 {
 
+    private $subsections = [
+        1 => 'Copies Restaurées',
+        2 => 'Documentaires sur le cinéma',
+        3 => 'World cinéma Foundation',
+        4 => 'Hommages',
+    ];
+    private $models = [
+        1 => 1,
+        2 => 2,
+        3 => 9,
+        4 => 6,
+    ];
+
+    private $currentIdSubsection = null;
+    private $currentSubsection = null;
+
     protected function configure()
     {
         $this->setName('base:core:create-old-classics');
@@ -33,19 +49,24 @@ class CreateOldClassicsCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $years = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FilmFilm')
-            ->getOldClassics()
-        ;
-        $progress = new ProgressBar($output, count($years));
-        $progress->start();
-        foreach ($years as $year => $films) {
-            $progress->advance();
-            $this->createClassics($year, $films);
+        foreach ($this->subsections as $idSubsection => $subsection) {
+            $this->currentIdSubsection = $idSubsection;
+            $this->currentSubsection = $subsection;
+            $years = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getOldClassics($idSubsection)
+            ;
+            $progress = new ProgressBar($output, count($years));
+            $progress->start();
+            foreach ($years as $year => $films) {
+                $progress->advance();
+                $this->createClassics($year, $films);
+            }
+            $progress->finish();
+            $output->writeln('');
         }
-        $progress->finish();
-        $output->writeln('');
+
     }
 
     /**
@@ -70,12 +91,12 @@ class CreateOldClassicsCommand extends ContainerAwareCommand
             ->getRepository(Classics::class)
             ->findOneBy([
                 'festival'     => $festival->getId(),
-                'oldNewsTable' => 'command',
+                'oldNewsTable' => $this->currentSubsection,
             ])
         ;
         if (!$classics) {
             $classics = new Classics();
-            $classics->setOldNewsTable('command');
+            $classics->setOldNewsTable($this->currentSubsection);
             $this->getDoctrineManager()->persist($classics);
         }
 
@@ -150,7 +171,7 @@ class CreateOldClassicsCommand extends ContainerAwareCommand
         $widgetMovie = $classicsWidgetMovie->getWidgetMovie();
         if (!$widgetMovie) {
             $widgetMovie = new WidgetMovie();
-            $widgetMovie->setTitle('Copies Restaurées');
+            $widgetMovie->setTitle($this->currentSubsection);
             $this->getDoctrineManager()->persist($widgetMovie);
             $classicsWidgetMovie->setWidgetMovie($widgetMovie);
         }
@@ -190,17 +211,11 @@ class CreateOldClassicsCommand extends ContainerAwareCommand
      */
     private function getModel()
     {
-        static $model = null;
-
-        if (!$model) {
-            $model = $this
+            return $this
                 ->getDoctrineManager()
                 ->getRepository(Classics::class)
-                ->find(1)
+                ->find($this->models[$this->currentIdSubsection])
             ;
-        }
-
-        return $model;
     }
 
     /**

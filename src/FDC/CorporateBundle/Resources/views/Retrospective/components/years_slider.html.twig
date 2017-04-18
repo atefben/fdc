@@ -49,7 +49,7 @@
                     </div>
 
                     {% if slideId > 1 %}<div class="date-back"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear-1}) }}" class="noajax">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                    {% if slideId < lastSlideId %}<div class="date-next"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear+1}) }}" class="noajax">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                    {% if slideId <= lastSlideId %}<div class="date-next"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear+1}) }}" class="noajax">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                     <div class="vFlexAlign">
 
@@ -79,7 +79,7 @@
                 </div>
 
                 {% if yearEdition > 1 %}<div class="date-back"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear-1} ) }}" class="noajax">{{ currentYear - 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
-                {% if slideId < lastSlideId %}<div class="date-next"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear+1} ) }}" class="noajax">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
+                {% if slideId <= lastSlideId %}<div class="date-next"><a href="{{ path('fdc_corporate_movie_selection', {year: currentYear+1} ) }}" class="noajax">{{ currentYear + 1 }}</a><i class="icon icon-arrow-fill"></i></div>{% endif %}
 
                 <div class="vFlexAlign">
                     {% if images|length %}

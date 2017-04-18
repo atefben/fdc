@@ -22,10 +22,10 @@
                                    href="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
                                    title='{{ title }}'
                                    data-credit="{% if photo.media.copyright is not empty %} © {{ photo.media.copyright }}{% endif %}"
-                                   data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ photo.media.id }}&picture=
-{% path file, resolution %}&name={{ gallery.media|trans_fallback('legend')}}&caption=&description={% if photo.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ photo.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
-                                   data-twitter="https://twitter.com/intent/tweet?text={{ photo.media|trans_fallback('legend')}}%20{{app.request.uri}}%23pid={{ photo.media.id }}"
-                                   data-link="{{app.request.uri}}#pid={{ photo.media.id }}">
+                                   data-url="{{app.request.uri}}#pid={{ photo.id }}"
+                                   data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ photo.id }}&picture="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}&name={{ title }}&caption=&description={% if photo.media.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ photo.media.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                   data-twitter="https://twitter.com/intent/tweet?text={{ photo.media|trans_fallback('legend')}}%20{{app.request.uri}}%23pid={{ photo.id }}"
+                                   data-link="{{app.request.uri}}#pid={{ photo.id }}">
                                     <img src="{% if photo.media.file is not empty %}{% path photo.media.file, photo.media.file.context ~ '_big' %}{% endif %}"
                                          alt=""/>
                                 </a>
@@ -40,6 +40,7 @@
                                href="{% path selfkit, selfkit.context ~ '_big' %}"
                                title='{{ selfkit.name?:'Affiche du film' }}'
                                data-credit="{{ selfkit.copyright ? ' © ' ~ selfkit.copyright : '' }}"
+                               data-url="{{app.request.uri}}#pid={{ selfkit.id }}"
                                data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{app.request.uri}}%23pid={{ selfkit.id }}&picture={% path selfkit, selfkit.context ~ '_big' %}&name={{ selfkit.name?:'Affiche du film' }}&caption=&description={% if selfkit.copyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ selfkit.copyright }}{% endif %}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
                                data-twitter="https://twitter.com/intent/tweet?text={{ selfkit.name?:'Affiche du film' }}%20{{app.request.uri}}%23pid={{ selfkit.id }}"
                                data-link="{{app.request.uri}}#pid={{ selfkit.id }}">

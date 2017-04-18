@@ -428,13 +428,13 @@ class FilmFilmRepository extends EntityRepository
     }
 
 
-    public function getOldClassics()
+    public function getOldClassics($subsection)
     {
         $films =  $this
             ->createQueryBuilder('f')
             ->innerJoin('f.festival', 'festival')
             ->andWhere('f.selectionSubsection = :subsection')
-            ->setParameter(':subsection', 1)
+            ->setParameter(':subsection', $subsection)
             ->andWhere('festival.year < 2016')
             ->getQuery()
             ->getResult()
