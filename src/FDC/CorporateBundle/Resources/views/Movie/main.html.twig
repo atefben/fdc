@@ -143,10 +143,11 @@
             'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
         })) }}
         {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
-        {'section': '',
-            'detail' : '',
-            'title'  : '',
-            'description': ''
+        {'section': movie.selectionSection|trans_fallback('name')|trans,
+            'detail' : directorsName,
+            'title'  : mainTitle,
+            'description': movie|trans_fallback('synopsis')|truncate(150),
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
         })) }}
 
         {% if movie.titleVO is not empty %}
