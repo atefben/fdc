@@ -2778,6 +2778,9 @@ var owFixMobile = function() {
 
 }
 
+if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  $('body').addClass('ismobile');
+}
 var owInitGrid = function (id) {
     if (id == 'isotope-01') {
         var $grid = $('.isotope-01:not(.add-ajax-request):not(.noComputing)');

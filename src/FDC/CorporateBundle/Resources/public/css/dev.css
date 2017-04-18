@@ -690,11 +690,8 @@ text-rendering: auto;
   margin: -325px 0 -127px 0;
 }
 
-.mob .slider-home {
-  height: 686px;
-}
 .error-not-found {
-  background-image: url("http://www.festival-cannes.com/bundles/fdcevent/img/error-bck.jpg");
+  background-image: url("http://cdn-vendor.festival-cannes.com/bundles/fdcevent/img/error-bck.jpg");
   height: 593px;
   background-size: cover
 }
@@ -731,4 +728,8 @@ text-rendering: auto;
   font-size: .69rem;
   font-family: "Camphor W01 Heavy",Arial,Helvetica,sans-serif;
   transition: all .5s cubic-bezier(.25,.46,.45,.94)
+}
+
+.ismobile .slider-home {
+  height: 686px;
 }
