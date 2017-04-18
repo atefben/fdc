@@ -5494,8 +5494,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');
                 var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');
                 var id = $(value).find('img').attr('data-id') || dataItem.data('pid');
-                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook') || $('div#nav-movie').find('a.facebook').attr('href');
-                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter') || $('div#nav-movie').find('a.twitter').attr('href');
+                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');
+                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');
                 var url = $(value).find('img').attr('data-url') || dataItem.data('url');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
