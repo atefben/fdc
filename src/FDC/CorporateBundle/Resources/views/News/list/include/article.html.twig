@@ -1,6 +1,11 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% if (article is news_audio or article is info_audio or article is statement_audio) %}
-    {% set audioFile = article.audio.findTranslationByLocale('fr') %}
+    {% if article.audio.findTranslationByLocale(app.request.locale) %}
+        {% set audioFile = article.audio.findTranslationByLocale(app.request.locale) %}
+    {% else %}
+        {% set audioFile = article.audio.findTranslationByLocale('fr') %}
+    {% endif %}
+    
     {% set header = article.header %}
     {% if header is not null %}
         {% set transAudio = header.findTranslationByLocale(app.request.locale) %}
@@ -15,6 +20,9 @@
         {% if imageTransAudio is defined and imageTransAudio is not null %}
             {% set fileAudio = imageTransAudio.file %}
             {% set imgAudio = article.header %}
+        {% else %}
+            {% set transAudio = header.findTranslationByLocale('fr') %}
+            {% set imgAudio = imageTransAudio.file %}
         {% endif %}
     {% else %}
         {% set imgAudio = article.audio.image %}
@@ -22,7 +30,7 @@
         {% if transAudio is null or transAudio.file is null %}
             {% set transAudio = imgAudio.findTranslationByLocale('fr') %}
         {% endif %}
-        {% set fileAudio = transAudio.file %}
+        {% set imgAudio = transAudio.file %}
     {% endif %}
 {% endif %}
 <article
@@ -33,8 +41,8 @@
             data-file='[{"file":"{{ s3_server_audio ~ audioFile.mp3Url }}"}]'
             data-theme="all {{ article.audio.theme|trans_fallback('slug') }}" data-time="1455909420" data-end="false"
             data-date="date-{{ article.audio.publishedAt|date('d-m-y') }}"
-            data-img="{% if imageTransAudio is defined and imageTransAudio and imageTransAudio.file %}{% path imageTransAudio.file , '640x404' %}{% endif %}"
-            data-aid="{{ article.audio.id }}
+            data-img="{% if imgAudio is defined and imgAudio  %}{% path imgAudio , '640x404' %}{% endif %}"
+            data-aid="{{ article.audio.id }}"
         {% endif %}
         data-end="false" data-date="date-{{ article.publishedAt|date('d-m-y') }}">
     <div class="image">
