@@ -7943,7 +7943,7 @@ $(document).ready(function () {
         var number = hash.slice(4);
 
         if (hash.length > 0 && verif == "pid") {
-            owinitSlideShow(slider, hash);
+            owinitSlideShow(slider, number);
         } else {
             owinitSlideShow(slider);
         }
