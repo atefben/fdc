@@ -619,7 +619,11 @@ text-rendering: auto;
 
   .retrospective .slider-restropective .calc3  img.i3 {
     top: -39%;
-    right: 34%;
+    right: 14%;
+  }
+  .retrospective .slider-restropective .calc3 {
+    left: -23%;
+    top: 3%;
   }
 }
 @media only screen and (max-width: 1440px) {
