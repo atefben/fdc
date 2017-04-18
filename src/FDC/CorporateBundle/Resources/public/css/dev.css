@@ -739,5 +739,5 @@ body.ismobile .slider-home .container-images .item {
 }
 
 .ismobile .block-push {
-  background: none !important;
+  background: center 0 no-repeat fixed !important;
 }
