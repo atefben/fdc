@@ -4687,7 +4687,7 @@ var initRs = function () {
     //LINK POPIN//
     var linkPopinInit = function(link, cls) {
         var link = link || document.location.href;
-        var cls = cls || '.link';
+        var cls = cls || '.link.self';
 
 
         clipboard = new Clipboard(cls);
