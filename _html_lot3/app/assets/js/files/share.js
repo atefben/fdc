@@ -276,4 +276,5 @@ var initRs = function () {
     }
 
     linkPopinInit();
+    linkPopinInit(0, '.top-bar-link');
 }
