@@ -46,7 +46,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_list", "search",
      *     "news_show",
@@ -74,7 +74,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "classics"
@@ -92,7 +92,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",
@@ -130,7 +130,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_list", "search",
      *     "news_show",
@@ -155,7 +155,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "classics",
@@ -178,7 +178,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_show",
      *     "classics"
@@ -199,7 +199,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_show",
      *     "classics"
@@ -252,7 +252,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show"
      * })
      */
@@ -270,7 +270,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show"
      * })
      *
@@ -345,7 +345,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list", "search",
@@ -372,7 +372,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_show",
      *     "search"
@@ -401,7 +401,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "news_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "film_selection_section_show",
      *     "home",
      *     "news_list", "search",
@@ -490,7 +490,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "classics",
      *     "orange_studio",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "search"
      * })
@@ -508,7 +508,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "classics",
      *     "orange_studio",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      * })
      */
@@ -591,7 +591,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show"
      * })
      * @return array|ArrayCollection
@@ -623,7 +623,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "news_list", "search",
      *     "news_show",
@@ -667,7 +667,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show"
      * })
      * @return array|ArrayCollection
@@ -720,7 +720,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show"
      * })
      *
