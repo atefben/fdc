@@ -339,10 +339,8 @@ class FilmProjectionRepository extends EntityRepository
             ->setParameter(':end', $end)
             ->addOrderBy('p.startsAt', 'asc')
             ->addOrderBy('pr.homeProjection2017Order', 'asc')
-            ->setMaxResults(1)
             ->getQuery()
             ->getResult();
-
     }
 
 }
