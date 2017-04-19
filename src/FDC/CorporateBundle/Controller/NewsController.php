@@ -62,36 +62,76 @@ class NewsController extends Controller
     {
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
+        $exclude = $request->query->get('exclude', null);
+        $theme = $request->query->get('theme', null);
+        $format = $request->query->get('format', null);
 
-        $parameters = $this->getArticlesAndFilters($festival, $locale, $time);
+        if ($theme) {
+            $themeTrans = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:ThemeTranslation')
+                ->findOneBy(['slug' => $theme])
+            ;
+            if ($themeTrans) {
+                $theme = $themeTrans->getTranslatable();
+            } else {
+                $theme = null;
+            }
+        }
 
+        $parameters = $this->getArticlesAndFilters($festival, $locale, $time, $exclude, $theme, $format);
         return $this->render('FDCCorporateBundle:News/list:articles-ajax.html.twig', $parameters);
     }
 
-    private function getArticlesAndFilters(FilmFestival $festival, $locale, $time = null)
+    /**
+     * @param FilmFestival $festival
+     * @param $locale
+     * @param null $time
+     * @param null $exclude
+     * @param null $theme
+     * @param null $format
+     * @return array
+     */
+    private function getArticlesAndFilters(FilmFestival $festival, $locale, $time = null, $exclude = null, $theme = null, $format = null)
     {
         $before = null;
         if ($time) {
             $before = new DateTime();
             $before->setTimestamp($time);
         }
-        $maxResults = 200;
+        $maxResults = 31;
+        $filters = [];
 
-        $articles = $this
+        if ($format) {
+            $filters['typeClone'] = $format;
+        }
+
+        if ($theme) {
+            $filters['theme'] = $theme->getId();
+        }
+
+        $nodes = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:News')
-            ->getNewsRetrospective($locale, $festival, null, $maxResults, $before)
+            ->getRepository('BaseCoreBundle:Node')
+            ->getNewsRetrospective($locale, $festival, 'site-institutionnel', $exclude, $before, $filters, $maxResults)
         ;
 
-        $articles = $this->removeUnpublishedNewsAudioVideo($articles, $locale, null, true);
-
-
-        if (count($articles) > 30) {
+        if (count($nodes) > 30) {
             $last = false;
-            $articles = array_slice($articles, 0, 30);
+            $nodes = array_slice($nodes, 0, 30);
         } else {
             $last = true;
         }
+
+        $articles = [];
+        foreach ($nodes as $node) {
+            $articles[] = $this
+                ->getDoctrineManager()
+                ->getRepository($node->getEntityClass())
+                ->find($node->getEntityId())
+            ;
+        }
+
         if (!$articles) {
             throw new NotFoundHttpException();
         }
@@ -100,36 +140,66 @@ class NewsController extends Controller
         $filters = [];
         $filters['dates'][0] = 'all';
         $filters['dateFormated'][0] = 'all';
-        $filters['themes']['content'][0] = 'all';
-        $filters['themes']['id'][0] = 'all';
         $filters['format'][0] = 'all';
-
 
         foreach ($articles as $key => $newsArticle) {
             if (($key % 3) == 0) {
                 $newsArticle->double = true;
             }
+        }
 
-            //check if filters don't already exist
-            $date = $newsArticle->getPublishedAt();
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
-                $filters['dates'][$date->format('y-m-d')] = $date;
+        $formatsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getFormatsNewsRetrospective($locale, 'site-institutionnel', $festival)
+        ;
+        if (count($formatsResults) > 1) {
+            $filters['format'][0] = 'all';
+
+            foreach ($formatsResults as $formatResult) {
+                $format = reset($formatResult);
+                $filters['format'][] = $format;
             }
+        }
 
-            if (!is_null($newsArticle->getTheme()) && !in_array($newsArticle->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $newsArticle->getTheme()->getId();
-                $filters['themes']['content'][] = $newsArticle->getTheme();
+        $filters['dates'][0] = 'all';
+        $yearsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getDatesNewsRetrospective($locale, 'site-institutionnel', $festival)
+        ;
+        foreach ($yearsResults as $yearResult) {
+            $date = reset($yearResult);
+            if ($date && !array_key_exists($date, $filters['dates'])) {
+                list($day, $month, $year) = explode('-', $date);
+                $dateTime = new DateTime();
+                $dateTime->setDate($year, $month, $day);
+                $dateTime->setTime(0, 0, 0);
+                $filters['dates'][$date] = $dateTime;
             }
+        }
 
-            if (!in_array($newsArticle->getNewsType(), $filters['format'])) {
-                $filters['format'][] = $newsArticle->getNewsType();
+        $filters['themes']['content'][0] = 'all';
+        $filters['themes']['id'][0] = 'all';
+        $themesResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Node')
+            ->getThemesNewsRetrospective($locale, 'site-institutionnel', $festival)
+        ;
+        foreach ($themesResults as $themeResult) {
+            $theme = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Theme')->find($themeResult['id']);
+            if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $theme->getId();
+                $filters['themes']['content'][] = $theme;
             }
         }
 
         $time = null;
+        $exclude = null;
         if ($articles && ($lastArticle = end($articles))) {
             if (method_exists($lastArticle, 'getPublishedAt') && $lastArticle->getPublishedAt()) {
                 $time = $lastArticle->getPublishedAt()->getTimestamp();
+                $exclude = $lastArticle->getId();
             }
         }
 
@@ -139,6 +209,7 @@ class NewsController extends Controller
             'filters'  => $filters,
             'time'     => $time,
             'last'     => $last,
+            'exclude'  => $exclude,
         ];
     }
 
@@ -403,30 +474,75 @@ class NewsController extends Controller
             $last = true;
         }
 
-        //set default filters
+//        $filters = [];
+//        $filters['dates'][0] = 'all';
+//        $filters['dateFormated'][0] = 'all';
+//        $filters['themes']['content'][0] = 'all';
+//        $filters['themes']['id'][0] = 'all';
+//        $filters['format'][0] = 'all';
+//
+//        foreach ($medias as $media) {
+//
+//            //check if filters don't already exist
+//            $date = $media->getPublishedAt();
+//            $notin = ['16-05-16', '15-05-16', '14-05-16', '13-05-16', '12-05-16', '11-05-16'];
+//            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates']) && !in_array($date->format('d-m-y'), $notin)) {
+//                $filters['dates'][$date->format('y-m-d')] = $date;
+//            }
+//            if ($media->getTheme() && !in_array($media->getTheme()->getId(), $filters['themes']['id'])) {
+//                $filters['themes']['id'][] = $media->getTheme()->getId();
+//                $filters['themes']['content'][] = $media->getTheme();
+//            }
+//
+//            $slugTypes = ['MediaImage' => 'photo', 'MediaVideo' => 'video', 'MediaAudio' => 'audio'];
+//            if (!in_array($slugTypes[$media->getMediaType()], $filters['format'])) {
+//                $filters['format'][] = $slugTypes[$media->getMediaType()];
+//            }
+//        }
         $filters = [];
+        $formatsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Media')
+            ->getFormatsRetrospective($locale, $festival)
+        ;
+        if (count($formatsResults) > 1) {
+            $filters['format'][0] = 'all';
+
+            foreach ($formatsResults as $formatResult) {
+                $format = reset($formatResult);
+                $filters['format'][] = $format;
+            }
+        }
+
         $filters['dates'][0] = 'all';
-        $filters['dateFormated'][0] = 'all';
+        $yearsResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Media')
+            ->getDatesRetrospective($locale, $festival)
+        ;
+        foreach ($yearsResults as $yearResult) {
+            $date = reset($yearResult);
+            if ($date && !array_key_exists($date, $filters['dates'])) {
+                list($day, $month, $year) = explode('-', $date);
+                $dateTime = new DateTime();
+                $dateTime->setDate($year, $month, $day);
+                $dateTime->setTime(0, 0, 0);
+                $filters['dates'][$date] = $dateTime;
+            }
+        }
+
         $filters['themes']['content'][0] = 'all';
         $filters['themes']['id'][0] = 'all';
-        $filters['format'][0] = 'all';
-
-        foreach ($medias as $media) {
-
-            //check if filters don't already exist
-            $date = $media->getPublishedAt();
-            $notin = ['16-05-16', '15-05-16', '14-05-16', '13-05-16', '12-05-16', '11-05-16'];
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates']) && !in_array($date->format('d-m-y'), $notin)) {
-                $filters['dates'][$date->format('y-m-d')] = $date;
-            }
-            if ($media->getTheme() && !in_array($media->getTheme()->getId(), $filters['themes']['id'])) {
-                $filters['themes']['id'][] = $media->getTheme()->getId();
-                $filters['themes']['content'][] = $media->getTheme();
-            }
-
-            $slugTypes = ['MediaImage' => 'photo', 'MediaVideo' => 'video', 'MediaAudio' => 'audio'];
-            if (!in_array($slugTypes[$media->getMediaType()], $filters['format'])) {
-                $filters['format'][] = $slugTypes[$media->getMediaType()];
+        $themesResults = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:Media')
+            ->getThemesRetrospective($locale, $festival)
+        ;
+        foreach ($themesResults as $themeResult) {
+            $theme = $this->getDoctrineManager()->getRepository('BaseCoreBundle:Theme')->find($themeResult['id']);
+            if ($theme instanceof Theme && !in_array($theme->getId(), $filters['themes']['id'])) {
+                $filters['themes']['id'][] = $theme->getId();
+                $filters['themes']['content'][] = $theme;
             }
         }
 

@@ -26,7 +26,6 @@ use Base\CoreBundle\Entity\FDCPagePrepareWidgetPictoTranslation;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\Homepage;
-use Base\CoreBundle\Entity\Info;
 use Base\CoreBundle\Entity\InfoArticle;
 use Base\CoreBundle\Entity\InfoAudio;
 use Base\CoreBundle\Entity\InfoImage;
@@ -60,7 +59,6 @@ use Base\CoreBundle\Entity\PressGuideWidgetPictoTranslation;
 use Base\CoreBundle\Entity\PressHomepage;
 use Base\CoreBundle\Entity\SocialGraph;
 use Base\CoreBundle\Entity\SocialWall;
-use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Entity\StatementArticle;
 use Base\CoreBundle\Entity\StatementAudio;
 use Base\CoreBundle\Entity\StatementImage;
@@ -117,9 +115,21 @@ class EntityListener
 
         if (method_exists($entity, 'setTypeClone')) {
             $mapper = [
-                'NewsArticle'      => 'article', 'NewsAudio' => 'audio', 'NewsImage' => 'image', 'NewsVideo' => 'video',
-                'StatementArticle' => 'article', 'StatementAudio' => 'audio', 'StatementImage' => 'image', 'StatementVideo' => 'video',
-                'InfoArticle'      => 'article', 'InfoAudio' => 'audio', 'InfoImage' => 'image', 'InfoVideo' => 'video',
+                'NewsArticle'      => 'article',
+                'NewsAudio'        => 'audio',
+                'NewsImage'        => 'image',
+                'NewsVideo'        => 'video',
+                'StatementArticle' => 'article',
+                'StatementAudio'   => 'audio',
+                'StatementImage'   => 'image',
+                'StatementVideo'   => 'video',
+                'InfoArticle'      => 'article',
+                'InfoAudio'        => 'audio',
+                'InfoImage'        => 'image',
+                'InfoVideo'        => 'video',
+                'MediaImage'       => 'image',
+                'MediAudio'        => 'audio',
+                'MediaVideo'       => 'video',
             ];
 
             $entityName = substr(strrchr(get_class($entity), '\\'), 1);

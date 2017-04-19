@@ -102,6 +102,15 @@ abstract class Media implements TranslateMainInterface
      */
     protected $publishEndedAt;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     *
+     */
+    protected $typeClone;
+
     /**
      * @var Site
      *
@@ -720,4 +729,23 @@ abstract class Media implements TranslateMainInterface
     {
         return $this->oldReference;
     }
+
+    /**
+     * @return string
+     */
+    public function getTypeClone()
+    {
+        return $this->typeClone;
+    }
+
+    /**
+     * @param string $typeClone
+     * @return $this
+     */
+    public function setTypeClone($typeClone)
+    {
+        $this->typeClone = $typeClone;
+        return $this;
+    }
+
 }
