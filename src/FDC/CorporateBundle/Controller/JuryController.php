@@ -23,6 +23,9 @@ class JuryController extends Controller
      */
     public function juriesAction(Request $request, $year = null, $slug = null)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $this->isPageEnabled($request->get('_route'));
         $festival = $this->getFestival($year)->getId();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
