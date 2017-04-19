@@ -5817,6 +5817,9 @@ strong.title-center {
   letter-spacing: .5em;
   text-transform: uppercase;
 }
+.dark .title-list-cat .title .ismobile {
+  font-size: 0.5rem;
+}
 .dark .title-list-cat .title-item {
   text-align: center;
   padding: 20px 20px 0;
@@ -10673,6 +10676,9 @@ body#home .isotope-01 .item .info {
   width: 75%;
   height: 100%;
   display: block;
+}
+.ismobile .slider-home .container-images {
+  width: 100%;
 }
 .slider-home .container-images.ff .item {
   background-size: 100%;
