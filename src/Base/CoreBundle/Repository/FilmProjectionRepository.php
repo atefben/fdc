@@ -314,6 +314,7 @@ class FilmProjectionRepository extends EntityRepository
         if (!$projection) {
             $projection = $this
                 ->createQueryBuilder('p')
+                ->andWhere('p.room = 1')
                 ->addOrderBy('p.startsAt', 'desc')
                 ->setMaxResults(1)
                 ->getQuery()
