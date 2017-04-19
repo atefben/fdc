@@ -20,7 +20,7 @@
         </ul>
         <ul class="user-nav">
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
+                <a href="{% if app.request.locale == 'fr' %} https://moncompte.festival-cannes.com/{% else %}https://moncompte.festival-cannes.com/default.aspx{% endif %}" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
             </li>
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon-language"></i> {{ app.request.locale|upper }}</a>

@@ -7277,7 +7277,7 @@ body.chocolat-open > .chocolat-content {
 }
 
 header .user-nav li a.account {
-  display: none;
+  //display: none;
 }
 
 body#home .contain-card .grid-01 .card:first-of-type {
