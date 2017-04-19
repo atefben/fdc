@@ -64,6 +64,13 @@ class FilmProjectionRoom
     protected $projections;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="home_projection_2017_order", nullable=true)
+     */
+    protected $homeProjection2017Order = 50;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -178,4 +185,24 @@ class FilmProjectionRoom
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getHomeProjection2017Order()
+    {
+        return $this->homeProjection2017Order;
+    }
+
+    /**
+     * @param string $homeProjection2017Order
+     * @return $this
+     */
+    public function setHomeProjection2017Order($homeProjection2017Order)
+    {
+        $this->homeProjection2017Order = $homeProjection2017Order;
+        return $this;
+    }
+
+
 }
