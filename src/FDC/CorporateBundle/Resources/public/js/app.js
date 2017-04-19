@@ -7283,6 +7283,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     if (fullScreenApi.supportsFullScreen) {
         $fullscreen[0].addEventListener('click', function () {
+            linkPopinInit(0, 'top-bar-link');
             if (!fullScreenApi.isFullScreen()) {
                 fullScreenApi.requestFullScreen($container[0]);
                 $fullscreen.removeClass('icon_fullscreen').addClass('icon_reverseFullScreen');
