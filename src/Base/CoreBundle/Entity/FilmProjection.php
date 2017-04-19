@@ -129,6 +129,7 @@ class FilmProjection
      *
      * @Groups({
      *     "projection_show",
+     *     "projection_list",
      *     "film_list",
      *     "film_show",
      *     "home",
