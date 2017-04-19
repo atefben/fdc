@@ -333,11 +333,12 @@ class FilmProjectionRepository extends EntityRepository
     {
         return $this
             ->createQueryBuilder('p')
+            ->innerJoin('p.room','pr')
             ->andWhere('p.startsAt BETWEEN :begin AND :end')
             ->setParameter(':begin', $begin)
             ->setParameter(':end', $end)
             ->addOrderBy('p.startsAt', 'asc')
-            ->addOrderBy('p.room', 'asc')
+            ->addOrderBy('pr.homeProjection2017Order', 'asc')
             ->setMaxResults(1)
             ->getQuery()
             ->getResult();
