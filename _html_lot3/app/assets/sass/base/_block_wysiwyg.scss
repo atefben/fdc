@@ -838,13 +838,14 @@ strong.title-center {
       max-width: 549px;
       margin: 0 auto;
       font-size: 1rem;
-      .ismobile {
-        font-size: 0.5rem;
-      }
       line-height: 30px;
       font-weight: 700;
       letter-spacing: .5em;
       text-transform: uppercase;
+
+      .ismobile & {
+        font-size: 0.5rem;
+      }
     }
 
     .title-item {
@@ -858,6 +859,10 @@ strong.title-center {
       font-family: $CamphorItalic;
       text-transform: none;
       letter-spacing: normal;
+
+      .ismobile & {
+        font-size: 0.4375rem;
+      }
     }
 
     &.block-01-xs {

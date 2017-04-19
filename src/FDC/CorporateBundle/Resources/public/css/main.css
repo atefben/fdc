@@ -5817,7 +5817,7 @@ strong.title-center {
   letter-spacing: .5em;
   text-transform: uppercase;
 }
-.dark .title-list-cat .title .ismobile {
+.ismobile .dark .title-list-cat .title {
   font-size: 0.5rem;
 }
 .dark .title-list-cat .title-item {
@@ -5831,6 +5831,9 @@ strong.title-center {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
+}
+.ismobile .dark .title-list-cat .title-item {
+  font-size: 0.4375rem;
 }
 .dark .title-list-cat.block-01-xs {
   width: auto;
