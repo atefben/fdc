@@ -447,8 +447,24 @@ class NewsController extends Controller
     {
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
+        $theme = $request->query->get('theme', null);
+        $format = $request->query->get('format', null);
 
-        $parameters = $this->getMediasAndFilters($festival, $locale, $page);
+        if ($theme) {
+            $themeTrans = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:ThemeTranslation')
+                ->findOneBy(['slug' => $theme])
+            ;
+            if ($themeTrans) {
+                $theme = $themeTrans->getTranslatable();
+            } else {
+                $theme = null;
+            }
+        }
+
+
+        $parameters = $this->getMediasAndFilters($festival, $locale, $page, $format, $theme);
 
         return $this->render('FDCCorporateBundle:News/list:medias-ajax.html.twig', $parameters);
     }
@@ -458,10 +474,23 @@ class NewsController extends Controller
      * @param FilmFestival $festival
      * @param $locale
      * @param int $page
+     * @param null $format
+     * @param null $theme
      * @return array
      */
-    private function getMediasAndFilters(FilmFestival $festival, $locale, $page = 1)
+    private function getMediasAndFilters(FilmFestival $festival, $locale, $page = 1, $format = null, $theme = null)
     {
+        $filters = [];
+
+        if ($format) {
+            $filters['typeClone'] = $format;
+        }
+
+        if ($theme) {
+            $filters['theme'] = $theme->getId();
+        }
+
+
         $medias = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:Media')
@@ -474,31 +503,6 @@ class NewsController extends Controller
             $last = true;
         }
 
-//        $filters = [];
-//        $filters['dates'][0] = 'all';
-//        $filters['dateFormated'][0] = 'all';
-//        $filters['themes']['content'][0] = 'all';
-//        $filters['themes']['id'][0] = 'all';
-//        $filters['format'][0] = 'all';
-//
-//        foreach ($medias as $media) {
-//
-//            //check if filters don't already exist
-//            $date = $media->getPublishedAt();
-//            $notin = ['16-05-16', '15-05-16', '14-05-16', '13-05-16', '12-05-16', '11-05-16'];
-//            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates']) && !in_array($date->format('d-m-y'), $notin)) {
-//                $filters['dates'][$date->format('y-m-d')] = $date;
-//            }
-//            if ($media->getTheme() && !in_array($media->getTheme()->getId(), $filters['themes']['id'])) {
-//                $filters['themes']['id'][] = $media->getTheme()->getId();
-//                $filters['themes']['content'][] = $media->getTheme();
-//            }
-//
-//            $slugTypes = ['MediaImage' => 'photo', 'MediaVideo' => 'video', 'MediaAudio' => 'audio'];
-//            if (!in_array($slugTypes[$media->getMediaType()], $filters['format'])) {
-//                $filters['format'][] = $slugTypes[$media->getMediaType()];
-//            }
-//        }
         $filters = [];
         $formatsResults = $this
             ->getDoctrineManager()
