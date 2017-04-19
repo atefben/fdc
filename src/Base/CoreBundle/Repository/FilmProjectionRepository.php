@@ -350,7 +350,7 @@ class FilmProjectionRepository extends EntityRepository
                 ->setParameter(':id', $exclude->getId())
             ;
         }
-        $qb
+        return $qb
             ->addOrderBy('p.startsAt', 'asc')
             ->addOrderBy('pr.homeProjection2017Order', 'asc')
             ->getQuery()

@@ -349,9 +349,6 @@ class FilmProjectionController extends FOSRestController
         // set context view
         $context = SerializationContext::create()->enableMaxDepthChecks();
         $context->setGroups(['programmation']);
-        $context->addExclusionStrategy(
-            new DepthExclusionStrategy()
-        );
         $context->setVersion($version);
         $view = $this->view($projections, 200);
         $view->setSerializationContext($context);
