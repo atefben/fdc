@@ -303,6 +303,7 @@ class FilmProjectionRepository extends EntityRepository
     {
         $projection = $this
             ->createQueryBuilder('p')
+            ->andWhere('p.room = 1')
             ->andWhere(':startsAt BETWEEN p.startsAt AND p.endsAt OR p.startsAt > :startsAt')
             ->setParameter(':startsAt', new \DateTime())
             ->addOrderBy('p.startsAt', 'asc')
@@ -313,13 +314,33 @@ class FilmProjectionRepository extends EntityRepository
         if (!$projection) {
             $projection = $this
                 ->createQueryBuilder('p')
-                ->addOrderBy('p.endsAt', 'desc')
+                ->addOrderBy('p.startsAt', 'desc')
                 ->setMaxResults(1)
                 ->getQuery()
                 ->getOneOrNullResult();
         }
 
         return $projection;
+    }
+
+    /**
+     * @param \DateTime $begin
+     * @param \DateTime $end
+     * @return FilmProjection[]
+     */
+    public function getHomeProjection2017(\DateTime $begin, \DateTime $end)
+    {
+        return $this
+            ->createQueryBuilder('p')
+            ->andWhere('p.startsAt BETWEEN :begin AND :end')
+            ->setParameter(':begin', $begin)
+            ->setParameter(':end', $end)
+            ->addOrderBy('p.startsAt', 'asc')
+            ->addOrderBy('p.room', 'asc')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
     }
 
 }

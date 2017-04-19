@@ -247,7 +247,6 @@ class FilmProjectionController extends FOSRestController
     }
 
 
-
     /**
      * Return main projection
      *
@@ -288,6 +287,68 @@ class FilmProjectionController extends FOSRestController
         $context->setGroups(['projection_show']);
         $context->setVersion($version);
         $view = $this->view($projection, 200);
+        $view->setSerializationContext($context);
+        return $view;
+    }
+
+
+    /**
+     *
+     * @Rest\Get("/programmation-2017-home")
+     * @Rest\View()
+     * @ApiDoc(
+     *  resource = true,
+     *  description = "Get home 2017 programmations",
+     *  section="Projections",
+     *  statusCodes = {
+     *     200 = "Returned when successful",
+     *     204 = "Returned when no film is found"
+     *  },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\FilmProjection",
+     *      "groups"={"projection_list"}
+     *  }
+     * )
+     *
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="time", description="time")
+     *
+     * @param ParamFetcher $paramFetcher
+     * @return View
+     */
+    public function getHomeProjection2017Action(ParamFetcher $paramFetcher)
+    {
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+
+        $time = $paramFetcher->get('time') ? $paramFetcher->get('time') : time();
+
+        $limit = new \DateTime();
+        $limit->setDate(2017, 05, 28);
+        $limit->setTime(23, 59, 59);
+
+        if ($limit->getTimestamp() < $time) {
+            $time = $limit->getTimestamp();
+        }
+
+        $begin = new \DateTime();
+        $begin->setTimestamp($time);
+        $begin->setTime(0, 0, 0);
+        $end = new \DateTime();
+        $end->setTimestamp($time);
+        $end->setTime(23, 59, 59);
+
+        $projections = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getHomeProjection2017($begin, $end)
+        ;
+
+        // set context view
+        $context = SerializationContext::create();
+        $context->setGroups(['projection_list']);
+        $context->setVersion($version);
+        $view = $this->view($projections, 200);
         $view->setSerializationContext($context);
         return $view;
     }
