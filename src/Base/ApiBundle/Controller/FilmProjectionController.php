@@ -290,7 +290,6 @@ class FilmProjectionController extends FOSRestController
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
-        $context->addExclusionStrategy(new GroupsExclusionStrategy(['noprogrammation']));
         return $view;
     }
 
