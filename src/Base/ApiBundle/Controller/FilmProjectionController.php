@@ -246,4 +246,50 @@ class FilmProjectionController extends FOSRestController
         return $view;
     }
 
+
+
+    /**
+     * Return main projection
+     *
+     * @Rest\Get("/programmation-2017-main")
+     * @Rest\View()
+     * @ApiDoc(
+     *  resource = true,
+     *  description = "Get main projectio",
+     *  section="Projections",
+     *  statusCodes = {
+     *     200 = "Returned when successful",
+     *     204 = "Returned when no film is found"
+     *  },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\FilmProjection",
+     *      "groups"={"projection_show"}
+     *  }
+     * )
+     *
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     *
+     * @param ParamFetcher $paramFetcher
+     * @return View
+     */
+    public function getMainProjection2017Action(ParamFetcher $paramFetcher)
+    {
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+
+        $projection = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getMainProjection2017()
+        ;
+
+        // set context view
+        $context = SerializationContext::create();
+        $context->setGroups(['projection_show']);
+        $context->setVersion($version);
+        $view = $this->view($projection, 200);
+        $view->setSerializationContext($context);
+        return $view;
+    }
+
 }

@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmProjection;
 
 /**
  * Class FilmProjectionRepository
@@ -293,6 +294,32 @@ class FilmProjectionRepository extends EntityRepository
         ;
 
         return $qb;
+    }
+
+    /**
+     * @return FilmProjection
+     */
+    public function getMainProjection2017()
+    {
+        $projection = $this
+            ->createQueryBuilder('p')
+            ->andWhere(':startsAt BETWEEN p.startsAt AND p.endsAt OR p.startsAt > :startsAt')
+            ->setParameter(':startsAt', new \DateTime())
+            ->addOrderBy('p.startsAt', 'asc')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        if (!$projection) {
+            $projection = $this
+                ->createQueryBuilder('p')
+                ->addOrderBy('p.endsAt', 'desc')
+                ->setMaxResults(1)
+                ->getQuery()
+                ->getOneOrNullResult();
+        }
+
+        return $projection;
     }
 
 }
