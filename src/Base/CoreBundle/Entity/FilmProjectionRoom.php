@@ -29,7 +29,7 @@ class FilmProjectionRoom
      * @ORM\Id
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "home",
      *     "news_list", "search"})
@@ -42,7 +42,7 @@ class FilmProjectionRoom
      * @ORM\Column(type="string", length=80, nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",

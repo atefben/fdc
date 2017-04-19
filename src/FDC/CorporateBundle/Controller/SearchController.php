@@ -364,6 +364,23 @@ class SearchController extends Controller
                         $filters[$subKey] = $f;
                     }
 
+                } elseif ($key == 'genres') {
+                    foreach ($filter as $f) {
+                        if ($f == 'M') {
+                            $f = 'male';
+                        } elseif ($f == 'F') {
+                            $f = 'female';
+                        }
+                        $subKey = $key . '_' . $f;
+                        $f = $translator->trans('search.form.gender.' . $f, [], 'FDCCorporateBundle');
+                        $filters[$subKey] = $f;
+                    }
+                } elseif ($key == 'formats') {
+                    foreach ($filter as $f) {
+                        $subKey = $key . '_' . $f;
+                        $f = $translator->trans('search.form.format.' . $f, [], 'FDCCorporateBundle');
+                        $filters[$subKey] = $f;
+                    }
                 } else {
                     foreach ($filter as &$f) {
                         $subKey = $key . '_' . $f;

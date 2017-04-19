@@ -7,6 +7,8 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\View\View;
+use JMS\Serializer\Exclusion\DepthExclusionStrategy;
+use JMS\Serializer\Exclusion\GroupsExclusionStrategy;
 use JMS\Serializer\SerializationContext;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
@@ -288,6 +290,7 @@ class FilmProjectionController extends FOSRestController
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);
+        $context->addExclusionStrategy(new GroupsExclusionStrategy(['noprogrammation']));
         return $view;
     }
 
@@ -345,8 +348,11 @@ class FilmProjectionController extends FOSRestController
         ;
 
         // set context view
-        $context = SerializationContext::create();
-        $context->setGroups(['projection_list']);
+        $context = SerializationContext::create()->enableMaxDepthChecks();
+        $context->setGroups(['programmation']);
+        $context->addExclusionStrategy(
+            new DepthExclusionStrategy()
+        );
         $context->setVersion($version);
         $view = $this->view($projections, 200);
         $view->setSerializationContext($context);

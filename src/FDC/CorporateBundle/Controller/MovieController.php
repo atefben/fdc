@@ -222,6 +222,9 @@ class MovieController extends Controller
      */
     public function selectionAction(Request $request, $slug = null, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year, TRUE);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
@@ -462,6 +465,9 @@ class MovieController extends Controller
      */
     public function classicsAction(Request $request, $slug, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();

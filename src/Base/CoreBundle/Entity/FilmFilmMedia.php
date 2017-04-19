@@ -51,7 +51,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list", "search",
@@ -78,7 +78,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "news_list", "search",
@@ -98,7 +98,7 @@ class FilmFilmMedia implements FilmFilmMediaInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "award_list",

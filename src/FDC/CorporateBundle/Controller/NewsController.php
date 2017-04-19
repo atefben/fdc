@@ -28,6 +28,9 @@ class NewsController extends Controller
      */
     public function getArticlesAction(Request $request, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
 
@@ -60,6 +63,9 @@ class NewsController extends Controller
      */
     public function getArticlesAjaxAction(Request $request, $year, $time = null)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $exclude = $request->query->get('exclude', null);
@@ -412,6 +418,9 @@ class NewsController extends Controller
      */
     public function getMediasAction(Request $request, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $this->isPageEnabled($request->get('_route'));
 
         $locale = $request->getLocale();
@@ -445,6 +454,9 @@ class NewsController extends Controller
      */
     public function getMediasAjaxAction(Request $request, $year, $page = 1)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $theme = $request->query->get('theme', null);
@@ -706,7 +718,9 @@ class NewsController extends Controller
      */
     public function getAction(Request $request, $year, $format, $slug)
     {
-
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $this->isPageEnabled($request->get('_route'));
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -855,6 +869,9 @@ class NewsController extends Controller
      */
     public function pressSingleAction(Request $request, $type, $format, $slug)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
 
         $isAdmin = false;
