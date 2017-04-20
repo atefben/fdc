@@ -28362,9 +28362,6 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .selector {
   width: 100%;
-  float: left;
-  min-height: 200px;
-  height: auto;
 }
 .conferences .selectbtn {
   letter-spacing: 1px;
@@ -28387,7 +28384,6 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 220px;
   margin-bottom: 50px;
   padding-top: 20px;
 }

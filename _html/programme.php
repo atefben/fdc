@@ -54,7 +54,7 @@
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences">
                 
-                <div class="dropdown"> 
+                <!--<div class="dropdown"> 
                   <span>AFFICHER</span>
                   <div id="eventSelector">
                     <div class="selectText" id="helping-hand">Helping hand,</div>
@@ -67,10 +67,8 @@
                     <div class="selectText" id="screening">Screening,</div>
                     <div class="selectText" id="pitching-training">Pitching Training</div>
                   </div>
-                  <!--<div class="dropArrow">
-                    <i class="icon icon_flecheGauche"></i>
-                  </div>-->
-                </div><br>
+      
+                </div><br>-->
                 <div class="selector">
                   <!--<div class="purpleBtn selectbtn" id="all">Tous</div>-->
                   <div class="selectbtn" id="a" rel="helping-hand">Helping Hand</div>
