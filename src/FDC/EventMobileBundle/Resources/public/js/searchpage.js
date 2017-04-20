@@ -418,19 +418,19 @@ $(document).ready(function() {
 
   function extractAndPopulateFilters(data)
   {
-      var $data = $(data),
-          $filtersSlider = $('#filter-slider'),
-          $filters = $data.find('.owl-carousel>.filters')
-      ;
-      $filtersSlider.trigger('destroy.owl.carousel').removeClass('owl-loaded');
-      if ($filters.length > 0) {
-        $filtersSlider.html($filters.html());
-        $filters.remove();
-      } else {
-        $filtersSlider.html('');
-      }
+    var $data = $(data),
+      $filtersSlider = $('#filter-slider'),
+      $filters = $data.find('.owl-carousel>.filters')
+    ;
+    $filtersSlider.trigger('destroy.owl.carousel').removeClass('owl-loaded');
+    if ($filters.length > 0) {
+      $filtersSlider.html($filters.html());
+      $filters.remove();
+    } else {
+      $filtersSlider.html('');
+    }
 
-      return $data.wrap('<div/>').parent().html();
+    return $data.wrap('<div/>').parent().html();
   }
 
   function initFilters(data){

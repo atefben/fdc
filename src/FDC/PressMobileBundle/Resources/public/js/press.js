@@ -678,7 +678,7 @@ $(document).ready(function () {
                             if ($(this).closest('.popin-event').length == 0) {
                                 var url = $(this).data('url');
                                 openPopinEvent(url);
-                            }    
+                            }
                         });
                     }
                 });
@@ -1010,7 +1010,7 @@ $(document).ready(function() {
   }
 
   if ($('.filters-slider').length) {
-    $('.filters-slider .select span').on('click', function() {
+    $('body').on('click', '.filters-slider .select span', function() {
       var h = $(this).parent().html();
 
       $('#filters').remove();

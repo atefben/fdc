@@ -55,7 +55,9 @@ class Country implements TranslateMainInterface
      *     "film_show",
      *     "film_selection_section_show",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $iso;

@@ -36,7 +36,7 @@
                                 <ul class="section-menu">
                                     {% for k,child in participateMenu %}
                                         {% if k == 0 %}
-                                            <li><a href="{{ path('fdc_eventmobile_participate_prepare') }}"> {{ child.title|trans }}</a></li>
+                                            <li><a href="{{ path('fdc_eventmobile_participate_prepare') }}"> {{ child|trans_fallback('title') }}</a></li>
                                         {% else %}
                                             <li>
                                                 <a href="{{ path('fdc_eventmobile_participate_getpage', {'slug': child|trans_fallback('slug') }) }}"

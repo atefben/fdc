@@ -186,10 +186,9 @@ class FilmProjectionRoom
             if (!($projection instanceof FilmProjection)) {
                 continue;
             }
-            if ($projection->getProgrammationFilms()->count()) {
                 if ((int)$projection->getStartsAt()->format('H') < 4) {
                     $tomorrow = clone $projection->getStartsAt();
-                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $tomorrow->add(date_interval_create_from_date_string('-1 day'));
                     $keyDay = $tomorrow->format('Y-m-d');
                     $key = $tomorrow->getTimestamp() . '-' . $projection->getId();
                 } else {
@@ -197,7 +196,6 @@ class FilmProjectionRoom
                     $key = $projection->getTimestamp() . '-' . $projection->getId();;
                 }
                 $days[$keyDay][$key] = $projection;
-            }
         }
         foreach ($days as &$day) {
             ksort($day);

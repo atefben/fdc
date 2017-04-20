@@ -321,7 +321,7 @@ $(document).ready(function() {
   }
 
   if ($('.filters-slider').length) {
-    $('.filters-slider .select span').on('click', function() {
+    $('body').on('click', '.filters-slider .select span', function() {
       var h = $(this).parent().html();
 
       $('#filters').remove();
@@ -421,6 +421,7 @@ function initAudioPlayers(autoplay) {
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
+      if ($(this).closest('.audio-player').hasClass('loading')) return false;
 
       if ($(this).find(".icon").hasClass('icon_audio')) {
         $(this).find(".icon").removeClass('icon_audio');
@@ -524,6 +525,7 @@ $(document).ready(function() {
 
     $('.fullscreenplayer').find('.category').html($(this).find('.category').html());
     $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
+    $('.fullscreenplayer').find('.date').html($(this).find('.titleLink').attr('data-date'));
   });
 
   // AUDIO PLAYER

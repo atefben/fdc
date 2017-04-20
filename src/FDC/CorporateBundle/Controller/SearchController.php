@@ -434,7 +434,7 @@ class SearchController extends Controller
             $translator->trans('search.form.cinefondation', [], 'FDCCorporateBundle')    => 'cinefondation',
             $translator->trans('search.form.cinemadelaplage', [], 'FDCCorporateBundle')  => 'cinemadelaplage',
         ];
-
+ 
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
     }
 
