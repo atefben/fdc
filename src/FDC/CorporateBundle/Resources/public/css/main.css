@@ -2615,6 +2615,12 @@ body.loading:before {
   opacity: 1;
   visibility: visible;
 }
+body.ismobile .title-list-cat .title {
+  font-size: 0.5rem;
+}
+body.ismobile .title-list-cat .title-item {
+  font-size: 0.4375rem;
+}
 
 ::-moz-selection {
   background: #fff;
@@ -5817,9 +5823,6 @@ strong.title-center {
   letter-spacing: .5em;
   text-transform: uppercase;
 }
-.ismobile .dark .title-list-cat .title {
-  font-size: 0.5rem;
-}
 .dark .title-list-cat .title-item {
   text-align: center;
   padding: 20px 20px 0;
@@ -5831,9 +5834,6 @@ strong.title-center {
   font-family: "Camphor W01 Italic", Arial, Helvetica, sans-serif;
   text-transform: none;
   letter-spacing: normal;
-}
-.ismobile .dark .title-list-cat .title-item {
-  font-size: 0.4375rem;
 }
 .dark .title-list-cat.block-01-xs {
   width: auto;

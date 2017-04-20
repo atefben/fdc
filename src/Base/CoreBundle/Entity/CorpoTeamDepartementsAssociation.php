@@ -43,7 +43,7 @@ class CorpoTeamDepartementsAssociation
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="CorpoTeamMembers")
+     * @ORM\ManyToOne(targetEntity="CorpoTeamMembers", inversedBy="$departements")
      */
     protected $members;
     
