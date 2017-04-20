@@ -1541,7 +1541,7 @@ $(document).ready(function() {
     $("#popin-press").addClass('visible');
     $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
     $("#overlay").css('top', scrollTop);
-    $('#password').focus();
+    $('#popin-press #password').focus();
     
     document.body.addEventListener('touchmove', listener,false);
 
@@ -1558,7 +1558,7 @@ $(document).ready(function() {
 
 });
 $(document).ready(function() {
-  if($('.press-downloads').lenth > 0) {
+  if($('.press-downloads').length > 0) {
     var menu = $("#horizontal-menu").owlCarousel({
       nav          : false,
       dots         : false,

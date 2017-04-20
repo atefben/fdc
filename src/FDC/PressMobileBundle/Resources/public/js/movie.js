@@ -1513,7 +1513,7 @@ $(document).ready(function() {
     });
     sliderThumb.owlCarousel();
 
-    $('.videos .thumbnails .owl-item').on('click', function(e) {
+    $('.thumbnails .owl-item').on('click', function(e) {
       e.preventDefault();
       $(this).parents('.slideshow').find('.thumb').removeClass('active');
      
@@ -1671,6 +1671,7 @@ function initAudioPlayers(autoplay) {
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
+      if ($(this).closest('.audio-player').hasClass('loading')) return false;
 
       if ($(this).find(".icon").hasClass('icon_audio')) {
         $(this).find(".icon").removeClass('icon_audio');

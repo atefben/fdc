@@ -316,7 +316,7 @@ $(document).ready(function() {
   }
 
   if ($('.filters-slider').length) {
-    $('.filters-slider .select span').on('click', function() {
+    $('body').on('click', '.filters-slider .select span', function() {
       var h = $(this).parent().html();
 
       $('#filters').remove();
@@ -455,7 +455,7 @@ $(document).ready(function() {
     $("#popin-press").addClass('visible');
     $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
     $("#overlay").css('top', scrollTop);
-    $('#password').focus();
+    $('#popin-press #password').focus();
     
     document.body.addEventListener('touchmove', listener,false);
 

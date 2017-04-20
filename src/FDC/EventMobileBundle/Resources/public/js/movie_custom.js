@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('.thumbnails .owl-item').off('click');
     // add both webm and mp4 sources for butter iOS support
     $('.section.videos .thumbnails .owl-item').off('click').on('click', function(e) {
         e.preventDefault();
@@ -26,5 +27,17 @@ $(document).ready(function(){
         $this.parents('.slideshow').find('.title-video').html($this.find('.thumb').find('.category').html());
         $this.parents('.slideshow').find('.caption').html($this.find('.thumb').find('.titleLink').html());
         $this.parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
+    });
+
+    $('.section.photos .thumbnails .owl-item').on('click', function(e) {
+      e.preventDefault();
+      $(this).parents('.slideshow').find('.thumb').removeClass('active');
+      $(this).parents('.slideshow').find('.images .img').removeClass('active');
+
+      var i     = $(this).index();
+      $(this).find('.thumb').addClass('active');
+      $(this).parents('.slideshow').find('.title-video').html($(this).find('.thumb').find('.category').html());
+      $(this).parents('.slideshow').find('.caption').html($(this).find('.thumb').find('.titleLink').html());
+      $(this).parents('.slideshow-img').find('.images .img').eq(i).addClass('active');
     });
 });
