@@ -2,6 +2,8 @@
 {{ form_errors(form) }}
 {{ form_start(form) }}
 <div class="vFlexAlign">
+    {% set notUsedM1 = 'search.form.cannesclassics'|trans %}
+    {% set notUsedM2 = 'search.form.cinemadelaplage'|trans %}
     <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i
                 class="icon icon-search"></i>
         {{ form_widget(form.search, { 'attr': {'class': 'searchBar'} }) }}
