@@ -290,6 +290,8 @@ class FilmPerson implements TranslateMainInterface
      *     "news_show",
      *     "film_selection_section_show",
      *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $nationality;
@@ -308,7 +310,9 @@ class FilmPerson implements TranslateMainInterface
      *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
-     *     "award_list"
+     *     "award_list",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $nationality2;
