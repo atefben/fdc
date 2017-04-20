@@ -40,7 +40,7 @@ class FilmPersonTranslation implements TranslateChildInterface
      *     "film_show",
      *     "jury_list",
      *     "jury_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show"
      * })
      * @Accessor(getter="getApiProfession")
@@ -59,7 +59,7 @@ class FilmPersonTranslation implements TranslateChildInterface
      *     "film_show",
      *     "jury_list",
      *     "jury_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show"
      * })
      */
@@ -77,7 +77,7 @@ class FilmPersonTranslation implements TranslateChildInterface
      *     "film_show",
      *     "jury_list",
      *     "jury_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show"
      * })
      */

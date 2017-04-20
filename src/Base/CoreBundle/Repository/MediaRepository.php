@@ -425,14 +425,16 @@ class MediaRepository extends EntityRepository
     }
 
     /**
-     * Find all displayed video
-     *
      * @param $locale
-     * @return \Doctrine\ORM\Query
+     * @param $festival
+     * @param null $startsAt
+     * @param null $endAt
+     * @return Media[]
      */
     public function getVideoMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
-        $qb = $this->createQueryBuilder('m')
+        $qb = $this
+            ->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
@@ -441,7 +443,8 @@ class MediaRepository extends EntityRepository
         ;
 
         if ($startsAt && $endAt) {
-            $qb = $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+            $qb
+                ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
                 ->setParameter('startsAt', $startsAt)
                 ->setParameter('endAt', $endAt)
             ;
@@ -449,14 +452,13 @@ class MediaRepository extends EntityRepository
 
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);
-        $qb = $this->addFDCEventQueries($qb, 's');
+        $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
+        return $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
 
     }
 

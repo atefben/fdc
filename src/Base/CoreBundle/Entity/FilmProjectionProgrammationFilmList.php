@@ -37,7 +37,7 @@ class FilmProjectionProgrammationFilmList
      *
      * @Groups({
      *  "film_list", "film_show",
-     *  "projection_list", "programmation", "projection_show"
+     *  "projection_list", "projection_list_2017", "programmation", "projection_show"
      * })
      */
     protected $type;
@@ -49,7 +49,7 @@ class FilmProjectionProgrammationFilmList
      *
      * @Groups({
      *  "film_list", "film_show",
-     *  "projection_list", "programmation", "projection_show"
+     *  "projection_list", "projection_list_2017", "programmation", "projection_show"
      * })
      */
     protected $projection;
@@ -59,7 +59,7 @@ class FilmProjectionProgrammationFilmList
      *
      * @ORM\ManyToMany(targetEntity="FilmFilm", inversedBy="projectionProgrammationFilmsList")
      *
-     * @Groups({"projection_list", "programmation", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $films;
     /**

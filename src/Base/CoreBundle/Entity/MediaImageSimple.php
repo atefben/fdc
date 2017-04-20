@@ -59,7 +59,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "film_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_selection_section_show",
      *     "event_show",
@@ -110,7 +110,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "orange_programmation_ocs",
      *     "orange_video_on_demand",
      *     "orange_studio",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "search"
      * })
