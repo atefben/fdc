@@ -2616,10 +2616,13 @@ body.loading:before {
   visibility: visible;
 }
 body.ismobile .title-list-cat .title {
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 body.ismobile .title-list-cat .title-item {
-  font-size: 0.4375rem;
+  font-size: 0.7rem;
+}
+body.ismobile .title-list-cat .text {
+  font-size: 0.6rem;
 }
 
 ::-moz-selection {
@@ -4203,7 +4206,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   margin: 0 28px;
 }
 .block-poster-01 .contain-txt {
-  height: 117px;
+  height: 187px;
 }
 .block-poster-01 strong {
   display: block;
