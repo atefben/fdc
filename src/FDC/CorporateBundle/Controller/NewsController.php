@@ -12,7 +12,6 @@ use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -28,9 +27,6 @@ class NewsController extends Controller
      */
     public function getArticlesAction(Request $request, $year)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
         $this->isPageEnabled($request->get('_route'));
         $locale = $request->getLocale();
 
@@ -63,15 +59,14 @@ class NewsController extends Controller
      */
     public function getArticlesAjaxAction(Request $request, $year, $time = null)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $exclude = $request->query->get('exclude', null);
         $theme = $request->query->get('theme', null);
         $format = $request->query->get('format', null);
-
+        if ($format == 'all') {
+            $format = null;
+        }
         if ($theme) {
             $themeTrans = $this
                 ->getDoctrineManager()
@@ -418,9 +413,6 @@ class NewsController extends Controller
      */
     public function getMediasAction(Request $request, $year)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
         $this->isPageEnabled($request->get('_route'));
 
         $locale = $request->getLocale();
@@ -454,14 +446,13 @@ class NewsController extends Controller
      */
     public function getMediasAjaxAction(Request $request, $year, $page = 1)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year);
         $theme = $request->query->get('theme', null);
         $format = $request->query->get('format', null);
-
+        if ($format == 'all') {
+            $format = null;
+        }
         if ($theme) {
             $themeTrans = $this
                 ->getDoctrineManager()
@@ -572,142 +563,6 @@ class NewsController extends Controller
     }
 
     /**
-     * @Route("/69-editions/retrospective/videos")
-     * @Template("FDCCorporateBundle:News/list:video.html.twig")
-     */
-    public function getVideosAction(Request $request)
-    {
-
-        $this->isPageEnabled($request->get('_route'));
-
-        $em = $this->getDoctrine()->getManager();
-        $dateTime = new DateTime();
-        $locale = $this->getRequest()->getLocale();
-
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
-        }
-
-        // SEO
-        $id = $this->getParameter('admin_fdc_page_news_videos_id');
-        $page = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageNewsVideos')
-            ->find($id)
-        ;
-
-        if ($page === null) {
-            $this->createNotFoundException('Page not found');
-        }
-
-        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
-
-        //GET ALL MEDIA VIDEOS
-        $videos = $em->getRepository('BaseCoreBundle:Media')->getVideoMedia($locale, $settings->getFestival()->getId(), $dateTime);
-
-        //set default filters
-        $filters = [];
-        $filters['dates'][0] = 'all';
-        $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
-
-        foreach ($videos as $key => $video) {
-            $video->theme = $video->getTheme();
-
-            if (($key % 3) == 0) {
-                $video->double = true;
-            }
-
-            //check if filters don't already exist
-            $date = $video->getPublishedAt();
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
-                $filters['dates'][$date->format('y-m-d')] = $date;
-            }
-
-            if (!in_array($video->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $video->getTheme()->getName();
-                $filters['themes']['content'][] = $video->getTheme();
-            }
-        }
-
-        return [
-            'videos'  => $videos,
-            'filters' => $filters,
-        ];
-
-    }
-
-    /**
-     * @Route("/69-editions/retrospective/audios")
-     * @Template("FDCCorporateBundle:News/list:audio.html.twig")
-     */
-    public function getAudiosAction(Request $request)
-    {
-
-        $this->isPageEnabled($request->get('_route'));
-
-        $em = $this->getDoctrine()->getManager();
-        $dateTime = new DateTime();
-        $locale = $this->getRequest()->getLocale();
-
-        // GET FDC SETTINGS
-        $settings = $em->getRepository('BaseCoreBundle:Settings')->findOneBySlug('fdc-year');
-        if ($settings === null || $settings->getFestival() === null) {
-            throw new NotFoundHttpException();
-        }
-
-        // SEO
-        $id = $this->getParameter('admin_fdc_page_news_audios_id');
-        $page = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCPageNewsAudios')
-            ->find($id)
-        ;
-
-        if ($page === null) {
-            $this->createNotFoundException('Page not found');
-        }
-
-        $this->get('base.manager.seo')->setFDCEventPageAllNewsSeo($page, $locale);
-
-        //GET ALL MEDIA AUDIOS
-        $audios = $em->getRepository('BaseCoreBundle:Media')->getAudioMedia($locale, $settings->getFestival()->getId(), $dateTime);
-
-        //set default filters
-        $filters = [];
-        $filters['dates'][0] = 'all';
-        $filters['themes']['content'][0] = 'all';
-        $filters['themes']['slug'][0] = 'all';
-
-        foreach ($audios as $key => $audio) {
-            $audio->theme = $audio->getTheme();
-
-            if (($key % 3) == 0) {
-                $audio->double = true;
-            }
-
-            //check if filters don't already exist
-            $date = $audio->getPublishedAt();
-            if ($date && !array_key_exists($date->format('y-m-d'), $filters['dates'])) {
-                $filters['dates'][$date->format('y-m-d')] = $date;
-            }
-
-            if (!in_array($audio->getTheme()->getName(), $filters['themes']['content'])) {
-                $filters['themes']['slug'][] = $audio->getTheme()->getName();
-                $filters['themes']['content'][] = $audio->getTheme();
-            }
-
-        }
-
-        return [
-            'audios'  => $audios,
-            'filters' => $filters,
-        ];
-    }
-
-    /**
      * @Route("/69-editions/retrospective/{year}/actualites/{format}/{slug}", requirements={"format": "articles|audios|videos|photos"},
      *     options={"expose"=true})
      * @param Request $request
@@ -718,9 +573,7 @@ class NewsController extends Controller
      */
     public function getAction(Request $request, $year, $format, $slug)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
+
         $this->isPageEnabled($request->get('_route'));
         $em = $this->getDoctrine()->getManager();
         $locale = $this->getRequest()->getLocale();
@@ -869,9 +722,6 @@ class NewsController extends Controller
      */
     public function pressSingleAction(Request $request, $type, $format, $slug)
     {
-        if($year == '2017') {
-            throw $this->createNotFoundException();
-        }
         $locale = $request->getLocale();
 
         $isAdmin = false;
@@ -1035,21 +885,5 @@ class NewsController extends Controller
             'sameDayArticles'        => $sameDayArticles,
             'hideSliderAndMenu'      => true,
         ]);
-    }
-
-
-    /**
-     * @param $a
-     * @param $b
-     * @return int
-     */
-    private function compareArticle($a, $b)
-    {
-        $aTime = $a->getPublishedAt()->getTimestamp();
-        $bTime = $b->getPublishedAt()->getTimestamp();
-        if ($aTime == $bTime) {
-            return 0;
-        }
-        return ($aTime > $bTime) ? -1 : 1;
     }
 }
