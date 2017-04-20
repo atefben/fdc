@@ -43,7 +43,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "film_show",
      *     "news_list", "search",
      *     "news_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "film_selection_section_show",
      *     "home",
      *     "news_list", "search",
@@ -65,7 +65,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "film_selection_section_show"
      * })
      */
@@ -81,7 +81,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "film_selection_section_show",
      *     "search"
      * })
@@ -98,7 +98,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "projection_list", "programmation",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "film_selection_section_show"
      * })
      */
@@ -114,7 +114,7 @@ class FilmFilmTranslation implements TranslateChildInterface
      *     "trailer_show",
      *     "film_list",
      *     "film_show",
-     *     "projection_list", "programmation"
+     *     "projection_list", "projection_list_2017", "programmation"
      * })
      */
     protected $programSection;
