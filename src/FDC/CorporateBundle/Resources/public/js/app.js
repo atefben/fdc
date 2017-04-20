@@ -4684,7 +4684,6 @@ var initRs = function () {
                 });
             });
         }
-
     }
 
     //LINK POPIN//
@@ -4738,11 +4737,11 @@ var initRs = function () {
 
         });
 
-    }
+    };
 
     linkPopinInit();
     linkPopinInit(0, '.top-bar-link');
-}
+};
 
 /*------------------------------------------------------------------------------
  JS Document (https://developer.mozilla.org/en/JavaScript)
