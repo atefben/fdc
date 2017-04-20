@@ -1671,6 +1671,7 @@ function initAudioPlayers(autoplay) {
     // on click on play/pause
     $(this).find('.playpause').on('click', function(e) {
       e.preventDefault();
+      if ($(this).closest('.audio-player').hasClass('loading')) return false;
 
       if ($(this).find(".icon").hasClass('icon_audio')) {
         $(this).find(".icon").removeClass('icon_audio');
