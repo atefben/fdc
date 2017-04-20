@@ -247,6 +247,7 @@
 
   .info {
     text-align: left;
+    font-family: $CamphorRegular;
 
     .title-info {
       text-transform: uppercase;
@@ -261,6 +262,7 @@
 
   strong {
     font-family: $CamphorBold;
+    color: $black;
   }
 
   sub {

@@ -5344,6 +5344,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-contain-txt-register-movie .info {
   text-align: left;
+  font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 .block-contain-txt-register-movie .info .title-info {
   text-transform: uppercase;
@@ -5355,6 +5356,7 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
 }
 .block-contain-txt-register-movie strong {
   font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #141414;
 }
 .block-contain-txt-register-movie sub {
   vertical-align: text-bottom;
