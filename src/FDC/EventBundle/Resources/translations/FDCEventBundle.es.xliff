@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-09-16T11:40:37Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
+  <file date="2017-04-20T13:45:50Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -24,12 +24,12 @@
       </trans-unit>
       <trans-unit id="0a67eed8e5b8acd2455a46e97c45618076bd50a9" resname="agenda.btn.telechargerformatics">
         <source>agenda.btn.telechargerformatics</source>
-        <target state="new">agenda.btn.telechargerformatics</target>
+        <target>Descarga .ics</target>
         <jms:reference-file line="20">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5af7e176d3ad3f601c6aa383712f40f3f03c2d91" resname="agenda.btn.telechargerformatpdf">
         <source>agenda.btn.telechargerformatpdf</source>
-        <target state="new">agenda.btn.telechargerformatpdf</target>
+        <target>Descargar .pdf</target>
         <jms:reference-file line="19">views/Agenda/agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2d132c7ab4703b4bc256ce93126751c8c418a2b5" resname="agenda.popin.label.debut">
@@ -806,7 +806,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="be10d1045fd22a417f1df5cf7e43e164961c5666" resname="home.title.portfoliodujour">
         <source>home.title.portfoliodujour</source>
-        <target state="new">home.title.portfoliodujour</target>
+        <target>Día de la cartera</target>
         <jms:reference-file line="42">News/widgets/slideshow-actu-home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="105e65c60daf79c5782e16bfe1e83e60376c26b7" resname="home.video.btn.touslesfilms">
@@ -896,7 +896,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="1f1ec2cb8e8893a1d5ece382511c0897b6645883" resname="juries.role.title.presidentedujury">
         <source>juries.role.title.presidentedujury</source>
-        <target state="new">juries.role.title.presidentedujury</target>
+        <target>El presidente del jurado</target>
         <jms:reference-file line="58">views/Jury/section.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1862223c48e8c270af155e1a2605c2b6bd9d624b" resname="movie.btn.ajouteramaselection">
@@ -927,7 +927,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="ed5827ee9dd42c7308eba4198ed9af397b82d601" resname="movie.contact.label.presseinternational">
         <source>movie.contact.label.presseinternational</source>
-        <target state="new">movie.contact.label.presseinternational</target>
+        <target>Prensa internacional</target>
         <jms:reference-file line="405">Movie/components/contact.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bab0b494f5ed776a38aea64e71ef7e7986ae1809" resname="movie.contact.label.production">
@@ -966,7 +966,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="08ec6d52a44841b6cf8757d06ce67de4225df54e" resname="movie.first_film">
         <source>movie.first_film</source>
-        <target state="new">movie.first_film</target>
+        <target>Primera película</target>
         <jms:reference-file line="29">views/Global/projection-single.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71ac86142f6bef01ec59b256c446c8bb3b9204ad" resname="movie.label.anneedeproduction">
@@ -1114,7 +1114,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="3e12f213a10adb5625e4d7ab250e654bc240d3d3" resname="newsletter.form.error.emaildejaenregistre">
         <source>newsletter.form.error.emaildejaenregistre</source>
-        <target state="new">newsletter.form.error.emaildejaenregistre</target>
+        <target>Esta dirección de correo electrónico ya ha sido registrada.</target>
         <jms:reference-file line="413">EventBundle/Controller/GlobalController.php</jms:reference-file>
         <jms:reference-file line="30">Global/translation/translation-nav.html.twig</jms:reference-file>
       </trans-unit>
@@ -1194,7 +1194,7 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
       </trans-unit>
       <trans-unit id="28f339e24d12b7a7a4d08f92596bc48cdf02958b" resname="programmation.objet.ceremonie-d-ouverture">
         <source>programmation.objet.ceremonie-d-ouverture</source>
-        <target state="new">programmation.objet.ceremonie-d-ouverture</target>
+        <target>Ceremonia de apertura</target>
         <jms:reference-file line="25">Global/translation/translation-agenda.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fdc444132da3aa3e66ae16fd66e653f72e20ffee" resname="programmation.objet.ceremonie-de-cloture">
@@ -1734,33 +1734,33 @@ principalmente con fines promocionales y/o publicitarios, en el marco de nuestra
         <jms:reference-file line="113">views/Television/channel.html.twig</jms:reference-file>
         <jms:reference-file line="119">views/Television/live.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="webview.article.signature_prefix" resname="webview.article.signature_prefix">
-        <source>webview.article.signature_prefix</source>
-        <target>Written by</target>
-      </trans-unit>
-      <trans-unit id="webview.article.yesterday_at" resname="webview.article.yesterday_at">
-        <source>webview.article.yesterday_at</source>
-        <target>Yesterday, at</target>
-      </trans-unit>
-      <trans-unit id="webview.article.yesterday_at_suffix" resname="webview.article.yesterday_at_suffix">
-        <source>webview.article.yesterday_at_suffix</source>
-        <target>hour(s)</target>
-      </trans-unit>
-      <trans-unit id="webview.article.hours_elapsed" resname="webview.article.hours_elapsed">
+      <trans-unit id="8accdc49eb4a8106f48c84c0d76597b3f2e44b5c" resname="webview.article.hours_elapsed">
         <source>webview.article.hours_elapsed</source>
         <target></target>
       </trans-unit>
-      <trans-unit id="webview.article.hours_elapsed_suffix" resname="webview.article.hours_elapsed_suffix">
+      <trans-unit id="e4927361114aaf1e1b3e1e795995cd83782a1a3f" resname="webview.article.hours_elapsed_suffix">
         <source>webview.article.hours_elapsed_suffix</source>
         <target>hours ago</target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed" resname="webview.article.minutes_elapsed">
+      <trans-unit id="63ccf77b267e77b7457b7e26d04bbf4f727f8e34" resname="webview.article.minutes_elapsed">
         <source>webview.article.minutes_elapsed</source>
         <target></target>
       </trans-unit>
-      <trans-unit id="webview.article.minutes_elapsed_suffix" resname="webview.article.minutes_elapsed_suffix">
+      <trans-unit id="b7e4391a60da162020bd5515974399af262c435f" resname="webview.article.minutes_elapsed_suffix">
         <source>webview.article.minutes_elapsed_suffix</source>
         <target>minutes ago</target>
+      </trans-unit>
+      <trans-unit id="c6d4622dd0796b9d5985121407eecd8fe7c1d172" resname="webview.article.signature_prefix">
+        <source>webview.article.signature_prefix</source>
+        <target>Written by</target>
+      </trans-unit>
+      <trans-unit id="9ca85b57741561e0c328eba40401f0001264e2cb" resname="webview.article.yesterday_at">
+        <source>webview.article.yesterday_at</source>
+        <target>Yesterday, at</target>
+      </trans-unit>
+      <trans-unit id="46b586bc3d8c45b044a2e3ed32299fa2052c677e" resname="webview.article.yesterday_at_suffix">
+        <source>webview.article.yesterday_at_suffix</source>
+        <target>hour(s)</target>
       </trans-unit>
     </body>
   </file>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-05-10T19:20:45Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2017-04-20T13:07:31Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -472,7 +472,7 @@
       </trans-unit>
       <trans-unit id="a0f54e138dab756d3c0dc7abab56cd32c8a8df2d" resname="press.header.text.allerdanslespacepresse">
         <source>press.header.text.allerdanslespacepresse</source>
-        <target state="new">press.header.text.allerdanslespacepresse</target>
+        <target>Go to the press room</target>
         <jms:reference-file line="14">Global/components/login_public.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d908a7b300b9113e98e70b2a1bcbdb965852c336" resname="press.header.text.journalistesveuillezsaisirvotremotdepasse">
@@ -482,7 +482,7 @@
       </trans-unit>
       <trans-unit id="0ea38c12ab1a6c5a25cdf2d0c10bcd3f3611aac2" resname="press.header.text.journalistesveuillezsvousrendredanslespacepresse">
         <source>press.header.text.journalistesveuillezsvousrendredanslespacepresse</source>
-        <target state="new">press.header.text.journalistesveuillezsvousrendredanslespacepresse</target>
+        <target>Journalists, please go to the press area and identify yourself to unlock the contents reserved for you</target>
         <jms:reference-file line="10">Global/components/login_public.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bd7d21ae60c816d81f33863768346c39e3ee036c" resname="press.header.title.accueil">
