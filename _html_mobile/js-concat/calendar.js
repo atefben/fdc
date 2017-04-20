@@ -298,7 +298,7 @@ $(document).ready(function() {
       localStorage.removeItem('calendar_day');
     }
   }
-  
+
   $(window).on('scroll', function () {
     var s = $(this).scrollTop();
     scrollTarget = s;
@@ -373,6 +373,14 @@ $(document).ready(function() {
     });
   }
 
+  function heigthEvent() {
+    $('.fc-event').each(function (index, value) {
+      var h = $(value).attr('data-duration');
+      h = h * 2.65;
+      $(value).css('height', h + 'px');
+    })
+  }
+
   function addEventsInCalendar() {
     events.sort(function(a, b) {
       if (new Date(a.start) > new Date(b.start)) return 1;
@@ -422,11 +430,6 @@ $(document).ready(function() {
       //add color
       $(this).find('.category').css('background-color', $(this).data('color'));
       $(this).css('margin-top', mT*170+10);
-
-      // update height of the event
-      var h = $(this).data('duration');
-      h = h * 2.65;
-      $(this).css('height', h + 'px');
     });
 
     $('.calendar').on('click', '.fc-event', function (e) {
@@ -453,6 +456,7 @@ $(document).ready(function() {
     });
 
     displayProgrammationDay($('.timeline-container .active').data('date'));
+    heigthEvent();
   };
 
   function moveTimeline(element, day) {
