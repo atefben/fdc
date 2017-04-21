@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PushFilmMobile
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Base\CoreBundle\Entity\PushFilmMobileRepository")
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\PushFilmMobileRepository")
  */
 class PushFilmMobile
 {
