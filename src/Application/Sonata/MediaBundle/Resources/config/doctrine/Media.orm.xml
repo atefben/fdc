@@ -73,5 +73,8 @@
 
         <field name="oldTitle" type="string" length="255" column="old_title" nullable="true">
         </field>
+
+        <field name="oldTitleVa" type="string" length="255" column="old_title_va" nullable="true">
+        </field>
     </entity>
 </doctrine-mapping>

@@ -35,7 +35,7 @@ class FilmProjectionProgrammationDynamic
      *
      * @ORM\Column(type="integer")
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $duration;
 
@@ -44,7 +44,7 @@ class FilmProjectionProgrammationDynamic
      *
      * @ORM\ManyToOne(targetEntity="FilmProjectionProgrammationType", cascade={"persist"})
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $type;
     

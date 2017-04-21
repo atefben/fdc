@@ -2,6 +2,8 @@
 {{ form_errors(form) }}
 {{ form_start(form) }}
 <div class="vFlexAlign">
+    {% set notUsedM1 = 'search.form.cannesclassics'|trans %}
+    {% set notUsedM2 = 'search.form.cinemadelaplage'|trans %}
     <label for="{{ form.search.vars.id }}" class="search-txt vFlexAlign"><i
                 class="icon icon-search"></i>
         {{ form_widget(form.search, { 'attr': {'class': 'searchBar'} }) }}
@@ -31,7 +33,7 @@
 </div>
 {{ form_widget(form.yearStart,{ 'attr': {'class': 's-yearstart'} }) }}
 {{ form_widget(form.yearEnd, { 'attr': {'class': 's-yearend'} }) }}
-<div class="tabs-two vFlexAlign">
+<div class="tabs-two vFlexAlign" style="display:none">
     <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span
                 class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
     <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i

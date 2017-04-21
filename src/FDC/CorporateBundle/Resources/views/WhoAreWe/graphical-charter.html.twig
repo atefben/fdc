@@ -45,13 +45,14 @@
                         </div>
 
                         <div class="block-accordion">
+                            {% set extra = {'technicalConstraints': graphicalCharter|trans_fallback('technicalConstraints')} %}
                             {% for section in sections %}
                                 <div class="item{% if loop.first %} active{% endif %}">
                                     <div class="title-contain border-top ">
                                         <strong class="title-22">
                                             {{ loop.index }}. {{ section.name }}
                                         </strong>
-                                        <i class="icon icon-nav-accordion icon-minus"></i>
+                                        <i class="icon icon-nav-accordion{% if loop.first %} icon-minus{% else %} icon-more-square{% endif %}"></i>
                                     </div>
                                     {% for widget in section.widgets %}
                                         {% if widget.type == 'text' %}
@@ -59,11 +60,11 @@
                                                 {{ widget.text|raw }}
                                             </div>
                                         {% elseif widget.type == 'one-column' %}
-                                            {{ widgetsMacro.oneColumn(widget) }}
+                                            {{ widgetsMacro.oneColumn(widget, extra) }}
                                         {% elseif widget.type == 'two-columns' %}
-                                            {{ widgetsMacro.twoColumns(widget) }}
+                                            {{ widgetsMacro.twoColumns(widget, extra) }}
                                         {% elseif widget.type == 'three-columns' %}
-                                            {{ widgetsMacro.threeColumns(widget) }}
+                                            {{ widgetsMacro.threeColumns(widget, extra) }}
                                         {% endif %}
                                     {% endfor %}
                                 </div>
@@ -74,16 +75,16 @@
             </div>
         </div>
     </section>
-    {% include "FDCCourtMetrageBundle:Shared:breadcrumb.html.twig" with
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
     {"breadcrumb":
     [
     {
     "name" : 'header.nav.qui'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_whoarewe_show')
     },
     {
     "name" : 'aboutus.graphical_charter'|trans,
-    "url"  : path('fdc_corporate_whoarewe_graphicalcharter')
+    "url"  : path('fdc_corporate_whoarewe_graphicalcharter', {'slug': app.request.attributes.get('slug')})
     }
     ]
     } %}

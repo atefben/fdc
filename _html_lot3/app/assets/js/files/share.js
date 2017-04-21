@@ -22,7 +22,7 @@ var initRs = function () {
     
     $('.print').on('click', function(e){
         e.preventDefault();
-    })
+    });
 
     //POPIN facebook SHARE
     $('.block-social-network .facebook, .rs-slideshow .facebook, .button.facebook').off('click').on('click', function (e) {
@@ -46,9 +46,17 @@ var initRs = function () {
         //add artist name to popin on artist page
         if($('.contentartist').length){
             var title = $('.contentartist').find('.title-15').text();
-
             $(cls).find('.contain-popin .title-article').text(title);
+        } else if ($('.tetiere-movie').length){
+
+            var title = $('.tetiere-movie').find('h2').text();
+            var authors = $('.tetiere-movie').find('a').text();
+            var synopsis = $('.synopsis').find('p').text().substring(0, 150);
+
+            $(cls).find('.contain-popin .date-article').text(authors);
+            $(cls).find('.contain-popin .chap-article').text(synopsis);
         }
+        $(cls).find('.contain-popin .title-article').text(title);
 
         $(cls + ' input[type="text"]', cls + ' textarea').on('input', function () {
             var input = $(this);
@@ -190,23 +198,27 @@ var initRs = function () {
 
 
     if ($('.popin-mail').length > 0) {
-        initPopinMail('.popin-mail');
-        $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
-            e.preventDefault();
-            $('.overlay-popin').addClass('visible-popin');
+        if($('.popin-mail-open').hasClass('ismovie')){
 
-            var title = $('.overlay-popin').find('.contain-popin .title-article').html();
-            if(title.length > 80){
-                var croptile = title.substring(0, 80) + "...";
-                $('.overlay-popin').find('.contain-popin .title-article').html(croptile);
-            }
-            $('.overlay-popin').on('click', function (e) {
+        } else {
+            initPopinMail('.popin-mail');
+            $('.popin-mail-open').off('click touchstart').on('click touchstart', function (e) {
+                e.preventDefault();
+                $('.overlay-popin').addClass('visible-popin');
 
-                if (!$(e.target).hasClass('popin')) {
-                    $(this).removeClass('visible-popin');
+                var title = $('.overlay-popin').find('.contain-popin .title-article').html();
+                if(title.length > 80){
+                    var croptile = title.substring(0, 80) + "...";
+                    $('.overlay-popin').find('.contain-popin .title-article').html(croptile);
                 }
+                $('.overlay-popin').on('click', function (e) {
+
+                    if (!$(e.target).hasClass('popin')) {
+                        $(this).removeClass('visible-popin');
+                    }
+                });
             });
-        });
+        }
     }
 
     //LINK POPIN//
@@ -260,7 +272,8 @@ var initRs = function () {
 
         });
 
-    }
+    };
 
     linkPopinInit();
-}
+    linkPopinInit(0, '.top-bar-link');
+};

@@ -92,6 +92,17 @@ class GraphicalCharterAdmin extends Admin
                         'field_type'         => 'ckeditor',
                         'input_sync'         => true
                     ],
+                    'technicalConstraints'              => [
+                        'label'              => 'form.ccm.graphical_charter.technical_constraints',
+                        'translation_domain' => 'BaseAdminBundle',
+                        'required'           => false,
+                        'attr'               => [
+                            'class' => 'ckeditor'
+                        ],
+                        'field_type'         => 'ckeditor',
+                        'config_name'        => 'ccm_widget',
+                        'input_sync'         => true
+                    ],
                     'status'       => [
                         'label'                     => 'form.label_status',
                         'translation_domain'        => 'BaseAdminBundle',

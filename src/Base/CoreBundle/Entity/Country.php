@@ -50,12 +50,14 @@ class Country implements TranslateMainInterface
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_show",
      *     "film_selection_section_show",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $iso;
@@ -95,13 +97,15 @@ class Country implements TranslateMainInterface
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_show",
      *     "film_selection_section_show",
      *     "news_list", "search",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $translations;

@@ -1044,6 +1044,20 @@ class NewsRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter(':status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
+        $dateTime = new DateTime();
+
+//        $qb
+//            ->leftJoin('na4.video', 'mv')
+//            ->leftJoin('mv.sites', 'mvs')
+//            ->andWhere('na4.typeClone != :video OR (na4.video is not null AND mv.publishedAt <= :dateTime AND (mv.publishEndedAt IS NULL OR mv.publishEndedAt >= :dateTime)) AND mvs.slug = :site_slug')
+//            ->leftJoin('na2.audio', 'ma')
+//            ->leftJoin('ma.sites', 'mas')
+//            ->andWhere('na2.typeClone != :audio OR (na2.audio is not null AND ma.publishedAt <= :dateTime AND (ma.publishEndedAt IS NULL OR ma.publishEndedAt >= :dateTime)) AND mas.slug = :site_slug')
+//            ->setParameter(':video', 'video')
+//            ->setParameter(':audio', 'audio')
+//            ->setParameter(':dateTime', $dateTime)
+//            ->setParameter(':site_slug', 'site-institutionnel')
+//        ;
 
         if ($locale != 'fr') {
             $qb

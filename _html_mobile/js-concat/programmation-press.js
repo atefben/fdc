@@ -874,11 +874,17 @@ $(document).ready(function () {
 
             function heigthEvent() {
                 $('.fc-event').each(function (index, value) {
-                    var h = $(value).attr('data-duration');
-                    h = h * 2.65;
-                    $(value).css('height', h + 'px');
+
+                  var startDate = new Date($(value).data("start"))
+                    , duration = $(value).data("duration")
+                    , time = $(value).data("time");
+
+                  var h = duration * 2.7;
+                  $(value).css('height', h + 'px');
+
+                  $(value).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
                 })
-            }
+              }
 
         }
     }
@@ -948,7 +954,7 @@ $(document).ready(function() {
     $("#popin-press").addClass('visible');
     $("#popin-press").css('top', scrollTop+$('.header-container').height()+$(window).height()/4);
     $("#overlay").css('top', scrollTop);
-    $('#password').focus();
+    $('#popin-press #password').focus();
     
     document.body.addEventListener('touchmove', listener,false);
 
@@ -1003,7 +1009,7 @@ $(document).ready(function() {
   }
 
   if ($('.filters-slider').length) {
-    $('.filters-slider .select span').on('click', function() {
+    $('body').on('click', '.filters-slider .select span', function() {
       var h = $(this).parent().html();
 
       $('#filters').remove();

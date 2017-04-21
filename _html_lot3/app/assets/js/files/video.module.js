@@ -34,7 +34,7 @@ var timeout = 1000,
             <div class="buttons square">\
                 <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon-facebook"></i></a>\
                 <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon-twitter"></i></a>\
-                <a href="#" class="button link"><i class="icon icon-link"></i></a>\
+                <a href="#" class="button link top-bar-link"><i class="icon icon-link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon-lettre"></i></a>\
             </div>\
         </div>',
@@ -113,7 +113,7 @@ function playerInit(id, cls, havePlaylist, live) {
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
 
-    console.log("cont", $container);
+    //console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -384,7 +384,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $container.height();
 
-    console.log('setup',{
+    /*console.log('setup',{
         sources: $container.data('file'),
         image: $container.data('img'),
         primary: 'html5',
@@ -393,7 +393,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         skin: 'seven',
         height: playerHeight,
         controls: ($('body').hasClass('tablet')) ? true : false
-    })
+    })*/
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -545,13 +545,17 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 }
             }
-            updatePopinMedia({
-                'type': "video",
-                'category': $playlist[index].category,
-                'date': $playlist[index].date,
-                'title': $playlist[index].name,
-                'url': shareUrl
-            });
+            if ($('.popin-mail').hasClass('ismovie')) {
+            } else {
+                updatePopinMedia({
+                    'type': "video",
+                    'category': $playlist[index].category,
+                    'date': $playlist[index].date,
+                    'title': $playlist[index].name,
+                    'url': shareUrl
+                });
+            }
+
         }
 
         if (sc) {

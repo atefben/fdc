@@ -57,7 +57,7 @@ $(document).ready(function(){
                 }
             }
         });
-        $('.agenda-access').on('click', function () {
+        $('[href="' + $('.agenda-access').attr('href') + '"]').on('click', function () {
             localStorage.setItem('calendar_day', $('.timeline-container').find('.active').data('day'));
         });
     }

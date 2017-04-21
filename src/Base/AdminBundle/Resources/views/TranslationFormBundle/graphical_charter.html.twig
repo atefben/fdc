@@ -30,6 +30,7 @@
                                         {{ form_row(translationsFields.header) }}
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(translationsFields.text) }}
+                                        {{ form_row(translationsFields.technicalConstraints) }}
                                         {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                             {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                                         {% elseif is_granted('ROLE_JOURNALIST') %}
@@ -88,6 +89,7 @@
                                         {{ form_row(translationsFields.header) }}
                                         {{ form_row(translationsFields.title) }}
                                         {{ form_row(translationsFields.text) }}
+                                        {{ form_row(translationsFields.technicalConstraints) }}
                                         {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
                                             {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
                                         {% elseif is_granted('ROLE_JOURNALIST') %}

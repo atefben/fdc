@@ -107,15 +107,16 @@ var initAudio = function (hash) {
 
 
         if ($('.activeAudio').length > 0) {
-            var audioFile = $('.activeAudio').data('file');
-            var audioImage = $('.activeAudio').data('img');
+            var fileArray = $('.activeAudio').data('file') || $('.activeAudio').parent().data('file');
+            var audioImage = $('.activeAudio').data('img') || $('.activeAudio').parent().data('img');
+        } else {
+            var fileArray = $container.data('file');
+            var audioImage = $container.data('img');
         }
 
-        var fileArray = $('.activeAudio').length > 0 ? audioFile : $container.data('file');
         var config = {
-            //file: $container.data('file'),
             sources: fileArray,
-            image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+            image: audioImage,
             primary: 'html5',
             aspectratio: '16:9',
             debug : true,
@@ -130,14 +131,13 @@ var initAudio = function (hash) {
                 var finalFile = tempArray.file;
                 config = {
                     file: finalFile,
-                    image: $('.activeAudio').length > 0 ? audioImage : $container.data('img'),
+                    image: audioImage,
                     primary: 'html5',
                     aspectratio: '16:9',
                     width: $(aid).parent('div').width(),
                     height: $(aid).parent('div').height(),
                     controls: false
                 };
-                
             }
         }
         // console.log('audioplayer config',config);
@@ -165,7 +165,7 @@ var initAudio = function (hash) {
             duration_secs = Math.floor(_duration - duration_mins * 60);
             $durationTime.html(duration_mins + ":" + (duration_secs < 10 ? '0' + duration_secs : duration_secs));
         }).on('error',function(e){
-            console.log(e);
+
         }).on('bufferChange', function (e) {
             var currentBuffer = e.bufferPercent;
             $progressBar.find('.buffer-bar').css('width', currentBuffer + '%');
@@ -300,27 +300,29 @@ var initAudio = function (hash) {
                 $('.popin-mail').find('form #contact_title').val(data['title']);
                 $('.popin-mail').find('form #contact_url').val(data['url']);
                 $('.popin-mail').find('.chap-article').html('');
-
-                $clamp($('.popin-mail').find('.contain-popin .title-article').get(0), {clamp: 3});
             }
         }
 
 
         if(hash != undefined) {
 
-            $this = $('.item.audio[data-aid="' + hash + '"');
+            $this = $('.item.audio[data-aid="' + hash + '"]');
+
+            if ($this.length == 0) {
+                $this = $('article[data-aid="' + hash + '"]').children('.item.audio');
+            }
 
             $('.activeAudio').removeClass('activeAudio');
             $this.addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
-                aid = $this.data('aid'),
-                source = $this.data('file'),
-                img = $this.data('img'),
-                category = $this.find('.category').text(),
-                date = $this.find('.date').text(),
-                hour = $this.find('.hour').text(),
-                name = $this.find('.contain-txt strong a').html();
+                aid = $this.closest('.audio').data('aid') || $this.closest('article').data('aid'),
+                source = $this.closest('.audio').data('file'),
+                img = $this.closest('.audio').data('img') || $this.closest('article').data('img'),
+                category = $this.find('span.title-type-media').data('title') || $this.find('span.title-type-media').text(),
+                date = $this.closest('.audio').find('.date').text() || $this.find('.title-dates').text().substring(0, 8),
+                hour = $this.closest('.audio').find('.hour').text() || $this.find('.title-dates').text().substring(13, 18),
+                name = $this.find('.title-media').data('title') || $this.find('.title-media').text();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($this.index() - 1);
@@ -401,21 +403,21 @@ var initAudio = function (hash) {
 
         }
 
-        $('.item.audio').on('click', function (e) {
+        $('.item.audio').not('.retrospective .articles-list .item.audio').on('click', function (e) {
 
             e.preventDefault();
 
             $('.activeAudio').removeClass('activeAudio');
-            $(this).addClass('activeAudio')
+            $(this).addClass('activeAudio');
 
             var $popinAudio = $('.popin-audio'),
-                aid = $(e.target).closest('.audio').data('aid'),
+                aid = $(e.target).closest('.audio').data('aid') || $(e.target).closest('article').data('aid'),
                 source = $(e.target).closest('.audio').data('file'),
-                img = $(e.target).closest('.audio').data('img'),
-                category = $(e.target).closest('.audio').find('.category').text(),
-                date = $(e.target).closest('.audio').find('.date').text(),
-                hour = $(e.target).closest('.audio').find('.hour').text(),
-                name = $(this).find('.contain-txt strong a').text();
+                img = $(e.target).closest('.audio').data('img') || $(e.target).closest('article').data('img'),
+                category = $(e.target).closest('.audio').find('.category').text() || $(this).find('span.title-type-media').data('title'),
+                date = $(e.target).closest('.audio').find('.date').text() || $(this).find('.title-dates').text().substring(0, 8),
+                hour = $(e.target).closest('.audio').find('.hour').text() || $(this).find('.title-dates').text().substring(13, 18),
+                name = $(this).find('.contain-txt strong a').text() || $(this).find('.title-media').data('title') || $(this).find('strong > a').text();
 
             audioPopin = audioInit('audio-player-popin', false, false);
             audioPopin.playlistItem($(this).index() - 1);
@@ -425,9 +427,6 @@ var initAudio = function (hash) {
             setTimeout(function(){
                 var hashPush = '#aid='+aid;
                 history.pushState(null, null, hashPush);
-
-
-                audioPopin.play();
                 audioPopin.play();
             }, 900);
 

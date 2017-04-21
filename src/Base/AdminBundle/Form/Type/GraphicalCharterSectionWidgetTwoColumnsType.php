@@ -121,23 +121,6 @@ class GraphicalCharterSectionWidgetTwoColumnsType extends GraphicalCharterSectio
                         'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
-                    'technicalConstraints'          => array(
-                        'label'              => 'form.ccm.graphical_charter.technical_constraints_1',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'field_type'         => 'ckeditor',
-                        'config_name' => 'ccm_widget',
-                        'input_sync' => true
-                    ),
-                    'isTechnicalConstraintsPopupActive' => array(
-                        'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_1',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'checkbox',
-                        'required' => false
-                    ),
                     'title2'             => array(
                         'label'              => 'form.ccm.graphical_charter.title_2',
                         'translation_domain' => 'BaseAdminBundle',
@@ -154,23 +137,6 @@ class GraphicalCharterSectionWidgetTwoColumnsType extends GraphicalCharterSectio
                         'config_name' => 'ccm_widget',
                         'input_sync' => true
                     ),
-                    'technicalConstraints2'          => array(
-                        'label'              => 'form.ccm.graphical_charter.technical_constraints_2',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'required' => false,
-                        'attr' => array(
-                            'class' => 'ckeditor'
-                        ),
-                        'field_type'         => 'ckeditor',
-                        'config_name' => 'ccm_widget',
-                        'input_sync' => true
-                    ),
-                    'isTechnicalConstraintsPopupActive2' => array(
-                        'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_2',
-                        'translation_domain' => 'BaseAdminBundle',
-                        'field_type' => 'checkbox',
-                        'required' => false
-                    )
                 ),
             ))
             ->add('image', 'sonata_type_model_list', array(
@@ -213,6 +179,16 @@ class GraphicalCharterSectionWidgetTwoColumnsType extends GraphicalCharterSectio
                 'class' => $this->contentFilesAdmin->getClass(),
                 'translation_domain' => 'BaseAdminBundle',
                 'btn_delete' => true,
+                'required' => false
+            ))
+            ->add('isTechnicalConstraintsPopupActive' , 'checkbox', array(
+                'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_1',
+                'translation_domain' => 'BaseAdminBundle',
+                'required' => false
+            ))
+            ->add('isTechnicalConstraintsPopupActive2' , 'checkbox', array(
+                'label' => 'form.ccm.graphical_charter.is_technical_constraints_popup_active_2',
+                'translation_domain' => 'BaseAdminBundle',
                 'required' => false
             ))
         ;

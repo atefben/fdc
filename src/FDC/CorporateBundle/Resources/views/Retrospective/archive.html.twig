@@ -13,7 +13,7 @@
                         {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set mainImage = mainTrans.file %}
-                    <div class="block-push block-push-top"
+                    <div class="block-push block-push-retro"
                          style="background-image: url({% path mainImage, '613h' %});">
                         <div class="vFlexAlign">
                             <div class="txts">
@@ -251,12 +251,12 @@
         'color' : true
     })) }}
 
-                                                     {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
     {"breadcrumb":
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
     "name" :  currentPage|trans_fallback('title'),

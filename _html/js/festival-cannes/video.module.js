@@ -34,7 +34,7 @@ var timeout = 1000,
             <div class="buttons square">\
                 <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon_facebook"></i></a>\
                 <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon_twitter"></i></a>\
-                <a href="#" class="button link"><i class="icon icon_link"></i></a>\
+                <a href="#" class="button link top-bar-link"><i class="icon icon_link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon_lettre"></i></a>\
             </div>\
         </div>',

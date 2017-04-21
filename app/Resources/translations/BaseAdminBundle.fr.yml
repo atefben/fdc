@@ -712,6 +712,8 @@ dashboard:
         film_procedure: Procédure d’inscription
 form:
     corpo_movie_inscription_tab_prefix: Titre onglets procédures
+    mobile_pushfilm:
+        title: Push Film Mobile
     mobile_settings:
         title: Applications mobiles
         ios_version: Numéro de version iOS
@@ -780,13 +782,13 @@ form:
             legend_2: Légende colonne 2
             legend_3: Légende colonne 3
             technical_constraints: Contraintes techniques
-            technical_constraints_1: Contraintes techniques colonne 1
-            technical_constraints_2: Contraintes techniques colonne 2
-            technical_constraints_3: Contraintes techniques colonne 3
-            is_technical_constraints_popup_active: Afficher vers la pop-in
-            is_technical_constraints_popup_active_1: Afficher vers la pop-in colonne 1
-            is_technical_constraints_popup_active_2: Afficher vers la pop-in colonne 2
-            is_technical_constraints_popup_active_3: Afficher vers la pop-in colonne 3
+            technical_constraints_1: Contraintes techniques - colonne N°1
+            technical_constraints_2: Contraintes techniques - colonne N°2
+            technical_constraints_3: Contraintes techniques - colonne N°3
+            is_technical_constraints_popup_active: Afficher les contraintes techniques
+            is_technical_constraints_popup_active_1: Afficher les contraintes techniques - colonne N°1
+            is_technical_constraints_popup_active_2: Afficher les contraintes techniques - colonne N°2
+            is_technical_constraints_popup_active_3: Afficher les contraintes techniques - colonne N°3
             header: Chapô
             text: Bloc de texte
             form_title: Sections de charte graphique
@@ -1753,6 +1755,7 @@ form:
     label_homepage_top_video_associated: Vidéos à la une
     label_homepage_top_web_tvs_associated: Chaînes à la une
     label_homepage_films_associated: Films présentés
+    label_homepage_trailer_background: Les bandes annonces et extraits image de fond
     label_projection: Projection
     label_projection_p: Projection presse
     label_arrive_icon: Pictogramme du titre

@@ -424,7 +424,7 @@
     }
 
     i{
-      font-size: 2.75rem;
+      font-size: 3rem;
       color: $gold;
       display: inline-block;
       vertical-align: middle !important;
@@ -973,6 +973,7 @@
           left: 10px;
           position: absolute;
           z-index: 1;
+          margin:0 0 0 0 !important;
         }
 
         img {
@@ -1161,7 +1162,7 @@
           border-top: 1px solid #252525;
           border-bottom: 1px solid #252525;
           height: 145px;
-          padding-left: 190px;
+          padding-left: 225px;
           position: relative;
 
           img {
@@ -1194,6 +1195,7 @@
         .links {
           border-bottom: 1px solid #252525;
           padding: 22px 0;
+          padding-left: 225px;
 
           a {
             color: #999;
@@ -1730,7 +1732,7 @@
           &.half-div,
           &.single-photo.large-photo,
           &.slideshow {
-            width: 730px;
+            width: 977px;
           }
         }
       }

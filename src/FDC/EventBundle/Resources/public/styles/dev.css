@@ -620,3 +620,8 @@ a.notloaded {
 .single-article .text a {
     color: #c8a461;
 }
+.single-movie .audios {
+    padding: 45px 0;
+    width: 630px;
+    margin: 0 auto;
+}

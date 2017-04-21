@@ -89,6 +89,9 @@
   .container-images {
     position: absolute;
     width: 75%;
+    .ismobile & {
+      width: 100%;
+    }
     height: 100%;
     display: block;
 
@@ -544,16 +547,6 @@
       z-index: 5;
       transition: $smoothTransition .6s;
     }
-
-    // &-back:hover {
-    //   transform: translate(-20px);
-    //   cursor: pointer;
-    // }
-    //
-    // &-next:hover {
-    //   transform: translate(20px);
-    //   cursor: pointer;
-    // }
   }
 
   .calc3 {
@@ -571,20 +564,20 @@
 
       &.i1 {
         position: relative;
-        top: -2%;
-        left: -21%;
+        top: 0%;
+        right: -49%;
       }
 
       &.i2 {
-        top: 38%;
+        top: 39%;
         position: relative;
-        right: 7%;
+        right: -5%;
       }
 
       &.i3 {
         position: relative;
-        top: 0%;
-        left: 15%;
+        top: 6%;
+        right: 50%;
       }
     }
   }
@@ -604,20 +597,20 @@
 
       &.i1 {
         position: relative;
-        top: -14%;
-        left: 13%;
+        top: 1%;
+        left: 25%;
       }
 
       &.i2 {
-        top: 41%;
+        top: 20%;
         position: relative;
-        right: -21%;
+        right: -30%;
       }
 
       &.i3 {
         position: relative;
-        top: 31%;
-        left: -53%;
+        top: 46%;
+        left: -36%;
       }
     }
   }
@@ -784,7 +777,7 @@
 
       img {
         position: absolute;
-        top: -20%;
+        top: -200px;
         opacity: .3;
         left: 0px;
 
@@ -918,7 +911,7 @@
   div {
     width: 100vw;
     height: 100vh;
-    object-fit: cover; //TODO IE !
+    object-fit: cover;
     display: inline-block;
     text-align: center;
     transform: translate3d(0,0,0);

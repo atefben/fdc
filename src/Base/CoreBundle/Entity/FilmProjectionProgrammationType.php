@@ -26,7 +26,7 @@ class FilmProjectionProgrammationType
      * @ORM\Column(type="integer")
      * @ORM\Id
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $id;
     
@@ -35,7 +35,7 @@ class FilmProjectionProgrammationType
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $type;
 
@@ -44,7 +44,7 @@ class FilmProjectionProgrammationType
      *
      * @ORM\Column(type="string")
      *
-     * @Groups({"projection_list", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
      */
     protected $name;
 

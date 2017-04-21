@@ -1,9 +1,9 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
+{% block bodyClass %}loading retrospective selection retrospective-home fs-off restrospective-init dark not-mobile classic{% endblock %}
 
 {% block body %}
-    <section class=" border-bottom s-slider-retrospective">
+    <section class="border-bottom s-slider-retrospective">
 
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
@@ -200,18 +200,10 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
     "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
+    "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ app.request.attributes.get('year'),
     "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
     },
     {

@@ -8,7 +8,6 @@ var owinitSlideShow = function (slider, hash) {
         if(slider.length > 1){
             //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
             slider.each(function(){
-                console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
                 if($(this).find('[data-pid="'+hash+'"]').length){
                     finalSlider = $(this);
                 }
@@ -167,14 +166,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 }
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
                 var title = getTitle || dataItem.attr('title');;
-                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label") || dataItem.data('label');;
-                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');;
-                var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');;
-                var id = $(value).find('img').attr('data-id') || dataItem.data('pid');;
-                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');;
-                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');;
-                var url = $(value).find('img').attr('data-url') || dataItem.data('url');;
-                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';;
+                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label") || dataItem.data('label');
+                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');
+                var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');
+                var id = $(value).find('img').attr('data-id') || dataItem.data('pid');
+                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');
+                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');
+                var url = $(value).find('img').attr('data-url') || dataItem.data('url');
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
@@ -236,7 +235,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
-        var hashPush = '#'+hash;
+        var hashPush = '#pid='+hash;
         history.pushState(null, null, hashPush);
     }
 
@@ -331,7 +330,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             fullscreen.removeClass('fadeOut').addClass('animated fadeIn');
         }, 700);
 
-        hash = "#"+images[id].id;
+        hash = "#pid="+images[id].id;
 
         history.pushState(null, null, hash);
         numberDiapo = centerElement + 1;
@@ -370,7 +369,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         if(typeof twitterUrl === 'undefined'){
             twitterUrl = images[centerElement].twitterurl;
         }
-        console.log('twitter share url',twitterUrl);
 
         facebook.attr('href', images[centerElement].facebookurl);
         twitter.attr('href',twitterUrl );
@@ -491,7 +489,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         '</div>' +
         '</div>');
 
-    $('.c-fullscreen-slider').append("<div class='zoomCursor'><i class='icon icon-wen-more'></i></div>")
+    console.log(images[centerElement].url);
+    $('.c-fullscreen-slider').append("<div class='zoomCursor'><i class='icon icon-wen-more'></i></div>");
 
     initRs();
 

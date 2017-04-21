@@ -2,6 +2,46 @@
 
 {% set mediaUrl = url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
 
+
+{% if filters.themes.content is defined and filters.themes.content|length %}
+    <div class="compute-filters theme">
+        {% for keytheme, theme in filters.themes.content if keytheme and theme|trans_fallback('name') and theme|trans_fallback('slug') %}
+            <span class=""
+                  data-filter="{{ theme|trans_fallback('slug') }}">{{ theme|trans_fallback('name') }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if filters.dates is defined %}
+    <div class="compute-filters date">
+        {% for key, day in filters.dates if key %}
+            <span class="" data-filter="date-{{ key }}">
+            {% if app.request.locale != 'cn' %}
+                {{ day|localizeddate('full', 'none') }}
+            {% else %}
+                {{ day|localizeddate('none', 'none', 'zh', null, 'MM月dd日, eee') }}
+            {% endif %}
+        </span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if filters.format is defined %}
+    <div class="compute-filters format">
+        {% for key, format in filters.format if key %}
+            <span class="" data-filter="{{ format|get_news_type }}">{{ format|get_news_type }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if filters.types is defined %}
+    <div class="compute-filters type">
+        {% for keyType, labelType in filters.types if keyType != 'all' %}
+            <span class="" data-filter="{{ keyType }}">{{ labelType|trans }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
 <div class="grid-01 isotope-01 add-ajax-request">
     <div class="grid-sizer"></div>
     {% include "FDCCorporateBundle:Media:components/medias.html.twig" with {"medias": medias} %}

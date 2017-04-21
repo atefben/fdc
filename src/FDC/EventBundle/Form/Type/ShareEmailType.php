@@ -47,14 +47,12 @@ class ShareEmailType extends AbstractType
             ->add('email', 'text', array(
                 'pattern' => '^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?)+$',
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.email'),
                     'class'       => 'popin'
                 ),
                 'label' => false
             ))
             ->add('user', 'email', array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.votreemail'),
                     'class'       => 'popin'
                 ),
                 'label' => false
@@ -69,7 +67,6 @@ class ShareEmailType extends AbstractType
             ))
             ->add('message', 'textarea', array(
                 'attr' => array(
-                    'placeholder' => $this->translator->trans('sharemail.form.placeholder.message'),
                     'class'       => 'popin'
                 ),
                 'label' => false,

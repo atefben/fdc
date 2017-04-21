@@ -602,26 +602,24 @@ $(document).ready(function () {
         owInitNavSticky(1);
         owArrowDisplay();
 
-        if (!$('.single-movie').length > 0) {
-            var slider = $('.slideshow-img .images');
+        var slider = $('.slideshow-img .images');
 
-            var hash = window.location.hash;
-            hash = hash.substring(1, hash.length);
+        var hash = window.location.hash;
+        hash = hash.substring(1, hash.length);
 
-            verif = hash.slice(0, 3);
-            number = hash.slice(4);
+        var verif = hash.slice(0, 3);
+        var number = hash.slice(4);
 
-            if (hash.length > 0 && verif == "pid") {
-                owinitSlideShow(slider, hash);
-            } else {
-                owinitSlideShow(slider);
-            }
+        if (hash.length > 0 && verif == "pid") {
+            owinitSlideShow(slider, number);
+        } else {
+            owinitSlideShow(slider);
+        }
 
-            if (hash.length > 0 && verif == "aid") {
-                initAudio(number);
-            } else {
-                initAudio();
-            }
+        if (hash.length > 0 && verif == "aid") {
+            initAudio(number);
+        } else {
+            initAudio();
         }
     }
 
@@ -773,7 +771,7 @@ $(document).ready(function () {
 
     //FIX IE
 
-    if($('body').hasClass('ie')){
+    if($('body').hasClass('ie')){ // test
         $.each($('.slide'),function (i, e) {
             var src = $(e).find('img').attr('src');
             $(e).find('.linkVid').css('background-image','url('+src+')');
@@ -785,11 +783,14 @@ $(document).ready(function () {
             var src = $(e).attr('src');
             var tmp = $(e).attr('style');
             // var dof = $(e).attr('data-object-fit');
-            if ($(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)
+            if ($(e).parent().parent().parent().hasClass('slider-restropective') || $(e).css('object-fit') == 'cover' || (tmp && tmp.indexOf('object-fit') > -1)
                 || (!$('body').hasClass('story-palme') && $('.block-movie-preview').length)) {
                 $(e).css('visibility', 'hidden');
                 $(e).parent().css('background-image', 'url('+src+')');
-                $(e).parent().css('background-size','cover');
+                $(e).parent().css('background-size', 'cover');
+                if ($(e).parent().parent().parent().hasClass('slider-restropective')) {
+                    $(e).parent().css('background-size', 'initial');
+                }
                 $(e).parent().css('background-position-x','center');
                 $(e).parent().css('background-position-y','center');
                 $(e).parent().css('display', 'block');

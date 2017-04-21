@@ -83,6 +83,9 @@ class EditionsController extends Controller
      */
     public function afficheAction(Request $request, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $festival = $this->getFestival($year);
 
         $posters = $this
@@ -113,6 +116,9 @@ class EditionsController extends Controller
      */
     public function yearAction($year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         return $this->redirectToRoute('fdc_corporate_movie_selection', ['year' => $year]);
     }
 

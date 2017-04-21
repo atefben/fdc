@@ -63,6 +63,7 @@ class LockController extends Controller
         'mediaaudio'                       => 'MediaAudio',
         'mediavideo'                       => 'MediaVideo',
         'mediapdf'                         => 'MediaPdf',
+        'gallery'                          => 'Gallery',
         // Edition par année
         'filmfestival'                     => 'FilmFestival',
         // Participer
@@ -119,8 +120,10 @@ class LockController extends Controller
         'filmselectionsection' => 'FilmSelectionSection',
         'filmfilm' => 'FilmFilm',
         'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
+        'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
         'graphicalcharterbuttonfile' => 'GraphicalCharterButtonFile',
-        'graphicalcharterbuttonsection' => 'GraphicalCharterSection',
+        'graphicalcharterbuttonsection' => 'GraphicalCharterButtonSection',
+        'graphicalchartersection' => 'GraphicalCharterSection',
     );
 
     /**

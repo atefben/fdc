@@ -21,6 +21,9 @@ class EventController extends Controller
      */
     public function getEventsAction(Request $request, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year)->getId();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
@@ -79,6 +82,9 @@ class EventController extends Controller
      */
     public function getAction(Request $request, $year, $slug)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $festival = $this->getFestival($year)->getId();
         $locale = $request->getLocale();
 

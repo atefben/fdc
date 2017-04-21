@@ -13,6 +13,7 @@ use Elastica\Aggregation\Terms;
 use Elastica\Filter\Term;
 use Elastica\Query\BoolQuery as ElasticaQueryBoolQuery;
 use Elastica\Query\Filtered as ElasticaQueryFiltered;
+use Elastica\Util;
 
 class FilmFilmRepository extends SearchRepository implements SearchRepositoryInterface
 {
@@ -77,7 +78,7 @@ class FilmFilmRepository extends SearchRepository implements SearchRepositoryInt
         if (!empty($searchTerm['prizes'])) {
             $prizesQuery = new ElasticaQueryBoolQuery();
             foreach ($searchTerm['prizes'] as $prize) {
-                $prizesQuery->addShould($this->getPrizesQuery($_locale, $prize));
+                $prizesQuery->addMust($this->getPrizesQuery($_locale, $prize));
             }
             $finalQuery->addMust($prizesQuery);
         }

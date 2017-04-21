@@ -626,6 +626,7 @@ $(document).ready(function() {
 
     $('.fullscreenplayer').find('.category').html($(this).find('.category').html());
     $('.fullscreenplayer').find('.title-video').html($(this).find('.titleLink').html());
+    $('.fullscreenplayer').find('.date').html($(this).find('.titleLink').attr('data-date'));
   });
 
   // AUDIO PLAYER

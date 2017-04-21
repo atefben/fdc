@@ -114,6 +114,41 @@
 
                 <img src="{% path file , '572x362' %}"
                      alt="{{ img|trans_fallback('alt') }} ">
+            {% elseif article is news_image and article.gallery.medias[0].media %}
+                {% set img = article.gallery.medias[0].media %}
+                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <img src="{% path file , '572x362' %}"
+                     alt="{{ img|trans_fallback('alt') }} ">
+            {% elseif (article is news_audio or article is info_audio or article is statement_audio) and article.audio.image %}
+                {% set img = article.audio.image %}
+                {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                {% if trans is null or trans.file is null %}
+                    {% set trans = img.findTranslationByLocale('fr') %}
+                {% endif %}
+                {% set file = trans.file %}
+                <img src="{% path file , '572x362' %}"
+                     alt="{{ img|trans_fallback('alt') }} ">
+            {% elseif (article is news_video or article is statement_video or article is info_video) and (article.video.image or article.video|trans_fallback('imageAmazonUrl') is not null) %}
+                {% set img = article.video.image %}
+                {% if img is defined and img is not null %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% elseif article.video|trans_fallback('imageAmazonUrl') is not null %}
+                    {% set imgamazon = s3_server_video ~ article.video|trans_fallback('imageAmazonUrl') %}
+                {% endif %}
+                {% if file is defined and file is not null %}
+                    <img src="{% path file , '572x362' %}"
+                         alt="{{ img|trans_fallback('alt') }} ">
+                {% elseif imgamazon is defined and imgamazon is not null %}
+                    <img src="{{ imgamazon }}" alt=""/>
+                {% endif %}
             {% else %}
                 <img src="{{ asset('bundles/fdccorporate/default_palme/film572x362.jpg') }}">
             {% endif %}

@@ -2,156 +2,148 @@
 
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
 
-{% set selfkits = movie.selfkitImages %}
+{% if not movie.festival or movie.festival.year not in [2014, 2015] %}
+
+    {% set selfkits = movie.selfkitImages %}
+{% else %}
+    {% set selfkits = [] %}
+{% endif %}
 {% block bodyClass %}article-single retrospective retrospective-home restrospective-init {% endblock bodyClass %}
 
 {% block body %}
-    <section class="s-slider-retrospective">
+<section class="s-slider-retrospective">
 
-    <div class="ajax-section bright"><div class="contain-ajax single-movie bright" id="main">
+    <div class="ajax-section bright">
+        <div class="contain-ajax single-movie bright" id="main">
 
-    <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
-    <div id="canvasloader" class="canvasloader"></div>
-    <div class="content-movie">
-        
-        {% include 'FDCCorporateBundle:Movie:components/pagination.html.twig' %}
+            <span id="addtext">{{ 'movie.btn.ajouteramaselection'|trans }}</span>
+            <div id="canvasloader" class="canvasloader"></div>
+            <div class="content-movie">
 
-        <span id="plx"></span>
+                {% include 'FDCCorporateBundle:Movie:components/pagination.html.twig' %}
 
-        {% include 'FDCCorporateBundle:Movie:components/banner.html.twig' %}
+                <span id="plx"></span>
 
-        <div id="nav-movie">
-            <div class="container">
-                <ul>
-                    {% if movie.associatedMediaVideos|length > 0 %}
-                        {% set firstVideo = null %}
-                        {% for video in movie.associatedMediaVideos if firstVideo is null %}
-                            {% set video = video.mediaVideo %}
-                            {% set trans = video.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null and trans.jobMp4State == 3 %}
-                                {% set firstVideo = video %}
-                            {% else %}
-                                {% set trans = video.findTranslationByLocale('fr') %}
-                                {% if trans is not null and trans.jobMp4State == 3 %}
-                                    {% set firstVideo = video %}
+                {% include 'FDCCorporateBundle:Movie:components/banner.html.twig' %}
+
+                <div id="nav-movie">
+                    <div class="container">
+                        <ul>
+                            {% if movie.associatedMediaVideos|length > 0 %}
+                                {% set firstVideo = null %}
+                                {% for video in movie.associatedMediaVideos if firstVideo is null %}
+                                    {% set video = video.mediaVideo %}
+                                    {% set trans = video.findTranslationByLocale(app.request.locale) %}
+                                    {% if trans is not null and trans.jobMp4State == 3 %}
+                                        {% set firstVideo = video %}
+                                    {% else %}
+                                        {% set trans = video.findTranslationByLocale('fr') %}
+                                        {% if trans is not null and trans.jobMp4State == 3 %}
+                                            {% set firstVideo = video %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if firstVideo is not null %}
+                                    <li><a href="#videos" class="link">{{ 'movie.middlenav.videos'|trans }}</a></li>
                                 {% endif %}
                             {% endif %}
+                            {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
+                                <li><a href="#casting" class="link">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
+                            {% endif %}
+                            {% if movie.getMedias()|length > 0  or selfkits|length %}
+                                <li><a href="#photos" class="link">{{ 'movie.middlenav.photos'|trans }}</a></li>
+                            {% endif %}
+                            {% if articles|length > 0 %}
+                                <li><a href="#news" class="link">{{ 'movie.middlenav.actualites'|trans }}</a></li>
+                            {% endif %}
+                            {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
+                                <li><a href="#audios" class="link">{{ 'movie.middlenav.audios'|trans }}</a></li>
+                            {% endif %}
+                            {% if (hidePressBlock is not defined or not hidePressBlock) %}
+                                {% set active = true %}
+                                {% set medias = movie|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PRESS_PDF'), true) %}
+                                {% if (medias|length == 0 or movie.selfkitPdfFiles|length == 0) and movie.contacts|length == 0 %}
+                                    {% set active = false %}
+                                {% endif %}
+                                {% if active %}
+                                    <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                        {% set secondTitle = null %}
+                        {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
+                            {% set mainTitle = movie.titleVO %}
+                            {% set secondTitle = movie|trans_fallback_movie('title') %}
+                        {% else %}
+                            {% set mainTitle = movie.titleVO %}
+                        {% endif %}
+                        {% set directorsName = '' %}
+                        {% for director in movie.getDirectors() %}
+                            {% set directorsName = directorsName ~ ' ' ~ director.person.fullName %}
                         {% endfor %}
-                        {% if firstVideo is not null %}
-                            <li><a href="#videos" class="link">{{ 'movie.middlenav.videos'|trans }}</a></li>
-                        {% endif %}
-                    {% endif %}
-                    {% if movie.getActors()|length > 0 or movie.getCredits()|length > 0 %}
-                        <li><a href="#casting" class="link">{{ 'movie.middlenav.creditcasting'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.getMedias()|length > 0  or selfkits|length %}
-                        <li><a href="#photos" class="link">{{ 'movie.middlenav.photos'|trans }}</a></li>
-                    {% endif %}
-                    {% if articles|length > 0 %}
-                        <li><a href="#news" class="link">{{ 'movie.middlenav.actualites'|trans }}</a></li>
-                    {% endif %}
-                    {% if movie.associatedMediaAudios(app.request.get('_locale'))|length > 0 %}
-                        <li><a href="#audios" class="link">{{ 'movie.middlenav.audios'|trans }}</a></li>
-                    {% endif %}
-                    {% if (hidePressBlock is not defined or not hidePressBlock) %}
-                        {% if movie.getMedias()|length > 0 or movie.contacts|length > 0 %}
-                            <li><a href="#press" class="link">{{ 'movie.middlenav.infospresse'|trans }}</a></li>
-                        {% endif %}
-                    {% endif %}
-                </ul>
-                {% set secondTitle = null %}
-                {% if movie|trans_fallback_movie('title') is not empty and movie|trans_fallback_movie('title') != movie.titleVO %}
-                    {% set mainTitle = movie.titleVO %}
-                    {% set secondTitle = movie|trans_fallback_movie('title') %}
-                {% else %}
-                    {% set mainTitle = movie.titleVO %}
-                {% endif %}
-                {% set directorsName = '' %}
-                {% for director in movie.getDirectors() %}
-                    {% set directorsName = directorsName ~ ' ' ~ director.person.fullName %}
-                {% endfor %}
-                <div class="relative">
-                    <div class="block-social-network block-social-network-all">
-                       <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup" rel="nofollow" class="button facebook">
-                            <i class="icon icon-facebook"></i>
-                        </a><!--
-                --><a class="twitter" href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ movie.festival.year )|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ directorsName|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
-                            <i class="icon icon-twitter"></i>
-                        </a><!--
+                        <div class="relative">
+                            <div class="block-social-network block-social-network-all">
+                                <a href="http://www.facebook.com/dialog/feed?app_id=1198653673492784&link={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}&picture={% include 'FDCEventBundle:Global:components/film.poster.share.html.twig' with ({ film: movie, film_format: '293x397', display_film_path: true, film_image_default: fdc_event_scheme ~ '://' ~ fdc_event_domain ~ '/bundles/fdccorporate/media/images/film_w256.jpg',}) %}&name={{ mainTitle|url_encode(true) }}%20-%20{{ directorsName|url_encode(true) }}&caption=&description={{ movie|trans_fallback('synopsis')|url_encode(true) }}&redirect_uri=http://www.festival-cannes.com/fr/sharing&display=popup"
+                                   rel="nofollow" class="button facebook">
+                                    <i class="icon icon-facebook"></i>
+                                </a><!--
+                --><a class="twitter"
+                      href="https://twitter.com/intent/tweet?text={{ ('#Cannes' ~ movie.festival.year )|url_encode(true) }} {{ mainTitle|url_encode(true) }} {{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}">
+                                    <i class="icon icon-twitter"></i>
+                                </a><!--
                 --><a href="#" rel="nofollow" class="link self"><i class="icon icon-link"></i></a><!--
-                --><a href="#" class="popin-mail-open" ><i class="icon icon-letter"></i></a><!--
+                --><a href="#" class="popin-mail-open noreplacepopin"><i class="icon icon-letter"></i></a><!--
                 --><a href="#" onclick="window.print();" class="print"><i class="icon icon-print"></i></a>
+                            </div>
+                            <div class="texts-clipboard"></div>
+                        </div>
                     </div>
-                    <div class="texts-clipboard"></div>
                 </div>
+
+                {% include 'FDCCorporateBundle:Movie:widgets/video.html.twig' with { videos: movie.getPublishedAssociatedMediaVideos(app.request.get('_locale')) } %}
+
+                <div class="container">
+
+                    {% include 'FDCCorporateBundle:Movie:widgets/casting.html.twig' %}
+
+                    {% include 'FDCCorporateBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias, 'selfkits': selfkits} %}
+
+                    {% if articles|length %}
+                        <div class="news" data-section="news">
+                            <div class="articles center">
+                                {% for article in articles %}
+                                    {% include 'FDCCorporateBundle:News:widgets/article.html.twig' %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if movie.associatedMediaAudios|length > 0 %}
+                        <div class="audios single-article" data-section="audios">
+                            {% for associatedMediaAudio in movie.associatedMediaAudios %}
+                                {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio, 'corpo' : true } %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% include 'FDCCorporateBundle:Movie:components/contact.html.twig' with { 'corpo' : true } %}
+
+                {% include 'FDCCorporateBundle:Movie:widgets/competition.html.twig' %}
+
             </div>
+            <span class="anim"></span>
         </div>
-
-        {% include 'FDCCorporateBundle:Movie:widgets/video.html.twig' with { videos: movie.getPublishedAssociatedMediaVideos(app.request.get('_locale')) } %}
-
-        <div class="container">
-
-            {% include 'FDCCorporateBundle:Movie:widgets/casting.html.twig' %}
-
-            {% include 'FDCEventBundle:Movie:widgets/image.html.twig' with {'photos': movie.medias, 'selfkits': selfkits} %}
-
-			{% if articles|length %}
-            <div class="news" data-section="news">
-                <div class="articles center">
-                {% for article in articles %}
-					{% include 'FDCCorporateBundle:News:widgets/article.html.twig' %}
-                {% endfor %}
-                </div>
-            </div>
-			{% endif %}
-
-			{% if movie.associatedMediaAudios|length > 0 %}
-                <div class="audios single-article" data-section="audios">
-                {% for associatedMediaAudio in movie.associatedMediaAudios %}
-                    {% include 'FDCEventBundle:Movie:widgets/audio.html.twig' with { 'mediaAudio': associatedMediaAudio.mediaAudio, 'corpo' : true } %}
-                {% endfor %}
-                </div>
-			{% endif %}
-
-        </div>
-
-        {% include 'FDCCorporateBundle:Movie:components/contact.html.twig' with { 'corpo' : true } %}
-
-        {% include 'FDCCorporateBundle:Movie:widgets/competition.html.twig' %}
-
-    </div>
-    <span class="anim"></span>
-</div>
-{{ render(controller('FDCEventBundle:Global:shareEmail',
-    {'section': movie.selectionSection|trans_fallback('name')|trans,
-        'detail' : directorsName,
-        'title'  : mainTitle,
-        'description': movie|trans_fallback('synopsis')|truncate(150),
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    }))
-}}
-{{ render(controller('FDCEventBundle:Global:shareEmailMedia',
-    {'section': '',
-     'detail' : '',
-     'title'  : '',
-     'description': ''
-    }))
-}}
-    {% if movie.titleVO is not empty %}
-        {% set mainTitle = movie.titleVO %}
-    {% else %}
-        {% set mainTitle = movie|trans_fallback('title') %}
-    {% endif %}
-
+        {% if movie.titleVO is not empty %}
+            {% set mainTitle = movie.titleVO %}
+        {% else %}
+            {% set mainTitle = movie|trans_fallback('title') %}
+        {% endif %}
         {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
         {"breadcrumb":
         [
         {
         "name" : 'breadcrumb.69editions.home'|trans,
-        "url"  : path('fdc_corporate_editions_retrospective')
-        },
-        {
-        "name" : 'breadcrumb.retrospective.home'|trans,
         "url"  : path('fdc_corporate_editions_retrospective')
         },
         {
@@ -169,11 +161,20 @@
         ]
         } %}
         {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+        {'section': movie.selectionSection|trans_fallback('name')|trans,
+            'detail' : directorsName,
+            'title'  : mainTitle,
+            'theaters' : 'TODO',
+            'description': movie|trans_fallback('synopsis')|truncate(150),
+            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
+            'artist' : null,
+            'color' : null,
+            'ismovie' : ''
+        })) }}
+        {{ render(controller('FDCCorporateBundle:Global:shareEmailMedia',
         {'section': '',
             'detail' : '',
             'title'  : '',
-            'description': '',
-            'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-        }))
-        }}
-{% endblock body %}
+            'description': ''
+        })) }}
+        {% endblock body %}

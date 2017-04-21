@@ -615,6 +615,12 @@ file that was distributed with this source code.
                                                                 {{ 'form.mobile_settings.title'|trans({}, 'BaseAdminBundle') }}
                                                             </a>
                                                         </li>
+                                                        <li{% if app.request.attributes.get('_route') == 'base_admin_settings_pushfilmmobile' %} class="active"{% endif %}>
+                                                            <a href="{{ path('base_admin_settings_pushfilmmobile') }}">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                                {{ 'form.mobile_pushfilm.title'|trans({}, 'BaseAdminBundle') }}
+                                                            </a>
+                                                        </li>
                                                     {% endif %}
                                                 </ul>
                                             </li>
@@ -722,7 +728,7 @@ file that was distributed with this source code.
                                     {% endif %}
 
                                     {% set active = (app.request.attributes.get('_route') in ['admin_base_core_filmfestival_list','admin_base_core_corpofestivalhistory_list','admin_base_core_corpofestivalhistory_edit','admin_base_core_corpofestivalhistory_create','admin_base_core_corpopalmeor_list','admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit']) ? 'active' %}
-                                    {% if is_granted('ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN') %}
+                                    {% if is_granted('ROLE_BASE_ADMIN_CORPO_FESTIVAL_HISTORY_ADMIN') %}
                                     <li class="treeview {% if active %} active{% endif %}">
                                         <a href="#">
                                             <i class="fa fa-folder"></i>

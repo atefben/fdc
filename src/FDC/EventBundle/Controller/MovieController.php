@@ -30,21 +30,27 @@ class MovieController extends Controller
         if ($request->getLocale() == 'cn') {
             $locale = 'zh';
         }
-        $oldFilmAssoc = $this
+
+        $movie = $this
             ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:OldFilmsassoc')
-            ->findOneBy(['idselfkit' => $id])
+            ->getRepository('BaseCoreBundle:FilmFilm')
+            ->find($id)
         ;
 
-
-        if ($oldFilmAssoc) {
-            $movie = $this
+        if (!$movie) {
+            $oldFilmAssoc = $this
                 ->getDoctrineManager()
-                ->getRepository('BaseCoreBundle:FilmFilm')
-                ->find($oldFilmAssoc->getIdSoif())
+                ->getRepository('BaseCoreBundle:OldFilmsassoc')
+                ->findOneBy(['idselfkit' => $id])
             ;
-        } else {
-            $movie = null;
+
+            if ($oldFilmAssoc) {
+                $movie = $this
+                    ->getDoctrineManager()
+                    ->getRepository('BaseCoreBundle:FilmFilm')
+                    ->find($oldFilmAssoc->getIdSoif())
+                ;
+            }
         }
 
         if (!$movie) {

@@ -21,7 +21,7 @@
                         {% if prev is defined and not prev is empty %}
                             {% if class(prev) starts with 'News' %}
                                 <a href="{{ path('fdc_corporate_news_get', {'format': prev.newsFormat, 'slug': prev|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                                   class="prev"><i class="icon icon-arrow-right"></i></a>
+                                   class="prev"><i class="icon icon-arrow-left"></i></a>
                             {% else %}
                                 {% if class(prev) starts with 'S' %}
                                     {% set type = 'communique' %}
@@ -131,7 +131,7 @@
                                href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
                                         class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
-                      href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
+                      href="https://twitter.com/intent/tweet?text={{ news|trans_fallback('title')| truncate(35, true)}}%20{{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
                                         class="icon icon-twitter"></i></a><!--
                 --><a href="#" rel="nofollow" class="link self"
                       data-clipboard-text="{{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i

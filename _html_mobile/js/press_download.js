@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if($('.press-downloads').lenth > 0) {
+  if($('.press-downloads').length > 0) {
     var menu = $("#horizontal-menu").owlCarousel({
       nav          : false,
       dots         : false,
