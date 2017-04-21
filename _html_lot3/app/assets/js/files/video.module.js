@@ -1,4 +1,4 @@
-var timeout = 1000,
+var timeout = 1001,
     thread,
     time,
     controlBar =
@@ -73,15 +73,15 @@ var timeout = 1000,
     $topBar = '',
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-function playerInit(id, cls, havePlaylist, live) {
-    cls = cls || 'video-player';
-    havePlaylist = havePlaylist || false;
-    live = live || false;
-    var tmp;
+    function playerInit(id, cls, havePlaylist, live) {
+        cls = cls || 'video-player';
+        havePlaylist = havePlaylist || false;
+        live = live || false;
+        var tmp;
 
     if (id) {
         var videoPlayer = jwplayer(id);
-        if (!$(videoPlayer).data('loaded')) {
+        if (!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0) {
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -94,7 +94,7 @@ function playerInit(id, cls, havePlaylist, live) {
         $("." + cls).each(function (i, v) {
             var videoPlayerHTML = this.firstElementChild || this;
 
-            if(videoPlayerHTML !== null) {
+            if (videoPlayerHTML !== null) {
                 var videoPlayer = jwplayer(videoPlayerHTML.id);
                 if (!$(videoPlayer).data('loaded')) {
                     playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
@@ -290,7 +290,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                     if($('.video-container').length > 0){
                         data = $('.video-container');
-                    }else{
+                    } else {
                         data = $('.html5-video-container');
                     }
 
@@ -535,8 +535,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 }
             }
-            if ($('.popin-mail').hasClass('ismovie')) {
-            } else {
+            if (!$('.popin-mail').hasClass('ismovie')) {
                 updatePopinMedia({
                     'type': "video",
                     'category': $playlist[index].category,
@@ -675,7 +674,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     callback(playerInstance);
-};
+}
 
 $(document).ready(function () {
     if ($('#video-player-ba').length > 0) {

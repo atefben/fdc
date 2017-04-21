@@ -87,42 +87,39 @@ var initVideo = function (hash) {
         live = live || false;
         var tmp;
 
-
-        if (id) {
-            var videoPlayer = jwplayer(id);
-
-            if (!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0) {
-                playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
-                    $(vid).data('loaded', true);
-                    tmp = vid;
-                });
-            } else {
-                tmp = videoPlayer;
-            }
-            return tmp;
-        } else {
-            tmp = [];
-            $("." + cls).each(function (i, v) {
-                var videoPlayerHTML = this.firstElementChild || this;
-
-                if (videoPlayerHTML !== null) {
-                    var videoPlayer = jwplayer(videoPlayerHTML.id);
-                    if (!$(videoPlayer).data('loaded')) {
-                        playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
-                            $(vid).data('loaded', true);
-                            tmp[i] = vid;
-                        });
-                    } else {
-                        tmp[i] = videoPlayer;
-                    }
-                }
+    if (id) {
+        var videoPlayer = jwplayer(id);
+        if (!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0) {
+            playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
+                $(vid).data('loaded', true);
+                tmp = vid;
             });
-            return tmp;
+        } else {
+            tmp = videoPlayer;
         }
-    };
+    } else {
+        tmp = [];
+        $("." + cls).each(function (i, v) {
+            var videoPlayerHTML = this.firstElementChild || this;
 
-    function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
-        var $container = $("#" + vid.id).parent();
+            if (videoPlayerHTML !== null) {
+                var videoPlayer = jwplayer(videoPlayerHTML.id);
+                if (!$(videoPlayer).data('loaded')) {
+                    playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
+                        $(vid).data('loaded', true);
+                        tmp[i] = vid;
+                    });
+                } else {
+                    tmp[i] = videoPlayer;
+                }
+            }
+        });
+    }
+    return tmp;
+};
+
+function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
+    var $container = $("#" + vid.id).parent();
 
         var checkInt = window.setInterval(function () {
             $container.find('.jwplayer').removeClass('jw-skin-seven');
@@ -131,22 +128,22 @@ var initVideo = function (hash) {
             }
         }, 500);
 
-        if ($container.find('.control-bar').length <= 0) {
-            $container.append(controlBar);
-        }
-        if ($container.find('.top-bar').length <= 0) {
-            $(topBar).insertAfter($container.find('#' + vid.id));
-        }
+    if ($container.find('.control-bar').length <= 0) {
+        $container.append(controlBar);
+    }
+    if ($container.find('.top-bar').length <= 0) {
+        $(topBar).insertAfter($container.find('#' + vid.id));
+    }
 
-        var $infoBar = $container.find('.info'),
-            $stateBtn = $container.find('.playstate'),
-            $durationTime = $container.find('.duration-time'),
-            $current = $container.find('.current-time'),
-            $progressBar = $container.find('.progress-bar'),
-            $fullscreen = $container.find('.icon-fullscreen'),
-            $sound = $container.find('.sound'),
-            $topBar = $container.find('.top-bar'),
-            $playlist = [];
+    var $infoBar = $container.find('.info'),
+        $stateBtn = $container.find('.playstate'),
+        $durationTime = $container.find('.duration-time'),
+        $current = $container.find('.current-time'),
+        $progressBar = $container.find('.progress-bar'),
+        $fullscreen = $container.find('.icon-fullscreen'),
+        $sound = $container.find('.sound'),
+        $topBar = $container.find('.top-bar'),
+        $playlist = [];
 
         setTimeout(function () {
             var infos = {
@@ -486,7 +483,7 @@ var initVideo = function (hash) {
                 playerInstance.playlistItem(index);
                 sliderChannelsVideo.trigger('to.owl.carousel', [index, 1, true]);
 
-            }
+            };
 
 
             if (hash > 0) {
@@ -637,7 +634,6 @@ var initVideo = function (hash) {
 
 
             } else if (typeof $container.data('playlist') != "undefined") {
-
                 playlist = $container.data('playlist');
                 playerInstance.load(playlist);
             } else {
@@ -965,7 +961,7 @@ var initVideo = function (hash) {
                 name = $(this).find('.contain-txt strong a').text();
             }
 
-            videoNews = playerInit('video-player-popin', 'video-playlist', null, false);
+            videoNews = playerInit('video-player-popin', 'video-playlist', $('.retrospective-home').length > 0, false);
 
             var hashPush = '#vid=' + vid;
             history.pushState(null, null, hashPush);
@@ -1140,4 +1136,4 @@ var initVideo = function (hash) {
             videoPlayer = playerInit(id, 'video-player', false, false);
         });
     }
-}
+};
