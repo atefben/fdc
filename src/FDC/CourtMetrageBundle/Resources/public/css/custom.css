@@ -461,3 +461,6 @@ body.chocolat-open.fixed {
     display: inline;
 }
 
+.short-film-corner .subtitle-space {
+    margin-top: 65px;
+}
