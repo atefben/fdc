@@ -36,7 +36,7 @@ class PushFilmMobileController extends FOSRestController
      * @Rest\QueryParam(name="uuid", nullable=false, description="The uuid of the device")
      * @Rest\QueryParam(name="os", nullable=false, description="The operating system of the device")
      * @Rest\QueryParam(name="lang", nullable=false, description="The lang of the device")
-     * @Rest\QueryParam(name="film", nullable=true, description="The film id. Can be array of ids.")
+     * @Rest\QueryParam(name="film", nullable=true, description="The film id. Can be array of ids.", array=true)
      * @Rest\QueryParam(name="remove", nullable=true, description="Set remove to 1 to delete the film's push", default="0")
      *
      * @param ParamFetcher $paramFetcher
@@ -85,7 +85,7 @@ class PushFilmMobileController extends FOSRestController
             $film = $this
                 ->getDoctrine()
                 ->getManager()
-                ->getRepository('FilmFilm')
+                ->getRepository('BaseCoreBundle:FilmFilm')
                 ->find($filmId)
             ;
 
@@ -122,19 +122,40 @@ class PushFilmMobileController extends FOSRestController
 
 
 
-    protected function deletePushFilmMobile($uuid, $os, $locale, $filmId = null)
+    protected function deletePushFilmMobile($uuid, $os, $locale, $filmIds = null)
     {
-        $pushes = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('BaseCoreBundle:PushFilmMobile')
-            ->findBy(array(
-                'uuid' => $uuid,
-                'os'   => $os,
-                'locale' => $locale,
-                'film' => $filmId,
-            ))
-        ;
+        if ($filmIds) {
+            $pushes = [];
+            foreach ($filmIds as $filmId) {
+                $push = $this
+                    ->getDoctrine()
+                    ->getManager()
+                    ->getRepository('BaseCoreBundle:PushFilmMobile')
+                    ->findOneBy(array(
+                        'uuid' => $uuid,
+                        'os'   => $os,
+                        'locale' => $locale,
+                        'film' => $filmId,
+                    ))
+                ;
+                if ($push) {
+                    $pushes[] = $push;
+                }
+            }
+        }
+        else {
+            $pushes = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BaseCoreBundle:PushFilmMobile')
+                ->findBy(array(
+                    'uuid' => $uuid,
+                    'os'   => $os,
+                    'locale' => $locale,
+                ))
+            ;
+        }
+
         foreach ($pushes as $push) {
             $this->getDoctrine()->getManager()->remove($push);
             $this->getDoctrine()->getManager()->flush();
