@@ -305,7 +305,7 @@
         {% endif %}
             <div class="trailer">
                 <div class="img-container">
-                    <div class="img" style="background-image:url('{{ asset('bundles/fdceventmobile/img/webtv/homepage_bande.png') }}')"></div>
+                    <div class="img" style="background-image:url({% if homepage.trailerImage is not null %}{% path homepage.trailerImage|trans_fallback('file'), 'reference' %}{% endif %})"></div>
                     <a class="linkFull" href="{{ path('fdc_eventmobile_television_trailers') }}"></a>
                 </div>
                 <div class="info-container vCenter">
