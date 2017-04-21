@@ -384,16 +384,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $container.height();
 
-    /*console.log('setup',{
-        sources: $container.data('file'),
-        image: $container.data('img'),
-        primary: 'html5',
-        aspectratio: '16:9',
-        width: $(vid).closest('div').width(),
-        skin: 'seven',
-        height: playerHeight,
-        controls: ($('body').hasClass('tablet')) ? true : false
-    })*/
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -419,19 +409,31 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     "hour": $(p).data('hour'),
                     "category": $(p).find('.info .category').text(),
                     "name": $(p).find('.info p').text()
-                }
+                };
                 playlist.push(tempList);
             });
 
         } else if (typeof $container.data('playlist') != "undefined") {
             playlist = $container.data('playlist');
+        } else {
+            $.each($('article.item.video'), function (i, p) {
+                var tempList = {
+                    "sources": $(p).data('file'),
+                    "image": $(p).data('img'),
+                    "date": $(p).data('date'),
+                    "hour": $(p).data('hour'),
+                    "category": $(p).find('.info .category').text(),
+                    "name": $(p).find('.info p').text()
+                };
+                playlist.push(tempList);
+            });
         }
 
         $.each(playlist, function (i, p) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src', p.image);
             tempSlide.find('.info-container .category').text(p.category);
-            tempSlide.find('.info-container p').text(p.name.trunc(30, true))
+            tempSlide.find('.info-container p').text(p.name.trunc(30, true));
             tempSlide.data('json', JSON.stringify(p));
             tempSlider.find('.slider-channels-video').append(tempSlide);
         });
