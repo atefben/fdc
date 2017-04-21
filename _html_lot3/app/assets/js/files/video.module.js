@@ -415,18 +415,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         } else if (typeof $container.data('playlist') != "undefined") {
             playlist = $container.data('playlist');
-        } else {
-            $.each($('article.item.video'), function (i, p) {
-                var tempList = {
-                    "sources": $(p).data('file'),
-                    "image": $(p).data('img'),
-                    "date": $(p).data('date'),
-                    "hour": $(p).data('hour'),
-                    "category": $(p).find('.info .category').text(),
-                    "name": $(p).find('.info p').text()
-                };
-                playlist.push(tempList);
-            });
         }
 
         $.each(playlist, function (i, p) {
