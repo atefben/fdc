@@ -5,13 +5,16 @@ namespace Base\AdminBundle\Controller;
 use Base\AdminBundle\Form\Type\PressPasswordType;
 use Base\AdminBundle\Form\Type\SettingsFDCApiYearType;
 use Base\AdminBundle\Form\Type\SettingsFDCYearType;
+use Base\AdminBundle\Form\Type\SettingsPushFilmType;
 use Base\CoreBundle\Entity\Settings;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -97,5 +100,42 @@ class SettingsController extends Controller
             'formFDCApiYear' => $formFDCApiYear->createView(),
             'formPressPassword' => $formPressPassword->createView(),
         );
+
+    }
+
+    /**
+     * @Route("/push-film")
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function pushFilmMobileAction(Request $request)
+    {
+        $admin_pool = $this->get('sonata.admin.pool');
+
+        $data = [
+            'push_film_fr_message' => $this->get('base.variable')->get('push_film_fr_message'),
+            'push_film_en_message' => $this->get('base.variable')->get('push_film_en_message'),
+        ];
+
+        $form = $this->createForm(new SettingsPushFilmType(), $data);
+        $form->handleRequest($request);
+
+        $msgModified = $this->get('translator')->trans('form.flashbag.modified', array(), 'BaseAdminBundle');
+
+        if ($form->isValid()) {
+            $this->get('base.variable')->set('push_film_fr_message', $form->get('push_film_fr_message')->getData());
+            $this->get('base.variable')->set('push_film_en_message', $form->get('push_film_en_message')->getData());
+
+            $this->addFlash('success', $msgModified);
+
+            return $this->redirectToRoute('base_admin_settings_pushfilmmobile', array(
+                'admin_pool' => $admin_pool
+            ));
+        }
+
+        return $this->render('BaseAdminBundle:Settings:mobile_pushfilm.html.twig', [
+            'admin_pool' => $admin_pool,
+            'form'       => $form->createView(),
+        ]);
     }
 }

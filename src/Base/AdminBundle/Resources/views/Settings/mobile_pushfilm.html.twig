@@ -1,0 +1,25 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% trans_default_domain 'BaseAdminBundle' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    <ol class="nav navbar-top-links breadcrumb">
+        <li>
+            <a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-home"></i></a>
+        </li>
+        <li class="active"><span>{{ 'form.mobile_pushfilm.title'|trans }}</span></li>
+    </ol>
+{% endblock sonata_breadcrumb %}
+
+{% block content %}
+    <h3>{{ 'form.mobile_pushfilm.title'|trans }}</h3>
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> {{ 'form.mobile_settings.save'|trans }}</button>
+    {{ form_end(form) }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sidebar-menu li.treeview:first-child > a').click()
+        });
+    </script>
+{% endblock %}

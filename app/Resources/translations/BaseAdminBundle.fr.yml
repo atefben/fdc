@@ -712,6 +712,8 @@ dashboard:
         film_procedure: Procédure d’inscription
 form:
     corpo_movie_inscription_tab_prefix: Titre onglets procédures
+    mobile_pushfilm:
+        title: Push Film Mobile
     mobile_settings:
         title: Applications mobiles
         ios_version: Numéro de version iOS
