@@ -461,11 +461,17 @@ $(document).ready(function () {
 
             function heigthEvent() {
                 $('.fc-event').each(function (index, value) {
-                    var h = $(value).attr('data-duration');
-                    h = h * 2.65;
-                    $(value).css('height', h + 'px');
+
+                  var startDate = new Date($(value).data("start"))
+                    , duration = $(value).data("duration")
+                    , time = $(value).data("time");
+
+                  var h = duration * 2.7;
+                  $(value).css('height', h + 'px');
+
+                  $(value).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
                 })
-            }
+              }
 
         }
     }

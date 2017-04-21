@@ -103,7 +103,9 @@ class Country implements TranslateMainInterface
      *     "film_selection_section_show",
      *     "news_list", "search",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $translations;

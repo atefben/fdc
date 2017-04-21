@@ -192,6 +192,13 @@ class Homepage implements TranslateMainInterface
     protected $filmsAssociated;
 
     /**
+     * @var MediaImageSimple
+     * @ORM\ManyToOne(targetEntity="Base\CoreBundle\Entity\MediaImageSimple")
+     * @ORM\JoinColumn(name="trailer_image", referencedColumnName="id", onDelete="SET NULL")
+     */
+    protected $trailerImage;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
@@ -1283,5 +1290,21 @@ class Homepage implements TranslateMainInterface
     public function getPrefooterImage5()
     {
         return $this->prefooterImage5;
+    }
+
+    /**
+     * @return MediaImageSimple
+     */
+    public function getTrailerImage()
+    {
+        return $this->trailerImage;
+    }
+
+    /**
+     * @param MediaImageSimple $trailerImage
+     */
+    public function setTrailerImage($trailerImage)
+    {
+        $this->trailerImage = $trailerImage;
     }
 }

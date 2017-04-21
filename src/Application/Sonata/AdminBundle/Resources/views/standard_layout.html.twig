@@ -615,6 +615,12 @@ file that was distributed with this source code.
                                                                 {{ 'form.mobile_settings.title'|trans({}, 'BaseAdminBundle') }}
                                                             </a>
                                                         </li>
+                                                        <li{% if app.request.attributes.get('_route') == 'base_admin_settings_pushfilmmobile' %} class="active"{% endif %}>
+                                                            <a href="{{ path('base_admin_settings_pushfilmmobile') }}">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                                {{ 'form.mobile_pushfilm.title'|trans({}, 'BaseAdminBundle') }}
+                                                            </a>
+                                                        </li>
                                                     {% endif %}
                                                 </ul>
                                             </li>

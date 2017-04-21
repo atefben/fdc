@@ -279,6 +279,10 @@ class HomepageAdmin extends Admin
                     'sortable'  => 'position'
                 )
             )
+            ->add('trailerImage', 'sonata_type_model_list', [
+                'label' => 'form.label_homepage_trailer_background',
+                'required' => false
+            ])
             ->add('topWebTvsAssociated', 'sonata_type_collection', array(
                 'label' => 'form.label_homepage_top_web_tvs_associated',
                 'help' => 'form.homepage.helper_top_web_tvs_associated',
