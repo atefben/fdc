@@ -6,7 +6,7 @@
         <span class="select">
             <span class="active" data-filter="all">{{ 'search.result.filter.toutes'|trans }}</span>
             {% for key, selection in selections %}
-                <span data-filter="{{ selection|trans_fallback('slug') }}">{{ selection|trans_fallback('name') }}</span>
+                <span data-filter="{{ selection|trans_fallback('name') }}">{{ selection|trans_fallback('name') }}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
         </span>
@@ -16,7 +16,7 @@
         <span class="select">
             <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span>
             {% for type in types %}
-                <span data-filter="{{ type|lower|replace(' ', '-') }}">
+                <span data-filter="{{ type }}">
                     {{ type }}
                 </span>
             {% endfor %}

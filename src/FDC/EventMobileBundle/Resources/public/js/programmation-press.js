@@ -520,6 +520,12 @@ $(document).ready(function () {
                         });
                         venues.owlCarousel();
 
+                        // reset filters
+                        $('.filters #category span[data-filter]:not([data-filter="all"])').removeClass('active').css('display', 'none');
+                        $('.filters #category span[data-filter="all"]').addClass('active');
+
+                        $('.filters #type span[data-filter]:not([data-filter="all"])').removeClass('active').css('display', 'none');
+                        $('.filters #type span[data-filter="all"]').addClass('active');
 
                         $('.calendar .v-container').each(function () {
                             var endDate = new Date("1900-01-01T00:00:00").getTime();
@@ -577,6 +583,10 @@ $(document).ready(function () {
 
                                 console.log(eventObject);
 
+                                // repopulate filters
+                                $('.filters #category span[data-filter="' + eventObject.selection + '"]').removeAttr('style');
+                                $('.filters #type span[data-filter="' + eventObject.type + '"]').removeAttr('style');
+                                
                                 // store the Event Object in the DOM element so we can get to it later
                                 $(this).data('eventObject', eventObject);
 
@@ -885,7 +895,30 @@ $(document).ready(function () {
                   $(value).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
                 })
               }
+            // add filters functionality
+            $('body').on('click', '#filters span[data-filter]', function () {
+                var filtersType = $(this).closest('#filters').attr('data-id'),
+                    category = filtersType == 'category' ? $(this).attr('data-filter') : $('.filters #category span.active').attr('data-filter'),
+                    type     = filtersType == 'type' ? $(this).attr('data-filter') : $('.filters #type span.active').attr('data-filter');
 
+                $('.calendar .fc-event').each(function (k, evt) {
+                    var $evt = $(evt),
+                        evtData = $evt.data('eventObject'),
+                        evtCategory = evtData.selection,
+                        evtType = evtData.type
+                        ;
+                    if (
+                        (category == 'all' && type == 'all') ||
+                        (category == evtCategory && type == 'all') ||
+                        (category == 'all' && type == evtType) ||
+                        (category == evtCategory && type == evtType)
+                    ) {
+                        $evt.css('display', 'block');
+                    } else {
+                        $evt.css('display', 'none');
+                    }
+                });
+            });
         }
     }
 );
