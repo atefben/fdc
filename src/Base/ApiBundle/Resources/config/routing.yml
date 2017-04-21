@@ -94,6 +94,10 @@ push_mobile:
     type:       rest
     resource:   Base\ApiBundle\Controller\PushMobileController
 
+push_film_mobile:
+    type:       rest
+    resource:   Base\ApiBundle\Controller\PushFilmMobileController
+
 api_search:
     type:       rest
     resource:   Base\ApiBundle\Controller\SearchController

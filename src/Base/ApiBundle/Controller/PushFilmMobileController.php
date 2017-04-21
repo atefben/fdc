@@ -24,7 +24,7 @@ class PushFilmMobileController extends FOSRestController
      * @Rest\View()
      * @ApiDoc(
      *   resource = true,
-     *   description = "add push",
+     *   description = "add push film",
      *   section="Push Mobile",
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -36,8 +36,8 @@ class PushFilmMobileController extends FOSRestController
      * @Rest\QueryParam(name="uuid", nullable=false, description="The uuid of the device")
      * @Rest\QueryParam(name="os", nullable=false, description="The operating system of the device")
      * @Rest\QueryParam(name="lang", nullable=false, description="The lang of the device")
-     * @Rest\QueryParam(name="film", nullable=true, description="The film id")
-     * @Rest\QueryParam(name="remove", nullable=true, description="Set remove to 1 to remove the film's push", default="0")
+     * @Rest\QueryParam(name="film", nullable=true, description="The film id. Can be array of ids.")
+     * @Rest\QueryParam(name="remove", nullable=true, description="Set remove to 1 to delete the film's push", default="0")
      *
      * @param ParamFetcher $paramFetcher
      * @return View
