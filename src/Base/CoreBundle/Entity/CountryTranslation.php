@@ -41,7 +41,9 @@ class CountryTranslation implements TranslateChildInterface
      *     "film_selection_section_show",
      *     "news_list", "search",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $name;
@@ -64,7 +66,9 @@ class CountryTranslation implements TranslateChildInterface
      *     "film_selection_section_show",
      *     "news_list", "search",
      *     "news_show",
-     *     "search"
+     *     "search",
+     *     "jury_list",
+     *     "jury_show"
      * })
      */
     protected $lang;
