@@ -16,7 +16,7 @@
         <span class="select">
             <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span>
             {% for type in types %}
-                <span data-filter="{{ type }}">
+                <span data-filter="{{ type|lower|replace(' ', '-') }}">
                     {{ type }}
                 </span>
             {% endfor %}

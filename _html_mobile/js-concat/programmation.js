@@ -451,7 +451,7 @@ $(document).ready(function () {
 
                                 // repopulate filters
                                 $('.filters #category span[data-filter="' + eventObject.selection + '"]').removeAttr('style');
-                                $('.filters #type span[data-filter="' + eventObject.type + '"]').removeAttr('style');
+                                $('.filters #type span[data-filter="' + $(this).attr('data-type') + '"]').removeAttr('style');
                                 
                                 // store the Event Object in the DOM element so we can get to it later
                                 $(this).data('eventObject', eventObject);
@@ -769,9 +769,8 @@ $(document).ready(function () {
 
                 $('.calendar .fc-event').each(function (k, evt) {
                     var $evt = $(evt),
-                        evtData = $evt.data('eventObject'),
-                        evtCategory = evtData.selection,
-                        evtType = evtData.type
+                        evtCategory = $evt.data('eventObject').selection,
+                        evtType = $evt.attr('data-type')
                         ;
                     if (
                         (category == 'all' && type == 'all') ||
