@@ -36,7 +36,7 @@ class PushFilmMobileController extends FOSRestController
      * @Rest\QueryParam(name="uuid", nullable=false, description="The uuid of the device")
      * @Rest\QueryParam(name="os", nullable=false, description="The operating system of the device")
      * @Rest\QueryParam(name="lang", nullable=false, description="The lang of the device")
-     * @Rest\QueryParam(name="film", nullable=true, description="The film id. Can be array of ids.", array=true)
+     * @Rest\QueryParam(name="film", nullable=true, description="The film ids. Must be array.", array=true)
      * @Rest\QueryParam(name="remove", nullable=true, description="Set remove to 1 to delete the film's push", default="0")
      *
      * @param ParamFetcher $paramFetcher
