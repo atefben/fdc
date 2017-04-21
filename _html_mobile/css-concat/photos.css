@@ -3997,9 +3997,6 @@ body.chocolat-open>.chocolat-content{
 /*    visibility: visible;*/
 
 }
-#filters span:first-child {
-    margin-top: 100px;
-}
 #filters span {
     color: #fff;
     display: block;
@@ -4029,6 +4026,7 @@ body.chocolat-open>.chocolat-content{
     line-height: 45px;
 }
 #filters span:nth-child(1) {
+  margin-top: 100px;
   -moz-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, -moz-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, -o-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95) 0.1s, color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: opacity 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), -webkit-transform 0.5s cubic-bezier(0.15, 0.9, 0.34, 0.95), color 0.9s cubic-bezier(0.15, 0.9, 0.34, 0.95);
