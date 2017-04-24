@@ -6508,6 +6508,7 @@ $(document).ready(function() {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
 
+          item.text = item.text.replace(/href="*"/g, 'href="#"');
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
         }

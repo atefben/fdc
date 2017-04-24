@@ -1,0 +1,3 @@
+#filters span:not(.do-display) {
+    display:none;
+}
