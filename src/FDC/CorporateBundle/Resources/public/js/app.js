@@ -3722,7 +3722,8 @@ $(document).ready(function() {
           setTimeout(function(){
               if (!$('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab')) {
                   videoMovieBa.playlistItem(number);
-                  //window.location.hash = 'vid=' + ???; // FIXME : find a way to access the video url from slider item
+                  var video = videoMovieBa.getPlaylistItem(number);
+                  window.location.hash = 'vid=' + video.id;
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
           }, 100);
@@ -6507,7 +6508,7 @@ $(document).ready(function() {
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
-          item.text = item.text.replace(/href="*"/g, 'href="#" onclick="return false;"');
+
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
         }
