@@ -130,6 +130,13 @@ class Node implements TranslateMainInterface
     protected $displayedMobile = false;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hidden", type="boolean", options={"default":0}, nullable=true)
+     */
+    protected $hidden = false;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="signature", type="string", nullable=true)
@@ -618,5 +625,28 @@ class Node implements TranslateMainInterface
     public function getTypeClone()
     {
         return $this->typeClone;
+    }
+
+    /**
+     * Set hidden
+     *
+     * @param boolean $hidden
+     * @return $this
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get hidden
+     *
+     * @return boolean 
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
     }
 }

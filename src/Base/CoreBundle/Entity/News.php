@@ -1132,6 +1132,9 @@ abstract class News implements TranslateMainInterface, RoutedItemInterface, Node
         if ($this->getExcludeFromSearch()) {
             $isElasticable = false;
         }
+        if ($this->getHidden()) {
+            $isElasticable = false;
+        }
         return $isElasticable;
     }
 
