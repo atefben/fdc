@@ -139,7 +139,7 @@
                                      data-id="{{ seance.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                      data-start="{{ seance.startsAt|date('Y-m-d') }}T{{ seance.startsAt|date('H:i:s') }}"
                                      data-end="{{ seance.endsAt|date('Y-m-d') }}T{{ seance.endsAt|date('H:i:s') }}"
-                                     data-time="{{ seance.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                                     data-time="{% if seance.startsAt|date('H') >= 0 and seance.startsAt|date('H') <= 3 %}{{ 24 + seance.startsAt|date('H') }}{% else %}{{ seance.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}"
                                 >
                                     <span class="category">
                                         <i class="icon icon_evt-seance-presse"></i>
@@ -227,7 +227,7 @@
                                      data-id="{{ conference.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                      data-start="{{ conference.startsAt|date('Y-m-d') }}T{{ conference.startsAt|date('H:i:s') }}"
                                      data-end="{{ conference.endsAt|date('Y-m-d') }}T{{ conference.endsAt|date('H:i:s') }}"
-                                     data-time="{{ conference.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                                     data-time="{% if conference.startsAt|date('H') >= 0 and conference.startsAt|date('H') <= 3 %}{{ 24 + conference.startsAt|date('H') }}{% else %}{{ conference.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}"
                                 >
                                         <span class="category">
                                             <i class="icon icon_evt-seance-conference"></i>
@@ -312,7 +312,7 @@
                                      data-id="{{ relatedProjection.id }}" data-picto='.seance' data-color='{{ dataColor }}'
                                      data-start="{{ relatedProjection.startsAt|date('Y-m-d') }}T{{ relatedProjection.startsAt|date('H:i:s') }}"
                                      data-end="{{ relatedProjection.endsAt|date('Y-m-d') }}T{{ relatedProjection.endsAt|date('H:i:s') }}"
-                                     data-time="{{ relatedProjection.startsAt|date('H') }}" data-duration="{{ minutes }}"
+                                     data-time="{% if relatedProjection.startsAt|date('H') >= 0 and relatedProjection.startsAt|date('H') <= 3 %}{{ 24 + relatedProjection.startsAt|date('H') }}{% else %}{{ relatedProjection.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}"
                                         >
                                         <span class="category">
                                             <i class="icon icon_evt-seance"></i>

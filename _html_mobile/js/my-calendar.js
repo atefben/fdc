@@ -81,8 +81,8 @@ $(document).ready(function() {
   addEventsInCalendar();
 
   function displayProgrammationDay(day) {
-    var startDayDate = new Date("2016-05-"+day+"T08:00:00").getTime();
-    var endDayDate = new Date("2016-05-"+(day+1)+"T03:00:00").getTime();
+    var startDayDate = new Date("2016-05-"+day+"T00:00:00").getTime();
+    var endDayDate = new Date("2016-05-"+day+"T24:00:00").getTime();
 
     $(".fc-event").each(function () {
       var startDate = new Date($(this).data('start')).getTime();
