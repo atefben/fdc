@@ -581,10 +581,8 @@ class NewsController extends Controller
         $festival = $this->getFestival($year);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
-        try {
-            $isAdmin = $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
-        } catch (\Exception $e) {
-            $isAdmin = false;
+        if ($this->getUser()) {
+            $isAdmin = $this->getUser()->hasRole('ROLE_ADMIN') || $this->getUser()->hasRole('ROLE_ALL_ADMIN');
         }
 
         // GET FDC SETTINGS
@@ -726,7 +724,7 @@ class NewsController extends Controller
 
         $isAdmin = false;
         if ($this->getUser()) {
-            $isAdmin = $this->getUser()->hasRole('ROLE_ADMIN');
+            $isAdmin = $this->getUser()->hasRole('ROLE_ADMIN') || $this->getUser()->hasRole('ROLE_ALL_ADMIN');
         }
 
         // GET FDC SETTINGS
