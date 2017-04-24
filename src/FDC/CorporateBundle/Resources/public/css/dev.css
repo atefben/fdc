@@ -743,5 +743,5 @@ body.ismobile .slider-home .container-images .item {
 }
 
 #social-wall a, #social-wall #wall .post .side.hasimg {
-    cursor: default;
+    cursor: default !important;
 }
