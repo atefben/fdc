@@ -237,6 +237,7 @@ abstract class Info implements TranslateMainInterface, NodeInterface
     /**
      * @var bool
      * @ORM\Column(name="orange", type="boolean", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     protected $orange = false;
 

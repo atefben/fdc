@@ -265,12 +265,14 @@ abstract class News implements TranslateMainInterface, RoutedItemInterface, Node
     /**
      * @var bool
      * @ORM\Column(name="orange", type="boolean", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     protected $orange = false;
 
     /**
      * @var bool
      * @ORM\Column(name="orange_type", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
      */
     protected $orangeType;
 
