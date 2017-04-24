@@ -104,6 +104,7 @@ class NodeListener
             ->setMainImage($object->getHeader())
             ->setTheme($object->getTheme())
             ->setTypeClone($object->getTypeClone())
+            ->setOrange($object->getOrange())
         ;
 
         if ($object instanceof News) {

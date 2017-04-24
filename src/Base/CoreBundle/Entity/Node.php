@@ -187,6 +187,12 @@ class Node implements TranslateMainInterface
      */
     protected $sites;
 
+    /**
+     * @var bool
+     * @ORM\Column(name="orange", type="boolean", nullable=true)
+     */
+    protected $orange = false;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -648,5 +654,28 @@ class Node implements TranslateMainInterface
     public function getHidden()
     {
         return $this->hidden;
+    }
+
+    /**
+     * Set orange
+     *
+     * @param boolean $orange
+     * @return $this
+     */
+    public function setOrange($orange)
+    {
+        $this->orange = $orange;
+
+        return $this;
+    }
+
+    /**
+     * Get orange
+     *
+     * @return boolean 
+     */
+    public function getOrange()
+    {
+        return $this->orange;
     }
 }

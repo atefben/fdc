@@ -281,4 +281,19 @@ interface NodeInterface
      * @return string
      */
     public function getMobileDisplay();
+
+    /**
+     * Set orange
+     *
+     * @param boolean $orange
+     * @return $this
+     */
+    public function setOrange($orange);
+
+    /**
+     * Get orange
+     *
+     * @return boolean
+     */
+    public function getOrange();
 }
