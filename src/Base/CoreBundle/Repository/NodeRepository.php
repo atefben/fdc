@@ -404,7 +404,7 @@ class NodeRepository extends EntityRepository
             ->andWhere('(n.publishEndedAt IS NULL OR n.publishEndedAt >= :dateTime)')
             ->setParameter('dateTime', new DateTime())
             ->andWhere('n.hidden != :hidden')
-            ->setParameter(':hidden',true)
+            ->setParameter(':hidden', true)
         ;
 
         if ($festival) {

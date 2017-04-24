@@ -579,7 +579,6 @@ class NewsController extends Controller
         $locale = $this->getRequest()->getLocale();
 
         $festival = $this->getFestival($year);
-        $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
 
         if ($this->getUser()) {
             $isAdmin = $this->getUser()->hasRole('ROLE_ADMIN') || $this->getUser()->hasRole('ROLE_ALL_ADMIN');

@@ -8,7 +8,6 @@ use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
-use JMS\DiExtraBundle\Annotation as DI;
 
 /**
  * NewsRepository class.
@@ -160,7 +159,7 @@ class NewsRepository extends EntityRepository
             ->setParameter('festival', $festival->getId())
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     public function getApiLastsNews($locale, $festival, $dateTime, $count, DateTime $limitDate = null)
@@ -328,6 +327,8 @@ class NewsRepository extends EntityRepository
             ->leftJoin('na1.translations', 'na1t')
             ->andWhere('s.slug = :site')
             ->setParameter(':site', $site)
+            ->andWhere('n.hidden != :hidden')
+            ->setParameter(':hidden', true)
         ;
 
         // add query for audio / video encoder
@@ -518,8 +519,7 @@ class NewsRepository extends EntityRepository
                     (na2t.locale = :locale AND na2t.status = :status_published) OR
                     (na3t.locale = :locale AND na3t.status = :status_published) OR
                     (na4t.locale = :locale AND na4t.status = :status_published)'
-                )
-            ;
+                );
         }
 
         $qb
@@ -536,7 +536,7 @@ class NewsRepository extends EntityRepository
         return $qb
             ->getQuery()
             ->getResult()
-        ;
+            ;
 
     }
 
