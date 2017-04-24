@@ -464,3 +464,9 @@ body.chocolat-open.fixed {
 .short-film-corner .subtitle-space {
     margin-top: 65px;
 }
+
+.tablet #slider-aboutVideos .owl-item .shadow-bottom-vid:before,
+.mob #slider-aboutVideos .owl-item .shadow-bottom-vid:before,
+.tablette #slider-aboutVideos .owl-item .shadow-bottom-vid:before {
+    z-index: 2;
+}
