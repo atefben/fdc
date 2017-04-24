@@ -97,18 +97,22 @@ html {
     display: inline-block;
     height: 100%;
     text-transform: uppercase;
-    color: #fff;
-    background: #c9a45e;
-    padding: 0px 15px; }
+    color: #ff6600;
+    padding: 15px 15px 0 15px;
+    font-weight: bold; }
   .Article-header-meta-date {
     text-transform: uppercase;
     color: #bfbfbf;
-    padding-left: 10px; }
+    padding-left: 10px;
+    margin: 4rem 0;
+    display: block; }
   .Article-header-meta-misc {
     font-size: 0.6rem;
     padding-left: 12px;
     color: #666666;
-    display: inline-block; }
+    display: inline-block;
+    float: right;
+    margin-right: 15px; }
     .Article-header-meta-misc strong {
       color: #212121; }
     .Article-header-meta-misc .copyright {
@@ -121,11 +125,11 @@ html {
   padding: 25px 20px 15px 20px;
   font-size: 1.4em; }
   .Article-content h1 {
-    font-family: "Playfair Display";
-    font-weight: bold;
+    font-family: "Open Sans";
     font-size: 2.8rem;
+    font-weight: bold;
     line-height: 3rem;
-    padding-bottom: 4rem; }
+    text-transform: uppercase; }
   .Article-content table {
     width: 100% !important; }
   .Article-content p {
@@ -368,6 +372,27 @@ html {
   font-family: "Playfair Display";
   padding-bottom: 3.7rem;
   font-size: 1.5rem; }
+
+.Article-black-block {
+  background-color: black;
+  height: 200px; }
+  .Article-black-block-logos {
+    margin: 0 auto;
+    height: 50px;
+    display: table;
+    padding-top: 15%;
+    margin-bottom: 10px; }
+    .Article-black-block-logos img {
+      height: 100%;
+      display: inline-block; }
+  .Article-black-block h2 {
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 2.3rem;
+    display: table;
+    padding: 3px 10px; }
 
 .Article-content a {
   text-decoration: none;
