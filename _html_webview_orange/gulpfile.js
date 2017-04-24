@@ -3,11 +3,11 @@ var sass = require('gulp-sass');
 var config = {
 	css: {
 		src: 'css/webview.css',
-		dest: '../src/FDC/EventBundle/Resources/public/webview/css/',
+		dest: '../src/FDC/EventBundle/Resources/public/webview_orange/css/',
 	},
 	js: {
 		src: 'js/*',
-		dest: '../src/FDC/EventBundle/Resources/public/webview/js/'
+		dest: '../src/FDC/EventBundle/Resources/public/webview_orange/js/'
 	}
 };
 
