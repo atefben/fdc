@@ -318,3 +318,48 @@
     margin: 0;
     width: 100%;
 }
+
+.little-txt {
+    font-size: 0.750rem;
+}
+
+.caption-article {
+    font-size: 0.750rem;
+}
+
+.big-quote span.big-quote-paragraph {
+    font-size: .875rem;
+}
+
+.text-content  .txt-grey-bkg-container {
+    font-size: 1rem;
+}
+
+.text-content .txt-grey-bkg-container strong {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
+    font-size: 1rem;
+}
+
+.loc {
+    display: block;
+    width: 246px;
+    margin: 0 auto;
+    line-height: 20px;
+}
+
+.title-acces {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    font-size: .75rem;
+    padding-bottom: 20px;
+}
+.descript-acces {
+    padding-bottom: 20px;
+    font-size: .8125rem;
+    line-height: 24px;
+}
