@@ -4,6 +4,7 @@ $(document).ready(function(){
     });
 });
 
+
 var initHeaderSticky = function () {
 
     $(window).on('scroll', function () {
