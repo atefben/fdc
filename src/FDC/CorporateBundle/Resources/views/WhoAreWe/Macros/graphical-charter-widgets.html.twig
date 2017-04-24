@@ -1,0 +1,257 @@
+{% macro oneColumn(widget, extra) %}
+    {% trans_default_domain 'FDCCorporateBundle' %}
+    <div class="contain-infos">
+        <div class="single-image vFlexAlign">
+            <img src="{% path widget.image|trans_fallback('file'), 'reference' %}"
+                 alt="image">
+        </div>
+    </div>
+
+    {#<div class="download no-flex customWidth wysiwyg">#}
+    {% if widget.title|default('')|trim %}
+        <span class="title-img-top">{{ widget.title }}</span>
+    {% endif %}
+    {% if widget.legend|default('')|trim %}
+        <p class="caption">{{ widget.legend|raw }}</p>
+    {% endif %}
+    {% if widget.subLegend|default('')|trim %}
+        <p class="s-caption">{{ widget.subLegend|raw }}</p>
+    {% endif %}
+    {#</div>#}
+    {% if widget.buttonGroup is defined and widget.buttonGroup|length %}
+        {% for buttonSection in widget.buttonGroup %}
+            <div class="item download">
+                <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                {% if buttonSection.files|length %}
+                    <div class="buttons buttons-02 a-left s-margin-top">
+                        {% for buttonFile in buttonSection.files if buttonFile.file %}
+                            <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                <i class="icon icon-download"></i> {{ buttonFile.title|default(null) }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if widget.technicalConstraintsPopupActive|default(false) %}
+                    <a href="#" class="link a-left modal-toggle-label"
+                       data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro twoColumns(widget, extra) %}
+    {% trans_default_domain 'FDCCorporateBundle' %}
+    <div class="contain-infos">
+
+        <div class="two-images no-margin-top">
+            <div class="item-img small">
+                {% if widget.image|default(null) %}
+                    <div class="contain-img vFlexAlign">
+                        <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="image">
+                    </div>
+                {% endif %}
+
+                {% if widget.title|default('')|trim %}
+                    <span class="title-img-top">{{ widget.title }}</span>
+                {% endif %}
+                {% if widget.legend|default('')|trim %}
+                    <p class="caption">{{ widget.legend|raw }}</p>
+                {% endif %}
+                {% if widget.subLegend|default('')|trim %}
+                    <p class="s-caption">{{ widget.subLegend|raw }}</p>
+                {% endif %}
+
+                {% if widget.buttonGroup is defined and widget.buttonGroup|length %}
+                    {% for buttonSection in widget.buttonGroup %}
+                        <div class="item download">
+                            <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                            {% if buttonSection.files|length %}
+                                <div class="buttons buttons-02 a-left s-margin-top">
+                                    {% for buttonFile in buttonSection.files if buttonFile.file %}
+                                        <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                            <i class="icon icon-download"></i> {{ buttonFile.title|default('') }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if widget.technicalConstraintsPopupActive|default(false) %}
+                                <a href="#" class="link a-left modal-toggle-label"
+                                   data-content="{{ widget.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="item-img big">
+                {% if widget.image2|default(null) %}
+                    <div class="contain-img vFlexAlign">
+                        <img src="{% path widget.image2|trans_fallback('file'), 'reference' %}" alt="image">
+                    </div>
+                {% endif %}
+
+                {% if widget.title2|default('')|trim %}
+                    <span class="title-img-top">{{ widget.title2 }}</span>
+                {% endif %}
+                {% if widget.legend2|default('')|trim %}
+                    <p class="caption">{{ widget.legend2|raw }}</p>
+                {% endif %}
+                {#{% if widget.subLegend|default('')|trim %}#}
+                {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}
+                {#{% endif %}#}
+
+                {% if widget.buttonGroup2 is defined and widget.buttonGroup2|length %}
+                    {% for buttonSection in widget.buttonGroup2 %}
+                        <div class="item download">
+                            <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                            {% if buttonSection.files|length %}
+                                <div class="buttons buttons-02 a-left s-margin-top">
+                                    {% for buttonFile in buttonSection.files if buttonFile.file %}
+                                        <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                            <i class="icon icon-download"></i> {{ buttonFile.title|default('') }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if widget.technicalConstraintsPopupActive2|default(false) %}
+                                <a href="#" class="link a-left modal-toggle-label"
+                                   data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+            </div> <!--fin item-img-->
+        </div> <!-- fin two-image-->
+    </div>
+{% endmacro %}
+
+{% macro threeColumns(widget, extra) %}
+    {% trans_default_domain 'FDCCorporateBundle' %}
+    <div class="contain-infos">
+
+        <div class="three-images vFlexAlign">
+            <div class="item-img">
+                {% if widget.image|default(null) %}
+                    <div class="contain-img vFlexAlign">
+                        <img src="{% path widget.image|trans_fallback('file'), 'reference' %}" alt="image">
+                    </div>
+                {% endif %}
+
+                {% if widget.title|default('')|trim %}
+                    <span class="title-img-top">{{ widget.title }}</span>
+                {% endif %}
+                {% if widget.legend|default('')|trim %}
+                    <p class="caption">{{ widget.legend|raw }}</p>
+                {% endif %}
+                {% if widget.subLegend|default('')|trim %}
+                    <p class="s-caption">{{ widget.subLegend|raw }}</p>
+                {% endif %}
+
+                {% if widget.buttonGroup is defined and widget.buttonGroup|length %}
+                    {% for buttonSection in widget.buttonGroup %}
+                        <div class="item download">
+                            <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                            {% if buttonSection.files|length %}
+                                <div class="buttons buttons-02 a-left s-margin-top">
+                                    {% for buttonFile in buttonSection.files if buttonFile.file %}
+                                        <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                            <i class="icon icon-download"></i> {{ buttonFile.title|default('') }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if widget.technicalConstraintsPopupActive|default(false) %}
+                                <a href="#" class="link a-left modal-toggle-label"
+                                   data-content="{{ extra.technicalConstraints|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="item-img">
+                {% if widget.image2|default(null) %}
+                    <div class="contain-img vFlexAlign">
+                        <img src="{% path widget.image2|trans_fallback('file'), 'reference' %}" alt="image">
+                    </div>
+                {% endif %}
+
+                {% if widget.title2|default('')|trim %}
+                    <span class="title-img-top">{{ widget.title2 }}</span>
+                {% endif %}
+                {% if widget.legend2|default('')|trim %}
+                    <p class="caption">{{ widget.legend2|raw }}</p>
+                {% endif %}
+                {#{% if widget.subLegend|default('')|trim %}#}
+                {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}
+                {#{% endif %}#}
+
+                {% if widget.buttonGroup2 is defined and widget.buttonGroup2|length %}
+                    {% for buttonSection in widget.buttonGroup2 %}
+                        <div class="item download">
+                            <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                            {% if buttonSection.files|length %}
+                                <div class="buttons buttons-02 a-left s-margin-top">
+                                    {% for buttonFile in buttonSection.files if buttonFile.file %}
+                                        <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                            <i class="icon icon-download"></i> {{ buttonFile.title|default('') }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if widget.technicalConstraintsPopupActive2|default(false) %}
+                                <a href="#" class="link a-left modal-toggle-label"
+                                   data-content="{{ extra.technicalConstraints2|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+            </div> <!--fin item-img-->
+
+            <div class="item-img">
+                {% if widget.image3|default(null) %}
+                    <div class="contain-img vFlexAlign">
+                        <img src="{% path widget.image3|trans_fallback('file'), 'reference' %}" alt="image">
+                    </div>
+                {% endif %}
+
+                {% if widget.title3|default('')|trim %}
+                    <span class="title-img-top">{{ widget.title3 }}</span>
+                {% endif %}
+                {% if widget.legend3|default('')|trim %}
+                    <p class="caption">{{ widget.legend3|raw }}</p>
+                {% endif %}
+                {#{% if widget.subLegend|default('')|trim %}#}
+                {#<p class="s-caption">{{ widget.subLegend|raw }}</p>#}
+                {#{% endif %}#}
+
+                {% if widget.buttonGroup3 is defined and widget.buttonGroup3|length %}
+                    {% for buttonSection in widget.buttonGroup3 %}
+                        <div class="item download">
+                            <strong class="title-dowload ">{{ buttonSection.title|default(null) }}</strong>
+                            {% if buttonSection.files|length %}
+                                <div class="buttons buttons-03 a-left s-margin-top">
+                                    {% for buttonFile in buttonSection.files if buttonFile.file %}
+                                        <a href="{% path buttonFile.file, 'reference' %}" class="button">
+                                            <i class="icon icon-download"></i> {{ buttonFile.title|default('') }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if widget.technicalConstraintsPopupActive3|default(false) %}
+                                <a href="#" class="link a-left modal-toggle-label"
+                                   data-content="{{ extra.technicalConstraints3|json_encode }}">{{ 'graphical.charter.technical.constraints'|trans }}</a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+            </div> <!--fin item-img-->
+
+        </div> <!-- fin three-image-->
+    </div>
+{% endmacro %}

@@ -1,0 +1,24 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+{% if searchFilter == 'artist' %}
+    {% set sliderType = 'portrait-slider' %}
+{% elseif searchFilter == 'film' %}
+    {% set sliderType = 'portrait-slider' %}
+{% elseif searchFilter == 'news' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% elseif searchFilter == 'statement' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% elseif searchFilter == 'info' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% elseif searchFilter == 'media' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% elseif searchFilter == 'event' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% elseif searchFilter == 'participate' %}
+    {% set sliderType = 'landscape-carousel' %}
+{% endif %}
+<div class="resultsContainer">
+    <div class="owl-carousel list {{ sliderType }}">
+        {% include 'FDCEventMobileBundle:Search:' ~ searchFilter ~ '.html.twig' with { 'items': items, 'searchFilters': searchFilters } %}
+    </div>
+</div>

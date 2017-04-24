@@ -16,6 +16,8 @@
                     {% set admin = admins[type][typeSecond] %}
                 {% elseif type == 'pages' %}
                     {% set admin = admins[type][class(object)] %}
+                {% elseif type == 'Gallery' %}
+                    {% set admin = admins[type][class(object)] %}
                 {% else %}
                     {% set admin = admins[type] %}
                 {% endif %}

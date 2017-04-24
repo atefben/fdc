@@ -85,11 +85,6 @@ class CcmSubNavAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('isActive', 'checkbox', array(
-                    'label' => 'form.ccm.label.menu.sub_nav_is_active',
-                    'required' => false,
-                )
-            )
         ;
     }
 

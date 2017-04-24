@@ -1,7 +1,6 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
-
 <article class="block-movie-preview" style="background-image: url('{% spaceless %}
-    {% include 'FDCCorporateBundle:Global:components/film.cover.html.twig' with ({
+    {% include 'FDCCorporateBundle:Global:components/film.poster.html.twig' with ({
     film: film,
     film_format: '976x535',
     film_image_default: '/bundles/fdccorporate/media/images/film1900x800.jpg',
@@ -11,6 +10,7 @@
     <div class="bck-hover">
         <div class="wrapper-item">
             <div class="poster">
+                <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}">
                 {% include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
                 film: film,
                 film_format: '259x352',
@@ -20,6 +20,7 @@
                 },
                 film_image_default: '/bundles/fdccorporate/media/images/film_w256.jpg'
                 }) %}
+                </a>
             </div>
             <div class="infos">
                 {% if projection is defined and projection is not empty %}
@@ -31,12 +32,21 @@
                 {% endif %}
 
                 <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}"><strong class="name-f">{{ film.titleVO }}</strong></a>
+                {% if titleTranslated is defined %}
+                    <p id="title-vf-selection" class="film-title-translations">
+                        <a href="{{ path('fdc_corporate_movie_get', {'slug': film.slug}) }}">
+                            ( {{ titleTranslated }} )
+                        </a>
+                    </p>
+                {% endif %}
 
                 {% set directors = film.getDirectors() %}
                 <span class="names-a">
                 {% for director in directors %}
-                    {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
-                    {% if loop.index != directors|length %} , {% endif %}
+                    {% if not director.person.duplicate %}
+                        {% if loop.index != 1 and loop.index+1 != directors|length %} , {% endif %}
+                        {% include 'FDCCorporateBundle:Movie:widgets/check_asian_name.html.twig' with {'person': director.person} %}
+                    {% endif %}
                 {% endfor %}
                 </span>
 

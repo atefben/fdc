@@ -63,7 +63,7 @@ class FilmFilmPerson implements TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "news_list", "search",
      *     "news_show",
@@ -85,7 +85,7 @@ class FilmFilmPerson implements TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "news_list", "search",
      *     "news_show",
@@ -105,7 +105,7 @@ class FilmFilmPerson implements TranslateMainInterface
      * @Groups({
      *     "film_list",
      *     "film_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "classics",
      *     "orange_studio"

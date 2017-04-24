@@ -1,9 +1,9 @@
 {% trans_default_domain 'FDCCorporateBundle' %}
 {% extends 'FDCCorporateBundle::layout.html.twig' %}
-{% block bodyClass %}loading retrospective selection retrospective-home restrospective-init dark{% endblock %}
+{% block bodyClass %}loading retrospective selection retrospective-home fs-off restrospective-init dark not-mobile classic{% endblock %}
 
 {% block body %}
-    <section class=" border-bottom s-slider-retrospective">
+    <section class="border-bottom s-slider-retrospective">
 
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
 
@@ -73,7 +73,7 @@
                                 {% include 'FDCCorporateBundle:News:widgets/single-photo.html.twig' with {'photo' : photo, 'hideCopyright': true } %}
                                 {% set copyright = photo|trans_fallback('copyright') %}
                                 {% set legend = widget.image|trans_fallback('legend') %}
-                                <br><br><span class="copy">{% if copyright is not empty %} {{ legend }} © {{ copyright }}{% endif %}</span>
+                                <br><span class="copy">{% if copyright is not empty %} {{ legend }} © {{ copyright }}{% endif %}</span>
                             </div>
                         {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
                             <div class="photos photo-module block-01-xs" data-section="photos">
@@ -110,7 +110,8 @@
                                                 <div class="infos">
                                                     <a href="{{ path('fdc_corporate_movie_get', {'slug': film.film.slug}) }}"><strong
                                                                 class="name-f">{{ film.film.titleVO }}</strong></a>
-                                                    {% set directors = film.getDirectors() %}
+                                                    {% if film.film.getDirectors()|length %}
+                                                    {% set directors = film.film.getDirectors() %}
                                                     {% set directorsName = '' %}
                                                     {% for director in directors %}
                                                         <a href="{{ path('fdc_corporate_artist_get', {'slug': director.person.slug}) }}"><span
@@ -120,6 +121,7 @@
                                                                 </span></a>
 
                                                     {% endfor %}
+                                                    {% endif %}
                                                     <span class="date">
                                                             {% set duration = [] %}
                                                         {% if film.film.duration is not empty %}
@@ -198,18 +200,10 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
     "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
-    "name" : app.request.attributes.get('year'),
-    "url"  : path('fdc_corporate_editions_year', {'year': app.request.attributes.get('year')})
-    },
-    {
-    "name" : 'breadcrumb.la_selection'|trans,
+    "name" : 'breadcrumb.la_selection'|trans ~ ' ' ~ app.request.attributes.get('year'),
     "url"  : path('fdc_corporate_movie_selection', {'year': app.request.attributes.get('year')})
     },
     {

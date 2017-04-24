@@ -60,12 +60,19 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
             $criteria['id'] = $id;
         }
         if ($entity == 'SonataMedia') {
-            $objects = $this
+            $qb = $this
                 ->getDoctrineManager()
                 ->getRepository('ApplicationSonataMediaBundle:Media')
                 ->createQueryBuilder('m')
-                ->innerJoin('m.selfkitFilms', 'sf')
                 ->andWhere('m.oldMediaPhoto is not null')
+            ;
+            if ($id) {
+                $qb
+                    ->andWhere('m.id = :id')
+                    ->setParameter(':id', $id)
+                ;
+            }
+            $objects = $qb
                 ->setFirstResult($input->getOption('first-result'))
                 ->setMaxResults($input->getOption('max-results'))
                 ->getQuery()
@@ -112,4 +119,6 @@ class FDCCorpoMediaLibarySyncCommand extends ContainerAwareCommand
     {
         return $this->getContainer()->get('fdc_corpo.media_library_manager');
     }
+
+
 }

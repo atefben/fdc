@@ -24,10 +24,10 @@
         <field name="oldMediaFestivalYear" type="string" column="old_media_festival_year" nullable="true">
         </field>
 
-        <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="false">
+        <field name="thumbsGenerated" type="boolean" column="thumbs_generated" nullable="true">
         </field>
 
-        <field name="uploadedFromBO" type="boolean" column="uploaded_from_bo" nullable="false">
+        <field name="uploadedFromBO" type="boolean" column="uploaded_from_bo" nullable="true">
         </field>
 
         <one-to-many field="filmMedias" target-entity="Base\CoreBundle\Entity\FilmMedia" mapped-by="file">
@@ -70,5 +70,11 @@
 
         <many-to-many field="selfkitPersons" target-entity="Base\CoreBundle\Entity\FilmPerson" mapped-by="selfkitImages">
         </many-to-many>
+
+        <field name="oldTitle" type="string" length="255" column="old_title" nullable="true">
+        </field>
+
+        <field name="oldTitleVa" type="string" length="255" column="old_title_va" nullable="true">
+        </field>
     </entity>
 </doctrine-mapping>

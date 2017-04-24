@@ -4,21 +4,18 @@
 var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
-        setTimeout(function () {
-
-            var finalSlider = slider;
-            if(slider.length > 1){
-                //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
-                slider.each(function(){
-                    console.log(hash,$(this).find('[data-pid="'+hash+'"]').length);
-                    if($(this).find('[data-pid="'+hash+'"]').length){
-                        finalSlider = $(this);
-                    }
-                })
-            }
-            openSlideShow(finalSlider, hash);
-        }, 100);
-    }else{
+        var finalSlider = slider;
+        if(slider.length > 1){
+            //if we find the current hash in the slider, it's the good one (evol multiple sliders on one page)
+            slider.each(function(){
+                if($(this).find('[data-pid="'+hash+'"]').length){
+                    finalSlider = $(this);
+                }
+            })
+        }
+        openSlideShow(finalSlider, hash);
+    }
+    //else{
 
         if($('.affiche-fdc').length) {
             if (typeof hash != "undefined") {
@@ -76,7 +73,7 @@ var owinitSlideShow = function (slider, hash) {
             }
         }
 
-    }
+    //}
 }
 
 
@@ -87,6 +84,9 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if($('.medias').length > 0 || $('.media-library').length > 0) {
         slider = $('.isotope-01');
+        if (slider.length == 0) {
+            slider = $('section.medias');
+        }
     }
 
     var images = [];
@@ -123,7 +123,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             }
 
             if($('.affiche-fdc').length) {
-                var src = $(value).find('img').attr('src');
+                var src = $(value).parent().data('img') || $(value).find('img').attr('src');
                 var alt = $(value).find('img').attr('alt');
                 var title = $(value).parent().find('.infos  .name-f').html();
                 var label = $(value).parent().find('.infos .names-a').html();
@@ -149,61 +149,55 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
             }else{
-                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
-                
+                var getTitle = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').data('title');
+                var dataItem = $(value).find('a');
+
                 if(typeof getTitle === 'undefined'){
                     getTitle = $(value).find('img').attr("data-title");
                 }
 
                 if($('.medias').length > 0 || $('.media-library').length > 0) {
-                    getTitle = $(value).find('.info .contain-txt').html();
+                    getTitle = $(value).find('.info .contain-txt').html() || $(value).find('img').data('title');
                 }
-
-                var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                if (dataItem.hasClass('linkAllCover')) {
+                    var src = dataItem.attr('href');
+                } else {
+                    var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
+                }
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
-                var title = getTitle;
-                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label");
-                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date");
-                var caption = $(value).find('img').attr('data-credit');
-                var id = $(value).find('img').attr('data-id');
-                var facebookurl = $(value).find('img').attr('data-facebookurl');
-                var twitterurl = $(value).find('img').attr('data-twitterurl');
-                var url = $(value).find('img').attr('data-url');
-                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-
-                if(typeof title === 'undefined' || typeof caption === 'undefined' || typeof date === 'undefined' || typeof facebookurl === 'undefined' || typeof twitterurl === 'undefined' || url === 'undefined'){
-                    var dataItem = $(value).find('a');
-
-                    var title = dataItem.attr('title');
-                    var label = dataItem.data('label');
-                    var date = dataItem.data('date');
-                    var caption = dataItem.data('credit');
-                    var id = dataItem.data('pid');
-                    var facebookurl = dataItem.data('facebook');
-                    var twitterurl = dataItem.data('twitter');
-                    var url = dataItem.data('url');
-                    var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
-                }
-
-                /*console.log('slideshow img config',{
-                    id: id,
-                    url: url,
-                    src: src,
-                    alt: alt,
-                    title: title,
-                    label: label,
-                    date: date,
-                    caption: caption,
-                    facebookurl: facebookurl,
-                    twitterurl: twitterurl,
-                    isPortrait: isPortrait
-                });*/
+                var title = getTitle || dataItem.attr('title');;
+                var label = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt a').html() : $(value).find('img').attr("data-label") || dataItem.data('label');
+                var date = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt span.date').html() + ' . ' + $(value).find('.info .contain-txt span.hour').html() : $(value).find('img').attr("data-date") || dataItem.data('date');
+                var caption = $(value).find('img').attr('data-credit') || dataItem.data('credit');
+                var id = $(value).find('img').attr('data-id') || dataItem.data('pid');
+                var facebookurl = $(value).find('img').attr('data-facebookurl') || dataItem.data('facebook');
+                var twitterurl = $(value).find('img').attr('data-twitterurl') || dataItem.data('twitter');
+                var url = $(value).find('img').attr('data-url') || dataItem.data('url');
+                var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape' || $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
             if(hash == id && centerElement == 0){
                 centerElement = $(this).index('.photo');
 
                 if(centerElement < 0){
                     centerElement = $(this).index();
+                }
+            }
+
+            function clean(str) {
+                if (str) {
+                    var res = str.replace(/%[2-7]./gi, function myFunction(x)
+                    {
+                        if (x == '%23') {
+                            return ('#');
+                        } else {
+                            return (decodeURI(x));
+                        }
+                    });
+
+                    res = encodeURI(res);
+                    return (res.replace('#', '%23'));
+                } else {
+                    return '';
                 }
             }
 
@@ -216,8 +210,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 label: label,
                 date: date,
                 caption: caption,
-                facebookurl: facebookurl,
-                twitterurl: twitterurl,
+                facebookurl: clean(facebookurl),
+                twitterurl: clean(twitterurl),
                 isPortrait: isPortrait
             };
             images.push(image);
@@ -241,7 +235,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
     if(typeof hash == "undefined") {
         hash = images[centerElement].id;
-        var hashPush = '#'+hash;
+        var hashPush = '#pid='+hash;
         history.pushState(null, null, hashPush);
     }
 
@@ -315,7 +309,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+            $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
             $('.popin-mail').find('.chap-article').html('');
 
             if($('.affiche-fdc').length){
@@ -336,7 +330,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             fullscreen.removeClass('fadeOut').addClass('animated fadeIn');
         }, 700);
 
-        hash = "#"+images[id].id;
+        hash = "#pid="+images[id].id;
 
         history.pushState(null, null, hash);
         numberDiapo = centerElement + 1;
@@ -375,7 +369,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         if(typeof twitterUrl === 'undefined'){
             twitterUrl = images[centerElement].twitterurl;
         }
-        console.log('twitter share url',twitterUrl);
 
         facebook.attr('href', images[centerElement].facebookurl);
         twitter.attr('href',twitterUrl );
@@ -388,7 +381,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
             $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
             $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-            $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+            $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
             $('.popin-mail').find('.chap-article').html('');
 
             if($('.affiche-fdc').length){
@@ -456,7 +449,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         var a = document.createElement('div');
         a.innerHTML = str;
         for (var c = a.childNodes, i = c.length; i--; ) {
-            if (c[i].nodeType == 1) return true; 
+            if (c[i].nodeType == 1) return true;
         }
         return false;
     }
@@ -496,7 +489,8 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         '</div>' +
         '</div>');
 
-    $('.c-fullscreen-slider').append("<div class='zoomCursor'><i class='icon icon-wen-more'></i></div>")
+    console.log(images[centerElement].url);
+    $('.c-fullscreen-slider').append("<div class='zoomCursor'><i class='icon icon-wen-more'></i></div>");
 
     initRs();
 
@@ -599,7 +593,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
         $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
-        $('.popin-mail').find('form #contact_url').val(images[centerElement].link);
+        $('.popin-mail').find('form #contact_url').val(images[centerElement].url);
         $('.popin-mail').find('.chap-article').html('');
 
         if($('.affiche-fdc').length){

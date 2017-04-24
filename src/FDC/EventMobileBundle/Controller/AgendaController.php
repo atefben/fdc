@@ -137,7 +137,7 @@ class AgendaController extends Controller
 
         if (!$isPress) {
             foreach ($rooms as $key => $room) {
-                if ($room->getName() == 'Salle de Conférence de Presse') {
+                if (trim($room->getName()) == 'Salle de Conférence de Presse') {
                     unset($rooms[$key]);
                 }
             }

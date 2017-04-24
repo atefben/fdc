@@ -3,16 +3,12 @@
 
 .article-single, .single-movie {
 
-
-  .picto .icon{
-    margin: 0px !important;
-  }
-
   h2.sub-title {
-    font-size: 1.5rem;
+    font-size: 24pt;
     margin-bottom: 50px;
     text-align: center;
-    font-family: $CamphorRegular;
+    font-family: $Playfair;
+    color: #333;
   }
 
   .table-article td, .table-article th {
@@ -106,6 +102,13 @@
       color: #666;
       line-height: 1.7em;
       margin-bottom: 5px;
+    }
+
+    ul {
+      li {
+        line-height: 30px;
+        list-style: inside;
+      }
     }
   }
 

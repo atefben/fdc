@@ -237,8 +237,17 @@
   // padding-bottom: 55px;
   display: none;
 
+  h3 {
+    font-family: $CamphorBold;
+  }
+
+  h4 {
+    padding-bottom: 32px;
+  }
+
   .info {
     text-align: left;
+    font-family: $CamphorRegular;
 
     .title-info {
       text-transform: uppercase;
@@ -253,6 +262,7 @@
 
   strong {
     font-family: $CamphorBold;
+    color: $black;
   }
 
   sub {
@@ -608,24 +618,28 @@
   }
 
   h2.sub-title {
-    font-size: 1.5rem;
+    font-size: 24pt;
     margin-bottom: 50px;
     text-align: center;
+    font-family: $Playfair;
+    color: #333;
   }
 
   h2.sub-title2 {
     font-family: "Playfair Display", Times New Roman, Times, serif;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 18pt;
     margin: 25px 0px;
+    color: #333;
   }
 
   h3.sub-title {
     font-family: $CamphorBold;
-    font-size: 0.875rem;
+    font-size: 14pt;
     margin: 50px 0;
     text-align: center;
     text-transform: uppercase;
+    color: #333;
   }
 
   .descrip-participate {
@@ -820,6 +834,7 @@ strong.title-center {
     border-top: #2c2c2c 1px solid;
     font-size: 1rem;
     text-align: center;
+    background-color: $black;
 
     .title {
       max-width: 549px;
@@ -847,7 +862,6 @@ strong.title-center {
     &.block-01-xs {
       width: auto;
     }
-
   }
 }
 

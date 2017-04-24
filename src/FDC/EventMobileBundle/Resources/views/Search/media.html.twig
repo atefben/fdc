@@ -3,6 +3,7 @@
 {% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for media in items %}
+        {% set link = null %}
         {% if class(media) == "MediaImage" %}
             {% set title = media|trans_fallback('legend') %}
             {% set format = 'photo' %}
@@ -24,47 +25,49 @@
             {% set link = path('fdc_eventmobile_news_getaudios') ~ '#aid=' ~ media.id %}
         {% endif %}
 
+        {% set mediaImage = '' %}
+        <div data-id="media-{{ media.id }}" class="thumb item {{ media.publishedAt|date('dmY') }} {{ media.theme ? media.theme.slug : '' }} {{ format }} {{ loop.index == 1 ? 'active' : '' }}">
+            {% set trans = media.findTranslationByLocale(app.request.locale) %}
+            {% set transImage = null %}
+            {% set amazonImage = null %}
 
-        <article data-date="{{ media.publishedAt|date('dmY') }}" data-theme="{{ media.theme|trans_fallback('slug') }}" data-format="{{ format }}" class="audio">
-            <div class="image">
-                <div class="image-wrapper">
+            {% if trans is null or trans.file is null %}
+                {% set trans = media.findTranslationByLocale('fr') %}
+            {% endif %}
 
-                    {% set trans = media.findTranslationByLocale(app.request.locale) %}
-                    {% set transImage = null %}
-                    {% set amazonImage = null %}
+            {% if media.header is not null %}
+                {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null  %}
+                    {% set transImage = media.header.findTranslationByLocale('fr') %}
+                {% endif %}
+            {% elseif media.image %}
+                {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
+                {% if transImage is null or transImage.file is null %}
+                    {% set transImage = media.image.findTranslationByLocale('fr') %}
+                {% endif %}
+            {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
+                {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
+            {% endif %}
 
-                    {% if trans is null or trans.file is null %}
-                        {% set trans = media.findTranslationByLocale('fr') %}
-                    {% endif %}
+            {% if transImage or amazonImage %}
+                {% set mediaImage %}{% if transImage is not null %}{% path transImage.file , '976x615' %}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}{% endset %}
+            {% elseif trans is not null %}
+                {% set mediaImage %}{% path trans.file , '976x615' %}{% endset %}
+            {% endif %}
 
-                    {% if media.header is not null %}
-                        {% set transImage = media.header.findTranslationByLocale(app.request.locale) %}
-                        {% if transImage is null or transImage.file is null  %}
-                            {% set transImage = media.header.findTranslationByLocale('fr') %}
-                        {% endif %}
-                    {% elseif media.image %}
-                        {% set transImage = media.image.findTranslationByLocale(app.request.locale) %}
-                        {% if transImage is null or transImage.file is null %}
-                            {% set transImage = media.image.findTranslationByLocale('fr') %}
-                        {% endif %}
-                    {% elseif class(media) == 'MediaVideo' and  media|trans_fallback('imageAmazonUrl') %}
-                        {% set amazonImage = s3_server_video ~ media|trans_fallback('imageAmazonUrl') %}
-                    {% endif %}
-
-                    {% if transImage or amazonImage %}
-                        <img src="{% if transImage is not null %}{% path transImage.file , '976x615' %}" alt="{{ transImage|trans_fallback('alt') }}{% elseif amazonImage is not null %}{{ amazonImage }}" alt="{% endif %}">
-                    {% else %}
-                        <img src="{% path trans.file , '976x615' %}" alt="{{ trans|trans_fallback('alt') }}">
-                    {% endif %}
-                </div>
-                <a class="linkImage" href="{{ link }}"></a>
+            <div class="img-container" style="background-image: url({{ mediaImage }})">
                 <span class="picto"><i class="icon icon_{{ format }}"></i></span>
+                {% if link is not empty %}
+                    <a class="linkImage" href="{{ link }}"></a>
+                {% endif %}
             </div>
             <div class="info">
-                <a class="category" href="#">{{ media.theme|trans_fallback('name') }}</a>
-                <span class="date">{{ media.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
-                <h2><a href="{{ link }}">{{ title }}</a></h2>
+                <div class="top-info">
+                    <a class="category" href="#">{{ media.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ media.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(media.publishedAt|date('H:i'), true, true) }}</span>
+                </div>
+                <a href="{{ link }}"><h2>{{ title }}</h2></a>
             </div>
-        </article>
+        </div>
     {% endfor %}
 {% endblock %}

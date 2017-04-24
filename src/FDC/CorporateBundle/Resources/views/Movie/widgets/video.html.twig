@@ -16,9 +16,8 @@
     {% if firstVideo is not null %}
         <div class="block-films block-01" data-section='videos'>
             <article class="video-player-style">
-                <div class="video-container state-init video"
+                <div class="video-container state-init video shadow-bottom"
                      data-playlist='[
-
                     {% for video in videos %}
                         {% set video = video.mediaVideo %}
                         {% set videoImage = null %}
@@ -40,13 +39,12 @@
                         {
                           "sources":[{% if(firstVideo.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ firstVideo|trans_fallback('webmUrl') }}"},{% endif %}{"file":"{{ s3_server_video ~ firstVideo|trans_fallback('mp4Url') }}"}],
                           "vid":"{{ firstVideo.id }}",
-                          "name":"{{ firstVideo|trans_fallback_movie('title') }}",
+                          "name":"{{ firstVideo|trans_fallback_movie('title')|replace({'"': "",'\'': "",':': "-",'(': " - ",')': "",'&': "",'.': ""})|raw|trim }}",
                           "image":"{% if videoImage is not empty %}{{ videoImage }}{% elseif amazonImage is not null %}{{ amazonImage }}{% endif %}",
-                          "category":"{{ firstVideo.theme|trans_fallback('name') }}",
+                          "category":"{{ firstVideo.theme|trans_fallback('name')|replace({'"': "",'\'': "",':': "-",'(': " - ",')': "",'&': "",'.': ""})|raw|trim }}",
                           "date":"{{ firstVideo.publishedAt()|date('d/m/Y') }}",
                           "hour":"{{ firstVideo.publishedAt()|date('H:i') }}"
-                        }{% if loop.last %}{% else %},{% endif %}{% endfor %}
-                    ]'>
+                        }{% if loop.last %}{% else %},{% endif %}{% endfor %}]'>
                     {% set break = 0 %}
                     {% for video in videos if break == 0 %}
                         <div id="video-player-ba"></div>

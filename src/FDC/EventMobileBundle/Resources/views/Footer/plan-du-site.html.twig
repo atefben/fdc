@@ -87,6 +87,79 @@
                         {% endfor %}
                     </ul>
                 </article>
+            {% elseif route.route == 'fdc_event_news_index' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for child in route.__children %}
+                            {% set childPath = null %}
+                            {% if child.route == 'fdc_event_news_index' %}
+                                {% set childPath = path('fdc_eventmobile_news_index') %}
+                            {% elseif child.route == 'fdc_event_news_getarticles' %}
+                                {% set childPath = path('fdc_eventmobile_news_getarticles') %}
+                            {% elseif child.route == 'fdc_event_news_getphotos' %}
+                                {% set childPath = path('fdc_eventmobile_news_getphotos') %}
+                            {% elseif child.route == 'fdc_event_news_getvideos' %}
+                                {% set childPath = path('fdc_eventmobile_news_getvideos') %}
+                            {% elseif child.route == 'fdc_event_news_getaudios' %}
+                                {% set childPath = path('fdc_eventmobile_news_getaudios') %}
+                            {% endif %}
+                            {% if childPath is not null %}
+                                <li>
+                                    <a href="{{ childPath }}">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% elseif route.route == 'fdc_event_television_live' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for child in route.__children %}
+                            {% set childPath = null %}
+                            {% if child.route == 'fdc_event_television_live' %}
+                                {% set childPath = path('fdc_eventmobile_television_live') %}
+                            {% elseif child.route == 'fdc_event_television_channels' %}
+                                {% set childPath = path('fdc_eventmobile_television_channels') %}
+                            {% elseif child.route == 'fdc_event_television_trailers' %}
+                                {% set childPath = path('fdc_eventmobile_television_trailers') %}
+                            {% endif %}
+                            {% if childPath is not null %}
+                                <li>
+                                    <a href="{{ childPath }}">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </article>
+            {% elseif route.route == 'fdc_event_agenda_scheduling' and route.enabled == true %}
+                <article class="sitemap-item">
+                    <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>
+                    <ul>
+                        {% for child in route.__children %}
+                            {% set childPath = null %}
+                            {% if child.route == 'fdc_event_agenda_scheduling' %}
+                                {% set childPath = path('fdc_eventmobile_agenda_scheduling') %}
+                            {% elseif child.route == 'fdc_event_agenda_get' %}
+                                {% set childPath = path('fdc_eventmobile_agenda_get') %}
+                            {% elseif child.route == 'fdc_event_agenda_room' %}
+                                {% set childPath = path('fdc_eventmobile_agenda_room') %}
+                            {% endif %}
+                            {% if childPath is not null %}
+                                <li>
+                                    <a href="{{ childPath }}">
+                                        {{ child.transName|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </article>
             {% elseif route.route == 'fdc_press_news_home' and route.enabled == true %}
                 <article class="sitemap-item">
                     <h3 class="title sitemap-item-title">{{ route.transName|trans }}</h3>

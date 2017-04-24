@@ -48,13 +48,6 @@ class CcmMainNav
      */
     private $mainNavsCollection;
 
-    /**
-     * @var
-     *
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
-     */
-    private $isActive = true;
-
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -177,22 +170,6 @@ class CcmMainNav
     public function setPosition($position)
     {
         $this->position = $position;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param mixed $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
     }
 }
 

@@ -14,7 +14,7 @@ use Base\CoreBundle\Util\SeoMain;
  * CorpoTeam
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class CorpoTeamMembers implements TranslateMainInterface
@@ -42,6 +42,13 @@ class CorpoTeamMembers implements TranslateMainInterface
      * ArrayCollection
      */
     protected $translations;
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="CorpoTeamDepartementsAssociation", mappedBy="members", cascade={"persist"}, orphanRemoval=true)
+     * 
+     */
+    protected $departements;
 
     /**
      * Constructor
@@ -93,5 +100,39 @@ class CorpoTeamMembers implements TranslateMainInterface
     public function getMainImage()
     {
         return $this->mainImage;
+    }
+
+    /**
+     * Add members
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $departements
+     * @return CorpoTeamDepartements
+     */
+    public function addDepartement(\Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $departement)
+    {
+        $departement->setDepartement($this);
+        $this->departements[] = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Remove departement
+     *
+     * @param \Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $departements
+     */
+    public function removeDepartement(\Base\CoreBundle\Entity\CorpoTeamDepartementsAssociation $departement)
+    {
+        $this->departements->removeElement($departement);
+    }
+
+    /**
+     * Get members
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepartements()
+    {
+        return $this->departements;
     }
 }

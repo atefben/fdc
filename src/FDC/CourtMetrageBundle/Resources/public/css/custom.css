@@ -94,6 +94,10 @@ sup {
     color: #c8a461;
 }
 
+.wysiwyg a > strong {
+    color: #c8a461!important;
+}
+
 .topiconsContainer .icon-border-right {
     border-right: 1px solid #404040;
 }
@@ -281,6 +285,9 @@ body.chocolat-open.fixed {
 .conferences .conf60 {
     padding-bottom: 25px;
 }
+.conferences .conf60 .confButton {
+    bottom: 30px;
+}
 
 .block-01-mms .audio-container {
     margin-top: 70px;
@@ -446,5 +453,11 @@ body.chocolat-open.fixed {
     background-size: cover!important;
 }
 
+.single-article-space {
+    padding: 65px 0;
+}
 
+.home .competition #slider-competition .info-movie a.director {
+    display: inline;
+}
 

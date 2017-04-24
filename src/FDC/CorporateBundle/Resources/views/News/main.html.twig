@@ -6,22 +6,22 @@
 {% block body %}
     <section class="s-slider-retrospective">
 
-        {#{% if not hideSliderAndMenu|default(false) %}#}
-        {#{% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}#}
-        {#{% endif %}#}
+        {% if not hideSliderAndMenu|default(false) %}
+        {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
+        {% endif %}
 
         <div class="ajax-section">
             <div class="contain-ajax bright" id="main">
-                {#{% if not hideSliderAndMenu|default(false) %}#}
-                {#{{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}#}
-                {#{% endif %}#}
-                <div class="block-01 padding-bottom"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
+                {% if not hideSliderAndMenu|default(false) %}
+                {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
+                {% endif %}
+                <div class="block-01"> <!-- class wysiwyg-article voir la page _test_article_wysiwyg -->
 
                     <div class="arrows">
                         {% if prev is defined and not prev is empty %}
                             {% if class(prev) starts with 'News' %}
                                 <a href="{{ path('fdc_corporate_news_get', {'format': prev.newsFormat, 'slug': prev|trans_fallback('slug'), 'year': app.request.get('year') }) }}"
-                                   class="prev"><i class="icon icon-arrow-right"></i></a>
+                                   class="prev"><i class="icon icon-arrow-left"></i></a>
                             {% else %}
                                 {% if class(prev) starts with 'S' %}
                                     {% set type = 'communique' %}
@@ -79,10 +79,11 @@
                             {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
                         </div>
                     {% endif %}
-
+                    {% if news|trans_fallback('introduction')|length > 0 %}
                     <div class="contain-title vFlexAlign block-01-m">
                         <span class="title-02">{{ news|trans_fallback('introduction')|raw }}</span>
                     </div>
+                    {% endif %}
                     {% for widget in news.widgets %}
                         {% if class(widget) == "StatementWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
                         or class(widget) == "InfoWidgetImage" and widget.gallery.medias is defined and widget.gallery.medias|length == 1
@@ -130,7 +131,7 @@
                                href="https://www.facebook.com/sharer/sharer.php?u={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
                                         class="icon icon-facebook"></i></a><!--
                 --><a class="twitter"
-                      href="https://twitter.com/intent/tweet?url={{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
+                      href="https://twitter.com/intent/tweet?text={{ news|trans_fallback('title')| truncate(35, true)}}%20{{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i
                                         class="icon icon-twitter"></i></a><!--
                 --><a href="#" rel="nofollow" class="link self"
                       data-clipboard-text="{{ url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}"><i

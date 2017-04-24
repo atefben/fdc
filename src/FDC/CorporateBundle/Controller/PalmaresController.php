@@ -21,6 +21,9 @@ class PalmaresController extends Controller
      */
     public function getAction(Request $request, $year, $slug = null)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $this->isPageEnabled($request->get('_route'));
 
         $festival = $this->getFestival($year)->getId();

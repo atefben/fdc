@@ -7,6 +7,7 @@ use Base\CoreBundle\Entity\Media;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Base\CoreBundle\Entity\Site;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class MediaRepository
@@ -182,7 +183,6 @@ class MediaRepository extends EntityRepository
         }
 
 
-
         if ($start && $end) {
             $qb->innerJoin('m.festival', 'f')
                 ->andWhere('f.year BETWEEN :yearStart AND :yearEnd')
@@ -206,7 +206,7 @@ class MediaRepository extends EntityRepository
             ->setMaxResults($max)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     /**
@@ -219,9 +219,24 @@ class MediaRepository extends EntityRepository
     public function getRetrospective($locale, $festival, $maxResults = 30, $firstResult = 0)
     {
 
-        $qb = $this
-            ->createQueryBuilder('m')
-            ->distinct(true)
+        $qb = $this->createQueryBuilder('m');
+
+        $this->retrospectiveFilters($qb, $locale, $festival);
+
+        return $qb
+            ->andWhere("m.publishEndedAt IS NULL")
+            ->addOrderBy('m.publishedAt', 'DESC')
+            ->setMaxResults($maxResults)
+            ->setFirstResult($firstResult)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    private function retrospectiveFilters(QueryBuilder $qb, $locale, $festival)
+    {
+        $qb->distinct(true)
+            ->innerJoin('m.theme', 'theme')
             ->innerJoin('m.sites', 's')
             ->leftJoin('Base\CoreBundle\Entity\MediaImage', 'mi', 'WITH', 'mi.id = m.id')
             ->leftJoin('Base\CoreBundle\Entity\MediaVideo', 'mv', 'WITH', 'mv.id = m.id')
@@ -257,12 +272,66 @@ class MediaRepository extends EntityRepository
         }
 
         $this->addFDCCorpoQueries($qb, 's');
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @return Media[]
+     */
+    public function getThemesRetrospective($locale, $festival)
+    {
+        $qb = $this
+            ->createQueryBuilder('m')
+            ->select('theme.id')
+        ;
+
+        $this->retrospectiveFilters($qb, $locale, $festival);
 
         return $qb
-            ->andWhere("m.publishEndedAt IS NULL")
-            ->addOrderBy('m.publishedAt', 'DESC')
-            ->setMaxResults($maxResults)
-            ->setFirstResult($firstResult)
+            ->addGroupBy('theme.id')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @return Media[]
+     */
+    public function getDatesRetrospective($locale, $festival)
+    {
+        $qb = $this
+            ->createQueryBuilder('m')
+            ->select('DATE_FORMAT(m.publishedAt, \'%m-%d-%Y\') as days')
+        ;
+
+        $this->retrospectiveFilters($qb, $locale, $festival);
+
+        return $qb
+            ->addGroupBy('days')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param $locale
+     * @param $festival
+     * @return Media[]
+     */
+    public function getFormatsRetrospective($locale, $festival)
+    {
+        $qb = $this
+            ->createQueryBuilder('m')
+            ->select('m.typeClone')
+        ;
+
+        $this->retrospectiveFilters($qb, $locale, $festival);
+
+        return $qb
+            ->addGroupBy('m.typeClone')
             ->getQuery()
             ->getResult()
             ;
@@ -356,14 +425,16 @@ class MediaRepository extends EntityRepository
     }
 
     /**
-     * Find all displayed video
-     *
      * @param $locale
-     * @return \Doctrine\ORM\Query
+     * @param $festival
+     * @param null $startsAt
+     * @param null $endAt
+     * @return Media[]
      */
     public function getVideoMedia($locale, $festival, $startsAt = null, $endAt = null)
     {
-        $qb = $this->createQueryBuilder('m')
+        $qb = $this
+            ->createQueryBuilder('m')
             ->join('m.sites', 's')
             ->leftjoin('Base\CoreBundle\Entity\MediaVideo', 'mi', 'WITH', 'mi.id = m.id')
             ->leftjoin('mi.translations', 'mit')
@@ -372,7 +443,8 @@ class MediaRepository extends EntityRepository
         ;
 
         if ($startsAt && $endAt) {
-            $qb = $qb->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
+            $qb
+                ->andWhere('(m.publishedAt IS NOT NULL AND m.publishedAt <= :endAt) AND (m.publishedAt IS NULL OR m.publishedAt >= :startsAt)')
                 ->setParameter('startsAt', $startsAt)
                 ->setParameter('endAt', $endAt)
             ;
@@ -380,14 +452,13 @@ class MediaRepository extends EntityRepository
 
         $this->addMasterQueries($qb, 'mi', $festival);
         $this->addTranslationQueries($qb, 'mit', $locale);
-        $qb = $this->addFDCEventQueries($qb, 's');
+        $this->addFDCEventQueries($qb, 's');
         $this->addAWSVideoEncodersQueries($qb, 'mit');
-        $qb = $qb->orderBy('mi.publishedAt', 'DESC')
+        return $qb
+            ->orderBy('mi.publishedAt', 'DESC')
             ->getQuery()
             ->getResult()
         ;
-
-        return $qb;
 
     }
 

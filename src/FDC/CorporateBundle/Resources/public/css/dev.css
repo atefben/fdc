@@ -27,7 +27,7 @@
 }
 
 .dark.story-movie.story-palme .wysiwyg-article-02 p {
-  color: #f5f5f5 !important;
+
 }
 
 .story-movie.dark.story-palme {
@@ -332,9 +332,12 @@
 }
 
 .article-single .border-top .relative {
-  margin-bottom:50px;
-}
+   margin-bottom:50px;
+ }
 
+.article-single .border-top {
+  height: 100%;
+}
 
 @media screen and (min-width: 1280px) {
   .media-library .isotope-01 .item.w2 {
@@ -367,4 +370,374 @@
   .media-library .isotope-01 .item {
     width: calc(100% / 4);
   }
+}
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.single-evenement .title-article {
+  margin-bottom: 37px;
+}
+
+.single-article.single-evenement .title-article {
+  color: #333;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin: 20px auto 40px auto;
+  max-width: 775px;
+  text-align: center;
+  padding: 0;
+}
+
+.single-evenement {
+  padding-bottom: 0;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.single-article.single-evenement {
+  padding: 65px 0;
+}
+
+.single-article.single-evenement .fck-legend {
+  color: #969696 !important;
+  font-size: .75rem !important;
+  margin: -10px 0 0 0 !important;
+  text-align: left !important;
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+}
+
+.single-article.single-evenement .small-container > div.single-photo, .single-article.single-evenement .small-container > div.single-video, .single-article.single-evenement .small-container > div.single-gallery, .single-article.single-evenement .small-container > div.chapeau {
+  width: 100%;
+}
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-article.single-evenement  .chapeau {
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  color: #333;
+  font-size: 1.125rem;
+  line-height: 2em;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.single-article.single-evenement .text {
+  width: 630px;
+  margin: 0 auto 70px;
+}
+
+.single-article.single-evenement .small-container > div {
+  width: 630px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-article.single-evenement .share {
+  border-top: 1px solid #e5e5e5;
+  padding: 70px 0 20px 0;
+  margin: 30px 0 0 0;
+}
+
+.single-evenement .share {
+  position: relative;
+}
+
+.single-article.single-evenement .text p {
+  font-family: "Camphor W01 Regular",Arial,Helvetica,sans-serif;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7em;
+  margin-bottom: 5px;
+  text-align: left !important;
+}
+.single-article.single-evenement a, .single-article.single-evenement a:hover {
+  color: #c8a461;
+}
+
+header #logo-wrapper #partners img.kering {
+  margin-top: 5px;
+}
+
+.block-social-network-all {
+  height: 136px;
+}
+
+.archive .block-01-xs img {
+  height: inherit;
+}
+
+.article-single.dark .wysiwyg-article-02 .caption {
+  line-height:14px !important;
+}
+
+.single-article.single-evenement .share p {
+  font-size: .75rem;
+  letter-spacing: .2em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Camphor W01 Bold",Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+}
+.single-article.single-evenement .share .icon:before {
+font-family: "icon";
+display: inline-block;
+vertical-align: bottom;
+line-height: 1;
+font-weight: normal;
+font-style: normal;
+speak: none;
+text-decoration: inherit;
+text-transform: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+}
+.single-evenement .share .buttons .icon {
+  margin-right:0px;
+}
+
+#title-vf-selection {
+    font-size: 10px;
+    margin-bottom: 2px;
+    margin-top: -2px;
+}
+
+#title-vf-selection a {
+    color: #fff;
+}
+
+.block-push-top {
+  background-attachment: fixed !important;
+}
+
+.article-single.dark .caption, .article-single.dark .caption strong {
+  color: #969696 !important;
+  font-size: 0.750rem !important;
+  margin: 10px auto 0 !important;
+  text-align: left;
+}
+
+.dark.history .contain-title p {
+  color: #333 !important;
+  font-size: 1.125rem;
+  font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+  margin: 0 0 20px 0;
+}
+
+.dark.history .contain-title p a {
+  color: #c8a461 !important;
+
+}
+
+.affiche-fdc .block-social-network-all {
+  height: 150px;
+}
+
+.single-movie .slideshow {
+  width: 100% !important;
+}
+
+.competition .title {
+  font-family: "Playfair Display",Times New Roman,Times,serif !important;
+  font-weight: 700 !important;
+  color:#000 !important;
+}
+
+.single-article .audio-container {
+  margin: 0 auto 35px !important;
+}
+
+.who-identity-guidelines .item p a {
+  color: #c8a461 !important;
+}
+
+.block-videos article.video .video-container {
+  height: calc(630px / 1.58) !important;
+  width: 630px !important;
+  margin: 0 auto !important;
+}
+
+@media screen and (max-width: 1920px)
+{
+  .retrospective .slider-restropective .calc3 {
+    width: 53%;
+  }
+
+  .retrospective .slider-restropective .calc3 img.i1 {
+    right: 0%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i2 {
+    top: 44%;
+    right: 46%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i3 {
+    top: -20%;
+    right: 55%;
+  }
+
+  .retrospective .slider-restropective .calc4 img.i1 {
+      top: 1%;
+      left: 22%;
+  }
+
+  .retrospective .slider-restropective .calc4  img.i2 {
+      top: 20%;
+      right: -16%;
+  }
+
+  .retrospective .slider-restropective .calc4 img.i3 {
+      top: 2%;
+      left: 7%;
+  }
+}
+
+@media screen and (max-width: 1280px)
+{
+  .retrospective .slider-restropective .calc3 img.i1 {
+    right: -24%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i2 {
+    right: 17%;
+  }
+
+  .retrospective .slider-restropective .calc3  img.i3 {
+    top: -39%;
+    right: 14%;
+  }
+  .retrospective .slider-restropective .calc3 {
+    zoom: 0.7 !important;
+    left: -15% !important;
+    top: 3% !important;
+  }
+  .retrospective .slider-restropective .calc4 {
+    zoom: 0.59 !important;
+    left: 50% !important;
+    top: 4% !important;
+  }
+}
+
+.retrospective .navigation-sticky-02.sticky {
+  position: inherit !important;
+}
+
+.by-author {
+  width: 636px;
+  margin: 0px auto 10px auto;
+}
+
+.classic .padding-bottom {
+  padding-bottom: 0px;
+}
+
+.classic .ajax-section .black {
+  padding: 0 0 60px 0;
+}
+
+.block-search .content-result .contain-img.hauteur img {
+  zoom:0.7;
+}
+
+.block-search .content-result .contain-img.largeur img {
+  zoom:0.5;
+}
+
+.block-search .content-result .contain-txts .title-media {
+  font-family: "Playfair Display",Times New Roman,Times,serif !important;
+}
+
+.single-evenement .single-photo {
+  margin:40px 0 0 0;
+  text-align:center;
+}
+
+.single-evenement .single-photo .caption {
+  margin: 0 0 0 32%;
+}
+
+.article-single .detailslideshow {
+  width: 640px;
+}
+
+.article-single .detailslideshow  .slideshow-img {
+  height: 530px;
+}
+
+.home .read-more {
+  background: #FFF;
+  top: -170px;
+  position: relative;
+}
+
+.home #maskread {
+  height: 289px;
+  background-color: #FFF;
+  position: relative;
+  display: block;
+  margin: -325px 0 -127px 0;
+}
+
+.error-not-found {
+  background-image: url("http://cdn-vendor.festival-cannes.com/bundles/fdcevent/img/error-bck.jpg");
+  height: 593px;
+  background-size: cover
+}
+
+.error-not-found .texts {
+  width: 900px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center
+}
+
+.error-not-found .texts h1 {
+  color: #fff;
+  font-size: 1.75rem;
+  letter-spacing: .5em;
+  line-height: 24px;
+  font-family: "Playfair Display",Times New Roman,Times,serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 19px
+}
+
+.error-not-found .texts p {
+  text-transform: uppercase;
+  color: #fff !important;
+  font-size: .75rem;
+  letter-spacing: .2rem;
+  line-height: 24px;
+  margin-bottom: 34px
+}
+
+.error-not-found .texts a {
+  color: #c8a461;
+  font-size: .69rem;
+  font-family: "Camphor W01 Heavy",Arial,Helvetica,sans-serif;
+  transition: all .5s cubic-bezier(.25,.46,.45,.94)
+}
+
+.ismobile .slider-home {
+  height: 686px;
+}
+
+body.ismobile .slider-home .container-images .item {
+  background-size: inherit;
+}
+
+.ismobile .block-03.block-scale {
+  display:none !important;
 }

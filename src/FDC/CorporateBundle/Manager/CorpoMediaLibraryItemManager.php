@@ -7,12 +7,12 @@ use Base\CoreBundle\Entity\FilmFestivalPoster;
 use Base\CoreBundle\Entity\FilmFestivalPosterTranslation;
 use Base\CoreBundle\Entity\FilmFilm;
 use Base\CoreBundle\Entity\FilmFilmMedia;
+use Base\CoreBundle\Entity\FilmFilmMediaInterface;
 use Base\CoreBundle\Entity\FilmFilmTranslation;
 use Base\CoreBundle\Entity\FilmPersonMedia;
 use Base\CoreBundle\Entity\FilmPersonTranslation;
 use Base\CoreBundle\Entity\Media;
 use Base\CoreBundle\Entity\MediaAudio;
-use Base\CoreBundle\Entity\MediaAudioFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaAudioTranslation;
 use Base\CoreBundle\Entity\MediaImage;
 use Base\CoreBundle\Entity\MediaImageSimple;
@@ -24,6 +24,7 @@ use Base\CoreBundle\Entity\MediaVideoFilmFilmAssociated;
 use Base\CoreBundle\Entity\MediaVideoTranslation;
 use Base\CoreBundle\Entity\TagTranslation;
 use Base\CoreBundle\Entity\ThemeTranslation;
+use Base\CoreBundle\Entity\WebTvTranslation;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use FDC\CorporateBundle\Entity\CorpoMediaLibraryItem;
@@ -81,8 +82,8 @@ class CorpoMediaLibraryItemManager
                         if ($filmTranslation instanceof FilmFilmTranslation) {
                             $search .= ' ' . $film->getTitleVO();
                             $search .= ' ' . $filmTranslation->getTitle();
-                            $search .= ' ' . $filmTranslation->getSynopsis();
-                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+//                            $search .= ' ' . $filmTranslation->getSynopsis();
+//                            $search .= ' ' . $filmTranslation->getInfoRestauration();
                         }
                     }
                     if (!$festival) {
@@ -121,7 +122,7 @@ class CorpoMediaLibraryItemManager
             ->setParameter(':mediaId', $media->getId())
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     private function syncMediaImage(MediaImage $object)
@@ -133,7 +134,7 @@ class CorpoMediaLibraryItemManager
                     $item = $this->getCorpoMediaLibraryItem($object, MediaImage::class, $locale);
                     $search = $trans->getLegend();
                     $search .= ' ' . $trans->getAlt();
-                    $search .= ' ' . $trans->getCopyright();
+//                    $search .= ' ' . $trans->getCopyright();
 
                     if (
                         $object->getTheme()
@@ -149,29 +150,48 @@ class CorpoMediaLibraryItemManager
                             && ($tagTrans = $tag->getTag()->findTranslationByLocale($locale))
                             && ($tagTrans instanceof TagTranslation)
                         ) {
-                            $search .= ' ' .$tagTrans->getName();
+                            $search .= ' ' . $tagTrans->getName();
                         }
                     }
+
+                    if ($object->getAssociatedFilm()) {
+                        $item->setFilmTitleVO($object->getAssociatedFilm()->getTitleVO());
+                    }
+
+//                    $films = [];
+//                    if ($object->getAssociatedFilm()) {
+//                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+//                    }
+//                    foreach ($films as $film) {
+//                        $filmTranslation = $film->findTranslationByLocale($locale);
+//                        if ($filmTranslation instanceof FilmFilmTranslation) {
+//                            $search .= ' ' . $film->getTitleVO();
+//                            $search .= ' ' . $filmTranslation->getTitle();
+//                            $search .= ' ' . $filmTranslation->getSynopsis();
+//                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+//                        }
+//                    }
 
                     $films = [];
                     if ($object->getAssociatedFilm()) {
                         $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
                     }
                     foreach ($films as $film) {
-                        $filmTranslation = $film->findTranslationByLocale($locale);
-                        if ($filmTranslation instanceof FilmFilmTranslation) {
-                            $search .= ' ' . $film->getTitleVO();
-                            $search .= ' ' . $filmTranslation->getTitle();
-                            $search .= ' ' . $filmTranslation->getSynopsis();
-                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
                         }
                     }
 
                     $item
                         ->setType('image')
                         ->setSorted($object->getPublishedAt())
-                        ->setFestivalYear($object->getFestival()->getYear())
+                        ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -207,38 +227,64 @@ class CorpoMediaLibraryItemManager
                             && ($tagTrans = $tag->getTag()->findTranslationByLocale($locale))
                             && ($tagTrans instanceof TagTranslation)
                         ) {
-                            $search .= $tagTrans->getName();
+                            $search .= ' ' . $tagTrans->getName();
                         }
                     }
+
+                    if ($object->getAssociatedFilm()) {
+                        $item->setFilmTitleVO($object->getAssociatedFilm()->getTitleVO());
+                    } else {
+                        foreach ($object->getAssociatedFilms() as $associatedFilm) {
+                            if ($associatedFilm instanceof MediaVideoFilmFilmAssociated && $associatedFilm->getAssociation()) {
+                                $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+                                $item->setFilmTitleVO($associatedFilm->getAssociation()->getTitleVO());
+                            }
+                        }
+                    }
+
+//                    $films = [];
+//                    if ($object->getAssociatedFilm()) {
+//                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+//                    }
+//                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaAudio($object) as $film) {
+//                        $films[$film->getId()] = $film;
+//                    }
+//                    foreach ($films as $film) {
+//                        $filmTranslation = $film->findTranslationByLocale($locale);
+//                        if ($filmTranslation instanceof FilmFilmTranslation) {
+//
+//                            $search .= ' ' . $film->getTitleVO();
+//                            $search .= ' ' . $filmTranslation->getTitle();
+//                            $search .= ' ' . $filmTranslation->getSynopsis();
+//                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+//                        }
+//                    }
+//                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
+//                        if ($associatedFilm instanceof MediaAudioFilmFilmAssociated && $associatedFilm->getAssociation()) {
+//                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+//                        }
+//                    }
 
                     $films = [];
                     if ($object->getAssociatedFilm()) {
                         $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
                     }
-                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaAudio($object) as $film) {
-                        $films[$film->getId()] = $film;
-                    }
                     foreach ($films as $film) {
-                        $filmTranslation = $film->findTranslationByLocale($locale);
-                        if ($filmTranslation instanceof FilmFilmTranslation) {
-
-                            $search .= ' ' . $film->getTitleVO();
-                            $search .= ' ' . $filmTranslation->getTitle();
-                            $search .= ' ' . $filmTranslation->getSynopsis();
-                            $search .= ' ' . $filmTranslation->getInfoRestauration();
-                        }
-                    }
-                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
-                        if ($associatedFilm instanceof MediaAudioFilmFilmAssociated && $associatedFilm->getAssociation()) {
-                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
                         }
                     }
 
                     $item
                         ->setType('audio')
                         ->setSorted($object->getPublishedAt())
-                        ->setFestivalYear($object->getFestival()->getYear())
+                        ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -274,41 +320,75 @@ class CorpoMediaLibraryItemManager
                             && ($tagTrans = $tag->getTag()->findTranslationByLocale($locale))
                             && ($tagTrans instanceof TagTranslation)
                         ) {
-                            $search .= $tagTrans->getName();
+                            $search .= ' ' . $tagTrans->getName();
                         }
                     }
+
+                    if ($object->getWebTv()) {
+                        foreach ($object->getWebTv() as $webTvTrans) {
+                            if ($webTvTrans instanceof WebTvTranslation && $webTvTrans->getName()) {
+                                $search .= ' ' . $webTvTrans->getName();
+                            }
+                        }
+                    }
+
+                    if ($object->getAssociatedFilm()) {
+                        $item->setFilmTitleVO($object->getAssociatedFilm()->getTitleVO());
+                    } else {
+                        foreach ($object->getAssociatedFilms() as $associatedFilm) {
+                            if ($associatedFilm instanceof MediaVideoFilmFilmAssociated && $associatedFilm->getAssociation()) {
+                                $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+                                $item->setFilmTitleVO($associatedFilm->getAssociation()->getTitleVO());
+                            }
+                        }
+                    }
+
+//                    $films = [];
+//                    if ($object->getAssociatedFilm()) {
+//                        $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
+//                    }
+//                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMainVideo($object) as $film) {
+//                        $films[$film->getId()] = $film;
+//                    }
+//                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaVideo($object) as $film) {
+//                        $films[$film->getId()] = $film;
+//                    }
+//                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
+//                        if ($associatedFilm instanceof MediaVideoFilmFilmAssociated && $associatedFilm->getAssociation()) {
+//                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
+//                        }
+//                    }
+//                    foreach ($films as $film) {
+//                        $filmTranslation = $film->findTranslationByLocale($locale);
+//                        if ($filmTranslation instanceof FilmFilmTranslation) {
+//
+//                            $search .= ' ' . $film->getTitleVO();
+//                            $search .= ' ' . $filmTranslation->getTitle();
+//                            $search .= ' ' . $filmTranslation->getSynopsis();
+//                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+//                        }
+//                    }
 
                     $films = [];
                     if ($object->getAssociatedFilm()) {
                         $films[$object->getAssociatedFilm()->getId()] = $object->getAssociatedFilm();
                     }
-                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMainVideo($object) as $film) {
-                        $films[$film->getId()] = $film;
-                    }
-                    foreach ($this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmFilm')->getFilmsByMediaVideo($object) as $film) {
-                        $films[$film->getId()] = $film;
-                    }
-                    foreach ($object->getAssociatedFilms() as $associatedFilm) {
-                        if ($associatedFilm instanceof MediaVideoFilmFilmAssociated && $associatedFilm->getAssociation()) {
-                            $films[$associatedFilm->getAssociation()->getId()] = $associatedFilm->getAssociation();
-                        }
-                    }
                     foreach ($films as $film) {
-                        $filmTranslation = $film->findTranslationByLocale($locale);
-                        if ($filmTranslation instanceof FilmFilmTranslation) {
-
-                            $search .= ' ' . $film->getTitleVO();
-                            $search .= ' ' . $filmTranslation->getTitle();
-                            $search .= ' ' . $filmTranslation->getSynopsis();
-                            $search .= ' ' . $filmTranslation->getInfoRestauration();
+                        $persons = $film->getPersons();
+                        foreach ($persons as $person) {
+                            if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
+                                $search .= ' ' . $person->getPerson()->lastname;
+                                $search .= ' ' . $person->getPerson()->firstname;
+                            }
                         }
                     }
 
                     $item
                         ->setType('video')
                         ->setSorted($object->getPublishedAt())
-                        ->setFestivalYear($object->getFestival()->getYear())
+                        ->setFestivalYear($this->getFestivalByYear($object->getPublishedAt()->format('Y')))
                         ->setSearch($search)
+                        ->setWeight(50)
                     ;
                     $this->getDoctrineManager()->flush();
                 } else {
@@ -340,9 +420,9 @@ class CorpoMediaLibraryItemManager
                 ;
                 $upperTitle = strtoupper($translation->getTitle());
                 if (strpos($upperTitle, 'UN CERTAIN REGARD')) {
-                    $item->setWeight(10);
+                    $item->setWeight(90);
                 } else {
-                    $item->setWeight(20);
+                    $item->setWeight(100);
                 }
                 $this->getDoctrineManager()->flush();
             }
@@ -354,16 +434,17 @@ class CorpoMediaLibraryItemManager
         foreach ($this->locales as $locale) {
             if (!$object->getMedia() || !$object->getMedia()->getFile()) {
                 $this->removeCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
-            } else {
+            } else if ($object->getFilm()) {
                 $filmTranslation = $object->getFilm()->findTranslationByLocale($locale);
                 if ($filmTranslation instanceof FilmFilmTranslation) {
                     $item = $this->getCorpoMediaLibraryItem($object, FilmFilmMedia::class, $locale);
 
                     $sorted = $object->getFilm()->getFestival()->getFestivalStartsAt();
                     $search = $object->getFilm()->getTitleVO();
+                    $item->setFilmTitleVO($object->getFilm()->getTitleVO());
                     $search .= ' ' . $filmTranslation->getTitle();
-                    $search .= ' ' . $object->getMedia()->getCopyright();
-                    $search .= ' ' . $object->getMedia()->getCredits();
+//                    $search .= ' ' . $object->getMedia()->getCopyright();
+//                    $search .= ' ' . $object->getMedia()->getCredits();
                     $search .= ' ' . $object->getMedia()->getTitleVf();
                     $search .= ' ' . $object->getMedia()->getTitleVa();
 
@@ -372,6 +453,7 @@ class CorpoMediaLibraryItemManager
                         ->setSorted($sorted)
                         ->setFestivalYear($object->getFilm()->getFestival()->getYear())
                         ->setSearch($search)
+                        ->setWeight($this->getSoifWeight($object->getType()))
                     ;
                     $this->getDoctrineManager()->flush();
                 }
@@ -396,24 +478,25 @@ class CorpoMediaLibraryItemManager
             if (!$object->getMedia() || !$object->getMedia()->getFestival()) {
                 return null;
             }
-            $text = $object->getPerson()->getFullName();
-            $text .= ' ' . $object->getPerson()->getCredits();
-            $text .= ' ' . $object->getPerson()->getPresidentJuryCredits();
+            $search = $object->getPerson()->getFullName();
+//            $search .= ' ' . $object->getPerson()->getCredits();
+//            $search .= ' ' . $object->getPerson()->getPresidentJuryCredits();
             $personTrans = $object->getPerson()->findTranslationByLocale($locale);
             if ($personTrans instanceof FilmPersonTranslation) {
-                $text .= ' ' . $personTrans->getBiography();
-                $text .= ' ' . $personTrans->getProfession();
+//                $search .= ' ' . $personTrans->getBiography();
+                $search .= ' ' . $personTrans->getProfession();
             }
             foreach ($object->getMedia()->getFilmMedias() as $filmMedia) {
                 if ($filmMedia instanceof FilmFilmMedia) {
                     $movie = $filmMedia->getFilm();
-                    $text .= ' ' . $movie->getTitleVO();
+                    $search .= ' ' . $movie->getTitleVO();
+                    $item->setFilmTitleVO($movie->getTitleVO());
                     $movieTrans = $movie->findTranslationByLocale($locale);
                     if ($movieTrans instanceof FilmFilmTranslation) {
-                        $text .= ' ' . $movieTrans->getTitle();
-                        $text .= ' ' . $movieTrans->getSynopsis();
-                        $text .= ' ' . $movieTrans->getDialog();
-                        $text .= ' ' . $movieTrans->getInfoRestauration();
+                        $search .= ' ' . $movieTrans->getTitle();
+//                        $search .= ' ' . $movieTrans->getSynopsis();
+//                        $search .= ' ' . $movieTrans->getDialog();
+//                        $search .= ' ' . $movieTrans->getInfoRestauration();
                     }
                 }
             }
@@ -422,56 +505,88 @@ class CorpoMediaLibraryItemManager
                 ->setType('image')
                 ->setSorted($object->getMedia()->getFestival()->getFestivalStartsAt())
                 ->setFestivalYear($object->getMedia()->getFestival()->getYear())
-                ->setSearch($text)
+                ->setSearch($search)
+                ->setWeight($this->getSoifWeight($object->getType()))
             ;
 
             $this->getDoctrineManager()->flush();
         }
     }
 
-    public function syncSonataMedia(SonataMedia $sonataMedia)
+    private function syncSonataMedia(SonataMedia $sonataMedia)
     {
         foreach ($this->locales as $locale) {
-            if (!$sonataMedia->getSelfkitFilms()->count() && !$sonataMedia->getOldMediaFestivalYear()) {
+            $festivalYear = null;
+            $filmJury = null;
+            if ($sonataMedia->getOldMediaPhotoJury()) {
+                $filmJury = $this->getDoctrineManager()->getRepository('BaseCoreBundle:FilmJury')->find($sonataMedia->getOldMediaPhotoJury());
+                $festivalYear = $filmJury->getFestival()->getYear();
+            }
+            if (!$sonataMedia->getOldMediaFestivalYear() && !$filmJury) {
                 return;
             }
             $item = $this->getCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);
             $search = '';
             $search .= ' ' . $sonataMedia->getName();
-            $search .= ' ' . $sonataMedia->getCopyright();
+            $search .= ' ' . $sonataMedia->getOldTitle();
+//            $search .= ' ' . $sonataMedia->getCopyright();
             $sorted = null;
-            $festivalYear = null;
             if ($sonataMedia->getSelfkitFilms()->count() && $sonataMedia->getSelfkitFilms()->first()) {
                 $film = $sonataMedia->getSelfkitFilms()->first();
                 if ($film instanceof FilmFilm) {
                     $sorted = $film->getFestival()->getFestivalStartsAt();
-                    $festivalYear = $film->getFestival()->getYear();
+                    $festivalYear = $festivalYear ?: $film->getFestival()->getYear();
                     $filmTranslation = $film->findTranslationByLocale($locale);
                     if ($filmTranslation instanceof FilmFilmTranslation) {
                         $search .= ' ' . $film->getTitleVO();
+                        $item->setFilmTitleVO($film->getTitleVO());
                         $search .= ' ' . $filmTranslation->getTitle();
-                        $search .= ' ' . $filmTranslation->getSynopsis();
-                        $search .= ' ' . $filmTranslation->getDialog();
-                        $search .= ' ' . $filmTranslation->getInfoRestauration();
+//                        $search .= ' ' . $filmTranslation->getSynopsis();
+//                        $search .= ' ' . $filmTranslation->getDialog();
+//                        $search .= ' ' . $filmTranslation->getInfoRestauration();
                     }
                 }
 
             }
             foreach ($sonataMedia->getSelfkitPersons() as $person) {
                 $search .= '' . $person->getFullName();
-                $search .= ' ' . $person->getCredits();
-                $search .= ' ' . $person->getPresidentJuryCredits();
+//                $search .= ' ' . $person->getCredits();
+//                $search .= ' ' . $person->getPresidentJuryCredits();
                 $personTrans = $person->findTranslationByLocale($locale);
                 if ($personTrans instanceof FilmPersonTranslation) {
-                    $search .= ' ' . $personTrans->getBiography();
+//                    $search .= ' ' . $personTrans->getBiography();
                     $search .= ' ' . $personTrans->getProfession();
                 }
             }
+
+            if ($filmJury && $filmJury->getPerson()) {
+                $person = $filmJury->getPerson();
+                $search .= ' ' . $person->getFullName();
+//                $search .= ' ' . $person->getCredits();
+//                $search .= ' ' . $person->getPresidentJuryCredits();
+                $personTrans = $person->findTranslationByLocale($locale);
+                if ($personTrans instanceof FilmPersonTranslation) {
+//                    $search .= ' ' . $personTrans->getBiography();
+                    $search .= ' ' . $personTrans->getProfession();
+                }
+            }
+
+            if ($sonataMedia->getOldMediaPhotoType()) {
+                $weight = $this->getSoifWeight($sonataMedia->getOldMediaPhotoType());
+            } elseif ($sonataMedia->getOldMediaPhotoJury()) {
+                $weight = $this->getSoifWeight(FilmFilmMediaInterface::TYPE_JURY);
+            } elseif ($sonataMedia->getOldTitle() == 'Photo du film') {
+                $weight = $this->getSoifWeight(FilmFilmMediaInterface::TYPE_FILM);
+            } else {
+                $weight = $this->getSoifWeight(0);
+            }
+
             $item
                 ->setType('image')
                 ->setSorted($sorted)
                 ->setFestivalYear($festivalYear)
                 ->setSearch($search)
+                ->setWeight($weight)
             ;
             $this->getDoctrineManager()->flush();
         }
@@ -529,6 +644,13 @@ class CorpoMediaLibraryItemManager
 
     private function isAvailableMedia(Media $media, $locale)
     {
+        if (!$media->getSites()->contains($this->getSiteCorpo())) {
+            return false;
+        }
+        if ($media->getExcludeFromSearch()) {
+            return false;
+        }
+
         $fr = $media->findTranslationByLocale('fr');
         $trans = $media->findTranslationByLocale($locale);
         if (!$fr) {
@@ -550,4 +672,45 @@ class CorpoMediaLibraryItemManager
         }
         return true;
     }
+
+    private function getSiteCorpo()
+    {
+        static $site = null;
+
+        if (!$site) {
+            $site = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:Site')
+                ->findOneBy(['slug' => 'site-institutionnel'])
+            ;
+        }
+
+        return $site;
+    }
+
+    private function getFestivalByYear($year)
+    {
+        return $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmFestival')
+            ->findOneBy(['year' => $year])
+            ;
+    }
+
+    private function getSoifWeight($type)
+    {
+        $types = [
+            FilmFilmMediaInterface::TYPE_JURY     => 28,
+            FilmFilmMediaInterface::TYPE_POSTER   => 26,
+            FilmFilmMediaInterface::TYPE_MAIN     => 24,
+            FilmFilmMediaInterface::TYPE_FILM     => 22,
+            FilmFilmMediaInterface::TYPE_DIRECTOR => 20,
+        ];
+
+        if (array_key_exists($type, $types)) {
+            return $types[$type];
+        }
+        return 20;
+    }
+
 }

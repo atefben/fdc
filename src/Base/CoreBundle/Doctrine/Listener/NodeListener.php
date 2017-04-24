@@ -84,6 +84,9 @@ class NodeListener
         if ($object instanceof NodeTranslationInterface) {
             $object = $object->getTranslatable();
         }
+        if (!$object->getId()) {
+            return;
+        }
 
         $node = $this->getNode($manager, get_class($object), $object->getId());
 
@@ -128,7 +131,7 @@ class NodeListener
         }
 
         foreach ($object->getTranslations() as $translation) {
-            if ($translation instanceof NodeTranslationInterface) {
+            if ($translation instanceof NodeTranslationInterface && $translation->getId()) {
                 $nodeTranslation = $this->getNodeTranslation($manager, get_class($translation), $translation->getId(), $node);
                 $nodeTranslation
                     ->setTitle($translation->getTitle())

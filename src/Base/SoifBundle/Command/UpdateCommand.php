@@ -39,6 +39,7 @@ class UpdateCommand extends ContainerAwareCommand
             ->addOption('entity', null, InputOption::VALUE_REQUIRED, 'If defined, will update the only entity selected')
             ->addOption('save', null, InputOption::VALUE_NONE, 'If defined, will save the end timestamp in database')
             ->addOption('remove', null, InputOption::VALUE_NONE, 'If defined, will only call the removed webservices')
+            ->addOption('noartist', null, InputOption::VALUE_NONE, 'If defined, will only call the removed webservices')
         ;
     }
     
@@ -57,6 +58,7 @@ class UpdateCommand extends ContainerAwareCommand
         $entity = $input->getOption('entity');
         $save = $input->getOption('save');
         $remove = $input->getOption('remove');
+        $noartist = $input->getOption('noartist');
         // services
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $logger = $this->getContainer()->get('logger');
@@ -81,17 +83,24 @@ class UpdateCommand extends ContainerAwareCommand
         }
         
         // managers
-        $managers = array(
-            $this->getContainer()->get('base.soif.country_manager'),
-            $this->getContainer()->get('base.soif.festival_manager'),
-            $this->getContainer()->get('base.soif.award_manager'),
-            $this->getContainer()->get('base.soif.festival_poster_manager'),
-            $this->getContainer()->get('base.soif.film_atelier_manager'),
-            $this->getContainer()->get('base.soif.film_manager'),
-            $this->getContainer()->get('base.soif.person_manager'),
-            $this->getContainer()->get('base.soif.jury_manager'),
-            $this->getContainer()->get('base.soif.projection_manager')
-        );
+        if($noartist == 1) {
+            $managers = array(
+                $this->getContainer()->get('base.soif.film_manager'),
+            );
+        } else {
+            $managers = array(
+                $this->getContainer()->get('base.soif.country_manager'),
+                $this->getContainer()->get('base.soif.festival_manager'),
+                $this->getContainer()->get('base.soif.award_manager'),
+                $this->getContainer()->get('base.soif.festival_poster_manager'),
+                $this->getContainer()->get('base.soif.film_atelier_manager'),
+                $this->getContainer()->get('base.soif.film_manager'),
+                $this->getContainer()->get('base.soif.person_manager'),
+                $this->getContainer()->get('base.soif.jury_manager'),
+                $this->getContainer()->get('base.soif.projection_manager')
+            );
+        }
+
         
         // check if manager exist when targetting a specific entity
         if ($entity) {

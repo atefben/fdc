@@ -3,17 +3,16 @@
 {% extends 'FDCEventMobileBundle:Search:base.html.twig' %}
 {% block content %}
     {% for event in items %}
-        <article data-theme="competition" data-format="article" class="article">
-            <div class="image">
-                <div class="image-wrapper">
-                    <img src='{% path event.header|trans_fallback('file'), '976x615' %}' alt="{{ event.header|trans_fallback('alt') }}"/>
-                </div>
+        <div data-id="event{{ event.id }}" class="thumb {{ loop.index == 1 ? 'active' : '' }}">
+            <div class="img-container" style="background-image: url({% path event.header|trans_fallback('file'), '976x615' %})">
                 <a class="linkImage" href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}"></a>
             </div>
             <div class="info">
-                <a class="category" href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}">{{ event.theme|trans_fallback('name') }}</a>
-                <h2><a href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}">{{ event|trans_fallback('title') }}</a></h2>
+                <div class="top-info">
+                    <a class="category" href="#">{{ event.theme|trans_fallback('name') }}</a>
+                </div>
+                <a href="{{ path('fdc_eventmobile_event_get', {'slug': event|trans_fallback('slug') }) }}"><h2>{{ event|trans_fallback('title') }}</h2></a>
             </div>
-        </article>
+        </div>
     {% endfor %}
 {% endblock %}

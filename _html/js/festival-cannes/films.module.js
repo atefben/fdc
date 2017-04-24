@@ -55,7 +55,7 @@ $(document).ready(function() {
                 itemSelector: '.item'
               });
             });
-            initAudioPlayers();
+            //initAudioPlayers();
             ajaxEvent();
             resizeGrid();
           });

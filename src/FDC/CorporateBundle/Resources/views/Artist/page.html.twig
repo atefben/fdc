@@ -58,9 +58,10 @@
                     {% if biography %}
                         <div class="biographie">
                             <strong class="title-cat-artist">{{ 'juries.artiste.title.biographie'|trans }}</strong>
-                            <p class="texte-01">{{ biography|raw }}</p>
+                            <p class="texte-01">{{ biography|raw|nl2br }}</p>
                         </div>
                     {% endif %}
+                    {% if artist.films|length > 0 %}
                     <div class="block-01-xs separator1">
                         <h2 class="title-art-artist">{{ 'juries.artiste.title.filmspresentes'|trans }}</h2>
                     </div>
@@ -115,7 +116,8 @@
                             {% endfor %}
                         {% endif %}
                     </div> <!-- fin block poster 01 -->
-                    <div class="block-poster-01 award">
+                   {% endif %}
+
                     {% set awardsCount = 0 %}
                     {% for filmPerson in artist.films %}
                         {% for awardAssociation in filmPerson.film.awards %}
@@ -126,6 +128,7 @@
                         {% endfor %}
                     {% endfor %}
                     {% if awardsCount > 0 %}
+                    <div class="block-poster-01 award">
                         {% set counter = 0 %}
                         {% for filmPerson in artist.getFilmPersonOrderedByFilmFestivalYearAsc() %}
                             {% for awardAssociation in filmPerson.film.awards %}
@@ -151,7 +154,7 @@
                                                 film_image_default: 'bundles/fdcevent/img/palmares/film_w181.jpg'
                                                 }) %}
                                             </div>
-
+                                        </a>
                                             <div class="content-text">
                                                 {% set secondTitle = null %}
                                                 {% if filmPerson.film|trans_fallback_movie('title') is not empty and filmPerson.film|trans_fallback_movie('title') != filmPerson.film.titleVO %}
@@ -183,7 +186,6 @@
                                                     {%- endspaceless %}
                                                 {% endif %}
                                             </div>
-                                        </a>
                                     </div>
                                 {% endif %}
                             {% endfor %}
@@ -191,8 +193,8 @@
                         {% if counter == 1 %}
                             </div>
                         {% endif %}
+                    </div>
                     {% endif %}
-                </div> <!-- fin block poster 01 -->
 
                     {% if artist.juries|length > 0 %}
                         <strong class="title-16">{{ 'juries.artiste.title.presences'|trans }}</strong>
@@ -247,8 +249,7 @@
                             <div class="slide item">
                                 {% set directorImage = director|person_image_portait %}
                                 {% if directorImage %}
-                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}"
-                                         data-object-fit="cover">
+                                    <img src="{% path directorImage, '210x284' %}" alt="{{ director.fullName }}">
                                 {% else %}
                                     {% set media = director|film_media(constant('Base\\CoreBundle\\Entity\\FilmFilmMedia::TYPE_PERSON'))|first %}
                                     {% if media is empty %}
@@ -276,13 +277,6 @@
             </div>
         </div>
     </section>
-    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
-    {'section': '',
-        'detail' : '',
-        'title'  : '',
-        'description': '',
-        'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
-    })) }}
 
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',

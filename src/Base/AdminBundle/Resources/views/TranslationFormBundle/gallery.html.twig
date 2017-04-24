@@ -69,9 +69,6 @@
                                     {{ form_widget(form.parent.children.translateOptions) }}
                                     {{ form_row(form.parent.children.priorityStatus) }}
                                 </div>
-                                <div class="status-hidden">
-                                    {{ form_row(translationsFields.status) }}
-                                </div>
                             </div>
                         </div>
 
@@ -100,12 +97,29 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                {{ 'form.label_alt_img'|trans }}
+                                                Chapo
                                             </label>
                                             {% if form.children.fr.vars.value is not null %}
                                                 <div>
-                                                    {{ form.children.fr.vars.value.introductionHomeCorpo }}
+                                                    {{ form.children.fr.vars.value.introductionHomeCorpo|raw }}
                                                 </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box-body">
+                                        <div class="sonata-ba-collapsed-fields">{{ form_row(translationsFields.status) }}
+                                            {% if is_granted('ROLE_TRANSLATOR_FR') or is_granted('ROLE_TRANSLATOR_EN') or is_granted('ROLE_TRANSLATOR_ES') or is_granted('ROLE_TRANSLATOR_ZH') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'translator'}}) }}
+                                            {% elseif is_granted('ROLE_JOURNALIST') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'journalist'}}) }}
+                                            {% elseif is_granted('ROLE_TRANSLATOR_MASTER') %}
+                                                {{ form_row(translationsFields.status, {'attr': {'class': 'master_translator'}}) }}
+                                            {% else %}
+                                                {{ form_row(translationsFields.status) }}
                                             {% endif %}
                                         </div>
                                     </div>

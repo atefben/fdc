@@ -68,7 +68,7 @@ $(document).ready(function() {
   /* thomon - tetiere height computing */
   if($('.tetiere-movie').length) {
     var tetiere = $('.tetiere-movie'),
-    defaultHeight = 290, //magic number, booooh
+    defaultHeight = 287, //magic number, booooh
     currentHeight = tetiere.outerHeight();
     
     if(tetiere.find('h2').outerHeight() > 35 ){ //2 lines & more
@@ -125,22 +125,20 @@ $(document).ready(function() {
       if(w/h > 0.8179 && !jQuery('#main').hasClass('single-movie')) {
         $(this).addClass('landscape');
       }
-    })
-
-    $('body').on('click', '.gallery .thumbs a', function(e) {
-      e.preventDefault();
-      var i = $(this).index(),
-          cap = $(this).data('caption');
-
-      $('.gallery .img img').removeClass('active');
-      $('.gallery .img img').eq(i).addClass('active');
-
-      $('.gallery .thumbs a').removeClass('active');
-      $(this).addClass('active');
-
-      $('.gallery .caption').text(cap);
     });
 
+    $('.gallery .thumbs a').click(function () {
+        var i = $(this).index(),
+            cap = $(this).data('caption');
+
+        $('.gallery .img img').removeClass('active');
+        $('.gallery .img img').eq(i).addClass('active');
+
+        $('.gallery .thumbs a').removeClass('active');
+        $(this).addClass('active');
+
+        $('.gallery .caption').text(cap);
+    });
 
     // anchors menu
     $('body').on('click', '#nav-movie ul a', function (e) {
@@ -250,64 +248,15 @@ $(document).ready(function() {
         }
       });
 
-      $('#slider-movie-videos .slide-video').on('click', function(e) {
+      $('#slider-movie-videos .slide-video').on('mousedown', function(e) {
         var number = $(this).closest('.owl-item').index();
-        sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
+          setTimeout(function(){
+              if (!$('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab')) {
+                  videoMovieBa.playlistItem(number);
+                  sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
+              }
+          }, 100);
       });
     }
-
-    // previous and next
-    /*$('body').on('click', '.single-movie .nav', function(e) {
-      e.preventDefault();
-
-      var $that = $(this);
-
-      if($that.hasClass('next')) {
-        $('.anim').addClass('next');
-      } else {
-        $('.anim').removeClass('next');
-      }
-
-      $('.anim').addClass('show');
-      setTimeout(function() {
-        cl.show();
-        $('#canvasloader').addClass('show');
-      }, 800);
-
-      var urlPath = $that.attr('href');
-
-      // remove timeout once on server. only for animation.
-
-      /*setTimeout(function() {
-        $('html, body').animate({
-          scrollTop: 0
-        }, 0);
-        $.get(urlPath, function(data){
-          var matches = data.match(/<title>(.*?)<\/title>/);
-          var spUrlTitle = matches[1];
-
-          document.title = spUrlTitle;
-          $(".content-movie").html( $(data).find('.content-movie') );
-          history.pushState('',GLOBALS.texts.url.title, urlPath);
-
-          $('#canvasloader').removeClass('show');
-
-          setTimeout(function() {
-            if($that.hasClass('next')) {
-              $('.anim').removeClass('next show');
-            }
-            else {
-              $('.anim').addClass('next').removeClass('show');
-            }
-            cl.hide();
-            initSliders();
-            initSlideshows();
-            initAudioPlayers();
-          }, 800);
-        });
-      }, 2000);
-    });*/
-
   }
-
 });

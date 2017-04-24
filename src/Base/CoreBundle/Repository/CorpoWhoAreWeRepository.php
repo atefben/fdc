@@ -23,13 +23,10 @@ class CorpoWhoAreWeRepository extends TranslationRepository
         $qb = $this->createQueryBuilder('p');
 
         $qb
-            ->join('p.translations', 't')
-            ->andWhere('t.locale = :locale')
-            ->andWhere('t.slug = :slug')
-            ->andWhere('t.status = 1')
-            ->setParameter('locale', $locale)
-            ->setParameter('slug', $slug)
+            ->join('p.translations', 'pt')
         ;
+
+        $this->addTranslationQueries($qb, 'pt', $locale, $slug);
 
         return $qb->getQuery()->getOneOrNullResult();
     }

@@ -60,7 +60,7 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedNews() as $associatedNews) {
             if ($associatedNews->getNews()) {
                 $article = $associatedNews->getNews();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
+                if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
                     if ($article instanceof NewsAudio) {
                         if ($article->getAudio()->getDisplayedHome()) {
                             continue;
@@ -72,7 +72,7 @@ class MovieController extends Controller
                         }
                     }
                     if ($this->isNewsPublished($article, $locale)) {
-                        $key = $article->getPublishedAt()->getTimestamp();
+                        $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-news-' . $article->getTypeClone();
                         $articles[$key] = $article;
                         $articlesIds[] = $article->getId();
                     }
@@ -93,7 +93,7 @@ class MovieController extends Controller
                     }
                 }
                 if ($this->isNewsPublished($news, $locale)) {
-                    $key = $news->getPublishedAt()->getTimestamp();
+                    $key = $news->getPublishedAt()->getTimestamp() . '-' . $news->getId() . '-news-' . $news->getTypeClone();
                     $articles[$key] = $news;
                     $articlesIds[] = $news->getId();
                 }
@@ -103,8 +103,8 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedInfo() as $associatedInfo) {
             if ($associatedInfo->getInfo()) {
                 $article = $associatedInfo->getInfo();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
-                    $key = $article->getPublishedAt()->getTimestamp();
+                if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-info-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
@@ -112,8 +112,8 @@ class MovieController extends Controller
         foreach ($movie->getAssociatedStatement() as $associatedStatement) {
             if ($associatedStatement->getStatement()) {
                 $article = $associatedStatement->getStatement();
-                if ($article->getPublishedAt() && $this->isPublished($article, $locale) && $article->findTranslationByLocale('fr')->getIsPublishedOnFDCEvent()) {
-                    $key = $article->getPublishedAt()->getTimestamp();
+                if ($article && $article->getPublishedAt() && $this->isPublished($article, $locale) && $article->getSites()->contains($this->getCorporateSite())) {
+                    $key = $article->getPublishedAt()->getTimestamp() . '-' . $article->getId() . '-statement-' . $article->getTypeClone();
                     $articles[$key] = $article;
                 }
             }
@@ -123,23 +123,25 @@ class MovieController extends Controller
 
         $prev = null;
         $next = null;
-        foreach ($moviesAll as $key => $tmp) {
-            if ($tmp->getId() == $movie->getId()) {
-                if ($key == 0) {
-                    $prev = $movies[count($movies) - 1];
-                    $next = $movies[1];
-                } elseif ($key == count($movies) - 1) {
-                    $prev = $movies[count($movies) - 2];
-                    $next = $movies[0];
-                } else {
-                    if (isset($movies[$key - 1])) {
-                        $prev = $movies[$key - 1];
+        if ($movies) {
+            foreach ($moviesAll as $key => $tmp) {
+                if ($tmp->getId() == $movie->getId()) {
+                    if ($key == 0) {
+                        $prev = end($movies);
+                        $next = $movies[1];
+                    } elseif ($key == count($movies) - 1) {
+                        $prev = $movies[count($movies) - 2];
+                        $next = $movies[0];
+                    } else {
+                        if (isset($movies[$key - 1])) {
+                            $prev = $movies[$key - 1];
+                        }
+                        if (isset($movies[$key])) {
+                            $next = $movies[$key];
+                        }
                     }
-                    if (isset($movies[$key])) {
-                        $next = $movies[$key];
-                    }
+                    break;
                 }
-                break;
             }
         }
 
@@ -220,11 +222,13 @@ class MovieController extends Controller
      */
     public function selectionAction(Request $request, $slug = null, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $locale = $request->getLocale();
         $festival = $this->getFestival($year, TRUE);
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
-        if($festival == "undefined")
-        {
+        if ($festival == "undefined") {
             $pages = $this
                 ->getDoctrineManager()
                 ->getRepository('BaseCoreBundle:FDCPageLaSelection')
@@ -248,10 +252,10 @@ class MovieController extends Controller
             $localeSlugs = $page->getLocaleSlugs();
             $this->get('base.manager.seo')->setFDCEventPageFDCPageLaSelectionSeo($page, $locale);
             return $this->render('FDCCorporateBundle:Movie:selection.html.twig', [
-                'page'            => $page,
-                'localeSlugs'     => $localeSlugs,
-                'festivals'       => $festivals,
-                'festival'        => False
+                'page'        => $page,
+                'localeSlugs' => $localeSlugs,
+                'festivals'   => $festivals,
+                'festival'    => False
             ]);
         }
 
@@ -461,6 +465,9 @@ class MovieController extends Controller
      */
     public function classicsAction(Request $request, $slug, $year)
     {
+        if($year == '2017') {
+            throw $this->createNotFoundException();
+        }
         $em = $this->get('doctrine')->getManager();
         $locale = $request->getLocale();
         $festivals = $this->getDoctrine()->getRepository('BaseCoreBundle:FilmFestival')->findAll();
@@ -500,14 +507,33 @@ class MovieController extends Controller
             $next = reset($filters);
         }
 
+        $festival = $this->getFestival($year, TRUE);
+        $cinemaDelaPlage = false;
+        $selectionSectionTrans = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:FilmSelectionSectionTranslation')
+            ->findOneBy(['name' => 'Cinéma de la plage', 'locale' => 'fr'])
+        ;
+        if ($selectionSectionTrans) {
+            $temp = $this
+                ->getDoctrineManager()
+                ->getRepository('BaseCoreBundle:FilmFilm')
+                ->getFilmsBySelectionSection($festival, $locale, $selectionSectionTrans->getTranslatable()->getId())
+            ;
+            if (count($temp)) {
+                $cinemaDelaPlage = true;
+            }
+        }
+
         return [
-            'cannesClassics' => $filters,
-            'classic'        => $classic,
-            'filters'        => $filters,
-            'selectionTabs'  => $pages,
-            'next'           => is_object($next) ? $next : false,
-            'localeSlugs'    => $localeSlugs,
-            'festivals'      => $festivals,
+            'cinemaDeLaPlage' => $cinemaDelaPlage,
+            'cannesClassics'  => $filters,
+            'classic'         => $classic,
+            'filters'         => $filters,
+            'selectionTabs'   => $pages,
+            'next'            => is_object($next) ? $next : false,
+            'localeSlugs'     => $localeSlugs,
+            'festivals'       => $festivals,
         ];
     }
 }

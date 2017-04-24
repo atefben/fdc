@@ -46,6 +46,7 @@ class CorpoMediathequeMediaAdmin extends Admin
             ->add('photo', 'sonata_type_model_list', array('btn_add' => false))
             ->add('video', 'sonata_type_model_list', array('btn_add' => false))
             ->add('audio', 'sonata_type_model_list', array('btn_add' => false))
+            ->add('position','hidden',array('attr'=>array("hidden" => true)))
         ;
     }
 

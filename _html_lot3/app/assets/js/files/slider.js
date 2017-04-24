@@ -40,7 +40,6 @@ var owInitSlider = function (sliderName) {
                     var desc = container.text();
                     desc = desc.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
                     container.empty().html(desc);
-                    $clamp(container.get(0), {clamp: 3});
                 });
                 
                 if(isFirefox){
@@ -206,13 +205,13 @@ var owInitSlider = function (sliderName) {
         var sizeSlide = $('.slider-restropective').width();
         var finalSizeSlider = numberSlide * sizeSlide + 1000;
 
-        $('.discover').on('click', function (e) {
+        /*$('.discover').on('click', function (e) {
             $('body').addClass('fs-off');
-        });
+        });*/
         var initOpenAjax = function () { //ajax
             $('.discover').on('click', function (e) {
 
-                e.preventDefault();
+                /*e.preventDefault();
                 var url = $(this).data('url');
                 
                 $('.slider-restropective').addClass('isOpen block-push block-push-top background-effet');
@@ -221,10 +220,8 @@ var owInitSlider = function (sliderName) {
                 $('.slides-calc2').css('display', 'none');
                 $('.title-big-date').addClass('title-2').removeClass('title-big-date');
                 $('.title-edition').addClass('title-4').removeClass('title-edition');
-
                 var imgurl = $('.block-push-top.big .container img').attr('src');
-                
-                $('.block-push').css('background-position', '0px 20%');
+                //$('.block-push').css('background-position', '0px 20%');
                 $('.block-push-top.big .container img').css('display', 'none');
 
                 $('.block-push-top.big').css('background-image', 'url(' + imgurl + ')');
@@ -243,7 +240,7 @@ var owInitSlider = function (sliderName) {
 
                 });
 
-                return false;
+                return false;*/
             });
         }
 
@@ -257,7 +254,7 @@ var owInitSlider = function (sliderName) {
 
         //init width of slide
         noUiSlider.create(slider, {
-            start: [1945],//todo script
+            start: [1945],
             range: {
                 'min': 1945,
                 'max': maxDate
@@ -307,15 +304,15 @@ var owInitSlider = function (sliderName) {
 
             //paralax calc 3
 
-            var val2 = -(valuesFloat - 1945 - number) * 380; //todo script ?
+            var val2 = -(valuesFloat - 1945 - number) * 380;
             $('.slider-restropective[data-slide=' + number + '] .calc3').css('transform', 'translate(' + val2 + 'px)');
 
             //paralax cal 4
 
-            var val3 = -(valuesFloat - 1945 - number) * 80; //todo script ?
+            var val3 = -(valuesFloat - 1945 - number) * 80;
             $('.slider-restropective[data-slide=' + number + '] .calc4').css('transform', 'translate(' + val3 + 'px)');
 
-            var val = -w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945);
 
             $slide.css('transform', 'translate(' + val + 'px)');
 
@@ -334,7 +331,7 @@ var owInitSlider = function (sliderName) {
             number = values - 1945;
 
 
-            var val = -w * (number); //todo script ?
+            var val = -w * (number);
 
             $slide.css('transform', 'translate(' + val + 'px)');
 
@@ -479,7 +476,7 @@ var owInitSlider = function (sliderName) {
         });
 
 
-        $('.date-next').on('click', function () {
+        /*$('.date-next').on('click', function () {
             animation('next-open');
 
             var $this = $(this);
@@ -513,7 +510,7 @@ var owInitSlider = function (sliderName) {
             });
 
             animation('prev-open');
-        });
+        });*/
 
         if ($('.restrospective-init').length) {
 
@@ -537,6 +534,12 @@ var owInitSlider = function (sliderName) {
     }
 };
 
+if ($('.retrospective').length) {
+    $(window).scroll(function () {
+        var scrollel = 200-($(window).scrollTop())-400;
+        $('.slider-restropective.big .vFlexAlign img').css('top', scrollel + 'px');
+    });
+}
 
 var rtime;
 var timeoutVar = false;
@@ -562,6 +565,7 @@ function resizeend() {
     } else {
         timeoutVar = false; 
         if ($('.retrospective').length) {
+
             
             $('.slides').removeClass('fadeOut').addClass('fadeIn');
             var $slide = $('.slides');
@@ -579,7 +583,7 @@ function resizeend() {
 
             values = $('.slides-calc1 .date').html();
             number = values - 1945;
-            var val = -w * (values - 1945); //todo script ?
+            var val = -w * (values - 1945);
 
 
             $slide.css('transform', 'translate(' + val + 'px)');

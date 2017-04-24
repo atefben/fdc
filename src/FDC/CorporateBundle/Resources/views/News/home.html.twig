@@ -60,7 +60,11 @@
                                             <strong class="title-2a">{{ sliderItem.theme }}</strong>
                                         </a>
                                         <p class="text-trunc">
-                                            {{ sliderItem.introduction }}
+                                            {% if app.request.locale != 'zh' %}
+                                                {{ sliderItem.introduction|striptags|raw|convert_encoding('UTF-8', 'HTML-ENTITIES')|truncate(180) }}
+                                            {% else %}
+                                                {{ sliderItem.introduction|striptags|raw|truncate(180) }}
+                                            {% endif %}
                                         </p>
                                     </div>
                                 {% endfor %}
@@ -83,7 +87,7 @@
         {% endif %}
 
         <div class="content">
-            <div class="block-01 padding-bottom block-scale">
+            <div class="block-01 block-scale">
                 {% if not homepage.displayedFeaturedContents %}
                     <div class="contain-card">
                         <div class="cards grid-01 isotope-01 ajax-filter-cards-container">
@@ -144,14 +148,12 @@
                                     <div class="text-01">
                                         {{ gallery|trans_fallback('introductionHomeCorpo')|raw }}
                                     </div>
-                                </div> <!-- end block texts-->
+                                </div>
 
-                            </div> <!-- end block info -->
-                        </div> <!-- end block legend-->
-
-                    </div> <!-- end diaporama-->
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
-
                 {% if not homepage.displayedFeaturedContents %}
                     <div class="articles-wrapper">
                         <div class="articles article-inverse">
@@ -165,14 +167,14 @@
                                 {% endif %}
 
                             </div>
-                        </div> <!-- end articles -->
-                    </div> <!-- end article wrapper-->
-
+                        </div>
+                    </div>
+                    <div id="maskread"></div>
                     {% if not last %}
                         <a id="home-news-statements-more"
                            href="{{ path('fdc_corporate_default_getarticlesfrom') }}?page={{ page }}"
                            data-reverse=""
-                           class="read-more ajax-request">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
+                           class="read-more ajax-request first">{{ 'home.coporate.statements.and.infos.more.button'|trans|raw }}</a>
                     {% else %}
                         <a id="home-news-statements-more"
                            href="{{ path('fdc_corporate_news_infosandstatements') }}"
@@ -188,8 +190,8 @@
                             <h2 class="title title-01">{{ 'home.coporate.videos.block.title'|trans|raw }}</h2>
 
                             <div class="center block-videos">
-                                <article class="video video-container">
-                                    <div class=" state-init video video-player"
+                                <article class="video video-container video-data-layer">
+                                    <div class="state-init video video-player shadow-bottom"
                                          data-file='[{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('webmUrl') }}"},{"file":"{{ s3_server_video ~ featuredVideo|trans_fallback('mp4Url') }}"}]'
                                         {% if featuredVideo.image|trans_fallback('file') %}
                                             data-img="{% path featuredVideo.image|trans_fallback('file'), '926x584' %}"
@@ -206,7 +208,7 @@
                                         <div id="video-player" class="jwplayer jw-reset">
                                         </div>
                                         <div class="video-overlay"></div>
-                                        <div class="infos-bar hide-info">
+                                        <div class="infos-bar">
                                             <div class="picto"><i class="icon icon-video"></i></div>
                                             <div class="info ">
                                                 <div class="vCenter">
@@ -605,7 +607,7 @@ http://cdn-media.festival-cannes.com/film_poster/0001/02/thumb_1458_film_poster_
         </div> <!-- end content -->
 
     </section>
-    {% include "FDCEventBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
+    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with {"breadcrumb": [
     {
     "name" : 'header.mainnav.nav.jourapresjour'|trans,
     "url"  : path('fdc_event_news_index')

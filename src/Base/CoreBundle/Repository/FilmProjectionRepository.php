@@ -5,6 +5,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FilmFilm;
+use Base\CoreBundle\Entity\FilmProjection;
 
 /**
  * Class FilmProjectionRepository
@@ -92,7 +93,7 @@ class FilmProjectionRepository extends EntityRepository
         if ($isPress == false) {
             $qb = $qb
                 ->andWhere('p.type NOT IN (:types)')
-                ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
+                ->setParameter('types', ['Séance de presse', 'Conférence de presse'])
             ;
         }
 
@@ -192,7 +193,7 @@ class FilmProjectionRepository extends EntityRepository
         }
 
         if ($dateTime) {
-            if($festival->getFestivalEndsAt() == $dateTime) {
+            if ($festival->getFestivalEndsAt() == $dateTime) {
                 $qb->setMaxResults(3);
             }
 
@@ -230,7 +231,7 @@ class FilmProjectionRepository extends EntityRepository
             ->join('fp.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
             ->andWhere('fp.type NOT IN (:types)')
-            ->setParameter('types', array('Séance de presse', 'Conférence de presse'))
+            ->setParameter('types', ['Séance de presse', 'Conférence de presse'])
         ;
 
         $this->addMasterQueries($qb, 'fp', $festival, false);
@@ -293,6 +294,68 @@ class FilmProjectionRepository extends EntityRepository
         ;
 
         return $qb;
+    }
+
+    /**
+     * @return FilmProjection
+     */
+    public function getMainProjection2017()
+    {
+        $projection = $this
+            ->createQueryBuilder('p')
+            ->andWhere('p.room = 1')
+            ->andWhere(':startsAt BETWEEN p.startsAt AND p.endsAt OR p.startsAt > :startsAt')
+            ->setParameter(':startsAt', new \DateTime())
+            ->addOrderBy('p.startsAt', 'asc')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        if (!$projection) {
+            $projection = $this
+                ->createQueryBuilder('p')
+                ->andWhere('p.room = 1')
+                ->addOrderBy('p.startsAt', 'desc')
+                ->setMaxResults(1)
+                ->getQuery()
+                ->getOneOrNullResult()
+            ;
+        }
+
+        return $projection;
+    }
+
+    /**
+     * @param \DateTime $begin
+     * @param \DateTime $end
+     * @return FilmProjection[]
+     */
+    public function getHomeProjection2017(\DateTime $begin, \DateTime $end)
+    {
+
+        $exclude = $this
+            ->getMainProjection2017();
+
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->innerJoin('p.room', 'pr')
+            ->andWhere('p.startsAt BETWEEN :begin AND :end')
+            ->setParameter(':begin', $begin)
+            ->setParameter(':end', $end)
+        ;
+        if ($exclude) {
+            $qb
+                ->andWhere('p.id != :id')
+                ->setParameter(':id', $exclude->getId())
+            ;
+        }
+        return $qb
+            ->addOrderBy('p.startsAt', 'asc')
+            ->addOrderBy('pr.homeProjection2017Order', 'asc')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 }

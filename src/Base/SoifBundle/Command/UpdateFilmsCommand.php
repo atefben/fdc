@@ -27,6 +27,7 @@ class UpdateFilmsCommand extends ContainerAwareCommand
             ->setName('base:soif:update_films')
             ->setDescription('Update all films')
             ->addOption('page', null, InputOption::VALUE_OPTIONAL, 'The page')
+            ->addOption('noartist', null, InputOption::VALUE_NONE, 'No artist')
         ;
     }
 

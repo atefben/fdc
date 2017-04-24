@@ -2,6 +2,8 @@
 
 namespace Base\AdminBundle\Controller;
 
+use Base\CoreBundle\Entity\GraphicalCharterButtonGroup;
+use Base\CoreBundle\Entity\GraphicalCharterSection;
 use \DateTime;
 
 use JMS\SecurityExtraBundle\Annotation\Secure;
@@ -61,6 +63,7 @@ class LockController extends Controller
         'mediaaudio'                       => 'MediaAudio',
         'mediavideo'                       => 'MediaVideo',
         'mediapdf'                         => 'MediaPdf',
+        'gallery'                          => 'Gallery',
         // Edition par année
         'filmfestival'                     => 'FilmFestival',
         // Participer
@@ -116,7 +119,11 @@ class LockController extends Controller
         'gallerydualalign' => 'GalleryDualAlign',
         'filmselectionsection' => 'FilmSelectionSection',
         'filmfilm' => 'FilmFilm',
-
+        'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
+        'graphicalcharterbuttongroup' => 'GraphicalCharterButtonGroup',
+        'graphicalcharterbuttonfile' => 'GraphicalCharterButtonFile',
+        'graphicalcharterbuttonsection' => 'GraphicalCharterButtonSection',
+        'graphicalchartersection' => 'GraphicalCharterSection',
     );
 
     /**

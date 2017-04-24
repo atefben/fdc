@@ -6,7 +6,7 @@
 {% set file = trans.file %}
 {% set copyright = photo|trans_fallback('copyright') %}
 {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
-{% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}
+<img src="{% path file, 'x584' %}" alt="{{ alt }}" title="{{ alt }}" />
 {% if hideCopyright is not defined %}
     <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
 {% endif %}

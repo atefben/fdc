@@ -128,7 +128,7 @@ file that was distributed with this source code.
         {% endblock %}
         {% block logo %}
             {% spaceless %}
-                <a class="logo" href="{{ url('sonata_admin_dashboard') }}">
+                <a class="logo" href="{{ url('sonata_admin_dashboard',{'locale':'fr'}) }}">
                     {% if 'single_image' == admin_pool.getOption('title_mode') or 'both' == admin_pool.getOption('title_mode') %}
                         <img src="{{ asset(admin_pool.titlelogo) }}" alt="{{ admin_pool.title }}">
                     {% endif %}
@@ -615,15 +615,41 @@ file that was distributed with this source code.
                                                                 {{ 'form.mobile_settings.title'|trans({}, 'BaseAdminBundle') }}
                                                             </a>
                                                         </li>
+                                                        <li{% if app.request.attributes.get('_route') == 'base_admin_settings_pushfilmmobile' %} class="active"{% endif %}>
+                                                            <a href="{{ path('base_admin_settings_pushfilmmobile') }}">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                                {{ 'form.mobile_pushfilm.title'|trans({}, 'BaseAdminBundle') }}
+                                                            </a>
+                                                        </li>
                                                     {% endif %}
                                                 </ul>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
 
-                                    {% set active = (app.request.attributes.get('_route') in ['admin_base_core_corpowhoarewe_list','admin_base_core_corpoteam_edit','admin_base_core_corpoteammembers_list','admin_base_core_corpoteammembers_edit',
-                                    'admin_base_core_corpoteammembers_create','admin_base_core_corpoteamdepartements_list','admin_base_core_corpoteamdepartements_edit','admin_base_core_corpoteamdepartements_create','admin_base_core_corpoteamteams_list','admin_base_core_corpoteamteams_edit','admin_base_core_corpoteamteams_create']) ? 'active' %}
-
+                                    {% set active = (app.request.attributes.get('_route') in [
+                                    'admin_base_core_corpowhoarewe_list',
+                                    'admin_base_core_corpoteam_edit',
+                                    'admin_base_core_corpoteammembers_list',
+                                    'admin_base_core_corpoteammembers_edit',
+                                    'admin_base_core_corpoteammembers_create',
+                                    'admin_base_core_corpoteamdepartements_list',
+                                    'admin_base_core_corpoteamdepartements_edit',
+                                    'admin_base_core_corpoteamdepartements_create',
+                                    'admin_base_core_corpoteamteams_list',
+                                    'admin_base_core_corpoteamteams_edit',
+                                    'admin_base_core_corpoteamteams_create',
+                                    'admin_base_core_graphicalcharter_edit',
+                                    'admin_base_core_graphicalchartersection_list',
+                                    'admin_base_core_graphicalchartersection_edit',
+                                    'admin_base_core_graphicalchartersection_create',
+                                    'admin_base_core_graphicalcharterbuttongroup_list',
+                                    'admin_base_core_graphicalcharterbuttongroup_edit',
+                                    'admin_base_core_graphicalcharterbuttongroup_create',
+                                    'admin_base_core_graphicalcharterbuttonsection_list',
+                                    'admin_base_core_graphicalcharterbuttonsection_edit',
+                                    'admin_base_core_graphicalcharterbuttonsection_create'
+                                    ]) ? 'active' %}
 
                                     {% if is_granted('ROLE_BASE_ADMIN_CORPO_WHO_ARE_WE_ADMIN') %}
                                         <li class="treeview {% if active %} active{% endif %}">
@@ -673,12 +699,36 @@ file that was distributed with this source code.
                                                         </a>
                                                     </li>
                                                 {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_GRAPHICAL_CHARTER_ADMIN') %}
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_graphicalcharter_edit'] %} active{% endif %}">
+                                                        <a href="{{ path('admin_base_core_graphicalcharter_edit', {'id': 1}) }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            Charte graphique
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_GRAPHICAL_CHARTER_SECTION_ADMIN') %}
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_graphicalchartersection_list', 'admin_base_core_graphicalchartersection_edit', 'admin_base_core_graphicalchartersection_create'] %} active{% endif %}">
+                                                        <a href="{{ path('admin_base_core_graphicalchartersection_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            Sections de charte graphique
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if is_granted('ROLE_BASE_ADMIN_GRAPHICAL_CHARTER_BUTTON_GROUP_ADMIN') %}
+                                                    <li class="{% if app.request.attributes.get('_route') in ['admin_base_core_graphicalcharterbuttongroup_list', 'admin_base_core_graphicalcharterbuttongroup_edit', 'admin_base_core_graphicalcharterbuttongroup_create'] %} active{% endif %}">
+                                                        <a href="{{ path('admin_base_core_graphicalcharterbuttongroup_list') }}">
+                                                            <i class="fa fa-angle-double-right"></i>
+                                                            Charte graphique - Groupe de boutons
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                         </li>
                                     {% endif %}
 
                                     {% set active = (app.request.attributes.get('_route') in ['admin_base_core_filmfestival_list','admin_base_core_corpofestivalhistory_list','admin_base_core_corpofestivalhistory_edit','admin_base_core_corpofestivalhistory_create','admin_base_core_corpopalmeor_list','admin_base_core_corpopalmeor_create','admin_base_core_corpopalmeor_edit']) ? 'active' %}
-                                    {% if is_granted('ROLE_BASE_ADMIN_FILM_FESTIVAL_ADMIN') %}
+                                    {% if is_granted('ROLE_BASE_ADMIN_CORPO_FESTIVAL_HISTORY_ADMIN') %}
                                     <li class="treeview {% if active %} active{% endif %}">
                                         <a href="#">
                                             <i class="fa fa-folder"></i>

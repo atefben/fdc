@@ -8,7 +8,7 @@
             data-link="{{ s3_server_video ~ translation.mp4Url }}"
             data-email="{{ s3_server_video ~ translation.mp4Url }}"
             data-file='[{% if(translation.jobWebmState == 3) %}{"file":"{{ s3_server_video ~ translation.webmUrl }}"},{% endif %}{"file":"{{ s3_server_video ~ translation.mp4Url }}"}]'
-            data-img="{% if image is defined and image is not null %}{% path image, 'reference' %}{% elseif translation.imageAmazonUrl is defined and translation.imageAmazonUrl is not null %}{{ s3_server_video ~ translation.imageAmazonUrl }}{% endif %}"
+            data-img="{% if mediaImage is defined and mediaImage is not null and mediaImage|trans_fallback('file') is not null %}{% path mediaImage|trans_fallback('file'), 'reference' %}{% elseif translation.imageAmazonUrl is defined and translation.imageAmazonUrl is not null %}{{ s3_server_video ~ translation.imageAmazonUrl }}{% endif %}"
             data-name="{{ translation.title }}">
             <div id="video-player-{{ mediaVideo.id }}" class="video-player">
             </div>

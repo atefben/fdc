@@ -2,9 +2,9 @@
 <header>
     <div id="top-bar">
         <ul class="main-nav">
-            <li>
-                <a href="{{ path('fdc_event_news_index') }}">{{ 'header.topbar.nav.festival'|trans }}</a>
-            </li>
+            {#<li>#}
+                {#<a href="{{ path('fdc_event_news_index') }}">{{ 'header.topbar.nav.festival'|trans }}</a>#}
+            {#</li>#}
             <li>
                 <a href="/{{app.request.locale}}/" target="_blank" class="active">{{ 'header.topbar.nav.festivalcannes'|trans }}</a>
             </li>
@@ -19,11 +19,8 @@
             </li>
         </ul>
         <ul class="user-nav">
-            <!-- <li>
-              <a href="#" class="selection"><i class="icon icon-hours-black"></i> Ma Sélection</a>
-            </li> -->
             <li>
-                <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
+                <a href="{% if app.request.locale == 'fr' %} https://moncompte.festival-cannes.com/{% else %}https://moncompte.festival-cannes.com/default.aspx{% endif %}" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
             </li>
             <li class="lang">
                 <a href="#" class="language"><i class="icon icon-language"></i> {{ app.request.locale|upper }}</a>
@@ -64,7 +61,7 @@
                 <a href="{{ attribute(_context, 'partner_chopard_'~ app.request.locale) }}" target="_blank"><img width="84" src="{{ asset('bundles/fdccorporate/img/header/Logo_Chopard.svg') }}" alt="Chopard" class="chopard" /></a>
                 <a href="{{ attribute(_context, 'partner_loreal_'~ app.request.locale) }}" target="_blank"><img width="75" src="{{ asset('bundles/fdccorporate/img/header/loreal.svg') }}" alt="L'Oréal" class="oreal" /></a>
                 <a href="{{ attribute(_context, 'partner_hp_'~ app.request.locale) }}" target="_blank"><img width="28" src="{{ asset('bundles/fdccorporate/img/header/hp.svg') }}" alt="HP" class="hp" /></a>
-                <a href="{{ attribute(_context, 'partner_kering_'~ app.request.locale) }}" target="_blank"><img width="82" src="{{ asset('bundles/fdccorporate/img/header/Kering-logo.svg') }}" alt="Kering" class="kering" /></a>
+                <a href="{{ attribute(_context, 'partner_kering_'~ app.request.locale) }}" target="_blank"><img width="82" src="{{ asset('bundles/fdccorporate/img/header/kering.png') }}" alt="Kering" class="kering" /></a>
                 <a href="{{ attribute(_context, 'partner_renault_'~ app.request.locale) }}" target="_blank"><img width="95" src="{{ asset('bundles/fdccorporate/img/header/renault.svg') }}" alt="Renault" class="renault" /></a>
                 <a href={{ attribute(_context, 'partner_mastercard_'~ app.request.locale) }}" target="_blank"><img width="73" src="{{ asset('bundles/fdccorporate/img/header/mastercard.png') }}" alt="Mastercard" class="mastercard" /></a>
             </div>
@@ -73,14 +70,11 @@
             </div>
             <div id="sticky-user">
                 <ul class="user-nav">
-                    <!-- <li>
-                      <a href="#" class="selection"><i class="icon icon-hours-black"></i>Ma Sélection</a>
-                    </li> -->
                     <li>
                         <a href="http://sub.festival-cannes.fr/" class="account" target="_blank"><i class="icon icon-user-round"></i> {{ 'header.usernav.nav.moncompte'|trans }}</a>
                     </li>
                     <li>
-                        <a href="search.html" class="search"><i class="icon icon-search"></i>{{ 'header.usernav.nav.rechercher'|trans }}</a>
+                        <a href="{{ path('fdc_corporate_search_searchsubmit') }}" class="search"><i class="icon icon-search"></i>{{ 'header.usernav.nav.rechercher'|trans }}</a>
                     </li>
                 </ul>
             </div>

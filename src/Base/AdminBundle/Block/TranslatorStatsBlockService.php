@@ -113,6 +113,9 @@ class TranslatorStatsBlockService extends BaseBlockService
                 'BaseCoreBundle:NewsVideo',
                 'BaseCoreBundle:NewsImage',
             ),
+            'gallery' => array(
+                'BaseCoreBundle:Gallery'
+            ),
             'videos' => array(
                 'BaseCoreBundle:MediaVideo'
             ),
@@ -173,6 +176,22 @@ class TranslatorStatsBlockService extends BaseBlockService
                 'BaseCoreBundle:ContactPage',
                 // pages
                 'BaseCoreBundle:FDCPageFooter',
+                'BaseCoreBundle:CorpoWhoAreWe',
+                'BaseCoreBundle:CorpoMediatheque',
+                'BaseCoreBundle:CorpoFestivalHistory',
+                'BaseCoreBundle:CorpoPalmeOr',
+                'BaseCoreBundle:CorpoAccredit',
+                'BaseCoreBundle:CorpoMovieInscriptionProcedure',
+                'BaseCoreBundle:CorpoMovieInscription',
+                'BaseCoreBundle:CorpoTeam',
+                'BaseCoreBundle:CorpoTeamDepartements',
+                'BaseCoreBundle:CorpoTeamMembers',
+                'BaseCoreBundle:CorpoTeamTeams',
+                'BaseCoreBundle:GraphicalCharter',
+                'BaseCoreBundle:GraphicalCharterButtonGroup',
+                'BaseCoreBundle:GraphicalCharterSection',
+                'BaseCoreBundle:CorpoAccreditProcedure',
+                'BaseCoreBundle:HomepageCorporate',
                 // seo + tetieres
                 'BaseCoreBundle:FDCPageEvent',
                 'BaseCoreBundle:FDCPageWebTvChannels',

@@ -600,6 +600,28 @@ a.notloaded {
 }
 
 .container .audio-container .audio-player {
-    width: 640px;
+    margin: 0 auto;
+}
+
+.single-article .big-quote a strong  {
+    color: #c8a461;
+    font-weight: 400;
+}
+.single-article .big-quote a  {
+    color: #c8a461;
+}
+.press.lock .affiche .buttons.active-btn .button {
+    pointer-events: auto;
+    border-color: #c8a461;
+    color: #c8a461;
+    border-right: 1px solid #c8a461;
+}
+
+.single-article .text a {
+    color: #c8a461;
+}
+.single-movie .audios {
+    padding: 45px 0;
+    width: 630px;
     margin: 0 auto;
 }

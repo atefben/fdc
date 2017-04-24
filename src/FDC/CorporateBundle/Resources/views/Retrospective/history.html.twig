@@ -12,7 +12,7 @@
                 {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
             {% endif %}
             {% set mainImage = mainTrans.file %}
-            <div class="block-push block-push-top" style="background-image: url({% path mainImage, '2560x1103' %});">
+            <div class="block-push block-push-retro" style="background-image: url({% path mainImage, '2560x1103' %});">
                 <div class="vFlexAlign">
                     <div class="txts">
                         <h1 class="title-3">{{ currentPage|trans_fallback('title') }}</h1>
@@ -216,12 +216,12 @@
         'color' : true
     })) }}
 
-    {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
+    {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
     {"breadcrumb":
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
+    "url"  : path('fdc_corporate_editions_retrospective')
     },
     {
     "name" :  '69edition.festival.history'|trans,

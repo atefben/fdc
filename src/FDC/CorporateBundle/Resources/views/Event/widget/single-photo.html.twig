@@ -1,0 +1,24 @@
+{% trans_default_domain 'FDCEventBundle' %}
+
+
+<div class="single-photo{% if photo_class is defined %}{{ photo_class }}{% endif %}">
+    {% if photo is not null %}
+        <div class="photo-container">
+            {% set trans = photo.findTranslationByLocale(app.request.locale) %}
+            {% if trans is null or trans.file is null %}
+                {% set trans = photo.findTranslationByLocale('fr') %}
+            {% endif %}
+            {% set file = trans.file %}
+            {% set copyright = photo|trans_fallback('copyright') %}
+            {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : '' %}
+            {#{% if file.height > file.width %}#}
+                <img src="{% path file, 'x584' %}" alt="{{ alt|escape('html_attr') }}" title="{{ alt|escape('html_attr') }}">
+            {#{% else %}#}
+                {#{% thumbnail file, '926x584' with {'alt': alt, 'title': alt } %}#}
+            {#{% endif %}#}
+            {% if hideCopyright is not defined %}
+                <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

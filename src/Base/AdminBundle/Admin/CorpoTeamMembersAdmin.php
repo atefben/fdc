@@ -190,7 +190,6 @@ class CorpoTeamMembersAdmin extends Admin
                 'label' => 'Photo du membre',
                 'help' => 'Dimensions attendues : 326x442. Format attendu : .jpg, .png, .gif',
                 'required' => false,
-                'btn_delete' => false
             ))
             ->add('translate')
             ->add('translateOptions', 'choice', array(

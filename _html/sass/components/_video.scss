@@ -42,8 +42,6 @@ video {
   overflow: hidden;
   width: 630px;
   height: calc(630px / 1.58);
-  text-align: center!important;
-  margin: 0 auto!important;
 
   button {
     background: none;
@@ -334,7 +332,7 @@ video {
   .control-bar {
     position: absolute;
     z-index: 10;
-    bottom: 0px;
+    bottom: 0;
     height: 18%;
     width: 100%;
     opacity: 1;

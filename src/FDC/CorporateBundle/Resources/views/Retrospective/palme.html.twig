@@ -13,8 +13,8 @@
                         {% set mainTrans = currentPage.image.findTranslationByLocale('fr') %}
                     {% endif %}
                     {% set mainImage = mainTrans.file %}
-                    <div class="block-push block-push-top"
-                         style="background-image: url({% path mainImage, '1280x808' %});">
+                    <div class="block-push block-push-retro"
+                         style="background-image: url({% path mainImage, '613h' %});">
                         <div class="vFlexAlign">
                             <div class="txts">
                                 <h1 class="title-3">
@@ -85,9 +85,9 @@
                                     {% set copyright = photo|trans_fallback('copyright') %}
                                     {% set legend = photo|trans_fallback('legend') %}
                                     {% if copyright is not empty -%}
-                                        <br><br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
+                                        <br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
                                     {% elseif legend is not null %}
-                                        <br><br><span class="copy"> {{ legend }} </span>
+                                        <br><span class="copy"> {{ legend }} </span>
                                     {%- endif %}
                                 </div>
                             {% elseif widget is fdc_page_la_selection_cannes_classics_widget_image and widget.gallery.medias is defined and widget.gallery.medias|length > 1 %}
@@ -205,9 +205,9 @@
                                                                                              {% set legend = widget.image|trans_fallback('legend') %}
                                                                                              {% set copyright = widget.image|trans_fallback('copyright') %}
                                                                                             {% if copyright is not empty %}
-                                                                                                 <br><br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
+                                                                                                 <br><span class="copy">{% if legend is not null %} {{ legend }} © {{ copyright }}{% endif %}</span>
                                                                                             {% elseif legend is not null %}
-                                                                                                <br><br><span class="copy"> {{ legend }} </span>
+                                                                                                <br><span class="copy"> {{ legend }} </span>
                                                                                             {%- endif %}
                                                                                              </figure>
                                                                                          {% endif %}
@@ -259,13 +259,13 @@
     {% set palme_breadcrumb  = archives is not defined ? {"name" : 'header.nav.69editions.palme'|trans, "url"  : path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})} : "" %}
 
     {% if palme_breadcrumb!= "" %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
+        {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
             palme_breadcrumb,
             {
             "name" :  currentPage|trans_fallback('title'),
@@ -275,13 +275,13 @@
             } 
         %}
     {% else %}
-        {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
-            {"breadcrumb":
-            [
-            {
-            "name" : 'breadcrumb.69editions.home'|trans,
-            "url"  : path('fdc_corporate_default_home')
-            },
+        {% include 'FDCCorporateBundle:Global:breadcrumb.html.twig' with
+        {"breadcrumb":
+        [
+        {
+        "name" : 'breadcrumb.69editions.home'|trans,
+        "url"  : path('fdc_corporate_editions_retrospective')
+        },
             {
             "name" :  currentPage|trans_fallback('title'),
             "url"  :  path('fdc_corporate_editions_palme', {'slug': app.request.attributes.get('slug')})

@@ -1431,6 +1431,143 @@ services:
         calls:
             - [ setTranslationDomain, ['BaseAdminBundle']]
 
+    base.admin.graphical_charter:
+        class: Base\AdminBundle\Admin\GraphicalCharterAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharter, BaseAdminBundle:GraphicalCharterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.graphical_charter, label_translator_strategy: sonata.admin.label.strategy.underscore}
+
+    base.admin.graphical_charter_section:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSection, BaseAdminBundle:GraphicalCharterSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: entity.graphical_charter_section, label_translator_strategy: sonata.admin.label.strategy.underscore}
+
+    base.admin.graphical_charter_section_position_dummy:
+            class: Base\AdminBundle\Admin\GraphicalCharterSectionPositionDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionPosition, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: graphical charter section position, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+    base.admin.graphical_charter_section_one_column_image_dummy:
+        class: Base\AdminBundle\Admin\MediaImageSimpleDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetOneColumn, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_two_columns_image_dummy:
+        class: Base\AdminBundle\Admin\MediaImageSimpleDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_two_columns_two_image_dummy:
+            class: Base\AdminBundle\Admin\MediaImageSimpleTwoDummyAdmin
+            arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumns, ApplicationSonataAdminBundle:CRUD]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy two columns, show_in_dashboard: false}
+            calls:
+                - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_image_dummy:
+        class: Base\AdminBundle\Admin\MediaImageSimpleDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_two_image_dummy:
+        class: Base\AdminBundle\Admin\MediaImageSimpleTwoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_three_image_dummy:
+        class: Base\AdminBundle\Admin\MediaImageSimpleThreeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image Dummy three columns three, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+
+
+    base.admin.graphical_charter_section_one_column_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionOneColumnDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetOneColumn, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_two_columns_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionTwoColumnsDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_two_columns_two_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionTwoColumnsTwoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy two columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionThreeColumnsDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_two_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionThreeColumnsTwoDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns two, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_section_three_columns_three_dummy:
+        class: Base\AdminBundle\Admin\GraphicalCharterSectionThreeColumnsThreeDummyAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns, ApplicationSonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Dummy three columns three, show_in_dashboard: false}
+        calls:
+            - [ setTranslationDomain, ['BaseAdminBundle']]
+
+    base.admin.graphical_charter_button_group_section_collection:
+        class: Base\AdminBundle\Admin\GraphicalCharterButtonGroupSectionCollectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterButtonGroupSectionCollection, BaseAdminBundle:GraphicalCharterButtonGroupSectionCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GraphicalCharterButtonGroupSectionCollection}
+
+    base.admin.graphical_charter_button_file:
+        class: Base\AdminBundle\Admin\GraphicalCharterButtonFileAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterButtonFile, BaseAdminBundle:GraphicalCharterButtonFileAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GraphicalCharterButtonFile}
+
+    base.admin.graphical_charter_button_section:
+        class: Base\AdminBundle\Admin\GraphicalCharterButtonSectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterButtonSection, BaseAdminBundle:GraphicalCharterButtonSectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GraphicalCharterButtonSection}
+
     base.admin.homepage_corporate:
         class: Base\AdminBundle\Admin\HomepageCorporateAdmin
         arguments: [~, Base\CoreBundle\Entity\HomepageCorporate, BaseAdminBundle:HomepageCorporateAdmin]
@@ -3139,3 +3276,15 @@ services:
         arguments: [~, FDC\CourtMetrageBundle\Entity\CcmProgramScheduleType, ApplicationSonataAdminBundle:CRUD]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.ccm.short, label: Schedule Type, show_in_dashboard: false}
+
+    base.admin.graphical_charter_button_file_collection:
+        class: Base\AdminBundle\Admin\GraphicalCharterButtonFileCollectionAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterButtonFileCollection, BaseAdminBundle:GraphicalCharterButtonFileCollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GraphicalCharterButtonFileCollection}
+
+    base.admin.graphical_charter_button_group:
+        class: Base\AdminBundle\Admin\GraphicalCharterButtonGroupAdmin
+        arguments: [~, Base\CoreBundle\Entity\GraphicalCharterButtonGroup, BaseAdminBundle:GraphicalCharterButtonGroupAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: GraphicalCharterButtonGroup}

@@ -2,23 +2,19 @@
 <nav class="navigation-sticky">
     <ul>
         {% if posters|length > 0 %}
-        <li{% if 'fdc_corporate_editions_affiche' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_affiche', {year: app.request.attributes.get('year')}) }}">L'affiche</a></li>
+        <li{% if 'fdc_corporate_editions_affiche' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_editions_affiche', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.affiche'|trans }}</a></li>
         {% endif %}
-
-        <li{% if 'fdc_corporate_movie_selection' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_movie_selection', {year: app.request.attributes.get('year')}) }}">La sélection</a></li>
-        <li{% if 'fdc_corporate_jury_juries' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_jury_juries', {year: app.request.attributes.get('year')}) }}">Les jurys</a></li>
-        <li{% if 'fdc_corporate_palmares_get' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_palmares_get', {year: app.request.attributes.get('year')}) }}">Le palmarès</a></li>
-
+        <li{% if 'fdc_corporate_movie_selection' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_movie_selection', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.selection'|trans }}</a></li>
+        <li{% if 'fdc_corporate_jury_juries' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_jury_juries', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.jurys'|trans }}</a></li>
+        <li{% if 'fdc_corporate_palmares_get' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_palmares_get', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.plamares'|trans }}</a></li>
         {% if events|length > 0 %}
-        <li{% if 'fdc_corporate_event' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_event_getevents', {year: app.request.attributes.get('year')}) }}">Les évènements</a></li>
+        <li{% if 'fdc_corporate_event' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_event_getevents', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.evenements'|trans }}</a></li>
         {% endif %}
-
         {% if medias|length > 0 %}
-        <li{% if 'fdc_corporate_news_getmedias' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getmedias', {year: app.request.attributes.get('year')}) }}">Les médias</a></li>
+        <li{% if 'fdc_corporate_news_getmedias' == route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getmedias', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.media'|trans }}</a></li>
         {% endif %}
-
         {% if news %}
-        <li{% if 'fdc_corporate_news_getarticles' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getarticles', {year: app.request.attributes.get('year')}) }}">L'actualité</a></li>
+        <li{% if 'fdc_corporate_news_getarticles' in route %} class="active"{% endif %}><a href="{{ path('fdc_corporate_news_getarticles', {year: app.request.attributes.get('year')}) }}" class="noajax">{{ 'retrospective.menu.actualite'|trans }}</a></li>
         {% endif %}
     </ul>
 </nav>

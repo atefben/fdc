@@ -85,11 +85,6 @@ class CcmMainNavAdmin extends Admin
                     ),
                 ),
             ))
-            ->add('isActive', 'checkbox', array(
-                    'label' => 'form.ccm.label.menu.main_nav_is_active',
-                    'required' => false,
-                )
-            )
             ->add('subNavsCollection', 'sonata_type_collection', array(
                     'by_reference'       => false,
                     'label'              => 'form.ccm.label.menu.sub_nav_list',

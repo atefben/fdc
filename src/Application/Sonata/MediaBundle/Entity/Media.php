@@ -51,7 +51,12 @@ class Media extends SonataBaseMedia
     protected $ccmParentAudioTranslation;
 
     private $thumbsGenerated = false;
+
     private $uploadedFromBO = false;
+
+    private $oldTitle;
+    private $oldTitleVa;
+
     private $ignoreListener = false;
 
     /**
@@ -512,5 +517,51 @@ class Media extends SonataBaseMedia
     public function getOldMediaFestivalYear()
     {
         return $this->oldMediaFestivalYear;
+    }
+
+    /**
+     * Set oldTitle
+     *
+     * @param string $oldTitle
+     * @return Media
+     */
+    public function setOldTitle($oldTitle)
+    {
+        $this->oldTitle = $oldTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get oldTitle
+     *
+     * @return string 
+     */
+    public function getOldTitle()
+    {
+        return $this->oldTitle;
+    }
+
+    /**
+     * Set oldTitleVa
+     *
+     * @param string $oldTitleVa
+     * @return Media
+     */
+    public function setOldTitleVa($oldTitleVa)
+    {
+        $this->oldTitleVa = $oldTitleVa;
+
+        return $this;
+    }
+
+    /**
+     * Get oldTitleVa
+     *
+     * @return string 
+     */
+    public function getOldTitleVa()
+    {
+        return $this->oldTitleVa;
     }
 }

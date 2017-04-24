@@ -30,7 +30,7 @@ class FilmProjection
      * @ORM\Id
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",
@@ -47,7 +47,7 @@ class FilmProjection
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",
@@ -64,7 +64,7 @@ class FilmProjection
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",
@@ -80,7 +80,7 @@ class FilmProjection
      * @ORM\Column(type="string", nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "film_list",
      *     "film_show",
@@ -97,7 +97,7 @@ class FilmProjection
      * @ORM\Column(type="string", nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      * })
      */
@@ -109,7 +109,7 @@ class FilmProjection
      * @ORM\Column(type="string", nullable=true)
      *
      * @Groups({
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      * })
      */
@@ -129,6 +129,7 @@ class FilmProjection
      *
      * @Groups({
      *     "projection_show",
+     *     "projection_list", "programmation",
      *     "film_list",
      *     "film_show",
      *     "home",
@@ -142,7 +143,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionProgrammationFilm", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show", "home", "news_list", "search"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "home", "news_list", "search"})
      */
     protected $programmationFilms;
 
@@ -167,7 +168,7 @@ class FilmProjection
      *
      * @ORM\OneToMany(targetEntity="FilmProjectionMedia", mappedBy="projection", cascade={"all"}, orphanRemoval=true)
      *
-     * @Groups({"projection_list", "projection_show", "news_list", "search"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "news_list", "search"})
      */
     protected $medias;
 
@@ -175,7 +176,7 @@ class FilmProjection
      * @var ArrayCollection
      *
      * @Groups({
-     *  "projection_list", "projection_show",
+     *  "projection_list", "projection_list_2017", "programmation", "projection_show",
      *  "film_list", "film_show"
      * })
      */

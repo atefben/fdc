@@ -12,111 +12,112 @@
         {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
             {% set articleFormat = "photo" %}
         {% endif %}
-        <article class="article" data-date="{{ article.publishedAt|date('dmY') }}" data-format="{{ articleFormat }}" data-theme="{{ article.theme|trans_fallback('slug') }}">
-            <div class="image">
-                <div class="image-wrapper">
-                    {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
-                        {% set img = article.header %}
+        <div data-id="info{{ article.id }}" class="thumb item {{ article.publishedAt|date('dmY') }} {{ article.theme ? article.theme.slug }} {{ article.infoType|get_info_type }}  {{ loop.index == 1 ? 'active' : '' }}">
+            {% set infoImage = '' %}
+            {% set file = null %}
+            {% if class(article) == "StatementArticle" or class(article) == "InfoArticle" %}
+                {% set img = article.header %}
+                {% if img is not null %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    {% set infoImage %}{% path file, '1144x724' %}{% endset %}
+                {% endif %}
+            {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = article.header %}
+                    {% set infoImage %}{% path file, '1144x724' %}{% endset %}
+                {% elseif article.video.image is not null %}
+                    {% set img = article.video.image %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                    {% set infoImage %}{% path file, '1144x724' %}{% endset %}
+                {% endif %}
+            {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = trans %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans is not null %}
+                    {% set file = imageTrans.file %}
+                    {% set img = article.header %}
+                {% else %}
+                    {% set file = null %}
+                    {% set img = article.audio.image %}
+                    {% if img is not null %}
                         {% set trans = img.findTranslationByLocale(app.request.locale) %}
                         {% if trans is null or trans.file is null %}
                             {% set trans = img.findTranslationByLocale('fr') %}
                         {% endif %}
                         {% set file = trans.file %}
-                        {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-                    {% elseif class(article) == "StatementVideo" or class(article) == "InfoVideo" %}
-                        {% set header = article.header %}
-                        {% if header is not null %}
-                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null and trans.file is not null %}
-                                {% set imageTrans = trans %}
-                            {% else %}
-                                {% set trans = article.header.findTranslationByLocale('fr') %}
-                                {% if trans is not null and trans.file is not null %}
-                                    {% set imageTrans = trans %}
-                                {% endif %}
-                            {% endif %}
-                        {% endif %}
-                        {% if imageTrans is defined and imageTrans is not null %}
-                            {% set file = imageTrans.file %}
-                            {% set img = article.header %}
-                        {% elseif article.video.image is not null %}
-                            {% set img = article.video.image %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                            {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-
-                        {% endif %}
-
-                    {% elseif class(article) == "StatementAudio" or class(article) == "InfoAudio" %}
-                        {% set header = article.header %}
-                        {% if header is not null %}
-                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null and trans.file is not null %}
-                                {% set imageTrans = trans %}
-                            {% else %}
-                                {% set trans = article.header.findTranslationByLocale('fr') %}
-                                {% if trans is not null and trans.file is not null %}
-                                    {% set imageTrans = trans %}
-                                {% endif %}
-                            {% endif %}
-                        {% endif %}
-                        {% if imageTrans is defined and imageTrans is not null %}
-                            {% set file = imageTrans.file %}
-                            {% set img = article.header %}
-                        {% else %}
-                            {% set img = article.audio.image %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                        {% endif %}
-
-                        {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
-                    {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
-                        {% set header = article.header %}
-                        {% if header is not null %}
-                            {% set trans = header.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is not null and trans.file is not null %}
-                                {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
-                            {% else %}
-                                {% set trans = article.header.findTranslationByLocale('fr') %}
-                                {% if trans is not null and trans.file is not null %}
-                                    {% set imageTrans = trans %}
-                                {% endif %}
-                            {% endif %}
-                        {% endif %}
-                        {% if imageTrans is defined and imageTrans is not null %}
-                            {% set img = article.header %}
-                            {% set file = imageTrans.file %}
-                        {% else %}
-                            {% set img = article.gallery.medias[0].media %}
-                            {% set trans = img.findTranslationByLocale(app.request.locale) %}
-                            {% if trans is null or trans.file is null %}
-                                {% set trans = img.findTranslationByLocale('fr') %}
-                            {% endif %}
-                            {% set file = trans.file %}
-                        {% endif %}
-
-                        {% thumbnail file, '1144x724' with {'alt': img|trans_fallback('alt') } %}
                     {% endif %}
-                </div>
+                {% endif %}
+                {% set infoImage %}{% path file, '1144x724' %}{% endset %}
+            {% elseif class(article) == "StatementImage" or class(article) == "InfoImage" %}
+                {% set header = article.header %}
+                {% if header is not null %}
+                    {% set trans = header.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is not null and trans.file is not null %}
+                        {% set imageTrans = article.header.findTranslationByLocale(app.request.locale) %}
+                    {% else %}
+                        {% set trans = article.header.findTranslationByLocale('fr') %}
+                        {% if trans is not null and trans.file is not null %}
+                            {% set imageTrans = trans %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if imageTrans is defined and imageTrans is not null %}
+                    {% set img = article.header %}
+                    {% set file = imageTrans.file %}
+                {% else %}
+                    {% set img = article.gallery.medias[0].media %}
+                    {% set trans = img.findTranslationByLocale(app.request.locale) %}
+                    {% if trans is null or trans.file is null %}
+                        {% set trans = img.findTranslationByLocale('fr') %}
+                    {% endif %}
+                    {% set file = trans.file %}
+                {% endif %}
+                {% set infoImage %}{% path file, '1144x724' %}{% endset %}
+            {% endif %}
+            <div class="img-container" style="background-image: url({{ infoImage }})">
+                <span class="picto"><i class="icon icon_{{ articleFormat }}"></i></span>
                 <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}" class="linkImage"></a>
-                <span class="picto"><i class="icon icon_{{ articleFormat }}"></i>
-                </span>
             </div>
             <div class="info">
-                <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}" class="category">{{ article.theme|trans_fallback('name') }}</a>
-                <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
-                <h2>
-                    <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
-                        {{ article|trans_fallback('title')|truncate(40) }}
-                    </a>
-                </h2>
+                <div class="top-info">
+                    <a href="#" class="category">{{ article.theme|trans_fallback('name') }}</a>
+                    <span class="date">{{ article.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(article.publishedAt|date('H:i'), true, true) }}</span>
+                </div>
+                <a href="{{ path('fdc_press_news_get', {'format': article.newsFormat, 'slug': article|trans_fallback('slug'), 'type': 'info' }) }}">
+                    <h2>{{ article|trans_fallback('title')|truncate(40) }}</h2>
+                </a>
             </div>
-        </article>
+        </div>
     {% endfor %}
 {% endblock %}

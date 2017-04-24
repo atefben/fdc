@@ -20,11 +20,11 @@
         <div class="audio-player">
             <div id="audio-player{{ mediaAudio.id }}" class="audio-player-container"></div>
             <div class="image" style="background-image: url('{%- spaceless -%}{{ img }}{%- endspaceless %}');"></div>
-            <button class="play-btn play"><i class="icon icon_play"></i></button>
+            <button class="play-btn play"><i class="icon icon-play"></i></button>
             <div class="off">
                 <div class="vCenter">
                     <div class="vCenterKid">
-                        <div class="picto"><i class="icon icon_audio"></i></div>
+                        <div class="picto"><i class="icon icon-audio"></i></div>
                         <div class="info">
                             <a href="#" class="category">{{ mediaAudio.theme|trans_fallback('name') }}</a><span class="date">{{ mediaAudio.publishedAt|date('d.m.y') }}</span> . <span class="hour">{{ agenda_leftbar_translate_hour(mediaAudio.publishedAt|date('H:i'), true, true) }}</span>
                             <p>{{ translation.title }}</p>

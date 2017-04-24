@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * CorpoMediatheque
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Base\CoreBundle\Repository\TranslationRepository")
  */
 class CorpoMediatheque implements TranslateMainInterface
 {
@@ -52,6 +52,7 @@ class CorpoMediatheque implements TranslateMainInterface
      * @var CorpoMediathequeMedia
      *
      * @ORM\OneToMany(targetEntity="CorpoMediathequeMedia", mappedBy="mediatheque", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $medias;
 

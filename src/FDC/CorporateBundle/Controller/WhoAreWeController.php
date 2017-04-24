@@ -3,6 +3,22 @@
 namespace FDC\CorporateBundle\Controller;
 
 use Base\CoreBundle\Entity\CorpoWhoAreWe;
+use Base\CoreBundle\Entity\GraphicalCharterButtonFile;
+use Base\CoreBundle\Entity\GraphicalCharterButtonFileCollection;
+use Base\CoreBundle\Entity\GraphicalCharterButtonFileTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterButtonGroup;
+use Base\CoreBundle\Entity\GraphicalCharterButtonGroupSectionCollection;
+use Base\CoreBundle\Entity\GraphicalCharterButtonSection;
+use Base\CoreBundle\Entity\GraphicalCharterButtonSectionTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterSectionTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetOneColumn;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetOneColumnTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetText;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTextTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumns;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetThreeColumnsTranslation;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumns;
+use Base\CoreBundle\Entity\GraphicalCharterSectionWidgetTwoColumnsTranslation;
 use FDC\EventBundle\Component\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,12 +58,209 @@ class WhoAreWeController extends Controller
     }
 
     /**
+     * @Route("/charte-graphique")
+     * @param Request $request
+     * @return Response
+     */
+    public function graphicalCharterAction(Request $request)
+    {
+        $locale = $request->getLocale();
+
+        $graphicalCharter = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:GraphicalCharter')
+            ->getPage($locale)
+        ;
+
+        $corpoTeam = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:CorpoTeam')
+            ->findOneById(1)
+        ;
+
+        if (!$graphicalCharter) {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+
+        if ($graphicalCharter->findTranslationByLocale('fr')->getStatus() == 1) {
+            return $this->render('FDCCorporateBundle:WhoAreWe:graphical-charter.html.twig', [
+                'graphicalCharter' => $graphicalCharter,
+                'sections'         => $this->getSections($locale),
+                'corpoTeam'         => $corpoTeam,
+            ]);
+        } else {
+            throw $this->createNotFoundException('There is not available Team.');
+        }
+    }
+
+    /**
+     * @param $locale
+     * @return array
+     */
+    private function getSections($locale)
+    {
+        $sections = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:GraphicalCharterSection')
+            ->getAvailables($locale)
+        ;
+
+        $items = [];
+        foreach ($sections as $section) {
+            $item = [];
+
+            $sectionTrans = $this->getTranslation($section, $locale);
+            if ($sectionTrans instanceof GraphicalCharterSectionTranslation) {
+                $item['name'] = $sectionTrans->getName();
+            }
+
+            $item['widgets'] = [];
+            foreach ($section->getGraphicalCharterSectionsWidgets() as $widget) {
+                $widgetTrans = $this->getTranslation($widget, $locale, 'fr');
+                $itemWidget = [];
+
+                if ($widget instanceof GraphicalCharterSectionWidgetText) {
+                    $itemWidget['type'] = 'text';
+
+                    if ($widgetTrans instanceof GraphicalCharterSectionWidgetTextTranslation) {
+                        $itemWidget['text'] = $widgetTrans->getText();
+                    }
+                } elseif ($widget instanceof GraphicalCharterSectionWidgetOneColumn) {
+                    $itemWidget['type'] = 'one-column';
+                    if ($widget->getImage()) {
+                        $itemWidget['image'] = $widget->getImage();
+                    }
+                    if ($widgetTrans instanceof GraphicalCharterSectionWidgetOneColumnTranslation) {
+                        $itemWidget['title'] = $widgetTrans->getTitle();
+                        $itemWidget['legend'] = $widgetTrans->getLegend();
+                        $itemWidget['subLegend'] = $widgetTrans->getSubLegend();
+                        $itemWidget['technicalConstraintsPopupActive'] = $widget->getIsTechnicalConstraintsPopupActive();
+                    }
+
+                    if ($widget->getGraphicalCharterButtonGroup()) {
+                        $itemWidget['buttonGroup'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup(), $locale);
+                    }
+                } elseif ($widget instanceof GraphicalCharterSectionWidgetTwoColumns) {
+                    $itemWidget['type'] = 'two-columns';
+                    if ($widget->getImage()) {
+                        $itemWidget['image'] = $widget->getImage();
+                    }
+                    if ($widget->getImage2()) {
+                        $itemWidget['image2'] = $widget->getImage2();
+                    }
+                    if ($widgetTrans instanceof GraphicalCharterSectionWidgetTwoColumnsTranslation) {
+                        $itemWidget['title'] = $widgetTrans->getTitle();
+                        $itemWidget['title2'] = $widgetTrans->getTitle2();
+                        $itemWidget['legend'] = $widgetTrans->getLegend();
+                        $itemWidget['legend2'] = $widgetTrans->getLegend2();
+                        $itemWidget['technicalConstraintsPopupActive'] = $widget->getIsTechnicalConstraintsPopupActive();
+                        $itemWidget['technicalConstraintsPopupActive2'] = $widget->getIsTechnicalConstraintsPopupActive2();
+                    }
+                    if ($widget->getGraphicalCharterButtonGroup()) {
+                        $itemWidget['buttonGroup'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup(), $locale);
+                    }
+                    if ($widget->getGraphicalCharterButtonGroup2()) {
+                        $itemWidget['buttonGroup2'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup2(), $locale);
+                    }
+                } elseif ($widget instanceof GraphicalCharterSectionWidgetThreeColumns) {
+                    $itemWidget['type'] = 'three-columns';
+                    if ($widget->getImage()) {
+                        $itemWidget['image'] = $widget->getImage();
+                    }
+                    if ($widget->getImage2()) {
+                        $itemWidget['image2'] = $widget->getImage2();
+                    }
+                    if ($widget->getImage3()) {
+                        $itemWidget['image3'] = $widget->getImage3();
+                    }
+                    if ($widgetTrans instanceof GraphicalCharterSectionWidgetThreeColumnsTranslation) {
+                        $itemWidget['title'] = $widgetTrans->getTitle();
+                        $itemWidget['title2'] = $widgetTrans->getTitle2();
+                        $itemWidget['title3'] = $widgetTrans->getTitle3();
+                        $itemWidget['legend'] = $widgetTrans->getLegend();
+                        $itemWidget['legend2'] = $widgetTrans->getLegend2();
+                        $itemWidget['legend3'] = $widgetTrans->getLegend3();
+                        $itemWidget['technicalConstraintsPopupActive'] = $widget->getIsTechnicalConstraintsPopupActive();
+                        $itemWidget['technicalConstraintsPopupActive2'] = $widget->getIsTechnicalConstraintsPopupActive2();
+                        $itemWidget['technicalConstraintsPopupActive3'] = $widget->getIsTechnicalConstraintsPopupActive3();
+                    }
+                    if ($widget->getGraphicalCharterButtonGroup()) {
+                        $itemWidget['buttonGroup'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup(), $locale);
+                    }
+                    if ($widget->getGraphicalCharterButtonGroup2()) {
+                        $itemWidget['buttonGroup2'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup2(), $locale);
+                    }
+                    if ($widget->getGraphicalCharterButtonGroup3()) {
+                        $itemWidget['buttonGroup3'] = $this->getButtonGroup($widget->getGraphicalCharterButtonGroup3(), $locale);
+                    }
+                }
+                if ($itemWidget) {
+                    $item['widgets'][] = $itemWidget;
+                }
+            }
+            if ($item) {
+                $items[] = $item;
+            }
+        }
+
+        return $items;
+    }
+
+    private function getButtonGroup(GraphicalCharterButtonGroup $group, $locale)
+    {
+        $buttonGroup = [];
+
+        foreach ($group->getGraphicalCharterButtonGroupSectionCollection() as $collection) {
+            if ($collection instanceof GraphicalCharterButtonGroupSectionCollection) {
+                $section = $collection->getGraphicalCharterButtonSection();
+                if ($section instanceof GraphicalCharterButtonSection) {
+                    $buttonGroupSection = [];
+                    $sectionTrans = $this->getTranslation($section, $locale, 'fr');
+                    if ($sectionTrans instanceof GraphicalCharterButtonSectionTranslation) {
+                        $buttonGroupSection['title'] = $sectionTrans->getButtonsSectionTitle();
+                    }
+                    $buttonGroupSection['files'] = [];
+                    foreach ($section->getGraphicalCharterButtonFileCollection() as $fileCollection) {
+                        if ($fileCollection instanceof GraphicalCharterButtonFileCollection) {
+                            $buttonFile = $fileCollection->getGraphicalCharterButtonFile();
+                            if ($buttonFile instanceof GraphicalCharterButtonFile) {
+                                $button = [];
+                                $buttonFileTrans = $this->getTranslation($buttonFile, $locale, 'fr');
+                                $buttonFileFr = $this->getTranslation($buttonFile, 'fr');
+                                if ($buttonFileTrans instanceof GraphicalCharterButtonFileTranslation) {
+                                    if ($buttonFileTrans->getFileTitle()) {
+                                        $button['title'] = $buttonFileTrans->getFileTitle();
+                                    } elseif ($buttonFileFr instanceof GraphicalCharterButtonFileTranslation && $buttonFileFr->getFileTitle()) {
+                                        $button['title'] = $buttonFileFr->getFileTitle();
+                                    }
+                                    if ($buttonFileTrans->getFile()) {
+                                        $button['file'] = $buttonFileTrans->getFile();
+                                    } elseif ($buttonFileFr instanceof GraphicalCharterButtonFileTranslation && $buttonFileFr->getFile()) {
+                                        $button['file'] = $buttonFileFr->getFile();
+                                    }
+
+                                }
+                                $buttonGroupSection['files'][] = $button;
+                            }
+                        }
+                    }
+                    $buttonGroup[] = $buttonGroupSection;
+                }
+            }
+        }
+
+        return $buttonGroup;
+    }
+
+    /**
      * @Route("/nav")
      * @param Request $request
+     * @param null $slug
      * @return Response
      */
     public function navAction(Request $request, $slug = null)
     {
+        $locale = $request->getLocale();
         $nav = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:CorpoWhoAreWe')
@@ -60,9 +273,17 @@ class WhoAreWeController extends Controller
                 $pages[] = $n;
             }
         }
+
+        $graphicalCharter = $this
+            ->getDoctrineManager()
+            ->getRepository('BaseCoreBundle:GraphicalCharter')
+            ->getPage($locale)
+        ;
+
         return $this->render('FDCCorporateBundle:WhoAreWe:nav.html.twig', [
             'pages' => $pages,
-            'slug'  => $slug
+            'slug'  => $slug,
+            'graphicalCharter'  => $graphicalCharter,
         ]);
     }
 
@@ -100,9 +321,14 @@ class WhoAreWeController extends Controller
             ->getPageBySlug($locale, $slug)
         ;
 
+        if (!$page) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('FDCCorporateBundle:WhoAreWe:index.html.twig', [
             'pages'       => $pages,
-            'currentPage' => $page
+            'currentPage' => $page,
+            'localeSlugs' => $page ? $page->getLocaleSlugs() : [],
         ]);
     }
 

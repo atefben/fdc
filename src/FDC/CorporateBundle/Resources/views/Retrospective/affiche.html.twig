@@ -36,7 +36,8 @@
                          data-credit="{% if posterCopyright is not empty %}{{ 'slider.credit_image'|trans }} : {{ poster.copyright }}{% endif %}"
                          data-url="{{ currentURL }}#pid={{ poster.file.id }}"
                          data-facebook="http://www.facebook.com/dialog/feed?app_id=1198653673492784&amp;link={{ absolute_url(currentURL)|escape('url') ~ '%23pid=' ~ poster.file.id }}&amp;picture={% if poster is not null %}{% path poster.file, '256x348' %}{% endif %}&amp;name={{ poster|trans_fallback('title')|escape('url') }}&amp;caption=&amp;description={{ poster|trans_fallback('description')|escape('url') }}&amp;redirect_uri={{ absolute_url(currentURL) }}&amp;display=popup"
-                         data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare)|escape('url') }}">
+                         data-twitter="https://twitter.com/intent/tweet?text={{ (poster|trans_fallback('title') ~ ' ' ~ urlshare ~ '%23pid={{ poster.file.id }}')|escape('url') }}"
+                         data-img="{% path poster.file, 'big' %}">
                         <div class="poster" data-url="pid={{ poster.file.id }}">
                             {% if poster.file is not empty %}
                                 <a class="link-update" href="#">
@@ -78,7 +79,7 @@
     {{ render(controller('FDCCorporateBundle:Global:shareEmail',
     {'section': '',
         'detail' : '',
-        'title'  : 'L\'affiche du Festival ' ~ app.request.attributes.get('year'),
+        'title'  : 'Affiche ' ~ app.request.attributes.get('year'),
         'description': (affiche) ? affiche.copyright : '',
         'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))
     })) }}
@@ -88,10 +89,6 @@
     [
     {
     "name" : 'breadcrumb.69editions.home'|trans,
-    "url"  : path('fdc_corporate_default_home')
-    },
-    {
-    "name" : 'breadcrumb.retrospective.home'|trans,
     "url"  : path('fdc_corporate_editions_retrospective')
     },
     {

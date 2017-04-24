@@ -1,4 +1,4 @@
-var timeout = 1000,
+var timeout = 1001,
     thread,
     time,
     controlBar =
@@ -34,7 +34,7 @@ var timeout = 1000,
             <div class="buttons square">\
                 <a href="//www.facebook.com/sharer.php?u=CUSTOM_URL" rel="nofollow" class="button facebook ajax"><i class="icon icon-facebook"></i></a>\
                 <a href="//twitter.com/intent/tweet?text=CUSTOM_TEXT" class="button twitter"><i class="icon icon-twitter"></i></a>\
-                <a href="#" class="button link"><i class="icon icon-link"></i></a>\
+                <a href="#" class="button link top-bar-link"><i class="icon icon-link"></i></a>\
                 <a href="#" class="button email"><i class="icon icon-lettre"></i></a>\
             </div>\
         </div>',
@@ -73,16 +73,15 @@ var timeout = 1000,
     $topBar = '',
     twitterLink = "//twitter.com/intent/tweet?text=CUSTOM_TEXT";
 
-function playerInit(id, cls, havePlaylist, live) {
-    cls = cls || 'video-player';
-    havePlaylist = havePlaylist || false;
-    live = live || false;
-    var tmp;
-
+    function playerInit(id, cls, havePlaylist, live) {
+        cls = cls || 'video-player';
+        havePlaylist = havePlaylist || false;
+        live = live || false;
+        var tmp;
 
     if (id) {
         var videoPlayer = jwplayer(id);
-        if (!$(videoPlayer).data('loaded')) {
+        if (!$(videoPlayer).data('loaded') || $('.activeVideo').length > 0) {
             playerLoad($("#" + id)[0], videoPlayer, havePlaylist, live, function (vid) {
                 $(vid).data('loaded', true);
                 tmp = vid;
@@ -90,30 +89,31 @@ function playerInit(id, cls, havePlaylist, live) {
         } else {
             tmp = videoPlayer;
         }
-        return tmp;
     } else {
         tmp = [];
         $("." + cls).each(function (i, v) {
-            if(this.firstElementChild !== null) {
-            var videoPlayer = jwplayer(this.firstElementChild.id);
-            if (!$(videoPlayer).data('loaded')) {
-                playerLoad(this.firstElementChild, videoPlayer, havePlaylist, live, function (vid) {
-                    $(vid).data('loaded', true);
-                    tmp[i] = vid;
-                });
-            } else {
-                tmp[i] = videoPlayer;
-            }
+            var videoPlayerHTML = this.firstElementChild || this;
+
+            if (videoPlayerHTML !== null) {
+                var videoPlayer = jwplayer(videoPlayerHTML.id);
+                if (!$(videoPlayer).data('loaded')) {
+                    playerLoad(videoPlayerHTML, videoPlayer, havePlaylist, live, function (vid) {
+                        $(vid).data('loaded', true);
+                        tmp[i] = vid;
+                    });
+                } else {
+                    tmp[i] = videoPlayer;
+                }
             }
         });
-        return tmp;
     }
+    return tmp;
 };
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
 
-    console.log("cont", $container);
+    //console.log("cont", $container);
     if ($container.find('.control-bar').length <= 0) {
         $container.append(controlBar);
     }
@@ -122,7 +122,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     var $infoBar = $container.find('.infos-bar'),
-        $stateBtn = $container.find('.play-btn'),
+        $stateBtn = $container.find('.playstate'),
         $durationTime = $container.find('.duration-time'),
         $current = $container.find('.current-time'),
         $progressBar = $container.find('.progress-bar'),
@@ -159,7 +159,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
         $sound.find('.sound-seek').css('width', percentage + '%');
         playerInstance.setVolume(percentage);
-    };
+    }
 
     playerInstance.updateMute = function (force) {
         force = force || false;
@@ -176,13 +176,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                 $sound.find('.sound-seek').css('width', '0%');
             }
         }
-    }
+    };
 
     playerInstance.stopMute = function () {
         playerInstance.setMute(false);
         playerInstance.setVolume(100);
         $sound.find('.sound-seek').css('width', '100%');
-    }
+    };
 
     playerInstance.removeFullscreen = function () {
         $container.find('.channels-video').removeClass('active');
@@ -191,7 +191,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $fullscreen.removeClass('icon_reverseFullScreen').addClass('icon_fullscreen');
         playerInstance.resize('100%', '100%');
         mouseMoving(false);
-    }
+    };
 
     function externeControl() {
         $topBar.on('click', '.channels', function () {
@@ -224,7 +224,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             center: true,
             loop: false,
             margin: 81,
-            autoWidth: true,
+            autoWidth: true
         });
 
         sliderChannelsVideo.owlCarousel();
@@ -233,6 +233,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             playerInstance.playlistItem(index);
 
             var infos = $.parseJSON($(this).find('.channel.video').data('json'));
+
             $topBar.find('.info .category').text(infos.category);
             $topBar.find('.info .date').text(infos.date);
             $topBar.find('.info .hour').text(infos.hour);
@@ -289,7 +290,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                     if($('.video-container').length > 0){
                         data = $('.video-container');
-                    }else{
+                    } else {
                         data = $('.html5-video-container');
                     }
 
@@ -383,16 +384,6 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
     var playerHeight = $('.home').length ? 550 : $container.height();
 
-    console.log('setup',{
-        sources: $container.data('file'),
-        image: $container.data('img'),
-        primary: 'html5',
-        aspectratio: '16:9',
-        width: $(vid).closest('div').width(),
-        skin: 'seven',
-        height: playerHeight,
-        controls: ($('body').hasClass('tablet')) ? true : false
-    })
     playerInstance.setup({
         sources: $container.data('file'),
         image: $container.data('img'),
@@ -418,7 +409,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     "hour": $(p).data('hour'),
                     "category": $(p).find('.info .category').text(),
                     "name": $(p).find('.info p').text()
-                }
+                };
                 playlist.push(tempList);
             });
 
@@ -430,7 +421,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             var tempSlide = $(slide);
             tempSlide.find('.image-wrapper img').attr('src', p.image);
             tempSlide.find('.info-container .category').text(p.category);
-            tempSlide.find('.info-container p').text(p.name.trunc(30, true))
+            tempSlide.find('.info-container p').text(p.name.trunc(30, true));
             tempSlide.data('json', JSON.stringify(p));
             tempSlider.find('.slider-channels-video').append(tempSlide);
         });
@@ -544,13 +535,16 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 
                 }
             }
-            updatePopinMedia({
-                'type': "video",
-                'category': $playlist[index].category,
-                'date': $playlist[index].date,
-                'title': $playlist[index].name,
-                'url': shareUrl
-            });
+            if (!$('.popin-mail').hasClass('ismovie')) {
+                updatePopinMedia({
+                    'type': "video",
+                    'category': $playlist[index].category,
+                    'date': $playlist[index].date,
+                    'title': $playlist[index].name,
+                    'url': shareUrl
+                });
+            }
+
         }
 
         if (sc) {
@@ -571,15 +565,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         $container.find('.infos-bar .info, .infos-bar .picto').addClass('hide');
         $container.find('.channels-video').removeClass('active');
         $container.find('.jwplayer').removeClass('overlay-channels');
-        $stateBtn.removeClass('icon-play').addClass('icon-pause');
+        $stateBtn.children().removeClass('icon-play').addClass('icon-pause');
         fullScreenApi.isFullScreen() ? mouseMoving(true) : mouseMoving(false);
     }).on('pause', function () {
-        $stateBtn.removeClass('icon-pause').addClass('icon-play');
+        $stateBtn.children().removeClass('icon-pause').addClass('icon-play');
         mouseMoving(false);
     }).on('buffer', function () {
     }).on('complete', function () {
         this.stop();
-        $stateBtn.removeClass('icon-pause').addClass('icon-play');
+        $stateBtn.children().removeClass('icon-pause').addClass('icon-play');
         $container.addClass('state-complete');
         mouseMoving(false);
     }).on('firstFrame', function () {
@@ -631,7 +625,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
         // $(this).off('click');
     });
 
-    $sound.on('click', '.icon_son', function () {
+    $sound.on('click', '.icon-sound', function () {
         playerInstance.updateMute();
     });
 
@@ -680,11 +674,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     }
 
     callback(playerInstance);
-};
+}
 
 $(document).ready(function () {
-
-
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
     }

@@ -38,6 +38,24 @@ body {
     opacity: 1;
     visibility: visible;
   }
+
+  &.ismobile {
+
+    .title-list-cat {
+
+      .title {
+        font-size: 1rem;
+      }
+
+      .title-item {
+        font-size: 0.7rem;
+      }
+
+      .text {
+        font-size: 0.6rem;
+      }
+    }
+  }
 }
 
 ::-moz-selection {
@@ -154,7 +172,6 @@ body .icon{
 
 .picto {
   color: $gold;
-  line-height: 39px;
 
   .icon {
     font-size: 16px;
@@ -268,8 +285,6 @@ video{
 .shadow-bottom {
   &:before {
     background: rgba(0,0,0,0);
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#141414', GradientType=0 );
     content: '';
     display: block;
     height: 100%;

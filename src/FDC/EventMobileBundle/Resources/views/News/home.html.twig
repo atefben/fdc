@@ -264,7 +264,7 @@
                 {% endif %}
                 {% if film.association is not empty %}
                 <div class="img-container">
-                    <div class="img" style="background-image:url({% if transImage is defined and transImage is not empty %}{% path transImage.file, '586x370' %}{% endif %})"></div>
+                    <div class="img" style="background-image:url({% if transImage is defined and transImage is not empty %}{% path transImage.file, '640x808' %}{% endif %})"></div>
                 </div>
                 <div class="info-container vCenter">
                     <div class="vCenterKid">
@@ -305,12 +305,12 @@
         {% endif %}
             <div class="trailer">
                 <div class="img-container">
-                    <div class="img" style="background-image:url('')"></div>
+                    <div class="img" style="background-image:url({% if homepage.trailerImage is not null %}{% path homepage.trailerImage|trans_fallback('file'), 'reference' %}{% endif %})"></div>
                     <a class="linkFull" href="{{ path('fdc_eventmobile_television_trailers') }}"></a>
                 </div>
                 <div class="info-container vCenter">
                     <div class="vCenterKid">
-                        <div class="icon-container"><i class="icon icon_video"></i></div>
+                        <div class="icon-container"><i class="icon icon_bandes-annonces-extraits"></i></div>
                         <h3 class="title tall">{{ 'bandeannonce.title.lesbandesannoncesetextraits'|trans }}</h3>
                     </div>
                 </div>

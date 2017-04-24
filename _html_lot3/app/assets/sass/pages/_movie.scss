@@ -32,8 +32,6 @@
 
     .picto .icon {
         font-size: 0.8rem;
-        margin-top: 9px;
-        margin-left: 17px;
         position: relative;
         top: -2px;
     }
@@ -309,8 +307,7 @@
         font-size: 2rem;
         margin-top: 24px;
         margin-left: 26px;
-        position: relative;
-        top: 27%;
+        display: flex;
       }
 
       &:hover + img {
@@ -411,12 +408,9 @@
     }
   }
 
-  .palmares{
+  .palmares {
     float: left;
     width: 63%;
-    /*
-    padding-bottom: 5px;
-    */
     padding-bottom: 23px;
     margin-top: -66px;
 
@@ -426,10 +420,11 @@
 
     .palmares-item {
       display:block;
+      height: 47px;
     }
 
     i{
-      font-size: 2.75rem;
+      font-size: 3rem;
       color: $gold;
       display: inline-block;
       vertical-align: middle !important;
@@ -484,10 +479,10 @@
   .nav {
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: block;
-    height: 82px;
+    height: 84px;
     position: fixed;
     top: 57%;
-    width: 82px;
+    width: 84px;
     z-index: 3;
     @include transition(all 0.3s $smoothTransition);
 
@@ -978,6 +973,7 @@
           left: 10px;
           position: absolute;
           z-index: 1;
+          margin:0 0 0 0 !important;
         }
 
         img {
@@ -1166,7 +1162,7 @@
           border-top: 1px solid #252525;
           border-bottom: 1px solid #252525;
           height: 145px;
-          padding-left: 190px;
+          padding-left: 225px;
           position: relative;
 
           img {
@@ -1199,6 +1195,7 @@
         .links {
           border-bottom: 1px solid #252525;
           padding: 22px 0;
+          padding-left: 225px;
 
           a {
             color: #999;
@@ -1303,15 +1300,14 @@
 
     #slider-competition {
       margin-top: 65px;
-      height: 380px;
-      min-height: 380px;
+      height: 390px;
       overflow: hidden;
-      padding-left: 424px;
+      padding-left: 239px;
       width: 200%;
 
       .slide {
         opacity: 1;
-        min-height: 380px;
+        min-height: 390px;
         display: inline-block;
         float: left;
         width: auto;
@@ -1453,26 +1449,29 @@
   h2 {
     &.sub-title{
       font-family: $Playfair;
-      font-size: 1.5rem;
+      font-size: 24pt;
       margin-bottom: 50px;
       text-align: center;
+      color: #333;
     }
 
     &.sub-title2{
       font-family: $Playfair;
       font-weight: 700;
-      font-size: 1.125rem;
+      font-size: 18pt;
       margin: 25px 0px;
+      color: #333;
     }
   }
 
   h3 {
     &.sub-title{
       font-family: $CamphorBold;
-      font-size: 0.875rem;
+      font-size: 14pt;
       margin: 50px 0;
       text-align: center;
       text-transform: uppercase;
+      color: #333;
     }
   }
 
@@ -1733,7 +1732,7 @@
           &.half-div,
           &.single-photo.large-photo,
           &.slideshow {
-            width: 730px;
+            width: 977px;
           }
         }
       }

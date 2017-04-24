@@ -3,17 +3,32 @@
 namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
+use Base\CoreBundle\Entity\FilmProjectionRoom;
 
 class FilmProjectionRoomRepository extends EntityRepository
 {
-    public function getApiRooms($festival, $time, $filmId)
+    /**
+     * @param $festival
+     * @param int|null $time
+     * @param string|null $filmId
+     * @param string|null $roomName
+     * @return FilmProjectionRoom[]
+     */
+    public function getApiRooms($festival, $time = null, $filmId = null, $roomName = null)
     {
         $qb = $this
             ->createQueryBuilder('r')
-            ->join('r.projections', 'p')
-            ->join('p.programmationFilms', 'pf')
+            ->innerJoin('r.projections', 'p')
+            ->innerJoin('p.programmationFilms', 'pf')
             ->andWhere('pf.film IS NOT NULL')
         ;
+
+        if ($roomName) {
+            $qb
+                ->andWhere('r.name = :roomName')
+                ->setParameter(':roomName', $roomName)
+            ;
+        }
 
         if ($time) {
             $date = new \DateTime;
@@ -37,6 +52,7 @@ class FilmProjectionRoomRepository extends EntityRepository
                 ->setParameter('end', $end)
             ;
         }
+
         if ($filmId) {
             $qb->join('r.programmationFilms', 'f')
                 ->andWhere('f.film = :film_id')
@@ -45,9 +61,11 @@ class FilmProjectionRoomRepository extends EntityRepository
         }
 
         $this->addMasterQueries($qb, 'p', $festival, false);
-        $qb->addOrderBy('p.startsAt', 'asc');
 
-        return $qb;
+        return $qb
+            ->addOrderBy('p.startsAt', 'asc')
+            ->getQuery()
+            ->getResult();
     }
 
     public function getProjectionsByFestivalAndDate($festival, $date)

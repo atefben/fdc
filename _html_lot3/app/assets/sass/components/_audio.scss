@@ -10,6 +10,7 @@
     overflow: hidden;
     position: relative;
 
+
     .picto .icon {
       margin-left: 0px;
       margin-top: 0px;
@@ -96,7 +97,6 @@
         pointer-events: auto;
         vertical-align: middle;
         text-align: center;
-        line-height: 44px;
 
         &.hide {
           display: none;
@@ -322,7 +322,7 @@
   }
 
   .single-article & {
-    margin: 0 auto;
+    margin: 0 auto 70px;
     width: 630px;
   }
 }

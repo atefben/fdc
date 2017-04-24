@@ -9,10 +9,12 @@
         {% else %}
             {% set defaultDate = 'now'|date('Y-m-d') %}
         {%- endif -#}
-
-
         <script>
+            {% if app.request.attributes.get('_route') %}
             {% set globalsCurrentPage = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+            {% else %}
+            {% set globalsCurrentPage = url('fdc_corporate_default_home') %}
+            {% endif %}
             var GLOBALS = {
                 "env" : "{{ app.environment }}",
                 "locale" : "{{ app.request.locale }}",

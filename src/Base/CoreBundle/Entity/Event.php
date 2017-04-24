@@ -74,7 +74,6 @@ class Event implements TranslateMainInterface
      * @ORM\ManyToOne(targetEntity="MediaImage")
      *
      * @Groups({"event_list", "search", "event_show"})
-     * @Assert\NotNull()
      */
     protected $header;
 

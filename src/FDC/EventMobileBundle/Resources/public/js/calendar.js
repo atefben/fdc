@@ -289,6 +289,15 @@ $(document).ready(function() {
   var calTop = $('.venues').offset().top - 80;
   console.log(calTop);
 
+  // when comming from /programmation calendar display the day the user was on see #3589
+  if (localStorage.getItem('calendar_day')) {
+    var calendar_day = $('.timeline-container').find('[data-date="' + parseInt(localStorage.getItem('calendar_day')) + '"]');
+    if (calendar_day.length == 1) {
+      $('.timeline-container').find('.active').removeClass()
+      calendar_day.addClass('active');
+      localStorage.removeItem('calendar_day');
+    }
+  }
 
   $(window).on('scroll', function () {
     var s = $(this).scrollTop();
@@ -364,6 +373,20 @@ $(document).ready(function() {
     });
   }
 
+  function heigthEvent() {
+    $('.fc-event').each(function (index, value) {
+
+      var startDate = new Date($(value).data("start"))
+        , duration = $(value).data("duration")
+        , time = $(value).data("time");
+
+      var h = duration * 2.7;
+      $(value).css('height', h + 'px');
+
+      $(value).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
+    })
+  }
+
   function addEventsInCalendar() {
     events.sort(function(a, b) {
       if (new Date(a.start) > new Date(b.start)) return 1;
@@ -372,7 +395,11 @@ $(document).ready(function() {
     });
 
     $.each(events, function(index, evt){
-      $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="'+evt.url+'" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><img src="'+evt.picture+'"><div class="txt"><span>'+evt.title+'</span><strong>'+evt.author+'</strong></div></div><div class="bottom"><span class="duration">'+Math.round((evt.duration/60)*100)/100+'H</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span><span class="competition">'+evt.selection+'</span></div></div>');
+      if (evt.type != 'custom') {
+        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="' + evt.url + '" data-id="' + evt.id + '" data-color="' + evt.eventColor + '" data-start="' + evt.start + '" data-end="' + evt.end + '" data-time="' + evt.time + '" data-duration="' + evt.duration + '"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon ' + evt.eventPictogram + '"></i><span class="cat-title">' + evt.type + '</span></span><div class="info"><img src="' + evt.picture + '"><div class="txt"><span>' + evt.title + '</span><strong>' + evt.author + '</strong></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">' + evt.room + '</span><span class="competition">' + evt.selection + '</span></div></div>');
+      } else {
+        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><div class="txt"><span>'+evt.title+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
+      }
     });
 
     var endDate = new Date("1900-01-01T00:00:00").getTime();
@@ -435,6 +462,7 @@ $(document).ready(function() {
     });
 
     displayProgrammationDay($('.timeline-container .active').data('date'));
+    heigthEvent();
   };
 
   function moveTimeline(element, day) {

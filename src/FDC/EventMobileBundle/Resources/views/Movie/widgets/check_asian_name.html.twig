@@ -8,11 +8,11 @@
 {%- else -%}
     {%- if person.asianName -%}
     <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director" >
-        <span class="name-item" style="font-size: 19px;">{{- person.lastName ~ ' ' ~ person.firstName -}}</span>
+        <span class="name-item" style="font-size: 19px;">{{- person.lastName ~ ' ' ~ person.firstName -}}{% if isLast is defined and not isLast %}, {% endif %}</span>
     </a>
     {%- else -%}
         <a href="{{- path('fdc_eventmobile_artist_get', {slug: person.slug }) -}}" class="director">
-            <span class="name-item" style="font-size: 19px;">{{- person.fullName -}}</span>
+            <span class="name-item" style="font-size: 19px;">{{- person.fullName -}}{% if isLast is defined and not isLast %}, {% endif %}</span>
         </a>
     {%- endif -%}
 {%- endif -%}

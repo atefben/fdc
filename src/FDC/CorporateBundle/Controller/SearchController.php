@@ -92,27 +92,7 @@ class SearchController extends Controller
             }
 
             if ($data['photos'] || $data['videos'] || $data['audios']) {
-
-                $i = 0;
-                if ($data['photos'])
-                    $i += 1;
-                if ($data['videos'])
-                    $i += 1;
-                if ($data['audios'])
-                    $i += 1;
-
                 $displayNb = 4;
-                switch ($i) {
-                    case 1:
-                        $displayNb = 4;
-                        break;
-                    case 2:
-                        $displayNb = 3;
-                        break;
-                    case 3:
-                        $displayNb = 2;
-                        break;
-                }
 
                 $default = ['items' => [], 'count' => 0];
                 $photoResults = $data['photos'] ? $this->getSearchResults($_locale, 'photos', $data, $displayNb) : $default;
@@ -261,11 +241,12 @@ class SearchController extends Controller
         }
 
         if ($searchFilter=="info_statement") {
+
             foreach ($searchResults['items'] as $key => $item) {
-                if($item->isDisplayedOnCorpoHome() == false) {
-                    unset($searchResults['items'][$key]);
-                    --$searchResults['count'];
-                }
+//                if($item->isDisplayedOnCorpoHome() == false) {
+//                    unset($searchResults['items'][$key]);
+//                    --$searchResults['count'];
+////                }
             }
         }
 
@@ -383,6 +364,23 @@ class SearchController extends Controller
                         $filters[$subKey] = $f;
                     }
 
+                } elseif ($key == 'genres') {
+                    foreach ($filter as $f) {
+                        if ($f == 'M') {
+                            $f = 'male';
+                        } elseif ($f == 'F') {
+                            $f = 'female';
+                        }
+                        $subKey = $key . '_' . $f;
+                        $f = $translator->trans('search.form.gender.' . $f, [], 'FDCCorporateBundle');
+                        $filters[$subKey] = $f;
+                    }
+                } elseif ($key == 'formats') {
+                    foreach ($filter as $f) {
+                        $subKey = $key . '_' . $f;
+                        $f = $translator->trans('search.form.format.' . $f, [], 'FDCCorporateBundle');
+                        $filters[$subKey] = $f;
+                    }
                 } else {
                     foreach ($filter as &$f) {
                         $subKey = $key . '_' . $f;
@@ -436,7 +434,7 @@ class SearchController extends Controller
             $translator->trans('search.form.cinefondation', [], 'FDCCorporateBundle')    => 'cinefondation',
             $translator->trans('search.form.cinemadelaplage', [], 'FDCCorporateBundle')  => 'cinemadelaplage',
         ];
-
+ 
         return $this->createForm(new SearchType($translator, '', $professionsCheckBoxes, $prizesCheckboxes, $selectionsCheckboxes));
     }
 

@@ -29,11 +29,17 @@ class MovieController extends Controller
     {
         $locale = $request->getLocale();
 
+        $festival = $this->getFestival();
+        $competitionManager = $this->get('ccm.manager.competition');
+        $selectionTab = $competitionManager->getSelectionTab($festival->getYear());
+        $selectionId = $selectionTab->getTranslatable()->getSelectionSection()->getId();
+
         $movie = $this
             ->getDoctrineManager()
             ->getRepository('BaseCoreBundle:FilmFilm')
             ->findOneBy([
                 'slug' => $slug,
+                'selectionSection' => $selectionId
             ])
         ;
 

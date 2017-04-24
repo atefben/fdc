@@ -763,6 +763,26 @@
     {% include 'BaseAdminBundle:TranslationFormBundle:corpo_who_are_we.html.twig' %}
 {% endblock %}
 
+{% block base_admin_graphical_charter_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:graphical_charter.html.twig' %}
+{% endblock %}
+
+{% block base_admin_graphical_charter_section_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:graphical_charter_section.html.twig' %}
+{% endblock %}
+
+{% block base_admin_graphical_charter_button_group_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:graphical_charter_button_group.html.twig' %}
+{% endblock %}
+
+{% block base_admin_graphical_charter_button_section_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:graphical_charter_button_section.html.twig' %}
+{% endblock %}
+
+{% block base_admin_graphical_charter_button_file_translations_a2lix_translations_widget %}
+    {% include 'BaseAdminBundle:TranslationFormBundle:graphical_charter_button_file.html.twig' %}
+{% endblock %}
+
 {% block base_admin_fdc_page_la_selection_cinema_plage_translations_a2lix_translations_widget %}
     {% include 'BaseAdminBundle:TranslationFormBundle:fdc_page_la_selection_cinema_plage.html.twig' %}
 {% endblock %}
@@ -908,6 +928,14 @@
                         <strong>{{ value.name }}</strong>
                     {% endif %}
                 {% elseif value.providerName == 'sonata.media.provider.pdf' %}
+                    <div class="pull-left" style="margin-right: 5px">
+                    </div>
+                    {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+                        <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
+                    {% else %}
+                        <strong>{{ value.name }}</strong>
+                    {% endif %}
+                {% elseif value.providerName == 'sonata.media.provider.archive' %}
                     <div class="pull-left" style="margin-right: 5px">
                     </div>
                     {% if sonata_admin_enabled is defined and sonata_admin_enabled %}

@@ -1,3 +1,5 @@
+{% trans_default_domain 'FDCCorporateBundle' %}
+
 <div class="c-filters">
     <div class="filters-02">
         <div class="block-01 container">
@@ -10,7 +12,7 @@
                 {% endif %}
             </ul>
         </div>
-        <a href="#" class="submit result-more">Filtrer les résultats</a>
+        <a href="#" class="submit result-more">{{ 'corpo.search.result.filter'|trans }}</a>
     </div>
     {% if filters|length > 4 %}
         <div class="filters-02 hidden">

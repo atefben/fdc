@@ -774,8 +774,8 @@ $('p').each(function() {
     }
 });
 
-var topTrigger = $('.subNavigation').offset().tpo;
 if($('.subNavigation').length){
+    var topTrigger = $('.subNavigation').offset().top;
   $(document).scroll(function() {
    if( $(this).scrollTop() >= topTrigger ) {
      if( !fixed ) {

@@ -40,7 +40,7 @@ class FilmFilmCountry
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "news_show",
      *     "search"
@@ -59,7 +59,7 @@ class FilmFilmCountry
      *     "trailer_show",
      *     "award_list",
      *     "award_show",
-     *     "projection_list",
+     *     "projection_list", "projection_list_2017", "programmation",
      *     "projection_show",
      *     "news_show",
      *     "search"

@@ -129,6 +129,35 @@ class FilmFilmRepository extends EntityRepository
     }
 
     /**
+     * Get movies from a list of ids and with a specific selection
+     * @param $ids
+     * @param $selectionSection
+     * @return array
+     */
+    public function getFilmsByIdsAndSelectionSection($ids, $selectionSection)
+    {
+        $qb = $this->createQueryBuilder('f');
+
+        $qb
+            ->where('f.id  IN (:ids)')
+            ->setParameter(':ids', $ids)
+        ;
+
+        if ($selectionSection) {
+            $qb
+                ->andWhere('f.selectionSection = :selectionSection')
+                ->setParameter('selectionSection', $selectionSection);
+        }
+
+        $qb
+            ->orderBy('f.titleVO', 'asc')
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
+
+    /**
      * @param $festival
      * @param $locale
      * @param $selectionSection
@@ -396,6 +425,30 @@ class FilmFilmRepository extends EntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+
+    public function getOldClassics($subsection)
+    {
+        $films =  $this
+            ->createQueryBuilder('f')
+            ->innerJoin('f.festival', 'festival')
+            ->andWhere('f.selectionSubsection = :subsection')
+            ->setParameter(':subsection', $subsection)
+            ->andWhere('festival.year < 2016')
+            ->getQuery()
+            ->getResult()
+            ;
+
+        $years = [];
+
+        foreach ($films as $film) {
+            if ($film instanceof FilmFilm && $film->getFestival()) {
+                $years[$film->getFestival()->getYear()][] = $film;
+            }
+        }
+
+        return $years;
     }
 
 }

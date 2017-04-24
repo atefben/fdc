@@ -4,6 +4,7 @@ namespace Base\CoreBundle\Repository;
 
 use Base\CoreBundle\Component\Repository\EntityRepository;
 use Base\CoreBundle\Entity\FDCPageLaSelection;
+use Base\CoreBundle\Entity\NewsArticleTranslation;
 use Doctrine\ORM\NonUniqueResultException;
 
 /**
@@ -23,13 +24,10 @@ class CorpoPalmeOrRepository extends TranslationRepository
         $qb = $this->createQueryBuilder('p');
 
         $qb
-            ->join('p.translations', 't')
-            ->andWhere('t.locale = :locale')
-            ->andWhere('t.slug = :slug')
-            ->andWhere('t.status = 1')
-            ->setParameter('locale', $locale)
-            ->setParameter('slug', $slug)
+            ->join('p.translations', 'pt')
         ;
+
+        $this->addTranslationQueries($qb, 'pt', $locale, $slug);
 
         $output = $qb->getQuery()->getOneOrNullResult();
 
@@ -45,18 +43,26 @@ class CorpoPalmeOrRepository extends TranslationRepository
     public function getAllPagesByLocale($locale)
     {
         $qb = $this->createQueryBuilder('p');
-
         $qb
+            ->where('t.locale = :locale')
+            ->setParameter('published',NewsArticleTranslation::STATUS_PUBLISHED)
             ->join('p.translations', 't')
-            ->andWhere('t.locale = :locale')
-            ->andWhere('t.status = 1')
             ->setParameter('locale', $locale)
-            ->orderBy('p.weight','ASC')
         ;
+        if ($locale != 'fr') {
+            $qb
+                ->andWhere('t.status = :translated')
+                ->setParameter('translated',NewsArticleTranslation::STATUS_TRANSLATED)
+                ->join('p.translations', 'tt')
+                ->andWhere('tt.locale = :locale_fr and tt.status = :published')
+                ->setParameter('locale_fr', 'fr')
+            ;
+        } else {
+            $qb
+                ->andWhere('t.status = :published')
+            ;
+        }
 
-        $output = $qb->getQuery()->getResult();
-
-
-        return $output;
+        return $qb->getQuery()->getResult();
     }
 }

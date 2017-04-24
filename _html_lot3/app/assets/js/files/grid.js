@@ -41,24 +41,25 @@ var owInitGrid = function (id) {
                     //landscape
                     $this.addClass('landscape');
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * landscapeRatio;
-                    if(itemRatio < landscapeRatio){
-                        //less large than desired output, scale width
+                    //var newHeight = $this.outerWidth() * landscapeRatio;
+                    // if(itemRatio < landscapeRatio){
+                        //less large than desired outpugridBigImgt, scale width
                         //$this.find('.image, .image-wrapper, img').css('width','100%');
-                    }else{
+                        // }else{
                         //more large than desired output, scale height
                         //$this.find('img').css('height','100%');
-                    }
+                        //}
                 }else{
                     //portrait
                     $this.addClass('portrait');
+                    //$this.height($this.height()+2);
                     //compute height based on width & ratio
-                    var newHeight = $this.outerWidth() * portraitRatio;
-                    if(itemRatio < portraitRatio){
+                    //var newHeight = $this.outerWidth() * portraitRatio;
+                    //if(itemRatio < portraitRatio){
                         //less large than desired output, scale width
-                    }else{
+                    //}else{
                         //more large than desired output, scale width too (?)
-                    }
+                    //}
                 }
             });
         };
@@ -202,7 +203,7 @@ var owInitGrid = function (id) {
                                 var titleText;
                                 var catText;
 
-                                $clamp(title.get(0), {clamp: 2});
+
                                 //$clamp(cat.get(0), {clamp: 1});
                             });
                             owsetGridBigImg(false, $('.grid-01'), false);
@@ -250,7 +251,7 @@ var owInitGrid = function (id) {
                     var title = $(e).find('.info strong a');
                     var cat = $(e).find('.info .category');
 
-                    $clamp(title.get(0), {clamp: 2});
+                    //$clamp(title.get(0), {clamp: 2});
                     //$clamp(cat.get(0), {clamp: 1});
                 });
             }
@@ -379,8 +380,8 @@ var owInitGrid = function (id) {
                 var title = $(e).find('.info strong a');
                 var cat = $(e).find('.info .category');
 
-                $clamp(title.get(0), {clamp: 2});
-                $clamp(cat.get(0), {clamp: 1});
+                //$clamp(title.get(0), {clamp: 2});
+                //$clamp(cat.get(0), {clamp: 1});
             });
         }
 
@@ -463,7 +464,7 @@ var owInitGrid = function (id) {
 
                             var timeout = window.setTimeout(function(){
                                 var bigInterval = window.setInterval(function(){
-                                    console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
+                                    //console.log($('.isotope-01').children('.item').eq(1).hasClass('w2'));
                                     if($('.isotope-01').children('.item').eq(1).hasClass('w2')){
                                         window.clearInterval(bigInterval);
                                     }else{
@@ -502,7 +503,7 @@ var owInitGrid = function (id) {
                             var titleText;
                             var catText;
 
-                            $clamp(title.get(0), {clamp: 2});
+                            //$clamp(title.get(0), {clamp: 2});
                             //$clamp(cat.get(0), {clamp: 1});
                         });
 
@@ -532,7 +533,6 @@ var owInitGrid = function (id) {
 
 
 var owsetGridBigImg = function (grid, dom, init) {
-    console.log('gridBigImg');
     var $img = $(dom).find('.card:visible img'),
         pourcentage = 0.30,
         nbImgAAgrandir = $img.length * pourcentage,

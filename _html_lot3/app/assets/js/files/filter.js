@@ -229,7 +229,7 @@ var owRemoveElementListe = function () {
 
         $.each($('.filters-02 li'), function(i,e){
             id = $(e).data('id');
-            text = $(e).data('text');
+            text = $(e).text();
 
             $('input#' + id).val(text);
             $('input#' + id).prop("checked", true);
@@ -267,7 +267,9 @@ var owInitFilterSearch = function () {
 
     $('.result-more').on('click', function (e) {
         e.preventDefault();
-
         block.toggleClass('visible');
-    })
+    });
+    $('.result-more a').on('click', function (e) {
+        e.stopPropagation();
+    });
 }

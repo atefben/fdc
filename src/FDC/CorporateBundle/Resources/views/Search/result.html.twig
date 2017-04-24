@@ -46,7 +46,13 @@
         </div>
     </div>
 </section>
-
+    {{ render(controller('FDCCorporateBundle:Global:shareEmail',
+    {'section':  '',
+        'detail' : '',
+        'title'  : '',
+        'description': '',
+        'url': ''
+    })) }}
 {% include "FDCCorporateBundle:Global:breadcrumb.html.twig" with
 {"breadcrumb":
 [
