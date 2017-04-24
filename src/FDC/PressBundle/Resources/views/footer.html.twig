@@ -25,7 +25,7 @@
                 <li><a class="podcast" href="{{ attribute(_context, 'social_podcast_'~ app.request.locale) }}" target="_blank"><i class="icon icon_podcast"></i></a></li>
             </ul>
         </div>
-        {{ render(controller('FDCEventBundle:Global:footer', {route : app.request.get('_route')})) }}
+        {{ render(controller('FDCCorporateBundle:Global:footer', {route : app.request.get('_route')})) }}
     </div>
 </footer>
 <div id="siteLoader" class="canvasloader"></div>
