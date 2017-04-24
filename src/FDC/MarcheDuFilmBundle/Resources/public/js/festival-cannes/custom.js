@@ -175,13 +175,20 @@ function menuMDF() {
       $('.rotateArrow').toggleClass('arrowRotated');
     });
 
-  $("#edition, #subMenu").hover(function() {
-        $('.tleft, .tright').toggleClass("showT");
+    $("#edition, #subMenu").hover(function() {
+        $('#subMenu .tleft, #subMenu .tright').toggleClass("showT");
         $('#subMenu').show();
         $('#subMenu').toggleClass("showMenu");
         $(blackBckg).toggleClass("showblackBckg");
 
-  });
+    });
+
+    $("#programs, #subMenu2").hover(function() {
+        $('#subMenu2 .tleft, #subMenu2 .tright').toggleClass("showT");
+        $('#subMenu2').show();
+        $('#subMenu2').toggleClass("showMenu");
+        $(blackBckg).toggleClass("showblackBckg");
+    });
 
 }
 
