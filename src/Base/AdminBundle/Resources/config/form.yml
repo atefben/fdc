@@ -757,6 +757,15 @@ services:
             - ['setSliderAccreditationAdmin', ['@base.admin.mdf_slider_accreditation']]
             - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
 
+    base.admin.form.program_industry_dispatch_widget_type:
+        scope: prototype
+        class: FDC\MarcheDuFilmBundle\Form\Type\ProgramIndustryDispatchWidgetType
+        tags:
+            - { name: form.type, alias: 'program_industry_dispatch_widget_type'}
+        calls:
+            - ['setSonataAdmin', ['@base.admin.dispatch_de_service_widget_image_dummy']]
+            - ['setMediaImageAdmin', ['@base.admin.mdf_media_image']]
+
     base.admin.form.graphical_section_position:
         scope: prototype
         class: Base\AdminBundle\Form\Type\GraphicalCharterSectionPositionType

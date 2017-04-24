@@ -3,11 +3,11 @@
 namespace FDC\MarcheDuFilmBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceTranslation;
-use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidgetTranslation;
+use FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatchTranslation;
+use FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatchWidgetTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class DispatchDeServiceManager
+class ProgramIndustryDispatchManager
 {
     protected $em;
 
@@ -19,17 +19,17 @@ class DispatchDeServiceManager
         $this->requestStack = $requestStack;
     }
 
-    public function getDispatchDeServiceWidgets()
+    public function getDispatchWidgets()
     {
         return $this->em
-            ->getRepository(DispatchDeServiceWidgetTranslation::class)
+            ->getRepository(ProgramIndustryDispatchWidgetTranslation::class)
             ->getSortedServices($this->requestStack->getMasterRequest()->get('_locale'));
     }
 
-    public function getDispatchDeServiceContent()
+    public function getDispatchContent()
     {
         return $this->em
-            ->getRepository(DispatchDeServiceTranslation::class)
+            ->getRepository(ProgramIndustryDispatchTranslation::class)
             ->findOneBy(
                 array(
                     'locale' => $this->requestStack->getMasterRequest()->get('_locale')
@@ -37,9 +37,9 @@ class DispatchDeServiceManager
             );
     }
 
-    public function findDispatchDeServiceByMedia($locale, $type, $id) {
+    public function findProgramIndustryDispatchByMedia($locale, $type, $id) {
         return $this->em
-            ->getRepository(DispatchDeServiceTranslation::class)
+            ->getRepository(ProgramIndustryDispatchTranslation::class)
             ->getByMedia(
                 $locale,
                 array('id' => $id, 'type' => $type)
