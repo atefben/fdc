@@ -39,7 +39,7 @@ class MovieController extends Controller
             ->getRepository('BaseCoreBundle:FilmFilm')
             ->findOneBy([
                 'slug' => $slug,
-                'selection' => $selectionId
+                'selectionSection' => $selectionId
             ])
         ;
 
