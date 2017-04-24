@@ -1,0 +1,322 @@
+html {
+  font-size: 62.5%; }
+
+.jwplayer.jw-state-buffering .jw-display-icon-container .jw-icon-display {
+  display: none !important; }
+
+.Article-wrapper {
+  font-family: "Open Sans"; }
+
+.Article-video-play {
+  position: absolute;
+  width: 3.8rem;
+  height: 5rem;
+  left: 50%;
+  margin-left: -1.9rem;
+  margin-top: 9.5rem;
+  z-index: 1; }
+  .Article-video-play img {
+    width: 100%; }
+
+.Article-header video {
+  width: 100%;
+  display: block;
+  background: transparent 50% 50% / cover no-repeat;
+  height: 240px; }
+
+.Article-header img {
+  width: 100%;
+  display: block; }
+
+.Article-header .Article-picture-caption {
+  height: auto;
+  line-height: 25px;
+  font-size: 0.8rem;
+  margin-bottom: 1.6rem; }
+  .Article-header .Article-picture-caption strong {
+    font-family: "Open Sans";
+    padding-bottom: 1.6rem;
+    line-height: 2.2rem;
+    display: inline; }
+
+.Article-header-meta {
+  display: block;
+  height: auto;
+  line-height: 18px;
+  font-size: 0.8rem;
+  position: relative; }
+  .Article-header-meta-category {
+    display: inline-block;
+    height: 100%;
+    text-transform: uppercase;
+    color: #fff;
+    background: #c9a45e;
+    padding: 0px 15px; }
+  .Article-header-meta-date {
+    text-transform: uppercase;
+    color: #bfbfbf;
+    padding-left: 10px; }
+  .Article-header-meta-misc {
+    font-size: 0.6rem;
+    padding-left: 12px;
+    color: #666666;
+    display: inline-block; }
+    .Article-header-meta-misc strong {
+      color: #212121; }
+    .Article-header-meta-misc .copyright {
+      display: none;
+      font-size: 0.8rem; }
+      .Article-header-meta-misc .copyright.active {
+        display: inline-block; }
+
+.Article-content {
+  padding: 25px 20px 15px 20px;
+  font-size: 1.4em; }
+  .Article-content h1 {
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 2.8rem;
+    line-height: 3rem;
+    padding-bottom: 4rem; }
+  .Article-content table {
+    width: 100% !important; }
+  .Article-content p {
+    display: block;
+    font-family: "Open Sans";
+    padding-bottom: 1.6rem;
+    line-height: 2.2rem; }
+  .Article-content img {
+    max-width: 100%;
+    height: auto !important; }
+  .Article-content a {
+    color: #c8a461;
+    text-decoration: none; }
+  .Article-content .Article-picture-dual-col {
+    width: 50%;
+    display: inline-block; }
+  .Article-content .Article-picture-caption {
+    height: auto;
+    line-height: 25px;
+    font-size: 0.8rem;
+    margin-bottom: 1.6rem; }
+    .Article-content .Article-picture-caption strong {
+      font-family: "Open Sans";
+      padding-bottom: 1.6rem;
+      line-height: 2.2rem;
+      font-size: 1.1rem;
+      display: inline; }
+
+.Article-quote blockquote {
+  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+  color: #666;
+  font-size: 1.688rem;
+  line-height: 1.4em;
+  padding: 40px 15px;
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 40px; }
+
+.Article-slider-wrapper {
+  position: relative; }
+
+.Article-slider-prev, .Article-slider-next {
+  position: absolute;
+  width: 21px;
+  height: 40px;
+  background: url(../../img/article/slider-prev.png) no-repeat top left;
+  background-size: 100%;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  margin-top: -20px; }
+
+.Article-slider-next {
+  background: url(../../img/article/slider-next.png) no-repeat top left;
+  background-size: 100%;
+  left: auto;
+  right: 0; }
+
+.Article-slider-item {
+  float: left;
+  width: 90vw; }
+  @media screen and (min-width: 768px) {
+    .Article-slider-item {
+      width: 100vw; } }
+  .Article-header .Article-slider-item {
+    width: 100vw; }
+  .Article-slider-item img {
+    width: 100%; }
+
+.Article-slider-caption {
+  height: auto;
+  line-height: 25px;
+  font-size: 0.8rem; }
+  .Article-slider-caption strong {
+    display: block;
+    word-wrap: break-word; }
+    .Article-header .Article-slider-caption strong {
+      display: inline-block; }
+    .Article-content .Article-slider-caption strong {
+      font-size: 0.8rem; }
+  .Article-header .Article-slider-caption {
+    display: none; }
+
+.Article-slider-count {
+  position: absolute;
+  font-size: 1.1rem;
+  color: #bfbfbf;
+  right: 0px;
+  bottom: 0px; }
+  .Article-slider-count strong {
+    display: inline;
+    color: #212121;
+    font-size: 1.1rem; }
+    .Article-content .Article-slider-count strong {
+      font-size: 1.1rem; }
+
+.Article-push {
+  background: #141414; }
+  .Article-push > * {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle; }
+  .Article-push-image {
+    text-align: center;
+    padding: 35px 0; }
+    .Article-push-image img {
+      display: inline-block;
+      width: 80%; }
+  .Article-push-content {
+    font-family: "Camphor W01 Heavy"; }
+    .Article-push-content strong {
+      color: #919191;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      display: block;
+      padding-bottom: 1.3rem;
+      letter-spacing: 1px; }
+    .Article-push-content h3 {
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      text-transform: uppercase;
+      padding-bottom: 1.3rem; }
+    .Article-push-content span {
+      display: block;
+      font-style: italic;
+      color: #c8a461;
+      font-size: 0.9rem; }
+      .Article-push-content span:after {
+        content: "";
+        width: 25px;
+        display: block;
+        height: 1px;
+        margin-top: 1.3rem;
+        background: #2a2a2a; }
+    .Article-push-content p {
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      color: #919191;
+      padding-top: 1.3rem; }
+
+.Article-related h2 {
+  padding-top: 80px;
+  padding-bottom: 70px;
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  font-family: "Playfair Display";
+  font-weight: bold;
+  text-align: center; }
+
+.Article-related-slider-item {
+  float: left;
+  display: inline-block;
+  width: 85vw;
+  padding-left: 1.5rem;
+  text-decoration: none;
+  color: #000; }
+  .Article-related-slider-item:last-child {
+    padding-right: 3.3rem; }
+  .Article-related-slider-item-pictureWrap {
+    height: auto;
+    position: relative;
+    overflow: hidden; }
+    .Article-related-slider-item-pictureWrap img {
+      width: 100%;
+      display: block; }
+    .Article-related-slider-item-pictureWrap i {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 1.75rem;
+      background: #fff;
+      display: inline-block;
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem; }
+      .Article-related-slider-item-pictureWrap i.icon-article:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: url(../../img/article/icons/Article.svg) no-repeat left top;
+        background-size: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .Article-related-slider-item-pictureWrap i.icon-audio:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: url(../../img/article/icons/Audio.svg) no-repeat left top;
+        background-size: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .Article-related-slider-item-pictureWrap i.icon-photo:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: url(../../img/article/icons/Photo.svg) no-repeat left top;
+        background-size: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; }
+      .Article-related-slider-item-pictureWrap i.icon-video:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: url(../../img/article/icons/Video.svg) no-repeat left top;
+        background-size: 100%;
+        position: absolute;
+        top: 0;
+        left: 0; }
+
+.Article-related-slider-caption h4 {
+  display: inline-block;
+  color: #c9a45e;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: "Camphor W01 Heavy";
+  height: 3.5rem;
+  line-height: 3.5rem; }
+
+.Article-related-slider-caption p {
+  display: inline-block;
+  font-family: "Camphor W01 Regular";
+  height: 3.5rem;
+  line-height: 3.5rem;
+  font-size: 1rem;
+  color: #b8b8b8; }
+
+.Article-related-slider-caption strong {
+  display: block;
+  font-weight: normal;
+  font-family: "Playfair Display";
+  padding-bottom: 3.7rem;
+  font-size: 1.5rem; }
