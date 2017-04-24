@@ -3,8 +3,11 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets "bundles/fdceventmobile/css/articles.css" %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+    {% stylesheets
+        "bundles/fdceventmobile/css/articles.css"
+        "bundles/fdceventmobile/css/articles_custom.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 {% endblock %}
 
@@ -142,7 +145,10 @@
 {% endblock body %}
 
 {% block javascripts %}
-    {% javascripts '@FDCEventMobileBundle/Resources/public/js/articles.js' %}
+    {% javascripts
+        '@FDCEventMobileBundle/Resources/public/js/articles.js'
+        '@FDCEventMobileBundle/Resources/public/js/articles_custom.js'
+    %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {{ parent() }}
