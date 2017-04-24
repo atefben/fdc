@@ -747,5 +747,5 @@ body.ismobile .slider-home .container-images .item {
 }
 
 header .user-nav li a.account {
-    display: block;
+    display: block !important;
 }
