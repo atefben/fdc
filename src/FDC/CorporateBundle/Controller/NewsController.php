@@ -580,6 +580,7 @@ class NewsController extends Controller
 
         $festival = $this->getFestival($year);
 
+        $isAdmin = false;
         if ($this->getUser()) {
             $isAdmin = $this->getUser()->hasRole('ROLE_ADMIN') || $this->getUser()->hasRole('ROLE_ALL_ADMIN');
         }
