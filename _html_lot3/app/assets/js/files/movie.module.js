@@ -252,7 +252,8 @@ $(document).ready(function() {
       });
         var hash = window.location.hash.split('=')[1];
         if (hash.length) {
-            videoMovieBa.getPlaylist().forEach(function (video, i) {
+          var arr = videoMovieBa.getPlaylist();
+            arr.forEach(function (video, i) {
                 if (video.vid == hash) {
                   videoMovieBa.playlistItem(i);
                   sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
