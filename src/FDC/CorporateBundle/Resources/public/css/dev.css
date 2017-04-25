@@ -758,3 +758,7 @@ header .user-nav li a.account {
   display: inline-block !important;
   width: auto !important;
 }
+
+.article-single .artist .block-01 img + p.caption {
+  width: inherit;
+}
