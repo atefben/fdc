@@ -44,7 +44,7 @@ class FilmFilmPersonFunction
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "classics",
@@ -63,7 +63,7 @@ class FilmFilmPersonFunction
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "classics",
      *     "orange_studio"
      * })
