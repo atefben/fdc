@@ -750,3 +750,11 @@ header .user-nav li a.account {
     display: block !important;
 }
 
+.artist .article-single .single-photo img {
+  width: inherit !important;
+}
+
+.artist .single-photo .photo-container {
+  display: inline-block !important;
+  width: auto !important;
+}
