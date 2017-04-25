@@ -5328,7 +5328,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   height: 300px;
 }
 
-#subMenu {
+.subMenu {
   height: 0px;
   position: absolute;
   width: 100%;
@@ -5347,14 +5347,14 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#subMenu ul {
+.subMenu ul {
   width: 34%;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -o-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#subMenu li {
+.subMenu li {
   max-width: 100% !important;
   display: block !important;
   margin-left: 0px !important;
@@ -5366,7 +5366,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#subMenu li .active, #subMenu li:hover {
+.subMenu li .active, .subMenu li:hover {
   color: #FFFFFF !important;
   opacity: 1 !important;
   -moz-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -5374,7 +5374,7 @@ header #navigation ul.user .icon_participer, header #navigation ul.user .icon_pr
   -webkit-transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
   transition: all 0.8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
 }
-#subMenu a:hover, #subMenu a.active {
+.subMenu a:hover, .subMenu a.active {
   color: #FFFFFF !important;
 }
 
