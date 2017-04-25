@@ -22,6 +22,21 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 class ThemeAdmin extends Admin
 {
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $alias = $query->getRootAliases()[0];
+
+        if (in_array('Orange', $this->getUser()->getGroupNames())) {
+            $query->andWhere("$alias.orange = :orange");
+            $query->setParameter(':orange', true);
+        } else {
+            $query->andWhere("$alias.orange = :orange OR $alias.orange is null");
+            $query->setParameter(':orange', false);
+        }
+        return $query;
+    }
+    
     protected $formOptions = array(
         'cascade_validation' => true
     );
