@@ -261,7 +261,7 @@ $(document).ready(function() {
                 sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
                 var $container = $('#video-player-ba');
                 var $fullscreen = $container.find('.icon-fullscreen');
-                $fullscreen.trigger('click');
+                $fullscreen[0].trigger('click');
               }
           });
       }
