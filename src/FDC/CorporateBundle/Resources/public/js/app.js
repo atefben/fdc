@@ -3717,19 +3717,21 @@ $(document).ready(function() {
               }
           }, 100);
       });
-        var hash = window.location.hash.split('=')[1];
-        if (hash.length && $('#video-player-ba').length > 0) {
-          videoMovieBa = playerInit('video-player-ba', false, true);
-          console.log(videoMovieBa);
-          console.log(videoMovieBa.getPlaylist());
-          var arr = videoMovieBa.getPlaylist();
-            arr.forEach(function (video, i) {
-                if (video.vid == hash) {
-                  videoMovieBa.playlistItem(i);
-                  sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                }
-            });
-        }
+
+      var hash = window.location.hash.split('=')[1];
+      if (hash.length && $('#video-player-ba').length > 0) {
+        videoMovieBa = playerInit('video-player-ba', false, true);
+        var arr = videoMovieBa.getPlaylist();
+          arr.forEach(function (video, i) {
+              if (video.vid == hash) {
+                videoMovieBa.playlistItem(i);
+                sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
+                var $container = $('#video-player-ba');
+                var $fullscreen = $container.find('.icon-fullscreen');
+                $fullscreen.trigger('click');
+              }
+          });
+      }
     }
   }
 });
