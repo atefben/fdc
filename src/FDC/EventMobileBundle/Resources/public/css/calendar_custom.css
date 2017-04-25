@@ -6,3 +6,7 @@
 #create-event-pop .container form .time .hours {
     top: 0px;
 }
+
+.fc-event-custom .category, .calendar .venues .venue .v-container .fc-event.fc-event-custom .remove-evt {
+    color: #000000;
+}
