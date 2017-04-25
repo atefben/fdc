@@ -29,7 +29,7 @@
 
                     {% if pageDomains is defined and pageDomains is not null %}
                         {% for key, domain in pageDomains %}
-                            <div class="selectbtn" id="{{ key }}" rel="{{ key }}">{{ domain }}</div>
+                            <div class="selectbtn" id="{{ key }}" rel="show-{{ key }}">{{ domain }}</div>
                         {% endfor %}
                     {% endif %}
                 </div>
