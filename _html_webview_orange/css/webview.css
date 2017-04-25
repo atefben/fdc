@@ -98,7 +98,7 @@ html {
     height: 100%;
     text-transform: uppercase;
     color: #ff6600;
-    padding: 15px 15px 0 15px;
+    padding: 20px 20px 0 20px;
     font-weight: bold; }
   .Article-header-meta-date {
     text-transform: uppercase;
@@ -375,24 +375,29 @@ html {
 
 .Article-black-block {
   background-color: black;
-  height: 200px; }
+  height: 175px;
+  padding-top: 37px; }
   .Article-black-block-logos {
     margin: 0 auto;
-    height: 50px;
+    height: 60px;
     display: table;
-    padding-top: 15%;
     margin-bottom: 10px; }
     .Article-black-block-logos img {
       height: 100%;
-      display: inline-block; }
+      display: inline-block;
+      margin: 0 15px; }
   .Article-black-block h2 {
     color: white;
     border: 1px solid white;
     border-radius: 5px;
-    margin: 0 auto;
+    margin: 25px auto 0;
+    font-family: "Helvetica Neue";
     font-size: 2.3rem;
+    font-weight: 500;
     display: table;
-    padding: 3px 10px; }
+    padding: 2px 10px; }
+    .Article-black-block h2 img {
+      height: 17px; }
 
 .Article-content a {
   text-decoration: none;
