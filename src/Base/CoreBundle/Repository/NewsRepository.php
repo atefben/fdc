@@ -540,7 +540,7 @@ class NewsRepository extends EntityRepository
 
     }
 
-    public function getAllNews($locale, $festival)
+    public function getAllNews($locale, $festival, $maxResults = 30)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -557,7 +557,7 @@ class NewsRepository extends EntityRepository
             ->where('s.slug = :site_slug')
         ;
 
-        $qb = $qb
+        $qb
             ->andWhere(
                 '(na1t.locale = :locale_fr AND na1t.status = :status) OR
                     (na2t.locale = :locale_fr AND na2t.status = :status) OR
@@ -569,7 +569,7 @@ class NewsRepository extends EntityRepository
         ;
 
         if ($locale != 'fr') {
-            $qb = $qb
+            $qb
                 ->leftJoin('na1.translations', 'na5t')
                 ->leftJoin('na2.translations', 'na6t')
                 ->leftJoin('na3.translations', 'na7t')
@@ -585,19 +585,19 @@ class NewsRepository extends EntityRepository
             ;
         }
 
-        $qb = $qb
-            ->orderBy('n.publishedAt', 'DESC')
+        $qb
+            ->addOrderBy('n.publishedAt', 'DESC')
             ->setParameter('site_slug', 'site-evenementiel')
         ;
 
         $this->addMasterQueries($qb, 'n', $festival, true);
 
-        $qb = $qb
+        return $qb
+            ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult()
         ;
 
-        return $qb;
     }
 
     public function getOlderNewsButSameDay($locale, $festival, $dateTime, $count)
