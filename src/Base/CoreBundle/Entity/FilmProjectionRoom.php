@@ -27,7 +27,7 @@ class FilmProjectionRoom
      *
      * @Groups({
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "home",
      *     "news_list", "search"})
      */
@@ -40,7 +40,7 @@ class FilmProjectionRoom
      *
      * @Groups({
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_list",
      *     "film_show",
      *     "home",

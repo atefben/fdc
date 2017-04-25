@@ -47,7 +47,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
@@ -75,7 +75,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_selection_section_show",
      *     "classics"
      * })
@@ -93,7 +93,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_list",
      *     "film_show",
      *     "film_selection_section_show",
@@ -131,7 +131,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
@@ -156,7 +156,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_selection_section_show",
      *     "classics",
      *     "orange_studio",
@@ -179,7 +179,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_show",
      *     "classics"
      * })
@@ -200,7 +200,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_show",
      *     "classics"
      * })
@@ -253,7 +253,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show"
+     *     "projection_show", "programmation_main"
      * })
      */
     protected $galaId;
@@ -271,7 +271,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show"
+     *     "projection_show", "programmation_main"
      * })
      *
      */
@@ -346,7 +346,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_selection_section_show",
      *     "news_list", "search",
      *     "news_show",
@@ -373,7 +373,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_show",
      *     "search"
      *
@@ -491,7 +491,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "classics",
      *     "orange_studio",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "search"
      * })
      * @Serializer\Accessor(getter="getApiImageMain")
@@ -509,7 +509,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "classics",
      *     "orange_studio",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      * })
      */
     protected $imageCover;
@@ -592,7 +592,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show"
+     *     "projection_show", "programmation_main"
      * })
      * @return array|ArrayCollection
      */
@@ -624,7 +624,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "film_selection_section_show",
@@ -668,7 +668,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show"
+     *     "projection_show", "programmation_main"
      * })
      * @return array|ArrayCollection
      */
@@ -721,7 +721,7 @@ class FilmFilm implements FilmFilmInterface, TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show"
+     *     "projection_show", "programmation_main"
      * })
      *
      */
