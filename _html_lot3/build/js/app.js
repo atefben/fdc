@@ -3718,7 +3718,8 @@ $(document).ready(function() {
           }, 100);
       });
         var hash = window.location.hash.split('=')[1];
-        if (hash.length) {
+        if (hash.length && $('#video-player-ba').length > 0) {
+          videoMovieBa = playerInit('video-player-ba', false, true);
           console.log(videoMovieBa);
           console.log(videoMovieBa.getPlaylist());
           var arr = videoMovieBa.getPlaylist();
