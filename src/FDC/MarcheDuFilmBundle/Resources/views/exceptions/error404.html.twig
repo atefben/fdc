@@ -143,15 +143,21 @@
                     <li>
                         <a href="{{ path('fdc_marche_du_film_services') }}" class="servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
+                    <li id="programs">
+                        <a href="#" class="{{ routeName == 'fdc_marche_du_film_conference_home'
+                        or routeName == 'fdc_marche_du_film_conference_infos_and_contacts'
+                        or routeName == 'fdc_marche_du_film_conference_program'
+                        or routeName == 'fdc_marche_du_film_conference_speakers'
+                        or routeName == 'fdc_marche_du_film_conference_news'
+                        or routeName == 'fdc_marche_du_film_conference_partners'
+                        ? 'active ' : '' }}">{{ 'menu.industry_programs'|trans }}</a>
+                    </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="whoAreWeColor">{{ 'menu.who_are_we'|trans }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_press_releases') }}" class="presseColor">{{ 'menu.press'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="utilInfoColor">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
@@ -187,16 +193,22 @@
                             </ul>
                         </li>
                     {% endif %}
-                    <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">{{ 'menu.conference_producers_workshop'|trans }}</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">{{ 'menu.conference_producers_network'|trans }}</a></li>
                 </ul>
-                <ul class="tright">
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">{{ 'menu.conference_doc_corner'|trans }}</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">{{ 'menu.conference_next'|trans }}</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">{{ 'menu.conference_mixers'|trans }}</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">{{ 'menu.conference_goes_to_cannes'|trans }}</a></li>
-                    <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'frontieres' }) }}">{{ 'menu.conference_frontieres'|trans }}</a></li>
-                </ul>
+                <div class="subMenu" id="subMenu2">
+                    <div class="bigContainer">
+                        <ul class="tleft">
+                            <li class="liMargin"><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-workshop' }) }}">{{ 'menu.conference_producers_workshop'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'producers-network' }) }}">{{ 'menu.conference_producers_network'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'doc-corner' }) }}">{{ 'menu.conference_doc_corner'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'next' }) }}">{{ 'menu.conference_next'|trans }}</a></li>
+                        </ul>
+                        <ul class="tright">
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'mixers' }) }}">{{ 'menu.conference_mixers'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'goes-to-cannes' }) }}">{{ 'menu.conference_goes_to_cannes'|trans }}</a></li>
+                            <li><a href="{{ path('fdc_marche_du_film_conference_home', { 'slug': 'frontieres' }) }}">{{ 'menu.conference_frontieres'|trans }}</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
