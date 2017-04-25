@@ -423,7 +423,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     $link.attr('data-clipboard-text', data.url);
 
                 });
-            }
+            };
 
             var loadInterval = window.setInterval(function () {
                 if ($('.slider-02 .owl-item.center').length) {
@@ -1116,8 +1116,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }, 500);
 
         });
-    } else if ($('.medias').length > 0 || $('.media-library').length > 0) {
-
+    } else if ($('.medias').length > 0 || $('.media-library').length > 0 || $('.article-single').length > 0) {
         initPopinVideo(hash);
 
     } else if ($('.video-playlist').length > 0) {
@@ -4738,6 +4737,7 @@ var initRs = function () {
                    $('#share-box').remove();
                    //two time because first don't work...
 
+                   linkPopinInit = 0;
                }, 1000);
 
             }, 3000);
