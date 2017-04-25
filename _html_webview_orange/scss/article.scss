@@ -445,10 +445,21 @@ html {
 			}
 		}
 	}
-	&-black-block {
+	&-bottom-block {
 		background-color: black;
 		height: 175px;
 		padding-top: 37px;
+
+		&.ocs {
+			background-image: url("../img/article/bg.png");
+			padding-top: 25px;
+			& > img {
+				height: 80px;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		
 		&-logos {
 			margin: 0 auto;
 			height: 60px;
