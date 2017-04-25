@@ -149,6 +149,9 @@ class FilmProjectionController extends FOSRestController
             ->getApiRooms($festival, null, null, $room)
         ;
 
+        if (count($rooms) === 1) {
+            $rooms = reset($rooms);
+        }
 
         $groups = ['projection_list_2017'];
         $context = $coreManager->setContext($groups, $paramFetcher);

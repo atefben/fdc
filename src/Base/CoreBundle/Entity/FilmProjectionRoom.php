@@ -201,7 +201,7 @@ class FilmProjectionRoom
             ksort($day);
             $day = array_values($day);
         }
-        return $days;
+        return [$days];
     }
 
     /**
