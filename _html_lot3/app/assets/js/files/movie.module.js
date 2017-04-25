@@ -259,11 +259,12 @@ $(document).ready(function() {
               if (video.vid == hash) {
                 videoMovieBa.playlistItem(i);
                 sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                  setTimeout(function(){
-                    var $container = $('#video-player-ba');
-                    var $fullscreen = $container.find('.icon-fullscreen');
-                    $fullscreen[0].trigger('click');
-                  }, 100);
+                var $container = $("#" + video.id).parent();
+                var $fullscreen = $container.find('.icon-fullscreen');
+                fullScreenApi.requestFullScreen($container[0]);
+                $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
+                playerInstance.resize('100%', '100%');
+                //mouseMoving(true);
               }
           });
       }
