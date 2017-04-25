@@ -589,6 +589,7 @@ admin:
         mdf: Marché du film
         mdf_producers_workshop: Producers Workshop
         mdf_producers_network: Producers Network
+        mdf_frontieres: Frontières
         mdf_doc_corner: Doc Corner
         mdf_next: Next
         mdf_mixers: Mixers
@@ -1421,6 +1422,7 @@ form:
             conference_mixers: Mixers
             conference_next: Next
             conference_producers_network: Producers Network
+            conference_frontieres: Frontières
             conference_producers_workshop: Producers Workshop
             conference_news:
                 title: Sous-titre de page

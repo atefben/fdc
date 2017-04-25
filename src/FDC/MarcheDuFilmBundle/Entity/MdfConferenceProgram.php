@@ -21,6 +21,7 @@ class MdfConferenceProgram
     const TYPE_NEXT = 'next';
     const TYPE_MIXERS = 'mixers';
     const TYPE_GOES_TO_CANNES = 'goes-to-cannes';
+    const TYPE_FRONTIERES = 'frontieres';
 
     /**
      * @var integer
@@ -285,6 +286,7 @@ class MdfConferenceProgram
             self::TYPE_MIXERS => 'form.mdf.label.conference_mixers',
             self::TYPE_NEXT => 'form.mdf.label.conference_next',
             self::TYPE_PRODUCERS_NETWORK => 'form.mdf.label.conference_producers_network',
+            self::TYPE_FRONTIERES => 'form.mdf.label.frontieres',
             self::TYPE_PRODUCERS_WORKSHOP => 'form.mdf.label.conference_producers_workshop',
         );
     }

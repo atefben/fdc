@@ -23,6 +23,7 @@ trait MdfTheme
             '' => '',
             self::THEME_PRODUCERS_WORKSHOP => 'form.mdf.theme.producers_workshop',
             self::THEME_PRODUCERS_NETWORK => 'form.mdf.theme.producers_network',
+            self::THEME_FRONTIERES => 'form.mdf.theme.frontieres',
             self::THEME_DOC_CORNER => 'form.mdf.theme.doc_corner',
             self::THEME_NEXT => 'form.mdf.theme.next',
             self::THEME_MIXERS => 'form.mdf.theme.mixers',
