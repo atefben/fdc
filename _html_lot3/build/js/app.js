@@ -3724,7 +3724,7 @@ $(document).ready(function() {
                   videoMovieBa.playlistItem(number);
                   var video = videoMovieBa.getPlaylistItem(number);
                   window.location.hash = 'vid=' + video.vid;
-                  linkPopinInit(0, '.top-bar-link');
+                  $('.top-bar-link').attr('data-clipboard-text', document.location.href);
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
           }, 100);
