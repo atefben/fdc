@@ -33,7 +33,7 @@
 </div>
 {{ form_widget(form.yearStart,{ 'attr': {'class': 's-yearstart'} }) }}
 {{ form_widget(form.yearEnd, { 'attr': {'class': 's-yearend'} }) }}
-<div class="tabs-two vFlexAlign" style="display:none">
+<div class="tabs-two vFlexAlign">
     <label for="{{ form.artists.vars.id }}" class="icon-s tab-s vFlexAlign"><i class="icon icon-user-round"></i><span
                 class="text">{{ form_label(form.artists) }}</span>{{ form_widget(form.artists) }}</label>
     <label for="{{ form.movies.vars.id }}" class="icon-s tab-s vFlexAlign last"><i
