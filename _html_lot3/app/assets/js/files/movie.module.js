@@ -87,16 +87,6 @@ $(document).ready(function() {
 
   if($('.single-movie').length) {
 
-        
-
-    /*var cl = new CanvasLoader('canvasloader');
-        cl.setColor('#ceb06e');
-        cl.setDiameter(20);
-        cl.setDensity(34);
-        cl.setRange(0.8);
-        cl.setSpeed(1);
-        cl.setFPS(60);*/
-
     function setActiveMovieVideos() {
       $('#slider-movie-videos .owl-item').removeClass('center');
       $('#slider-movie-videos .owl-item.active').first().addClass('center');
@@ -260,6 +250,15 @@ $(document).ready(function() {
               }
           }, 100);
       });
+        var hash = window.location.hash.split('=')[1];
+        if (hash.length) {
+            $.each(videoMovieBa.getPlaylist, function (i, e) {
+                if (e.vid == hash) {
+                  videoMovieBa.playlistItem(i);
+                  sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
+                }
+            });
+        }
     }
   }
 });
