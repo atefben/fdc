@@ -21,6 +21,10 @@ class LoadMdfContentData implements FixtureInterface
             $dispatchDeService = new \FDC\MarcheDuFilmBundle\Entity\DispatchDeService();
             $manager->persist($dispatchDeService);
         }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatch::class)->findAll()) == 0) {
+            $programIndustryDispatch = new \FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatch();
+            $manager->persist($programIndustryDispatch);
+        }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\HeaderFooter::class)->findAll()) == 0) {
             $headerFooter = new \FDC\MarcheDuFilmBundle\Entity\HeaderFooter();
             $manager->persist($headerFooter);

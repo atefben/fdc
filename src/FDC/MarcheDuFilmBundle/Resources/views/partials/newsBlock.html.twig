@@ -25,7 +25,10 @@
                         <div class="articles-img"><img src="{% path newsItem['image'][0].image|trans_fallback('file'), 'reference' %}"></div>
                     {% endif %}
                     <div class="articles-content">
-                        <span class="customClass4">{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }} <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span></span>
+                        <span class="customClass4">
+                            {% if newsItem['content'].translatable.theme %}{{ newsItem['content'].translatable.theme.findTranslationByLocale(app.request.locale).title }}{% endif %}
+                            <span class="article-date">{{ newsItem['content'].translatable.publishedAt|date("d M Y") }}</span>
+                        </span>
                         {% if newsItem['content'].title|length > newsTitleLength %}
                             <h6>{{ newsItem['content'].title|truncate(newsTitleLength, true, "...") }}</h6>
                         {% else %}
