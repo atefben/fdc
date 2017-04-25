@@ -3724,7 +3724,7 @@ $(document).ready(function() {
                   videoMovieBa.playlistItem(number);
                   var video = videoMovieBa.getPlaylistItem(number);
                   window.location.hash = 'vid=' + video.vid;
-                  $('.top-bar-link').attr('data-clipboard-text', document.location.href);
+                  linkPopinInit(0, '.top-bar-link');
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
           }, 100);
@@ -4745,6 +4745,7 @@ var initRs = function () {
     };
 
     linkPopinInit();
+    linkPopinInit(0, '.top-bar-link');
 };
 
 /*------------------------------------------------------------------------------
