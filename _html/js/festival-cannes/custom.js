@@ -252,7 +252,7 @@ $(window).scroll(function(){
 
 $(window).scroll(function(){
 
-    if ($("body").scrollTop() > $(".contact-box").offset().top) {
+    if ($(".contact-box").length > 0 && $("body").scrollTop() > $(".contact-box").offset().top) {
             $(".floatingButtonLeft, .floatingButtonRight").hide();
     }
 
