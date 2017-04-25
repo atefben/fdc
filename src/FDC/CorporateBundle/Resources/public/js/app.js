@@ -3730,7 +3730,7 @@ $(document).ready(function() {
                 var $fullscreen = $container.find('.icon-fullscreen');
                 fullScreenApi.requestFullScreen($container[0]);
                 $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
-                playerInstance.resize('100%', '100%');
+                videoMovieBa.resize('100%', '100%');
                 //mouseMoving(true);
               }
           });
