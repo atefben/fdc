@@ -3719,7 +3719,7 @@ $(document).ready(function() {
       });
 
       var hash = window.location.hash.split('=')[1];
-      if (hash.length && $('#video-player-ba').length > 0) {
+      if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
         var arr = videoMovieBa.getPlaylist();
           arr.forEach(function (video, i) {
