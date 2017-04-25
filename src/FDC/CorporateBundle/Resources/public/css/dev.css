@@ -750,3 +750,15 @@ header .user-nav li a.account {
     display: block !important;
 }
 
+.article-single .artist .single-photo img {
+  width: inherit !important;
+}
+
+.article-single .artist .single-photo .photo-container {
+  display: inline-block !important;
+  width: auto !important;
+}
+
+.article-single .artist .block-01 img + p.caption {
+  width: inherit;
+}
