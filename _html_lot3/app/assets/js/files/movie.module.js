@@ -254,7 +254,7 @@ $(document).ready(function() {
               if (!$('#slider-movie-videos .slide-video').closest('.owl-item').parent().hasClass('owl-grab')) {
                   videoMovieBa.playlistItem(number);
                   var video = videoMovieBa.getPlaylistItem(number);
-                  window.location.hash = 'vid=' + video.id;
+                  window.location.hash = 'vid=' + video.vid;
                   sliderMovieVideos.trigger('to.owl.carousel', [number, 400, true]);
               }
           }, 100);
