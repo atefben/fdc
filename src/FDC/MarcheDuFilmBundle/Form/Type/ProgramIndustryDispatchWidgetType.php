@@ -65,20 +65,20 @@ class ProgramIndustryDispatchWidgetType extends AbstractType
                         ),
                     ),
                     'title'          => array(
-                        'label'              => 'form.mdf.label.dispatch_de_service_widget_title',
+                        'label'              => 'form.mdf.label.program_industry_dispatch_widget_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'subtitle'          => array(
-                        'label'              => 'form.mdf.label.dispatch_de_service_widget_sub_title',
+                        'label'              => 'form.mdf.label.program_industry_dispatch_widget_sub_title',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'description'          => array(
                         'field_type' => 'ckeditor',
-                        'label'              => 'form.mdf.label.dispatch_de_service_widget_description',
+                        'label'              => 'form.mdf.label.program_industry_dispatch_widget_description',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                     'seeMoreUrl'          => array(
-                        'label'              => 'form.mdf.label.dispatch_de_service_widget_see_more_url',
+                        'label'              => 'form.mdf.label.program_industry_dispatch_widget_see_more_url',
                         'translation_domain' => 'BaseAdminBundle',
                     ),
                 ),
@@ -87,7 +87,7 @@ class ProgramIndustryDispatchWidgetType extends AbstractType
                 'constraints'        => array(
                     new NotBlank(),
                 ),
-                'label' => 'form.mdf.label.header_image',
+                'label' => 'form.mdf.label.program_industry_dispatch_widget_image',
                 'sonata_field_description' =>  $this->admin->getFormFieldDescriptions()['image'],
                 'model_manager' => $this->mediaImageAdmin->getModelManager(),
                 'class' => $this->mediaImageAdmin->getClass(),

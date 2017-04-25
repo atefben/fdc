@@ -1390,6 +1390,14 @@ form:
             dispatch_de_service_widget_description: Description du service
             dispatch_de_service_widget_see_more_url: Redirection du service
             dispatch_de_service_widget_helper_widgets: Helper du service
+            program_industry_dispatch_widget: Bloc Industry Programs
+            program_industry_dispatch_widget_image: Image du programme
+            program_industry_dispatch_widget_title: Titre du programme
+            program_industry_dispatch_widget_sub_title: Sous-titre du programme
+            program_industry_dispatch_widget_description: Description du programme
+            program_industry_dispatch_widget_see_more_url: Redirection du programme
+            program_industry_dispatch_widget_add_button: Bloc de programme
+            program_industry_dispatch_widget_helper_widgets: Helper du service
             header_image: Image du service
             contact_image: Image du contact
             service_info: Informations générales détail de service
