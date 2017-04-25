@@ -259,7 +259,7 @@ $(document).ready(function() {
               if (video.vid == hash) {
                 videoMovieBa.playlistItem(i);
                 sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                var $container = $("#" + video.id).parent();
+                var $container = $("#video-player-ba").parent();
                 var $fullscreen = $container.find('.icon-fullscreen');
                 fullScreenApi.requestFullScreen($container[0]);
                 $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
