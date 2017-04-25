@@ -331,6 +331,7 @@ html {
   padding-top: 37px; }
   .Article-bottom-block.ocs {
     background-image: url("../img/article/bg.png");
+    background-size: cover;
     padding-top: 25px; }
     .Article-bottom-block.ocs > img {
       height: 80px;
@@ -339,8 +340,7 @@ html {
   .Article-bottom-block-logos {
     margin: 0 auto;
     height: 60px;
-    display: table;
-    margin-bottom: 10px; }
+    display: table; }
     .Article-bottom-block-logos img {
       height: 100%;
       display: inline-block;

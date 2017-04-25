@@ -452,6 +452,7 @@ html {
 
 		&.ocs {
 			background-image: url("../img/article/bg.png");
+			background-size: cover;
 			padding-top: 25px;
 			& > img {
 				height: 80px;
@@ -464,7 +465,6 @@ html {
 			margin: 0 auto;
 			height: 60px;
 			display: table;
-			margin-bottom: 10px;
 			img {
 				height: 100%;
 				display: inline-block;

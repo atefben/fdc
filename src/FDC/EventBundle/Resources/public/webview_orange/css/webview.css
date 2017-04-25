@@ -387,8 +387,7 @@ html {
   .Article-bottom-block-logos {
     margin: 0 auto;
     height: 60px;
-    display: table;
-    margin-bottom: 10px; }
+    display: table; }
     .Article-bottom-block-logos img {
       height: 100%;
       display: inline-block;
@@ -397,7 +396,7 @@ html {
     color: white;
     border: 1px solid white;
     border-radius: 5px;
-    margin: auto 0;
+    margin: 25px auto 0;
     font-family: "Helvetica Neue";
     font-size: 2.3rem;
     font-weight: 500;
