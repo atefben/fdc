@@ -94,11 +94,6 @@
                         <a href="{{ path('fdc_marche_du_film_homepage') }}" class="{{ routeName == 'fdc_marche_du_film_homepage'
                         or routeName == 'fdc_marche_du_film_edition_presentation'
                         or routeName =='fdc_marche_du_film_edition_projections'
-                        or routeName == 'fdc_marche_du_film_conference_home'
-                        or routeName == 'fdc_marche_du_film_conference_program'
-                        or routeName == 'fdc_marche_du_film_conference_speakers'
-                        or routeName == 'fdc_marche_du_film_conference_news'
-                        or routeName == 'fdc_marche_du_film_conference_partners'
                         ? 'active ' : '' }}editionColor">{{ 'menu.edition'|trans }}
                         </a>
                     </li>
@@ -109,7 +104,14 @@
                         <a href="{{ path('fdc_marche_du_film_services') }}" class="{{ routeName == 'fdc_marche_du_film_services' or routeName == 'fdc_marche_du_film_services_widgets' ? 'active ' : '' }}servicesColor">{{ 'menu.services'|trans }}</a>
                     </li>
                     <li id="programs">
-                        <a href="#">{{ 'menu.industry_programs'|trans }}</a>
+                        <a href="{{ path('fdc_marche_du_film_program_industry') }}" class="{{ routeName == 'fdc_marche_du_film_conference_home'
+                        or routeName == 'fdc_marche_du_film_conference_infos_and_contacts'
+                        or routeName == 'fdc_marche_du_film_conference_program'
+                        or routeName == 'fdc_marche_du_film_conference_speakers'
+                        or routeName == 'fdc_marche_du_film_conference_news'
+                        or routeName == 'fdc_marche_du_film_conference_partners'
+                        or routeName == 'fdc_marche_du_film_program_industry'
+                        ? 'active ' : '' }}">{{ 'menu.industry_programs'|trans }}</a>
                     </li>
                     <li>
                         <a href="{{ path('fdc_marche_du_film_who_are_we_history') }}" class="{{ routeName == 'fdc_marche_du_film_who_are_we_history'
@@ -124,9 +126,6 @@
                         or routeName =='fdc_marche_du_film_press_gallery'
                         or routeName =='fdc_marche_du_film_press_graphical_charter'
                         ? 'active ' : '' }}presseColor">{{ 'menu.press'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fdc_marche_du_film_infos_utiles') }}" class="{{ routeName == 'fdc_marche_du_film_infos_utiles' ? 'active ': ''}}utilInfoColor">{{ 'menu.faq'|trans }}</a>
                     </li>
                     <li class="liSearchBox">
                         <div class="searchBox">
