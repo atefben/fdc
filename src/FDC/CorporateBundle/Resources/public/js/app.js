@@ -3719,8 +3719,8 @@ $(document).ready(function() {
       });
         var hash = window.location.hash.split('=')[1];
         if (hash.length) {
-            $.each(videoMovieBa.getPlaylist(), function (i, e) {
-                if (e.vid == hash) {
+            videoMovieBa.getPlaylist().forEach(function (video, i) {
+                if (video.vid == hash) {
                   videoMovieBa.playlistItem(i);
                   sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
                 }
