@@ -220,4 +220,26 @@ class Admin extends BaseAdmin
     }
 
 
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        $container = $this->configurationPool->getContainer();
+        if (!$container->has('security.token_storage')) {
+            throw new \LogicException('The SecurityBundle is not registered in your application.');
+        }
+
+        if (null === $token = $container->get('security.token_storage')->getToken()) {
+            return;
+        }
+
+        if (!is_object($user = $token->getUser())) {
+            // e.g. anonymous authentication
+            return;
+        }
+
+        return $user;
+    }
+
 }
