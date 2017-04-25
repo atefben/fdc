@@ -3719,6 +3719,8 @@ $(document).ready(function() {
       });
         var hash = window.location.hash.split('=')[1];
         if (hash.length) {
+          console.log(videoMovieBa);
+          console.log(videoMovieBa.getPlaylist());
           var arr = videoMovieBa.getPlaylist();
             arr.forEach(function (video, i) {
                 if (video.vid == hash) {
