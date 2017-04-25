@@ -259,9 +259,11 @@ $(document).ready(function() {
               if (video.vid == hash) {
                 videoMovieBa.playlistItem(i);
                 sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                var $container = $('#video-player-ba');
-                var $fullscreen = $container.find('.icon-fullscreen');
-                $fullscreen[0].trigger('click');
+                  setTimeout(function(){
+                    var $container = $('#video-player-ba');
+                    var $fullscreen = $container.find('.icon-fullscreen');
+                    $fullscreen[0].trigger('click');
+                  }, 100);
               }
           });
       }
