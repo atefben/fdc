@@ -32,6 +32,11 @@ class MovieController extends Controller
         $festival = $this->getFestival();
         $competitionManager = $this->get('ccm.manager.competition');
         $selectionTab = $competitionManager->getSelectionTab($festival->getYear());
+
+        if ($selectionTab === null) {
+            throw new NotFoundHttpException('Selection tab not found');
+        }
+
         $selectionId = $selectionTab->getTranslatable()->getSelectionSection()->getId();
 
         $movie = $this
