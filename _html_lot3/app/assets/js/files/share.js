@@ -226,6 +226,9 @@ var initRs = function () {
         var link = link || document.location.href;
         var cls = cls || '.link.self';
 
+        if (cls == '.link.self') {
+            link = link.replace(/#vid=.*/g, '');
+        }
 
         clipboard = new Clipboard(cls);
         
@@ -265,7 +268,6 @@ var initRs = function () {
                    $('#share-box').remove();
                    //two time because first don't work...
 
-                   linkPopinInit = 0;
                }, 1000);
 
             }, 3000);
