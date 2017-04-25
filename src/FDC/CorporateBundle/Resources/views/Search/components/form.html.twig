@@ -99,7 +99,7 @@
 
                 <div class="sub-tab">
                     <div class="price">
-                        <div class="title-cont">prix <i class="icon icon-create"></i></div>
+                        <div class="title-cont">{{ 'search.form.label.prix'|trans }} <i class="icon icon-create"></i></div>
                         {% for prize in form.prizes %}
                             {% set temp = form_widget(prize) %}
                             <input type="checkbox" id="prizes_{{ prize.vars.value }}"
