@@ -1042,7 +1042,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }, 1000);
             initRs();
         });
-    }
+    };
 
     function updatePopinMedia(data) {
         data['url'] = data['url'] || document.location.href;
@@ -1116,16 +1116,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }, 500);
 
         });
-    } else if ($('.medias').length > 0 || $('.media-library').length > 0 || $('.article-single').length > 0) {
         initPopinVideo(hash);
-
+    } else if ($('.medias').length > 0 || $('.media-library').length > 0) {
+        initPopinVideo(hash);
     } else if ($('.video-playlist').length > 0) {
         if ($('.home #homepage-playlist-player').length > 0) {
             videoPlayer = playerInit('homepage-playlist-player', false, true);
         } else {
             videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
         }
-
     } else if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
 
