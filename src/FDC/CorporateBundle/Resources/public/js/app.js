@@ -4517,6 +4517,9 @@ var initRs = function () {
         if($('.contentartist').length){
             var title = $('.contentartist').find('.title-15').text();
             $(cls).find('.contain-popin .title-article').text(title);
+        } else if($('.contain-titles').length){
+            var title = $('.contain-titles').find('.title-15').text();
+            $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
             var title = $('.tetiere-movie').find('h2').text();
@@ -4696,6 +4699,9 @@ var initRs = function () {
         var link = link || document.location.href;
         var cls = cls || '.link.self';
 
+        if (cls == '.link.self') {
+            link = link.replace(/#vid=.*/g, '');
+        }
 
         clipboard = new Clipboard(cls);
         
@@ -4735,7 +4741,6 @@ var initRs = function () {
                    $('#share-box').remove();
                    //two time because first don't work...
 
-                   linkPopinInit = 0;
                }, 1000);
 
             }, 3000);

@@ -60,7 +60,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_selection_section_show",
      *     "event_show",
      *     "jury_list",
@@ -111,7 +111,7 @@ class MediaImageSimple implements TranslateMainInterface
      *     "orange_video_on_demand",
      *     "orange_studio",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "search"
      * })
      * @Serializer\Accessor(getter="getApiTranslations")

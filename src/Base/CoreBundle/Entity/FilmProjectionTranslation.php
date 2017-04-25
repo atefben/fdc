@@ -33,7 +33,7 @@ class FilmProjectionTranslation implements TranslateChildInterface
      * @ORM\Column(type="text", nullable=true)
      *
      * @Groups({
-     *  "projection_list", "projection_list_2017", "programmation", "projection_show",
+     *  "projection_list", "projection_list_2017", "programmation", "projection_show", "programmation_main",
      *  "film_list", "film_show",
      * })
      */
