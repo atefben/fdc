@@ -411,6 +411,8 @@ class NodeRepository extends EntityRepository
             $qb
                 ->andWhere('n.festival = :festivalId')
                 ->setParameter(':festivalId', $festival->getId())
+                ->andWhere('YEAR(n.publishedAt) = :festivalYear')
+                ->setParameter(':festivalYear', $festival->getYear())
             ;
         }
 
