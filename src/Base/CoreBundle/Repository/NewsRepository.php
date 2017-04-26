@@ -93,7 +93,7 @@ class NewsRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }
@@ -190,7 +190,7 @@ class NewsRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }
@@ -289,7 +289,7 @@ class NewsRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }

@@ -152,7 +152,7 @@ class StatementRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }
@@ -816,7 +816,7 @@ class StatementRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }
@@ -895,7 +895,7 @@ class StatementRepository extends EntityRepository
 
         if (!$orange) {
             $qb
-                ->andWhere('n.orange != :orange')
+                ->andWhere('n.orange != :orange or n.orange is null')
                 ->setParameter(':orange', true)
             ;
         }
