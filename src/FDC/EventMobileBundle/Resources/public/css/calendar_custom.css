@@ -6,3 +6,7 @@
 #create-event-pop .container form .time .hours {
     top: 0px;
 }
+
+.fc-event {
+    -webkit-backface-visibility: hidden;
+}
