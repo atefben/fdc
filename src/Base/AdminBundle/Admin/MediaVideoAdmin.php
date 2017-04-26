@@ -400,6 +400,7 @@ class MediaVideoAdmin extends Admin
                 'attr'  => array(
                     'class' => 'hidden',
                 ),
+                'years' => range(1960, (int)date('Y') + 5),
             ))
             ->add('createdBy', null, array(
                 'label' => false,

@@ -2,6 +2,7 @@
 
 namespace Base\AdminBundle\Component\Admin;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Base\AdminBundle\Component\Admin\Admin as BaseAdmin;
 use Base\CoreBundle\Entity\NewsArticle;
 use Base\CoreBundle\Entity\NewsArticleTranslation;
@@ -167,5 +168,4 @@ class NewsCommonAdmin extends BaseAdmin
             'Publié sur'                                => 'exportSites',
         );
     }
-
 }

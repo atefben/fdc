@@ -299,28 +299,48 @@ class FilmProjectionRepository extends EntityRepository
     /**
      * @return FilmProjection
      */
-    public function getMainProjection2017()
+    public function getMainProjection2017($hideType = [])
     {
-        $projection = $this
+        $qb = $this
             ->createQueryBuilder('p')
             ->andWhere('p.room = 1')
             ->andWhere(':startsAt BETWEEN p.startsAt AND p.endsAt OR p.startsAt > :startsAt')
             ->setParameter(':startsAt', new \DateTime())
+        ;
+
+        if ($hideType) {
+            $qb
+                ->andWhere('p.type not in (:hideType)')
+                ->setParameter(':hideType', $hideType)
+            ;
+        }
+
+        $projection = $qb
             ->addOrderBy('p.startsAt', 'asc')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
         ;
 
+
         if (!$projection) {
-            $projection = $this
+            $qb = $this
                 ->createQueryBuilder('p')
                 ->andWhere('p.room = 1')
+            ;
+
+            if ($hideType) {
+                $qb
+                    ->andWhere('p.type not in (:hideType)')
+                    ->setParameter(':hideType', $hideType)
+                ;
+            }
+
+            $projection = $qb
                 ->addOrderBy('p.startsAt', 'desc')
                 ->setMaxResults(1)
                 ->getQuery()
-                ->getOneOrNullResult()
-            ;
+                ->getOneOrNullResult();
         }
 
         return $projection;

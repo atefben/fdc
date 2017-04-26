@@ -6,7 +6,12 @@
 {% set file = trans.file %}
 {% set copyright = photo|trans_fallback('copyright') %}
 {% set alt = (photo|trans_fallback('alt') == '') ? photo|trans_fallback('legend') : photo|trans_fallback('alt') %}
-<img src="{% path file, 'x584' %}" alt="{{ alt }}" title="{{ alt }}" />
+
+{% if file.height > file.width %}
+    <img src="{% path file, '554x880' %}" alt="{{ alt|escape('html_attr') }}" title="{{ alt|escape('html_attr') }}">
+{% else %}
+    {% thumbnail file, 'x584' with {'alt': alt, 'title': alt } %}
+{% endif %}
 {% if hideCopyright is not defined %}
     <p class="caption">{{ photo|trans_fallback('legend') }}{% if copyright is not empty %} © {{ copyright }}{% endif %}</p>
 {% endif %}

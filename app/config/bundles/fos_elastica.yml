@@ -415,6 +415,7 @@ fos_elastica:
                             type: nested
                             properties :
                                 profession: { boost: 5, search_analyzer: artist_search_analyzer, index_analyzer: artist_search_analyzer, type: string }
+                                gender: { boost: 5, search_analyzer: artist_search_analyzer, index_analyzer: artist_search_analyzer, type: string }
                                 locale: ~
                                 status: ~
 

@@ -262,6 +262,20 @@ abstract class News implements TranslateMainInterface, RoutedItemInterface, Node
      */
     protected $mobileDisplay;
 
+    /**
+     * @var bool
+     * @ORM\Column(name="orange", type="boolean", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $orange = false;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="orange_type", type="string", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $orangeType;
+
     public function __construct()
     {
         $this->hideSameDay = false;
@@ -1132,6 +1146,9 @@ abstract class News implements TranslateMainInterface, RoutedItemInterface, Node
         if ($this->getExcludeFromSearch()) {
             $isElasticable = false;
         }
+        if ($this->getHidden()) {
+            $isElasticable = false;
+        }
         return $isElasticable;
     }
 
@@ -1225,5 +1242,51 @@ abstract class News implements TranslateMainInterface, RoutedItemInterface, Node
     public function getMobileDisplay()
     {
         return $this->mobileDisplay;
+    }
+
+    /**
+     * Set orange
+     *
+     * @param boolean $orange
+     * @return News
+     */
+    public function setOrange($orange)
+    {
+        $this->orange = $orange;
+
+        return $this;
+    }
+
+    /**
+     * Get orange
+     *
+     * @return boolean 
+     */
+    public function getOrange()
+    {
+        return $this->orange;
+    }
+
+    /**
+     * Set orangeType
+     *
+     * @param string $orangeType
+     * @return $this
+     */
+    public function setOrangeType($orangeType)
+    {
+        $this->orangeType = $orangeType;
+
+        return $this;
+    }
+
+    /**
+     * Get orangeType
+     *
+     * @return string 
+     */
+    public function getOrangeType()
+    {
+        return $this->orangeType;
     }
 }

@@ -712,6 +712,7 @@ dashboard:
         film_inscription: Inscrire un film
         film_procedure: Procédure d’inscription
 form:
+    label_orange_type: Type Orange
     corpo_movie_inscription_tab_prefix: Titre onglets procédures
     mobile_pushfilm:
         title: Push Film Mobile
@@ -1560,6 +1561,7 @@ form:
         helper_home_slider: Sélectionnez de 3 à 6 actualités ou communiqués ou infos. Elles apparaitront en front-office dans l'ordre des lignes.
         helper_top_video_associated: Sélectionnez de 2 à 5 vidéos de la webTV. Elles apparaitront en front-office dans l'ordre des champs.
         helper_top_web_tvs_associated: Sélectionnez de 3 à 10 chaînes de la webTV. Elles apparaitront en front-office de façon aléatoire parmi celles sélectionnées.
+        helper_trailer_background: Sélectionnez une image avec une taille de 640 x 280
         helper_films_associated: Sélectionnez de 1 à 5 films et leurs boucles vidéos associées. Ils apparaitront en front-office dans l'ordre des champs.
         helper_pushes: Format de l'image recommandé : 650x410
         helper_pushes_306x206: Format de l'image recommandé : 306x206

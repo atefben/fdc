@@ -338,7 +338,7 @@ $(document).ready(function() {
           if(item.img && item.img != '#') {
             $(c).addClass('hasimg').css('background-image', 'url(' + item.img + ')');
           }
-
+          item.text = item.text.replace(/href="*"/g, 'href="#" onclick="return false;"');
           $(c).append(item.text);
           $(c).append('<span class="ov"></span>');
         }

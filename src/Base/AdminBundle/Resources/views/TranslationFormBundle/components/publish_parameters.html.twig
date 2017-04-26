@@ -15,9 +15,14 @@
         </h4>
     </div>
     <div class="box-body">
-        {% if form.parent.children.mobileDisplay is defined %}
+        {% if form.parent.children.mobileDisplay is defined  and (form.parent.vars.data.orange is not defined or not form.parent.vars.data.orange) %}
             <div{% if isTranslator %} class="hidden"{% endif %}>
                 {{ form_row(form.parent.children.mobileDisplay) }}
+            </div>
+        {% endif %}
+        {% if form.parent.vars.data.orange is defined and form.parent.vars.data.orange %}
+            <div>
+                {{ form_row(form.parent.children.orangeType) }}
             </div>
         {% endif %}
         {% if participate_section is defined %}
@@ -48,49 +53,51 @@
         {% endif %}
         <div class="sonata-ba-collapsed-fields">
             {% if  is_granted('ROLE_TRANSLATOR_MASTER') or is_granted('ROLE_TRANSLATOR') %}
-                <div class="row">
-                    {% if form.parent.children.sites is defined %}
-                        <div class="col-md-6">
-                            {{ form_label(form.parent.children.sites) }}
-                            {% for site in form.parent.children.sites.vars.value %}
-                                <div>
-                                    {{ site.name }}
+                {% if form.parent.vars.data.orange is not defined or not form.parent.vars.data.orange %}
+                    <div class="row">
+                        {% if form.parent.children.sites is defined %}
+                            <div class="col-md-6">
+                                {{ form_label(form.parent.children.sites) }}
+                                {% for site in form.parent.children.sites.vars.value %}
+                                    <div>
+                                        {{ site.name }}
+                                    </div>
+                                {% endfor %}
+                                <div class="hidden">
+                                    {{ form_row(form.parent.children.sites) }}
                                 </div>
-                            {% endfor %}
-                            <div class="hidden">
-                                {{ form_row(form.parent.children.sites) }}
                             </div>
-                        </div>
-                    {% endif %}
-                    {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
-                        <div class="form-group col-xs-6" id="displayedHomepageLabel" style="margin-top: 25px;">
-                            {% if form.parent.children.displayedHome.vars.data == 1 %}
-                                {{ form_label(form.parent.children.displayedHome) }}
-                            {% endif %}
-                            <div class="hidden">
-                                {{ form_widget(form.parent.children.displayedHome) }}
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% if form.parent.children.displayedOnCorpoHome is defined %}
-                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
-                            {% if form.parent.children.displayedOnCorpoHome.vars.data == 1 %}
-                                {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
-                            {% endif %}
-
-                            {{ form_label(form.parent.children.displayedOnCorpoHome) }}
-                        </div>
-                    {% endif %}
-                </div>
-                {% if form.parent.children.displayedMobile is defined %}
-                    <div class="form-group">
-                        {% if form.parent.children.displayedMobile.vars.data == 1 %}
-                            {{ form_label(form.parent.children.displayedMobile) }}
                         {% endif %}
-                        <div class="hidden">
-                            {{ form_widget(form.parent.children.displayedMobile) }}
-                        </div>
+                        {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
+                            <div class="form-group col-xs-6" id="displayedHomepageLabel" style="margin-top: 25px;">
+                                {% if form.parent.children.displayedHome.vars.data == 1 %}
+                                    {{ form_label(form.parent.children.displayedHome) }}
+                                {% endif %}
+                                <div class="hidden">
+                                    {{ form_widget(form.parent.children.displayedHome) }}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if form.parent.children.displayedOnCorpoHome is defined %}
+                            <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
+                                {% if form.parent.children.displayedOnCorpoHome.vars.data == 1 %}
+                                    {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                                {% endif %}
+
+                                {{ form_label(form.parent.children.displayedOnCorpoHome) }}
+                            </div>
+                        {% endif %}
                     </div>
+                    {% if form.parent.children.displayedMobile is defined %}
+                        <div class="form-group">
+                            {% if form.parent.children.displayedMobile.vars.data == 1 %}
+                                {{ form_label(form.parent.children.displayedMobile) }}
+                            {% endif %}
+                            <div class="hidden">
+                                {{ form_widget(form.parent.children.displayedMobile) }}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
                 {% if form.parent.children.publishedAt is defined %}
                     {{ form_row(form.parent.children.publishedAt, {'attr': {'readonly': 'readonly'}}) }}
@@ -151,31 +158,33 @@
                     {% endif %}
                 </div>
             {% else %}
-                <div class="row">
-                    {% if form.parent.children.sites is defined %}
-                        <div class="col-xs-6">
-                            {{ form_row(form.parent.children.sites) }}
-                        </div>
-                    {% endif %}
-                    {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
-                        <div class="form-group col-xs-6{% if displayedHomeClass is defined %} {{ displayedHomeClass }}{% endif %}"
-                             id="displayedHomepageLabel" style="margin-top: 25px;">
-                            {{ form_widget(form.parent.children.displayedHome) }}
-                            {{ form_label(form.parent.children.displayedHome) }}
-                        </div>
-                    {% endif %}
-                    {% if form.parent.children.displayedOnCorpoHome is defined %}
-                        <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
-                            {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
-                            {{ form_label(form.parent.children.displayedOnCorpoHome) }}
-                        </div>
-                    {% endif %}
-                </div>
-                {% if form.parent.children.displayedMobile is defined %}
-                    <div class="form-group">
-                        {{ form_widget(form.parent.children.displayedMobile) }}
-                        {{ form_label(form.parent.children.displayedMobile) }}
+                {% if form.parent.vars.data.orange is not defined or not form.parent.vars.data.orange %}
+                    <div class="row">
+                        {% if form.parent.children.sites is defined %}
+                            <div class="col-xs-6">
+                                {{ form_row(form.parent.children.sites) }}
+                            </div>
+                        {% endif %}
+                        {% if form.parent.children.displayedHome is defined and (isDisplayedHome is not defined or isDisplayedHome == true) %}
+                            <div class="form-group col-xs-6{% if displayedHomeClass is defined %} {{ displayedHomeClass }}{% endif %}"
+                                 id="displayedHomepageLabel" style="margin-top: 25px;">
+                                {{ form_widget(form.parent.children.displayedHome) }}
+                                {{ form_label(form.parent.children.displayedHome) }}
+                            </div>
+                        {% endif %}
+                        {% if form.parent.children.displayedOnCorpoHome is defined %}
+                            <div class="form-group col-xs-6" id="displayedOnCorpoHomeLabel">
+                                {{ form_widget(form.parent.children.displayedOnCorpoHome) }}
+                                {{ form_label(form.parent.children.displayedOnCorpoHome) }}
+                            </div>
+                        {% endif %}
                     </div>
+                    {% if form.parent.children.displayedMobile is defined %}
+                        <div class="form-group">
+                            {{ form_widget(form.parent.children.displayedMobile) }}
+                            {{ form_label(form.parent.children.displayedMobile) }}
+                        </div>
+                    {% endif %}
                 {% endif %}
                 {% if form.parent.children.publishedAt is defined %}
                     {{ form_row(form.parent.children.publishedAt) }}

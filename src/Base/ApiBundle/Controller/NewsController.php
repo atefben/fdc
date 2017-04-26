@@ -21,7 +21,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class NewsController extends FOSRestController
 {
-    private $repository = 'BaseCoreBundle:News';
 
     /**
      * Return an array of news, can be filtered with page / offset parameters
@@ -160,35 +159,172 @@ class NewsController extends FOSRestController
         return $view;
     }
 
-    public function getApiSameDayNews($festival, $locale, $dateTime, DateTime $limitDate)
+    /**
+     * Return an array of news, can be filtered with page / offset parameters
+     * @Rest\Get("/news-2017")
+     * @Rest\View()
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Get all news",
+     *   section="News",
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   },
+     *  output={
+     *      "class"="Base\CoreBundle\Entity\News",
+     *      "groups"={"news_list"}
+     *  }
+     * )
+     *
+     * @Rest\QueryParam(name="version", description="Api Version number")
+     * @Rest\QueryParam(name="lang", requirements="(fr|en)", default="fr", description="The lang")
+     * @Rest\QueryParam(name="page", requirements="\d+", default=1, description="The page number")
+     * @Rest\QueryParam(name="offset", requirements="\d+", default=10, description="The offset number, maximum 10")
+     * @Rest\QueryParam(name="time", description="Timestamp of the day to display")
+     *
+     * @param ParamFetcher $paramFetcher
+     * @return View
+     */
+    public function getNews2017Action(ParamFetcher $paramFetcher)
+    {
+        // coremanager shortcut
+        $coreManager = $this->get('base.api.core_manager');
+
+        // get festival year / version
+        $festival = $coreManager->getApiFestivalYear();
+        $version = ($paramFetcher->get('version') !== null) ? $paramFetcher->get('version') : $this->container->getParameter('api_version');
+        $lang = $paramFetcher->get('lang');
+        $dateTime = new \DateTime();
+
+        $time = $paramFetcher->get('time');
+        if ($time) {
+            $dateTime->setTimestamp($time);
+        }
+
+        $settings = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:Settings')
+            ->findOneBy(['slug' => 'fdc-year'])
+        ;
+
+        if ($settings === null) {
+            throw $this->createNotFoundException();
+        }
+
+        $limitDate = new \DateTime();
+        $limitDate->setDate(2016, 10, 1);
+        $limitDate->setTime(0, 0, 0);
+
+        // news
+        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, true, true);
+        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate, true, true);
+        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate, true, true);
+
+        // images
+        $images = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:MediaImage')
+            ->getNewsApiImages($lang, $festival, $dateTime, $limitDate)
+        ;
+
+        $items = array_merge($news, $infos, $statements, $images);
+
+        // if no content at all, reach the content of the last day
+        if (!count($items)) {
+            $dateTime = $festival->getFestivalEndsAt();
+
+            // news
+            $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate);
+            $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate);
+            $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate);
+
+            // images
+            $images = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BaseCoreBundle:MediaImage')
+                ->getNewsApiImages($lang, $festival, $dateTime, $limitDate)
+            ;
+        }
+
+        $items = array_merge($news, $infos, $statements, $images);
+
+        // projections
+        $tempProjections = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('BaseCoreBundle:FilmProjection')
+            ->getNewsApiProjections($festival, $dateTime, $limitDate)
+        ;
+        $projections = [];
+        $now = new DateTime();
+        $endDateTime = new DateTime();
+        $endDateTime->setDate($dateTime->format('Y'), $dateTime->format('m'), $dateTime->format('d'));
+        $endDateTime->setDate($now->format('H'), $now->format('i'), $now->format('s'));
+        $end = $endDateTime->getTimestamp() + 3600;
+        foreach ($tempProjections as $projection) {
+            if ($projection->getProgrammationSection() != 'Cinéfondation' && $projection->getProgrammationSection() != 'En Compétition - Courts métrages') {
+                if ($projection->getStartsAt() && (int)$projection->getStartsAt()->format('H') < 4) {
+                    $tomorrow = clone $projection->getStartsAt();
+                    $tomorrow->add(date_interval_create_from_date_string('1 day'));
+                    $begin = $tomorrow->getTimestamp();
+                } else {
+                    $begin = $projection->getStartsAt()->getTimestamp();
+                }
+                if ($end >= $begin) {
+                    $projections[] = $projection;
+
+                }
+            }
+        }
+
+        $items = array_merge($projections, $items);
+        $items = $this->buildDays($items);
+
+        // set context view
+        $groups = ['news_list'];
+        $context = $coreManager->setContext($groups, $paramFetcher);
+        //$context->addExclusionStrategy(new TranslationExclusionStrategy($lang));
+        $context->setVersion($version);
+
+        // create view
+        $view = $this->view($items, 200);
+        $view->setSerializationContext($context);
+
+        return $view;
+    }
+
+    public function getApiSameDayNews($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getNewsApiSameDayNews($locale, $festival, $dateTime, $limitDate)
+            ->getNewsApiSameDayNews($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }
 
-    public function getApiSameDayInfos($festival, $locale, $dateTime, DateTime $limitDate)
+    public function getApiSameDayInfos($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getNewsApiSameDayInfos($locale, $festival, $dateTime, $limitDate)
+            ->getNewsApiSameDayInfos($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }
 
-    public function getApiSameDayStatements($festival, $locale, $dateTime, DateTime $limitDate)
+    public function getApiSameDayStatements($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getNewsApiSameDayStatements($locale, $festival, $dateTime, $limitDate)
+            ->getNewsApiSameDayStatements($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }

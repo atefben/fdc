@@ -40,7 +40,7 @@
                 {% endif %}
                 {% set file = trans.file %}
                 {%- thumbnail file, '646x567' with {'title': '', 'alt': img|trans_fallback('alt'), 'class': 'map' } -%}
-                <h3>{{ 'plandessalles.label.lazonedufestival'|trans({},'FDCEventBundle') }}</h3>
+                <h3>{{ 'plandessalles.label.lazonedufestival'|trans({},'FDCEventMobileBundle') }}</h3>
                 {% set roomActive = "room"~r.room.id %}
                 {% set active = "" %}
                 {% set img = r.room.zoneImage %}

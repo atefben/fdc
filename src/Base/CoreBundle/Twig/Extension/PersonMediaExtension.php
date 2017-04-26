@@ -530,7 +530,6 @@ class PersonMediaExtension extends Twig_Extension
      */
     public function getArtistPageMedia(FilmPerson $person, $locale)
     {
-
         $image = $this->getLandscapeImage($person, $locale);
         if (!$image) {
             $image = $this->getPortraitImage($person, $locale);
