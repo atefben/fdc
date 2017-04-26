@@ -175,7 +175,7 @@
     </article>
 
     {% if object.orange %}
-        {% if object.orangeType = 'ocs' %}
+        {% if object.orangeType == 'ocs' %}
           <div class="Article-bottom-block ocs">
             <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/ocs.png') }}"/>
             <h2>{{ 'movie.presse.label.plusdinformations'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
