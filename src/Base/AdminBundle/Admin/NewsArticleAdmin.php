@@ -364,14 +364,6 @@ class NewsArticleAdmin extends Admin
                 'btn_delete'         => false,
                 'required'           => false,
             ])
-            ->add('mobileDisplay', 'choice', [
-                'required'                  => false,
-                'choices'                   => [
-                    'big'  => 'form.label_mobile_display_big',
-                    'main' => 'form.label_mobile_display_main',
-                ],
-                'choice_translation_domain' => 'BaseAdminBundle',
-            ])
             ->add('translate')
             ->add('translateOptions', 'choice', [
                 'choices'            => News::getAvailableTranslateOptions(),
