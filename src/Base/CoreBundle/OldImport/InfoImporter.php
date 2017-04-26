@@ -153,8 +153,7 @@ class InfoImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($info, $oldArticle);
-                }
-                elseif ($this->input->getOption('update-widget-video-only')) {
+                } elseif ($this->input->getOption('update-widget-video-only')) {
                     $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
                 } else {
                     $this->buildInfoWidgetText($info, $translation, $oldTranslation);
@@ -800,6 +799,18 @@ class InfoImporter extends Importer
                     }
                 }
             }
+        }
+
+        $ids = [62152, 62133, 62105, 62092, 62093];
+
+        if (in_array($oldArticle->getId(), $ids)) {
+            if ($oldArticle->getId() == 62093) {
+                $this->isInfoImage = true;
+            } else {
+                $this->isInfoImage = false;
+            }
+            $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+            return true;
         }
     }
 
