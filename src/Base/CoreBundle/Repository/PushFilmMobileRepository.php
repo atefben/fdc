@@ -31,6 +31,5 @@ class PushFilmMobileRepository extends EntityRepository
             ->getQuery()
             ->getResult()
         ;
-
     }
 }
