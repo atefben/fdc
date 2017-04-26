@@ -319,20 +319,78 @@
     width: 100%;
 }
 
+/* WYSIWYG styles */
+
+.text-content .title-article {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.text-content h2.sub-title {
+    font-size: 1.5rem;
+}
+
+.text-content h2.sub-title2 {
+    font-size: 1.125rem;
+}
+
+.text-content h3.sub-title {
+    font-size: 0.875rem;
+}
+
+.text-content .descrip-participate {
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    color: #333;
+    width: 607px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 36px;
+}
+
+.text-content > .big-quote-paragraph {
+    color: #333;
+    font-family: "Playfair Display", Times New Roman, Times, serif;
+    line-height: normal;
+}
+
 .little-txt {
     font-size: 0.750rem;
+    line-height: normal;
+}
+
+.big-txt {
+    font-size: 1.25rem;
+}
+
+.text-content .chapeau {
+    font-size: 1.125rem;
+    line-height: 2em;
+    margin-bottom: 70px;
+    font-weight: normal;
 }
 
 .caption-article {
     font-size: 0.750rem;
+    max-width: 100%;
+    line-height: normal;
+    margin: 10px 0 0;
 }
 
 .big-quote span.big-quote-paragraph {
     font-size: .875rem;
+    font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
+    display: block;
+    line-height: normal;
 }
 
 .text-content  .txt-grey-bkg-container {
     font-size: 1rem;
+    font-style: normal;
 }
 
 .text-content .txt-grey-bkg-container strong {
@@ -342,6 +400,7 @@
 
 .txt-grey-bkg-container span.txt-grey-bkg-container-paragraph {
     font-size: 1rem;
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
 }
 
 .loc {
@@ -357,9 +416,14 @@
     font-family: "Camphor W01 Bold", Arial, Helvetica, sans-serif;
     font-size: .75rem;
     padding-bottom: 20px;
+    line-height: normal;
 }
-.descript-acces {
+
+.text-content .descript-acces {
     padding-bottom: 20px;
     font-size: .8125rem;
     line-height: 24px;
+    color: #333;
 }
+
+/* end WYSIWYG styles */
