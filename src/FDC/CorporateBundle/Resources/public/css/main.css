@@ -11369,6 +11369,9 @@ body#home .isotope-01 .item .info {
   -ms-user-select: none;
   user-select: none;
 }
+.fullscreen-slider img.isZoom {
+  transition: none;
+}
 
 /*
 Slider channel

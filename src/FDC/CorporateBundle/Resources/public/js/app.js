@@ -4507,6 +4507,9 @@ var initRs = function () {
             $(cls).find('.contain-popin .title-article').text(title);
         } else if($('.contain-titles').length){
             var title = $('.contain-titles').find('.title-15').text();
+            var theme = $('.contain-titles').find('.title-14').html();
+
+            $(cls).find('.contain-popin .theme-article').html(theme);
             $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
@@ -5493,8 +5496,11 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                     getTitle = $(value).find('img').attr("data-title");
                 }
 
-                if($('.medias').length > 0 || $('.media-library').length > 0) {
+                if($('.medias').length > 0) {
                     getTitle = $(value).find('.info .contain-txt').html() || $(value).find('img').data('title');
+                }
+                if($('.media-library').length > 0) {
+                    getTitle = '<div><a href="#" class="category">'+$(value).find('img').data('title') +' </a><span class="date">'+$(value).find('img').data('date') +'</span></div>';
                 }
                 if (dataItem.hasClass('linkAllCover')) {
                     var src = dataItem.attr('href');
@@ -6045,18 +6051,15 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
         $('.fullscreen-slider img').on('click', function (e) {
 
-            $(this).toggleClass('isZoom');
 
-            $(this).css('transition', 'transform 900ms cubic-bezier(0.15, 0.9, 0.34, 0.95)');
-            $(this).offsetHeight;
             if($(this).hasClass('isZoom')) {
-                $(this).css('transform', 'scale(2)');
-                $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
-                $(this).css('transition', 'none');
-                $(this).offsetHeight;
-            }else{
+                $(this).toggleClass('isZoom');
                 $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
+            }else{
+                $(this).css('transform', 'scale(2)');
+                $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
+                $(this).toggleClass('isZoom');
             }
         });
 
