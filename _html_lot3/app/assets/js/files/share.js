@@ -49,6 +49,9 @@ var initRs = function () {
             $(cls).find('.contain-popin .title-article').text(title);
         } else if($('.contain-titles').length){
             var title = $('.contain-titles').find('.title-15').text();
+            var theme = $('.contain-titles').find('.title-14').html();
+
+            $(cls).find('.contain-popin .theme-article').html(theme);
             $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
