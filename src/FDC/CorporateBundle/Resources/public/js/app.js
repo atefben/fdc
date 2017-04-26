@@ -1721,7 +1721,7 @@ var initAudio = function (hash) {
             $('#main').addClass('overlay');
 
             setTimeout(function () {
-                $('*:not(.popin-audio)').on('click', function (e) {
+                $('div.vFlexAlign, #main, header, footer, #logo-wrapper, #navigation').on('click', function (e) {
 
                     e.preventDefault();
 
@@ -1739,7 +1739,7 @@ var initAudio = function (hash) {
 
                     audioPopin = 0;
 
-                    $('*:not(.popin-audio)').off('click');
+                    $('div.vFlexAlign, #main, header, footer, #logo-wrapper, #navigation').off('click');
                 });
 
                 initRs();
