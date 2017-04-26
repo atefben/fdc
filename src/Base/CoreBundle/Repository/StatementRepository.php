@@ -128,9 +128,10 @@ class StatementRepository extends EntityRepository
      * @param FilmFestival $festival
      * @param \DateTime $dateTime
      * @param \DateTime $limitDate
+     * @param boolean|null $orange
      * @return Statement[]
      */
-    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -148,6 +149,13 @@ class StatementRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

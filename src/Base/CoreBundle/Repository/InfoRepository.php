@@ -129,9 +129,10 @@ class InfoRepository extends EntityRepository
      * @param FilmFestival $festival
      * @param \DateTime $dateTime
      * @param \DateTime $limitDate
+     * @param boolean|null $orange
      * @return Info[]
      */
-    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
+    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -149,6 +150,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
