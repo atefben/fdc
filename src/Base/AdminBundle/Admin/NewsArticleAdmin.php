@@ -277,10 +277,12 @@ class NewsArticleAdmin extends Admin
 
     private function configureOrangeFormFields(FormMapper $formMapper)
     {
-        $this->getSubject()->setOrange(true);
-        $this->getSubject()->setDisplayedMobile(true);
-        $this->getSubject()->setHidden(true);
-        $this->getSubject()->setOrangeType('OCS');
+        if (!$this->getSubject()->getId()) {
+            $this->getSubject()->setOrange(true);
+            $this->getSubject()->setDisplayedMobile(true);
+            $this->getSubject()->setHidden(true);
+            $this->getSubject()->setOrangeType('OCS');
+        }
 
         $formMapper
             ->add('translations', 'a2lix_translations', [
@@ -407,6 +409,8 @@ class NewsArticleAdmin extends Admin
                     'Orange et le cinéma' => 'Orange et le cinéma',
                 ],
                 'required' => true,
+                'expanded' => true,
+                'multiple' => false,
             ])
             ->end()
         ;
