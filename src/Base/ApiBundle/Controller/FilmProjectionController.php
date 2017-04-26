@@ -246,8 +246,9 @@ class FilmProjectionController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getMainProjection2017()
+            ->getMainProjection2017(['Événement'])
         ;
+
 
         // set context view
         $context = SerializationContext::create();
