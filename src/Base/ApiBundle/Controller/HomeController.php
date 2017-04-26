@@ -107,11 +107,11 @@ class HomeController extends FOSRestController
         $festival = $coreManager->getApiFestivalYear()->getId();
 
         $since = new \DateTime();
-        $since->setDate(2017, 1, 1);
+        $since->setDate(2016, 1, 1);
         $since->setTime(0, 0, 0);
 
         $limitDate = new \DateTime();
-        $limitDate->setDate(2017, 10, 1);
+        $limitDate->setDate(2016, 10, 1);
         $limitDate->setTime(0, 0, 0);
 
         $output = array();
