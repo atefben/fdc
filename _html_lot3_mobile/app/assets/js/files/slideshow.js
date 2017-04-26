@@ -77,7 +77,7 @@ var openSlideShow = function (slider, hash) {
                 var url = $(value).find('a').data('link');
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
 
-            }else{
+            } else {
                 var src = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("src") : $(value).find('img').attr("src");
                 var alt = ($(value).hasClass('photo')) ? $(value).find('.image-wrapper img').attr("alt") : $(value).find('img').attr("alt");
                 var title = ($(value).hasClass('photo')) ? $(value).find('.info .contain-txt strong a').data('title') : $(value).find('img').attr("data-title");
@@ -88,7 +88,6 @@ var openSlideShow = function (slider, hash) {
                 var facebookurl = $(value).find('img').attr('data-facebookurl');
                 var twitterurl = $(value).find('img').attr('data-twitterurl');
                 var url = $(value).find('img').attr('data-url');
-
                 var isPortrait = $(value).hasClass('portrait') ? 'portrait' : 'landscape';
             }
 
@@ -298,6 +297,8 @@ var openSlideShow = function (slider, hash) {
     $('.c-fullscreen-slider').addClass('chocolat-wrapper');
 
     $('.c-fullscreen-slider').append('<div class="chocolat-top"><i class="icon icon-close chocolat-close"></i></div>');
+
+    console.log(images[centerElement].twitterurl);
 
     $('.c-fullscreen-slider').append('<div class="c-chocolat-bottom">' +
         '<div class="chocolat-bottom">' +
