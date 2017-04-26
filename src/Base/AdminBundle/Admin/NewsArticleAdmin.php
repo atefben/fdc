@@ -404,7 +404,7 @@ class NewsArticleAdmin extends Admin
             ->add('orangeType', 'choice', [
                 'choices'  => [
                     'OCS'                 => 'OCS',
-                    'orange et le cinema' => 'Orange et le cinéma',
+                    'Orange et le cinéma' => 'Orange et le cinéma',
                 ],
                 'required' => true,
                 'expanded' => true,

@@ -29,7 +29,11 @@
     <title>Festival de Cannes</title>
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/47cc6bed-5912-4140-bc5c-4caa2425b61d.css"/>
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Playfair+Display:400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview/css/webview.css') }}?css" />
+    {% if not object.orange %}
+      <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview/css/webview.css') }}?css" />
+    {% else %}
+      <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview_orange/css/webview.css') }}?css" />
+    {% endif %}
      <link rel="stylesheet" href="{{ asset('bundles/fdcevent/webview/css/dev.css') }}?css" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   </head>
@@ -45,9 +49,10 @@
         {% elseif object is news_image %}
           {% include 'FDCEventBundle:Webview:widget/slideshow.html.twig' with { 'medias': object.gallery.medias } %}
         {% endif %}
-        
+
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
+          {% if not object.orange %}
           <span class="Article-header-meta-date">
             {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
             {% set today = "now"|date('d-m-Y H:i:s') %}
@@ -76,6 +81,7 @@
               {% endif %}
             {% endif %}
           </span>
+          {% endif %}
           {% if object is news_image %}
             <span class="Article-header-meta-misc">
             {% for media in object.gallery.medias %}
@@ -94,9 +100,38 @@
 
       <div class="Article-content">
         <h1>{{ object|trans_fallback('title') }}</h1>
+        {% if object.orange %}
+          <span class="Article-header-meta-date">
+          {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
+              {% set today = "now"|date('d-m-Y H:i:s') %}
+              {% set difference = date(today).diff(date(postDate)) %}
+              {% set daysElapsed = difference.d %}
+              {% set hoursElapsed = difference.h %}
+              {% set minutesElapsed = difference.i %}
 
+              {% if daysElapsed > 1 %}
+                <strong>{{ 'webview.article.date_prefix'|trans }} {{ object.publishedAt|date('d.m.y') }}</strong> {{ 'webview.article.date_separator'|trans }} {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+          {% elseif daysElapsed == 1 %}
+                <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+                  {{ object.publishedAt|date('H') }}:{{ object.publishedAt|date('i') }}
+              {% else %}
+                  {% if hoursElapsed <= 1 %}
+                    <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }} <strong>{{ 'webview.article.minutes_elapsed_suffix'|trans }}</strong>
+            {% else %}
+                      {# detect differents days even if less than 24 hours between them #}
+                      {% if object.publishedAt|date('d') != "now"|date('d') %}
+                        <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+              {{ object.publishedAt|date('H') }}
+              <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
+              {% else %}
+                        <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
+                      {% endif %}
+                  {% endif %}
+              {% endif %}
+        </span>
+        {% endif %}
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
-        
+
         {% for widget in object.widgets %}
             {% if class(widget) ends with 'WidgetImage' and widget.gallery.medias is defined and widget.gallery.medias|length == 1 %}
                 {% include 'FDCEventBundle:Webview:widget/single-photo.html.twig' with ({
@@ -138,6 +173,24 @@
         </div>
       </div-->
     </article>
+
+    {% if object.orange %}
+        {% if object.orangeType == 'OCS' %}
+          <div class="Article-bottom-block ocs">
+            <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/ocs.png') }}"/>
+            <h2>{{ 'movie.presse.label.plusdinformations'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
+          </div>
+        {% else %}
+          <div class="Article-bottom-block">
+            <div class="Article-bottom-block-logos">
+              <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-orange.png') }}"/>
+              <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-fdc.png') }}"/>
+            </div>
+            <h2>{{ 'movie.presse.label.plusdinformations'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
+          </div>
+        {% endif %}
+    {% endif %}
+
 
     {% if sameDayObjects != null and object.hideSameDay == false %}
     <aside class="Article-related">
@@ -199,7 +252,7 @@
                   {% endif %}
               {% endif %}
 
-              
+
             {% elseif associatedNews is news_audio or associatedNews is info_audio or associatedNews is statement_audio %}
                 {% set header = associatedNews.header %}
                 {% if header is not null %}
@@ -233,6 +286,7 @@
             </div>
           </a>
           {% endfor %}
+      </div>
       </div>
     </aside>
     {% endif %}
