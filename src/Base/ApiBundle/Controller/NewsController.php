@@ -213,8 +213,8 @@ class NewsController extends FOSRestController
         }
 
         $limitDate = new \DateTime();
-        $limitDate->setDate(2016, 9, 30);
-        $limitDate->setTime(23, 59, 59);
+        $limitDate->setDate(2016, 10, 1);
+        $limitDate->setTime(0, 0, 0);
 
         // news
         $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, false, true);
