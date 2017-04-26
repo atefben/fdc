@@ -13,4 +13,5 @@
 
 .fc-event {
     -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
 }
