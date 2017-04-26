@@ -194,13 +194,13 @@ class FilmProjectionRoom
                 $key = $tomorrow->getTimestamp() . '-' . $projection->getId();
             } else {
                 $keyDay = $projection->getStartsAt()->format('Y-m-d');
-                $key = $projection->getTimestamp() . '-' . $projection->getId();;
+                $key = $projection->getStartsAt()->getTimestamp() . '-' . $projection->getId();;
             }
             $days[$keyDay][$key] = $projection;
         }
-        foreach ($days as $key => $day) {
-            ksort($days[$key]);
-            $days[$key] = array_values($day);
+        foreach ($days as &$day) {
+            ksort($day);
+            $day = array_values($day);
         }
         ksort($days);
         return [$days];
