@@ -368,12 +368,22 @@ alert('ready events');
 alert('display programmation day');
       var startDayDate = new Date("2016-05-" + day + "T00:00:00").getTime();
       var endDayDate = new Date("2016-05-" + day + "T24:00:00").getTime();
-
+alert(day);
+alert("2016-05-" + day + "T00:00:00");
+alert(startDayDate);
+alert("2016-05-" + day + "T24:00:00");
+alert(endDayDate);
+alert('start each');
       $(".fc-event").each(function () {
           var startDate = new Date($(this).data('start')).getTime();
+          alert($(this).data('id'));
+          alert($(this).data('start'));
+          alert(startDate);
           if (startDate >= startDayDate && startDate <= endDayDate) {
+            alert('display');
               $(this).css('display', 'block');
           } else {
+            alert('hide');
               $(this).css('display', 'none');
           }
       });
