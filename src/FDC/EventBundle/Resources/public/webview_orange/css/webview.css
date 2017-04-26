@@ -379,6 +379,7 @@ html {
   padding-top: 37px; }
   .Article-bottom-block.ocs {
     background-image: url("../img/article/bg.png");
+    background-size: cover;
     padding-top: 25px; }
     .Article-bottom-block.ocs > img {
       height: 80px;
