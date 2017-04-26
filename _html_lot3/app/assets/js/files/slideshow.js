@@ -710,7 +710,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
             $(this).toggleClass('isZoom');
             $(this).offsetHeight;
-            $(this).toggleClass('isZoomed');
             if($(this).hasClass('isZoom')) {
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
             }else{
