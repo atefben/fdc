@@ -92,7 +92,7 @@ class HomeController extends FOSRestController
      * )
      * @Rest\QueryParam(name="version", description="Api Version number")
      * @Rest\QueryParam(name="lang", default="fr", description="The lang")
-     * @Rest\QueryParam(name="page", default="1", description="The lang")
+     * @Rest\QueryParam(name="orange", default="0", description="Get also Orange news")
      * @param ParamFetcher $paramFetcher
      * @return View
      * @throws \Exception
@@ -103,7 +103,7 @@ class HomeController extends FOSRestController
         $coreManager = $this->get('base.api.core_manager');
 
         $locale = $paramFetcher->get('lang');
-        $page = (int)$paramFetcher->get('page');
+        $orange = (int)$paramFetcher->get('orange');
         $festival = $coreManager->getApiFestivalYear()->getId();
 
         $since = new \DateTime();
@@ -115,9 +115,9 @@ class HomeController extends FOSRestController
         $limitDate->setTime(0, 0, 0);
 
         $output = array();
-        $news = $this->getNews2017($festival, $locale, $since, null, null, $limitDate);
-        $infos = $this->getInfos2017($festival, $locale, $since, null, null, $limitDate);
-        $statements = $this->getStatements2017($festival, $locale, $since, null, null, $limitDate);
+        $news = $this->getNews2017($festival, $locale, $since, null, null, $limitDate, $orange);
+        $infos = $this->getInfos2017($festival, $locale, $since, null, null, $limitDate, $orange);
+        $statements = $this->getStatements2017($festival, $locale, $since, null, null, $limitDate, $orange);
 
         $output['news'] = array_merge($news, $infos, $statements);
         krsort($output['news']);
@@ -150,13 +150,13 @@ class HomeController extends FOSRestController
         return $news;
     }
 
-    protected function getNews2017($festival, $locale, $since, $page, $count, \DateTime $limitDate)
+    protected function getNews2017($festival, $locale, $since, $page, $count, \DateTime $limitDate, $orange = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getApiNewsHome2017($locale, $festival, $since, $page, $count, $limitDate)
+            ->getApiNewsHome2017($locale, $festival, $since, $page, $count, $limitDate, $orange)
         ;
 
         $news = array();
@@ -184,13 +184,13 @@ class HomeController extends FOSRestController
         return $infos;
     }
 
-    protected function getInfos2017($festival, $locale, $since, $page, $count, \DateTime $limitDate)
+    protected function getInfos2017($festival, $locale, $since, $page, $count, \DateTime $limitDate, $orange = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getApiInfoHome2017($locale, $festival, $since, $page, $count, $limitDate)
+            ->getApiInfoHome2017($locale, $festival, $since, $page, $count, $limitDate, $orange)
         ;
 
         $infos = array();
@@ -219,13 +219,13 @@ class HomeController extends FOSRestController
         return $statements;
     }
 
-    protected function getStatements2017($festival, $locale, $since, $page, $count, \DateTime $limitDate)
+    protected function getStatements2017($festival, $locale, $since, $page, $count, \DateTime $limitDate, $orange = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getApiStatementHome2017($locale, $festival, $since, $page, $count, $limitDate)
+            ->getApiStatementHome2017($locale, $festival, $since, $page, $count, $limitDate, $orange)
         ;
 
         $statements = array();

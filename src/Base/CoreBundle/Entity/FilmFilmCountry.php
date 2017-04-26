@@ -41,7 +41,7 @@ class FilmFilmCountry
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_show",
      *     "search"
      * })
@@ -60,7 +60,7 @@ class FilmFilmCountry
      *     "award_list",
      *     "award_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_show",
      *     "search"
      * })

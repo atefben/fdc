@@ -27,7 +27,7 @@ class FilmProjectionRoom
      *
      * @Groups({
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "home",
      *     "news_list", "search"})
      */
@@ -40,7 +40,7 @@ class FilmProjectionRoom
      *
      * @Groups({
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "film_list",
      *     "film_show",
      *     "home",
@@ -183,25 +183,27 @@ class FilmProjectionRoom
     {
         $days = [];
         foreach ($this->getProjections() as $projection) {
-            if (!($projection instanceof FilmProjection)) {
+            if (!($projection instanceof FilmProjection) || $projection->getFestival()->getYear() < 2016) {
                 continue;
             }
-                if ((int)$projection->getStartsAt()->format('H') < 4) {
-                    $tomorrow = clone $projection->getStartsAt();
-                    $tomorrow->add(date_interval_create_from_date_string('-1 day'));
-                    $keyDay = $tomorrow->format('Y-m-d');
-                    $key = $tomorrow->getTimestamp() . '-' . $projection->getId();
-                } else {
-                    $keyDay = $projection->getStartsAt()->format('Y-m-d');
-                    $key = $projection->getTimestamp() . '-' . $projection->getId();;
-                }
-                $days[$keyDay][$key] = $projection;
+
+            if ((int)$projection->getStartsAt()->format('H') < 4) {
+                $tomorrow = clone $projection->getStartsAt();
+                $tomorrow->add(date_interval_create_from_date_string('-1 day'));
+                $keyDay = $tomorrow->format('Y-m-d');
+                $key = $tomorrow->getTimestamp() . '-' . $projection->getId();
+            } else {
+                $keyDay = $projection->getStartsAt()->format('Y-m-d');
+                $key = $projection->getStartsAt()->getTimestamp() . '-' . $projection->getId();;
+            }
+            $days[$keyDay][$key] = $projection;
         }
         foreach ($days as &$day) {
             ksort($day);
             $day = array_values($day);
         }
-        return $days;
+        ksort($days);
+        return [$days];
     }
 
     /**

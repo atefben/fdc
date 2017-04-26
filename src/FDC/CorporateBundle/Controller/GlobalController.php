@@ -415,25 +415,25 @@ class GlobalController extends Controller
 
     /**
      * @Route("/menu")
-     * @Template("FDCCorporateBundle:Global:footer.html.twig")
      * @param Request $request
      * @param $route
      * @return array
      */
     public function footerAction(Request $request, $route)
     {
-        $criteria = ['type' => 2, 'site' => 3];
-        $sort = ['position' => 'asc'];
-        $displayedFooterElements = $this
-            ->getDoctrineManager()
-            ->getRepository('BaseCoreBundle:FDCEventRoutes')
-            ->findBy($criteria, $sort)
-        ;
+//        $criteria = ['type' => 2, 'site' => 3];
+//        $sort = ['position' => 'asc'];
+//        $displayedFooterElements = $this
+//            ->getDoctrineManager()
+//            ->getRepository('BaseCoreBundle:FDCEventRoutes')
+//            ->findBy($criteria, $sort)
+//        ;
 
-        return [
-            'footer' => $displayedFooterElements,
-            'route'  => $route
-        ];
+//        return [
+//            'footer' => $displayedFooterElements,
+//            'route'  => $route
+//        ];
+        return $this->render('FDCCorporateBundle:Global:footer.html.twig');
     }
 
 }

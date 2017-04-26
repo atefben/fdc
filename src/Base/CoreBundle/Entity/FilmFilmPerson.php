@@ -64,7 +64,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "home",
@@ -86,7 +86,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "news_list", "search",
      *     "news_show",
      *     "award_list",
@@ -106,7 +106,7 @@ class FilmFilmPerson implements TranslateMainInterface
      *     "film_list",
      *     "film_show",
      *     "projection_list", "projection_list_2017", "programmation",
-     *     "projection_show",
+     *     "projection_show", "programmation_main",
      *     "classics",
      *     "orange_studio"
      * })

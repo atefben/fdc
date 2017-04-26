@@ -28,7 +28,7 @@ class FilmProjectionMedia
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", inversedBy="projectionMedias", cascade={"persist"})
      *
-     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "news_list", "search"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "programmation_main", "news_list", "search"})
      */
     protected $file;
     
@@ -44,7 +44,7 @@ class FilmProjectionMedia
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "programmation_main"})
      */
     protected $position;
     
@@ -53,7 +53,7 @@ class FilmProjectionMedia
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      *
-     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "programmation_main"})
      */
     protected $filename;
     
@@ -62,7 +62,7 @@ class FilmProjectionMedia
      *
      * @ORM\Column(type="integer", nullable=true)
      *
-     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show"})
+     * @Groups({"projection_list", "projection_list_2017", "programmation", "projection_show", "programmation_main"})
      */
     protected $type;
 

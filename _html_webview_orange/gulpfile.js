@@ -8,7 +8,11 @@ var config = {
 	js: {
 		src: 'js/*',
 		dest: '../src/FDC/EventBundle/Resources/public/webview_orange/js/'
-	}
+	},
+	img: {
+        src: 'img/*/*',
+        dest: '../src/FDC/EventBundle/Resources/public/webview_orange/img/'
+    }
 };
 
 gulp.task('sass', function () {
@@ -32,4 +36,9 @@ gulp.task('copy:js', function () {
         .pipe(gulp.dest(config.js.dest))
 });
 
-gulp.task('default', ['sass','copy:css','copy:js']);
+gulp.task('copy:img', function () {
+    return gulp.src(config.img.src, {dot: true})
+        .pipe(gulp.dest(config.img.dest))
+});
+
+gulp.task('default', ['sass','copy:css','copy:js', 'copy:img']);
