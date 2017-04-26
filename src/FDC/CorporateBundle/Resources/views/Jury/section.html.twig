@@ -30,17 +30,19 @@
                         <div class="block-jury">
                             <a href="{{ path('fdc_corporate_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
-                                    ICI
                                     <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})"></div>
                                 {%- elseif president['jury'].id is defined -%}
-                                    LA
                                     {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
                                     {%- if media is not empty -%}
-
-                                        2
                                         <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
                                     {%- else -%}
-                                        3
+                                        <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
+                                    {%- endif -%}
+                                {%- else -%}
+                                    {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
+                                    {%- if media is not empty -%}
+                                        <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
+                                    {%- else -%}
                                         <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
                                     {%- endif -%}
                                 {%- endif -%}
