@@ -10,9 +10,3 @@
 .fc-event-custom .category, .calendar .venues .venue .v-container .fc-event.fc-event-custom .remove-evt {
     color: #000000;
 }
-
-.fc-event {
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    z-index: 10;
-}
