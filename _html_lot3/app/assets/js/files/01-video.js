@@ -1,6 +1,6 @@
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
-        s_ = isTooLong ? this.substr(0, n - 1) : this;
+    s_ = isTooLong ? this.substr(0, n - 1) : this;
     s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
     return isTooLong ? s_ + '...' : s_;
 };
@@ -116,7 +116,7 @@ var initVideo = function (hash) {
         });
     }
     return tmp;
-};
+}
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
@@ -240,13 +240,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     $sound.find('.sound-seek').css('width', '0%');
                 }
             }
-        }
+        };
 
         playerInstance.stopMute = function () {
             playerInstance.setMute(false);
             playerInstance.setVolume(100);
             $sound.find('.sound-seek').css('width', '100%');
-        }
+        };
 
         playerInstance.removeFullscreen = function () {
             $container.find('.channels-video').removeClass('active');
@@ -255,7 +255,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
             playerInstance.resize('100%', '100%');
             mouseMoving(false);
-        }
+        };
 
         function externeControl() {
             $topBar.on('click', '.channels', function () {

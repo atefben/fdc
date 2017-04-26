@@ -679,6 +679,22 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
 $(document).ready(function () {
     if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true);
+        var hash = window.location.hash.split('=')[1];
+        if (hash.length) {
+            var arr = videoMovieBa.getPlaylist();
+            arr.forEach(function (video, i) {
+                if (video.vid == hash) {
+                    videoMovieBa.playlistItem(i);
+                    sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
+                    var $container = $("#video-player-ba").parent();
+                    var $fullscreen = $container.find('.icon-fullscreen');
+                    fullScreenApi.requestFullScreen($container[0]);
+                    $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
+                    videoMovieBa.resize('100%', '100%');
+                    mouseMoving(true);
+                }
+            });
+        }
     }
 
     if ($('.video-player').length > 0) {

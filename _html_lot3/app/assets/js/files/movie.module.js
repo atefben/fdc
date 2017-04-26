@@ -1,6 +1,5 @@
 var videoMovie;
 
-
 // Single Movie
 // =========================
 $( window ).resize( function(){
@@ -11,6 +10,7 @@ $( window ).resize( function(){
     });
   }
 });
+
 $(document).ready(function() {
   if($('.content-movie').length) {
     $('.content-movie .prevmovie').on('click', function (e) {
@@ -48,8 +48,8 @@ $(document).ready(function() {
     $('#nav-movie ul a').removeClass('active');
     $(this).addClass('active');
 
-    var $el = $(this)
-      , id = $el.attr('href').substr(1);
+    var $el = $(this);
+    var id = $el.attr('href').substr(1);
 
     var posT = $('*[data-section="' + id + '"]').offset().top - $('#nav-movie').height() - $('header').height();
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
         'position':'relative',
         'top':  (currentHeight > defaultHeight) ? 0 : - (parseInt(defaultHeight) - parseInt(currentHeight))
       });
-    }else{
+    } else {
       tetiere.css('height',defaultHeight);
     }
   }
@@ -250,24 +250,6 @@ $(document).ready(function() {
               }
           }, 100);
       });
-
-      var hash = window.location.hash.split('=')[1];
-      if (hash.length && $('#video-player-ba').length > 0) {
-        videoMovieBa = playerInit('video-player-ba', false, true);
-        var arr = videoMovieBa.getPlaylist();
-          arr.forEach(function (video, i) {
-              if (video.vid == hash) {
-                videoMovieBa.playlistItem(i);
-                sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                var $container = $("#video-player-ba").parent();
-                var $fullscreen = $container.find('.icon-fullscreen');
-                fullScreenApi.requestFullScreen($container[0]);
-                $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
-                videoMovieBa.resize('100%', '100%');
-                //mouseMoving(true);
-              }
-          });
-      }
     }
   }
 });
