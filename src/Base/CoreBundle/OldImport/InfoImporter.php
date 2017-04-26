@@ -34,6 +34,36 @@ class InfoImporter extends Importer
     protected $status;
     protected $isInfoImage = false;
 
+    public function importOneInfo($id)
+    {
+        $oldArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldArticle')
+            ->createQueryBuilder('o')
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', $this->getTypes())
+            ->andWhere('o.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        if ($oldArticle) {
+            return;
+        }
+
+        $news = $this->importItem($oldArticle);
+        if ($news) {
+            foreach ($this->langs as $lang) {
+                $news->findTranslationByLocale($lang);
+            }
+        }
+
+        $this->getSiteEvent(true);
+        $this->getSiteCorporate(true);
+        $this->getDefaultTheme(true);
+    }
+
     public function importInfos()
     {
         $this->output->writeln('<info>Import infos...</info>');
