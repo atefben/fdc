@@ -3699,7 +3699,7 @@ sup {
   @include transition(all 0.1s $smoothTransition);
 }
 
-.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {
+.goldSlideshow .slideshow-img .thumbnails .thumb.active:after {    
   border: 6px solid #c3a05f!important;
   @include transition(all 0.1s $smoothTransition);
 }
@@ -15657,7 +15657,7 @@ a {
 }
 .catalogue:hover img {
   -webkit-transition: all 2s;
-  /*-ms-transform: scale(1.1);
+  /*-ms-transform: scale(1.1); 
   -webkit-transform: scale(1.1);
   transform: scale(1.1);*/
   -moz-transition: all 8s cubic-bezier(0.15, 0.9, 0.34, 0.95);
@@ -15733,11 +15733,11 @@ a {
   /*&:hover .plusSign {
     @include transition(all 0.9s $smoothTransition);
     -webkit-transition: all 0.5s;
-    -ms-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2); 
     transform: scale(1.2);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg); 
+    -webkit-transform: rotate(360deg); 
     transform: rotate(360deg);
   }*/
 }
@@ -27132,7 +27132,7 @@ body:not(.tablette) .webtv #live .img {
 
 .floatingButtonRight {
   /*position: absolute;
-  z-index: 1004;
+  z-index: 1004;  
   right: 1%;
   top: 100%;*/
   display: none;
@@ -28024,7 +28024,7 @@ ul.tabs .quarterTab h4 {
   }
 
   &:last-child {
-
+      
         &:after {
         content: '';
     }
@@ -28362,9 +28362,6 @@ ul.tabs .quarterTab h4 {
 }
 .conferences .selector {
   width: 100%;
-  float: left;
-  min-height: 200px;
-  height: auto;
 }
 .conferences .selectbtn {
   letter-spacing: 1px;
@@ -28387,7 +28384,6 @@ ul.tabs .quarterTab h4 {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  margin-top: 220px;
   margin-bottom: 50px;
   padding-top: 20px;
 }

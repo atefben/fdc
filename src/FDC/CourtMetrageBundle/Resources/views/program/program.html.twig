@@ -26,17 +26,7 @@
             <div id="accordion-conf" class="conferences">
 
                 {% if filters|length > 0 %}
-                    <div class="dropdown">
-                        <span>{{ 'ccm.program.show'|trans }}</span>
-                        <div id="eventSelector">
-                            {% for filter in filters %}
-                                <div class="selectText" id="filter-{{ filter.id }}">
-                                    {{ filter.title|title }}{% if loop.index < filters|length %},{% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <br>
+
                     <div class="selector">
                         {% for filter in filters %}
                             <div class="selectbtn" id="selector-{{ filter.id }}" rel="filter-{{ filter.id }}">

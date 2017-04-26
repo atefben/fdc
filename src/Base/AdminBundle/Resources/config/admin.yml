@@ -1786,6 +1786,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch De Service}
 
+    base.admin.mdf_program_industry_dispatch:
+        class: Base\AdminBundle\Admin\MdfProgramIndustryDispatchAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatch, BaseAdminBundle:MdfProgramIndustryDispatchAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf, label: Dispatch Industry Programs}
+
     base.admin.mdf_service_gallery:
         class: Base\AdminBundle\Admin\MdfServiceGalleryAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfServiceGallery, BaseAdminBundle:MdfServiceGalleryAdmin]
@@ -2155,6 +2161,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: News Page}
 
+    base.admin.mdf_conference_news_page_frontieres:
+        class: Base\AdminBundle\Admin\MdfConferenceNewsPageFrontieresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageFrontieresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: News Page}
+
     base.admin.mdf_conference_news_page_doc_corner:
         class: Base\AdminBundle\Admin\MdfConferenceNewsPageDocCornerAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage, BaseAdminBundle:MdfConferenceNewsPageDocCornerAdmin]
@@ -2190,6 +2202,12 @@ services:
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactProducersNetworkAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Infos et Contacts}
+
+    base.admin.mdf_conference_info_and_contact_frontieres:
+        class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactFrontieresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact, BaseAdminBundle:MdfConferenceInfoAndContactFrontieresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: Infos et Contacts}
 
     base.admin.mdf_conference_info_and_contact_doc_corner:
         class: Base\AdminBundle\Admin\MdfConferenceInfoAndContactDocCornerAdmin
@@ -2245,17 +2263,35 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Conférences}
 
+    base.admin.mdf_conference_program_frontieres:
+        class: Base\AdminBundle\Admin\MdfConferenceProgramFrontieresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram, BaseAdminBundle:MdfConferenceProgramFrontieresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: Conférences}
+
     base.admin.mdf_speakers_producers_network:
         class: Base\AdminBundle\Admin\MdfSpeakersProducersNetworkAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersProducersNetworkAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Intervenants}
 
+    base.admin.mdf_speakers_frontieres:
+        class: Base\AdminBundle\Admin\MdfSpeakersFrontieresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfSpeakers, BaseAdminBundle:MdfSpeakersFrontieresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: Intervenants}
+
     base.admin.mdf_conference_partner_producers_network:
         class: Base\AdminBundle\Admin\MdfConferencePartnerProducersNetworkAdmin
         arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerProducersNetworkAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Partenaires}
+
+    base.admin.mdf_conference_partner_frontieres:
+        class: Base\AdminBundle\Admin\MdfConferencePartnerFrontieresAdmin
+        arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner, BaseAdminBundle:MdfConferencePartnerFrontieresAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: Partenaires}
 
     base.admin.mdf_conference_program_doc_corner:
         class: Base\AdminBundle\Admin\MdfConferenceProgramDocCornerAdmin
@@ -2334,6 +2370,12 @@ services:
             arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeProducersNetworkAdmin]
             tags:
                 - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_producers_network, label: Accueil}
+
+    base.admin.mdf_industry_program_home_frontieres:
+            class: Base\AdminBundle\Admin\MdfIndustryProgramHomeFrontieresAdmin
+            arguments: [~, FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate, BaseAdminBundle:MdfIndustryProgramHomeFrontieresAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin.group.mdf_frontieres, label: Accueil}
 
     base.admin.mdf_industry_program_home_doc_corner:
         class: Base\AdminBundle\Admin\MdfIndustryProgramHomeDocCornerAdmin

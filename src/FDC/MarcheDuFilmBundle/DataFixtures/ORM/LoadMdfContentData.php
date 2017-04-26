@@ -21,6 +21,10 @@ class LoadMdfContentData implements FixtureInterface
             $dispatchDeService = new \FDC\MarcheDuFilmBundle\Entity\DispatchDeService();
             $manager->persist($dispatchDeService);
         }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatch::class)->findAll()) == 0) {
+            $programIndustryDispatch = new \FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatch();
+            $manager->persist($programIndustryDispatch);
+        }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\HeaderFooter::class)->findAll()) == 0) {
             $headerFooter = new \FDC\MarcheDuFilmBundle\Entity\HeaderFooter();
             $manager->persist($headerFooter);
@@ -39,6 +43,12 @@ class LoadMdfContentData implements FixtureInterface
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK])) == 0) {
             $conferencePNinfo = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact();
             $conferencePNinfo->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK);
+            $manager->persist($conferencePNinfo);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNinfo = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact();
+            $conferencePNinfo->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
             $manager->persist($conferencePNinfo);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceInfoAndContact::class)
@@ -78,6 +88,12 @@ class LoadMdfContentData implements FixtureInterface
             $manager->persist($conferencePNnews);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNnews = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage();
+            $conferencePNnews->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
+            $manager->persist($conferencePNnews);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage::class)
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_DOC_CORNER])) == 0) {
             $conferenceDCnews = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceNewsPage();
             $conferenceDCnews->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_DOC_CORNER);
@@ -114,6 +130,12 @@ class LoadMdfContentData implements FixtureInterface
             $manager->persist($conferencePNpartner);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNpartner = new \FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner();
+            $conferencePNpartner->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
+            $manager->persist($conferencePNpartner);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner::class)
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_DOC_CORNER])) == 0) {
             $conferenceDCpartner = new \FDC\MarcheDuFilmBundle\Entity\MdfConferencePartner();
             $conferenceDCpartner->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_DOC_CORNER);
@@ -147,6 +169,12 @@ class LoadMdfContentData implements FixtureInterface
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK])) == 0) {
             $conferencePNprogram = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram();
             $conferencePNprogram->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK);
+            $manager->persist($conferencePNprogram);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNprogram = new \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram();
+            $conferencePNprogram->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
             $manager->persist($conferencePNprogram);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::class)
@@ -209,6 +237,12 @@ class LoadMdfContentData implements FixtureInterface
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK])) == 0) {
             $conferencePNhomepage = new \FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate();
             $conferencePNhomepage->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK);
+            $manager->persist($conferencePNhomepage);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNhomepage = new \FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate();
+            $conferencePNhomepage->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
             $manager->persist($conferencePNhomepage);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfContentTemplate::class)
@@ -279,6 +313,12 @@ class LoadMdfContentData implements FixtureInterface
                 ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK])) == 0) {
             $conferencePNspeakers = new \FDC\MarcheDuFilmBundle\Entity\MdfSpeakers();
             $conferencePNspeakers->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_PRODUCERS_NETWORK);
+            $manager->persist($conferencePNspeakers);
+        }
+        if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakers::class)
+                ->findBy(['type' => \FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES])) == 0) {
+            $conferencePNspeakers = new \FDC\MarcheDuFilmBundle\Entity\MdfSpeakers();
+            $conferencePNspeakers->setType(\FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgram::TYPE_FRONTIERES);
             $manager->persist($conferencePNspeakers);
         }
         if (count($manager->getRepository(\FDC\MarcheDuFilmBundle\Entity\MdfSpeakers::class)

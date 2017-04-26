@@ -86,6 +86,9 @@ sonata_admin:
             admin.group.mdf_producers_network:
                 items: ~
                 label_catalogue: BaseAdminBundle
+            admin.group.mdf_frontieres:
+                items: ~
+                label_catalogue: BaseAdminBundle
             admin.group.mdf_producers_workshop:
                 items: ~
                 label_catalogue: BaseAdminBundle

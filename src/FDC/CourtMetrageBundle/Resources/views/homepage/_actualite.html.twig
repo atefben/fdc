@@ -15,10 +15,11 @@
                                 </span>
                                 <h6>{{ actualite.title }}</h6>
                                 {% if  actualite.translatable.image is not null%}
-                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('100', '...')}}</p>
+                                    {%  set description = actualite.description(app.request.locale)|striptags|raw|slice(0, 120) %}
                                 {% else %}
-                                    <p>{{ actualite.description(app.request.locale)|striptags|raw|shorten('500', '...')}}</p>
+                                    {%  set description = actualite.description(app.request.locale)|striptags|raw|slice(0, 500) %}
                                 {% endif %}
+                                <p>{{ description }}{% if description|length < actualite.description(app.request.locale)|length %}{{ '...' }}{% endif %}</p>
                             </div>
                         </div>
                     </a>

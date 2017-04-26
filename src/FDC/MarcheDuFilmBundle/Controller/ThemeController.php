@@ -4,6 +4,7 @@ namespace FDC\MarcheDuFilmBundle\Controller;
 
 use FDC\MarcheDuFilmBundle\Entity\MdfConferenceProgramTranslation;
 use FDC\MarcheDuFilmBundle\Entity\MdfSpeakersTranslation;
+use FDC\MarcheDuFilmBundle\Entity\ProgramIndustryDispatchTranslation;
 use FOS\RestBundle\Controller\Annotations\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,36 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ThemeController extends Controller
 {
+    /**
+     * @Route("industry-programs", name="fdc_marche_du_film_program_industry")
+     */
+    public function indexAction(Request $request)
+    {
+        $programIndustryDispatchManager = $this->get('mdf.manager.program_industry_dispatch');
+        $contentTemplateManager = $this->get('mdf.manager.content_template');
+        $contactManager = $this->get('mdf.manager.contact');
+
+        $dispatchContent = $programIndustryDispatchManager->getDispatchContent();
+
+        $pageTranslationStatus = $dispatchContent->getStatus();
+        if(($pageTranslationStatus != ProgramIndustryDispatchTranslation::STATUS_TRANSLATED) && ($pageTranslationStatus != ProgramIndustryDispatchTranslation::STATUS_PUBLISHED))
+        {
+            throw new NotFoundHttpException();
+        }
+
+        $dispatchWidgets = $programIndustryDispatchManager->getDispatchWidgets();
+        $newsContent = $contentTemplateManager->getHomepageNewsContent();
+        $contact = $contactManager->getContactInfo();
+
+
+        return $this->render('FDCMarcheDuFilmBundle:conference:dispatch.html.twig', array(
+            'serviceContent' => $dispatchContent,
+            'serviceWidgets' => $dispatchWidgets,
+            'news' => $newsContent,
+            'contact' => $contact
+        ));
+    }
+
     /**
      * @Route("/{slug}/speakers", name="fdc_marche_du_film_conference_speakers")
      *

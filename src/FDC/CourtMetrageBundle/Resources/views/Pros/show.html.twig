@@ -20,21 +20,6 @@
         <div class="bigContainer">
             <div id="accordion-conf" class="conferences confcourtaccordion">
 
-                <div class="dropdown">
-                    <span>{{ 'ccm.pros.afficher'|trans }}</span>
-                    <div id="eventSelector">
-                        {% if hasSFC %}
-                            <div class="selectText" id="short-fim-corner">{{ 'ccm.pros.present_sfc'|trans }}</div>
-                        {% endif %}
-
-                        {% if pageDomains is defined and pageDomains is not null %}
-                            {% for key, domain in pageDomains %}
-                                <div class="selectText" id="{{ key }}">{{ domain }}{% if loop.last == false %}, {% endif %}</div>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-
-                </div><br>
                 <div class="selector">
                     {% if hasSFC %}
                         <div class="selectbtn bigSelectbtn" id="short-fim-corner" rel="short-fim-corner">
@@ -44,7 +29,7 @@
 
                     {% if pageDomains is defined and pageDomains is not null %}
                         {% for key, domain in pageDomains %}
-                            <div class="selectbtn" id="{{ key }}" rel="{{ key }}">{{ domain }}</div>
+                            <div class="selectbtn" id="{{ key }}" rel="show-{{ key }}">{{ domain }}</div>
                         {% endfor %}
                     {% endif %}
                 </div>
