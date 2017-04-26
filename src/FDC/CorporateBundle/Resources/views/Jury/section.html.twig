@@ -22,7 +22,6 @@
                 <div class="all-contain">
                     {% for president in presidents %}
                         <div class="block-jury">
-                            {{ president['jury'].id }}
                             <a href="{{ path('fdc_corporate_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                                     <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})"></div>
