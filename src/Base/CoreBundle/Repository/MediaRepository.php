@@ -223,6 +223,7 @@ class MediaRepository extends EntityRepository
 
         $this->retrospectiveFilters($qb, $locale, $festival);
 
+
         return $qb
             ->andWhere("m.publishEndedAt IS NULL")
             ->addOrderBy('m.publishedAt', 'DESC')
@@ -246,7 +247,9 @@ class MediaRepository extends EntityRepository
             ->leftJoin('ma.translations', 'mat')
             ->andWhere('m.displayedAll = 1')
             ->andWhere('m.festival = :festival')
-            ->setParameter(':festival', $festival)
+            ->setParameter(':festival', $festival->getId())
+            ->andWhere('YEAR(m.publishedAt) = :festivalYear')
+            ->setParameter(':festivalYear', $festival->getYear())
             ->andWhere(
                 '(mit.locale = :locale_fr AND mit.status = :status) OR
                     (mvt.locale = :locale_fr AND mvt.status = :status) OR
