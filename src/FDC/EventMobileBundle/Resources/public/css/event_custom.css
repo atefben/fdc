@@ -338,7 +338,7 @@
 }
 
 .text-content h3.sub-title {
-    font-size: 0.875rem;
+    font-size: 0.925rem;
 }
 
 .text-content .descrip-participate {
@@ -359,7 +359,7 @@
 }
 
 .little-txt {
-    font-size: 0.750rem;
+    font-size: 0.875rem;
     line-height: normal;
 }
 
@@ -368,6 +368,7 @@
 }
 
 .text-content .chapeau {
+    font-family: "Camphor W01 Regular", Arial, Helvetica, sans-serif;
     font-size: 1.125rem;
     line-height: 2em;
     margin-bottom: 70px;
@@ -375,7 +376,7 @@
 }
 
 .caption-article {
-    font-size: 0.750rem;
+    font-size: 0.875rem;
     max-width: 100%;
     line-height: normal;
     margin: 10px 0 0;
@@ -408,6 +409,8 @@
     width: 246px;
     margin: 0 auto;
     line-height: 20px;
+    color: #333;
+    font-size: 1rem;
 }
 
 .title-acces {
@@ -417,11 +420,12 @@
     font-size: .75rem;
     padding-bottom: 20px;
     line-height: normal;
+    font-weight: bold;
 }
 
 .text-content .descript-acces {
     padding-bottom: 20px;
-    font-size: .8125rem;
+    font-size: .875rem;
     line-height: 24px;
     color: #333;
 }
