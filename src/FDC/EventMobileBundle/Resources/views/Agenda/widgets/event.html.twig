@@ -28,16 +28,16 @@
 
     {%- if event.programmationFilms|length > 0 -%}
         {%- set film = event.programmationFilms[0].film -%}
+        {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
+        {%- set trans = trans_slug|trans -%}
         <div class="fc-event {{ film.selectionSection|trans_fallback('slug') }} {{ event.type|lower|replace(' ', '-') }}" data-category="{{ film.selectionSection|trans_fallback('slug') }}"{{- ' ' -}}
-             data-type="{{ event.type|lower|replace(' ', '-') }}" data-url="{{ path('fdc_eventmobile_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
+             data-type="{{ (trans_slug != trans ? trans : event.type)|lower|replace(' ', '-') }}" data-url="{{ path('fdc_eventmobile_agenda_getprojection', {id: event.id}) }}"{{- ' ' -}}
              data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
              data-start="{{ (event.startsAt|date('H') < 4 ? event.startsAt.timestamp - 86400 : event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
              data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
              data-time="{% if event.startsAt|date('H') >= 0 and event.startsAt|date('H') <= 3 %}{{ 24 + event.startsAt|date('H') }}{% else %}{{ event.startsAt|date('H') }}{% endif %}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- elseif isEvenement -%}icon_speacker{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
-            {%- set trans = trans_slug|trans -%}
             {%- if trans_slug != trans -%}
                 {{- trans -}}
             {%- else -%}
@@ -112,16 +112,16 @@
             </div>
         </div>
     {%- else -%}
+        {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
+        {%- set trans = trans_slug|trans -%}
         <div class="fc-event cursor-default {{ event.type|lower|replace(' ', '-') }}" data-category=""{{- ' ' -}}
-             data-type="{{ event.type|lower|replace(' ', '-') }}"{{- ' ' -}}
+             data-type="{{ (trans_slug != trans ? trans : event.type)|lower|replace(' ', '-') }}"{{- ' ' -}}
              data-id="{{ event.id }}" data-picto=".pen" data-color="{{ dataColor }}"{{- ' ' -}}
              data-start="{{ (event.startsAt|date('H') < 4 ? event.startsAt.timestamp - 86400 : event.startsAt)|date('Y-m-d') }}T{{ event.startsAt|date('H') < 4 ? '23:59:59' : event.startsAt|date('H:i:s') }}"{{- ' ' -}}
              data-end="{{ event.endsAt|date('Y-m-d') }}T{{ event.endsAt|date('H:i:s') }}"{{- ' ' -}}
              data-time="{{ event.startsAt|date('H') }}" data-duration="{{ minutes }}">
         <span class="category">
             <i class="icon {% if isSeancePress -%}icon_espace-presse{%- elseif isConferencePress -%}icon_evt-conference{%- elseif isEvenement -%}icon_speacker{%- else -%}icon_evt-seance{%- endif -%}"></i>
-            {%- set trans_slug = 'programmation.type.' ~ event.type|remove_accents|sonata_slugify|lower -%}
-            {%- set trans = trans_slug|trans -%}
             {%- if trans_slug != trans -%}
                 {{- trans -}}
             {%- else -%}
