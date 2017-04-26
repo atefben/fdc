@@ -914,7 +914,9 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $('#main').addClass('overlay');
 
             setTimeout(function () {
-                $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').on('click', function (e) {
+                $('div.vFlexAlign, #main, header, footer, #logo-wrapper, #navigation').on('click', function (e) {
+
+                    e.preventDefault();
 
                     videoNews.stop();
                     videoNews.setMute(true);
@@ -931,7 +933,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     $('.activeVideo').removeClass('activeVideo');
                     $(videoNews).data('loaded', false);
 
-                    $('div.vFlexAlign, #main, footer, #logo-wrapper, #navigation').off('click');
+                    $('div.vFlexAlign, #main, header, footer, #logo-wrapper, #navigation').off('click');
                 });
             }, 1000);
 
