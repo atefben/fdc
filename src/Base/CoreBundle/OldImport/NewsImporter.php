@@ -61,7 +61,7 @@ class NewsImporter extends Importer
             ->getOneOrNullResult()
         ;
 
-        if ($oldArticle) {
+        if (!$oldArticle) {
             return;
         }
 

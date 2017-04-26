@@ -48,7 +48,7 @@ class InfoImporter extends Importer
             ->getOneOrNullResult()
         ;
 
-        if ($oldArticle) {
+        if (!$oldArticle) {
             return;
         }
 
