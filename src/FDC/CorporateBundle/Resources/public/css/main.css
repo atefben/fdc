@@ -4162,10 +4162,10 @@ body:not(.who) .block-push, body:not(.edition-69.story-movie) .block-push {
   float: left;
 }
 .block-poster .title-11 {
-  display: block;
+  display: table;
 }
 .block-poster .title-12 {
-  display: inline-block;
+  display: table;
 }
 .block-poster .last-line {
   margin-bottom: 0px;
