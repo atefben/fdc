@@ -920,6 +920,14 @@
   img {
     max-width: 100vw;
     height: 100%;
+
+    &.isZoom {
+      transform: scale(2);
+      transition: transform 900ms $smoothTransition;
+      &.isZoomed {
+        transition: none;
+      }
+    }
     will-change: transform;
     -webkit-user-select: none;
     -moz-user-select: none;
