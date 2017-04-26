@@ -5341,7 +5341,6 @@ function resizeend() {
 /**
  * Created by tatjac on 17/06/2016.
  */
-
 var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
@@ -6053,9 +6052,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         $('.fullscreen-slider img').on('click', function (e) {
             $(this).toggleClass('isZoom');
 
-
-            $(this).css('transition', 'transform 900ms cubic-bezier(0.15, 0.9, 0.34, 0.95)');
-
             if($(this).hasClass('isZoom')) {
                 $(this).css('transform', 'scale(2)');
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
@@ -6063,8 +6059,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
-
-            $(this).css('transition', 'none');
         });
 
         $('.fullscreen-slider img').on('mouseout', function (e){
