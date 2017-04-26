@@ -372,7 +372,6 @@ class NewsArticleAdmin extends Admin
                 ],
                 'choice_translation_domain' => 'BaseAdminBundle',
             ])
-            ->add('hideSameDay')
             ->add('translate')
             ->add('translateOptions', 'choice', [
                 'choices'            => News::getAvailableTranslateOptions(),

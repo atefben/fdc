@@ -15,7 +15,7 @@
         </h4>
     </div>
     <div class="box-body">
-        {% if form.parent.children.mobileDisplay is defined %}
+        {% if form.parent.children.mobileDisplay is defined  and (form.parent.vars.data.orange is not defined or not form.parent.vars.data.orange) %}
             <div{% if isTranslator %} class="hidden"{% endif %}>
                 {{ form_row(form.parent.children.mobileDisplay) }}
             </div>
