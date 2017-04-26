@@ -914,17 +914,11 @@
     object-fit: cover;
     display: inline-block;
     text-align: center;
-    transform: translate3d(0,0,0);
   }
 
   img {
     max-width: 100vw;
     height: 100%;
-    transition: transform 100ms $smoothTransition;
-    -webkit-transition: transform 100ms $smoothTransition;
-    -moz-transition: transform 100ms $smoothTransition;
-    -o-transition: transform 100ms $smoothTransition;
-    will-change: transform;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
