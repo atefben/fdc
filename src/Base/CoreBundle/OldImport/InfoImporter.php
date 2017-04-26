@@ -41,7 +41,7 @@ class InfoImporter extends Importer
             ->getRepository('BaseCoreBundle:OldArticle')
             ->createQueryBuilder('o')
             ->andWhere('o.articleTypeId in (:types)')
-            ->setParameter(':types', $this->getTypes())
+            ->setParameter(':types', [static::TYPE_NEWS_FESTIVAL])
             ->andWhere('o.id = :id')
             ->setParameter(':id', $id)
             ->getQuery()
