@@ -782,9 +782,10 @@ class StatementRepository extends EntityRepository
      * @param int $page
      * @param int $count
      * @param \DateTime|null $limitDate
+     * @param $orange
      * @return Statement[]
      */
-    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
+    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null, $orange = null)
     {
         $now = new \DateTime();
         $qb = $this
@@ -812,6 +813,13 @@ class StatementRepository extends EntityRepository
             )
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

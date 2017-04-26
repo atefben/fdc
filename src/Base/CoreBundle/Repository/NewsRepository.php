@@ -253,9 +253,10 @@ class NewsRepository extends EntityRepository
      * @param int $page
      * @param int $count
      * @param DateTime|null $limitDate
+     * @param $orange
      * @return News[]
      */
-    public function getApiNewsHome2017($locale, $festival, $since, $page = 1, $count = 10, DateTime $limitDate = null)
+    public function getApiNewsHome2017($locale, $festival, $since, $page = 1, $count = 10, DateTime $limitDate = null, $orange = false)
     {
         $now = new DateTime();
         $qb = $this
@@ -285,6 +286,13 @@ class NewsRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', NewsArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

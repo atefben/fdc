@@ -803,9 +803,10 @@ class InfoRepository extends EntityRepository
      * @param int $page
      * @param int $count
      * @param \DateTime|null $limitDate
+     * @param $orange
      * @return Info[]
      */
-    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
+    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null, $orange = false)
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
@@ -832,6 +833,13 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
