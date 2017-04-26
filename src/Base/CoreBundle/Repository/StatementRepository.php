@@ -128,9 +128,10 @@ class StatementRepository extends EntityRepository
      * @param FilmFestival $festival
      * @param \DateTime $dateTime
      * @param \DateTime $limitDate
+     * @param boolean|null $orange
      * @return Statement[]
      */
-    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -148,6 +149,13 @@ class StatementRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
@@ -774,9 +782,10 @@ class StatementRepository extends EntityRepository
      * @param int $page
      * @param int $count
      * @param \DateTime|null $limitDate
+     * @param $orange
      * @return Statement[]
      */
-    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
+    public function getApiStatementHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null, $orange = null)
     {
         $now = new \DateTime();
         $qb = $this
@@ -804,6 +813,13 @@ class StatementRepository extends EntityRepository
             )
             ->setParameter('status', TranslateChildInterface::STATUS_PUBLISHED)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
@@ -850,9 +866,11 @@ class StatementRepository extends EntityRepository
      * @param $dateTime
      * @param $count
      * @param $locale
+     * @param $limitDate
+     * @param $orange
      * @return mixed
      */
-    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
+    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this->createQueryBuilder('n')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
@@ -874,6 +892,13 @@ class StatementRepository extends EntityRepository
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
             )
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

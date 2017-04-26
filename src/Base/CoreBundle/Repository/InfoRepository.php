@@ -129,9 +129,10 @@ class InfoRepository extends EntityRepository
      * @param FilmFestival $festival
      * @param \DateTime $dateTime
      * @param \DateTime $limitDate
+     * @param boolean|null $orange
      * @return Info[]
      */
-    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null)
+    public function getNewsApiSameDayInfos($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -149,6 +150,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.displayedMobile = :displayed_mobile')
             ->setParameter('displayed_mobile', true)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
@@ -708,9 +716,11 @@ class InfoRepository extends EntityRepository
      * @param $dateTime
      * @param $count
      * @param $locale
+     * @param $limitDate
+     * @param $orange
      * @return Info[]
      */
-    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
+    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -727,6 +737,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
@@ -786,9 +803,10 @@ class InfoRepository extends EntityRepository
      * @param int $page
      * @param int $count
      * @param \DateTime|null $limitDate
+     * @param $orange
      * @return Info[]
      */
-    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null)
+    public function getApiInfoHome2017($locale, $festival, $since, $page = 1, $count = 10, \DateTime $limitDate = null, $orange = false)
     {
         $now = new \DateTime();
         $qb = $this->createQueryBuilder('n')
@@ -815,6 +833,13 @@ class InfoRepository extends EntityRepository
             ->setParameter('locale_fr', 'fr')
             ->setParameter('status', InfoArticleTranslation::STATUS_PUBLISHED)
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb
