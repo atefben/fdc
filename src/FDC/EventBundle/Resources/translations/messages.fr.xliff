@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-09-16T11:38:19Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2017-04-21T11:28:19Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -16,10 +16,10 @@
         <target>L'adresse email n'est pas valide</target>
         <jms:reference-file line="115">Form/Type/ContactType.php</jms:reference-file>
         <jms:reference-file line="116">Form/Type/ContactType.php</jms:reference-file>
-        <jms:reference-file line="98">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="99">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="102">Form/Type/ShareEmailType.php</jms:reference-file>
-        <jms:reference-file line="103">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="96">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="97">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="100">Form/Type/ShareEmailType.php</jms:reference-file>
+        <jms:reference-file line="101">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="08d76bebf9dca034727ab36b9ea6595b433b8bde" resname="contact.form.errors.message">
         <source>contact.form.errors.message</source>
@@ -61,21 +61,6 @@
         <source>home.article.btn.ajouteramaselection</source>
         <target>Ajouter à ma sélection</target>
         <jms:reference-file line="126">News/widgets/article-home.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="36278b911584399981f85e88a9bacb72061055cf" resname="sharemail.form.placeholder.email">
-        <source>sharemail.form.placeholder.email</source>
-        <target state="new">sharemail.form.placeholder.email</target>
-        <jms:reference-file line="50">Form/Type/ShareEmailType.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="7b1dafe6f88c7fb35125e5fb7424125f7f05a776" resname="sharemail.form.placeholder.message">
-        <source>sharemail.form.placeholder.message</source>
-        <target state="new">sharemail.form.placeholder.message</target>
-        <jms:reference-file line="71">Form/Type/ShareEmailType.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="4a242351d5fd2d0511a44d02e793a9924a5f32bf" resname="sharemail.form.placeholder.votreemail">
-        <source>sharemail.form.placeholder.votreemail</source>
-        <target state="new">sharemail.form.placeholder.votreemail</target>
-        <jms:reference-file line="56">Form/Type/ShareEmailType.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>

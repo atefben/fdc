@@ -239,6 +239,13 @@ abstract class Statement implements TranslateMainInterface, NodeInterface
      */
     protected $mobileDisplay = false;
 
+    /**
+     * @var bool
+     * @ORM\Column(name="orange", type="boolean", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $orange = false;
+
     public function __construct()
     {
         $this->translations = new ArrayCollection();
@@ -1034,5 +1041,38 @@ abstract class Statement implements TranslateMainInterface, NodeInterface
     {
         $this->displayedOnCorpoHome = $displayedOnCorpoHome;
         return $this;
+    }
+
+    /**
+     * Get displayedOnCorpoHome
+     *
+     * @return boolean 
+     */
+    public function getDisplayedOnCorpoHome()
+    {
+        return $this->displayedOnCorpoHome;
+    }
+
+    /**
+     * Set orange
+     *
+     * @param boolean $orange
+     * @return $this
+     */
+    public function setOrange($orange)
+    {
+        $this->orange = $orange;
+
+        return $this;
+    }
+
+    /**
+     * Get orange
+     *
+     * @return boolean 
+     */
+    public function getOrange()
+    {
+        return $this->orange;
     }
 }

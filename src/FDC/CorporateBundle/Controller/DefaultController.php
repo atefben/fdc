@@ -2,7 +2,9 @@
 
 namespace FDC\CorporateBundle\Controller;
 
+use Base\CoreBundle\Component\Interfaces\NodeInterface;
 use Base\CoreBundle\Entity\Info;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\Statement;
 use Base\CoreBundle\Interfaces\TranslateChildInterface;
 use DateTime;
@@ -69,9 +71,9 @@ class DefaultController extends Controller
         $displayHomeSlider = $homepage->getDisplayedSlider();
         $homeSlider = [];
         foreach ($slides as $slide) {
-            if ($slide->getInfo() != null) {
+            if ($slide->getInfo() && $this->isNodeAvailable($slide->getInfo(), $locale)) {
                 $homeSlider[] = $slide->getInfo();
-            } elseif ($slide->getStatement() != null) {
+            } elseif ($slide->getStatement() && $this->isNodeAvailable($slide->getStatement(), $locale)) {
                 $homeSlider[] = $slide->getStatement();
             }
         }
@@ -253,5 +255,23 @@ class DefaultController extends Controller
             'festivalYear' => $settings->getFestival()->getYear(),
             'last'         => $last,
         ]);
+    }
+
+    public function isNodeAvailable($item, $locale)
+    {
+        if (!$item->getPublishedAt()) {
+            return false;
+        }
+        $fr = $item->findTranslationByLocale('fr');
+        if (!$fr || $fr->getStatus() != TranslateChildInterface::STATUS_PUBLISHED) {
+            return false;
+        }
+        if ('fr' != $locale) {
+            $translation = $item->findTranslationByLocale($locale);
+            if (!$translation || $translation->getStatus() != TranslateChildInterface::STATUS_TRANSLATED) {
+                return false;
+            }
+        }
+        return true;
     }
 }

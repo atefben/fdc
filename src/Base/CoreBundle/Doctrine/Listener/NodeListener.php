@@ -7,6 +7,7 @@ use Base\CoreBundle\Component\Interfaces\NodeImageInterface;
 use Base\CoreBundle\Component\Interfaces\NodeInterface;
 use Base\CoreBundle\Component\Interfaces\NodeTranslationInterface;
 use Base\CoreBundle\Component\Interfaces\NodeVideoInterface;
+use Base\CoreBundle\Entity\News;
 use Base\CoreBundle\Entity\Node;
 use Base\CoreBundle\Entity\NodeTranslation;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
@@ -103,7 +104,15 @@ class NodeListener
             ->setMainImage($object->getHeader())
             ->setTheme($object->getTheme())
             ->setTypeClone($object->getTypeClone())
+            ->setOrange($object->getOrange())
         ;
+
+        if ($object instanceof News) {
+            $node->setHidden($object->getHidden());
+        }
+        else {
+            $node->setHidden(false);
+        }
 
         if ($object instanceof NodeAudioInterface) {
             $node->setMainAudio($object->getAudio());

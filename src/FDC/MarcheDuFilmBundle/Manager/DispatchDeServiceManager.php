@@ -5,7 +5,6 @@ namespace FDC\MarcheDuFilmBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceTranslation;
 use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceWidgetTranslation;
-use FDC\MarcheDuFilmBundle\Entity\DispatchDeServiceContactTranslation;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class DispatchDeServiceManager

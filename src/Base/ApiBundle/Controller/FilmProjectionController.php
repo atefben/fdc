@@ -149,6 +149,9 @@ class FilmProjectionController extends FOSRestController
             ->getApiRooms($festival, null, null, $room)
         ;
 
+        if (count($rooms) === 1) {
+            $rooms = reset($rooms);
+        }
 
         $groups = ['projection_list_2017'];
         $context = $coreManager->setContext($groups, $paramFetcher);
@@ -243,12 +246,13 @@ class FilmProjectionController extends FOSRestController
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:FilmProjection')
-            ->getMainProjection2017()
+            ->getMainProjection2017(['Événement'])
         ;
+
 
         // set context view
         $context = SerializationContext::create();
-        $context->setGroups(['projection_show']);
+        $context->setGroups(['programmation_main']);
         $context->setVersion($version);
         $view = $this->view($projection, 200);
         $view->setSerializationContext($context);

@@ -40,6 +40,13 @@ class Theme implements TranslateMainInterface
     protected $id;
 
     /**
+     * @var bool
+     * @ORM\Column(name="orange", type="boolean", nullable=true)
+     * @Groups({"news_list", "search", "news_show", "home"})
+     */
+    protected $orange = false;
+
+    /**
      * @var ArrayCollection
      *
      * @Groups({"news_list", "search", "news_show", "event_list", "search", "event_show", "film_show", "home", "live", "search"})
@@ -73,6 +80,29 @@ class Theme implements TranslateMainInterface
         }
 
         return $string;
+    }
+
+    /**
+     * Set orange
+     *
+     * @param boolean $orange
+     * @return $this
+     */
+    public function setOrange($orange)
+    {
+        $this->orange = $orange;
+
+        return $this;
+    }
+
+    /**
+     * Get orange
+     *
+     * @return boolean
+     */
+    public function getOrange()
+    {
+        return $this->orange;
     }
 
     /**

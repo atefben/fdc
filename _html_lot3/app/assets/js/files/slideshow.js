@@ -704,20 +704,18 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
 
                 img.css('transform','translate3d(' + (-mvtX) + 'px' +',' + (-mvtY) + 'px' + ', 0) scale(2)');
             }
-        })
+        });
 
         $('.fullscreen-slider img').on('click', function (e) {
 
             $(this).toggleClass('isZoom');
-
+            $(this).offsetHeight;
+            $(this).toggleClass('isZoomed');
             if($(this).hasClass('isZoom')) {
-                $(this).css('transform', 'scale(2)');
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
             }else{
-                $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
-
         });
 
         $('.fullscreen-slider img').on('mouseout', function (e){

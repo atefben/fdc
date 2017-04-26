@@ -7,7 +7,9 @@
     <div class="a2lix_translationsFields tab-content">
         {% set themeTranslations = (form.parent.children.theme.vars.data is not null) ? form.parent.children.theme.vars.data.translations : null %}
         {% set headerTranslations = (form.parent.children.header.vars.data is not null) ? form.parent.children.header.vars.data.translations : null %}
-        {% set newsNewsTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
+        {% if not form.parent.vars.data.orange %}
+            {% set newsNewsTag = (form.parent.children.tags.vars.data|length > 0) ? form.parent.children.tags.vars.data : null %}
+        {% endif %}
 
         {% for translationsFields in form %}
             {{ form_row(translationsFields.applyChanges) }}
@@ -98,6 +100,7 @@
                                                 {% endif %}
                                             </div>
                                         </div>
+                                        {% if not form.parent.vars.data.orange %}
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Tags de recherche
@@ -119,6 +122,7 @@
                                                 {% endif %}
                                             </div>
                                         </div>
+                                        {% endif %}
                                         <div class="form-group">
                                             <header>
                                                 Image principale
@@ -202,6 +206,7 @@
                                                 {% endif %}
                                             </div>
                                         </div>
+                                        {% if not form.parent.vars.data.orange %}
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Tags de recherche
@@ -218,6 +223,7 @@
                                                 {% endfor %}
                                             </div>
                                         </div>
+                                        {% endif %}
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Informations image principale
@@ -332,15 +338,19 @@
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_text_type) | escape }}"><i
                                                 class="icon-plus"></i>{{ 'form.widget.text'|trans }}</a>
+                                    {% if not form.parent.vars.data.orange %}
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_type) | escape }}"><i
                                                 class="icon-plus"></i>{{ 'form.widget.video'|trans }}</a>
+                                    {% endif %}
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_video_youtube_type) | escape }}"><i
                                                 class="icon-plus"></i>{{ 'form.widget.video_youtube'|trans }}</a>
+                                    {% if not form.parent.vars.data.orange %}
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_audio_type) | escape }}"><i
                                                 class="icon-plus"></i>{{ 'form.widget.audio'|trans }}</a>
+                                    {% endif %}
                                     <a class="btn btn-primary btn-add-base-widget"
                                        data-prototype="{{ form_widget(form.parent.children.widgets.vars.prototypes.news_widget_image_type) | escape }}"><i
                                                 class="icon-plus"></i>{{ 'form.widget.image'|trans }}</a>
@@ -713,7 +723,7 @@
                         </div>
                     {% endif %}
                 </div>
-                {% if form.vars.default_locale == locale %}
+                {% if form.vars.default_locale == locale and not form.parent.vars.data.orange %}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-success">
@@ -734,12 +744,15 @@
                                         {{ form_widget(form.parent.children.hideSameDay) }}
                                         {{ form_label(form.parent.children.hideSameDay) }}
                                     </div>
+                                    {% if not form.parent.vars.data.orange %}
                                     {{ form_row(form.parent.children.tags) }}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endif %}
+                {% if not form.parent.vars.data.orange %}
                 <div class="row">
                     <div class="col-md-8">
                         <div class="box box-success">
@@ -800,6 +813,7 @@
                         </div>
                     {% endif %}
                 </div>
+                {% endif %}
                 {% if form.vars.default_locale != locale %}
                     <div class="row">
                         <div class="col-md-4">

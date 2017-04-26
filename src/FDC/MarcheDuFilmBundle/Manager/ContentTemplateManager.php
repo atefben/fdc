@@ -79,6 +79,10 @@ class ContentTemplateManager
                 $pageType = MdfConferenceProgram::TYPE_PRODUCERS_NETWORK;
                 $isConference = true;
                 break;
+            case 'frontieres':
+                $pageType = MdfConferenceProgram::TYPE_FRONTIERES;
+                $isConference = true;
+                break;
             case 'doc-corner':
                 $pageType = MdfConferenceProgram::TYPE_DOC_CORNER;
                 $isConference = true;

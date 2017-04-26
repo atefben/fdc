@@ -1,10 +1,7 @@
 $(document).ready(function () {
     // Renvoie un UID unique
-    function guid() {
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-        function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-        }
+    function guid() { // must be integer so it passes parseInt validation from remove event
+        return parseInt((Math.floor(Math.random() * (999999 - 999 + 1)) + 999) + '' + new Date().getTime());
     }
 
     // POPIN CALENDAR CREAT EVENT //
@@ -110,13 +107,14 @@ $(document).ready(function () {
                         } catch (e) {
                             var agenda = null;
                         }
-
+                        var error = false;
                         if (agenda == null) {
                             var events = [];
                             events.push(myEvent);
                             try {
                                 localStorage.setItem('agenda_press', JSON.stringify(events));
                             } catch (e) {
+                                error = true;
                             }
                         } else {
                             // get events, add the event and store
@@ -125,7 +123,68 @@ $(document).ready(function () {
                             try {
                                 localStorage.setItem('agenda_press', JSON.stringify(events));
                             } catch (e) {
+                                error = true;
                             }
+                        }
+
+                        if (!error) {
+                            $('.v-container').append('<div class="fc-event fc-event-custom" data-category="reprise" data-type="reprise" data-id="'+myEvent.id+'" data-color="'+myEvent.eventColor+'" data-start="'+myEvent.start+'" data-end="'+myEvent.end+'" data-time="'+myEvent.time+'" data-duration="'+myEvent.duration+'"><p class="remove-evt remove-myEvent"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+myEvent.eventPictogram+'"></i><span class="cat-title">'+myEvent.title+'</span></span><div class="info"><div class="txt"><span>'+myEvent.description+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(myEvent.duration / 60) + 'H' + (myEvent.duration % 60 < 10 ? '0' : '') + (myEvent.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+myEvent.room+'</span></div></div>');
+
+                            $(".fc-event").each(function () {
+                                if ($(this).data('id') == myEvent.id) {
+                                    // short event (less than 2 hours)
+                                    // based on time start and duration, calculate positions of event
+                                    var dur = Math.floor($(this).data('duration') / 60),
+                                        minutes = $(this).data('duration') % 60;
+
+                                    if (minutes == 0) {
+                                        minutes = '';
+                                    }
+                                    if (dur < 2) {
+                                        $(this).addClass('one-hour');
+                                        $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+                                    }
+
+                                    //add color
+                                    $(this).find('.category').css('background-color', $(this).data('color'));
+
+
+                                    var startDate = new Date($(this).data("start"))
+                                        , duration = $(this).data("duration")
+                                        , time = $(this).data("time");
+
+                                    var h = duration * 2.7;
+                                    $(this).css('height', h + 'px');
+
+                                    $(this).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
+
+                                    var day = $('.timeline-container .active').data('date');
+                                    var startDayDate = new Date("2016-05-"+day+"T00:00:00").getTime();
+                                    var endDayDate = new Date("2016-05-"+day+"T24:00:00").getTime();
+                                    if(startDate >= startDayDate && startDate <= endDayDate) {
+                                        $(this).css('display','block');
+                                    } else {
+                                        $(this).css('display','none');
+                                    }
+                                    // delete event from localStorage
+                                    $(this).on('click', '.remove-evt', function (e) {
+                                        e.preventDefault();
+
+                                        var id = parseInt($(this).parent().data('id'));
+                                        var agenda = localStorage.getItem('agenda_press');
+                                        events = JSON.parse(agenda);
+
+                                        for (var i = 0; i < events.length; i++) {
+                                            if (events[i].id == id) {
+                                                events.splice(i, 1);
+                                            }
+                                        }
+
+                                        localStorage.setItem('agenda_press', JSON.stringify(events));
+                                        $(this).parent().remove();
+                                    });
+                                }
+                            });
                         }
                     }
                 }

@@ -6,7 +6,7 @@
         <span class="select">
             <span class="active" data-filter="all">{{ 'search.result.filter.toutes'|trans }}</span>
             {% for key, selection in selections %}
-                <span data-filter="{{ selection|trans_fallback('slug') }}">{{ selection|trans_fallback('name') }}</span>
+                <span data-filter="{{ selection|trans_fallback('name') }}">{{ selection|trans_fallback('name') }}</span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>
         </span>
@@ -16,8 +16,14 @@
         <span class="select">
             <span class="active" data-filter="all">{{ 'search.result.filter.tous'|trans }}</span>
             {% for type in types %}
-                <span data-filter="{{ type|lower|replace(' ', '-') }}">
-                    {{ type }}
+                {%- set trans_slug = 'programmation.type.' ~ type|remove_accents|sonata_slugify|lower -%}
+                {%- set trans = trans_slug|trans -%}
+                <span data-filter="{{ (trans_slug != trans ? trans : type)|lower|replace(' ', '-') }}">
+                    {%- if trans_slug != trans -%}
+                        {{- trans -}}
+                    {%- else -%}
+                        {{- type -}}
+                    {%- endif -%}
                 </span>
             {% endfor %}
             <i class="icon icon_fleche-down"></i>

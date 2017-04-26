@@ -1,15 +1,141 @@
-{% trans_default_domain 'FDCCorporateBundle' %}
-<div class="footer-menu">
-    <ul>
-        <li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>
-        {% for element in footer %}
-            {% if element.enabled == true and element.route is defined and element.route != '' %}
-                <li>
-                    <a href="{% if element.route != '#' %}{{ path(element.route) }}{% else %}#{% endif %}">
-                        {{ element.transName|trans }}
-                    </a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+{#{% trans_default_domain 'FDCCorporateBundle' %}#}
+{#<div class="footer-menu">#}
+    {#<ul>#}
+        {#<li class="copyright">{{ 'footer.nav.copyright'|trans }} {{ 'now'|date('Y') }}</li>#}
+        {#{% for element in footer %}#}
+            {#{% if element.enabled == true and element.route is defined and element.route != '' %}#}
+                {#<li>#}
+                    {#<a href="{% if element.route != '#' %}{{ path(element.route) }}{% else %}#{% endif %}">#}
+                        {#{{ element.transName|trans }}#}
+                    {#</a>#}
+                {#</li>#}
+            {#{% endif %}#}
+        {#{% endfor %}#}
+    {#</ul>#}
+{#</div>#}
+
+{% if 'fr' == app.request.locale %}
+    <div class="footer-menu">
+        <ul>
+            <li class="copyright">© Copyright 2017</li>
+            <li>
+                <a href="/fr/contact">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="/fr/credits">
+                    Crédits
+                </a>
+            </li>
+            <li>
+                <a href="/fr/mentions-legales">
+                    Mentions Légales
+                </a>
+            </li>
+            <li>
+                <a href="/fr/sitemap">
+                    Plan du Site
+                </a>
+            </li>
+            <li>
+                <a href="/fr/privacy">
+                    Politique de Confidentialité
+                </a>
+            </li>
+        </ul>
+    </div>
+{% elseif 'en' == app.request.locale %}
+    <div class="footer-menu">
+        <ul>
+            <li class="copyright">© Copyright 2017</li>
+            <li>
+                <a href="/en/contact">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="/en/credits">
+                    Credits
+                </a>
+            </li>
+            <li>
+                <a href="/en/mentions-legales">
+                    Legal
+                </a>
+            </li>
+            <li>
+                <a href="/en/sitemap">
+                    Sitemap
+                </a>
+            </li>
+            <li>
+                <a href="/en/privacy">
+                    Privacy policy
+                </a>
+            </li>
+        </ul>
+    </div>
+{% elseif 'es' == app.request.locale %}
+    <div class="footer-menu">
+        <ul>
+            <li class="copyright">© Copyright 2017</li>
+            <li>
+                <a href="/es/contact">
+                    Contacto
+                </a>
+            </li>
+            <li>
+                <a href="/es/credits">
+                    Créditos
+                </a>
+            </li>
+            <li>
+                <a href="/es/mentions-legales">
+                    Información legal
+                </a>
+            </li>
+            <li>
+                <a href="/es/sitemap">
+                    Mapa del sitio
+                </a>
+            </li>
+            <li>
+                <a href="/es/privacy">
+                    Política de confidencialidad
+                </a>
+            </li>
+        </ul>
+    </div>
+{% elseif 'zh' == app.request.locale %}
+    <div class="footer-menu">
+        <ul>
+            <li class="copyright">©版权所有 2017</li>
+            <li>
+                <a href="/zh/contact">
+                    联络方式
+                </a>
+            </li>
+            <li>
+                <a href="/zh/credits">
+                    版权
+                </a>
+            </li>
+            <li>
+                <a href="/zh/mentions-legales">
+                    法律声明
+                </a>
+            </li>
+            <li>
+                <a href="/zh/sitemap">
+                    网站地图
+                </a>
+            </li>
+            <li>
+                <a href="/zh/privacy">
+                    保密政策
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

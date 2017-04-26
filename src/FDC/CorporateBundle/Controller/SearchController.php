@@ -441,10 +441,26 @@ class SearchController extends Controller
     private function _translateData($data)
     {
         $translator = $this->get('translator');
-        foreach ($data as &$value) {
-            if (is_array($value)) {
-                foreach ($value as &$label) {
-                    $label = $translator->trans('search.form.' . $label, [], 'FDCCorporateBundle');
+        foreach ($data as $key => &$value) {
+            if($key == "professions") {
+                continue;
+            }else if ($key == "genres") {
+                if (is_array($value)) {
+                    foreach ($value as &$label) {
+                        if($label == 'F') {
+                            $label = 'Madame';
+                        }
+
+                        if($label == 'M') {
+                            $label = 'Monsieur';
+                        }
+                    }
+                }
+            }else {
+                if (is_array($value)) {
+                    foreach ($value as &$label) {
+                        $label = $translator->trans('search.form.' . $label, [], 'FDCCorporateBundle');
+                    }
                 }
             }
         }

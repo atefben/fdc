@@ -38,8 +38,15 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
             }
         }
         
+        if(isset($searchTerm['genres']) && $searchTerm['genres']) {
+            foreach($searchTerm['genres'] as $genre) {
+                $finalQuery->addMust($this->getLocalizedGenderFieldsQuery('fr', $genre)); //comparison done with 'fr'
+            }
+        }
+
         $sortedQuery = new \Elastica\Query();
         $sortedQuery
+            ->setMinScore(1)
             ->setQuery($finalQuery)
             ->addSort('_score')
             ->addSort(array('firstname' => array('order' => 'asc')))
@@ -58,6 +65,17 @@ class FilmPersonRepository extends SearchRepository implements SearchRepositoryI
         $path = 'translations';
         $fields = array(
           'profession',
+        );
+ 
+        return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);
+     
+    }
+    
+    private function getLocalizedGenderFieldsQuery($_locale, $searchTerm)
+    {
+        $path = 'translations';
+        $fields = array(
+          'gender',
         );
  
         return $this->getFieldsKeywordNestedQuery($fields, $searchTerm, $path, $_locale);

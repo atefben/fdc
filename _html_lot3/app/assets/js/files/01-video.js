@@ -1,6 +1,6 @@
 String.prototype.trunc = function (n, useWordBoundary) {
     var isTooLong = this.length > n,
-        s_ = isTooLong ? this.substr(0, n - 1) : this;
+    s_ = isTooLong ? this.substr(0, n - 1) : this;
     s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
     return isTooLong ? s_ + '...' : s_;
 };
@@ -116,7 +116,7 @@ var initVideo = function (hash) {
         });
     }
     return tmp;
-};
+}
 
 function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
     var $container = $("#" + vid.id).parent();
@@ -240,13 +240,13 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     $sound.find('.sound-seek').css('width', '0%');
                 }
             }
-        }
+        };
 
         playerInstance.stopMute = function () {
             playerInstance.setMute(false);
             playerInstance.setVolume(100);
             $sound.find('.sound-seek').css('width', '100%');
-        }
+        };
 
         playerInstance.removeFullscreen = function () {
             $container.find('.channels-video').removeClass('active');
@@ -255,7 +255,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             $fullscreen.removeClass('icon-reverseFullscreen').addClass('icon-fullscreen');
             playerInstance.resize('100%', '100%');
             mouseMoving(false);
-        }
+        };
 
         function externeControl() {
             $topBar.on('click', '.channels', function () {
@@ -423,7 +423,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
                     $link.attr('data-clipboard-text', data.url);
 
                 });
-            }
+            };
 
             var loadInterval = window.setInterval(function () {
                 if ($('.slider-02 .owl-item.center').length) {
@@ -1042,7 +1042,7 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }, 1000);
             initRs();
         });
-    }
+    };
 
     function updatePopinMedia(data) {
         data['url'] = data['url'] || document.location.href;
@@ -1116,17 +1116,15 @@ function playerLoad(vid, playerInstance, havePlaylist, live, callback) {
             }, 500);
 
         });
-    } else if ($('.medias').length > 0 || $('.media-library').length > 0) {
-
         initPopinVideo(hash);
-
+    } else if ($('.medias').length > 0 || $('.media-library').length > 0) {
+        initPopinVideo(hash);
     } else if ($('.video-playlist').length > 0) {
         if ($('.home #homepage-playlist-player').length > 0) {
             videoPlayer = playerInit('homepage-playlist-player', false, true);
         } else {
             videoPlayer = playerInit('video-playlist', 'video-playlist', true, false);
         }
-
     } else if ($('#video-player-ba').length > 0) {
         videoMovieBa = playerInit('video-player-ba', false, true)
 

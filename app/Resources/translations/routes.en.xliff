@@ -611,8 +611,8 @@
         <target state="new">/festival/web-tv/trailers/{slug}</target>
       </trans-unit>
       <trans-unit id="585a886a362a5f28711137aaf7fb970eb267616b" resname="fdc_event_webview_article">
-        <source>/festival/webview/article/{type}/{variant}/{id}</source>
-        <target state="new">/festival/webview/article/{type}/{variant}/{id}</target>
+        <source>/webview/article/{type}/{variant}/{id}</source>
+        <target state="new">/webview/article/{type}/{variant}/{id}</target>
       </trans-unit>
       <trans-unit id="cb9b5ad29743f31635e3241204a93f75230e107e" resname="fdc_eventmobile_agenda_get">
         <source>/festival/programmation/agenda</source>

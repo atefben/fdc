@@ -81,8 +81,8 @@ $(document).ready(function() {
   addEventsInCalendar();
 
   function displayProgrammationDay(day) {
-    var startDayDate = new Date("2016-05-"+day+"T08:00:00").getTime();
-    var endDayDate = new Date("2016-05-"+(day+1)+"T03:00:00").getTime();
+    var startDayDate = new Date("2016-05-"+day+"T00:00:00").getTime();
+    var endDayDate = new Date("2016-05-"+day+"T24:00:00").getTime();
 
     $(".fc-event").each(function () {
       var startDate = new Date($(this).data('start')).getTime();
@@ -119,7 +119,7 @@ $(document).ready(function() {
       if (evt.type != 'custom') {
         $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="' + evt.url + '" data-id="' + evt.id + '" data-color="' + evt.eventColor + '" data-start="' + evt.start + '" data-end="' + evt.end + '" data-time="' + evt.time + '" data-duration="' + evt.duration + '"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon ' + evt.eventPictogram + '"></i><span class="cat-title">' + evt.type + '</span></span><div class="info"><img src="' + evt.picture + '"><div class="txt"><span>' + evt.title + '</span><strong>' + evt.author + '</strong></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">' + evt.room + '</span><span class="competition">' + evt.selection + '</span></div></div>');
       } else {
-        $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.type+'</span></span><div class="info"><div class="txt"><span>'+evt.title+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
+        $('.v-container').append('<div class="fc-event fc-event-custom" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.title+'</span></span><div class="info"><div class="txt"><span>'+evt.description+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
       }
     });
 
@@ -161,7 +161,9 @@ $(document).ready(function() {
 
     $('.calendar').on('click', '.fc-event', function (e) {
       var url = $(this).data('url');
-      openPopinEvent(url);
+      if (url) {
+        openPopinEvent(url);
+      }
     });
 
     // delete event from localStorage

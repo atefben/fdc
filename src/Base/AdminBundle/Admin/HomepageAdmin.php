@@ -281,6 +281,7 @@ class HomepageAdmin extends Admin
             )
             ->add('trailerImage', 'sonata_type_model_list', [
                 'label' => 'form.label_homepage_trailer_background',
+                'help' => 'form.homepage.helper_trailer_background',
                 'required' => false
             ])
             ->add('topWebTvsAssociated', 'sonata_type_collection', array(
