@@ -715,12 +715,12 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             if($(this).hasClass('isZoom')) {
                 $(this).css('transform', 'scale(2)');
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
+                $(this).css('transition', 'none');
+                $(this).offsetHeight;
             }else{
                 $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
-            $(this).css('transition', 'none');
-            $(this).offsetHeight;
         });
 
         $('.fullscreen-slider img').on('mouseout', function (e){
