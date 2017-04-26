@@ -858,9 +858,11 @@ class StatementRepository extends EntityRepository
      * @param $dateTime
      * @param $count
      * @param $locale
+     * @param $limitDate
+     * @param $orange
      * @return mixed
      */
-    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
+    public function getApiLastStatements($festival, $dateTime, $locale, $count, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this->createQueryBuilder('n')
             ->leftjoin('Base\CoreBundle\Entity\StatementArticle', 'na', 'WITH', 'na.id = n.id')
@@ -882,6 +884,13 @@ class StatementRepository extends EntityRepository
                 OR (nvt.locale = 'fr' AND nvt.status = :status)"
             )
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

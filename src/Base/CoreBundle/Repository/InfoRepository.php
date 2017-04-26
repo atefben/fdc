@@ -716,9 +716,11 @@ class InfoRepository extends EntityRepository
      * @param $dateTime
      * @param $count
      * @param $locale
+     * @param $limitDate
+     * @param $orange
      * @return Info[]
      */
-    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null)
+    public function getApiLastInfos($festival, $dateTime, $locale, $count, \DateTime $limitDate = null, $orange = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -735,6 +737,13 @@ class InfoRepository extends EntityRepository
             ->andWhere('n.festival = :festival')
             ->andWhere('(n.publishedAt IS NULL OR n.publishedAt <= :datetime) AND (n.publishEndedAt IS NULL OR n.publishEndedAt >= :datetime)')
         ;
+
+        if (!$orange) {
+            $qb
+                ->andWhere('n.orange != :orange')
+                ->setParameter(':orange', true)
+            ;
+        }
 
         if ($limitDate) {
             $qb

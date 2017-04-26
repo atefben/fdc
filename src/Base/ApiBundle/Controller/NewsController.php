@@ -21,7 +21,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class NewsController extends FOSRestController
 {
-    private $repository = 'BaseCoreBundle:News';
 
     /**
      * Return an array of news, can be filtered with page / offset parameters
