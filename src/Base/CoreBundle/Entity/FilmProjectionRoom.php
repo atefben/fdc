@@ -198,9 +198,9 @@ class FilmProjectionRoom
             }
             $days[$keyDay][$key] = $projection;
         }
-        foreach ($days as &$day) {
-            ksort($day);
-            $day = array_values($day);
+        foreach ($days as $key => $day) {
+            ksort($days[$key]);
+            $days[$key] = array_values($day);
         }
         ksort($days);
         return [$days];
