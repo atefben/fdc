@@ -407,8 +407,6 @@ class NewsArticleAdmin extends Admin
                     'Orange et le cinéma' => 'Orange et le cinéma',
                 ],
                 'required' => true,
-                'expanded' => true,
-                'multiple' => false,
             ])
             ->end()
         ;
