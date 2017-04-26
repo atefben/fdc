@@ -34,6 +34,36 @@ class InfoImporter extends Importer
     protected $status;
     protected $isInfoImage = false;
 
+    public function importOneInfo($id)
+    {
+        $oldArticle = $this
+            ->getManager()
+            ->getRepository('BaseCoreBundle:OldArticle')
+            ->createQueryBuilder('o')
+            ->andWhere('o.articleTypeId in (:types)')
+            ->setParameter(':types', [static::TYPE_NEWS_FESTIVAL])
+            ->andWhere('o.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        if (!$oldArticle) {
+            return;
+        }
+
+        $news = $this->importItem($oldArticle);
+        if ($news) {
+            foreach ($this->langs as $lang) {
+                $news->findTranslationByLocale($lang);
+            }
+        }
+
+        $this->getSiteEvent(true);
+        $this->getSiteCorporate(true);
+        $this->getDefaultTheme(true);
+    }
+
     public function importInfos()
     {
         $this->output->writeln('<info>Import infos...</info>');
@@ -123,8 +153,7 @@ class InfoImporter extends Importer
             if ($translation) {
                 if ($this->input->getOption('update-films-only')) {
                     $this->buildAssociatedFilms($info, $oldArticle);
-                }
-                elseif ($this->input->getOption('update-widget-video-only')) {
+                } elseif ($this->input->getOption('update-widget-video-only')) {
                     $this->buildInfoWidgetsVideo($info, $translation, $oldTranslation);
                 } else {
                     $this->buildInfoWidgetText($info, $translation, $oldTranslation);
@@ -770,6 +799,18 @@ class InfoImporter extends Importer
                     }
                 }
             }
+        }
+
+        $ids = [62152, 62133, 62105, 62092, 62093];
+
+        if (in_array($oldArticle->getId(), $ids)) {
+            if ($oldArticle->getId() == 62093) {
+                $this->isInfoImage = true;
+            } else {
+                $this->isInfoImage = false;
+            }
+            $this->status = TranslateChildInterface::STATUS_PUBLISHED;
+            return true;
         }
     }
 

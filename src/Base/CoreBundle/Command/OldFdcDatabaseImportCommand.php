@@ -52,7 +52,9 @@ class OldFdcDatabaseImportCommand extends ContainerAwareCommand
         if ($onlyInfos) {
             $infoImporter = $this->getContainer()->get('old_import.info_importer');
             $infoImporter->setInput($input)->setOutput($output)->setDefaultThemeId($themeId);
-            if ($input->getOption('count')) {
+            if ($input->getOption('id')) {
+                $infoImporter->importOneInfo($input->getOption('id'));
+            } elseif ($input->getOption('count')) {
                 $output->writeln('Infos to import ' . $infoImporter->countInfos());
             } else {
                 $infoImporter->importInfos();

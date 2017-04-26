@@ -164,7 +164,7 @@
         {'section': movie.selectionSection|trans_fallback('name')|trans,
             'detail' : directorsName,
             'title'  : mainTitle,
-            'theaters' : 'TODO',
+            'theaters' : '',
             'description': movie|trans_fallback('synopsis')|truncate(150),
             'url': url(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')),
             'artist' : null,
