@@ -722,7 +722,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
                 $(this).css('transform', 'scale(1)');
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
-            
+
             $(this).css('transition', 'none');
         });
 
