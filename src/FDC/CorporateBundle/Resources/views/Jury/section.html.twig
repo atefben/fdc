@@ -4,14 +4,10 @@
 
 {% block body %}
     <section class="s-slider-retrospective">
-
         {% include 'FDCCorporateBundle:Retrospective:components/years_slider.html.twig' %}
-
         <div class="ajax-section">
             <div class="contain-ajax jury">
-
                 {{ render(controller('FDCCorporateBundle:Editions:menu', {year:app.request.get('year'), route:app.request.get('_route')})) }}
-
                 <nav class="navigation-sticky-02">
                     <ul>
                         {% for tab in pages %}
@@ -23,22 +19,14 @@
                         {% endfor %}
                     </ul>
                 </nav>
-
                 <div class="all-contain">
-
                     {% for president in presidents %}
                         <div class="block-jury">
+                            {{ president['jury'].id }}
                             <a href="{{ path('fdc_corporate_artist_get', {'slug': president['jury'].person.slug}) }}">
                                 {%- if president['jury'].person.presidentJuryImage is defined and president['jury'].person.presidentJuryImage|trans_fallback('file') -%}
                                     <div class="contain-img" style="background-image:url({%- path president['jury'].person.presidentJuryImage|trans_fallback('file'), '976x535' -%})"></div>
                                 {%- elseif president['jury'].id is defined -%}
-                                    {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
-                                    {%- if media is not empty -%}
-                                        <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
-                                    {%- else -%}
-                                        <div class="contain-img" style="background-image:url('{{ asset('bundles/fdcevent/img/jurys/president.jpg') }}');"></div>
-                                    {%- endif -%}
-                                {%- else -%}
                                     {% set media = jury_page_media(president['jury'], app.request.locale, festival) %}
                                     {%- if media is not empty -%}
                                         <div class="contain-img" style="background-image:url('{% path media, '976x535' %}');"></div>
