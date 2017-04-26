@@ -371,6 +371,17 @@ $(document).ready(function() {
         $(this).css('display','none');
       }
     });
+
+    var venues = $(".v-wrapper-content").owlCarousel({
+                            nav: false,
+                            dots: false,
+                            smartSpeed: 500,
+                            margin: 0,
+                            autoWidth: true,
+                            loop: false,
+                            items: 2
+                        });
+                        venues.owlCarousel();
   }
 
   function heigthEvent() {
