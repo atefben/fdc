@@ -684,15 +684,17 @@ $(document).ready(function () {
             var arr = videoMovieBa.getPlaylist();
             arr.forEach(function (video, i) {
                 if (video.vid == hash) {
-                    var sliderMovieVideos = $("#slider-movie-videos");
-                    videoMovieBa.playlistItem(i);
-                    sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
-                    var $container = $("#video-player-ba").parent();
-                    var $fullscreen = $container.find('.icon-fullscreen');
-                    fullScreenApi.requestFullScreen($container[0]);
-                    $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
-                    videoMovieBa.resize('100%', '100%');
-                    mouseMoving(true);
+                    setTimeout(function () {
+                        var sliderMovieVideos = $("#slider-movie-videos");
+                        videoMovieBa.playlistItem(i);
+                        sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
+                        var $container = $("#video-player-ba").parent();
+                        var $fullscreen = $container.find('.icon-fullscreen');
+                        fullScreenApi.requestFullScreen($container[0]);
+                        $fullscreen.removeClass('icon-fullscreen').addClass('icon-reverseFullscreen');
+                        videoMovieBa.resize('100%', '100%');
+                        mouseMoving(true);
+                    }, 1000);
                 }
             });
         }
