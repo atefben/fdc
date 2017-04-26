@@ -360,17 +360,18 @@ $(document).ready(function() {
   addEventsInCalendar();
 
   function displayProgrammationDay(day) {
-    var startDayDate = new Date("2016-05-"+day+"T00:00:00").getTime();
-    var endDayDate = new Date("2016-05-"+day+"T24:00:00").getTime();
+      var startDayDate = new Date("2016-05-" + day + "T00:00:00").getTime();
+      var endDayDate = new Date("2016-05-" + day + "T24:00:00").getTime();
 
-    $(".fc-event").each(function () {
-      var startDate = new Date($(this).data('start')).getTime();
-      if(startDate >= startDayDate && startDate <= endDayDate) {
-        $(this).css('display','block');
-      } else {
-        $(this).css('display','none');
-      }
-    });
+      $(".fc-event").each(function () {
+          var startDate = new Date($(this).data('start')).getTime();
+          if (startDate >= startDayDate && startDate <= endDayDate) {
+              $(this).css('display', 'block');
+          } else {
+              $(this).css('display', 'none');
+          }
+      });
+  }
 
   function heigthEvent() {
     $('.fc-event').each(function (index, value) {
