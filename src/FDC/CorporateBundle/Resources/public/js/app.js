@@ -7309,6 +7309,7 @@ $(document).ready(function () {
             var arr = videoMovieBa.getPlaylist();
             arr.forEach(function (video, i) {
                 if (video.vid == hash) {
+                    var sliderMovieVideos = $("#slider-movie-videos");
                     videoMovieBa.playlistItem(i);
                     sliderMovieVideos.trigger('to.owl.carousel', [i, 400, true]);
                     var $container = $("#video-player-ba").parent();
