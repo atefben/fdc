@@ -48,6 +48,7 @@
         
         <div class="Article-header-meta">
           <span class="Article-header-meta-category">{{ object.theme|trans_fallback('name') }}</span>
+          {% if not object.orange %}
           <span class="Article-header-meta-date">
             {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
             {% set today = "now"|date('d-m-Y H:i:s') %}
@@ -76,6 +77,7 @@
               {% endif %}
             {% endif %}
           </span>
+          {% endif %}
           {% if object is news_image %}
             <span class="Article-header-meta-misc">
             {% for media in object.gallery.medias %}
@@ -94,7 +96,36 @@
 
       <div class="Article-content">
         <h1>{{ object|trans_fallback('title') }}</h1>
+        {% if object.orange %}
+          <span class="Article-header-meta-date">
+          {% set postDate = object.publishedAt|date('d-m-Y H:i:s') %}
+              {% set today = "now"|date('d-m-Y H:i:s') %}
+              {% set difference = date(today).diff(date(postDate)) %}
+              {% set daysElapsed = difference.d %}
+              {% set hoursElapsed = difference.h %}
+              {% set minutesElapsed = difference.i %}
 
+              {% if daysElapsed > 1 %}
+                <strong>{{ 'webview.article.date_prefix'|trans }} {{ object.publishedAt|date('d.m.y') }}</strong> {{ 'webview.article.date_separator'|trans }} {{ agenda_leftbar_translate_hour(object.publishedAt|date('H:i'), true, true) }}
+          {% elseif daysElapsed == 1 %}
+                <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+                  {{ object.publishedAt|date('H') }}:{{ object.publishedAt|date('i') }}
+              {% else %}
+                  {% if hoursElapsed <= 1 %}
+                    <strong>{{ 'webview.article.minutes_elapsed'|trans }}</strong> {{ minutesElapsed }} <strong>{{ 'webview.article.minutes_elapsed_suffix'|trans }}</strong>
+            {% else %}
+                      {# detect differents days even if less than 24 hours between them #}
+                      {% if object.publishedAt|date('d') != "now"|date('d') %}
+                        <strong>{{ 'webview.article.yesterday_at'|trans }}</strong>
+              {{ object.publishedAt|date('H') }}
+              <strong>{{ 'webview.article.yesterday_at_suffix'|trans }}</strong>
+              {% else %}
+                        <strong>{{ 'webview.article.hours_elapsed'|trans }}</strong> {{ hoursElapsed }} <strong>{{ 'webview.article.hours_elapsed_suffix'|trans }}</strong>
+                      {% endif %}
+                  {% endif %}
+              {% endif %}
+        </span>
+        {% endif %}
         <strong>{{ object|trans_fallback('introduction')|raw }}</strong>
         
         {% for widget in object.widgets %}
@@ -138,6 +169,21 @@
         </div>
       </div-->
     </article>
+
+    {% if object.orange %}
+      <div class="Article-bottom-block">
+        <div class="Article-bottom-block-logos">
+          <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-orange.png') }}"/>
+          <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-fdc.png') }}"/>
+        </div>
+        <h2>{{ 'webview.orange.more'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
+      </div>
+      <div class="Article-bottom-block ocs">
+        <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/ocs.png') }}"/>
+        <h2>{{ 'webview.orange.more'|trans }} <img src="{{ asset('img/article/right-arrow.png') }}"/></h2>
+      </div>
+    {% endif %}
+
 
     {% if sameDayObjects != null and object.hideSameDay == false %}
     <aside class="Article-related">
@@ -233,6 +279,7 @@
             </div>
           </a>
           {% endfor %}
+      </div>
       </div>
     </aside>
     {% endif %}
