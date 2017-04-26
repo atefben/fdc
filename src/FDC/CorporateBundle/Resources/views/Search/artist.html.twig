@@ -50,7 +50,10 @@
                         </div>
                         <div class="contain-txts">
                             <span class="title-11">{{ artist.firstName }} {{ artist.lastName }}</span>
-                            <span class="title-12">{{ artist|trans_fallback('profession') }}</span>
+                            {% set profession = artist|trans_fallback('profession') %}
+                            {% if profession %}
+                                <span class="title-12">{{ artist|profession_gender('profession') }}</span>
+                            {% endif %}
                             {% if artist.nationality %}
                                 <span class="title-13">
                                     {{ artist.nationality|trans_fallback('name') }}
