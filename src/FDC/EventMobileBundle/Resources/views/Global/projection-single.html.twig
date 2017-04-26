@@ -144,7 +144,12 @@
                                     <span class="category">
                                         <i class="icon icon_evt-seance-presse"></i>
                                         <span class="cat-title">
-                                            {{ seance.type }}
+                                            {%- set trans_slug = 'programmation.type.' ~ seance.type|remove_accents|sonata_slugify|lower -%}
+                                            {%- set trans = trans_slug|trans -%}{%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- seance.type -}}
+                                            {%- endif -%}
                                         </span>
                                     </span>
                                     <div class="info">
@@ -231,7 +236,12 @@
                                 >
                                         <span class="category">
                                             <i class="icon icon_evt-seance-conference"></i>
-                                            {{ conference.type }}
+                                            {%- set trans_slug = 'programmation.type.' ~ conference.type|remove_accents|sonata_slugify|lower -%}
+                                            {%- set trans = trans_slug|trans -%}{%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- conference.type -}}
+                                            {%- endif -%}
                                         </span>
                                     <div class="info">
                                         {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({
@@ -316,7 +326,12 @@
                                         >
                                         <span class="category">
                                             <i class="icon icon_evt-seance"></i>
-                                            {{ relatedProjection.type }}
+                                            {%- set trans_slug = 'programmation.type.' ~ relatedProjection.type|remove_accents|sonata_slugify|lower -%}
+                                            {%- set trans = trans_slug|trans -%}{%- if trans_slug != trans -%}
+                                                {{- trans -}}
+                                            {%- else -%}
+                                                {{- relatedProjection.type -}}
+                                            {%- endif -%}
                                         </span>
                                     <div class="info">
                                         {%- include 'FDCEventBundle:Global:components/film.poster.html.twig' with ({

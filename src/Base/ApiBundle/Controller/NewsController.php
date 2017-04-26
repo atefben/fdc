@@ -217,9 +217,9 @@ class NewsController extends FOSRestController
         $limitDate->setTime(0, 0, 0);
 
         // news
-        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, false, true);
-        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate, false, true);
-        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate, false, true);
+        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, true, true);
+        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate, true, true);
+        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate, true, true);
 
         // images
         $images = $this
