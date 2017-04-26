@@ -5341,6 +5341,7 @@ function resizeend() {
 /**
  * Created by tatjac on 17/06/2016.
  */
+
 var owinitSlideShow = function (slider, hash) {
 
     if (typeof hash != "undefined" && !$('.affiche-fdc').length) {
