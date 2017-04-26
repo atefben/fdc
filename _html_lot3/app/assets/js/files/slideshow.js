@@ -713,10 +713,14 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             $(this).toggleClass('isZoom');
 
             if($(this).hasClass('isZoom')) {
-                $(this).css('transform', 'scale(2)');
+                $(this).animate({
+                    transform: 'scale(2)'
+                }, 900, "swing");
                 $('.zoomCursor .icon').removeClass('icon-wen-more').addClass('icon-wen-minus');
             }else{
-                $(this).css('transform', 'scale(1)');
+                $(this).animate({
+                    transform: 'scale(1)'
+                }, 900, "swing");
                 $('.zoomCursor .icon').addClass('icon-wen-more').removeClass('icon-wen-minus');
             }
         });
