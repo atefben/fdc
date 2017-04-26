@@ -213,13 +213,13 @@ class NewsController extends FOSRestController
         }
 
         $limitDate = new \DateTime();
-        $limitDate->setDate(2016, 9, 30);
-        $limitDate->setTime(23, 59, 59);
+        $limitDate->setDate(2016, 10, 1);
+        $limitDate->setTime(0, 0, 0);
 
         // news
-        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, false);
-        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate, false);
-        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate, false);
+        $news = $this->getApiSameDayNews($festival, $lang, $dateTime, $limitDate, false, true);
+        $infos = $this->getApiSameDayInfos($festival, $lang, $dateTime, $limitDate, false, true);
+        $statements = $this->getApiSameDayStatements($festival, $lang, $dateTime, $limitDate, false, true);
 
         // images
         $images = $this
@@ -296,35 +296,35 @@ class NewsController extends FOSRestController
         return $view;
     }
 
-    public function getApiSameDayNews($festival, $locale, $dateTime, DateTime $limitDate, $orange = false)
+    public function getApiSameDayNews($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:News')
-            ->getNewsApiSameDayNews($locale, $festival, $dateTime, $limitDate, $orange)
+            ->getNewsApiSameDayNews($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }
 
-    public function getApiSameDayInfos($festival, $locale, $dateTime, DateTime $limitDate, $orange = false)
+    public function getApiSameDayInfos($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Info')
-            ->getNewsApiSameDayInfos($locale, $festival, $dateTime, $limitDate, $orange)
+            ->getNewsApiSameDayInfos($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }
 
-    public function getApiSameDayStatements($festival, $locale, $dateTime, DateTime $limitDate, $orange = false)
+    public function getApiSameDayStatements($festival, $locale, $dateTime, DateTime $limitDate, $orange = false, $inverseLimitDate = false)
     {
         $items = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('BaseCoreBundle:Statement')
-            ->getNewsApiSameDayStatements($locale, $festival, $dateTime, $limitDate, $orange)
+            ->getNewsApiSameDayStatements($locale, $festival, $dateTime, $limitDate, $orange, $inverseLimitDate)
         ;
         return $items ? $items : [];
     }

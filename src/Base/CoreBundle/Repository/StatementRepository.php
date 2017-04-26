@@ -129,9 +129,10 @@ class StatementRepository extends EntityRepository
      * @param \DateTime $dateTime
      * @param \DateTime $limitDate
      * @param boolean|null $orange
+     * @param boolean|null $inverseLimitDate
      * @return Statement[]
      */
-    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false)
+    public function getNewsApiSameDayStatements($locale, FilmFestival $festival, \DateTime $dateTime, \DateTime $limitDate = null, $orange = false, $inverseLimitDate = false)
     {
         $qb = $this
             ->createQueryBuilder('n')
@@ -157,7 +158,13 @@ class StatementRepository extends EntityRepository
             ;
         }
 
-        if ($limitDate) {
+        if ($limitDate && $inverseLimitDate) {
+            $qb
+                ->andWhere('n.publishedAt >= :limitDate')
+                ->setParameter(':limitDate', $limitDate)
+            ;
+        }
+        elseif ($limitDate) {
             $qb
                 ->andWhere('n.publishedAt <= :limitDate')
                 ->setParameter(':limitDate', $limitDate)
