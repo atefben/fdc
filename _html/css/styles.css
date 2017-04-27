@@ -17196,17 +17196,17 @@ article .read-later.rAlign span:after {
 }
 @media screen and (max-width: 1600px) {
   .single-movie {
-    padding-top: 330px;
+    padding-top: 290px;
   }
 }
 @media screen and (max-width: 1280px) {
   .single-movie {
-    padding-top: 270px;
+    padding-top: 230px;
   }
 }
 @media screen and (max-width: 1024px) {
   .single-movie {
-    padding-top: 180px;
+    padding-top: 140px;
   }
 }
 .single-movie h3.title-section {
@@ -26722,6 +26722,8 @@ body:not(.tablette) .webtv #live .img {
   height: 770px;
   width: 100%;
   z-index: 2;
+  margin-bottom: -15px;
+  /* IEF FIX */
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .our-news {
@@ -27331,6 +27333,12 @@ body:not(.tablette) .webtv #live .img {
   margin-right: 5px;
 }
 
+/* IE 11 FIX*/
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop, .our-news {
+    margin-bottom: -15px;
+  }
+}
 /* TABS */
 .pub {
   height: 480px;

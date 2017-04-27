@@ -16,6 +16,9 @@
     height: 770px;
     width: 100%;
     z-index: 2;
+    margin-bottom: -15px;
+
+    /* IEF FIX */
 
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
      margin-bottom: -15px;
@@ -620,3 +623,10 @@
     }
 }
 
+
+/* IE 11 FIX*/
+
+  @media all and (-ms-high-contrast:none) 
+   {
+    *::-ms-backdrop, .our-news { margin-bottom: -15px; };
+   }
