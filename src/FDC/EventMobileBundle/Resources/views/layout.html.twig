@@ -13,6 +13,9 @@
 		{%- block stylesheets -%}
 			{%- include 'FDCEventMobileBundle:Base:stylesheet.html.twig' -%}
 		{% endblock -%}
+		{% stylesheets 'bundles/fdceventmobile/css/custom.css' %}
+			<link rel="stylesheet" href="{{ asset_url }}">
+		{% endstylesheets %}
 		{% include 'FDCEventMobileBundle:Base:javascript_head.html.twig' -%}
 	</head>
 	<body>
