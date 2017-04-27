@@ -5,7 +5,7 @@ var slideshows = [],
 
 function initSlideshows() {
   // create slider of thumbs
-  var nbItems = $('.single-article').length != 0 ? 7 : 8;
+  var nbItems = $('.single-article, .about').length != 0 ? 5 : 8;
 
   var sliderThumbs = $('.thumbnails').owlCarousel({
     nav          : false,
