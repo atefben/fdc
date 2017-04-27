@@ -581,18 +581,21 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
             return false;
         }
 
+        var emailTitle = '';
+
         if(typeof images[centerElement].title !== 'undefined'){
             if(isHTML(images[centerElement].title)){
                 if($(images[centerElement].title).filter('*').size()){
                     if($(images[centerElement].title).filter('strong').length){
-                        images[centerElement].title = $(images[centerElement].title).filter('strong').text();
+                        emailTitle = $(images[centerElement].title).filter('strong').text();
                     }else{
-                        images[centerElement].title = $(images[centerElement].title).text();
+                        emailTitle = $(images[centerElement].title).text();
                     }
                 }
             }
         }
-        $('.popin-mail').find('.contain-popin .title-article').text(images[centerElement].title);
+
+        $('.popin-mail').find('.contain-popin .title-article').text(emailTitle);
         $('.popin-mail').find('form #contact_section').val(images[centerElement].label);
         $('.popin-mail').find('form #contact_detail').val(images[centerElement].date);
         $('.popin-mail').find('form #contact_title').val(images[centerElement].title);
