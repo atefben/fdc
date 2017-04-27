@@ -49,9 +49,11 @@ var initRs = function () {
             $(cls).find('.contain-popin .title-article').text(title);
         } else if($('.contain-titles').length){
             var title = $('.contain-titles').find('.title-15').text();
-            var theme = $('.contain-titles').find('.title-14').html();
+            var theme = $('.contain-titles').find('.title-14 .category').text();
+            var date = $('.contain-titles').find('.title-14 .date').text().substring(0, 8);
 
-            $(cls).find('.contain-popin .theme-article').html(theme);
+            $(cls).find('.contain-popin .theme-article').text(theme);
+            $(cls).find('.contain-popin .date-article').text(date);
             $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
