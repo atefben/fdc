@@ -119,7 +119,7 @@ class AjaxController extends Controller
         } elseif ($node instanceof NodeAudioInterface) {
             return 'audios';
         } elseif ($node instanceof NodeImageInterface) {
-            return 'images';
+            return 'photos';
         } elseif ($node instanceof NodeVideoInterface) {
             return 'videos';
         }
