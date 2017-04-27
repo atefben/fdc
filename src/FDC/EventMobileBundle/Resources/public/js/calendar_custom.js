@@ -212,6 +212,18 @@ $(document).ready(function () {
                                     $('#timeline a[data-date="' + new Date($(this).data('start')).getDate() + '"]').trigger('click');
                                 }
                             });
+
+                            var startDayDate = new Date("2016-05-"+myEvent.start.getDate()+"T00:00:00").getTime();
+                            var endDayDate = new Date("2016-05-"+myEvent.start.getDate()+"T23:59:59").getTime();
+
+                            $(".fc-event").each(function () {
+                                var startDateTimestamp = new Date($(this).data('start')).getTime();
+                                if(startDateTimestamp >= startDayDate && startDateTimestamp <= endDayDate) {
+                                    $(this).css('display','block');
+                                } else {
+                                    $(this).css('display','none');
+                                }
+                            });
                         }
                     }
                 }
