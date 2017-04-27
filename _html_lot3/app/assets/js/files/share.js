@@ -51,9 +51,11 @@ var initRs = function () {
             var title = $('.contain-titles').find('.title-15').text();
             var theme = $('.contain-titles').find('.title-14 .category').text();
             var date = $('.contain-titles').find('.title-14 .date').text().substring(0, 8);
+            var chapo = $('.contain-title').find('.title-02').text().substring(0, 150);
 
             $(cls).find('.contain-popin .theme-article').text(theme);
             $(cls).find('.contain-popin .date-article').text(date);
+            $(cls).find('.contain-popin .chap-article').text(chapo);
             $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
