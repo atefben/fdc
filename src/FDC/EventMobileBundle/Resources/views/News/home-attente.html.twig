@@ -152,7 +152,7 @@
                            data-timestamp="{{ timestamp|date('U') }}"
                            data-date="{{ date|date('d') }}"
                            class="{% if homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') == date|date('Y-m-d') %}active{% elseif homeArticles|length > 0 and homeArticles[0].publishedAt|date('Y-m-d') < date|date('Y-m-d') %}disabled{% endif %}">
-                            {{ date|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                            {{ date|localizeddate('full', 'none', app.request.locale, null, 'EEEE')|truncate(3, false, "") }}
                             <span class="day">{{ date|date('d') }}</span>
                         </a>
                     {% endfor %}
