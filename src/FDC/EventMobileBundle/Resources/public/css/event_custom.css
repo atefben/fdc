@@ -339,6 +339,7 @@
 
 .text-content h3.sub-title {
     font-size: 0.925rem;
+    font-family: Times New Roman, Times, serif;
 }
 
 .text-content .descrip-participate {
@@ -361,6 +362,7 @@
 .little-txt {
     font-size: 0.875rem;
     line-height: normal;
+    font-family: Times New Roman, Times, serif;
 }
 
 .big-txt {
@@ -380,6 +382,7 @@
     max-width: 100%;
     line-height: normal;
     margin: 10px 0 0;
+    font-family: Times New Roman, Times, serif;
 }
 
 .big-quote span.big-quote-paragraph {
@@ -405,6 +408,7 @@
 }
 
 .loc {
+    font-family: Times New Roman, Times, serif;
     display: block;
     width: 246px;
     margin: 0 auto;
@@ -424,6 +428,7 @@
 }
 
 .text-content .descript-acces {
+    font-family: Times New Roman, Times, serif;
     padding-bottom: 20px;
     font-size: .875rem;
     line-height: 24px;
