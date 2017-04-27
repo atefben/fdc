@@ -76,7 +76,7 @@
                         {% endif %}
                     {% elseif class(news) == "StatementImage" or class(news) == "InfoImage" or class(news) == "NewsImage" %}
                         <div class="single-gallery">
-                            {% include 'FDCEventBundle:News:widgets/single-gallery.html.twig' %}
+                            {% include 'FDCCorporateBundle:News/widgets:single-gallery.html.twig' %}
                         </div>
                     {% endif %}
                     {% if news|trans_fallback('introduction')|length > 0 %}
