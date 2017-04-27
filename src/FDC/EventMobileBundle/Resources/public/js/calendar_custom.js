@@ -56,7 +56,7 @@ $(document).ready(function () {
 
                     var dateBegin = new Date(date1);
                     var dateEnd = new Date(date2);
-                    var _userOffset = dateBegin.getTimezoneOffset() * 60000;
+                    // var _userOffset = dateBegin.getTimezoneOffset() * 60000;
 
 
                     if (dateEnd < dateBegin || !(dateEnd instanceof Date) || !(dateBegin instanceof Date)) {
@@ -77,21 +77,20 @@ $(document).ready(function () {
 
                         var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
                         //Création de l'évènement et affichage sur le calendrier
-                        var dateBeginTimezoned = new Date(dateBegin.getTime() + _userOffset);
-                        var dateEndTimezoned = new Date(dateEnd.getTime() + _userOffset);
+                        // var dateBeginTimezoned = new Date(dateBegin.getTime() + _userOffset);
+                        // var dateEndTimezoned = new Date(dateEnd.getTime() + _userOffset);
                         var myEvent = {
                             "title": titleEvent,
                             "eventColor": "#fff",
-                            "start": dateBeginTimezoned,
-                            "end": dateEndTimezoned,
+                            "start": dateBegin,
+                            "end": dateEnd,
                             "type": 'custom',
                             "description": data.description,
-                            "time": dateBeginTimezoned.getHours(),
+                            "time": dateBegin.getHours(),
                             "duration": (dateEnd - dateBegin) / 60000,
                             "room": data.place,
                             "eventPictogram": "pen",
-                            "id": id,
-                            "url": "eventPopin.html"
+                            "id": id
                         };
 
                         /*
@@ -183,6 +182,9 @@ $(document).ready(function () {
                                         localStorage.setItem('agenda_press', JSON.stringify(events));
                                         $(this).parent().remove();
                                     });
+
+                                    // go to the day of the new event
+                                    $('#timeline a[data-date="' + startDate.getDate() + '"]').trigger('click');
                                 }
                             });
                         }
