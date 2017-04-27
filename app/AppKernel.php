@@ -66,6 +66,8 @@ class AppKernel extends Kernel
             new FDC\EventMobileBundle\FDCEventMobileBundle(),
             new FDC\PressBundle\FDCPressBundle(),
             new Misd\GuzzleBundle\MisdGuzzleBundle(),
+            // FOS HTTP Cache Bundle
+            new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
             /* Console */
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new Eko\FeedBundle\EkoFeedBundle(),
