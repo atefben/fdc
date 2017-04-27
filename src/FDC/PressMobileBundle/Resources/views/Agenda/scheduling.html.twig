@@ -52,7 +52,7 @@
                                     <a href="#" class="{% if day == date %}active{% endif %}"
                                        data-date="{{ day|date('Y-m-d') }}"
                                        data-day="{{ day|date('d') }}">
-                                        {{ day|localizeddate('full', 'none', app.request.locale)|truncate(3, false, "") }}
+                                        {{ day|localizeddate('full', 'none', app.request.locale, null, 'EEEE')|truncate(3, false, "") }}
                                         <span class="day">{{ day|date('d') }}</span>
                                     </a>
                                 {% endfor %}

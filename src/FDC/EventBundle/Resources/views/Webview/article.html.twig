@@ -176,18 +176,18 @@
 
     {% if object.orange %}
         {% if object.orangeType == 'OCS' %}
-          <div class="Article-bottom-block ocs">
+          <a href="http://fans.ocs.fr/festival-de-cannes-2017/" class="Article-bottom-block ocs" style="display:block; text-decoration: none;">
             <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/ocs.png') }}"/>
             <h2>{{ 'movie.presse.label.plusdinformations'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
-          </div>
+          </a>
         {% else %}
-          <div class="Article-bottom-block">
+          <a href="http://www.festival-cannes.com/fr/static-application-mobile" class="Article-bottom-block" style="display:block; text-decoration: none;">
             <div class="Article-bottom-block-logos">
               <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-orange.png') }}"/>
               <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/logo-fdc.png') }}"/>
             </div>
             <h2>{{ 'movie.presse.label.plusdinformations'|trans }} <img src="{{ asset('bundles/fdcevent/webview_orange/img/article/right-arrow.png') }}"/></h2>
-          </div>
+          </a>
         {% endif %}
     {% endif %}
 

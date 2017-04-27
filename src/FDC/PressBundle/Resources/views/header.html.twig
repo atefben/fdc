@@ -3,11 +3,11 @@
 <header class="press">
     <div id="top-bar">
         <ul class="main-nav">
-            <li>
+            <!--<li>
                 <a href="/{{app.request.locale}}/" class="active" > {{ 'header.topbar.nav.festival'|trans }} </a>
-            </li>
+            </li>-->
             <li>
-                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
+                <a href="{{ attribute(_context, 'header_fdc_'~ app.request.locale) }}" target="_blank" class="active" > {{ 'header.topbar.nav.festivalcannes'|trans }} </a>
             </li>
             <li>
                 <a href="{{ attribute(_context, 'header_cine_'~ app.request.locale) }}" target="_blank" > {{ 'header.topbar.nav.cinefondation'|trans }} </a>
