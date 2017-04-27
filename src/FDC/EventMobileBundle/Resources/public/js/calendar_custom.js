@@ -56,7 +56,7 @@ $(document).ready(function () {
 
                     var dateBegin = new Date(date1);
                     var dateEnd = new Date(date2);
-                    // var _userOffset = dateBegin.getTimezoneOffset() * 60000;
+                    var _userOffset = dateBegin.getTimezoneOffset() * 60000;
 
 
                     if (dateEnd < dateBegin || !(dateEnd instanceof Date) || !(dateBegin instanceof Date)) {
@@ -77,16 +77,16 @@ $(document).ready(function () {
 
                         var titleEvent = (data.title.length > 17) ? jQuery.trim(data.title).substring(0, 15).split(" ").slice(0, -1).join(" ") + "..." : data.title;
                         //Création de l'évènement et affichage sur le calendrier
-                        // var dateBeginTimezoned = new Date(dateBegin.getTime() + _userOffset);
-                        // var dateEndTimezoned = new Date(dateEnd.getTime() + _userOffset);
+                        var dateBeginTimezoned = new Date(dateBegin.getTime() + _userOffset);
+                        var dateEndTimezoned = new Date(dateEnd.getTime() + _userOffset);
                         var myEvent = {
                             "title": titleEvent,
                             "eventColor": "#fff",
-                            "start": dateBegin,
-                            "end": dateEnd,
+                            "start": dateBeginTimezoned,
+                            "end": dateEndTimezoned,
                             "type": 'custom',
                             "description": data.description,
-                            "time": dateBegin.getHours(),
+                            "time": dateBeginTimezoned.getHours(),
                             "duration": (dateEnd - dateBegin) / 60000,
                             "room": data.place,
                             "eventPictogram": "pen",
@@ -127,64 +127,89 @@ $(document).ready(function () {
                         }
 
                         if (!error) {
-                            $('.v-container').append('<div class="fc-event fc-event-custom" data-category="reprise" data-type="reprise" data-id="'+myEvent.id+'" data-color="'+myEvent.eventColor+'" data-start="'+myEvent.start+'" data-end="'+myEvent.end+'" data-time="'+myEvent.time+'" data-duration="'+myEvent.duration+'"><p class="remove-evt remove-myEvent"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+myEvent.eventPictogram+'"></i><span class="cat-title">'+myEvent.title+'</span></span><div class="info"><div class="txt"><span>'+myEvent.description+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(myEvent.duration / 60) + 'H' + (myEvent.duration % 60 < 10 ? '0' : '') + (myEvent.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+myEvent.room+'</span></div></div>');
+                            // remove all existing events events
+                            $('.fc-event').remove();
+
+                            events.sort(function(a, b) {
+                                if (new Date(a.start) > new Date(b.start)) return 1;
+                                if (new Date(a.start) < new Date(b.start)) return -1;
+                                return 0;
+                            });
+
+                            // add them again after sorting
+                            $.each(events, function(index, evt){
+                                if (evt.type != 'custom') {
+                                    $('.v-container').append('<div class="fc-event" data-category="reprise" data-type="reprise" data-url="' + evt.url + '" data-id="' + evt.id + '" data-color="' + evt.eventColor + '" data-start="' + evt.start + '" data-end="' + evt.end + '" data-time="' + evt.time + '" data-duration="' + evt.duration + '"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon ' + evt.eventPictogram + '"></i><span class="cat-title">' + evt.type + '</span></span><div class="info"><img src="' + evt.picture + '"><div class="txt"><span>' + evt.title + '</span><strong>' + evt.author + '</strong></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">' + evt.room + '</span><span class="competition">' + evt.selection + '</span></div></div>');
+                                } else {
+                                    $('.v-container').append('<div class="fc-event fc-event-custom" data-category="reprise" data-type="reprise" data-id="'+evt.id+'" data-color="'+evt.eventColor+'" data-start="'+evt.start+'" data-end="'+evt.end+'" data-time="'+evt.time+'" data-duration="'+evt.duration+'"><p class="remove-evt"><i class="icon icon_close"></p></i><span class="category"><i class="icon '+evt.eventPictogram+'"></i><span class="cat-title">'+evt.title+'</span></span><div class="info"><div class="txt"><span>'+evt.description+'</span></div></div><div class="bottom"><span class="duration">' + Math.floor(evt.duration / 60) + 'H' + (evt.duration % 60 < 10 ? '0' : '') + (evt.duration % 60) + '</span> <span class="dash">-</span> <span class="ven">'+evt.room+'</span></div></div>');
+                                }
+                            });
+
+                            var endDate = new Date("1900-01-01T00:00:00").getTime();
 
                             $(".fc-event").each(function () {
-                                if ($(this).data('id') == myEvent.id) {
-                                    // short event (less than 2 hours)
-                                    // based on time start and duration, calculate positions of event
-                                    var dur = Math.floor($(this).data('duration') / 60),
-                                        minutes = $(this).data('duration') % 60;
+                                // allows to display two events at same hour (or overlap) in the same column
+                                // it works only if element (fc-event) are added in chronologic order
+                                var startDate = new Date($(this).data('start')).getTime();
 
-                                    if (minutes == 0) {
-                                        minutes = '';
+                                if(startDate < endDate) {
+                                    $(this).addClass('half');
+                                    if(!$(this).prev('.fc-event').hasClass('half')) {
+                                        $(this).prev('.fc-event').addClass('half');
                                     }
-                                    if (dur < 2) {
-                                        $(this).addClass('one-hour');
-                                        $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
-                                    }
+                                }
 
-                                    //add color
-                                    $(this).find('.category').css('background-color', $(this).data('color'));
+                                endDate = new Date($(this).data('end')).getTime();
+                                // short event (less than 2 hours)
+                                // based on time start and duration, calculate positions of event
+                                var timeStart = $(this).data('time'),
+                                    dur = Math.floor($(this).data('duration') / 60),
+                                    minutes = $(this).data('duration') % 60,
+                                    base = 8;
+                                var mT = timeStart - base;
 
+                                if (minutes == 0) {
+                                    minutes = '';
+                                }
+                                if (dur < 2) {
+                                    $(this).addClass('one-hour');
+                                    $(this).find('.txt span').prepend(dur + 'H' + minutes + ' - ');
+                                }
 
-                                    var startDate = new Date($(this).data("start"))
-                                        , duration = $(this).data("duration")
-                                        , time = $(this).data("time");
+                                //add color
+                                $(this).find('.category').css('background-color', $(this).data('color'));
+                                $(this).css('margin-top', mT*170+10);
 
-                                    var h = duration * 2.7;
-                                    $(this).css('height', h + 'px');
+                                // delete event from localStorage
+                                $(this).on('click', '.remove-evt', function (e) {
+                                    e.preventDefault();
 
-                                    $(this).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
+                                    var id = parseInt($(this).parent().data('id'));
+                                    var agenda = localStorage.getItem('agenda_press');
+                                    events = JSON.parse(agenda);
 
-                                    var day = $('.timeline-container .active').data('date');
-                                    var startDayDate = new Date("2016-05-"+day+"T00:00:00").getTime();
-                                    var endDayDate = new Date("2016-05-"+day+"T23:59:59").getTime();
-                                    if(startDate >= startDayDate && startDate <= endDayDate) {
-                                        $(this).css('display','block');
-                                    } else {
-                                        $(this).css('display','none');
-                                    }
-                                    // delete event from localStorage
-                                    $(this).on('click', '.remove-evt', function (e) {
-                                        e.preventDefault();
-
-                                        var id = parseInt($(this).parent().data('id'));
-                                        var agenda = localStorage.getItem('agenda_press');
-                                        events = JSON.parse(agenda);
-
-                                        for (var i = 0; i < events.length; i++) {
-                                            if (events[i].id == id) {
-                                                events.splice(i, 1);
-                                            }
+                                    for (var i = 0; i < events.length; i++) {
+                                        if (events[i].id == id) {
+                                            events.splice(i, 1);
                                         }
+                                    }
 
-                                        localStorage.setItem('agenda_press', JSON.stringify(events));
-                                        $(this).parent().remove();
-                                    });
+                                    localStorage.setItem('agenda_press', JSON.stringify(events));
+                                    $(this).parent().remove();
+                                });
 
+                                var startDate = new Date($(this).data("start"))
+                                    , duration = $(this).data("duration")
+                                    , time = $(this).data("time");
+
+                                var h = duration * 2.7;
+                                $(this).css('height', h + 'px');
+
+                                $(this).css("margin-top", (time - 8) * 170 + startDate.getMinutes() / 60 * 170 + 5);
+
+                                if ($(this).data('id') == myEvent.id) {
                                     // go to the day of the new event
-                                    $('#timeline a[data-date="' + startDate.getDate() + '"]').trigger('click');
+                                    $('#timeline a[data-date="' + new Date($(this).data('start')).getDate() + '"]').trigger('click');
                                 }
                             });
                         }
