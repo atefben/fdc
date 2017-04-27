@@ -49,11 +49,11 @@
                     </div>
 
                     <div class="contain-titles brigth">
-                        <strong class="title-14">{{ news.theme|trans_fallback('name') }} <span
-                                    class="date">{{ news.publishedAt|date('d.m.y') }}
-                                . {{ agenda_leftbar_translate_hour(news.publishedAt|date('H:i'), true, true) }} /</span>
-                            Mise à jour : <span class="date">{{ news.updatedAt|date('d.m.y') }}
-                                . {{ agenda_leftbar_translate_hour(news.updatedAt|date('H:i'), true, true) }}</span></strong>
+                        <strong class="title-14">
+                            <span class="category">{{ news.theme|trans_fallback('name') }}</span>
+                            <span class="date">{{ news.publishedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(news.publishedAt|date('H:i'), true, true) }} /</span>
+                            <span class="update">Mise à jour :</span>
+                            <span class="update-date">{{ news.updatedAt|date('d.m.y') }} . {{ agenda_leftbar_translate_hour(news.updatedAt|date('H:i'), true, true) }}</span></strong>
                         <h1 class="title-15">{{ news|trans_fallback('title') }}</h1>
                     </div>
 
