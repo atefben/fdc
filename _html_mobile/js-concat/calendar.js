@@ -286,8 +286,7 @@ $(document).ready(function() {
       $timeline = $('#timeline'),
       $navMovie = $('#nav-movie');
 
-  var calTop = $('.venues').offset().top - 80;
-  console.log(calTop);
+  var calTop = $('#timeline-calendar').offset().top - 80;
 
   // when comming from /programmation calendar display the day the user was on see #3589
   if (localStorage.getItem('calendar_day')) {
@@ -306,37 +305,23 @@ $(document).ready(function() {
     if ($('#timeline-calendar').length > 0 && !$('.press-home').length > 0) {
       if (!$('.programmation-press').length > 0) {
 
-        calTop = $('.venues').offset().top - 93;
+        calTop = $('#timeline-calendar').offset().top - 93;
 
         if (s > calTop) {
           var w = s - calTop + 120;
           w = w + "px";
           $('#timeline-calendar').css('transform', 'translateY(' + w + ')').css('z-index', 3);
-          /*
-           $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
-           */
-        } else {
-          $('#timeline-calendar').css('transform', 'translateY(' + 0 + ')');
-          /*
-           $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
-           */
         }
       } else {
 
         if (s > calTop) {
-          var w = s - calTop
+          var w = s - calTop;
           w = w + "px";
 
-          $('.calendar .v-head').css('transform', 'translateY(' + w + ')');
+          $('.calendar .v-head #timeline-calendar .filters').css('transform', 'translateY(' + w + ')');
           $('.calendar .nav').css('transform', 'translateY(' + w + ')').css('z-index', 3);
-
-        } else {
-
-          $('.calendar .v-head').css('transform', 'translateY(' + 0 + ')');
-          $('.calendar .nav').css('transform', 'translateY(' + 0 + ')').css('z-index', 3);
         }
       }
-
     }
   });
 
