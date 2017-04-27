@@ -4511,9 +4511,11 @@ var initRs = function () {
             var title = $('.contain-titles').find('.title-15').text();
             var theme = $('.contain-titles').find('.title-14 .category').text();
             var date = $('.contain-titles').find('.title-14 .date').text().substring(0, 8);
+            var chapo = $('.contain-title').find('.title-02').text().substring(0, 150);
 
             $(cls).find('.contain-popin .theme-article').text(theme);
             $(cls).find('.contain-popin .date-article').text(date);
+            $(cls).find('.contain-popin .chap-article').text(chapo);
             $(cls).find('.contain-popin .title-article').text(title);
         } else if ($('.tetiere-movie').length){
 
@@ -5628,12 +5630,13 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         var twitter = $('.c-fullscreen-slider').find('.rs-slideshow .twitter');
         var link = $('.c-fullscreen-slider').find('.rs-slideshow .link');
 
-        var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
-        if(typeof images[centerElement].title !== 'undefined'){
-            if(isHTML(images[centerElement].title)){
-                finalTitle = images[centerElement].title;
-            }
-        }
+        // var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
+        // if(typeof images[centerElement].title !== 'undefined'){
+        //     if(isHTML(images[centerElement].title)){
+        //         finalTitle = images[centerElement].title;
+        //     }
+        // }
+        finalTitle = images[centerElement].title;
 
         title.html(finalTitle);
         pagination.html(numberDiapo + '/' + images.length + ' <i class="icon icon-media"></i>');
@@ -5804,7 +5807,6 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
     var finalTitle = '<strong><a>'+images[centerElement].title+'</a></strong>';
     if(typeof images !== 'undefined'){
         if(typeof images[centerElement] !== 'undefined'){
-
             if(typeof images[centerElement].title !== 'undefined'){
                  if(isHTML(images[centerElement].title)){
                     finalTitle = images[centerElement].title;
@@ -5820,7 +5822,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         '<span class="chocolat-set-title"></span>' +
         '<div class="thumbnails owl-carousel owl-theme owl-loaded">' +
         '</div>' +
-        '<span class="chocolat-description"><h2 class="title-slide">' + finalTitle + '</h2></span>' +
+        '<span class="chocolat-description"><h2 class="title-slide"></h2></span>' +
         '<div class="credit">' + images[centerElement].caption + '</div>' +
         '<a href="" class="share"><i class="icon icon-share"></i></a>' +
             '<div class="buttons square img-slideshow-share rs-slideshow">' +
@@ -5836,7 +5838,7 @@ var openSlideShow = function(slider, hash, affiche, fdcAfficheIndex){
         '</div>' +
         '</div>');
 
-    console.log(images[centerElement].url);
+    $('.c-fullscreen-slider').find('.title-slide').html(finalTitle);
     $('.c-fullscreen-slider').append("<div class='zoomCursor'><i class='icon icon-wen-more'></i></div>");
 
     initRs();
