@@ -180,8 +180,7 @@ class CorpoMediaLibraryItemManager
                         $persons = $film->getPersons();
                         foreach ($persons as $person) {
                             if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
-                                $search .= ' ' . $person->getPerson()->lastname;
-                                $search .= ' ' . $person->getPerson()->firstname;
+                                $search .= ' ' . $person->getPerson()->getFullName();
                             }
                         }
                     }
@@ -273,8 +272,7 @@ class CorpoMediaLibraryItemManager
                         $persons = $film->getPersons();
                         foreach ($persons as $person) {
                             if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
-                                $search .= ' ' . $person->getPerson()->lastname;
-                                $search .= ' ' . $person->getPerson()->firstname;
+                                $search .= ' ' . $person->getPerson()->getFullName();
                             }
                         }
                     }
@@ -377,8 +375,7 @@ class CorpoMediaLibraryItemManager
                         $persons = $film->getPersons();
                         foreach ($persons as $person) {
                             if ($person instanceof \Base\CoreBundle\Entity\FilmFilmPerson) {
-                                $search .= ' ' . $person->getPerson()->lastname;
-                                $search .= ' ' . $person->getPerson()->firstname;
+                                $search .= ' ' . $person->getPerson()->getFullName();
                             }
                         }
                     }
@@ -516,6 +513,10 @@ class CorpoMediaLibraryItemManager
     private function syncSonataMedia(SonataMedia $sonataMedia)
     {
         foreach ($this->locales as $locale) {
+            if (strpos(strtolower($sonataMedia->getOldTitle()), 'film') !== false) {
+                $this->removeCorpoMediaLibraryItem($sonataMedia, SonataMedia::class, $locale);
+                continue;
+            }
             $festivalYear = null;
             $filmJury = null;
             if ($sonataMedia->getOldMediaPhotoJury()) {
