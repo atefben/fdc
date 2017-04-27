@@ -1659,8 +1659,8 @@ sub {
   margin-top: 70px;
   margin-bottom: 39px;
 }
-.title-14 .date {
-  color: #666666;
+.title-14 .date, .title-14 .update-date {
+  color: #969696;
   margin-left: 3px;
 }
 
