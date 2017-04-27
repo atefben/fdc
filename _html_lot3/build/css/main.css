@@ -2002,7 +2002,6 @@ blockquote, .quote {
   color: #666666;
 }
 .ie .contain-title p, .ie .contain-title ul, .ie .contain-title ol {
-  margin-top: 67px;
   width: 100%;
 }
 .bright .contain-title p, .bright .contain-title ul, .bright .contain-title ol {
@@ -2088,7 +2087,6 @@ blockquote, .quote {
   line-height: 36px;
 }
 .ie .contain-title .title-02 {
-  margin-top: 67px;
   width: 100%;
 }
 .contain-title .title-02 strong {
